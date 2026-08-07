@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v3';
+const VERSION = 'v4';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;

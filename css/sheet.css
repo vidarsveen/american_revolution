@@ -104,6 +104,28 @@
 .sheet__scroll::-webkit-scrollbar { width: 5px; }
 .sheet__scroll::-webkit-scrollbar-thumb { background: var(--rule-strong); border-radius: var(--r-pill); }
 
+/* ---------- Portrait (person sheets) ----------------------- */
+.sheet__portrait {
+  display: block;
+  width: 128px;
+  aspect-ratio: 1 / 1.12;
+  margin: var(--s2) 0 var(--s4);
+  border-radius: var(--r-md);
+  object-fit: cover;
+  object-position: 50% 20%;
+  background: var(--paper-sunken);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
+  filter: sepia(.26) saturate(.88) contrast(1.03);
+}
+.sheet__portrait--none {
+  display: grid;
+  place-items: center;
+  color: var(--ink-faint);
+  background: radial-gradient(80% 60% at 50% 32%, var(--paper-raised), var(--paper-sunken));
+}
+.sheet__portrait--none svg { width: 44%; height: 44%; opacity: .45; }
+
 /* ---------- Header ----------------------------------------- */
 .sheet__kicker {
   display: flex;

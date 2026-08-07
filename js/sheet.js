@@ -125,7 +125,7 @@ function renderPerson(p) {
   const side = p.side || 'neutral';
   const img = p.portrait
     ? `<img class="sheet__portrait" src="./assets/portraits/${escapeHtml(p.portrait)}"
-            alt="${escapeHtml(tx(p.name))}" loading="lazy" decoding="async">`
+            alt="${escapeHtml(tx(p.name))}" decoding="async">`
     : `<div class="sheet__portrait sheet__portrait--none">${icoPersonPlaceholder}</div>`;
 
   return `
