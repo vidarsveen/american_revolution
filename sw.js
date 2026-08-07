@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v8';
+const VERSION = 'v9';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -53,22 +53,22 @@ const PRECACHE = [
   './content/american-revolution/geo/places.json',
   './content/american-revolution/geo/colonies.geojson',
   './content/american-revolution/geo/routes.json',
-  './engine/scenes\map.js',
-  './engine/scenes\overlays.js',
-  './engine\basemap.js',
-  './engine\captions.js',
-  './engine\chrome.js',
-  './engine\player.js',
-  './engine\script.js',
-  './engine\stage.js',
-  './engine\story.js',
+  './engine/scenes/map.js',
+  './engine/scenes/overlays.js',
+  './engine/basemap.js',
+  './engine/captions.js',
+  './engine/chrome.js',
+  './engine/player.js',
+  './engine/script.js',
+  './engine/stage.js',
+  './engine/story.js',
   './css/story.css',
   './content/american-revolution/chapter-1775-04-19.json',
   './content/american-revolution/timing.no.json',
-  './content/american-revolution/media\doolittle-1.jpg',
-  './content/american-revolution/media\doolittle-2.jpg',
-  './content/american-revolution/media\doolittle-3.jpg',
-  './content/american-revolution/media\doolittle-4.jpg',
+  './content/american-revolution/media/doolittle-1.jpg',
+  './content/american-revolution/media/doolittle-2.jpg',
+  './content/american-revolution/media/doolittle-3.jpg',
+  './content/american-revolution/media/doolittle-4.jpg',
   './content/american-revolution/media.json',
   './content/american-revolution/timing.en.json',
   './assets/fonts/fraunces-latin.woff2',

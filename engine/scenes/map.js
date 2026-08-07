@@ -4,32 +4,49 @@
    Everything here is idempotent and reset-able, because the player rebuilds
    the whole picture from scratch whenever you seek backwards. Nothing may
    depend on having seen the previous cue.
+
+   Nothing here knows about any particular war. Places, routes and the things
+   that converge on them all come from the content pack.
    ============================================================ */
 
 import { attachTiles } from '../basemap.js';
 
-const SIDE = { british: 'british', patriot: 'patriot', french: 'french', neutral: 'neutral' };
-
 let map = null;
 let tiles = null;
 let chapter = null;
-let routeLayer = null;
-let markerLayer = null;
-let arrowLayer = null;
+let lang = 'no';
+
 let labelLayer = null;
+let routeLayer = null;
+let arrowLayer = null;
+let markerLayer = null;
+let ringLayer = null;
+
 let timeEl = null;
 let flashEl = null;
 let moodEl = null;
+let hostEl = null;
 
-const drawn = new Map();      // routeId -> polyline
-const markers = new Map();    // placeId -> marker
+const drawn = new Map();      // routeId  -> polyline
+const markers = new Map();    // placeId  -> marker
+const rings = new Map();      // placeId  -> marker
 
-export function mountMap(container, ch) {
+/** Keeps the framed area clear of the transport and the caption strip. */
+function framePadding() {
+  const h = hostEl ? hostEl.clientHeight : 600;
+  const w = hostEl ? hostEl.clientWidth : 390;
+  const bottom = Math.min(260, Math.max(120, Math.round(h * 0.34)));
+  const side = Math.max(28, Math.round(w * 0.10));
+  return { paddingTopLeft: [side, 70], paddingBottomRight: [side, bottom] };
+}
+
+export function mountMap(container, ch, language) {
   chapter = ch;
+  lang = language || ch.narrationLang || 'no';
 
-  const host = document.createElement('div');
-  host.className = 'stage-map';
-  host.innerHTML = `
+  hostEl = document.createElement('div');
+  hostEl.className = 'stage-map';
+  hostEl.innerHTML = `
     <div class="stage-map__canvas" id="story-map"></div>
     <div class="stage-map__mood"></div>
     <div class="map-wash"></div>
@@ -38,13 +55,13 @@ export function mountMap(container, ch) {
     <div class="stage-map__flash"></div>
     <div class="stage-map__time"><span></span></div>
   `;
-  container.appendChild(host);
+  container.appendChild(hostEl);
 
-  moodEl = host.querySelector('.stage-map__mood');
-  flashEl = host.querySelector('.stage-map__flash');
-  timeEl = host.querySelector('.stage-map__time');
+  moodEl = hostEl.querySelector('.stage-map__mood');
+  flashEl = hostEl.querySelector('.stage-map__flash');
+  timeEl = hostEl.querySelector('.stage-map__time');
 
-  map = L.map(host.querySelector('#story-map'), {
+  map = L.map(hostEl.querySelector('#story-map'), {
     zoomControl: false,
     attributionControl: true,
     dragging: false,          // the narration drives the camera, not the finger
@@ -52,14 +69,15 @@ export function mountMap(container, ch) {
     doubleClickZoom: false,
     touchZoom: false,
     keyboard: false,
-    zoomSnap: 0,              // continuous zoom so flyTo lands exactly
+    zoomSnap: 0,
     fadeAnimation: true,
   });
   map.attributionControl.setPrefix('');
-  map.setView([42.42, -71.18], 11);
+  map.setView(homeCentre(), 10.5);
 
   tiles = attachTiles(map);
   labelLayer = L.layerGroup().addTo(map);
+  ringLayer = L.layerGroup().addTo(map);
   routeLayer = L.layerGroup().addTo(map);
   arrowLayer = L.layerGroup().addTo(map);
   markerLayer = L.layerGroup().addTo(map);
@@ -68,29 +86,47 @@ export function mountMap(container, ch) {
   applyZoomClass();
   map.on('zoomend', applyZoomClass);
 
+  // A Leaflet map created while its container is hidden or still being laid
+  // out measures as zero and renders nothing — the "map didn't load" case.
+  // Re-measure whenever the box could have changed.
+  addEventListener('resize', invalidate);
+  addEventListener('orientationchange', () => setTimeout(invalidate, 250));
+  if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(() => invalidate()).observe(hostEl);
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) setTimeout(invalidate, 60);
+  });
+  for (const d of [0, 120, 400, 1200]) setTimeout(invalidate, d);
+
   return { invalidate, refreshTheme: () => tiles.refresh() };
 }
 
+function homeCentre() {
+  const home = chapter.places?.[chapter.home] || Object.values(chapter.places || {})[0];
+  return home ? home.coords : [0, 0];
+}
+
 function invalidate() {
-  if (map) map.invalidateSize({ animate: false });
+  if (!map) return;
+  map.invalidateSize({ animate: false });
 }
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/**
- * A label-free basemap of rural Massachusetts is a blank field. These names
- * are what make it a map rather than a beige rectangle — and they are the
- * places the narration keeps referring to.
- */
+/* ------------------------------------------------------------
+   Standing place names
+   ------------------------------------------------------------ */
+
 function drawStandingLabels() {
   labelLayer.clearLayers();
   for (const [id, place] of Object.entries(chapter.places || {})) {
     if (place.label === false) continue;
-    const name = pick(place.name, chapter.lang);
+    const name = pick(place.name);
     if (!name) continue;
     const icon = L.divIcon({
       className: 'story-place-wrap',
-      html: `<span class="story-place" data-place="${escAttr(id)}">${esc(name)}</span>`,
+      html: `<span class="story-place" data-place="${esc(id)}">${esc(name)}</span>`,
       iconSize: [150, 20],
       iconAnchor: [75, 10],
     });
@@ -98,32 +134,39 @@ function drawStandingLabels() {
   }
 }
 
-/** Only show the smaller places once there is room for them. */
 function applyZoomClass() {
   const z = map.getZoom();
   const el = map.getContainer();
-  el.classList.toggle('story-z-mid', z >= 11.5);
-  el.classList.toggle('story-z-near', z >= 12.8);
+  el.classList.toggle('story-z-mid', z >= 11.2);
+  el.classList.toggle('story-z-near', z >= 12.6);
+}
+
+function setStandingLabel(placeId, visible) {
+  const node = map?.getContainer()
+    .querySelector(`.story-place[data-place="${CSS.escape(String(placeId))}"]`);
+  if (node) node.classList.toggle('is-hidden', !visible);
 }
 
 /* ------------------------------------------------------------
-   Reset — called before re-applying cues after a seek
+   Reset
    ------------------------------------------------------------ */
 
 export function resetMap() {
   routeLayer?.clearLayers();
   arrowLayer?.clearLayers();
   markerLayer?.clearLayers();
+  ringLayer?.clearLayers();
   drawn.clear();
+  rings.clear();
   for (const id of markers.keys()) setStandingLabel(id, true);
   markers.clear();
   setMood('day', true);
   setTime(null);
-  if (flashEl) flashEl.classList.remove('is-on');
+  flashEl?.classList.remove('is-on');
 }
 
 /* ------------------------------------------------------------
-   Verbs
+   Camera
    ------------------------------------------------------------ */
 
 export function flyTo(cue, instant) {
@@ -134,19 +177,35 @@ export function flyTo(cue, instant) {
   else map.flyTo(place.coords, zoom, { duration: cue.over ?? 2.4, easeLinearity: 0.25 });
 }
 
+/** Frame a set of points, leaving room for the chrome. */
+function frame(points, instant, duration = 1.8) {
+  if (!map || !points.length) return;
+  const bounds = L.latLngBounds(points);
+  const opts = { ...framePadding(), maxZoom: 13.5 };
+  if (instant || reduced()) map.fitBounds(bounds, { ...opts, animate: false });
+  else map.flyToBounds(bounds, { ...opts, duration });
+}
+
 export function fitRoute(cue, instant) {
   const route = chapter.routes[cue.id];
-  if (!route || !map) return;
-  map.flyToBounds(L.latLngBounds(route.coords), {
-    padding: [40, 40], duration: instant ? 0 : 1.8, animate: !instant && !reduced(),
-  });
+  if (route) frame(route.coords, instant, cue.over ?? 1.8);
 }
+
+/** Frame several named places at once. */
+export function fitPlaces(cue, instant) {
+  const ids = cue.places || [];
+  const pts = ids.map((id) => chapter.places[id]?.coords).filter(Boolean);
+  frame(pts, instant, cue.over ?? 1.8);
+}
+
+/* ------------------------------------------------------------
+   Atmosphere
+   ------------------------------------------------------------ */
 
 export function setTime(value) {
   if (!timeEl) return;
-  const span = timeEl.querySelector('span');
   const text = typeof value === 'string' ? value : '';
-  span.textContent = text;
+  timeEl.querySelector('span').textContent = text;
   timeEl.classList.toggle('is-on', Boolean(text));
 }
 
@@ -160,7 +219,6 @@ export function setMood(value, instant) {
   }
 }
 
-/** A muzzle-flash for the moment a shot is fired. */
 export function flash(instant) {
   if (!flashEl || instant || reduced()) return;
   flashEl.classList.remove('is-on');
@@ -169,15 +227,23 @@ export function flash(instant) {
   setTimeout(() => flashEl.classList.remove('is-on'), 700);
 }
 
+/* ------------------------------------------------------------
+   Routes
+   ------------------------------------------------------------ */
+
 export function drawRoute(cue, instant) {
   const route = chapter.routes[cue.id];
   if (!route || !map || drawn.has(cue.id)) return;
 
-  const side = SIDE[route.side] || 'neutral';
+  // A march that draws itself off the edge of the screen explains nothing, so
+  // unless the author opts out, frame it before drawing.
+  if (cue.fit !== false) frame(route.coords, instant, 1.4);
+
+  const side = route.side || 'neutral';
   const line = L.polyline(route.coords, {
-    className: `story-route story-route--${side}`,
+    className: `story-route story-route--${side}${route.naval ? ' story-route--naval' : ''}`,
     weight: 4,
-    opacity: 0.9,
+    opacity: 0.92,
     interactive: false,
     smoothFactor: 1,
   }).addTo(routeLayer);
@@ -186,30 +252,28 @@ export function drawRoute(cue, instant) {
   const path = line.getElement?.() || line._path;
   if (!path) return;
 
-  if (instant || reduced()) {
-    path.style.strokeDasharray = '';
-    path.style.strokeDashoffset = '';
-    return;
-  }
+  if (instant || reduced()) return;
 
   let len = 0;
   try { len = path.getTotalLength(); } catch { /* not laid out yet */ }
   if (!len) return;
 
+  // Start drawing after the camera has mostly settled, or the line grows
+  // while the ground moves under it.
+  const lead = cue.fit === false ? 0 : 900;
   const over = (cue.over ?? 4) * 1000;
   path.style.transition = 'none';
   path.style.strokeDasharray = String(len);
   path.style.strokeDashoffset = String(len);
-  requestAnimationFrame(() => {
+  setTimeout(() => {
     path.style.transition = `stroke-dashoffset ${over}ms cubic-bezier(.35,.05,.25,1)`;
     path.style.strokeDashoffset = '0';
-  });
-  // Hand the line back once drawn, so a later zoom does not restart the dash.
+  }, lead);
   setTimeout(() => {
     path.style.transition = '';
     path.style.strokeDasharray = '';
     path.style.strokeDashoffset = '';
-  }, over + 80);
+  }, lead + over + 90);
 }
 
 export function clearRoutes() {
@@ -218,32 +282,77 @@ export function clearRoutes() {
   drawn.clear();
 }
 
-export function showMarker(cue, instant, lang) {
+/* ------------------------------------------------------------
+   Converging lines
+
+   Generic: "these named places moved on that one". Militia closing on a road,
+   armies on a capital, supply lines on a port — the verb does not care.
+   ------------------------------------------------------------ */
+
+export function converge(cue, instant) {
+  if (!map) return;
+  const target = chapter.places[cue.to];
+  if (!target) return;
+
+  const from = (cue.from || [])
+    .map((id) => ({ id, place: chapter.places[id] }))
+    .filter((x) => x.place);
+  if (!from.length) return;
+
+  if (cue.fit !== false) {
+    frame([target.coords, ...from.map((x) => x.place.coords)], instant, 1.6);
+  }
+
+  const side = cue.side || 'patriot';
+  const over = (cue.over ?? 3.2) * 1000;
+  const lead = cue.fit === false ? 0 : 800;
+
+  from.forEach((x, i) => {
+    const line = L.polyline([x.place.coords, target.coords], {
+      className: `story-converge story-converge--${side}`,
+      weight: 2.6,
+      interactive: false,
+    }).addTo(arrowLayer);
+
+    const path = line.getElement?.() || line._path;
+    if (!path) return;
+    if (instant || reduced()) return;
+
+    let len = 0;
+    try { len = path.getTotalLength(); } catch { /* ignore */ }
+    if (!len) return;
+    path.style.transition = 'none';
+    path.style.strokeDasharray = String(len);
+    path.style.strokeDashoffset = String(len);
+    const delay = lead + i * 220;
+    setTimeout(() => {
+      path.style.transition = `stroke-dashoffset ${over}ms cubic-bezier(.3,.1,.2,1)`;
+      path.style.strokeDashoffset = '0';
+    }, delay);
+  });
+}
+
+/* ------------------------------------------------------------
+   Markers and highlights
+   ------------------------------------------------------------ */
+
+export function showMarker(cue, instant) {
   const place = chapter.places[cue.at];
   if (!place || !map || markers.has(cue.at)) return;
-  const label = pick(cue.label, lang) || pick(place.name, lang) || '';
+  const label = pick(cue.label) || pick(place.name) || '';
   const kind = cue.kind || 'point';
   const icon = L.divIcon({
     className: 'story-mk-wrap',
-    html: `<div class="story-mk story-mk--${kind}${instant ? ' is-instant' : ''}">
+    html: `<div class="story-mk story-mk--${esc(kind)}${instant ? ' is-instant' : ''}">
              <span class="story-mk__dot"></span>
-             <span class="story-mk__label">${esc(label)}</span>
+             ${label ? `<span class="story-mk__label">${esc(label)}</span>` : ''}
            </div>`,
-    iconSize: [140, 46],
-    iconAnchor: [70, 23],
+    iconSize: [160, 48],
+    iconAnchor: [80, 24],
   });
-  markers.set(cue.at, L.marker(place.coords, { icon, interactive: false, keyboard: false }).addTo(markerLayer));
-  // A pin already names the place; the standing label would just double it.
-  setStandingLabel(cue.at, false);
-}
-
-function setStandingLabel(placeId, visible) {
-  const node = map?.getContainer().querySelector(`.story-place[data-place="${cssEscape(placeId)}"]`);
-  if (node) node.classList.toggle('is-hidden', !visible);
-}
-
-function cssEscape(s) {
-  return CSS.escape(String(s));
+  markers.set(cue.at, L.marker(place.coords, { icon, interactive: false, keyboard: false })
+    .addTo(markerLayer));
+  setStandingLabel(cue.at, false);   // the pin already names it
 }
 
 export function hideMarker(cue) {
@@ -258,62 +367,45 @@ export function clearMarkers() {
 }
 
 /**
- * Militia closing in on the road. Deliberately vague: a scatter of short
- * arrows pointing inward, not a claim about who came from exactly where.
+ * Draw attention to a place without necessarily pinning it: an expanding ring
+ * you can see from across the screen. This is the "point at the map while you
+ * talk" verb.
  */
-export function militiaConverge(cue, instant) {
-  if (!map) return;
-  const target = cue.wide
-    ? [[42.40, -71.10], 0.42]
-    : [[42.44, -71.24], 0.26];
-  const [centre, spread] = target;
-  const n = cue.wide ? 14 : 10;
+export function highlight(cue, instant) {
+  const place = chapter.places[cue.at];
+  if (!place || !map) return;
+  if (rings.has(cue.at)) return;
 
-  for (let i = 0; i < n; i++) {
-    const angle = (i / n) * Math.PI * 2 + 0.4;
-    const from = [
-      centre[0] + Math.sin(angle) * spread,
-      centre[1] + Math.cos(angle) * spread * 1.5,
-    ];
-    const to = [
-      centre[0] + Math.sin(angle) * spread * 0.45,
-      centre[1] + Math.cos(angle) * spread * 0.45 * 1.5,
-    ];
-    const line = L.polyline([from, to], {
-      className: 'story-arrow',
-      weight: 2.5,
-      interactive: false,
-    }).addTo(arrowLayer);
+  const tone = cue.tone || 'gold';
+  const icon = L.divIcon({
+    className: 'story-ring-wrap',
+    html: `<span class="story-ring story-ring--${esc(tone)}${instant ? ' is-instant' : ''}"></span>`,
+    iconSize: [120, 120],
+    iconAnchor: [60, 60],
+  });
+  rings.set(cue.at, L.marker(place.coords, { icon, interactive: false, keyboard: false })
+    .addTo(ringLayer));
 
-    const path = line.getElement?.() || line._path;
-    if (!path) continue;
-    if (instant || reduced()) continue;
-    let len = 0;
-    try { len = path.getTotalLength(); } catch { /* ignore */ }
-    if (!len) continue;
-    path.style.transition = 'none';
-    path.style.strokeDasharray = String(len);
-    path.style.strokeDashoffset = String(len);
-    const delay = 90 * i;
-    requestAnimationFrame(() => {
-      path.style.transition = `stroke-dashoffset 900ms ${delay}ms ease-out`;
-      path.style.strokeDashoffset = '0';
-    });
+  if (cue.centre !== false && !instant && !reduced()) {
+    map.panTo(place.coords, { duration: 1.1 });
   }
+}
+
+export function clearHighlights() {
+  ringLayer?.clearLayers();
+  rings.clear();
 }
 
 /* ------------------------------------------------------------ */
 
-function pick(field, lang) {
+function pick(field) {
   if (field == null) return '';
-  if (typeof field === 'string') return field;
+  if (typeof field === 'string' || typeof field === 'number') return String(field);
   return field[lang] ?? field.no ?? field.en ?? '';
 }
 
-function escAttr(s) { return esc(s); }
-
 function esc(s) {
-  return String(s).replace(/[&<>"']/g, (c) => (
+  return String(s ?? '').replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
 }

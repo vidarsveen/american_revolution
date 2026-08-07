@@ -91,10 +91,20 @@ js/                        the Explore mode
 tools/                     narrate.py · fetch-media.py · check-script.py · check-data.py
 ```
 
-**Cue vocabulary** (a subject without geography simply never uses the map verbs):
-`map.flyTo` · `map.fitRoute` · `map.time` · `map.mood` · `map.flash` · `route.draw` ·
-`route.clear` · `marker.show/hide/clear` · `portrait.show/hide` · `image.show/hide` ·
-`quote.show/hide` · `stat.show/clear` · `caption.note` · `militia.converge` · `hold` · `pause`.
+**Cue vocabulary** — all subject-neutral. A topic without geography simply never uses the
+map verbs; one with different geography just ships different places.
+
+| verb | what it does |
+|---|---|
+| `map.flyTo` `map.fitRoute` `map.fitPlaces` | move the camera |
+| `map.time` `map.mood` `map.flash` | clock, time of day, a shot going off |
+| `route.draw` `route.clear` | a march drawing itself. Frames itself first unless `fit: false`, so it cannot run off the edge |
+| `converge` | `from: [places] → to: place`. Lines coming in from outside and joining — militia on a road, armies on a capital, supply lines on a port |
+| `place.highlight` `place.clear` | a pulsing ring: point at the map while you talk |
+| `marker.show/hide/clear` | a named pin |
+| `portrait.show/hide` | the person being spoken about, upright |
+| `image.show/hide` `quote.show/hide` `stat.show/clear` `caption.note` | the overlay cards |
+| `hold` `pause` | pacing; `pause` waits for a tap |
 
 Adding a verb means adding it to the table in `engine/stage.js` **and** to `VERBS` in
 `tools/check-script.py`, or a typo in a chapter will silently do nothing.

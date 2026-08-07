@@ -64,11 +64,28 @@
 <script type="module" src="./js/main.js"></script>
 <script>
   // Service worker is optional: the app works fine without it.
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
+  //
+  // Not on localhost, though. A caching worker in front of a dev server means
+  // an edit can appear to have no effect — you get the previous build back and
+  // spend the next twenty minutes debugging code that is not running. Offline
+  // behaviour gets tested on the deployed site instead.
+  (function () {
+    if (!('serviceWorker' in navigator)) return;
+    var local = ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) >= 0;
+    if (local) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function (rs) { rs.forEach(function (r) { r.unregister(); }); })
+        .catch(function () {});
+      if (window.caches) {
+        caches.keys().then(function (ks) { ks.forEach(function (k) { caches.delete(k); }); })
+          .catch(function () {});
+      }
+      return;
+    }
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () {});
     });
-  }
+  }());
 </script>
 </body>
 </html>

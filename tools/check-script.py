@@ -27,15 +27,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # engine/stage.js will pass this check and fail silently in the browser, so
 # these two lists have to be kept honest together.
 VERBS = {
-    "map.flyTo", "map.fitRoute", "map.time", "map.mood", "map.flash",
+    "map.flyTo", "map.fitRoute", "map.fitPlaces", "map.time", "map.mood", "map.flash",
     "route.draw", "route.clear",
-    "marker.show", "marker.hide", "marker.clear", "marker.pulse",
+    "marker.show", "marker.hide", "marker.clear",
+    "place.highlight", "place.clear",
+    "converge",
     "portrait.show", "portrait.hide",
     "image.show", "image.hide",
     "quote.show", "quote.hide",
     "stat.show", "stat.clear",
     "caption.note",
-    "militia.converge",
     "hold", "pause",
 }
 
@@ -134,8 +135,20 @@ def main():
                         + ("" if media else " (no media.json — run tools/fetch-media.py)"))
                 if verb == "quote.show" and cue.get("id") not in quotes:
                     problems.append(f"{bid}: quote.show -> '{cue.get('id')}' is not in the chapter's quotes block")
-                if verb == "marker.show" and cue.get("at") not in places:
-                    problems.append(f"{bid}: marker.show -> unknown place '{cue.get('at')}'")
+                if verb in ("marker.show", "marker.hide", "place.highlight") and cue.get("at") not in places:
+                    problems.append(f"{bid}: {verb} -> unknown place '{cue.get('at')}'")
+                if verb == "map.fitPlaces":
+                    for pid in cue.get("places", []) or []:
+                        if pid not in places:
+                            problems.append(f"{bid}: map.fitPlaces -> unknown place '{pid}'")
+                if verb == "converge":
+                    if cue.get("to") not in places:
+                        problems.append(f"{bid}: converge -> unknown target place '{cue.get('to')}'")
+                    if not (cue.get("from") or []):
+                        problems.append(f"{bid}: converge has no 'from' places")
+                    for pid in cue.get("from", []) or []:
+                        if pid not in places:
+                            problems.append(f"{bid}: converge -> unknown origin place '{pid}'")
 
                 # the important one: does the anchor word actually get spoken?
                 on = cue.get("on", "start")

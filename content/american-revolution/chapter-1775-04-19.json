@@ -189,6 +189,150 @@
         "en": "The whole day"
       },
       "label": false
+    },
+    "reading": {
+      "coords": [
+        42.5254,
+        -71.1096
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Reading",
+        "en": "Reading"
+      }
+    },
+    "billerica": {
+      "coords": [
+        42.5584,
+        -71.2689
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Billerica",
+        "en": "Billerica"
+      }
+    },
+    "woburn": {
+      "coords": [
+        42.4793,
+        -71.1523
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Woburn",
+        "en": "Woburn"
+      }
+    },
+    "sudbury": {
+      "coords": [
+        42.3834,
+        -71.4162
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Sudbury",
+        "en": "Sudbury"
+      }
+    },
+    "danvers": {
+      "coords": [
+        42.5751,
+        -70.93
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Danvers",
+        "en": "Danvers"
+      }
+    },
+    "dedham": {
+      "coords": [
+        42.2436,
+        -71.1662
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Dedham",
+        "en": "Dedham"
+      }
+    },
+    "watertown": {
+      "coords": [
+        42.3709,
+        -71.1828
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Watertown",
+        "en": "Watertown"
+      }
+    },
+    "newton": {
+      "coords": [
+        42.337,
+        -71.2092
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Newton",
+        "en": "Newton"
+      }
+    },
+    "lynn": {
+      "coords": [
+        42.4668,
+        -70.9495
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Lynn",
+        "en": "Lynn"
+      }
+    },
+    "salem": {
+      "coords": [
+        42.5195,
+        -70.8967
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Salem",
+        "en": "Salem"
+      }
+    },
+    "roxbury": {
+      "coords": [
+        42.3125,
+        -71.09
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Roxbury",
+        "en": "Roxbury"
+      }
+    },
+    "chelmsford": {
+      "coords": [
+        42.5998,
+        -71.3673
+      ],
+      "zoom": 12,
+      "label": false,
+      "name": {
+        "no": "Chelmsford",
+        "en": "Chelmsford"
+      }
     }
   },
   "routes": {
@@ -409,7 +553,7 @@
               }
             }
           ],
-          "gapAfter": 0.5
+          "gapAfter": 0.85
         },
         {
           "id": "s1.b2",
@@ -444,7 +588,7 @@
               "side": "british"
             }
           ],
-          "gapAfter": 0.8
+          "gapAfter": 1.15
         },
         {
           "id": "s1.b3",
@@ -463,7 +607,7 @@
               "id": "gage"
             }
           ],
-          "gapAfter": 0.4
+          "gapAfter": 0.75
         },
         {
           "id": "s1.b4",
@@ -471,7 +615,7 @@
             "no": "Han har prøvd å advare London. Skal dere slå ned dette, skrev han hjem, trenger dere en mye større hær enn dere tror. Ingen ville høre.",
             "en": "He has tried to warn London. If you mean to put this down, he wrote home, you will need a far larger army than you think. Nobody wanted to hear it."
           },
-          "gapAfter": 0.8
+          "gapAfter": 1.15
         },
         {
           "id": "s1.b5",
@@ -498,9 +642,19 @@
                 "en": "Concord"
               },
               "kind": "target"
+            },
+            {
+              "on": {
+                "no": "word:Concord",
+                "en": "word:Concord"
+              },
+              "do": "place.highlight",
+              "at": "concord",
+              "tone": "gold",
+              "centre": false
             }
           ],
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s1.b6",
@@ -515,7 +669,7 @@
               "id": "margaret-gage"
             }
           ],
-          "gapAfter": 0.5
+          "gapAfter": 0.85
         },
         {
           "id": "s1.b7",
@@ -529,7 +683,7 @@
               "do": "portrait.hide"
             }
           ],
-          "gapAfter": 1.4
+          "gapAfter": 1.75
         },
         {
           "id": "s1.b8",
@@ -573,7 +727,7 @@
               "kind": "point"
             }
           ],
-          "gapAfter": 0.7
+          "gapAfter": 1.05
         },
         {
           "id": "s1.b9",
@@ -589,7 +743,7 @@
               "over": 4.5
             }
           ],
-          "gapAfter": 2.2
+          "gapAfter": 3.15
         }
       ]
     },
@@ -611,6 +765,10 @@
             "en": "But the town has already seen them. In the tower of the Old North Church, two lanterns hang for a few seconds. One if the British come by land. Two if they come by water."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
             {
               "on": "start",
               "do": "route.clear"
@@ -638,7 +796,7 @@
               "kind": "point"
             }
           ],
-          "gapAfter": 0.7
+          "gapAfter": 1.05
         },
         {
           "id": "s2.b2",
@@ -653,7 +811,7 @@
               "id": "revere"
             }
           ],
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s2.b3",
@@ -677,7 +835,7 @@
               "over": 6
             }
           ],
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s2.b4",
@@ -701,7 +859,7 @@
               "over": 6
             }
           ],
-          "gapAfter": 0.8
+          "gapAfter": 1.15
         },
         {
           "id": "s2.b5",
@@ -720,7 +878,7 @@
               "to": "wide"
             }
           ],
-          "gapAfter": 1.0
+          "gapAfter": 1.35
         },
         {
           "id": "s2.b6",
@@ -752,7 +910,7 @@
               "kind": "point"
             }
           ],
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s2.b7",
@@ -767,7 +925,7 @@
               "id": "prescott"
             }
           ],
-          "gapAfter": 0.5
+          "gapAfter": 0.85
         },
         {
           "id": "s2.b8",
@@ -792,10 +950,21 @@
               "on": "word:Prescott",
               "do": "route.draw",
               "id": "prescott-ride",
-              "over": 3.5
+              "over": 3.5,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:patrulje",
+                "en": "word:patrol"
+              },
+              "do": "place.highlight",
+              "at": "revere-capture",
+              "tone": "red",
+              "centre": false
             }
           ],
-          "gapAfter": 0.7
+          "gapAfter": 1.05
         },
         {
           "id": "s2.b9",
@@ -809,7 +978,7 @@
               "do": "route.clear"
             }
           ],
-          "gapAfter": 2.0
+          "gapAfter": 2.95
         }
       ]
     },
@@ -856,7 +1025,7 @@
               "kind": "clash"
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s3.b2",
@@ -864,7 +1033,7 @@
             "no": "På gressplassen midt i Lexington står det en flokk menn. Noen av dem er nitten år. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker.",
             "en": "On the green in the middle of Lexington stands a cluster of men. Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker."
           },
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s3.b3",
@@ -879,7 +1048,7 @@
               "id": "parker"
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s3.b4",
@@ -919,7 +1088,7 @@
               "side": "british"
             }
           ],
-          "gapAfter": 1.3
+          "gapAfter": 1.65
         },
         {
           "id": "s3.b5",
@@ -933,7 +1102,7 @@
               "do": "stat.clear"
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s3.b6",
@@ -948,7 +1117,7 @@
               "id": "pitcairn"
             }
           ],
-          "gapAfter": 0.5
+          "gapAfter": 0.85
         },
         {
           "id": "s3.b7",
@@ -962,7 +1131,7 @@
               "do": "portrait.hide"
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s3.b8",
@@ -974,9 +1143,16 @@
             {
               "on": "end",
               "do": "map.flash"
+            },
+            {
+              "on": "end",
+              "do": "place.highlight",
+              "at": "lexington-green",
+              "tone": "red",
+              "centre": false
             }
           ],
-          "gapAfter": 1.8
+          "gapAfter": 2.15
         },
         {
           "id": "s3.b9",
@@ -984,7 +1160,7 @@
             "no": "Ingen har noen gang klart å si hvem som skjøt. Begge sider var helt sikre på at det var den andre.",
             "en": "Nobody has ever been able to say who fired. Both sides were quite certain it was the other."
           },
-          "gapAfter": 1.2
+          "gapAfter": 1.55
         },
         {
           "id": "s3.b10",
@@ -1003,7 +1179,7 @@
               "mode": "inset"
             }
           ],
-          "gapAfter": 0.7
+          "gapAfter": 1.05
         },
         {
           "id": "s3.b11",
@@ -1039,7 +1215,7 @@
               "side": "british"
             }
           ],
-          "gapAfter": 1.5
+          "gapAfter": 1.85
         },
         {
           "id": "s3.b12",
@@ -1062,7 +1238,7 @@
               "to": "concord"
             }
           ],
-          "gapAfter": 2.0
+          "gapAfter": 2.95
         }
       ]
     },
@@ -1084,6 +1260,10 @@
             "en": "By seven o'clock the British are in Concord. The town is almost empty. People moved what they could during the night."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
             {
               "on": "start",
               "do": "map.mood",
@@ -1109,7 +1289,7 @@
               "kind": "point"
             }
           ],
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s4.b2",
@@ -1128,7 +1308,7 @@
               "mode": "inset"
             }
           ],
-          "gapAfter": 0.8
+          "gapAfter": 1.15
         },
         {
           "id": "s4.b3",
@@ -1154,9 +1334,19 @@
               "do": "marker.show",
               "at": "north-bridge",
               "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:røyken",
+                "en": "word:smoke"
+              },
+              "do": "place.highlight",
+              "at": "concord",
+              "tone": "red",
+              "centre": false
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s4.b4",
@@ -1179,7 +1369,7 @@
               "side": "patriot"
             }
           ],
-          "gapAfter": 0.7
+          "gapAfter": 1.05
         },
         {
           "id": "s4.b5",
@@ -1193,7 +1383,7 @@
               "do": "stat.clear"
             }
           ],
-          "gapAfter": 1.1
+          "gapAfter": 1.45
         },
         {
           "id": "s4.b6",
@@ -1212,7 +1402,7 @@
               "mode": "inset"
             }
           ],
-          "gapAfter": 1.0
+          "gapAfter": 1.35
         },
         {
           "id": "s4.b7",
@@ -1220,7 +1410,7 @@
             "no": "De britiske soldatene ved broa er hundre mann. De trekker seg tilbake over elva, blir usikre, og noen av dem fyrer av et skudd. Så en hel salve.",
             "en": "The British at the bridge are a hundred men. They pull back across the river, waver, and some of them fire a shot. Then a full volley."
           },
-          "gapAfter": 0.8
+          "gapAfter": 1.15
         },
         {
           "id": "s4.b8",
@@ -1228,7 +1418,7 @@
             "no": "To amerikanere faller. Og for første gang i historien gir en amerikansk offiser ordre om å skyte på kongens soldater.",
             "en": "Two Americans fall. And for the first time in history, an American officer gives the order to fire on the king's soldiers."
           },
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s4.b9",
@@ -1240,9 +1430,16 @@
             {
               "on": "end",
               "do": "map.flash"
+            },
+            {
+              "on": "end",
+              "do": "place.highlight",
+              "at": "north-bridge",
+              "tone": "red",
+              "centre": false
             }
           ],
-          "gapAfter": 1.6
+          "gapAfter": 1.95
         },
         {
           "id": "s4.b10",
@@ -1256,7 +1453,7 @@
               "do": "image.hide"
             }
           ],
-          "gapAfter": 2.0
+          "gapAfter": 2.95
         }
       ]
     },
@@ -1278,6 +1475,10 @@
             "en": "At noon the British begin to march back to Boston. They have thirty kilometres ahead of them."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
             {
               "on": "start",
               "do": "map.time",
@@ -1304,7 +1505,7 @@
               }
             }
           ],
-          "gapAfter": 0.7
+          "gapAfter": 1.05
         },
         {
           "id": "s5.b2",
@@ -1324,7 +1525,7 @@
               "over": 14
             }
           ],
-          "gapAfter": 1.2
+          "gapAfter": 1.55
         },
         {
           "id": "s5.b3",
@@ -1342,9 +1543,16 @@
                 "en": "Meriam's Corner"
               },
               "kind": "clash"
+            },
+            {
+              "on": "word:Meriams",
+              "do": "place.highlight",
+              "at": "meriams-corner",
+              "tone": "red",
+              "centre": false
             }
           ],
-          "gapAfter": 0.8
+          "gapAfter": 1.15
         },
         {
           "id": "s5.b4",
@@ -1354,11 +1562,25 @@
           },
           "cues": [
             {
-              "on": "word:Reading",
-              "do": "militia.converge"
+              "on": {
+                "no": "word:Reading",
+                "en": "word:Reading"
+              },
+              "do": "converge",
+              "from": [
+                "reading",
+                "billerica",
+                "woburn",
+                "sudbury",
+                "danvers",
+                "watertown"
+              ],
+              "to": "bloody-angle",
+              "side": "patriot",
+              "over": 3.6
             }
           ],
-          "gapAfter": 0.6
+          "gapAfter": 0.95
         },
         {
           "id": "s5.b5",
@@ -1366,7 +1588,7 @@
             "no": "Og de stiller seg ikke opp på ei slette slik en hær skal. De legger seg bak murer og trær langs veien.",
             "en": "And they do not line up in a field the way an army is supposed to. They lie down behind walls and trees along the road."
           },
-          "gapAfter": 1.0
+          "gapAfter": 1.35
         },
         {
           "id": "s5.b6",
@@ -1391,7 +1613,7 @@
               "to": "bloody-angle"
             }
           ],
-          "gapAfter": 1.1
+          "gapAfter": 1.45
         },
         {
           "id": "s5.b7",
@@ -1406,7 +1628,7 @@
               "to": "the-road"
             }
           ],
-          "gapAfter": 1.3
+          "gapAfter": 1.65
         },
         {
           "id": "s5.b8",
@@ -1414,7 +1636,7 @@
             "no": "Soldatene har vært våkne i over et døgn. De har gått over førti kilometer. Mange er tomme for ammunisjon. Noen begynner å løpe.",
             "en": "The soldiers have been awake for over a day. They have marched more than forty kilometres. Many are out of ammunition. Some begin to run."
           },
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s5.b9",
@@ -1436,7 +1658,7 @@
               "mode": "inset"
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s5.b10",
@@ -1459,9 +1681,19 @@
                 "en": "Menotomy"
               },
               "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:Menotomy",
+                "en": "word:Menotomy"
+              },
+              "do": "place.highlight",
+              "at": "menotomy",
+              "tone": "red",
+              "centre": false
             }
           ],
-          "gapAfter": 1.0
+          "gapAfter": 1.35
         },
         {
           "id": "s5.b11",
@@ -1499,7 +1731,7 @@
               "kind": "point"
             }
           ],
-          "gapAfter": 1.2
+          "gapAfter": 1.55
         },
         {
           "id": "s5.b12",
@@ -1535,7 +1767,7 @@
               "side": "patriot"
             }
           ],
-          "gapAfter": 2.2
+          "gapAfter": 3.15
         }
       ]
     },
@@ -1559,6 +1791,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -1576,7 +1812,7 @@
               "to": "siege"
             }
           ],
-          "gapAfter": 1.0
+          "gapAfter": 1.35
         },
         {
           "id": "s6.b2",
@@ -1590,11 +1826,27 @@
                 "no": "word:flere",
                 "en": "word:arriving"
               },
-              "do": "militia.converge",
-              "wide": true
+              "do": "converge",
+              "from": [
+                "salem",
+                "danvers",
+                "lynn",
+                "reading",
+                "billerica",
+                "chelmsford",
+                "sudbury",
+                "dedham",
+                "roxbury",
+                "watertown",
+                "newton",
+                "woburn"
+              ],
+              "to": "siege",
+              "side": "patriot",
+              "over": 4.4
             }
           ],
-          "gapAfter": 0.9
+          "gapAfter": 1.25
         },
         {
           "id": "s6.b3",
@@ -1617,7 +1869,7 @@
               "side": "patriot"
             }
           ],
-          "gapAfter": 1.3
+          "gapAfter": 1.65
         },
         {
           "id": "s6.b4",
@@ -1631,7 +1883,7 @@
               "do": "stat.clear"
             }
           ],
-          "gapAfter": 1.1
+          "gapAfter": 1.45
         },
         {
           "id": "s6.b5",
@@ -1639,7 +1891,7 @@
             "no": "Den er der bare, om morgenen den tjuende april, fordi tusenvis av mennesker gjorde det samme uten å avtale det med hverandre.",
             "en": "It is simply there, on the morning of the twentieth of April, because thousands of people did the same thing without arranging it with each other."
           },
-          "gapAfter": 2.4
+          "gapAfter": 3.35
         }
       ]
     },
@@ -1663,6 +1915,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": "start",
               "do": "map.mood",
               "value": "day"
             },
@@ -1677,7 +1933,7 @@
               "to": "wide"
             }
           ],
-          "gapAfter": 1.0
+          "gapAfter": 1.35
         },
         {
           "id": "s7.b2",
@@ -1692,7 +1948,7 @@
               "id": "percy"
             }
           ],
-          "gapAfter": 1.6
+          "gapAfter": 1.95
         },
         {
           "id": "s7.b3",
@@ -1706,7 +1962,7 @@
               "do": "quote.hide"
             }
           ],
-          "gapAfter": 1.1
+          "gapAfter": 1.45
         },
         {
           "id": "s7.b4",
@@ -1728,7 +1984,7 @@
               }
             }
           ],
-          "gapAfter": 1.4
+          "gapAfter": 1.75
         },
         {
           "id": "s7.b5",
@@ -1756,7 +2012,7 @@
               "kind": "clash"
             }
           ],
-          "gapAfter": 3.0
+          "gapAfter": 3.95
         }
       ]
     }
@@ -1772,5 +2028,6 @@
         "en": "Lord Percy, letter, 20 April 1775"
       }
     }
-  }
+  },
+  "home": "wide"
 }

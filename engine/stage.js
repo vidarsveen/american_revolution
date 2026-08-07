@@ -17,7 +17,7 @@ let lang = 'no';
 
 export function mountStage(container, chapter, people, language) {
   lang = language;
-  const map = M.mountMap(container, chapter);
+  const map = M.mountMap(container, chapter, language);
   O.mountOverlays(container, chapter, people, language);
   return map;
 }
@@ -31,6 +31,7 @@ export function resetStage() {
 const VERBS = {
   'map.flyTo':        (c, i) => M.flyTo(c, i),
   'map.fitRoute':     (c, i) => M.fitRoute(c, i),
+  'map.fitPlaces':    (c, i) => M.fitPlaces(c, i),
   'map.time':         (c)    => M.setTime(pick(c.value)),
   'map.mood':         (c, i) => M.setMood(c.value, i),
   'map.flash':        (c, i) => M.flash(i),
@@ -38,10 +39,16 @@ const VERBS = {
   'route.draw':       (c, i) => M.drawRoute(c, i),
   'route.clear':      ()     => M.clearRoutes(),
 
-  'marker.show':      (c, i) => M.showMarker(c, i, lang),
+  'marker.show':      (c, i) => M.showMarker(c, i),
   'marker.hide':      (c)    => M.hideMarker(c),
   'marker.clear':     ()     => M.clearMarkers(),
-  'marker.pulse':     (c, i) => M.showMarker(c, i, lang),
+
+  // "point at the map while you talk"
+  'place.highlight':  (c, i) => M.highlight(c, i),
+  'place.clear':      ()     => M.clearHighlights(),
+
+  // generic: these named places moved on that one
+  'converge':         (c, i) => M.converge(c, i),
 
   'portrait.show':    (c, i) => O.showPortrait(c, i),
   'portrait.hide':    ()     => O.hidePortrait(),
@@ -57,7 +64,6 @@ const VERBS = {
 
   'caption.note':     (c, i) => O.showNote(c, i),
 
-  'militia.converge': (c, i) => M.militiaConverge(c, i),
 
   // Pacing verbs are handled by the player, not the stage.
   hold:  () => {},

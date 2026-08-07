@@ -16,6 +16,7 @@ const STR = {
   no: {
     play: 'Spill av', pause: 'Pause', back: 'Forrige', forward: 'Neste',
     captions: 'Undertekst', transcript: 'Manus', close: 'Lukk', seek: 'Spol',
+    controls: 'Kontroller', hideControls: 'Skjul kontroller',
     start: 'Start', resume: 'Fortsett', replay: 'Spill igjen',
     tapToContinue: 'Trykk for å fortsette',
     noAudio: 'Lyden er ikke generert ennå. Kjør tools/narrate.py.',
@@ -25,6 +26,7 @@ const STR = {
   en: {
     play: 'Play', pause: 'Pause', back: 'Previous', forward: 'Next',
     captions: 'Captions', transcript: 'Transcript', close: 'Close', seek: 'Seek',
+    controls: 'Controls', hideControls: 'Hide controls',
     start: 'Start', resume: 'Resume', replay: 'Play again',
     tapToContinue: 'Tap to continue',
     noAudio: 'Audio has not been generated yet. Run tools/narrate.py.',
@@ -82,7 +84,10 @@ export async function initStory(container, allPeople, language) {
     },
   });
 
-  chrome = mountChrome(view.querySelector('.story__chrome'), chapter, player, STR[lang] || STR.no);
+  chrome = mountChrome(
+    view.querySelector('.story__chrome'),
+    view.querySelector('.story'),
+    chapter, player, STR[lang] || STR.no);
   setCaptionsOn(true);
 
   showCover('start');
