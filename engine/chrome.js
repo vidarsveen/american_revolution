@@ -44,7 +44,6 @@ export function mountChrome(host, root, chapter, player, strings) {
         <button class="tp-btn tp-btn--ghost" data-act="back" aria-label="${strings.back}">${ICON.back}</button>
         <button class="tp-btn tp-btn--ghost" data-act="fwd" aria-label="${strings.forward}">${ICON.fwd}</button>
         <span class="transport__spacer"></span>
-        <button class="tp-btn tp-btn--icon" data-act="cc" aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
         <button class="tp-btn tp-btn--icon" data-act="text" aria-label="${strings.transcript}">${ICON.text}</button>
         <button class="tp-btn tp-btn--icon" data-act="fold" aria-label="${strings.hideControls}">${ICON.down}</button>
       </div>
@@ -59,6 +58,8 @@ export function mountChrome(host, root, chapter, player, strings) {
         <span class="transport__seek-fill"></span>
       </button>
       <span class="transport__time">0:00</span>
+      <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
+              aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
     </div>
     <input class="transport__range" type="range" min="0" max="1000" value="0" step="1"
            aria-label="${strings.seek}">
@@ -127,9 +128,11 @@ export function mountChrome(host, root, chapter, player, strings) {
     if (act === 'cc') {
       const next = !captionsOn();
       setCaptionsOn(next);
-      e.target.closest('[data-act]').setAttribute('aria-pressed', String(next));
-      scheduleFold();
-      return;
+      for (const b of el.querySelectorAll('[data-act=cc]')) {
+        b.setAttribute('aria-pressed', String(next));
+      }
+      try { localStorage.setItem('revolusjonen:captions', next ? '1' : '0'); } catch { /* private mode */ }
+      return;   // do not fold: turning captions off is not "done fiddling"
     }
     const seg = e.target.closest('.rail-seg');
     if (seg) {

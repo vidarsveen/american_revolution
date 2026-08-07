@@ -94,6 +94,22 @@
 .lang-toggle b { color: var(--ink); }
 .lang-toggle i { font-style: normal; opacity: .38; }
 
+/* While a narrated chapter plays, the app frame folds away — you are watching
+   the story, not the application. Pausing brings it straight back. */
+.app.is-immersive .topbar {
+  margin-top: calc((var(--topbar-h) + var(--safe-t)) * -1);
+  opacity: 0;
+  pointer-events: none;
+}
+.app.is-immersive .tabbar {
+  margin-bottom: calc((var(--tabbar-h) + var(--safe-b)) * -1);
+  opacity: 0;
+  pointer-events: none;
+}
+.topbar, .tabbar {
+  transition: margin var(--t-slow) var(--ease-out), opacity var(--t-med) var(--ease-out);
+}
+
 /* ---------- View stack ------------------------------------- */
 .views {
   position: relative;

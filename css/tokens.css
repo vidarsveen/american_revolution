@@ -35,13 +35,13 @@
   --shadow-marker: 0 1px 3px rgba(36,31,24,.35), 0 3px 10px rgba(36,31,24,.22);
 
   /* --- Map tile treatment -------------------------------- */
-  --tile-filter: sepia(.55) saturate(.60) hue-rotate(-8deg) brightness(1.03) contrast(.94);
+  --tile-filter: sepia(.48) saturate(.62) hue-rotate(-8deg) brightness(1.02) contrast(1.14);
   /* CARTO's land is near-white; a multiply wash pulls it onto parchment
      without flattening the land/water difference. */
   --wash-color: #e8dcc2;
   --wash-blend: multiply;
-  --wash-opacity: .55;
-  --grain-opacity: .30;
+  --wash-opacity: .34;
+  --grain-opacity: .24;
   --grain-blend: multiply;
   --vignette: radial-gradient(120% 85% at 50% 45%, transparent 52%, rgba(74,58,36,.20) 100%);
 
@@ -117,7 +117,7 @@
     --tile-filter: sepia(.34) saturate(.70) hue-rotate(-8deg) brightness(1.75) contrast(.92);
     --wash-color: #2b2a20;
     --wash-blend: overlay;
-    --wash-opacity: .40;
+    --wash-opacity: .26;
     --grain-opacity: .22;
     --grain-blend: overlay;
     --vignette: radial-gradient(125% 88% at 50% 45%, transparent 55%, rgba(0,0,0,.34) 100%);
@@ -156,7 +156,7 @@
   --tile-filter: sepia(.34) saturate(.70) hue-rotate(-8deg) brightness(1.75) contrast(.92);
   --wash-color: #2b2a20;
   --wash-blend: overlay;
-  --wash-opacity: .40;
+  --wash-opacity: .26;
   --grain-opacity: .22;
   --grain-blend: overlay;
   --vignette: radial-gradient(125% 88% at 50% 45%, transparent 55%, rgba(0,0,0,.34) 100%);

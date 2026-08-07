@@ -308,10 +308,11 @@ export function converge(cue, instant) {
   const lead = cue.fit === false ? 0 : 800;
 
   from.forEach((x, i) => {
-    const line = L.polyline([x.place.coords, target.coords], {
+    const line = L.polyline(approach(x.place.coords, target.coords, i), {
       className: `story-converge story-converge--${side}`,
-      weight: 2.6,
+      weight: 2.4,
       interactive: false,
+      smoothFactor: 1,
     }).addTo(arrowLayer);
 
     const path = line.getElement?.() || line._path;
@@ -330,6 +331,29 @@ export function converge(cue, instant) {
       path.style.strokeDashoffset = '0';
     }, delay);
   });
+}
+
+/**
+ * A path from one place towards another: gently bowed, and stopping short of
+ * the destination. Straight lines all meeting at a single point read as an
+ * asterisk rather than as people converging on somewhere.
+ */
+function approach(from, to, index) {
+  const STOP = 0.86;                 // leave a gap before the target
+  const bow = (index % 2 ? -1 : 1) * (0.10 + (index % 3) * 0.035);
+  const dLat = to[0] - from[0];
+  const dLon = to[1] - from[1];
+  const pts = [];
+  for (let i = 0; i <= 12; i++) {
+    const t = (i / 12) * STOP;
+    // sin(pi*t) peaks in the middle, so the bow is widest mid-route
+    const off = Math.sin(Math.PI * (t / STOP)) * bow;
+    pts.push([
+      from[0] + dLat * t - dLon * off * 0.5,
+      from[1] + dLon * t + dLat * off * 0.5,
+    ]);
+  }
+  return pts;
 }
 
 /* ------------------------------------------------------------

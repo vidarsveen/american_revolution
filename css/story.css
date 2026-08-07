@@ -26,10 +26,13 @@
   transition: background 2.4s var(--ease-in-out), opacity 2.4s var(--ease-in-out);
 }
 .stage-map__mood[data-mood="day"]   { background: transparent; opacity: 0; }
-.stage-map__mood[data-mood="dawn"]  { background: linear-gradient(180deg, #ffd9a8, #f7c9a0 40%, #d9c3b0); opacity: .34; }
-.stage-map__mood[data-mood="dusk"]  { background: linear-gradient(180deg, #8a7fa8, #c08a6e 60%, #6d5f6b); opacity: .38; }
-.stage-map__mood[data-mood="night"] { background: linear-gradient(180deg, #2b3a63, #1f2b48); opacity: .52; }
-:root[data-theme="dark"] .stage-map__mood[data-mood="night"] { opacity: .28; }
+.stage-map__mood[data-mood="dawn"]  { background: linear-gradient(180deg, #ffd2a0, #f8cba4 45%, #e6d2bc); opacity: .26; }
+.stage-map__mood[data-mood="dusk"]  { background: linear-gradient(180deg, #9a8fb4, #d0997c 60%, #8a7a84); opacity: .26; }
+/* Night used to be an opaque slab at .52 that hid the map entirely — the
+   scenes set at night read as a loading screen. It should say "this is
+   happening in the dark", not stop you seeing where. */
+.stage-map__mood[data-mood="night"] { background: linear-gradient(180deg, #33456f, #253154); opacity: .30; }
+:root[data-theme="dark"] .stage-map__mood[data-mood="night"] { opacity: .18; }
 
 .stage-map .map-wash     { z-index: 3; }
 .stage-map .map-grain    { z-index: 4; }
@@ -107,7 +110,12 @@
 .story-route--naval   { stroke-dasharray: 1 8; }
 
 /* Lines coming in from outside — the towns that turned out */
-.story-converge { fill: none; stroke-linecap: round; opacity: .7; }
+.story-converge {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 2;
+  opacity: .5;
+}
 .story-converge--patriot { stroke: var(--blue); }
 .story-converge--british { stroke: var(--red); }
 .story-converge--french  { stroke: var(--gold); }
@@ -179,7 +187,13 @@
 .stage-overlays { position: absolute; inset: 0; z-index: 30; pointer-events: none; }
 
 .ov-deck { position: absolute; left: 0; right: 0; padding: 0 var(--s3); }
-.ov-deck--top { top: calc(var(--s3) + 42px); display: flex; justify-content: flex-end; }
+.ov-deck--top {
+  top: calc(var(--s3) + 42px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--s3);
+}
 .ov-deck--mid { top: 32%; display: grid; justify-items: center; gap: var(--s3); }
 .ov-deck--lower {
   bottom: calc(var(--transport-h) + var(--s3));
@@ -197,15 +211,19 @@
 .ov-portrait.is-instant, .ov-image.is-instant,
 .ov-quote.is-instant, .ov-note.is-instant { transition: none; }
 
-/* ---------- Portrait: upright, and worth looking at --------- */
+/* ---------- Portrait -----------------------------------------
+   A face gets the same slot and the same weight as a historical picture:
+   up at the top, big enough to look at. It used to live in the bottom-left
+   corner, where the transport covered it on a phone.
+   ------------------------------------------------------------ */
 
-.ov-portrait { transform: translateY(12px) scale(.96); transform-origin: bottom left; }
+.ov-portrait { transform: translateY(-10px) scale(.97); transform-origin: top right; }
 .ov-portrait.is-on { opacity: 1; transform: none; }
 
 .ov-portrait__card {
   position: relative;
   margin: 0;
-  width: 132px;
+  width: min(46vw, 212px);
   padding: 8px 8px 10px;
   border-radius: var(--r-md);
   background: var(--paper-veil);
@@ -239,16 +257,17 @@
 .ov-portrait__card b {
   display: block;
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 700;
+  line-height: 1.15;
 }
 .ov-portrait__card span {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-top: 2px;
-  font-size: 10px;
+  margin-top: 3px;
+  font-size: 11px;
   line-height: 1.3;
   color: var(--ink-soft);
 }
@@ -411,10 +430,6 @@
   pointer-events: none;
   transition: bottom var(--t-med) var(--ease-out);
 }
-/* With a portrait up, the caption lifts above it rather than sitting on it. */
-.story.has-portrait .story__caption-slot {
-  bottom: calc(var(--transport-h) + 214px);
-}
 .captions {
   max-width: min(92vw, 540px);
   padding: var(--s3) var(--s4);
@@ -559,6 +574,7 @@
 .tp-btn--ghost { width: 38px; height: 38px; color: var(--ink-soft); }
 .tp-btn--ghost svg { width: 18px; height: 18px; }
 .tp-btn--icon { width: 36px; height: 36px; color: var(--ink-faint); }
+.tp-btn--cc { margin-left: -4px; }
 .tp-btn--icon svg { width: 19px; height: 19px; }
 .tp-btn--icon[aria-pressed="true"] { color: var(--ink); }
 

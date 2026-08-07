@@ -25,6 +25,12 @@ export function setCaptionsOn(value) {
   root?.classList.toggle('is-off', !on);
 }
 
+/** Whatever you chose last time. Captions default to on. */
+export function storedCaptionsOn() {
+  try { return localStorage.getItem('revolusjonen:captions') !== '0'; }
+  catch { return true; }
+}
+
 export function captionsOn() { return on; }
 
 /** Called every frame the beat or word changes. */
@@ -35,9 +41,14 @@ export function renderCaption(beat, wordIndex) {
     currentBeat = beat;
     if (!beat) { lineEl.innerHTML = ''; return; }
     // Rebuild only when the beat changes; highlighting is then a class swap.
-    lineEl.innerHTML = beat.words.length
-      ? beat.words.map((w, i) => `<span data-w="${i}">${esc(w.w)}</span>`).join(' ')
-      : esc(beat.text);
+    // Wrap the *written* tokens, not the spoken ones — the TTS word list has
+    // the punctuation stripped, and a caption without full stops reads badly.
+    const written = beat.text.split(/\s+/).filter(Boolean);
+    lineEl.innerHTML = (beat.words.length && written.length === beat.words.length)
+      ? written.map((w, i) => `<span data-w="${i}">${esc(w)}</span>`).join(' ')
+      : (beat.words.length
+          ? beat.words.map((w, i) => `<span data-w="${i}">${esc(w.w)}</span>`).join(' ')
+          : esc(beat.text));
     lineEl.classList.remove('is-in');
     void lineEl.offsetWidth;
     lineEl.classList.add('is-in');

@@ -21,6 +21,16 @@
   background: var(--paper-sunken);
 }
 
+/* Landform under the parchment: multiply keeps it as shading, not a picture. */
+.basemap-relief {
+  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(.72) brightness(1.12);
+}
+:root[data-theme="dark"] .basemap-relief { mix-blend-mode: screen; opacity: .28 !important; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .basemap-relief { mix-blend-mode: screen; opacity: .28 !important; }
+}
+
 /* Fade each tile in instead of popping */
 .leaflet-tile { transition: opacity 380ms var(--ease-out); }
 

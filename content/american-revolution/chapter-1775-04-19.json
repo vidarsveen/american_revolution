@@ -25,7 +25,7 @@
         42.3601,
         -71.0589
       ],
-      "zoom": 11.5,
+      "zoom": 11.4,
       "name": {
         "no": "Boston",
         "en": "Boston"
@@ -1489,8 +1489,8 @@
             },
             {
               "on": "start",
-              "do": "map.flyTo",
-              "to": "the-road"
+              "do": "map.fitRoute",
+              "id": "british-retreat"
             },
             {
               "on": {
@@ -1522,7 +1522,8 @@
               "on": "end",
               "do": "route.draw",
               "id": "british-retreat",
-              "over": 14
+              "over": 16,
+              "fit": false
             }
           ],
           "gapAfter": 1.55
@@ -1809,7 +1810,8 @@
             {
               "on": "start",
               "do": "map.flyTo",
-              "to": "siege"
+              "to": "boston",
+              "zoom": 10.6
             }
           ],
           "gapAfter": 1.35
@@ -1841,7 +1843,7 @@
                 "newton",
                 "woburn"
               ],
-              "to": "siege",
+              "to": "boston",
               "side": "patriot",
               "over": 4.4
             }

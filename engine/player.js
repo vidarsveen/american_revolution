@@ -76,6 +76,10 @@ export class Player {
     }
     this.rebuildTo(at);
     this.setNow(at);
+    const beat = beatAt(scene, at);
+    this._lastBeat = beat;
+    this._lastWord = wordAt(beat, at);
+    this.onTick(at, scene, beat, this._lastWord);
     if (autoplay) await this.play(); else this.onState(this.state());
   }
 
@@ -130,7 +134,12 @@ export class Player {
     const clamped = Math.max(0, Math.min(this.scene.dur - 0.05, t));
     this.rebuildTo(clamped);
     this.setNow(clamped);
-    this.onTick(clamped, this.scene);
+    // Report the beat and word too, or the caption stays blank until playback
+    // resumes — which also made every paused screenshot look caption-less.
+    const beat = beatAt(this.scene, clamped);
+    this._lastBeat = beat;
+    this._lastWord = wordAt(beat, clamped);
+    this.onTick(clamped, this.scene, beat, this._lastWord);
     if (!this.playing) this.onState(this.state());
   }
 

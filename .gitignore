@@ -17,3 +17,12 @@ voice-samples/
 
 # Per-beat narration cache (scene mp3s are committed, these are not)
 .narrate-cache/
+
+# Installed agent skills (per-machine, not part of the site)
+.agents/
+
+# Visual QA output
+shots/
+
+# Agent skills installed per-machine via `npx skills add`
+.claude/skills/

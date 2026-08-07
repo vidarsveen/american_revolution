@@ -5,7 +5,7 @@
 import { loadChapter } from './script.js';
 import { mountStage } from './stage.js';
 import { Player } from './player.js';
-import { mountCaptions, renderCaption, clearCaption, setCaptionsOn } from './captions.js';
+import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
 import { mountChrome } from './chrome.js';
 
 const CHAPTERS = [
@@ -80,6 +80,9 @@ export async function initStory(container, allPeople, language) {
     onState: (s) => {
       chrome?.update(s);
       view.classList.toggle('is-waiting', Boolean(s.waitingForTap));
+      // While the narration is running, the app frame is not the point. The
+      // title bar and tab bar were taking about a quarter of a phone screen.
+      document.querySelector('.app')?.classList.toggle('is-immersive', s.playing);
       if (s.finished) showCover('replay');
     },
   });
@@ -88,7 +91,7 @@ export async function initStory(container, allPeople, language) {
     view.querySelector('.story__chrome'),
     view.querySelector('.story'),
     chapter, player, STR[lang] || STR.no);
-  setCaptionsOn(true);
+  setCaptionsOn(storedCaptionsOn());
 
   showCover('start');
   wireCover(cover);

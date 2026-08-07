@@ -37,6 +37,7 @@ export function mountOverlays(container, ch, allPeople, language) {
   root.className = 'stage-overlays';
   root.innerHTML = `
     <div class="ov-deck ov-deck--top">
+      <div class="ov-portrait"></div>
       <div class="ov-image"></div>
     </div>
     <div class="ov-deck ov-deck--mid">
@@ -44,7 +45,6 @@ export function mountOverlays(container, ch, allPeople, language) {
       <div class="ov-quote"></div>
     </div>
     <div class="ov-deck ov-deck--lower">
-      <div class="ov-portrait"></div>
       <div class="ov-stats"></div>
     </div>
   `;
@@ -58,7 +58,6 @@ export function mountOverlays(container, ch, allPeople, language) {
 }
 
 export function resetOverlays() {
-  storyRoot?.classList.remove('has-portrait');
   for (const el of [portraitEl, imageEl, quoteEl, noteEl]) {
     if (!el) continue;
     el.classList.remove('is-on');
@@ -104,14 +103,9 @@ export function showPortrait(cue, instant) {
         ${p.lived ? `<i>${esc(p.lived)}</i>` : ''}
       </figcaption>
     </figure>`, instant);
-  // The caption strip lifts out of the way while a face is on screen.
-  storyRoot?.classList.add('has-portrait');
 }
 
-export function hidePortrait() {
-  hide(portraitEl);
-  storyRoot?.classList.remove('has-portrait');
-}
+export function hidePortrait() { hide(portraitEl); }
 
 /* ---------- Picture ----------------------------------------- */
 

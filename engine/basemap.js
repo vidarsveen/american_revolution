@@ -32,8 +32,17 @@ export function isDark() {
  * Attach tiles to a map and keep them alive.
  * Returns { refresh() } — call it when the theme changes.
  */
-export function attachTiles(map) {
+/**
+ * Rural Massachusetts on a label-free basemap is a blank field: no terrain, no
+ * forest, barely a road. Hillshade underneath gives the ground actual shape,
+ * which is the difference between a map and a beige rectangle.
+ */
+const HILLSHADE =
+  'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}';
+
+export function attachTiles(map, { relief = true } = {}) {
   let layer = null;
+  let shade = null;
   let idx = 0;
   let errors = 0;
 
@@ -55,6 +64,15 @@ export function attachTiles(map) {
   }
 
   mount(0);
+
+  if (relief) {
+    shade = L.tileLayer(HILLSHADE, {
+      maxZoom: 16, opacity: 0.5, className: 'basemap-relief',
+      attribution: 'Hillshade &copy; Esri',
+    }).addTo(map);
+    shade.on('tileerror', () => { /* relief is decoration; losing it is fine */ });
+  }
+
   return {
     refresh() { if (PROVIDERS[idx].themed) mount(idx); },
   };
