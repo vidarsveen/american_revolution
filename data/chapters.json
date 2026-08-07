@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ch1",
+    "ep": 1,
+    "from": "1754-01-01",
+    "to": "1775-04-18",
+    "title": { "no": "For friheten", "en": "For Liberty" },
+    "blurb": {
+      "no": "Motviljen mot britene bygger seg opp – fra nye skatter til teselskapet i Boston.",
+      "en": "Resentment builds against Britain — from new taxes to the Boston Tea Party."
+    }
+  },
+  {
+    "id": "ch2",
+    "ep": 2,
+    "from": "1775-04-19",
+    "to": "1776-07-31",
+    "title": { "no": "Et asyl for menneskeheten", "en": "An Asylum for Mankind" },
+    "blurb": {
+      "no": "Washington tar kommandoen, og Kongressen erklærer uavhengighet.",
+      "en": "Washington takes command and Congress declares independence."
+    }
+  },
+  {
+    "id": "ch3",
+    "ep": 3,
+    "from": "1776-08-01",
+    "to": "1777-01-31",
+    "title": { "no": "Prøvelsenes tid", "en": "The Times That Try Men's Souls" },
+    "blurb": {
+      "no": "Nederlag og sykdom holder på å knuse revolusjonen – helt til Trenton.",
+      "en": "Defeat and disease nearly break the revolution — until Trenton."
+    }
+  },
+  {
+    "id": "ch4",
+    "ep": 4,
+    "from": "1777-02-01",
+    "to": "1777-12-18",
+    "title": { "no": "Vendepunktet", "en": "The Turning Point" },
+    "blurb": {
+      "no": "Britene tar Philadelphia, men taper en hel hær ved Saratoga.",
+      "en": "The British take Philadelphia but lose an entire army at Saratoga."
+    }
+  },
+  {
+    "id": "ch5",
+    "ep": 5,
+    "from": "1777-12-19",
+    "to": "1780-05-12",
+    "title": { "no": "Amerikas sjel", "en": "The Soul of America" },
+    "blurb": {
+      "no": "Etter vinteren ved Valley Forge reiser hæren seg – og krigen flytter sørover.",
+      "en": "After the winter at Valley Forge the army rebuilds — and the war moves south."
+    }
+  },
+  {
+    "id": "ch6",
+    "ep": 6,
+    "from": "1780-05-13",
+    "to": "1783-12-31",
+    "title": { "no": "En ny nasjon", "en": "A New Nation" },
+    "blurb": {
+      "no": "Yorktown tvinger britene i kne, og en skjør ny stat skal finne formen sin.",
+      "en": "Yorktown forces Britain to its knees, and a fragile new nation takes shape."
+    }
+  }
+]

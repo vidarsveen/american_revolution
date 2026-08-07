@@ -1,0 +1,109 @@
+{
+  "routes": [
+    {
+      "id": "concord-raid",
+      "side": "british",
+      "from": "1775-04-19",
+      "label": { "no": "Britene marsjerer mot Concord", "en": "The British march on Concord" },
+      "coords": [
+        [42.3736, -71.0590], [42.3736, -71.1097], [42.4184, -71.1662],
+        [42.4492, -71.2311], [42.4604, -71.3489]
+      ]
+    },
+    {
+      "id": "canada-invasion",
+      "side": "patriot",
+      "from": "1775-09-25",
+      "label": { "no": "Arnolds marsj gjennom villmarken", "en": "Arnold's march through the wilderness" },
+      "coords": [
+        [42.8126, -70.8773], [44.0900, -69.8100], [44.2334, -69.7753],
+        [44.7145, -69.7947], [45.4000, -70.6500], [45.9000, -70.6000],
+        [46.4000, -70.9000], [46.8131, -71.2075]
+      ]
+    },
+    {
+      "id": "nj-retreat",
+      "side": "patriot",
+      "from": "1776-11-20",
+      "label": { "no": "Flukten gjennom New Jersey", "en": "The retreat across New Jersey" },
+      "coords": [
+        [40.8509, -73.9701], [40.8859, -74.0435], [40.7357, -74.1724],
+        [40.4862, -74.4518], [40.3573, -74.6672], [40.2206, -74.7597],
+        [40.2960, -74.8700]
+      ]
+    },
+    {
+      "id": "trenton-crossing",
+      "side": "patriot",
+      "from": "1776-12-26",
+      "label": { "no": "Over Delaware julenatta", "en": "Across the Delaware on Christmas night" },
+      "coords": [
+        [40.2967, -74.8703], [40.2790, -74.8300], [40.2560, -74.7900], [40.2206, -74.7597]
+      ]
+    },
+    {
+      "id": "burgoyne-south",
+      "side": "british",
+      "from": "1777-06-20",
+      "label": { "no": "Burgoyne sørover fra Canada", "en": "Burgoyne south from Canada" },
+      "coords": [
+        [45.3070, -73.2620], [45.1200, -73.2800], [44.4800, -73.3600],
+        [43.9530, -73.4300], [43.8412, -73.3879], [43.5480, -73.4090],
+        [43.2670, -73.5850], [43.0089, -73.6398]
+      ]
+    },
+    {
+      "id": "greene-south",
+      "side": "patriot",
+      "from": "1780-12-16",
+      "label": { "no": "Greene trekker Cornwallis nordover", "en": "Greene draws Cornwallis north" },
+      "coords": [
+        [35.2271, -80.8431], [35.1364, -81.8190], [35.4800, -81.2200],
+        [36.0900, -80.2400], [36.5900, -79.3800], [36.1320, -79.8450]
+      ]
+    },
+    {
+      "id": "french-fleet",
+      "side": "french",
+      "naval": true,
+      "from": "1781-08-05",
+      "label": { "no": "Den franske flåten fra Karibia", "en": "The French fleet from the Caribbean" },
+      "coords": [
+        [19.7570, -72.2000], [22.5000, -74.5000], [26.5000, -77.5000],
+        [31.5000, -78.5000], [34.5000, -76.5000], [36.9500, -75.7000]
+      ]
+    },
+    {
+      "id": "march-to-yorktown",
+      "side": "patriot",
+      "from": "1781-08-19",
+      "label": { "no": "Marsjen til Yorktown", "en": "The march to Yorktown" },
+      "coords": [
+        [41.0340, -73.7629], [40.7128, -74.0060], [40.2206, -74.7597],
+        [39.9526, -75.1652], [39.6070, -75.8330], [39.2904, -76.6122],
+        [38.9784, -76.4922], [37.2707, -76.7075], [37.2387, -76.5097]
+      ]
+    }
+  ],
+
+  "theatres": [
+    {
+      "id": "new-england",
+      "from": "1775-04-19", "to": "1776-07-31",
+      "center": [42.4, -71.3], "radiusKm": 260,
+      "label": { "no": "New England", "en": "New England" }
+    },
+    {
+      "id": "middle",
+      "from": "1776-08-01", "to": "1778-12-31",
+      "center": [40.2, -74.6], "radiusKm": 320,
+      "label": { "no": "Midtkoloniene", "en": "The Middle Colonies" }
+    },
+    {
+      "id": "south",
+      "from": "1779-01-01", "to": "1781-10-19",
+      "center": [34.4, -80.2], "radiusKm": 430,
+      "label": { "no": "Sørstatene", "en": "The South" }
+    }
+  ]
+}

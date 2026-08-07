@@ -1,0 +1,301 @@
+/* ============================================================
+   Map — parchment tiles, markers, routes, labels
+   ============================================================ */
+
+.view--map { overflow: hidden; }
+
+#map {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--paper-sunken);   /* never a white flash while tiles load */
+}
+
+/* The whole trick: modern label-free tiles, aged into parchment. */
+.leaflet-tile-pane {
+  filter: var(--tile-filter);
+}
+
+.leaflet-container {
+  font-family: var(--font-body);
+  background: var(--paper-sunken);
+}
+
+/* Fade each tile in instead of popping */
+.leaflet-tile { transition: opacity 380ms var(--ease-out); }
+
+/* ---------- Texture layers --------------------------------- */
+.map-wash,
+.map-grain,
+.map-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Warms the basemap onto parchment. Sits under the grain. */
+.map-wash {
+  z-index: 2;
+  background: var(--wash-color);
+  mix-blend-mode: var(--wash-blend);
+  opacity: var(--wash-opacity);
+}
+
+.map-grain {
+  z-index: 3;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+.map-vignette {
+  z-index: 4;
+  background: var(--vignette);
+}
+
+/* ---------- Attribution: small and out of the way ---------- */
+.leaflet-control-attribution {
+  background: var(--paper-veil) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--ink-faint) !important;
+  font-size: 9px !important;
+  line-height: 1.6;
+  padding: 1px 6px !important;
+  border-radius: var(--r-pill) 0 0 0;
+  max-width: 66vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.leaflet-control-attribution a { color: var(--ink-soft) !important; }
+
+/* ---------- Map buttons (recentre, zoom) ------------------- */
+.map-tools {
+  position: absolute;
+  z-index: 500;
+  right: var(--s3);
+  top: var(--s3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+.map-tool {
+  width: var(--tap);
+  height: var(--tap);
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-md);
+  background: var(--paper-veil);
+  backdrop-filter: blur(10px) saturate(1.4);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink-soft);
+  transition: transform var(--t-fast) var(--ease-out), color var(--t-fast);
+}
+.map-tool:active { transform: scale(.92); }
+.map-tool svg { width: 20px; height: 20px; }
+
+/* ============================================================
+   Event markers
+   ============================================================ */
+
+.mk {
+  --mk-color: var(--blue);
+  --mk-size: 26px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: 0;
+  transform-origin: 50% 50%;
+  animation: mk-in 420ms var(--ease-spring) backwards;
+}
+@keyframes mk-in {
+  from { opacity: 0; transform: scale(.3) translateY(6px); }
+}
+
+.mk--british { --mk-color: var(--red); }
+.mk--patriot { --mk-color: var(--blue); }
+.mk--french  { --mk-color: var(--gold); }
+.mk--neutral { --mk-color: var(--sage); }
+
+.mk__body {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: var(--mk-size);
+  height: var(--mk-size);
+  border-radius: 50%;
+  background: var(--mk-color);
+  color: #fff8ea;
+  border: 1.5px solid rgba(255, 250, 240, .92);
+  box-shadow: var(--shadow-marker);
+  transition: transform var(--t-med) var(--ease-spring),
+              opacity var(--t-med) var(--ease-out);
+}
+.mk__body svg { width: 62%; height: 62%; display: block; }
+
+/* Size by importance */
+.mk--imp1 { --mk-size: 17px; }
+.mk--imp2 { --mk-size: 24px; }
+.mk--imp3 { --mk-size: 32px; }
+.mk--imp1 .mk__body svg { width: 54%; height: 54%; }
+
+/* Turning points get a gold collar */
+.mk--imp3 .mk__body {
+  border-color: var(--gold);
+  border-width: 2px;
+  box-shadow: var(--shadow-marker), 0 0 0 3px rgba(176, 128, 60, .22);
+}
+
+/* Events already in the past: quiet, so the current year reads first */
+.mk--past .mk__body { opacity: .48; transform: scale(.8); }
+
+/* The current year pulses */
+.mk__ring {
+  position: absolute;
+  z-index: 1;
+  width: var(--mk-size);
+  height: var(--mk-size);
+  border-radius: 50%;
+  border: 2px solid var(--mk-color);
+  opacity: 0;
+}
+.mk--now .mk__ring { animation: mk-pulse 2.6s var(--ease-out) infinite; }
+.mk--now .mk__body { transform: scale(1.06); }
+@keyframes mk-pulse {
+  0%   { opacity: .65; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(2.7); }
+  100% { opacity: 0;   transform: scale(2.7); }
+}
+
+/* Selected */
+.mk--sel .mk__body {
+  transform: scale(1.3);
+  opacity: 1;
+  border-color: var(--gold);
+  box-shadow: var(--shadow-marker), 0 0 0 5px var(--gold-soft);
+}
+
+.mk:active .mk__body { transform: scale(.9); }
+
+/* Marker label */
+.mk__label {
+  position: absolute;
+  z-index: 3;
+  top: calc(50% + var(--mk-size) / 2 + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 6px;
+  border-radius: var(--r-sm);
+  background: var(--paper-veil);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--ink);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease-out);
+}
+/* Labels only once there is room for them */
+.map-z-mid .mk--imp3 .mk__label,
+.map-z-mid .mk--now  .mk__label,
+.map-z-mid .mk--sel  .mk__label { opacity: .95; }
+.map-z-near .mk .mk__label      { opacity: .92; }
+.map-z-near .mk--past .mk__label { opacity: .5; }
+.mk--sel .mk__label { opacity: 1 !important; font-weight: 700; }
+
+/* Leaflet wrapper for our divIcons */
+.leaflet-marker-icon.mk-wrap {
+  background: none;
+  border: 0;
+  overflow: visible;
+}
+
+/* ============================================================
+   Period place labels (our own — the basemap has none)
+   ============================================================ */
+.place-wrap { background: none; border: 0; overflow: visible; }
+
+.place {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 14, 'WONK' 1;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-shadow:
+    0 1px 0 rgba(255, 250, 238, .8),
+    0 0 7px rgba(255, 250, 238, .95),
+    0 0 3px rgba(255, 250, 238, 1);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease-out);
+}
+:root[data-theme="dark"] .place {
+  text-shadow: 0 1px 0 rgba(10, 12, 16, .9), 0 0 8px rgba(10, 12, 16, .95);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .place {
+    text-shadow: 0 1px 0 rgba(10, 12, 16, .9), 0 0 8px rgba(10, 12, 16, .95);
+  }
+}
+
+.place--region {
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--ink-faint);
+  font-style: italic;
+  text-transform: none;
+}
+
+/* Regions orient you at any zoom; city names arrive once there is room. */
+.place--region             { opacity: .72; }
+.map-z-mid  .place--region { opacity: .78; }
+.map-z-near .place--region { opacity: .35; }
+.map-z-mid  .place--city   { opacity: .82; }
+.map-z-near .place--city   { opacity: .92; }
+
+/* ============================================================
+   Campaign routes
+   ============================================================ */
+.route-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.route--british { stroke: var(--red); }
+.route--patriot { stroke: var(--blue); }
+.route--french  { stroke: var(--gold); }
+.route--naval   { stroke-dasharray: 1 8; stroke-width: 3.5; }
+
+/* Where the weight of the war sits this year — deliberately vague. */
+.theatre-glow { stroke: none; }
+
+/* Colonies outline */
+.colonies-shape {
+  fill: rgba(176, 128, 60, .05);
+  stroke: rgba(36, 31, 24, .26);
+  stroke-width: 0.9;
+  stroke-dasharray: 2 5;
+}
+:root[data-theme="dark"] .colonies-shape { stroke: rgba(236, 227, 209, .22); }
+
+/* Wide marker boxes must not swallow taps meant for neighbours */
+.leaflet-marker-icon.mk-wrap { pointer-events: none; }
+.mk__body { pointer-events: auto; cursor: pointer; }

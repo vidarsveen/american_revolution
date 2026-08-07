@@ -1,0 +1,1786 @@
+[
+  {
+    "id": "proclamation-1763",
+    "date": "1763-10-07",
+    "dateDisplay": {
+      "no": "7. oktober 1763",
+      "en": "7 October 1763"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      38.9,
+      -79.4
+    ],
+    "title": {
+      "no": "Grensen i vest",
+      "en": "The Proclamation Line"
+    },
+    "hook": {
+      "no": "London tegnet en strek langs fjellene og sa: ikke lenger vest.",
+      "en": "London drew a line along the mountains and said: no further west."
+    },
+    "body": {
+      "no": "Krigen mot Frankrike var akkurat over, og Storbritannia hadde vunnet et enormt landområde i Nord-Amerika. Problemet var at det allerede bodde folk der.\n\nFor å slippe nye kriger med urfolksnasjonene trakk kongen en linje langs Appalachene. Vest for streken skulle ingen kolonister få slå seg ned.\n\nI koloniene ble dette oppfattet som et slag i ansiktet. De hadde nettopp kjempet i den krigen, og mange hadde kjøpt land i vest som de plutselig ikke fikk bruke. En av dem var en ung offiser fra Virginia som het George Washington.",
+      "en": "The war against France had just ended, and Britain had won an enormous stretch of North America. The trouble was that people already lived there.\n\nTo avoid fresh wars with the Native nations, the king drew a line along the Appalachians. West of it, no colonist was to settle.\n\nIn the colonies this landed as a slap in the face. They had just fought in that war, and many had bought western land they were now forbidden to use. One of them was a young Virginian officer named George Washington."
+    },
+    "why": {
+      "no": "Første gang koloniene virkelig kjente at London bestemte over hodet på dem. Den følelsen forsvant aldri.",
+      "en": "The first time the colonies really felt London deciding over their heads. That feeling never went away."
+    },
+    "fact": {
+      "no": "Linjen ble nesten aldri håndhevet. Folk flyttet vestover uansett – og skapte akkurat de konfliktene kongen ville unngå.",
+      "en": "The line was barely enforced. People moved west anyway — causing exactly the conflicts the king wanted to avoid."
+    },
+    "people": [
+      "george3",
+      "washington"
+    ],
+    "wiki": {
+      "no": "Kongelig proklamasjon av 1763",
+      "en": "Royal Proclamation of 1763"
+    }
+  },
+  {
+    "id": "stamp-act",
+    "date": "1765-03-22",
+    "dateDisplay": {
+      "no": "22. mars 1765",
+      "en": "22 March 1765"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      42.3585,
+      -71.0576
+    ],
+    "title": {
+      "no": "Stempelloven",
+      "en": "The Stamp Act"
+    },
+    "hook": {
+      "no": "En skatt på papir – og plutselig kranglet et helt kontinent med London.",
+      "en": "A tax on paper — and suddenly a whole continent was arguing with London."
+    },
+    "body": {
+      "no": "Storbritannia hadde nettopp vunnet en enorm krig mot Frankrike, og satt igjen med en gjeld som var like enorm. Løsningen virket rimelig i London: koloniene i Amerika hadde tjent på krigen, så de kunne være med og betale.\n\nStempelloven la avgift på alt som ble trykt. Aviser, kontrakter, skjøter, til og med spillkort måtte ha et offisielt stempel. Det rammet nettopp de gruppene som var flinkest til å lage bråk: advokater, kjøpmenn og avisredaktører.\n\nSvaret kom raskere og hardere enn noen hadde ventet. Folk boikottet britiske varer, brente dukker av skatteinnkreverne, og i noen byer ble innkreverne jaget hjem. Etter et år ga London opp og opphevet loven.",
+      "en": "Britain had just won an enormous war against France and was left with an equally enormous debt. In London the solution looked reasonable enough: the American colonies had benefited from that war, so they could help pay for it.\n\nThe Stamp Act taxed anything printed. Newspapers, contracts, deeds, even playing cards needed an official stamp. It hit precisely the people best equipped to make trouble: lawyers, merchants and newspaper editors.\n\nThe answer came faster and harder than anyone expected. Colonists boycotted British goods, burned effigies of the tax collectors, and in some towns chased them out of their houses. After a year London gave up and repealed it."
+    },
+    "why": {
+      "no": "Her ble slagordet født: ingen skatt uten representasjon. Koloniene hadde ingen i det britiske parlamentet, og mente derfor at parlamentet ikke kunne skattlegge dem.",
+      "en": "This is where the slogan was born: no taxation without representation. The colonies had no one in Parliament, so they argued Parliament had no business taxing them."
+    },
+    "fact": {
+      "no": "London opphevet loven, men vedtok samtidig en ny lov som slo fast at parlamentet kunne bestemme over koloniene «i alle saker overhodet». Krangelen var altså ikke over – bare utsatt.",
+      "en": "London repealed the act, but passed another one the same day declaring that Parliament could bind the colonies \"in all cases whatsoever\". The argument was not over — just postponed."
+    },
+    "people": [
+      "franklin",
+      "george3"
+    ],
+    "wiki": {
+      "no": "Stempelloven",
+      "en": "Stamp Act 1765"
+    }
+  },
+  {
+    "id": "townshend",
+    "date": "1767-06-29",
+    "dateDisplay": {
+      "no": "29. juni 1767",
+      "en": "29 June 1767"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 1,
+    "coords": [
+      42.3601,
+      -71.062
+    ],
+    "title": {
+      "no": "Townshend-avgiftene",
+      "en": "The Townshend Duties"
+    },
+    "hook": {
+      "no": "Ny runde med avgifter – og denne gangen kom soldatene med på kjøpet.",
+      "en": "A second round of duties — and this time soldiers came with them."
+    },
+    "body": {
+      "no": "London hadde gitt seg på stempelloven, men trengte fortsatt penger. Denne gangen la de avgift på varer som ble importert: glass, bly, maling, papir og te.\n\nSvaret var det samme som sist, bare bedre organisert. Kvinner sluttet å kjøpe britisk stoff og vevde selv. Kjøpmenn signerte avtaler om ikke å importere. Britisk eksport til koloniene falt kraftig.\n\nFor å få inn pengene sendte London tollere – og soldater for å beskytte tollerne. To regimenter marsjerte inn i Boston i 1768. Det gikk som det måtte gå.",
+      "en": "London had backed down over the Stamp Act but still needed money. This time they taxed imports: glass, lead, paint, paper and tea.\n\nThe response was the same as before, only better organised. Women stopped buying British cloth and wove their own. Merchants signed agreements not to import. British exports to the colonies fell sharply.\n\nTo collect the money London sent customs officers — and soldiers to protect the customs officers. Two regiments marched into Boston in 1768. It went the way it had to go."
+    },
+    "why": {
+      "no": "Boikotten viste at koloniene kunne handle sammen. Og soldatene i gatene gjorde konflikten fysisk.",
+      "en": "The boycott showed the colonies could act together. And troops in the streets made the conflict physical."
+    },
+    "fact": {
+      "no": "Alle avgiftene ble opphevet i 1770 – bortsett fra den på te. Den fikk stå igjen bare for å vise at parlamentet hadde rett til å skattlegge.",
+      "en": "All the duties were repealed in 1770 — except the one on tea. That was kept purely to make the point that Parliament had the right to tax."
+    },
+    "people": [
+      "sam-adams",
+      "george3"
+    ],
+    "wiki": {
+      "no": "Townshend Acts",
+      "en": "Townshend Acts"
+    }
+  },
+  {
+    "id": "boston-massacre",
+    "date": "1770-03-05",
+    "dateDisplay": {
+      "no": "5. mars 1770",
+      "en": "5 March 1770"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      42.3588,
+      -71.0576
+    ],
+    "title": {
+      "no": "Massakren i Boston",
+      "en": "The Boston Massacre"
+    },
+    "hook": {
+      "no": "En snøballkrig som endte med fem døde – og ble den beste reklamen patriotene fikk.",
+      "en": "A snowball fight that ended with five dead — and became the best publicity the Patriots ever got."
+    },
+    "body": {
+      "no": "Boston hadde fått britiske soldater innkvartert midt i byen for å holde ro. Det gjorde det motsatte. Soldatene tok strøjobber som byens egne folk ville hatt, og stemningen var giftig.\n\nEn kald marskveld begynte en gruppe unge menn å kaste snøballer, is og østersskjell på en vaktpost utenfor tollboden. Flere kom til. Soldater ble tilkalt. Noen ropte «fyr!» – ingen vet hvem – og soldatene skjøt inn i mengden. Fem sivile døde.\n\nSaken kom for retten, og forsvarsadvokaten var ingen ringere enn John Adams, som selv var patriot. Han mente at soldatene hadde rett på en rettferdig rettssak, og fikk de fleste frikjent. Det gjorde ham upopulær, men han var stolt av det resten av livet.",
+      "en": "Boston had British troops billeted in the middle of town to keep order. It did the opposite. The soldiers took side jobs local men wanted, and the mood turned poisonous.\n\nOn a cold March evening a group of young men started throwing snowballs, ice and oyster shells at a sentry outside the customs house. More joined. Soldiers were called in. Somebody shouted \"fire\" — nobody knows who — and the soldiers fired into the crowd. Five civilians died.\n\nThe case went to trial, and the defence lawyer was none other than John Adams, a Patriot himself. He argued the soldiers deserved a fair trial, and got most of them acquitted. It made him unpopular, and he was proud of it for the rest of his life."
+    },
+    "why": {
+      "no": "Det var ikke antallet døde som gjorde dette viktig, men bildet av det. Paul Reveres stikk av «massakren» hang snart i stuer over hele koloniene.",
+      "en": "It was not the number of dead that mattered but the picture of it. Paul Revere's engraving of the \"massacre\" was soon hanging in parlours across the colonies."
+    },
+    "fact": {
+      "no": "Den første som ble skutt var Crispus Attucks, en havnearbeider med afrikansk og urfolks bakgrunn som trolig hadde rømt fra slaveri. Han regnes som den første som døde i revolusjonen.",
+      "en": "The first man shot was Crispus Attucks, a dockworker of African and Native descent who had probably escaped slavery. He is remembered as the first to die in the revolution."
+    },
+    "people": [
+      "john-adams",
+      "revere"
+    ],
+    "wiki": {
+      "no": "Massakren i Boston",
+      "en": "Boston Massacre"
+    }
+  },
+  {
+    "id": "tea-party",
+    "date": "1773-12-16",
+    "dateDisplay": {
+      "no": "16. desember 1773",
+      "en": "16 December 1773"
+    },
+    "kind": "politics",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      42.3527,
+      -71.052
+    ],
+    "title": {
+      "no": "Teselskapet i Boston",
+      "en": "The Boston Tea Party"
+    },
+    "hook": {
+      "no": "342 kister med te i havet – og britene mistet tålmodigheten for godt.",
+      "en": "342 chests of tea in the harbour — and Britain finally lost patience."
+    },
+    "body": {
+      "no": "Teloven var egentlig ment å gjøre te *billigere*. Men den ga et britisk selskap enerett på å selge te i Amerika, og prisen inneholdt fortsatt en liten britisk avgift. Å kjøpe den teen var å godta at London kunne skattlegge dem.\n\nTre skip lå i Boston havn og ventet på å bli losset. Byens folk krevde at de snudde og seilte hjem. Guvernøren nektet.\n\nKvelden 16. desember gikk mellom hundre og hundreogfemti menn om bord, mange grovt forkledd som mohawk-indianere. På tre timer knuste de 342 kister og tømte innholdet i sjøen. De rørte ikke noe annet – én mann som prøvde å stikke av med litt te i lomma, fikk juling av sine egne.",
+      "en": "The Tea Act was actually meant to make tea *cheaper*. But it handed one British company a monopoly on selling tea in America, and the price still carried a small British duty. Buying that tea meant accepting that London could tax you.\n\nThree ships sat in Boston harbour waiting to be unloaded. The town demanded they turn around and sail home. The governor refused.\n\nOn the evening of 16 December between one and two hundred men went aboard, many crudely disguised as Mohawk warriors. In three hours they broke open 342 chests and dumped them in the water. They touched nothing else — one man who tried to pocket some tea was beaten by his own side."
+    },
+    "why": {
+      "no": "Dette var ikke en demonstrasjon lenger. Det var ødeleggelse av privat eiendom i stor skala, og London kunne ikke la det passere.",
+      "en": "This was no longer a protest. It was large-scale destruction of private property, and London could not let it pass."
+    },
+    "fact": {
+      "no": "Teen som ble kastet ville i dag vært verdt godt over ti millioner kroner. Havna luktet visstnok te i flere dager.",
+      "en": "The tea destroyed would be worth well over a million pounds today. The harbour reportedly smelled of it for days."
+    },
+    "people": [
+      "revere",
+      "sam-adams"
+    ],
+    "wiki": {
+      "no": "Teselskapet i Boston",
+      "en": "Boston Tea Party"
+    }
+  },
+  {
+    "id": "intolerable-acts",
+    "date": "1774-05-20",
+    "dateDisplay": {
+      "no": "Våren 1774",
+      "en": "Spring 1774"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      42.364,
+      -71.05
+    ],
+    "title": {
+      "no": "Tvangslovene",
+      "en": "The Coercive Acts"
+    },
+    "hook": {
+      "no": "Straffen for teselskapet: havna stengt, selvstyret opphevet.",
+      "en": "The punishment for the Tea Party: the port closed, self-government suspended."
+    },
+    "body": {
+      "no": "London ville statuere et eksempel. Bostons havn ble stengt til byen betalte for teen – og Boston levde av havna. Massachusetts mistet retten til å velge sitt eget råd. Byfolk kunne ikke lenger holde møter uten tillatelse. Britiske soldater kunne innkvarteres i tomme bygninger.\n\nTanken var å isolere Boston, slik at de andre koloniene ville se hva som skjedde med bråkmakere og holde seg unna.\n\nDet skjedde det motsatte. Korn og penger strømmet inn til Boston fra hele kysten. Koloniene begynte for alvor å se på seg selv som én sak.",
+      "en": "London wanted to make an example. Boston's port was closed until the town paid for the tea — and Boston lived off its port. Massachusetts lost the right to elect its own council. Townspeople could no longer hold meetings without permission. British troops could be quartered in empty buildings.\n\nThe idea was to isolate Boston, so the other colonies would see what happened to troublemakers and keep their distance.\n\nThe opposite happened. Grain and money poured into Boston from all along the coast. The colonies began in earnest to see themselves as one cause."
+    },
+    "why": {
+      "no": "Britene lagde selv den enheten de fryktet mest. Uten tvangslovene ville det neppe blitt noen felles kongress.",
+      "en": "The British created the very unity they feared most. Without the Coercive Acts there would probably have been no joint Congress."
+    },
+    "fact": {
+      "no": "I koloniene fikk lovene raskt et annet navn: *the Intolerable Acts* – de utålelige lovene. Navnet festet seg.",
+      "en": "In the colonies the laws quickly got another name: the *Intolerable Acts*. It stuck."
+    },
+    "people": [
+      "gage",
+      "george3",
+      "sam-adams"
+    ],
+    "wiki": {
+      "no": "Intolerable Acts",
+      "en": "Intolerable Acts"
+    }
+  },
+  {
+    "id": "first-congress",
+    "date": "1774-09-05",
+    "dateDisplay": {
+      "no": "5. september 1774",
+      "en": "5 September 1774"
+    },
+    "kind": "politics",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      39.947,
+      -75.149
+    ],
+    "title": {
+      "no": "Den første kontinentalkongressen",
+      "en": "The First Continental Congress"
+    },
+    "hook": {
+      "no": "For første gang satte koloniene seg rundt samme bord.",
+      "en": "For the first time, the colonies sat down at the same table."
+    },
+    "body": {
+      "no": "56 utsendinger fra tolv kolonier møttes i Philadelphia. De fleste hadde aldri møtt hverandre før, og de stolte ikke helt på hverandre heller. En delegat fra Massachusetts og en fra South Carolina hadde omtrent ingenting felles.\n\nDe kranglet i sju uker. Resultatet ble en felles boikott av britiske varer, en liste over rettigheter de mente de hadde, og en avtale om å møtes igjen året etter hvis ingenting ble bedre.\n\nDet var ikke en revolusjon. Men det var første gang tretten separate kolonier oppførte seg som ett.",
+      "en": "Fifty-six delegates from twelve colonies met in Philadelphia. Most had never met each other, and they did not entirely trust one another either. A delegate from Massachusetts and one from South Carolina had almost nothing in common.\n\nThey argued for seven weeks. What came out was a joint boycott of British goods, a list of the rights they believed they had, and an agreement to meet again the next year if nothing improved.\n\nIt was not a revolution. But it was the first time thirteen separate colonies behaved as one."
+    },
+    "why": {
+      "no": "Her ble maskineriet bygget som senere kunne erklære uavhengighet, utnevne en general og føre krig.",
+      "en": "This built the machinery that could later declare independence, appoint a general and run a war."
+    },
+    "fact": {
+      "no": "Georgia møtte ikke opp. De sto midt i en konflikt med naboene sine og trengte britiske soldater akkurat da.",
+      "en": "Georgia did not turn up. They were in the middle of a conflict with their neighbours and needed British troops just then."
+    },
+    "people": [
+      "john-adams",
+      "washington",
+      "sam-adams"
+    ],
+    "wiki": {
+      "no": "Den første kontinentalkongressen",
+      "en": "First Continental Congress"
+    }
+  },
+  {
+    "id": "lexington-concord",
+    "date": "1775-04-19",
+    "dateDisplay": {
+      "no": "19. april 1775",
+      "en": "19 April 1775"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      42.4492,
+      -71.2311
+    ],
+    "title": {
+      "no": "Lexington og Concord",
+      "en": "Lexington and Concord"
+    },
+    "hook": {
+      "no": "Skuddet som ble hørt over hele verden.",
+      "en": "The shot heard round the world."
+    },
+    "body": {
+      "no": "Britene hadde en plan: marsjere ut av Boston om natta, ta våpenlageret patriotene hadde gjemt i Concord, og være tilbake før noen rakk å reagere.\n\nMen koloniene hadde et varslingssystem. Ryttere – blant dem Paul Revere – galopperte ut i mørket og vekket bygd etter bygd. Da rundt 700 britiske soldater kom fram til Lexington ved daggry, sto omtrent 70 lokale menn oppstilt på plassen og ventet på dem.\n\nIngen vet hvem som skjøt først. Åtte amerikanere ble liggende igjen døde. Britene marsjerte videre til Concord, fant nesten ingen våpen, og snudde hjemover.\n\nDet ble den lengste turen i livet deres. Hele veien tilbake til Boston lå bevæpnede bønder bak steingjerder og trær og skjøt på kolonnen. Nesten 300 britiske soldater ble drept eller såret i løpet av én dag.",
+      "en": "The British had a plan: march out of Boston at night, seize the weapons the Patriots had stored at Concord, and be back before anyone could react.\n\nBut the colonies had a warning system. Riders — Paul Revere among them — galloped out into the dark waking one town after another. When around 700 British soldiers reached Lexington at dawn, about 70 local men were drawn up on the green waiting for them.\n\nNobody knows who fired first. Eight Americans were left dead. The British marched on to Concord, found almost no weapons, and turned for home.\n\nIt became the longest walk of their lives. The whole way back to Boston, armed farmers lay behind stone walls and trees firing into the column. Nearly 300 British soldiers were killed or wounded in a single day."
+    },
+    "why": {
+      "no": "Etter denne dagen fantes det ingen vei tilbake. Krangelen om skatter var blitt en krig.",
+      "en": "After this day there was no way back. An argument about taxes had become a war."
+    },
+    "fact": {
+      "no": "«Militsen» var vanlige menn som skulle kunne møte opp bevæpnet på ett minutts varsel. Derfor kalte de seg *minutemen*.",
+      "en": "The militia were ordinary men expected to turn out armed at a minute's notice. That is why they called themselves *minutemen*."
+    },
+    "numbers": {
+      "britishForces": 1500,
+      "americanForces": 3800,
+      "outcome": "patriot"
+    },
+    "people": [
+      "revere",
+      "gage"
+    ],
+    "route": "concord-raid",
+    "wiki": {
+      "no": "Slaget ved Lexington og Concord",
+      "en": "Battles of Lexington and Concord"
+    }
+  },
+  {
+    "id": "ticonderoga",
+    "date": "1775-05-10",
+    "dateDisplay": {
+      "no": "10. mai 1775",
+      "en": "10 May 1775"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      43.8412,
+      -73.3879
+    ],
+    "title": {
+      "no": "Fort Ticonderoga",
+      "en": "Fort Ticonderoga"
+    },
+    "hook": {
+      "no": "De tok festningen uten å avfyre et skudd – og fant kanonene som skulle redde Boston.",
+      "en": "They took the fort without firing a shot — and found the guns that would save Boston."
+    },
+    "body": {
+      "no": "Fort Ticonderoga lå strategisk mellom Canada og Hudsondalen, men britene hadde bare 48 mann der og trodde ikke det hastet.\n\nEthan Allen og hans «Green Mountain Boys» kom over innsjøen ved daggry, sammen med Benedict Arnold. Vakten prøvde å skyte, men kruttet var fuktig. Kommandanten kom ut i skjorta.\n\nDet virkelige byttet var artilleriet: nesten seksti kanoner. Vinteren etter dro en 25 år gammel bokhandler ved navn Henry Knox dem 500 kilometer gjennom snø til Boston.",
+      "en": "Fort Ticonderoga sat strategically between Canada and the Hudson valley, but the British had only 48 men there and saw no urgency.\n\nEthan Allen and his Green Mountain Boys came across the lake at dawn, together with Benedict Arnold. The sentry tried to fire but his powder was damp. The commander came out in his nightshirt.\n\nThe real prize was the artillery: nearly sixty guns. That winter a 25-year-old bookseller named Henry Knox hauled them 500 kilometres through the snow to Boston."
+    },
+    "why": {
+      "no": "Uten disse kanonene hadde ikke Washington klart å presse britene ut av Boston året etter.",
+      "en": "Without those guns Washington could not have forced the British out of Boston the following year."
+    },
+    "fact": {
+      "no": "Knox brukte oksesleder og 42 dager. Han mistet ikke én kanon underveis.",
+      "en": "Knox used ox-drawn sledges and 42 days. He did not lose a single gun on the way."
+    },
+    "people": [
+      "arnold"
+    ],
+    "wiki": {
+      "no": "Fort Ticonderoga",
+      "en": "Capture of Fort Ticonderoga"
+    }
+  },
+  {
+    "id": "bunker-hill",
+    "date": "1775-06-17",
+    "dateDisplay": {
+      "no": "17. juni 1775",
+      "en": "17 June 1775"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      42.3763,
+      -71.0611
+    ],
+    "title": {
+      "no": "Bunker Hill",
+      "en": "Bunker Hill"
+    },
+    "hook": {
+      "no": "Britene vant. Det kostet dem så mye at de nesten skulle ønske de hadde tapt.",
+      "en": "The British won. It cost them so much they almost wished they had lost."
+    },
+    "body": {
+      "no": "Etter Lexington strømmet tusenvis av kolonister til og sperret britene inne i Boston. Natt til 17. juni gravde patriotene seg ned på en høyde rett nord for byen – Breed's Hill, selv om slaget har fått navn etter naboåsen Bunker Hill.\n\nBritene kunne gått rundt og kuttet dem av. I stedet gikk de rett opp bakken, i tette rekker, i full sommervarme, med tung oppakning på ryggen. To ganger ble de slått tilbake nedover. Tredje gang gikk amerikanerne tom for krutt og måtte trekke seg ut.\n\nBritene tok høyden. Men over tusen av dem lå igjen – nærmere halvparten av alle som gikk til angrep.",
+      "en": "After Lexington thousands of colonists poured in and penned the British inside Boston. On the night of 17 June the Patriots dug in on a hill just north of town — Breed's Hill, though the battle took the name of neighbouring Bunker Hill.\n\nThe British could have gone around and cut them off. Instead they walked straight up the slope, in tight ranks, in full summer heat, carrying heavy packs. Twice they were driven back down. The third time the Americans ran out of gunpowder and had to pull out.\n\nThe British took the hill. But more than a thousand of them were left on it — close to half of everyone who attacked."
+    },
+    "why": {
+      "no": "Britene lærte at disse bøndene faktisk kom til å slåss. Amerikanerne lærte at de kunne stå imot verdens beste hær.",
+      "en": "The British learned these farmers would really fight. The Americans learned they could stand up to the best army in the world."
+    },
+    "fact": {
+      "no": "Ordren «ikke skyt før du ser det hvite i øynene deres» skal ha falt her. Den handlet ikke om mot, men om at de hadde altfor lite krutt til å kunne bomme.",
+      "en": "The order \"don't fire until you see the whites of their eyes\" is said to come from here. It was not about courage — they simply had far too little powder to waste a shot."
+    },
+    "numbers": {
+      "britishForces": 2200,
+      "americanForces": 1500,
+      "outcome": "british"
+    },
+    "people": [
+      "howe",
+      "gage"
+    ],
+    "wiki": {
+      "no": "Slaget ved Bunker Hill",
+      "en": "Battle of Bunker Hill"
+    }
+  },
+  {
+    "id": "washington-command",
+    "date": "1775-07-03",
+    "dateDisplay": {
+      "no": "3. juli 1775",
+      "en": "3 July 1775"
+    },
+    "kind": "people",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      42.377,
+      -71.1167
+    ],
+    "title": {
+      "no": "Washington tar kommandoen",
+      "en": "Washington Takes Command"
+    },
+    "hook": {
+      "no": "Kongressen trengte en general. Han var den eneste i salen som møtte opp i uniform.",
+      "en": "Congress needed a general. He was the only man in the room who turned up in uniform."
+    },
+    "body": {
+      "no": "Kongressen i Philadelphia hadde en hær utenfor Boston, men ingen som ledet den. De trengte også en fra Virginia, slik at krigen ikke skulle se ut som noe bare New England drev med.\n\nGeorge Washington var 43 år, plantasjeeier, og hadde erfaring fra krigen mot Frankrike – der han ærlig talt hadde gjort en del feil. Men han var høy, rolig og så ut som en leder. Og han møtte i Kongressen iført sin gamle uniform, noe alle forsto hva betydde.\n\nDa han kom til leiren utenfor Boston, fant han rundt 16 000 mann uten disiplin, uten uniformer og nesten uten krutt. Han brukte resten av året på å gjøre dem om til noe som lignet en hær.",
+      "en": "Congress in Philadelphia had an army outside Boston but nobody leading it. They also needed a Virginian, so the war would not look like something only New England was doing.\n\nGeorge Washington was 43, a plantation owner, with experience from the war against France — where, honestly, he had made a fair few mistakes. But he was tall, calm and looked the part. And he turned up at Congress wearing his old uniform, which everyone understood perfectly well.\n\nWhen he reached the camp outside Boston he found some 16,000 men with no discipline, no uniforms and almost no gunpowder. He spent the rest of the year turning them into something resembling an army."
+    },
+    "why": {
+      "no": "Washington tapte flere slag enn han vant. Det som betydde noe var at hæren aldri forsvant så lenge han ledet den.",
+      "en": "Washington lost more battles than he won. What mattered was that the army never disappeared while he was leading it."
+    },
+    "fact": {
+      "no": "Han nektet å ta lønn for jobben. Han ba bare om å få utgiftene dekket – og de utgiftene ble til slutt langt større enn lønna ville vært.",
+      "en": "He refused a salary for the job. He asked only that his expenses be covered — and those expenses ended up costing far more than the salary would have."
+    },
+    "people": [
+      "washington",
+      "john-adams"
+    ],
+    "wiki": {
+      "no": "George Washington",
+      "en": "George Washington in the American Revolution"
+    }
+  },
+  {
+    "id": "dunmore",
+    "date": "1775-11-07",
+    "dateDisplay": {
+      "no": "7. november 1775",
+      "en": "7 November 1775"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      36.8508,
+      -76.2859
+    ],
+    "title": {
+      "no": "Dunmores tilbud",
+      "en": "Dunmore's Proclamation"
+    },
+    "hook": {
+      "no": "Den britiske guvernøren lovte frihet til slavene som rømte og sluttet seg til ham.",
+      "en": "The British governor offered freedom to enslaved people who ran away and joined him."
+    },
+    "body": {
+      "no": "Lord Dunmore var kongens guvernør i Virginia og hadde mistet kontrollen over kolonien. Han trengte soldater, og han visste hvor de fantes.\n\nHan erklærte at alle slaver som tilhørte opprørere og klarte å komme seg til britiske linjer, skulle bli frie hvis de tok opp våpen for kongen. Flere tusen prøvde. Rundt 800 rakk fram og ble til «Lord Dunmores etiopiske regiment», som hadde ordene «Frihet til slaver» sydd på uniformen.\n\nFor plantasjeeierne i sør var dette det verste de kunne tenke seg – og mange av dem var nettopp de mennene som ledet revolusjonen i frihetens navn.",
+      "en": "Lord Dunmore was the king's governor in Virginia and had lost control of the colony. He needed soldiers, and he knew where they were.\n\nHe declared that any enslaved person belonging to a rebel who could reach British lines would be free if they took up arms for the king. Several thousand tried. Around 800 made it and became \"Lord Dunmore's Ethiopian Regiment\", with the words *Liberty to Slaves* sewn onto their uniforms.\n\nFor southern plantation owners this was the nightmare — and many of those men were precisely the ones leading a revolution in the name of liberty."
+    },
+    "why": {
+      "no": "Det tvang fram spørsmålet ingen ville stille: hvem sin frihet handlet denne krigen egentlig om? Gjennom hele krigen rømte titusenvis av slaver til britiske linjer.",
+      "en": "It forced the question nobody wanted to ask: whose liberty was this war actually about? Across the war, tens of thousands of enslaved people fled to British lines."
+    },
+    "fact": {
+      "no": "Dunmore handlet ikke av godhet – han trengte soldater. Men for dem som rømte var det likevel den beste sjansen de hadde.",
+      "en": "Dunmore did not act out of kindness — he needed soldiers. For those who ran, it was still the best chance they had."
+    },
+    "people": [
+      "dunmore",
+      "washington"
+    ],
+    "wiki": {
+      "no": "Dunmore's Proclamation",
+      "en": "Dunmore's Proclamation"
+    }
+  },
+  {
+    "id": "quebec",
+    "date": "1775-12-31",
+    "dateDisplay": {
+      "no": "31. desember 1775",
+      "en": "31 December 1775"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      46.8131,
+      -71.2075
+    ],
+    "title": {
+      "no": "Angrepet på Québec",
+      "en": "The Assault on Quebec"
+    },
+    "hook": {
+      "no": "Nyttårsaften, snøstorm, og et felttog som endte i katastrofe.",
+      "en": "New Year's Eve, a snowstorm, and a campaign that ended in disaster."
+    },
+    "body": {
+      "no": "Amerikanerne håpet Canada skulle bli den fjortende kolonien. To styrker gikk nordover: én langs innsjøene, og én under Benedict Arnold rett gjennom villmarken i Maine.\n\nArnolds marsj var et mareritt. Båtene lekket, maten råtnet, og til slutt kokte mennene skosålene sine. Av 1 100 mann kom rundt 600 fram, utsultede.\n\nDe angrep Québec i en snøstorm nyttårsaften, i håp om at været skulle skjule dem. General Montgomery ble drept med en gang, Arnold ble skutt i beinet, og over 400 amerikanere ble tatt til fange.",
+      "en": "The Americans hoped Canada would become the fourteenth colony. Two forces went north: one along the lakes, and one under Benedict Arnold straight through the Maine wilderness.\n\nArnold's march was a nightmare. The boats leaked, the food rotted, and in the end the men boiled their shoe leather. Of 1,100 men, about 600 arrived, starving.\n\nThey attacked Quebec in a snowstorm on New Year's Eve, hoping the weather would hide them. General Montgomery was killed immediately, Arnold was shot in the leg, and over 400 Americans were captured."
+    },
+    "why": {
+      "no": "Canada ble aldri med. Det betydde at britene beholdt en base i nord – og derfra kom Burgoyne to år senere.",
+      "en": "Canada never joined. That left the British a base in the north — and from it Burgoyne came two years later."
+    },
+    "fact": {
+      "no": "De fransktalende canadierne var stort sett likegyldige. Britene hadde nettopp gitt dem religionsfrihet, og amerikanerne hadde protestert høylytt mot akkurat det.",
+      "en": "The French-speaking Canadians were largely indifferent. The British had just granted them religious freedom, and the Americans had loudly protested about exactly that."
+    },
+    "numbers": {
+      "britishForces": 1800,
+      "americanForces": 1200,
+      "outcome": "british"
+    },
+    "people": [
+      "arnold"
+    ],
+    "route": "canada-invasion",
+    "wiki": {
+      "no": "Slaget ved Quebec (1775)",
+      "en": "Battle of Quebec (1775)"
+    }
+  },
+  {
+    "id": "common-sense",
+    "date": "1776-01-10",
+    "dateDisplay": {
+      "no": "10. januar 1776",
+      "en": "10 January 1776"
+    },
+    "kind": "politics",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      39.95,
+      -75.145
+    ],
+    "title": {
+      "no": "Sunn fornuft",
+      "en": "Common Sense"
+    },
+    "hook": {
+      "no": "47 sider som gjorde uavhengighet til noe man kunne si høyt.",
+      "en": "Forty-seven pages that made independence something you could say out loud."
+    },
+    "body": {
+      "no": "Thomas Paine hadde kommet til Amerika bare to år tidligere, blakk og mislykket, med et anbefalingsbrev fra Benjamin Franklin.\n\nSå skrev han *Sunn fornuft*. Den var billig, kort, og skrevet slik at hvem som helst kunne forstå den – ingen latinske sitater, ingen jusspråk. Poenget var enkelt: det er absurd at en øy skal styre et kontinent, og det er absurd at noen skal være konge fordi faren var det.\n\nDen solgte i over hundre tusen eksemplarer på noen måneder, i en befolkning på 2,5 millioner. Folk leste den høyt på vertshus for dem som ikke kunne lese.",
+      "en": "Thomas Paine had arrived in America only two years earlier, broke and unsuccessful, with a letter of introduction from Benjamin Franklin.\n\nThen he wrote *Common Sense*. It was cheap, short, and written so anyone could follow it — no Latin quotations, no legal language. The argument was simple: it is absurd for an island to govern a continent, and absurd for a man to be king because his father was.\n\nIt sold over a hundred thousand copies in a few months, in a population of 2.5 million. People read it aloud in taverns to those who could not read."
+    },
+    "why": {
+      "no": "Fram til nå hadde de fleste sagt at de kjempet mot dårlige rådgivere rundt kongen. Paine gjorde det mulig å si det egentlige: vi vil ut.",
+      "en": "Until now most people said they were fighting the king's bad advisers. Paine made it possible to say the real thing: we want out."
+    },
+    "fact": {
+      "no": "Paine ga fra seg all fortjeneste. Han døde fattig i New York, og bare seks personer kom i begravelsen hans.",
+      "en": "Paine gave away all the profits. He died poor in New York, and six people came to his funeral."
+    },
+    "people": [
+      "paine",
+      "franklin"
+    ],
+    "wiki": {
+      "no": "Common Sense",
+      "en": "Common Sense (pamphlet)"
+    }
+  },
+  {
+    "id": "boston-evacuated",
+    "date": "1776-03-17",
+    "dateDisplay": {
+      "no": "17. mars 1776",
+      "en": "17 March 1776"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      42.3318,
+      -71.047
+    ],
+    "title": {
+      "no": "Britene forlater Boston",
+      "en": "The British Leave Boston"
+    },
+    "hook": {
+      "no": "Kanonene sto på høyden om morgenen. Da var spillet over.",
+      "en": "The guns were on the heights by morning. That settled it."
+    },
+    "body": {
+      "no": "Etter elleve måneders beleiring hadde Washington endelig fått Knox' kanoner fra Ticonderoga. Natt til 5. mars fraktet han dem opp på Dorchester Heights, høydene som dominerte havna, og gravde dem ned. Bakken var frossen, så de tok med ferdigbygde brystvern i tre.\n\nDa general Howe våknet og så ut, hadde amerikanerne artilleri som nådde både byen og flåten hans. En offiser skal ha sagt at de hadde gjort mer på én natt enn hans egen hær hadde gjort på en måned.\n\nHowe vurderte å angripe, men husket Bunker Hill. To uker senere seilte hele den britiske styrken bort, sammen med rundt tusen lojalister som ikke turte bli igjen.",
+      "en": "After eleven months of siege Washington finally had Knox's guns from Ticonderoga. On the night of 5 March he moved them onto Dorchester Heights, which overlooked the harbour, and dug them in. The ground was frozen, so they brought prefabricated wooden breastworks with them.\n\nWhen General Howe woke and looked out, the Americans had artillery covering both the town and his fleet. One officer reportedly said they had done more in one night than his own army had done in a month.\n\nHowe considered attacking, then remembered Bunker Hill. Two weeks later the entire British force sailed away, along with around a thousand loyalists who did not dare stay behind."
+    },
+    "why": {
+      "no": "Første store seier for Washington, og han vant den uten et slag. Byen der det hele startet var fri.",
+      "en": "Washington's first big victory, and he won it without a battle. The town where it all began was free."
+    },
+    "fact": {
+      "no": "Lojalistene som dro fikk aldri komme tilbake. Mange endte i Nova Scotia og mistet alt de eide.",
+      "en": "The loyalists who left never came back. Many ended up in Nova Scotia and lost everything they owned."
+    },
+    "people": [
+      "washington",
+      "howe"
+    ],
+    "wiki": {
+      "no": "Beleiringen av Boston",
+      "en": "Siege of Boston"
+    }
+  },
+  {
+    "id": "declaration",
+    "date": "1776-07-04",
+    "dateDisplay": {
+      "no": "4. juli 1776",
+      "en": "4 July 1776"
+    },
+    "kind": "politics",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      39.9489,
+      -75.15
+    ],
+    "title": {
+      "no": "Uavhengighetserklæringen",
+      "en": "The Declaration of Independence"
+    },
+    "hook": {
+      "no": "Tretten kolonier skrev ned at de ikke lenger var britiske – og at det fantes rettigheter ingen konge kunne ta fra dem.",
+      "en": "Thirteen colonies wrote down that they were no longer British — and that there are rights no king can take away."
+    },
+    "body": {
+      "no": "I over et år hadde de slåss mot kongens hær samtidig som de fortsatt kalte seg britiske undersåtter. Det gikk ikke i lengden. Thomas Paines pamflett *Sunn fornuft* hadde solgt i hundretusener og sagt høyt det mange tenkte: hvorfor skal en øy styre et kontinent?\n\nKongressen ga oppgaven til en komité, og komiteen ga skrivejobben til Thomas Jefferson, 33 år gammel. Han skrev i løpet av noen uker. De andre strøk og endret – blant annet fjernet de et avsnitt der Jefferson anklaget kongen for slavehandelen.\n\nDet de vedtok 4. juli var både en skilsmisseerklæring og noe mye større: en påstand om at alle mennesker er skapt like.",
+      "en": "For over a year they had been fighting the king's army while still calling themselves British subjects. That could not last. Thomas Paine's pamphlet *Common Sense* had sold in the hundreds of thousands and said out loud what many were thinking: why should an island govern a continent?\n\nCongress handed the job to a committee, and the committee handed the writing to Thomas Jefferson, 33 years old. He wrote it in a few weeks. The others cut and changed — including striking a passage where Jefferson blamed the king for the slave trade.\n\nWhat they adopted on 4 July was both a divorce notice and something much larger: a claim that all people are created equal."
+    },
+    "why": {
+      "no": "Setningen om at alle mennesker er skapt like var ikke sann i 1776 – en femtedel av befolkningen var slaver. Men den ble stående, og folk har brukt den til å kreve sin rett helt siden.",
+      "en": "The line about all people being created equal was not true in 1776 — a fifth of the population was enslaved. But it stayed on the page, and people have used it to demand their rights ever since."
+    },
+    "fact": {
+      "no": "Nesten ingen skrev under 4. juli. De fleste signaturene kom først i august, og John Hancock skrev så stort «at kong George kan lese det uten briller».",
+      "en": "Almost nobody signed on 4 July. Most signatures came in August, and John Hancock wrote his so large \"that King George can read it without his spectacles\"."
+    },
+    "people": [
+      "jefferson",
+      "john-adams",
+      "franklin"
+    ],
+    "wiki": {
+      "no": "USAs uavhengighetserklæring",
+      "en": "United States Declaration of Independence"
+    }
+  },
+  {
+    "id": "long-island",
+    "date": "1776-08-27",
+    "dateDisplay": {
+      "no": "27. august 1776",
+      "en": "27 August 1776"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      40.66,
+      -73.975
+    ],
+    "title": {
+      "no": "Long Island",
+      "en": "Long Island"
+    },
+    "hook": {
+      "no": "Washingtons verste nederlag – og natta han reddet hæren sin i tåka.",
+      "en": "Washington's worst defeat — and the night he saved his army in the fog."
+    },
+    "body": {
+      "no": "Britene kom tilbake med den største invasjonsstyrken de noen gang hadde sendt over Atlanteren: over 400 skip og rundt 32 000 soldater, rett utenfor New York. Washington hadde under halvparten så mange, og de var dårligere trent.\n\nHan spredte styrken sin, og britene fant hullet. Natt til 27. august marsjerte de rundt den amerikanske flanken gjennom et pass ingen hadde satt vakt ved, og angrep bakfra. Amerikanerne ble revet i stykker.\n\nRestene av hæren ble presset ut mot elva. Da hadde de vann i ryggen og britene foran seg. Natt til 30. august rodde Washington hele styrken – rundt 9 000 mann – over til Manhattan i småbåter, i mørke og tett tåke. Britene våknet til en tom leir.",
+      "en": "The British came back with the largest invasion force they had ever sent across the Atlantic: over 400 ships and some 32,000 soldiers, right off New York. Washington had less than half that, and they were far less well trained.\n\nHe spread his force thin, and the British found the gap. On the night of 27 August they marched around the American flank through a pass nobody had bothered to guard, and attacked from behind. The Americans were torn apart.\n\nWhat was left was pushed back against the river — water behind them, the British in front. On the night of 30 August Washington rowed his entire force, around 9,000 men, across to Manhattan in small boats, in darkness and thick fog. The British woke to an empty camp."
+    },
+    "why": {
+      "no": "Washington gjorde nesten alt galt i dette slaget. Men han lærte den viktigste leksen i krigen: hæren måtte overleve, selv om byene gikk tapt.",
+      "en": "Washington did almost everything wrong in this battle. But he learned the most important lesson of the war: the army had to survive, even if the cities did not."
+    },
+    "fact": {
+      "no": "Evakueringen tok hele natta, og den siste båten la fra land i grålysningen. Tåka lettet omtrent da de var trygt over.",
+      "en": "The evacuation took all night, and the last boat pushed off at first light. The fog lifted just about when they were safely across."
+    },
+    "numbers": {
+      "britishForces": 20000,
+      "americanForces": 10000,
+      "outcome": "british"
+    },
+    "people": [
+      "washington",
+      "howe"
+    ],
+    "wiki": {
+      "no": "Slaget ved Long Island",
+      "en": "Battle of Long Island"
+    }
+  },
+  {
+    "id": "nj-retreat",
+    "date": "1776-11-20",
+    "dateDisplay": {
+      "no": "November 1776",
+      "en": "November 1776"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      40.85,
+      -73.947
+    ],
+    "title": {
+      "no": "Flukten gjennom New Jersey",
+      "en": "The Retreat Across New Jersey"
+    },
+    "hook": {
+      "no": "Hæren smuldret opp mens den løp. Ved elva var det knapt noen igjen.",
+      "en": "The army crumbled as it ran. By the time it reached the river there was almost nothing left."
+    },
+    "body": {
+      "no": "Etter Long Island fortsatte nederlagene. Washington gjorde en tabbe han angret på resten av livet: han lot rundt 2 800 mann bli igjen i Fort Washington på Manhattan. Britene tok fortet på én dag, og alle inni det.\n\nSå begynte flukten. Gjennom hele New Jersey, i regn og gjørme, med britene rett bak. Soldater forsvant hjem for hver dag som gikk. Av 20 000 mann i august var det rundt 3 000 igjen i desember.\n\nDet var her Thomas Paine skrev setningen som ble lest opp for troppene: «Dette er tider som prøver menneskers sjeler.»",
+      "en": "After Long Island the defeats kept coming. Washington made a mistake he regretted for the rest of his life: he left around 2,800 men in Fort Washington on Manhattan. The British took the fort in a day, and everyone in it.\n\nThen the retreat began. Across the whole of New Jersey, in rain and mud, with the British right behind. Soldiers slipped away home every day. Of 20,000 men in August, around 3,000 remained in December.\n\nIt was here that Thomas Paine wrote the line that was read aloud to the troops: \"These are the times that try men's souls.\""
+    },
+    "why": {
+      "no": "Revolusjonen var nærmere å dø denne høsten enn på noe annet tidspunkt. Det er derfor Trenton betydde så mye.",
+      "en": "The revolution came closer to dying this autumn than at any other point. That is why Trenton mattered so much."
+    },
+    "fact": {
+      "no": "Washington fikk hæren over Delaware-elva og tok med seg alle båtene på vestsiden. Britene sto igjen uten noe å krysse med.",
+      "en": "Washington got the army over the Delaware and took every boat with him to the west bank. The British were left with nothing to cross in."
+    },
+    "numbers": {
+      "britishForces": 14000,
+      "americanForces": 3000,
+      "outcome": "british"
+    },
+    "people": [
+      "washington",
+      "howe",
+      "paine"
+    ],
+    "route": "nj-retreat",
+    "wiki": {
+      "no": "Slaget ved Fort Washington",
+      "en": "Battle of Fort Washington"
+    }
+  },
+  {
+    "id": "trenton",
+    "date": "1776-12-26",
+    "dateDisplay": {
+      "no": "26. desember 1776",
+      "en": "26 December 1776"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      40.2206,
+      -74.7597
+    ],
+    "title": {
+      "no": "Trenton",
+      "en": "Trenton"
+    },
+    "hook": {
+      "no": "Washington krysset en iskald elv natta etter jul – fordi han var i ferd med å tape alt.",
+      "en": "Washington crossed an icy river the night after Christmas — because he was about to lose everything."
+    },
+    "body": {
+      "no": "Høsten 1776 var en katastrofe. New York var tapt, hæren hadde flyktet tvers gjennom New Jersey, og soldatenes kontrakter gikk ut ved nyttår. Om få dager ville Washington stå igjen nesten alene.\n\nSå han satset alt. Julaften lastet han rundt 2 400 mann i båter og krysset Delaware-elva i snøstorm og drivis. Marsjen på den andre siden tok hele natta; to menn frøs i hjel.\n\nVed daggry gikk de rett inn i Trenton, der rundt 1 400 hessiske leiesoldater lå. Kampen var over på under en time. Nesten hele garnisonen ble tatt til fange. Amerikanerne mistet knapt noen.",
+      "en": "The autumn of 1776 was a disaster. New York was lost, the army had fled clean across New Jersey, and the soldiers' enlistments ran out at New Year. In a few days Washington would be standing there almost alone.\n\nSo he gambled everything. On Christmas night he loaded around 2,400 men into boats and crossed the Delaware in a snowstorm full of drifting ice. The march on the far side took all night; two men froze to death.\n\nAt dawn they walked straight into Trenton, where some 1,400 Hessian mercenaries were quartered. The fight was over in under an hour. Almost the entire garrison was captured. The Americans lost barely anyone."
+    },
+    "why": {
+      "no": "Militært var Trenton et lite slag. Politisk reddet det revolusjonen: soldatene ble værende, og folk begynte å tro at dette kunne gå.",
+      "en": "Militarily Trenton was a small battle. Politically it saved the revolution: the soldiers stayed on, and people began to believe this could work."
+    },
+    "fact": {
+      "no": "Myten om at hessierne var fulle etter julefeiring stemmer trolig ikke. De var rett og slett utslitte etter uker med angrep fra lokal milits – og ingen trodde noen ville angripe i et slikt vær.",
+      "en": "The story that the Hessians were drunk from Christmas is probably not true. They were simply exhausted after weeks of local militia raids — and nobody believed anyone would attack in that weather."
+    },
+    "numbers": {
+      "britishForces": 1400,
+      "americanForces": 2400,
+      "outcome": "patriot"
+    },
+    "people": [
+      "washington",
+      "hamilton"
+    ],
+    "route": "trenton-crossing",
+    "wiki": {
+      "no": "Slaget ved Trenton",
+      "en": "Battle of Trenton"
+    }
+  },
+  {
+    "id": "princeton",
+    "date": "1777-01-03",
+    "dateDisplay": {
+      "no": "3. januar 1777",
+      "en": "3 January 1777"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      40.333,
+      -74.669
+    ],
+    "title": {
+      "no": "Princeton",
+      "en": "Princeton"
+    },
+    "hook": {
+      "no": "Åtte dager etter Trenton lurte han dem en gang til.",
+      "en": "Eight days after Trenton he fooled them all over again."
+    },
+    "body": {
+      "no": "Cornwallis kom med 8 000 mann for å ta igjen for Trenton, og fant Washington med ryggen mot en elv. Han bestemte seg for å angripe neste morgen. «Vi tar reven i morgen tidlig,» skal han ha sagt.\n\nWashington lot leirbålene brenne og satte noen mann til å grave støyende hele natta. Resten av hæren snek seg ut på et sideveis spor med filler rundt vognhjulene.\n\nOm morgenen sto de ikke foran Cornwallis, men bak ham – ved Princeton, der han hadde etterlatt seg forsyningene og noen få regimenter. Washington red selv rett inn mellom linjene for å samle mennene sine.",
+      "en": "Cornwallis came up with 8,000 men to avenge Trenton, and found Washington with his back to a river. He decided to attack next morning. \"We'll bag the fox in the morning,\" he is said to have remarked.\n\nWashington left the campfires burning and set a few men to dig noisily all night. The rest of the army slipped away down a side road with rags wrapped around the wagon wheels.\n\nIn the morning they were not in front of Cornwallis but behind him — at Princeton, where he had left his supplies and a few regiments. Washington rode straight between the firing lines himself to rally his men."
+    },
+    "why": {
+      "no": "Trenton og Princeton sammen ryddet britene ut av det meste av New Jersey på ti dager. Vinteren som skulle avslutte krigen reddet den i stedet.",
+      "en": "Trenton and Princeton together cleared the British out of most of New Jersey in ten days. The winter that was supposed to end the war saved it instead."
+    },
+    "fact": {
+      "no": "En offiser som så Washington ri inn i kuleregnet skal ha lagt hatten over øynene fordi han ikke orket å se generalen bli skutt. Da han så opp igjen, satt Washington uskadd på hesten.",
+      "en": "An officer who saw Washington ride into the gunfire pulled his hat over his eyes rather than watch the general be shot. When he looked up, Washington was still in the saddle, untouched."
+    },
+    "numbers": {
+      "britishForces": 1200,
+      "americanForces": 4500,
+      "outcome": "patriot"
+    },
+    "people": [
+      "washington",
+      "cornwallis"
+    ],
+    "wiki": {
+      "no": "Slaget ved Princeton",
+      "en": "Battle of Princeton"
+    }
+  },
+  {
+    "id": "brandywine",
+    "date": "1777-09-11",
+    "dateDisplay": {
+      "no": "11. september 1777",
+      "en": "11 September 1777"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      39.872,
+      -75.588
+    ],
+    "title": {
+      "no": "Brandywine",
+      "en": "Brandywine"
+    },
+    "hook": {
+      "no": "Howe gikk rundt flanken hans igjen – og igjen slapp hæren unna.",
+      "en": "Howe went around his flank again — and again the army got away."
+    },
+    "body": {
+      "no": "Howe seilte 15 000 mann sørover og gikk i land i Maryland for å ta Philadelphia bakfra. Washington stilte seg opp bak Brandywine-elva for å stanse ham.\n\nProblemet var at han ikke visste hvor mange vadesteder elva hadde. Howe gjorde nøyaktig det samme som ved Long Island: bandt amerikanerne foran mens hovedstyrken gikk mange kilometer nordover og krysset der ingen sto vakt.\n\nDet ble det største slaget i hele krigen målt i antall soldater. Amerikanerne holdt stand lenger enn ventet, men måtte trekke seg. Her ble den 19 år gamle Lafayette skutt i beinet.",
+      "en": "Howe sailed 15,000 men south and landed in Maryland to take Philadelphia from behind. Washington drew up behind the Brandywine to stop him.\n\nThe trouble was that he did not know how many fords the river had. Howe did exactly what he had done at Long Island: pinned the Americans in front while his main force marched miles north and crossed where nobody was watching.\n\nIt was the largest battle of the entire war by number of troops. The Americans held longer than expected but had to withdraw. This is where the 19-year-old Lafayette was shot in the leg."
+    },
+    "why": {
+      "no": "Veien til Philadelphia lå åpen. Men Washington hadde igjen klart å tape uten å miste hæren.",
+      "en": "The road to Philadelphia lay open. But once again Washington had managed to lose without losing the army."
+    },
+    "fact": {
+      "no": "En britisk skarpskytter fikk en amerikansk offiser i siktet, men lot være å skyte fordi mannen snudde ryggen til. Han skrev senere at han trodde det kan ha vært Washington.",
+      "en": "A British marksman had an American officer in his sights but held his fire because the man had his back turned. He later wrote that he believed it may have been Washington."
+    },
+    "numbers": {
+      "britishForces": 15500,
+      "americanForces": 14600,
+      "outcome": "british"
+    },
+    "people": [
+      "washington",
+      "howe",
+      "lafayette"
+    ],
+    "wiki": {
+      "no": "Slaget ved Brandywine",
+      "en": "Battle of Brandywine"
+    }
+  },
+  {
+    "id": "philadelphia-falls",
+    "date": "1777-09-26",
+    "dateDisplay": {
+      "no": "26. september 1777",
+      "en": "26 September 1777"
+    },
+    "kind": "politics",
+    "side": "british",
+    "importance": 1,
+    "coords": [
+      39.953,
+      -75.163
+    ],
+    "title": {
+      "no": "Philadelphia faller",
+      "en": "Philadelphia Falls"
+    },
+    "hook": {
+      "no": "Britene tok hovedstaden. Det betydde mindre enn de trodde.",
+      "en": "The British took the capital. It mattered less than they thought."
+    },
+    "body": {
+      "no": "Kongressen pakket sammen og flyktet vestover. Britene marsjerte inn i Amerikas største by, og noen innbyggere jublet.\n\nI Europa ville dette normalt betydd at krigen var over – tar du hovedstaden, har du vunnet. Men USA hadde ingen hovedstad i den forstand. Kongressen kunne møtes hvor som helst, og gjorde det.\n\nBenjamin Franklin, som satt i Paris, fikk beskjeden om at Howe hadde tatt Philadelphia. Han skal ha svart: «Nei, Philadelphia har tatt Howe.»",
+      "en": "Congress packed up and fled west. The British marched into America's largest city, and some residents cheered.\n\nIn Europe this would normally have meant the war was over — take the capital and you have won. But the United States had no capital in that sense. Congress could meet anywhere, and did.\n\nBenjamin Franklin, sitting in Paris, was told that Howe had taken Philadelphia. He is said to have replied: \"No, Philadelphia has taken Howe.\""
+    },
+    "why": {
+      "no": "Britene brukte hele hæren sin på å holde en by som ikke avgjorde noe – mens Burgoyne gikk under ved Saratoga samme høst.",
+      "en": "The British tied up their whole army holding a city that decided nothing — while Burgoyne went under at Saratoga the same autumn."
+    },
+    "fact": {
+      "no": "De forlot byen igjen etter ni måneder, uten kamp, da Frankrike kom inn i krigen og New York plutselig virket viktigere.",
+      "en": "They left again after nine months without a fight, once France entered the war and New York suddenly looked more important."
+    },
+    "people": [
+      "howe",
+      "franklin"
+    ],
+    "wiki": {
+      "no": "Philadelphia-felttoget",
+      "en": "Philadelphia campaign"
+    }
+  },
+  {
+    "id": "saratoga",
+    "date": "1777-10-17",
+    "dateDisplay": {
+      "no": "17. oktober 1777",
+      "en": "17 October 1777"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      43.0089,
+      -73.6398
+    ],
+    "title": {
+      "no": "Saratoga",
+      "en": "Saratoga"
+    },
+    "hook": {
+      "no": "Slaget som fikk Frankrike til å bli med i krigen.",
+      "en": "The battle that brought France into the war."
+    },
+    "body": {
+      "no": "Planen var elegant på papiret: general Burgoyne skulle marsjere sørover fra Canada langs innsjøene, møte en annen britisk styrke ved Albany, og dermed skjære New England av fra resten av koloniene.\n\nVirkeligheten var villmark. Amerikanerne felte trær over stiene, ødela broer og demmet opp bekker. Britene brukte 24 dager på å komme 37 kilometer. Underveis mistet Burgoyne folk i småtreff han ikke hadde regnet med, og hjelpen fra sør kom aldri – general Howe hadde dratt til Philadelphia i stedet.\n\nVed Saratoga sto han til slutt omringet av en amerikansk hær som vokste for hver dag, mens hans egen krympet. 17. oktober overga han hele styrken sin.",
+      "en": "The plan looked elegant on paper: General Burgoyne would march south from Canada along the lakes, meet another British force at Albany, and cut New England off from the rest of the colonies.\n\nThe reality was wilderness. The Americans felled trees across the tracks, broke the bridges and dammed the streams. The British took 24 days to cover 37 kilometres. Along the way Burgoyne lost men in skirmishes he had not planned for, and the help from the south never came — General Howe had gone to Philadelphia instead.\n\nAt Saratoga he ended up surrounded by an American army that grew every day while his own shrank. On 17 October he surrendered his whole force."
+    },
+    "why": {
+      "no": "En hel britisk hær som overga seg var noe helt nytt. Frankrike hadde ventet på et bevis for at amerikanerne kunne vinne. Nå fikk de det, og gikk inn i krigen som Amerikas allierte.",
+      "en": "An entire British army surrendering was something new. France had been waiting for proof the Americans could actually win. Now they had it, and joined the war as America's ally."
+    },
+    "fact": {
+      "no": "Benedict Arnold var en av dagens store helter ved Saratoga – han red inn i kampen mot ordre og ble skutt i beinet. Tre år senere skiftet han side.",
+      "en": "Benedict Arnold was one of the heroes of Saratoga — he rode into the fight against orders and was shot in the leg. Three years later he changed sides."
+    },
+    "numbers": {
+      "britishForces": 6200,
+      "americanForces": 15000,
+      "outcome": "patriot"
+    },
+    "people": [
+      "burgoyne",
+      "arnold",
+      "gates"
+    ],
+    "route": "burgoyne-south",
+    "wiki": {
+      "no": "Slaget ved Saratoga",
+      "en": "Battles of Saratoga"
+    }
+  },
+  {
+    "id": "valley-forge",
+    "date": "1777-12-19",
+    "dateDisplay": {
+      "no": "Vinteren 1777–78",
+      "en": "Winter 1777–78"
+    },
+    "kind": "people",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      40.0993,
+      -75.4566
+    ],
+    "title": {
+      "no": "Valley Forge",
+      "en": "Valley Forge"
+    },
+    "hook": {
+      "no": "Ingen fiende i sikte. Likevel den verste vinteren i hele krigen.",
+      "en": "No enemy in sight. Still the worst winter of the whole war."
+    },
+    "body": {
+      "no": "Britene satt varmt og godt i Philadelphia. Washington slo leir tre mil unna, på et jorde ved Valley Forge, med rundt 12 000 mann.\n\nDe bygde over tusen tømmerhytter selv. Maten kom sjelden fram, klærne var utslitte, og tusenvis hadde ikke sko. Sykdom – tyfus, dysenteri – tok langt flere enn kulda. Rundt 2 000 mann døde i løpet av vinteren.\n\nOg likevel er det ikke lidelsen som gjør Valley Forge viktig. Det er det som skjedde da en preussisk offiser ved navn von Steuben dukket opp i februar. Han kunne knapt engelsk, men han kunne eksersis. Han tok en modellgruppe, drillet dem, og lot dem drille de neste. Om våren marsjerte hæren ut som noe helt annet enn den som hadde marsjert inn.",
+      "en": "The British were warm and comfortable in Philadelphia. Washington camped thirty kilometres away, in a field at Valley Forge, with around 12,000 men.\n\nThey built over a thousand log huts themselves. Food rarely arrived, clothing was worn through, and thousands had no shoes. Disease — typhus, dysentery — killed far more than the cold. Around 2,000 men died over the winter.\n\nAnd yet it is not the suffering that makes Valley Forge matter. It is what happened when a Prussian officer named von Steuben turned up in February. He barely spoke English, but he knew drill. He took one model company, trained them, and had them train the next. In spring the army marched out as something quite different from the one that had marched in."
+    },
+    "why": {
+      "no": "Her ble den kontinentale hæren en ordentlig hær. Fem måneder senere sto de imot britene i åpen mark ved Monmouth – noe de ikke hadde klart året før.",
+      "en": "This is where the Continental Army became a real army. Five months later they stood up to the British in open field at Monmouth — something they could not have done the year before."
+    },
+    "fact": {
+      "no": "Von Steuben bannet så voldsomt på tysk og fransk når soldatene gjorde feil at han måtte få en assistent til å banne for seg på engelsk. Soldatene elsket ham.",
+      "en": "Von Steuben swore so magnificently in German and French when the men got it wrong that he had to have an aide swear for him in English. The soldiers loved him."
+    },
+    "people": [
+      "washington",
+      "steuben",
+      "lafayette"
+    ],
+    "wiki": {
+      "no": "Valley Forge",
+      "en": "Valley Forge"
+    }
+  },
+  {
+    "id": "french-alliance",
+    "date": "1778-02-06",
+    "dateDisplay": {
+      "no": "6. februar 1778",
+      "en": "6 February 1778"
+    },
+    "kind": "politics",
+    "side": "french",
+    "importance": 3,
+    "coords": [
+      48.8049,
+      2.1204
+    ],
+    "title": {
+      "no": "Frankrike blir med",
+      "en": "France Joins the War"
+    },
+    "hook": {
+      "no": "En lokal opprørskrig ble plutselig en verdenskrig.",
+      "en": "A local rebellion suddenly became a world war."
+    },
+    "body": {
+      "no": "Benjamin Franklin hadde bodd i Paris i over et år og gjort seg til Frankrikes yndling. Han spilte bevisst rollen som den enkle mannen fra skogen – pelslue, ingen parykk – midt i Europas mest overdådige hoff. Franskmennene var vilt begeistret.\n\nMen sjarm alene var ikke nok. Frankrike ville ikke satse på en taper. Da nyheten om Saratoga nådde Paris i desember 1777, snudde alt. To måneder senere signerte de en allianse.\n\nFrankrike hadde tapt en krig mot Storbritannia bare femten år før, og ville gjerne ha revansje. Nå fikk amerikanerne penger, våpen, offiserer – og aller viktigst: en flåte.",
+      "en": "Benjamin Franklin had been living in Paris for over a year and had made himself France's favourite. He deliberately played the simple man from the backwoods — fur cap, no wig — in the middle of Europe's most extravagant court. The French adored it.\n\nBut charm alone was not enough. France was not going to back a loser. When news of Saratoga reached Paris in December 1777, everything changed. Two months later they signed an alliance.\n\nFrance had lost a war to Britain only fifteen years earlier and badly wanted a rematch. Now the Americans got money, weapons, officers — and most importantly, a navy."
+    },
+    "why": {
+      "no": "Uten den franske flåten hadde Yorktown vært umulig. Britene måtte plutselig forsvare seg over hele verden, ikke bare i Amerika.",
+      "en": "Without the French navy, Yorktown would have been impossible. Britain suddenly had to defend itself all over the world, not just in America."
+    },
+    "fact": {
+      "no": "Spania kom med året etter, og Nederland i 1780. Til slutt sto Storbritannia alene mot fire land samtidig.",
+      "en": "Spain joined the next year, the Dutch in 1780. In the end Britain stood alone against four countries at once."
+    },
+    "people": [
+      "franklin",
+      "lafayette"
+    ],
+    "wiki": {
+      "no": "Traktaten i Paris (1778)",
+      "en": "Treaty of Alliance (1778)"
+    }
+  },
+  {
+    "id": "monmouth",
+    "date": "1778-06-28",
+    "dateDisplay": {
+      "no": "28. juni 1778",
+      "en": "28 June 1778"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      40.283,
+      -74.287
+    ],
+    "title": {
+      "no": "Monmouth",
+      "en": "Monmouth"
+    },
+    "hook": {
+      "no": "Den varmeste dagen i krigen – og første gang hæren sto imot i åpen mark.",
+      "en": "The hottest day of the war — and the first time the army held its ground in open field."
+    },
+    "body": {
+      "no": "Britene forlot Philadelphia og marsjerte mot New York i en kolonne som var flere mil lang. Washington bestemte seg for å angripe baktroppen.\n\nDet startet elendig. General Charles Lee, som ledet forsvarsangrepet, trakk seg tilbake nesten umiddelbart. Washington red fram, møtte sine egne soldater på vei bakover, og skjelte Lee ut foran alle. Vitner sa de aldri hadde hørt ham bruke slike ord.\n\nSå snudde han linjen selv. Resten av dagen sto hæren og slåss mot britiske regulære tropper i formasjon, i nesten 40 graders varme, uten å bryte sammen. Det var Valley Forge som viste seg.",
+      "en": "The British left Philadelphia and marched for New York in a column miles long. Washington decided to attack the rearguard.\n\nIt started badly. General Charles Lee, leading the attack, pulled back almost immediately. Washington rode up, met his own soldiers heading backwards, and tore into Lee in front of everyone. Witnesses said they had never heard him use language like it.\n\nThen he turned the line around himself. For the rest of the day the army stood and fought British regulars in formation, in nearly 40-degree heat, without breaking. This was Valley Forge showing itself."
+    },
+    "why": {
+      "no": "Ingen vant slaget. Men amerikanerne hadde bevist at de kunne møte den britiske hæren på dens egne premisser.",
+      "en": "Nobody won the battle. But the Americans had proved they could meet the British army on its own terms."
+    },
+    "fact": {
+      "no": "Mary Ludwig Hays bar vann til kanonene hele dagen og tok over ladingen da mannen hennes falt om. Historien om «Molly Pitcher» stammer trolig herfra.",
+      "en": "Mary Ludwig Hays carried water to the guns all day and took over loading when her husband collapsed. The story of \"Molly Pitcher\" probably comes from here."
+    },
+    "numbers": {
+      "britishForces": 11000,
+      "americanForces": 11000,
+      "outcome": "draw"
+    },
+    "people": [
+      "washington",
+      "steuben",
+      "lafayette",
+      "clinton"
+    ],
+    "wiki": {
+      "no": "Slaget ved Monmouth",
+      "en": "Battle of Monmouth"
+    }
+  },
+  {
+    "id": "savannah-falls",
+    "date": "1778-12-29",
+    "dateDisplay": {
+      "no": "29. desember 1778",
+      "en": "29 December 1778"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 1,
+    "coords": [
+      32.083,
+      -81.098
+    ],
+    "title": {
+      "no": "Savannah faller",
+      "en": "Savannah Falls"
+    },
+    "hook": {
+      "no": "Britene flyttet krigen sørover og møtte nesten ingen motstand.",
+      "en": "The British moved the war south and met almost no resistance."
+    },
+    "body": {
+      "no": "Etter tre år uten avgjørelse i nord skiftet London strategi. Sørstatene var rikere, mer avhengige av eksport, og der trodde de at lojalistene var mange nok til å holde landet etterpå.\n\nEn liten britisk styrke seilte ned og tok Savannah på én ettermiddag. En slavebundet mann viste dem en sti gjennom sumpen rundt de amerikanske stillingene.\n\nGeorgia var dermed den første kolonien som ble ført tilbake under kongens styre.",
+      "en": "After three years without a decision in the north, London changed strategy. The southern states were richer, more dependent on exports, and there they believed the loyalists were numerous enough to hold the country afterwards.\n\nA small British force sailed down and took Savannah in an afternoon. An enslaved man showed them a path through the swamp around the American positions.\n\nGeorgia thus became the first colony brought back under the king's government."
+    },
+    "why": {
+      "no": "Sørstatsstrategien virket i to år. Den brøt sammen fordi britene aldri klarte å holde landet de tok.",
+      "en": "The southern strategy worked for two years. It collapsed because the British could never hold the country they took."
+    },
+    "fact": {
+      "no": "Et år senere prøvde amerikanerne og franskmennene å ta byen tilbake. Angrepet mislyktes fullstendig, og over 800 mann falt på under en time.",
+      "en": "A year later the Americans and French tried to take the city back. The assault failed completely, with over 800 men lost in under an hour."
+    },
+    "people": [
+      "clinton"
+    ],
+    "wiki": {
+      "no": "Capture of Savannah",
+      "en": "Capture of Savannah"
+    }
+  },
+  {
+    "id": "sullivan",
+    "date": "1779-08-29",
+    "dateDisplay": {
+      "no": "August–september 1779",
+      "en": "August–September 1779"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      42.1,
+      -76.83
+    ],
+    "title": {
+      "no": "Sullivan-ekspedisjonen",
+      "en": "The Sullivan Expedition"
+    },
+    "hook": {
+      "no": "Washington sendte en hær mot irokeserne med ordre om å ødelegge alt.",
+      "en": "Washington sent an army against the Iroquois with orders to destroy everything."
+    },
+    "body": {
+      "no": "Irokeserforbundet hadde holdt sammen i hundrevis av år. Revolusjonen splittet det: fire av de seks nasjonene gikk med britene, to med amerikanerne. For første gang kjempet irokesere mot irokesere.\n\nEtter år med grenseangrep på begge sider sendte Washington general Sullivan nordover med rundt 4 000 mann. Ordren var eksplisitt: ikke bare slå fienden, men ødelegge bosetningene deres så grundig at de ikke kunne brukes igjen.\n\nDe brente rundt 40 landsbyer og ødela hundretusenvis av mål med mais og frukthager. Det var lite kamp. Tusenvis av mennesker flyktet til britiske Niagara og møtte en vinter uten mat.",
+      "en": "The Iroquois Confederacy had held together for centuries. The revolution split it: four of the six nations sided with the British, two with the Americans. For the first time, Iroquois fought Iroquois.\n\nAfter years of frontier raids on both sides, Washington sent General Sullivan north with around 4,000 men. The order was explicit: not merely to defeat the enemy but to destroy their settlements so thoroughly they could not be used again.\n\nThey burned around forty villages and destroyed hundreds of thousands of hectares of corn and orchards. There was little fighting. Thousands of people fled to British Niagara and faced a winter without food."
+    },
+    "why": {
+      "no": "Krigen handlet ikke bare om briter og amerikanere. For urfolksnasjonene var den en katastrofe uansett hvem som vant.",
+      "en": "The war was not only about the British and the Americans. For the Native nations it was a catastrophe whoever won."
+    },
+    "fact": {
+      "no": "Blant seneca-folket ble Washington etter dette kalt *Hanadagáyas* – «byødeleggeren». Navnet fulgte deretter alle amerikanske presidenter.",
+      "en": "Among the Seneca, Washington was afterwards called *Hanadagáyas* — \"town destroyer\". The name was then given to every American president who followed."
+    },
+    "people": [
+      "washington",
+      "brant"
+    ],
+    "wiki": {
+      "no": "Sullivan Expedition",
+      "en": "Sullivan Expedition"
+    }
+  },
+  {
+    "id": "jones",
+    "date": "1779-09-23",
+    "dateDisplay": {
+      "no": "23. september 1779",
+      "en": "23 September 1779"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      54.115,
+      -0.08
+    ],
+    "title": {
+      "no": "«Jeg har ikke begynt å slåss»",
+      "en": "\"I Have Not Yet Begun to Fight\""
+    },
+    "hook": {
+      "no": "Sagt fra et skip som holdt på å synke – utenfor kysten av England.",
+      "en": "Said from a ship that was sinking — off the coast of England."
+    },
+    "body": {
+      "no": "John Paul Jones var skotskfødt og seilte for den amerikanske marinen, som knapt fantes. Han gjorde noe ingen forventet: han tok krigen til britisk farvann.\n\nUtenfor Flamborough Head møtte han et større og bedre bevæpnet britisk krigsskip. Kanonene hans sprakk, skipet tok inn vann, og den britiske kapteinen ropte over om han ville overgi seg.\n\nJones svarte at han ikke hadde begynt å slåss ennå. Han la skipet inntil fienden, bandt dem sammen, og lot mennene sine slåss fra riggen. Etter tre timer overga britene seg. Jones' eget skip sank dagen etter.",
+      "en": "John Paul Jones was Scottish-born and sailed for an American navy that barely existed. He did what nobody expected: he took the war into British waters.\n\nOff Flamborough Head he met a larger and better-armed British warship. His guns burst, his ship took on water, and the British captain called across to ask if he was surrendering.\n\nJones answered that he had not yet begun to fight. He laid his ship alongside, lashed the two together, and had his men fight from the rigging. After three hours the British surrendered. Jones's own ship sank the next day."
+    },
+    "why": {
+      "no": "Militært betydde det lite. Psykologisk betydde det mye: britiske kystbyer forsto plutselig at krigen kunne komme til dem.",
+      "en": "Militarily it meant little. Psychologically it meant a great deal: British coastal towns suddenly understood the war could reach them."
+    },
+    "fact": {
+      "no": "Folk sto i land og så på slaget fra klippene ved Flamborough Head.",
+      "en": "People stood on the cliffs at Flamborough Head and watched the battle from shore."
+    },
+    "numbers": {
+      "britishForces": 284,
+      "americanForces": 322,
+      "outcome": "patriot"
+    },
+    "people": [],
+    "wiki": {
+      "no": "John Paul Jones",
+      "en": "John Paul Jones"
+    }
+  },
+  {
+    "id": "charleston-falls",
+    "date": "1780-05-12",
+    "dateDisplay": {
+      "no": "12. mai 1780",
+      "en": "12 May 1780"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      32.7765,
+      -79.9311
+    ],
+    "title": {
+      "no": "Charleston faller",
+      "en": "Charleston Falls"
+    },
+    "hook": {
+      "no": "Det største amerikanske nederlaget i hele krigen – en hel hær tatt til fange.",
+      "en": "The worst American defeat of the entire war — a whole army taken prisoner."
+    },
+    "body": {
+      "no": "Britene hadde gitt opp å vinne i nord. Ny plan: ta sørstatene, der de trodde det fantes mange lojalister som bare ventet på hjelp.\n\nCharleston var Sørens rikeste by. General Clinton omringet den fra land og sjø, og general Lincoln lot seg sperre inne med hele hæren sin i stedet for å trekke seg ut mens han kunne. Etter seks ukers beleiring måtte han overgi byen – og over 5 000 soldater.\n\nDet så ut som britene hadde funnet oppskriften. Men å ta byer er én ting; å holde et landskap er noe annet.",
+      "en": "The British had given up on winning in the north. New plan: take the southern states, where they believed plenty of loyalists were waiting for help.\n\nCharleston was the richest city in the South. General Clinton surrounded it by land and sea, and General Lincoln allowed himself to be shut inside with his entire army rather than pulling out while he still could. After six weeks of siege he had to surrender the city — and over 5,000 soldiers.\n\nIt looked as though the British had found the formula. But taking cities is one thing; holding a countryside is another."
+    },
+    "why": {
+      "no": "Nederlaget åpnet sørstatene for britene. Det som fulgte ble den styggeste delen av krigen – nabo mot nabo, med brenning og drap på begge sider.",
+      "en": "The defeat opened the South to the British. What followed was the ugliest part of the war — neighbour against neighbour, with burning and killing on both sides."
+    },
+    "fact": {
+      "no": "Kongressen sendte Nathanael Greene sørover for å rydde opp. Han tapte nesten hvert eneste slag han deltok i, og vant likevel felttoget ved å slite britene ut.",
+      "en": "Congress sent Nathanael Greene south to sort it out. He lost nearly every battle he fought and still won the campaign, simply by wearing the British down."
+    },
+    "numbers": {
+      "britishForces": 14000,
+      "americanForces": 5500,
+      "outcome": "british"
+    },
+    "people": [
+      "clinton",
+      "greene"
+    ],
+    "wiki": {
+      "no": "Beleiringen av Charleston",
+      "en": "Siege of Charleston"
+    }
+  },
+  {
+    "id": "camden",
+    "date": "1780-08-16",
+    "dateDisplay": {
+      "no": "16. august 1780",
+      "en": "16 August 1780"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      34.326,
+      -80.594
+    ],
+    "title": {
+      "no": "Camden",
+      "en": "Camden"
+    },
+    "hook": {
+      "no": "Gates stilte utrente bønder rett overfor britenes beste. De løp.",
+      "en": "Gates put untrained farmers directly opposite Britain's best. They ran."
+    },
+    "body": {
+      "no": "Horatio Gates, helten fra Saratoga, fikk kommandoen i sør. Han marsjerte mennene sine gjennom en region uten forsyninger, i sommerheten, og de spiste grønne fersken og umoden mais. Halve hæren var syk da de kom fram.\n\nSå stilte han opp med militsen på venstre side – rett overfor de britiske eliteregimentene. Da britene gikk fram med bajonett, kastet militsen våpnene og løp uten å avfyre et skudd.\n\nDe erfarne kontinentale soldatene på høyre flanke sto igjen alene, omringet, og ble hugget ned. Gates selv red 30 mil på tre dager, bort fra slagmarken.",
+      "en": "Horatio Gates, the hero of Saratoga, was given command in the South. He marched his men through a region with no supplies, in the summer heat, eating green peaches and unripe corn. Half the army was sick by the time they arrived.\n\nThen he drew up with the militia on the left — directly opposite the British elite regiments. When the British came on with the bayonet, the militia threw down their weapons and ran without firing a shot.\n\nThe experienced Continentals on the right were left alone, surrounded, and cut down. Gates himself rode 300 kilometres in three days, away from the battlefield."
+    },
+    "why": {
+      "no": "Den amerikanske hæren i sør var i praksis utslettet. Det var etter dette Nathanael Greene overtok.",
+      "en": "The American army in the South was effectively destroyed. It was after this that Nathanael Greene took over."
+    },
+    "fact": {
+      "no": "Baron de Kalb, en tysk offiser i amerikansk tjeneste, ble truffet elleve ganger mens han holdt høyre flanke. Han døde tre dager senere.",
+      "en": "Baron de Kalb, a German officer in American service, was hit eleven times holding the right flank. He died three days later."
+    },
+    "numbers": {
+      "britishForces": 2100,
+      "americanForces": 3700,
+      "outcome": "british"
+    },
+    "people": [
+      "gates",
+      "cornwallis",
+      "tarleton"
+    ],
+    "wiki": {
+      "no": "Slaget ved Camden",
+      "en": "Battle of Camden"
+    }
+  },
+  {
+    "id": "arnold-treason",
+    "date": "1780-09-21",
+    "dateDisplay": {
+      "no": "21. september 1780",
+      "en": "21 September 1780"
+    },
+    "kind": "people",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      41.3915,
+      -73.956
+    ],
+    "title": {
+      "no": "Arnolds forræderi",
+      "en": "Arnold's Treason"
+    },
+    "hook": {
+      "no": "Amerikas modigste general prøvde å selge festningen West Point.",
+      "en": "America's bravest general tried to sell the fortress at West Point."
+    },
+    "body": {
+      "no": "Benedict Arnold hadde gjort mer for saken enn nesten noen: Ticonderoga, Québec, Champlainsjøen, Saratoga. Han hadde også blitt forbigått ved forfremmelser, anklaget for økonomisk rot, og han haltet stygt av to sår i samme bein.\n\nHan ba Washington om kommandoen over West Point, den viktigste festningen i Hudsondalen. Så begynte han å forhandle med britene om å overgi den – for 20 000 pund og en britisk offisersgrad.\n\nPlanen falt fordi den britiske mellommannen, major André, ble stanset av tre tilfeldige militsmenn med planene gjemt i støvelen. Arnold fikk beskjed én time før Washington ankom, og rakk å ro ut til et britisk skip.",
+      "en": "Benedict Arnold had done more for the cause than almost anyone: Ticonderoga, Quebec, Lake Champlain, Saratoga. He had also been passed over for promotion, accused of financial irregularities, and limped badly from two wounds in the same leg.\n\nHe asked Washington for command of West Point, the key fortress in the Hudson valley. Then he began negotiating with the British to hand it over — for £20,000 and a British commission.\n\nThe plot collapsed because the British go-between, Major André, was stopped by three random militiamen with the plans hidden in his boot. Arnold got word an hour before Washington arrived, and made it out to a British ship."
+    },
+    "why": {
+      "no": "Hadde West Point falt, ville britene kontrollert Hudson og skåret koloniene i to. Krigen kunne endt annerledes.",
+      "en": "Had West Point fallen, the British would have controlled the Hudson and cut the colonies in two. The war could have ended differently."
+    },
+    "fact": {
+      "no": "Major André ble hengt som spion. Han var så godt likt at flere amerikanske offiserer gråt, og Washington selv unngikk å møte ham.",
+      "en": "Major André was hanged as a spy. He was so well liked that several American officers wept, and Washington avoided meeting him."
+    },
+    "people": [
+      "arnold",
+      "washington",
+      "clinton"
+    ],
+    "wiki": {
+      "no": "Benedict Arnold",
+      "en": "Benedict Arnold"
+    }
+  },
+  {
+    "id": "kings-mountain",
+    "date": "1780-10-07",
+    "dateDisplay": {
+      "no": "7. oktober 1780",
+      "en": "7 October 1780"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      35.142,
+      -81.383
+    ],
+    "title": {
+      "no": "King's Mountain",
+      "en": "King's Mountain"
+    },
+    "hook": {
+      "no": "Ikke én britisk soldat deltok. Amerikanere drepte amerikanere i en time.",
+      "en": "Not one British soldier took part. Americans killed Americans for an hour."
+    },
+    "body": {
+      "no": "En britisk major sendte beskjed til nybyggerne vest for fjellene om at hvis de ikke la ned våpnene, ville han komme og brenne gårdene deres.\n\nDet var feil ting å si til de folkene. Rundt tusen menn samlet seg, red i flere dager, og fant majoren på en skogkledd høyde med rundt like mange lojalistiske amerikanere.\n\nDe omringet høyden og skjøt seg oppover fra alle kanter, indianerstil, mens lojalistene gikk til bajonettangrep nedover igjen og igjen. Etter en time var majoren død og hele styrken hans tatt eller drept. Noen ble skutt etter at de hadde overgitt seg – flere ropte «Tarletons nåde» mens de skjøt.",
+      "en": "A British major sent word to the settlers west of the mountains that if they did not lay down their arms, he would come and burn their farms.\n\nThat was the wrong thing to say to those people. Around a thousand men gathered, rode for days, and found the major on a wooded ridge with roughly the same number of loyalist Americans.\n\nThey surrounded the ridge and fought their way up from every side, tree to tree, while the loyalists charged downhill with bayonets again and again. Within an hour the major was dead and his whole force killed or captured. Some were shot after surrendering — several men shouted \"Tarleton's quarter\" as they fired."
+    },
+    "why": {
+      "no": "Britenes lojalistiske styrke i vest ble utslettet, og Cornwallis måtte utsette invasjonen av North Carolina. Det ga Greene tid.",
+      "en": "Britain's loyalist force in the west was wiped out, and Cornwallis had to postpone invading North Carolina. That bought Greene time."
+    },
+    "fact": {
+      "no": "Dette var borgerkrigen inne i revolusjonen. Naboer, og noen ganger brødre, sto på hver sin side av høyden.",
+      "en": "This was the civil war inside the revolution. Neighbours, and sometimes brothers, stood on opposite sides of the hill."
+    },
+    "numbers": {
+      "britishForces": 1100,
+      "americanForces": 900,
+      "outcome": "patriot"
+    },
+    "people": [
+      "cornwallis",
+      "tarleton"
+    ],
+    "wiki": {
+      "no": "Slaget ved Kings Mountain",
+      "en": "Battle of Kings Mountain"
+    }
+  },
+  {
+    "id": "cowpens",
+    "date": "1781-01-17",
+    "dateDisplay": {
+      "no": "17. januar 1781",
+      "en": "17 January 1781"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 2,
+    "coords": [
+      35.1364,
+      -81.819
+    ],
+    "title": {
+      "no": "Cowpens",
+      "en": "Cowpens"
+    },
+    "hook": {
+      "no": "En genial plan som brukte soldatenes egen feighet som våpen.",
+      "en": "A brilliant plan that used his own soldiers' tendency to run as a weapon."
+    },
+    "body": {
+      "no": "Daniel Morgan visste to ting: militsen hans kom til å stikke av, og Banastre Tarleton – den fryktede britiske kavalerisjefen – kom til å angripe hodestups uansett.\n\nSå han planla for begge deler. Han stilte militsen først, og ba dem om noe de faktisk klarte: skyt to skudd, sikt på offiserene, og løp deretter bak linjen. Bak dem sto de erfarne soldatene.\n\nDet gikk nøyaktig som planlagt. Tarleton så militsen løpe, trodde slaget var vunnet, og lot troppene sine storme fram i uorden – rett inn i en fullt oppstilt linje som ventet. Da kavaleriet kom rundt fra siden samtidig, var det over på under en time. Tarleton mistet nesten hele styrken sin.",
+      "en": "Daniel Morgan knew two things: his militia were going to run, and Banastre Tarleton — the feared British cavalry commander — was going to charge headlong regardless.\n\nSo he planned for both. He put the militia in front and asked them for something they could actually do: fire two shots, aim at the officers, then run behind the line. Behind them stood the experienced troops.\n\nIt went exactly to plan. Tarleton saw the militia running, assumed the battle was won, and let his men charge forward in disorder — straight into a fully formed line that was waiting. When the cavalry came round the flank at the same moment, it was over in under an hour. Tarleton lost almost his entire force."
+    },
+    "why": {
+      "no": "Britenes beste lette tropper i sør ble utslettet på én morgen. Det tvang Cornwallis til å jage etter Greene gjennom hele North Carolina – og det var starten på veien mot Yorktown.",
+      "en": "Britain's best light troops in the South were wiped out in a single morning. It forced Cornwallis to chase Greene across North Carolina — and that was the beginning of the road to Yorktown."
+    },
+    "fact": {
+      "no": "Morgan hadde vondt i ryggen og gikt, og hadde egentlig sluttet i hæren. Han kom tilbake fordi han ikke orket å sitte hjemme mens sørstatene falt.",
+      "en": "Morgan had a bad back and sciatica and had actually quit the army. He came back because he could not stand sitting at home while the South fell."
+    },
+    "numbers": {
+      "britishForces": 1100,
+      "americanForces": 1900,
+      "outcome": "patriot"
+    },
+    "people": [
+      "morgan",
+      "tarleton"
+    ],
+    "wiki": {
+      "no": "Slaget ved Cowpens",
+      "en": "Battle of Cowpens"
+    }
+  },
+  {
+    "id": "guilford",
+    "date": "1781-03-15",
+    "dateDisplay": {
+      "no": "15. mars 1781",
+      "en": "15 March 1781"
+    },
+    "kind": "battle",
+    "side": "british",
+    "importance": 2,
+    "coords": [
+      36.132,
+      -79.845
+    ],
+    "title": {
+      "no": "Guilford Courthouse",
+      "en": "Guilford Courthouse"
+    },
+    "hook": {
+      "no": "Cornwallis vant – og mistet en fjerdedel av hæren sin på å gjøre det.",
+      "en": "Cornwallis won — and lost a quarter of his army doing it."
+    },
+    "body": {
+      "no": "Greene hadde jaget Cornwallis rundt i North Carolina i to måneder uten å slåss, helt til britene var utslitte og langt fra forsyningene sine. Så valgte han et sted og stilte opp.\n\nHan kopierte Morgans plan fra Cowpens: milits foran med beskjed om å skyte to skudd og trekke seg, erfarne tropper bak. Det holdt nesten.\n\nCornwallis tok til slutt marken, men bare fordi han lot artilleriet skyte med kardesk inn i en klynge der hans egne menn slåss mann mot mann. Han vant slaget og mistet over 500 soldater han ikke kunne erstatte.",
+      "en": "Greene had led Cornwallis around North Carolina for two months without fighting, until the British were exhausted and far from their supplies. Then he chose a spot and drew up.\n\nHe copied Morgan's plan from Cowpens: militia in front told to fire two shots and fall back, veterans behind. It nearly held.\n\nCornwallis eventually took the field, but only by ordering his artillery to fire grapeshot into a melee where his own men were fighting hand to hand. He won the battle and lost over 500 soldiers he could not replace."
+    },
+    "why": {
+      "no": "Etter dette ga Cornwallis opp North Carolina og marsjerte mot Virginia. Den marsjen endte i Yorktown.",
+      "en": "After this Cornwallis gave up North Carolina and marched for Virginia. That march ended at Yorktown."
+    },
+    "fact": {
+      "no": "En britisk politiker sa om slaget: «Enda en slik seier, og vi har ingen hær igjen.»",
+      "en": "A British politician said of the battle: \"Another such victory would ruin the British army.\""
+    },
+    "numbers": {
+      "britishForces": 1900,
+      "americanForces": 4400,
+      "outcome": "british"
+    },
+    "people": [
+      "greene",
+      "cornwallis",
+      "tarleton"
+    ],
+    "route": "greene-south",
+    "wiki": {
+      "no": "Slaget ved Guilford Court House",
+      "en": "Battle of Guilford Court House"
+    }
+  },
+  {
+    "id": "chesapeake",
+    "date": "1781-09-05",
+    "dateDisplay": {
+      "no": "5. september 1781",
+      "en": "5 September 1781"
+    },
+    "kind": "battle",
+    "side": "french",
+    "importance": 3,
+    "coords": [
+      36.95,
+      -75.7
+    ],
+    "title": {
+      "no": "Slaget i Chesapeake Bay",
+      "en": "The Battle of the Chesapeake"
+    },
+    "hook": {
+      "no": "Krigens viktigste sjøslag. Ingen amerikanere deltok.",
+      "en": "The most important naval battle of the war. No Americans took part."
+    },
+    "body": {
+      "no": "Cornwallis satt ved Yorktown og regnet med at flåten kunne hente ham ut når som helst. Britene hadde tross alt hersket på havet i hundre år.\n\nSå kom admiral de Grasse opp fra Karibia med 24 franske linjeskip og la seg i innseilingen til Chesapeake Bay. Den britiske flåten kom nordfra for å bryte gjennom.\n\nSlaget varte i to og en halv time og var taktisk uavgjort. Men britene ble skadet nok til at de måtte til New York for reparasjon. Da de kom tilbake, var Yorktown allerede overgitt.",
+      "en": "Cornwallis sat at Yorktown assuming the fleet could lift him out whenever needed. The British had, after all, ruled the sea for a century.\n\nThen Admiral de Grasse came up from the Caribbean with 24 French ships of the line and placed himself across the entrance to Chesapeake Bay. The British fleet came north to break through.\n\nThe battle lasted two and a half hours and was tactically a draw. But the British were damaged enough that they had to go to New York for repairs. By the time they came back, Yorktown had already surrendered."
+    },
+    "why": {
+      "no": "Dette er det som avgjorde krigen. Uten fransk kontroll over sjøen i akkurat de ukene, hadde Cornwallis kommet seg unna.",
+      "en": "This is what decided the war. Without French control of the sea in exactly those weeks, Cornwallis would have got away."
+    },
+    "fact": {
+      "no": "Det var en av svært få ganger på hele 1700-tallet at den britiske marinen tapte kontrollen over et havområde som betydde noe.",
+      "en": "It was one of very few times in the whole eighteenth century that the Royal Navy lost control of a stretch of sea that mattered."
+    },
+    "numbers": {
+      "britishForces": 19,
+      "frenchForces": 24,
+      "outcome": "patriot"
+    },
+    "people": [
+      "rochambeau",
+      "cornwallis"
+    ],
+    "route": "french-fleet",
+    "wiki": {
+      "no": "Slaget ved Chesapeake",
+      "en": "Battle of the Chesapeake"
+    }
+  },
+  {
+    "id": "yorktown",
+    "date": "1781-10-19",
+    "dateDisplay": {
+      "no": "19. oktober 1781",
+      "en": "19 October 1781"
+    },
+    "kind": "battle",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      37.2387,
+      -76.5097
+    ],
+    "title": {
+      "no": "Yorktown",
+      "en": "Yorktown"
+    },
+    "hook": {
+      "no": "En britisk hær med franskmenn på sjøen og amerikanere på land – og ingen vei ut.",
+      "en": "A British army with the French at sea and the Americans on land — and no way out."
+    },
+    "body": {
+      "no": "Cornwallis hadde jaget rundt i sørstatene i et år uten å få has på Greene. Til slutt slo han leir ved Yorktown på en halvøy i Virginia, for å kunne få forsyninger og forsterkninger fra sjøen.\n\nDet var akkurat der Washington og den franske generalen Rochambeau ville ha ham. De marsjerte over 60 mil sørover fra New York, så raskt og hemmelig at britene i New York trodde de fortsatt var på vei mot dem.\n\nSamtidig kom admiral de Grasse med den franske flåten fra Karibia og slo den britiske flåten utenfor Chesapeake Bay. Døra ut var lukket. I tre uker ble Yorktown beskutt døgnet rundt. 19. oktober marsjerte 7 000 britiske soldater ut og la ned våpnene.",
+      "en": "Cornwallis had chased around the southern states for a year without ever catching Greene. In the end he camped at Yorktown on a peninsula in Virginia, so he could be supplied and reinforced from the sea.\n\nThat was exactly where Washington and the French general Rochambeau wanted him. They marched over 600 kilometres south from New York, so fast and so secretly that the British in New York still thought they were coming for them.\n\nAt the same time Admiral de Grasse arrived with the French fleet from the Caribbean and beat the British fleet off Chesapeake Bay. The way out was shut. For three weeks Yorktown was shelled around the clock. On 19 October, 7,000 British soldiers marched out and laid down their arms."
+    },
+    "why": {
+      "no": "Krigen fortsatte formelt i to år til, men i London var det slutt. Da statsministeren fikk beskjeden, skal han ha utbrutt: «Å Gud, alt er over.»",
+      "en": "The war formally went on for two more years, but in London it was finished. When the prime minister got the news he is said to have cried: \"Oh God, it is all over.\""
+    },
+    "fact": {
+      "no": "Cornwallis møtte ikke opp til overgivelsen selv – han meldte seg syk og sendte nestkommanderende. Washington svarte med å la sin egen nestkommanderende ta imot sverdet.",
+      "en": "Cornwallis did not turn up to the surrender himself — he reported sick and sent his second in command. Washington replied by having his own second in command accept the sword."
+    },
+    "numbers": {
+      "britishForces": 9000,
+      "americanForces": 11000,
+      "frenchForces": 8000,
+      "outcome": "patriot"
+    },
+    "people": [
+      "washington",
+      "cornwallis",
+      "rochambeau",
+      "lafayette"
+    ],
+    "route": "march-to-yorktown",
+    "wiki": {
+      "no": "Beleiringen av Yorktown",
+      "en": "Siege of Yorktown"
+    }
+  },
+  {
+    "id": "treaty-paris",
+    "date": "1783-09-03",
+    "dateDisplay": {
+      "no": "3. september 1783",
+      "en": "3 September 1783"
+    },
+    "kind": "politics",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      48.8566,
+      2.3522
+    ],
+    "title": {
+      "no": "Freden i Paris",
+      "en": "The Treaty of Paris"
+    },
+    "hook": {
+      "no": "Med noen få signaturer i Paris fantes USA på ordentlig.",
+      "en": "With a few signatures in Paris, the United States existed for real."
+    },
+    "body": {
+      "no": "Franklin, John Adams og John Jay forhandlet i Paris i nesten to år. De hadde streng beskjed fra Kongressen om å gjøre alt i samråd med Frankrike. De ignorerte beskjeden og forhandlet direkte med britene – og fikk langt bedre vilkår enn Frankrike hadde tenkt å gi dem.\n\nStorbritannia anerkjente USA som en selvstendig stat, og ga fra seg alt land helt vest til Mississippi. Det var enormt mye mer enn amerikanerne kontrollerte militært.\n\nIngen spurte de mange urfolksnasjonene som faktisk bodde på dette landet. De hadde kjempet på begge sider, og satt igjen som krigens største tapere.",
+      "en": "Franklin, John Adams and John Jay negotiated in Paris for nearly two years. Congress had told them firmly to do everything in consultation with France. They ignored that, dealt with the British directly — and got far better terms than France had intended them to have.\n\nBritain recognised the United States as an independent country and gave up all the land west to the Mississippi. That was vastly more than the Americans actually controlled.\n\nNobody asked the many Native nations who actually lived on that land. They had fought on both sides, and came out of the war as its biggest losers."
+    },
+    "why": {
+      "no": "Åtte år etter Lexington var det over. En koloni hadde slått verdens sterkeste imperium og blitt et eget land.",
+      "en": "Eight years after Lexington it was over. A set of colonies had beaten the most powerful empire in the world and become a country."
+    },
+    "fact": {
+      "no": "Da Washington kort etter la ned kommandoen frivillig og dro hjem, skal kong George III ha sagt at hvis han virkelig gjorde det, ville han være «den største mannen i verden».",
+      "en": "When Washington soon after voluntarily gave up command and went home, King George III is said to have remarked that if he really did it, he would be \"the greatest man in the world\"."
+    },
+    "people": [
+      "franklin",
+      "john-adams",
+      "george3"
+    ],
+    "wiki": {
+      "no": "Freden i Paris (1783)",
+      "en": "Treaty of Paris (1783)"
+    }
+  },
+  {
+    "id": "washington-resigns",
+    "date": "1783-12-23",
+    "dateDisplay": {
+      "no": "23. desember 1783",
+      "en": "23 December 1783"
+    },
+    "kind": "people",
+    "side": "patriot",
+    "importance": 3,
+    "coords": [
+      38.9784,
+      -76.4922
+    ],
+    "title": {
+      "no": "Washington gir fra seg makten",
+      "en": "Washington Gives Up Power"
+    },
+    "hook": {
+      "no": "Han hadde hæren i ryggen og kunne tatt hva han ville. Han dro hjem i stedet.",
+      "en": "He had the army behind him and could have taken anything. He went home instead."
+    },
+    "body": {
+      "no": "Dette er kanskje det viktigste som skjedde i hele revolusjonen, og det var ikke et slag.\n\nWashington hadde ledet hæren i åtte år. Offiserene hans var bitre – Kongressen hadde ikke betalt dem på lenge, og noen begynte å snakke om å marsjere mot Philadelphia og ta over. Washington møtte dem selv og ba dem la være. Da han skulle lese opp et brev, fomlet han med brillene og sa: «Tilgi meg, jeg har ikke bare blitt grå i deres tjeneste, men også nesten blind.» Flere av offiserene begynte å gråte. Kuppet døde der og da.\n\n23. desember stilte han seg foran Kongressen i Annapolis, leverte tilbake kommandoen skriftlig, og red hjem til Mount Vernon. Han rakk fram julaften.",
+      "en": "This may be the most important thing that happened in the whole revolution, and it was not a battle.\n\nWashington had led the army for eight years. His officers were bitter — Congress had not paid them in a long time, and some began talking about marching on Philadelphia and taking over. Washington met them himself and asked them not to. About to read out a letter, he fumbled with his spectacles and said: \"Forgive me, I have not only grown grey but almost blind in the service of my country.\" Several officers wept. The coup died on the spot.\n\nOn 23 December he stood before Congress at Annapolis, handed back his commission in writing, and rode home to Mount Vernon. He arrived on Christmas Eve."
+    },
+    "why": {
+      "no": "Nesten alle vellykkede revolusjoner i historien har endt med en ny eneveldig hersker. Denne gjorde ikke det, og mye av grunnen er at én mann valgte å gå hjem.",
+      "en": "Almost every successful revolution in history has ended with a new strongman. This one did not, and much of the reason is that one man chose to go home."
+    },
+    "fact": {
+      "no": "Han gjorde det samme igjen fjorten år senere, da han gikk av som president etter to perioder selv om ingen ba ham om det. Det ble en uskreven regel i USA i 150 år.",
+      "en": "He did the same thing again fourteen years later, stepping down as president after two terms though nobody asked him to. That became an unwritten American rule for 150 years."
+    },
+    "people": [
+      "washington"
+    ],
+    "wiki": {
+      "no": "George Washington",
+      "en": "George Washington"
+    }
+  }
+]

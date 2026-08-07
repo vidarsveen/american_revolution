@@ -1,0 +1,505 @@
+/* ============================================================
+   Year scrubber (on the map) + vertical timeline view
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. The scrubber — floats above the tab bar on the map view
+   ------------------------------------------------------------ */
+.scrubber {
+  position: absolute;
+  z-index: 500;
+  left: var(--s3);
+  right: var(--s3);
+  bottom: var(--s3);
+  padding: var(--s3) var(--s4) var(--s3);
+  border-radius: var(--r-lg);
+  background: var(--paper-veil);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--t-med) var(--ease-out), opacity var(--t-med);
+}
+/* Slide it out of the way while the sheet is up */
+.sheet-open .scrubber { transform: translateY(140%); opacity: 0; pointer-events: none; }
+
+.scrubber__head {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin-bottom: var(--s2);
+}
+
+.play-btn {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast) var(--ease-spring), background var(--t-fast);
+}
+.play-btn:active { transform: scale(.9); }
+.play-btn svg { width: 18px; height: 18px; }
+.play-btn .ico-pause { display: none; }
+.is-playing .play-btn { background: var(--red); }
+.is-playing .play-btn .ico-play  { display: none; }
+.is-playing .play-btn .ico-pause { display: block; }
+
+.scrubber__now { flex: 1 1 auto; min-width: 0; line-height: 1.15; }
+.scrubber__year {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 72, 'WONK' 1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.scrubber__chapter {
+  font-size: var(--fs-xs);
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.scrubber__count {
+  flex: none;
+  text-align: right;
+  font-size: var(--fs-2xs);
+  color: var(--ink-faint);
+  line-height: 1.25;
+  max-width: 32%;
+}
+.scrubber__count b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* ---- Track ---- */
+.scrubber__track {
+  position: relative;
+  height: 34px;               /* generous touch strip */
+  margin: 0 2px;
+  touch-action: none;         /* we own the drag */
+  cursor: grab;
+}
+.scrubber__track:active { cursor: grabbing; }
+
+.scrubber__rail {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: var(--r-pill);
+  background: var(--paper-sunken);
+  overflow: hidden;
+}
+.scrubber__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+
+/* year ticks */
+.scrubber__tick {
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 7px;
+  margin-top: -3.5px;
+  background: var(--rule-strong);
+  transform: translateX(-50%);
+}
+.scrubber__tick--major { height: 12px; margin-top: -6px; background: var(--ink-faint); }
+
+/* one dot per event, so you can see where the action is */
+.scrubber__dot {
+  position: absolute;
+  top: 50%;
+  width: 5px; height: 5px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  transform: translateX(-50%);
+  opacity: .5;
+  transition: opacity var(--t-fast), background var(--t-fast);
+}
+.scrubber__dot--imp3 { width: 7px; height: 7px; margin-top: -12px; background: var(--gold); opacity: .95; }
+.scrubber__dot--seen { opacity: .95; background: var(--blue); }
+
+.scrubber__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 20px; height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  border: 2.5px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  transition: transform var(--t-fast) var(--ease-out);
+}
+.scrubber__track.is-dragging .scrubber__thumb { transform: scale(1.25); }
+
+.scrubber__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: .04em;
+  margin-top: 1px;
+}
+
+/* ---- Tour caption card ---- */
+.tour-caption {
+  position: absolute;
+  z-index: 520;
+  left: var(--s4);
+  right: var(--s4);
+  top: var(--s4);
+  padding: var(--s3) var(--s4);
+  border-radius: var(--r-md);
+  background: var(--paper-veil);
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+}
+.tour-caption.is-on { opacity: 1; transform: none; }
+.tour-caption__date {
+  font-size: var(--fs-2xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.tour-caption__title {
+  font-size: var(--fs-lg);
+  margin: 2px 0 3px;
+  font-variation-settings: 'opsz' 60, 'WONK' 1;
+}
+.tour-caption__hook {
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+  line-height: var(--lh-snug);
+}
+
+/* ------------------------------------------------------------
+   2. The vertical timeline view
+   ------------------------------------------------------------ */
+.timeline {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.filters {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  gap: var(--s2);
+  padding: var(--s3) var(--s4);
+  background: var(--paper-veil);
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filters::-webkit-scrollbar { display: none; }
+
+.filter {
+  flex: none;
+  height: 32px;
+  padding: 0 var(--s3);
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule-strong);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+}
+.filter[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.filter:active { transform: scale(.96); }
+
+.tl-list { padding: var(--s3) var(--s4) var(--s8); }
+
+/* Chapter header = a documentary episode */
+.tl-chapter {
+  position: sticky;
+  top: 56px;
+  z-index: 10;
+  margin: var(--s6) calc(var(--s4) * -1) var(--s3);
+  padding: var(--s2) var(--s4);
+  background: linear-gradient(var(--paper) 62%, transparent);
+}
+.tl-list > .tl-chapter:first-child { margin-top: 0; }
+.tl-chapter__ep {
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.tl-chapter__title {
+  font-size: var(--fs-lg);
+  font-variation-settings: 'opsz' 60, 'WONK' 1;
+  margin-top: 1px;
+}
+
+/* Card */
+.tl-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: var(--s3);
+  width: 100%;
+  text-align: left;
+  padding: var(--s3) 0;
+  color: inherit;
+}
+/* the continuous rule down the left */
+.tl-card::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 0; bottom: 0;
+  width: 1.5px;
+  background: var(--rule);
+}
+.tl-card:first-of-type::before { top: 22px; }
+.tl-card:last-of-type::before  { bottom: auto; height: 22px; }
+
+.tl-card__node {
+  position: relative;
+  z-index: 2;
+  grid-column: 1;
+  justify-self: center;
+  align-self: start;
+  margin-top: 15px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2.5px solid var(--ink-faint);
+  transition: transform var(--t-med) var(--ease-spring), border-color var(--t-fast);
+}
+.tl-card--british .tl-card__node { border-color: var(--red); }
+.tl-card--patriot .tl-card__node { border-color: var(--blue); }
+.tl-card--french  .tl-card__node { border-color: var(--gold); }
+.tl-card--neutral .tl-card__node { border-color: var(--sage); }
+.tl-card--imp3 .tl-card__node {
+  width: 15px; height: 15px;
+  margin-top: 13px;
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-soft);
+}
+
+.tl-card__body {
+  grid-column: 2;
+  padding: var(--s3) var(--s4);
+  border-radius: var(--r-md);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast) var(--ease-out), box-shadow var(--t-fast);
+}
+.tl-card:active .tl-card__body { transform: scale(.985); box-shadow: none; }
+
+.tl-card__date {
+  display: block;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.tl-card__title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-md);
+  line-height: 1.2;
+  letter-spacing: -0.008em;
+  margin: 3px 0 5px;
+  font-variation-settings: 'opsz' 40, 'WONK' 0;
+}
+.tl-card__hook {
+  display: block;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-soft);
+  margin: 0;
+}
+.tl-card__tag {
+  display: inline-block;
+  margin-top: var(--s2);
+  padding: 1px 7px;
+  border-radius: var(--r-pill);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+/* ------------------------------------------------------------
+   3. People grid
+   ------------------------------------------------------------ */
+.people {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: var(--s4) var(--s4) var(--s8);
+}
+
+.people__intro {
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+  margin-bottom: var(--s4);
+  line-height: var(--lh-snug);
+}
+
+.people__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: var(--s3);
+}
+
+.pcard {
+  position: relative;
+  display: block;
+  text-align: left;
+  color: inherit;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast) var(--ease-out), box-shadow var(--t-fast);
+}
+.pcard:active { transform: scale(.975); box-shadow: none; }
+
+.pcard__img {
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1.12;
+  background: var(--paper-sunken);
+  overflow: hidden;
+}
+.pcard__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  filter: sepia(.28) saturate(.85) contrast(1.03);
+}
+.pcard__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 42%, rgba(18, 14, 8, .30) 62%, rgba(18, 14, 8, .8));
+}
+.pcard__side {
+  position: absolute;
+  z-index: 2;
+  top: var(--s2); left: var(--s2);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 250, 240, .8);
+}
+.pcard--british .pcard__side { background: var(--red); }
+.pcard--patriot .pcard__side { background: var(--blue); }
+.pcard--french  .pcard__side { background: var(--gold); }
+.pcard--neutral .pcard__side { background: var(--sage); }
+
+.pcard__name {
+  position: absolute;
+  z-index: 2;
+  left: var(--s3); right: var(--s3); bottom: var(--s2);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.005em;
+  color: #fdf7ea;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .75), 0 0 12px rgba(0, 0, 0, .5);
+  font-variation-settings: 'opsz' 24, 'WONK' 0;
+  /* Full names, not first names — two lines is fine, three is not. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pcard__meta {
+  display: block;
+  padding: var(--s2) var(--s3) var(--s3);
+}
+.pcard__role {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--fs-xs);
+  color: var(--ink-soft);
+  line-height: var(--lh-snug);
+}
+.pcard__lived {
+  display: block;
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: .04em;
+  margin-top: 2px;
+}
+
+/* Fallback silhouette when a portrait is missing */
+.pcard__img--none {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(80% 60% at 50% 30%, var(--paper-raised), var(--paper-sunken));
+}
+.pcard__img--none svg { width: 46%; height: 46%; color: var(--ink-faint); opacity: .45; }
+
+/* ------------------------------------------------------------
+   Wider screens: the phone layout just gets more comfortable
+   ------------------------------------------------------------ */
+@media (min-width: 720px) {
+  .timeline .tl-list,
+  .people { max-width: 760px; margin-inline: auto; }
+  .scrubber { left: 50%; right: auto; width: min(560px, calc(100% - var(--s6))); transform: translateX(-50%); }
+  .sheet-open .scrubber { transform: translateX(-50%) translateY(140%); }
+  .tour-caption { left: 50%; right: auto; width: min(560px, calc(100% - var(--s7))); transform: translateX(-50%) translateY(-10px); }
+  .tour-caption.is-on { transform: translateX(-50%); }
+}

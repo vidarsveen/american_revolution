@@ -1,0 +1,7 @@
+# Keep LF in the repository regardless of platform.
+* text=auto eol=lf
+
+# Binary assets must never be touched.
+*.png   binary
+*.jpg   binary
+*.woff2 binary

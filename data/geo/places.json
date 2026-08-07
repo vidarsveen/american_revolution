@@ -1,0 +1,222 @@
+[
+  {
+    "type": "city",
+    "coords": [
+      42.3601,
+      -71.0589
+    ],
+    "name": {
+      "no": "Boston",
+      "en": "Boston"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      40.7128,
+      -74.006
+    ],
+    "name": {
+      "no": "New York",
+      "en": "New York"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      39.9526,
+      -75.1652
+    ],
+    "name": {
+      "no": "Philadelphia",
+      "en": "Philadelphia"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      32.7765,
+      -79.9311
+    ],
+    "name": {
+      "no": "Charles Town",
+      "en": "Charles Town"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      32.0809,
+      -81.0912
+    ],
+    "name": {
+      "no": "Savannah",
+      "en": "Savannah"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      46.8139,
+      -71.208
+    ],
+    "name": {
+      "no": "Québec",
+      "en": "Quebec"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      45.5017,
+      -73.5673
+    ],
+    "name": {
+      "no": "Montréal",
+      "en": "Montreal"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      42.6526,
+      -73.7562
+    ],
+    "name": {
+      "no": "Albany",
+      "en": "Albany"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      39.2904,
+      -76.6122
+    ],
+    "name": {
+      "no": "Baltimore",
+      "en": "Baltimore"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      37.2707,
+      -76.7075
+    ],
+    "name": {
+      "no": "Williamsburg",
+      "en": "Williamsburg"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      41.4901,
+      -71.3128
+    ],
+    "name": {
+      "no": "Newport",
+      "en": "Newport"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      44.6488,
+      -63.5752
+    ],
+    "name": {
+      "no": "Halifax",
+      "en": "Halifax"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      36.8508,
+      -76.2859
+    ],
+    "name": {
+      "no": "Norfolk",
+      "en": "Norfolk"
+    }
+  },
+  {
+    "type": "city",
+    "coords": [
+      35.2271,
+      -80.8431
+    ],
+    "name": {
+      "no": "Charlotte",
+      "en": "Charlotte"
+    }
+  },
+  {
+    "type": "region",
+    "coords": [
+      44.2,
+      -70.6
+    ],
+    "name": {
+      "no": "New England",
+      "en": "New England"
+    }
+  },
+  {
+    "type": "region",
+    "coords": [
+      37.6,
+      -78.6
+    ],
+    "name": {
+      "no": "Virginia",
+      "en": "Virginia"
+    }
+  },
+  {
+    "type": "region",
+    "coords": [
+      34.6,
+      -80.2
+    ],
+    "name": {
+      "no": "Carolinaene",
+      "en": "The Carolinas"
+    }
+  },
+  {
+    "type": "region",
+    "coords": [
+      47.4,
+      -73.5
+    ],
+    "name": {
+      "no": "Provinsen Québec",
+      "en": "Province of Quebec"
+    }
+  },
+  {
+    "type": "region",
+    "coords": [
+      37.4,
+      -71.8
+    ],
+    "name": {
+      "no": "Atlanterhavet",
+      "en": "The Atlantic"
+    }
+  },
+  {
+    "type": "region",
+    "coords": [
+      39.6,
+      -81.0
+    ],
+    "name": {
+      "no": "Indianernes land",
+      "en": "Native lands"
+    }
+  }
+]

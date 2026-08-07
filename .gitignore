@@ -1,0 +1,13 @@
+# Local Python virtualenv — not part of the site
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini

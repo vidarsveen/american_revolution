@@ -1,0 +1,916 @@
+[
+  {
+    "id": "washington",
+    "side": "patriot",
+    "lived": "1732–1799",
+    "portrait": "washington.jpg",
+    "name": {
+      "no": "George Washington",
+      "en": "George Washington"
+    },
+    "role": {
+      "no": "Sjef for den kontinentale hæren",
+      "en": "Commander of the Continental Army"
+    },
+    "hook": {
+      "no": "Han tapte flere slag enn han vant, og vant likevel krigen.",
+      "en": "He lost more battles than he won, and still won the war."
+    },
+    "body": {
+      "no": "Washington var plantasjeeier fra Virginia, ikke noen strålende taktiker. Som feltherre gjorde han store feil, særlig rundt New York i 1776.\n\nMen han hadde én egenskap ingen andre hadde: han ga seg aldri, og han holdt hæren samlet gjennom åtte år med nederlag, sult og lite lønn. Så lenge hæren fantes, fantes revolusjonen.\n\nHan eide også over hundre slaver, og skrev i testamentet at de skulle frigis etter hans kones død. Han var både mannen som ga fra seg makten frivillig og mannen som holdt mennesker som eiendom.",
+      "en": "Washington was a Virginia plantation owner, not a brilliant tactician. As a field commander he made serious mistakes, especially around New York in 1776.\n\nBut he had one quality nobody else did: he never quit, and he held the army together through eight years of defeat, hunger and unpaid wages. As long as the army existed, the revolution existed.\n\nHe also owned more than a hundred enslaved people, and wrote in his will that they should be freed after his wife's death. He was both the man who gave up power voluntarily and the man who held people as property."
+    },
+    "fact": {
+      "no": "Tennene hans var ikke av tre. De var laget av elfenbein, metall og ekte mennesketenner – noen av dem kjøpt fra hans egne slaver.",
+      "en": "His teeth were not wooden. They were ivory, metal and real human teeth — some of them bought from people he enslaved."
+    },
+    "events": [
+      "washington-command",
+      "long-island",
+      "trenton",
+      "valley-forge",
+      "yorktown",
+      "washington-resigns"
+    ],
+    "wiki": {
+      "no": "George Washington",
+      "en": "George Washington"
+    }
+  },
+  {
+    "id": "franklin",
+    "side": "patriot",
+    "lived": "1706–1790",
+    "portrait": "franklin.jpg",
+    "name": {
+      "no": "Benjamin Franklin",
+      "en": "Benjamin Franklin"
+    },
+    "role": {
+      "no": "Diplomat, oppfinner og forfatter",
+      "en": "Diplomat, inventor and writer"
+    },
+    "hook": {
+      "no": "70 år gammel dro han til Paris og sjarmerte et helt kongerike inn i krigen.",
+      "en": "At 70 he went to Paris and charmed an entire kingdom into the war."
+    },
+    "body": {
+      "no": "Franklin var berømt i Europa lenge før revolusjonen – som vitenskapsmann, ikke politiker. Han hadde bevist at lyn er elektrisitet, og oppfunnet alt fra lynavlederen til bifokale briller.\n\nDa han kom til Frankrike i 1776, forsto han at han måtte spille en rolle. Han la bort parykken, tok på seg en pelslue og opptrådte som den enkle, kloke mannen fra villmarken. Paris gikk av hengslene. Ansiktet hans var på snusdåser og lommetørklær.\n\nBak sjarmoffensiven satt en knallhard forhandler som skaffet Amerika penger, våpen og til slutt en allianse.",
+      "en": "Franklin was famous in Europe long before the revolution — as a scientist, not a politician. He had proved lightning was electricity, and invented everything from the lightning rod to bifocal glasses.\n\nWhen he arrived in France in 1776 he understood he had to play a part. He put away the wig, put on a fur cap and performed the role of the simple, wise man from the wilderness. Paris went wild. His face was on snuffboxes and handkerchiefs.\n\nBehind the charm sat a very tough negotiator who got America money, weapons and finally an alliance."
+    },
+    "fact": {
+      "no": "Sønnen hans William var lojalist og britisk guvernør i New Jersey. De to snakket knapt sammen igjen etter krigen.",
+      "en": "His son William was a loyalist and the British governor of New Jersey. The two barely spoke again after the war."
+    },
+    "events": [
+      "stamp-act",
+      "declaration",
+      "french-alliance",
+      "treaty-paris"
+    ],
+    "wiki": {
+      "no": "Benjamin Franklin",
+      "en": "Benjamin Franklin"
+    }
+  },
+  {
+    "id": "jefferson",
+    "side": "patriot",
+    "lived": "1743–1826",
+    "portrait": "jefferson.jpg",
+    "name": {
+      "no": "Thomas Jefferson",
+      "en": "Thomas Jefferson"
+    },
+    "role": {
+      "no": "Skrev Uavhengighetserklæringen",
+      "en": "Author of the Declaration of Independence"
+    },
+    "hook": {
+      "no": "Han skrev at alle mennesker er skapt like – mens over 600 mennesker jobbet som slaver på gården hans.",
+      "en": "He wrote that all men are created equal — while over 600 people were enslaved on his estate."
+    },
+    "body": {
+      "no": "Jefferson var 33 år og nesten ukjent da han fikk oppdraget med å skrive erklæringen. Han var en dårlig taler, men en av tidens beste skribenter, og de andre i komiteen visste det.\n\nHan skrev inn et avsnitt som anklaget kong George for slavehandelen. Kongressen strøk det, dels på press fra South Carolina og Georgia. Jefferson var bitter over strykningen resten av livet.\n\nHan mente selv at slaveri var galt, og gjorde likevel ingenting for å avvikle sitt eget. Han fikk seks barn med Sally Hemings, en slavebundet kvinne på Monticello som var halvsøsteren til hans avdøde kone.",
+      "en": "Jefferson was 33 and almost unknown when he was handed the job of writing the Declaration. He was a poor speaker but one of the finest writers of the age, and the rest of the committee knew it.\n\nHe included a passage blaming King George for the slave trade. Congress struck it out, partly under pressure from South Carolina and Georgia. Jefferson resented the cut for the rest of his life.\n\nHe believed slavery was wrong, and still did nothing to end his own. He had six children with Sally Hemings, an enslaved woman at Monticello who was his late wife's half-sister."
+    },
+    "fact": {
+      "no": "Han døde 4. juli 1826 – nøyaktig 50 år etter erklæringen. Samme dag døde John Adams.",
+      "en": "He died on 4 July 1826 — exactly fifty years after the Declaration. John Adams died the same day."
+    },
+    "events": [
+      "declaration"
+    ],
+    "wiki": {
+      "no": "Thomas Jefferson",
+      "en": "Thomas Jefferson"
+    }
+  },
+  {
+    "id": "john-adams",
+    "side": "patriot",
+    "lived": "1735–1826",
+    "portrait": "john-adams.jpg",
+    "name": {
+      "no": "John Adams",
+      "en": "John Adams"
+    },
+    "role": {
+      "no": "Advokat og pådriver for uavhengighet",
+      "en": "Lawyer and driving force for independence"
+    },
+    "hook": {
+      "no": "Han forsvarte de britiske soldatene etter massakren i Boston – og angret aldri.",
+      "en": "He defended the British soldiers after the Boston Massacre — and never regretted it."
+    },
+    "body": {
+      "no": "Adams var kranglete, ærlig til det pinlige, og overbevist om at han fortjente mer anerkjennelse enn han fikk. Han hadde antakelig rett.\n\nHan var den som mest utrettelig presset Kongressen mot uavhengighet, og den som foreslo Washington som general. Senere tilbrakte han år i Europa som diplomat.\n\nHan skrev hundrevis av brev til kona Abigail, og de er noe av det beste vi har fra perioden – ærlige, kloke og ofte morsomme.",
+      "en": "Adams was argumentative, honest to the point of awkwardness, and convinced he deserved more credit than he got. He was probably right.\n\nHe was the man who pushed Congress hardest towards independence, and the one who proposed Washington as general. Later he spent years in Europe as a diplomat.\n\nHe wrote hundreds of letters to his wife Abigail, and they are among the best things we have from the period — honest, sharp and often funny."
+    },
+    "fact": {
+      "no": "Abigail skrev til ham mens de lagde de nye lovene: «husk damene». Han lo det bort. Hun hadde et poeng.",
+      "en": "Abigail wrote to him while they were drafting the new laws: \"remember the ladies\". He laughed it off. She had a point."
+    },
+    "events": [
+      "boston-massacre",
+      "declaration",
+      "washington-command",
+      "treaty-paris"
+    ],
+    "wiki": {
+      "no": "John Adams",
+      "en": "John Adams"
+    }
+  },
+  {
+    "id": "lafayette",
+    "side": "french",
+    "lived": "1757–1834",
+    "portrait": "lafayette.jpg",
+    "name": {
+      "no": "Marquis de Lafayette",
+      "en": "Marquis de Lafayette"
+    },
+    "role": {
+      "no": "Fransk adelsmann og general i amerikansk tjeneste",
+      "en": "French nobleman and general in American service"
+    },
+    "hook": {
+      "no": "19 år gammel snek han seg fra Frankrike for å slåss i en krig som ikke var hans.",
+      "en": "At 19 he slipped out of France to fight in a war that was not his."
+    },
+    "body": {
+      "no": "Lafayette var styrtrik, foreldreløs og hadde aldri vært i kamp. Kongen forbød ham å dra. Han kjøpte sitt eget skip og dro likevel.\n\nHan ble såret i beinet i sitt første slag ved Brandywine og nektet å forlate feltet. Washington, som ikke hadde egne barn, tok ham nesten som en sønn.\n\nEtter krigen dro han hjem og ble en sentral skikkelse i den franske revolusjonen. Han ga nøkkelen til Bastillen i gave til Washington. Den henger fortsatt på Mount Vernon.",
+      "en": "Lafayette was fabulously rich, an orphan, and had never been in a battle. The king forbade him to go. He bought his own ship and went anyway.\n\nHe was shot in the leg in his first battle at Brandywine and refused to leave the field. Washington, who had no children of his own, took to him almost as a son.\n\nAfter the war he went home and became a central figure in the French Revolution. He sent Washington the key to the Bastille as a gift. It still hangs at Mount Vernon."
+    },
+    "fact": {
+      "no": "Da han besøkte USA igjen som gammel mann i 1824, møtte det opp så mye folk at det regnes som den største folkefesten i landets historie fram til da.",
+      "en": "When he visited America again as an old man in 1824, the crowds were so vast it counted as the largest public celebration in the country's history to that point."
+    },
+    "events": [
+      "valley-forge",
+      "french-alliance",
+      "yorktown"
+    ],
+    "wiki": {
+      "no": "Gilbert du Motier de La Fayette",
+      "en": "Gilbert du Motier, Marquis de Lafayette"
+    }
+  },
+  {
+    "id": "hamilton",
+    "side": "patriot",
+    "lived": "1755–1804",
+    "portrait": "hamilton.jpg",
+    "name": {
+      "no": "Alexander Hamilton",
+      "en": "Alexander Hamilton"
+    },
+    "role": {
+      "no": "Washingtons adjutant, senere finansminister",
+      "en": "Washington's aide, later Treasury Secretary"
+    },
+    "hook": {
+      "no": "Foreldreløs innvandrer fra Karibia som skrev seg til toppen.",
+      "en": "An orphaned immigrant from the Caribbean who wrote his way to the top."
+    },
+    "body": {
+      "no": "Hamilton vokste opp fattig på Nevis og St. Croix. Han var så åpenbart begavet at lokale forretningsmenn samlet inn penger for å sende ham til skole i New York.\n\nHan ble Washingtons høyre hånd og skrev store deler av generalens korrespondanse. Men han ville i kamp, ikke sitte med penn, og maste seg til slutt til en kommando ved Yorktown, der han ledet et nattangrep på en britisk skanse.\n\nEtter krigen bygde han USAs økonomiske system nesten fra grunnen.",
+      "en": "Hamilton grew up poor on Nevis and St Croix. He was so obviously gifted that local businessmen took up a collection to send him to school in New York.\n\nHe became Washington's right hand and wrote much of the general's correspondence. But he wanted to fight, not hold a pen, and eventually nagged his way into a command at Yorktown, where he led a night assault on a British redoubt.\n\nAfter the war he built the American financial system almost from scratch."
+    },
+    "fact": {
+      "no": "Han ble drept i duell 22 år senere av visepresidenten Aaron Burr.",
+      "en": "He was killed in a duel 22 years later by the sitting vice president, Aaron Burr."
+    },
+    "events": [
+      "trenton",
+      "yorktown"
+    ],
+    "wiki": {
+      "no": "Alexander Hamilton",
+      "en": "Alexander Hamilton"
+    }
+  },
+  {
+    "id": "greene",
+    "side": "patriot",
+    "lived": "1742–1786",
+    "portrait": "greene.jpg",
+    "name": {
+      "no": "Nathanael Greene",
+      "en": "Nathanael Greene"
+    },
+    "role": {
+      "no": "General i sørstatene",
+      "en": "General in the southern campaign"
+    },
+    "hook": {
+      "no": "«Vi slåss, vi taper, vi reiser oss og slåss igjen.»",
+      "en": "\"We fight, get beat, rise, and fight again.\""
+    },
+    "body": {
+      "no": "Greene var kveker fra Rhode Island – altså fra en gruppe som avviste all vold. Menigheten kastet ham ut da han meldte seg til hæren.\n\nHan lærte krigføring ved å lese bøker, og ble Washingtons dyktigste general. I sørstatene fikk han en umulig oppgave: en utslitt hær mot Cornwallis.\n\nLøsningen var å aldri stå i et avgjørende slag. Han trakk britene lengre og lengre fra forsyningene sine, tapte slag på slag, men kom alltid tilbake sterkere enn fienden.",
+      "en": "Greene was a Quaker from Rhode Island — from a community that rejected all violence. His meeting expelled him when he joined the army.\n\nHe learned warfare by reading books, and became Washington's ablest general. In the South he was handed an impossible job: an exhausted army against Cornwallis.\n\nHis solution was never to risk a decisive battle. He drew the British further and further from their supplies, lost battle after battle, and always came back stronger than his enemy."
+    },
+    "fact": {
+      "no": "Han haltet hele livet etter en skade som barn, og ble mobbet for det av offiserene da han meldte seg inn i militsen.",
+      "en": "He limped all his life from a childhood injury, and was mocked for it by the officers when he joined the militia."
+    },
+    "events": [
+      "charleston-falls",
+      "cowpens"
+    ],
+    "wiki": {
+      "no": "Nathanael Greene",
+      "en": "Nathanael Greene"
+    }
+  },
+  {
+    "id": "morgan",
+    "side": "patriot",
+    "lived": "1736–1802",
+    "portrait": "morgan.jpg",
+    "name": {
+      "no": "Daniel Morgan",
+      "en": "Daniel Morgan"
+    },
+    "role": {
+      "no": "Sjef for riflemennene",
+      "en": "Commander of the riflemen"
+    },
+    "hook": {
+      "no": "Han hadde 499 piskeslag på ryggen fra britisk militærtjeneste. Han glemte det aldri.",
+      "en": "He carried 499 lashes on his back from British service. He never forgot it."
+    },
+    "body": {
+      "no": "Morgan var vognkjører fra grensetraktene, stor og røff, og elsket av mennene sine fordi han var en av dem.\n\nRiflemennene hans var noe helt nytt i europeisk krigføring: jegere som kunne treffe en mann på 200 meter, mens en vanlig muskett var upålitelig på 80. De hadde spesialordre om å skyte offiserer.\n\nVed Cowpens laget han den kanskje mest elegante slagplanen i hele krigen – ved å planlegge for at hans egne soldater ville rømme.",
+      "en": "Morgan was a wagon driver from the frontier, big and rough, and loved by his men because he was one of them.\n\nHis riflemen were something new in European warfare: hunters who could hit a man at 200 metres, when a standard musket was unreliable at 80. They had standing orders to shoot officers.\n\nAt Cowpens he produced perhaps the most elegant battle plan of the whole war — by planning around the fact that his own soldiers would run."
+    },
+    "fact": {
+      "no": "Han hevdet at britene skyldte ham ett piskeslag, fordi telleren hadde mistet tellingen og bare gitt ham 499 av de 500 han var dømt til.",
+      "en": "He claimed the British still owed him one lash, because the counter lost track and gave him only 499 of the 500 he was sentenced to."
+    },
+    "events": [
+      "cowpens"
+    ],
+    "wiki": {
+      "no": "Daniel Morgan",
+      "en": "Daniel Morgan"
+    }
+  },
+  {
+    "id": "arnold",
+    "side": "british",
+    "lived": "1741–1801",
+    "portrait": "arnold.jpg",
+    "name": {
+      "no": "Benedict Arnold",
+      "en": "Benedict Arnold"
+    },
+    "role": {
+      "no": "Amerikansk helt som skiftet side",
+      "en": "American hero who changed sides"
+    },
+    "hook": {
+      "no": "Krigens modigste general ble navnet amerikanere fortsatt bruker om en forræder.",
+      "en": "The war's bravest general became the word Americans still use for a traitor."
+    },
+    "body": {
+      "no": "Arnold var uten tvil en av de dyktigste soldatene på amerikansk side. Han ledet et vanvittig felttog gjennom villmarken mot Quebec, bygde en flåte fra ingenting på Champlainsjøen, og red inn i kampen ved Saratoga mot direkte ordre.\n\nMen han ble forbigått ved forfremmelser, anklaget for korrupsjon, og følte seg dypt urettferdig behandlet. I 1780 tilbød han britene festningen West Point mot betaling.\n\nPlanen ble avslørt da den britiske kontaktmannen ble tatt med papirene i støvelen. Arnold rakk så vidt å rømme.",
+      "en": "Arnold was without question one of the ablest soldiers on the American side. He led an insane march through the wilderness to Quebec, built a fleet from nothing on Lake Champlain, and rode into the fight at Saratoga against direct orders.\n\nBut he was passed over for promotion, accused of corruption, and felt deeply wronged. In 1780 he offered the British the fortress at West Point for money.\n\nThe plot came out when the British contact was caught with the papers in his boot. Arnold escaped by minutes."
+    },
+    "fact": {
+      "no": "Ved Saratoga står det et monument formet som en støvel, til minne om beinet hans. Navnet hans står ikke på det.",
+      "en": "At Saratoga there is a monument shaped like a boot, honouring his leg. His name is not on it."
+    },
+    "events": [
+      "saratoga"
+    ],
+    "wiki": {
+      "no": "Benedict Arnold",
+      "en": "Benedict Arnold"
+    }
+  },
+  {
+    "id": "gates",
+    "side": "patriot",
+    "lived": "1727–1806",
+    "portrait": "gates.jpg",
+    "name": {
+      "no": "Horatio Gates",
+      "en": "Horatio Gates"
+    },
+    "role": {
+      "no": "General, seierherren ved Saratoga",
+      "en": "General, the victor at Saratoga"
+    },
+    "hook": {
+      "no": "Han fikk æren for Saratoga – og mistet den igjen ved Camden.",
+      "en": "He got the credit for Saratoga — and lost it again at Camden."
+    },
+    "body": {
+      "no": "Gates var tidligere britisk offiser og en dyktig organisator. Ved Saratoga sto han for planleggingen, mens Arnold og Morgan gjorde det meste av selve kampen.\n\nSeieren gjorde ham til en kandidat til å erstatte Washington, og han lot seg gjerne snakke opp.\n\nTre år senere ledet han den amerikanske hæren ved Camden i South Carolina. Den ble knust, og Gates red 300 kilometer bort fra slagmarken på tre dager. Karrieren var over.",
+      "en": "Gates was a former British officer and a capable organiser. At Saratoga he did the planning while Arnold and Morgan did most of the actual fighting.\n\nThe victory made him a candidate to replace Washington, and he was happy to be talked up.\n\nThree years later he led the American army at Camden in South Carolina. It was crushed, and Gates rode 300 kilometres away from the battlefield in three days. His career was over."
+    },
+    "fact": {
+      "no": "Ved Camden stilte han utrente militssoldater rett overfor britenes beste tropper. De løp før første salve var over.",
+      "en": "At Camden he put untrained militia directly opposite Britain's best troops. They ran before the first volley was finished."
+    },
+    "events": [
+      "saratoga"
+    ],
+    "wiki": {
+      "no": "Horatio Gates",
+      "en": "Horatio Gates"
+    }
+  },
+  {
+    "id": "steuben",
+    "side": "patriot",
+    "lived": "1730–1794",
+    "portrait": "steuben.jpg",
+    "name": {
+      "no": "Baron von Steuben",
+      "en": "Baron von Steuben"
+    },
+    "role": {
+      "no": "Preussisk offiser som drillet hæren",
+      "en": "Prussian officer who drilled the army"
+    },
+    "hook": {
+      "no": "Han overdrev CV-en sin kraftig – og ble likevel akkurat det hæren trengte.",
+      "en": "He wildly exaggerated his CV — and turned out to be exactly what the army needed."
+    },
+    "body": {
+      "no": "Steuben presenterte seg som preussisk generalløytnant. Han hadde egentlig vært kaptein. Franklin, som skrev anbefalingsbrevet i Paris, visste det utmerket godt.\n\nDet spilte ingen rolle. Ved Valley Forge tok han én utvalgt gruppe soldater, drillet dem personlig, og lot dem lære opp resten. Han skrev også en eksersisbok som den amerikanske hæren brukte i over tretti år.\n\nHan kunne nesten ikke engelsk, og bannet på tysk og fransk til han fikk en assistent til å oversette skjellsordene.",
+      "en": "Steuben presented himself as a Prussian lieutenant general. He had actually been a captain. Franklin, who wrote the letter of introduction in Paris, knew perfectly well.\n\nIt did not matter. At Valley Forge he took one hand-picked company, drilled them himself, and had them teach the rest. He also wrote a drill manual the American army used for over thirty years.\n\nHe barely spoke English, and swore in German and French until he got an aide to translate the insults."
+    },
+    "fact": {
+      "no": "Han var trolig homofil, og ryktene om det var en av grunnene til at han måtte forlate Europa.",
+      "en": "He was probably gay, and rumours about it were part of why he had to leave Europe."
+    },
+    "events": [
+      "valley-forge"
+    ],
+    "wiki": {
+      "no": "Friedrich Wilhelm von Steuben",
+      "en": "Baron von Steuben"
+    }
+  },
+  {
+    "id": "revere",
+    "side": "patriot",
+    "lived": "1735–1818",
+    "portrait": "revere.jpg",
+    "name": {
+      "no": "Paul Revere",
+      "en": "Paul Revere"
+    },
+    "role": {
+      "no": "Sølvsmed, kurér og propagandist",
+      "en": "Silversmith, courier and propagandist"
+    },
+    "hook": {
+      "no": "Han ropte aldri «britene kommer». Han ble tatt til fange samme natt.",
+      "en": "He never shouted \"the British are coming\". He was captured that same night."
+    },
+    "body": {
+      "no": "Revere var sølvsmed i Boston og en av byens best organiserte patrioter. Han lagde også stikket av massakren i Boston, som var langt mer propaganda enn dokumentasjon.\n\nNatt til 19. april 1775 red han ut for å varsle at britene var på vei. Han var ikke alene – det var flere ryttere, og et helt nettverk av folk som varslet videre.\n\nHan rakk aldri fram til Concord. Britisk patrulje stanset ham, tok hesten hans, og lot ham gå til fots.",
+      "en": "Revere was a Boston silversmith and one of the town's best-organised Patriots. He also made the engraving of the Boston Massacre, which was far more propaganda than documentation.\n\nOn the night of 19 April 1775 he rode out to warn that the British were coming. He was not alone — there were several riders, and a whole network of people passing the word on.\n\nHe never reached Concord. A British patrol stopped him, took his horse, and left him to walk."
+    },
+    "fact": {
+      "no": "Han kunne uansett ikke ropt «britene kommer» – folk der ute regnet seg selv som britiske. Beskjeden var trolig at «de regulære er ute».",
+      "en": "He could not have shouted \"the British are coming\" anyway — the people out there considered themselves British. The message was probably \"the regulars are out\"."
+    },
+    "events": [
+      "boston-massacre",
+      "tea-party",
+      "lexington-concord"
+    ],
+    "wiki": {
+      "no": "Paul Revere",
+      "en": "Paul Revere"
+    }
+  },
+  {
+    "id": "sam-adams",
+    "side": "patriot",
+    "lived": "1722–1803",
+    "portrait": "sam-adams.jpg",
+    "name": {
+      "no": "Samuel Adams",
+      "en": "Samuel Adams"
+    },
+    "role": {
+      "no": "Organisatoren bak motstanden i Boston",
+      "en": "The organiser behind Boston's resistance"
+    },
+    "hook": {
+      "no": "Håpløs forretningsmann, briljant til å få folk ut i gatene.",
+      "en": "A hopeless businessman, brilliant at getting people into the streets."
+    },
+    "body": {
+      "no": "Sam Adams gikk konkurs med farens bryggeri og var elendig til å kreve inn skatt da han jobbet som skatteinnkrever. Men han hadde et talent ingen andre hadde: han kunne organisere.\n\nHan bygde opp korrespondansekomiteene, et nettverk som lot byer over hele koloniene dele informasjon raskt. Da krisen kom, fantes det allerede et system.\n\nBritene så på ham som hovedmannen bak alt bråket, og en av hensiktene med marsjen mot Concord var å få tak i ham.",
+      "en": "Sam Adams bankrupted his father's brewery and was terrible at collecting taxes when he worked as a tax collector. But he had a talent nobody else had: he could organise.\n\nHe built the committees of correspondence, a network that let towns across the colonies share information fast. When the crisis came, the system already existed.\n\nThe British saw him as the man behind all the trouble, and part of the point of the march on Concord was to catch him."
+    },
+    "fact": {
+      "no": "Ølmerket som bærer navnet hans i dag har ingenting med ham å gjøre – bortsett fra at faren faktisk drev bryggeri.",
+      "en": "The beer brand carrying his name today has nothing to do with him — beyond the fact that his father really did run a brewery."
+    },
+    "events": [
+      "tea-party"
+    ],
+    "wiki": {
+      "no": "Samuel Adams",
+      "en": "Samuel Adams"
+    }
+  },
+  {
+    "id": "george3",
+    "side": "british",
+    "lived": "1738–1820",
+    "portrait": "george3.jpg",
+    "name": {
+      "no": "Kong George III",
+      "en": "King George III"
+    },
+    "role": {
+      "no": "Konge av Storbritannia",
+      "en": "King of Great Britain"
+    },
+    "hook": {
+      "no": "Ikke den gale tyrannen han ble fremstilt som – men han nektet å gi seg.",
+      "en": "Not the mad tyrant he was painted as — but he refused to let go."
+    },
+    "body": {
+      "no": "George III var 22 år da han ble konge, pliktoppfyllende og dypt interessert i jordbruk og vitenskap. Uavhengighetserklæringen lister opp en lang rekke anklager mot ham personlig, men mye av politikken kom egentlig fra parlamentet.\n\nSamtidig var det han som holdt hardest fast. Da regjeringen ville forhandle, presset kongen på for å fortsette krigen. Han mente at hvis Amerika fikk gå, ville resten av imperiet følge etter.\n\nSenere i livet fikk han alvorlige sykdomsanfall med forvirring og uro, og sønnen måtte styre for ham.",
+      "en": "George III was 22 when he became king, dutiful and deeply interested in farming and science. The Declaration of Independence lists a long series of charges against him personally, but much of the policy actually came from Parliament.\n\nAt the same time he was the one who held on hardest. When the government wanted to negotiate, the king pushed to keep fighting. He believed that if America went, the rest of the empire would follow.\n\nLater in life he suffered severe episodes of confusion and agitation, and his son had to rule in his place."
+    },
+    "fact": {
+      "no": "I dagboka si skrev han 4. juli 1776: «Ingenting av betydning skjedde i dag.» Historien om det er nok en myte, men den er for god til å dø.",
+      "en": "His diary for 4 July 1776 supposedly reads: \"Nothing of importance happened today.\" The story is almost certainly a myth, but it is too good to die."
+    },
+    "events": [
+      "stamp-act",
+      "treaty-paris"
+    ],
+    "wiki": {
+      "no": "Georg III av Storbritannia",
+      "en": "George III"
+    }
+  },
+  {
+    "id": "howe",
+    "side": "british",
+    "lived": "1729–1814",
+    "portrait": "howe.jpg",
+    "name": {
+      "no": "General William Howe",
+      "en": "General William Howe"
+    },
+    "role": {
+      "no": "Britisk øverstkommanderende 1775–78",
+      "en": "British commander-in-chief 1775–78"
+    },
+    "hook": {
+      "no": "Han slo Washington gang på gang, og lot ham slippe unna hver gang.",
+      "en": "He beat Washington again and again, and let him get away every time."
+    },
+    "body": {
+      "no": "Howe var en dyktig general som vant nesten alle slagene sine. Problemet var at han aldri fulgte opp.\n\nEtter Long Island kunne han trolig ha knust den amerikanske hæren fullstendig. Han ventet. Etter Brandywine det samme. Noen mener han var forsiktig fordi han hadde sett hva et frontalangrep kostet ved Bunker Hill. Andre mener han faktisk sympatiserte med amerikanerne og håpet på forlik.\n\nI 1777 valgte han å ta Philadelphia i stedet for å hjelpe Burgoyne i nord. Det bidro til katastrofen ved Saratoga.",
+      "en": "Howe was a capable general who won nearly all his battles. The problem was that he never followed through.\n\nAfter Long Island he could probably have destroyed the American army completely. He waited. After Brandywine, the same. Some think he was cautious because he had seen what a frontal assault cost at Bunker Hill. Others think he genuinely sympathised with the Americans and hoped for a settlement.\n\nIn 1777 he chose to take Philadelphia instead of helping Burgoyne in the north. That contributed to the disaster at Saratoga."
+    },
+    "fact": {
+      "no": "Broren hans, admiral Richard Howe, ledet den britiske flåten. De to hadde også fullmakt til å forhandle fred – en litt merkelig dobbeltrolle.",
+      "en": "His brother, Admiral Richard Howe, commanded the British fleet. The two also had authority to negotiate peace — a slightly odd double role."
+    },
+    "events": [
+      "bunker-hill",
+      "long-island"
+    ],
+    "wiki": {
+      "no": "William Howe",
+      "en": "William Howe, 5th Viscount Howe"
+    }
+  },
+  {
+    "id": "cornwallis",
+    "side": "british",
+    "lived": "1738–1805",
+    "portrait": "cornwallis.jpg",
+    "name": {
+      "no": "Lord Cornwallis",
+      "en": "Lord Cornwallis"
+    },
+    "role": {
+      "no": "Britisk general i sørstatene",
+      "en": "British general in the southern campaign"
+    },
+    "hook": {
+      "no": "Generalen som måtte overgi seg ved Yorktown – og likevel fikk en strålende karriere etterpå.",
+      "en": "The general who surrendered at Yorktown — and still had a brilliant career afterwards."
+    },
+    "body": {
+      "no": "Cornwallis var aggressiv og dyktig, og i motsetning til Howe fulgte han opp seirene sine. Han jaget Nathanael Greene tvers gjennom North Carolina i månedsvis.\n\nProblemet var at han vant seg selv i senk. Ved Guilford Courthouse vant han slaget og mistet en fjerdedel av hæren. Til slutt trakk han seg til kysten ved Yorktown for å hvile og få forsyninger, og gikk dermed rett i fella.\n\nI Storbritannia fikk han ikke skylda. Han ble senere generalguvernør i India og visekonge i Irland.",
+      "en": "Cornwallis was aggressive and capable, and unlike Howe he followed up his victories. He chased Nathanael Greene clean across North Carolina for months.\n\nThe trouble was that he won himself into exhaustion. At Guilford Courthouse he won the battle and lost a quarter of his army. Finally he pulled back to the coast at Yorktown to rest and resupply, and walked straight into the trap.\n\nIn Britain he was not blamed. He later became governor-general of India and viceroy of Ireland."
+    },
+    "fact": {
+      "no": "Han hadde faktisk stemt mot stempelloven i det britiske overhuset. Han var ingen fiende av koloniene – han var soldat.",
+      "en": "He had actually voted against the Stamp Act in the House of Lords. He was no enemy of the colonies — he was a soldier."
+    },
+    "events": [
+      "yorktown"
+    ],
+    "wiki": {
+      "no": "Charles Cornwallis",
+      "en": "Charles Cornwallis, 1st Marquess Cornwallis"
+    }
+  },
+  {
+    "id": "burgoyne",
+    "side": "british",
+    "lived": "1722–1792",
+    "portrait": "burgoyne.jpg",
+    "name": {
+      "no": "General John Burgoyne",
+      "en": "General John Burgoyne"
+    },
+    "role": {
+      "no": "Britisk general, tapte ved Saratoga",
+      "en": "British general, defeated at Saratoga"
+    },
+    "hook": {
+      "no": "Kalt «Gentleman Johnny». Han tok med seg 30 vogner med personlig bagasje inn i villmarken.",
+      "en": "They called him \"Gentleman Johnny\". He took thirty wagons of personal baggage into the wilderness."
+    },
+    "body": {
+      "no": "Burgoyne var offiser, parlamentsmedlem og – ganske seriøst – dramatiker. Han skrev planen for felttoget fra Canada selv og fikk den godkjent i London.\n\nPlanen forutsatte at general Howe kom nordover og møtte ham. Ingen sørget for at Howe faktisk fikk beskjed om det som en ordre.\n\nDa han innså at han sto alene, var det for sent å snu. Overgivelsen ved Saratoga var det verste britiske nederlaget så langt i krigen.",
+      "en": "Burgoyne was an officer, a member of Parliament and — quite seriously — a playwright. He wrote the plan for the campaign from Canada himself and had it approved in London.\n\nThe plan assumed General Howe would come north and meet him. Nobody made sure Howe was actually ordered to.\n\nBy the time he realised he was alone, it was too late to turn back. The surrender at Saratoga was the worst British defeat of the war so far."
+    },
+    "fact": {
+      "no": "Bagasjen hans inkluderte champagne og hans elskerinne. Det tok tid å flytte et slikt følge gjennom skogen.",
+      "en": "His baggage included champagne and his mistress. Moving a train like that through forest takes time."
+    },
+    "events": [
+      "saratoga"
+    ],
+    "wiki": {
+      "no": "John Burgoyne",
+      "en": "John Burgoyne"
+    }
+  },
+  {
+    "id": "tarleton",
+    "side": "british",
+    "lived": "1754–1833",
+    "portrait": "tarleton.jpg",
+    "name": {
+      "no": "Banastre Tarleton",
+      "en": "Banastre Tarleton"
+    },
+    "role": {
+      "no": "Britisk kavalerisjef i sør",
+      "en": "British cavalry commander in the South"
+    },
+    "hook": {
+      "no": "26 år gammel og det mest hatede navnet i sørstatene.",
+      "en": "Twenty-six years old and the most hated name in the South."
+    },
+    "body": {
+      "no": "Tarleton var rask, hensynsløs og svært effektiv. Kavaleriet hans dukket opp der ingen ventet dem.\n\nRyktet hans ble bygget på Waxhaws i 1780, der amerikanske soldater hevdet de ble hugget ned etter at de hadde overgitt seg. «Tarletons nåde» ble et uttrykk, og drev tusenvis av sørstatsfolk over på patriotenes side.\n\nVed Cowpens gikk hensynsløsheten hans rett i Daniel Morgans felle, og han mistet nesten hele styrken.",
+      "en": "Tarleton was fast, ruthless and very effective. His cavalry turned up where nobody expected them.\n\nHis reputation was built at the Waxhaws in 1780, where American soldiers claimed they were cut down after surrendering. \"Tarleton's quarter\" became a phrase, and drove thousands of southerners onto the Patriot side.\n\nAt Cowpens his ruthlessness walked straight into Daniel Morgan's trap, and he lost almost his entire force."
+    },
+    "fact": {
+      "no": "Han satt senere i det britiske parlamentet i over tjue år, der han kjempet for å beholde slavehandelen.",
+      "en": "He later sat in Parliament for over twenty years, where he fought to preserve the slave trade."
+    },
+    "events": [
+      "cowpens"
+    ],
+    "wiki": {
+      "no": "Banastre Tarleton",
+      "en": "Banastre Tarleton"
+    }
+  },
+  {
+    "id": "clinton",
+    "side": "british",
+    "lived": "1730–1795",
+    "portrait": "clinton.jpg",
+    "name": {
+      "no": "General Henry Clinton",
+      "en": "General Henry Clinton"
+    },
+    "role": {
+      "no": "Britisk øverstkommanderende 1778–82",
+      "en": "British commander-in-chief 1778–82"
+    },
+    "hook": {
+      "no": "Han tok Charleston – og satt så fast i New York mens krigen ble avgjort andre steder.",
+      "en": "He took Charleston — then sat in New York while the war was decided elsewhere."
+    },
+    "body": {
+      "no": "Clinton overtok kommandoen etter Howe og hadde faktisk gode ideer. Det var han som foreslo omgåelsen som knuste amerikanerne ved Long Island.\n\nMen han var vanskelig å samarbeide med og lå i konstant konflikt med Cornwallis om hvem som bestemte i sør. De to sendte hverandre brev som ofte kom fram for sent eller ble misforstått.\n\nDa Washington marsjerte sørover mot Yorktown, trodde Clinton lenge at angrepet ville komme mot New York.",
+      "en": "Clinton took over from Howe and actually had good ideas. It was he who proposed the flanking march that shattered the Americans at Long Island.\n\nBut he was difficult to work with and in constant conflict with Cornwallis over who was in charge in the South. The two sent each other letters that often arrived too late or were misunderstood.\n\nWhen Washington marched south for Yorktown, Clinton spent a long time believing the attack was coming at New York."
+    },
+    "fact": {
+      "no": "Han og Cornwallis brukte resten av livet på å skrive bøker og pamfletter om hvem sin skyld Yorktown var.",
+      "en": "He and Cornwallis spent the rest of their lives writing books and pamphlets about whose fault Yorktown was."
+    },
+    "events": [
+      "charleston-falls"
+    ],
+    "wiki": {
+      "no": "Henry Clinton (offiser)",
+      "en": "Henry Clinton (British Army officer, born 1730)"
+    }
+  },
+  {
+    "id": "gage",
+    "side": "british",
+    "lived": "1718–1787",
+    "portrait": "gage.jpg",
+    "name": {
+      "no": "General Thomas Gage",
+      "en": "General Thomas Gage"
+    },
+    "role": {
+      "no": "Britisk sjef i Boston da krigen brøt ut",
+      "en": "British commander in Boston when the war began"
+    },
+    "hook": {
+      "no": "Mannen som ga ordren om å marsjere til Concord.",
+      "en": "The man who gave the order to march on Concord."
+    },
+    "body": {
+      "no": "Gage hadde bodd i Amerika i nesten tjue år og var gift med en amerikansk kvinne. Han forsto koloniene bedre enn de fleste i London, og advarte om at det ville trengs en stor hær for å slå ned motstanden. Ingen ville høre.\n\nSom guvernør i Massachusetts fikk han i oppgave å håndheve tvangslovene etter teselskapet. Det gjorde ham til den mest upopulære mannen i Boston.\n\nEtter Bunker Hill ble han kalt hjem og erstattet av Howe.",
+      "en": "Gage had lived in America for almost twenty years and was married to an American woman. He understood the colonies better than most people in London, and warned that a large army would be needed to put down the resistance. Nobody wanted to hear it.\n\nAs governor of Massachusetts he was handed the job of enforcing the punitive acts after the Tea Party. It made him the most unpopular man in Boston.\n\nAfter Bunker Hill he was recalled and replaced by Howe."
+    },
+    "fact": {
+      "no": "Det er fortsatt mistanke om at kona hans, Margaret, lekket planene om Concord til patriotene. Hun ble sendt til England kort etter.",
+      "en": "There is still a suspicion that his wife Margaret leaked the Concord plans to the Patriots. She was sent to England shortly afterwards."
+    },
+    "events": [
+      "lexington-concord",
+      "bunker-hill"
+    ],
+    "wiki": {
+      "no": "Thomas Gage",
+      "en": "Thomas Gage"
+    }
+  },
+  {
+    "id": "rochambeau",
+    "side": "french",
+    "lived": "1725–1807",
+    "portrait": "rochambeau.jpg",
+    "name": {
+      "no": "Comte de Rochambeau",
+      "en": "Comte de Rochambeau"
+    },
+    "role": {
+      "no": "Sjef for den franske hæren i Amerika",
+      "en": "Commander of the French army in America"
+    },
+    "hook": {
+      "no": "Den erfarne generalen som overtalte Washington til å angripe riktig sted.",
+      "en": "The veteran general who talked Washington into attacking the right place."
+    },
+    "body": {
+      "no": "Rochambeau kom med 5 500 franske soldater i 1780 og hadde ordre om å stille seg under Washingtons kommando – noe som var uvanlig for en fransk general.\n\nWashington ville angripe New York. Rochambeau mente det var håpløst og pekte sørover mot Virginia, der den franske flåten kunne stenge Cornwallis inne.\n\nHan fikk rett. Marsjen til Yorktown ble krigens avgjørende trekk.",
+      "en": "Rochambeau arrived with 5,500 French troops in 1780 with orders to place himself under Washington's command — unusual for a French general.\n\nWashington wanted to attack New York. Rochambeau thought that was hopeless and pointed south to Virginia, where the French fleet could shut Cornwallis in.\n\nHe was right. The march to Yorktown was the decisive move of the war."
+    },
+    "fact": {
+      "no": "De franske soldatene ble strengt instruert om å oppføre seg upåklagelig. Det virket: amerikanerne, som hadde hatet franskmenn i generasjoner, ble oppriktig imponert.",
+      "en": "The French troops were under strict orders to behave impeccably. It worked: Americans, who had hated the French for generations, were genuinely impressed."
+    },
+    "events": [
+      "yorktown"
+    ],
+    "wiki": {
+      "no": "Jean-Baptiste Donatien de Vimeur de Rochambeau",
+      "en": "Jean-Baptiste Donatien de Vimeur, comte de Rochambeau"
+    }
+  },
+  {
+    "id": "dunmore",
+    "side": "british",
+    "lived": "1730–1809",
+    "portrait": "dunmore.jpg",
+    "name": {
+      "no": "Lord Dunmore",
+      "en": "Lord Dunmore"
+    },
+    "role": {
+      "no": "Kongens siste guvernør i Virginia",
+      "en": "The king's last governor of Virginia"
+    },
+    "hook": {
+      "no": "Han tilbød slaver frihet – ikke av godhet, men fordi han trengte soldater.",
+      "en": "He offered enslaved people freedom — not out of kindness, but because he needed soldiers."
+    },
+    "body": {
+      "no": "Dunmore mistet kontrollen over Virginia i 1775 og måtte flykte om bord på et britisk krigsskip. Derfra styrte han kolonien sin i noen måneder.\n\nProklamasjonen hans lovte frihet til slaver og kontraktsarbeidere som rømte fra opprørere og tok opp våpen for kongen. Flere tusen forsøkte.\n\nFor plantasjeeierne i sør ble dette et av de sterkeste argumentene for å bryte med Storbritannia.",
+      "en": "Dunmore lost control of Virginia in 1775 and had to flee aboard a British warship. From there he governed his colony for a few months.\n\nHis proclamation promised freedom to enslaved people and indentured servants who escaped from rebels and took up arms for the king. Several thousand tried.\n\nFor southern plantation owners it became one of the strongest arguments for breaking with Britain."
+    },
+    "fact": {
+      "no": "Mange av dem som fikk friheten sin, ble senere evakuert til Nova Scotia. Noen av dem endte til slutt i Sierra Leone i Afrika.",
+      "en": "Many of those who won their freedom were later evacuated to Nova Scotia. Some of them ended up in Sierra Leone in Africa."
+    },
+    "events": [
+      "dunmore"
+    ],
+    "wiki": {
+      "no": "John Murray, 4. jarl av Dunmore",
+      "en": "John Murray, 4th Earl of Dunmore"
+    }
+  },
+  {
+    "id": "paine",
+    "side": "patriot",
+    "lived": "1737–1809",
+    "portrait": "paine.jpg",
+    "name": {
+      "no": "Thomas Paine",
+      "en": "Thomas Paine"
+    },
+    "role": {
+      "no": "Skrev *Sunn fornuft*",
+      "en": "Author of *Common Sense*"
+    },
+    "hook": {
+      "no": "Mislykket korsettmaker fra England som skrev revolusjonens viktigste tekst.",
+      "en": "A failed corset-maker from England who wrote the revolution's most important text."
+    },
+    "body": {
+      "no": "Paine var 37 år og hadde mislyktes med det meste da han kom til Philadelphia med et anbefalingsbrev fra Franklin i lomma.\n\nHan hadde en gave: han skrev slik at vanlige folk forsto det, om ting bare lærde pleide å skrive om. *Sunn fornuft* gjorde uavhengighet til noe man kunne mene høyt. Senere, midt i den verste retretten gjennom New Jersey, skrev han *The American Crisis*, som ble lest opp for de frysende soldatene før Trenton.\n\nHan dro videre til Frankrike og deltok i revolusjonen der også, ble kastet i fengsel, og unngikk giljotinen så vidt.",
+      "en": "Paine was 37 and had failed at most things when he arrived in Philadelphia with a letter from Franklin in his pocket.\n\nHe had one gift: he wrote so ordinary people could follow him, about things only scholars normally wrote about. *Common Sense* made independence something you could argue for out loud. Later, in the middle of the worst of the retreat across New Jersey, he wrote *The American Crisis*, which was read aloud to the freezing soldiers before Trenton.\n\nHe went on to France and joined that revolution too, was thrown in prison, and narrowly avoided the guillotine."
+    },
+    "fact": {
+      "no": "Han tjente ikke en krone på *Sunn fornuft*. Han ga bort inntektene til hæren, og døde fattig og upopulær i New York.",
+      "en": "He made nothing from *Common Sense*. He gave the proceeds to the army, and died poor and unpopular in New York."
+    },
+    "events": [
+      "common-sense",
+      "nj-retreat",
+      "declaration"
+    ],
+    "wiki": {
+      "no": "Thomas Paine",
+      "en": "Thomas Paine"
+    }
+  },
+  {
+    "id": "abigail-adams",
+    "side": "patriot",
+    "lived": "1744–1818",
+    "portrait": "abigail-adams.jpg",
+    "name": {
+      "no": "Abigail Adams",
+      "en": "Abigail Adams"
+    },
+    "role": {
+      "no": "Brevskriver og rådgiver",
+      "en": "Letter writer and adviser"
+    },
+    "hook": {
+      "no": "«Husk damene» – skrevet mens de nye lovene ble laget.",
+      "en": "\"Remember the ladies\" — written while the new laws were being drafted."
+    },
+    "body": {
+      "no": "Abigail hadde nesten ingen formell skolegang, men leste alt hun kom over. Mens John var borte i Philadelphia og Europa i årevis, drev hun gården, oppdro barna, og holdt familien flytende gjennom krigen.\n\nBrevene mellom dem – over tusen stykker – er noe av det beste vi har fra perioden. Hun skriver om politikk like ofte som om hjemmet, og hun er sjelden enig uten videre.\n\nI mars 1776 ba hun ham om å «huske damene» når de laget de nye lovene, og advarte om at kvinner ikke ville føle seg bundet av lover de ikke hadde vært med på å lage. John lo det bort i svarbrevet.",
+      "en": "Abigail had almost no formal schooling but read everything she could find. While John was away in Philadelphia and Europe for years at a time, she ran the farm, raised the children, and kept the family afloat through the war.\n\nThe letters between them — over a thousand of them — are among the best things we have from the period. She writes about politics as often as about home, and she rarely agrees without an argument.\n\nIn March 1776 she asked him to \"remember the ladies\" when they made the new laws, warning that women would not feel bound by laws they had no hand in making. John laughed it off in his reply."
+    },
+    "fact": {
+      "no": "Hun var også imot slaveri, og skrev til John at det var «et ondskapsfullt system» å kjempe for frihet mens man holdt andre ufrie.",
+      "en": "She also opposed slavery, writing to John that fighting for liberty while holding others in bondage was an evil scheme."
+    },
+    "events": [
+      "declaration"
+    ],
+    "wiki": {
+      "no": "Abigail Adams",
+      "en": "Abigail Adams"
+    }
+  },
+  {
+    "id": "brant",
+    "side": "british",
+    "lived": "1743–1807",
+    "portrait": "brant.jpg",
+    "name": {
+      "no": "Joseph Brant",
+      "en": "Joseph Brant"
+    },
+    "role": {
+      "no": "Mohawk-leder, alliert med britene",
+      "en": "Mohawk leader, allied with the British"
+    },
+    "hook": {
+      "no": "Han valgte britene fordi han visste hva amerikanske nybyggere ville gjøre med landet hans.",
+      "en": "He chose the British because he knew what American settlers would do with his land."
+    },
+    "body": {
+      "no": "Brant – *Thayendanegea* på mohawk – var utdannet på en engelsk skole, oversatte Bibelen til mohawk, og reiste til London der han ble mottatt av kongen.\n\nDa krigen kom, mente han at britene var det minste onde: de hadde i det minste lovet en grense mot nybyggerne. Fire av de seks irokesiske nasjonene fulgte ham. To gikk andre veien. Forbundet som hadde holdt sammen i århundrer, brakk.\n\nHan ledet raid langs grensen som gjorde ham fryktet, og som utløste Sullivan-ekspedisjonen.",
+      "en": "Brant — *Thayendanegea* in Mohawk — was educated at an English school, translated the Bible into Mohawk, and travelled to London where he was received by the king.\n\nWhen the war came he judged the British the lesser evil: they had at least promised a boundary against the settlers. Four of the six Iroquois nations followed him. Two went the other way. The confederacy that had held for centuries broke apart."
+    },
+    "fact": {
+      "no": "Da freden ble sluttet i 1783, nevnte traktaten ikke urfolksnasjonene med ett ord. Brant fikk til slutt land i Canada til folket sitt.",
+      "en": "When peace was made in 1783, the treaty did not mention the Native nations at all. Brant eventually secured land in Canada for his people."
+    },
+    "events": [
+      "sullivan"
+    ],
+    "wiki": {
+      "no": "Joseph Brant",
+      "en": "Joseph Brant"
+    }
+  },
+  {
+    "id": "wheatley",
+    "side": "patriot",
+    "lived": "ca. 1753–1784",
+    "portrait": "wheatley.jpg",
+    "name": {
+      "no": "Phillis Wheatley",
+      "en": "Phillis Wheatley"
+    },
+    "role": {
+      "no": "Poet, slavebundet fra hun var sju",
+      "en": "Poet, enslaved from the age of seven"
+    },
+    "hook": {
+      "no": "Hun skrev et dikt til Washington. Han inviterte henne på besøk.",
+      "en": "She wrote a poem to Washington. He invited her to visit."
+    },
+    "body": {
+      "no": "Phillis ble kidnappet i Vest-Afrika som sjuåring og solgt i Boston. Familien som kjøpte henne oppdaget at hun lærte usedvanlig fort, og lot henne studere latin og gresk.\n\nSom tenåring ga hun ut en diktsamling – den første av en afroamerikansk kvinne. Ingen ville tro at hun hadde skrevet den, så atten kjente menn i Boston, blant dem John Hancock, måtte eksaminere henne og signere på at hun faktisk kunne.\n\nHun skrev et dikt til Washington i 1775. Han svarte og ba henne komme, og de møttes i hovedkvarteret hans.",
+      "en": "Phillis was kidnapped in West Africa at seven and sold in Boston. The family who bought her found she learned extraordinarily fast, and let her study Latin and Greek.\n\nAs a teenager she published a book of poems — the first by an African American woman. Nobody would believe she had written it, so eighteen prominent Boston men, John Hancock among them, had to examine her and sign a statement that she could.\n\nShe wrote a poem to Washington in 1775. He wrote back and asked her to come, and they met at his headquarters."
+    },
+    "fact": {
+      "no": "Hun ble frigitt, men klarte seg dårlig etterpå. Hun døde 31 år gammel, fattig, og de siste diktene hennes er borte.",
+      "en": "She was freed, but did badly afterwards. She died at 31, in poverty, and her final book of poems is lost."
+    },
+    "events": [
+      "washington-command"
+    ],
+    "wiki": {
+      "no": "Phillis Wheatley",
+      "en": "Phillis Wheatley"
+    }
+  },
+  {
+    "id": "north",
+    "side": "british",
+    "lived": "1732–1792",
+    "portrait": "north.jpg",
+    "name": {
+      "no": "Lord North",
+      "en": "Lord North"
+    },
+    "role": {
+      "no": "Britisk statsminister 1770–82",
+      "en": "British Prime Minister 1770–82"
+    },
+    "hook": {
+      "no": "Han ville gå av i årevis. Kongen nektet å slippe ham.",
+      "en": "He wanted to resign for years. The king would not let him go."
+    },
+    "body": {
+      "no": "North var en dyktig og godt likt politiker som havnet i feil krig. Han hadde ansvaret for tvangslovene og for krigføringen, men trodde selv aldri helt på at den kunne vinnes.\n\nFlere ganger ba han om å få gå av. George III nektet, dels fordi ingen andre kunne holde flertallet i parlamentet sammen.\n\nDa nyheten om Yorktown nådde London i november 1781, skal han ha tatt seg til brystet og utbrutt: «Å Gud, alt er over.» Han gikk av noen måneder senere.",
+      "en": "North was a capable and well-liked politician who ended up in the wrong war. He was responsible for the Coercive Acts and for running the war, yet never fully believed it could be won.\n\nSeveral times he asked to resign. George III refused, partly because nobody else could hold the parliamentary majority together.\n\nWhen news of Yorktown reached London in November 1781, he is said to have clutched his chest and cried: \"Oh God, it is all over.\" He resigned a few months later."
+    },
+    "fact": {
+      "no": "Han var kjent for å sovne i parlamentet under lange debatter – noen ganger med vilje, for å slippe å høre på.",
+      "en": "He was famous for falling asleep in Parliament during long debates — sometimes on purpose, to avoid listening."
+    },
+    "events": [
+      "intolerable-acts",
+      "yorktown"
+    ],
+    "wiki": {
+      "no": "Frederick North",
+      "en": "Frederick North, Lord North"
+    }
+  }
+]
