@@ -12,11 +12,16 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v6';
+const VERSION = 'v8';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
 
+// Deliberately no audio here. The narration is ~7.6 MB across two languages,
+// and pulling that down on a first visit over mobile data to cache a chapter
+// you may not play is the wrong trade. Scene files are cached by the fetch
+// handler the first time they are played, so anything you have listened to
+// works offline afterwards.
 const PRECACHE = [
   './',
   './index.html',
@@ -60,18 +65,12 @@ const PRECACHE = [
   './css/story.css',
   './content/american-revolution/chapter-1775-04-19.json',
   './content/american-revolution/timing.no.json',
-  './content/american-revolution/audio/no\s1.mp3',
-  './content/american-revolution/audio/no\s2.mp3',
-  './content/american-revolution/audio/no\s3.mp3',
-  './content/american-revolution/audio/no\s4.mp3',
-  './content/american-revolution/audio/no\s5.mp3',
-  './content/american-revolution/audio/no\s6.mp3',
-  './content/american-revolution/audio/no\s7.mp3',
   './content/american-revolution/media\doolittle-1.jpg',
   './content/american-revolution/media\doolittle-2.jpg',
   './content/american-revolution/media\doolittle-3.jpg',
   './content/american-revolution/media\doolittle-4.jpg',
   './content/american-revolution/media.json',
+  './content/american-revolution/timing.en.json',
   './assets/fonts/fraunces-latin.woff2',
 ];
 

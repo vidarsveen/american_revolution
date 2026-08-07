@@ -601,6 +601,11 @@
 .cover__go:active { transform: scale(.96); }
 .cover__go-ico { font-size: 14px; }
 .cover__go i { font-style: normal; font-size: var(--fs-xs); font-weight: 600; opacity: .6; }
+.cover__note {
+  margin-top: var(--s4);
+  font-size: var(--fs-xs);
+  color: var(--ink-faint);
+}
 .cover__warn {
   margin-top: var(--s4);
   font-size: var(--fs-xs);

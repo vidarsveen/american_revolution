@@ -1,163 +1,149 @@
-# Den amerikanske revolusjonen 1763–1783
+# Den amerikanske revolusjonen
 
-An interactive map and timeline of the American Revolution, built as a companion to
-Ken Burns' *Den amerikanske revolusjonen* on NRK. Norwegian and English, mobile first.
+A narrated learning app, built as a companion to Ken Burns' *Den amerikanske revolusjonen*
+on NRK. Norwegian and English, mobile first.
 
-Open it, drag the year rail, and watch the war spread across the map. Tap anything to
-read what happened — written to be read on a sofa, not in a seminar.
+Two ways in:
 
----
+- **Fortell** — a narrated chapter. A voice tells the story and the map moves with it: a
+  portrait when someone is named, a march drawing itself across the country when a march is
+  described, a zoom to the field at the moment the field matters. First chapter:
+  **19 April 1775**, hour by hour, about eleven minutes.
+- **Utforsk** — the whole war to browse: a parchment map of 39 events, a timeline grouped by
+  the six NRK episodes, and 32 people.
 
-## What's in it
-
-- **Kart** — a parchment-styled map with the events placed where they happened. A year
-  rail along the bottom drives everything: markers appear as you reach their date, the
-  current year pulses, campaign routes draw themselves across the map, and a soft glow
-  follows the war's centre of gravity from New England to the Middle Colonies to the South.
-- **▶ Ta meg gjennom krigen** — a guided tour. The camera flies between the eleven moments
-  that turned the war while the clock runs forward. Touch anything to take back control.
-- **Tidslinje** — every event in order, grouped under the six NRK episodes, so you can jump
-  straight to the one you just watched. Filter by battles, politics, people or turning points.
-- **Personer** — 27 portraits, both sides. Each one links to the events they were part of.
-- **Les mer** — Wikipedia summaries are fetched *into* the app, in your language, with an
-  automatic fall back to English. Nothing throws you out to a browser tab unless you ask.
-- Light and dark, Norwegian and English, installable to your home screen, works offline.
-
-39 events · 27 people · 8 animated campaign routes · 1763–1783.
+Live: **https://vidarsveen.github.io/american_revolution/**
 
 ---
 
-## Running it locally
+## The idea the engine is built on
 
-No build step, no npm, no dependencies to install. It just needs to be served over HTTP
-(ES modules and the service worker will not run from `file://`).
-
-```bash
-python -m http.server 8000
-# then open http://localhost:8000
-```
-
-Any static server works.
-
----
-
-## Publishing to GitHub Pages
-
-```bash
-git init
-git add .
-git commit -m "Den amerikanske revolusjonen"
-git branch -M main
-git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin main
-```
-
-Then **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `/ (root)`**.
-
-Two things that matter and are already handled:
-
-- `.nojekyll` at the root, so GitHub Pages serves the files as-is.
-- Every path in the project is **relative** (`./css/base.css`, never `/css/base.css`).
-  A project site lives at `https://<you>.github.io/<repo>/`, and absolute paths are the
-  usual way these break.
-
----
-
-## Editing the content
-
-All the writing lives in `data/` — you never need to touch JavaScript to change history.
+Cues are pinned to **words in the script**, never to timestamps:
 
 ```jsonc
-// data/events.json
 {
-  "id": "saratoga",
-  "date": "1777-10-17",
-  "dateDisplay": { "no": "17. oktober 1777", "en": "17 October 1777" },
-  "kind": "battle",        // battle | politics | people
-  "side": "patriot",       // patriot | british | french | neutral — marker colour
-  "importance": 3,         // 1 small · 2 normal · 3 turning point (gold, in the tour)
-  "coords": [43.0089, -73.6398],
-  "title":   { "no": "…", "en": "…" },
-  "hook":    { "no": "One line that makes you want to read on.", "en": "…" },
-  "body":    { "no": "Three or four short paragraphs.", "en": "…" },
-  "why":     { "no": "Why it matters — one sentence.", "en": "…" },
-  "fact":    { "no": "Did you know…", "en": "…" },
-  "numbers": { "britishForces": 6200, "americanForces": 15000, "outcome": "patriot" },
-  "people":  ["burgoyne", "arnold", "gates"],   // ids from people.json
-  "route":   "burgoyne-south",                  // id from geo/routes.json
-  "wiki":    { "no": "Slaget ved Saratoga", "en": "Battles of Saratoga" }
+  "id": "s3.b4",
+  "say": {
+    "no": "De er syttisju mann. Nedover veien kommer det sju hundre.",
+    "en": "There are seventy-seven of them. Coming down the road are seven hundred."
+  },
+  "cues": [
+    { "on": { "no": "word:syttisju", "en": "word:seventy-seven" },
+      "do": "stat.show", "value": "77",  "side": "patriot" },
+    { "on": { "no": "word:hundre",   "en": "word:hundred" },
+      "do": "stat.show", "value": "700", "side": "british" }
+  ]
 }
 ```
 
-`*text*` becomes italics. Blank lines separate paragraphs.
+`edge-tts` reports the millisecond every word was actually spoken, so `tools/narrate.py`
+resolves those anchors for you. You write prose and say which word each visual belongs to.
+Rewrite the sentence, or change the voice, and the timings regenerate — nothing is hand-timed.
+The same word times drive the karaoke-style captions, so the whole chapter works with the sound
+off.
 
-| file | what it holds |
-|---|---|
-| `data/events.json` | the 39 events |
-| `data/people.json` | the 27 people, with `portrait` naming a file in `assets/portraits/` |
-| `data/chapters.json` | the six NRK episodes and their date ranges |
-| `data/geo/routes.json` | campaign paths and theatre glows |
-| `data/geo/places.json` | period place names drawn on the map |
-| `data/geo/colonies.geojson` | the thirteen colonies outline |
-
-**House style for the writing** — this is the part that makes or breaks it:
-hook first; around 120 words of body; explain every term the first time; concrete over
-abstract; round numbers; one good fact beats three paragraphs of context. Norwegian is
-written natively and English follows it, not the other way round.
-
-After editing, run the validator:
-
-```bash
-python tools/check-data.py
-```
+An anchor written as a bare string (`"word:Concord"`) applies to every language, which is right
+for proper nouns. A `{no, en}` pair is required whenever the languages say it differently —
+`tools/check-script.py` fails the build if an anchored word is not in the text, because the
+player would otherwise fall back to the start of the beat and the visual would just fire early,
+which is easy to miss by ear.
 
 ---
 
-## How it is put together
+## Three rules the engine keeps
 
-Vanilla HTML, CSS and ES modules. No framework — it is fifty entries and one map, and this
-way it still works in five years with nothing to reinstall.
+**The picture is a function of time, not a history of events.** Seeking wipes the stage and
+re-applies every cue up to that point with animation suppressed. Scrub backwards into the middle
+of a drawing route and you get a correct picture, not a half-drawn one.
+
+**Nothing that must happen depends on `requestAnimationFrame`.** Browsers stop delivering frames
+to a backgrounded tab. Animation frames make things smooth; timers are the contract.
+
+**Audio failing is not the app failing.** If playback is blocked before a user gesture, or a file
+is missing, the chapter still runs on a timer and the captions carry the words. And if a chapter
+has not been recorded in your language, it plays in one that has been, and the cover says so.
+
+---
+
+## Layout
 
 ```
-index.html          shell; every path relative
-sw.js               offline: network races a short timer for app files,
-                    cache-first for map tiles
-css/                tokens · base · shell · map · timeline · sheet
-js/
-  store.js          state, pub/sub, hash routing, filter predicates
-  main.js           loads data, builds the chrome, wires the views
-  map.js            Leaflet, markers, place labels, camera
-  routes.js         campaign lines that draw themselves, theatre glow
-  scrubber.js       the year rail
-  timeline.js       the chapter-grouped list
-  people.js         the portrait grid
-  sheet.js          the drag-up detail panel
-  wiki.js           Wikipedia summaries, cached, failing quietly
-  tour.js           the guided tour
-  i18n.js           all UI strings
-data/               all content
-vendor/             Leaflet 1.9.4, vendored so no CDN can break it
-assets/             portraits, fonts, icons
+engine/                    generic — knows nothing about this subject
+  script.js     load a chapter, resolve word anchors against the timings
+  player.js     the clock: playback, cue scheduling, seeking, silent fallback
+  stage.js      the cue vocabulary — one table of verb -> effect
+  scenes/
+    map.js      Leaflet surface: flyTo, routes, pins, place names, time of day
+    overlays.js portrait / image / quote / stat cards
+  captions.js   word-highlighted captions and the transcript
+  chrome.js     transport, scene rail, scrubbing
+  basemap.js    the parchment tiles, shared with Explore
+  story.js      mode entry point
+
+content/american-revolution/    one folder per subject
+  chapter-1775-04-19.json  scenes -> beats -> cues, plus places, routes, quotes
+  timing.no.json           generated: beat offsets and per-word times
+  audio/no/s1.mp3 …        generated: one gapless file per scene
+  media.json  media/       generated: images with artist, licence, source
+  people.json  events.json  chapters.json  geo/
+
+js/                        the Explore mode
+tools/                     narrate.py · fetch-media.py · check-script.py · check-data.py
 ```
 
-A few decisions worth knowing about:
+**Cue vocabulary** (a subject without geography simply never uses the map verbs):
+`map.flyTo` · `map.fitRoute` · `map.time` · `map.mood` · `map.flash` · `route.draw` ·
+`route.clear` · `marker.show/hide/clear` · `portrait.show/hide` · `image.show/hide` ·
+`quote.show/hide` · `stat.show/clear` · `caption.note` · `militia.converge` · `hold` · `pause`.
 
-- **The map tiles are CARTO's label-free basemap**, aged into parchment with a CSS filter
-  and a warm multiply wash. Real geography and real pinch-zoom, period look, no API key.
-  If CARTO is unreachable it falls back to Esri, then to plain OpenStreetMap. Place names
-  are drawn by us, so no modern motorways show through.
-- **Nothing that has to happen depends on `requestAnimationFrame`.** Browsers stop
-  delivering frames to a backgrounded tab, and a tour that freezes when you switch apps and
-  never recovers is worse than one that is slightly less smooth. rAF is used for smoothness;
-  timers are the contract.
-- **A Wikipedia failure is never visible.** Offline, blocked or missing article — the block
-  simply does not appear.
-- **Offline starts fast, not just eventually.** A plain network-first service worker makes
-  every request on the page wait out its own connection timeout, which turned an offline
-  launch into about ten seconds of splash screen. The network now races a 900 ms timer, and
-  the first failure trips a short circuit breaker so the rest of the page goes straight to
-  cache. Cold offline start is around 1.7 seconds.
-- `prefers-reduced-motion` disables the route drawing and the tour's camera flights.
+Adding a verb means adding it to the table in `engine/stage.js` **and** to `VERBS` in
+`tools/check-script.py`, or a typo in a chapter will silently do nothing.
+
+---
+
+## Working on it
+
+No build step, no npm. Serve over HTTP — ES modules and the service worker will not run from
+`file://`.
+
+```bash
+python -m http.server 8000
+```
+
+Python tooling lives in `.venv` (`edge-tts`, `pillow`, `mutagen`) and needs `ffmpeg` on PATH.
+
+```bash
+# regenerate narration after editing the script (only changed beats re-synthesise)
+python tools/narrate.py --chapter american-revolution/chapter-1775-04-19 --lang no
+python tools/narrate.py ... --only s3          # just one scene
+python tools/narrate.py ... --rate -14%        # slower read
+python tools/narrate.py ... --engine openai    # needs OPENAI_API_KEY
+
+# images from Wikimedia Commons, with licence and attribution captured
+python tools/fetch-media.py american-revolution
+
+# always run both before committing
+python tools/check-script.py american-revolution/chapter-1775-04-19
+python tools/check-data.py
+```
+
+`--engine openai` sounds better but returns no word timings, so anchors are estimated from word
+length and flagged `approx`. The tool says so rather than quietly mis-syncing.
+
+### Writing style
+
+The part that decides whether any of this is worth using. Upper-secondary level, never
+university: hook first, short sentences (long ones read badly aloud), every term explained the
+first time, concrete over abstract, one good fact instead of three paragraphs of context.
+Numbers are written the way they should be **spoken** — `syttisju`, not `77` — with the digits
+kept separately for the screen. Norwegian is written natively; English follows it.
+
+---
+
+## Publishing
+
+Push to `main`; GitHub Pages serves from the repository root. `.nojekyll` is in place and every
+path is relative, so the site works under `/american_revolution/`.
 
 ---
 
@@ -165,9 +151,13 @@ A few decisions worth knowing about:
 
 - Text written for this project. Wikipedia extracts are fetched live and credited in place
   (CC BY-SA).
-- Portraits: public-domain paintings from Wikimedia Commons.
+- Amos Doolittle's four engravings of 19 April 1775, made the same year — public domain,
+  with artist, source and licence recorded in `media.json`.
+- Portraits: public-domain paintings from Wikimedia Commons. Where an image is a statue or a
+  stand-in rather than a likeness, the app says so.
 - Map tiles © OpenStreetMap contributors, © CARTO.
-- [Fraunces](https://github.com/googlefonts/fraunces) (SIL Open Font License 1.1),
+- Voices: Microsoft Edge neural TTS via [edge-tts](https://github.com/rany2/edge-tts).
+- [Fraunces](https://github.com/googlefonts/fraunces) (SIL OFL 1.1),
   [Leaflet](https://leafletjs.com/) (BSD-2-Clause).
 - Structure and chapter titles follow *Den amerikanske revolusjonen* (Ken Burns,
   Sarah Botstein and David Schmidt), shown on NRK.

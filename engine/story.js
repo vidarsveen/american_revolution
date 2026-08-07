@@ -19,6 +19,7 @@ const STR = {
     start: 'Start', resume: 'Fortsett', replay: 'Spill igjen',
     tapToContinue: 'Trykk for å fortsette',
     noAudio: 'Lyden er ikke generert ennå. Kjør tools/narrate.py.',
+    onlyIn: 'Denne fortellingen finnes foreløpig bare på norsk.',
     listen: 'Lytt', minutes: 'min', chapters: 'Kapitler', finished: 'Ferdig',
   },
   en: {
@@ -27,6 +28,7 @@ const STR = {
     start: 'Start', resume: 'Resume', replay: 'Play again',
     tapToContinue: 'Tap to continue',
     noAudio: 'Audio has not been generated yet. Run tools/narrate.py.',
+    onlyIn: 'This chapter is only narrated in Norwegian so far.',
     listen: 'Listen', minutes: 'min', chapters: 'Chapters', finished: 'Finished',
   },
 };
@@ -64,7 +66,7 @@ export async function initStory(container, allPeople, language) {
   }
 
   const stage = view.querySelector('.story__stage');
-  stageApi = mountStage(stage, chapter, people, lang);
+  stageApi = mountStage(stage, chapter, people, chapter.narrationLang);
   mountCaptions(view.querySelector('.story__caption-slot'));
 
   player = new Player(chapter, {
@@ -108,6 +110,7 @@ function showCover(mode) {
         <i>${mins} ${esc(t('minutes'))}</i>
       </button>
       ${chapter.hasAudio ? '' : `<p class="cover__warn">${esc(t('noAudio'))}</p>`}
+      ${chapter.dubbed ? `<p class="cover__note">${esc(t('onlyIn'))}</p>` : ''}
     </div>`;
   cover.classList.add('is-on');
 }
