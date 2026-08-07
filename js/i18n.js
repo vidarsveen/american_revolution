@@ -12,6 +12,7 @@ const STRINGS = {
     appYears: '1763–1783',
     bootLine: 'Den amerikanske revolusjonen',
 
+    tabStory: 'Fortell',
     tabMap: 'Kart',
     tabTimeline: 'Tidslinje',
     tabPeople: 'Personer',
@@ -76,6 +77,7 @@ const STRINGS = {
     appYears: '1763–1783',
     bootLine: 'The American Revolution',
 
+    tabStory: 'Story',
     tabMap: 'Map',
     tabTimeline: 'Timeline',
     tabPeople: 'People',

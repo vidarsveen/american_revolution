@@ -126,6 +126,15 @@
 }
 .sheet__portrait--none svg { width: 44%; height: 44%; opacity: .45; }
 
+.sheet__portrait-note {
+  margin: calc(var(--s4) * -1) 0 var(--s4);
+  max-width: 30ch;
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
 /* ---------- Header ----------------------------------------- */
 .sheet__kicker {
   display: flex;

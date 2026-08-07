@@ -7,7 +7,7 @@ import {
   initRouting, readHash, parseDate, onNextFrame,
 } from './store.js';
 import { t } from './i18n.js';
-import { icoMap, icoTimeline, icoPeople, icoSun, icoMoon } from './icons.js';
+import { icoStory, icoMap, icoTimeline, icoPeople, icoSun, icoMoon } from './icons.js';
 import { initMap, drawPlaces, drawColonies, flyToEvent, mountTools, mapHeight, refreshTileTheme } from './map.js';
 import { initRoutes } from './routes.js';
 import { initScrubber } from './scrubber.js';
@@ -15,8 +15,10 @@ import { initTimeline, scrollToDate } from './timeline.js';
 import { initPeople } from './people.js';
 import { initSheet } from './sheet.js';
 import * as tour from './tour.js';
+import { initStory, storyPause, storyInvalidate, storyRefreshTheme } from '../engine/story.js';
 
 const VIEWS = [
+  { id: 'story', label: 'tabStory', icon: icoStory },
   { id: 'map', label: 'tabMap', icon: icoMap },
   { id: 'timeline', label: 'tabTimeline', icon: icoTimeline },
   { id: 'people', label: 'tabPeople', icon: icoPeople },
@@ -56,6 +58,10 @@ async function boot() {
   initPeople(peopleView, data.people);
   initSheet(data.events, data.people, { onShowOnMap: showOnMap });
 
+  // Fortell is the front door; Explore lives behind the other tabs.
+  initStory(document.querySelector('.view--story'), data.people, state.lang)
+    .catch((err) => console.error('[story] failed to start', err));
+
   initRouting();
   watchSystemTheme();
   readHash();
@@ -64,7 +70,7 @@ async function boot() {
   subscribe((s, changed) => {
     if (changed.has('view')) syncViews();
     if (changed.has('lang')) { applyLangAttr(); relabelChrome(); savePrefs(); }
-    if (changed.has('theme')) { applyTheme(); refreshTileTheme(); savePrefs(); }
+    if (changed.has('theme')) { applyTheme(); refreshTileTheme(); storyRefreshTheme(); savePrefs(); }
   });
 
   // Start just before the first event so the map is not empty on arrival.
@@ -93,12 +99,12 @@ async function loadData() {
   };
 
   const [events, people, chapters, places, colonies, routes] = await Promise.all([
-    grab('./data/events.json', []),
-    grab('./data/people.json', []),
-    grab('./data/chapters.json', []),
-    grab('./data/geo/places.json', []),
-    grab('./data/geo/colonies.geojson', null),
-    grab('./data/geo/routes.json', { routes: [], theatres: [] }),
+    grab('./content/american-revolution/events.json', []),
+    grab('./content/american-revolution/people.json', []),
+    grab('./content/american-revolution/chapters.json', []),
+    grab('./content/american-revolution/geo/places.json', []),
+    grab('./content/american-revolution/geo/colonies.geojson', null),
+    grab('./content/american-revolution/geo/routes.json', { routes: [], theatres: [] }),
   ]);
 
   return {
@@ -183,6 +189,8 @@ function syncViews() {
     el.classList.toggle('is-active', el.dataset.view === state.view);
   }
   if (state.view === 'timeline') scrollToDate(state.date);
+  if (state.view === 'story') storyInvalidate();
+  else storyPause();     // never leave a voice talking in a hidden tab
 }
 
 /* ------------------------------------------------------------
@@ -230,6 +238,7 @@ function watchSystemTheme() {
     if (state.theme !== 'auto') return;
     applyTheme();
     refreshTileTheme();
+    storyRefreshTheme();
   });
 }
 

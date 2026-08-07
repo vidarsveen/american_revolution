@@ -12,7 +12,7 @@ const listeners = new Set();
 export const state = {
   lang: 'no',            // 'no' | 'en'
   theme: 'auto',         // 'auto' | 'light' | 'dark'
-  view: 'map',           // 'map' | 'timeline' | 'people'
+  view: 'story',         // 'story' | 'map' | 'timeline' | 'people'
   date: START,           // scrubber position, ms
   filter: 'all',         // 'all' | 'battle' | 'politics' | 'turning-point'
   selected: null,        // { type: 'event' | 'person', id }
@@ -73,8 +73,8 @@ export function savePrefs() {
    Keeps the Android back button and shared links working.
    ----------------------------------------------------------- */
 
-const VIEW_SLUG = { map: 'kart', timeline: 'tidslinje', people: 'personer' };
-const SLUG_VIEW = { kart: 'map', tidslinje: 'timeline', personer: 'people' };
+const VIEW_SLUG = { story: 'fortell', map: 'kart', timeline: 'tidslinje', people: 'personer' };
+const SLUG_VIEW = { fortell: 'story', kart: 'map', tidslinje: 'timeline', personer: 'people' };
 
 let writing = false;
 
@@ -83,7 +83,7 @@ export function hashFor(s = state) {
     const kind = s.selected.type === 'person' ? 'person' : 'hendelse';
     return `#/${kind}/${s.selected.id}`;
   }
-  return `#/${VIEW_SLUG[s.view] || 'kart'}`;
+  return `#/${VIEW_SLUG[s.view] || 'fortell'}`;
 }
 
 function writeHash() {

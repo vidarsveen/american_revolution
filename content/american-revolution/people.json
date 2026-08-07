@@ -912,5 +912,178 @@
       "no": "Frederick North",
       "en": "Frederick North, Lord North"
     }
+  },
+  {
+    "id": "parker",
+    "side": "patriot",
+    "lived": "1729–1775",
+    "portrait": "parker.jpg",
+    "name": {
+      "no": "John Parker",
+      "en": "John Parker"
+    },
+    "role": {
+      "no": "Kaptein for militsen i Lexington",
+      "en": "Captain of the Lexington militia"
+    },
+    "hook": {
+      "no": "Han var dødssyk den morgenen, og møtte likevel opp.",
+      "en": "He was dying that morning, and turned out anyway."
+    },
+    "body": {
+      "no": "Parker var bonde og hadde vært soldat i krigen mot Frankrike tjue år tidligere. Nå var han 45 år og hadde tuberkulose. Han var så svak at han knapt kunne snakke høyt.\n\nLikevel sto han på plassen i Lexington klokka halv fem om morgenen, foran syttisju naboer, og ga ordren om å la britene passere hvis de ville – men å ikke gi fra seg plassen.\n\nHan døde fem måneder senere, uten å se hvordan det gikk.",
+      "en": "Parker was a farmer and had soldiered in the war against France twenty years earlier. Now he was 45 and had tuberculosis. He was so weak he could barely raise his voice.\n\nEven so he stood on the green at Lexington at half past four in the morning, in front of seventy-seven neighbours, and gave the order to let the British pass if they wished — but not to give up the ground.\n\nHe died five months later, without seeing how it turned out."
+    },
+    "fact": {
+      "no": "Ordene som står hugget i stein på Lexington Green i dag ble skrevet ned femti år etter, av en mann som var der. Ingen vet nøyaktig hva Parker sa.",
+      "en": "The words carved in stone on Lexington Green today were written down fifty years later by a man who was there. Nobody knows exactly what Parker said."
+    },
+    "events": [
+      "lexington-concord"
+    ],
+    "wiki": {
+      "no": "John Parker",
+      "en": "John Parker (captain)"
+    },
+    "portraitNote": {
+      "no": "Minutemann-statuen i Lexington, 1900. Det finnes ikke noe portrett av Parker.",
+      "en": "The Lexington Minuteman, 1900. No portrait of Parker exists."
+    }
+  },
+  {
+    "id": "pitcairn",
+    "side": "british",
+    "lived": "1722–1775",
+    "portrait": "pitcairn.jpg",
+    "name": {
+      "no": "John Pitcairn",
+      "en": "John Pitcairn"
+    },
+    "role": {
+      "no": "Britisk marineoffiser, ledet fortroppen",
+      "en": "British marine officer, led the advance guard"
+    },
+    "hook": {
+      "no": "Han ropte til bøndene om å gå hjem. Så smalt det.",
+      "en": "He shouted at the farmers to go home. Then came the shot."
+    },
+    "body": {
+      "no": "Pitcairn var skotte, major i marinen, og en av de få britiske offiserene i Boston som faktisk var likt av byens folk. Han hadde ord på seg for å være rettferdig.\n\nDet var han som red fram foran kolonnen på Lexington Green og ropte til militsen at de skulle spre seg og legge ned våpnene. Han hevdet resten av livet at han aldri ga ordre om å skyte.\n\nTo måneder senere ble han skutt i brystet ved Bunker Hill, og døde i armene på sin egen sønn.",
+      "en": "Pitcairn was a Scot, a major of marines, and one of the few British officers in Boston the townspeople actually liked. He had a reputation for fairness.\n\nIt was he who rode to the front of the column on Lexington Green and shouted at the militia to disperse and lay down their arms. He maintained for the rest of his life that he never ordered anyone to fire.\n\nTwo months later he was shot through the chest at Bunker Hill, and died in his own son's arms."
+    },
+    "fact": {
+      "no": "Begge sider var enige om at han ikke ga ordren. Ingen har noen gang klart å si hvem som skjøt først.",
+      "en": "Both sides agreed he gave no such order. Nobody has ever been able to say who fired first."
+    },
+    "events": [
+      "lexington-concord",
+      "bunker-hill"
+    ],
+    "wiki": {
+      "no": "John Pitcairn",
+      "en": "John Pitcairn"
+    }
+  },
+  {
+    "id": "prescott",
+    "side": "patriot",
+    "lived": "1751–1777",
+    "name": {
+      "no": "Samuel Prescott",
+      "en": "Samuel Prescott"
+    },
+    "role": {
+      "no": "Lege fra Concord, den eneste rytteren som kom fram",
+      "en": "A doctor from Concord, the only rider who got through"
+    },
+    "hook": {
+      "no": "Han var på vei hjem fra kjæresten sin klokka ett om natta. Det reddet Concord.",
+      "en": "He was riding home from his girlfriend's at one in the morning. It saved Concord."
+    },
+    "body": {
+      "no": "Prescott var 23 år og lege i Concord. Natt til 19. april var han i Lexington og besøkte forloveden sin, og møtte Revere og Dawes tilfeldig på veien hjem.\n\nDe tre red videre sammen. Da en britisk patrulje stanset dem, ble Revere tatt og Dawes kastet av hesten. Prescott kjente hver eneste steinmur i området, hoppet over en av dem og forsvant.\n\nHan var den eneste av de tre som nådde Concord. Hele varslingen av byen hang på at en ung mann var ute for sent på natta.",
+      "en": "Prescott was 23 and a doctor in Concord. On the night of 19 April he was in Lexington visiting his fiancée, and ran into Revere and Dawes by chance on his way home.\n\nThe three rode on together. When a British patrol stopped them, Revere was captured and Dawes was thrown from his horse. Prescott knew every stone wall in the district, jumped one of them and vanished.\n\nHe was the only one of the three to reach Concord. The warning of the town came down to a young man being out late."
+    },
+    "fact": {
+      "no": "Han døde to år senere i britisk fangenskap, 26 år gammel. Longfellows berømte dikt om ridtet nevner ham ikke med ett ord.",
+      "en": "He died two years later in British captivity, aged 26. Longfellow's famous poem about the ride does not mention him at all."
+    },
+    "events": [
+      "lexington-concord"
+    ],
+    "wiki": {
+      "no": "Samuel Prescott",
+      "en": "Samuel Prescott"
+    },
+    "portraitNote": {
+      "no": "Det finnes ikke noe bilde av Samuel Prescott.",
+      "en": "No likeness of Samuel Prescott exists."
+    }
+  },
+  {
+    "id": "dawes",
+    "side": "patriot",
+    "lived": "1745–1799",
+    "portrait": "dawes.jpg",
+    "name": {
+      "no": "William Dawes",
+      "en": "William Dawes"
+    },
+    "role": {
+      "no": "Garver, red den andre veien ut av Boston",
+      "en": "A tanner who rode the other road out of Boston"
+    },
+    "hook": {
+      "no": "Han red like langt som Revere. Nesten ingen husker navnet hans.",
+      "en": "He rode just as far as Revere. Almost nobody remembers his name."
+    },
+    "body": {
+      "no": "Dawes var garver i Boston. Mens Revere ble rodd over elva, red Dawes den lange landeveien sørover og rundt – gjennom den eneste porten britene bevoktet.\n\nHan kom seg forbi vaktene, sannsynligvis fordi han var kjent i området og virket harmløs. De to møttes i Lexington, hver for seg, etter å ha varslet ulike bygder på veien.\n\nAt varslingen fungerte, skyldtes nettopp at det var to ruter og flere ryttere. Hvis britene hadde tatt den ene, gikk den andre likevel.",
+      "en": "Dawes was a tanner in Boston. While Revere was rowed across the river, Dawes rode the long way round by land — out through the one gate the British were guarding.\n\nHe got past the sentries, probably because he was known locally and seemed harmless. The two met up in Lexington, separately, having warned different towns on the way.\n\nThe warning worked precisely because there were two routes and several riders. If the British caught one, the other still got through."
+    },
+    "fact": {
+      "no": "Longfellow valgte Revere fordi navnet rimte bedre. «Dawes» er vanskelig å få til å rime på noe dramatisk.",
+      "en": "Longfellow chose Revere because the name scanned better. \"Dawes\" is hard to rhyme with anything dramatic."
+    },
+    "events": [
+      "lexington-concord"
+    ],
+    "wiki": {
+      "no": "William Dawes",
+      "en": "William Dawes"
+    }
+  },
+  {
+    "id": "margaret-gage",
+    "side": "neutral",
+    "lived": "1734–1824",
+    "portrait": "margaret-gage.jpg",
+    "name": {
+      "no": "Margaret Kemble Gage",
+      "en": "Margaret Kemble Gage"
+    },
+    "role": {
+      "no": "Amerikansk, gift med den britiske øverstkommanderende",
+      "en": "American, married to the British commander-in-chief"
+    },
+    "hook": {
+      "no": "Mistanken om at hun lekket planene har fulgt henne i 250 år.",
+      "en": "The suspicion that she leaked the plan has followed her for 250 years."
+    },
+    "body": {
+      "no": "Margaret var født i New Jersey og gift med general Thomas Gage. Hun sa selv at hun følte seg som en kvinne som elsket to menn som kranglet – og at hun håpet ingen av dem ville vinne for lett.\n\nBritene visste at planen om Concord hadde lekket. Gage hadde fortalt den til svært få. Etter den natta sendte han kona til England, og de bodde aldri sammen igjen på samme måte.\n\nDet finnes ingen bevis. Det finnes bare et sammentreff som er vanskelig å overse.",
+      "en": "Margaret was born in New Jersey and married to General Thomas Gage. She said herself that she felt like a woman who loved two men who were quarrelling — and that she hoped neither would win too easily.\n\nThe British knew the Concord plan had leaked. Gage had told very few people. After that night he sent his wife to England, and they never really lived together again.\n\nThere is no evidence. There is only a coincidence that is hard to ignore."
+    },
+    "fact": {
+      "no": "Portrettet av henne er malt av John Singleton Copley, den samme kunstneren som malte Paul Revere.",
+      "en": "Her portrait was painted by John Singleton Copley — the same artist who painted Paul Revere."
+    },
+    "events": [
+      "lexington-concord"
+    ],
+    "wiki": {
+      "no": "Margaret Kemble Gage",
+      "en": "Margaret Kemble Gage"
+    }
   }
 ]

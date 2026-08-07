@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v4';
+const VERSION = 'v6';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -42,12 +42,36 @@ const PRECACHE = [
   './js/wiki.js',
   './js/tour.js',
   './js/routes.js',
-  './data/events.json',
-  './data/people.json',
-  './data/chapters.json',
-  './data/geo/places.json',
-  './data/geo/colonies.geojson',
-  './data/geo/routes.json',
+  './content/american-revolution/events.json',
+  './content/american-revolution/people.json',
+  './content/american-revolution/chapters.json',
+  './content/american-revolution/geo/places.json',
+  './content/american-revolution/geo/colonies.geojson',
+  './content/american-revolution/geo/routes.json',
+  './engine/scenes\map.js',
+  './engine/scenes\overlays.js',
+  './engine\basemap.js',
+  './engine\captions.js',
+  './engine\chrome.js',
+  './engine\player.js',
+  './engine\script.js',
+  './engine\stage.js',
+  './engine\story.js',
+  './css/story.css',
+  './content/american-revolution/chapter-1775-04-19.json',
+  './content/american-revolution/timing.no.json',
+  './content/american-revolution/audio/no\s1.mp3',
+  './content/american-revolution/audio/no\s2.mp3',
+  './content/american-revolution/audio/no\s3.mp3',
+  './content/american-revolution/audio/no\s4.mp3',
+  './content/american-revolution/audio/no\s5.mp3',
+  './content/american-revolution/audio/no\s6.mp3',
+  './content/american-revolution/audio/no\s7.mp3',
+  './content/american-revolution/media\doolittle-1.jpg',
+  './content/american-revolution/media\doolittle-2.jpg',
+  './content/american-revolution/media\doolittle-3.jpg',
+  './content/american-revolution/media\doolittle-4.jpg',
+  './content/american-revolution/media.json',
   './assets/fonts/fraunces-latin.woff2',
 ];
 

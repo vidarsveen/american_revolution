@@ -1,0 +1,26 @@
+{
+  "doolittle-1": {
+    "commons": "File:Battle of Lexington.jpeg",
+    "title": { "no": "Slaget ved Lexington, plate I", "en": "The Battle of Lexington, Plate I" },
+    "artist": "Amos Doolittle",
+    "year": "1775"
+  },
+  "doolittle-2": {
+    "commons": "File:Plate II, A View of the Town of Concord, Amos Doolittle engravings of the Battle of Lexington and Concord, December 1775, reprint by Charles E. Goodspeed, Boston, 1903 - Concord Museum - Concord, MA - DSC05584.JPG",
+    "title": { "no": "Utsikt over Concord, plate II", "en": "A View of the Town of Concord, Plate II" },
+    "artist": "Amos Doolittle",
+    "year": "1775"
+  },
+  "doolittle-3": {
+    "commons": "File:North Bridge Fight.jpeg",
+    "title": { "no": "Kampen ved North Bridge, plate III", "en": "The Engagement at the North Bridge, Plate III" },
+    "artist": "Amos Doolittle",
+    "year": "1775"
+  },
+  "doolittle-4": {
+    "commons": "File:Plate IV, A View of South Lexington, Amos Doolittle engravings of the Battle of Lexington and Concord, December 1775, reprint by Charles E. Goodspeed, Boston, 1903 - Concord Museum - Concord, MA - DSC05587.JPG",
+    "title": { "no": "Percys unnsetning ved Lexington, plate IV", "en": "Percy's Relief at Lexington, Plate IV" },
+    "artist": "Amos Doolittle",
+    "year": "1775"
+  }
+}

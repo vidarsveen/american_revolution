@@ -15,6 +15,12 @@ export const icoMap = s(
   '<path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Z"/><path d="M9 4v13"/><path d="M15 6.5v13"/>'
 );
 
+export const icoStory = s(
+  '<path d="M5 4.6h6.2a2.6 2.6 0 0 1 2.6 2.6v12a2 2 0 0 0-2-2H5Z"/>' +
+  '<path d="M13.8 7.2A2.6 2.6 0 0 1 16.4 4.6H19v12.6h-3.2a2 2 0 0 0-2 2"/>' +
+  '<path d="M8.2 9.4h2.4"/>'
+);
+
 export const icoTimeline = s(
   '<path d="M6 3v18"/><circle cx="6" cy="7.5" r="2"/><circle cx="6" cy="16.5" r="2"/>' +
   '<path d="M11 7.5h9"/><path d="M11 16.5h6"/>'

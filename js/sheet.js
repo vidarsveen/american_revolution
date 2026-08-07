@@ -127,9 +127,12 @@ function renderPerson(p) {
     ? `<img class="sheet__portrait" src="./assets/portraits/${escapeHtml(p.portrait)}"
             alt="${escapeHtml(tx(p.name))}" decoding="async">`
     : `<div class="sheet__portrait sheet__portrait--none">${icoPersonPlaceholder}</div>`;
+  // Some images are statues or stand-ins rather than likenesses. Say so.
+  const note = p.portraitNote
+    ? `<p class="sheet__portrait-note">${escapeHtml(tx(p.portraitNote))}</p>` : '';
 
   return `
-    ${img}
+    ${img}${note}
     <div class="sheet__kicker side--${side}">
       <span class="dot"></span>
       <span>${escapeHtml(tx(p.role))}</span>

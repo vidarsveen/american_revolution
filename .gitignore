@@ -11,3 +11,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Voice comparison samples, not part of the site
+voice-samples/
+
+# Per-beat narration cache (scene mp3s are committed, these are not)
+.narrate-cache/

@@ -45,11 +45,11 @@ def bilingual(obj, field, where, minlen=1):
 
 
 def main():
-    events = load("data/events.json")
-    people = load("data/people.json")
-    chapters = load("data/chapters.json")
-    routes = load("data/geo/routes.json")
-    places = load("data/geo/places.json")
+    events = load("content/american-revolution/events.json")
+    people = load("content/american-revolution/people.json")
+    chapters = load("content/american-revolution/chapters.json")
+    routes = load("content/american-revolution/geo/routes.json")
+    places = load("content/american-revolution/geo/places.json")
 
     event_ids, person_ids = set(), set()
     route_ids = {r["id"] for r in routes["routes"]}
@@ -108,9 +108,16 @@ def main():
         ):
             bilingual(p, field, where, minlen)
 
-        portrait = p.get("portrait", "")
-        if not portrait or not os.path.exists(os.path.join(ROOT, "assets/portraits", portrait)):
+        # A portrait is optional — some people have no surviving likeness — but a
+        # named file must actually exist, and an image that is not a contemporary
+        # likeness must carry a note saying so.
+        portrait = p.get("portrait")
+        if portrait and not os.path.exists(os.path.join(ROOT, "assets/portraits", portrait)):
             problems.append(f"{where}: portrait file assets/portraits/{portrait} is missing")
+        if not portrait and not p.get("portraitNote"):
+            notes.append(f"{where}: no portrait and no note explaining why")
+        if p.get("portraitNote"):
+            bilingual(p, "portraitNote", where, 10)
 
     # ---- cross references -------------------------------------------------
     for e in events:
