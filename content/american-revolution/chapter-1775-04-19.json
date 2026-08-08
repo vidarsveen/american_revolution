@@ -694,6 +694,28 @@
           -70.9
         ]
       ]
+    },
+    "militia-bridge": {
+      "side": "patriot",
+      "label": {
+        "no": "Militsen går ned mot brua",
+        "en": "The militia walk down to the bridge"
+      },
+      "strength": 400,
+      "coords": [
+        [
+          42.4771,
+          -71.3548
+        ],
+        [
+          42.4738,
+          -71.3536
+        ],
+        [
+          42.4693,
+          -71.352
+        ]
+      ]
     }
   },
   "scenes": [
@@ -1398,6 +1420,15 @@
               "do": "route.draw",
               "id": "revere-ride",
               "over": 6
+            },
+            {
+              "on": {
+                "no": "word:hest",
+                "en": "word:horse"
+              },
+              "do": "sound.ambience",
+              "id": "hooves",
+              "gainDb": -13
             }
           ],
           "gapAfter": 0.95
@@ -1468,8 +1499,8 @@
         {
           "id": "s2.b6",
           "say": {
-            "no": "Revere når Lexington rundt midnatt, og varsler de to mennene britene helst vil ha tak i: Samuel Adams og John Hancock.",
-            "en": "Revere reaches Lexington around midnight, and warns the two men the British would most like to catch: Samuel Adams and John Hancock."
+            "no": "Revere når Lexington rundt midnatt, og advarer de to mennene britene helst vil ha tak i: Samuel Adams og John Hancock. Han roper ikke at britene kommer. Alle her er britiske. Han sier at regulære tropper er på vei ut.",
+            "en": "Revere reaches Lexington around midnight, and warns the two men the British would most like to catch: Samuel Adams and John Hancock. He does not shout that the British are coming. Everyone here is British. He says the Regulars are coming out."
           },
           "cues": [
             {
@@ -1560,6 +1591,10 @@
             {
               "on": "end",
               "do": "route.clear"
+            },
+            {
+              "on": "end",
+              "do": "sound.ambience"
             }
           ],
           "gapAfter": 2.95
@@ -1633,8 +1668,8 @@
         {
           "id": "s3.b2",
           "say": {
-            "no": "På gressplassen midt i Lexington står det en flokk menn. Noen av dem er nitten år. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker.",
-            "en": "On the green in the middle of Lexington stands a cluster of men. Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker."
+            "no": "På grønningen midt i Lexington står en klynge menn. Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
+            "en": "On the green in the middle of Lexington stands a cluster of men. Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
           },
           "gapAfter": 0.95,
           "cues": [
@@ -1712,6 +1747,18 @@
             {
               "on": "start",
               "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Stå",
+                "en": "word:Stand"
+              },
+              "do": "quote.show",
+              "id": "parker"
+            },
+            {
+              "on": "end",
+              "do": "quote.hide"
             }
           ],
           "gapAfter": 1.25
@@ -1727,6 +1774,18 @@
               "on": "word:Pitcairn",
               "do": "portrait.show",
               "id": "pitcairn"
+            },
+            {
+              "on": {
+                "no": "word:roper",
+                "en": "word:shouts"
+              },
+              "do": "quote.show",
+              "id": "pitcairn"
+            },
+            {
+              "on": "end",
+              "do": "quote.hide"
             }
           ],
           "gapAfter": 0.85
@@ -1784,7 +1843,20 @@
             "no": "Ingen har noen gang klart å si hvem som skjøt. Begge sider var helt sikre på at det var den andre.",
             "en": "Nobody has ever been able to say who fired. Both sides were quite certain it was the other."
           },
-          "gapAfter": 1.55
+          "gapAfter": 1.55,
+          "cues": [
+            {
+              "on": {
+                "no": "word:Ingen",
+                "en": "word:Nobody"
+              },
+              "do": "caption.note",
+              "value": {
+                "no": "Ingen vet hvem som skjøt",
+                "en": "Nobody knows who fired"
+              }
+            }
+          ]
         },
         {
           "id": "s3.b10",
@@ -1817,8 +1889,8 @@
         {
           "id": "s3.b11",
           "say": {
-            "no": "Åtte amerikanere ligger igjen døde på plassen. Én britisk soldat er såret i beinet.",
-            "en": "Eight Americans lie dead on the green. One British soldier is wounded in the leg."
+            "no": "Åtte amerikanere ligger døde på grønningen. Én britisk soldat er såret i beinet. Jonathan Harrington kryper hjem over veien og dør på sin egen dørstokk, foran kona si.",
+            "en": "Eight Americans lie dead on the green. One British soldier is wounded in the leg. Jonathan Harrington crawls back across the road and dies on his own doorstep, in front of his wife."
           },
           "cues": [
             {
@@ -2024,6 +2096,18 @@
             {
               "on": "start",
               "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Skal",
+                "en": "word:Will"
+              },
+              "do": "quote.show",
+              "id": "hosmer"
+            },
+            {
+              "on": "end",
+              "do": "quote.hide"
             }
           ],
           "gapAfter": 1.45
@@ -2043,6 +2127,24 @@
               "do": "image.show",
               "id": "doolittle-3",
               "mode": "inset"
+            },
+            {
+              "on": {
+                "no": "word:går",
+                "en": "word:walk"
+              },
+              "do": "route.draw",
+              "id": "militia-bridge",
+              "over": 5.0
+            },
+            {
+              "on": {
+                "no": "word:kolonne",
+                "en": "word:column"
+              },
+              "do": "sound.ambience",
+              "id": "boots",
+              "gainDb": -13
             }
           ],
           "gapAfter": 1.35
@@ -2087,7 +2189,24 @@
             "no": "To amerikanere faller. Og for første gang i historien gir en amerikansk offiser ordre om å skyte på kongens soldater.",
             "en": "Two Americans fall. And for the first time in history, an American officer gives the order to fire on the king's soldiers."
           },
-          "gapAfter": 1.25
+          "gapAfter": 1.25,
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:faller",
+                "en": "word:fall"
+              },
+              "do": "sound.play",
+              "id": "musket",
+              "times": 2,
+              "spread": 0.7,
+              "gainDb": -5
+            }
+          ]
         },
         {
           "id": "s4.b9",
@@ -2115,6 +2234,14 @@
               "do": "sound.play",
               "id": "volley",
               "gainDb": -3
+            },
+            {
+              "on": {
+                "no": "word:Skyt",
+                "en": "word:Fire"
+              },
+              "do": "quote.show",
+              "id": "buttrick"
             }
           ],
           "gapAfter": 1.95
@@ -2129,6 +2256,14 @@
             {
               "on": "end",
               "do": "image.hide"
+            },
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "end",
+              "do": "sound.ambience"
             }
           ],
           "gapAfter": 2.95
@@ -2275,7 +2410,19 @@
             "no": "Og de stiller seg ikke opp på ei slette slik en hær skal. De legger seg bak murer og trær langs veien.",
             "en": "And they do not line up in a field the way an army is supposed to. They lie down behind walls and trees along the road."
           },
-          "gapAfter": 1.35
+          "gapAfter": 1.35,
+          "cues": [
+            {
+              "on": {
+                "no": "word:legger",
+                "en": "word:lie"
+              },
+              "do": "map.flyTo",
+              "to": "the-road",
+              "zoom": 12.4,
+              "over": 7.0
+            }
+          ]
         },
         {
           "id": "s5.b6",
@@ -2371,7 +2518,7 @@
         {
           "id": "s5.b10",
           "say": {
-            "no": "Men de siste kilometrene, gjennom bygda Menotomy, er de verste. Der går kampene fra hus til hus. Flere dør her enn ved Lexington og Concord til sammen.",
+            "no": "Men de siste kilometrene, gjennom landsbyen Menotomy, er de verste. Der går kampene fra hus til hus. Flere dør her enn ved Lexington og Concord til sammen.",
             "en": "But the last few kilometres, through the village of Menotomy, are the worst. There the fighting goes house to house. More die here than at Lexington and Concord combined."
           },
           "cues": [
@@ -2405,7 +2552,43 @@
               "centre": false
             }
           ],
-          "gapAfter": 1.35
+          "gapAfter": 0.9
+        },
+        {
+          "id": "s5.b10b",
+          "say": {
+            "no": "Her møter Samuel Whittemore, syttiåtte år gammel, kolonnen alene. Han blir skutt i ansiktet, stukket med bajonett og etterlatt som død. Han lever til han er nittiseks.",
+            "en": "Here Samuel Whittemore, seventy-eight years old, meets the column alone. He is shot in the face, bayoneted and left for dead. He lives to be ninety-six."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:syttiåtte",
+                "en": "word:seventy-eight"
+              },
+              "do": "stat.show",
+              "value": "78",
+              "label": {
+                "no": "år gammel",
+                "en": "years old"
+              },
+              "side": "patriot"
+            },
+            {
+              "on": {
+                "no": "word:nittiseks",
+                "en": "word:ninety-six"
+              },
+              "do": "stat.show",
+              "value": "96",
+              "label": {
+                "no": "ble han",
+                "en": "he lived to"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.2
         },
         {
           "id": "s5.b11",
@@ -2788,6 +2971,46 @@
       "by": {
         "no": "Slagordet i koloniene, fra 1765",
         "en": "The colonists’ slogan, from 1765"
+      }
+    },
+    "parker": {
+      "text": {
+        "no": "Stå på deres plass. Ikke skyt med mindre det blir skutt på dere.",
+        "en": "Stand your ground. Do not fire unless fired upon."
+      },
+      "by": {
+        "no": "Kaptein John Parker til militsen, Lexington, 19. april 1775",
+        "en": "Captain John Parker to the militia, Lexington, 19 April 1775"
+      }
+    },
+    "pitcairn": {
+      "text": {
+        "no": "Spre dere, karer! Legg ned våpnene, og spre dere!",
+        "en": "Disperse, you men! Lay down your arms, and disperse!"
+      },
+      "by": {
+        "no": "Major John Pitcairn, slik det ble husket etterpå",
+        "en": "Major John Pitcairn, as it was remembered afterwards"
+      }
+    },
+    "hosmer": {
+      "text": {
+        "no": "Vil dere la dem brenne byen ned?",
+        "en": "Will you let them burn the town down?"
+      },
+      "by": {
+        "no": "Joseph Hosmer til militsen over Concord, 19. april 1775",
+        "en": "Joseph Hosmer to the militia above Concord, 19 April 1775"
+      }
+    },
+    "buttrick": {
+      "text": {
+        "no": "Skyt, karer, skyt!",
+        "en": "Fire, fellow soldiers, fire!"
+      },
+      "by": {
+        "no": "Major John Buttrick ved North Bridge — den første ordren om å skyte på kongens soldater",
+        "en": "Major John Buttrick at the North Bridge — the first order to fire on the king’s soldiers"
       }
     }
   },

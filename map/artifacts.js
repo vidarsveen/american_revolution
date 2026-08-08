@@ -67,20 +67,29 @@ export function arrowPath(screenPts, wMax, progress = 1) {
   if (m.total < 4) return null;
 
   const norm = normals(pts);
+  /* An arrow wider than it is long is a blob, not an arrow.
+
+     Width comes from strength in metres of ground, which is right — but a
+     large force moving a short distance at street zoom asks for exactly that
+     shape. Four hundred militia walking the nine hundred metres down to the
+     North Bridge came out as a blue lozenge with no direction in it at all.
+     So the width is also bounded by the length of the march. */
+  const w = Math.min(wMax, m.total * 0.13);
+
   // The head has to FLARE, not sharpen. This was wMax * 1.05, i.e. barbs 5%
   // wider than the shaft, which measured 26px of shaft narrowing to 10px —
   // a sharpened stick. An arrowhead reads as an arrowhead when its barbs are
   // roughly twice the shaft's half-width, so the flare is unmistakable at a
   // glance even when the arrow is small.
-  const headLen = Math.min(wMax * 3.4, m.total * 0.32);
-  const headHalf = wMax * 2.0;
+  const headLen = Math.min(w * 3.4, m.total * 0.32);
+  const headHalf = Math.min(w * 2.0, m.total * 0.22);
   const sShaft = m.total - headLen;
-  const wTail = wMax * 0.42;
+  const wTail = w * 0.42;
 
   const halfWidth = (s) => {
     if (s <= sShaft) {
       const u = sShaft > 0 ? s / sShaft : 1;
-      return wTail + (wMax - wTail) * smoothstep(0, 0.28, u);
+      return wTail + (w - wTail) * smoothstep(0, 0.28, u);
     }
     return wMax;   // the shaft holds full width right up to the head base
   };

@@ -83,7 +83,6 @@ const VERBS = {
 
 
   // Pacing verbs are handled by the player, not the stage.
-  hold:  () => {},
   pause: () => {},
 };
 

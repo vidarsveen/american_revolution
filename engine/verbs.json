@@ -370,14 +370,6 @@
         }
       }
     },
-    "hold": {
-      "summary": {
-        "no": "Hold bildet",
-        "en": "Hold the picture"
-      },
-      "args": {},
-      "handledBy": "player"
-    },
     "pause": {
       "summary": {
         "no": "Vent på et trykk",
