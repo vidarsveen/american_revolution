@@ -86,6 +86,45 @@ export function applyCue(cue, instant = false) {
 
 export function knownVerbs() { return Object.keys(VERBS); }
 
+/**
+ * Cross-check the handler table against engine/verbs.json.
+ *
+ * The vocabulary used to live in two hand-maintained lists — this table and
+ * VERBS in tools/check-script.py. Adding a verb to one and forgetting the
+ * other meant a chapter validated clean and then silently did nothing in the
+ * browser, which is the worst possible failure mode: no error, no picture,
+ * and a cue that reads correct on the page.
+ *
+ * The manifest is now the source of truth for BOTH. This reports a drift in
+ * either direction, and deliberately only warns: a mismatched manifest must
+ * never be the reason a reader cannot hear a chapter.
+ */
+export async function checkVerbManifest(base = './engine/verbs.json') {
+  try {
+    const res = await fetch(base);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const manifest = await res.json();
+
+    const declared = new Set(Object.keys(manifest.verbs || {}));
+    const implemented = new Set(Object.keys(VERBS));
+
+    const missing = [...declared].filter((v) => !implemented.has(v));
+    const extra = [...implemented].filter((v) => !declared.has(v));
+
+    if (missing.length) {
+      console.warn('[stage] verbs.json declares verbs with no handler:', missing.join(', '));
+    }
+    if (extra.length) {
+      console.warn('[stage] handlers missing from verbs.json (check-script.py will '
+                 + 'reject chapters that use them):', extra.join(', '));
+    }
+    return { manifest, missing, extra, ok: !missing.length && !extra.length };
+  } catch (err) {
+    console.warn('[stage] could not read the verb manifest:', err.message);
+    return { manifest: null, missing: [], extra: [], ok: false };
+  }
+}
+
 function pick(field) {
   if (field == null) return null;
   if (typeof field === 'string') return field;

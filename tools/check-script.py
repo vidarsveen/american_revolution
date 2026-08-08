@@ -23,22 +23,21 @@ import unicodedata
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Every verb the engine implements. Adding one here without implementing it in
-# engine/stage.js will pass this check and fail silently in the browser, so
-# these two lists have to be kept honest together.
-VERBS = {
-    "map.flyTo", "map.fitRoute", "map.fitPlaces", "map.time", "map.mood", "map.flash",
-    "route.draw", "route.clear",
-    "marker.show", "marker.hide", "marker.clear",
-    "place.highlight", "place.clear",
-    "converge",
-    "portrait.show", "portrait.hide",
-    "image.show", "image.hide",
-    "quote.show", "quote.hide",
-    "stat.show", "stat.clear",
-    "caption.note",
-    "hold", "pause",
-}
+# The cue vocabulary comes from engine/verbs.json, which engine/stage.js also
+# reads. It used to be copied by hand into this file, so adding a verb to one
+# and not the other meant a chapter validated clean and then silently did
+# nothing in the browser.
+MANIFEST_PATH = os.path.join(ROOT, "engine", "verbs.json")
+
+try:
+    with open(MANIFEST_PATH, encoding="utf-8") as fh:
+        MANIFEST = json.load(fh)
+except FileNotFoundError:
+    raise SystemExit(f"missing {MANIFEST_PATH} — it is the source of truth for cue verbs")
+
+VERB_SPEC = MANIFEST["verbs"]
+VERBS = set(VERB_SPEC)
+REF_TYPES = MANIFEST.get("refTypes", {})
 
 problems: list[str] = []
 notes: list[str] = []
@@ -102,6 +101,24 @@ def main():
             media = set(json.load(fh))
     quotes = set(chapter.get("quotes", {}))
 
+    sounds = set()
+    sp = os.path.join(ROOT, "content", pack, "sound.json")
+    if os.path.exists(sp):
+        with open(sp, encoding="utf-8") as fh:
+            sounds = set(json.load(fh))
+
+    # What each reference type in the manifest points at, and what to call it
+    # when it is missing.
+    global REF_POOLS
+    REF_POOLS = {
+        "place":  (places, "place"),
+        "route":  (routes, "route"),
+        "person": (people, "person"),
+        "media":  (media, "image"),
+        "quote":  (quotes, "quote"),
+        "sound":  (sounds, "sound"),
+    }
+
     # A pack may ship recorded sound effects instead of using the synthesised
     # ones in sound/library.js. Same shape as media.json, same rule: a file
     # with no licence and no credit does not go in a build. Absent by design —
@@ -144,36 +161,34 @@ def main():
                 if verb not in VERBS:
                     problems.append(f"{bid}: unknown cue verb '{verb}'")
 
-                # reference integrity
-                if verb == "map.flyTo" and cue.get("to") not in places:
-                    problems.append(f"{bid}: map.flyTo -> unknown place '{cue.get('to')}'")
-                if verb in ("route.draw", "map.fitRoute") and cue.get("id") not in routes:
-                    problems.append(f"{bid}: {verb} -> unknown route '{cue.get('id')}'")
-                if verb == "portrait.show" and cue.get("id") not in people:
-                    problems.append(f"{bid}: portrait.show -> unknown person '{cue.get('id')}'")
-                # An empty manifest used to make these checks vanish, which is
-                # exactly when they matter most — the cue then silently does
-                # nothing in the browser.
-                if verb == "image.show" and cue.get("id") not in media:
-                    problems.append(
-                        f"{bid}: image.show -> '{cue.get('id')}' is not in media.json"
-                        + ("" if media else " (no media.json — run tools/fetch-media.py)"))
-                if verb == "quote.show" and cue.get("id") not in quotes:
-                    problems.append(f"{bid}: quote.show -> '{cue.get('id')}' is not in the chapter's quotes block")
-                if verb in ("marker.show", "marker.hide", "place.highlight") and cue.get("at") not in places:
-                    problems.append(f"{bid}: {verb} -> unknown place '{cue.get('at')}'")
-                if verb == "map.fitPlaces":
-                    for pid in cue.get("places", []) or []:
-                        if pid not in places:
-                            problems.append(f"{bid}: map.fitPlaces -> unknown place '{pid}'")
-                if verb == "converge":
-                    if cue.get("to") not in places:
-                        problems.append(f"{bid}: converge -> unknown target place '{cue.get('to')}'")
-                    if not (cue.get("from") or []):
-                        problems.append(f"{bid}: converge has no 'from' places")
-                    for pid in cue.get("from", []) or []:
-                        if pid not in places:
-                            problems.append(f"{bid}: converge -> unknown origin place '{pid}'")
+                # Reference integrity, driven by the manifest: any argument
+                # whose declared type is a reference must name something that
+                # exists. Adding a verb with a `place` argument gets this check
+                # for free, which is the point of the manifest.
+                spec = VERB_SPEC.get(verb) or {}
+                for arg, adef in (spec.get("args") or {}).items():
+                    atype = adef.get("type", "")
+                    base = atype[:-2] if atype.endswith("[]") else atype
+                    value = cue.get(arg)
+
+                    if adef.get("required") and value in (None, "", [], {}):
+                        problems.append(f"{bid}: {verb} is missing required '{arg}'")
+                        continue
+                    if base not in REF_TYPES or value is None:
+                        continue
+
+                    pool, what = REF_POOLS[base]
+                    wanted = value if atype.endswith("[]") else [value]
+                    if atype.endswith("[]") and not isinstance(value, list):
+                        problems.append(f"{bid}: {verb} '{arg}' should be a list")
+                        continue
+                    for ref in wanted:
+                        if ref not in pool:
+                            hint = ""
+                            if base == "media" and not pool:
+                                hint = " (no media.json — run tools/fetch-media.py)"
+                            problems.append(
+                                f"{bid}: {verb} -> unknown {what} '{ref}'{hint}")
 
                 # the important one: does the anchor word actually get spoken?
                 on = cue.get("on", "start")

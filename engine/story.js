@@ -3,7 +3,7 @@
    ============================================================ */
 
 import { loadChapter } from './script.js';
-import { mountStage } from './stage.js';
+import { checkVerbManifest, mountStage } from './stage.js';
 import { Player } from './player.js';
 import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
 import { mountChrome } from './chrome.js';
@@ -45,6 +45,12 @@ let started = false;
 let stageApi = null;
 
 export async function initStory(container, allPeople, language) {
+  // Dev-time only: a drift between the handler table and the manifest
+  // is invisible until a cue silently does nothing, so say it out loud.
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    checkVerbManifest();
+  }
+
   view = container;
   people = allPeople;
   lang = language;

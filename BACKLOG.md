@@ -26,24 +26,27 @@ a constraint.
 
 ---
 
-## Blocking the next piece of work
+## Done
 
-**The cue vocabulary is duplicated by hand** between `engine/stage.js` and
-`tools/check-script.py`. Adding a verb to one without the other means a typo
-in a chapter silently does nothing. This has already blocked work twice, and
-wiring sound cues will hit it a third time. One JSON manifest read by both,
-and the lab control panels can be generated from it for free.
+- **The cue vocabulary is now one file** — `engine/verbs.json`, read by
+  `engine/stage.js` (which cross-checks its handler table at boot on
+  localhost) and by `tools/check-script.py` (which drives its reference
+  integrity checks from the declared argument types). Removing a verb from
+  the manifest now fails the validator instead of silently doing nothing in
+  the browser. Adding a verb with a `place` argument gets its reference check
+  for free. Still to do: generate the lab control panels from it.
+- **`geo/colonies.geojson` is no longer anachronistic** — rebuilt by
+  `tools/build-colonies.py` as thirteen units dissolved from modern states.
 
 ---
 
 ## Content
 
-**`geo/colonies.geojson` is anachronistic.** It has 15 features including a
-separate *Maine* and a *West Virginia*. In 1775 Massachusetts ran up through
-Maine, Vermont was claimed by both New York and New Hampshire, and West
-Virginia was 88 years away. This matters immediately: any scene that says
-"the thirteen colonies" and draws this file is teaching something false. The
-override mechanism is in place (`map.useRegions(geojson)`); the data is not.
+**Colonial boundaries are still an approximation.** `build-colonies.py` now
+gives thirteen historically-grouped units, but they are modern state outlines
+dissolved together, not 1775 survey lines. Charters ran to vague western
+limits and several overlapped. Good enough to say "the thirteen colonies"
+honestly; not good enough to argue a border dispute from.
 
 **An introduction chapter.** The existing chapter opens in Boston with no
 orientation. See "Next up" below.
