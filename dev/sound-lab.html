@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="no" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lydlab — sound module bench</title>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid;
+    grid-template-columns: 268px 1fr;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  /* ---- panel ---- */
+  .panel {
+    overflow-y: auto;
+    padding: 14px;
+    background: var(--paper-raised);
+    border-right: 1px solid var(--rule);
+  }
+  .panel h1 {
+    margin: 0 0 2px;
+    font-family: var(--font-display);
+    font-size: 17px;
+  }
+  .panel p.sub { margin: 0 0 14px; font-size: 11.5px; color: var(--ink-soft); }
+  .grp { margin-bottom: 14px; }
+  .grp > h2 {
+    margin: 0 0 6px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 5px; }
+  button {
+    font: inherit;
+    font-size: 12px;
+    padding: 6px 9px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 7px;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  button:hover { background: var(--paper-sunken); }
+  button.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  button.wide { flex: 1 1 100%; }
+  button.hero {
+    flex: 1 1 100%;
+    padding: 9px;
+    font-weight: 700;
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+  }
+  button[disabled] { opacity: .45; cursor: not-allowed; }
+  label.slider { display: block; font-size: 11.5px; color: var(--ink-soft); margin-top: 8px; }
+  label.slider input { width: 100%; }
+  .note {
+    margin-top: 10px; padding: 8px 9px;
+    font-size: 11px; line-height: 1.5; color: var(--ink-soft);
+    background: var(--paper-sunken); border-radius: 7px;
+  }
+  .note code { font-size: 10.5px; }
+
+  /* ---- stage ---- */
+  .stage { overflow-y: auto; padding: 18px; display: grid; gap: 14px; align-content: start; }
+  .card {
+    padding: 14px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-sm);
+  }
+  .card > h3 {
+    margin: 0 0 10px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* meter */
+  .meters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .meter b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 30px; line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .meter i { display: block; font-style: normal; font-size: 11px; color: var(--ink-soft); }
+  .bar {
+    position: relative; height: 12px; margin-top: 8px;
+    background: var(--paper-sunken); border-radius: var(--r-pill); overflow: hidden;
+  }
+  .bar span { position: absolute; inset: 0 auto 0 0; background: var(--gold); border-radius: var(--r-pill); }
+  .bar span.target { background: var(--rule-strong); }
+  .duckflag {
+    display: inline-block; margin-left: 6px; padding: 1px 7px;
+    font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    border-radius: var(--r-pill); color: #fff; background: var(--ink-faint);
+  }
+  .duckflag.is-on { background: var(--red); }
+
+  #trace { display: block; width: 100%; height: 190px; }
+
+  table.read { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.read td { padding: 3px 0; border-bottom: 1px solid var(--rule); }
+  table.read td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+  table.read tr:last-child td { border-bottom: 0; }
+
+  .legend { display: flex; gap: 14px; margin-top: 8px; font-size: 11px; color: var(--ink-soft); }
+  .legend i { display: inline-block; width: 22px; height: 3px; margin-right: 5px; vertical-align: middle; border-radius: 2px; }
+
+  @media (max-width: 780px) {
+    body { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .panel { border-right: 0; border-bottom: 1px solid var(--rule); max-height: 45vh; }
+    .meters { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1>Lydlab</h1>
+  <p class="sub">The sound module on its own bench — no app, no narration.</p>
+
+  <div class="grp">
+    <h2>Tema</h2>
+    <div class="row" id="theme">
+      <button data-theme-set="light" class="on">Lyst</button>
+      <button data-theme-set="dark">Mørkt</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Mikser</h2>
+    <div class="row">
+      <button class="hero" id="unlock">Lås opp lyden</button>
+      <button class="wide" data-do="suspend">Pause konteksten</button>
+      <button class="wide" data-do="resume">Fortsett</button>
+    </div>
+    <div class="note" id="mixState">Ikke låst opp ennå.</div>
+  </div>
+
+  <div class="grp">
+    <h2>Musikkunderlag</h2>
+    <div class="row" id="musicBtns"></div>
+    <label class="slider">Underlagsnivå: <b id="bedOut">−14 dB</b>
+      <input type="range" id="bed" min="-40" max="0" step="1" value="-14">
+    </label>
+    <label class="slider">Dukking: <b id="duckOut">−12 dB</b>
+      <input type="range" id="duck" min="-30" max="0" step="1" value="-12">
+    </label>
+    <label class="slider">Forvarsel: <b id="lookOut">250 ms</b>
+      <input type="range" id="look" min="0" max="800" step="25" value="250">
+    </label>
+  </div>
+
+  <div class="grp">
+    <h2>Tale (syntetisk manus)</h2>
+    <div class="row">
+      <button class="wide" id="run">Spill av manuset</button>
+      <button data-do="rewind">Til start</button>
+      <button data-do="reset">Nullstill</button>
+    </div>
+    <label class="slider">Tid: <b id="tOut">0,0 s</b>
+      <input type="range" id="scrub" min="0" max="2800" step="1" value="0">
+    </label>
+  </div>
+
+  <div class="grp">
+    <h2>Effekter</h2>
+    <div class="row" id="sfxBtns"></div>
+  </div>
+
+  <div class="grp">
+    <h2>Atmosfære</h2>
+    <div class="row" id="ambBtns"></div>
+  </div>
+
+  <div class="grp">
+    <h2>Modus</h2>
+    <div class="row">
+      <button class="wide" id="instant">instant: av</button>
+      <button class="wide" id="noctx">AudioContext: finnes</button>
+      <button class="wide" id="silent">Stille reserve: av</button>
+    </div>
+    <div class="note">
+      <b>instant</b> er flagget spilleren setter når bildet bygges opp igjen etter
+      et hopp. Musikk og atmosfære skal sette ny tilstand uten fade; enkeltlyder
+      skal droppes helt, ellers avfyres førti musketter når du spoler tilbake
+      gjennom Lexington.<br><br>
+      <b>AudioContext: mangler</b> bygger mikseren på nytt uten
+      <code>window.AudioContext</code>. Alt skal fortsette å svare — bare stille.
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+
+  <div class="card">
+    <h3>Nivå på musikkbussen <span class="duckflag" id="duckFlag">åpen</span></h3>
+    <div class="meters">
+      <div class="meter">
+        <b id="mMeasured">—</b>
+        <i>målt på GainNode-en</i>
+        <div class="bar"><span id="barMeasured"></span></div>
+      </div>
+      <div class="meter">
+        <b id="mTarget">—</b>
+        <i>mål fra <code>targetAt(t)</code></i>
+        <div class="bar"><span class="target" id="barTarget"></span></div>
+      </div>
+      <div class="meter">
+        <b id="mTime">0,0 s</b>
+        <i>i manuset</i>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Dukking over tid</h3>
+    <canvas id="trace" width="1200" height="380"></canvas>
+    <div class="legend">
+      <span><i style="background:var(--blue)"></i>tale</span>
+      <span><i style="background:var(--ink)"></i>mål (funksjon av tid)</span>
+      <span><i style="background:var(--gold)"></i>målt nivå</span>
+      <span><i style="background:var(--red)"></i>nå</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Tilstand</h3>
+    <table class="read">
+      <tr><td>mixer.ready()</td><td id="rReady">false</td></tr>
+      <tr><td>musikk</td><td id="rMusic">—</td></tr>
+      <tr><td>atmosfære</td><td id="rAmb">—</td></tr>
+      <tr><td>taleintervaller</td><td id="rInt">0</td></tr>
+      <tr><td>enkeltlyder spilt</td><td id="rSfx">0</td></tr>
+      <tr><td>enkeltlyder droppet</td><td id="rSkip">0</td></tr>
+      <tr><td>enkeltlyder uten lyd</td><td id="rUnav">0</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<script type="module" src="./sound-lab.js"></script>
+</body>
+</html>

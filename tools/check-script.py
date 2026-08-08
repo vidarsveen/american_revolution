@@ -53,6 +53,25 @@ def norm(s: str) -> str:
     )
 
 
+def check_sound_manifest(pack_dir: str) -> None:
+    """content/<pack>/sound.json — one entry per recorded effect, or no file."""
+    path = os.path.join(pack_dir, "sound.json")
+    if not os.path.exists(path):
+        return
+    with open(path, encoding="utf-8") as fh:
+        manifest = json.load(fh)
+    for name, entry in manifest.items():
+        if not isinstance(entry, dict) or not entry.get("file"):
+            problems.append(f"sound.json {name}: no 'file' — drop the entry and the synthesised effect is used")
+            continue
+        for field in ("licence", "credit"):
+            if not entry.get(field):
+                problems.append(f"sound.json {name}: no '{field}'")
+        if not os.path.exists(os.path.join(pack_dir, entry["file"])):
+            problems.append(f"sound.json {name}: '{entry['file']}' is not on disk")
+    print(f"sound.json: {len(manifest)} recorded effect(s)")
+
+
 def main():
     if len(sys.argv) < 2:
         print(__doc__)
@@ -82,6 +101,12 @@ def main():
         with open(media_path, encoding="utf-8") as fh:
             media = set(json.load(fh))
     quotes = set(chapter.get("quotes", {}))
+
+    # A pack may ship recorded sound effects instead of using the synthesised
+    # ones in sound/library.js. Same shape as media.json, same rule: a file
+    # with no licence and no credit does not go in a build. Absent by design —
+    # the default library is synthetic and has nothing to attribute.
+    check_sound_manifest(pack_dir)
 
     langs = sorted({l for s in chapter["scenes"] for b in s["beats"]
                     for l in (b.get("say") or {})})
