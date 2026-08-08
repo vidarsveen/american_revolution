@@ -84,6 +84,14 @@ export function createMap(host, opts = {}) {
   const bctx = buf.getContext('2d');
   let bufState = null;
   const MARGIN = 0.3;
+  /* How far the live zoom may drift from the zoom the ground was baked at
+     before it has to be baked again. Within this the buffer is simply scaled,
+     which is what every tile map does during a pinch: slightly soft while the
+     camera is moving, sharp the moment it stops. Above it the softness starts
+     to read as blur rather than as motion. */
+  const ZOOM_SLACK = 0.55;
+  let camMovedAt = -1e9;
+  let settleTimer = 0;
 
   /* ---------------- camera ---------------- */
   const cam = { lon: center[1], lat: center[0], zoom };
@@ -258,6 +266,7 @@ export function createMap(host, opts = {}) {
     const camKey = `${cam.lat.toFixed(5)},${cam.lon.toFixed(5)},${cam.zoom.toFixed(3)}`;
     if (camKey !== lastCam) {
       lastCam = camKey;
+      camMovedAt = now();
       onCamera({ lat: cam.lat, lon: cam.lon, zoom: cam.zoom });
     }
 
@@ -355,15 +364,28 @@ export function createMap(host, opts = {}) {
     // fetch beat the first frame.
     const groundReady = levelReady(want);
 
+    /* Re-baking the ground on every frame of a zoom is what made a fly-over
+       crawl: a 2.6 s flight changed the zoom ~150 times and re-walked every
+       coastline, pond and wood each time. Measured at 118 ms a frame — eight
+       frames a second. So while the camera is moving the existing bake is
+       SCALED instead, and re-baked once it settles.
+
+       The coverage test below also has to use the zoom the buffer was baked
+       at rather than the live one, or a scaled buffer is measured against the
+       wrong world size and reports itself as covering ground it does not. */
+    const sBuf = bufState ? scaleFor(bufState.zoom) : s;
+    const zoomOff = bufState ? Math.abs(cam.zoom - bufState.zoom) : 0;
+    const moving = now() - camMovedAt < 140;
+
     const stale = !bufState
       || !bufState.ready
-      || bufState.zoom !== cam.zoom
+      || (moving ? zoomOff > ZOOM_SLACK : zoomOff > 1e-6)
       || bufState.level !== want
       || bufState.palette !== palette
       || bufState.borders !== borderKey()
       || tl.x < bufState.x || tl.y < bufState.y
-      || tl.x + size.w / s > bufState.x + bufState.w / s
-      || tl.y + size.h / s > bufState.y + bufState.h / s;
+      || tl.x + size.w / s > bufState.x + bufState.w / sBuf
+      || tl.y + size.h / s > bufState.y + bufState.h / sBuf;
 
     if (stale) {
       const bw = Math.ceil(size.w + mx * 2);
@@ -384,7 +406,18 @@ export function createMap(host, opts = {}) {
 
     const ox = (bufState.x - tl.x) * s;
     const oy = (bufState.y - tl.y) * s;
-    ctx.drawImage(buf, ox, oy, bufState.w, bufState.h);
+    // k is 1 whenever the bake is at the live zoom, so a still map is pixel
+    // for pixel what it always was.
+    const k = s / scaleFor(bufState.zoom);
+    ctx.drawImage(buf, ox, oy, bufState.w * k, bufState.h * k);
+
+    // A scaled bake has to be redeemed. Nothing else will schedule a frame
+    // once the camera stops, so ask for one — otherwise the ground stays soft
+    // for as long as you leave it alone, which is exactly the wrong way round.
+    if (k !== 1) {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(schedule, 160);
+    }
   }
 
   /* ---------------- overlay: labels and unit counters ---------------- */

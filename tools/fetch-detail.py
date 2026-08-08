@@ -231,7 +231,13 @@ def main() -> int:
     # Tolerance ~11 m: finer than a pixel at zoom 14, and the whole point is
     # that this level is only ever drawn when you are standing in it.
     TOL = 0.0001
-    MIN_WATER = 0.0016   # bbox diagonal in degrees, roughly 150 m
+    # Roughly 440 m. Eastern Massachusetts has three thousand ponds inside
+    # this box and half of them are under 360 m — a dozen pixels at the zooms
+    # this level is drawn at. They are not water you can see, they are
+    # speckle, and every one of them is re-walked whenever the ground is
+    # baked. Keeping only the ones big enough to be a place cuts the lake
+    # geometry by 60% and loses nothing anyone could point at.
+    MIN_WATER = 0.004
     # Woods are kept only when they are big enough to read as ground rather
     # than as speckle. Modern OSM maps every copse behind a supermarket; at
     # the zooms this level is drawn, anything under about half a kilometre is
