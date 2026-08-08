@@ -66,6 +66,22 @@ function detailShowing(zoom, lon, lat) {
   return true;
 }
 
+/**
+ * Who to credit for what is currently drawn.
+ *
+ * Natural Earth is public domain and needs no attribution, but the pack's
+ * close-in geometry is OpenStreetMap under ODbL, which does. The credit
+ * travelled in the detail file from the day it was built and was never once
+ * rendered — it was invisible only because a Leaflet attribution control for
+ * the old raster tiles happened to be sitting in the corner saying something
+ * similar. Taking the tiles away without this would have left OSM data on
+ * screen with nothing crediting it.
+ */
+export function creditFor(zoom, lon, lat) {
+  if (!detailShowing(zoom, lon, lat)) return '';
+  return detail.data?.credit || detail.credit || '';
+}
+
 export function detailWanted(zoom, lon, lat) {
   return detailShowing(zoom, lon, lat) && !detail.data;
 }
@@ -121,6 +137,22 @@ export async function loadLevel(name, base = '../assets/geo') {
 
   cache.set(name, promise);
   return promise;
+}
+
+/**
+ * Has this level finished loading and baking?
+ *
+ * The cache holds a promise while a level is in flight and the baked object
+ * afterwards, so the two are told apart by whether it is thenable. Callers
+ * need this because "the network went idle" does not mean "the ground is
+ * drawn": the level JSON is fetched from inside the first draw, so a
+ * screenshot taken on a timer can catch a canvas that is still nothing but
+ * water. That made tools/check-contrast.py report land and sea as the same
+ * colour, at random.
+ */
+export function levelReady(name) {
+  const v = cache.get(name);
+  return !!v && typeof v.then !== 'function';
 }
 
 export function levelFor(zoom, lon, lat) {

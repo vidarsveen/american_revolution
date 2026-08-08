@@ -334,3 +334,28 @@
   .atlas-ring { animation: none; opacity: .8; }
   .atlas-pin  { animation: none; }
 }
+
+/* ---------- Data credit ----------
+   Small, quiet, and always present when the data it names is on screen.
+   Natural Earth is public domain, so naming it is courtesy; the pack's
+   close-in geometry is OpenStreetMap under ODbL, where it is a condition. */
+.atlas__credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  max-width: 66%;
+  padding: 1px 6px;
+  border-radius: var(--r-pill, 999px) 0 0 0;
+  background: var(--paper-veil, rgba(0, 0, 0, .25));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--atlas-ink-quiet);
+  font-size: 9px;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.atlas__credit:empty { display: none; }

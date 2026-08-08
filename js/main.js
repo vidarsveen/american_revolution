@@ -8,7 +8,7 @@ import {
 } from './store.js';
 import { t } from './i18n.js';
 import { icoStory, icoMap, icoTimeline, icoPeople, icoSun, icoMoon } from './icons.js';
-import { initMap, drawPlaces, drawColonies, flyToEvent, mountTools, mapHeight, refreshTileTheme } from './map.js';
+import { initMap, drawPlaces, drawColonies, flyToEvent, mountTools, mapHeight, refreshMapTheme } from './map.js';
 import { initRoutes } from './routes.js';
 import { initScrubber } from './scrubber.js';
 import { initTimeline, scrollToDate } from './timeline.js';
@@ -70,7 +70,7 @@ async function boot() {
   subscribe((s, changed) => {
     if (changed.has('view')) syncViews();
     if (changed.has('lang')) { applyLangAttr(); relabelChrome(); savePrefs(); }
-    if (changed.has('theme')) { applyTheme(); refreshTileTheme(); storyRefreshTheme(); savePrefs(); }
+    if (changed.has('theme')) { applyTheme(); refreshMapTheme(); storyRefreshTheme(); savePrefs(); }
   });
 
   // Start just before the first event so the map is not empty on arrival.
@@ -237,7 +237,7 @@ function watchSystemTheme() {
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     if (state.theme !== 'auto') return;
     applyTheme();
-    refreshTileTheme();
+    refreshMapTheme();
     storyRefreshTheme();
   });
 }

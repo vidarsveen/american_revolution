@@ -13,13 +13,13 @@
    ============================================================ */
 
 import { project, unproject, scaleFor, clamp, metresPerPixel, WORLD } from './geo.js';
-import { loadLevel, levelFor, preload, drawBasemap,
-         registerDetail, loadDetail, detailWanted } from './basemap.js';
+import { loadLevel, levelFor, levelReady, preload, drawBasemap, registerDetail,
+         loadDetail, detailWanted, creditFor } from './basemap.js';
 import { loadRegions, fromGeoJSON } from './regions.js';
 import { tintFor } from './tint.js';
 import {
   drawArrow, drawMarch, drawFront, drawArea, drawRegions, drawCrossing,
-  drawBattle, widthForStrength,
+  drawBattle, drawGlow, widthForStrength,
 } from './artifacts.js';
 
 const DEFAULT_FACTIONS = {
@@ -36,6 +36,10 @@ export function createMap(host, opts = {}) {
     geoBase = '../assets/geo',
     factions = { ...DEFAULT_FACTIONS },
     onSelect = () => {},
+    onCamera = () => {},
+    // Named for the shipped geometry. Natural Earth is public domain, so this
+    // is courtesy; a pack's own data may not be, and creditFor() adds it.
+    credit = 'Natural Earth',
     flyOver = 2.8,
     detail = null,
     lang = 'no',
@@ -58,12 +62,14 @@ export function createMap(host, opts = {}) {
   flashEl.className = 'atlas__flash';
   const timeEl = document.createElement('div');
   timeEl.className = 'atlas__time';
+  const creditEl = document.createElement('div');
+  creditEl.className = 'atlas__credit';
 
   // Order is the lesson the old map taught the hard way: the time-of-day
   // tint goes ABOVE the ground and BELOW the labels. Night used to darken
   // the place names as hard as the fields, which is exactly when you most
   // need to read them.
-  host.append(canvas, grain, mood, overlay, flashEl, vignette, timeEl);
+  host.append(canvas, grain, mood, overlay, flashEl, vignette, timeEl, creditEl);
 
   const ctx = canvas.getContext('2d');
   let size = { w: 0, h: 0 };
@@ -111,6 +117,7 @@ export function createMap(host, opts = {}) {
     marches: new Map(), arrows: new Map(), crossings: new Map(),
     battles: new Map(), places: new Map(), units: new Map(),
     regions: new Map(), markers: new Map(), highlights: new Map(),
+    pins: new Map(), glows: new Map(),
   };
 
   const now = () => performance.now();
@@ -239,8 +246,19 @@ export function createMap(host, opts = {}) {
     return flight != null;
   }
 
+  let lastCam = '';
+
   function draw() {
     if (flight) stepFlight();
+
+    // Tell the caller when the view actually moved. Fired from the draw
+    // rather than from the input handlers, so a flight, a fit and a pinch all
+    // report the same way and nothing has to poll.
+    const camKey = `${cam.lat.toFixed(5)},${cam.lon.toFixed(5)},${cam.zoom.toFixed(3)}`;
+    if (camKey !== lastCam) {
+      lastCam = camKey;
+      onCamera({ lat: cam.lat, lon: cam.lon, zoom: cam.zoom });
+    }
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, size.w, size.h);
@@ -264,6 +282,14 @@ export function createMap(host, opts = {}) {
     paintGround(tl, want);
 
     const pts = (coords) => coords.map(([la, lo]) => toScreen(la, lo));
+
+    // Under even the regions: this is atmosphere, not a claim about ground.
+    for (const s of layers.glows.values()) {
+      const mppNow = metresPerPixel(cam.lat, cam.zoom);
+      drawGlow(ctx, toScreen(s.at[0], s.at[1]),
+               (s.radiusKm * 1000) / mppNow,
+               { fill: colourOf(s.faction || 'french').fill, progress: progressOf(s) });
+    }
 
     // Regions sit under the campaign: they are the ground's political shape,
     // not an event on it. Drawn as one layer rather than one at a time,
@@ -306,6 +332,11 @@ export function createMap(host, opts = {}) {
     }
 
     syncOverlay();
+
+    const extra = creditFor(cam.zoom, cam.lon, cam.lat);
+    const line = [credit, extra].filter(Boolean).join(' · ');
+    if (creditEl.textContent !== line) creditEl.textContent = line;
+
     if (anyAnimating()) schedule();
   }
 
@@ -313,7 +344,18 @@ export function createMap(host, opts = {}) {
     const s = scale();
     const mx = size.w * MARGIN, my = size.h * MARGIN;
 
+    // Was the geometry actually there when this buffer was painted? If the
+    // level was still in flight, drawBasemap filled the buffer with water and
+    // returned — and every check below would then call that buffer fresh, so
+    // it got blitted for good and the land never appeared. The story map hid
+    // this because its camera never stops moving, which invalidates the
+    // buffer anyway; Explore fits once at boot and then holds still, so it
+    // kept the empty one. Land or sea is not something to leave to whether a
+    // fetch beat the first frame.
+    const groundReady = levelReady(want);
+
     const stale = !bufState
+      || !bufState.ready
       || bufState.zoom !== cam.zoom
       || bufState.level !== want
       || bufState.palette !== palette
@@ -336,7 +378,7 @@ export function createMap(host, opts = {}) {
       drawBasemap(bctx, { x: bx, y: by, zoom: cam.zoom }, { w: bw, h: bh },
                   palette, want, borders);
       bufState = { zoom: cam.zoom, level: want, palette, borders: borderKey(),
-                   x: bx, y: by, w: bw, h: bh };
+                   x: bx, y: by, w: bw, h: bh, ready: groundReady };
     }
 
     const ox = (bufState.x - tl.x) * s;
@@ -443,6 +485,33 @@ export function createMap(host, opts = {}) {
       const [x, y] = toScreen(s.at[0], s.at[1]);
       n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       n.style.visibility = onScreen(x, y, 120) ? '' : 'hidden';
+    }
+
+    /* Pins the caller draws itself.
+       Everything else in this overlay has a shape the module decides — a place
+       name, a commander chip, a ring. Explore's event markers are none of
+       those: they carry a glyph, a side, an importance and a selected state,
+       with styling that predates this module. Rather than bend them into a
+       shape that does not fit, or make Explore position its own DOM and
+       duplicate the projection, the module positions and the caller supplies
+       the markup. */
+    for (const s of layers.pins.values()) {
+      if (s.minZoom != null && cam.zoom < s.minZoom) { dropNode(s.id); continue; }
+      live.add(s.id);
+      const n = nodeFor(s.id, () => {
+        const el = document.createElement('div');
+        // Bound once and dispatched through the node, because the spec object
+        // is replaced on every add() and a captured one goes stale.
+        el.addEventListener('click', () => n._onClick?.(s.id));
+        return el;
+      });
+      n._onClick = s.onClick;
+      if (n._cls !== s.className) { n.className = s.className || ''; n._cls = s.className; }
+      if (n._html !== s.html) { n.innerHTML = s.html || ''; n._html = s.html; }
+      if (s.z != null) n.style.zIndex = String(s.z);
+      const [x, y] = toScreen(s.at[0], s.at[1]);
+      n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      n.style.visibility = onScreen(x, y, 140) ? '' : 'hidden';
     }
 
     for (const s of layers.units.values()) {
@@ -637,11 +706,23 @@ export function createMap(host, opts = {}) {
     return clamp(speed * (0.5 + 0.5 * Math.min(screens, 3) + 0.15 * dz), 0.9, 7);
   }
 
-  function flyTo({ to, zoom: z, over, instant = false } = {}) {
+  /**
+   * @param offset  [dx, dy] in screen pixels at the TARGET zoom. Positive dy
+   *                moves the point down the screen, which is how you keep a
+   *                marker clear of a sheet that covers the bottom half.
+   */
+  function flyTo({ to, zoom: z, over, offset, instant = false } = {}) {
     const targetZ = clamp(z ?? cam.zoom, minZoom, maxZoom);
-    if (instant || reducedMotion()) return setView(to[0], to[1], targetZ);
+    let [lat, lon] = to;
+    if (offset && (offset[0] || offset[1])) {
+      // Shift the CAMERA the opposite way, at the zoom we will arrive at.
+      const sc = scaleFor(targetZ);
+      const [wx, wy] = project(lon, lat);
+      [lon, lat] = unproject(wx - offset[0] / sc, wy - offset[1] / sc);
+    }
+    if (instant || reducedMotion()) return setView(lat, lon, targetZ);
     const from = { lat: cam.lat, lon: cam.lon, zoom: cam.zoom };
-    const target = { lat: to[0], lon: to[1], zoom: targetZ };
+    const target = { lat, lon, zoom: targetZ };
     return new Promise((resolve) => {
       flight = {
         from, to: target,
@@ -848,6 +929,8 @@ export function createMap(host, opts = {}) {
     },
 
     places: makeLayer('places', { dom: true }),
+    pins: makeLayer('pins', { dom: true }),
+    glows: makeLayer('glows'),
     markers: makeLayer('markers', { dom: true }),
     highlights: makeLayer('highlights', { dom: true }),
     units: makeLayer('units', { dom: true }),
@@ -906,6 +989,8 @@ export function createMap(host, opts = {}) {
     setLang(next) { lang = next; schedule(); },
     invalidate: resize,
     redraw: schedule,
+    /** True once the ground for the current view is drawn, not merely fetched. */
+    ready: () => levelReady(levelFor(cam.zoom, cam.lon, cam.lat)),
     destroy() {
       if (ro) ro.disconnect();
       removeEventListener('resize', resize);

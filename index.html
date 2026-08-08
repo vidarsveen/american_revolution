@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin>
 <link rel="preload" href="./assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="./vendor/leaflet.css">
 <link rel="stylesheet" href="./css/fonts.css">
 <link rel="stylesheet" href="./css/tokens.css">
 <link rel="stylesheet" href="./css/base.css">
@@ -47,9 +46,9 @@
 
     <section class="view view--map" data-view="map">
       <div id="map"></div>
-      <!-- wash and grain are mounted inside the map, in a pane above the
-           tiles and below the labels (map/texture.js). The vignette is a
-           lens effect, so it stays out here anchored to the viewport. -->
+      <!-- wash and grain are drawn by the map module, above the ground and
+           below the labels. The vignette is a lens effect, so it stays out
+           here anchored to the viewport. -->
       <div class="map-vignette"></div>
       <!-- scrubber, tour caption and map tools are appended here -->
     </section>
@@ -62,7 +61,6 @@
   <nav class="tabbar" role="tablist"><!-- built by main.js --></nav>
 </div>
 
-<script src="./vendor/leaflet.js"></script>
 <script type="module" src="./js/main.js"></script>
 <script>
   // Service worker is optional: the app works fine without it.

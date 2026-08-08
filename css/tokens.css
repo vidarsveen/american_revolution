@@ -73,7 +73,11 @@
   /* Place names were --ink-soft: a deliberately faded token, at 10.5px,
      with a text-shadow glow rather than a halo. Full ink and a real halo. */
   --label-ink:        #1e1a13;
-  --label-ink-quiet:  #4a4235;
+  /* Dark enough to clear 4.5:1 over WATER, not just over land. A region name
+     like "Atlanterhavet" sits on the sea by definition, and at #4a4235 it
+     measured 3.64 there — it had been passing only because the old basemap
+     was a raster being filtered lighter underneath it. */
+  --label-ink-quiet:  #332d22;
   --label-halo:       rgba(255, 251, 242, .95);
   --label-halo-width: 3px;
   --coast:            rgba(36, 31, 24, .34);

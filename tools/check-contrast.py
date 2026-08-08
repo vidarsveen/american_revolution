@@ -48,12 +48,12 @@ PROBES = [
 # 1.01, and plainly different to the eye. Scoring that with luminance would
 # repeat exactly the mistake sepia() made. So it uses CIE76 dE*ab instead.
 THRESHOLDS = {
-    # 8.0 is what a filtered third-party raster basemap can reach. Pushing to
-    # 12 is possible (measured 13.25 at saturate(2.4)) but only by saturating
-    # the modern interstate network until it blazes yellow across a 1775 map —
-    # so 12 is the target for the authored basemap, behind --strict, not a
-    # gate the raster path can honestly pass.
-    "land/water":    (8.0, "project rule, CIE76 dE — 2.3 is just-noticeable, 12 is obvious"),
+    # 12 was the authored-basemap target that the old raster Explore mode
+    # could not honestly reach — 8.0 was its ceiling, and pushing it further
+    # only worked by saturating the modern interstate network until it blazed
+    # yellow across a 1775 map. Explore draws its own ground now, so both
+    # modes are held to the real number and --strict has nothing left to do.
+    "land/water":    (12.0, "project rule, CIE76 dE — 2.3 is just-noticeable, 12 is obvious"),
     "label/ground":  (4.5,  "WCAG 2.2 AA, normal-size text"),
     "marker/ground": (3.0,  "WCAG 2.2 1.4.11, non-text contrast (measured at the pin's ring)"),
     # Measured on the wash as it lands on the ground, not on the colour the
@@ -68,13 +68,13 @@ GEOM_JS = """
 async (probes) => {
   const M = await import('/js/map.js');
   const map = M.getMap();
-  const rect = map.getContainer().getBoundingClientRect();
+  const rect = document.getElementById('map').getBoundingClientRect();
   const out = { probes: [], labels: [], markers: [] };
 
   for (const p of probes) {
-    const pt = map.latLngToContainerPoint([p[1], p[2]]);
+    const [x, y] = map.toScreen(p[1], p[2]);
     out.probes.push({ name: p[0], kind: p[3],
-                      x: rect.left + pt.x, y: rect.top + pt.y });
+                      x: rect.left + x, y: rect.top + y });
   }
   for (const el of document.querySelectorAll('.place')) {
     const r = el.getBoundingClientRect();
@@ -333,7 +333,14 @@ def run(theme: str, width: int, height: int, shots: Path):
             errors: list[str] = []
             page.on("pageerror", lambda e: errors.append(str(e)))
             page.goto(f"{base}/index.html#/kart", wait_until="networkidle")
-            page.wait_for_timeout(3500)
+            # Wait for the GROUND, not for a timer. The basemap level is
+            # fetched from inside the first draw, so "network idle" can happen
+            # before the land exists — and a screenshot taken then samples
+            # water everywhere and reports land and sea as identical.
+            page.wait_for_function(
+                "async () => (await import('/js/map.js')).getMap()?.ready() === true",
+                timeout=20000)
+            page.wait_for_timeout(900)
 
             shots.mkdir(parents=True, exist_ok=True)
             shot = shots / f"contrast-{theme}.png"
@@ -378,7 +385,10 @@ def run_story(theme: str, width: int, height: int, shots: Path):
                 timeout=20000)
             page.evaluate("() => document.querySelector('.story__cover')"
                           "?.classList.remove('is-on')")
-            page.wait_for_timeout(1200)
+            page.wait_for_function(
+                "async () => (await import('/engine/scenes/map.js')).getStoryMap()?.ready() === true",
+                timeout=20000)
+            page.wait_for_timeout(900)
             spots = page.evaluate(COLONIES_JS, list(STORY_BEAT))
             page.wait_for_timeout(400)
 

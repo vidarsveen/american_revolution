@@ -33,9 +33,15 @@ export function initTour(container, allEvents) {
 
   // Touching the map is a request to stop being driven around. The tour's own
   // camera moves are flagged first so they do not cancel the tour itself.
-  const map = getMap();
-  if (map) {
-    map.on('dragstart zoomstart', () => { if (running && !cameraIsOurs) stop(); });
+  //
+  // Listened for on the element rather than through the map, because the map
+  // module has no event bus: the gestures ARE pointer and wheel events on its
+  // host, so there is nothing for it to re-announce.
+  const host = document.getElementById('map');
+  if (host) {
+    const interrupted = () => { if (running && !cameraIsOurs) stop(); };
+    host.addEventListener('pointerdown', interrupted);
+    host.addEventListener('wheel', interrupted, { passive: true });
   }
 
   // Switching away from the app should not leave a tour running behind you.

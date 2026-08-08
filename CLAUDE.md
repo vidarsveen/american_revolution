@@ -66,7 +66,7 @@ script's word timings, which is deterministic and seek-safe.
 ## Layout
 
 ```
-map/          the map module — no tiles, no Leaflet, we draw the ground
+map/          the map module — no tiles, no Leaflet, we draw the ground (BOTH modes)
   geo.js        Web Mercator (Leaflet-compatible), Catmull-Rom, normals
   basemap.js    Natural Earth baked into Path2D + a pack's detail overlay
   artifacts.js  army arrows, marches, fronts, areas, crossings, battles
@@ -157,6 +157,18 @@ simply stops partway and vanishes. Nothing in the script shows it; you have to m
 against the time left. `check-script.py` does that now, and it is how "the British march out of
 Boston" was found stopping 70% of the way to Concord.
 
+**A cached ground buffer must remember whether it had any ground.** `paintGround` bakes the
+basemap into an offscreen buffer and re-renders it only when the camera leaves it. But
+`drawBasemap` fills the buffer with water and returns early when the level is still loading —
+and that buffer was then cached as if it were complete, so the land never arrived. The story
+map never showed it, because its camera moves constantly and invalidates the buffer anyway;
+Explore fits once at boot and holds still, and kept the empty one. `bufState.ready` now
+records whether the geometry was actually there.
+
+**"Network idle" is not "the ground is drawn".** The basemap level is fetched from inside the
+first draw, so a screenshot on a timer can catch a canvas that is still all water — which made
+`check-contrast.py` report land and sea as the same colour, at random. Wait on `map.ready()`.
+
 **Modern boundaries are wrong for history.** The framework ships modern admin boundaries
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was
 disputed, and West Virginia did not exist. A historical pack overrides with its own
@@ -206,8 +218,8 @@ of the surrounding file.
 
 ## In flight
 
-- **Explore mode (`js/map.js`, `js/routes.js`) is still on Leaflet.** The story stage has moved
-  to `map/`. Until Explore follows, `vendor/leaflet.*` must stay.
+- **The sound module is the last thing not wired in.** Explore has moved off Leaflet, so both
+  modes now draw the same ground from the same module and `vendor/` is gone.
 - **The sound module is built and benched but not wired into `engine/story.js`.** Integration
   notes are in the plan; the key point is to drive `soundscape.tick()` from a 100 ms interval,
   **not** from the player's `onTick`, which only fires when the beat or word changes.

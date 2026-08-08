@@ -11,10 +11,8 @@
   background: var(--paper-sunken);   /* never a white flash while tiles load */
 }
 
-/* The whole trick: modern label-free tiles, aged into parchment. */
-.leaflet-tile-pane {
-  filter: brightness(var(--tile-bri)) saturate(var(--tile-sat)) contrast(var(--tile-con));
-}
+/* The ground is drawn by map/, from geometry we ship, using the --atlas-*
+   tokens. Nothing to filter: there is no third-party raster to age any more. */
 
 /* Saturation is doing one job: separating water from land. That job only
    exists while a coastline is on screen. Zoomed into Lexington there is no
@@ -28,7 +26,7 @@
   --tile-sat: var(--tile-sat-near);
 }
 
-.leaflet-container {
+#map.atlas {
   font-family: var(--font-body);
   background: var(--paper-sunken);
 }
@@ -43,8 +41,7 @@
   :root:not([data-theme="light"]) .basemap-relief { mix-blend-mode: screen; opacity: .28 !important; }
 }
 
-/* Fade each tile in instead of popping */
-.leaflet-tile { transition: opacity 380ms var(--ease-out); }
+
 
 /* ---------- Texture layers ---------------------------------
    The wash and grain are mounted into a Leaflet pane at z-index 250 by
@@ -94,22 +91,10 @@
   filter: blur(2px) saturate(.85);
 }
 
-/* ---------- Attribution: small and out of the way ---------- */
-.leaflet-control-attribution {
-  background: var(--paper-veil) !important;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  color: var(--ink-faint) !important;
-  font-size: 9px !important;
-  line-height: 1.6;
-  padding: 1px 6px !important;
-  border-radius: var(--r-pill) 0 0 0;
-  max-width: 66vw;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.leaflet-control-attribution a { color: var(--ink-soft) !important; }
+/* ---------- Attribution: small and out of the way ----------
+   Rendered by the map module, which knows which sources are actually on
+   screen. Natural Earth is public domain; the pack's close-in geometry is
+   OpenStreetMap under ODbL and has to be credited whenever it is drawn. */
 
 /* ---------- Map buttons (recentre, zoom) ------------------- */
 .map-tools {
@@ -254,8 +239,16 @@
 .map-z-near .mk--past .mk__label { opacity: .5; }
 .mk--sel .mk__label { opacity: 1 !important; font-weight: 700; }
 
-/* Leaflet wrapper for our divIcons */
-.leaflet-marker-icon.mk-wrap {
+/* The map module positions this node with a transform and nothing else, so
+   the box and its centring live here. 96x64 with the anchor in the middle is
+   what the Leaflet icon used to declare. */
+.mk-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 64px;
+  margin: -32px 0 0 -48px;
   background: none;
   border: 0;
   overflow: visible;
@@ -264,7 +257,17 @@
 /* ============================================================
    Period place labels (our own — the basemap has none)
    ============================================================ */
-.place-wrap { background: none; border: 0; overflow: visible; }
+.place-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 22px;
+  margin: -11px 0 0 -80px;
+  background: none;
+  border: 0;
+  overflow: visible;
+}
 
 .place {
   position: absolute;
@@ -330,5 +333,5 @@
 :root[data-theme="dark"] .colonies-shape { stroke: rgba(236, 227, 209, .22); }
 
 /* Wide marker boxes must not swallow taps meant for neighbours */
-.leaflet-marker-icon.mk-wrap { pointer-events: none; }
+.mk-wrap { pointer-events: none; }
 .mk__body { pointer-events: auto; cursor: pointer; }

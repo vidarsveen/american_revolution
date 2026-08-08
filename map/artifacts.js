@@ -299,6 +299,40 @@ export function drawArea(ctx, screenRings,
 }
 
 /* ------------------------------------------------------------
+   Theatre glow — where the weight of the war sits
+   ------------------------------------------------------------ */
+
+/**
+ * A soft radial wash marking the theatre a given year belongs to.
+ *
+ * Deliberately edgeless. A ring would say the fighting stopped at a line, and
+ * it did not; this says "the weight is about here" and nothing more precise
+ * than that, which is all anyone can honestly claim about a whole year of a
+ * war fought across a seaboard.
+ */
+export function drawGlow(ctx, [x, y], radius, { fill, progress = 1 }) {
+  if (!(radius > 0) || progress <= 0) return;
+  const g = ctx.createRadialGradient(x, y, 0, x, y, radius);
+  g.addColorStop(0, fill);
+  g.addColorStop(0.55, fill);
+  g.addColorStop(1, fill);
+  ctx.save();
+  // The stops carry the shape; globalAlpha carries the strength, so the
+  // colour can stay a plain token instead of needing an alpha variant.
+  ctx.globalAlpha = 0.16 * progress;
+  ctx.fillStyle = g;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.fill();
+  // A second, tighter pass gives the centre weight without a visible edge.
+  ctx.globalAlpha = 0.1 * progress;
+  ctx.beginPath();
+  ctx.arc(x, y, radius * 0.55, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+/* ------------------------------------------------------------
    Named regions — the political shape of the ground
    ------------------------------------------------------------ */
 

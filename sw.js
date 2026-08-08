@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v15';
+const VERSION = 'v16';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -26,8 +26,6 @@ const PRECACHE = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './vendor/leaflet.js',
-  './vendor/leaflet.css',
   './css/fonts.css',
   './css/tokens.css',
   './css/base.css',
@@ -57,8 +55,6 @@ const PRECACHE = [
   './engine/scenes/overlays.js',
   './core/theme.js',
   './css/atlas.css',
-  './map/tiles.js',
-  './map/texture.js',
   './map/geo.js',
   './map/basemap.js',
   './map/artifacts.js',

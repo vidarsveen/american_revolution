@@ -73,7 +73,7 @@ engine/                    generic — knows nothing about this subject
   player.js     the clock: playback, cue scheduling, seeking, silent fallback
   stage.js      the cue vocabulary — one table of verb -> effect
   scenes/
-    map.js      Leaflet surface: flyTo, routes, pins, place names, time of day
+    map.js      cue -> map calls: flyTo, routes, pins, place names, time of day
     overlays.js portrait / image / quote / stat cards
   captions.js   word-highlighted captions and the transcript
   chrome.js     transport, scene rail, scrubbing
@@ -87,9 +87,8 @@ map/                       the map module — we draw the ground ourselves
   basemap.js    Natural Earth baked into Path2D + a pack's detail overlay
   artifacts.js  army arrows, marches, fronts, areas, crossings, battles
   regions.js    named administrative areas, any level
-  index.js      createMap(host, opts) -> an instance
-  tiles.js      the raster path, still used by Explore
-  texture.js    wash/grain, above the tiles and BELOW every label
+  tint.js       one side's colour spread into a family, one per region
+  index.js      createMap(host, opts) -> an instance, used by BOTH modes
 
 sound/                     mixer, synthesised effects, script-driven ducking
 
@@ -215,9 +214,7 @@ path is relative, so the site works under `/american_revolution/`.
   stand-in rather than a likeness, the app says so.
 - Basemap drawn from [Natural Earth](https://www.naturalearthdata.com/) (public domain).
   Close-in water and coastline from OpenStreetMap contributors, ODbL.
-- Map tiles © OpenStreetMap contributors, © CARTO (Explore mode).
 - Voices: Microsoft Edge neural TTS via [edge-tts](https://github.com/rany2/edge-tts).
-- [Fraunces](https://github.com/googlefonts/fraunces) (SIL OFL 1.1),
-  [Leaflet](https://leafletjs.com/) (BSD-2-Clause).
+- [Fraunces](https://github.com/googlefonts/fraunces) (SIL OFL 1.1).
 - Structure and chapter titles follow *Den amerikanske revolusjonen* (Ken Burns,
   Sarah Botstein and David Schmidt), shown on NRK.
