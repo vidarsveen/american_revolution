@@ -74,9 +74,33 @@ export function soundScene(scene, { silent = false } = {}) {
   scape.setSchedule(scene ? scheduleFromBeats(scene.beats) : []);
 }
 
-/** Stop everything still ringing. Called before a rebuild replays the cues. */
+/* What the cues have asked for, once they have all been replayed.
+
+   Music and ambience are STATE, not events: the bed under a scene is a fact
+   about that stretch of the chapter, the way the time of day is. Tearing it
+   down in reset() and letting the cues build it back would be correct and
+   would also be audible — the stage rebuilds on every scene change AND every
+   scrub, so the bed would restart from its first bar every time you touched
+   the scrubber. Instead reset() forgets what was wanted and resolves on the
+   next turn, after the cues have replayed: whatever they asked for is already
+   playing and stays playing, and anything they did not ask for stops. */
+let wantMusic = null;
+let wantAmbience = null;
+let settle = 0;
+
+/** Called before a rebuild replays the cues. */
 export function resetSound() {
-  if (scape) scape.reset();
+  if (!scape) return;
+  wantMusic = null;
+  wantAmbience = null;
+  clearTimeout(settle);
+  settle = setTimeout(resolveWanted, 0);
+}
+
+function resolveWanted() {
+  if (!scape) return;
+  if (!wantMusic) scape.stopMusic({ instant: true });
+  if (!wantAmbience) scape.setAmbience(null, { instant: true });
 }
 
 export function setSilentSound(on) {
@@ -133,13 +157,17 @@ export function playSound(cue, instant) {
 /** A continuous bed of place: wind, sea, a crowd. `id` null stops it. */
 export function setAmbience(cue, instant) {
   if (!scape) return;
+  wantAmbience = cue.id || null;
   scape.setAmbience(cue.id || null, { instant, gainDb: cue.gainDb ?? 0 });
 }
 
 /** The music bed. It ducks under the voice on its own. */
 export function playMusicCue(cue, instant) {
   if (!scape) return;
+  wantMusic = cue.id || null;
   if (!cue.id) { scape.stopMusic({ instant }); return; }
+  // Idempotent for the same bed, so replaying this cue after a seek does not
+  // restart it — which is the whole point of the settle above.
   scape.playMusic(cue.id, { instant, gainDb: cue.gainDb ?? 0 });
 }
 

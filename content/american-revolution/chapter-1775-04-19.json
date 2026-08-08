@@ -716,6 +716,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn"
+            },
+            {
+              "on": "start",
               "do": "border.set",
               "country": true,
               "state": false
@@ -1037,6 +1042,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn"
+            },
+            {
+              "on": "start",
               "do": "road.draw",
               "id": "british-out"
             },
@@ -1218,6 +1228,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch"
+            },
+            {
+              "on": "start",
               "do": "marker.clear"
             },
             {
@@ -1292,6 +1307,11 @@
             "en": "But the town has already seen them. In the tower of the Old North Church, two lanterns hang for a few seconds. One if the British come by land. Two if they come by water."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch"
+            },
             {
               "on": "start",
               "do": "road.draw",
@@ -1553,6 +1573,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn"
+            },
+            {
+              "on": "start",
               "do": "road.draw",
               "id": "british-out"
             },
@@ -1714,6 +1739,10 @@
             "en": "And then, nobody knows from where, a shot goes off."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music"
+            },
             {
               "on": "end",
               "do": "map.flash"
@@ -1915,6 +1944,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn"
+            },
+            {
+              "on": "start",
               "do": "image.hide"
             },
             {
@@ -2010,6 +2044,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music"
+            },
+            {
+              "on": "start",
               "do": "map.flyTo",
               "to": "north-bridge",
               "zoom": 14.2,
@@ -2102,6 +2140,11 @@
             "en": "At noon the British begin to march back to Boston. They have thirty kilometres ahead of them."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch"
+            },
             {
               "on": "start",
               "do": "road.draw",
@@ -2320,6 +2363,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "sound.music"
+            },
+            {
               "on": "word:Menotomy",
               "do": "map.flyTo",
               "to": "menotomy"
@@ -2441,6 +2488,11 @@
             "en": "But what happens that evening matters more than the numbers."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn"
+            },
             {
               "on": "start",
               "do": "road.draw",
@@ -2585,6 +2637,11 @@
             "en": "The British had marched out to collect a weapons store, expecting to be back for breakfast."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn"
+            },
             {
               "on": "start",
               "do": "place.clear"
