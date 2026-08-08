@@ -346,6 +346,30 @@
       },
       "label": false
     },
+    "atlantic-nw": {
+      "coords": [
+        58.0,
+        -78.0
+      ],
+      "zoom": 3,
+      "name": {
+        "no": "Nordvest",
+        "en": "North-west"
+      },
+      "label": false
+    },
+    "atlantic-se": {
+      "coords": [
+        28.0,
+        10.0
+      ],
+      "zoom": 3,
+      "name": {
+        "no": "Sørøst",
+        "en": "South-east"
+      },
+      "label": false
+    },
     "britain": {
       "coords": [
         53.2,
@@ -375,7 +399,7 @@
         51.5074,
         -0.1278
       ],
-      "zoom": 8.0,
+      "zoom": 6.1,
       "name": {
         "no": "London",
         "en": "London"
@@ -420,7 +444,7 @@
     "colonies-n": {
       "coords": [
         47.6,
-        -66.8
+        -66.6
       ],
       "zoom": 6,
       "name": {
@@ -431,8 +455,8 @@
     },
     "colonies-s": {
       "coords": [
-        30.5,
-        -82.2
+        30.2,
+        -86.2
       ],
       "zoom": 6,
       "name": {
@@ -683,8 +707,11 @@
             },
             {
               "on": "start",
-              "do": "map.flyTo",
-              "to": "world",
+              "do": "map.fitPlaces",
+              "places": [
+                "atlantic-nw",
+                "atlantic-se"
+              ],
               "over": 0.1
             },
             {
@@ -926,7 +953,8 @@
               "names": [
                 "Massachusetts"
               ],
-              "side": "patriot"
+              "side": "patriot",
+              "strength": 4.6
             },
             {
               "on": {
@@ -1207,10 +1235,13 @@
           },
           "cues": [
             {
-              "on": "end",
+              "on": {
+                "no": "word:gå",
+                "en": "word:walk"
+              },
               "do": "route.draw",
               "id": "british-out",
-              "over": 4.5
+              "over": 4.0
             }
           ],
           "gapAfter": 3.15
