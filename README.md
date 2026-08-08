@@ -157,6 +157,9 @@ python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/check-data.py
 python tools/check-contrast.py          # both themes; fails on unreadable map
 python tools/check-sound.py             # ducking, instant suppression, silent fallback
+
+# after pushing — does the live site actually serve what you committed?
+python tools/check-published.py
 ```
 
 Per-module benches live in `dev/` and are the place to work. Build a module against its bench

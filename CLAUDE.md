@@ -92,6 +92,14 @@ python tools/check-contrast.py     # samples real pixels; fails on an unreadable
 python tools/check-sound.py        # 24 assertions on ducking and the silent fallback
 ```
 
+After pushing, confirm the deploy actually landed. "I pushed" and "the site is
+updated" are different claims — Pages builds asynchronously, and a file that
+was never committed 404s in production while working perfectly on localhost:
+
+```bash
+python tools/check-published.py    # hashes every file index.html reaches
+```
+
 ---
 
 ## Hazards that have bitten before
