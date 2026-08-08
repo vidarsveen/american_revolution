@@ -159,9 +159,15 @@ export function clearStats() {
 
 export function showNote(cue, instant) {
   const text = pick(cue.value);
-  if (!text) { hide(noteEl); return; }
-  show(noteEl, `<span class="ov-note__pill">${esc(text)}</span>`, instant);
   clearTimeout(showNote._t);
+  // A note is a one-shot effect: it shows itself for four seconds and takes
+  // itself away again. Rebuilding the picture after a seek replays every cue
+  // in the scene, so re-showing it here put a note back on screen at a time
+  // it had already gone — the "1763-1775" pill was still sitting over Boston
+  // two beats after the years it labelled. Same rule as the musket flash:
+  // anything that undoes itself on a timer must not be replayed.
+  if (instant || !text) { hide(noteEl); return; }
+  show(noteEl, `<span class="ov-note__pill">${esc(text)}</span>`, instant);
   showNote._t = setTimeout(() => hide(noteEl), 4200);
 }
 
