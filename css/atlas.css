@@ -1,0 +1,336 @@
+/* ============================================================
+   atlas.css — every colour the map draws.
+
+   These are authored values, not the result of filtering somebody else's
+   tiles. The old map separated land from water only by hue, and then ran
+   sepia() over it, which is a colour matrix that collapses hue onto one
+   axis — so the separation was destroyed by the same stylesheet that was
+   supposed to create it. Here land and water differ in lightness AND in
+   hue, so neither a filter nor a colourblind viewer can flatten them.
+
+   tools/check-contrast.py holds these to account in both themes.
+   ============================================================ */
+
+:root {
+  /* --- Ground -------------------------------------------- */
+  --atlas-water:       #8fb2c9;   /* sea, lakes */
+  --atlas-water-deep:  #7ba3bd;   /* beyond the shelf, a touch deeper */
+  --atlas-land:        #f4ecd8;   /* parchment */
+  --atlas-land-far:    #ece2ca;   /* land outside the theatre, quieter */
+  --atlas-coast:       #5d4f3a;   /* the drawn shoreline */
+  --atlas-coast-w:     1.1px;
+  --atlas-river:       #6f9ab6;
+  --atlas-river-w:     1.0px;
+
+  /* --- Ink ----------------------------------------------- */
+  --atlas-ink:         #241f18;
+  --atlas-ink-quiet:   #5b5240;
+  --atlas-halo:        rgba(252, 247, 235, .96);
+
+  /* --- Paper treatment (kept well below the information) -- */
+  --atlas-grain:       .05;
+  --atlas-vignette:    radial-gradient(130% 95% at 50% 45%, transparent 68%, rgba(74, 58, 36, .12) 100%);
+}
+
+:root[data-theme="dark"] {
+  --atlas-water:       #16212f;
+  --atlas-water-deep:  #111a26;
+  --atlas-land:        #4c4838;
+  --atlas-land-far:    #423f31;
+  --atlas-coast:       #b9ad8e;
+  --atlas-coast-w:     1.1px;
+  --atlas-river:       #4d7d9e;
+  --atlas-river-w:     1.0px;
+
+  --atlas-ink:         #f7f1e2;
+  --atlas-ink-quiet:   #cfc6b1;
+  --atlas-halo:        rgba(8, 11, 16, .96);
+
+  --atlas-grain:       .04;
+  --atlas-vignette:    radial-gradient(130% 95% at 50% 45%, transparent 70%, rgba(0, 0, 0, .22) 100%);
+}
+
+/* Same values when the reader has no explicit choice and their system is dark.
+   Declared here rather than duplicated by hand — the two blocks in
+   css/tokens.css drifted apart precisely because they were hand-copied. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  --atlas-water:       #16212f;
+  --atlas-water-deep:  #111a26;
+  --atlas-land:        #4c4838;
+  --atlas-land-far:    #423f31;
+  --atlas-coast:       #b9ad8e;
+  --atlas-coast-w:     1.1px;
+  --atlas-river:       #4d7d9e;
+  --atlas-river-w:     1.0px;
+
+  --atlas-ink:         #f7f1e2;
+  --atlas-ink-quiet:   #cfc6b1;
+  --atlas-halo:        rgba(8, 11, 16, .96);
+
+  --atlas-grain:       .04;
+  --atlas-vignette:    radial-gradient(130% 95% at 50% 45%, transparent 70%, rgba(0, 0, 0, .22) 100%);
+  }
+}
+
+/* ============================================================
+   Structure
+   ============================================================ */
+
+.atlas {
+  position: relative;
+  overflow: hidden;
+  background: var(--atlas-water-deep);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.atlas__canvas   { position: absolute; inset: 0; display: block; }
+.atlas__overlay  { position: absolute; inset: 0; pointer-events: none; }
+.atlas__grain,
+.atlas__vignette { position: absolute; inset: 0; pointer-events: none; }
+
+/* Texture is the last thing added and the first thing sacrificed. It sits
+   under nothing except the ground — the overlay (every label, every unit)
+   is painted after it, which is exactly the bug the old map had backwards. */
+.atlas__grain {
+  opacity: var(--atlas-grain);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+.atlas__vignette { background: var(--atlas-vignette); }
+
+/* ---------- Place names ---------- */
+.atlas-place {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: -0.7em 0 0 0.55em;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  color: var(--atlas-ink);
+  /* A halo, not a glow: repeating the blurred shadow compounds its alpha
+     into an opaque ring, and the four offsets close the corners. */
+  text-shadow:
+    0 0 2px var(--atlas-halo), 0 0 2px var(--atlas-halo), 0 0 3px var(--atlas-halo),
+    1px 1px 0 var(--atlas-halo), -1px 1px 0 var(--atlas-halo),
+    1px -1px 0 var(--atlas-halo), -1px -1px 0 var(--atlas-halo);
+}
+.atlas-place::before {
+  content: '';
+  position: absolute;
+  left: -0.55em;
+  top: 50%;
+  width: 5px; height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--atlas-ink);
+  box-shadow: 0 0 0 1.5px var(--atlas-halo);
+}
+.atlas-place--region {
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--atlas-ink-quiet);
+  margin-left: 0;
+  transform-origin: 0 0;
+}
+.atlas-place--region::before { display: none; }
+.atlas-place--town { font-size: 11.5px; font-weight: 550; color: var(--atlas-ink-quiet); }
+
+/* ---------- Unit counters: flag, commander, strength ---------- */
+.atlas-unit {
+  position: absolute;
+  top: 0; left: 0;
+  margin: -14px 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 9px 4px 4px;
+  border-radius: 6px;
+  background: var(--atlas-halo);
+  border: 1px solid var(--faction, #55704c);
+  border-left-width: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .28), 0 4px 12px rgba(0, 0, 0, .16);
+  pointer-events: auto;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.atlas-unit::before {
+  /* Leader line back to the exact coordinate the counter belongs to. */
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 12px;
+  border-top: 1.5px dotted var(--faction, #55704c);
+}
+.atlas-unit__flag {
+  display: block;
+  width: 22px; height: 15px;
+  flex: none;
+  border: 1px solid rgba(0, 0, 0, .3);
+  background-size: cover;
+  overflow: hidden;
+}
+.atlas-unit__flag svg { display: block; width: 100%; height: 100%; }
+.atlas-unit__text { display: flex; flex-direction: column; line-height: 1.15; }
+.atlas-unit__name {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 12.5px; font-weight: 700; color: var(--atlas-ink);
+}
+.atlas-unit__n {
+  font-size: 10.5px; font-variant-numeric: tabular-nums;
+  color: var(--atlas-ink-quiet);
+}
+
+/* When a counter is pushed clear of a neighbour, the leader line leans back
+   to the coordinate it belongs to instead of pointing at empty ground. */
+.atlas-unit::before {
+  transform: rotate(calc(atan2(var(--lean, 0px), 12px)));
+  transform-origin: 100% 50%;
+}
+
+/* ---------- Administrative boundaries ----------
+   A border is a claim, not a physical thing, so it is dashed. Country lines
+   carry more weight than state lines, which carry more than municipal ones,
+   so the hierarchy reads without anyone having to squint. */
+:root {
+  --atlas-border-0:   rgba(58, 46, 30, .60);
+  --atlas-border-0-w: 1.7;
+  --atlas-border-1:   rgba(58, 46, 30, .38);
+  --atlas-border-1-w: 1.1;
+}
+:root[data-theme="dark"] {
+  --atlas-border-0:   rgba(226, 214, 186, .52);
+  --atlas-border-1:   rgba(226, 214, 186, .30);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --atlas-border-0: rgba(226, 214, 186, .52);
+    --atlas-border-1: rgba(226, 214, 186, .30);
+  }
+}
+
+/* ============================================================
+   Atmosphere — time of day, a shot going off, the clock
+   ============================================================ */
+
+/* Multiply, so it darkens the ground without flattening it. Sits under the
+   overlay, so labels stay at full strength however dark the night. */
+.atlas__mood {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transition: background 2.4s var(--ease-in-out, ease), opacity 2.4s var(--ease-in-out, ease);
+}
+.atlas__mood[data-mood="day"]   { background: transparent; opacity: 0; }
+.atlas__mood[data-mood="dawn"]  { background: linear-gradient(180deg, #ffd2a0, #f8cba4 45%, #e6d2bc); opacity: .30; }
+.atlas__mood[data-mood="dusk"]  { background: linear-gradient(180deg, #9a8fb4, #d0997c 60%, #8a7a84); opacity: .30; }
+/* Night says "this is happening in the dark". It must never say "the map
+   failed to load", which is what an opaque slab reads as. */
+.atlas__mood[data-mood="night"] { background: linear-gradient(180deg, #33456f, #253154); opacity: .34; }
+.atlas__mood[data-mood="storm"] { background: linear-gradient(180deg, #5d6470, #3f4650); opacity: .34; }
+:root[data-theme="dark"] .atlas__mood[data-mood="night"] { opacity: .20; }
+
+.atlas__flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(38% 26% at 50% 52%, rgba(255, 246, 214, .92), transparent 70%);
+}
+.atlas__flash.is-on { animation: atlas-flash 620ms ease-out; }
+@keyframes atlas-flash {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.atlas__time {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 11px;
+  border-radius: var(--r-pill, 999px);
+  background: var(--atlas-halo);
+  border: 1px solid var(--atlas-border-0);
+  color: var(--atlas-ink);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--t-med, .26s), transform var(--t-med, .26s);
+}
+.atlas__time.is-on { opacity: 1; transform: none; }
+
+/* ---------- Pins: the one spot being spoken about ---------- */
+.atlas-pin {
+  position: absolute;
+  top: 0; left: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  animation: atlas-pop 380ms cubic-bezier(.34, 1.32, .64, 1) backwards;
+}
+@keyframes atlas-pop { from { opacity: 0; transform: scale(.4); } }
+.atlas-pin i {
+  flex: none;
+  width: 11px; height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border-radius: 50%;
+  background: var(--faction, #a8322d);
+  border: 2px solid var(--atlas-halo);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .45);
+}
+.atlas-pin b {
+  margin-top: -5px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: var(--atlas-halo);
+  border: 1px solid var(--atlas-border-0);
+  color: var(--atlas-ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.atlas-pin--bare b { display: none; }
+
+/* ---------- Highlight ring: pointing while you talk ---------- */
+.atlas-ring {
+  position: absolute;
+  top: 0; left: 0;
+  width: 22px; height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 2.5px solid var(--faction, #a8322d);
+  pointer-events: none;
+  animation: atlas-ping 2.4s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+/* On a seek we rebuild the picture, and a ring mid-pulse would be a
+   different picture every time you scrubbed to the same moment. */
+.atlas-ring--still { animation: none; opacity: .8; }
+@keyframes atlas-ping {
+  0%   { opacity: .85; transform: scale(.6); }
+  70%  { opacity: 0;   transform: scale(2.6); }
+  100% { opacity: 0;   transform: scale(2.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-ring { animation: none; opacity: .8; }
+  .atlas-pin  { animation: none; }
+}

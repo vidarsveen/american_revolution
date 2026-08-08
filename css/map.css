@@ -13,7 +13,19 @@
 
 /* The whole trick: modern label-free tiles, aged into parchment. */
 .leaflet-tile-pane {
-  filter: var(--tile-filter);
+  filter: brightness(var(--tile-bri)) saturate(var(--tile-sat)) contrast(var(--tile-con));
+}
+
+/* Saturation is doing one job: separating water from land. That job only
+   exists while a coastline is on screen. Zoomed into Lexington there is no
+   coast and a great deal of twentieth-century tarmac, so the same setting
+   that rescues the Atlantic sets the interstates glowing.
+
+   Story only. Explore caps at zoom 10, where the seaboard is still on screen
+   and the roads are still hairlines; its .map-z-near fires at zoom 8, which
+   is far too early to give up the water. */
+.story-z-near {
+  --tile-sat: var(--tile-sat-near);
 }
 
 .leaflet-container {
@@ -34,34 +46,52 @@
 /* Fade each tile in instead of popping */
 .leaflet-tile { transition: opacity 380ms var(--ease-out); }
 
-/* ---------- Texture layers --------------------------------- */
+/* ---------- Texture layers ---------------------------------
+   The wash and grain are mounted into a Leaflet pane at z-index 250 by
+   map/texture.js — above the tiles, below every label and marker. They are
+   positioned and sized there, so they must NOT claim `inset: 0`: a Leaflet
+   pane has no intrinsic size and inset:0 inside it means zero size.
+
+   They used to be siblings of #map at z-index 2/3 while #map sat at 1,
+   which put a multiply wash and a noise grain on top of every place name
+   on the map. That was the low contrast.
+   ----------------------------------------------------------- */
 .map-wash,
-.map-grain,
-.map-vignette {
-  position: absolute;
-  inset: 0;
+.map-grain {
   pointer-events: none;
 }
 
 /* Warms the basemap onto parchment. Sits under the grain. */
 .map-wash {
-  z-index: 2;
   background: var(--wash-color);
   mix-blend-mode: var(--wash-blend);
   opacity: var(--wash-opacity);
 }
 
 .map-grain {
-  z-index: 3;
   opacity: var(--grain-opacity);
   mix-blend-mode: var(--grain-blend);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
 }
 
+/* A vignette is a lens effect, so it stays anchored to the viewport rather
+   than to the map: still a sibling of #map, still on top. Kept mild enough
+   that it never eats a label near the edge. */
 .map-vignette {
+  position: absolute;
+  inset: 0;
   z-index: 4;
+  pointer-events: none;
   background: var(--vignette);
+}
+
+/* ---------- Basemap layers --------------------------------- */
+/* Pinned at maxNativeZoom 5 and upscaled, so there is always a complete
+   image behind the sharp tiles instead of bare paper. The blur is what
+   makes it read as depth rather than as a failure to load. */
+.basemap-backdrop {
+  filter: blur(2px) saturate(.85);
 }
 
 /* ---------- Attribution: small and out of the way ---------- */
@@ -242,34 +272,27 @@
   top: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
-  font-size: 10.5px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 650;
   font-variation-settings: 'opsz' 14, 'WONK' 1;
-  letter-spacing: .09em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--label-ink);
+  /* A halo, not a glow. Repeating the blurred shadow compounds its alpha,
+     which is what gives an opaque ring; the four offsets close the corners. */
   text-shadow:
-    0 1px 0 rgba(255, 250, 238, .8),
-    0 0 7px rgba(255, 250, 238, .95),
-    0 0 3px rgba(255, 250, 238, 1);
+    0 0 2px var(--label-halo), 0 0 2px var(--label-halo), 0 0 3px var(--label-halo),
+    1px 1px 0 var(--label-halo), -1px 1px 0 var(--label-halo),
+    1px -1px 0 var(--label-halo), -1px -1px 0 var(--label-halo);
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
   transition: opacity var(--t-med) var(--ease-out);
 }
-:root[data-theme="dark"] .place {
-  text-shadow: 0 1px 0 rgba(10, 12, 16, .9), 0 0 8px rgba(10, 12, 16, .95);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .place {
-    text-shadow: 0 1px 0 rgba(10, 12, 16, .9), 0 0 8px rgba(10, 12, 16, .95);
-  }
-}
-
 .place--region {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: .2em;
-  color: var(--ink-faint);
+  color: var(--label-ink-quiet);
   font-style: italic;
   text-transform: none;
 }

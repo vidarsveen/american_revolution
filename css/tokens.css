@@ -34,16 +34,40 @@
   --shadow-lg:  0 -2px 10px rgba(36,31,24,.08), 0 -18px 50px rgba(36,31,24,.18);
   --shadow-marker: 0 1px 3px rgba(36,31,24,.35), 0 3px 10px rgba(36,31,24,.22);
 
-  /* --- Map tile treatment -------------------------------- */
-  --tile-filter: sepia(.48) saturate(.62) hue-rotate(-8deg) brightness(1.02) contrast(1.14);
-  /* CARTO's land is near-white; a multiply wash pulls it onto parchment
-     without flattening the land/water difference. */
-  --wash-color: #e8dcc2;
+  /* --- Map treatment ------------------------------------- */
+  /* No sepia. sepia() is a colour matrix that collapses hue onto one axis,
+     and hue is most of what separates land from water on the basemap —
+     which is why the water used to be invisible. Contrast does the ageing
+     now; the warmth comes from the wash, which is what a wash is for. */
+  /* Composed into a filter at the point of use, in css/map.css — NOT here.
+     A var() inside a custom property resolves against the element the
+     property is declared on, so a --tile-filter built at :root freezes
+     --tile-sat at the root value and no descendant can override it. */
+  --tile-bri: 1.02;
+  --tile-sat: 1.58;
+  --tile-con: 1.19;
+  /* Close in there is no coastline left to read, but plenty of modern
+     motorway — so the saturation that separates water at regional zoom
+     is dialled back before it turns a 1775 map into a road atlas. */
+  --tile-sat-near: .78;
+  /* The wash and grain live in a Leaflet pane above the tiles and BELOW
+     every label and marker (map/texture.js). They no longer sit on top of
+     the information, so they can be gentle and still read. */
+  --wash-color: #ece0c6;
   --wash-blend: multiply;
-  --wash-opacity: .34;
-  --grain-opacity: .24;
+  --wash-opacity: .21;
+  --grain-opacity: .12;
   --grain-blend: multiply;
-  --vignette: radial-gradient(120% 85% at 50% 45%, transparent 52%, rgba(74,58,36,.20) 100%);
+  --vignette: radial-gradient(125% 90% at 50% 45%, transparent 64%, rgba(74,58,36,.13) 100%);
+
+  /* --- Map ink ------------------------------------------- */
+  /* Place names were --ink-soft: a deliberately faded token, at 10.5px,
+     with a text-shadow glow rather than a halo. Full ink and a real halo. */
+  --label-ink:        #1e1a13;
+  --label-ink-quiet:  #4a4235;
+  --label-halo:       rgba(255, 251, 242, .95);
+  --label-halo-width: 3px;
+  --coast:            rgba(36, 31, 24, .34);
 
   /* --- Type ---------------------------------------------- */
   --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
@@ -114,13 +138,27 @@
     --shadow-lg:  0 -2px 10px rgba(0,0,0,.34), 0 -18px 50px rgba(0,0,0,.52);
     --shadow-marker: 0 1px 3px rgba(0,0,0,.65), 0 3px 10px rgba(0,0,0,.45);
 
-    --tile-filter: sepia(.34) saturate(.70) hue-rotate(-8deg) brightness(1.75) contrast(.92);
-    --wash-color: #2b2a20;
-    --wash-blend: overlay;
-    --wash-opacity: .26;
-    --grain-opacity: .22;
+    /* Dark mode now dims the SAME light basemap rather than loading a
+       pre-darkened one. CARTO's dark tiles separate land from water by only a
+       few points of luminance; once that difference is gone no filter can
+       recover it. Dimming a basemap that still has the hue cue keeps it:
+       land stays warm grey, water stays blue. */
+    --tile-bri: .44;
+    --tile-sat: 2.60;
+    --tile-con: 1.08;
+    --tile-sat-near: 1.15;
+    --wash-color: #141c2a;
+    --wash-blend: multiply;
+    --wash-opacity: .28;
+    --grain-opacity: .10;
     --grain-blend: overlay;
-    --vignette: radial-gradient(125% 88% at 50% 45%, transparent 55%, rgba(0,0,0,.34) 100%);
+    --vignette: radial-gradient(128% 92% at 50% 45%, transparent 66%, rgba(0,0,0,.26) 100%);
+
+    --label-ink:        #f7f1e2;
+    --label-ink-quiet:  #d8d0bd;
+    --label-halo:       rgba(8, 10, 14, .94);
+    --label-halo-width: 3px;
+    --coast:            rgba(236, 227, 209, .30);
   }
 }
 
@@ -153,11 +191,25 @@
   --shadow-lg:  0 -2px 10px rgba(0,0,0,.34), 0 -18px 50px rgba(0,0,0,.52);
   --shadow-marker: 0 1px 3px rgba(0,0,0,.65), 0 3px 10px rgba(0,0,0,.45);
 
-  --tile-filter: sepia(.34) saturate(.70) hue-rotate(-8deg) brightness(1.75) contrast(.92);
-  --wash-color: #2b2a20;
-  --wash-blend: overlay;
-  --wash-opacity: .26;
-  --grain-opacity: .22;
+  /* Dark mode now dims the SAME light basemap rather than loading a
+     pre-darkened one. CARTO's dark tiles separate land from water by only a
+     few points of luminance; once that difference is gone no filter can
+     recover it. Dimming a basemap that still has the hue cue keeps it:
+     land stays warm grey, water stays blue. */
+  --tile-bri: .44;
+  --tile-sat: 2.60;
+  --tile-con: 1.08;
+  --tile-sat-near: 1.15;
+  --wash-color: #141c2a;
+  --wash-blend: multiply;
+  --wash-opacity: .28;
+  --grain-opacity: .10;
   --grain-blend: overlay;
-  --vignette: radial-gradient(125% 88% at 50% 45%, transparent 55%, rgba(0,0,0,.34) 100%);
+  --vignette: radial-gradient(128% 92% at 50% 45%, transparent 66%, rgba(0,0,0,.26) 100%);
+
+  --label-ink:        #f7f1e2;
+  --label-ink-quiet:  #d8d0bd;
+  --label-halo:       rgba(8, 10, 14, .94);
+  --label-halo-width: 3px;
+  --coast:            rgba(236, 227, 209, .30);
 }

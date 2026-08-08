@@ -77,8 +77,28 @@ engine/                    generic — knows nothing about this subject
     overlays.js portrait / image / quote / stat cards
   captions.js   word-highlighted captions and the transcript
   chrome.js     transport, scene rail, scrubbing
-  basemap.js    the parchment tiles, shared with Explore
   story.js      mode entry point
+
+core/                      shared primitives, no DOM ownership
+  theme.js      isDark(el), watchTheme, reducedMotion — one copy, was three
+
+map/                       the map module — we draw the ground ourselves
+  geo.js        Web Mercator (Leaflet-compatible), Catmull-Rom, normals
+  basemap.js    Natural Earth baked into Path2D + a pack's detail overlay
+  artifacts.js  army arrows, marches, fronts, areas, crossings, battles
+  regions.js    named administrative areas, any level
+  index.js      createMap(host, opts) -> an instance
+  tiles.js      the raster path, still used by Explore
+  texture.js    wash/grain, above the tiles and BELOW every label
+
+sound/                     mixer, synthesised effects, script-driven ducking
+
+dev/                       benches — open these, not the app
+  map-lab.html    every map capability on one screen, both themes
+  sound-lab.html  every effect, with the duck curve plotted
+
+assets/geo/                built by tools/build-basemap.py, committed
+content/<pack>/geo/        built by tools/fetch-detail.py — close-in water
 
 content/american-revolution/    one folder per subject
   chapter-1775-04-19.json  scenes -> beats -> cues, plus places, routes, quotes
@@ -132,10 +152,30 @@ python tools/narrate.py ... --engine openai    # needs OPENAI_API_KEY
 # images from Wikimedia Commons, with licence and attribution captured
 python tools/fetch-media.py american-revolution
 
-# always run both before committing
+# always run these before committing
 python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/check-data.py
+python tools/check-contrast.py          # both themes; fails on unreadable map
+python tools/check-sound.py             # ducking, instant suppression, silent fallback
 ```
+
+Per-module benches live in `dev/` and are the place to work. Build a module against its bench
+before wiring it into the app — every defect that mattered this year was invisible to reading
+and obvious to measurement.
+
+```bash
+# rebuild the basemap after changing tolerances or levels
+python tools/build-basemap.py
+# close-in water and coastline for one pack's theatre (OpenStreetMap, ODbL)
+python tools/fetch-detail.py american-revolution
+```
+
+`check-contrast.py` drives a real browser and samples real pixels, because the map was
+unreadable for months and nobody could point at a number. It scores label and marker contrast
+as WCAG ratios, and land-versus-water as a CIE76 colour difference — deliberately not a WCAG
+ratio, because WCAG is a function of luminance alone and land and water here differ mostly in
+hue. Measured land (238,234,227) against water (234,242,236) is a luminance ratio of 1.01 and
+plainly different to the eye. Scoring that by luminance is the same mistake `sepia()` made.
 
 `--engine openai` sounds better but returns no word timings, so anchors are estimated from word
 length and flagged `approx`. The tool says so rather than quietly mis-syncing.
@@ -165,7 +205,9 @@ path is relative, so the site works under `/american_revolution/`.
   with artist, source and licence recorded in `media.json`.
 - Portraits: public-domain paintings from Wikimedia Commons. Where an image is a statue or a
   stand-in rather than a likeness, the app says so.
-- Map tiles © OpenStreetMap contributors, © CARTO.
+- Basemap drawn from [Natural Earth](https://www.naturalearthdata.com/) (public domain).
+  Close-in water and coastline from OpenStreetMap contributors, ODbL.
+- Map tiles © OpenStreetMap contributors, © CARTO (Explore mode).
 - Voices: Microsoft Edge neural TTS via [edge-tts](https://github.com/rany2/edge-tts).
 - [Fraunces](https://github.com/googlefonts/fraunces) (SIL OFL 1.1),
   [Leaflet](https://leafletjs.com/) (BSD-2-Clause).

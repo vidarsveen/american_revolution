@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="./css/base.css">
 <link rel="stylesheet" href="./css/shell.css">
 <link rel="stylesheet" href="./css/map.css">
+  <link rel="stylesheet" href="./css/atlas.css">
 <link rel="stylesheet" href="./css/timeline.css">
 <link rel="stylesheet" href="./css/sheet.css">
 <link rel="stylesheet" href="./css/story.css">
@@ -46,8 +47,9 @@
 
     <section class="view view--map" data-view="map">
       <div id="map"></div>
-      <div class="map-wash"></div>
-      <div class="map-grain"></div>
+      <!-- wash and grain are mounted inside the map, in a pane above the
+           tiles and below the labels (map/texture.js). The vignette is a
+           lens effect, so it stays out here anchored to the viewport. -->
       <div class="map-vignette"></div>
       <!-- scrubber, tour caption and map tools are appended here -->
     </section>

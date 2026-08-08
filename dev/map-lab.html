@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="no" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kartlab — map module bench</title>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/atlas.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid;
+    grid-template-columns: 268px 1fr;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  /* ---- panel ---- */
+  .panel {
+    overflow-y: auto;
+    padding: 14px;
+    background: var(--paper-raised);
+    border-right: 1px solid var(--rule);
+  }
+  .panel h1 {
+    margin: 0 0 2px;
+    font-family: var(--font-display);
+    font-size: 17px;
+  }
+  .panel p.sub { margin: 0 0 14px; font-size: 11.5px; color: var(--ink-soft); }
+  .grp { margin-bottom: 14px; }
+  .grp > h2 {
+    margin: 0 0 6px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 5px; }
+  button {
+    font: inherit;
+    font-size: 12px;
+    padding: 6px 9px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 7px;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  button:hover { background: var(--paper-sunken); }
+  button.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  button.wide { flex: 1 1 100%; }
+  button.hero {
+    flex: 1 1 100%;
+    padding: 9px;
+    font-weight: 700;
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+  }
+  label.slider { display: block; font-size: 11.5px; color: var(--ink-soft); margin-top: 8px; }
+  label.slider input { width: 100%; }
+
+  /* ---- stage ---- */
+  .stage { position: relative; display: grid; place-items: center; overflow: hidden; }
+  .frame {
+    position: relative;
+    width: 100%; height: 100%;
+    background: var(--paper-sunken);
+    box-shadow: 0 6px 30px rgba(0,0,0,.22);
+    overflow: hidden;
+    transition: width .25s, height .25s;
+  }
+  .frame.phone   {
+    width: 390px; height: 844px;
+    max-height: 96%; aspect-ratio: 390 / 844; height: auto;
+    border-radius: 22px;
+  }
+  .frame.tablet  {
+    width: 834px; max-width: 96%; height: 1000px;
+    max-height: 96%; aspect-ratio: 834 / 1112; height: auto;
+    border-radius: 14px;
+  }
+  #map { position: absolute; inset: 0; }
+
+  .hud {
+    position: absolute; left: 10px; bottom: 10px; z-index: 5;
+    display: flex; gap: 10px;
+    padding: 5px 10px; border-radius: 7px;
+    background: rgba(20,20,20,.72); color: #f2ead8;
+    font-size: 11px; font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+  .zoomer {
+    position: absolute; right: 10px; top: 10px; z-index: 5;
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .zoomer button { width: 34px; height: 34px; padding: 0; font-size: 16px; }
+  .note {
+    margin-top: 10px; padding: 8px 9px;
+    font-size: 11px; line-height: 1.5; color: var(--ink-soft);
+    background: var(--paper-sunken); border-radius: 7px;
+  }
+  @media (max-width: 780px) {
+    body { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .panel { border-right: 0; border-bottom: 1px solid var(--rule); max-height: 45vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1>Kartlab</h1>
+  <p class="sub">The map module on its own bench — no app, no narration.</p>
+
+  <div class="grp">
+    <h2>Tema</h2>
+    <div class="row" id="theme">
+      <button data-theme-set="light" class="on">Lyst</button>
+      <button data-theme-set="dark">Mørkt</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Ramme</h2>
+    <div class="row" id="frameBtns">
+      <button data-frame="full" class="on">Full</button>
+      <button data-frame="phone">Telefon</button>
+      <button data-frame="tablet">Nettbrett</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Kamera</h2>
+    <div class="row">
+      <button data-view="atlantic">Atlanterhavet</button>
+      <button data-view="colonies">Koloniene</button>
+      <button data-view="boston">Boston</button>
+      <button data-view="lexington">Lexington</button>
+    </div>
+    <label class="slider">Kamerafart: <b id="speedOut">2,8 s</b>
+      <input type="range" id="speed" min="0.6" max="8" step="0.2" value="2.8">
+    </label>
+  </div>
+
+  <div class="grp">
+    <h2>Grenser</h2>
+    <div class="row">
+      <button data-border="country">Land</button>
+      <button data-border="state">Delstater</button>
+    </div>
+    <div class="row" style="margin-top:5px">
+      <button class="wide" data-do="regionsModern">Navngi delstatene (moderne)</button>
+      <button class="wide" data-do="regionsColonies">Koloniene 1775 (pakkens egne)</button>
+      <button class="wide" data-do="regionsSides">Farg etter side</button>
+      <button class="wide" data-do="regionsClear">Fjern regioner</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Artefakter</h2>
+    <div class="row">
+      <button data-do="places">Steder</button>
+      <button data-do="roads">Veier</button>
+      <button data-do="march">Marsj</button>
+      <button data-do="arrows">Hærpiler</button>
+      <button data-do="units">Førere + flagg</button>
+      <button data-do="front">Frontlinje</button>
+      <button data-do="area">Kontrollområde</button>
+      <button data-do="crossing">Elvekryssing</button>
+      <button data-do="battles">Slag / beleiring</button>
+      <button data-do="converge">Militsen samles</button>
+    </div>
+    <label class="slider">Styrke: <b id="strengthOut">1 500</b>
+      <input type="range" id="strength" min="200" max="30000" step="100" value="1500">
+    </label>
+  </div>
+
+  <div class="grp">
+    <h2>Alt</h2>
+    <div class="row">
+      <button class="hero" data-do="story">Spill 19. april 1775</button>
+      <button class="wide" data-do="all">Vis alt på én gang</button>
+      <button class="wide" data-do="clear">Tøm kartet</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Test</h2>
+    <div class="row">
+      <button class="wide" data-do="panTest">Panoreringstest (blanke ruter?)</button>
+      <button class="wide" data-do="seekTest">Seek-test (instant = samme bilde?)</button>
+    </div>
+    <div class="note" id="testOut">
+      Panoreringstesten drar kartet raskt og teller bilder uten grunn under seg.
+      Seek-testen tegner alt animert, så alt med <code>instant</code>, og sammenligner.
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <div id="map"></div>
+    <div class="zoomer">
+      <button data-zoom="1">+</button>
+      <button data-zoom="-1">−</button>
+    </div>
+    <div class="hud">
+      <span id="hudZoom">z —</span>
+      <span id="hudPos">—</span>
+      <span id="hudFps">— fps</span>
+      <span id="hudArrow"></span>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./map-lab.js"></script>
+</body>
+</html>

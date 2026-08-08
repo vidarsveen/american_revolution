@@ -5,6 +5,8 @@
 import { state, subscribe, parseDate, yearOf, onNextFrame, matchesFilter } from './store.js';
 import { tx, t } from './i18n.js';
 import { GLYPH, icoTarget } from './icons.js';
+import { attachTiles } from '../map/tiles.js';
+import { mountTexture } from '../map/texture.js';
 
 /* Roughly the theatre of the war: New England down to Georgia.
    We fit these bounds rather than fixing a zoom, so a tall phone and a
@@ -14,30 +16,8 @@ const HOME_BOUNDS = [[31.2, -82.0], [46.0, -69.5]];
    has to be big enough to fly there. */
 const MAX_BOUNDS = [[14, -110], [62, 22]];
 
-/* Tried in order — if one CDN is unreachable we quietly fall to the next. */
-const PROVIDERS = [
-  {
-    url: 'https://{s}.basemaps.cartocdn.com/{style}_nolabels/{z}/{x}/{y}{r}.png',
-    themed: true,
-    opts: {
-      subdomains: 'abcd', maxZoom: 19,
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-    },
-  },
-  {
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
-    opts: { maxZoom: 13, attribution: 'Tiles &copy; Esri' },
-  },
-  {
-    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    opts: { maxZoom: 19, attribution: '&copy; OpenStreetMap' },
-  },
-];
-
 let map = null;
 let tiles = null;
-let providerIdx = 0;
-let tileErrors = 0;
 
 let markerLayer = null;
 let labelLayer = null;
@@ -77,7 +57,8 @@ export function initMap(allEvents, handlers = {}) {
   labelLayer = L.layerGroup().addTo(map);   // period place names
   markerLayer = L.layerGroup().addTo(map);  // events
 
-  mountTiles(0);
+  tiles = attachTiles(map, { relief: true });
+  mountTexture(map);
   applyZoomClass();
   map.on('zoomend', applyZoomClass);
 
@@ -95,30 +76,6 @@ export function initMap(allEvents, handlers = {}) {
   });
 
   return map;
-}
-
-function isDarkNow() {
-  const attr = document.documentElement.getAttribute('data-theme');
-  if (attr === 'dark') return true;
-  if (attr === 'light') return false;
-  return matchMedia('(prefers-color-scheme: dark)').matches;
-}
-
-function mountTiles(idx) {
-  providerIdx = idx;
-  tileErrors = 0;
-  const p = PROVIDERS[idx];
-  const url = p.themed ? p.url.replace('{style}', isDarkNow() ? 'dark' : 'light') : p.url;
-  if (tiles) map.removeLayer(tiles);
-  tiles = L.tileLayer(url, { ...p.opts, crossOrigin: true, keepBuffer: 2 }).addTo(map);
-  tiles.on('tileerror', () => {
-    tileErrors += 1;
-    // A handful of misses is normal at the edges; a wall of them is not.
-    if (tileErrors > 6 && providerIdx < PROVIDERS.length - 1) {
-      console.warn('[map] tile provider failed, falling back');
-      mountTiles(providerIdx + 1);
-    }
-  });
 }
 
 function applyZoomClass() {
@@ -285,8 +242,7 @@ export function resetView(animate = true) {
 
 /** The basemap itself changes with the theme — swap the tile style. */
 export function refreshTileTheme() {
-  if (!map || !PROVIDERS[providerIdx].themed) return;
-  mountTiles(providerIdx);
+  if (tiles) tiles.refresh();
 }
 
 export function getMap() { return map; }

@@ -17,10 +17,10 @@
 
 /* Time of day, over the tiles and under the parchment wash so it tints the
    whole picture rather than sitting on top of it. */
+/* Lives in the texture pane now, positioned and sized by map/texture.js —
+   so no inset and no z-index of its own. */
 .stage-map__mood {
   position: absolute;
-  inset: 0;
-  z-index: 2;
   pointer-events: none;
   mix-blend-mode: multiply;
   transition: background 2.4s var(--ease-in-out), opacity 2.4s var(--ease-in-out);
@@ -34,8 +34,8 @@
 .stage-map__mood[data-mood="night"] { background: linear-gradient(180deg, #33456f, #253154); opacity: .30; }
 :root[data-theme="dark"] .stage-map__mood[data-mood="night"] { opacity: .18; }
 
-.stage-map .map-wash     { z-index: 3; }
-.stage-map .map-grain    { z-index: 4; }
+/* Wash and grain are ordered by the pane; only the vignette is still a
+   sibling of the canvas out here. */
 .stage-map .map-vignette { z-index: 5; }
 
 /* Muzzle flash */

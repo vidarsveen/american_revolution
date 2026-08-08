@@ -26,3 +26,8 @@ shots/
 
 # Agent skills installed per-machine via `npx skills add`
 .claude/skills/
+
+# Raw Natural Earth / Overpass downloads. 165 MB of source that the build
+# turns into the ~4 MB under assets/geo and content/<pack>/geo that actually
+# ships. Re-fetch with tools/build-basemap.py and tools/fetch-detail.py.
+assets/geo/_src/

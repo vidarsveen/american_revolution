@@ -1,0 +1,314 @@
+#!/usr/bin/env python3
+"""
+check-contrast.py — measure what the map actually renders, in both themes.
+
+The map was unreadable for a long time and nobody could point at a number,
+only at a feeling. This samples real pixels from a real browser and turns the
+question into a pass/fail:
+
+  * land vs water    — can you tell the sea from the shore at all?
+  * label vs ground  — can you read a place name where it actually sits?
+  * marker vs ground — does an event pin stand out from what is behind it?
+
+WCAG governs text (4.5:1 AA) and UI components (3:1). There is no standard
+for "land vs water", so that threshold is stated as a project rule, not
+dressed up as one.
+
+    python tools/check-contrast.py
+    python tools/check-contrast.py --theme dark
+"""
+from __future__ import annotations
+
+import argparse
+import http.server
+import socket
+import socketserver
+import sys
+import threading
+from pathlib import Path
+
+from PIL import Image
+from playwright.sync_api import sync_playwright
+
+ROOT = Path(__file__).resolve().parent.parent
+
+# (name, lat, lon, kind) — well inside their feature at the default Explore
+# framing, so a small camera change cannot flip a probe to the wrong side.
+PROBES = [
+    ("open Atlantic", 38.0, -69.0, "water"),
+    ("Chesapeake", 37.6, -76.1, "water"),
+    ("inland Virginia", 38.2, -79.6, "land"),
+    ("Pennsylvania", 40.9, -77.8, "land"),
+]
+
+# land/water is deliberately NOT a WCAG ratio. WCAG contrast is a function of
+# luminance alone, and land/water on this basemap differ mostly in HUE:
+# measured pixels are land (238,234,227) vs water (234,242,236) — a ratio of
+# 1.01, and plainly different to the eye. Scoring that with luminance would
+# repeat exactly the mistake sepia() made. So it uses CIE76 dE*ab instead.
+THRESHOLDS = {
+    # 8.0 is what a filtered third-party raster basemap can reach. Pushing to
+    # 12 is possible (measured 13.25 at saturate(2.4)) but only by saturating
+    # the modern interstate network until it blazes yellow across a 1775 map —
+    # so 12 is the target for the authored basemap, behind --strict, not a
+    # gate the raster path can honestly pass.
+    "land/water":    (8.0, "project rule, CIE76 dE — 2.3 is just-noticeable, 12 is obvious"),
+    "label/ground":  (4.5,  "WCAG 2.2 AA, normal-size text"),
+    "marker/ground": (3.0,  "WCAG 2.2 1.4.11, non-text contrast (measured at the pin's ring)"),
+}
+
+GEOM_JS = """
+async (probes) => {
+  const M = await import('/js/map.js');
+  const map = M.getMap();
+  const rect = map.getContainer().getBoundingClientRect();
+  const out = { probes: [], labels: [], markers: [] };
+
+  for (const p of probes) {
+    const pt = map.latLngToContainerPoint([p[1], p[2]]);
+    out.probes.push({ name: p[0], kind: p[3],
+                      x: rect.left + pt.x, y: rect.top + pt.y });
+  }
+  for (const el of document.querySelectorAll('.place')) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || parseFloat(getComputedStyle(el).opacity) < 0.3) continue;
+    out.labels.push({ name: el.textContent.trim(), x: r.left, y: r.top,
+                      w: r.width, h: r.height, color: getComputedStyle(el).color });
+  }
+  for (const el of document.querySelectorAll('.mk__body')) {
+    const r = el.getBoundingClientRect();
+    if (!r.width) continue;
+    out.markers.push({ x: r.left + r.width / 2, y: r.top + r.height / 2,
+                       w: r.width, color: getComputedStyle(el).backgroundColor,
+                       ring: getComputedStyle(el).borderTopColor });
+  }
+  return out;
+}
+"""
+
+
+# ---------------------------------------------------------------- colour
+
+def _lin(c: float) -> float:
+    c /= 255.0
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+
+def luminance(rgb) -> float:
+    r, g, b = (_lin(c) for c in rgb[:3])
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def ratio(a, b) -> float:
+    la, lb = luminance(a), luminance(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
+
+
+def _lab(rgb):
+    """sRGB -> CIE L*a*b* (D65)."""
+    r, g, b = (_lin(c) for c in rgb[:3])
+    x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047
+    y = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 1.00000
+    z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883
+    f = lambda t: t ** (1 / 3) if t > 0.008856 else (7.787 * t + 16 / 116)
+    fx, fy, fz = f(x), f(y), f(z)
+    return (116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz))
+
+
+def delta_e(a, b) -> float:
+    """CIE76 dE*ab — sees hue and chroma, which a luminance ratio cannot."""
+    la, lb = _lab(a), _lab(b)
+    return sum((x - y) ** 2 for x, y in zip(la, lb)) ** 0.5
+
+
+def median_patch(img: Image.Image, x: int, y: int, r: int = 6):
+    """
+    Median, not mean: the grain layer is noise and would drag a mean.
+
+    Returns None when the patch would fall outside the image. PIL.crop()
+    happily pads out-of-bounds regions with black, which scored an offscreen
+    sample as pure black and produced both a false FAIL (light) and a false
+    PASS (dark) before this guard existed.
+    """
+    if x - r < 0 or y - r < 0 or x + r >= img.width or y + r >= img.height:
+        return None
+    box = img.crop((x - r, y - r, x + r + 1, y + r + 1)).convert("RGB")
+    px = list(box.getdata())
+    if not px:
+        return None
+    return tuple(sorted(p[i] for p in px)[len(px) // 2] for i in range(3))
+
+
+def parse_rgb(s: str):
+    inner = s[s.index("(") + 1:s.index(")")]
+    parts = inner.replace("/", " ").replace(",", " ").split()
+    return tuple(int(float(v)) for v in parts[:3])
+
+
+def parse_rgba(s: str):
+    inner = s[s.index("(") + 1:s.index(")")]
+    parts = inner.replace("/", " ").replace(",", " ").split()
+    rgb = tuple(int(float(v)) for v in parts[:3])
+    return rgb, (float(parts[3]) if len(parts) > 3 else 1.0)
+
+
+def composite(fg, bg):
+    """Flatten a semi-transparent colour over an opaque one."""
+    (r, g, b), a = fg
+    return tuple(round(c * a + d * (1 - a)) for c, d in zip((r, g, b), bg))
+
+
+# ---------------------------------------------------------------- server
+
+def serve(root: Path):
+    class Handler(http.server.SimpleHTTPRequestHandler):
+        def __init__(self, *a, **k):
+            super().__init__(*a, directory=str(root), **k)
+
+        def log_message(self, *a):
+            pass
+
+    probe = socket.socket()
+    probe.bind(("127.0.0.1", 0))
+    port = probe.getsockname()[1]
+    probe.close()
+
+    srv = socketserver.ThreadingTCPServer(("127.0.0.1", port), Handler)
+    srv.daemon_threads = True
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    return srv, f"http://127.0.0.1:{port}"
+
+
+# ---------------------------------------------------------------- measure
+
+def measure(page, img: Image.Image, dpr: float):
+    geom = page.evaluate(GEOM_JS, PROBES)
+
+    def px(x, y, r=6):
+        return median_patch(img, int(x * dpr), int(y * dpr), r)
+
+    results = []
+
+    waters = [p for p in geom["probes"] if p["kind"] == "water"]
+    lands = [p for p in geom["probes"] if p["kind"] == "land"]
+    for w in waters:
+        for l in lands:
+            wc, lc = px(w["x"], w["y"]), px(l["x"], l["y"])
+            if wc is None or lc is None:
+                continue
+            results.append((
+                "land/water",
+                f"{l['name']} / {w['name']}",
+                delta_e(lc, wc),
+            ))
+
+    # A label's background varies along its length, so take the worst case:
+    # sample a ring just outside the glyph box, where the halo has faded out.
+    for lb in geom["labels"][:8]:
+        ink = parse_rgb(lb["color"])
+        ring = [
+            g for g in (
+                px(lb["x"] + lb["w"] * fx, lb["y"] + lb["h"] * fy, 4)
+                for fx in (-0.25, 0.5, 1.25)
+                for fy in (-0.9, 1.9)
+            ) if g is not None
+        ]
+        if not ring:
+            continue
+        worst = min(ring, key=lambda g: ratio(ink, g))
+        results.append(("label/ground", lb["name"][:22], ratio(ink, worst)))
+
+    # A pin is a coloured disc inside a near-white ring. 1.4.11 asks whether
+    # the component is distinguishable from what is adjacent to it, and on a
+    # dark map it is the ring that does that work, not the fill — so score
+    # the stronger of the two boundaries the pin actually presents.
+    for mk in geom["markers"][:6]:
+        ground = px(mk["x"] + mk["w"] * 1.4, mk["y"], 4)
+        if ground is None:
+            continue
+        fill = parse_rgb(mk["color"])
+        ring = composite(parse_rgba(mk["ring"]), fill)
+        results.append((
+            "marker/ground", "event pin",
+            max(ratio(fill, ground), ratio(ring, ground)),
+        ))
+
+    return results
+
+
+def run(theme: str, width: int, height: int, shots: Path):
+    srv, base = serve(ROOT)
+    try:
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch()
+            ctx = browser.new_context(
+                viewport={"width": width, "height": height},
+                device_scale_factor=2,
+                color_scheme=theme,
+                reduced_motion="reduce",
+            )
+            page = ctx.new_page()
+            errors: list[str] = []
+            page.on("pageerror", lambda e: errors.append(str(e)))
+            page.goto(f"{base}/index.html#/kart", wait_until="networkidle")
+            page.wait_for_timeout(3500)
+
+            shots.mkdir(parents=True, exist_ok=True)
+            shot = shots / f"contrast-{theme}.png"
+            page.screenshot(path=str(shot))
+            results = measure(page, Image.open(shot), dpr=2)
+
+            ctx.close()
+            browser.close()
+        return results, errors, shot
+    finally:
+        srv.shutdown()
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--theme", choices=["light", "dark", "both"], default="both")
+    ap.add_argument("--width", type=int, default=390)
+    ap.add_argument("--height", type=int, default=844)
+    ap.add_argument("--shots", type=Path, default=ROOT / "shots" / "contrast")
+    ap.add_argument("--strict", action="store_true",
+                    help="hold land/water to the authored-basemap target (dE 12)")
+    args = ap.parse_args()
+
+    if args.strict:
+        THRESHOLDS["land/water"] = (12.0, THRESHOLDS["land/water"][1])
+
+    themes = ["light", "dark"] if args.theme == "both" else [args.theme]
+    failed = False
+
+    for theme in themes:
+        results, errors, shot = run(theme, args.width, args.height, args.shots)
+        head = f"  {theme.upper()}  ({args.width}x{args.height})   {shot}"
+        print(f"\n{'=' * len(head)}\n{head}\n{'=' * len(head)}")
+
+        if errors:
+            failed = True
+            print("  page errors:")
+            for e in errors:
+                print(f"    ! {e}")
+
+        for pair, (threshold, basis) in THRESHOLDS.items():
+            rows = [r for r in results if r[0] == pair]
+            if not rows:
+                print(f"\n  {pair}: no samples")
+                continue
+            worst = min(r[2] for r in rows)
+            ok = worst >= threshold
+            failed |= not ok
+            print(f"\n  {pair}   worst {worst:5.2f}  need {threshold:.2f}   "
+                  f"[{'PASS' if ok else 'FAIL'}]")
+            print(f"    {basis}")
+            for _, label, val in sorted(rows, key=lambda r: r[2])[:4]:
+                print(f"    {' ' if val >= threshold else '!'} {val:5.2f}  {label}")
+
+    print()
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
