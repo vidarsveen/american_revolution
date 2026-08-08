@@ -737,3 +737,16 @@
   .transport { max-width: 620px; margin-inline: auto; }
   .ov-deck { padding-inline: max(var(--s3), calc((100% - 900px) / 2)); }
 }
+
+/* A person with no surviving likeness. The card keeps its shape and its
+   weight — they are as much a part of the story as the ones who were painted
+   — but shows no empty frame, because an empty frame reads as a failure. */
+.ov-portrait__card.is-faceless { width: min(52vw, 240px); }
+.ov-portrait__card figcaption u {
+  display: block;
+  margin-top: 4px;
+  text-decoration: none;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--ink-faint);
+}

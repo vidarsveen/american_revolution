@@ -88,19 +88,30 @@ const hide = (el) => el?.classList.remove('is-on');
    things on screen that is not a diagram.
    ------------------------------------------------------------ */
 
+/* Said when there is no likeness. Not every face in this story survives: no
+   portrait of Samuel Prescott is known, and there never was one. */
+const NO_LIKENESS = { no: 'Ikke noe kjent portrett', en: 'No known likeness' };
+
 export function showPortrait(cue, instant) {
   const p = people.get(cue.id);
   if (!p) return;
-  const img = p.portrait
-    ? `<img src="./assets/portraits/${esc(p.portrait)}" alt="${esc(pick(p.name))}" decoding="async">`
-    : `<span class="ov-portrait__none">${SILHOUETTE}</span>`;
+
+  // An empty frame with a silhouette in it reads as a picture that failed to
+  // load, which is a bug the viewer has to forgive. The absence is real and
+  // worth a line: no portrait of Samuel Prescott was ever made. So the card
+  // drops the frame entirely and says so.
+  const frame = p.portrait
+    ? `<span class="ov-portrait__frame"><img src="./assets/portraits/${esc(p.portrait)}"
+         alt="${esc(pick(p.name))}" decoding="async"></span>`
+    : '';
   show(portraitEl, `
-    <figure class="ov-portrait__card side--${esc(p.side || 'neutral')}">
-      <span class="ov-portrait__frame">${img}</span>
+    <figure class="ov-portrait__card side--${esc(p.side || 'neutral')}${p.portrait ? '' : ' is-faceless'}">
+      ${frame}
       <figcaption>
         <b>${esc(pick(p.name))}</b>
         <span>${esc(pick(p.role))}</span>
         ${p.lived ? `<i>${esc(p.lived)}</i>` : ''}
+        ${p.portrait ? '' : `<u>${esc(NO_LIKENESS[lang] || NO_LIKENESS.en)}</u>`}
       </figcaption>
     </figure>`, instant);
 }

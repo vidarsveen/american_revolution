@@ -1120,7 +1120,21 @@
             "no": "Han har prøvd å advare London. Skal dere slå ned dette, skrev han hjem, trenger dere en mye større hær enn dere tror. Ingen ville høre.",
             "en": "He has tried to warn London. If you mean to put this down, he wrote home, you will need a far larger army than you think. Nobody wanted to hear it."
           },
-          "gapAfter": 1.15
+          "gapAfter": 1.15,
+          "cues": [
+            {
+              "on": {
+                "no": "word:advare",
+                "en": "word:warn"
+              },
+              "do": "quote.show",
+              "id": "gage-warning"
+            },
+            {
+              "on": "end",
+              "do": "quote.hide"
+            }
+          ]
         },
         {
           "id": "s1.b5",
@@ -1478,8 +1492,7 @@
               "on": "word:Prescott",
               "do": "route.draw",
               "id": "prescott-ride",
-              "over": 3.5,
-              "fit": false
+              "over": 3.5
             },
             {
               "on": {
@@ -1551,6 +1564,15 @@
               "do": "marker.show",
               "at": "lexington-green",
               "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:kaldt",
+                "en": "word:cold"
+              },
+              "do": "sound.ambience",
+              "id": "wind",
+              "gainDb": -9
             }
           ],
           "gapAfter": 1.25
@@ -1561,7 +1583,16 @@
             "no": "På gressplassen midt i Lexington står det en flokk menn. Noen av dem er nitten år. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker.",
             "en": "On the green in the middle of Lexington stands a cluster of men. Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker."
           },
-          "gapAfter": 0.95
+          "gapAfter": 0.95,
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "the-road",
+              "zoom": 11.6,
+              "over": 11.0
+            }
+          ]
         },
         {
           "id": "s3.b3",
@@ -1955,7 +1986,29 @@
             "no": "De britiske soldatene ved broa er hundre mann. De trekker seg tilbake over elva, blir usikre, og noen av dem fyrer av et skudd. Så en hel salve.",
             "en": "The British at the bridge are a hundred men. They pull back across the river, waver, and some of them fire a shot. Then a full volley."
           },
-          "gapAfter": 1.15
+          "gapAfter": 1.15,
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "north-bridge",
+              "zoom": 14.2,
+              "over": 7.0
+            },
+            {
+              "on": {
+                "no": "word:hundre",
+                "en": "word:hundred"
+              },
+              "do": "stat.show",
+              "value": "100",
+              "label": {
+                "no": "ved brua",
+                "en": "at the bridge"
+              },
+              "side": "british"
+            }
+          ]
         },
         {
           "id": "s4.b8",
@@ -2076,8 +2129,7 @@
               "on": "end",
               "do": "route.draw",
               "id": "british-retreat",
-              "over": 16,
-              "fit": false
+              "over": 16
             }
           ],
           "gapAfter": 1.55
@@ -2190,7 +2242,28 @@
             "no": "Soldatene har vært våkne i over et døgn. De har gått over førti kilometer. Mange er tomme for ammunisjon. Noen begynner å løpe.",
             "en": "The soldiers have been awake for over a day. They have marched more than forty kilometres. Many are out of ammunition. Some begin to run."
           },
-          "gapAfter": 1.25
+          "gapAfter": 1.25,
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "boots",
+              "gainDb": -11
+            },
+            {
+              "on": {
+                "no": "word:førti",
+                "en": "word:forty"
+              },
+              "do": "stat.show",
+              "value": "40 km",
+              "label": {
+                "no": "marsjert",
+                "en": "marched"
+              },
+              "side": "british"
+            }
+          ]
         },
         {
           "id": "s5.b9",
@@ -2447,7 +2520,20 @@
             "no": "Den er der bare, om morgenen den tjuende april, fordi tusenvis av mennesker gjorde det samme uten å avtale det med hverandre.",
             "en": "It is simply there, on the morning of the twentieth of April, because thousands of people did the same thing without arranging it with each other."
           },
-          "gapAfter": 3.35
+          "gapAfter": 3.35,
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "siege",
+              "zoom": 10.2,
+              "over": 9.0
+            },
+            {
+              "on": "end",
+              "do": "sound.ambience"
+            }
+          ]
         }
       ]
     },
@@ -2582,6 +2668,16 @@
       "by": {
         "no": "Lord Percy, brev, 20. april 1775",
         "en": "Lord Percy, letter, 20 April 1775"
+      }
+    },
+    "gage-warning": {
+      "text": {
+        "no": "Hvis dere mener alvor med å slå dette ned, trenger dere en langt større hær enn dere tror.",
+        "en": "If you mean to put this down, you will need a far larger army than you think."
+      },
+      "by": {
+        "no": "General Thomas Gage, brev til London, 1774",
+        "en": "General Thomas Gage, letter to London, 1774"
       }
     }
   },
