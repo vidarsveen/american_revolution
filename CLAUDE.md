@@ -109,9 +109,14 @@ the list, and it works online and 404s offline — silently, because the install
 `Promise.allSettled`. Every change that adds, moves or deletes a shipped file must update
 both.
 
-**The cue vocabulary is duplicated by hand** between `engine/stage.js` and
-`tools/check-script.py`. Adding a verb to one without the other means a typo in a chapter
-silently does nothing. This has blocked work twice and wants a shared manifest.
+**The cue vocabulary lives in `engine/verbs.json` and nowhere else.** It used to be copied by
+hand into `engine/stage.js` and `tools/check-script.py`, so adding a verb to one and not the
+other meant a chapter validated clean and then silently did nothing in the browser. Adding a
+verb now means: the manifest entry, and a handler in the `VERBS` table in `stage.js`.
+`checkVerbManifest()` reports drift at boot on localhost, and `check-script.py` refuses a
+chapter that uses a verb the manifest does not declare. Declare an argument with a reference
+type (`place`, `route`, `person`, `media`, `quote`, `sound`) and its integrity check comes
+free.
 
 **CSS `<link>` order in `index.html` is load-bearing.** `tokens.css` must precede everything
 that reads its variables, and later files rely on later-wins cascade. When splitting a
