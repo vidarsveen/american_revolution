@@ -986,8 +986,8 @@
         {
           "id": "s0.b9",
           "say": {
-            "no": "Boston. Og om noen timer skal syv hundre britiske soldater marsjere ut herfra, i mørket.",
-            "en": "Boston. And in a few hours seven hundred British soldiers will march out of here, in the dark."
+            "no": "Byen er Boston. Og det er her tolv år med krangel skal bli til noe helt annet.",
+            "en": "The town is Boston. And this is where twelve years of argument turn into something else entirely."
           },
           "cues": [
             {
@@ -995,13 +995,9 @@
               "do": "region.clear"
             },
             {
-              "on": {
-                "no": "word:Boston",
-                "en": "word:Boston"
-              },
-              "do": "map.flyTo",
-              "to": "boston",
-              "over": 3.2
+              "on": "start",
+              "do": "map.mood",
+              "value": "dusk"
             },
             {
               "on": {
@@ -1015,14 +1011,6 @@
                 "en": "Boston"
               },
               "side": "british"
-            },
-            {
-              "on": {
-                "no": "word:mørket",
-                "en": "word:dark"
-              },
-              "do": "map.mood",
-              "value": "dusk"
             }
           ],
           "gapAfter": 1.4
@@ -1043,8 +1031,8 @@
         {
           "id": "s1.b1",
           "say": {
-            "no": "Byen ligger på en halvøy, med én eneste smal vei ut til fastlandet.",
-            "en": "The town sits on a peninsula, with one single narrow road out to the mainland."
+            "no": "Kvelden den attende april, sytten hundre og syttifem. Byen ligger på en halvøy, med én eneste smal vei ut til fastlandet.",
+            "en": "The evening of the eighteenth of April, seventeen seventy-five. The town sits on a peninsula, with one single narrow road out to the mainland."
           },
           "cues": [
             {
@@ -1054,16 +1042,20 @@
             },
             {
               "on": "start",
-              "do": "map.flyTo",
-              "to": "boston"
-            },
-            {
-              "on": "start",
               "do": "map.time",
               "value": {
                 "no": "18. april, kveld",
                 "en": "18 April, evening"
               }
+            },
+            {
+              "on": {
+                "no": "word:Byen",
+                "en": "word:town"
+              },
+              "do": "map.flyTo",
+              "to": "boston",
+              "over": 3.4
             }
           ],
           "gapAfter": 0.85
