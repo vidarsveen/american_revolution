@@ -17,11 +17,18 @@ nothing to gain from caching and a great deal to lose.
 
 It also binds every interface and prints the LAN address, because this app is
 mobile-first and most of its bugs only show up on an actual phone.
+
+It answers Range requests, which `http.server` does not. Without them a media
+element streams the whole file, reports `seekable` as an empty range, and
+silently refuses to seek — so dragging the scrubber does nothing and the
+playhead sits at the start. That is a real production bug you cannot reproduce
+on a server that hands back the whole file every time.
 """
 from __future__ import annotations
 
 import argparse
 import http.server
+import os
 import socket
 import socketserver
 from pathlib import Path
@@ -51,6 +58,56 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if str(path).endswith(ext):
                 return mime
         return super().guess_type(path)
+
+    def send_head(self):
+        """
+        Serve a byte range when one is asked for.
+
+        SimpleHTTPRequestHandler ignores Range entirely and always answers 200
+        with the whole file. A browser will happily play that, and then mark
+        the media unseekable, because it has no way to fetch from the middle.
+        """
+        rng = self.headers.get("Range")
+        if not rng or not rng.startswith("bytes="):
+            return super().send_head()
+
+        path = self.translate_path(self.path)
+        try:
+            f = open(path, "rb")
+        except OSError:
+            return super().send_head()
+
+        try:
+            size = os.fstat(f.fileno()).st_size
+            first, _, last = rng[6:].partition("-")
+            try:
+                start = int(first) if first else max(0, size - int(last))
+                end = int(last) if (last and first) else size - 1
+            except ValueError:
+                f.close()
+                return super().send_head()
+            end = min(end, size - 1)
+            if start > end or start >= size:
+                f.close()
+                self.send_response(416)
+                self.send_header("Content-Range", f"bytes */{size}")
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return None
+
+            self.send_response(206)
+            self.send_header("Content-Type", self.guess_type(path))
+            self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+            self.send_header("Content-Length", str(end - start + 1))
+            self.send_header("Accept-Ranges", "bytes")
+            self.end_headers()
+            f.seek(start)
+            self.wfile.write(f.read(end - start + 1))
+            f.close()
+            return None
+        except Exception:
+            f.close()
+            raise
 
     def log_message(self, fmt, *args):
         # Only complain about failures; a wall of 200s hides the 404 that matters.

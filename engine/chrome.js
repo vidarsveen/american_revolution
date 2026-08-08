@@ -151,16 +151,75 @@ export function mountChrome(host, root, chapter, player, strings) {
     }
   });
 
-  seekEl.addEventListener('pointerdown', () => { scrubbing = true; clearTimeout(foldTimer); });
+  /* The scrub bar.
+
+     The slider is transparent and sits over the thin progress line, so the
+     thing you see is the thing you drag. Two things it has to get right:
+
+     1. A drag fires `input` on every pixel, and every seek wipes the stage and
+        replays the scene's cues. Doing that sixty times a second is wasted
+        work and hammers the audio element, which is what makes a scrub feel
+        like it is fighting back. The bar and the clock follow your finger
+        immediately; the actual seek is committed at most every 130 ms, and
+        always once more when you let go.
+
+     2. A tap is not a drag. The control this slider covers is the one that
+        opens the transport, and while the slider sat on top of it there was
+        no way left to open the transport at all. So a press that does not
+        move and does not change the value is treated as what it looks like:
+        a tap on the bar, which expands. */
+  const SEEK_COMMIT_MS = 130;
+  let pendingSeek = null;
+  let lastCommit = 0;
+  let commitTimer = 0;
+  let pressValue = null;
+  let pressX = 0;
+  let moved = false;
+
+  const commitSeek = () => {
+    clearTimeout(commitTimer);
+    commitTimer = 0;
+    if (pendingSeek == null) return;
+    lastCommit = performance.now();
+    player.seek(pendingSeek);
+    pendingSeek = null;
+  };
+
+  seekEl.addEventListener('pointerdown', (ev) => {
+    scrubbing = true;
+    moved = false;
+    pressValue = seekEl.value;
+    pressX = ev.clientX;
+    clearTimeout(foldTimer);
+  });
+  seekEl.addEventListener('pointermove', (ev) => {
+    if (scrubbing && Math.abs(ev.clientX - pressX) > 6) moved = true;
+  });
   seekEl.addEventListener('input', () => {
     const scene = player.scene;
     if (!scene) return;
+    // The picture of where you are updates now; the seek follows.
     fillEl.style.width = `${seekEl.value / 10}%`;
-    player.seek((seekEl.value / 1000) * scene.dur);
+    pendingSeek = (seekEl.value / 1000) * scene.dur;
+    timeEl.textContent = clockText(pendingSeek);
+    const since = performance.now() - lastCommit;
+    if (since >= SEEK_COMMIT_MS) commitSeek();
+    else if (!commitTimer) commitTimer = setTimeout(commitSeek, SEEK_COMMIT_MS - since);
   });
-  const endScrub = () => { scrubbing = false; scheduleFold(); };
+
+  const endScrub = () => {
+    if (!scrubbing) return;
+    scrubbing = false;
+    commitSeek();
+    // A press that neither moved nor changed anything was a tap on the bar,
+    // and the bar's other job is to open the controls.
+    if (!moved && seekEl.value === pressValue) expand();
+    else scheduleFold();
+  };
   seekEl.addEventListener('pointerup', endScrub);
   seekEl.addEventListener('pointercancel', endScrub);
+  // Keyboard and assistive input never send pointer events at all.
+  seekEl.addEventListener('change', () => { if (!scrubbing) commitSeek(); });
 
   addEventListener('resize', publishHeight);
   publishHeight();

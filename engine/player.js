@@ -32,6 +32,11 @@ export class Player {
     // timer so the pictures and captions carry it. Silence is a degraded
     // experience; a frozen screen is a broken one.
     this.silent = false;
+    // True between asking the element to seek and it confirming. A media
+    // element keeps reporting the OLD currentTime until then, so trusting it
+    // during a scrub snapped the playhead back to where the audio had not
+    // left yet — which read as "dragging the bar always returns to the start".
+    this._seeking = false;
     this._pos = 0;
     this._t0 = 0;
     this._raf = 0;
@@ -39,6 +44,14 @@ export class Player {
     this._lastWord = -1;
 
     this.audio.addEventListener('ended', () => this.next());
+    this.audio.addEventListener('seeked', () => { this._seeking = false; });
+    // Not every browser fires `seeked` when you would like it to. Once the
+    // element has actually arrived, stop waiting for the event.
+    this.audio.addEventListener('timeupdate', () => {
+      if (this._seeking && Math.abs(this.audio.currentTime - this._pos) < 0.35) {
+        this._seeking = false;
+      }
+    });
     this.audio.addEventListener('error', () => {
       console.warn('[player] audio unavailable, falling back to a timed run');
       this.silent = true;
@@ -47,18 +60,41 @@ export class Player {
 
   get scene() { return this.chapter.scenes[this.sceneIndex] || null; }
 
-  /** Seconds into the current scene, from whichever clock is running. */
+  /**
+   * Seconds into the current scene, from whichever clock is actually running.
+   *
+   * The audio element carries the clock when it can, because it is the thing
+   * the listener hears. It cannot be trusted while a seek is in flight: it
+   * reports where it still is, not where it was told to go, and a scrubber
+   * that believes that jumps back on every frame of the drag.
+   */
   now() {
-    if (!this.silent) return this.audio.currentTime;
-    if (!this.playing) return this._pos;
-    return this._pos + (performance.now() - this._t0) / 1000;
+    // The element only gets to answer when it has a timeline to answer from.
+    // A file that has not loaded, or has failed to decode, happily reports
+    // currentTime 0 for ever — so a seek to 1:27 would be thrown away on the
+    // very next frame and the playhead would sit at the start, which is
+    // exactly what it did.
+    const carrying = !this.silent
+      && !this._seeking
+      && this.audio.readyState >= 1
+      && this.audio.duration > 0;
+    if (!carrying) {
+      return this.playing ? this._pos + (performance.now() - this._t0) / 1000 : this._pos;
+    }
+    return this.audio.currentTime;
   }
 
   /** Move both clocks to the same place. */
   setNow(t) {
     this._pos = t;
     this._t0 = performance.now();
-    try { this.audio.currentTime = t; } catch { /* not seekable yet */ }
+    if (Math.abs(this.audio.currentTime - t) < 0.05) return;
+    try {
+      this._seeking = true;
+      this.audio.currentTime = t;
+    } catch {
+      // Not seekable yet — the timer carries the clock until it is.
+    }
   }
 
   /* ---------- Scene selection ------------------------------- */

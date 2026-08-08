@@ -470,6 +470,13 @@ export function createMap(host, opts = {}) {
       const [x, y] = toScreen(s.at[0], s.at[1]);
       n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       n.style.visibility = onScreen(x, y, 120) ? '' : 'hidden';
+      // A pin is the one thing the narration is pointing at right now, so it
+      // enters the collision pass at a rank nothing can outbid — and the place
+      // names underneath it get out of the way. Leaving pins out of the pass
+      // was why "Boston" landed squarely on top of "Boston Common", which at
+      // harbour zoom is six pixels away, and why the Concord pin sat on
+      // "North Bridge".
+      if (s.label) labels.push({ n, x, y, rank: 20 });
     }
 
     // A ring is the equivalent of pointing at the map while you talk.
@@ -512,6 +519,7 @@ export function createMap(host, opts = {}) {
       const [x, y] = toScreen(s.at[0], s.at[1]);
       n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       n.style.visibility = onScreen(x, y, 140) ? '' : 'hidden';
+      if (s.rank != null) labels.push({ n, x, y, rank: s.rank });
     }
 
     for (const s of layers.units.values()) {

@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v16';
+const VERSION = 'v17';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -53,6 +53,10 @@ const PRECACHE = [
   './content/american-revolution/geo/routes.json',
   './engine/scenes/map.js',
   './engine/scenes/overlays.js',
+  './sound/mixer.js',
+  './sound/library.js',
+  './sound/soundscape.js',
+  './engine/scenes/sound.js',
   './core/theme.js',
   './css/atlas.css',
   './map/geo.js',
@@ -112,6 +116,19 @@ self.addEventListener('fetch', (e) => {
   // Wikipedia: straight to the network, wiki.js handles failure gracefully.
   if (url.hostname.endsWith('wikipedia.org')) return;
 
+  /* Media goes straight to the network, always.
+
+     A media element seeks by asking for a byte range. The Cache API cannot
+     store a 206, so a cached entry is always the complete file — and handing
+     a complete 200 back to an element that asked for bytes makes it mark
+     itself unseekable. It plays, and the scrubber does nothing: drag it and
+     the playhead returns to wherever the audio actually is, which is the
+     start. Nothing in the console, because nothing failed.
+
+     The narration was deliberately never precached (7.6 MB across two
+     languages), so this costs no offline capability that was designed for. */
+  if (request.headers.has('range') || isMedia(url)) return;
+
   if (isTile(url)) { e.respondWith(tileFirst(request)); return; }
   if (url.origin === self.location.origin) { e.respondWith(networkFirst(request)); }
 });
@@ -131,6 +148,11 @@ const NET_COOLDOWN_MS = 10000;
    the difference between a one-second start and a seven-second one. */
 let networkDownUntil = 0;
 const networkLooksDown = () => Date.now() < networkDownUntil;
+
+/** Anything a <video> or <audio> element streams, and therefore seeks. */
+function isMedia(url) {
+  return /\.(mp3|m4a|aac|ogg|opus|wav|mp4|webm)$/i.test(url.pathname);
+}
 
 async function networkFirst(request) {
   const cache = await caches.open(APP_CACHE);

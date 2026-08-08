@@ -177,7 +177,9 @@ function framePadding() {
   const h = box?.height || 600;
   const edge = Math.max(20, Math.min(w * 0.07, h * 0.07));
 
-  let bottom = edge;
+  const pad = { top: edge, right: edge, bottom: edge, left: edge };
+  if (!box) return pad;
+
   // The caption sits in its own slot ABOVE the transport, so measuring the
   // transport alone leaves the map framing a caption's worth of picture it
   // cannot show. Both, plus the slot, because the caption element is empty
@@ -186,17 +188,41 @@ function framePadding() {
                      '.captions']) {
     for (const el of document.querySelectorAll(sel)) {
       const r = el.getBoundingClientRect();
-      if (!r.height || !box) continue;
-      // How far up from the bottom of the map this thing reaches.
-      bottom = Math.max(bottom, box.bottom - r.top + 8);
+      if (r.height) pad.bottom = Math.max(pad.bottom, box.bottom - r.top + 8);
     }
   }
-  return {
-    top: edge,
-    right: edge,
-    left: edge,
-    bottom: Math.min(bottom, h * 0.42),   // never squeeze the map to nothing
-  };
+
+  /* A portrait or a picture covers the map too, and a march drawing itself
+     underneath one is a march nobody can see. These sit in a corner rather
+     than across an edge, so clearing them is a choice of which way to push:
+     down past the bottom of the card, or in past its inner edge. Take
+     whichever costs less picture — for a 46vw portrait in the top right that
+     is almost always the right edge, and pushing everything down below it
+     would have thrown away half the frame. */
+  for (const el of document.querySelectorAll('.ov-portrait__card, .ov-image__card, .ov-quote')) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    if (getComputedStyle(el).opacity === '0') continue;
+    if (r.right < box.left || r.left > box.right) continue;
+    if (r.bottom < box.top || r.top > box.bottom) continue;
+
+    const options = [
+      ['top', r.bottom - box.top + 8],
+      ['bottom', box.bottom - r.top + 8],
+      ['left', r.right - box.left + 8],
+      ['right', box.right - r.left + 8],
+    ].filter(([, v]) => v > 0);
+    if (!options.length) continue;
+    const [side, amount] = options.reduce((a, b) => (b[1] < a[1] ? b : a));
+    pad[side] = Math.max(pad[side], amount);
+  }
+
+  // Never squeeze the map to nothing, whatever is piled on top of it.
+  pad.bottom = Math.min(pad.bottom, h * 0.42);
+  pad.top = Math.min(pad.top, h * 0.34);
+  pad.left = Math.min(pad.left, w * 0.42);
+  pad.right = Math.min(pad.right, w * 0.42);
+  return pad;
 }
 
 export function flyTo(cue, instant) {
