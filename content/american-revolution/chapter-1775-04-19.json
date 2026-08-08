@@ -1,6 +1,10 @@
 {
   "id": "chapter-1775-04-19",
   "pack": "american-revolution",
+  "work": {
+    "no": "Den amerikanske revolusjonen",
+    "en": "The American Revolution"
+  },
   "title": {
     "no": "19. april 1775",
     "en": "19 April 1775"
@@ -498,7 +502,8 @@
           42.4604,
           -71.3489
         ]
-      ]
+      ],
+      "strength": 700
     },
     "revere-ride": {
       "side": "patriot",
@@ -618,7 +623,8 @@
           42.3782,
           -71.0602
         ]
-      ]
+      ],
+      "strength": 700
     },
     "percy-relief": {
       "side": "british",
@@ -632,8 +638,16 @@
           -71.0589
         ],
         [
-          42.3736,
-          -71.1097
+          42.33,
+          -71.08
+        ],
+        [
+          42.355,
+          -71.13
+        ],
+        [
+          42.39,
+          -71.145
         ],
         [
           42.4154,
@@ -643,7 +657,8 @@
           42.4492,
           -71.2311
         ]
-      ]
+      ],
+      "strength": 1000
     },
     "atlantic": {
       "side": "british",
@@ -1028,8 +1043,8 @@
         {
           "id": "s1.b1",
           "say": {
-            "no": "Boston, april sytten hundre og syttifem. En by bygget på en halvøy, med én eneste smal vei ut til fastlandet.",
-            "en": "Boston, April seventeen seventy-five. A town built on a peninsula, with one single narrow road out to the mainland."
+            "no": "Byen ligger på en halvøy, med én eneste smal vei ut til fastlandet.",
+            "en": "The town sits on a peninsula, with one single narrow road out to the mainland."
           },
           "cues": [
             {
@@ -1118,8 +1133,8 @@
         {
           "id": "s1.b5",
           "say": {
-            "no": "Den attende april får han en ordre han ikke kan si nei til. Marsjer ut til Concord, tjue kilometer vestover. Der har opprørerne samlet et våpenlager. Ta det. Gjør det om natta, og gjør det stille.",
-            "en": "On the eighteenth of April he receives an order he cannot refuse. March out to Concord, twenty kilometres west. The rebels have gathered a weapons store there. Take it. Do it at night, and do it quietly."
+            "no": "Den attende april får han en ordre han ikke kan si nei til. Marsjer ut til Concord, tretti kilometer vestover. Der har opprørerne samlet et våpenlager. Ta det. Gjør det om natta, og gjør det stille.",
+            "en": "On the eighteenth of April he receives an order he cannot refuse. March out to Concord, thirty kilometres west. The rebels have gathered a weapons store there. Take it. Do it at night, and do it quietly."
           },
           "cues": [
             {
@@ -2073,13 +2088,12 @@
                 "reading",
                 "billerica",
                 "woburn",
-                "sudbury",
-                "danvers",
-                "watertown"
+                "sudbury"
               ],
               "to": "bloody-angle",
               "side": "patriot",
-              "over": 3.6
+              "over": 3.6,
+              "strength": 300
             }
           ],
           "gapAfter": 0.95
@@ -2346,7 +2360,8 @@
               ],
               "to": "boston",
               "side": "patriot",
-              "over": 4.4
+              "over": 4.4,
+              "strength": 1200
             }
           ],
           "gapAfter": 1.25
