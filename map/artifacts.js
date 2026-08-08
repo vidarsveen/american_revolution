@@ -138,13 +138,19 @@ export function drawArrow(ctx, screenPts,
     // its own — canvas filters blur the whole surface, so one arrow dropped
     // panning from 50 fps to 17. A wide translucent stroke of the same path
     // reads almost identically and costs nothing.
+    // Scaled to the arrow, not fixed. At 9 px this halo was a soft glow around
+    // a big arrow and a second arrow around a small one: at theatre zoom the
+    // shaft clamps to 5 px, so a fixed halo more than doubled its apparent
+    // width and twelve militia columns converging on Boston came out as a
+    // tangle of fat blue swooshes instead of twelve arrows.
+    const halo = Math.min(9, Math.max(2.5, wMax * 1.1));
     ctx.globalAlpha = 0.16;
     ctx.strokeStyle = fill;
-    ctx.lineWidth = 9;
+    ctx.lineWidth = halo;
     ctx.lineJoin = 'round';
     ctx.stroke(path);
     ctx.globalAlpha = 0.24;
-    ctx.lineWidth = 4.5;
+    ctx.lineWidth = halo * 0.5;
     ctx.stroke(path);
 
     ctx.globalAlpha = 0.86;

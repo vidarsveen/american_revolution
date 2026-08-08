@@ -169,8 +169,13 @@
         "fit": {
           "type": "boolean",
           "default": true
+        },
+        "strength": {
+          "type": "number",
+          "note": "How many people are moving. A route with a strength draws an army arrow sized by it; a route without one stays a thin line, which is what a single rider or a ship should be. Normally set on the route itself rather than the cue, because it is a fact about who is moving, not about this moment."
         }
-      }
+      },
+      "note": "Arrow or line is decided by whether anyone declared a strength — see that argument. Seven hundred regulars and one silversmith must not look alike."
     },
     "route.clear": {
       "summary": {

@@ -113,10 +113,14 @@ function showCover(mode) {
   const cover = view.querySelector('.story__cover');
   const mins = Math.round(chapter.duration / 60);
   const label = mode === 'replay' ? t('replay') : t('start');
+  // What you are about to watch is the American Revolution; 19 April 1775 is
+  // which part of it. Leading with the date named a day to someone who has not
+  // been told yet why that day matters.
+  const when = [chapter.title, chapter.subtitle].filter(Boolean).join(' · ');
   cover.innerHTML = `
     <div class="cover__card">
-      <p class="cover__kicker">${esc(chapter.subtitle)}</p>
-      <h2 class="cover__title">${esc(chapter.title)}</h2>
+      <p class="cover__kicker">${esc(when)}</p>
+      <h2 class="cover__title">${esc(chapter.work)}</h2>
       <p class="cover__blurb">${esc(chapter.blurb)}</p>
       <button class="cover__go" type="button">
         <span class="cover__go-ico">▶</span>

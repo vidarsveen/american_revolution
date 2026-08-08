@@ -112,6 +112,11 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
     id: chapter.id,
     pack: chapter.pack,
     lang,
+    // The name of the whole work, not of this chapter. The cover leads with
+    // it, because "19 April 1775" answers a question nobody has asked yet.
+    // Falls back to the chapter title so a pack that never sets one still
+    // shows something.
+    work: pick(chapter.work, lang) || pick(chapter.title, lang),
     title: pick(chapter.title, lang),
     subtitle: pick(chapter.subtitle, lang),
     blurb: pick(chapter.blurb, lang),

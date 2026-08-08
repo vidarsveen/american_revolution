@@ -247,6 +247,20 @@ export function flash(instant) {
    Routes
    ------------------------------------------------------------ */
 
+/**
+ * Draw a route: an army arrow if a force is moving along it, a line if not.
+ *
+ * The distinction is the whole point and it used to be missing — every route
+ * drew the same hairline, so seven hundred regulars marching on Concord looked
+ * exactly like Paul Revere alone on a horse, while the militia coming in from
+ * the towns got proper broad arrows because they happened to arrive through a
+ * different verb. Same map, two visual languages, no rule.
+ *
+ * The rule now: a route with a `strength` is a body of people and gets an
+ * arrow sized by how many of them there are. A route without one is a rider or
+ * a ship and stays a line. That is a property of who is moving, so it lives on
+ * the route rather than on the cue — though a cue can still override it.
+ */
 export function drawRoute(cue, instant) {
   const route = chapter.routes?.[cue.id];
   if (!route || !map) return;
@@ -254,14 +268,24 @@ export function drawRoute(cue, instant) {
   // Frame it first, or a march can draw itself straight off the edge.
   if (cue.fit !== false) frame(route.coords, instant, 1.6);
 
-  map.marches.add({
-    id: `route:${cue.id}`,
-    coords: route.coords,
-    faction: route.side || cue.side || 'neutral',
-    naval: route.naval,
-    over: cue.over ?? 2.6,
-    instant,
-  });
+  const id = `route:${cue.id}`;
+  const faction = route.side || cue.side || 'neutral';
+  const strength = cue.strength ?? route.strength;
+
+  if (strength) {
+    map.arrows.add({
+      id, coords: route.coords, faction, strength,
+      over: cue.over ?? 2.6,
+      instant,
+    });
+  } else {
+    map.marches.add({
+      id, coords: route.coords, faction,
+      naval: route.naval,
+      over: cue.over ?? 2.6,
+      instant,
+    });
+  }
 }
 
 export function clearRoutes() {
@@ -304,14 +328,21 @@ export function converge(cue, instant) {
 /**
  * Bow the path so several arrows converging on one point stay distinguishable
  * instead of collapsing into a single thick spoke.
+ *
+ * The amount is constant. It used to grow with the index — 0.16, 0.24, 0.32,
+ * and so on — which is fine for the three or four columns it was written for
+ * and absurd for the twelve that close on Boston during the siege: the last
+ * arrows bowed so far they crossed the earlier ones and the picture became a
+ * knot. Towns surrounding a target already arrive on different bearings and
+ * need no help separating; the bow is only there for the ones that share a
+ * bearing, and a small constant does that job without anything looping.
  */
 function bow([aLat, aLon], [bLat, bLon], i) {
   const midLat = (aLat + bLat) / 2;
   const midLon = (aLon + bLon) / 2;
   const dLat = bLat - aLat;
   const dLon = bLon - aLon;
-  const side = i % 2 ? -1 : 1;
-  const amt = 0.16 * (1 + Math.floor(i / 2) * 0.5) * side;
+  const amt = 0.13 * (i % 2 ? -1 : 1);
   return [
     [aLat, aLon],
     [midLat - dLon * amt, midLon + dLat * amt],
