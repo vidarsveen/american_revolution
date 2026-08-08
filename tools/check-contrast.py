@@ -6,9 +6,10 @@ The map was unreadable for a long time and nobody could point at a number,
 only at a feeling. This samples real pixels from a real browser and turns the
 question into a pass/fail:
 
-  * land vs water    — can you tell the sea from the shore at all?
-  * label vs ground  — can you read a place name where it actually sits?
-  * marker vs ground — does an event pin stand out from what is behind it?
+  * land vs water      — can you tell the sea from the shore at all?
+  * label vs ground    — can you read a place name where it actually sits?
+  * marker vs ground   — does an event pin stand out from what is behind it?
+  * colony vs colony   — can you tell two colonies that share a border apart?
 
 WCAG governs text (4.5:1 AA) and UI components (3:1). There is no standard
 for "land vs water", so that threshold is stated as a project rule, not
@@ -55,6 +56,12 @@ THRESHOLDS = {
     "land/water":    (8.0, "project rule, CIE76 dE — 2.3 is just-noticeable, 12 is obvious"),
     "label/ground":  (4.5,  "WCAG 2.2 AA, normal-size text"),
     "marker/ground": (3.0,  "WCAG 2.2 1.4.11, non-text contrast (measured at the pin's ring)"),
+    # Measured on the wash as it lands on the ground, not on the colour the
+    # palette asked for. Those are very different numbers: thirteen tints that
+    # were 13 dE apart in the token came out 4 apart once laid over olive land
+    # at the alpha the wash used, which is "the same colour" to anyone not
+    # holding them side by side. Only the rendered pixel settles it.
+    "colony/colony": (10.0, "project rule, CIE76 dE between neighbours sharing a border"),
 }
 
 GEOM_JS = """
@@ -85,6 +92,81 @@ async (probes) => {
   return out;
 }
 """
+
+
+# The chapter and the beat that puts every colony on screen at once. If the
+# script moves, this moves with it — but the check is about the picture, so it
+# has to be taken from the real thing rather than from a fixture.
+STORY_CHAPTER = "american-revolution/chapter-1775-04-19"
+STORY_BEAT = ("s0.b5", 3.0)
+
+COLONIES_JS = """
+async ([beatId, offset]) => {
+  const S = await import('/engine/story.js');
+  const M = await import('/engine/scenes/map.js');
+  const p = S.getPlayer(), ch = S.getChapter();
+  let at = offset;
+  for (const s of ch.scenes) for (const b of s.beats) if (b.id === beatId) at = b.start + offset;
+  await p.goToScene(0, { autoplay: false, at });
+  S.storyInvalidate();
+  await new Promise(r => setTimeout(r, 900));
+
+  const map = M.getStoryMap();
+  // Take the names off the map before measuring it. Sampling beside a label
+  // to dodge its halo is guesswork on a phone, where Rhode Island is eight
+  // pixels wide and "beside" is already Connecticut — the three of them came
+  // back as one colour that way. With the labels hidden the centre of the
+  // region is the region.
+  // A stylesheet rule, not an inline style: the map re-runs its label pass on
+  // every draw and writes element.style.visibility itself, so an inline hide
+  // survives exactly until the next frame. An !important author rule outranks
+  // the inline declaration the map writes.
+  const hide = document.createElement('style');
+  hide.textContent = '.atlas-place { visibility: hidden !important; }';
+  document.head.appendChild(hide);
+  map.redraw();
+  await new Promise(r => setTimeout(r, 200));
+
+  const host = document.querySelector('#story-map').getBoundingClientRect();
+  return map.regions.all()
+    .filter((r) => r.centre)
+    .map((r) => {
+      const [x, y] = map.toScreen(r.centre[0], r.centre[1]);
+      return { name: r.name, x: host.left + x, y: host.top + y,
+               on: x > 0 && y > 0 && x < host.width && y < host.height };
+    })
+    .filter((r) => r.on);
+}
+"""
+
+
+def adjacent_colonies(path: Path):
+    """
+    Which colonies share a border, read off the geometry itself.
+
+    No point-in-polygon and no geometry library: since the borders are
+    simplified as a network, two colonies that share a border share the very
+    coordinates along it. Anything else is not a shared border — which is the
+    property the build is there to guarantee, so testing for it here also
+    tests that the build still holds.
+    """
+    import json
+
+    def vertices(geom):
+        groups = (geom["coordinates"] if geom["type"] == "MultiPolygon"
+                  else [geom["coordinates"]])
+        return {(x, y) for g in groups for ring in g for x, y in ring}
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    verts = {f["properties"]["name"]: vertices(f["geometry"])
+             for f in data.get("features", [])}
+    names = list(verts)
+    pairs = []
+    for i, a in enumerate(names):
+        for b in names[i + 1:]:
+            if len(verts[a] & verts[b]) >= 2:
+                pairs.append((a, b))
+    return pairs
 
 
 # ---------------------------------------------------------------- colour
@@ -265,6 +347,70 @@ def run(theme: str, width: int, height: int, shots: Path):
         srv.shutdown()
 
 
+def run_story(theme: str, width: int, height: int, shots: Path):
+    """
+    Measure the story stage, which the Explore-mode run never reaches.
+
+    Same idea, different page: boot the chapter, seek to the beat that puts all
+    thirteen colonies on screen, and sample each one where its own name sits.
+    """
+    geo = (ROOT / "content" / "american-revolution" / "geo" / "colonies.geojson")
+    if not geo.exists():
+        return [], [], None
+    pairs = adjacent_colonies(geo)
+
+    srv, base = serve(ROOT)
+    try:
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch()
+            ctx = browser.new_context(
+                viewport={"width": width, "height": height},
+                device_scale_factor=2,
+                color_scheme=theme,
+                reduced_motion="reduce",
+            )
+            page = ctx.new_page()
+            errors: list[str] = []
+            page.on("pageerror", lambda e: errors.append(str(e)))
+            page.goto(f"{base}/index.html", wait_until="networkidle")
+            page.wait_for_function(
+                "() => !!document.querySelector('#story-map') && !document.querySelector('.boot')",
+                timeout=20000)
+            page.evaluate("() => document.querySelector('.story__cover')"
+                          "?.classList.remove('is-on')")
+            page.wait_for_timeout(1200)
+            spots = page.evaluate(COLONIES_JS, list(STORY_BEAT))
+            page.wait_for_timeout(400)
+
+            shots.mkdir(parents=True, exist_ok=True)
+            shot = shots / f"colonies-{theme}.png"
+            page.screenshot(path=str(shot))
+            img = Image.open(shot)
+
+            # Small radius on purpose. Rhode Island is a handful of pixels
+            # across at phone width, and a patch wide enough to be comfortable
+            # would average in its neighbours and report them as identical.
+            seen = {}
+            for sp in spots:
+                patch = median_patch(img, int(sp["x"] * 2), int(sp["y"] * 2), 2)
+                if patch is not None:
+                    seen[sp["name"]] = patch
+
+            ctx.close()
+            browser.close()
+
+        results = []
+        for a, b in pairs:
+            if a in seen and b in seen:
+                results.append(("colony/colony", f"{a} / {b}",
+                                delta_e(seen[a], seen[b])))
+        if not results:
+            errors.append("no colonies were on screen at the sampled beat")
+        return results, errors, shot
+    finally:
+        srv.shutdown()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--theme", choices=["light", "dark", "both"], default="both")
@@ -283,6 +429,9 @@ def main() -> int:
 
     for theme in themes:
         results, errors, shot = run(theme, args.width, args.height, args.shots)
+        story, story_errors, _ = run_story(theme, args.width, args.height, args.shots)
+        results += story
+        errors += story_errors
         head = f"  {theme.upper()}  ({args.width}x{args.height})   {shot}"
         print(f"\n{'=' * len(head)}\n{head}\n{'=' * len(head)}")
 

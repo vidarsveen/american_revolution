@@ -243,6 +243,100 @@ async function panTest() {
            : '<b>tegnet</b>, aldri blankt.');
 }
 
+/**
+ * Can you tell two colonies that share a border apart?
+ *
+ * The question the palette exists to answer, asked of the pixels rather than
+ * of the tokens — and the two give different answers. Thirteen tints that were
+ * 13 dE apart as colours arrived on screen 4 dE apart once laid over olive
+ * ground at the alpha the wash used. Reading the palette would have called
+ * that a pass.
+ *
+ * Adjacency comes from the geometry: since the borders are simplified as a
+ * network, two colonies that share a border share the coordinates along it.
+ * So this fails too if the build ever stops guaranteeing that.
+ */
+async function paletteTest() {
+  const out = $('#testOut');
+  out.textContent = 'Kjorer...';
+
+  const res = await fetch('../content/american-revolution/geo/colonies.geojson');
+  const geo = await res.json();
+  await map.useRegions(geo);
+
+  map.reset();
+  map.setBorders({ state: false });
+  for (const name of map.regionNames()) {
+    map.regions.add({ id: `p-${name}`, name, faction: 'patriot',
+                      label: false, instant: true });
+  }
+  await map.fitBounds([[30.2, -86.2], [47.6, -66.6]], { instant: true, padding: 24 });
+  await wait(500);
+
+  const verts = new Map();
+  for (const f of geo.features) {
+    const g = f.geometry;
+    const groups = g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates];
+    const set = new Set();
+    for (const grp of groups) for (const ring of grp) {
+      for (const pair of ring) set.add(`${pair[0]},${pair[1]}`);
+    }
+    verts.set(f.properties.name, set);
+  }
+
+  const c = map.canvas;
+  const g2 = c.getContext('2d');
+  const dpr = c.width / c.getBoundingClientRect().width;
+  const seen = new Map();
+  for (const r of map.regions.all()) {
+    if (!r.centre) continue;
+    const p = map.toScreen(r.centre[0], r.centre[1]);
+    const px = Math.round(p[0] * dpr), py = Math.round(p[1] * dpr);
+    if (px < 0 || py < 0 || px >= c.width || py >= c.height) continue;
+    const d = g2.getImageData(px, py, 1, 1).data;
+    seen.set(r.name, [d[0], d[1], d[2]]);
+  }
+
+  const names = [...verts.keys()];
+  const rows = [];
+  for (let i = 0; i < names.length; i++) {
+    for (let j = i + 1; j < names.length; j++) {
+      const a = names[i], b = names[j];
+      let shared = 0;
+      for (const v of verts.get(a)) if (verts.get(b).has(v) && ++shared >= 2) break;
+      if (shared < 2 || !seen.has(a) || !seen.has(b)) continue;
+      rows.push([a, b, deltaE(seen.get(a), seen.get(b))]);
+    }
+  }
+  rows.sort((p, q) => p[2] - q[2]);
+
+  if (!rows.length) { out.textContent = 'Ingen naboer maalt.'; return; }
+  const worst = rows[0];
+  const list = rows.slice(0, 4)
+    .map((r) => `${r[0]} / ${r[1]} — ΔE ${r[2].toFixed(1)}`).join('<br>');
+  out.innerHTML = worst[2] >= 10
+    ? `<b style="color:#55704c">Naboer kan skilles</b> (verst ΔE ${worst[2].toFixed(1)}, krav 10).<br>${list}`
+    : `<b style="color:#a8322d">For likt</b> — ${worst[0]} og ${worst[1]} ligger ΔE ${worst[2].toFixed(1)} fra hverandre.<br>${list}`;
+}
+
+/** CIE76 ΔE*ab. WCAG contrast cannot see a hue difference; this can. */
+function deltaE(p, q) {
+  const lab = (rgb) => {
+    const lin = rgb.map((v) => {
+      const c = v / 255;
+      return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+    const r = lin[0], g = lin[1], b = lin[2];
+    const X = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047;
+    const Y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const Z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883;
+    const f = (t) => (t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116);
+    return [116 * f(Y) - 16, 500 * (f(X) - f(Y)), 200 * (f(Y) - f(Z))];
+  };
+  const A = lab(p), B = lab(q);
+  return Math.hypot(A[0] - B[0], A[1] - B[1], A[2] - B[2]);
+}
+
 async function seekTest() {
   const out = $('#testOut');
   out.textContent = 'Kjører…';
@@ -253,6 +347,8 @@ async function seekTest() {
   };
 
   map.reset();
+  await DEMOS.regionsColonies();
+  DEMOS.regionsSides();
   DEMOS.all();
   await wait(4500);                    // let every animation finish
   await settled();
@@ -260,14 +356,22 @@ async function seekTest() {
 
   // Same content, but every artifact jumps straight to its end state — the
   // path the player takes after a seek.
+  //
+  // `regions` is in this list for a reason. It is the one layer that is not
+  // drawn one artifact at a time — the whole set goes down in a single pass so
+  // that a border shared by two regions is stroked once — and a layer that
+  // draws itself as a group is exactly where a per-artifact progress value can
+  // quietly stop being a pure function of time.
   const patched = [];
   for (const layer of ['places', 'roads', 'marches', 'arrows', 'fronts',
-                       'areas', 'crossings', 'battles', 'units']) {
+                       'areas', 'crossings', 'battles', 'units', 'regions']) {
     const add = map[layer].add.bind(map[layer]);
     patched.push([layer, map[layer].add]);
     map[layer].add = (spec) => add({ ...spec, instant: true, over: 0 });
   }
   map.reset();
+  await DEMOS.regionsColonies();
+  DEMOS.regionsSides();
   DEMOS.all();
   // The camera is NOT an artifact: a fitCoords inside the demo starts a
   // flight, and grabbing mid-flight compares two different viewpoints — which
@@ -342,6 +446,7 @@ document.addEventListener('click', (ev) => {
   }
   if (b.dataset.do === 'panTest') return void panTest();
   if (b.dataset.do === 'seekTest') return void seekTest();
+  if (b.dataset.do === 'paletteTest') return void paletteTest();
   if (b.dataset.do && DEMOS[b.dataset.do]) DEMOS[b.dataset.do]();
 });
 

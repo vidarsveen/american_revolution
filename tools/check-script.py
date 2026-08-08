@@ -71,6 +71,101 @@ def check_sound_manifest(pack_dir: str) -> None:
     print(f"sound.json: {len(manifest)} recorded effect(s)")
 
 
+# Verbs that draw themselves in over time, and the layer a clear wipes. A
+# route drawing itself is the most visible thing the map does, so a route that
+# cannot finish is the most visible way for a chapter to look broken.
+ANIMATED = {"route.draw": ("routes", 2.6), "converge": ("routes", 3.2)}
+CLEARS = {"route.clear": "routes"}
+
+
+def cue_time(cue, beat, timing_beat, lang):
+    """When a cue actually fires, in scene seconds. None if unknowable."""
+    if timing_beat is None:
+        return None
+    start = timing_beat.get("start", 0.0)
+    on = cue.get("on", "start")
+    if isinstance(on, dict):
+        on = on.get(lang)
+    if not isinstance(on, str):
+        return None
+    if on == "start":
+        return start
+    if on == "end":
+        return start + timing_beat.get("dur", 0.0)
+    if on.startswith("t:"):
+        return start + float(on[2:] or 0)
+    if on.startswith("pct:"):
+        return start + float(on[4:] or 0) * timing_beat.get("dur", 0.0)
+    if on.startswith("word:"):
+        wanted, _, nth = on[5:].partition("#")
+        want = int(nth) if nth.isdigit() else 1
+        seen = 0
+        for w in timing_beat.get("words", []):
+            if norm(w["w"]) == norm(wanted):
+                seen += 1
+                if seen == want:
+                    return w["t"]
+        return start
+    return start
+
+
+def check_animations_finish(chapter, timings, langs):
+    """
+    Every march must have time to reach its destination.
+
+    The engine rebuilds the stage from scratch on a scene change — that is how
+    seeking stays correct — so anything still drawing when the scene ends is
+    not paused, it is erased. The same goes for a `route.clear` in a later
+    beat. Neither shows up as an error: the line simply stops partway and the
+    picture is quietly wrong, which is how "the British march out of Boston"
+    spent months stopping two thirds of the way to Concord. It was anchored to
+    the end of the last beat of its scene, leaving 3.15 s of gap for 4.5 s of
+    animation.
+
+    Nothing about that is visible in the script. It only shows up if you
+    multiply the numbers out, so the numbers get multiplied out here.
+    """
+    problems = []
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            st = tm["scenes"].get(scene["id"])
+            if not st:
+                continue
+            by_id = {b["id"]: b for b in st.get("beats", [])}
+            events = []
+            for beat in scene["beats"]:
+                tb = by_id.get(beat["id"])
+                for cue in beat.get("cues", []):
+                    at = cue_time(cue, beat, tb, lang)
+                    if at is not None:
+                        events.append((at, cue, beat["id"]))
+            events.sort(key=lambda e: e[0])
+
+            for i, (at, cue, bid) in enumerate(events):
+                spec = ANIMATED.get(cue["do"])
+                if not spec:
+                    continue
+                layer, default_over = spec
+                over = float(cue.get("over", default_over))
+                # The scene ending wipes the stage just as surely as a clear.
+                deadline = st.get("dur", 0.0)
+                for at2, cue2, _ in events[i + 1:]:
+                    if CLEARS.get(cue2["do"]) == layer:
+                        deadline = min(deadline, at2)
+                        break
+                room = deadline - at
+                if room < over - 0.05:
+                    what = cue.get("id") or cue.get("to") or cue["do"]
+                    problems.append(
+                        f"{bid}: '{lang}' {cue['do']} '{what}' animates for {over:.1f}s "
+                        f"but is wiped after {room:.1f}s — it would stop "
+                        f"{100 * max(0.0, room) / over:.0f}% of the way there")
+    return problems
+
+
 def main():
     if len(sys.argv) < 2:
         print(__doc__)
@@ -245,6 +340,8 @@ def main():
                                     f"recorded as spoken — re-run tools/narrate.py")
                     elif spec not in ("start", "end") and not re.fullmatch(r"(t|pct):[\d.]+", spec):
                         problems.append(f"{bid}: unrecognised '{lang}' anchor '{spec}'")
+
+    problems.extend(check_animations_finish(chapter, timings, langs))
 
     # totals
     print(f"{len(chapter['scenes'])} scenes, {n_beats} beats, {n_cues} cues "

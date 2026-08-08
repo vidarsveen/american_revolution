@@ -90,6 +90,7 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | Lab | The question it answers |
 |---|---|
 | `dev/map-lab.html` | Does `instant` reproduce the animated picture exactly? Is any frame blank? |
+| `dev/map-lab.html` | Can two regions that share a border be told apart, measured on the pixels? |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
 
 Build the module against its lab **before** wiring it into the app. Both defects that mattered
@@ -133,6 +134,28 @@ free.
 **CSS `<link>` order in `index.html` is load-bearing.** `tokens.css` must precede everything
 that reads its variables, and later files rely on later-wins cascade. When splitting a
 stylesheet, put the new file immediately after the one it came from.
+
+**Simplifying areas one at a time tears the borders between them.** Shapely's
+`preserve_topology` preserves the topology of the geometry you hand it, not the topology
+*between* geometries — so Virginia's southern edge and North Carolina's northern edge, which
+are one line in the source, thin down to two different lines. Measured on the file this
+replaced: twelve overlapping pairs, the worst 151 km². On screen that is a border drawn twice
+a few pixels apart with two washes stacked between them. `tools/build-colonies.py` now
+simplifies the border *network* — union the boundaries, simplify the arcs, polygonize back —
+and `report_seams()` fails the build if two areas ever claim the same ground again. A
+side-effect worth knowing: neighbours now share the very coordinates along their border, which
+is what `check-contrast.py` and the lab use to work out which regions touch.
+
+**One `stroke()` call, not one per region.** Two coincident subpaths inside a single
+`ctx.stroke()` composite once; two separate `stroke()` calls composite twice, so every internal
+border comes out darker and fatter than the coastline. `drawRegions()` takes the whole set for
+this reason. Correct geometry is a precondition, not a substitute.
+
+**An animation that outlives its scene is erased, not paused.** A scene change wipes the stage
+and replays — that is what makes seeking correct — so a route still drawing when the scene ends
+simply stops partway and vanishes. Nothing in the script shows it; you have to multiply `over`
+against the time left. `check-script.py` does that now, and it is how "the British march out of
+Boston" was found stopping 70% of the way to Concord.
 
 **Modern boundaries are wrong for history.** The framework ships modern admin boundaries
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was
