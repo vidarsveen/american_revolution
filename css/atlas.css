@@ -16,6 +16,7 @@
   --atlas-water:       #8fb2c9;   /* sea, lakes */
   --atlas-water-deep:  #7ba3bd;   /* beyond the shelf, a touch deeper */
   --atlas-land:        #f4ecd8;   /* parchment */
+  --atlas-wood:        #dcdfb6;   /* woodland: the land, a shade deeper and greener */
   --atlas-land-far:    #ece2ca;   /* land outside the theatre, quieter */
   --atlas-coast:       #5d4f3a;   /* the drawn shoreline */
   --atlas-coast-w:     1.1px;
@@ -36,6 +37,7 @@
   --atlas-water:       #16212f;
   --atlas-water-deep:  #111a26;
   --atlas-land:        #4c4838;
+  --atlas-wood:        #5d6147;
   --atlas-land-far:    #423f31;
   --atlas-coast:       #b9ad8e;
   --atlas-coast-w:     1.1px;
@@ -58,6 +60,7 @@
   --atlas-water:       #16212f;
   --atlas-water-deep:  #111a26;
   --atlas-land:        #4c4838;
+  --atlas-wood:        #5d6147;
   --atlas-land-far:    #423f31;
   --atlas-coast:       #b9ad8e;
   --atlas-coast-w:     1.1px;

@@ -447,6 +447,23 @@
           "default": 0
         }
       }
+    },
+    "road.draw": {
+      "summary": {
+        "no": "Legg ned en vei",
+        "en": "Lay a road down"
+      },
+      "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "default": 1.8
+        }
+      }
     }
   }
 }

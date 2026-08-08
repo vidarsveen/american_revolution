@@ -255,6 +255,19 @@ export function drawBasemap(ctx, cam, size, palette, levelName, borders = {}) {
       ctx.fill(d.paths.land, 'evenodd');
       ctx.stroke(d.paths.land);
 
+      /* Woodland, on the land and under the water.
+
+         This is what makes the ground between Boston and Concord worth
+         looking at. The rest of this extract is water, and away from the
+         harbour there is barely any — so scenes three to five, which are the
+         whole point of the chapter, were playing over a blank field. No
+         outline: a wood has no edge you could stand on, and drawing one
+         turns a texture into a claim. */
+      if (d.paths.woods) {
+        ctx.fillStyle = palette.wood;
+        ctx.fill(d.paths.woods, 'evenodd');
+      }
+
       if (d.paths.lakes) {
         ctx.fillStyle = palette.water;
         ctx.lineWidth = Math.max(0.6, palette.coastW * 0.8) * px;

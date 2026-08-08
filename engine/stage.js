@@ -52,6 +52,7 @@ const VERBS = {
   'sound.ambience':   (c, i) => S.setAmbience(c, i),
   'sound.music':      (c, i) => S.playMusicCue(c, i),
 
+  'road.draw':        (c)    => M.drawRoad(c),
   'route.draw':       (c, i) => M.drawRoute(c, i),
   'route.clear':      ()     => M.clearRoutes(),
 

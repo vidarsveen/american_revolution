@@ -1037,6 +1037,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "road.draw",
+              "id": "british-out"
+            },
+            {
+              "on": "start",
               "do": "map.mood",
               "value": "night"
             },
@@ -1287,6 +1292,11 @@
             "en": "But the town has already seen them. In the tower of the Old North Church, two lanterns hang for a few seconds. One if the British come by land. Two if they come by water."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "road.draw",
+              "id": "british-out"
+            },
             {
               "on": "start",
               "do": "place.clear"
@@ -1541,6 +1551,11 @@
             "en": "It is half past four in the morning. It is cold, and barely light."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "road.draw",
+              "id": "british-out"
+            },
             {
               "on": "start",
               "do": "map.mood",
@@ -1838,6 +1853,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "road.draw",
+              "id": "british-out"
+            },
+            {
+              "on": "start",
               "do": "place.clear"
             },
             {
@@ -2082,6 +2102,11 @@
             "en": "At noon the British begin to march back to Boston. They have thirty kilometres ahead of them."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "road.draw",
+              "id": "british-out"
+            },
             {
               "on": "start",
               "do": "place.clear"
@@ -2416,6 +2441,11 @@
             "en": "But what happens that evening matters more than the numbers."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "road.draw",
+              "id": "british-out"
+            },
             {
               "on": "start",
               "do": "place.clear"

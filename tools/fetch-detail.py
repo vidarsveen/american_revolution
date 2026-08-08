@@ -46,6 +46,10 @@ QUERY = """[out:json][timeout:180];
   way["natural"="water"]({s},{w},{n},{e});
   relation["natural"="water"]({s},{w},{n},{e});
   way["waterway"="river"]({s},{w},{n},{e});
+  way["natural"="wood"]({s},{w},{n},{e});
+  relation["natural"="wood"]({s},{w},{n},{e});
+  way["landuse"="forest"]({s},{w},{n},{e});
+  relation["landuse"="forest"]({s},{w},{n},{e});
 );
 out geom;
 """
@@ -228,10 +232,15 @@ def main() -> int:
     # that this level is only ever drawn when you are standing in it.
     TOL = 0.0001
     MIN_WATER = 0.0016   # bbox diagonal in degrees, roughly 150 m
-    water, coast, rivers = [], [], []
+    # Woods are kept only when they are big enough to read as ground rather
+    # than as speckle. Modern OSM maps every copse behind a supermarket; at
+    # the zooms this level is drawn, anything under about half a kilometre is
+    # noise that costs bytes and says nothing.
+    MIN_WOOD = 0.007
+    water, coast, rivers, woods = [], [], [], []
     for el in els:
         tags = el.get("tags") or {}
-        kind = tags.get("natural") or tags.get("waterway")
+        kind = tags.get("natural") or tags.get("waterway") or tags.get("landuse")
         for ring in geom_of(el):
             pts = simplify(ring, TOL)
             if len(pts) < 2:
@@ -247,6 +256,9 @@ def main() -> int:
                     water.append([flat])
             elif kind in ("river", "stream"):
                 rivers.append([flat])
+            elif kind in ("wood", "forest"):
+                if len(pts) >= 3 and span(pts) >= MIN_WOOD:
+                    woods.append([flat])
 
     # Coastline lines -> land polygons, so the map has ONE coast.
     coast_rings = []
@@ -265,7 +277,12 @@ def main() -> int:
         "name": f"{pack}-detail",
         "scale": "osm",
         "bbox": [w, s, e, n],
-        "layers": {"land": land, "lakes": water, "rivers": rivers},
+        # Woods are the reason inland New England is worth drawing at all.
+        # Without them the ground between Boston and Concord is blank: this
+        # extract is otherwise water, and away from the harbour there is
+        # hardly any. The men at Meriam's Corner were firing from behind
+        # trees; the map should have some.
+        "layers": {"land": land, "woods": woods, "lakes": water, "rivers": rivers},
         "credit": "© OpenStreetMap contributors, ODbL",
     }
     dest = ROOT / "content" / pack / "geo" / "detail.json"
@@ -273,7 +290,8 @@ def main() -> int:
     dest.write_text(json.dumps(out, separators=(",", ":")), encoding="utf-8")
 
     pts = sum(len(f) // 2 for layer in out["layers"].values() for sh in layer for f in sh)
-    print(f"  land {len(land)}, water {len(water)}, rivers {len(rivers)}")
+    print(f"  land {len(land)}, woods {len(woods)}, water {len(water)}, "
+          f"rivers {len(rivers)}")
     print(f"  {pts} points -> {dest.relative_to(ROOT)}  {dest.stat().st_size / 1024:.0f} KB")
     return 0
 

@@ -163,6 +163,7 @@ export function createMap(host, opts = {}) {
       water: v('--atlas-water', '#8fb2c9'),
       waterDeep: v('--atlas-water-deep', '#7ba3bd'),
       land: v('--atlas-land', '#f4ecd8'),
+      wood: v('--atlas-wood', '#e4e3c6'),
       coast: v('--atlas-coast', '#5d4f3a'),
       coastW: parseFloat(v('--atlas-coast-w', '1.1')) || 1.1,
       river: v('--atlas-river', '#6f9ab6'),

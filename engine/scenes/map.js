@@ -314,6 +314,28 @@ export function drawRoute(cue, instant) {
   }
 }
 
+/**
+ * Lay a road down: a quiet standing line, drawn whole.
+ *
+ * The ground between Boston and Concord is close to empty at the zooms
+ * scenes three to five play at — our close-in geometry is water, and inland
+ * New England has little of it — so every march was crossing a blank field.
+ * The road is the one line the entire day happens on, and once it is there
+ * the marches are travelling ALONG something rather than over nothing.
+ *
+ * Not animated and not a route: it is scenery, so it never competes with the
+ * movement drawn on top of it.
+ */
+export function drawRoad(cue) {
+  const route = chapter.routes?.[cue.id];
+  if (!route || !map) return;
+  map.roads.add({
+    id: `road:${cue.id}`,
+    coords: route.coords,
+    width: cue.width ?? 1.8,
+  });
+}
+
 export function clearRoutes() {
   map?.marches.clear();
   map?.arrows.clear();
