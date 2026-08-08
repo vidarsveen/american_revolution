@@ -63,6 +63,7 @@ export function mountMap(container, ch, language) {
       bbox: [-71.70, 42.05, -70.75, 42.75],
     },
     factions: readFactions(document.documentElement),
+    lang,
   });
 
   drawStandingLabels();
@@ -136,6 +137,7 @@ function setStandingLabel(id, on) {
 export function resetMap() {
   if (!map) return;
   map.reset();
+  map.setBorders({ country: true, state: false });
   pinned.clear();
   drawStandingLabels();
 }
@@ -315,6 +317,59 @@ export function highlight(cue, instant) {
 
 export function clearHighlights() {
   map?.highlights.clear();
+}
+
+/* ------------------------------------------------------------
+   Regions and boundaries
+   ------------------------------------------------------------ */
+
+/* Loaded once, lazily: a chapter that never names a region should not pay
+   for the file. `chapter.regions` is a path relative to the pack, so the
+   engine never learns what a colony is. */
+let regionsReady = null;
+
+function ensureRegions() {
+  if (regionsReady) return regionsReady;
+  const rel = chapter.regions;
+  if (!rel) return Promise.resolve(null);
+  regionsReady = fetch(`./content/${chapter.pack}/${rel}`)
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+    .then((geo) => map.useRegions(geo))
+    .catch((err) => {
+      console.warn('[map] could not load regions:', err.message);
+      return null;
+    });
+  return regionsReady;
+}
+
+export function showRegions(cue, instant) {
+  if (!map) return;
+  const names = cue.names || (cue.name ? [cue.name] : []);
+  if (!names.length) return;
+  ensureRegions().then((set) => {
+    if (!set) return;
+    for (const name of names) {
+      map.regions.add({
+        id: `region:${name}`,
+        name,
+        faction: cue.side,
+        label: cue.label !== false,
+        over: cue.over ?? 1.2,
+        instant,
+      });
+    }
+  });
+}
+
+export function clearRegions() {
+  map?.regions.clear();
+}
+
+export function setBorders(cue) {
+  const next = {};
+  if (cue.country !== undefined) next.country = !!cue.country;
+  if (cue.state !== undefined) next.state = !!cue.state;
+  map?.setBorders(next);
 }
 
 /** Debug hook — tools/shoot.py drives the stage through this. */

@@ -37,6 +37,7 @@ export function createMap(host, opts = {}) {
     onSelect = () => {},
     flyOver = 2.8,
     detail = null,
+    lang = 'no',
   } = opts;
 
   /* ---------------- DOM ---------------- */
@@ -365,11 +366,14 @@ export function createMap(host, opts = {}) {
         el.className = 'atlas-place atlas-place--region';
         return el;
       });
-      n.textContent = s.name;
+      n.textContent = (s.label && (s.label[lang] ?? s.label.no ?? s.label.en)) || s.name;
       const [x, y] = toScreen(s.centre[0], s.centre[1]);
-      n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      // Centre a region name on its area. A left-anchored label reads fine
+      // inland and runs off the edge for anything on the coast, which is
+      // most of what a colonial map is made of.
+      n.style.transform = `translate3d(${x}px, ${y}px, 0) translateX(-50%)`;
       n.style.visibility = onScreen(x, y) ? '' : 'hidden';
-      labels.push({ n, x, y, rank: 2 });
+      labels.push({ n, x, y, rank: 2, centred: true });
     }
 
     // A pin names one spot the narration is talking about right now.
@@ -454,7 +458,8 @@ export function createMap(host, opts = {}) {
       const w = l.n.offsetWidth, h = l.n.offsetHeight;
       if (!w) continue;
       // The node is anchored at (x, y) but drawn offset by its own margins.
-      const box = { x: l.x + l.n.offsetLeft, y: l.y + l.n.offsetTop, w, h };
+      const box = { x: l.x + l.n.offsetLeft - (l.centred ? w / 2 : 0),
+                    y: l.y + l.n.offsetTop, w, h };
       const hit = placed.some((p) =>
         box.x < p.x + p.w + 4 && box.x + box.w + 4 > p.x &&
         box.y < p.y + p.h + 2 && box.y + box.h + 2 > p.y);
@@ -704,7 +709,8 @@ export function createMap(host, opts = {}) {
         add(spec) {
           if (!spec.coords && spec.name && regionSet) {
             const r = regionSet.get(spec.name);
-            if (r) return base.add({ ...spec, coords: r.coords, centre: r.centre });
+            if (r) return base.add({ ...spec, coords: r.coords,
+                                     centre: r.centre, label: r.label });
             console.warn(`[map] no region named "${spec.name}"`);
             return null;
           }
@@ -728,6 +734,7 @@ export function createMap(host, opts = {}) {
     refreshTheme() { palette = readPalette(); bufState = null; schedule(); },
     /** Replace faction colours — they are design tokens, so they flip with the theme. */
     setFactions(next) { Object.assign(factions, next); schedule(); },
+    setLang(next) { lang = next; schedule(); },
     invalidate: resize,
     redraw: schedule,
     destroy() {

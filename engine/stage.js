@@ -36,6 +36,13 @@ const VERBS = {
   'map.mood':         (c, i) => M.setMood(c.value, i),
   'map.flash':        (c, i) => M.flash(i),
 
+  // The political shape of the ground: who holds what, and where the lines
+  // are. Subject-neutral — a pack decides whether level 1 means a colony,
+  // a German state or a Norwegian kommune.
+  'region.show':      (c, i) => M.showRegions(c, i),
+  'region.clear':     ()     => M.clearRegions(),
+  'border.set':       (c)    => M.setBorders(c),
+
   'route.draw':       (c, i) => M.drawRoute(c, i),
   'route.clear':      ()     => M.clearRoutes(),
 

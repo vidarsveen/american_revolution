@@ -41,6 +41,18 @@ from shapely.ops import unary_union
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets" / "geo" / "_src" / "ne_10m_admin_1_states_provinces.json"
 DEST = ROOT / "content" / "american-revolution" / "geo" / "colonies.geojson"
+# Everything the narration can name as an area, which is more than the
+# thirteen: an establishing shot has to be able to point at Britain and France.
+DEST_REGIONS = ROOT / "content" / "american-revolution" / "geo" / "regions.geojson"
+COUNTRIES_SRC = ROOT / "assets" / "geo" / "_src" / "ne_50m_admin_0_countries.json"
+COUNTRIES = {
+    "United Kingdom": {"name": "Britain",
+                       "label": {"no": "Storbritannia", "en": "Britain"},
+                       "side": "british"},
+    "France":         {"name": "France",
+                       "label": {"no": "Frankrike", "en": "France"},
+                       "side": "french"},
+}
 
 # colonial unit -> the modern states it covered in 1775
 COLONIES = {
@@ -152,6 +164,21 @@ def main() -> int:
                     encoding="utf-8")
     print(f"\n  {len(features)} colonies -> {DEST.relative_to(ROOT)}  "
           f"{DEST.stat().st_size / 1024:.0f} KB")
+
+    countries = build_countries()
+    regions = {
+        "type": "FeatureCollection",
+        "note": ("Everything this pack's narration can name as an area: the "
+                 "thirteen colonies plus the European powers. Built by "
+                 "tools/build-colonies.py."),
+        "features": features + countries,
+    }
+    DEST_REGIONS.write_text(
+        json.dumps(regions, separators=(",", ":"), ensure_ascii=False),
+        encoding="utf-8")
+    print(f"  {len(features) + len(countries)} regions -> "
+          f"{DEST_REGIONS.relative_to(ROOT)}  "
+          f"{DEST_REGIONS.stat().st_size / 1024:.0f} KB")
     return 0 if len(features) == 13 else 1
 
 
@@ -162,5 +189,44 @@ def count_points(geom):
     return sum(len(r) for poly in c for r in poly)
 
 
+
+
+def build_countries():
+    """Britain and France, coarse — they are only ever seen from orbit."""
+    from shapely.geometry import box
+
+    if not COUNTRIES_SRC.exists():
+        print(f"  ! {COUNTRIES_SRC.name} not downloaded — no countries")
+        return []
+
+    data = json.loads(COUNTRIES_SRC.read_text(encoding="utf-8"))
+    out = []
+    for feat in data.get("features", []):
+        props = feat.get("properties") or {}
+        # Natural Earth is not consistent about case: the admin-1 file uses
+        # lowercase property keys, the admin-0 file uses UPPERCASE. Try both
+        # rather than silently matching nothing.
+        key = next((props[k] for k in ("admin", "ADMIN", "name", "NAME")
+                    if props.get(k)), None)
+        spec = COUNTRIES.get(key)
+        if not spec or not feat.get("geometry"):
+            continue
+
+        # Metropolitan territory only. France's overseas departments are a
+        # modern arrangement, and an intro set in 1763 does not want a stray
+        # French shape appearing in the Caribbean.
+        geom = shape(feat["geometry"]).buffer(0).intersection(box(-12, 40, 12, 62))
+        if geom.is_empty:
+            continue
+        geom = geom.simplify(0.02, preserve_topology=True)
+
+        out.append({
+            "type": "Feature",
+            "properties": {"name": spec["name"], "label": spec["label"],
+                           "side": spec["side"], "level": 0},
+            "geometry": mapping(geom),
+        })
+        print(f"  {spec['name']:16} {count_points(mapping(geom)):5} points")
+    return out
 if __name__ == "__main__":
     raise SystemExit(main())

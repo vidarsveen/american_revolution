@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v12';
+const VERSION = 'v13';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -64,6 +64,7 @@ const PRECACHE = [
   './map/artifacts.js',
   './map/regions.js',
   './map/index.js',
+  './engine/verbs.json',
   // The coarse world level only — first paint needs it. The 50m, 10m and
   // pack-detail levels are megabytes and are fetched when the camera asks
   // for them; networkFirst caches each one the first time it is used.

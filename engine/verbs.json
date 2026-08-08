@@ -7,7 +7,8 @@
     "person": "pack.people",
     "media": "pack.media",
     "quote": "chapter.quotes",
-    "sound": "pack.sound"
+    "sound": "pack.sound",
+    "region": "chapter.regions"
   },
   "verbs": {
     "map.flyTo": {
@@ -97,6 +98,51 @@
         "en": "A shot goes off"
       },
       "args": {}
+    },
+    "region.show": {
+      "summary": {
+        "no": "Vis et navngitt område",
+        "en": "Show a named region"
+      },
+      "note": "Names resolve against the file the chapter declares in `regions`.",
+      "args": {
+        "names": {
+          "type": "region[]",
+          "required": true
+        },
+        "side": {
+          "type": "faction"
+        },
+        "label": {
+          "type": "boolean",
+          "default": true
+        },
+        "over": {
+          "type": "seconds"
+        }
+      }
+    },
+    "region.clear": {
+      "summary": {
+        "no": "Fjern områdene",
+        "en": "Clear the regions"
+      },
+      "args": {}
+    },
+    "border.set": {
+      "summary": {
+        "no": "Slå grenser av og på",
+        "en": "Turn boundaries on and off"
+      },
+      "note": "0 country, 1 state/province. A pack decides what those mean.",
+      "args": {
+        "country": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "boolean"
+        }
+      }
     },
     "route.draw": {
       "summary": {

@@ -117,6 +117,11 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
     blurb: pick(chapter.blurb, lang),
     places: chapter.places || {},
     routes: chapter.routes || {},
+    // Where region names resolve from, relative to the pack. compile() passes
+    // an explicit whitelist rather than spreading the chapter, so anything a
+    // scene needs has to be named here — leave it out and the cue silently
+    // does nothing, which is exactly what happened the first time.
+    regions: chapter.regions || null,
     media: chapter.media || {},
     quotes: chapter.quotes || {},
     poster: chapter.poster || null,

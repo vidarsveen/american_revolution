@@ -101,6 +101,21 @@ def main():
             media = set(json.load(fh))
     quotes = set(chapter.get("quotes", {}))
 
+    # Region names come from whatever GeoJSON the chapter declares, so a typo
+    # in "Massachusetts" fails here rather than drawing nothing in the browser.
+    regions = set()
+    rel = chapter.get("regions")
+    if rel:
+        rp = os.path.join(ROOT, "content", pack, rel)
+        if os.path.exists(rp):
+            with open(rp, encoding="utf-8") as fh:
+                geo = json.load(fh)
+            regions = {(f.get("properties") or {}).get("name")
+                       for f in geo.get("features", [])}
+            regions.discard(None)
+        else:
+            problems.append(f"chapter declares regions '{rel}' but {rp} does not exist")
+
     sounds = set()
     sp = os.path.join(ROOT, "content", pack, "sound.json")
     if os.path.exists(sp):
@@ -117,6 +132,7 @@ def main():
         "media":  (media, "image"),
         "quote":  (quotes, "quote"),
         "sound":  (sounds, "sound"),
+        "region": (regions, "region"),
     }
 
     # A pack may ship recorded sound effects instead of using the synthesised

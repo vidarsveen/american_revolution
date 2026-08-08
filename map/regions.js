@@ -41,6 +41,10 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
     const name = feat.properties?.[nameKey] ?? feat.properties?.name;
     const geom = feat.geometry;
     if (!name || !geom) continue;
+    // `name` is the key a script writes; `label` is what a reader sees, and
+    // the two are not the same language. "North Carolina" is the id;
+    // "Nord-Carolina" is what a Norwegian sixteen-year-old should read.
+    const label = feat.properties?.label ?? null;
 
     const rings = [];
     const groups = geom.type === 'Polygon' ? [geom.coordinates]
@@ -52,7 +56,7 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
         if (flat.length >= 6) rings.push(flat);
       }
     }
-    if (rings.length) out.push({ name, country: '', rings });
+    if (rings.length) out.push({ name, label, country: '', rings });
   }
   return index(out, level);
 }

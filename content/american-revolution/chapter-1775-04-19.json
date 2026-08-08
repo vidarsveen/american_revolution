@@ -333,6 +333,89 @@
         "no": "Chelmsford",
         "en": "Chelmsford"
       }
+    },
+    "world": {
+      "coords": [
+        44.0,
+        -42.0
+      ],
+      "zoom": 3.1,
+      "name": {
+        "no": "Atlanterhavet",
+        "en": "The Atlantic"
+      },
+      "label": false
+    },
+    "britain": {
+      "coords": [
+        53.2,
+        -2.2
+      ],
+      "zoom": 5.0,
+      "name": {
+        "no": "Storbritannia",
+        "en": "Britain"
+      },
+      "label": false
+    },
+    "france": {
+      "coords": [
+        46.8,
+        2.4
+      ],
+      "zoom": 5.0,
+      "name": {
+        "no": "Frankrike",
+        "en": "France"
+      },
+      "label": false
+    },
+    "london": {
+      "coords": [
+        51.5074,
+        -0.1278
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "London",
+        "en": "London"
+      }
+    },
+    "colonies": {
+      "coords": [
+        39.5,
+        -73.0
+      ],
+      "zoom": 4.9,
+      "name": {
+        "no": "Koloniene",
+        "en": "The colonies"
+      },
+      "label": false
+    },
+    "boston-wide": {
+      "coords": [
+        42.36,
+        -71.06
+      ],
+      "zoom": 8.6,
+      "name": {
+        "no": "Boston",
+        "en": "Boston"
+      },
+      "label": false
+    },
+    "europe": {
+      "coords": [
+        50.0,
+        -2.0
+      ],
+      "zoom": 4.3,
+      "name": {
+        "no": "Europa",
+        "en": "Europe"
+      },
+      "label": false
     }
   },
   "routes": {
@@ -513,9 +596,369 @@
           -71.2311
         ]
       ]
+    },
+    "atlantic": {
+      "side": "british",
+      "naval": true,
+      "label": {
+        "no": "Fem uker over Atlanteren",
+        "en": "Five weeks across the Atlantic"
+      },
+      "coords": [
+        [
+          51.4,
+          -1.0
+        ],
+        [
+          49.5,
+          -12.0
+        ],
+        [
+          45.0,
+          -30.0
+        ],
+        [
+          42.0,
+          -48.0
+        ],
+        [
+          42.2,
+          -62.0
+        ],
+        [
+          42.35,
+          -70.9
+        ]
+      ]
     }
   },
   "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Før alt dette",
+        "en": "Before any of this"
+      },
+      "clock": {
+        "no": "1763–1775",
+        "en": "1763–1775"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Krigen som skapte USA begynte med en krangel om penger.",
+            "en": "The war that made the United States began as an argument about money."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "border.set",
+              "country": true,
+              "state": false
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "world",
+              "over": 0.1
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            }
+          ],
+          "gapAfter": 0.9
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "I sytten sekstitre er Storbritannia det mektigste landet i verden. De har nettopp slått Frankrike i en krig som ble utkjempet på fire kontinenter.",
+            "en": "In seventeen sixty-three Britain is the most powerful country on earth. It has just beaten France in a war fought across four continents."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Storbritannia",
+                "en": "word:Britain"
+              },
+              "do": "region.show",
+              "names": [
+                "Britain"
+              ],
+              "side": "british"
+            },
+            {
+              "on": {
+                "no": "word:Frankrike",
+                "en": "word:France"
+              },
+              "do": "region.show",
+              "names": [
+                "France"
+              ],
+              "side": "french"
+            },
+            {
+              "on": {
+                "no": "word:Frankrike",
+                "en": "word:France"
+              },
+              "do": "map.flyTo",
+              "to": "europe",
+              "over": 2.2
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "Men kriger koster. Storbritannia sitter igjen med en gjeld så stor at ingen i London helt vet hvordan den skal betales.",
+            "en": "But wars cost money. Britain is left with a debt so large that nobody in London is quite sure how to pay it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": {
+                "no": "word:London",
+                "en": "word:London"
+              },
+              "do": "map.flyTo",
+              "to": "london",
+              "over": 2.4
+            },
+            {
+              "on": {
+                "no": "word:gjeld",
+                "en": "word:debt"
+              },
+              "do": "stat.show",
+              "value": "£130 000 000",
+              "label": {
+                "no": "britisk statsgjeld",
+                "en": "British national debt"
+              },
+              "side": "british"
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "Løsningen virker rimelig nok fra London. På den andre siden av Atlanteren ligger tretten kolonier som også vant den krigen. La dem betale sin del.",
+            "en": "From London the answer looks reasonable enough. On the other side of the Atlantic lie thirteen colonies who also won that war. Let them pay their share."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Atlanteren",
+                "en": "word:Atlantic"
+              },
+              "do": "route.draw",
+              "id": "atlantic",
+              "over": 4.0
+            },
+            {
+              "on": {
+                "no": "word:kolonier",
+                "en": "word:colonies"
+              },
+              "do": "map.flyTo",
+              "to": "colonies",
+              "over": 2.6
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b5",
+          "say": {
+            "no": "Her er de. Tretten kolonier langs kysten, fra Georgia i sør til New Hampshire i nord. Rundt to og en halv million mennesker.",
+            "en": "Here they are. Thirteen colonies along the coast, from Georgia in the south to New Hampshire in the north. About two and a half million people."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:Tretten",
+                "en": "word:Thirteen"
+              },
+              "do": "region.show",
+              "names": [
+                "New Hampshire",
+                "Massachusetts",
+                "Rhode Island",
+                "Connecticut",
+                "New York",
+                "New Jersey",
+                "Pennsylvania",
+                "Delaware",
+                "Maryland",
+                "Virginia",
+                "North Carolina",
+                "South Carolina",
+                "Georgia"
+              ],
+              "side": "patriot",
+              "over": 2.0
+            },
+            {
+              "on": {
+                "no": "word:million",
+                "en": "word:million"
+              },
+              "do": "stat.show",
+              "value": "2 500 000",
+              "label": {
+                "no": "innbyggere i koloniene",
+                "en": "people in the colonies"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b6",
+          "say": {
+            "no": "De har ingen i det britiske parlamentet. Ingen som stemmer for dem, ingen som taler deres sak. Og nå skal de skatte.",
+            "en": "They have nobody in the British Parliament. Nobody voting for them, nobody arguing their case. And now they are to be taxed."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:parlamentet",
+                "en": "word:Parliament"
+              },
+              "do": "stat.show",
+              "value": "0",
+              "label": {
+                "no": "representanter i London",
+                "en": "seats in London"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b7",
+          "say": {
+            "no": "Det er dette som blir slagordet: ingen skatt uten representasjon. I tolv år krangler de. Skatt etter skatt, boikott etter boikott.",
+            "en": "This becomes the slogan: no taxation without representation. For twelve years they argue. Tax after tax, boycott after boycott."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:tolv",
+                "en": "word:twelve"
+              },
+              "do": "caption.note",
+              "value": {
+                "no": "1763–1775",
+                "en": "1763–1775"
+              }
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b8",
+          "say": {
+            "no": "Ingen steder er det verre enn i én havneby i Massachusetts. London har stengt havna og fylt gatene med soldater.",
+            "en": "Nowhere is it worse than in one harbour town in Massachusetts. London has closed the port and filled the streets with soldiers."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Massachusetts",
+                "en": "word:Massachusetts"
+              },
+              "do": "region.show",
+              "names": [
+                "Massachusetts"
+              ],
+              "side": "patriot"
+            },
+            {
+              "on": {
+                "no": "word:havna",
+                "en": "word:port"
+              },
+              "do": "map.flyTo",
+              "to": "boston-wide",
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b9",
+          "say": {
+            "no": "Boston. Og om noen timer skal syv hundre britiske soldater marsjere ut herfra, i mørket.",
+            "en": "Boston. And in a few hours seven hundred British soldiers will march out of here, in the dark."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": {
+                "no": "word:Boston",
+                "en": "word:Boston"
+              },
+              "do": "map.flyTo",
+              "to": "boston",
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:Boston",
+                "en": "word:Boston"
+              },
+              "do": "marker.show",
+              "at": "boston",
+              "label": {
+                "no": "Boston",
+                "en": "Boston"
+              },
+              "side": "british"
+            },
+            {
+              "on": {
+                "no": "word:mørket",
+                "en": "word:dark"
+              },
+              "do": "map.mood",
+              "value": "dusk"
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
     {
       "id": "s1",
       "title": {
@@ -2031,5 +2474,6 @@
       }
     }
   },
-  "home": "wide"
+  "home": "world",
+  "regions": "geo/regions.geojson"
 }
