@@ -134,7 +134,8 @@
       "name": {
         "no": "North Bridge",
         "en": "North Bridge"
-      }
+      },
+      "label": false
     },
     "meriams-corner": {
       "coords": [
@@ -940,6 +941,14 @@
           },
           "cues": [
             {
+              "on": {
+                "no": "word:slagordet",
+                "en": "word:slogan"
+              },
+              "do": "quote.show",
+              "id": "slogan"
+            },
+            {
               "on": "start",
               "do": "stat.clear"
             },
@@ -953,6 +962,10 @@
                 "no": "1763–1775",
                 "en": "1763–1775"
               }
+            },
+            {
+              "on": "end",
+              "do": "quote.hide"
             }
           ],
           "gapAfter": 1.0
@@ -2765,6 +2778,16 @@
       "by": {
         "no": "General Thomas Gage, brev til London, 1774",
         "en": "General Thomas Gage, letter to London, 1774"
+      }
+    },
+    "slogan": {
+      "text": {
+        "no": "Ingen skatt uten representasjon.",
+        "en": "No taxation without representation."
+      },
+      "by": {
+        "no": "Slagordet i koloniene, fra 1765",
+        "en": "The colonists’ slogan, from 1765"
       }
     }
   },
