@@ -416,6 +416,30 @@
         "en": "Europe"
       },
       "label": false
+    },
+    "colonies-n": {
+      "coords": [
+        47.6,
+        -66.8
+      ],
+      "zoom": 6,
+      "name": {
+        "no": "Nord",
+        "en": "North"
+      },
+      "label": false
+    },
+    "colonies-s": {
+      "coords": [
+        30.5,
+        -82.2
+      ],
+      "zoom": 6,
+      "name": {
+        "no": "Sør",
+        "en": "South"
+      },
+      "label": false
     }
   },
   "routes": {
@@ -773,8 +797,11 @@
                 "no": "word:kolonier",
                 "en": "word:colonies"
               },
-              "do": "map.flyTo",
-              "to": "colonies",
+              "do": "map.fitPlaces",
+              "places": [
+                "colonies-n",
+                "colonies-s"
+              ],
               "over": 2.6
             }
           ],
