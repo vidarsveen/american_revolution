@@ -12,6 +12,7 @@
 
 import * as M from './scenes/map.js';
 import * as O from './scenes/overlays.js';
+import * as S from './scenes/sound.js';
 
 let lang = 'no';
 
@@ -19,6 +20,7 @@ export function mountStage(container, chapter, people, language) {
   lang = language;
   const map = M.mountMap(container, chapter, language);
   O.mountOverlays(container, chapter, people, language);
+  S.mountSound();
   return map;
 }
 
@@ -26,6 +28,7 @@ export function mountStage(container, chapter, people, language) {
 export function resetStage() {
   M.resetMap();
   O.resetOverlays();
+  S.resetSound();
 }
 
 const VERBS = {
@@ -42,6 +45,12 @@ const VERBS = {
   'region.show':      (c, i) => M.showRegions(c, i),
   'region.clear':     ()     => M.clearRegions(),
   'border.set':       (c)    => M.setBorders(c),
+
+  // Sound. The soundscape enforces the one-shot rule itself, so these hand
+  // `instant` straight through rather than guarding it a second time.
+  'sound.play':       (c, i) => S.playSound(c, i),
+  'sound.ambience':   (c, i) => S.setAmbience(c, i),
+  'sound.music':      (c, i) => S.playMusicCue(c, i),
 
   'route.draw':       (c, i) => M.drawRoute(c, i),
   'route.clear':      ()     => M.clearRoutes(),

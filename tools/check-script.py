@@ -52,6 +52,33 @@ def norm(s: str) -> str:
     )
 
 
+SOUND_LIB = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "sound", "library.js")
+
+
+def builtin_effects() -> set[str]:
+    """
+    The effect names sound/library.js synthesises.
+
+    A pack does not have to ship a single audio file — the default library
+    builds every effect from an oscillator — so validating a `sound` reference
+    against the pack's sound.json alone rejects every name that actually
+    works. Read from the catalogue itself so the two cannot drift: adding an
+    effect there is enough to be able to name it in a script.
+    """
+    try:
+        with open(SOUND_LIB, encoding="utf-8") as fh:
+            src = fh.read()
+    except OSError:
+        return set()
+    start = src.find("const CATALOGUE = {")
+    if start < 0:
+        return set()
+    end = src.find("export const EFFECTS", start)
+    block = src[start:end if end > 0 else len(src)]
+    return set(re.findall(r"^\s{2}(\w+):\s*\{\s*kind:", block, re.M))
+
+
 def check_sound_manifest(pack_dir: str) -> None:
     """content/<pack>/sound.json — one entry per recorded effect, or no file."""
     path = os.path.join(pack_dir, "sound.json")
@@ -226,7 +253,9 @@ def main():
         "person": (people, "person"),
         "media":  (media, "image"),
         "quote":  (quotes, "quote"),
-        "sound":  (sounds, "sound"),
+        # The pack's recorded effects, plus everything the shipped library can
+        # synthesise. A pack that records nothing still has a full palette.
+        "sound":  (set(sounds) | builtin_effects(), "sound"),
         "region": (regions, "region"),
     }
 

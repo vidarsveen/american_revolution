@@ -7,6 +7,8 @@ import { checkVerbManifest, mountStage } from './stage.js';
 import { Player } from './player.js';
 import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
 import { mountChrome } from './chrome.js';
+import { soundScene, unlockSound, setSilentSound,
+         startSoundClock, stopSoundClock } from './scenes/sound.js';
 
 const CHAPTERS = [
   { pack: 'american-revolution', id: 'chapter-1775-04-19' },
@@ -82,13 +84,22 @@ export async function initStory(container, allPeople, language) {
       chrome?.tick(t2, scene, player.sceneIndex);
       if (beat !== undefined) renderCaption(beat, word);
     },
-    onScene: () => { clearCaption(); },
+    onScene: (scene) => {
+      clearCaption();
+      // The ducking schedule is a property of the scene, and it has to be in
+      // place before the first word — not discovered as the voice arrives.
+      soundScene(scene, { silent: player.silent });
+    },
     onState: (s) => {
       chrome?.update(s);
       view.classList.toggle('is-waiting', Boolean(s.waitingForTap));
       // While the narration is running, the app frame is not the point. The
       // title bar and tab bar were taking about a quarter of a phone screen.
       document.querySelector('.app')?.classList.toggle('is-immersive', s.playing);
+      // A chapter running on the timer has no voice to duck under, and music
+      // over silent captions is worse than silence.
+      setSilentSound(player.silent);
+      if (s.playing) startSoundClock(() => player.now()); else stopSoundClock();
       if (s.finished) showCover('replay');
     },
   });
@@ -138,6 +149,12 @@ function wireCover(cover) {
     if (!e.target.closest('.cover__go')) return;
     cover.classList.remove('is-on');
     started = true;
+    // The only real user gesture the chapter is guaranteed to get. A browser
+    // will not build an audio context without one, and Safari only counts it
+    // once something has been scheduled on the context — which unlock() does.
+    // Deliberately not awaited: sound is an enhancement and must never stand
+    // between the tap and the story starting.
+    unlockSound();
     player.goToScene(0, { autoplay: true });
   });
 

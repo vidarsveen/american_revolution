@@ -93,6 +93,11 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `dev/map-lab.html` | Can two regions that share a border be told apart, measured on the pixels? |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
 
+Add a verb and you must touch three things, not two: `engine/verbs.json`, the `VERBS` table in
+`engine/stage.js`, and — if it takes a reference type — the pool `tools/check-script.py`
+resolves that type against. A `sound` reference validated only against the pack's `sound.json`
+rejects every effect the shipped library synthesises, which is all of them.
+
 Build the module against its lab **before** wiring it into the app. Both defects that mattered
 most this year were invisible to reading and obvious to measurement.
 
@@ -169,6 +174,19 @@ records whether the geometry was actually there.
 first draw, so a screenshot on a timer can catch a canvas that is still all water — which made
 `check-contrast.py` report land and sea as the same colour, at random. Wait on `map.ready()`.
 
+**A media element that cannot answer a Range request cannot seek.** It streams the whole file,
+reports `seekable` as an empty range, and silently refuses — so dragging the scrubber does
+nothing and the playhead sits wherever the audio actually is. Two things caused this: the
+service worker answered a Range request from cache with a complete 200 (the Cache API cannot
+store a 206), and `tools/serve.py` ignored Range entirely so it could not be reproduced in
+dev. Media now bypasses the service worker, and `serve.py` answers 206.
+
+**A media element reports where it IS, not where it was told to go.** Between setting
+`currentTime` and the `seeked` event it still returns the old position, so a scrubber that
+believes it snaps back on every frame of the drag. `player.now()` runs on the timer while a
+seek is in flight — and only trusts the element when it has a timeline at all, because a file
+that failed to load reports 0 for ever.
+
 **Modern boundaries are wrong for history.** The framework ships modern admin boundaries
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was
 disputed, and West Virginia did not exist. A historical pack overrides with its own
@@ -218,8 +236,9 @@ of the surrounding file.
 
 ## In flight
 
-- **The sound module is the last thing not wired in.** Explore has moved off Leaflet, so both
-  modes now draw the same ground from the same module and `vendor/` is gone.
+- Nothing. Explore has moved off Leaflet, so both modes draw the same ground from the same
+  module and `vendor/` is gone; the sound module is wired into `engine/story.js` and driven
+  from a 100 ms interval, as the note here always said it would have to be.
 - **The sound module is built and benched but not wired into `engine/story.js`.** Integration
   notes are in the plan; the key point is to drive `soundscape.tick()` from a 100 ms interval,
   **not** from the player's `onTick`, which only fires when the beat or word changes.

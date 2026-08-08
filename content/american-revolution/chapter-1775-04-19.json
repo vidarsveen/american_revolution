@@ -527,10 +527,6 @@
         [
           42.4492,
           -71.2311
-        ],
-        [
-          42.446,
-          -71.265
         ]
       ]
     },
@@ -574,6 +570,10 @@
         "en": "Prescott gets through"
       },
       "coords": [
+        [
+          42.4492,
+          -71.2311
+        ],
         [
           42.446,
           -71.265
@@ -1384,6 +1384,26 @@
               "on": "word:system",
               "do": "map.flyTo",
               "to": "wide"
+            },
+            {
+              "on": {
+                "no": "word:kirkeklokker",
+                "en": "word:bells"
+              },
+              "do": "sound.play",
+              "id": "churchBell",
+              "gainDb": -3
+            },
+            {
+              "on": {
+                "no": "word:Skudd",
+                "en": "word:Guns"
+              },
+              "do": "sound.play",
+              "id": "musket",
+              "times": 4,
+              "spread": 2.6,
+              "gainDb": -7
             }
           ],
           "gapAfter": 1.35
@@ -1658,6 +1678,14 @@
               "at": "lexington-green",
               "tone": "red",
               "centre": false
+            },
+            {
+              "on": {
+                "no": "word:skudd",
+                "en": "word:shot"
+              },
+              "do": "sound.play",
+              "id": "musket"
             }
           ],
           "gapAfter": 2.15
@@ -1685,6 +1713,15 @@
               "do": "image.show",
               "id": "doolittle-1",
               "mode": "inset"
+            },
+            {
+              "on": {
+                "no": "word:salve",
+                "en": "word:volley"
+              },
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -2
             }
           ],
           "gapAfter": 1.05
@@ -1945,6 +1982,15 @@
               "at": "north-bridge",
               "tone": "red",
               "centre": false
+            },
+            {
+              "on": {
+                "no": "word:Skyt",
+                "en": "word:Fire"
+              },
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -3
             }
           ],
           "gapAfter": 1.95
@@ -2155,15 +2201,15 @@
           "cues": [
             {
               "on": "word:Percy",
-              "do": "route.draw",
-              "id": "percy-relief",
-              "over": 5
-            },
-            {
-              "on": "word:Percy",
               "do": "image.show",
               "id": "doolittle-4",
               "mode": "inset"
+            },
+            {
+              "on": "word:Percy",
+              "do": "route.draw",
+              "id": "percy-relief",
+              "over": 5
             }
           ],
           "gapAfter": 1.25

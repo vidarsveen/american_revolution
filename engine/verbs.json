@@ -385,6 +385,68 @@
       },
       "args": {},
       "handledBy": "player"
+    },
+    "sound.play": {
+      "summary": {
+        "no": "Spill en lyd én gang",
+        "en": "Play a sound once"
+      },
+      "note": "A single event: a shot, a bell, a fife. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
+      "args": {
+        "id": {
+          "type": "sound",
+          "required": true
+        },
+        "times": {
+          "type": "number",
+          "default": 1,
+          "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering."
+        },
+        "spread": {
+          "type": "seconds",
+          "default": 0
+        },
+        "gainDb": {
+          "type": "number",
+          "default": 0
+        },
+        "rate": {
+          "type": "number",
+          "default": 1
+        }
+      }
+    },
+    "sound.ambience": {
+      "summary": {
+        "no": "Legg en lydkulisse under",
+        "en": "Lay a bed of place under it"
+      },
+      "note": "Continuous: wind, sea, a crowd. Crossfades. Omit `id` to stop it.",
+      "args": {
+        "id": {
+          "type": "sound"
+        },
+        "gainDb": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    },
+    "sound.music": {
+      "summary": {
+        "no": "Musikk under fortellingen",
+        "en": "Music under the narration"
+      },
+      "note": "Ducks under the voice on its own, from the script word timings. Omit `id` to stop it.",
+      "args": {
+        "id": {
+          "type": "sound"
+        },
+        "gainDb": {
+          "type": "number",
+          "default": 0
+        }
+      }
     }
   }
 }
