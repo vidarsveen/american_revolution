@@ -16,9 +16,10 @@ import { project, unproject, scaleFor, clamp, metresPerPixel, WORLD } from './ge
 import { loadLevel, levelFor, preload, drawBasemap,
          registerDetail, loadDetail, detailWanted } from './basemap.js';
 import { loadRegions, fromGeoJSON } from './regions.js';
+import { tintFor } from './tint.js';
 import {
-  drawArrow, drawMarch, drawFront, drawArea, drawCrossing, drawBattle,
-  widthForStrength,
+  drawArrow, drawMarch, drawFront, drawArea, drawRegions, drawCrossing,
+  drawBattle, widthForStrength,
 } from './artifacts.js';
 
 const DEFAULT_FACTIONS = {
@@ -183,6 +184,22 @@ export function createMap(host, opts = {}) {
     };
   }
 
+  /**
+   * The colour one region is filled with.
+   *
+   * All thirteen colonies are on the same side, and filling them all with
+   * that side's one wash is how the map ends up as a single blue smear with
+   * thirteen names floating on it. The side decides the family; the region's
+   * own position in the set decides which member of the family it gets.
+   */
+  function fillForRegion(s) {
+    if (!s.faction) return palette.border0;
+    const c = colourOf(s.faction);
+    const base = c.wash || c.fill;
+    if (s.tint == null || !(s.of > 1) || s.vary === false) return base;
+    return tintFor(base, s.tint, s.of);
+  }
+
   /* ---------------- administrative boundaries ---------------- */
   let borders = { country: true, state: false, local: false };
   let regionSet = null;
@@ -249,22 +266,16 @@ export function createMap(host, opts = {}) {
     const pts = (coords) => coords.map(([la, lo]) => toScreen(la, lo));
 
     // Regions sit under the campaign: they are the ground's political shape,
-    // not an event on it.
-    for (const s of layers.regions.values()) {
-      const rings = s.coords || [];
-      if (!rings.length) continue;
-      const c = s.faction ? colourOf(s.faction)
-                          : { fill: palette.border0, line: palette.border0 };
-      drawArea(ctx, rings.map(pts), {
-        ...c, fill: c.wash || c.fill,
-        progress: progressOf(s), solid: true,
-        // A control area is a claim laid over the map and stays restrained.
-        // A named region coloured by side IS the point of the shot — when the
-        // narration says "thirteen colonies", they have to read as thirteen
-        // coloured things, not as a grey wash.
+    // not an event on it. Drawn as one layer rather than one at a time,
+    // because a border between two of them belongs to both — see drawRegions.
+    drawRegions(ctx, [...layers.regions.values()]
+      .filter((s) => (s.coords || []).length)
+      .map((s) => ({
+        rings: s.coords.map(pts),
+        fill: fillForRegion(s),
+        progress: progressOf(s),
         strength: s.strength ?? (s.faction ? 3.0 : 1),
-      });
-    }
+      })), { line: palette.border0, width: palette.border0W });
     for (const s of layers.areas.values()) {
       drawArea(ctx, (s.rings || [s.coords]).map(pts), { ...colourOf(s.faction), progress: progressOf(s) });
     }
@@ -378,21 +389,28 @@ export function createMap(host, opts = {}) {
         el.className = 'atlas-place atlas-place--region';
         return el;
       });
-      n.textContent = (s.label && (s.label[lang] ?? s.label.no ?? s.label.en)) || s.name;
+
       const [x0, y] = toScreen(s.centre[0], s.centre[1]);
-      // Centre a region name on its area. A left-anchored label reads fine
-      // inland and runs off the edge for anything on the coast, which is
-      // most of what a colonial map is made of.
-      //
-      // Then keep it on screen. A centred label whose anchor sits near an
-      // edge hangs half of itself off the side, and on a phone that is most
-      // of the southern colonies at once. Nudging it inward beats clipping
-      // the name, and beats hand-placing thirteen of them.
-      const half = (n.offsetWidth || 0) / 2;
-      const x = half ? clamp(x0, half + 6, Math.max(half + 6, size.w - half - 6)) : x0;
-      n.style.transform = `translate3d(${x}px, ${y}px, 0) translateX(-50%)`;
+      // How much room the region itself offers, in pixels, right now.
+      const [left, right] = s.bounds
+        ? [toScreen(s.bounds[0][0], s.bounds[0][1])[0],
+           toScreen(s.bounds[1][0], s.bounds[1][1])[0]]
+        : [-Infinity, Infinity];
+
+      measureLabel(n, pickLabel(s.label) || s.name, pickLabel(s.short));
+      const placed = placeLabel(n, x0, left, right);
+      n.style.transform = `translate3d(${placed.x}px, ${y}px, 0) translateX(-50%)`;
       n.style.visibility = onScreen(x0, y) ? '' : 'hidden';
-      labels.push({ n, x, y, rank: 2, centred: true });
+      // Rank by how much of the screen the region covers, so a collision is
+      // lost by the colony there is least room for. Without a tiebreak the
+      // sort fell back to the order the regions happen to sit in the file,
+      // and which name survived was decided by luck.
+      const [, top] = toScreen(s.bounds ? s.bounds[1][0] : 0, 0);
+      const [, bottom] = toScreen(s.bounds ? s.bounds[0][0] : 0, 0);
+      const area = Math.abs(right - left) * Math.abs(bottom - top);
+      // `shrink` is the smaller form declutter tries before dropping the name.
+      labels.push({ n, x: placed.x, y, rank: 2 + Math.min(0.9, area / 4e5),
+                    centred: true, w: placed.w, shrink: placed.shrink });
     }
 
     // A pin names one spot the narration is talking about right now.
@@ -462,6 +480,88 @@ export function createMap(host, opts = {}) {
     for (const id of [...nodes.keys()]) if (!live.has(id)) dropNode(id);
   }
 
+  const pickLabel = (field) =>
+    (field && (field[lang] ?? field.no ?? field.en)) || null;
+
+  /**
+   * Measure both forms of a region name once, and cache them on the node.
+   *
+   * offsetWidth forces layout. Doing it for thirteen regions on every frame
+   * of a fly-over is thirteen forced reflows a frame; the widths only change
+   * when the text or the font does, so they are measured on change and read
+   * from the node after that.
+   */
+  function measureLabel(n, full, short) {
+    // Compare against the arguments as given, not against what they resolved
+    // to. Testing the resolved `_short` never matched for a region with no
+    // short form — `short` is null, `_short` fell back to the full name — so
+    // every such region re-measured itself on every frame, which is the
+    // forced reflow this cache exists to avoid.
+    if (n._fullIn === full && n._shortIn === short) return;
+    n._fullIn = full;
+    n._shortIn = short;
+    n._full = full;
+    n._short = short || full;
+    n.textContent = full;
+    n._wFull = n.offsetWidth;
+    if (n._short !== full) {
+      n.textContent = n._short;
+      n._wShort = n.offsetWidth;
+    } else {
+      n._wShort = n._wFull;
+    }
+    n.textContent = full;
+    n._showing = full;
+  }
+
+  /**
+   * Where a region's name goes — and, first, which name.
+   *
+   * The rule that matters: a label must never leave the region it names.
+   * This used to clamp the name into the VIEWPORT, which on a 393 px phone
+   * meant "MASSACHUSETTS" was wider than the screen edge allowed and got
+   * shoved inland until it sat squarely over Connecticut. Every reader of
+   * that frame learned the wrong name for a colony, which is worse than
+   * learning none.
+   *
+   * So the name is fitted to its own ground: full name if the area is wide
+   * enough for it, the atlas abbreviation if not, and if even that will not
+   * fit, it stays centred and takes its chances with declutter() rather than
+   * wandering off onto a neighbour.
+   */
+  function placeLabel(n, x0, left, right) {
+    const want = (w) => {
+      const half = w / 2;
+      const lo = Math.max(left + half + 2, half + 6);
+      const hi = Math.min(right - half - 2, size.w - half - 6);
+      return lo <= hi ? clamp(x0, lo, hi) : null;
+    };
+
+    let x = n._wFull ? want(n._wFull) : x0;
+    let text = n._full;
+    let w = n._wFull;
+    const canShrink = n._wShort < n._wFull;
+
+    if (x == null && canShrink) {
+      x = want(n._wShort);
+      text = n._short;
+      w = n._wShort;
+    }
+    if (x == null) {
+      // Nothing fits. Centre it on the region and let the collision pass
+      // decide — a dropped label is honest, a misplaced one is not.
+      x = x0;
+      text = canShrink ? n._short : n._full;
+      w = canShrink ? n._wShort : n._wFull;
+    }
+    if (n._showing !== text) { n.textContent = text; n._showing = text; }
+    // Offer declutter the smaller form, if there is one still unused.
+    const shrink = text === n._full && canShrink
+      ? { text: n._short, w: n._wShort, x: want(n._wShort) ?? x0 }
+      : null;
+    return { x, w, shrink };
+  }
+
   /**
    * Hide labels that collide, most important first.
    *
@@ -472,17 +572,37 @@ export function createMap(host, opts = {}) {
    */
   function declutter(labels) {
     const placed = [];
+    const clear = (box) => !placed.some((p) =>
+      box.x < p.x + p.w + 4 && box.x + box.w + 4 > p.x &&
+      box.y < p.y + p.h + 2 && box.y + box.h + 2 > p.y);
+
     for (const l of labels.sort((a, b) => b.rank - a.rank)) {
       if (l.n.style.visibility === 'hidden') continue;
-      const w = l.n.offsetWidth, h = l.n.offsetHeight;
+      const h = l.n.offsetHeight;
+      const w = l.w || l.n.offsetWidth;
       if (!w) continue;
       // The node is anchored at (x, y) but drawn offset by its own margins.
-      const box = { x: l.x + l.n.offsetLeft - (l.centred ? w / 2 : 0),
-                    y: l.y + l.n.offsetTop, w, h };
-      const hit = placed.some((p) =>
-        box.x < p.x + p.w + 4 && box.x + box.w + 4 > p.x &&
-        box.y < p.y + p.h + 2 && box.y + box.h + 2 > p.y);
-      if (hit) l.n.style.visibility = 'hidden';
+      const boxAt = (x, width) => ({
+        x: x + l.n.offsetLeft - (l.centred ? width / 2 : 0),
+        y: l.y + l.n.offsetTop, w: width, h,
+      });
+
+      let box = boxAt(l.x, w);
+      if (!clear(box) && l.shrink) {
+        // Before dropping a name, try the short form. "New York" is 99 px on
+        // a phone and collides with Massachusetts; "N.Y." is 40 and does not.
+        // Dropping first is how a colony the narration just named ends up as
+        // an unlabelled patch of colour.
+        const small = boxAt(l.shrink.x, l.shrink.w);
+        if (clear(small)) {
+          l.n.textContent = l.shrink.text;
+          l.n._showing = l.shrink.text;
+          l.n.style.transform =
+            `translate3d(${l.shrink.x}px, ${l.y}px, 0) translateX(-50%)`;
+          box = small;
+        }
+      }
+      if (!clear(box)) l.n.style.visibility = 'hidden';
       else placed.push(box);
     }
   }
@@ -541,14 +661,37 @@ export function createMap(host, opts = {}) {
     if (t >= 1) { flight = null; f.resolve(); }
   }
 
+  /**
+   * Fit a lat/lon box into the part of the map that is actually visible.
+   *
+   * `padding` may be one number or {top, right, bottom, left}. The asymmetric
+   * form is not a nicety: on a phone the narration's caption and transport
+   * cover the bottom 150 px of the map and the title bar covers the top, so
+   * a box fitted to the full canvas puts a fifth of what it framed underneath
+   * the furniture. Georgia spent the whole "here they are, thirteen colonies"
+   * beat behind the subtitles.
+   */
   function fitBounds(bounds, { padding = 40, instant = false, over, maxZ = maxZoom } = {}) {
     const [[s, w], [n, e]] = bounds;
     const [x0, y1] = project(w, s);
     const [x1, y0] = project(e, n);
-    const zx = Math.log2(Math.max(1, size.w - padding * 2) / Math.abs(x1 - x0));
-    const zy = Math.log2(Math.max(1, size.h - padding * 2) / Math.abs(y1 - y0));
+
+    const p = typeof padding === 'number'
+      ? { top: padding, right: padding, bottom: padding, left: padding }
+      : { top: 0, right: 0, bottom: 0, left: 0, ...padding };
+    const availW = Math.max(1, size.w - p.left - p.right);
+    const availH = Math.max(1, size.h - p.top - p.bottom);
+
+    const zx = Math.log2(availW / Math.abs(x1 - x0));
+    const zy = Math.log2(availH / Math.abs(y1 - y0));
     const z = clamp(Math.min(zx, zy), minZoom, maxZ);
-    const [lon, lat] = unproject((x0 + x1) / 2, (y0 + y1) / 2);
+
+    // The camera sits at the centre of the CANVAS; the box has to land at the
+    // centre of the free rectangle. Offset one by the distance between them.
+    const sc = scaleFor(z);
+    const cx = (x0 + x1) / 2 + (size.w / 2 - (p.left + availW / 2)) / sc;
+    const cy = (y0 + y1) / 2 + (size.h / 2 - (p.top + availH / 2)) / sc;
+    const [lon, lat] = unproject(cx, cy);
     return instant ? setView(lat, lon, z) : flyTo({ to: [lat, lon], zoom: z, over });
   }
 
@@ -730,7 +873,13 @@ export function createMap(host, opts = {}) {
             const r = regionSet.get(spec.name);
             if (r) return base.add({ ...spec, coords: r.coords,
                                      centre: r.labelAt || r.centre,
-                                     label: r.label });
+                                     bounds: r.bounds, label: r.label,
+                                     short: r.short,
+                                     // Which colour of the side's family
+                                     // this one wears, and how many there
+                                     // are — everything tintFor needs.
+                                     tint: spec.tint ?? r.tint,
+                                     of: r.tints ?? regionSet.count });
             console.warn(`[map] no region named "${spec.name}"`);
             return null;
           }

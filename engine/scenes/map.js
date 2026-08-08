@@ -54,7 +54,12 @@ export function mountMap(container, ch, language) {
     interactive: false,
     center: homeCentre(),
     zoom: 10.5,
-    minZoom: 3,
+    // Low enough that a phone can hold an ocean. At minZoom 3 a 393 px screen
+    // shows 64 degrees of longitude, so the establishing shot could not fit
+    // Boston and Britain at once however it was framed — Britain sat 46 px off
+    // the right edge at the moment the narration named it. A wide screen never
+    // showed the problem, because 64 degrees is what it has to spare.
+    minZoom: 1.8,
     maxZoom: 15,
     geoBase: './assets/geo',
     // Natural Earth is 1:10M and this chapter plays at zoom 11-13.5. Without
@@ -152,11 +157,46 @@ export function resetMap() {
    Camera
    ------------------------------------------------------------ */
 
-/** Room for the transport and captions, which sit over the bottom of the map. */
+/**
+ * Room for the furniture that sits ON TOP of the map, per edge.
+ *
+ * The caption and transport cover the bottom of the stage and the title bar
+ * covers the top — they are over the map, not beside it, so the map is
+ * 393x742 while the part you can actually see is more like 393x540. Padding
+ * every edge equally treats those as free space and frames the picture into
+ * them: the "thirteen colonies" shot put Georgia and South Carolina behind
+ * the subtitles, which are the two the sentence names.
+ *
+ * Measured off the real elements rather than guessed, so a caption that grows
+ * to three lines on a narrow screen is still cleared.
+ */
 function framePadding() {
-  const h = hostEl?.clientHeight || 600;
-  const w = hostEl?.clientWidth || 400;
-  return Math.max(28, Math.min(w * 0.12, h * 0.16));
+  const host = hostEl?.querySelector('#story-map') || hostEl;
+  const box = host?.getBoundingClientRect();
+  const w = box?.width || 400;
+  const h = box?.height || 600;
+  const edge = Math.max(20, Math.min(w * 0.07, h * 0.07));
+
+  let bottom = edge;
+  // The caption sits in its own slot ABOVE the transport, so measuring the
+  // transport alone leaves the map framing a caption's worth of picture it
+  // cannot show. Both, plus the slot, because the caption element is empty
+  // between beats and the slot is not.
+  for (const sel of ['.story__chrome', '.transport', '.story__caption-slot',
+                     '.captions']) {
+    for (const el of document.querySelectorAll(sel)) {
+      const r = el.getBoundingClientRect();
+      if (!r.height || !box) continue;
+      // How far up from the bottom of the map this thing reaches.
+      bottom = Math.max(bottom, box.bottom - r.top + 8);
+    }
+  }
+  return {
+    top: edge,
+    right: edge,
+    left: edge,
+    bottom: Math.min(bottom, h * 0.42),   // never squeeze the map to nothing
+  };
 }
 
 export function flyTo(cue, instant) {
@@ -373,6 +413,9 @@ export function showRegions(cue, instant) {
         faction: cue.side,
         strength: cue.strength,
         label: cue.label !== false,
+        // Each region its own colour within the side, unless the shot is
+        // about the side rather than the areas.
+        vary: cue.vary !== false,
         over: cue.over ?? 1.2,
         instant,
       });

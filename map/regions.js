@@ -12,6 +12,8 @@
    drawing Norwegian kommuner. All it needs is named polygons.
    ============================================================ */
 
+import { spreadIndex } from './tint.js';
+
 let cache = null;
 
 /** Load the framework's default (modern) regions. */
@@ -45,6 +47,16 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
     // the two are not the same language. "North Carolina" is the id;
     // "Nord-Carolina" is what a Norwegian sixteen-year-old should read.
     const label = feat.properties?.label ?? null;
+    // What the name shrinks to when the area is narrower than the word. A
+    // phone showing all thirteen colonies has room for "Mass." and not for
+    // "Massachusetts", and a dropped label teaches less than a short one.
+    const short = feat.properties?.short ?? null;
+    // Which of the side's colours this region wears. Solved against the
+    // adjacency graph at build time, because only the build knows which
+    // regions touch — see assign_tints in tools/build-colonies.py. A region
+    // with no tint (a country, say) wears its side's own colour.
+    const tint = feat.properties?.tint ?? null;
+    const tints = feat.properties?.tints ?? null;
     // Where the name should sit. The area-weighted centroid is usually right,
     // but not when a colony reached hundreds of miles inland: Virginia ran to
     // Kentucky, so its centroid lands in the mountains while every reader is
@@ -61,26 +73,62 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
         if (flat.length >= 6) rings.push(flat);
       }
     }
-    if (rings.length) out.push({ name, label, labelAt, country: '', rings });
+    if (rings.length) {
+      out.push({ name, label, short, labelAt, tint, tints, country: '', rings });
+    }
   }
   return index(out, level);
 }
 
 function index(regions, level) {
   const byName = new Map();
-  for (const r of regions) {
+  // Does this file decide its own colours? If any region carries a slot, the
+  // file is in charge and a region WITHOUT one is opting out on purpose —
+  // Britain and France are the only region of their side ever on screen, so
+  // there is nothing to tell them apart from and they wear their side's own
+  // colour. Handing them a slot from the fallback painted the British red
+  // through a hue rotation and came out olive.
+  const authored = regions.some((r) => r.tint != null);
+  const family = authored ? regions.filter((r) => r.tint != null).length
+                          : regions.length;
+
+  regions.forEach((r, i) => {
     r.level = level;
     r.coords = r.rings.map(toLatLngRing);
     r.centre = centroid(r.rings);
+    r.bounds = bounds(r.rings);
+    // Which colour of its side's family this region wears, and how big that
+    // family is. The data says so when it knows — it is the build that can
+    // see which regions touch. Otherwise fall back to position in the set,
+    // which at least is a function of the data rather than of the order a
+    // script happened to name things in: seek backwards, replay the cues in
+    // any order, and Virginia is still Virginia's colour.
+    if (r.tint == null && !authored) r.tint = spreadIndex(i, family);
+    if (r.tints == null) r.tints = family;
     byName.set(norm(r.name), r);
-  }
+  });
   return {
     level,
+    count: regions.length,
     all: () => regions,
     get: (name) => byName.get(norm(name)) || null,
     /** Every region whose name is in `names`, quietly skipping misses. */
     pick: (names) => names.map((n) => byName.get(norm(n))).filter(Boolean),
   };
+}
+
+/** [[minLat, minLon], [maxLat, maxLon]] — for keeping a label on its own area. */
+function bounds(rings) {
+  let s = 90, n = -90, w = 180, e = -180;
+  for (const flat of rings) {
+    for (let i = 0; i < flat.length; i += 2) {
+      if (flat[i] < w) w = flat[i];
+      if (flat[i] > e) e = flat[i];
+      if (flat[i + 1] < s) s = flat[i + 1];
+      if (flat[i + 1] > n) n = flat[i + 1];
+    }
+  }
+  return [[s, w], [n, e]];
 }
 
 const norm = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');

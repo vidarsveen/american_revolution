@@ -123,6 +123,11 @@
         "strength": {
           "type": "number",
           "default": 1
+        },
+        "vary": {
+          "type": "boolean",
+          "default": true,
+          "note": "Give each region its own colour inside the side's family. On by default: thirteen colonies filled with one wash read as one shape, not thirteen. Set false when a shot is about the side and not about the individual areas."
         }
       }
     },

@@ -264,13 +264,8 @@ function hatchFor(colour) {
 export function drawArea(ctx, screenRings,
                          { fill, line, progress = 1, solid, strength = 1 }) {
   if (!screenRings.length) return;
-  const path = new Path2D();
-  for (const ring of screenRings) {
-    if (ring.length < 3) continue;
-    path.moveTo(ring[0][0], ring[0][1]);
-    for (let i = 1; i < ring.length; i++) path.lineTo(ring[i][0], ring[i][1]);
-    path.closePath();
-  }
+  const path = ringPath(screenRings);
+  if (!path) return;
 
   ctx.save();
   // Restrained on purpose. A control area covers most of the frame by
@@ -295,6 +290,89 @@ export function drawArea(ctx, screenRings,
   ctx.setLineDash(solid ? [] : [6, 4]);
   ctx.stroke(path);
   ctx.restore();
+}
+
+/* ------------------------------------------------------------
+   Named regions — the political shape of the ground
+   ------------------------------------------------------------ */
+
+/**
+ * Draw a whole set of named regions at once.
+ *
+ * Taking the set rather than one region is the point, and it is about the
+ * borders. Massachusetts' western edge and New York's eastern edge are the
+ * same line. Stroke each region separately and that line is painted twice,
+ * a translucent stroke over a translucent stroke, so every internal border
+ * comes out darker and thicker than the coastline while the outer edge of
+ * the group stays thin. Thirteen colonies drawn that way look like they are
+ * fighting each other for the same pixels — which is exactly what they are
+ * doing.
+ *
+ * One stroke() call over one Path2D fixes it. Canvas builds the stroke of an
+ * entire path and fills that region ONCE, so two coincident subpaths inside a
+ * single call composite as one line. (Two separate calls do not, whatever the
+ * geometry.) The fills still happen per region, because the colour is the
+ * whole reason to tell them apart.
+ *
+ * This only works if the geometry actually agrees with itself: two borders a
+ * few metres apart are two lines, not one, and no amount of careful drawing
+ * merges them. tools/build-colonies.py simplifies the border network as a
+ * network so that they do, and report_seams() there fails the build if they
+ * ever stop agreeing.
+ */
+export function drawRegions(ctx, regions, { line, width = 1.2 } = {}) {
+  if (!regions.length) return;
+
+  const edges = new Path2D();
+  let strongest = 0;
+
+  for (const r of regions) {
+    const progress = r.progress ?? 1;
+    if (progress <= 0) continue;
+    const path = ringPath(r.rings);
+    if (!path) continue;
+    strongest = Math.max(strongest, progress);
+    edges.addPath(path);
+
+    ctx.save();
+    // A named region carries its identity in this fill, so it has to survive
+    // being laid over olive ground. At 0.39 — what a control-area wash uses —
+    // thirteen distinctly different colours arrived on screen only 4 deltaE
+    // apart, because every one of them had been pulled two thirds of the way
+    // back to the land underneath. Measured again at 0.62 they hold. The
+    // ground still reads through it: coast, rivers and lakes are all drawn
+    // darker than the wash is strong.
+    ctx.globalAlpha = clamp01(0.2 * (r.strength ?? 1) * progress);
+    ctx.fillStyle = r.fill;
+    ctx.fill(path, 'evenodd');
+    ctx.restore();
+  }
+
+  if (!strongest) return;
+  ctx.save();
+  ctx.globalAlpha = 0.85 * strongest;
+  ctx.strokeStyle = line;
+  ctx.lineWidth = width;
+  ctx.lineJoin = 'round';
+  ctx.setLineDash([]);
+  ctx.stroke(edges);
+  ctx.restore();
+}
+
+const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+
+/** Closed Path2D through a list of screen-space rings. */
+function ringPath(rings) {
+  const path = new Path2D();
+  let any = false;
+  for (const ring of rings) {
+    if (ring.length < 3) continue;
+    path.moveTo(ring[0][0], ring[0][1]);
+    for (let i = 1; i < ring.length; i++) path.lineTo(ring[i][0], ring[i][1]);
+    path.closePath();
+    any = true;
+  }
+  return any ? path : null;
 }
 
 /* ------------------------------------------------------------

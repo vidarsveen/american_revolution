@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v14';
+const VERSION = 'v15';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -63,6 +63,7 @@ const PRECACHE = [
   './map/basemap.js',
   './map/artifacts.js',
   './map/regions.js',
+  './map/tint.js',
   './map/index.js',
   './engine/verbs.json',
   // The coarse world level only — first paint needs it. The 50m, 10m and
