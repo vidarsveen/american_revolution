@@ -137,8 +137,13 @@ No build step, no npm. Serve over HTTP — ES modules and the service worker wil
 `file://`.
 
 ```bash
-python -m http.server 8000
+python tools/serve.py
 ```
+
+Not `python -m http.server`: that sends `Last-Modified` and no `Cache-Control`, so the
+browser invents a freshness lifetime and hands you back the module you edited two minutes ago
+— silently, with nothing in the console. `serve.py` serves everything `no-store`, and prints
+the LAN address so you can open it on a phone.
 
 Python tooling lives in `.venv` (`edge-tts`, `pillow`, `mutagen`) and needs `ffmpeg` on PATH.
 

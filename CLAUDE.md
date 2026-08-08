@@ -19,8 +19,13 @@ included. If a change needs a compiler, it is the wrong change.
 **Serve over HTTP.** ES modules and the service worker will not run from `file://`.
 
 ```bash
-python -m http.server 8000
+python tools/serve.py     # NOT python -m http.server — see below
 ```
+
+`http.server` sends `Last-Modified` and no `Cache-Control`, so browsers apply *heuristic*
+freshness and quietly serve you the version you edited two minutes ago. No error, nothing in
+the console, and you debug code that is not running. `serve.py` is `no-store` throughout and
+prints the LAN address for testing on a phone.
 
 Python tooling lives in `.venv` (`.venv/Scripts/python.exe` on Windows) and needs
 `playwright` and `pillow`. `narrate.py` additionally needs `edge-tts`, `mutagen` and `ffmpeg`.
