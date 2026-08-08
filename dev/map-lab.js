@@ -287,14 +287,36 @@ async function paletteTest() {
   const c = map.canvas;
   const g2 = c.getContext('2d');
   const dpr = c.width / c.getBoundingClientRect().width;
+
+  /* A region's colour is not one pixel. Rhode Island is thirteen pixels wide
+     at seaboard zoom on a phone, and the border stroked over it is more than
+     one of them — so a single sample lands on the line about as often as on
+     the wash, and reports two colonies as nearly identical when they are not.
+     Hand-checked against the real pixels, this test was claiming deltaE 6.7
+     for a pair that measures 14.3. Take the median of a small patch, the same
+     way tools/check-contrast.py does. */
+  const patch = (px, py, r = 2) => {
+    const R = [], G = [], B = [];
+    for (let x = px - r; x <= px + r; x++) {
+      for (let y = py - r; y <= py + r; y++) {
+        if (x < 0 || y < 0 || x >= c.width || y >= c.height) continue;
+        const d = g2.getImageData(x, y, 1, 1).data;
+        R.push(d[0]); G.push(d[1]); B.push(d[2]);
+      }
+    }
+    if (!R.length) return null;
+    const mid = (a) => a.sort((u, v) => u - v)[a.length >> 1];
+    return [mid(R), mid(G), mid(B)];
+  };
+
   const seen = new Map();
   for (const r of map.regions.all()) {
     if (!r.centre) continue;
     const p = map.toScreen(r.centre[0], r.centre[1]);
     const px = Math.round(p[0] * dpr), py = Math.round(p[1] * dpr);
     if (px < 0 || py < 0 || px >= c.width || py >= c.height) continue;
-    const d = g2.getImageData(px, py, 1, 1).data;
-    seen.set(r.name, [d[0], d[1], d[2]]);
+    const got = patch(px, py);
+    if (got) seen.set(r.name, got);
   }
 
   const names = [...verts.keys()];

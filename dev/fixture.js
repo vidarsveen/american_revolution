@@ -40,16 +40,22 @@ const FLAG_FRENCH = `<svg viewBox="0 0 60 40" preserveAspectRatio="none">
   </g>
 </svg>`;
 
+/* Wash colours matter as much as fills: a large area is drawn with `wash`,
+   and these are the --*-wash tokens the app actually uses. Without them the
+   bench grew its region palette from the fill instead, so the lab was
+   measuring a set of colours the product never shows — and reporting two
+   colonies as too similar that measure fine in the app. A bench that does not
+   match the thing it benches is worse than no bench. */
 export const FACTIONS = {
   british: {
     label: 'Britiske', flag: FLAG_BRITISH,
-    fill: '#a8322d', line: '#7d211d',
-    fillDark: '#e0645c', lineDark: '#f0a19b',
+    fill: '#a8322d', line: '#7d211d', wash: '#c4675f',
+    fillDark: '#e0645c', lineDark: '#f0a19b', washDark: '#e0645c',
   },
   patriot: {
     label: 'Patriotene', flag: FLAG_PATRIOT,
-    fill: '#2c4a6e', line: '#1c3050',
-    fillDark: '#7ba6d8', lineDark: '#b7d2ee',
+    fill: '#2c4a6e', line: '#1c3050', wash: '#5b86b8',
+    fillDark: '#7ba6d8', lineDark: '#b7d2ee', washDark: '#7ba6d8',
   },
   french: {
     label: 'Franske', flag: FLAG_FRENCH,

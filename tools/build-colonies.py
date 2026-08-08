@@ -183,7 +183,7 @@ def main() -> int:
             units[colony] = unary_union(geoms)
 
     units = simplify_together(units, TOLERANCE)
-    tints, _ = assign_tints(units)
+    touching = neighbours_of(units)
 
     features = []
     for colony, merged in units.items():
@@ -195,10 +195,8 @@ def main() -> int:
             # short form is what a paper atlas falls back to at small scale.
             "short": SHORT[colony],
             "side": "patriot",
-            # Which of the side's tints this colony wears, and how many there
-            # are. Solved against the adjacency graph — see assign_tints.
-            "tint": tints[colony],
-            "tints": len(tints),
+            # Who this colony borders. The renderer turns that into colours.
+            "neighbours": sorted(touching[colony]),
             # Provenance, so the anachronism cannot quietly come back.
             "modern": parts,
         }
@@ -305,69 +303,29 @@ def simplify_together(units, tolerance):
     return out
 
 
-def assign_tints(units):
+def neighbours_of(units):
     """
-    Give each colony a slot on the colour wheel, far from its neighbours'.
+    Which colonies share a border.
 
-    The map module spreads a side's colour into as many tints as there are
-    regions. Which region gets which tint is a graph colouring problem and it
-    has to be solved HERE, because only here is it known which colonies touch:
-    the renderer sees a list, and a list has no idea that New York and
-    Pennsylvania share four hundred kilometres of border.
-
-    Handing out slots in list order looks fine and is not. The list runs north
-    to south, so any rule based on position in it gives similar tints to
-    colonies that are two apart — and two apart in a north-south list is very
-    often adjacent on the ground. Measured on the rendered pixels, that put
-    New York next to Pennsylvania at deltaE 4.0 and North Carolina next to
-    Georgia at 5.5, which is "the same colour" to anyone not comparing them
-    side by side.
-
-    So: maximise the smallest wheel distance between any two colonies that
-    touch. Greedy most-constrained-first, then hill-climb by swapping pairs.
-    Deterministic — same input, same colours, every build.
+    This is all the build has to say about colour. Deciding WHICH tint each
+    colony wears used to happen here too, scored against how far apart two
+    slots sat on a notional wheel — a proxy for how different the colours
+    actually look, and one that silently stopped matching the renderer every
+    time the palette was retuned. The renderer knows what its colours look
+    like; it does not know which colonies touch. So each end now ships what it
+    alone can know, and there is no proxy in between to drift.
     """
     names = list(units)
-    n = len(names)
-    touching = {a: set() for a in names}
+    out = {n: [] for n in names}
+    pairs = 0
     for i, a in enumerate(names):
         for b in names[i + 1:]:
             if units[a].touches(units[b]) or units[a].intersects(units[b]):
-                touching[a].add(b)
-                touching[b].add(a)
-
-    # Distance between two slots, around a wheel of n.
-    def apart(x, y):
-        d = abs(x - y) % n
-        return min(d, n - d)
-
-    def worst(slots):
-        return min((apart(slots[a], slots[b])
-                    for a in names for b in touching[a]), default=n)
-
-    slots = {}
-    for name in sorted(names, key=lambda x: (-len(touching[x]), x)):
-        free = [s for s in range(n) if s not in slots.values()]
-        placed = [slots[b] for b in touching[name] if b in slots]
-        slots[name] = max(free, key=lambda s: (
-            min((apart(s, p) for p in placed), default=n), -s))
-
-    best = worst(slots)
-    improved = True
-    while improved:
-        improved = False
-        for i, a in enumerate(names):
-            for b in names[i + 1:]:
-                slots[a], slots[b] = slots[b], slots[a]
-                got = worst(slots)
-                if got > best:
-                    best, improved = got, True
-                else:
-                    slots[a], slots[b] = slots[b], slots[a]
-
-    print(f"  colour slots: closest neighbours are {best} of {n} apart "
-          f"on the wheel")
-    return slots, best
+                out[a].append(b)
+                out[b].append(a)
+                pairs += 1
+    print(f"  adjacency: {pairs} shared borders")
+    return out
 
 
 def round_coords(obj, n=DECIMALS):

@@ -12,7 +12,7 @@
    drawing Norwegian kommuner. All it needs is named polygons.
    ============================================================ */
 
-import { spreadIndex } from './tint.js';
+import { spreadIndex, assignTints } from './tint.js';
 
 let cache = null;
 
@@ -57,6 +57,9 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
     // with no tint (a country, say) wears its side's own colour.
     const tint = feat.properties?.tint ?? null;
     const tints = feat.properties?.tints ?? null;
+    // Who this region borders, so the colours can be solved against the
+    // geometry rather than against a guess about it.
+    const neighbours = feat.properties?.neighbours ?? null;
     // Where the name should sit. The area-weighted centroid is usually right,
     // but not when a colony reached hundreds of miles inland: Virginia ran to
     // Kentucky, so its centroid lands in the mountains while every reader is
@@ -74,7 +77,8 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
       }
     }
     if (rings.length) {
-      out.push({ name, label, short, labelAt, tint, tints, country: '', rings });
+      out.push({ name, label, short, labelAt, tint, tints, neighbours,
+                 country: '', rings });
     }
   }
   return index(out, level);
@@ -91,6 +95,23 @@ function index(regions, level) {
   const authored = regions.some((r) => r.tint != null);
   const family = authored ? regions.filter((r) => r.tint != null).length
                           : regions.length;
+
+  /* If the data says which regions touch, solve the colours against that.
+     Only the regions that HAVE neighbours take part — a country sitting on
+     its own has nothing to be told apart from and keeps its side's colour. */
+  const inFamily = regions.filter((r) => Array.isArray(r.neighbours));
+  if (inFamily.length > 2) {
+    const at = new Map(inFamily.map((r, i) => [norm(r.name), i]));
+    const edges = [];
+    inFamily.forEach((r, i) => {
+      for (const other of r.neighbours) {
+        const j = at.get(norm(other));
+        if (j != null && j > i) edges.push([i, j]);
+      }
+    });
+    const solved = assignTints(inFamily.length, edges);
+    inFamily.forEach((r, i) => { r.tint = solved[i]; r.tints = inFamily.length; });
+  }
 
   regions.forEach((r, i) => {
     r.level = level;
