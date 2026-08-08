@@ -42,7 +42,7 @@ export async function loadDetail() {
   const paths = {};
   for (const [layer, shapes] of Object.entries(data.layers || {})) {
     const path = new Path2D();
-    const closed = layer === 'lakes';
+    const closed = layer === 'land' || layer === 'lakes';
     for (const parts of shapes) {
       for (const flat of parts) {
         for (let i = 0; i < flat.length; i += 2) {
@@ -196,26 +196,46 @@ export function drawBasemap(ctx, cam, size, palette, levelName, borders = {}) {
     ctx.stroke(level.paths.rivers);
   }
 
-  // A pack's close-in geometry, over the shipped land and under the borders.
+  /* A pack's close-in geometry REPLACES the shipped ground inside its box.
+     It used to be drawn over the top, which meant two coastlines about a
+     kilometre apart were both visible around Boston: the coarse Natural
+     Earth polygon edge, and the fine OSM line stroked on top of it. Clip to
+     the box, repaint it from the detail, and there is one coast again. */
   if (detailShowing(cam.zoom, ...centreOf(cam, size)) && detail.data) {
     const d = detail.data;
-    if (d.paths.lakes) {
-      ctx.fillStyle = palette.water;
-      ctx.strokeStyle = palette.coast;
-      ctx.lineWidth = palette.coastW * 0.8 * px;
-      ctx.fill(d.paths.lakes, 'evenodd');
-      ctx.stroke(d.paths.lakes);
-    }
-    if (d.paths.coast) {
+    const bb = d.bbox || detail.bbox;
+    if (bb && d.paths.land) {
+      const [x0, y0] = project(bb[0], bb[3]);
+      const [x1, y1] = project(bb[2], bb[1]);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x0, y0, x1 - x0, y1 - y0);
+      ctx.clip();
+
+      ctx.fillStyle = palette.waterDeep;
+      ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+
+      ctx.fillStyle = palette.land;
       ctx.strokeStyle = palette.coast;
       ctx.lineWidth = palette.coastW * px;
-      ctx.stroke(d.paths.coast);
-    }
-    if (d.paths.rivers) {
-      ctx.strokeStyle = palette.river;
-      ctx.lineWidth = palette.riverW * 1.3 * px;
-      ctx.lineCap = 'round';
-      ctx.stroke(d.paths.rivers);
+      ctx.lineJoin = 'round';
+      ctx.fill(d.paths.land, 'evenodd');
+      ctx.stroke(d.paths.land);
+
+      if (d.paths.lakes) {
+        ctx.fillStyle = palette.water;
+        ctx.lineWidth = Math.max(0.6, palette.coastW * 0.8) * px;
+        ctx.fill(d.paths.lakes, 'evenodd');
+        ctx.stroke(d.paths.lakes);
+      }
+      if (d.paths.rivers) {
+        ctx.strokeStyle = palette.river;
+        ctx.lineWidth = palette.riverW * 1.3 * px;
+        ctx.lineCap = 'round';
+        ctx.stroke(d.paths.rivers);
+      }
+      ctx.restore();
     }
   }
 

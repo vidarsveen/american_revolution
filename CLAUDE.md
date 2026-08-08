@@ -39,6 +39,13 @@ half-drawn march and you must get a correct picture, not a half-drawn one.
 *Corollary:* one-shot effects — a muzzle flash, a musket — must return early when `instant` is
 true. Scrubbing back through Lexington must not fire forty muskets.
 
+*Corollary:* **an async cue handler breaks this rule unless it is guarded.** Replaying cues
+after a seek runs them in order, but an awaited fetch lands out of order — a `clear` in a later
+beat runs instantly while an earlier `show` resolves after it and undoes the clear. Capture an
+epoch counter before the await and drop the result if it has moved. `engine/scenes/map.js`
+does this for regions, and it cost an afternoon to find: seeking to the end of the intro left
+Massachusetts washed blue over the whole map.
+
 **2. Nothing that must happen depends on `requestAnimationFrame`.** Browsers stop delivering
 frames to a backgrounded tab. Animation frames make things smooth; timers are the contract.
 Every draw path must be callable synchronously.

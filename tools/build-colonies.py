@@ -101,6 +101,18 @@ NOTE = {
                        "en": "Reached west to Tennessee"},
 }
 
+# Where the name sits, [lat, lon], for the colonies whose centroid is
+# misleading. Virginia ran west to Kentucky and North Carolina to Tennessee,
+# so their centroids land in the mountains — but the settled part, and the
+# part a reader is looking at, is the coast.
+LABEL_AT = {
+    "Virginia":       [37.8, -78.2],
+    "North Carolina": [35.6, -79.2],
+    "Massachusetts":  [42.3, -71.9],
+    "New York":       [42.9, -75.4],
+    "Georgia":        [32.7, -83.2],
+}
+
 # ~900 m. The colonies are only ever drawn at seaboard zoom, where finer
 # detail is smaller than a pixel and costs bytes for nothing.
 TOLERANCE = 0.008
@@ -146,6 +158,8 @@ def main() -> int:
         }
         if colony in NOTE:
             props["note"] = NOTE[colony]
+        if colony in LABEL_AT:
+            props["labelAt"] = LABEL_AT[colony]
         features.append({"type": "Feature", "properties": props,
                          "geometry": mapping(merged)})
 

@@ -24,6 +24,9 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from shapely.geometry import LineString, box, mapping, shape
+from shapely.ops import polygonize, unary_union
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
@@ -125,6 +128,80 @@ def flatten(points, q=5):
     return out
 
 
+def build_land(coast_rings, bbox, ne_land_path):
+    """
+    Assemble OSM coastline lines into land polygons.
+
+    OSM does not ship land as polygons — it ships `natural=coastline` as
+    directed lines, and every renderer is expected to close them itself.
+    Skipping that step is what produced the visible bug: the land/sea shape
+    still came from Natural Earth (1:10M, roughly a kilometre out) while the
+    fine OSM coastline was stroked on top of it, so Boston had two coastlines
+    about a kilometre apart.
+
+    The assembly: cut the bounding box along the coastline and polygonize the
+    result, which yields faces that are each wholly land or wholly sea. Then
+    ask Natural Earth which is which — it is too coarse to draw with, but it
+    is entirely accurate enough to classify a face tens of kilometres across.
+    """
+    w, s_, e, n = bbox
+    frame = box(w, s_, e, n)
+
+    lines = [LineString(r) for r in coast_rings if len(r) >= 2]
+    if not lines:
+        return []
+
+    # unary_union nodes the lines against each other and the frame, which
+    # matters: OSM ways meet end to end but polygonize needs them noded.
+    faces = list(polygonize(unary_union(lines + [frame.boundary])))
+    if not faces:
+        return []
+
+    print(f"  coastline splits the box into {len(faces)} faces")
+
+    ne = load_ne_land(ne_land_path, frame)
+    if ne is None:
+        return []
+
+    land = [f for f in faces if ne.contains(f.representative_point())]
+    print(f"  {len(land)} of them are land")
+    if not land:
+        return []
+
+    merged = unary_union(land).intersection(frame)
+    return merged
+
+
+def load_ne_land(path: Path, frame):
+    """Natural Earth land, clipped to the frame — used only to classify."""
+    if not path.exists():
+        print(f"  ! {path.name} not downloaded — cannot classify land from sea")
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    parts = []
+    for feat in data.get("features", []):
+        geom = feat.get("geometry")
+        if not geom:
+            continue
+        g = shape(geom)
+        if g.intersects(frame):
+            parts.append(g.buffer(0).intersection(frame))
+    return unary_union(parts) if parts else None
+
+
+def rings_of_geom(geom):
+    """Flatten a (Multi)Polygon into exterior + interior rings."""
+    if geom.is_empty:
+        return []
+    polys = geom.geoms if geom.geom_type == "MultiPolygon" else [geom]
+    out = []
+    for poly in polys:
+        parts = [list(poly.exterior.coords)]
+        parts += [list(r.coords) for r in poly.interiors]
+        out.append(parts)
+    return out
+
+
 def main() -> int:
     pack = sys.argv[1] if len(sys.argv) > 1 else "american-revolution"
     if pack not in THEATRES:
@@ -171,11 +248,24 @@ def main() -> int:
             elif kind in ("river", "stream"):
                 rivers.append([flat])
 
+    # Coastline lines -> land polygons, so the map has ONE coast.
+    coast_rings = []
+    for parts in coast:
+        for flat in parts:
+            coast_rings.append([(flat[i], flat[i + 1]) for i in range(0, len(flat), 2)])
+    land_geom = build_land(coast_rings, (w, s, e, n),
+                           ROOT / "assets" / "geo" / "_src" / "ne_10m_land.json")
+
+    land = []
+    if land_geom is not None and not getattr(land_geom, "is_empty", True):
+        for parts in rings_of_geom(land_geom.simplify(TOL, preserve_topology=True)):
+            land.append([flatten(r) for r in parts])
+
     out = {
         "name": f"{pack}-detail",
         "scale": "osm",
         "bbox": [w, s, e, n],
-        "layers": {"lakes": water, "rivers": rivers, "coast": coast},
+        "layers": {"land": land, "lakes": water, "rivers": rivers},
         "credit": "© OpenStreetMap contributors, ODbL",
     }
     dest = ROOT / "content" / pack / "geo" / "detail.json"
@@ -183,7 +273,7 @@ def main() -> int:
     dest.write_text(json.dumps(out, separators=(",", ":")), encoding="utf-8")
 
     pts = sum(len(f) // 2 for layer in out["layers"].values() for sh in layer for f in sh)
-    print(f"  water {len(water)}, rivers {len(rivers)}, coastline {len(coast)}")
+    print(f"  land {len(land)}, water {len(water)}, rivers {len(rivers)}")
     print(f"  {pts} points -> {dest.relative_to(ROOT)}  {dest.stat().st_size / 1024:.0f} KB")
     return 0
 

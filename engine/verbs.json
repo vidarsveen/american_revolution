@@ -119,6 +119,10 @@
         },
         "over": {
           "type": "seconds"
+        },
+        "strength": {
+          "type": "number",
+          "default": 1
         }
       }
     },

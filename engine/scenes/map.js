@@ -25,13 +25,16 @@ const pinned = new Set();
    "British" looks like. When packs land, this comes from pack.json instead. */
 const SIDES = ['british', 'patriot', 'french', 'neutral'];
 const TOKEN = { british: '--red', patriot: '--blue', french: '--gold', neutral: '--sage' };
+const WASH = { british: '--red-wash', patriot: '--blue-wash',
+               french: '--gold-wash', neutral: '--sage-wash' };
 
 function readFactions(el) {
   const cs = getComputedStyle(el);
   const out = {};
   for (const id of SIDES) {
     const fill = cs.getPropertyValue(TOKEN[id]).trim() || '#55704c';
-    out[id] = { label: id, fill, line: fill, flag: '' };
+    const wash = cs.getPropertyValue(WASH[id]).trim() || fill;
+    out[id] = { label: id, fill, line: fill, wash, flag: '' };
   }
   return out;
 }
@@ -67,6 +70,8 @@ export function mountMap(container, ch, language) {
   });
 
   drawStandingLabels();
+  // Warm the region file now rather than mid-sentence.
+  ensureRegions();
 
   // A map created while its container is hidden or still being laid out
   // measures as zero and renders nothing — the "map didn't load" case.
@@ -136,6 +141,7 @@ function setStandingLabel(id, on) {
 
 export function resetMap() {
   if (!map) return;
+  regionEpoch += 1;
   map.reset();
   map.setBorders({ country: true, state: false });
   pinned.clear();
@@ -328,6 +334,17 @@ export function clearHighlights() {
    engine never learns what a colony is. */
 let regionsReady = null;
 
+/* Every clear bumps this. An in-flight show captured an older value and
+   drops itself when it lands.
+
+   Without it the async load breaks the engine's central rule. Replaying cues
+   after a seek runs them in order, but `region.show` has to wait for a fetch
+   while `region.clear` is instant — so a clear in beat 9 ran first and beat
+   8's show resolved afterwards and put the region back. Seeking to the end of
+   the scene left Massachusetts washed over the whole map. The picture has to
+   be a function of time, and an unguarded promise is a history of events. */
+let regionEpoch = 0;
+
 function ensureRegions() {
   if (regionsReady) return regionsReady;
   const rel = chapter.regions;
@@ -346,13 +363,15 @@ export function showRegions(cue, instant) {
   if (!map) return;
   const names = cue.names || (cue.name ? [cue.name] : []);
   if (!names.length) return;
+  const epoch = regionEpoch;
   ensureRegions().then((set) => {
-    if (!set) return;
+    if (!set || epoch !== regionEpoch) return;
     for (const name of names) {
       map.regions.add({
         id: `region:${name}`,
         name,
         faction: cue.side,
+        strength: cue.strength,
         label: cue.label !== false,
         over: cue.over ?? 1.2,
         instant,
@@ -362,6 +381,7 @@ export function showRegions(cue, instant) {
 }
 
 export function clearRegions() {
+  regionEpoch += 1;
   map?.regions.clear();
 }
 

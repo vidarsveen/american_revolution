@@ -174,8 +174,13 @@ export function createMap(host, opts = {}) {
     const f = side(id);
     const dark = host.closest('[data-theme="dark"]') ||
       (!host.closest('[data-theme="light"]') && matchMedia('(prefers-color-scheme: dark)').matches);
-    return { fill: (dark && f.fillDark) || f.fill || '#55704c',
-             line: (dark && f.lineDark) || f.line || f.fill || '#55704c' };
+    const fill = (dark && f.fillDark) || f.fill || '#55704c';
+    return {
+      fill,
+      line: (dark && f.lineDark) || f.line || f.fill || '#55704c',
+      // Large areas get their own colour; everything else uses the line hue.
+      wash: (dark && f.washDark) || f.wash || fill,
+    };
   }
 
   /* ---------------- administrative boundaries ---------------- */
@@ -248,9 +253,16 @@ export function createMap(host, opts = {}) {
     for (const s of layers.regions.values()) {
       const rings = s.coords || [];
       if (!rings.length) continue;
+      const c = s.faction ? colourOf(s.faction)
+                          : { fill: palette.border0, line: palette.border0 };
       drawArea(ctx, rings.map(pts), {
-        ...(s.faction ? colourOf(s.faction) : { fill: palette.border0, line: palette.border0 }),
+        ...c, fill: c.wash || c.fill,
         progress: progressOf(s), solid: true,
+        // A control area is a claim laid over the map and stays restrained.
+        // A named region coloured by side IS the point of the shot — when the
+        // narration says "thirteen colonies", they have to read as thirteen
+        // coloured things, not as a grey wash.
+        strength: s.strength ?? (s.faction ? 3.0 : 1),
       });
     }
     for (const s of layers.areas.values()) {
@@ -367,12 +379,19 @@ export function createMap(host, opts = {}) {
         return el;
       });
       n.textContent = (s.label && (s.label[lang] ?? s.label.no ?? s.label.en)) || s.name;
-      const [x, y] = toScreen(s.centre[0], s.centre[1]);
+      const [x0, y] = toScreen(s.centre[0], s.centre[1]);
       // Centre a region name on its area. A left-anchored label reads fine
       // inland and runs off the edge for anything on the coast, which is
       // most of what a colonial map is made of.
+      //
+      // Then keep it on screen. A centred label whose anchor sits near an
+      // edge hangs half of itself off the side, and on a phone that is most
+      // of the southern colonies at once. Nudging it inward beats clipping
+      // the name, and beats hand-placing thirteen of them.
+      const half = (n.offsetWidth || 0) / 2;
+      const x = half ? clamp(x0, half + 6, Math.max(half + 6, size.w - half - 6)) : x0;
       n.style.transform = `translate3d(${x}px, ${y}px, 0) translateX(-50%)`;
-      n.style.visibility = onScreen(x, y) ? '' : 'hidden';
+      n.style.visibility = onScreen(x0, y) ? '' : 'hidden';
       labels.push({ n, x, y, rank: 2, centred: true });
     }
 
@@ -710,7 +729,8 @@ export function createMap(host, opts = {}) {
           if (!spec.coords && spec.name && regionSet) {
             const r = regionSet.get(spec.name);
             if (r) return base.add({ ...spec, coords: r.coords,
-                                     centre: r.centre, label: r.label });
+                                     centre: r.labelAt || r.centre,
+                                     label: r.label });
             console.warn(`[map] no region named "${spec.name}"`);
             return null;
           }

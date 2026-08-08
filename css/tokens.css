@@ -28,6 +28,15 @@
   --sage:           #55704c;   /* neutral / other peoples */
   --sage-soft:      rgba(85, 112, 76, .13);
 
+  /* Fills for large areas. The side colours above are tuned for lines and
+     arrows — dark and restrained, which is right for a stroke and reads as
+     grey when spread across a whole colony. These are the same hues at the
+     chroma a big wash needs. */
+  --red-wash:       #c4675f;
+  --blue-wash:      #5b86b8;
+  --gold-wash:      #cba055;
+  --sage-wash:      #7d9a72;
+
   /* --- Shadows ------------------------------------------- */
   --shadow-sm:  0 1px 2px rgba(36,31,24,.10), 0 2px 6px rgba(36,31,24,.06);
   --shadow-md:  0 2px 6px rgba(36,31,24,.10), 0 8px 22px rgba(36,31,24,.10);
@@ -132,6 +141,11 @@
     --gold-soft:    rgba(223, 171, 94, .17);
     --sage:         #8fb083;
     --sage-soft:    rgba(143, 176, 131, .16);
+
+    --red-wash:     #e0645c;
+    --blue-wash:    #7ba6d8;
+    --gold-wash:    #dfab5e;
+    --sage-wash:    #8fb083;
 
     --shadow-sm:  0 1px 2px rgba(0,0,0,.44), 0 2px 6px rgba(0,0,0,.30);
     --shadow-md:  0 2px 6px rgba(0,0,0,.44), 0 8px 22px rgba(0,0,0,.38);

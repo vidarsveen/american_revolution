@@ -45,6 +45,11 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
     // the two are not the same language. "North Carolina" is the id;
     // "Nord-Carolina" is what a Norwegian sixteen-year-old should read.
     const label = feat.properties?.label ?? null;
+    // Where the name should sit. The area-weighted centroid is usually right,
+    // but not when a colony reached hundreds of miles inland: Virginia ran to
+    // Kentucky, so its centroid lands in the mountains while every reader is
+    // looking at the coast.
+    const labelAt = feat.properties?.labelAt ?? null;
 
     const rings = [];
     const groups = geom.type === 'Polygon' ? [geom.coordinates]
@@ -56,7 +61,7 @@ export function fromGeoJSON(geojson, { level = 1, nameKey = 'name' } = {}) {
         if (flat.length >= 6) rings.push(flat);
       }
     }
-    if (rings.length) out.push({ name, label, country: '', rings });
+    if (rings.length) out.push({ name, label, labelAt, country: '', rings });
   }
   return index(out, level);
 }

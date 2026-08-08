@@ -261,7 +261,8 @@ function hatchFor(colour) {
   return pat;
 }
 
-export function drawArea(ctx, screenRings, { fill, line, progress = 1, solid }) {
+export function drawArea(ctx, screenRings,
+                         { fill, line, progress = 1, solid, strength = 1 }) {
   if (!screenRings.length) return;
   const path = new Path2D();
   for (const ring of screenRings) {
@@ -276,13 +277,15 @@ export function drawArea(ctx, screenRings, { fill, line, progress = 1, solid }) 
   // definition, so anything heavier tints the whole map and the ground stops
   // reading as ground — which looked exactly like the low-contrast basemap
   // this module was built to replace.
-  ctx.globalAlpha = 0.13 * progress;
+  ctx.globalAlpha = 0.13 * strength * progress;
   ctx.fillStyle = fill;
   ctx.fill(path, 'evenodd');
 
-  ctx.globalAlpha = 0.16 * progress;
-  const pattern = ctx.createPattern(hatchFor(line), 'repeat');
-  if (pattern) { ctx.fillStyle = pattern; ctx.fill(path, 'evenodd'); }
+  if (!solid) {
+    ctx.globalAlpha = 0.16 * strength * progress;
+    const pattern = ctx.createPattern(hatchFor(line), 'repeat');
+    if (pattern) { ctx.fillStyle = pattern; ctx.fill(path, 'evenodd'); }
+  }
 
   ctx.globalAlpha = 0.85 * progress;
   ctx.strokeStyle = line;
