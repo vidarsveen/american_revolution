@@ -200,6 +200,17 @@ export class Player {
     }
   }
 
+  /**
+   * Jump a whole episode. Unlike prev(), which restarts the current scene
+   * first, this always moves — it is what the episode list and shift+arrow
+   * mean, and "back" that does not go back is worse than no button.
+   */
+  skipScene(dir) {
+    const i = Math.max(0, Math.min(this.chapter.scenes.length - 1, this.sceneIndex + dir));
+    if (i === this.sceneIndex) { this.seek(0); return; }
+    this.goToScene(i, { autoplay: this.playing });
+  }
+
   setRate(rate) {
     this.audio.playbackRate = rate;
     this.onState(this.state());

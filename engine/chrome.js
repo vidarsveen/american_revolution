@@ -19,6 +19,9 @@ const ICON = {
   text:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M5 6.5h14M5 11h14M5 15.5h9"/></svg>',
   close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
   down:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 10 6 6 6-6"/></svg>',
+  // Deliberately a stack of numbered rows rather than a hamburger: the thing
+  // it opens is a list of parts, and a hamburger reads as "app settings".
+  list:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><path d="M4 5.5v2.6M3.3 5.9 4 5.3M3.3 17.6h1.6M3.3 11.2h1.4L3.3 12.8h1.4"/></svg>',
 };
 
 /** How long the opened controls stay up while the narration is running. */
@@ -60,6 +63,8 @@ export function mountChrome(host, root, chapter, player, strings) {
       <span class="transport__time">0:00</span>
       <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
               aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
+      <button class="tp-btn tp-btn--icon" data-act="episodes"
+              aria-label="${strings.episodes}">${ICON.list}</button>
     </div>
     <input class="transport__range" type="range" min="0" max="1000" value="0" step="1"
            aria-label="${strings.seek}">
@@ -77,6 +82,62 @@ export function mountChrome(host, root, chapter, player, strings) {
     b.setAttribute('aria-label', `${i + 1}. ${scene.title}`);
     b.innerHTML = `<span class="rail-seg__fill"></span>`;
     rail.appendChild(b);
+  });
+
+  /* The episode list.
+
+     A chapter is eight short films with titles, and until now the only way to
+     reach one was an unlabelled rail inside the transport that folds itself
+     away after three and a half seconds. You could not see where you were,
+     what was coming, or how long any of it took — so in practice the chapter
+     had no navigation at all.
+
+     Same sheet mechanics as the transcript, and mounted on the story root for
+     the same reason: it has to cover the bar it was opened from. */
+  const episodes = document.createElement('div');
+  episodes.className = 'transcript episodes';
+  episodes.innerHTML = `
+    <div class="transcript__bar">
+      <b>${strings.episodes}</b>
+      <button class="tp-btn tp-btn--icon" data-act="close-eps" aria-label="${strings.close}">${ICON.close}</button>
+    </div>
+    <div class="transcript__body scroll-y">
+      <ol class="eplist">${chapter.scenes.map((sc, i) => `
+        <li><button class="epitem" type="button" data-scene="${i}">
+          <span class="epitem__no">${i + 1}</span>
+          <span class="epitem__text">
+            <b>${escHtml(sc.title)}</b>
+            ${sc.clock ? `<i>${escHtml(sc.clock)}</i>` : ''}
+          </span>
+          <span class="epitem__dur">${clockText(sc.dur)}</span>
+        </button></li>`).join('')}
+      </ol>
+    </div>`;
+  root.appendChild(episodes);
+
+  const openEpisodes = () => {
+    // Mark before showing, not on a timer: opening the list to a stale "you
+    // are here" is worse than not marking it at all.
+    markEpisodes(player.sceneIndex);
+    episodes.classList.add('is-open');
+  };
+  const closeEpisodes = () => episodes.classList.remove('is-open');
+
+  function markEpisodes(current) {
+    for (const b of episodes.querySelectorAll('.epitem')) {
+      const i = Number(b.dataset.scene);
+      b.classList.toggle('is-current', i === current);
+      b.classList.toggle('is-done', i < current);
+      b.setAttribute('aria-current', i === current ? 'true' : 'false');
+    }
+  }
+
+  episodes.addEventListener('click', (e) => {
+    if (e.target.closest('[data-act=close-eps]')) { closeEpisodes(); return; }
+    const item = e.target.closest('.epitem');
+    if (!item) return;
+    closeEpisodes();
+    player.goToScene(Number(item.dataset.scene), { autoplay: true });
   });
 
   const sheet = document.createElement('div');
@@ -125,6 +186,7 @@ export function mountChrome(host, root, chapter, player, strings) {
     if (act === 'fold') { fold(); return; }
     if (act === 'expand') { expand(); return; }
     if (act === 'text') { sheet.classList.add('is-open'); return; }
+    if (act === 'episodes') { openEpisodes(); return; }
     if (act === 'cc') {
       const next = !captionsOn();
       setCaptionsOn(next);
@@ -227,9 +289,13 @@ export function mountChrome(host, root, chapter, player, strings) {
   return {
     el,
     sheet,
+    episodes,
     expand,
     fold,
+    openEpisodes,
+    closeEpisodes,
     update(state) {
+      markEpisodes(state.sceneIndex);
       el.classList.toggle('is-playing', state.playing);
       el.classList.toggle('is-waiting', Boolean(state.waitingForTap));
       el.querySelector('[data-act=toggle]')
@@ -265,6 +331,12 @@ export function mountChrome(host, root, chapter, player, strings) {
       clockEl.textContent = scene.clock || '';
     },
   };
+}
+
+function escHtml(v) {
+  return String(v ?? '').replace(/[&<>"']/g, (c) => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
 }
 
 function clockText(sec) {
