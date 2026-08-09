@@ -1479,7 +1479,7 @@
                 "en": "word:bells"
               },
               "do": "sound.play",
-              "id": "churchBell",
+              "id": "alarmBell",
               "gainDb": -3
             },
             {

@@ -5,13 +5,52 @@ re-deriving why. Newest concerns first within each section.
 
 ---
 
+## Open, from the 9 August review pass
+
+None of these are bugs. They are judgement calls I did not want to make alone,
+and one piece of research I would not invent.
+
+**The quote card does two different jobs and looks the same doing both.** Six
+of the seven quotes are somebody's words — Gage, Percy, Parker, Pitcairn,
+Hosmer, Buttrick. The seventh, "no taxation without representation", is an
+idea nobody in particular said. A reader has no way to tell those apart. A
+variant style for a slogan would fix it; I left them identical rather than
+guess which way you want it to go.
+
+**Held beats are not usable yet.** The `pause` verb is implemented in the
+player and unused, because its only affordance is a gold ring around the
+transport — on a phone that reads as "frozen", not as "deliberate". It wants a
+visible "tap to continue" before any chapter leans on it. The obvious place is
+"nobody has ever been able to say who fired".
+
+**Music placement is unheard.** Scene two gets `bedMarch` for urgency, but
+Revere crossing the river past a warship with muffled oars may want
+`bedSolemn`. Levels are untested by ear: bed at -14 dB, duck -12, and the
+muskets at s2.b5 are -7. All single numbers.
+
+**Scene three beat two is still the thinnest in the chapter.** "On the green
+in the middle of Lexington stands a cluster of men" — sixteen seconds over
+ground that has a road and some woods on it and nothing else. It wants a
+period image of the green, or a device this chapter does not have yet.
+
+**Explore's eight strategic routes are lines, not arrows.** They would read
+far better as army arrows, which needs a troop number per route — Arnold to
+Quebec, Burgoyne south, the march to Yorktown. I did not want to invent those
+figures.
+
+**The chapter has no ending.** It stops on the last beat and returns to the
+cover. A held final card — the arc around Boston, the date, the toll — would
+land it.
+
+---
+
 ## Sound — needs another pass
 
 Listened to on 8 August. Verdict: most of the library is usable, three are not.
 
 | Effect | Verdict | Likely cause |
 |---|---|---|
-| `churchBell` | **bad** | Eight inharmonic partials with independent decays. Probably too many partials and too clean a strike — a real bell has a hard transient and a much longer, beating tail. |
+| `churchBell` | **bad**, and now unused | Eight inharmonic partials with independent decays. Probably too many partials and too clean a strike — a real bell has a hard transient and a much longer, beating tail. The chapter calls `alarmBell` instead, which passed and is the more accurate word anyway: those bells were rung as an alarm that night. |
 | `crowd` | **bad** | A 480 Hz noise band with formant blips reads as static, not people. Needs uneven density and occasional near-voice peaks without ever being a word. |
 | `rigging` | **barely audible** | Almost certainly a level problem, not a design one: the RMS ceiling added to stop `fife` dominating will have pushed a quiet ambient bed further down. Check its RMS against `wind` (0.1004) before touching the synthesis. |
 
@@ -77,7 +116,10 @@ orientation. See "Next up" below.
 
 ---
 
-## Next up: an establishing chapter
+## Done: the establishing chapter
+
+Shipped as scene 0 of the 19 April chapter — "Before any of this", nine beats,
+1763 to 1775. What follows is the brief it was built to.
 
 The idea: open wide and close in, the way a documentary does. Britain, France
 and the colonies as three players on one map; then America; then the thirteen
