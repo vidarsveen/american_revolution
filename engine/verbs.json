@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing.",
+  "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
   "refTypes": {
     "place": "chapter.places",
     "route": "chapter.routes",
@@ -184,6 +184,68 @@
       },
       "args": {}
     },
+    "front.show": {
+      "summary": {
+        "no": "En linje som står og venter",
+        "en": "A line of men, holding"
+      },
+      "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "side": {
+          "type": "faction"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "facing": {
+          "type": "number",
+          "default": 1,
+          "note": "Which side of the line the ticks hang from: 1 or -1. Which way they are looking."
+        },
+        "fluid": {
+          "type": "boolean",
+          "default": false,
+          "note": "Dashed, for a body of men who have not formed up properly. Most of this chapter."
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "fit": {
+          "type": "boolean",
+          "default": false,
+          "note": "Off by default: a front is usually drawn inside a shot the camera has already framed."
+        }
+      }
+    },
+    "front.hide": {
+      "summary": {
+        "no": "Fjern én linje",
+        "en": "Remove one front"
+      },
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        }
+      }
+    },
+    "front.clear": {
+      "summary": {
+        "no": "Fjern alle linjer",
+        "en": "Clear every front"
+      },
+      "args": {}
+    },
     "marker.show": {
       "summary": {
         "no": "En navngitt nål",
@@ -199,8 +261,30 @@
         },
         "side": {
           "type": "faction"
+        },
+        "kind": {
+          "type": "enum",
+          "values": [
+            "point",
+            "clash",
+            "target",
+            "camp",
+            "siege"
+          ],
+          "default": "point",
+          "note": "point is a plain pin and draws no glyph."
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
         }
-      }
+      },
+      "note": "`kind` decides what happened there, and drops the matching glyph from the map's battle set under the pin. `tone` names a palette colour when the point is not about a side — a bridge people fought over is not a claim about who owns it."
     },
     "marker.hide": {
       "summary": {
@@ -237,6 +321,16 @@
         "centre": {
           "type": "boolean",
           "default": true
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ],
+          "note": "A colour, not a side. Defaults to gold, the map’s \"look here\" colour."
         }
       }
     },
@@ -304,6 +398,14 @@
         "id": {
           "type": "media",
           "required": true
+        },
+        "mode": {
+          "type": "enum",
+          "values": [
+            "inset",
+            "full"
+          ],
+          "default": "inset"
         }
       }
     },

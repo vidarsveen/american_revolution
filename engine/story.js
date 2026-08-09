@@ -7,8 +7,8 @@ import { checkVerbManifest, mountStage } from './stage.js';
 import { Player } from './player.js';
 import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
 import { mountChrome } from './chrome.js';
-import { soundScene, unlockSound, setSilentSound,
-         startSoundClock, stopSoundClock } from './scenes/sound.js';
+import { soundScene, unlockSound, setSilentSound, startSoundClock,
+         stopSoundClock, pauseSound, resumeSound, stopSound } from './scenes/sound.js';
 
 const CHAPTERS = [
   { pack: 'american-revolution', id: 'chapter-1775-04-19' },
@@ -24,6 +24,7 @@ const STR = {
     noAudio: 'Lyden er ikke generert ennå. Kjør tools/narrate.py.',
     onlyIn: 'Denne fortellingen finnes foreløpig bare på norsk.',
     listen: 'Lytt', minutes: 'min', chapters: 'Kapitler', finished: 'Ferdig',
+    episodes: 'Episoder',
   },
   en: {
     play: 'Play', pause: 'Pause', back: 'Previous', forward: 'Next',
@@ -34,6 +35,7 @@ const STR = {
     noAudio: 'Audio has not been generated yet. Run tools/narrate.py.',
     onlyIn: 'This chapter is only narrated in Norwegian so far.',
     listen: 'Listen', minutes: 'min', chapters: 'Chapters', finished: 'Finished',
+    episodes: 'Episodes',
   },
 };
 
@@ -99,8 +101,20 @@ export async function initStory(container, allPeople, language) {
       // A chapter running on the timer has no voice to duck under, and music
       // over silent captions is worse than silence.
       setSilentSound(player.silent);
-      if (s.playing) startSoundClock(() => player.now()); else stopSoundClock();
-      if (s.finished) showCover('replay');
+      // Stopping the clock only stops the ducker. Music and ambience are
+      // looping sources that carry on by themselves, which is how a paused
+      // chapter — and a chapter left behind by switching to Explore — went on
+      // playing a bed under a screen that had stopped telling a story.
+      if (s.playing) {
+        resumeSound();
+        startSoundClock(() => player.now());
+      } else {
+        stopSoundClock();
+        pauseSound();
+      }
+      // The end is not a pause. The cover is back and there is no narration
+      // left for a bed to sit under, so this one is a real stop.
+      if (s.finished) { stopSound(); showCover('replay'); }
     },
   });
 
@@ -172,8 +186,13 @@ function wireKeys() {
     if (view.closest('.view')?.classList.contains('is-active') === false) return;
     if (e.target.matches('input, textarea')) return;
     if (e.code === 'Space') { e.preventDefault(); player.toggle(); }
+    // Plain arrows step a sentence; with shift they step a whole episode.
+    else if (e.code === 'ArrowLeft' && e.shiftKey) { e.preventDefault(); player.skipScene(-1); }
+    else if (e.code === 'ArrowRight' && e.shiftKey) { e.preventDefault(); player.skipScene(1); }
     else if (e.code === 'ArrowLeft') { e.preventDefault(); player.skipBeat(-1); }
     else if (e.code === 'ArrowRight') { e.preventDefault(); player.skipBeat(1); }
+    else if (e.code === 'KeyE') { e.preventDefault(); chrome?.openEpisodes(); }
+    else if (e.code === 'Escape') { chrome?.closeEpisodes(); }
   });
 }
 

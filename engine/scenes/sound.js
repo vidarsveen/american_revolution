@@ -32,21 +32,46 @@ import { createSoundscape, scheduleFromBeats } from '../../sound/soundscape.js';
 
 let mixer = null;
 let scape = null;
+let library = null;
 let ticker = 0;
 let currentScene = null;
 
-export function mountSound() {
+export function mountSound(chapter) {
   if (scape) return scape;
   try {
     mixer = createMixer({ enabled: true });
-    scape = createSoundscape({ mixer, library: createLibrary() });
+    library = createLibrary();
+    scape = createSoundscape({ mixer, library });
   } catch (err) {
     // Sound is an enhancement. Losing it must not take the chapter with it.
     console.warn('[sound] unavailable:', err && err.message);
     mixer = null;
     scape = null;
+    library = null;
   }
+  if (scape && chapter?.pack) loadPackSounds(chapter.pack);
   return scape;
+}
+
+/**
+ * A pack may override any synthesised effect with a recording.
+ *
+ * Deliberately fire-and-forget. The manifest is not needed until the first
+ * cue asks for a sound, which is at the earliest a second after the cover is
+ * tapped, and if it never arrives every effect is synthesised exactly as
+ * before — the file-based path is an override, not a dependency. A pack with
+ * no sound.json is the normal case and must not log anything alarming.
+ */
+async function loadPackSounds(pack) {
+  const base = `./content/${pack}/`;
+  try {
+    const res = await fetch(`${base}sound.json`, { cache: 'no-cache' });
+    if (!res.ok) return;                       // 404 is the normal case
+    const taken = library.addManifest(await res.json(), { base });
+    if (taken) console.info(`[sound] ${pack}: ${taken} recorded effect(s) override the synth`);
+  } catch {
+    /* no manifest, malformed manifest — the synthesised catalogue stands */
+  }
 }
 
 /**
@@ -129,6 +154,41 @@ export function startSoundClock(getTime) {
 export function stopSoundClock() {
   clearInterval(ticker);
   ticker = 0;
+}
+
+/**
+ * The narration has stopped, but it is coming back.
+ *
+ * Stopping the clock only stops the ducker. The music and the ambience are
+ * looping BufferSources and carry on regardless — which is how a paused
+ * chapter, and a chapter left behind by switching to Explore, went on playing
+ * a bed under a screen that was no longer telling a story.
+ *
+ * Suspending the whole context rather than tearing the beds down, because the
+ * beds are state the cues resolved: stopping them here would leave nothing to
+ * start them again short of a seek. Suspend is exactly "the same mix, paused".
+ */
+export function pauseSound() {
+  mixer?.suspend();
+}
+
+export function resumeSound() {
+  mixer?.resume();
+}
+
+/**
+ * The chapter is over. Unlike a pause this is a real stop: the cover is back
+ * and there is no narration for a bed to sit under.
+ *
+ * Safe to start again — reset() leaves the soundscape holding no voices, so
+ * replaying the chapter rebuilds scene zero and its cues start the bed afresh.
+ */
+export function stopSound() {
+  stopSoundClock();
+  clearTimeout(settle);
+  wantMusic = null;
+  wantAmbience = null;
+  scape?.reset();
 }
 
 /* ------------------------------------------------------------

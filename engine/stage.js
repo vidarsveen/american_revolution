@@ -20,7 +20,7 @@ export function mountStage(container, chapter, people, language) {
   lang = language;
   const map = M.mountMap(container, chapter, language);
   O.mountOverlays(container, chapter, people, language);
-  S.mountSound();
+  S.mountSound(chapter);
   return map;
 }
 
@@ -55,6 +55,12 @@ const VERBS = {
   'road.draw':        (c)    => M.drawRoad(c),
   'route.draw':       (c, i) => M.drawRoute(c, i),
   'route.clear':      ()     => M.clearRoutes(),
+
+  // People standing still, facing something. An arrow is the wrong shape for
+  // seventy-seven men who did not go anywhere.
+  'front.show':       (c, i) => M.showFront(c, i),
+  'front.hide':       (c)    => M.hideFront(c),
+  'front.clear':      ()     => M.clearFronts(),
 
   'marker.show':      (c, i) => M.showMarker(c, i),
   'marker.hide':      (c)    => M.hideMarker(c),

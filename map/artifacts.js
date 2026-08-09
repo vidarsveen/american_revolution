@@ -91,7 +91,12 @@ export function arrowPath(screenPts, wMax, progress = 1) {
       const u = sShaft > 0 ? s / sShaft : 1;
       return wTail + (w - wTail) * smoothstep(0, 0.28, u);
     }
-    return wMax;   // the shaft holds full width right up to the head base
+    // The shaft holds full width right up to the head base. `w`, not `wMax`:
+    // wMax is what strength asked for before the length cap above, and using
+    // it here would have let a short march escape its own cap. Unreachable as
+    // the loops are written today — they stop at sShaft — but it is the kind
+    // of thing that becomes reachable the day somebody changes the loop.
+    return w;
   };
 
   const path = new Path2D();

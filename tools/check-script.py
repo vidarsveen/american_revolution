@@ -306,6 +306,21 @@ def main():
                 # exists. Adding a verb with a `place` argument gets this check
                 # for free, which is the point of the manifest.
                 spec = VERB_SPEC.get(verb) or {}
+
+                # An argument the manifest does not declare is read by nobody.
+                # `kind` on marker.show and `tone` on place.highlight sat in
+                # this chapter for months doing exactly nothing: every pin drew
+                # British-red and every "red" ring drew gold, and the script
+                # validated clean the whole time because only the verb name was
+                # ever checked. Same failure mode as an undeclared verb, so it
+                # gets the same answer.
+                declared = set(spec.get("args") or {}) | {"on", "do"}
+                for arg in cue:
+                    if arg not in declared and verb in VERBS:
+                        problems.append(
+                            f"{bid}: {verb} has no argument '{arg}' "
+                            f"(declare it in engine/verbs.json or the engine ignores it)")
+
                 for arg, adef in (spec.get("args") or {}).items():
                     atype = adef.get("type", "")
                     base = atype[:-2] if atype.endswith("[]") else atype
@@ -314,6 +329,12 @@ def main():
                     if adef.get("required") and value in (None, "", [], {}):
                         problems.append(f"{bid}: {verb} is missing required '{arg}'")
                         continue
+                    if atype == "enum" and value is not None:
+                        allowed = adef.get("values") or []
+                        if allowed and value not in allowed:
+                            problems.append(
+                                f"{bid}: {verb} '{arg}' is '{value}', "
+                                f"not one of {', '.join(map(str, allowed))}")
                     if base not in REF_TYPES or value is None:
                         continue
 

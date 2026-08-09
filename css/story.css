@@ -196,7 +196,13 @@
 }
 .ov-deck--mid { top: 32%; display: grid; justify-items: center; gap: var(--s3); }
 .ov-deck--lower {
-  bottom: calc(var(--transport-h) + var(--s3));
+  /* Above the caption, not behind it. Both used to be anchored to the
+     transport, so they claimed the same strip and the caption — later in the
+     document and on a higher layer — covered every number the chapter shows.
+     --caption-h is published by engine/captions.js, the same way the
+     transport publishes its own height, and falls back to zero so the deck is
+     never left floating if that ever stops arriving. */
+  bottom: calc(var(--transport-h) + var(--caption-h, 0px) + var(--s3) * 2);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -299,6 +305,13 @@
 .ov-image__card img {
   display: block;
   width: min(52vw, 260px);
+  /* Bound the HEIGHT too, or a portrait plate runs off the bottom of the
+     card and takes its own credit line with it — the Old North Church tower
+     is 2:3 and its caption landed on top of the map with the picture behind
+     it. object-fit keeps the crop honest rather than squashing the steeple. */
+  max-height: min(46vh, 320px);
+  object-fit: cover;
+  object-position: center top;
   border-radius: var(--r-md);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-md);
@@ -749,4 +762,79 @@
   font-style: italic;
   font-size: 11px;
   color: var(--ink-faint);
+}
+
+/* ---------- Episode list ------------------------------------
+   Reuses the transcript sheet's mechanics — same slide, same bar, same
+   scroll body — and only adds the rows. A chapter is eight short films and
+   until this existed there was no way to see that, let alone reach one.
+   ------------------------------------------------------------ */
+
+.eplist { margin: 0; padding: 0; list-style: none; }
+
+.epitem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  width: 100%;
+  /* A row is a navigation target on a phone, so it gets a phone-sized one. */
+  min-height: 56px;
+  padding: var(--s3) var(--s2);
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--t-fast);
+}
+.epitem:hover  { background: var(--paper-raised); }
+.epitem:active { background: var(--paper-sunken); }
+
+.epitem__no {
+  flex: none;
+  width: 1.9em;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--ink-faint);
+}
+.epitem__text { flex: 1 1 auto; min-width: 0; }
+.epitem__text b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 60, 'WONK' 1;
+  color: var(--ink);
+}
+.epitem__text i {
+  display: block;
+  margin-top: 1px;
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.epitem__dur {
+  flex: none;
+  font-size: var(--fs-xs);
+  color: var(--ink-faint);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Where you are, and how far you have got. Both are the question the list is
+   opened to answer, so neither is left to the colour of the text alone. */
+.epitem.is-done .epitem__no,
+.epitem.is-done .epitem__text b { color: var(--ink-faint); }
+.epitem.is-current { background: var(--paper-raised); }
+.epitem.is-current .epitem__no { color: var(--gold); }
+.epitem.is-current .epitem__text b { font-weight: 700; }
+.epitem.is-current::before {
+  content: '';
+  align-self: stretch;
+  width: 3px;
+  margin: 2px 0 2px -8px;
+  border-radius: var(--r-pill);
+  background: var(--gold);
 }

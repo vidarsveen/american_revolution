@@ -10,6 +10,7 @@ let root = null;
 let lineEl = null;
 let on = true;
 let currentBeat = null;
+let slot = null;
 
 export function mountCaptions(container) {
   root = document.createElement('div');
@@ -17,12 +18,43 @@ export function mountCaptions(container) {
   root.innerHTML = `<p class="captions__line"></p>`;
   container.appendChild(root);
   lineEl = root.querySelector('.captions__line');
+  slot = container;
+  // Watch our own height, the way the transport publishes --transport-h.
+  // ResizeObserver rather than a measurement after each render: a caption
+  // reflows when the window turns, when the font finishes loading, and when
+  // the viewer changes the text size, none of which are render events here.
+  if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(publishHeight).observe(root);
+  }
+  addEventListener('resize', publishHeight);
+  publishHeight();
   return root;
+}
+
+/**
+ * How tall the caption is, as --caption-h on the story root.
+ *
+ * The stats deck and the caption box were both anchored to the transport, so
+ * they occupied the same strip of screen and the caption — a later element
+ * with a higher z-index — sat on top. Every number the chapter shows was
+ * drawn underneath it: seventy-seven against seven hundred, the eight dead on
+ * the green, the British losses. All of them present, none of them visible.
+ *
+ * Zero when captions are off, because then there is nothing to clear.
+ */
+function publishHeight() {
+  if (!root || !slot) return;
+  const story = slot.closest('.story') || slot.parentElement;
+  if (!story) return;
+  const h = on ? Math.round(root.getBoundingClientRect().height) : 0;
+  story.style.setProperty('--caption-h', `${h}px`);
 }
 
 export function setCaptionsOn(value) {
   on = Boolean(value);
   root?.classList.toggle('is-off', !on);
+  // Turning captions off gives the numbers the whole strip back.
+  publishHeight();
 }
 
 /** Whatever you chose last time. Captions default to on. */

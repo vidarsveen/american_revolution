@@ -342,6 +342,50 @@ export function clearRoutes() {
 }
 
 /* ------------------------------------------------------------
+   Fronts — a line of men standing somewhere, facing something
+   ------------------------------------------------------------ */
+
+/**
+ * Not everybody on a map is going anywhere.
+ *
+ * An arrow says "these people moved from here to there". Seventy-seven men
+ * standing on a village green at dawn did the opposite of that, and drawing
+ * them as an arrow would say the one thing about them that is not true. The
+ * map module has drawn fronts since it was written — a line with ticks on the
+ * owning side — and nothing could ask for one, so Lexington was a starburst
+ * on an empty field and the North Bridge was a single blue arrow pointing at
+ * nobody.
+ *
+ * Geometry comes from a route, because a line is a line: the same coordinates
+ * the pack already knows how to write. `facing` is which side of it the ticks
+ * hang from, i.e. which way the men are looking.
+ */
+export function showFront(cue, instant) {
+  const route = chapter.routes?.[cue.id];
+  if (!route || !map) return;
+  if (cue.fit) frame(route.coords, instant, 1.6);
+  map.fronts.add({
+    id: `front:${cue.id}`,
+    coords: route.coords,
+    faction: factionOf(cue, route.side || 'neutral'),
+    facing: cue.facing ?? 1,
+    // A dashed line for a body of men who have not formed up properly. Most
+    // of this chapter is exactly that, which is rather the point of it.
+    fluid: cue.fluid ?? false,
+    over: cue.over ?? 1.6,
+    instant,
+  });
+}
+
+export function hideFront(cue) {
+  map?.fronts.remove(`front:${cue.id}`);
+}
+
+export function clearFronts() {
+  map?.fronts.clear();
+}
+
+/* ------------------------------------------------------------
    Converge — lines coming in from outside and joining
    ------------------------------------------------------------ */
 
@@ -402,6 +446,34 @@ function bow([aLat, aLon], [bLat, bLon], i) {
    Pins and rings
    ------------------------------------------------------------ */
 
+/**
+ * A tone names a colour, not a side.
+ *
+ * "This bridge is where they fought" is not a claim about who owns it, and a
+ * chapter should be able to say red without saying British. The four factions
+ * happen to BE the four palette colours (see SIDES/TOKEN above), so resolving
+ * a tone is an alias lookup — and doing it here, in the adapter, is the point:
+ * when pack.json lands and a pack names its own sides, this table moves with
+ * it and nothing above the adapter has to change.
+ *
+ * This existed as `tone:` in the chapter script for months and was read by
+ * nothing at all. Every "red" ring drew gold and every pin drew British,
+ * which is most of why Lexington and the North Bridge had no picture to
+ * follow: the cues were there, the colours were not.
+ */
+const TONE = { red: 'british', blue: 'patriot', gold: 'french', sage: 'neutral' };
+
+const factionOf = (cue, fallback) => cue.side || TONE[cue.tone] || fallback;
+
+/**
+ * Which glyph, if any, belongs under a pin.
+ *
+ * A pin says "here is a place". `kind` says what happened there, and the
+ * glyphs come straight from the map module's battle set. `point` is a plain
+ * pin and draws nothing extra — that is the default and always was.
+ */
+const GLYPH = { clash: 'battle', target: 'siege', camp: 'camp', siege: 'siege' };
+
 export function showMarker(cue, instant) {
   const place = chapter.places?.[cue.at];
   if (!place || !map) return;
@@ -409,20 +481,40 @@ export function showMarker(cue, instant) {
     id: `mk:${cue.at}`,
     at: place.coords,
     label: pick(cue.label) || pick(place.name) || '',
-    faction: cue.side || cue.tone || 'british',
+    faction: factionOf(cue, 'british'),
     instant,
   });
+
+  // Gold rather than a side by default: a fight is not owned by whoever is
+  // being talked about, and gold is already the map's "look here" colour.
+  const glyph = GLYPH[cue.kind];
+  if (glyph) {
+    map.battles.add({
+      id: `glyph:${cue.at}`,
+      at: place.coords,
+      kind: glyph,
+      faction: factionOf(cue, 'french'),
+      scale: cue.scale ?? 2,
+      over: instant ? 0 : 0.7,
+      instant,
+    });
+  } else {
+    map.battles.remove(`glyph:${cue.at}`);
+  }
+
   setStandingLabel(cue.at, false);
 }
 
 export function hideMarker(cue) {
   map?.markers.remove(`mk:${cue.at}`);
+  map?.battles.remove(`glyph:${cue.at}`);
   setStandingLabel(cue.at, true);
 }
 
 export function clearMarkers() {
   if (!map) return;
   map.markers.clear();
+  map.battles.clear();
   for (const id of [...pinned]) setStandingLabel(id, true);
 }
 
@@ -432,7 +524,7 @@ export function highlight(cue, instant) {
   map.highlights.add({
     id: `ring:${cue.at}`,
     at: place.coords,
-    faction: cue.side || 'french',
+    faction: factionOf(cue, 'french'),
     instant,
   });
   if (cue.centre !== false && !instant) {
