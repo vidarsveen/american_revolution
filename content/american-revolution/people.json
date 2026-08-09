@@ -446,6 +446,41 @@
     }
   },
   {
+    "id": "hancock",
+    "side": "patriot",
+    "lived": "1737–1793",
+    "portrait": "hancock.jpg",
+    "name": {
+      "no": "John Hancock",
+      "en": "John Hancock"
+    },
+    "role": {
+      "no": "Bostons rikeste mann, og finansierte motstanden",
+      "en": "The richest man in Boston, and the money behind the resistance"
+    },
+    "hook": {
+      "no": "Sam Adams hadde nettverket. Hancock hadde pengene.",
+      "en": "Sam Adams had the network. Hancock had the money."
+    },
+    "body": {
+      "no": "Hancock arvet et av de største handelshusene i Amerika av onkelen sin da han var tjuesju. Skipene hans fraktet både lovlige varer og smuglergods, som nesten alle andre handelshus i Boston.\n\nI 1768 beslagla britiske tollere sluppen hans, Liberty. Det ble opptøyer i byen, og Hancock gikk fra å være en rik kjøpmann til å bli et symbol.\n\nHan betalte for mye av motstanden, og natta til 19. april lå han og Samuel Adams i et prestehus i Lexington. Paul Revere red dit for å vekke dem.",
+      "en": "Hancock inherited one of the largest merchant houses in America from his uncle when he was twenty-seven. His ships carried legal cargo and smuggled cargo alike, like almost every other merchant house in Boston.\n\nIn 1768 British customs officers seized his sloop, the Liberty. The town rioted, and Hancock went from being a rich merchant to being a symbol.\n\nHe paid for much of the resistance, and on the night of 18 April he and Samuel Adams were asleep in a parsonage in Lexington. Paul Revere rode there to wake them."
+    },
+    "fact": {
+      "no": "Han skrev navnet sitt så stort på uavhengighetserklæringen at «a John Hancock» fortsatt betyr en signatur på amerikansk. At han gjorde det for at kong Georg skulle klare å lese det uten briller, er en historie som ble til lenge etterpå.",
+      "en": "He signed the Declaration of Independence so large that “a John Hancock” still means a signature in American English. That he did it so King George could read it without his spectacles is a story invented long afterwards."
+    },
+    "events": [
+      "tea-party",
+      "lexington-concord",
+      "declaration"
+    ],
+    "wiki": {
+      "no": "John Hancock",
+      "en": "John Hancock"
+    }
+  },
+  {
     "id": "george3",
     "side": "british",
     "lived": "1738–1820",

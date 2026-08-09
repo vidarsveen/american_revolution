@@ -42,5 +42,16 @@
     "artist": "Amos Doolittle",
     "licence": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:Plate_IV,_A_View_of_South_Lexington,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05587.JPG"
+  },
+  "old-north": {
+    "file": "old-north.jpg",
+    "title": {
+      "no": "Tårnet på Old North Church",
+      "en": "The tower of the Old North Church"
+    },
+    "year": "ca. 1878",
+    "artist": "Ukjent fotograf",
+    "licence": "No restrictions",
+    "source": "https://commons.wikimedia.org/wiki/File:History_of_Paul_Revere%27s_signal_lanterns,_April_18,_1775,_in_the_steeple_of_the_North_Church-_with_an_account_of_the_tablet_on_Christ_Church_and_the_monuments_at_Highland_Park_and_Dorchester_Heights_(14777037692).jpg"
   }
 }

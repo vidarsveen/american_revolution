@@ -106,6 +106,19 @@ def main():
             im = Image.open(io.BytesIO(raw))
             if im.mode not in ("RGB", "L"):
                 im = im.convert("RGB")
+
+            # An optional crop, as fractions of the source: [left, top, right,
+            # bottom]. The overlay shows pictures in a landscape-ish inset, and
+            # a 1:2 photograph of a church steeple arrives as a sliver with the
+            # subject 40 px tall. Cropping is an editorial act, so it lives in
+            # media-sources.json next to the attribution rather than being
+            # guessed at by the tool.
+            box = spec.get("crop")
+            if box:
+                w, h = im.size
+                im = im.crop((int(box[0] * w), int(box[1] * h),
+                              int(box[2] * w), int(box[3] * h)))
+
             im.thumbnail((MAX_W, MAX_W), Image.LANCZOS)
             im.convert("RGB").save(dest, "JPEG", quality=84, optimize=True, progressive=True)
 

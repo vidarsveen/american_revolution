@@ -716,6 +716,92 @@
           -71.352
         ]
       ]
+    },
+    "into-lexington": {
+      "side": "british",
+      "label": {
+        "no": "Kolonnen inn mot Lexington",
+        "en": "The column into Lexington"
+      },
+      "strength": 700,
+      "coords": [
+        [
+          42.4424,
+          -71.2162
+        ],
+        [
+          42.4462,
+          -71.2245
+        ],
+        [
+          42.4489,
+          -71.2303
+        ]
+      ]
+    },
+    "lexington-line": {
+      "side": "patriot",
+      "label": {
+        "no": "Militsen på grønningen",
+        "en": "The militia on the green"
+      },
+      "coords": [
+        [
+          42.4472,
+          -71.2326
+        ],
+        [
+          42.4492,
+          -71.2311
+        ],
+        [
+          42.4512,
+          -71.2296
+        ]
+      ]
+    },
+    "into-concord": {
+      "side": "british",
+      "label": {
+        "no": "Kolonnen inn i Concord",
+        "en": "The column into Concord"
+      },
+      "strength": 700,
+      "coords": [
+        [
+          42.4553,
+          -71.316
+        ],
+        [
+          42.4585,
+          -71.335
+        ],
+        [
+          42.4604,
+          -71.347
+        ]
+      ]
+    },
+    "bridge-british-line": {
+      "side": "british",
+      "label": {
+        "no": "Britene på østsiden av brua",
+        "en": "The British on the town side"
+      },
+      "coords": [
+        [
+          42.4677,
+          -71.3516
+        ],
+        [
+          42.4693,
+          -71.3512
+        ],
+        [
+          42.4709,
+          -71.3508
+        ]
+      ]
     }
   },
   "scenes": [
@@ -873,6 +959,15 @@
                 "colonies-s"
               ],
               "over": 2.6
+            },
+            {
+              "on": {
+                "no": "word:Atlanteren",
+                "en": "word:Atlantic"
+              },
+              "do": "sound.ambience",
+              "id": "sea",
+              "gainDb": -14
             }
           ],
           "gapAfter": 1.0
@@ -1051,6 +1146,10 @@
                 "en": "Boston"
               },
               "side": "british"
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience"
             }
           ],
           "gapAfter": 1.4
@@ -1299,6 +1398,24 @@
               "do": "marker.show",
               "at": "boston-common",
               "kind": "point"
+            },
+            {
+              "on": {
+                "no": "word:rodd",
+                "en": "word:rowed"
+              },
+              "do": "sound.ambience",
+              "id": "oars",
+              "gainDb": -11
+            },
+            {
+              "on": {
+                "no": "word:knærne",
+                "en": "word:wade"
+              },
+              "do": "sound.ambience",
+              "id": "wading",
+              "gainDb": -10
             }
           ],
           "gapAfter": 1.05
@@ -1318,6 +1435,15 @@
               "do": "route.draw",
               "id": "british-out",
               "over": 4.0
+            },
+            {
+              "on": {
+                "no": "word:gå",
+                "en": "word:walk"
+              },
+              "do": "sound.ambience",
+              "id": "boots",
+              "gainDb": -13
             }
           ],
           "gapAfter": 3.15
@@ -1338,8 +1464,8 @@
         {
           "id": "s2.b1",
           "say": {
-            "no": "Men byen har allerede sett dem. I tårnet på Old North Church henger det to lykter i noen sekunder. Én hvis britene kommer landeveien. To hvis de kommer over vannet.",
-            "en": "But the town has already seen them. In the tower of the Old North Church, two lanterns hang for a few seconds. One if the British come by land. Two if they come by water."
+            "no": "Men byen har allerede sett dem. Oppe i tårnet på Old North Church er det avtalt et signal: én lykt i vinduet betyr at britene går landeveien. To lykter betyr at de kommer over vannet.",
+            "en": "But the town has already seen them. Up in the tower of the Old North Church a signal has been arranged: one lantern in the window means the British are going by land. Two lanterns mean they are coming by water."
           },
           "cues": [
             {
@@ -1361,20 +1487,21 @@
               "do": "route.clear"
             },
             {
-              "on": "word:Church",
+              "on": {
+                "no": "word:tårnet",
+                "en": "word:tower"
+              },
               "do": "map.flyTo",
               "to": "old-north"
             },
             {
               "on": {
-                "no": "word:To",
-                "en": "word:Two"
+                "no": "word:tårnet",
+                "en": "word:tower"
               },
-              "do": "caption.note",
-              "value": {
-                "no": "To lykter",
-                "en": "Two lanterns"
-              }
+              "do": "image.show",
+              "id": "old-north",
+              "mode": "inset"
             },
             {
               "on": "start",
@@ -1383,19 +1510,54 @@
               "kind": "point"
             }
           ],
-          "gapAfter": 1.05
+          "gapAfter": 0.75
+        },
+        {
+          "id": "s2.b1b",
+          "say": {
+            "no": "Denne kvelden blir det tent to.",
+            "en": "Tonight, two are lit."
+          },
+          "gapAfter": 1.35,
+          "cues": [
+            {
+              "on": {
+                "no": "word:tent",
+                "en": "word:lit"
+              },
+              "do": "caption.note",
+              "value": {
+                "no": "To lykter — over vannet",
+                "en": "Two lanterns — by water"
+              }
+            },
+            {
+              "on": {
+                "no": "word:tent",
+                "en": "word:lit"
+              },
+              "do": "place.highlight",
+              "at": "old-north",
+              "tone": "gold",
+              "centre": false
+            }
+          ]
         },
         {
           "id": "s2.b2",
           "say": {
-            "no": "Signalet er ikke til Paul Revere. Det er fra ham, til folk på den andre siden av elva, i tilfelle han selv ikke kommer seg ut av byen.",
-            "en": "The signal is not to Paul Revere. It is from him, to people on the far side of the river, in case he does not get out of the town himself."
+            "no": "Mannen bak signalet heter Paul Revere, og han er sølvsmed i Boston. Lyktene er hans beskjed til folkene på den andre siden av elva, i tilfelle han selv ikke kommer seg ut av byen i natt.",
+            "en": "The man behind the signal is called Paul Revere, and he is a silversmith in Boston. The lanterns are his message to the people on the far side of the river, in case he cannot get out of the town himself tonight."
           },
           "cues": [
             {
               "on": "word:Revere",
               "do": "portrait.show",
               "id": "revere"
+            },
+            {
+              "on": "end",
+              "do": "image.hide"
             }
           ],
           "gapAfter": 0.95
@@ -1403,8 +1565,8 @@
         {
           "id": "s2.b3",
           "say": {
-            "no": "Revere er sølvsmed. Han blir rodd over elva, forbi et britisk krigsskip, med årene surret inn i tøy så de ikke skal lage lyd. På den andre siden står det en hest og venter.",
-            "en": "Revere is a silversmith. He is rowed across the river, past a British warship, with the oars wrapped in cloth so they make no sound. On the far side a horse is waiting."
+            "no": "Han blir rodd over elva, forbi et britisk krigsskip, med årene surret inn i tøy så de ikke skal lage lyd. På den andre siden står det en hest og venter.",
+            "en": "He is rowed across the river, past a British warship, with the oars wrapped in cloth so they make no sound. On the far side a horse is waiting."
           },
           "cues": [
             {
@@ -1429,6 +1591,15 @@
               "do": "sound.ambience",
               "id": "hooves",
               "gainDb": -13
+            },
+            {
+              "on": {
+                "no": "word:rodd",
+                "en": "word:rowed"
+              },
+              "do": "sound.ambience",
+              "id": "oars",
+              "gainDb": -16
             }
           ],
           "gapAfter": 0.95
@@ -1499,9 +1670,10 @@
         {
           "id": "s2.b6",
           "say": {
-            "no": "Revere når Lexington rundt midnatt, og advarer de to mennene britene helst vil ha tak i: Samuel Adams og John Hancock. Han roper ikke at britene kommer. Alle her er britiske. Han sier at regulære tropper er på vei ut.",
-            "en": "Revere reaches Lexington around midnight, and warns the two men the British would most like to catch: Samuel Adams and John Hancock. He does not shout that the British are coming. Everyone here is British. He says the Regulars are coming out."
+            "no": "Revere når Lexington rundt midnatt. I et prestehus i utkanten av bygda sover de to mennene britene aller helst vil ha tak i. Den ene er Samuel Adams, som har organisert motstanden i Boston.",
+            "en": "Revere reaches Lexington around midnight. In a parsonage on the edge of the village sleep the two men the British would most like to catch. One is Samuel Adams, who has organised the resistance in Boston."
           },
+          "gapAfter": 0.85,
           "cues": [
             {
               "on": "word:Lexington",
@@ -1524,9 +1696,51 @@
               "do": "marker.show",
               "at": "lexington-green",
               "kind": "point"
+            },
+            {
+              "on": "word:Samuel",
+              "do": "portrait.show",
+              "id": "sam-adams"
             }
-          ],
-          "gapAfter": 0.95
+          ]
+        },
+        {
+          "id": "s2.b6b",
+          "say": {
+            "no": "Den andre er John Hancock, den rikeste mannen i Boston, og han som betaler for det meste av det Adams setter i gang.",
+            "en": "The other is John Hancock, the richest man in Boston, and the one who pays for most of what Adams sets in motion."
+          },
+          "gapAfter": 0.9,
+          "cues": [
+            {
+              "on": "word:Hancock",
+              "do": "portrait.show",
+              "id": "hancock"
+            }
+          ]
+        },
+        {
+          "id": "s2.b6c",
+          "say": {
+            "no": "Revere banker på og får dem opp. Han roper ikke at britene kommer. Alle her er britiske. Han sier at de regulære troppene er på vei ut.",
+            "en": "Revere knocks and gets them up. He does not shout that the British are coming. Everyone here is British. He says the Regulars are coming out."
+          },
+          "gapAfter": 1.05,
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:banker",
+                "en": "word:knocks"
+              },
+              "do": "sound.play",
+              "id": "doorKnock",
+              "gainDb": -8
+            }
+          ]
         },
         {
           "id": "s2.b7",
@@ -1587,17 +1801,38 @@
             "no": "Han er den eneste av de tre som kommer fram til Concord. Hele varslingen av byen henger på at en ung mann var ute for sent på natta.",
             "en": "He is the only one of the three to reach Concord. The warning of the whole town comes down to a young man being out too late at night."
           },
+          "cues": [],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s2.b9b",
+          "say": {
+            "no": "Og bak ham, i hver eneste bygd de har vekket, står det nå folk oppe i mørket med gevær i hendene. Lexington er en av dem. Der skal britene gjennom om fire timer.",
+            "en": "And behind him, in every town they have woken, people are standing up in the dark with guns in their hands. Lexington is one of them. The British have to pass through it in four hours."
+          },
+          "gapAfter": 2.95,
           "cues": [
             {
-              "on": "end",
+              "on": "start",
               "do": "route.clear"
             },
             {
-              "on": "end",
+              "on": "start",
               "do": "sound.ambience"
+            },
+            {
+              "on": "word:Lexington",
+              "do": "map.flyTo",
+              "to": "lexington-green"
+            },
+            {
+              "on": "word:Lexington",
+              "do": "place.highlight",
+              "at": "lexington-green",
+              "tone": "gold",
+              "centre": false
             }
-          ],
-          "gapAfter": 2.95
+          ]
         }
       ]
     },
@@ -1615,8 +1850,8 @@
         {
           "id": "s3.b1",
           "say": {
-            "no": "Klokka er halv fem om morgenen. Det er kaldt, og det er så vidt lyst.",
-            "en": "It is half past four in the morning. It is cold, and barely light."
+            "no": "Klokka er halv fem om morgenen, fire timer etter at Revere red gjennom Lexington. Det er kaldt, og det er så vidt lyst.",
+            "en": "It is half past four in the morning, four hours after Revere rode through Lexington. It is cold, and barely light."
           },
           "cues": [
             {
@@ -1651,7 +1886,7 @@
               "on": "start",
               "do": "marker.show",
               "at": "lexington-green",
-              "kind": "clash"
+              "kind": "point"
             },
             {
               "on": {
@@ -1668,19 +1903,40 @@
         {
           "id": "s3.b2",
           "say": {
-            "no": "På grønningen midt i Lexington står en klynge menn. Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
-            "en": "On the green in the middle of Lexington stands a cluster of men. Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
+            "no": "På grønningen midt i Lexington står en klynge menn. De har stått her siden klokka ett i natt, fordi Revere vekket dem da han red forbi.",
+            "en": "On the green in the middle of Lexington stands a cluster of men. They have been here since one in the morning, because Revere woke them as he rode past."
           },
-          "gapAfter": 0.95,
+          "gapAfter": 0.85,
           "cues": [
             {
               "on": "start",
               "do": "map.flyTo",
-              "to": "the-road",
-              "zoom": 11.6,
-              "over": 11.0
+              "to": "lexington-green",
+              "zoom": 13.6,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:klynge",
+                "en": "word:cluster"
+              },
+              "do": "front.show",
+              "id": "lexington-line",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": true,
+              "over": 2.0
             }
           ]
+        },
+        {
+          "id": "s3.b2b",
+          "say": {
+            "no": "Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
+            "en": "Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
+          },
+          "gapAfter": 1.15,
+          "cues": []
         },
         {
           "id": "s3.b3",
@@ -1733,6 +1989,16 @@
                 "en": "on the road"
               },
               "side": "british"
+            },
+            {
+              "on": {
+                "no": "word:Nedover",
+                "en": "word:Coming"
+              },
+              "do": "route.draw",
+              "id": "into-lexington",
+              "over": 4.5,
+              "fit": false
             }
           ],
           "gapAfter": 1.65
@@ -1821,6 +2087,16 @@
             },
             {
               "on": "end",
+              "do": "marker.show",
+              "at": "lexington-green",
+              "label": {
+                "no": "Lexington",
+                "en": "Lexington"
+              },
+              "kind": "clash"
+            },
+            {
+              "on": "end",
               "do": "place.highlight",
               "at": "lexington-green",
               "tone": "red",
@@ -1894,6 +2170,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "front.clear"
+            },
+            {
               "on": {
                 "no": "word:Åtte",
                 "en": "word:Eight"
@@ -1941,6 +2221,24 @@
               "on": "word:Concord",
               "do": "map.flyTo",
               "to": "concord"
+            },
+            {
+              "on": {
+                "no": "word:seiersmarsj",
+                "en": "word:march"
+              },
+              "do": "sound.play",
+              "id": "fife",
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:seiersmarsj",
+                "en": "word:march"
+              },
+              "do": "sound.play",
+              "id": "drums",
+              "gainDb": -12
             }
           ],
           "gapAfter": 2.95
@@ -1976,6 +2274,10 @@
             },
             {
               "on": "start",
+              "do": "front.clear"
+            },
+            {
+              "on": "start",
               "do": "map.mood",
               "value": "day"
             },
@@ -1997,6 +2299,16 @@
               "do": "marker.show",
               "at": "concord",
               "kind": "point"
+            },
+            {
+              "on": {
+                "no": "word:Klokka",
+                "en": "word:seven"
+              },
+              "do": "route.draw",
+              "id": "into-concord",
+              "over": 4.0,
+              "fit": false
             }
           ],
           "gapAfter": 0.95
@@ -2016,6 +2328,15 @@
               "do": "image.show",
               "id": "doolittle-2",
               "mode": "inset"
+            },
+            {
+              "on": {
+                "no": "word:brenne",
+                "en": "word:burn"
+              },
+              "do": "sound.ambience",
+              "id": "fire",
+              "gainDb": -13
             }
           ],
           "gapAfter": 1.15
@@ -2037,6 +2358,10 @@
               "do": "image.hide"
             },
             {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
               "on": {
                 "no": "word:røyken",
                 "en": "word:smoke"
@@ -2048,7 +2373,7 @@
               "on": "start",
               "do": "marker.show",
               "at": "north-bridge",
-              "kind": "clash"
+              "kind": "point"
             },
             {
               "on": {
@@ -2130,6 +2455,17 @@
             },
             {
               "on": {
+                "no": "word:broa",
+                "en": "word:bridge"
+              },
+              "do": "front.show",
+              "id": "bridge-british-line",
+              "side": "british",
+              "facing": 1,
+              "over": 1.4
+            },
+            {
+              "on": {
                 "no": "word:går",
                 "en": "word:walk"
               },
@@ -2165,7 +2501,7 @@
               "on": "start",
               "do": "map.flyTo",
               "to": "north-bridge",
-              "zoom": 14.2,
+              "zoom": 13.5,
               "over": 7.0
             },
             {
@@ -2221,6 +2557,16 @@
             },
             {
               "on": "end",
+              "do": "marker.show",
+              "at": "north-bridge",
+              "label": {
+                "no": "North Bridge",
+                "en": "North Bridge"
+              },
+              "kind": "clash"
+            },
+            {
+              "on": "end",
               "do": "place.highlight",
               "at": "north-bridge",
               "tone": "red",
@@ -2260,6 +2606,14 @@
             {
               "on": "start",
               "do": "quote.hide"
+            },
+            {
+              "on": {
+                "no": "word:løper",
+                "en": "word:run"
+              },
+              "do": "front.hide",
+              "id": "bridge-british-line"
             },
             {
               "on": "end",
@@ -2511,6 +2865,15 @@
               "do": "route.draw",
               "id": "percy-relief",
               "over": 5
+            },
+            {
+              "on": {
+                "no": "word:kanoner",
+                "en": "word:cannon"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "gainDb": -6
             }
           ],
           "gapAfter": 1.25
@@ -2624,6 +2987,15 @@
               "do": "marker.show",
               "at": "charlestown",
               "kind": "point"
+            },
+            {
+              "on": {
+                "no": "word:krigsskipene",
+                "en": "word:warships"
+              },
+              "do": "sound.ambience",
+              "id": "rigging",
+              "gainDb": -14
             }
           ],
           "gapAfter": 1.55
@@ -2751,6 +3123,15 @@
               "side": "patriot",
               "over": 4.4,
               "strength": 1200
+            },
+            {
+              "on": {
+                "no": "word:flere",
+                "en": "word:arriving"
+              },
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -15
             }
           ],
           "gapAfter": 1.25
