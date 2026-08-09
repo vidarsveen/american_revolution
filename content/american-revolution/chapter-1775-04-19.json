@@ -826,7 +826,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn"
+              "id": "bedOpen"
             },
             {
               "on": "start",
@@ -1177,7 +1177,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn"
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -1363,7 +1363,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch"
+              "id": "bedUrgent"
             },
             {
               "on": "start",
@@ -1471,7 +1471,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch"
+              "id": "bedUrgent"
             },
             {
               "on": "start",
@@ -1857,7 +1857,8 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn"
+              "id": "bedStill",
+              "gainDb": -6
             },
             {
               "on": "start",
@@ -2351,7 +2352,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn"
+              "id": "bedTension"
             },
             {
               "on": "start",

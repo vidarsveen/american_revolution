@@ -610,38 +610,126 @@ function sRigging(ac, out, rnd, { at = 0, dur = 10.4 } = {}) {
   }
 }
 
-/* A music bed, not a tune. A stack of sawtooths on D with the fifth and the
-   minor third, filtered down to something that sits under a voice, and a
-   slow swell so it is never quite still. Anything with a melody would fight
-   the narration; this is meant to be ducked and barely noticed. */
-function drone(ac, out, rnd, { at = 0, dur = 16.4, level = 1 } = {}) {
-  const freqs = [73.42, 110.0, 146.83, 174.61, 220.0, 293.66];
-  const amps = [1.0, 0.55, 0.42, 0.26, 0.18, 0.10];
+/* A music bed, not a tune.
+
+   Everything here is a stack of held pitches with a slow filter breathing
+   over it. No melody, deliberately: a bed has to be duckable and barely
+   noticed, and the moment it has a tune it competes with the sentence it is
+   under. What changes between moods is the HARMONY, not the arrangement —
+   which interval you stack decides whether a scene feels open, held or
+   grim, and it costs nothing to change.
+
+   Frequencies are in D throughout, so cutting from one bed to another
+   between scenes does not sound like a key change.
+
+     · no third        -> neither major nor minor: open, unresolved
+     · minor third     -> the default weight
+     · tritone, quiet  -> unease, without announcing itself
+     · two pitches a few cents apart -> a slow beat, which the ear reads as
+       tension long before it can say why
+*/
+function drone(ac, out, rnd, {
+  at = 0, dur = 16.4, level = 1,
+  freqs = [73.42, 110.0, 146.83, 174.61, 220.0, 293.66],   // D minor
+  amps = [1.0, 0.55, 0.42, 0.26, 0.18, 0.10],
+  cutoff = 620, sweep = 240, sweepHz = 1 / 11.0,
+  breathe = 0.13, breatheHz = 1 / 8.2,
+  bright = 3,           // how many of the voices are sawtooth rather than triangle
+} = {}) {
   const f = ac.createBiquadFilter();
-  f.type = 'lowpass'; f.frequency.value = 620; f.Q.value = 0.8;
-  lfo(ac, f.frequency, { freq: 1 / 11.0, amount: 240, phaseAt: at });
+  f.type = 'lowpass'; f.frequency.value = cutoff; f.Q.value = 0.8;
+  if (sweep) lfo(ac, f.frequency, { freq: sweepHz, amount: sweep, phaseAt: at });
   const g = ac.createGain();
   g.gain.value = 0.4 * level;
-  lfo(ac, g.gain, { freq: 1 / 8.2, amount: 0.13 * level, phaseAt: at });
+  if (breathe) lfo(ac, g.gain, { freq: breatheHz, amount: breathe * level, phaseAt: at });
   f.connect(g).connect(out);
 
   freqs.forEach((freq, i) => {
     const o = ac.createOscillator();
-    o.type = i < 3 ? 'sawtooth' : 'triangle';
+    o.type = i < bright ? 'sawtooth' : 'triangle';
     o.frequency.value = freq;
     o.detune.value = (rnd() - 0.5) * 9;
     const og = ac.createGain();
-    og.gain.value = amps[i] * 0.12;
+    og.gain.value = (amps[i] ?? 0.1) * 0.12;
     o.connect(og).connect(f);
     o.start(at); o.stop(at + dur);
   });
 }
 
+/* Weight and aftermath. D minor, the default. */
 function sBedSolemn(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
   drone(ac, out, rnd, { at, dur, level: 1 });
 }
 
-/* The same bed with a slow field drum under it, for the marching stretches. */
+/* Wide and unresolved: root, fifth, octave and the ninth, and NO third at
+   all. Without a third the ear cannot decide whether it is happy or sad,
+   which is exactly right for an establishing scene that is explaining rather
+   than mourning. Brighter cutoff, because this one is not supposed to feel
+   heavy. */
+function sBedOpen(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
+  drone(ac, out, rnd, {
+    at, dur,
+    freqs: [73.42, 110.0, 146.83, 220.0, 329.63, 440.0],   // D A D A E A
+    amps: [1.0, 0.5, 0.38, 0.2, 0.13, 0.07],
+    cutoff: 900, sweep: 300, sweepHz: 1 / 13.0, breathe: 0.1,
+  });
+}
+
+/* Held breath. Two roots a few cents apart beat slowly against each other,
+   and a tritone sits underneath too quietly to identify. Nothing resolves
+   and nothing moves — the sound of a plan nobody has told you yet. */
+function sBedTension(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
+  drone(ac, out, rnd, {
+    at, dur,
+    //     D2      D2 +7c   A2      G#2 (tritone) D3
+    freqs: [73.42, 73.72, 110.0, 103.83, 146.83],
+    amps: [1.0, 0.85, 0.3, 0.16, 0.22],
+    cutoff: 380, sweep: 120, sweepHz: 1 / 17.0, breathe: 0.06, bright: 2,
+  });
+}
+
+/* Movement without percussion. The same minor stack with a pulse ON THE
+   DRONE rather than a drum over it, so it pushes without ever becoming a
+   rhythm the narration has to fit around. Two pulses a second, which is
+   roughly a fast walk. */
+function sBedUrgent(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
+  drone(ac, out, rnd, {
+    at, dur, level: 0.85,
+    freqs: [73.42, 110.0, 146.83, 174.61, 220.0],
+    amps: [1.0, 0.6, 0.45, 0.3, 0.16],
+    cutoff: 700, sweep: 260, sweepHz: 1 / 6.5, breathe: 0,
+  });
+  // The pulse: a separate quiet voice that swells twice a second. Sine, so it
+  // adds motion and no edge.
+  const g = ac.createGain();
+  g.gain.value = 0.05;
+  lfo(ac, g.gain, { freq: 2.0, amount: 0.045, phaseAt: at });
+  g.connect(out);
+  for (const freq of [110.0, 220.0]) {
+    const o = ac.createOscillator();
+    o.type = 'sine';
+    o.frequency.value = freq;
+    o.connect(g);
+    o.start(at); o.stop(at + dur);
+  }
+}
+
+/* Almost nothing. One low note and a thin shimmer five octaves up, beating
+   very slowly. For a cold empty field before anyone has done anything —
+   scene three opened on the same music as the epilogue, which flattened
+   both. Normalisation brings every bed to the same RMS, so "quiet" here is
+   a matter of texture, not level; the cue asks for a lower gainDb. */
+function sBedStill(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
+  drone(ac, out, rnd, {
+    at, dur,
+    freqs: [73.42, 110.0, 587.33, 589.10],   // D2, A2, D5 and D5 beating
+    amps: [1.0, 0.18, 0.05, 0.045],
+    cutoff: 320, sweep: 90, sweepHz: 1 / 19.0, breathe: 0.05, bright: 1,
+  });
+}
+
+/* The same weight with a slow field drum under it, for the marching
+   stretches. The one bed that is allowed a pulse you can march to. */
 function sBedMarch(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
   drone(ac, out, rnd, { at, dur, level: 0.8 });
   const pulse = 60 / 70;
@@ -677,6 +765,10 @@ const CATALOGUE = {
 
   bedSolemn:  { kind: 'music', dur: 16.00, synth: sBedSolemn,    label: { no: 'Underlag: alvor', en: 'Bed: solemn' } },
   bedMarch:   { kind: 'music', dur: 16.00, synth: sBedMarch,     label: { no: 'Underlag: marsj', en: 'Bed: march' } },
+  bedOpen:    { kind: 'music', dur: 16.00, synth: sBedOpen,      label: { no: 'Underlag: åpent', en: 'Bed: open' } },
+  bedTension: { kind: 'music', dur: 16.00, synth: sBedTension,   label: { no: 'Underlag: spenning', en: 'Bed: tension' } },
+  bedUrgent:  { kind: 'music', dur: 16.00, synth: sBedUrgent,    label: { no: 'Underlag: hastverk', en: 'Bed: urgent' } },
+  bedStill:   { kind: 'music', dur: 16.00, synth: sBedStill,     label: { no: 'Underlag: stillhet', en: 'Bed: stillness' } },
 };
 
 /**
