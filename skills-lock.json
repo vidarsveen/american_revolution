@@ -61,6 +61,30 @@
       "skillPath": "skills/pdf/SKILL.md",
       "computedHash": "37226d4220d844377e6b2a386c51a011df4cd130855ff0b80bcc22f9c28abd57"
     },
+    "playwright-dev": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-dev/SKILL.md",
+      "computedHash": "bb80c82768dfae153e4e087bd539a9cf774f4505821bad86e90be0930a9e3a29"
+    },
+    "playwright-devops": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-devops/SKILL.md",
+      "computedHash": "5f6899cfc05fcd27045190a7fc733eb299460a49573bbe898f74f800af8b7e77"
+    },
+    "playwright-test-results": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-test-results/SKILL.md",
+      "computedHash": "c1b81d75d37b87c8fa3aaaff601dcf0b72128fbcce7a70a0f3d193e99e9c5daf"
+    },
+    "playwright-triage": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-triage/SKILL.md",
+      "computedHash": "fdf69315e247a0e0baaf6bdbbf7b5042fe37bb816d563ca7d0cee6fd62d87966"
+    },
     "pptx": {
       "source": "anthropics/skills",
       "sourceType": "github",

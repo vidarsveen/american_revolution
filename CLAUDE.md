@@ -30,6 +30,13 @@ prints the LAN address for testing on a phone.
 Python tooling lives in `.venv` (`.venv/Scripts/python.exe` on Windows) and needs
 `playwright` and `pillow`. `narrate.py` additionally needs `edge-tts`, `mutagen` and `ffmpeg`.
 
+`tools/gen-sound.py` is the exception and runs from **`.venv-audio`**, a second environment on
+Python 3.12. Two reasons it is separate, both learned the hard way: `audiocraft` wants
+`numpy<2` and would break the tooling above, and it hard-pins `torch==2.1.0`, `torchvision`,
+`torchtext` and `xformers<0.0.23`, none of which have 3.12 wheels — so it is installed with
+`--no-deps` on torch 2.6+cu124 with its import chain satisfied by hand. `pip` will complain
+about the unmet pins for ever; the imports work. Neither venv is committed.
+
 ---
 
 ## Three rules the engine keeps
@@ -136,6 +143,19 @@ chapter that uses a verb the manifest does not declare. Declare an argument with
 type (`place`, `route`, `person`, `media`, `quote`, `sound`) and its integrity check comes
 free.
 
+**A cue argument the manifest does not declare is read by nobody, silently.** `kind` on
+`marker.show` and `tone` on `place.highlight` sat in the chapter for months. The verb existed,
+the argument did not, so every pin drew British-red, every "red" ring drew gold, and no battle
+glyph ever appeared — and `check-script.py` passed it clean, because it only ever checked verb
+*names*. It now rejects undeclared arguments and validates enum values. The lesson generalises:
+the manifest is the contract, and anything not in it is decoration.
+
+**Two overlays anchored to the same edge will fight, and the later one wins.** The stats deck
+and the caption box were both `bottom: calc(var(--transport-h) + ...)`, and the caption sits on
+a higher layer — so every number the chapter shows was drawn behind it. Invisible, not missing,
+which is why it survived so long. `engine/captions.js` publishes `--caption-h` the way the
+transport publishes its own height; anything sharing that edge must clear it.
+
 **CSS `<link>` order in `index.html` is load-bearing.** `tokens.css` must precede everything
 that reads its variables, and later files rely on later-wins cascade. When splitting a
 stylesheet, put the new file immediately after the one it came from.
@@ -219,6 +239,18 @@ Each of these cost real time. They are documented at the call site too.
 
 ---
 
+## Answering back
+
+**Summaries: ten lines, hard limit.** What was done, what to do next, one
+question if there is one. Nothing else. No tables of what was verified, no
+recap of reasoning, no restating the problem. Detail belongs in the code
+comment, `BACKLOG.md` or the commit message, where it can be read once and
+found again — not re-read in every reply. Ten minutes to extract a status is
+a broken status.
+
+State the full path whenever files are produced, and keep produced files
+inside the project rather than a temp directory.
+
 ## Writing style
 
 The part that decides whether any of this is worth using. Upper-secondary level, never
@@ -239,6 +271,8 @@ of the surrounding file.
 - Nothing. Explore has moved off Leaflet, so both modes draw the same ground from the same
   module and `vendor/` is gone; the sound module is wired into `engine/story.js` and driven
   from a 100 ms interval, as the note here always said it would have to be.
-- **The sound module is built and benched but not wired into `engine/story.js`.** Integration
-  notes are in the plan; the key point is to drive `soundscape.tick()` from a 100 ms interval,
-  **not** from the player's `onTick`, which only fires when the beat or word changes.
+- **Generated sound effects are Apache 2.0** (MOSS-SoundEffect v2.0), so the build is
+  commercially usable. Check a LICENSE file rather than a blog before trusting any model's
+  terms: Meta's AudioGen is widely described as Apache 2.0 and its weights are CC-BY-NC 4.0.
+  The synthesised catalogue in `sound/library.js` stays as the zero-dependency fallback and
+  must not be deleted — a pack entry only overrides it.

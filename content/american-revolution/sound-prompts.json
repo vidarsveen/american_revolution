@@ -1,0 +1,206 @@
+{
+  "_note": "Prompts and metadata for tools/gen-sound.py. Default backend is MOSS-SoundEffect v2.0 (Apache 2.0, 48 kHz), so accepting one of these does NOT encumber the build. `kind` must match sound/library.js so the loop seam is applied to the same things. `tags`, `description` and `reuse` are copied into sound.json on --accept and exist so a FUTURE subject can find an effect without listening to all of them: reuse=generic travels anywhere, period is tied to an era, subject is tied to this story. Names not in library.js (oars, wading, fire, doorKnock) exist only as pack files — delete the sound.json entry and those cues fall silent rather than falling back to a synthesised version.",
+  "alarmBell": {
+    "description": "A heavy bronze bell rung hard and unevenly as a warning, strikes overlapping, long ringing tail.",
+    "tags": [
+      "bell",
+      "bronze",
+      "alarm",
+      "warning",
+      "village",
+      "outdoor",
+      "metal"
+    ],
+    "reuse": "period",
+    "prompt": "a church bell rung hard and repeatedly as an alarm, heavy bronze bell in a wooden steeple, uneven strikes, long ringing tail",
+    "duration": 8.0,
+    "kind": "oneshot",
+    "title": {
+      "no": "Alarmklokke",
+      "en": "Alarm bell"
+    }
+  },
+  "churchBell": {
+    "description": "A single large church bell tolling slowly, struck twice, ringing out over a quiet village.",
+    "tags": [
+      "bell",
+      "bronze",
+      "toll",
+      "church",
+      "slow",
+      "outdoor",
+      "metal",
+      "mourning"
+    ],
+    "reuse": "period",
+    "prompt": "a single large church bell tolling slowly, deep bronze, struck twice, ringing out over a quiet village",
+    "duration": 12.0,
+    "kind": "oneshot",
+    "title": {
+      "no": "Kirkeklokke",
+      "en": "Church bell"
+    }
+  },
+  "hooves": {
+    "description": "One horse cantering steadily on a packed dirt road. A rider going somewhere, not a charge.",
+    "tags": [
+      "horse",
+      "hooves",
+      "canter",
+      "single",
+      "dirt-road",
+      "travel",
+      "night"
+    ],
+    "reuse": "generic",
+    "prompt": "a single horse cantering steadily on a hard dirt road at night, hooves on packed earth, no other sound",
+    "duration": 3.3,
+    "kind": "loop",
+    "title": {
+      "no": "Hovslag",
+      "en": "Hooves"
+    }
+  },
+  "wind": {
+    "description": "Low steady wind across an empty field at night. Hollow and continuous, no trees, no rain.",
+    "tags": [
+      "wind",
+      "weather",
+      "outdoor",
+      "open-ground",
+      "cold",
+      "night",
+      "bed"
+    ],
+    "reuse": "generic",
+    "prompt": "steady cold wind over an open field before dawn, gusting, low and hollow, no trees, no rain",
+    "duration": 9.0,
+    "kind": "loop",
+    "title": {
+      "no": "Vind",
+      "en": "Wind"
+    }
+  },
+  "crowd": {
+    "description": "Many people talking at once outdoors in a town square. A continuous murmur with no word distinguishable.",
+    "tags": [
+      "crowd",
+      "voices",
+      "murmur",
+      "outdoor",
+      "town",
+      "many-people",
+      "bed"
+    ],
+    "reuse": "generic",
+    "prompt": "a crowd of people talking outdoors across a town square, no individual words audible, uneven murmur",
+    "duration": 8.0,
+    "kind": "loop",
+    "title": {
+      "no": "Folkemengde",
+      "en": "Crowd"
+    }
+  },
+  "rigging": {
+    "description": "A wooden sailing ship at anchor: ropes creaking under load, blocks knocking, timber working.",
+    "tags": [
+      "ship",
+      "rope",
+      "timber",
+      "harbour",
+      "sail",
+      "creak",
+      "water",
+      "bed"
+    ],
+    "reuse": "period",
+    "prompt": "wooden sailing ship at anchor, ropes creaking under load, blocks knocking, timber groaning, quiet water",
+    "duration": 10.0,
+    "kind": "loop",
+    "title": {
+      "no": "Rigg",
+      "en": "Rigging"
+    }
+  },
+  "oars": {
+    "description": "Wooden oars dipping and pulling through calm water, a boat moving steadily, water running off the blades.",
+    "tags": [
+      "water",
+      "boat",
+      "rowing",
+      "oars",
+      "river",
+      "crossing",
+      "night",
+      "bed"
+    ],
+    "reuse": "generic",
+    "prompt": "wooden oars dipping and pulling through calm water, a rowing boat moving steadily at night, water dripping from the blades, no voices",
+    "duration": 6.0,
+    "kind": "loop",
+    "title": {
+      "no": "Åretak",
+      "en": "Oars"
+    }
+  },
+  "wading": {
+    "description": "Men walking through knee-deep water, heavy sloshing steps coming ashore onto a muddy bank.",
+    "tags": [
+      "water",
+      "wading",
+      "footsteps",
+      "shore",
+      "landing",
+      "crossing",
+      "bed"
+    ],
+    "reuse": "generic",
+    "prompt": "men walking through knee deep water, heavy sloshing steps wading ashore onto a muddy bank, no voices",
+    "duration": 5.0,
+    "kind": "loop",
+    "title": {
+      "no": "Vassing",
+      "en": "Wading"
+    }
+  },
+  "fire": {
+    "description": "A bonfire of dry wood burning outdoors, crackling and spitting, steady flames.",
+    "tags": [
+      "fire",
+      "burning",
+      "wood",
+      "crackle",
+      "outdoor",
+      "destruction",
+      "bed"
+    ],
+    "reuse": "generic",
+    "prompt": "a bonfire of dry wood burning outdoors, crackling and spitting, steady flames, no wind, no voices",
+    "duration": 8.0,
+    "kind": "loop",
+    "title": {
+      "no": "Bål",
+      "en": "Fire"
+    }
+  },
+  "doorKnock": {
+    "description": "A fist knocking hard three times on a heavy wooden door at night. Someone waking someone up.",
+    "tags": [
+      "door",
+      "knock",
+      "wood",
+      "urgent",
+      "night",
+      "arrival",
+      "indoor"
+    ],
+    "reuse": "generic",
+    "prompt": "a fist knocking hard three times on a heavy wooden door at night, urgent, indoors quiet",
+    "duration": 3.0,
+    "kind": "oneshot",
+    "title": {
+      "no": "Banking på dør",
+      "en": "Knock at a door"
+    }
+  }
+}

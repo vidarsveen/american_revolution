@@ -1,5 +1,16 @@
 # Local Python virtualenv — not part of the site
 .venv/
+
+# Separate venv for the AudioGen sound-generation tool. Kept apart from .venv
+# on purpose: audiocraft pins old torch/numpy and would break the playwright,
+# pillow and edge-tts tooling the whole build depends on. Python 3.12, because
+# torch has no 3.14 wheels. Rebuild with tools/gen-sound.py --setup.
+.venv-audio/
+
+# Separate venv for MOSS-SoundEffect (Apache 2.0, 48 kHz). Its own environment
+# because it pins torch 2.9+cu128 and numpy 1.26 against a checkout that lives
+# outside this repo at ../MOSS-TTS. Rebuild: see tools/gen-sound.py.
+.venv-moss/
 __pycache__/
 *.pyc
 
@@ -31,3 +42,12 @@ shots/
 # turns into the ~4 MB under assets/geo and content/<pack>/geo that actually
 # ships. Re-fetch with tools/build-basemap.py and tools/fetch-detail.py.
 assets/geo/_src/
+
+# Generated sound candidates, waiting to be listened to. Top level and in
+# plain English on purpose — they get opened by hand for days, and hunting for
+# them under content/<pack>/sound/_candidates or in AppData was hopeless.
+# Only what `gen-sound.py --accept` promotes into content/<pack>/sound/ is
+# committed, and that carries its licence and prompt in sound.json.
+# The README inside is kept, the audio is not.
+sound-candidates/*
+!sound-candidates/README.md

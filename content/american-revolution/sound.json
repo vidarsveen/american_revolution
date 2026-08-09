@@ -1,0 +1,319 @@
+{
+  "wind": {
+    "file": "sound/wind.wav",
+    "title": {
+      "no": "Vind",
+      "en": "Wind"
+    },
+    "description": "Low steady wind across an empty field at night. Hollow and continuous, no trees, no rain.",
+    "tags": [
+      "wind",
+      "weather",
+      "outdoor",
+      "open-ground",
+      "cold",
+      "night",
+      "bed"
+    ],
+    "reuse": "generic",
+    "kind": "loop",
+    "duration": 9.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "low steady wind blowing across an empty field at night, hollow and continuous, no trees, no rain, no birds",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 1.7433,
+      "peakBefore": 0.2643,
+      "rmsBefore": 0.0631,
+      "peakAfter": 0.4608,
+      "rmsAfter": 0.11,
+      "bound": "rms"
+    },
+    "candidate": "wind-mbare-1"
+  },
+  "crowd": {
+    "file": "sound/crowd.wav",
+    "title": {
+      "no": "Folkemengde",
+      "en": "Crowd"
+    },
+    "description": "Many people talking at once outdoors in a town square. A continuous murmur with no word distinguishable.",
+    "tags": [
+      "crowd",
+      "voices",
+      "murmur",
+      "outdoor",
+      "town",
+      "many-people",
+      "bed"
+    ],
+    "reuse": "generic",
+    "kind": "loop",
+    "duration": 8.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "many people talking at once outdoors in a town square, continuous murmur, no words distinguishable",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 1.4995,
+      "peakBefore": 0.3668,
+      "rmsBefore": 0.0388,
+      "peakAfter": 0.55,
+      "rmsAfter": 0.0581,
+      "bound": "peak"
+    },
+    "candidate": "crowd-mtown-1"
+  },
+  "oars": {
+    "file": "sound/oars.wav",
+    "title": {
+      "no": "Åretak",
+      "en": "Oars"
+    },
+    "description": "Wooden oars dipping and pulling through calm water, a boat moving steadily, water running off the blades.",
+    "tags": [
+      "water",
+      "boat",
+      "rowing",
+      "oars",
+      "river",
+      "crossing",
+      "night",
+      "bed"
+    ],
+    "reuse": "generic",
+    "kind": "loop",
+    "duration": 6.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "wooden oars dipping and pulling through calm water, a rowing boat moving steadily at night, water dripping from the blades, no voices",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 3.8505,
+      "peakBefore": 0.1349,
+      "rmsBefore": 0.0286,
+      "peakAfter": 0.5194,
+      "rmsAfter": 0.11,
+      "bound": "rms"
+    },
+    "candidate": "oars-m-1"
+  },
+  "wading": {
+    "file": "sound/wading.wav",
+    "title": {
+      "no": "Vassing",
+      "en": "Wading"
+    },
+    "description": "Men walking through knee-deep water, heavy sloshing steps coming ashore onto a muddy bank.",
+    "tags": [
+      "water",
+      "wading",
+      "footsteps",
+      "shore",
+      "landing",
+      "crossing",
+      "bed"
+    ],
+    "reuse": "generic",
+    "kind": "loop",
+    "duration": 5.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "men walking through knee deep water, heavy sloshing steps wading ashore onto a muddy bank, no voices",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 0.97,
+      "peakBefore": 0.567,
+      "rmsBefore": 0.0474,
+      "peakAfter": 0.55,
+      "rmsAfter": 0.046,
+      "bound": "peak"
+    },
+    "candidate": "wading-m-1"
+  },
+  "fire": {
+    "file": "sound/fire.wav",
+    "title": {
+      "no": "Bål",
+      "en": "Fire"
+    },
+    "description": "A bonfire of dry wood burning outdoors, crackling and spitting, steady flames.",
+    "tags": [
+      "fire",
+      "burning",
+      "wood",
+      "crackle",
+      "outdoor",
+      "destruction",
+      "bed"
+    ],
+    "reuse": "generic",
+    "kind": "loop",
+    "duration": 8.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "a bonfire of dry wood burning outdoors, crackling and spitting, steady flames, no wind, no voices",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 0.553,
+      "peakBefore": 0.9946,
+      "rmsBefore": 0.059,
+      "peakAfter": 0.55,
+      "rmsAfter": 0.0326,
+      "bound": "peak"
+    },
+    "candidate": "fire-m-1"
+  },
+  "doorKnock": {
+    "file": "sound/doorKnock.wav",
+    "title": {
+      "no": "Banking på dør",
+      "en": "Knock at a door"
+    },
+    "description": "A fist knocking hard three times on a heavy wooden door at night. Someone waking someone up.",
+    "tags": [
+      "door",
+      "knock",
+      "wood",
+      "urgent",
+      "night",
+      "arrival",
+      "indoor"
+    ],
+    "reuse": "generic",
+    "kind": "oneshot",
+    "duration": 3.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "a fist knocking hard three times on a heavy wooden door at night, urgent, indoors quiet",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 0.9012,
+      "peakBefore": 0.9987,
+      "rmsBefore": 0.0815,
+      "peakAfter": 0.9,
+      "rmsAfter": 0.0734,
+      "bound": "peak"
+    },
+    "candidate": "doorKnock-m-1"
+  },
+  "hooves": {
+    "file": "sound/hooves.wav",
+    "title": {
+      "no": "Hovslag",
+      "en": "Hooves"
+    },
+    "description": "One horse cantering steadily on a packed dirt road. A rider going somewhere, not a charge.",
+    "tags": [
+      "horse",
+      "hooves",
+      "canter",
+      "single",
+      "dirt-road",
+      "travel",
+      "night"
+    ],
+    "reuse": "generic",
+    "kind": "loop",
+    "duration": 3.3,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "a single horse cantering steadily on a hard dirt road at night, hooves on packed earth, no other sound",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 0.656,
+      "peakBefore": 0.8384,
+      "rmsBefore": 0.0461,
+      "peakAfter": 0.55,
+      "rmsAfter": 0.0302,
+      "bound": "peak"
+    },
+    "candidate": "hooves-m-1"
+  },
+  "alarmBell": {
+    "file": "sound/alarmBell.wav",
+    "title": {
+      "no": "Alarmklokke",
+      "en": "Alarm bell"
+    },
+    "description": "A heavy bronze bell rung hard and unevenly as a warning, strikes overlapping, long ringing tail.",
+    "tags": [
+      "bell",
+      "bronze",
+      "alarm",
+      "warning",
+      "village",
+      "outdoor",
+      "metal"
+    ],
+    "reuse": "period",
+    "kind": "oneshot",
+    "duration": 8.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "a church bell rung hard and repeatedly as an alarm, heavy bronze bell in a wooden steeple, uneven strikes, long ringing tail",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 0.4361,
+      "peakBefore": 0.9994,
+      "rmsBefore": 0.2752,
+      "peakAfter": 0.4358,
+      "rmsAfter": 0.12,
+      "bound": "rms"
+    },
+    "candidate": "alarmBell-m-1"
+  },
+  "churchBell": {
+    "file": "sound/churchBell.wav",
+    "title": {
+      "no": "Kirkeklokke",
+      "en": "Church bell"
+    },
+    "description": "A single large church bell tolling slowly, struck twice, ringing out over a quiet village.",
+    "tags": [
+      "bell",
+      "bronze",
+      "toll",
+      "church",
+      "slow",
+      "outdoor",
+      "metal",
+      "mourning"
+    ],
+    "reuse": "period",
+    "kind": "oneshot",
+    "duration": 12.0,
+    "licence": "Apache-2.0",
+    "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+    "prompt": "a single large church bell tolling slowly, deep bronze, struck twice, ringing out over a quiet village",
+    "seed": 1001,
+    "sampleRate": 48000,
+    "levelled": {
+      "gain": 1.5062,
+      "peakBefore": 0.5975,
+      "rmsBefore": 0.0573,
+      "peakAfter": 0.9,
+      "rmsAfter": 0.0863,
+      "bound": "peak"
+    },
+    "candidate": "churchBell-m-1"
+  }
+}

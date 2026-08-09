@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v17';
+const VERSION = 'v19';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -83,6 +83,7 @@ const PRECACHE = [
   './content/american-revolution/media/doolittle-2.jpg',
   './content/american-revolution/media/doolittle-3.jpg',
   './content/american-revolution/media/doolittle-4.jpg',
+  './content/american-revolution/media/old-north.jpg',
   './content/american-revolution/media.json',
   './content/american-revolution/timing.en.json',
   './assets/fonts/fraunces-latin.woff2',
@@ -126,8 +127,21 @@ self.addEventListener('fetch', (e) => {
      start. Nothing in the console, because nothing failed.
 
      The narration was deliberately never precached (7.6 MB across two
-     languages), so this costs no offline capability that was designed for. */
-  if (request.headers.has('range') || isMedia(url)) return;
+     languages), so this costs no offline capability that was designed for.
+
+     Matched on the REQUEST, not on the file extension. The rule used to be
+     "any .wav/.mp3 URL", which also caught the sound effects — and those are
+     not streamed by an element at all: sound/library.js fetches them from
+     script and hands the bytes to decodeAudioData, so no Range is involved
+     and there is nothing to make unseekable. Under the old rule they went to
+     the network on every single visit and never worked offline. A media
+     element sets request.destination to 'audio' or 'video'; a fetch() from
+     script leaves it 'empty', which is exactly the distinction wanted. */
+  if (request.headers.has('range')) return;
+  if (request.destination === 'audio' || request.destination === 'video') return;
+  // Older browsers may not populate `destination`; fall back to the old test
+  // only when it is missing entirely, so they keep the seek fix.
+  if (!('destination' in request) && isMedia(url)) return;
 
   if (isTile(url)) { e.respondWith(tileFirst(request)); return; }
   if (url.origin === self.location.origin) { e.respondWith(networkFirst(request)); }

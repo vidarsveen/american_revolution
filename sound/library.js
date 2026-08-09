@@ -127,6 +127,50 @@ function tone(ac, out, {
   return g;
 }
 
+/**
+ * A value that wanders and yet joins itself exactly at the loop point.
+ *
+ * Every weather bed here has to do two contradictory things: never repeat
+ * audibly, and meet its own beginning at the seam. One LFO does the second
+ * and fails the first — a 0.2 Hz sine is a machine breathing, and once you
+ * have heard it you cannot stop hearing it, which is most of what was wrong
+ * with the old wind. A random walk does the first and fails the second.
+ *
+ * Summing sinusoids whose periods are all exact divisions of the loop gives
+ * both. The sum is a Fourier series, so it wanders; every term completes a
+ * whole number of cycles, so shape(0) === shape(1) and the join is free.
+ * Phases come from the seeded rng, so it is different per effect and the
+ * same on every load.
+ *
+ * Returns a function of u in 0..1, valued roughly -1..1.
+ */
+function wobble(rnd, cycles = [1, 2, 3, 5, 8]) {
+  const phase = cycles.map(() => rnd() * Math.PI * 2);
+  const w = cycles.map((c) => 1 / Math.sqrt(c));
+  const norm = w.reduce((a, b) => a + b, 0) || 1;
+  return (u) => {
+    let v = 0;
+    for (let i = 0; i < cycles.length; i++) {
+      v += w[i] * Math.sin(u * cycles[i] * Math.PI * 2 + phase[i]);
+    }
+    return v / norm;
+  };
+}
+
+/**
+ * Draw a shape onto a parameter over `dur`, rather than modulating it.
+ *
+ * setValueCurveAtTime rather than an oscillator, because the point of
+ * wobble() is a shape that is not any one frequency — there is nothing to
+ * wire an LFO to.
+ */
+function curveOn(param, { at = 0, dur = 1, mid = 0.5, depth = 0.4, shape, steps = 240, min = 0 }) {
+  const arr = new Float32Array(steps + 1);
+  for (let i = 0; i <= steps; i++) arr[i] = Math.max(min, mid + depth * shape(i / steps));
+  try { param.setValueCurveAtTime(arr, Math.max(0, at), dur); } catch { /* param busy */ }
+  return arr;
+}
+
 /** A slow oscillator wired onto somebody else's parameter. */
 function lfo(ac, param, { freq = 0.2, amount = 1, type = 'sine', phaseAt = 0 }) {
   const o = ac.createOscillator();
@@ -180,41 +224,72 @@ function sCannon(ac, out, rnd, { at = 0 } = {}) {
   hit(ac, out, { at: at + 0.06, dur: 2.9, peak: 0.22, attack: 0.18, type: 'lowpass', freq: 340, q: 0.5, sweepTo: 90, brown: 0.5, rnd });
 }
 
-/* A bell is inharmonic — that is the whole character of one. These ratios
-   are the usual hum/prime/tierce/quint/nominal set, each with its own
-   decay, because the high partials die first and the hum note is what is
-   left ringing over the town. */
+/* A bell is inharmonic, and — this is the part the first version missed — it
+   BEATS. Two nominally identical modes of one lump of cast metal are never
+   quite identical, so each partial is really a pair a fraction of a hertz
+   apart, drifting in and out of phase a couple of times a second. That
+   shimmer is most of what your ear uses to say "bell" rather than "organ".
+   Eight clean sines gave the ratios and none of the sound.
+
+   [ratio, amp, life, beatHz]. The ratios are the usual minor-third bell set:
+   hum, prime, tierce, quint, nominal, and the four above it. The amplitudes
+   are the other half of the character — the nominal is the loudest thing at
+   the strike and one of the first to go, and the hum is barely there until
+   everything else has died and then rings over the town for ten seconds. */
 const BELL_PARTIALS = [
-  [0.5, 0.55, 1.00], [1.0, 1.00, 0.85], [1.2, 0.62, 0.60],
-  [1.5, 0.48, 0.45], [2.0, 0.38, 0.38], [2.5, 0.22, 0.22],
-  [3.0, 0.16, 0.16], [4.2, 0.10, 0.10],
+  [0.500, 0.60, 1.00, 0.6],
+  [1.000, 0.82, 0.66, 0.9],
+  [1.183, 0.66, 0.44, 1.5],
+  [1.506, 0.50, 0.32, 1.9],
+  [2.000, 0.95, 0.22, 2.4],
+  [2.514, 0.34, 0.14, 3.2],
+  [3.011, 0.25, 0.10, 3.9],
+  [4.166, 0.18, 0.062, 5.1],
+  [5.433, 0.12, 0.042, 6.4],
 ];
 
-function bellStrike(ac, out, rnd, { at = 0, f0 = 168, decay = 5.5, peak = 1 }) {
-  for (const [ratio, amp, life] of BELL_PARTIALS) {
-    tone(ac, out, {
-      at, dur: decay * life, freq: f0 * ratio, peak: amp * 0.34 * peak,
-      type: 'sine', attack: 0.004, detune: (rnd() - 0.5) * 8,
-    });
+function bellStrike(ac, out, rnd, { at = 0, f0 = 233, decay = 7.0, peak = 1 }) {
+  for (const [ratio, amp, life, beat] of BELL_PARTIALS) {
+    const f = f0 * ratio;
+    const a = amp * 0.19 * peak;
+    // The pair. Splitting the amplitude keeps the partial's weight the same
+    // as one oscillator would have had, so the balance above still reads.
+    tone(ac, out, { at, dur: decay * life, freq: f, peak: a,
+                    type: 'sine', attack: 0.003, detune: (rnd() - 0.5) * 4 });
+    tone(ac, out, { at, dur: decay * life, freq: f + beat * (0.7 + rnd() * 0.6), peak: a,
+                    type: 'sine', attack: 0.003 });
   }
-  // The clapper itself: metal on metal, gone in a moment.
-  hit(ac, out, { at, dur: 0.05, peak: 0.3 * peak, attack: 0.001, type: 'bandpass', freq: 2600, q: 1.4, rnd });
+
+  // The strike itself. A real bell is hit with several kilos of iron and for
+  // about thirty milliseconds that is ALL you hear — bright, broadband and
+  // violent. The old version gave it one quiet blip at 2.6 kHz, which is why
+  // the bell seemed to fade in out of nowhere.
+  hit(ac, out, { at, dur: 0.03, peak: 0.80 * peak, attack: 0.0005, type: 'bandpass', freq: f0 * 8.2, q: 0.7, rnd });
+  hit(ac, out, { at, dur: 0.13, peak: 0.40 * peak, attack: 0.0008, type: 'bandpass', freq: f0 * 3.4, q: 1.1, rnd });
+  hit(ac, out, { at, dur: 0.45, peak: 0.14 * peak, attack: 0.004, type: 'lowpass', freq: f0 * 1.7, q: 0.6, brown: 0.35, rnd });
 }
 
-/* A church bell tolling: struck slowly, left to ring out. */
+/* A church bell tolling: struck slowly, left to ring right out. Two strikes,
+   because one is a sound effect and two is a bell being rung. */
 function sChurchBell(ac, out, rnd, { at = 0 } = {}) {
-  bellStrike(ac, out, rnd, { at, f0: 168, decay: 5.6, peak: 1 });
-  bellStrike(ac, out, rnd, { at: at + 2.7, f0: 168, decay: 4.6, peak: 0.72 });
+  bellStrike(ac, out, rnd, { at, f0: 233, decay: 9.0, peak: 1 });
+  bellStrike(ac, out, rnd, { at: at + 3.7, f0: 233, decay: 8.0, peak: 0.78 });
 }
 
-/* The same bell rung as an alarm — fast, uneven, nobody counting. This is a
-   different event from a bell tolling and reads as one; on 19 April the
-   bells were the warning, not the hour. */
+/* The same bell rung as an alarm — hard, uneven, nobody counting. A different
+   event from a bell tolling and it has to read as one; on 19 April the bells
+   were the warning, not the hour.
+
+   Slower than it was. The old one struck nine times in three seconds, which
+   is a hand bell on a table: a church bell is a few hundred kilos on a wheel
+   and a strong man cannot make it speak more than about once a second. The
+   strikes now overlap instead of chattering, which is the actual sound of a
+   town being woken. */
 function sAlarmBell(ac, out, rnd, { at = 0 } = {}) {
   let t = at;
-  for (let i = 0; i < 9; i++) {
-    bellStrike(ac, out, rnd, { at: t, f0: 214, decay: 1.9, peak: 0.6 + rnd() * 0.4 });
-    t += 0.30 + rnd() * 0.13;
+  for (let i = 0; i < 6; i++) {
+    bellStrike(ac, out, rnd, { at: t, f0: 294, decay: 3.8, peak: 0.68 + rnd() * 0.32 });
+    t += 0.80 + rnd() * 0.26;
   }
 }
 
@@ -295,20 +370,38 @@ function sFife(ac, out, rnd, { at = 0 } = {}) {
   }
 }
 
-/* One horse at a gallop, not cavalry: this app needs Revere's ride far more
-   than it needs a charge. A gallop is four beats and a gap, not an even
-   trot, and the gap is what makes it read as speed. */
-function sHooves(ac, out, rnd, { at = 0, dur = 2.4 } = {}) {
-  const stride = 0.60;
-  const feet = [0, 0.095, 0.235, 0.335];
-  for (let s = 0; s * stride < dur; s++) {
-    const base = at + s * stride;
+/* One horse, not cavalry: this app needs Revere's ride far more than it needs
+   a charge. Four beats and a gap — the gap is what makes it read as a horse
+   rather than a drum.
+
+   Slowed from a 0.60 s stride to 0.82 s, and the four footfalls stretched
+   with it. The old one was a racing gallop, which is wrong twice over: it
+   sounded frantic under a calm sentence, and no rider gallops flat out for
+   twenty kilometres in the dark on a road he cannot see. This is a hand
+   canter, which is what the night actually was.
+
+   The stride length also breathes by a few percent. A perfectly even stride
+   is a metronome, and a metronome under a loop is the most obvious tell
+   there is that a sound was made by a computer. */
+function sHooves(ac, out, rnd, { at = 0, dur = 3.3 } = {}) {
+  const STRIDE = 0.82;
+  // Fractions of a stride, so the pattern stretches with the tempo instead of
+  // staying bunched at the front of a longer gap.
+  const feet = [0, 0.135, 0.325, 0.455];
+  let base = at;
+  while (base < at + dur) {
+    const stride = STRIDE * (0.965 + rnd() * 0.07);
     feet.forEach((o, i) => {
-      const t = base + o + (rnd() - 0.5) * 0.012;
-      const p = (i === 3 ? 1 : 0.62 + rnd() * 0.22);
-      hit(ac, out, { at: t, dur: 0.075, peak: p, attack: 0.001, type: 'lowpass', freq: 240, q: 1.1, brown: 0.4, rnd });
-      hit(ac, out, { at: t, dur: 0.022, peak: p * 0.4, attack: 0.0008, type: 'bandpass', freq: 1150, q: 1.2, rnd });
+      const t = base + o * stride + (rnd() - 0.5) * 0.014;
+      // The fourth foot is the one that lands hardest — it is the one the
+      // horse pushes off from, and it is what gives a gallop its lilt.
+      const p = (i === 3 ? 1 : 0.58 + rnd() * 0.24);
+      hit(ac, out, { at: t, dur: 0.085, peak: p, attack: 0.0012, type: 'lowpass', freq: 210, q: 1.1, brown: 0.45, rnd });
+      hit(ac, out, { at: t, dur: 0.030, peak: p * 0.34, attack: 0.0008, type: 'bandpass', freq: 980, q: 1.0, rnd });
+      // A little grit: a hoof on a packed dirt road throws stones about.
+      hit(ac, out, { at: t + 0.012, dur: 0.05, peak: p * 0.14, attack: 0.004, type: 'highpass', freq: 3200, q: 0.5, rnd });
     });
+    base += stride;
   }
 }
 
@@ -331,52 +424,99 @@ function sBoots(ac, out, rnd, { at = 0, dur = 4 } = {}) {
    wobbling, with short blips at speech-shaped rates on top. No words — the
    moment you can make out a word it stops being a crowd. */
 function sCrowd(ac, out, rnd, { at = 0, dur = 8.4 } = {}) {
-  const src = ac.createBufferSource();
-  src.buffer = noise(ac, dur, rnd, out.channelCount || 2, 0.25);
-  const f = ac.createBiquadFilter();
-  f.type = 'bandpass'; f.frequency.value = 480; f.Q.value = 0.55;
-  const g = ac.createGain();
-  g.gain.value = 0.34;
-  lfo(ac, g.gain, { freq: 0.19, amount: 0.12, phaseAt: at });
-  src.connect(f).connect(g).connect(out);
-  src.start(at); src.stop(at + dur);
+  const ch = out.channelCount || 2;
+  const swell = wobble(rnd, [1, 2, 3, 7]);
 
-  for (let i = 0; i < 90; i++) {
-    hit(ac, out, {
-      at: at + rnd() * dur,
-      dur: 0.12 + rnd() * 0.3,
-      peak: 0.05 + rnd() * 0.09,
-      attack: 0.04,
-      type: 'bandpass',
-      freq: 280 + rnd() * 700,
-      q: 3 + rnd() * 4,
-      rnd,
-    });
+  // Two bands rather than one. A single 480 Hz band was the whole problem:
+  // speech occupies a chest register and a mouth register at once, and a
+  // crowd with only the first is a rumble, with only the second is static.
+  for (const [freq, q, lvl] of [[240, 0.8, 0.30], [720, 0.7, 0.20]]) {
+    const src = ac.createBufferSource();
+    src.buffer = noise(ac, dur, rnd, ch, 0.3);
+    const f = ac.createBiquadFilter();
+    f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = q;
+    const g = ac.createGain();
+    curveOn(g.gain, { at, dur, mid: lvl, depth: lvl * 0.5, shape: swell, min: 0.02 });
+    src.connect(f).connect(g).connect(out);
+    src.start(at); src.stop(at + dur);
+  }
+
+  // The near voices. Uneven density is the point — people do not talk on a
+  // Poisson process, they talk in clumps and then everybody stops at once.
+  // Clustering the blips is the difference between a crowd and a noise gate.
+  let t = at;
+  while (t < at + dur) {
+    const clump = 1 + Math.floor(rnd() * 4);
+    const pitch = 190 + rnd() * 520;          // one speaker, several syllables
+    for (let i = 0; i < clump; i++) {
+      hit(ac, out, {
+        at: t + i * (0.11 + rnd() * 0.13),
+        dur: 0.09 + rnd() * 0.16,
+        peak: 0.04 + rnd() * 0.10,
+        attack: 0.025,
+        type: 'bandpass',
+        // Never a whole formant pair: the moment you can make out a word it
+        // stops being a crowd and becomes one person you cannot understand.
+        freq: pitch * (1 + rnd() * 0.35),
+        q: 2.5 + rnd() * 3,
+        rnd,
+      });
+    }
+    t += 0.14 + rnd() * rnd() * 1.1;
   }
 }
 
-/* Wind: brown noise through a filter that breathes, plus a thin whistle for
-   the edge of a building. A flat noise bed does not sound like weather. */
+/* Wind. Three layers, because wind is not one sound: a rumble you feel more
+   than hear, the body of it, and the thin edge it makes going past a corner.
+
+   Two things were wrong with the old one and they were the same thing twice.
+   Every movement came from a single sine LFO, so it breathed in and out on a
+   perfect five-second cycle — mechanical, and the ear locks onto it within
+   one loop. And the level and the brightness were modulated independently, at
+   different rates, which no gust has ever done.
+
+   Both are fixed by wobble(): a shape that wanders, repeats exactly once per
+   loop, and — crucially — drives level AND cutoff AND the whistle from the
+   SAME curve, so a gust arrives as one event. Louder, brighter and thinner
+   all at once is what a gust is. */
 function sWind(ac, out, rnd, { at = 0, dur = 9.3, level = 1 } = {}) {
+  const gust = wobble(rnd, [1, 2, 3, 5, 8]);
+  const drift = wobble(rnd, [1, 2, 5]);
+  const ch = out.channelCount || 2;
+
+  // The body of it.
   const src = ac.createBufferSource();
-  src.buffer = noise(ac, dur, rnd, out.channelCount || 2, 0.85);
+  src.buffer = noise(ac, dur, rnd, ch, 0.8);
   const f = ac.createBiquadFilter();
-  f.type = 'lowpass'; f.frequency.value = 620; f.Q.value = 0.9;
-  lfo(ac, f.frequency, { freq: 0.215, amount: 330, phaseAt: at });
+  f.type = 'lowpass'; f.Q.value = 0.6;
+  curveOn(f.frequency, { at, dur, mid: 540, depth: 400, shape: gust, min: 110 });
   const g = ac.createGain();
-  g.gain.value = 0.7 * level;
-  lfo(ac, g.gain, { freq: 0.111, amount: 0.28 * level, phaseAt: at });
+  curveOn(g.gain, { at, dur, mid: 0.40 * level, depth: 0.32 * level, shape: gust, min: 0.015 });
   src.connect(f).connect(g).connect(out);
   src.start(at); src.stop(at + dur);
 
+  // The rumble under it, on its own slower drift. This is the layer that
+  // makes wind feel like weather rather than like tape hiss.
+  const low = ac.createBufferSource();
+  low.buffer = noise(ac, dur, rnd, ch, 0.95);
+  const lf = ac.createBiquadFilter();
+  lf.type = 'lowpass'; lf.frequency.value = 130; lf.Q.value = 0.5;
+  const lg = ac.createGain();
+  curveOn(lg.gain, { at, dur, mid: 0.34 * level, depth: 0.16 * level, shape: drift, min: 0.02 });
+  low.connect(lf).connect(lg).connect(out);
+  low.start(at); low.stop(at + dur);
+
+  // The edge. Q 2.6 rather than 7: at 7 it is a tuned whistle and reads as a
+  // theremin, and a swept theremin is exactly what the old wind had. And its
+  // level rides the gust curve with a floor of zero, so it only exists at the
+  // top of a gust — which is the only time you actually hear one.
   const w = ac.createBufferSource();
-  w.buffer = noise(ac, dur, rnd, out.channelCount || 2, 0);
+  w.buffer = noise(ac, dur, rnd, ch, 0);
   const wf = ac.createBiquadFilter();
-  wf.type = 'bandpass'; wf.frequency.value = 1250; wf.Q.value = 7;
-  lfo(ac, wf.frequency, { freq: 0.086, amount: 420, phaseAt: at });
+  wf.type = 'bandpass'; wf.Q.value = 2.6;
+  curveOn(wf.frequency, { at, dur, mid: 1150, depth: 520, shape: gust, min: 300 });
   const wg = ac.createGain();
-  wg.gain.value = 0.06 * level;
-  lfo(ac, wg.gain, { freq: 0.13, amount: 0.05 * level, phaseAt: at });
+  curveOn(wg.gain, { at, dur, mid: 0.018 * level, depth: 0.052 * level, shape: gust, min: 0 });
   w.connect(wf).connect(wg).connect(out);
   w.start(at); w.stop(at + dur);
 }
@@ -443,17 +583,26 @@ function sSea(ac, out, rnd, { at = 0, dur = 12.4 } = {}) {
    resonant band swept downward — that falling pitch is the sound of a load
    coming onto a rope. */
 function sRigging(ac, out, rnd, { at = 0, dur = 10.4 } = {}) {
-  sWind(ac, out, rnd, { at, dur, level: 0.45 });
+  // Was barely audible, and it was a level problem rather than a design one.
+  // The library normalises each effect to an RMS ceiling; this bed was mostly
+  // a very quiet wind, so its RMS was tiny and the normaliser tried to lift
+  // the lot — until the peak of one hard block-knock hit the peak ceiling
+  // first and capped the gain for the whole buffer. Louder wind and softer
+  // knocks put RMS back in charge, which is the ceiling that should govern a
+  // continuous bed.
+  sWind(ac, out, rnd, { at, dur, level: 0.75 });
   let t = at + rnd() * 0.8;
   while (t < at + dur) {
     if (rnd() < 0.55) {
+      // A rope taking a load: a resonant band falling in pitch. That fall IS
+      // the sound of the load coming on.
       hit(ac, out, {
-        at: t, dur: 0.35 + rnd() * 0.5, peak: 0.35 + rnd() * 0.3, attack: 0.06,
-        type: 'bandpass', freq: 260 + rnd() * 260, q: 11, sweepTo: 150 + rnd() * 90, rnd,
+        at: t, dur: 0.35 + rnd() * 0.5, peak: 0.22 + rnd() * 0.18, attack: 0.06,
+        type: 'bandpass', freq: 260 + rnd() * 260, q: 9, sweepTo: 150 + rnd() * 90, rnd,
       });
     } else {
       hit(ac, out, {
-        at: t, dur: 0.11, peak: 0.4 + rnd() * 0.3, attack: 0.002,
+        at: t, dur: 0.13, peak: 0.20 + rnd() * 0.14, attack: 0.006,
         type: 'lowpass', freq: 520, q: 1.6, brown: 0.4, rnd,
       });
     }
@@ -513,12 +662,12 @@ const CATALOGUE = {
   musket:     { kind: 'oneshot', dur: 1.10, synth: sMusket,     label: { no: 'Muskettskudd', en: 'Musket shot' } },
   volley:     { kind: 'oneshot', dur: 2.60, synth: sVolley,     label: { no: 'Salve', en: 'Volley' } },
   cannon:     { kind: 'oneshot', dur: 3.40, synth: sCannon,     label: { no: 'Kanon', en: 'Cannon' } },
-  churchBell: { kind: 'oneshot', dur: 8.00, synth: sChurchBell, label: { no: 'Kirkeklokke', en: 'Church bell' } },
-  alarmBell:  { kind: 'oneshot', dur: 5.60, synth: sAlarmBell,  label: { no: 'Alarmklokke', en: 'Alarm bell' } },
+  churchBell: { kind: 'oneshot', dur: 13.00, synth: sChurchBell, label: { no: 'Kirkeklokke', en: 'Church bell' } },
+  alarmBell:  { kind: 'oneshot', dur: 8.20, synth: sAlarmBell,  label: { no: 'Alarmklokke', en: 'Alarm bell' } },
   fife:       { kind: 'oneshot', dur: 2.90, synth: sFife,       label: { no: 'Tverrfløyte', en: 'Fife' } },
 
   drums:      { kind: 'loop', dur: 60 / 112 * 8, synth: sDrums,  label: { no: 'Tromme', en: 'Drums' } },
-  hooves:     { kind: 'loop', dur: 2.40,  synth: sHooves,        label: { no: 'Hovslag', en: 'Hooves' } },
+  hooves:     { kind: 'loop', dur: 3.28,  synth: sHooves,        label: { no: 'Hovslag', en: 'Hooves' } },
   boots:      { kind: 'loop', dur: 4.00,  synth: sBoots,         label: { no: 'Marsjstøvler', en: 'Marching boots' } },
   crowd:      { kind: 'loop', dur: 8.00,  synth: sCrowd,         label: { no: 'Folkemengde', en: 'Crowd' } },
   wind:       { kind: 'loop', dur: 9.00,  synth: sWind,          label: { no: 'Vind', en: 'Wind' } },
@@ -635,17 +784,42 @@ export function validateManifest(manifest, { onProblem } = {}) {
 
 export function createLibrary({ manifest = null, base = '' } = {}) {
   const files = {};
-  if (manifest) {
-    const problems = validateManifest(manifest);
+  let root = base;
+
+  /**
+   * Take a manifest after construction.
+   *
+   * A pack's sound.json arrives over the network, and the library has to
+   * exist before that lands — the soundscape is built at mount time and the
+   * first cue can fire seconds later. So the manifest is applied when it
+   * turns up, and anything already rendered for those names is dropped so the
+   * next request goes to the file instead of the synthesised version.
+   *
+   * If it never arrives, every effect is still synthesised and the chapter
+   * sounds exactly as it did before. That is the fallback working, not a
+   * failure to report.
+   */
+  function addManifest(m, { base: b } = {}) {
+    if (b != null) root = b;
+    const problems = validateManifest(m);
     for (const p of problems) console.warn(`[sound] manifest: ${p}`);
-    for (const [name, e] of Object.entries(manifest)) {
-      if (e && e.file && e.licence && e.credit) files[name] = e;
+    let taken = 0;
+    for (const [name, e] of Object.entries(m || {})) {
+      if (!(e && e.file && e.licence && e.credit)) continue;
+      files[name] = e;
+      taken += 1;
+      for (const key of [...cache.keys()]) {
+        if (key.startsWith(`${name}@`)) cache.delete(key);
+      }
     }
+    return taken;
   }
 
   // Keyed by sample rate: an AudioBuffer rendered at 44.1k played through a
   // 48k context is the right sound at the wrong pitch.
   const cache = new Map();
+
+  if (manifest) addManifest(manifest);
 
   function names() {
     return [...new Set([...Object.keys(CATALOGUE), ...Object.keys(files)])];
@@ -667,7 +841,7 @@ export function createLibrary({ manifest = null, base = '' } = {}) {
   }
 
   async function decodeFile(entry, ctx) {
-    const res = await fetch(base + entry.file, { cache: 'force-cache' });
+    const res = await fetch(root + entry.file, { cache: 'force-cache' });
     if (!res.ok) throw new Error(`${res.status} ${entry.file}`);
     const bytes = await res.arrayBuffer();
     return await ctx.decodeAudioData(bytes);
@@ -709,7 +883,8 @@ export function createLibrary({ manifest = null, base = '' } = {}) {
     return Promise.all(list.map((n) => get(n, ctx)));
   }
 
-  return { names, meta, get, warm, isLooping: (n) => (meta(n)?.kind ?? 'oneshot') !== 'oneshot' };
+  return { names, meta, get, warm, addManifest,
+           isLooping: (n) => (meta(n)?.kind ?? 'oneshot') !== 'oneshot' };
 }
 
 /** The catalogue keys, for anything that needs the list without a context. */
