@@ -692,6 +692,53 @@
 .cover__note { margin-top: var(--s4); font-size: var(--fs-xs); color: var(--ink-faint); }
 .cover__warn { margin-top: var(--s4); font-size: var(--fs-xs); color: var(--red); }
 
+/* The other chapters. Under the play button and quieter than it: the cover
+   is still an invitation to start the one it is describing, not a menu. */
+.cover__chapters { margin-top: var(--s7); }
+.cover__chapters-label {
+  margin: 0 0 var(--s3);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.cover__chapters ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cover__chapter {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  width: 100%;
+  /* 44 px, not the 28 px the text alone would give: this is the one control
+     on the cover a thumb has to find without a second try. */
+  min-height: 44px;
+  padding: var(--s2) var(--s4);
+  border-radius: var(--r-md);
+  text-align: left;
+  font-size: var(--fs-xs);
+  color: var(--ink-soft);
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+}
+.cover__chapter b {
+  flex: none;
+  width: 1.4em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+}
+.cover__chapter.is-current {
+  background: color-mix(in srgb, var(--gold) 20%, transparent);
+  color: var(--ink);
+}
+.cover__chapter.is-current b { color: var(--gold); }
+.cover__chapter:active { transform: scale(.98); }
+
 /* ---------- Transcript -------------------------------------
    Mounted on the stage root, so it covers everything including the bar it
    was opened from.

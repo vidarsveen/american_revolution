@@ -1120,5 +1120,142 @@
       "no": "Margaret Kemble Gage",
       "en": "Margaret Kemble Gage"
     }
+  },
+  {
+    "id": "warren",
+    "side": "patriot",
+    "lived": "1741–1775",
+    "portrait": "warren.jpg",
+    "name": {
+      "no": "Joseph Warren",
+      "en": "Joseph Warren"
+    },
+    "role": {
+      "no": "Lege i Boston, og mannen som styrte opprøret der",
+      "en": "A Boston doctor, and the man who ran the rebellion there"
+    },
+    "hook": {
+      "no": "Han var nettopp utnevnt til general. Han møtte opp som menig.",
+      "en": "He had just been made a general. He turned up as a private."
+    },
+    "body": {
+      "no": "Warren var lege, og en av de mest kjente mennene i Boston. Det var han som sendte Paul Revere av gårde natt til 19. april. Da de andre lederne rømte byen, ble Warren igjen og styrte opprøret derfra.\n\nTre dager før slaget ved Bunker Hill ble han utnevnt til generalmajor. Papirene hadde ikke rukket å tre i kraft. Da han kom opp på høyden 17. juni, tilbød både Putnam og Prescott ham kommandoen. Han takket nei til begge, lånte et gevær og stilte seg i rekka sammen med alle andre.\n\nHan ble skutt i ansiktet helt på slutten, inne i skansen, mens de andre trakk seg ut. Han var 34 år.",
+      "en": "Warren was a doctor, and one of the best known men in Boston. It was he who sent Paul Revere out on the night of 19 April. When the other leaders fled the town, Warren stayed and ran the rebellion from inside it.\n\nThree days before Bunker Hill he was made a major general. The commission had not yet taken effect. When he came up the hill on 17 June, both Putnam and Prescott offered him the command. He turned them both down, borrowed a musket and took his place in the line like everybody else.\n\nHe was shot in the face at the very end, inside the redoubt, while the others were pulling out. He was 34."
+    },
+    "fact": {
+      "no": "Britene kastet ham i en grunn grav. Ti måneder senere ble han gravd opp og kjent igjen av Paul Revere, som hadde laget to falske tenner til ham og festet dem med sølvtråd. Det er den første kjente gangen noen ble identifisert på tennene sine.",
+      "en": "The British threw him into a shallow grave. Ten months later he was dug up and recognised by Paul Revere, who had made him two false teeth and wired them in with silver. It is the first known case of anyone being identified from their teeth."
+    },
+    "events": [
+      "lexington-concord",
+      "bunker-hill"
+    ],
+    "wiki": {
+      "no": "Joseph Warren",
+      "en": "Joseph Warren"
+    }
+  },
+  {
+    "id": "william-prescott",
+    "side": "patriot",
+    "lived": "1726–1795",
+    "portrait": "william-prescott.jpg",
+    "name": {
+      "no": "Oberst William Prescott",
+      "en": "Colonel William Prescott"
+    },
+    "role": {
+      "no": "Bonde fra Pepperell, sjef for skansen på Breed's Hill",
+      "en": "A farmer from Pepperell, in command of the redoubt on Breed's Hill"
+    },
+    "hook": {
+      "no": "Han sto oppe på vollen mens kanonkulene kom, for at mennene skulle se at det gikk an.",
+      "en": "He stood up on the wall while the cannonballs came in, so his men could see it could be done."
+    },
+    "body": {
+      "no": "Prescott var bonde og hadde vært soldat i krigen mot Frankrike. Natt til 17. juni ledet han rundt tusen mann ut på halvøya ved Charlestown, og satte dem til å grave.\n\nDe gravde fra midnatt til daggry. Da sola kom opp, hadde de en firkantet skanse med jordvoller på nesten to meter, midt i skuddlinja fra den britiske flåten.\n\nDa kanonaden begynte og mennene ble redde, klatret Prescott opp på vollen og gikk fram og tilbake der oppe, fullt synlig, til de roet seg. Han holdt skansen gjennom to angrep, og forlot den først da kruttet var slutt.",
+      "en": "Prescott was a farmer who had soldiered in the war against France. On the night of 17 June he led about a thousand men out onto the Charlestown peninsula and set them digging.\n\nThey dug from midnight to first light. When the sun came up they had a square redoubt with earth walls six feet high, sitting in the line of fire of the British fleet.\n\nWhen the bombardment started and the men began to frighten, Prescott climbed up onto the wall and walked up and down it in full view until they steadied. He held the redoubt through two assaults, and left it only when the powder ran out."
+    },
+    "fact": {
+      "no": "Ordren gikk ut på å befeste Bunker Hill. Prescott og offiserene hans gravde på Breed's Hill i stedet – lavere, nærmere Boston og mye vanskeligere å komme seg vekk fra. Ingen vet sikkert om det var en beslutning eller en misforståelse.",
+      "en": "The order was to fortify Bunker Hill. Prescott and his officers dug on Breed's Hill instead — lower, closer to Boston and far harder to get away from. Nobody knows for certain whether it was a decision or a mistake."
+    },
+    "events": [
+      "bunker-hill"
+    ],
+    "wiki": {
+      "no": "William Prescott",
+      "en": "William Prescott"
+    },
+    "portraitNote": {
+      "no": "Statuen på Breed's Hill, reist i 1881. Det finnes ikke noe portrett av Prescott.",
+      "en": "The statue on Breed's Hill, put up in 1881. No portrait of Prescott exists."
+    }
+  },
+  {
+    "id": "putnam",
+    "side": "patriot",
+    "lived": "1718–1790",
+    "portrait": "putnam.jpg",
+    "name": {
+      "no": "General Israel Putnam",
+      "en": "General Israel Putnam"
+    },
+    "role": {
+      "no": "Gammel grensekriger fra Connecticut, den eldste på høyden",
+      "en": "An old frontier fighter from Connecticut, the oldest man on the hill"
+    },
+    "hook": {
+      "no": "Han var 57 år, og han pløyde åkeren sin da beskjeden om Lexington kom.",
+      "en": "He was 57, and he was ploughing his field when the news from Lexington came."
+    },
+    "body": {
+      "no": "Putnam hadde slåss mot franskmenn og deres allierte i tjue år, blitt tatt til fange og nær brent på bål. Historiene om ham var halvt sanne og halvt oppdiktet, og han gjorde ingenting for å rette på dem.\n\nDa budet om Lexington nådde gården hans, lot han plogen stå i åkeren og red av gårde i de klærne han hadde på seg.\n\nPå Bunker Hill red han fram og tilbake mellom skansen og gjerdet, samlet folk, ropte, og forsøkte å få forsterkninger over halsen. Hvem som egentlig hadde kommandoen den dagen har vært kranglet om siden.",
+      "en": "Putnam had fought the French and their allies for twenty years, been taken prisoner and nearly burned alive. The stories about him were half true and half invented, and he did nothing to correct them.\n\nWhen the news from Lexington reached his farm he left the plough standing in the field and rode off in the clothes he had on.\n\nAt Bunker Hill he rode back and forth between the redoubt and the fence, gathering men, shouting, trying to push reinforcements across the neck. Who actually held the command that day has been argued about ever since."
+    },
+    "fact": {
+      "no": "Den mest siterte ordren i amerikansk historie – ikke skyt før du ser det hvite i øynene deres – blir tillagt Putnam. Den blir også tillagt Prescott, Stark og Gridley. Historikere mener i dag at ingen sa den.",
+      "en": "The most quoted order in American history — don't fire till you see the whites of their eyes — is credited to Putnam. It is also credited to Prescott, to Stark and to Gridley. Historians now think nobody said it."
+    },
+    "events": [
+      "bunker-hill"
+    ],
+    "wiki": {
+      "no": "Israel Putnam",
+      "en": "Israel Putnam"
+    }
+  },
+  {
+    "id": "stark",
+    "side": "patriot",
+    "lived": "1728–1822",
+    "portrait": "stark.jpg",
+    "name": {
+      "no": "Oberst John Stark",
+      "en": "Colonel John Stark"
+    },
+    "role": {
+      "no": "Sjef for mennene fra New Hampshire på venstre flanke",
+      "en": "In command of the New Hampshire men on the left flank"
+    },
+    "hook": {
+      "no": "Han så hullet i linja som ingen andre hadde sett, og fylte det.",
+      "en": "He saw the hole in the line that nobody else had seen, and filled it."
+    },
+    "body": {
+      "no": "Stark kom fra grensetraktene i New Hampshire og hadde vært speider i krigen mot Frankrike. Han kom til Charlestown midt på dagen 17. juni.\n\nHan så med én gang det ingen andre hadde sett: at linja stoppet før den nådde vannet, og at britene kunne gå rundt den langs stranda. Han førte mennene sine ned dit og bygde en steinmur på noen minutter.\n\nDa det britiske eliteinfanteriet kom langs stranda i kolonne, sto mennene fra New Hampshire bak muren og ventet. Angrepet ble stanset på under et kvarter.",
+      "en": "Stark came from the New Hampshire frontier and had been a scout in the war against France. He reached Charlestown around midday on 17 June.\n\nHe saw at once what nobody else had: that the line stopped short of the water, and the British could simply walk round it along the beach. He took his men down there and built a stone wall in a few minutes.\n\nWhen the British light infantry came along the beach in column, the New Hampshire men were behind the wall waiting. The attack was stopped in under a quarter of an hour."
+    },
+    "fact": {
+      "no": "Stark satte en påle i bakken hundre fot foran muren, og ga beskjed om at ingen skulle skyte før britene hadde passert den. To år senere vant han slaget ved Bennington.",
+      "en": "Stark drove a stake into the ground a hundred feet in front of the wall and told his men nobody was to fire until the British had passed it. Two years later he won the battle of Bennington."
+    },
+    "events": [
+      "bunker-hill"
+    ],
+    "wiki": {
+      "no": "John Stark",
+      "en": "John Stark"
+    }
   }
 ]

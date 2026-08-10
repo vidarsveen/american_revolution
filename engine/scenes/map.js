@@ -42,6 +42,15 @@ function readFactions(el) {
 export function mountMap(container, ch, language) {
   chapter = ch;
   lang = language || ch.narrationLang || 'no';
+  // Both of these are memoised against the map instance below, so they have to
+  // go when it does. `regionsReady` in particular resolves by calling
+  // useRegions() on whichever map was current when the fetch was started —
+  // hand back that promise after a chapter switch and the geometry is handed
+  // to a map that is no longer on screen. The second chapter's closing shot
+  // then names three colonies and colours none of them, silently, with the
+  // file fetched and a 200 in the network panel.
+  regionsReady = null;
+  pinned.clear();
 
   hostEl = document.createElement('div');
   hostEl.className = 'stage-map';

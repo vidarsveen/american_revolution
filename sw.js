@@ -12,7 +12,7 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v19';
+const VERSION = 'v20';
 const APP_CACHE = `revolusjonen-app-${VERSION}`;
 const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -78,14 +78,20 @@ const PRECACHE = [
   './engine/story.js',
   './css/story.css',
   './content/american-revolution/chapter-1775-04-19.json',
-  './content/american-revolution/timing.no.json',
+  './content/american-revolution/timing.chapter-1775-04-19.no.json',
   './content/american-revolution/media/doolittle-1.jpg',
   './content/american-revolution/media/doolittle-2.jpg',
   './content/american-revolution/media/doolittle-3.jpg',
   './content/american-revolution/media/doolittle-4.jpg',
   './content/american-revolution/media/old-north.jpg',
   './content/american-revolution/media.json',
-  './content/american-revolution/timing.en.json',
+  './content/american-revolution/timing.chapter-1775-04-19.en.json',
+  './content/american-revolution/chapter-1775-06-17.json',
+  './content/american-revolution/timing.chapter-1775-06-17.no.json',
+  './content/american-revolution/timing.chapter-1775-06-17.en.json',
+  './content/american-revolution/media/bunker-hill-attack.jpg',
+  './content/american-revolution/media/trumbull-warren.jpg',
+  './content/american-revolution/geo/regions.geojson',
   './assets/fonts/fraunces-latin.woff2',
 ];
 

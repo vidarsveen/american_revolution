@@ -49,5 +49,23 @@
       0.98,
       0.7
     ]
+  },
+  "bunker-hill-attack": {
+    "commons": "File:View of the attack on Bunker's Hill, with the burning of Charles Town, June 17, 1775 - drawn by Mr. Millar ; engraved by Lodge. LCCN2004670002.jpg",
+    "title": {
+      "no": "Angrepet på Bunker Hill, mens Charlestown brenner",
+      "en": "The attack on Bunker's Hill, with Charlestown burning"
+    },
+    "artist": "John Lodge, etter Millar",
+    "year": "1783"
+  },
+  "trumbull-warren": {
+    "commons": "File:The Death of General Warren at the Battle of Bunker's Hill.jpg",
+    "title": {
+      "no": "General Warrens død ved Bunker Hill",
+      "en": "The Death of General Warren at the Battle of Bunker's Hill"
+    },
+    "artist": "John Trumbull",
+    "year": "1786"
   }
 }

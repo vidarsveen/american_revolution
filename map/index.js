@@ -330,6 +330,7 @@ export function createMap(host, opts = {}) {
     for (const s of layers.arrows.values()) {
       drawArrow(ctx, pts(s.coords), { ...colourOf(s.faction), strength: s.strength,
                                       mpp, widthM: s.widthM,
+                                      viewport: Math.min(size.w, size.h),
                                       ghost: s.ghost, progress: progressOf(s) });
     }
     for (const s of layers.crossings.values()) {

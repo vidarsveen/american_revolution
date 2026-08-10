@@ -5,7 +5,7 @@
  "engine": "edge",
  "scenes": {
   "s0": {
-   "audio": "audio/en/s0.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s0.mp3",
    "dur": 94.364,
    "beats": [
     {
@@ -1053,7 +1053,7 @@
    ]
   },
   "s1": {
-   "audio": "audio/en/s1.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s1.mp3",
    "dur": 106.666,
    "beats": [
     {
@@ -2276,7 +2276,7 @@
    ]
   },
   "s2": {
-   "audio": "audio/en/s2.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s2.mp3",
    "dur": 168.732,
    "beats": [
     {
@@ -4346,7 +4346,7 @@
    ]
   },
   "s3": {
-   "audio": "audio/en/s3.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s3.mp3",
    "dur": 144.306,
    "beats": [
     {
@@ -5911,7 +5911,7 @@
    ]
   },
   "s4": {
-   "audio": "audio/en/s4.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s4.mp3",
    "dur": 101.236,
    "beats": [
     {
@@ -6972,7 +6972,7 @@
    ]
   },
   "s5": {
-   "audio": "audio/en/s5.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s5.mp3",
    "dur": 133.218,
    "beats": [
     {
@@ -8407,7 +8407,7 @@
    ]
   },
   "s6": {
-   "audio": "audio/en/s6.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s6.mp3",
    "dur": 48.05,
    "beats": [
     {
@@ -8928,7 +8928,7 @@
    ]
   },
   "s7": {
-   "audio": "audio/en/s7.mp3",
+   "audio": "audio/en/chapter-1775-04-19/s7.mp3",
    "dur": 55.33,
    "beats": [
     {

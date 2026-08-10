@@ -5,12 +5,13 @@ on NRK. Norwegian and English, mobile first.
 
 Two ways in:
 
-- **Fortell** — a narrated chapter. A voice tells the story and the map moves with it: a
+- **Fortell** — narrated chapters. A voice tells the story and the map moves with it: a
   portrait when someone is named, a march drawing itself across the country when a march is
-  described, a zoom to the field at the moment the field matters. First chapter:
-  **19 April 1775**, hour by hour, about eleven minutes.
+  described, a zoom to the field at the moment the field matters. Two so far, both hour by
+  hour: **19 April 1775** — the day the war began, and **17 June 1775** — Bunker Hill, the
+  day both sides found out what it was going to cost. Pick one on the cover.
 - **Utforsk** — the whole war to browse: a parchment map of 39 events, a timeline grouped by
-  the six NRK episodes, and 32 people.
+  the six NRK episodes, and 37 people.
 
 Live: **https://vidarsveen.github.io/american_revolution/**
 
@@ -100,11 +101,15 @@ assets/geo/                built by tools/build-basemap.py, committed
 content/<pack>/geo/        built by tools/fetch-detail.py — close-in water
 
 content/american-revolution/    one folder per subject
-  chapter-1775-04-19.json  scenes -> beats -> cues, plus places, routes, quotes
-  timing.no.json           generated: beat offsets and per-word times
-  audio/no/s1.mp3 …        generated: one gapless file per scene
+  chapter-<date>.json      scenes -> beats -> cues, plus places, routes, quotes
+  timing.<chapter>.no.json generated: beat offsets and per-word times
+  audio/no/<chapter>/s1.mp3  generated: one gapless file per scene
   media.json  media/       generated: images with artist, licence, source
+  portraits.json           generated: the same record for assets/portraits/
   people.json  events.json  chapters.json  geo/
+
+Timings and audio are keyed by chapter as well as language. Scene ids restart at `s0` in
+every chapter, so one timing file per pack meant chapter two silently overwrote chapter one.
 
 js/                        the Explore mode
 tools/                     narrate.py · fetch-media.py · check-script.py · check-data.py
@@ -155,9 +160,11 @@ python tools/narrate.py ... --engine openai    # needs OPENAI_API_KEY
 
 # images from Wikimedia Commons, with licence and attribution captured
 python tools/fetch-media.py american-revolution
+python tools/fetch-media.py american-revolution --portraits   # the faces, same record
 
 # always run these before committing
 python tools/check-script.py american-revolution/chapter-1775-04-19
+python tools/check-script.py american-revolution/chapter-1775-06-17
 python tools/check-data.py
 python tools/check-contrast.py          # both themes; fails on unreadable map
 python tools/check-sound.py             # ducking, instant suppression, silent fallback

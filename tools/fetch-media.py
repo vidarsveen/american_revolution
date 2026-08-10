@@ -3,10 +3,16 @@
 Fetch period images from Wikimedia Commons and record where they came from.
 
     python tools/fetch-media.py american-revolution
+    python tools/fetch-media.py american-revolution --portraits
 
 Reads a `media` block from the pack's media-sources.json, downloads each file,
 downscales it, and writes content/<pack>/media.json with the artist, date,
 source URL and licence for every image, so the app can credit them properly.
+
+--portraits does the same job for the faces in assets/portraits/, reading
+portrait-sources.json and writing portraits.json. The first 32 portraits
+arrived with no source list at all, which is a thing you cannot fix later by
+looking at a JPEG; every face added since goes through here.
 
 Only public-domain works are wanted here. The script prints the licence it
 found for each file — if something is not PD, that is a decision to make, not
@@ -29,6 +35,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "AmericanRevolutionTimeline/1.0 (personal learning project; vidarsveen@gmail.com)"
 API = "https://commons.wikimedia.org/w/api.php"
 MAX_W = 1200
+# A portrait is shown in a small card, never full bleed. The first 1200 px
+# fetch produced 230 KB faces next to the 30 KB ones already shipped.
+MAX_PORTRAIT_W = 640
 
 
 def api(params):
@@ -73,12 +82,24 @@ def fetch_one(title):
 
 
 def main():
-    if len(sys.argv) < 2:
+    args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    portraits = "--portraits" in sys.argv
+    if not args:
         print(__doc__)
         return 2
-    pack = sys.argv[1]
+    pack = args[0]
     pack_dir = os.path.join(ROOT, "content", pack)
-    src_path = os.path.join(pack_dir, "media-sources.json")
+
+    # Two sets of images with the same provenance problem and the same answer.
+    # Portraits are shared across packs, so they live under assets/ rather than
+    # inside the pack; the record of where they came from stays with the pack
+    # that asked for them.
+    src_name = "portrait-sources.json" if portraits else "media-sources.json"
+    out_name = "portraits.json" if portraits else "media.json"
+    out_dir = (os.path.join(ROOT, "assets", "portraits") if portraits
+               else os.path.join(pack_dir, "media"))
+
+    src_path = os.path.join(pack_dir, src_name)
     if not os.path.exists(src_path):
         print(f"error: no {src_path}", file=sys.stderr)
         return 2
@@ -86,7 +107,6 @@ def main():
     with open(src_path, encoding="utf-8") as fh:
         sources = json.load(fh)
 
-    out_dir = os.path.join(pack_dir, "media")
     os.makedirs(out_dir, exist_ok=True)
     media = {}
     failed = []
@@ -119,7 +139,8 @@ def main():
                 im = im.crop((int(box[0] * w), int(box[1] * h),
                               int(box[2] * w), int(box[3] * h)))
 
-            im.thumbnail((MAX_W, MAX_W), Image.LANCZOS)
+            cap = MAX_PORTRAIT_W if portraits else MAX_W
+            im.thumbnail((cap, cap), Image.LANCZOS)
             im.convert("RGB").save(dest, "JPEG", quality=84, optimize=True, progressive=True)
 
             media[mid] = {
@@ -138,7 +159,7 @@ def main():
             failed.append((mid, repr(e)[:90]))
             print(f"  {mid:16} FAILED  {repr(e)[:90]}")
 
-    out = os.path.join(pack_dir, "media.json")
+    out = os.path.join(pack_dir, out_name)
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(media, fh, ensure_ascii=False, indent=2)
     print(f"\n{len(media)} images -> {os.path.relpath(out, ROOT)}")

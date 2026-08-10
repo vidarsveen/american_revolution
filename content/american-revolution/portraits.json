@@ -1,0 +1,34 @@
+{
+  "warren": {
+    "file": "warren.jpg",
+    "title": {},
+    "year": "ca. 1765",
+    "artist": "John Singleton Copley",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:JosephWarrenByCopley.jpeg"
+  },
+  "william-prescott": {
+    "file": "william-prescott.jpg",
+    "title": {},
+    "year": "2015",
+    "artist": "Balon Greyjoy",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:William_Prescott_Statue_Bunker_Hill.jpg"
+  },
+  "putnam": {
+    "file": "putnam.jpg",
+    "title": {},
+    "year": "1864",
+    "artist": "Dominique C. Fabronius",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Israel_putnam_portrait.jpg"
+  },
+  "stark": {
+    "file": "stark.jpg",
+    "title": {},
+    "year": "ca. 1815",
+    "artist": "Alexander Hay Ritchie",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Portrait_of_General_John_Stark.jpg"
+  }
+}

@@ -112,6 +112,7 @@ most this year were invisible to reading and obvious to measurement.
 
 ```bash
 python tools/check-script.py american-revolution/chapter-1775-04-19
+python tools/check-script.py american-revolution/chapter-1775-06-17
 python tools/check-data.py
 python tools/check-contrast.py     # samples real pixels; fails on an unreadable map
 python tools/check-sound.py        # 24 assertions on ducking and the silent fallback
@@ -218,6 +219,27 @@ are *read*, not how they are *heard*: "a war fought across four continents" came
 `four` and `for` are the same sound. Rewording to "on four continents at once" gives the number
 somewhere to lean and 125 ms. `edge-tts` reports a duration per word, so this is measurable —
 a cardinal under about 100 ms is being swallowed.
+
+**Timings and audio are keyed by chapter, not just by pack.** `timing.<chapter>.<lang>.json`
+and `audio/<lang>/<chapter>/<scene>.mp3`. Scene ids restart at `s0` in every chapter, so the
+original one-file-per-pack layout had a second chapter overwriting the first scene for scene
+— and the overwrite is silent, because a timing file for the wrong chapter still parses and
+still has an `s0`. Adding a chapter therefore also means four new lines in `sw.js`.
+
+**A scene change wipes the stage, so nothing standing survives it.** Rule 1 says the picture
+is a function of time; seeking re-applies only the cues of the scene you land in. So a front,
+a marker or a road drawn in scene four is *gone* in scene five, and the script gives you no
+hint — the beat still talks about the redoubt, and the redoubt is not there. The Bunker Hill
+chapter opened its dawn scene on a fleet shelling nothing and sent its first assault at empty
+grass before this was spotted by looking at the pixels. Every scene re-establishes what it
+inherits, at `start`. `check-script.py` cannot catch this: both halves are individually valid.
+
+**Module-level state in `engine/scenes/*` lives longer than a chapter.** It was written when
+Fortell loaded one chapter per page load, and the cover can now switch. `regionsReady`
+memoised a fetch whose `.then` called `useRegions()` on the map instance that was current when
+it started, so after a switch the second map never got the geometry and `region.show` drew
+nothing — with a 200 in the network panel. `mountMap` clears it. Anything else cached against
+`map` must go the same way.
 
 **Modern boundaries are wrong for history.** The framework ships modern admin boundaries
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was

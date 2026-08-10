@@ -1,0 +1,47 @@
+{
+  "warren": {
+    "commons": "File:JosephWarrenByCopley.jpeg",
+    "artist": "John Singleton Copley",
+    "year": "ca. 1765",
+    "crop": [
+      0.1,
+      0.11,
+      0.9,
+      0.84
+    ]
+  },
+  "william-prescott": {
+    "commons": "File:William Prescott Statue Bunker Hill.jpg",
+    "artist": "Balon Greyjoy",
+    "year": "2015",
+    "crop": [
+      0.24,
+      0.04,
+      0.9,
+      0.52
+    ],
+    "note": "CC0, not PD-by-age: a 2015 photograph of the 1881 statue. No portrait of Prescott was ever painted. CC0 is a public-domain dedication, so it carries no obligation, but it is not the same tag as the rest of this file."
+  },
+  "putnam": {
+    "commons": "File:Israel putnam portrait.jpg",
+    "artist": "Dominique C. Fabronius",
+    "year": "1864",
+    "crop": [
+      0.12,
+      0.04,
+      0.92,
+      0.78
+    ]
+  },
+  "stark": {
+    "commons": "File:Portrait of General John Stark.jpg",
+    "artist": "Alexander Hay Ritchie",
+    "year": "ca. 1815",
+    "crop": [
+      0.02,
+      0.03,
+      0.98,
+      0.86
+    ]
+  }
+}

@@ -53,5 +53,27 @@
     "artist": "Ukjent fotograf",
     "licence": "No restrictions",
     "source": "https://commons.wikimedia.org/wiki/File:History_of_Paul_Revere%27s_signal_lanterns,_April_18,_1775,_in_the_steeple_of_the_North_Church-_with_an_account_of_the_tablet_on_Christ_Church_and_the_monuments_at_Highland_Park_and_Dorchester_Heights_(14777037692).jpg"
+  },
+  "bunker-hill-attack": {
+    "file": "bunker-hill-attack.jpg",
+    "title": {
+      "no": "Angrepet på Bunker Hill, mens Charlestown brenner",
+      "en": "The attack on Bunker's Hill, with Charlestown burning"
+    },
+    "year": "1783",
+    "artist": "John Lodge, etter Millar",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_attack_on_Bunker%27s_Hill,_with_the_burning_of_Charles_Town,_June_17,_1775_-_drawn_by_Mr._Millar_;_engraved_by_Lodge._LCCN2004670002.jpg"
+  },
+  "trumbull-warren": {
+    "file": "trumbull-warren.jpg",
+    "title": {
+      "no": "General Warrens død ved Bunker Hill",
+      "en": "The Death of General Warren at the Battle of Bunker's Hill"
+    },
+    "year": "1786",
+    "artist": "John Trumbull",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_General_Warren_at_the_Battle_of_Bunker%27s_Hill.jpg"
   }
 }

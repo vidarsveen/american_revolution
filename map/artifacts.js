@@ -21,6 +21,14 @@ const REF_STRENGTH = 5000;   // a "typical" force; width is relative to this
 const REF_METRES = 620;      // half-width ON THE GROUND for that force
 const MIN_PX = 5;            // at theatre zoom an arrow is a symbol, not a hairline
 const MAX_PX = 120;          // still an arrow, not a wall, at street zoom
+// And never wider than this fraction of the shorter side of the viewport.
+// MAX_PX alone is a fixed 240 px ribbon: a reasonable arrow on a desktop map
+// and most of a phone screen. Four hundred New Hampshire men coming over
+// Charlestown Neck buried the hill they were marching to, and the head flares
+// to twice the shaft, so what the eye actually measures is four times this.
+// The ground-truth model is right and stays — this is the screen it is being
+// drawn on getting a say, which is the one thing it could not previously do.
+const MAX_VIEWPORT_FRACTION = 0.05;
 
 /**
  * Width from strength, in METRES OF GROUND — then converted to pixels by the
@@ -135,8 +143,9 @@ export function arrowPath(screenPts, wMax, progress = 1) {
 }
 
 export function drawArrow(ctx, screenPts,
-                          { fill, line, strength, mpp, widthM, progress = 1, ghost }) {
-  const wMax = widthForStrength(strength, mpp, widthM);
+                          { fill, line, strength, mpp, widthM, viewport, progress = 1, ghost }) {
+  let wMax = widthForStrength(strength, mpp, widthM);
+  if (viewport > 0) wMax = Math.min(wMax, viewport * MAX_VIEWPORT_FRACTION);
   const path = arrowPath(screenPts, wMax, progress);
   if (!path) return;
 

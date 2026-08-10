@@ -10,8 +10,12 @@ Turn a chapter script into narration audio plus a timing file.
 
 What it produces, per language:
 
-    content/<pack>/audio/<lang>/<scene>.mp3     one gapless file per scene
-    content/<pack>/timing.<lang>.json           beat offsets and per-word times
+    content/<pack>/audio/<lang>/<chapter>/<scene>.mp3   one gapless file per scene
+    content/<pack>/timing.<chapter>.<lang>.json         beat offsets and word times
+
+Both are keyed by the chapter, not just the pack. Scene ids restart at s0 in
+every chapter, so a pack-wide timing file had the second chapter overwriting
+the first one scene for scene.
 
 Why per-word times matter: the player pins visual cues to words in the script
 ("when he says Concord, fly the map to Concord"), so nothing is hand-timed and
@@ -299,7 +303,8 @@ def main():
     made = asyncio.run(synth_beats(chapter, args.lang, voice, rate, backend, only, args.force))
 
     # Merge into any existing timing file so --only does not wipe other scenes.
-    timing_path = os.path.join(ROOT, "content", pack, f"timing.{args.lang}.json")
+    timing_path = os.path.join(ROOT, "content", pack,
+                               f"timing.{chapter['id']}.{args.lang}.json")
     timing = {"lang": args.lang, "voice": voice, "rate": rate,
               "engine": backend.name, "scenes": {}}
     if os.path.exists(timing_path) and only:
@@ -313,8 +318,9 @@ def main():
         if only and scene["id"] not in only:
             total += timing["scenes"].get(scene["id"], {}).get("dur", 0.0)
             continue
-        rel = f"audio/{args.lang}/{scene['id']}.mp3"
+        rel = f"audio/{args.lang}/{chapter['id']}/{scene['id']}.mp3"
         out = os.path.join(ROOT, "content", pack, rel)
+        os.makedirs(os.path.dirname(out), exist_ok=True)
         beats, dur = build_scene(scene, made, out, args.gap)
         timing["scenes"][scene["id"]] = {"audio": rel, "dur": dur, "beats": beats}
         total += dur

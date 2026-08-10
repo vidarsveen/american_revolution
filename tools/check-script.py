@@ -270,12 +270,12 @@ def main():
 
     timings = {}
     for lang in langs:
-        tp = os.path.join(pack_dir, f"timing.{lang}.json")
+        tp = os.path.join(pack_dir, f"timing.{chapter['id']}.{lang}.json")
         if os.path.exists(tp):
             with open(tp, encoding="utf-8") as fh:
                 timings[lang] = json.load(fh)
         else:
-            notes.append(f"no timing.{lang}.json yet — run tools/narrate.py --lang {lang}")
+            notes.append(f"no timing.{chapter['id']}.{lang}.json yet — run tools/narrate.py --lang {lang}")
 
     n_beats = n_cues = n_word = 0
 

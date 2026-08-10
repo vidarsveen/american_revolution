@@ -39,11 +39,20 @@ is out of copyright by age, but Commons tags it with the Flickr Commons
 `tools/fetch-media.py` prints a warning for exactly this case. Left in
 deliberately; worth a second look before any commercial use.
 
-**The portraits have no provenance record.** All 32 files in
-`assets/portraits/` arrived with no source list, unlike
-`content/<pack>/media/`, which is rebuilt from `media-sources.json` and
-carries artist, licence and source URL per image. A `portrait-sources.json` in
-the same shape would close it.
+**The portraits have no provenance record — the original 32, anyway.**
+Those files arrived with no source list, unlike `content/<pack>/media/`, which
+is rebuilt from `media-sources.json` and carries artist, licence and source URL
+per image. `tools/fetch-media.py --portraits` now does the same job for faces,
+reading `portrait-sources.json` and writing `portraits.json`, and the four
+added for Bunker Hill went through it. The original 32 are still unrecorded and
+cannot be reconstructed by looking at a JPEG; they want an afternoon with
+Commons and a reverse image search.
+
+One of the four is **CC0 rather than public-domain-by-age**:
+`william-prescott.jpg` is a 2015 photograph of the 1881 statue, because no
+portrait of Prescott was ever painted. CC0 is a public-domain dedication and
+carries no obligation, so this is a note rather than a problem — but it is not
+the same tag as everything around it, and `portrait-sources.json` says so.
 
 ---
 
@@ -69,15 +78,6 @@ Revere crossing the river past a warship with muffled oars may want
 `bedSolemn`. Levels are untested by ear: bed at -14 dB, duck -12, and the
 muskets at s2.b5 are -7. All single numbers.
 
-**An army arrow at street zoom is still too big.** `widthForStrength` models
-an arrow as ground it stands on, which is right at theatre zoom and absurd at
-14: four hundred militia crossing a hundred metres of bridge asked for a
-350 m-wide ribbon. `arrowPath` caps the width at 13% of the march's own
-length, which stops it being a lozenge but not being enormous. The bridge
-scene was pulled back from zoom 14.2 to 13.5 to dodge it. A real fix probably
-bounds the arrow against the viewport, which artifacts.js cannot currently
-see.
-
 **Explore's eight strategic routes are lines, not arrows.** They would read
 far better as army arrows, which needs a troop number per route — Arnold to
 Quebec, Burgoyne south, the march to Yorktown. I did not want to invent those
@@ -88,6 +88,54 @@ cover. A held final card — the arc around Boston, the date, the toll — would
 land it.
 
 ---
+
+## From the second chapter, 10 August
+
+Adding **17 June 1775** exercised the engine as a *framework* for the first
+time, which is where it was weakest. Four things it found:
+
+**A scene change wipes the stage, so nothing standing survives it.** That is
+the rule that makes seeking correct and it is written down, but writing a
+second chapter is what makes you feel it: scene three opened on a fleet
+shelling a redoubt that was not drawn, and the first British assault was a red
+arrow pointing at empty grass — the North Bridge defect again, one chapter
+later. Every scene now re-establishes the line it inherits at `start`. It is
+the single easiest thing to get wrong when authoring, and `check-script.py`
+cannot see it: a beat that mentions the redoubt and a stage with no redoubt on
+it are both perfectly valid.
+
+**Module-level caches assumed one chapter per page load.** `regionsReady` in
+`engine/scenes/map.js` memoises a fetch whose `.then` calls `useRegions()` on
+whichever map existed when it started. Switch chapters and the second map is
+handed nothing — the closing shot named three colonies and coloured none of
+them, with the file fetched and a 200 in the network panel. Cleared in
+`mountMap` now. Worth a sweep for others the day a third chapter lands.
+
+**Timings and audio were keyed by pack, not by chapter.** Scene ids restart at
+`s0` in every chapter, so `timing.no.json` and `audio/no/s3.mp3` would have had
+chapter two overwriting chapter one, silently, because a timing file for the
+wrong chapter still parses and still has an `s0`. Now
+`timing.<chapter>.<lang>.json` and `audio/<lang>/<chapter>/<scene>.mp3`.
+
+**`tools/shoot.py` had a stale scene index beside every beat id.** They drifted
+apart the day scene 0 was added, so `s3-77` shot scene 2 and the contact sheet
+labelled Dawes riding out as "seventy-seven against seven hundred". Nobody
+noticed for months, because a sheet with a plausible picture under every
+caption looks right. The index is derived from the beat id now, and the table
+covers both chapters.
+
+Still open from it:
+
+**The cover's chapter list fetches whole chapters to learn their names.** Two
+files, ~200 KB, after the cover is already up and not awaited — fine at two
+chapters and wrong at ten. The real answer is a `pack.json` listing narrated
+chapters with their titles, which is the "pack boundary" item below.
+
+**Nobody has listened to the new chapter.** The levels were set by eye from the
+first chapter's numbers: `bedSolemn` at -7, `bedUrgent` at -6/-7, `cannon` at
+-5 for the opening broadside and -9 for the sustained bombardment, the beach
+volley at -6 over six muskets at -11. Three cannon and a volley inside twenty
+seconds is more ordnance than the first chapter fires in eleven minutes.
 
 ## Sound — the 9 August pass
 

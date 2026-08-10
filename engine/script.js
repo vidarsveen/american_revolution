@@ -36,7 +36,9 @@ export async function loadChapter(pack, chapterId, lang) {
   let timing = null;
   let narrationLang = lang;
   for (const candidate of order) {
-    timing = await getJSON(`${base}/timing.${candidate}.json`).catch(() => null);
+    // Keyed by chapter as well as language: scene ids restart at s0 in every
+    // chapter, so one file per pack had chapter two overwriting chapter one.
+    timing = await getJSON(`${base}/timing.${chapterId}.${candidate}.json`).catch(() => null);
     if (timing) { narrationLang = candidate; break; }
   }
   if (!timing) {

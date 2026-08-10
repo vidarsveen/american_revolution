@@ -1,0 +1,2892 @@
+{
+  "id": "chapter-1775-06-17",
+  "pack": "american-revolution",
+  "work": {
+    "no": "Den amerikanske revolusjonen",
+    "en": "The American Revolution"
+  },
+  "title": {
+    "no": "17. juni 1775",
+    "en": "17 June 1775"
+  },
+  "subtitle": {
+    "no": "Dagen de fikk vite prisen",
+    "en": "The day the price was set"
+  },
+  "blurb": {
+    "no": "Britene vant bakken på under to timer. Det kostet dem mer enn noen annen kamp i hele krigen. Her er hvorfor de gikk rett opp, og hva de fant der oppe.",
+    "en": "The British took the hill in under two hours. It cost them more than any other fight in the whole war. Here is why they walked straight up it, and what they found at the top."
+  },
+  "voice": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural"
+  },
+  "rate": "-10%",
+  "poster": "bunker-hill-attack",
+  "home": "wide",
+  "regions": "geo/regions.geojson",
+  "places": {
+    "wide": {
+      "coords": [
+        42.365,
+        -71.078
+      ],
+      "zoom": 11.6,
+      "name": {
+        "no": "Boston og omegn",
+        "en": "Boston and around it"
+      },
+      "label": false
+    },
+    "boston": {
+      "coords": [
+        42.3601,
+        -71.0589
+      ],
+      "zoom": 12.6,
+      "name": {
+        "no": "Boston",
+        "en": "Boston"
+      }
+    },
+    "boston-neck": {
+      "coords": [
+        42.343,
+        -71.064
+      ],
+      "zoom": 13.4,
+      "name": {
+        "no": "Boston Neck",
+        "en": "Boston Neck"
+      },
+      "label": false
+    },
+    "charlestown": {
+      "coords": [
+        42.3778,
+        -71.062
+      ],
+      "zoom": 13.6,
+      "name": {
+        "no": "Halvøya ved Charlestown",
+        "en": "The Charlestown peninsula"
+      },
+      "label": false
+    },
+    "charlestown-town": {
+      "coords": [
+        42.3772,
+        -71.0678
+      ],
+      "zoom": 14.0,
+      "name": {
+        "no": "Charlestown",
+        "en": "Charlestown"
+      }
+    },
+    "breeds-hill": {
+      "coords": [
+        42.3763,
+        -71.0608
+      ],
+      "zoom": 14.4,
+      "name": {
+        "no": "Breed's Hill",
+        "en": "Breed's Hill"
+      }
+    },
+    "the-line": {
+      "coords": [
+        42.3782,
+        -71.0592
+      ],
+      "zoom": 14.7,
+      "name": {
+        "no": "Den amerikanske linja",
+        "en": "The American line"
+      },
+      "label": false
+    },
+    "bunker-hill": {
+      "coords": [
+        42.3792,
+        -71.0648
+      ],
+      "zoom": 14.2,
+      "name": {
+        "no": "Bunker Hill",
+        "en": "Bunker Hill"
+      }
+    },
+    "charlestown-neck": {
+      "coords": [
+        42.3838,
+        -71.0705
+      ],
+      "zoom": 14.0,
+      "name": {
+        "no": "Halsen",
+        "en": "The Neck"
+      }
+    },
+    "moultons-point": {
+      "coords": [
+        42.3742,
+        -71.0522
+      ],
+      "zoom": 14.2,
+      "name": {
+        "no": "Moulton's Point",
+        "en": "Moulton's Point"
+      }
+    },
+    "mystic-beach": {
+      "coords": [
+        42.3806,
+        -71.0552
+      ],
+      "zoom": 14.8,
+      "name": {
+        "no": "Stranda ved Mystic",
+        "en": "The Mystic beach"
+      },
+      "label": false
+    },
+    "copps-hill": {
+      "coords": [
+        42.3676,
+        -71.0561
+      ],
+      "zoom": 14.0,
+      "name": {
+        "no": "Copp's Hill",
+        "en": "Copp's Hill"
+      },
+      "label": false
+    },
+    "cambridge": {
+      "coords": [
+        42.3736,
+        -71.1097
+      ],
+      "zoom": 13.0,
+      "name": {
+        "no": "Cambridge",
+        "en": "Cambridge"
+      }
+    },
+    "medford": {
+      "coords": [
+        42.4184,
+        -71.1062
+      ],
+      "zoom": 13.0,
+      "name": {
+        "no": "Medford",
+        "en": "Medford"
+      }
+    },
+    "dorchester-heights": {
+      "coords": [
+        42.3325,
+        -71.0463
+      ],
+      "zoom": 13.4,
+      "name": {
+        "no": "Dorchester Heights",
+        "en": "Dorchester Heights"
+      }
+    },
+    "concord": {
+      "coords": [
+        42.4604,
+        -71.3489
+      ],
+      "zoom": 12.5,
+      "name": {
+        "no": "Concord",
+        "en": "Concord"
+      }
+    },
+    "philadelphia": {
+      "coords": [
+        39.9496,
+        -75.1503
+      ],
+      "zoom": 11.0,
+      "name": {
+        "no": "Philadelphia",
+        "en": "Philadelphia"
+      }
+    }
+  },
+  "routes": {
+    "prescott-out": {
+      "side": "patriot",
+      "label": {
+        "no": "Tusen mann med spader",
+        "en": "A thousand men with spades"
+      },
+      "strength": 1000,
+      "coords": [
+        [
+          42.3736,
+          -71.1097
+        ],
+        [
+          42.38,
+          -71.09
+        ],
+        [
+          42.3838,
+          -71.0705
+        ],
+        [
+          42.38,
+          -71.065
+        ],
+        [
+          42.3766,
+          -71.0612
+        ]
+      ]
+    },
+    "stark-march": {
+      "side": "patriot",
+      "label": {
+        "no": "New Hampshire-mennene over halsen",
+        "en": "The New Hampshire men over the neck"
+      },
+      "strength": 400,
+      "coords": [
+        [
+          42.3902,
+          -71.08
+        ],
+        [
+          42.3852,
+          -71.0722
+        ],
+        [
+          42.3826,
+          -71.066
+        ],
+        [
+          42.3806,
+          -71.0586
+        ],
+        [
+          42.3802,
+          -71.0558
+        ]
+      ]
+    },
+    "british-crossing": {
+      "side": "british",
+      "naval": true,
+      "label": {
+        "no": "Tjueåtte lektere over vannet",
+        "en": "Twenty-eight barges across the water"
+      },
+      "coords": [
+        [
+          42.3668,
+          -71.0534
+        ],
+        [
+          42.369,
+          -71.05
+        ],
+        [
+          42.3722,
+          -71.0498
+        ],
+        [
+          42.3742,
+          -71.0522
+        ]
+      ]
+    },
+    "clinton-plan": {
+      "side": "british",
+      "naval": true,
+      "label": {
+        "no": "Angrepet Clinton foreslo",
+        "en": "The attack Clinton proposed"
+      },
+      "coords": [
+        [
+          42.3662,
+          -71.057
+        ],
+        [
+          42.37,
+          -71.068
+        ],
+        [
+          42.3778,
+          -71.078
+        ],
+        [
+          42.384,
+          -71.0716
+        ]
+      ]
+    },
+    "flank-attack": {
+      "side": "british",
+      "label": {
+        "no": "Eliteinfanteriet langs stranda",
+        "en": "The light infantry along the beach"
+      },
+      "strength": 350,
+      "coords": [
+        [
+          42.3748,
+          -71.0528
+        ],
+        [
+          42.3776,
+          -71.0542
+        ],
+        [
+          42.38,
+          -71.0554
+        ]
+      ]
+    },
+    "assault-1": {
+      "side": "british",
+      "label": {
+        "no": "Første angrep",
+        "en": "The first assault"
+      },
+      "strength": 1200,
+      "coords": [
+        [
+          42.3745,
+          -71.053
+        ],
+        [
+          42.376,
+          -71.0566
+        ],
+        [
+          42.3776,
+          -71.0598
+        ]
+      ]
+    },
+    "assault-2": {
+      "side": "british",
+      "label": {
+        "no": "Andre angrep",
+        "en": "The second assault"
+      },
+      "strength": 1100,
+      "coords": [
+        [
+          42.3739,
+          -71.0536
+        ],
+        [
+          42.3752,
+          -71.0572
+        ],
+        [
+          42.3768,
+          -71.0602
+        ]
+      ]
+    },
+    "assault-3": {
+      "side": "british",
+      "label": {
+        "no": "Tredje angrep, med bajonett",
+        "en": "The third assault, with the bayonet"
+      },
+      "strength": 1400,
+      "coords": [
+        [
+          42.3742,
+          -71.0524
+        ],
+        [
+          42.375,
+          -71.056
+        ],
+        [
+          42.3762,
+          -71.0603
+        ]
+      ]
+    },
+    "american-retreat": {
+      "side": "patriot",
+      "label": {
+        "no": "Ut over halsen",
+        "en": "Out across the neck"
+      },
+      "strength": 900,
+      "coords": [
+        [
+          42.3766,
+          -71.0612
+        ],
+        [
+          42.3792,
+          -71.065
+        ],
+        [
+          42.3838,
+          -71.0705
+        ],
+        [
+          42.3862,
+          -71.081
+        ]
+      ]
+    },
+    "siege-arc": {
+      "side": "patriot",
+      "label": {
+        "no": "Beleiringslinja",
+        "en": "The siege line"
+      },
+      "coords": [
+        [
+          42.409,
+          -71.079
+        ],
+        [
+          42.396,
+          -71.093
+        ],
+        [
+          42.38,
+          -71.101
+        ],
+        [
+          42.365,
+          -71.118
+        ],
+        [
+          42.341,
+          -71.115
+        ],
+        [
+          42.329,
+          -71.085
+        ],
+        [
+          42.32,
+          -71.06
+        ]
+      ]
+    },
+    "redoubt": {
+      "side": "patriot",
+      "label": {
+        "no": "Skansen",
+        "en": "The redoubt"
+      },
+      "coords": [
+        [
+          42.3772,
+          -71.0618
+        ],
+        [
+          42.3764,
+          -71.0606
+        ],
+        [
+          42.3757,
+          -71.06
+        ]
+      ]
+    },
+    "breastwork": {
+      "side": "patriot",
+      "label": {
+        "no": "Brystvernet",
+        "en": "The breastwork"
+      },
+      "coords": [
+        [
+          42.3772,
+          -71.0618
+        ],
+        [
+          42.378,
+          -71.061
+        ],
+        [
+          42.3786,
+          -71.0602
+        ]
+      ]
+    },
+    "rail-fence": {
+      "side": "patriot",
+      "label": {
+        "no": "Gjerdet med høy",
+        "en": "The rail fence"
+      },
+      "coords": [
+        [
+          42.3786,
+          -71.0602
+        ],
+        [
+          42.3795,
+          -71.0578
+        ],
+        [
+          42.3802,
+          -71.0558
+        ]
+      ]
+    },
+    "stark-wall": {
+      "side": "patriot",
+      "label": {
+        "no": "Steinmuren på stranda",
+        "en": "The stone wall on the beach"
+      },
+      "coords": [
+        [
+          42.3802,
+          -71.0558
+        ],
+        [
+          42.3809,
+          -71.0548
+        ]
+      ]
+    }
+  },
+  "quotes": {
+    "burgoyne": {
+      "text": {
+        "no": "Hva? Ti tusen bønder holder fem tusen av kongens soldater innesperret? La oss komme oss inn, så skal vi snart skaffe albuerom.",
+        "en": "What! Ten thousand peasants keep five thousand king's troops shut up? Let us get in, and we'll soon find elbow room."
+      },
+      "by": {
+        "no": "General John Burgoyne, da han kom til Boston i mai 1775",
+        "en": "General John Burgoyne, on reaching Boston in May 1775"
+      }
+    },
+    "willard": {
+      "text": {
+        "no": "Jeg kan ikke svare for mennene hans. Men Prescott kommer til å slåss mot dere helt til helvetes porter.",
+        "en": "I cannot answer for his men, but Prescott will fight you to the gates of hell."
+      },
+      "by": {
+        "no": "Abijah Willard til general Gage, slik det ble fortalt etterpå",
+        "en": "Abijah Willard to General Gage, as the story was told afterwards"
+      }
+    },
+    "whites": {
+      "text": {
+        "no": "Ikke skyt før du ser det hvite i øynene deres.",
+        "en": "Don't fire till you see the whites of their eyes."
+      },
+      "by": {
+        "no": "Ordren alle husker – som historikere mener ingen ga",
+        "en": "The order everybody remembers — which historians think nobody gave"
+      }
+    },
+    "gage-bunker": {
+      "text": {
+        "no": "Tapet vi har lidd er større enn vi kan bære.",
+        "en": "The loss we have sustained is greater than we can bear."
+      },
+      "by": {
+        "no": "General Thomas Gage, brev til London, juni 1775",
+        "en": "General Thomas Gage, letter to London, June 1775"
+      }
+    },
+    "clinton": {
+      "text": {
+        "no": "Noen flere slike seire, og det ville vært slutt på britisk styre i Amerika.",
+        "en": "A few more such victories would have shortly put an end to British dominion in America."
+      },
+      "by": {
+        "no": "General Henry Clinton, i dagboka, 17. juni 1775",
+        "en": "General Henry Clinton, in his diary, 17 June 1775"
+      }
+    },
+    "greene": {
+      "text": {
+        "no": "Jeg skulle ønske vi kunne selge dem én ås til, til samme pris.",
+        "en": "I wish we could sell them another hill at the same price."
+      },
+      "by": {
+        "no": "Nathanael Greene, brev, juni 1775",
+        "en": "Nathanael Greene, letter, June 1775"
+      }
+    }
+  },
+  "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Etter den dagen",
+        "en": "After that day"
+      },
+      "clock": {
+        "no": "April–juni 1775",
+        "en": "April–June 1775"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Den syttende juni sytten sytti fem marsjerte verdens beste hær opp en gresskledd bakke rett nord for Boston. De gjorde det tre ganger.",
+            "en": "On the seventeenth of June, seventeen seventy-five, the best army in the world marched up a grassy hill just north of Boston. They did it three times."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -7
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "wide"
+            },
+            {
+              "on": "word:Boston",
+              "do": "place.highlight",
+              "at": "charlestown",
+              "tone": "gold"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "De tok bakken. Det tok under to timer. Og det kostet dem mer enn noen annen kamp i hele krigen som kom etterpå.",
+            "en": "They took the hill. It took less than two hours. And it cost them more than any other fight in the whole war that came after."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "place.clear"
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "For å skjønne hvorfor de gikk rett opp bakken, må vi to måneder tilbake. Den nittende april hadde britene marsjert ut av Boston for å hente et våpenlager i Concord.",
+            "en": "To understand why they walked straight up it, we have to go back two months. On the nineteenth of April the British had marched out of Boston to seize a weapons store at Concord."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "April 1775",
+                "en": "April 1775"
+              }
+            },
+            {
+              "on": "word:Concord",
+              "do": "map.fitPlaces",
+              "places": [
+                "boston",
+                "concord"
+              ],
+              "over": 3.0
+            },
+            {
+              "on": "word:Concord",
+              "do": "marker.show",
+              "at": "concord",
+              "kind": "clash",
+              "tone": "gold"
+            }
+          ],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "De kom seg så vidt tilbake, med tusenvis av bønder etter seg. Men bøndene gikk ikke hjem igjen. De ble liggende.",
+            "en": "They barely got back, with thousands of farmers behind them. But the farmers did not go home again. They stayed where they were."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "marker.clear"
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s0.b5",
+          "say": {
+            "no": "På en uke lå det rundt femten tusen bevæpnede menn i en bue rundt byen.",
+            "en": "Within a week there were around fifteen thousand armed men lying in an arc around the town."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "wide",
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:femten",
+                "en": "word:fifteen"
+              },
+              "do": "stat.show",
+              "value": "15 000",
+              "label": {
+                "no": "rundt Boston",
+                "en": "around Boston"
+              },
+              "side": "patriot"
+            },
+            {
+              "on": {
+                "no": "word:bue",
+                "en": "word:arc"
+              },
+              "do": "front.show",
+              "id": "siege-arc",
+              "side": "patriot",
+              "fluid": true,
+              "facing": 1,
+              "over": 3.5
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s0.b6",
+          "say": {
+            "no": "Boston er nesten en øy. Én smal landtunge binder byen til fastlandet, og den tungen holdt amerikanerne. Britene hadde en hel by, og ingen steder å gå.",
+            "en": "Boston is almost an island. One narrow neck of land ties the town to the mainland, and the Americans held that neck. The British had a whole town, and nowhere to go."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:landtunge",
+                "en": "word:neck"
+              },
+              "do": "place.highlight",
+              "at": "boston-neck",
+              "tone": "gold",
+              "centre": false
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s0.b7",
+          "say": {
+            "no": "Den tjuefemte mai kom det skip fra England med forsterkninger, og med tre generaler: William Howe, Henry Clinton og John Burgoyne.",
+            "en": "On the twenty-fifth of May, ships arrived from England with reinforcements — and with three generals: William Howe, Henry Clinton and John Burgoyne."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": "word:Howe",
+              "do": "portrait.show",
+              "id": "howe"
+            },
+            {
+              "on": "word:Clinton",
+              "do": "portrait.show",
+              "id": "clinton"
+            },
+            {
+              "on": "word:Burgoyne",
+              "do": "portrait.show",
+              "id": "burgoyne"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s0.b8",
+          "say": {
+            "no": "Burgoyne skjønte ingenting av det han så. Ti tusen bønder som holdt kongens soldater innesperret? Han hadde et forslag.",
+            "en": "Burgoyne could not believe what he was looking at. Ten thousand peasants keeping the king's soldiers shut up? He had a suggestion."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:forslag",
+                "en": "word:suggestion"
+              },
+              "do": "quote.show",
+              "id": "burgoyne"
+            }
+          ],
+          "gapAfter": 1.65
+        },
+        {
+          "id": "s0.b9",
+          "say": {
+            "no": "Så britene bestemte seg for å bryte ut. Femtende juni la de en plan: den attende skulle de ta høydene sør for byen.",
+            "en": "So the British decided to break out. On the fifteenth of June they made a plan: on the eighteenth they would take the heights south of the town."
+          },
+          "cues": [
+            {
+              "on": "pct:0.45",
+              "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "boston",
+              "zoom": 12.2,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:høydene",
+                "en": "word:heights"
+              },
+              "do": "place.highlight",
+              "at": "dorchester-heights",
+              "side": "british",
+              "centre": false
+            }
+          ],
+          "gapAfter": 1.25
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "title": {
+        "no": "Bakken ingen hadde tatt",
+        "en": "The ground nobody had taken"
+      },
+      "clock": {
+        "no": "15.–16. juni",
+        "en": "15–16 June"
+      },
+      "beats": [
+        {
+          "id": "s1.b1",
+          "say": {
+            "no": "Her må du se på kartet et øyeblikk, for resten av dagen henger på det.",
+            "en": "Here you need to look at the map for a moment, because the rest of the day hangs on it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -8
+            },
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "wide",
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s1.b2",
+          "say": {
+            "no": "Boston ligger lavt. Rundt byen er det høyder, og fra en høyde når en kanon ned i gatene.",
+            "en": "Boston lies low. Around the town there are hills, and from a hill a cannon reaches down into the streets."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:kanon",
+                "en": "word:cannon"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "gainDb": -14
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "To av høydene betyr noe. Dorchester Heights i sør, og halvøya ved Charlestown i nord. Ingen av dem var tatt.",
+            "en": "Two of those hills matter. Dorchester Heights to the south, and the Charlestown peninsula to the north. Neither had been taken."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "dorchester-heights",
+                "charlestown"
+              ],
+              "over": 3.2
+            },
+            {
+              "on": "word:Dorchester",
+              "do": "marker.show",
+              "at": "dorchester-heights",
+              "kind": "target",
+              "tone": "gold"
+            },
+            {
+              "on": "word:Charlestown",
+              "do": "marker.show",
+              "at": "charlestown",
+              "kind": "target",
+              "tone": "gold",
+              "label": {
+                "no": "Halvøya",
+                "en": "The peninsula"
+              }
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s1.b4",
+          "say": {
+            "no": "Britene hadde ikke folk nok til å holde begge to, og amerikanerne hadde nesten ingen kanoner å sette der.",
+            "en": "The British did not have men enough to hold both, and the Americans had almost no cannon to put on them."
+          },
+          "cues": [],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s1.b5",
+          "say": {
+            "no": "Femtende juni bestemte britene seg. Den attende juni tar vi Dorchester Heights.",
+            "en": "On the fifteenth of June the British decided. On the eighteenth of June we take Dorchester Heights."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "15. juni",
+                "en": "15 June"
+              }
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "word:Dorchester",
+              "do": "place.highlight",
+              "at": "dorchester-heights",
+              "side": "british"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s1.b6",
+          "say": {
+            "no": "Dagen etter visste amerikanerne det. Boston var full av folk som snakket med hverandre, og britene klarte ikke å holde på en hemmelighet i den byen.",
+            "en": "By the next day the Americans knew. Boston was full of people talking to each other, and the British could not keep a secret in that town."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "16. juni",
+                "en": "16 June"
+              }
+            },
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": {
+                "no": "word:hemmelighet",
+                "en": "word:secret"
+              },
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -15
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s1.b7",
+          "say": {
+            "no": "Sikkerhetskomiteen ga ordre samme kveld. Befest Bunker Hill, oppe på halvøya i nord. Kom dit først.",
+            "en": "The Committee of Safety gave its order that same evening. Fortify Bunker Hill, up on the peninsula to the north. Get there first."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.ambience"
+            },
+            {
+              "on": "word:Bunker",
+              "do": "map.flyTo",
+              "to": "charlestown",
+              "over": 3.5
+            },
+            {
+              "on": "word:Bunker",
+              "do": "place.highlight",
+              "at": "bunker-hill",
+              "side": "patriot",
+              "centre": false
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s1.b8",
+          "say": {
+            "no": "Det var en farlig ordre. Halvøya henger fast i fastlandet med en hals som er noen få hundre meter bred. Alt som går inn der, kan bli stengt inne.",
+            "en": "It was a dangerous order. The peninsula hangs off the mainland by a neck a few hundred metres wide. Anything that goes in there can be shut in."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:hals",
+                "en": "word:neck"
+              },
+              "do": "place.highlight",
+              "at": "charlestown-neck",
+              "tone": "red",
+              "centre": false
+            }
+          ],
+          "gapAfter": 1.45
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": {
+        "no": "Natta med spadene",
+        "en": "The night with the spades"
+      },
+      "clock": {
+        "no": "16. juni, kl. 21",
+        "en": "16 June, 9 p.m."
+      },
+      "beats": [
+        {
+          "id": "s2.b1",
+          "say": {
+            "no": "Klokka ni om kvelden den sekstende juni stiller rundt tusen mann opp i Cambridge. De har med seg hakker og spader. En prest ber en bønn.",
+            "en": "At nine in the evening on the sixteenth of June, around a thousand men fall in at Cambridge. They carry picks and spades. A minister says a prayer."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch",
+              "gainDb": -9
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "night"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "16. juni, 21:00",
+                "en": "16 June, 21:00"
+              }
+            },
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "cambridge",
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:tusen",
+                "en": "word:thousand"
+              },
+              "do": "stat.show",
+              "value": "1000",
+              "label": {
+                "no": "mann med spade",
+                "en": "men with spades"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s2.b2",
+          "say": {
+            "no": "De fleste av dem vet ikke hvor de skal.",
+            "en": "Most of them have no idea where they are going."
+          },
+          "cues": [],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b3",
+          "say": {
+            "no": "Sjefen deres er oberst William Prescott. Bonde fra Pepperell, og gammel soldat fra krigen mot Frankrike.",
+            "en": "Their commander is Colonel William Prescott. A farmer from Pepperell, and an old soldier from the war against France."
+          },
+          "cues": [
+            {
+              "on": "word:Prescott",
+              "do": "portrait.show",
+              "id": "william-prescott"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b4",
+          "say": {
+            "no": "De marsjerer ut i mørket, uten lykter og uten trommer, over halsen og ut på halvøya.",
+            "en": "They march out into the dark, with no lanterns and no drums, over the neck and out onto the peninsula."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:marsjerer",
+                "en": "word:march"
+              },
+              "do": "route.draw",
+              "id": "prescott-out",
+              "over": 5.0
+            },
+            {
+              "on": {
+                "no": "word:mørket",
+                "en": "word:dark"
+              },
+              "do": "sound.ambience",
+              "id": "boots",
+              "gainDb": -16
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s2.b5",
+          "say": {
+            "no": "Og der oppe stopper de, og krangler.",
+            "en": "And up there they stop, and argue."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.ambience"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "charlestown",
+              "zoom": 13.8,
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s2.b6",
+          "say": {
+            "no": "Ordren gjaldt Bunker Hill. Det er den høyeste åsen, den ligger nærmest halsen, og den er den de kan trekke seg tilbake fra.",
+            "en": "The order named Bunker Hill. It is the higher hill, it sits closest to the neck, and it is the one they can fall back from."
+          },
+          "cues": [
+            {
+              "on": "word:Bunker",
+              "do": "marker.show",
+              "at": "bunker-hill",
+              "tone": "gold",
+              "label": {
+                "no": "Bunker Hill – ordren",
+                "en": "Bunker Hill — the order"
+              }
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s2.b7",
+          "say": {
+            "no": "De begynner å grave på Breed's Hill i stedet. Den er lavere, den ligger nærmere Boston, og den har vann på tre kanter.",
+            "en": "They start digging on Breed's Hill instead. It is lower, it is closer to Boston, and it has water on three sides."
+          },
+          "cues": [
+            {
+              "on": "word:Breed's",
+              "do": "marker.show",
+              "at": "breeds-hill",
+              "side": "patriot",
+              "label": {
+                "no": "Breed's Hill – der de gravde",
+                "en": "Breed's Hill — where they dug"
+              }
+            },
+            {
+              "on": "word:Breed's",
+              "do": "map.flyTo",
+              "to": "the-line",
+              "zoom": 14.5,
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b8",
+          "say": {
+            "no": "Ingen vet sikkert hvorfor. Kanskje var det en misforståelse i mørket. Kanskje var det noen som ville at britene skulle se dem.",
+            "en": "Nobody knows for certain why. Perhaps it was a misunderstanding in the dark. Perhaps somebody wanted the British to see them."
+          },
+          "cues": [],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s2.b9",
+          "say": {
+            "no": "Klokka er midnatt når den første spaden går i jorda.",
+            "en": "It is midnight when the first spade goes into the ground."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "17. juni, 00:00",
+                "en": "17 June, 00:00"
+              }
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "wind",
+              "gainDb": -13
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s2.b10",
+          "say": {
+            "no": "De graver til det lysner. Når sola kommer opp, står det en firkantet skanse på toppen, førti meter på hver side, med jordvoller så høye som en mann.",
+            "en": "They dig until first light. When the sun comes up there is a square redoubt on the crest, forty metres on each side, with earth walls as high as a man."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:skanse",
+                "en": "word:redoubt"
+              },
+              "do": "front.show",
+              "id": "redoubt",
+              "side": "patriot",
+              "facing": -1,
+              "over": 2.5
+            },
+            {
+              "on": {
+                "no": "word:førti",
+                "en": "word:forty"
+              },
+              "do": "stat.show",
+              "value": "40 m",
+              "label": {
+                "no": "på hver side",
+                "en": "on each side"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b11",
+          "say": {
+            "no": "Ingen av dem har sovet. De har ikke fått vann. Og de er nå det eneste synlige målet i hele Boston havn.",
+            "en": "None of them has slept. They have had no water. And they are now the only visible target in the whole of Boston harbour."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            }
+          ],
+          "gapAfter": 1.55
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": {
+        "no": "Daggry, og skipene ser dem",
+        "en": "Dawn, and the ships see them"
+      },
+      "clock": {
+        "no": "17. juni, kl. 04",
+        "en": "17 June, 4 a.m."
+      },
+      "beats": [
+        {
+          "id": "s3.b1",
+          "say": {
+            "no": "Klokka fire om morgenen ser en vaktpost om bord på krigsskipet Lively noe som ikke var der kvelden før.",
+            "en": "At four in the morning a lookout aboard the warship Lively sees something that was not there the evening before."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "redoubt",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": false,
+              "over": 0.8
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -8
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dawn"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "17. juni, 04:00",
+                "en": "17 June, 04:00"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "charlestown",
+              "zoom": 13.6,
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "sea",
+              "gainDb": -14
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s3.b2",
+          "say": {
+            "no": "Han varsler. Skipet dreier rundt, og åpner ild.",
+            "en": "He raises the alarm. The ship swings round, and opens fire."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:ild",
+                "en": "word:fire"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "gainDb": -5
+            },
+            {
+              "on": {
+                "no": "word:ild",
+                "en": "word:fire"
+              },
+              "do": "map.flash"
+            }
+          ],
+          "gapAfter": 1.05
+        },
+        {
+          "id": "s3.b3",
+          "say": {
+            "no": "Snart skyter alt som kan skyte. Skipene ute i havna, og et batteri oppe på Copp's Hill inne i Boston.",
+            "en": "Soon everything that can shoot is shooting. The ships out in the harbour, and a battery up on Copp's Hill inside Boston."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.play",
+              "id": "cannon",
+              "times": 4,
+              "spread": 3.4,
+              "gainDb": -9
+            },
+            {
+              "on": "word:Copp's",
+              "do": "marker.show",
+              "at": "copps-hill",
+              "side": "british",
+              "label": {
+                "no": "Britisk batteri",
+                "en": "British battery"
+              }
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s3.b4",
+          "say": {
+            "no": "En kanonkule tar hodet av en mann som graver like utenfor skansen. Arbeidet stopper. Mennene stivner.",
+            "en": "A cannonball takes the head off a man digging just outside the redoubt. The work stops. The men freeze."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "the-line",
+              "zoom": 14.6,
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s3.b5",
+          "say": {
+            "no": "Da klatrer Prescott opp på vollen. Han går fram og tilbake der oppe, i full sikt fra skipene, til mennene begynner å grave igjen.",
+            "en": "So Prescott climbs up onto the wall. He walks up and down it in full view of the ships, until the men start digging again."
+          },
+          "cues": [
+            {
+              "on": "word:Prescott",
+              "do": "portrait.show",
+              "id": "william-prescott"
+            },
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s3.b6",
+          "say": {
+            "no": "Inne i Boston står folk på takene og ser på. Byen har verdens beste utsiktsplass til det som skal skje.",
+            "en": "Inside Boston people are standing on the rooftops watching. The town has the best seat in the world for what is coming."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "boston",
+              "zoom": 12.8,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:takene",
+                "en": "word:rooftops"
+              },
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -14
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s3.b7",
+          "say": {
+            "no": "General Gage står med kikkert og ser på skansen. Han spør mannen ved siden av seg hvem det er som har kommandoen der oppe.",
+            "en": "General Gage stands with a telescope and looks at the redoubt. He asks the man beside him who is in command up there."
+          },
+          "cues": [
+            {
+              "on": "word:Gage",
+              "do": "portrait.show",
+              "id": "gage"
+            }
+          ],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s3.b8",
+          "say": {
+            "no": "Mannen kjente Prescott godt. Han var svogeren hans.",
+            "en": "The man knew Prescott well. He was his brother-in-law."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "word:Prescott",
+              "do": "quote.show",
+              "id": "willard"
+            }
+          ],
+          "gapAfter": 1.75
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": {
+        "no": "Over vannet",
+        "en": "Across the water"
+      },
+      "clock": {
+        "no": "17. juni, kl. 13",
+        "en": "17 June, 1 p.m."
+      },
+      "beats": [
+        {
+          "id": "s4.b1",
+          "say": {
+            "no": "Britene har to muligheter, og de er svært forskjellige.",
+            "en": "The British have two choices, and they are very different."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "redoubt",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": false,
+              "over": 0.8
+            },
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedUrgent",
+              "gainDb": -9
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience"
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "17. juni, 13:00",
+                "en": "17 June, 13:00"
+              }
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "charlestown",
+              "zoom": 13.4,
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s4.b2",
+          "say": {
+            "no": "Den ene er å sette folk i land ved halsen, bak amerikanerne, og stenge hele halvøya. Henry Clinton foreslår akkurat det.",
+            "en": "One is to land troops at the neck, behind the Americans, and shut the whole peninsula. Henry Clinton proposes exactly that."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:halsen",
+                "en": "word:neck"
+              },
+              "do": "route.draw",
+              "id": "clinton-plan",
+              "over": 3.5,
+              "fit": false
+            },
+            {
+              "on": "word:Clinton",
+              "do": "portrait.show",
+              "id": "clinton"
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b3",
+          "say": {
+            "no": "Den andre er å gå i land foran dem og gå rett opp bakken. Gage og Howe velger den. Delvis fordi tidevannet og skipene gjorde det andre vanskelig, og delvis fordi de ikke trodde bøndene kom til å stå.",
+            "en": "The other is to land in front of them and walk straight up the hill. Gage and Howe choose that one. Partly because the tide and the ships made the other plan awkward, and partly because they did not believe the farmers would stand."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "word:Howe",
+              "do": "portrait.show",
+              "id": "howe"
+            },
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s4.b4",
+          "say": {
+            "no": "Klokka ett begynner båtene å gå over. Tjueåtte flatbunnede lektere, i to rekker, med sola rett i ansiktet.",
+            "en": "At one o'clock the boats start across. Twenty-eight flat-bottomed barges, in two lines, with the sun full in their faces."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:båtene",
+                "en": "word:boats"
+              },
+              "do": "route.draw",
+              "id": "british-crossing",
+              "over": 4.0,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:båtene",
+                "en": "word:boats"
+              },
+              "do": "sound.ambience",
+              "id": "oars",
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b5",
+          "say": {
+            "no": "Femten hundre mann går i land ved Moulton's Point uten at et eneste skudd faller.",
+            "en": "Fifteen hundred men come ashore at Moulton's Point without a single shot being fired."
+          },
+          "cues": [
+            {
+              "on": "word:Moulton's",
+              "do": "marker.show",
+              "at": "moultons-point",
+              "side": "british"
+            },
+            {
+              "on": {
+                "no": "word:Femten",
+                "en": "word:Fifteen"
+              },
+              "do": "stat.show",
+              "value": "1500",
+              "label": {
+                "no": "i land",
+                "en": "ashore"
+              },
+              "side": "british"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s4.b6",
+          "say": {
+            "no": "Og så setter de seg ned og spiser. Howe venter på resten av styrken, og han har god tid. Det tror han.",
+            "en": "And then they sit down and eat. Howe is waiting for the rest of his force, and he has plenty of time. He thinks."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.ambience"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s4.b7",
+          "say": {
+            "no": "Oppe på bakken ser amerikanerne hele forestillingen. Og de bruker den timen godt.",
+            "en": "Up on the hill the Americans watch the whole performance. And they use that hour well."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "the-line",
+              "zoom": 14.7,
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s4.b8",
+          "say": {
+            "no": "De strekker linja nordover. Fra skansen bygger de et brystvern, og videre et gjerde stappet med høy, ned mot elva.",
+            "en": "They stretch the line northwards. From the redoubt they build a breastwork, and beyond it a rail fence stuffed with hay, running down towards the river."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:brystvern",
+                "en": "word:breastwork"
+              },
+              "do": "front.show",
+              "id": "breastwork",
+              "side": "patriot",
+              "facing": -1,
+              "over": 1.8
+            },
+            {
+              "on": {
+                "no": "word:gjerde",
+                "en": "word:fence"
+              },
+              "do": "front.show",
+              "id": "rail-fence",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": true,
+              "over": 2.5
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b9",
+          "say": {
+            "no": "Så kommer John Stark med mennene fra New Hampshire, rett over halsen mens kanonkulene slår ned i den.",
+            "en": "Then John Stark arrives with the New Hampshire men, straight over the neck while the cannonballs are coming down on it."
+          },
+          "cues": [
+            {
+              "on": "word:Stark",
+              "do": "portrait.show",
+              "id": "stark"
+            },
+            {
+              "on": "word:Hampshire",
+              "do": "route.draw",
+              "id": "stark-march",
+              "over": 4.0,
+              "fit": false
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b10",
+          "say": {
+            "no": "Stark ser med én gang det ingen andre har sett. Linja stopper før den når vannet. Britene kan bare gå rundt den, langs stranda.",
+            "en": "Stark sees at once what nobody else has seen. The line stops short of the water. The British can simply walk round it, along the beach."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:stranda",
+                "en": "word:beach"
+              },
+              "do": "place.highlight",
+              "at": "mystic-beach",
+              "tone": "red",
+              "centre": false
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b11",
+          "say": {
+            "no": "Han fører mennene ned dit og bygger en steinmur på noen få minutter. Det er den viktigste muren noen bygde den dagen.",
+            "en": "He takes his men down there and builds a stone wall in a few minutes. It is the most important wall anybody built that day."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "place.clear"
+            },
+            {
+              "on": {
+                "no": "word:steinmur",
+                "en": "word:wall"
+              },
+              "do": "front.show",
+              "id": "stark-wall",
+              "side": "patriot",
+              "facing": -1,
+              "over": 1.6
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s4.b12",
+          "say": {
+            "no": "Klokka to gir Howe ordre om å brenne Charlestown. Skipene skyter brannkuler inn i byen, og den tar fyr.",
+            "en": "At two o'clock Howe orders Charlestown burned. The ships fire incendiary shot into the town, and it catches."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "word:Charlestown",
+              "do": "map.flyTo",
+              "to": "charlestown-town",
+              "zoom": 14.0,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:brannkuler",
+                "en": "word:incendiary"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "times": 3,
+              "spread": 2.0,
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:fyr",
+                "en": "word:catches"
+              },
+              "do": "sound.ambience",
+              "id": "fire",
+              "gainDb": -10
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b13",
+          "say": {
+            "no": "Omtrent to tusen sju hundre mennesker bodde i Charlestown. De fleste hadde alt flyktet. Byen brant ned til grunnen mens slaget pågikk.",
+            "en": "About two thousand seven hundred people lived in Charlestown. Most had already fled. The town burned to the ground while the battle went on."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "image.show",
+              "id": "bunker-hill-attack",
+              "mode": "inset"
+            }
+          ],
+          "gapAfter": 1.65
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": {
+        "no": "Tre ganger opp bakken",
+        "en": "Three times up the hill"
+      },
+      "clock": {
+        "no": "17. juni, kl. 15",
+        "en": "17 June, 3 p.m."
+      },
+      "beats": [
+        {
+          "id": "s5.b1",
+          "say": {
+            "no": "Klokka tre går britene fram.",
+            "en": "At three o'clock the British advance."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "redoubt",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": false,
+              "over": 0.8
+            },
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "breastwork",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": false,
+              "over": 0.8
+            },
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "rail-fence",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": true,
+              "over": 1.0
+            },
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "stark-wall",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": false,
+              "over": 0.8
+            },
+            {
+              "on": "start",
+              "do": "image.hide"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedUrgent",
+              "gainDb": -7
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "17. juni, 15:00",
+                "en": "17 June, 15:00"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "the-line",
+              "zoom": 14.7,
+              "over": 2.5
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "drums",
+              "gainDb": -13
+            }
+          ],
+          "gapAfter": 0.85
+        },
+        {
+          "id": "s5.b2",
+          "say": {
+            "no": "De går oppover i rette rekker, gjennom gress som rekker dem til knærne, i steikende sommervarme, med full oppakning på ryggen.",
+            "en": "They come up the slope in straight ranks, through grass up to their knees, in blazing summer heat, with full packs on their backs."
+          },
+          "cues": [],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s5.b3",
+          "say": {
+            "no": "Bak muren og gjerdet venter amerikanerne. De har lite krutt. Mange har ti eller femten skudd hver, og ikke mer.",
+            "en": "Behind the wall and the fence the Americans are waiting. They have little powder. Many have ten or fifteen rounds each, and no more."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:femten",
+                "en": "word:fifteen"
+              },
+              "do": "stat.show",
+              "value": "10–15",
+              "label": {
+                "no": "skudd per mann",
+                "en": "rounds per man"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s5.b4",
+          "say": {
+            "no": "Ordren som gikk langs linja var enkel. Ikke skyt før du er sikker på at du treffer.",
+            "en": "The order that went along the line was a simple one. Do not fire until you are sure you will hit."
+          },
+          "cues": [],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s5.b5",
+          "say": {
+            "no": "Alle husker den i en annen form. Ikke skyt før du ser det hvite i øynene deres.",
+            "en": "Everybody remembers it in another form. Don't fire till you see the whites of their eyes."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:hvite",
+                "en": "word:whites"
+              },
+              "do": "quote.show",
+              "id": "whites"
+            }
+          ],
+          "gapAfter": 1.55
+        },
+        {
+          "id": "s5.b6",
+          "say": {
+            "no": "Historikere tror i dag at ingen sa det den dagen. Men det som lå bak var helt sant. De hadde ikke krutt nok til å bomme.",
+            "en": "Historians now think nobody said it that day. But what lay behind it was true enough. They had no powder to spare on a miss."
+          },
+          "cues": [
+            {
+              "on": "pct:0.5",
+              "do": "quote.hide"
+            },
+            {
+              "on": "end",
+              "do": "stat.clear"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b7",
+          "say": {
+            "no": "Det britiske eliteinfanteriet går først, langs stranda ved Mystic-elva, i kolonne.",
+            "en": "The British light infantry go first, along the beach by the Mystic river, in column."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:stranda",
+                "en": "word:beach"
+              },
+              "do": "map.flyTo",
+              "to": "mystic-beach",
+              "zoom": 14.6,
+              "over": 2.5
+            },
+            {
+              "on": {
+                "no": "word:kolonne",
+                "en": "word:column"
+              },
+              "do": "route.draw",
+              "id": "flank-attack",
+              "over": 3.0,
+              "fit": false
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s5.b8",
+          "say": {
+            "no": "Stark har satt en påle i bakken hundre fot foran muren. Ingen skyter før britene har passert den.",
+            "en": "Stark has driven a stake into the ground a hundred feet in front of the wall. Nobody fires until the British have passed it."
+          },
+          "cues": [],
+          "gapAfter": 1.05
+        },
+        {
+          "id": "s5.b9",
+          "say": {
+            "no": "Så skyter de.",
+            "en": "Then they fire."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flash"
+            },
+            {
+              "on": "start",
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -6
+            },
+            {
+              "on": "start",
+              "do": "sound.play",
+              "id": "musket",
+              "times": 6,
+              "spread": 1.6,
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s5.b10",
+          "say": {
+            "no": "På under et kvarter ligger nesten hundre av dem igjen på sanda. Angrepet langs stranda kommer aldri lenger.",
+            "en": "In under a quarter of an hour nearly a hundred of them are down on the sand. The attack along the beach never gets any further."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:hundre",
+                "en": "word:hundred"
+              },
+              "do": "stat.show",
+              "value": "96",
+              "label": {
+                "no": "falt på stranda",
+                "en": "down on the beach"
+              },
+              "side": "british"
+            },
+            {
+              "on": "end",
+              "do": "route.clear"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b11",
+          "say": {
+            "no": "Oppe på bakken går det samme veien. Rekkene kommer på seksti meters hold, og hele linja foran dem tar fyr på én gang.",
+            "en": "Up on the hill it goes the same way. The ranks come to sixty metres, and the whole line in front of them goes off at once."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "the-line",
+              "zoom": 14.7,
+              "over": 2.5
+            },
+            {
+              "on": {
+                "no": "word:Rekkene",
+                "en": "word:ranks"
+              },
+              "do": "route.draw",
+              "id": "assault-1",
+              "over": 3.0,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:fyr",
+                "en": "word:off"
+              },
+              "do": "map.flash"
+            },
+            {
+              "on": {
+                "no": "word:fyr",
+                "en": "word:off"
+              },
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -5
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s5.b12",
+          "say": {
+            "no": "Britene går ned igjen. De samler seg nede ved vannet, og de går opp en gang til. De blir slått ned igjen.",
+            "en": "The British go back down. They re-form at the water's edge, and they come up a second time. They are driven down again."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:samler",
+                "en": "word:re-form"
+              },
+              "do": "route.draw",
+              "id": "assault-2",
+              "over": 2.8,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:slått",
+                "en": "word:driven"
+              },
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -6
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b13",
+          "say": {
+            "no": "Nå gjør Howe tre ting. Han lar mennene legge fra seg oppakningen. Han slutter å angripe gjerdet. Og han samler alt han har igjen mot skansen.",
+            "en": "Now Howe does three things. He has the men drop their packs. He stops attacking the fence. And he gathers everything he has left against the redoubt."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:skansen",
+                "en": "word:redoubt"
+              },
+              "do": "route.draw",
+              "id": "assault-3",
+              "over": 3.2,
+              "fit": false
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s5.b14",
+          "say": {
+            "no": "Tredje gang har amerikanerne ikke mer krutt. De skyter det de har igjen, og så slåss de med geværkolber og steiner.",
+            "en": "The third time, the Americans have no powder left. They fire what they still have, and then they fight with musket butts and stones."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:skyter",
+                "en": "word:fire"
+              },
+              "do": "sound.play",
+              "id": "musket",
+              "times": 5,
+              "spread": 2.2,
+              "gainDb": -9
+            }
+          ],
+          "gapAfter": 1.05
+        },
+        {
+          "id": "s5.b15",
+          "say": {
+            "no": "Britene kommer over vollen med bajonett.",
+            "en": "The British come over the wall with the bayonet."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flash"
+            },
+            {
+              "on": "end",
+              "do": "front.hide",
+              "id": "redoubt"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b16",
+          "say": {
+            "no": "Amerikanerne trekker seg ut. Over Bunker Hill, over halsen, med kanonene i ryggen. Det meste av hæren kommer seg unna.",
+            "en": "The Americans pull out. Over Bunker Hill, over the neck, with the guns at their backs. Most of the army gets away."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "front.clear"
+            },
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:trekker",
+                "en": "word:pull"
+              },
+              "do": "route.draw",
+              "id": "american-retreat",
+              "over": 4.5,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:kanonene",
+                "en": "word:guns"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "times": 3,
+              "spread": 2.4,
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.75
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": {
+        "no": "Warren",
+        "en": "Warren"
+      },
+      "clock": {
+        "no": "17. juni, kl. 17",
+        "en": "17 June, 5 p.m."
+      },
+      "beats": [
+        {
+          "id": "s6.b1",
+          "say": {
+            "no": "En av dem som ikke kom seg unna, het Joseph Warren.",
+            "en": "One of the men who did not get away was called Joseph Warren."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "front.show",
+              "id": "redoubt",
+              "side": "patriot",
+              "facing": -1,
+              "fluid": false,
+              "over": 0.8
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -7
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience"
+            },
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dusk"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "breeds-hill",
+              "zoom": 14.7,
+              "over": 3.0
+            },
+            {
+              "on": "word:Warren",
+              "do": "portrait.show",
+              "id": "warren"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s6.b2",
+          "say": {
+            "no": "Warren var lege i Boston, og en av de mest kjente mennene i byen. Det var han som styrte opprøret der etter at de andre lederne hadde rømt.",
+            "en": "Warren was a doctor in Boston, and one of the best known men in the town. It was he who ran the rebellion there after the other leaders had fled."
+          },
+          "cues": [],
+          "gapAfter": 0.95
+        },
+        {
+          "id": "s6.b3",
+          "say": {
+            "no": "Og det var han som sendte Paul Revere av gårde natt til nittende april.",
+            "en": "And it was he who sent Paul Revere out on the night of the nineteenth of April."
+          },
+          "cues": [
+            {
+              "on": "word:Revere",
+              "do": "portrait.show",
+              "id": "revere"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s6.b4",
+          "say": {
+            "no": "Tre dager før slaget var han utnevnt til generalmajor. Papirene hadde ikke rukket å tre i kraft.",
+            "en": "Three days before the battle he had been made a major general. The commission had not yet taken effect."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:generalmajor",
+                "en": "word:general"
+              },
+              "do": "portrait.show",
+              "id": "warren"
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s6.b5",
+          "say": {
+            "no": "Da han kom opp på høyden, tilbød både Putnam og Prescott ham kommandoen. Han takket nei til begge.",
+            "en": "When he came up the hill, both Putnam and Prescott offered him the command. He turned them both down."
+          },
+          "cues": [
+            {
+              "on": "word:Putnam",
+              "do": "portrait.show",
+              "id": "putnam"
+            }
+          ],
+          "gapAfter": 1.05
+        },
+        {
+          "id": "s6.b6",
+          "say": {
+            "no": "Han lånte et gevær og stilte seg i rekka inne i skansen, som menig soldat.",
+            "en": "He borrowed a musket and took his place in the line inside the redoubt, as a private soldier."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:gevær",
+                "en": "word:musket"
+              },
+              "do": "portrait.show",
+              "id": "warren"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s6.b7",
+          "say": {
+            "no": "Han ble skutt i ansiktet helt til slutt, mens de andre trakk seg ut. Han var trettifire år gammel.",
+            "en": "He was shot in the face at the very end, while the others were pulling out. He was thirty-four years old."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:skutt",
+                "en": "word:shot"
+              },
+              "do": "image.show",
+              "id": "trumbull-warren",
+              "mode": "inset"
+            }
+          ],
+          "gapAfter": 1.65
+        },
+        {
+          "id": "s6.b8",
+          "say": {
+            "no": "Britene kastet ham i en grunn grav sammen med de andre. Ti måneder senere, da de hadde forlatt Boston, ble han gravd opp igjen. Han var ikke til å kjenne igjen.",
+            "en": "The British threw him into a shallow grave with the rest. Ten months later, after they had left Boston, he was dug up again. He was past recognising."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "image.hide"
+            }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s6.b9",
+          "say": {
+            "no": "Men Paul Revere var sølvsmed, og han hadde laget to falske tenner til Warren og festet dem med sølvtråd. Han kjente igjen sitt eget arbeid.",
+            "en": "But Paul Revere was a silversmith, and he had made Warren two false teeth and wired them in with silver. He knew his own work."
+          },
+          "cues": [
+            {
+              "on": "word:Revere",
+              "do": "portrait.show",
+              "id": "revere"
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s6.b10",
+          "say": {
+            "no": "Det er den første gangen vi vet om at et menneske ble identifisert på tennene sine.",
+            "en": "It is the first case we know of where a human being was identified from their teeth."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.75
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "title": {
+        "no": "Prisen",
+        "en": "The price"
+      },
+      "clock": {
+        "no": "Etterpå",
+        "en": "Afterwards"
+      },
+      "beats": [
+        {
+          "id": "s7.b1",
+          "say": {
+            "no": "Britene hadde bakken. La oss se på hva den kostet.",
+            "en": "The British had the hill. Let us look at what it cost them."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -8
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": null
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "charlestown",
+              "zoom": 13.4,
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "marker.show",
+              "at": "breeds-hill",
+              "kind": "clash",
+              "side": "british"
+            }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s7.b2",
+          "say": {
+            "no": "Av rundt to tusen to hundre briter som gikk til angrep, ble over tusen skutt. To hundre og tjueseks av dem døde.",
+            "en": "Of the two thousand two hundred British who attacked, over a thousand were shot down. Two hundred and twenty-six of them died."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:skutt",
+                "en": "word:down"
+              },
+              "do": "stat.show",
+              "value": "1054",
+              "label": {
+                "no": "britiske tap",
+                "en": "British casualties"
+              },
+              "side": "british"
+            },
+            {
+              "on": {
+                "no": "word:døde",
+                "en": "word:died"
+              },
+              "do": "stat.show",
+              "value": "226",
+              "label": {
+                "no": "britiske døde",
+                "en": "British dead"
+              },
+              "side": "british"
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s7.b3",
+          "say": {
+            "no": "Det er det største tapet britene hadde i én enkelt kamp i hele krigen. Nitten britiske offiserer døde her, og sekstito ble såret.",
+            "en": "That is the heaviest loss the British took in any single fight of the entire war. Nineteen British officers were killed here, and sixty-two were wounded."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Nitten",
+                "en": "word:Nineteen"
+              },
+              "do": "stat.show",
+              "value": "19",
+              "label": {
+                "no": "offiserer døde",
+                "en": "officers killed"
+              },
+              "side": "british"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s7.b4",
+          "say": {
+            "no": "Amerikanerne mistet rundt fire hundre og femti mann. Hundre og trettiåtte av dem døde.",
+            "en": "The Americans lost around four hundred and fifty men in all. A hundred and thirty-eight of them died."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:femti",
+                "en": "word:fifty"
+              },
+              "do": "stat.show",
+              "value": "450",
+              "label": {
+                "no": "amerikanske tap",
+                "en": "American casualties"
+              },
+              "side": "patriot"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s7.b5",
+          "say": {
+            "no": "Blant de britiske døde var major John Pitcairn. Det var han som red fram foran linja på Lexington Green to måneder tidligere.",
+            "en": "Among the British dead was Major John Pitcairn. He was the man who rode out in front of the line on Lexington Green two months earlier."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "word:Pitcairn",
+              "do": "portrait.show",
+              "id": "pitcairn"
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s7.b6",
+          "say": {
+            "no": "Gage skrev hjem til London at tapet var større enn de kunne bære. Han ble kalt hjem i oktober, og Howe overtok kommandoen.",
+            "en": "Gage wrote home to London that the loss was greater than they could bear. He was recalled in October, and Howe took over the command."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:bære",
+                "en": "word:bear"
+              },
+              "do": "quote.show",
+              "id": "gage-bunker"
+            }
+          ],
+          "gapAfter": 1.55
+        },
+        {
+          "id": "s7.b7",
+          "say": {
+            "no": "Henry Clinton skrev i dagboka si at noen flere slike seire ville gjort slutt på britisk styre i Amerika.",
+            "en": "Henry Clinton wrote in his diary that a few more victories like that one would have ended British rule in America."
+          },
+          "cues": [
+            {
+              "on": "word:Clinton",
+              "do": "quote.show",
+              "id": "clinton"
+            }
+          ],
+          "gapAfter": 1.55
+        },
+        {
+          "id": "s7.b8",
+          "say": {
+            "no": "På den andre siden skrev Nathanael Greene et brev som sa alt. Jeg skulle ønske vi kunne selge dem én ås til, til samme pris.",
+            "en": "On the other side, Nathanael Greene wrote a letter that said all of it. I wish we could sell them another hill at the same price."
+          },
+          "cues": [
+            {
+              "on": "word:Greene",
+              "do": "quote.show",
+              "id": "greene"
+            }
+          ],
+          "gapAfter": 1.65
+        },
+        {
+          "id": "s7.b9",
+          "say": {
+            "no": "To dager før slaget hadde Kongressen i Philadelphia valgt en øverstkommanderende for den nye hæren. Han var på vei nordover da nyheten møtte ham på veien.",
+            "en": "Two days before the battle, Congress in Philadelphia had chosen a commander in chief for the new army. He was riding north when the news met him on the road."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "word:Philadelphia",
+              "do": "map.fitPlaces",
+              "places": [
+                "boston",
+                "philadelphia"
+              ],
+              "over": 4.0
+            },
+            {
+              "on": {
+                "no": "word:hæren",
+                "en": "word:army"
+              },
+              "do": "portrait.show",
+              "id": "washington"
+            }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s7.b10",
+          "say": {
+            "no": "Mennene på den bakken kom fra tre kolonier: Massachusetts, New Hampshire og Connecticut. Ingen hadde beordret dem til å møte opp.",
+            "en": "The men on that hill came from three colonies: Massachusetts, New Hampshire and Connecticut. Nobody had ordered them to turn out."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "word:Massachusetts",
+              "do": "region.show",
+              "names": [
+                "Massachusetts",
+                "New Hampshire",
+                "Connecticut"
+              ],
+              "side": "patriot",
+              "over": 2.5
+            }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s7.b11",
+          "say": {
+            "no": "Britene lærte at bøndene kom til å slåss. Amerikanerne lærte noe større.",
+            "en": "The British learned that the farmers would fight. The Americans learned something bigger."
+          },
+          "cues": [],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s7.b12",
+          "say": {
+            "no": "De tapte bakken. Men de hadde funnet ut hvordan denne krigen kunne vinnes. Ikke ved å slå britene, men ved å gjøre hver eneste seier for dyr.",
+            "en": "They lost the hill. But they had worked out how this war could be won. Not by beating the British, but by making every single victory cost too much."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "sound.music"
+            }
+          ],
+          "gapAfter": 2.0
+        }
+      ]
+    }
+  ]
+}
