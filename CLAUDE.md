@@ -207,6 +207,18 @@ believes it snaps back on every frame of the drag. `player.now()` runs on the ti
 seek is in flight — and only trusts the element when it has a timeline at all, because a file
 that failed to load reports 0 for ever.
 
+**SSML does not work with `edge-tts`, and fails out loud.** Tags are escaped into the text,
+so `<emphasis level="strong">four</emphasis>` is spoken as *"emphasis level equals strong four
+emphasis"* — and the tag words land in the word list, so the captions show them too. The only
+prosody controls are the voice, the `rate`, and the wording itself.
+
+**The number rule does not cover English homophones.** Writing numbers as words fixes how they
+are *read*, not how they are *heard*: "a war fought across four continents" came out with
+`four` held for 75 ms, which is function-word length, and in British English an unstressed
+`four` and `for` are the same sound. Rewording to "on four continents at once" gives the number
+somewhere to lean and 125 ms. `edge-tts` reports a duration per word, so this is measurable —
+a cardinal under about 100 ms is being swallowed.
+
 **Modern boundaries are wrong for history.** The framework ships modern admin boundaries
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was
 disputed, and West Virginia did not exist. A historical pack overrides with its own
