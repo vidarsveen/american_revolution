@@ -1,6 +1,7 @@
 {
   "caesar-death": {
     "file": "caesar-death.jpg",
+    "fit": "cover",
     "title": {
       "no": "Cæsars død",
       "en": "The Death of Caesar"
@@ -12,6 +13,7 @@
   },
   "senate": {
     "file": "senate.jpg",
+    "fit": "cover",
     "title": {
       "no": "Senatet i Roma",
       "en": "The senate at Rome"
@@ -23,6 +25,7 @@
   },
   "forum": {
     "file": "forum.jpg",
+    "fit": "cover",
     "title": {
       "no": "Forum Romanum",
       "en": "The Roman Forum"
@@ -34,6 +37,7 @@
   },
   "actium": {
     "file": "actium.jpg",
+    "fit": "cover",
     "title": {
       "no": "Slaget ved Actium",
       "en": "The Battle of Actium"
@@ -45,6 +49,7 @@
   },
   "colosseum": {
     "file": "colosseum.jpg",
+    "fit": "cover",
     "title": {
       "no": "Roma",
       "en": "Rome"
@@ -56,6 +61,7 @@
   },
   "nile": {
     "file": "nile.jpg",
+    "fit": "cover",
     "title": {
       "no": "Nilen",
       "en": "The Nile"
@@ -67,6 +73,7 @@
   },
   "legion": {
     "file": "legion.jpg",
+    "fit": "cover",
     "title": {
       "no": "Legionærer på marsj",
       "en": "Legionaries on the march"
@@ -78,6 +85,7 @@
   },
   "caesar-funeral": {
     "file": "caesar-funeral.jpg",
+    "fit": "cover",
     "title": {
       "no": "Antonius taler over Cæsars lik",
       "en": "Antony speaks over Caesar's body"
@@ -89,6 +97,7 @@
   },
   "triumph": {
     "file": "triumph.jpg",
+    "fit": "cover",
     "title": {
       "no": "Et romersk triumftog",
       "en": "A Roman triumph"
@@ -100,6 +109,7 @@
   },
   "proscriptions": {
     "file": "proscriptions.jpg",
+    "fit": "cover",
     "title": {
       "no": "Fulvia med Ciceros hode",
       "en": "Fulvia with Cicero's head"
@@ -111,6 +121,7 @@
   },
   "philippi": {
     "file": "philippi.jpg",
+    "fit": "cover",
     "title": {
       "no": "Brutus og Cassius faller ved Filippi",
       "en": "Brutus and Cassius fall at Philippi"
@@ -122,6 +133,7 @@
   },
   "siege": {
     "file": "siege.jpg",
+    "fit": "cover",
     "title": {
       "no": "Romerne beleirer en by",
       "en": "Romans besieging a town"
@@ -133,6 +145,7 @@
   },
   "cleopatra-death": {
     "file": "cleopatra-death.jpg",
+    "fit": "cover",
     "title": {
       "no": "Kleopatras død",
       "en": "The death of Cleopatra"
@@ -144,6 +157,7 @@
   },
   "denarius": {
     "file": "denarius.jpg",
+    "fit": "contain",
     "title": {
       "no": "Denar med Octavians ansikt",
       "en": "A denarius with Octavian's face"
@@ -155,6 +169,7 @@
   },
   "augustus-statue": {
     "file": "augustus-statue.jpg",
+    "fit": "contain",
     "title": {
       "no": "Augustus fra Prima Porta",
       "en": "The Augustus of Prima Porta"
@@ -166,6 +181,7 @@
   },
   "res-gestae": {
     "file": "res-gestae.jpg",
+    "fit": "contain",
     "title": {
       "no": "Res Gestae, hugget i tempelveggen i Ankara",
       "en": "The Res Gestae, cut into the temple wall at Ankara"
@@ -177,6 +193,7 @@
   },
   "pantheon": {
     "file": "pantheon.jpg",
+    "fit": "cover",
     "title": {
       "no": "Pantheon, bygd av Agrippa",
       "en": "The Pantheon, built by Agrippa"
@@ -188,6 +205,7 @@
   },
   "appia": {
     "file": "appia.jpg",
+    "fit": "cover",
     "title": {
       "no": "Via Appia utenfor Roma",
       "en": "The Via Appia outside Rome"
@@ -199,6 +217,7 @@
   },
   "teutoburg": {
     "file": "teutoburg.jpg",
+    "fit": "cover",
     "title": {
       "no": "Slaget i Teutoburgerskogen",
       "en": "The battle in the Teutoburg Forest"
@@ -210,6 +229,7 @@
   },
   "mausoleum": {
     "file": "mausoleum.jpg",
+    "fit": "cover",
     "title": {
       "no": "Augustus' mausoleum",
       "en": "The mausoleum of Augustus"

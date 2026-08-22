@@ -116,6 +116,82 @@ READABLE = {
 }
 
 
+# How long a still picture can hold the whole screen before it stops being a
+# shot and starts being a wall. Measured, not guessed: the Lexington engraving
+# was up for 120 SECONDS over a map that was carrying the narration, because
+# the show had no matching hide and the scene ran on for ten more beats.
+#
+# The other end of the same defect is a plate shown so late in its scene that
+# the scene wipe takes it away before anyone sees it -- which reads as a span
+# of zero or less, and is a picture nobody ever gets.
+PLATE_CEILING = 34.0
+
+
+def check_plates_hold(chapter, timings, langs):
+    """Every plate's real time on screen, including the ones with no hide.
+
+    check_overlays_readable only measures show->hide pairs. A plate can also
+    end by being REPLACED by another plate, or by its scene ending, and those
+    are exactly the cases that produced the two-minute stills.
+    """
+    found = []
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            st = tm["scenes"].get(scene["id"])
+            if not st:
+                continue
+            # The scene's own duration. Beats carry `start` and `dur`, not an
+            # `end` -- reading a key that is not there returned None, fell back
+            # to the last beat's START, and reported every closing plate as
+            # shown after the scene finished. The first run of this check was
+            # wrong before any chapter was.
+            scene_end = st.get("dur") or 0
+
+            events = []
+            for beat in scene["beats"]:
+                tb = timing_beat(tm, scene["id"], beat["id"])
+                for cue in beat.get("cues", []):
+                    if cue["do"] not in ("plate.show", "plate.hide"):
+                        continue
+                    at = cue_time(cue, tb, lang)
+                    if at is not None:
+                        events.append((at, cue, beat["id"]))
+            events.sort(key=lambda e: e[0])
+
+            open_at = open_id = open_beat = None
+
+            def close(end):
+                if open_at is None:
+                    return
+                span = end - open_at
+                if span <= 0.5:
+                    found.append(
+                        f"{open_beat}: '{lang}' plate '{open_id}' is shown "
+                        f"{-span:.1f}s after its scene ends — the wipe takes it "
+                        f"away and nobody ever sees it.")
+                elif span > PLATE_CEILING:
+                    found.append(
+                        f"{open_beat}: '{lang}' plate '{open_id}' holds the whole "
+                        f"screen for {span:.0f}s, over {PLATE_CEILING:.0f}s — the map "
+                        f"is blocked that long. Add a plate.hide, or a second picture.")
+
+            for at, cue, bid in events:
+                if cue["do"] == "plate.show":
+                    if open_id is not None and open_id != cue.get("id"):
+                        close(at)
+                        open_at = open_id = open_beat = None
+                    if open_id != cue.get("id"):
+                        open_at, open_id, open_beat = at, cue.get("id"), bid
+                else:
+                    close(at)
+                    open_at = open_id = open_beat = None
+            close(scene_end)
+    return found
+
+
 def check_overlays_readable(chapter, timings, langs):
     found = []
     for lang in langs:
@@ -301,6 +377,7 @@ def main():
 
     problems.extend(check_animations_finish(chapter, timings, langs))
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
+    problems.extend(check_plates_hold(chapter, timings, langs) or [])
 
     # totals
     print(f"{len(chapter['scenes'])} scenes, {n_beats} beats, {n_cues} cues "

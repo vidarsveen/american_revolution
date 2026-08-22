@@ -108,6 +108,12 @@ export function showPlate(cue, instant) {
     imgEl.alt = pick(m.title) || '';
     capEl.innerHTML = creditFor(m);
   }
+  // A wide stage crops a tall picture, and for a map or a coin the crop is
+  // the whole point of the picture. media.json carries a fit worked out from
+  // the image's own shape; a cue may override it. Measured before it was
+  // fixed: the 1205x1800 plan of Boston was showing 38% of itself.
+  const fit = cue.fit || m.fit || 'cover';
+  root.classList.toggle('is-contain', fit === 'contain');
   // Aim the zoom at what matters. A face is rarely in the middle of a frame.
   imgEl.style.transformOrigin = `${(fx * 100).toFixed(1)}% ${(fy * 100).toFixed(1)}%`;
   root.style.setProperty('--plate-dim', String(cue.dim ?? 0));

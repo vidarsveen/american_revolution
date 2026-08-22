@@ -1045,7 +1045,13 @@
             "no": "Britene hadde ikke folk nok til å holde begge to, og amerikanerne hadde nesten ingen kanoner å sette der.",
             "en": "The British did not have men enough to hold both, and the Americans had almost no cannon to put on them."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
+            }
+          ],
           "gapAfter": 1.15
         },
         {
@@ -1103,11 +1109,6 @@
               "do": "sound.ambience",
               "id": "crowd",
               "gainDb": -15
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.15
@@ -2241,6 +2242,11 @@
               },
               "do": "quote.show",
               "id": "whites"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.55
@@ -2289,11 +2295,6 @@
               "id": "flank-attack",
               "over": 3.0,
               "fit": false
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.15
@@ -2498,6 +2499,11 @@
               "times": 5,
               "spread": 2.2,
               "gainDb": -9
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.05
@@ -2556,11 +2562,6 @@
               "times": 3,
               "spread": 2.4,
               "gainDb": -11
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.75

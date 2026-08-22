@@ -2805,6 +2805,11 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "how-we-know"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.5
@@ -2816,10 +2821,6 @@
             "en": "The rest of the fleet surrenders. His army, nineteen legions, waits a few days and then goes over to Octavian."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "plate.hide"
-            },
             {
               "on": "start",
               "do": "route.clear"

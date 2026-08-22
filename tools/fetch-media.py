@@ -42,6 +42,32 @@ MAX_W = 1800
 # fetch produced 230 KB faces next to the 30 KB ones already shipped.
 MAX_PORTRAIT_W = 640
 
+# A plate fills a wide stage with object-fit: cover, which crops whatever does
+# not fit. That is right for a painting -- you lose some sky -- and wrong for
+# anything where the whole frame IS the information. Measured on what shipped:
+# a 1205x1800 plan of Boston showed 38% of itself and then slowly zoomed into
+# that, which is not a map, it is a texture.
+#
+# So the fit is derived from the picture rather than remembered by a person:
+# anything far from the stage ratio is letterboxed. A source entry may still
+# say `"fit": "contain"` outright, for the cases a ratio cannot judge -- a
+# 4:3 MAP needs its edges even though a 4:3 painting does not.
+STAGE_AR = 16 / 9
+# 0.62 is where the measurement put the cliff, not a round number: the five
+# pictures below it keep 38-53% and are unreadable, the next one up keeps
+# 66% and is a perfectly good wide scene with some sky gone.
+FIT_FLOOR = 0.62
+
+
+def fit_for(size, explicit=None):
+    if explicit in ("cover", "contain"):
+        return explicit
+    w, h = size
+    ar = w / h
+    keep = ar / STAGE_AR if ar < STAGE_AR else STAGE_AR / ar
+    return "contain" if keep < FIT_FLOOR else "cover"
+
+
 
 def api(params):
     url = API + "?" + urllib.parse.urlencode({**params, "format": "json", "formatversion": "2"})
@@ -162,6 +188,7 @@ def main():
 
             media[mid] = {
                 "file": fname,
+                "fit": fit_for(im.size, spec.get("fit")),
                 "title": spec.get("title", {}),
                 "year": spec.get("year") or meta["year"],
                 "artist": spec.get("artist") or meta["artist"],

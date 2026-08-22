@@ -391,6 +391,11 @@
             {
               "on": "end",
               "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.0
@@ -409,13 +414,6 @@
                 "no": "23 f.Kr.",
                 "en": "23 BC"
               }
-            },
-            {
-              "on": {
-                "no": "word:frisk",
-                "en": "word:recovers"
-              },
-              "do": "plate.hide"
             }
           ],
           "gapAfter": 1.2
@@ -672,6 +670,11 @@
               },
               "do": "portrait.show",
               "id": "agrippa"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.1
@@ -1567,6 +1570,11 @@
                 "en": "years old"
               },
               "side": "roman"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.2
@@ -1647,11 +1655,6 @@
               },
               "do": "portrait.show",
               "id": "livia"
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.2
@@ -2248,6 +2251,11 @@
               },
               "do": "quote.show",
               "id": "res-gestae-open"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 2.4
@@ -2282,10 +2290,6 @@
             "en": "Tiberius took over without anyone revolting. That was the proof that what Augustus had built was a system and not a man."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "plate.hide"
-            },
             {
               "on": {
                 "no": "word:Tiberius",

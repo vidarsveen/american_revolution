@@ -1,6 +1,7 @@
 {
   "doolittle-1": {
     "file": "doolittle-1.jpg",
+    "fit": "cover",
     "title": {
       "no": "Slaget ved Lexington, plate I",
       "en": "The Battle of Lexington, Plate I"
@@ -12,6 +13,7 @@
   },
   "doolittle-2": {
     "file": "doolittle-2.jpg",
+    "fit": "cover",
     "title": {
       "no": "Utsikt over Concord, plate II",
       "en": "A View of the Town of Concord, Plate II"
@@ -23,6 +25,7 @@
   },
   "doolittle-3": {
     "file": "doolittle-3.jpg",
+    "fit": "cover",
     "title": {
       "no": "Kampen ved North Bridge, plate III",
       "en": "The Engagement at the North Bridge, Plate III"
@@ -34,6 +37,7 @@
   },
   "doolittle-4": {
     "file": "doolittle-4.jpg",
+    "fit": "cover",
     "title": {
       "no": "Percys unnsetning ved Lexington, plate IV",
       "en": "Percy's Relief at Lexington, Plate IV"
@@ -45,6 +49,7 @@
   },
   "old-north": {
     "file": "old-north.jpg",
+    "fit": "contain",
     "title": {
       "no": "Tårnet på Old North Church",
       "en": "The tower of the Old North Church"
@@ -56,6 +61,7 @@
   },
   "bunker-hill-attack": {
     "file": "bunker-hill-attack.jpg",
+    "fit": "cover",
     "title": {
       "no": "Angrepet på Bunker Hill, mens Charlestown brenner",
       "en": "The attack on Bunker's Hill, with Charlestown burning"
@@ -67,6 +73,7 @@
   },
   "trumbull-warren": {
     "file": "trumbull-warren.jpg",
+    "fit": "cover",
     "title": {
       "no": "General Warrens død ved Bunker Hill",
       "en": "The Death of General Warren at the Battle of Bunker's Hill"
@@ -78,6 +85,7 @@
   },
   "join-or-die": {
     "file": "join-or-die.jpg",
+    "fit": "cover",
     "title": {
       "no": "Bli med, eller dø",
       "en": "Join, or Die"
@@ -89,6 +97,7 @@
   },
   "stamp-act": {
     "file": "stamp-act.jpg",
+    "fit": "cover",
     "title": {
       "no": "Stempelavgiftens begravelse",
       "en": "The funeral of the Stamp Act"
@@ -100,6 +109,7 @@
   },
   "boston-1768": {
     "file": "boston-1768.jpg",
+    "fit": "cover",
     "title": {
       "no": "Britiske tropper går i land i Boston",
       "en": "British troops landing at Boston"
@@ -111,6 +121,7 @@
   },
   "tea-party": {
     "file": "tea-party.jpg",
+    "fit": "cover",
     "title": {
       "no": "Teselskapet i Boston",
       "en": "The Boston Tea Party"
@@ -122,6 +133,7 @@
   },
   "boston-massacre": {
     "file": "boston-massacre.jpg",
+    "fit": "contain",
     "title": {
       "no": "Massakren i Boston",
       "en": "The Boston Massacre"
@@ -133,6 +145,7 @@
   },
   "siege-map": {
     "file": "siege-map.jpg",
+    "fit": "contain",
     "title": {
       "no": "Boston med skansene rundt",
       "en": "Boston with the works around it"
@@ -144,6 +157,7 @@
   },
   "bunker-hill-plan": {
     "file": "bunker-hill-plan.jpg",
+    "fit": "contain",
     "title": {
       "no": "Clintons egen plan over slaget",
       "en": "Clinton's own plan of the battle"
@@ -155,6 +169,7 @@
   },
   "charlestown-burning": {
     "file": "charlestown-burning.jpg",
+    "fit": "cover",
     "title": {
       "no": "Charlestown brenner",
       "en": "Charlestown burning"
@@ -166,6 +181,7 @@
   },
   "bunker-hill-assault": {
     "file": "bunker-hill-assault.jpg",
+    "fit": "cover",
     "title": {
       "no": "Opp bakken, tredje gang",
       "en": "Up the hill, the third time"
@@ -177,6 +193,7 @@
   },
   "washington-cambridge": {
     "file": "washington-cambridge.jpg",
+    "fit": "cover",
     "title": {
       "no": "Washington overtar kommandoen",
       "en": "Washington takes command"

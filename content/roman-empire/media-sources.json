@@ -158,7 +158,8 @@
   "title": {
    "no": "Res Gestae, hugget i tempelveggen i Ankara",
    "en": "The Res Gestae, cut into the temple wall at Ankara"
-  }
+  },
+  "fit": "contain"
  },
  "pantheon": {
   "commons": "File:The Pantheon exterior (Veduta del Pantheon d'Agrippa oggi Chiesa di S. Maria ad Martyres) MET DP828229.jpg",

@@ -1140,6 +1140,11 @@
               "do": "term.mark",
               "kind": "term",
               "id": "tax"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.0
@@ -1402,6 +1407,11 @@
             {
               "on": "end",
               "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ]
         },
@@ -1440,11 +1450,6 @@
               "at": "concord",
               "tone": "gold",
               "centre": false
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 0.95
@@ -2121,6 +2126,11 @@
               "on": "word:Parker",
               "do": "portrait.show",
               "id": "parker"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.25
@@ -2746,6 +2756,11 @@
               "times": 2,
               "spread": 0.7,
               "gainDb": -5
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ]
         },
@@ -2804,10 +2819,6 @@
             "en": "The British at the bridge lose three men in two minutes, and run. It is the first time that day that British soldiers turn."
           },
           "cues": [
-            {
-              "on": "end",
-              "do": "plate.hide"
-            },
             {
               "on": "start",
               "do": "quote.hide"
@@ -3019,6 +3030,11 @@
               "on": "word:Bloody",
               "do": "map.flyTo",
               "to": "bloody-angle"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.45
@@ -3139,6 +3155,11 @@
               "at": "menotomy",
               "tone": "red",
               "centre": false
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 0.9
@@ -3186,10 +3207,6 @@
             "en": "At sunset the remains of the column get across to Charlestown, under the guns of the warships."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "plate.hide"
-            },
             {
               "on": "start",
               "do": "map.mood",

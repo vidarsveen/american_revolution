@@ -1124,6 +1124,15 @@
   object-fit: cover;
   will-change: transform;
 }
+/* Letterboxed: the whole picture, on a quiet field. Used where cropping would
+   throw away the information -- a map, a coin, an inscription. The drift still
+   runs, just over a picture that is entirely there. */
+.stage-plate.is-contain .plate__img { object-fit: contain; }
+.stage-plate.is-contain { background: var(--paper-sunken); }
+/* No floor gradient under a letterboxed plate: it would darken the bar rather
+   than the picture, and there is no bright sky to protect a caption from. */
+.stage-plate.is-contain .plate__fig::after { display: none; }
+
 /* Darkens the picture so words over it stay readable, only when asked. */
 .plate__dim {
   position: absolute;
