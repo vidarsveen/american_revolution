@@ -1,143 +1,304 @@
 {
- "//": [
-  "Prose about a place. The geometry — coords, zoom, label — stays in the",
-  "chapter, because that is what the camera needs. The reading lives here so",
-  "two chapters can share one Rome without either of them owning it.",
-  "Keyed by the same ids the chapter uses in `places`."
- ],
-
- "roma": {
-  "name": { "no": "Roma", "en": "Rome" },
-  "hook": {
-   "no": "En million mennesker, uten politi, uten brannvesen, og med gratis korn til to hundre tusen av dem.",
-   "en": "A million people, with no police, no fire brigade, and free grain for two hundred thousand of them."
+  "//": [
+    "Prose about a place. The geometry — coords, zoom, label — stays in the",
+    "chapter, because that is what the camera needs. The reading lives here so",
+    "two chapters can share one Rome without either of them owning it.",
+    "Keyed by the same ids the chapter uses in `places`."
+  ],
+  "roma": {
+    "name": {
+      "no": "Roma",
+      "en": "Rome"
+    },
+    "hook": {
+      "no": "En million mennesker, uten politi, uten brannvesen, og med gratis korn til to hundre tusen av dem.",
+      "en": "A million people, with no police, no fire brigade, and free grain for two hundred thousand of them."
+    },
+    "body": {
+      "no": "Roma i førtifire før Kristus var trolig den største byen verden hadde sett. Anslagene ligger rundt én million, og ingen vet sikkert.\n\nDe fleste bodde i insulae, leiegårder i fire–fem etasjer, bygd av mursten og tre. De brant ofte og falt av og til sammen. Vann kom fra offentlige fontener, ikke fra leiligheten.\n\nDet fantes ingen politistyrke. Orden ble holdt av gjenger, klienter og til slutt av soldater. Når kildene sier at «folkemengden» gjorde noe, snakker de om en reell politisk kraft — det var mengden som drev drapsmennene ut av byen etter Cæsars begravelse.",
+      "en": "Rome in forty-four before Christ was probably the largest city the world had seen. The estimates run around a million, and nobody knows for certain.\n\nMost people lived in insulae, tenement blocks four or five storeys high, built of brick and timber. They burned often and occasionally fell down. Water came from public fountains, not from the flat.\n\nThere was no police force. Order was kept by gangs, by patronage, and in the end by soldiers. When the sources say 'the crowd' did something, they mean a real political force — it was the crowd that drove the assassins out of the city after Caesar's funeral."
+    },
+    "fact": {
+      "no": "Augustus skrøt av at han fant Roma i mursten og etterlot den i marmor. Det var stort sett fasadene.",
+      "en": "Augustus boasted that he found Rome brick and left it marble. Mostly that meant the facings."
+    },
+    "wiki": {
+      "no": "Roma",
+      "en": "Rome"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "grain-and-bread"
+      },
+      {
+        "kind": "topic",
+        "id": "roman-slavery"
+      }
+    ]
   },
-  "body": {
-   "no": "Roma i førtifire før Kristus var trolig den største byen verden hadde sett. Anslagene ligger rundt én million, og ingen vet sikkert.\n\nDe fleste bodde i insulae, leiegårder i fire–fem etasjer, bygd av mursten og tre. De brant ofte og falt av og til sammen. Vann kom fra offentlige fontener, ikke fra leiligheten.\n\nDet fantes ingen politistyrke. Orden ble holdt av gjenger, klienter og til slutt av soldater. Når kildene sier at «folkemengden» gjorde noe, snakker de om en reell politisk kraft — det var mengden som drev drapsmennene ut av byen etter Cæsars begravelse.",
-   "en": "Rome in forty-four before Christ was probably the largest city the world had seen. The estimates run around a million, and nobody knows for certain.\n\nMost people lived in insulae, tenement blocks four or five storeys high, built of brick and timber. They burned often and occasionally fell down. Water came from public fountains, not from the flat.\n\nThere was no police force. Order was kept by gangs, by patronage, and in the end by soldiers. When the sources say 'the crowd' did something, they mean a real political force — it was the crowd that drove the assassins out of the city after Caesar's funeral."
+  "alexandria": {
+    "name": {
+      "no": "Alexandria",
+      "en": "Alexandria"
+    },
+    "hook": {
+      "no": "Grunnlagt av Aleksander, styrt av grekere, og den eneste byen som kunne måle seg med Roma.",
+      "en": "Founded by Alexander, ruled by Greeks, and the only city that could stand comparison with Rome."
+    },
+    "body": {
+      "no": "Alexandria var Egypts hovedstad og Middelhavets rikeste havn. Herfra gikk kornet som holdt Roma i live, og her lå biblioteket og museet der gresk vitenskap ble drevet videre.\n\nByen var gresk, ikke egyptisk. Ptolemeerne, som styrte i tre hundre år, snakket gresk; Kleopatra skal ha vært den første av dem som lærte seg egyptisk.\n\nDa Octavian tok byen i tretti før Kristus, ble Egypt ikke en vanlig provins. Det ble hans personlige eiendom, og ingen senator fikk lov til å sette sin fot der uten tillatelse.",
+      "en": "Alexandria was Egypt's capital and the richest harbour on the Mediterranean. From here went the grain that kept Rome alive, and here stood the library and the museum where Greek learning carried on.\n\nThe city was Greek, not Egyptian. The Ptolemies, who ruled for three hundred years, spoke Greek; Cleopatra is said to have been the first of them who learned Egyptian.\n\nWhen Octavian took the city in thirty before Christ, Egypt did not become an ordinary province. It became his personal property, and no senator was allowed to set foot there without permission."
+    },
+    "fact": {
+      "no": "Fyrtårnet på Pharos sto fortsatt. Det var over hundre meter høyt og et av verdens sju underverker.",
+      "en": "The lighthouse on Pharos was still standing. It was over a hundred metres tall and one of the seven wonders."
+    },
+    "wiki": {
+      "no": "Alexandria",
+      "en": "Alexandria"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "cleopatra"
+      },
+      {
+        "kind": "topic",
+        "id": "grain-and-bread"
+      }
+    ]
   },
-  "fact": {
-   "no": "Augustus skrøt av at han fant Roma i mursten og etterlot den i marmor. Det var stort sett fasadene.",
-   "en": "Augustus boasted that he found Rome brick and left it marble. Mostly that meant the facings."
+  "actium": {
+    "name": {
+      "no": "Actium",
+      "en": "Actium"
+    },
+    "hook": {
+      "no": "Et nes ved innløpet til en bukt. Slaget som avgjorde hvem som skulle styre verden, tok en ettermiddag.",
+      "en": "A headland at the mouth of a gulf. The battle that decided who would rule the world took one afternoon."
+    },
+    "body": {
+      "no": "Actium ligger der en smal åpning slipper havet inn i den ambrakiske bukta, på vestkysten av Hellas. Antonius' flåte lå inne i bukta. Agrippas lå utenfor og sperret.\n\nDet avgjørende skjedde før slaget. Agrippa hadde tatt forsyningslinjene, og gjennom sommeren sultet og sykdom herjet leiren innenfor. Da flåten endelig rykket ut andre september, var den underbemannet og hadde brent noen av sine egne skip fordi det ikke var folk til å ro dem.\n\nSlaget var altså avgjort av en blokade, ikke av en manøver. Det er ofte slik med sjøslag, og sjelden slik de blir fortalt.",
+      "en": "Actium sits where a narrow opening lets the sea into the Ambracian Gulf, on the west coast of Greece. Antony's fleet lay inside the gulf. Agrippa's lay outside, blocking it.\n\nThe decisive part happened before the battle. Agrippa had taken the supply lines, and through the summer hunger and sickness went through the camp inside. When the fleet finally came out on the second of September it was undermanned, and had burned some of its own ships because there were not enough men to row them.\n\nSo the battle was settled by a blockade, not by a manoeuvre. That is often true of sea battles, and seldom how they are told."
+    },
+    "fact": {
+      "no": "Augustus grunnla en by like ved og kalte den Nikopolis — «seiersbyen». Ruinene ligger der ennå.",
+      "en": "Augustus founded a city next to it and called it Nicopolis — 'victory city'. The ruins are still there."
+    },
+    "wiki": {
+      "no": "Slaget ved Actium",
+      "en": "Battle of Actium"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "agrippa"
+      },
+      {
+        "kind": "topic",
+        "id": "propaganda"
+      }
+    ]
   },
-  "wiki": { "no": "Roma", "en": "Rome" },
-  "seeAlso": [
-   { "kind": "topic", "id": "grain-and-bread" },
-   { "kind": "topic", "id": "roman-slavery" }
-  ]
- },
-
- "alexandria": {
-  "name": { "no": "Alexandria", "en": "Alexandria" },
-  "hook": {
-   "no": "Grunnlagt av Aleksander, styrt av grekere, og den eneste byen som kunne måle seg med Roma.",
-   "en": "Founded by Alexander, ruled by Greeks, and the only city that could stand comparison with Rome."
+  "philippi": {
+    "name": {
+      "no": "Filippi",
+      "en": "Philippi"
+    },
+    "hook": {
+      "no": "Her døde den siste hæren som kjempet for republikken, i to slag tre uker fra hverandre.",
+      "en": "Here died the last army that fought for the republic, in two battles three weeks apart."
+    },
+    "body": {
+      "no": "Filippi lå i Makedonia, ved veien som bandt øst til vest. Sletta mellom fjellene og myra var stedet der Brutus og Cassius valgte å stå.\n\nDet første slaget var uavgjort og kaotisk. Cassius, som ikke kunne se hva som skjedde på den andre fløyen, trodde alt var tapt og lot en frigitt slave drepe seg. Brutus hadde faktisk slått Octavian samtidig.\n\nTre uker senere tapte Brutus det andre slaget og gjorde det samme. Etter Filippi fantes det ingen hær igjen som kjempet for republikken — bare hærer som kjempet for menn.",
+      "en": "Philippi lay in Macedonia, on the road that tied east to west. The plain between the mountains and the marsh was where Brutus and Cassius chose to stand.\n\nThe first battle was indecisive and confused. Cassius, who could not see what was happening on the other wing, believed all was lost and had a freedman kill him. Brutus had in fact beaten Octavian at the same moment.\n\nThree weeks later Brutus lost the second battle and did the same. After Philippi there was no army left fighting for the republic — only armies fighting for men."
+    },
+    "fact": {
+      "no": "Octavian var syk begge dagene og ble båret ut av leiren. Antonius vant slaget. Historien husker det motsatt.",
+      "en": "Octavian was ill on both days and had to be carried out of camp. Antony won the battle. History remembers it the other way round."
+    },
+    "wiki": {
+      "no": "Slaget ved Filippi",
+      "en": "Battle of Philippi"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "brutus"
+      },
+      {
+        "kind": "topic",
+        "id": "roman-army"
+      }
+    ]
   },
-  "body": {
-   "no": "Alexandria var Egypts hovedstad og Middelhavets rikeste havn. Herfra gikk kornet som holdt Roma i live, og her lå biblioteket og museet der gresk vitenskap ble drevet videre.\n\nByen var gresk, ikke egyptisk. Ptolemeerne, som styrte i tre hundre år, snakket gresk; Kleopatra skal ha vært den første av dem som lærte seg egyptisk.\n\nDa Octavian tok byen i tretti før Kristus, ble Egypt ikke en vanlig provins. Det ble hans personlige eiendom, og ingen senator fikk lov til å sette sin fot der uten tillatelse.",
-   "en": "Alexandria was Egypt's capital and the richest harbour on the Mediterranean. From here went the grain that kept Rome alive, and here stood the library and the museum where Greek learning carried on.\n\nThe city was Greek, not Egyptian. The Ptolemies, who ruled for three hundred years, spoke Greek; Cleopatra is said to have been the first of them who learned Egyptian.\n\nWhen Octavian took the city in thirty before Christ, Egypt did not become an ordinary province. It became his personal property, and no senator was allowed to set foot there without permission."
+  "brundisium": {
+    "name": {
+      "no": "Brundisium",
+      "en": "Brundisium"
+    },
+    "hook": {
+      "no": "Italias dør mot øst. Alt som skulle til Hellas, gikk herfra.",
+      "en": "Italy's door to the east. Everything bound for Greece went from here."
+    },
+    "body": {
+      "no": "Brundisium hadde den beste naturlige havna på Italias hæl, og der endte Via Appia — hovedveien fra Roma. Skulle du til Hellas, Asia eller Egypt, gikk du om bord her.\n\nDerfor er byen et vendepunkt to ganger i denne fortellingen. Octavian går i land her i førtifire, på vei mot Roma for å kreve arven sin. Og i førti ligger de to hærene her og ser på hverandre til soldatene nekter å slåss.\n\nAvtalen som ble inngått her ga Antonius øst og Octavian vest, og holdt i ni år.",
+      "en": "Brundisium had the best natural harbour on Italy's heel, and there the Via Appia ended — the main road from Rome. If you were going to Greece, Asia or Egypt, you boarded here.\n\nThat makes the town a turning point twice in this story. Octavian lands here in forty-four, on his way to Rome to claim his inheritance. And in forty the two armies lie here watching each other until the soldiers refuse to fight.\n\nThe agreement made here gave Antony the east and Octavian the west, and held for nine years."
+    },
+    "wiki": {
+      "no": "Brindisi",
+      "en": "Brindisi"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "roman-marriage"
+      },
+      {
+        "kind": "person",
+        "id": "antony"
+      }
+    ]
   },
-  "fact": {
-   "no": "Fyrtårnet på Pharos sto fortsatt. Det var over hundre meter høyt og et av verdens sju underverker.",
-   "en": "The lighthouse on Pharos was still standing. It was over a hundred metres tall and one of the seven wonders."
+  "apollonia": {
+    "name": {
+      "no": "Apollonia",
+      "en": "Apollonia"
+    },
+    "hook": {
+      "no": "En skoleby på den andre siden av havet. Her fikk en nittenåring beskjed om at onkelen var drept.",
+      "en": "A university town across the water. Here a nineteen-year-old was told his great-uncle had been killed."
+    },
+    "body": {
+      "no": "Apollonia lå i Illyria, på kysten av dagens Albania, og var en gresk by med et godt rykte som studiested. Octavian var der vinteren førtifem–førtifire for å studere retorikk og gresk, og for å vente på Cæsars felttog mot partherne.\n\nDet var også der Cæsars hær samlet seg. Da nyheten om drapet kom, tilbød offiserene ham legionene. Han takket nei, og dro til Italia med bare noen få følgesvenner.\n\nDet var trolig den viktigste avgjørelsen han tok. En nittenåring som kom til Italia i spissen for en hær, ville vært en fiende av staten fra dag én.",
+      "en": "Apollonia lay in Illyria, on the coast of modern Albania, a Greek city with a reputation as a place to study. Octavian was there over the winter of forty-five and forty-four to work on rhetoric and Greek, and to wait for Caesar's Parthian campaign.\n\nIt was also where Caesar's army was gathering. When news of the murder came, the officers offered him the legions. He turned them down, and went to Italy with only a few companions.\n\nIt was probably the most important decision he made. A nineteen-year-old arriving in Italy at the head of an army would have been an enemy of the state from the first day."
+    },
+    "wiki": {
+      "no": "Apollonia (Illyria)",
+      "en": "Apollonia (Illyria)"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "octavian"
+      },
+      {
+        "kind": "person",
+        "id": "agrippa"
+      }
+    ]
   },
-  "wiki": { "no": "Alexandria", "en": "Alexandria" },
-  "seeAlso": [
-   { "kind": "person", "id": "cleopatra" },
-   { "kind": "topic", "id": "grain-and-bread" }
-  ]
- },
-
- "actium": {
-  "name": { "no": "Actium", "en": "Actium" },
-  "hook": {
-   "no": "Et nes ved innløpet til en bukt. Slaget som avgjorde hvem som skulle styre verden, tok en ettermiddag.",
-   "en": "A headland at the mouth of a gulf. The battle that decided who would rule the world took one afternoon."
+  "perusia": {
+    "name": {
+      "no": "Perusia",
+      "en": "Perusia"
+    },
+    "hook": {
+      "no": "En by som sultet gjennom vinteren og brant om våren. Den delen av historien blir sjelden fortalt.",
+      "en": "A town that starved through the winter and burned in the spring. That part of the story is rarely told."
+    },
+    "body": {
+      "no": "Perusia, dagens Perugia, ligger på en høyde i Umbria. Vinteren førtien–førti holdt Antonius' bror Lucius og kona Fulvia byen mot Octavian, som svar på jordkonfiskasjonene.\n\nOctavian gravde en voll rundt hele fjellet og ventet. Byen sultet. Da den overga seg, sparte han lederne og lot byrådet henrette. Byen brant ned, om det var med vilje eller ikke.\n\nDette er den siden av Octavian propagandaen senere pusset bort. Han var tjuetre år og allerede en mann som kunne sitte utenfor en by og vente på at den skulle sulte.",
+      "en": "Perusia, modern Perugia, sits on a hill in Umbria. Over the winter of forty-one and forty, Antony's brother Lucius and his wife Fulvia held the town against Octavian, in answer to the land confiscations.\n\nOctavian dug a rampart around the whole hill and waited. The town starved. When it surrendered he spared the leaders and had the town council executed. The town burned, whether deliberately or not.\n\nThis is the side of Octavian the later propaganda polished away. He was twenty-three, and already a man who could sit outside a town and wait for it to starve."
+    },
+    "wiki": {
+      "no": "Perusinerkrigen",
+      "en": "Perusine War"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "roman-army"
+      },
+      {
+        "kind": "topic",
+        "id": "propaganda"
+      }
+    ]
   },
-  "body": {
-   "no": "Actium ligger der en smal åpning slipper havet inn i den ambrakiske bukta, på vestkysten av Hellas. Antonius' flåte lå inne i bukta. Agrippas lå utenfor og sperret.\n\nDet avgjørende skjedde før slaget. Agrippa hadde tatt forsyningslinjene, og gjennom sommeren sultet og sykdom herjet leiren innenfor. Da flåten endelig rykket ut andre september, var den underbemannet og hadde brent noen av sine egne skip fordi det ikke var folk til å ro dem.\n\nSlaget var altså avgjort av en blokade, ikke av en manøver. Det er ofte slik med sjøslag, og sjelden slik de blir fortalt.",
-   "en": "Actium sits where a narrow opening lets the sea into the Ambracian Gulf, on the west coast of Greece. Antony's fleet lay inside the gulf. Agrippa's lay outside, blocking it.\n\nThe decisive part happened before the battle. Agrippa had taken the supply lines, and through the summer hunger and sickness went through the camp inside. When the fleet finally came out on the second of September it was undermanned, and had burned some of its own ships because there were not enough men to row them.\n\nSo the battle was settled by a blockade, not by a manoeuvre. That is often true of sea battles, and seldom how they are told."
+  "nola": {
+    "name": {
+      "no": "Nola",
+      "en": "Nola"
+    },
+    "short": {
+      "no": "Småbyen sør for Napoli der Augustus døde, i det samme rommet som faren hans.",
+      "en": "The small town south of Naples where Augustus died, in the same room as his father."
+    },
+    "body": {
+      "no": "Nola var en gammel by i Campania, uten særlig betydning i seg selv. Augustus hadde et familiehus der.\n\nSveton forteller at han døde i det samme rommet som faren hadde dødd i, syttiseks år gammel, den nittende august år 14. Han hadde vært på reise, og var blitt syk underveis.\n\nLivia holdt dødsfallet hemmelig i noen timer, sier kildene, til Tiberius var kommet fram. Om det er sant eller en historie som ble laget senere, er ikke mulig å avgjøre.",
+      "en": "Nola was an old town in Campania, of no great importance in itself. Augustus had a family house there.\n\nSuetonius reports that he died in the same room his father had died in, aged seventy-six, on the nineteenth of August in the year 14. He had been travelling, and had fallen ill on the way.\n\nLivia kept the death quiet for some hours, the sources say, until Tiberius had arrived. Whether that is true or a story made up later cannot be settled."
+    }
   },
-  "fact": {
-   "no": "Augustus grunnla en by like ved og kalte den Nikopolis — «seiersbyen». Ruinene ligger der ennå.",
-   "en": "Augustus founded a city next to it and called it Nicopolis — 'victory city'. The ruins are still there."
+  "ancyra": {
+    "name": {
+      "no": "Ancyra",
+      "en": "Ancyra"
+    },
+    "short": {
+      "no": "Dagens Ankara. Her står den nesten komplette kopien av Res Gestae.",
+      "en": "Ankara today. Here stands the almost complete copy of the Res Gestae."
+    },
+    "body": {
+      "no": "Ancyra var hovedstad i provinsen Galatia. Da Augustus døde, ble teksten hans hugget inn i veggene på tempelet for Roma og Augustus i byen – latin på den ene siden, gresk på den andre.\n\nBronsetavlene i Roma er for lengst smeltet om. Denne veggen står. Nesten alt vi kan lese av Res Gestae i dag, kommer herfra.\n\nDet er verdt å tenke over: den viktigste selvframstillingen fra antikken har overlevd fordi den ble kopiert til provinsen, ikke fordi den ble tatt vare på i hovedstaden.",
+      "en": "Ancyra was the capital of the province of Galatia. When Augustus died, his text was cut into the walls of the temple of Rome and Augustus in the city – Latin on one side, Greek on the other.\n\nThe bronze tablets in Rome were melted down long ago. This wall stands. Almost everything we can read of the Res Gestae today comes from here.\n\nIt is worth a thought: the most important piece of self-presentation from antiquity survived because it was copied to the provinces, not because it was looked after in the capital."
+    }
   },
-  "wiki": { "no": "Slaget ved Actium", "en": "Battle of Actium" },
-  "seeAlso": [
-   { "kind": "person", "id": "agrippa" },
-   { "kind": "topic", "id": "propaganda" }
-  ]
- },
-
- "philippi": {
-  "name": { "no": "Filippi", "en": "Philippi" },
-  "hook": {
-   "no": "Her døde den siste hæren som kjempet for republikken, i to slag tre uker fra hverandre.",
-   "en": "Here died the last army that fought for the republic, in two battles three weeks apart."
+  "teutoburg": {
+    "name": {
+      "no": "Teutoburgerskogen",
+      "en": "The Teutoburg Forest"
+    },
+    "short": {
+      "no": "Tre legioner forsvant her på fire dager, og grensen ble stående ved Rhinen i fire hundre år.",
+      "en": "Three legions vanished here in four days, and the frontier stayed on the Rhine for four hundred years."
+    },
+    "body": {
+      "no": "I nesten to tusen år visste ingen nøyaktig hvor slaget sto. Navnet kommer fra Tacitus, som skriver saltus Teutoburgiensis, og det kunne bety nesten hvor som helst i Nordvest-Tyskland.\n\nI 1987 fant en britisk offiser med metalldetektor romerske slyngkuler og mynter ved Kalkriese, nord for Osnabrück. Utgravningene der har siden funnet en menneskelaget voll, beinrester og utstyr som ble ødelagt med vilje.\n\nStedet passer med det kildene beskriver: en smal passasje mellom myr og bakke, der en kolonne ikke kan snu og en legion ikke kan stille opp.",
+      "en": "For nearly two thousand years nobody knew exactly where the battle was. The name comes from Tacitus, who writes saltus Teutoburgiensis, and it could have meant almost anywhere in north-west Germany.\n\nIn 1987 a British officer with a metal detector found Roman sling bullets and coins at Kalkriese, north of Osnabrück. Excavations there have since found a man-made rampart, human remains and equipment deliberately destroyed.\n\nThe site fits what the sources describe: a narrow passage between marsh and slope, where a column cannot turn and a legion cannot form up."
+    }
   },
-  "body": {
-   "no": "Filippi lå i Makedonia, ved veien som bandt øst til vest. Sletta mellom fjellene og myra var stedet der Brutus og Cassius valgte å stå.\n\nDet første slaget var uavgjort og kaotisk. Cassius, som ikke kunne se hva som skjedde på den andre fløyen, trodde alt var tapt og lot en frigitt slave drepe seg. Brutus hadde faktisk slått Octavian samtidig.\n\nTre uker senere tapte Brutus det andre slaget og gjorde det samme. Etter Filippi fantes det ingen hær igjen som kjempet for republikken — bare hærer som kjempet for menn.",
-   "en": "Philippi lay in Macedonia, on the road that tied east to west. The plain between the mountains and the marsh was where Brutus and Cassius chose to stand.\n\nThe first battle was indecisive and confused. Cassius, who could not see what was happening on the other wing, believed all was lost and had a freedman kill him. Brutus had in fact beaten Octavian at the same moment.\n\nThree weeks later Brutus lost the second battle and did the same. After Philippi there was no army left fighting for the republic — only armies fighting for men."
+  "rhodos": {
+    "name": {
+      "no": "Rhodos",
+      "en": "Rhodes"
+    },
+    "short": {
+      "no": "Øya der arvingen til riket satt i sju år og nektet å forklare hvorfor.",
+      "en": "The island where the heir to the empire sat for seven years and refused to explain why."
+    },
+    "body": {
+      "no": "Rhodos var en gresk øy med gammel og god utdanning, et sted romerske overklassesønner dro for å studere.\n\nDa Tiberius dro dit i år 6 f.Kr., var han på toppen av karrieren: general, konsul, gift med Augustus' datter. Han la fra seg alt sammen og ble borte i sju år.\n\nKildene gir flere forklaringer – han var lei av Julia, han ville ikke stå i veien for Augustus' unge barnebarn, han var rett og slett utbrent. Ingen av dem kan bekreftes, og alle er skrevet lenge etterpå.",
+      "en": "Rhodes was a Greek island with an old and good tradition of education, a place where upper-class Roman sons went to study.\n\nWhen Tiberius went there in 6 BC he was at the top of his career: general, consul, married to the daughter of Augustus. He put all of it down and disappeared for seven years.\n\nThe sources offer several explanations – he was sick of Julia, he did not want to stand in the way of Augustus's young grandsons, he was simply worn out. None can be confirmed, and all were written long afterwards."
+    }
   },
-  "fact": {
-   "no": "Octavian var syk begge dagene og ble båret ut av leiren. Antonius vant slaget. Historien husker det motsatt.",
-   "en": "Octavian was ill on both days and had to be carried out of camp. Antony won the battle. History remembers it the other way round."
+  "pandateria": {
+    "name": {
+      "no": "Pandateria",
+      "en": "Pandateria"
+    },
+    "short": {
+      "no": "Den vesle øya utenfor Napoli der Augustus lot sin egen datter bli innesperret.",
+      "en": "The small island off Naples where Augustus had his own daughter confined."
+    },
+    "body": {
+      "no": "Pandateria – i dag Ventotene – er under to kvadratkilometer stor. Den ligger langt nok fra land til at ingen svømmer, og nær nok til at maten kommer fram.\n\nJulia ble sendt hit i år 2 f.Kr. Vilkårene var strenge: ingen vin, ingen mannlige besøkende uten fars tillatelse. Moren hennes fulgte frivillig med.\n\nØya ble brukt til det samme igjen og igjen. Både Agrippina den eldre og Octavia, Neros kone, ble sendt hit og døde der. To tusen år senere brukte Mussolini den til politiske fanger.",
+      "en": "Pandateria – Ventotene today – is under two square kilometres. It lies far enough from land that nobody swims it, and near enough that food arrives.\n\nJulia was sent here in 2 BC. The terms were strict: no wine, no male visitors without her father's permission. Her mother went with her voluntarily.\n\nThe island was used the same way again and again. Agrippina the Elder and Octavia, the wife of Nero, were both sent here and died there. Two thousand years later Mussolini used it for political prisoners."
+    }
   },
-  "wiki": { "no": "Slaget ved Filippi", "en": "Battle of Philippi" },
-  "seeAlso": [
-   { "kind": "person", "id": "brutus" },
-   { "kind": "topic", "id": "roman-army" }
-  ]
- },
-
- "brundisium": {
-  "name": { "no": "Brundisium", "en": "Brundisium" },
-  "hook": {
-   "no": "Italias dør mot øst. Alt som skulle til Hellas, gikk herfra.",
-   "en": "Italy's door to the east. Everything bound for Greece went from here."
-  },
-  "body": {
-   "no": "Brundisium hadde den beste naturlige havna på Italias hæl, og der endte Via Appia — hovedveien fra Roma. Skulle du til Hellas, Asia eller Egypt, gikk du om bord her.\n\nDerfor er byen et vendepunkt to ganger i denne fortellingen. Octavian går i land her i førtifire, på vei mot Roma for å kreve arven sin. Og i førti ligger de to hærene her og ser på hverandre til soldatene nekter å slåss.\n\nAvtalen som ble inngått her ga Antonius øst og Octavian vest, og holdt i ni år.",
-   "en": "Brundisium had the best natural harbour on Italy's heel, and there the Via Appia ended — the main road from Rome. If you were going to Greece, Asia or Egypt, you boarded here.\n\nThat makes the town a turning point twice in this story. Octavian lands here in forty-four, on his way to Rome to claim his inheritance. And in forty the two armies lie here watching each other until the soldiers refuse to fight.\n\nThe agreement made here gave Antony the east and Octavian the west, and held for nine years."
-  },
-  "wiki": { "no": "Brindisi", "en": "Brindisi" },
-  "seeAlso": [
-   { "kind": "topic", "id": "roman-marriage" },
-   { "kind": "person", "id": "antony" }
-  ]
- },
-
- "apollonia": {
-  "name": { "no": "Apollonia", "en": "Apollonia" },
-  "hook": {
-   "no": "En skoleby på den andre siden av havet. Her fikk en nittenåring beskjed om at onkelen var drept.",
-   "en": "A university town across the water. Here a nineteen-year-old was told his great-uncle had been killed."
-  },
-  "body": {
-   "no": "Apollonia lå i Illyria, på kysten av dagens Albania, og var en gresk by med et godt rykte som studiested. Octavian var der vinteren førtifem–førtifire for å studere retorikk og gresk, og for å vente på Cæsars felttog mot partherne.\n\nDet var også der Cæsars hær samlet seg. Da nyheten om drapet kom, tilbød offiserene ham legionene. Han takket nei, og dro til Italia med bare noen få følgesvenner.\n\nDet var trolig den viktigste avgjørelsen han tok. En nittenåring som kom til Italia i spissen for en hær, ville vært en fiende av staten fra dag én.",
-   "en": "Apollonia lay in Illyria, on the coast of modern Albania, a Greek city with a reputation as a place to study. Octavian was there over the winter of forty-five and forty-four to work on rhetoric and Greek, and to wait for Caesar's Parthian campaign.\n\nIt was also where Caesar's army was gathering. When news of the murder came, the officers offered him the legions. He turned them down, and went to Italy with only a few companions.\n\nIt was probably the most important decision he made. A nineteen-year-old arriving in Italy at the head of an army would have been an enemy of the state from the first day."
-  },
-  "wiki": { "no": "Apollonia (Illyria)", "en": "Apollonia (Illyria)" },
-  "seeAlso": [
-   { "kind": "person", "id": "octavian" },
-   { "kind": "person", "id": "agrippa" }
-  ]
- },
-
- "perusia": {
-  "name": { "no": "Perusia", "en": "Perusia" },
-  "hook": {
-   "no": "En by som sultet gjennom vinteren og brant om våren. Den delen av historien blir sjelden fortalt.",
-   "en": "A town that starved through the winter and burned in the spring. That part of the story is rarely told."
-  },
-  "body": {
-   "no": "Perusia, dagens Perugia, ligger på en høyde i Umbria. Vinteren førtien–førti holdt Antonius' bror Lucius og kona Fulvia byen mot Octavian, som svar på jordkonfiskasjonene.\n\nOctavian gravde en voll rundt hele fjellet og ventet. Byen sultet. Da den overga seg, sparte han lederne og lot byrådet henrette. Byen brant ned, om det var med vilje eller ikke.\n\nDette er den siden av Octavian propagandaen senere pusset bort. Han var tjuetre år og allerede en mann som kunne sitte utenfor en by og vente på at den skulle sulte.",
-   "en": "Perusia, modern Perugia, sits on a hill in Umbria. Over the winter of forty-one and forty, Antony's brother Lucius and his wife Fulvia held the town against Octavian, in answer to the land confiscations.\n\nOctavian dug a rampart around the whole hill and waited. The town starved. When it surrendered he spared the leaders and had the town council executed. The town burned, whether deliberately or not.\n\nThis is the side of Octavian the later propaganda polished away. He was twenty-three, and already a man who could sit outside a town and wait for it to starve."
-  },
-  "wiki": { "no": "Perusinerkrigen", "en": "Perusine War" },
-  "seeAlso": [
-   { "kind": "topic", "id": "roman-army" },
-   { "kind": "topic", "id": "propaganda" }
-  ]
- }
+  "germania": {
+    "name": {
+      "no": "Germania",
+      "en": "Germania"
+    },
+    "short": {
+      "no": "Landet mellom Rhinen og Elben, som Roma erobret på papiret og mistet i en skog.",
+      "en": "The land between the Rhine and the Elbe, which Rome conquered on paper and lost in a forest."
+    },
+    "body": {
+      "no": "Romerne hadde ført krig øst for Rhinen i tjue år før år 9, og regnet området som i ferd med å bli provins. Det var leirer, veier og markeder der, og romerske skatteinnkrevere var begynt å arbeide.\n\nEtter Teutoburgerskogen ble grensen trukket tilbake til Rhinen. Senere felttog gikk inn igjen og vant slag, men ingen forsøkte å gjøre landet om til provins på nytt.\n\nDet er en av de få gangene vi kan peke på en uke og si at kartet ble stående slik i fire hundre år på grunn av den.",
+      "en": "The Romans had campaigned east of the Rhine for twenty years before the year 9, and treated the region as a province in the making. There were camps, roads and markets there, and Roman tax collectors had started work.\n\nAfter the Teutoburg Forest the frontier was pulled back to the Rhine. Later campaigns went in again and won battles, but nobody tried to make the country a province again.\n\nIt is one of the few times we can point at a single week and say the map stayed that way for four hundred years because of it."
+    }
+  }
 }

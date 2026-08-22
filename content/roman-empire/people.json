@@ -1,274 +1,441 @@
 [
- {
-  "id": "octavian",
-  "side": "caesarian",
-  "lived": "63 f.Kr.–14 e.Kr.",
-  "name": {
-   "no": "Octavian",
-   "en": "Octavian"
+  {
+    "id": "octavian",
+    "side": "caesarian",
+    "lived": "63 f.Kr.–14 e.Kr.",
+    "name": {
+      "no": "Octavian",
+      "en": "Octavian"
+    },
+    "role": {
+      "no": "Cæsars adoptivsønn, senere Augustus",
+      "en": "Caesar's adopted son, later Augustus"
+    },
+    "hook": {
+      "no": "Nitten år gammel, uten hær og uten embete. Han arvet et navn, og det viste seg å være nok.",
+      "en": "Nineteen years old, with no army and no office. He inherited a name, and it turned out to be enough."
+    },
+    "body": {
+      "no": "Gaius Octavius var Cæsars grandnevø, og studerte i Apollonia da beskjeden kom om at onkelen var drept. Testamentet gjorde ham til arving og adoptivsønn.\n\nHan var syk, ung og uerfaren, og alle undervurderte ham. Cicero skrev at gutten burde «roses, heves og fjernes». Fjorten år senere sto Cicero på proskripsjonslista, og gutten satt igjen alene med hele romerriket.",
+      "en": "Gaius Octavius was Caesar's great-nephew, studying at Apollonia when word came that his uncle had been killed. The will made him heir and adopted son.\n\nHe was sickly, young and untried, and everyone underestimated him. Cicero wrote that the boy should be 'praised, raised and removed'. Fourteen years later Cicero was on the proscription list, and the boy was left holding the whole Roman world."
+    },
+    "fact": {
+      "no": "Han tok navnet Augustus først i 27 f.Kr., da han var trettifem. Fram til da het han bare Cæsar.",
+      "en": "He only took the name Augustus in 27 BC, at thirty-five. Until then he simply called himself Caesar."
+    },
+    "wiki": {
+      "no": "Augustus",
+      "en": "Augustus"
+    },
+    "portrait": "octavian.jpg",
+    "portraitNote": {
+      "no": "Augustus fra Prima Porta — en statue laget for å vise makt, ikke et portrett. Foto: Justin Benttinen · CC BY-SA 4.0",
+      "en": "The Prima Porta Augustus — a statue made to show power, not a portrait. Photo: Justin Benttinen · CC BY-SA 4.0"
+    }
   },
-  "role": {
-   "no": "Cæsars adoptivsønn, senere Augustus",
-   "en": "Caesar's adopted son, later Augustus"
+  {
+    "id": "caesar",
+    "side": "caesarian",
+    "lived": "100–44 f.Kr.",
+    "name": {
+      "no": "Julius Cæsar",
+      "en": "Julius Caesar"
+    },
+    "role": {
+      "no": "Diktator på livstid",
+      "en": "Dictator for life"
+    },
+    "hook": {
+      "no": "Drept av sine egne i senatet, med et testamente ingen ventet.",
+      "en": "Killed by his own in the senate, leaving a will nobody expected."
+    },
+    "body": {
+      "no": "Cæsar hadde vunnet borgerkrigen, tilgitt fiendene sine og latt seg utnevne til diktator på livstid. Det siste var for mye: en romer kunne tåle en mektig mann, men ikke en som aldri skulle gi fra seg makten.\n\nHan ble drept femtende mars 44 f.Kr. Testamentet, åpnet noen dager senere, gjorde en nittenåring de fleste aldri hadde hørt om til hans sønn og arving.",
+      "en": "Caesar had won the civil war, pardoned his enemies and had himself made dictator for life. That last was too much: a Roman could stomach a powerful man, but not one who would never give the power back.\n\nHe was killed on the fifteenth of March, 44 BC. The will, opened a few days later, made a nineteen-year-old most people had never heard of his son and heir."
+    },
+    "fact": {
+      "no": "«Et tu, Brute?» er Shakespeare. Sveton siterer noe annet — på gresk — og tviler selv på at han sa noe i det hele tatt.",
+      "en": "'Et tu, Brute?' is Shakespeare. Suetonius quotes something else — in Greek — and doubts himself that Caesar said anything at all."
+    },
+    "wiki": {
+      "no": "Julius Cæsar",
+      "en": "Julius Caesar"
+    },
+    "portrait": "caesar.jpg",
+    "portraitNote": {
+      "no": "Romersk byste. Ingen sikker samtidig avbildning av Cæsar finnes. Foto: Ángel M. Felicísimo from Mérida, España · Public domain",
+      "en": "A Roman bust. No certain likeness of Caesar made in his lifetime survives. Photo: Ángel M. Felicísimo from Mérida, España · Public domain"
+    }
   },
-  "hook": {
-   "no": "Nitten år gammel, uten hær og uten embete. Han arvet et navn, og det viste seg å være nok.",
-   "en": "Nineteen years old, with no army and no office. He inherited a name, and it turned out to be enough."
+  {
+    "id": "antony",
+    "side": "antonian",
+    "lived": "83–30 f.Kr.",
+    "name": {
+      "no": "Marcus Antonius",
+      "en": "Mark Antony"
+    },
+    "role": {
+      "no": "Cæsars nestkommanderende, triumvir",
+      "en": "Caesar's second-in-command, triumvir"
+    },
+    "hook": {
+      "no": "Den erfarne generalen som skulle arvet alt, og som fikk øst i stedet.",
+      "en": "The seasoned general who should have inherited everything, and got the east instead."
+    },
+    "body": {
+      "no": "Antonius var konsul da Cæsar døde, og den soleklare arvtakeren: en voksen mann, en dyktig soldat, elsket av veteranene. Så viste det seg at testamentet pekte et annet sted.\n\nDe neste tretten årene var Octavian og Antonius vekselvis allierte og fiender. De delte riket mellom seg, giftet Antonius med Octavians søster for å holde freden, og endte med å møtes ved Actium.",
+      "en": "Antony was consul when Caesar died, and the obvious successor: a grown man, a capable soldier, loved by the veterans. Then the will pointed somewhere else.\n\nFor the next thirteen years Antony and Octavian were allies and enemies by turns. They split the empire between them, married Antony to Octavian's sister to keep the peace, and ended up facing each other at Actium."
+    },
+    "fact": {
+      "no": "Han holdt liktalen over Cæsar. Den gjorde folkemengden så rasende at drapsmennene måtte flykte fra Roma.",
+      "en": "He gave the funeral speech over Caesar. It made the crowd angry enough that the killers had to flee Rome."
+    },
+    "wiki": {
+      "no": "Marcus Antonius",
+      "en": "Mark Antony"
+    },
+    "portrait": "antony.jpg",
+    "portraitNote": {
+      "no": "Marmorbyste, Vatikanmuseet. Identifiseringen er sannsynlig, ikke sikker. Foto: Bust: unknown ancient Roman artist of the 1st century AD; photo: unknown photographer. · CC BY-SA 4.0",
+      "en": "Marble bust, Vatican Museums. The identification is likely, not certain. Photo: Bust: unknown ancient Roman artist of the 1st century AD; photo: unknown photographer. · CC BY-SA 4.0"
+    }
   },
-  "body": {
-   "no": "Gaius Octavius var Cæsars grandnevø, og studerte i Apollonia da beskjeden kom om at onkelen var drept. Testamentet gjorde ham til arving og adoptivsønn.\n\nHan var syk, ung og uerfaren, og alle undervurderte ham. Cicero skrev at gutten burde «roses, heves og fjernes». Fjorten år senere sto Cicero på proskripsjonslista, og gutten satt igjen alene med hele romerriket.",
-   "en": "Gaius Octavius was Caesar's great-nephew, studying at Apollonia when word came that his uncle had been killed. The will made him heir and adopted son.\n\nHe was sickly, young and untried, and everyone underestimated him. Cicero wrote that the boy should be 'praised, raised and removed'. Fourteen years later Cicero was on the proscription list, and the boy was left holding the whole Roman world."
+  {
+    "id": "cleopatra",
+    "side": "ptolemaic",
+    "lived": "69–30 f.Kr.",
+    "name": {
+      "no": "Kleopatra",
+      "en": "Cleopatra"
+    },
+    "role": {
+      "no": "Dronning av Egypt",
+      "en": "Queen of Egypt"
+    },
+    "hook": {
+      "no": "Hersker over det rikeste landet ved Middelhavet, og den siste i sitt dynasti.",
+      "en": "Ruler of the richest country on the Mediterranean, and the last of her line."
+    },
+    "body": {
+      "no": "Kleopatra den sjuende var gresk, ikke egyptisk — etterkommer av en av Aleksanders generaler. Egypt var Romas kornkammer, og den som kontrollerte Nilen kontrollerte hva Roma spiste.\n\nHun allierte seg først med Cæsar, siden med Antonius. Romersk propaganda gjorde henne til en forførerske som stjal en romersk general. Det er en enklere historie enn den sanne, som handler om korn, penger og flåter.",
+      "en": "Cleopatra VII was Greek, not Egyptian — descended from one of Alexander's generals. Egypt was Rome's granary, and whoever held the Nile held what Rome ate.\n\nShe allied first with Caesar, then with Antony. Roman propaganda turned her into a seductress who stole a Roman general. That is a simpler story than the true one, which is about grain, money and fleets."
+    },
+    "fact": {
+      "no": "Slangen er sannsynligvis en legende. Sveton sier «to små stikk» og innrømmer at ingen så det skje.",
+      "en": "The asp is probably a legend. Suetonius says 'two small punctures' and admits nobody saw it happen."
+    },
+    "wiki": {
+      "no": "Kleopatra VII",
+      "en": "Cleopatra"
+    },
+    "portrait": "cleopatra.jpg",
+    "portraitNote": {
+      "no": "Byste i Berlin. Mynter viser henne med kraftigere trekk enn denne. Foto: Louis le Grand · Public domain",
+      "en": "A bust in Berlin. Coins show her with stronger features than this. Photo: Louis le Grand · Public domain"
+    }
   },
-  "fact": {
-   "no": "Han tok navnet Augustus først i 27 f.Kr., da han var trettifem. Fram til da het han bare Cæsar.",
-   "en": "He only took the name Augustus in 27 BC, at thirty-five. Until then he simply called himself Caesar."
+  {
+    "id": "brutus",
+    "side": "liberatores",
+    "lived": "85–42 f.Kr.",
+    "name": {
+      "no": "Brutus",
+      "en": "Brutus"
+    },
+    "role": {
+      "no": "Senator, en av drapsmennene",
+      "en": "Senator, one of the assassins"
+    },
+    "hook": {
+      "no": "Cæsar hadde tilgitt ham og forfremmet ham. Han drepte ham likevel.",
+      "en": "Caesar had pardoned him and promoted him. He killed him anyway."
+    },
+    "body": {
+      "no": "Marcus Junius Brutus hadde kjempet mot Cæsar i borgerkrigen, blitt tilgitt, og fått embeter av ham. Slekten hans skulle etter sigende ha kastet ut Romas siste konge fire hundre år tidligere, og det navnet var tungt å bære.\n\nHan og Cassius trodde at når tyrannen var borte, ville republikken komme tilbake av seg selv. Den gjorde ikke det. De tapte ved Filippi to år senere, og tok sitt eget liv.",
+      "en": "Marcus Junius Brutus had fought against Caesar in the civil war, been pardoned, and given office by him. His family was said to have thrown out Rome's last king four hundred years earlier, and that name was a heavy thing to carry.\n\nHe and Cassius believed that once the tyrant was gone the republic would return by itself. It did not. They lost at Philippi two years later, and killed themselves."
+    },
+    "fact": {
+      "no": "Han slo mynter med sitt eget ansikt på — akkurat det Cæsar var blitt hatet for.",
+      "en": "He struck coins with his own face on them — the very thing Caesar had been hated for."
+    },
+    "wiki": {
+      "no": "Marcus Junius Brutus",
+      "en": "Marcus Junius Brutus"
+    },
+    "portrait": "brutus.jpg",
+    "portraitNote": {
+      "no": "Kalt «Brutus», men ingen vet sikkert hvem bysten forestiller. Foto: Jamie Heath · CC BY-SA 2.0",
+      "en": "Called 'Brutus', though nobody is certain who the bust shows. Photo: Jamie Heath · CC BY-SA 2.0"
+    }
   },
-  "wiki": {
-   "no": "Augustus",
-   "en": "Augustus"
+  {
+    "id": "cicero",
+    "side": "senate",
+    "lived": "106–43 f.Kr.",
+    "name": {
+      "no": "Cicero",
+      "en": "Cicero"
+    },
+    "role": {
+      "no": "Taler og senator",
+      "en": "Orator and senator"
+    },
+    "hook": {
+      "no": "Republikkens beste stemme. Han satset på den unge Octavian, og tok feil.",
+      "en": "The republic's finest voice. He backed the young Octavian, and was wrong."
+    },
+    "body": {
+      "no": "Cicero brukte året etter drapet på å angripe Antonius i tale etter tale, og på å bygge opp Octavian som motvekt. Planen var å bruke gutten og så sette ham til side.\n\nDa Octavian og Antonius i stedet ble enige, var Cicero det første navnet Antonius krevde på lista. Han ble drept i desember 43 f.Kr. Hodet og hendene ble stilt ut på talerstolen i Roma.",
+      "en": "Cicero spent the year after the murder attacking Antony in speech after speech, and building up Octavian as a counterweight. The plan was to use the boy and then set him aside.\n\nWhen Octavian and Antony came to terms instead, Cicero was the first name Antony demanded on the list. He was killed in December 43 BC. His head and hands were displayed on the speaker's platform in Rome."
+    },
+    "fact": {
+      "no": "Han skrev at gutten burde «roses, heves og fjernes». Octavian fikk vite om setningen.",
+      "en": "He wrote that the boy should be 'praised, raised and removed'. Octavian heard about the line."
+    },
+    "wiki": {
+      "no": "Marcus Tullius Cicero",
+      "en": "Cicero"
+    },
+    "portrait": "cicero.jpg",
+    "portraitNote": {
+      "no": "Byste fra det første århundre f.Kr., Kapitolmuseet. Foto: José Luiz · CC BY-SA 4.0",
+      "en": "A first-century BC bust, Capitoline Museums. Photo: José Luiz · CC BY-SA 4.0"
+    }
   },
-  "portrait": "octavian.jpg",
-  "portraitNote": {
-   "no": "Augustus fra Prima Porta — en statue laget for å vise makt, ikke et portrett. Foto: Justin Benttinen · CC BY-SA 4.0",
-   "en": "The Prima Porta Augustus — a statue made to show power, not a portrait. Photo: Justin Benttinen · CC BY-SA 4.0"
+  {
+    "id": "lepidus",
+    "side": "caesarian",
+    "lived": "89–13 f.Kr.",
+    "name": {
+      "no": "Lepidus",
+      "en": "Lepidus"
+    },
+    "role": {
+      "no": "Den tredje triumviren",
+      "en": "The third triumvir"
+    },
+    "hook": {
+      "no": "Han delte riket med de to andre, og er den ingen husker.",
+      "en": "He split the empire with the other two, and is the one nobody remembers."
+    },
+    "body": {
+      "no": "Marcus Aemilius Lepidus hadde soldatene som gjorde triumviratet mulig, og fikk Africa da riket ble delt. Han var alltid den svakeste av de tre.\n\nI 36 f.Kr. forsøkte han å ta Sicilia for seg selv. Octavian gikk inn i leiren hans alene, og legionene gikk over til ham. Lepidus fikk beholde livet og tittelen som øversteprest, og levde tjuetre år til uten makt.",
+      "en": "Marcus Aemilius Lepidus had the soldiers that made the triumvirate possible, and got Africa when the empire was divided. He was always the weakest of the three.\n\nIn 36 BC he tried to take Sicily for himself. Octavian walked into his camp alone, and the legions went over to him. Lepidus kept his life and his title as chief priest, and lived another twenty-three years with no power at all."
+    },
+    "wiki": {
+      "no": "Marcus Aemilius Lepidus (triumvir)",
+      "en": "Marcus Aemilius Lepidus (triumvir)"
+    },
+    "fact": {
+      "no": "Han beholdt tittelen øversteprest i tjuetre år etter at makten var borte. Octavian overtok den først da Lepidus døde.",
+      "en": "He kept the title of chief priest for twenty-three years after the power was gone. Octavian took it only when Lepidus died."
+    },
+    "portrait": "lepidus.jpg",
+    "portraitNote": {
+      "no": "Kopi av en byste i Vatikanet. Identifiseringen er omstridt. Foto: Shakko · CC BY-SA 4.0",
+      "en": "A copy of a bust in the Vatican. The identification is disputed. Photo: Shakko · CC BY-SA 4.0"
+    }
+  },
+  {
+    "id": "agrippa",
+    "side": "caesarian",
+    "lived": "63–12 f.Kr.",
+    "name": {
+      "no": "Agrippa",
+      "en": "Agrippa"
+    },
+    "role": {
+      "no": "Octavians general og admiral",
+      "en": "Octavian's general and admiral"
+    },
+    "hook": {
+      "no": "Octavian vant slagene. Agrippa var som regel den som ledet dem.",
+      "en": "Octavian won the battles. Agrippa was usually the one commanding them."
+    },
+    "body": {
+      "no": "Marcus Vipsanius Agrippa var jevnaldrende med Octavian og hadde vært med ham i Apollonia da nyheten kom. Han var alt Octavian ikke var: en soldat.\n\nHan bygde flåten som slo Sextus Pompeius, og han la planen som vant Actium. Han ble aldri en trussel, og det er en del av forklaringen på at Octavian overlevde så lenge: han hadde en mann som var god nok til å vinne og lojal nok til å la være å prøve.",
+      "en": "Marcus Vipsanius Agrippa was Octavian's own age and had been with him at Apollonia when the news came. He was everything Octavian was not: a soldier.\n\nHe built the fleet that beat Sextus Pompeius, and he made the plan that won Actium. He never became a threat, and that is part of why Octavian survived so long: he had a man good enough to win and loyal enough not to try."
+    },
+    "wiki": {
+      "no": "Marcus Vipsanius Agrippa",
+      "en": "Marcus Vipsanius Agrippa"
+    },
+    "fact": {
+      "no": "Han fikk gravd en kanal fra havet inn i en innsjø for å trene flåten i skjul. Så slo han Sextus Pompeius med den.",
+      "en": "He had a canal dug from the sea into a lake so the fleet could train out of sight. Then he beat Sextus Pompeius with it."
+    },
+    "portrait": "agrippa.jpg",
+    "portraitNote": {
+      "no": "Byste fra Gabii, Louvre. Foto: ukjent · CC BY 2.5",
+      "en": "Bust from Gabii, the Louvre. Photo: ukjent · CC BY 2.5"
+    }
+  },
+  {
+    "id": "livia",
+    "side": "roman",
+    "lived": "58 f.Kr.–29 e.Kr.",
+    "name": {
+      "no": "Livia Drusilla",
+      "en": "Livia Drusilla"
+    },
+    "role": {
+      "no": "Augustus' kone i femtien år",
+      "en": "Augustus's wife for fifty-one years"
+    },
+    "hook": {
+      "no": "Hun var gift med ham lenger enn noen annen var noe som helst i dette riket, og hennes sønn arvet det.",
+      "en": "She was married to him longer than anyone in this empire was anything, and her son inherited it."
+    },
+    "body": {
+      "no": "Augustus møtte henne da hun var gift med en annen og gravid med hans barn. Han skilte henne fra mannen og giftet seg med henne i 38 f.Kr. Ekteskapet varte til han døde, femtien år senere.\n\nHun fikk aldri barn med ham. Det er hele problemet i denne historien: alle arvingene måtte hentes fra andre ekteskap. Tiberius, som til slutt overtok, var hennes sønn fra det første.\n\nRomerske forfattere som skrev hundre år senere, gjorde henne til giftblander og lot henne rydde arvingene av veien én etter én. Det finnes ingen kilde fra samtiden som sier det. Historien festet seg likevel, og den lever fortsatt.",
+      "en": "Augustus met her while she was married to another man and pregnant with his child. He had her divorced and married her in 38 BC. The marriage lasted until he died, fifty-one years later.\n\nShe never had a child with him. That is the whole problem in this story: every heir had to come from somebody else's marriage. Tiberius, who took over in the end, was her son from the first one.\n\nRoman writers working a hundred years later turned her into a poisoner and had her clear the heirs away one by one. No contemporary source says it. The story stuck anyway, and it is still going."
+    },
+    "fact": {
+      "no": "Da hun døde i år 29, var hun åttiseks år gammel. Tiberius kom ikke i begravelsen.",
+      "en": "When she died in the year 29 she was eighty-six. Tiberius did not come to the funeral."
+    },
+    "wiki": {
+      "no": "Livia Drusilla",
+      "en": "Livia"
+    },
+    "portrait": "livia.jpg",
+    "portraitNote": {
+      "no": "Byste i Louvre. Portretter av Livia ble laget i hundrevis, og de eldes aldri.",
+      "en": "Bust in the Louvre. Portraits of Livia were made in their hundreds, and they never age."
+    }
+  },
+  {
+    "id": "tiberius",
+    "side": "roman",
+    "lived": "42 f.Kr.–37 e.Kr.",
+    "name": {
+      "no": "Tiberius",
+      "en": "Tiberius"
+    },
+    "role": {
+      "no": "Stesønn, motvillig arving, keiser fra år 14",
+      "en": "Stepson, reluctant heir, emperor from AD 14"
+    },
+    "hook": {
+      "no": "Han var den fjerde på lista, og den eneste som fortsatt levde.",
+      "en": "He was fourth on the list, and the only one still alive."
+    },
+    "body": {
+      "no": "Tiberius var en dyktig general som vant kriger på Balkan og ved Rhinen i tjue år. Han var også vanskelig, lukket og uten interesse for å bli likt.\n\nI år 6 f.Kr. forlot han alt sammen og dro til Rhodos, der han ble i sju år. Ingen vet sikkert hvorfor. Han var da gift med Julia, mot sin vilje, etter at Augustus hadde tvunget ham til å skille seg fra kona han faktisk ville ha.\n\nHan ble adoptert i år 4, da alle andre var døde, og overtok i år 14 uten at noen løftet et våpen. Det var akkurat det Augustus hadde bygd systemet for.",
+      "en": "Tiberius was a capable general who won wars in the Balkans and on the Rhine for twenty years. He was also difficult, closed off, and uninterested in being liked.\n\nIn 6 BC he left the whole thing and went to Rhodes, where he stayed for seven years. Nobody knows for certain why. He was married to Julia at the time, against his will, after Augustus had forced him to divorce the wife he actually wanted.\n\nHe was adopted in the year 4, when everyone else was dead, and took over in the year 14 without anyone lifting a weapon. That is exactly what Augustus had built the system to do."
+    },
+    "fact": {
+      "no": "Han styrte i tjuetre år, og tilbrakte de siste elleve av dem på Capri, uten å sette føttene i Roma.",
+      "en": "He ruled for twenty-three years, and spent the last eleven of them on Capri, without setting foot in Rome."
+    },
+    "wiki": {
+      "no": "Tiberius",
+      "en": "Tiberius"
+    },
+    "portrait": "tiberius.jpg",
+    "portraitNote": {
+      "no": "Byste i Venezia, av typen som ble laget da han fikk imperium maius.",
+      "en": "Bust in Venice, of the type made when he was given imperium maius."
+    }
+  },
+  {
+    "id": "julia",
+    "side": "roman",
+    "lived": "39 f.Kr.–14 e.Kr.",
+    "name": {
+      "no": "Julia den eldre",
+      "en": "Julia the Elder"
+    },
+    "role": {
+      "no": "Augustus' eneste barn",
+      "en": "The only child of Augustus"
+    },
+    "hook": {
+      "no": "Faren giftet henne bort tre ganger for å skaffe seg arvinger, og landsforviste henne til slutt etter sin egen lov.",
+      "en": "Her father married her off three times to get himself heirs, and finally exiled her under his own law."
+    },
+    "body": {
+      "no": "Julia ble født samme dag som Augustus skilte seg fra moren hennes. Hun vokste opp i huset hans, under streng oppdragelse, og ble gift første gang som fjortenåring.\n\nHun ble gift med Marcellus, så med Agrippa, så med Tiberius. Med Agrippa fikk hun fem barn, og to av sønnene ble adoptert av bestefaren som arvinger. Begge døde unge.\n\nI år 2 f.Kr. anklaget faren henne offentlig for utroskap med flere menn, og brukte ekteskapsloven han selv hadde fått vedtatt. Hun ble sendt til øya Pandateria, uten vin og uten besøk. Senere fikk hun flytte til fastlandet. Hun kom aldri tilbake til Roma, og døde året etter faren.\n\nAlt vi vet om saken er skrevet av menn som ikke var der. Noen historikere mener anklagen egentlig gjaldt en politisk sammensvergelse.",
+      "en": "Julia was born on the same day Augustus divorced her mother. She grew up in his house under a strict upbringing, and was married for the first time at fourteen.\n\nShe married Marcellus, then Agrippa, then Tiberius. With Agrippa she had five children, and two of the sons were adopted by their grandfather as heirs. Both died young.\n\nIn 2 BC her father accused her publicly of adultery with several men, using the marriage law he had himself pushed through. She was sent to the island of Pandateria, with no wine and no visitors. Later she was allowed to move to the mainland. She never returned to Rome, and died the year after her father.\n\nEverything we know about the case was written by men who were not there. Some historians think the charge was really about a political conspiracy."
+    },
+    "fact": {
+      "no": "Det finnes ingen sikkert identifisert byste av henne. Faren fylte riket med sitt eget ansikt, og hennes forsvant.",
+      "en": "There is no securely identified bust of her. Her father filled the empire with his own face, and hers disappeared."
+    },
+    "wiki": {
+      "no": "Julia den eldre",
+      "en": "Julia the Elder"
+    },
+    "portraitNote": {
+      "no": "Det finnes ingen sikkert identifisert byste av Julia. Faren fylte riket med sitt eget ansikt, og hennes forsvant.",
+      "en": "There is no securely identified bust of Julia. Her father filled the empire with his own face, and hers disappeared."
+    }
+  },
+  {
+    "id": "varus",
+    "side": "roman",
+    "lived": "46 f.Kr.–9 e.Kr.",
+    "name": {
+      "no": "Publius Quinctilius Varus",
+      "en": "Publius Quinctilius Varus"
+    },
+    "role": {
+      "no": "Guvernør i Germania",
+      "en": "Governor in Germania"
+    },
+    "hook": {
+      "no": "Han hadde styrt en rik og rolig provins, og behandlet Germania som om den var en til.",
+      "en": "He had governed a rich and quiet province, and treated Germania as though it were another one."
+    },
+    "body": {
+      "no": "Varus var ikke en dum mann, og det er den vanligste feilen om ham. Han hadde vært konsul, og han hadde styrt Syria, som var en av de vanskeligste og rikeste provinsene i riket.\n\nDet han gjorde galt, var å tro at Germania var på samme sted i utviklingen. Han begynte å kreve inn skatt og holde rettssaker på romersk vis, i et område som ennå ikke var erobret ferdig.\n\nDa angrepet kom, tok han sitt eget liv på tredje eller fjerde dagen. Germanerne fant liket, hogg av hodet og sendte det til Roma.",
+      "en": "Varus was not a stupid man, and that is the commonest mistake made about him. He had been consul, and he had governed Syria, one of the hardest and richest provinces in the empire.\n\nWhat he got wrong was believing Germania was at the same stage. He began collecting taxes and holding trials in the Roman manner, in a region that had not finished being conquered.\n\nWhen the attack came he took his own life on the third or fourth day. The Germans found the body, cut off the head and sent it to Rome."
+    },
+    "fact": {
+      "no": "Slagmarken ble funnet igjen først i 1987, ved Kalkriese i Nord-Tyskland, av en britisk offiser med metalldetektor.",
+      "en": "The battlefield was only found again in 1987, at Kalkriese in northern Germany, by a British officer with a metal detector."
+    },
+    "wiki": {
+      "no": "Publius Quinctilius Varus",
+      "en": "Publius Quinctilius Varus"
+    },
+    "portraitNote": {
+      "no": "Ingen byste kan sikkert knyttes til Varus. Etter nederlaget ble navnet hans noe man helst ikke nevnte.",
+      "en": "No bust can be securely tied to Varus. After the defeat his name became something better left unsaid."
+    }
+  },
+  {
+    "id": "arminius",
+    "side": "germanic",
+    "lived": "ca. 18 f.Kr.–21 e.Kr.",
+    "name": {
+      "no": "Arminius",
+      "en": "Arminius"
+    },
+    "role": {
+      "no": "Cheruskerhøvding, og romersk offiser",
+      "en": "Cheruscan chieftain, and Roman officer"
+    },
+    "hook": {
+      "no": "Han lærte hvordan den romerske hæren marsjerte ved å marsjere i den.",
+      "en": "He learned how the Roman army marched by marching in it."
+    },
+    "body": {
+      "no": "Arminius var sønn av en høvding blant cheruskerne, og ble sendt til Roma som gissel da han var gutt. Det var vanlig praksis: sønnene til allierte høvdinger vokste opp romerske, og kom hjem som pålitelige menn.\n\nHan tjente i den romerske hæren, fikk romersk borgerrett og ridderrang. Så gikk han hjem, samlet flere stammer og la et bakhold han visste at legionen ikke kunne komme ut av.\n\nHan ble drept tolv år senere, av sine egne slektninger, som mente han ville gjøre seg til konge.",
+      "en": "Arminius was the son of a chieftain among the Cherusci, and was sent to Rome as a hostage while a boy. It was standard practice: the sons of allied chieftains grew up Roman, and came home as reliable men.\n\nHe served in the Roman army, was given Roman citizenship and equestrian rank. Then he went home, gathered several tribes and laid an ambush he knew the legion could not get out of.\n\nHe was killed twelve years later, by his own relatives, who thought he meant to make himself king."
+    },
+    "fact": {
+      "no": "Tacitus kaller ham utvilsomt Germanias befrier. Han skriver også at germanerne fortsatt sang om ham hundre år etter.",
+      "en": "Tacitus calls him without doubt the liberator of Germania. He also writes that the Germans were still singing about him a hundred years later."
+    },
+    "wiki": {
+      "no": "Arminius",
+      "en": "Arminius"
+    },
+    "portraitNote": {
+      "no": "Det finnes ikke noe antikt portrett av Arminius. Statuene av ham er fra attenhundretallet, og handler om Tyskland like mye som om Roma.",
+      "en": "There is no ancient portrait of Arminius. The statues of him are nineteenth-century, and are about Germany as much as about Rome."
+    }
   }
- },
- {
-  "id": "caesar",
-  "side": "caesarian",
-  "lived": "100–44 f.Kr.",
-  "name": {
-   "no": "Julius Cæsar",
-   "en": "Julius Caesar"
-  },
-  "role": {
-   "no": "Diktator på livstid",
-   "en": "Dictator for life"
-  },
-  "hook": {
-   "no": "Drept av sine egne i senatet, med et testamente ingen ventet.",
-   "en": "Killed by his own in the senate, leaving a will nobody expected."
-  },
-  "body": {
-   "no": "Cæsar hadde vunnet borgerkrigen, tilgitt fiendene sine og latt seg utnevne til diktator på livstid. Det siste var for mye: en romer kunne tåle en mektig mann, men ikke en som aldri skulle gi fra seg makten.\n\nHan ble drept femtende mars 44 f.Kr. Testamentet, åpnet noen dager senere, gjorde en nittenåring de fleste aldri hadde hørt om til hans sønn og arving.",
-   "en": "Caesar had won the civil war, pardoned his enemies and had himself made dictator for life. That last was too much: a Roman could stomach a powerful man, but not one who would never give the power back.\n\nHe was killed on the fifteenth of March, 44 BC. The will, opened a few days later, made a nineteen-year-old most people had never heard of his son and heir."
-  },
-  "fact": {
-   "no": "«Et tu, Brute?» er Shakespeare. Sveton siterer noe annet — på gresk — og tviler selv på at han sa noe i det hele tatt.",
-   "en": "'Et tu, Brute?' is Shakespeare. Suetonius quotes something else — in Greek — and doubts himself that Caesar said anything at all."
-  },
-  "wiki": {
-   "no": "Julius Cæsar",
-   "en": "Julius Caesar"
-  },
-  "portrait": "caesar.jpg",
-  "portraitNote": {
-   "no": "Romersk byste. Ingen sikker samtidig avbildning av Cæsar finnes. Foto: Ángel M. Felicísimo from Mérida, España · Public domain",
-   "en": "A Roman bust. No certain likeness of Caesar made in his lifetime survives. Photo: Ángel M. Felicísimo from Mérida, España · Public domain"
-  }
- },
- {
-  "id": "antony",
-  "side": "antonian",
-  "lived": "83–30 f.Kr.",
-  "name": {
-   "no": "Marcus Antonius",
-   "en": "Mark Antony"
-  },
-  "role": {
-   "no": "Cæsars nestkommanderende, triumvir",
-   "en": "Caesar's second-in-command, triumvir"
-  },
-  "hook": {
-   "no": "Den erfarne generalen som skulle arvet alt, og som fikk øst i stedet.",
-   "en": "The seasoned general who should have inherited everything, and got the east instead."
-  },
-  "body": {
-   "no": "Antonius var konsul da Cæsar døde, og den soleklare arvtakeren: en voksen mann, en dyktig soldat, elsket av veteranene. Så viste det seg at testamentet pekte et annet sted.\n\nDe neste tretten årene var Octavian og Antonius vekselvis allierte og fiender. De delte riket mellom seg, giftet Antonius med Octavians søster for å holde freden, og endte med å møtes ved Actium.",
-   "en": "Antony was consul when Caesar died, and the obvious successor: a grown man, a capable soldier, loved by the veterans. Then the will pointed somewhere else.\n\nFor the next thirteen years Antony and Octavian were allies and enemies by turns. They split the empire between them, married Antony to Octavian's sister to keep the peace, and ended up facing each other at Actium."
-  },
-  "fact": {
-   "no": "Han holdt liktalen over Cæsar. Den gjorde folkemengden så rasende at drapsmennene måtte flykte fra Roma.",
-   "en": "He gave the funeral speech over Caesar. It made the crowd angry enough that the killers had to flee Rome."
-  },
-  "wiki": {
-   "no": "Marcus Antonius",
-   "en": "Mark Antony"
-  },
-  "portrait": "antony.jpg",
-  "portraitNote": {
-   "no": "Marmorbyste, Vatikanmuseet. Identifiseringen er sannsynlig, ikke sikker. Foto: Bust: unknown ancient Roman artist of the 1st century AD; photo: unknown photographer. · CC BY-SA 4.0",
-   "en": "Marble bust, Vatican Museums. The identification is likely, not certain. Photo: Bust: unknown ancient Roman artist of the 1st century AD; photo: unknown photographer. · CC BY-SA 4.0"
-  }
- },
- {
-  "id": "cleopatra",
-  "side": "ptolemaic",
-  "lived": "69–30 f.Kr.",
-  "name": {
-   "no": "Kleopatra",
-   "en": "Cleopatra"
-  },
-  "role": {
-   "no": "Dronning av Egypt",
-   "en": "Queen of Egypt"
-  },
-  "hook": {
-   "no": "Hersker over det rikeste landet ved Middelhavet, og den siste i sitt dynasti.",
-   "en": "Ruler of the richest country on the Mediterranean, and the last of her line."
-  },
-  "body": {
-   "no": "Kleopatra den sjuende var gresk, ikke egyptisk — etterkommer av en av Aleksanders generaler. Egypt var Romas kornkammer, og den som kontrollerte Nilen kontrollerte hva Roma spiste.\n\nHun allierte seg først med Cæsar, siden med Antonius. Romersk propaganda gjorde henne til en forførerske som stjal en romersk general. Det er en enklere historie enn den sanne, som handler om korn, penger og flåter.",
-   "en": "Cleopatra VII was Greek, not Egyptian — descended from one of Alexander's generals. Egypt was Rome's granary, and whoever held the Nile held what Rome ate.\n\nShe allied first with Caesar, then with Antony. Roman propaganda turned her into a seductress who stole a Roman general. That is a simpler story than the true one, which is about grain, money and fleets."
-  },
-  "fact": {
-   "no": "Slangen er sannsynligvis en legende. Sveton sier «to små stikk» og innrømmer at ingen så det skje.",
-   "en": "The asp is probably a legend. Suetonius says 'two small punctures' and admits nobody saw it happen."
-  },
-  "wiki": {
-   "no": "Kleopatra VII",
-   "en": "Cleopatra"
-  },
-  "portrait": "cleopatra.jpg",
-  "portraitNote": {
-   "no": "Byste i Berlin. Mynter viser henne med kraftigere trekk enn denne. Foto: Louis le Grand · Public domain",
-   "en": "A bust in Berlin. Coins show her with stronger features than this. Photo: Louis le Grand · Public domain"
-  }
- },
- {
-  "id": "brutus",
-  "side": "liberatores",
-  "lived": "85–42 f.Kr.",
-  "name": {
-   "no": "Brutus",
-   "en": "Brutus"
-  },
-  "role": {
-   "no": "Senator, en av drapsmennene",
-   "en": "Senator, one of the assassins"
-  },
-  "hook": {
-   "no": "Cæsar hadde tilgitt ham og forfremmet ham. Han drepte ham likevel.",
-   "en": "Caesar had pardoned him and promoted him. He killed him anyway."
-  },
-  "body": {
-   "no": "Marcus Junius Brutus hadde kjempet mot Cæsar i borgerkrigen, blitt tilgitt, og fått embeter av ham. Slekten hans skulle etter sigende ha kastet ut Romas siste konge fire hundre år tidligere, og det navnet var tungt å bære.\n\nHan og Cassius trodde at når tyrannen var borte, ville republikken komme tilbake av seg selv. Den gjorde ikke det. De tapte ved Filippi to år senere, og tok sitt eget liv.",
-   "en": "Marcus Junius Brutus had fought against Caesar in the civil war, been pardoned, and given office by him. His family was said to have thrown out Rome's last king four hundred years earlier, and that name was a heavy thing to carry.\n\nHe and Cassius believed that once the tyrant was gone the republic would return by itself. It did not. They lost at Philippi two years later, and killed themselves."
-  },
-  "fact": {
-   "no": "Han slo mynter med sitt eget ansikt på — akkurat det Cæsar var blitt hatet for.",
-   "en": "He struck coins with his own face on them — the very thing Caesar had been hated for."
-  },
-  "wiki": {
-   "no": "Marcus Junius Brutus",
-   "en": "Marcus Junius Brutus"
-  },
-  "portrait": "brutus.jpg",
-  "portraitNote": {
-   "no": "Kalt «Brutus», men ingen vet sikkert hvem bysten forestiller. Foto: Jamie Heath · CC BY-SA 2.0",
-   "en": "Called 'Brutus', though nobody is certain who the bust shows. Photo: Jamie Heath · CC BY-SA 2.0"
-  }
- },
- {
-  "id": "cicero",
-  "side": "senate",
-  "lived": "106–43 f.Kr.",
-  "name": {
-   "no": "Cicero",
-   "en": "Cicero"
-  },
-  "role": {
-   "no": "Taler og senator",
-   "en": "Orator and senator"
-  },
-  "hook": {
-   "no": "Republikkens beste stemme. Han satset på den unge Octavian, og tok feil.",
-   "en": "The republic's finest voice. He backed the young Octavian, and was wrong."
-  },
-  "body": {
-   "no": "Cicero brukte året etter drapet på å angripe Antonius i tale etter tale, og på å bygge opp Octavian som motvekt. Planen var å bruke gutten og så sette ham til side.\n\nDa Octavian og Antonius i stedet ble enige, var Cicero det første navnet Antonius krevde på lista. Han ble drept i desember 43 f.Kr. Hodet og hendene ble stilt ut på talerstolen i Roma.",
-   "en": "Cicero spent the year after the murder attacking Antony in speech after speech, and building up Octavian as a counterweight. The plan was to use the boy and then set him aside.\n\nWhen Octavian and Antony came to terms instead, Cicero was the first name Antony demanded on the list. He was killed in December 43 BC. His head and hands were displayed on the speaker's platform in Rome."
-  },
-  "fact": {
-   "no": "Han skrev at gutten burde «roses, heves og fjernes». Octavian fikk vite om setningen.",
-   "en": "He wrote that the boy should be 'praised, raised and removed'. Octavian heard about the line."
-  },
-  "wiki": {
-   "no": "Marcus Tullius Cicero",
-   "en": "Cicero"
-  },
-  "portrait": "cicero.jpg",
-  "portraitNote": {
-   "no": "Byste fra det første århundre f.Kr., Kapitolmuseet. Foto: José Luiz · CC BY-SA 4.0",
-   "en": "A first-century BC bust, Capitoline Museums. Photo: José Luiz · CC BY-SA 4.0"
-  }
- },
- {
-  "id": "lepidus",
-  "side": "caesarian",
-  "lived": "89–13 f.Kr.",
-  "name": {
-   "no": "Lepidus",
-   "en": "Lepidus"
-  },
-  "role": {
-   "no": "Den tredje triumviren",
-   "en": "The third triumvir"
-  },
-  "hook": {
-   "no": "Han delte riket med de to andre, og er den ingen husker.",
-   "en": "He split the empire with the other two, and is the one nobody remembers."
-  },
-  "body": {
-   "no": "Marcus Aemilius Lepidus hadde soldatene som gjorde triumviratet mulig, og fikk Africa da riket ble delt. Han var alltid den svakeste av de tre.\n\nI 36 f.Kr. forsøkte han å ta Sicilia for seg selv. Octavian gikk inn i leiren hans alene, og legionene gikk over til ham. Lepidus fikk beholde livet og tittelen som øversteprest, og levde tjuetre år til uten makt.",
-   "en": "Marcus Aemilius Lepidus had the soldiers that made the triumvirate possible, and got Africa when the empire was divided. He was always the weakest of the three.\n\nIn 36 BC he tried to take Sicily for himself. Octavian walked into his camp alone, and the legions went over to him. Lepidus kept his life and his title as chief priest, and lived another twenty-three years with no power at all."
-  },
-  "wiki": {
-   "no": "Marcus Aemilius Lepidus (triumvir)",
-   "en": "Marcus Aemilius Lepidus (triumvir)"
-  },
-  "fact": {
-   "no": "Han beholdt tittelen øversteprest i tjuetre år etter at makten var borte. Octavian overtok den først da Lepidus døde.",
-   "en": "He kept the title of chief priest for twenty-three years after the power was gone. Octavian took it only when Lepidus died."
-  },
-  "portrait": "lepidus.jpg",
-  "portraitNote": {
-   "no": "Kopi av en byste i Vatikanet. Identifiseringen er omstridt. Foto: Shakko · CC BY-SA 4.0",
-   "en": "A copy of a bust in the Vatican. The identification is disputed. Photo: Shakko · CC BY-SA 4.0"
-  }
- },
- {
-  "id": "agrippa",
-  "side": "caesarian",
-  "lived": "63–12 f.Kr.",
-  "name": {
-   "no": "Agrippa",
-   "en": "Agrippa"
-  },
-  "role": {
-   "no": "Octavians general og admiral",
-   "en": "Octavian's general and admiral"
-  },
-  "hook": {
-   "no": "Octavian vant slagene. Agrippa var som regel den som ledet dem.",
-   "en": "Octavian won the battles. Agrippa was usually the one commanding them."
-  },
-  "body": {
-   "no": "Marcus Vipsanius Agrippa var jevnaldrende med Octavian og hadde vært med ham i Apollonia da nyheten kom. Han var alt Octavian ikke var: en soldat.\n\nHan bygde flåten som slo Sextus Pompeius, og han la planen som vant Actium. Han ble aldri en trussel, og det er en del av forklaringen på at Octavian overlevde så lenge: han hadde en mann som var god nok til å vinne og lojal nok til å la være å prøve.",
-   "en": "Marcus Vipsanius Agrippa was Octavian's own age and had been with him at Apollonia when the news came. He was everything Octavian was not: a soldier.\n\nHe built the fleet that beat Sextus Pompeius, and he made the plan that won Actium. He never became a threat, and that is part of why Octavian survived so long: he had a man good enough to win and loyal enough not to try."
-  },
-  "wiki": {
-   "no": "Marcus Vipsanius Agrippa",
-   "en": "Marcus Vipsanius Agrippa"
-  },
-  "fact": {
-   "no": "Han fikk gravd en kanal fra havet inn i en innsjø for å trene flåten i skjul. Så slo han Sextus Pompeius med den.",
-   "en": "He had a canal dug from the sea into a lake so the fleet could train out of sight. Then he beat Sextus Pompeius with it."
-  },
-  "portrait": "agrippa.jpg",
-  "portraitNote": {
-   "no": "Byste fra Gabii, Louvre. Foto: ukjent · CC BY 2.5",
-   "en": "Bust from Gabii, the Louvre. Photo: ukjent · CC BY 2.5"
-  }
- }
 ]

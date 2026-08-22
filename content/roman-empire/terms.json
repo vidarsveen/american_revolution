@@ -1,221 +1,353 @@
 {
- "triumvirate": {
-  "term": {
-   "no": "Triumvirat",
-   "en": "Triumvirate"
+  "triumvirate": {
+    "term": {
+      "no": "Triumvirat",
+      "en": "Triumvirate"
+    },
+    "short": {
+      "no": "Tre menn som deler makten mellom seg — og som til slutt blir to, og så én.",
+      "en": "Three men sharing power between them — which becomes two, and then one."
+    },
+    "body": {
+      "no": "Det andre triumviratet ble opprettet ved lov i november 43 f.Kr. Octavian, Antonius og Lepidus fikk fem år med makt over alt: hærer, lover, embeter, liv og død.\n\nDet var ikke en hemmelig avtale, slik det første triumviratet hadde vært. Det var vedtatt av folkeforsamlingen, med et navn og en sluttdato. Republikkens former ble holdt i live mens innholdet ble tømt ut — og det er akkurat den framgangsmåten Octavian bruker resten av livet.",
+      "en": "The second triumvirate was created by law in November 43 BC. Octavian, Antony and Lepidus were given five years of authority over everything: armies, laws, offices, life and death.\n\nIt was not a private arrangement, as the first triumvirate had been. It was voted by the assembly, with a name and an end date. The forms of the republic were kept alive while the substance was poured out — and that is exactly the method Octavian uses for the rest of his life."
+    },
+    "fact": {
+      "no": "De fornyet det for fem år til i 37 f.Kr. Det utløp i 33, og ingen av dem sluttet å styre.",
+      "en": "They renewed it for another five years in 37 BC. It lapsed in 33, and none of them stopped ruling."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Det andre triumviratet",
+      "en": "Second Triumvirate"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "proscription"
+      },
+      {
+        "kind": "person",
+        "id": "lepidus"
+      }
+    ]
   },
-  "short": {
-   "no": "Tre menn som deler makten mellom seg — og som til slutt blir to, og så én.",
-   "en": "Three men sharing power between them — which becomes two, and then one."
+  "proscription": {
+    "term": {
+      "no": "Proskripsjon",
+      "en": "Proscription"
+    },
+    "short": {
+      "no": "En liste med navn, slått opp på torget. Sto du på den, var du fredløs og hodet ditt var verdt penger.",
+      "en": "A list of names, posted in the forum. If you were on it you were outlawed, and your head was worth money."
+    },
+    "body": {
+      "no": "Da triumvirene hadde delt makten, satte de opp en liste over fiender. Navnene ble slått opp offentlig. Den som drepte en mann på lista fikk betalt; den som skjulte ham kom selv på den.\n\nHensikten var todelt og helt åpen: å bli kvitt motstandere, og å skaffe penger. Fjorten legioner måtte lønnes, og de proskribertes eiendom gikk til staten. Roma hadde sett dette før, under Sulla, og visste nøyaktig hva det betydde.",
+      "en": "Once the triumvirs had divided power, they drew up a list of enemies. The names were posted in public. Kill a man on the list and you were paid; hide him and you went on it yourself.\n\nThe purpose was twofold and entirely open: to be rid of opponents, and to raise money. Fourteen legions had to be paid, and the property of the proscribed went to the state. Rome had seen this before, under Sulla, and knew exactly what it meant."
+    },
+    "fact": {
+      "no": "Hvor mange som døde er omstridt. Appian sier tre hundre senatorer og to tusen riddere; andre kilder sier langt færre.",
+      "en": "How many died is disputed. Appian says three hundred senators and two thousand knights; other sources say far fewer."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Proskripsjon",
+      "en": "Proscription"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "cicero"
+      },
+      {
+        "kind": "term",
+        "id": "triumvirate"
+      }
+    ]
   },
-  "body": {
-   "no": "Det andre triumviratet ble opprettet ved lov i november 43 f.Kr. Octavian, Antonius og Lepidus fikk fem år med makt over alt: hærer, lover, embeter, liv og død.\n\nDet var ikke en hemmelig avtale, slik det første triumviratet hadde vært. Det var vedtatt av folkeforsamlingen, med et navn og en sluttdato. Republikkens former ble holdt i live mens innholdet ble tømt ut — og det er akkurat den framgangsmåten Octavian bruker resten av livet.",
-   "en": "The second triumvirate was created by law in November 43 BC. Octavian, Antony and Lepidus were given five years of authority over everything: armies, laws, offices, life and death.\n\nIt was not a private arrangement, as the first triumvirate had been. It was voted by the assembly, with a name and an end date. The forms of the republic were kept alive while the substance was poured out — and that is exactly the method Octavian uses for the rest of his life."
+  "legion": {
+    "term": {
+      "no": "Legion",
+      "en": "Legion"
+    },
+    "short": {
+      "no": "Rundt fem tusen mann. Den som kunne betale dem, hadde makt — uansett hva loven sa.",
+      "en": "About five thousand men. Whoever could pay them held power, whatever the law said."
+    },
+    "body": {
+      "no": "En legion var på papiret rundt fem tusen soldater. Etter Marius' reformer var de yrkessoldater som tjente i tjue år, og som fikk pensjon i form av jord når de var ferdige.\n\nDet er den detaljen som velter republikken. Jorda kom ikke fra staten, den kom fra generalen deres. Så soldatene var lojale mot mannen, ikke mot Roma — og en nittenåring med Cæsars navn og Cæsars penger kunne kjøpe seg en hær før senatet rakk å stemme over noe som helst.",
+      "en": "A legion was on paper about five thousand soldiers. After Marius' reforms they were professionals who served twenty years and were paid off in land at the end.\n\nThat detail is what topples the republic. The land did not come from the state, it came from their general. So the soldiers were loyal to the man, not to Rome — and a nineteen-year-old with Caesar's name and Caesar's money could buy an army before the senate had voted on anything at all."
+    },
+    "fact": {
+      "no": "Octavians to første legioner var Cæsars veteraner. Han vervet dem med egne penger, uten noe embete i det hele tatt.",
+      "en": "Octavian's first two legions were Caesar's veterans. He recruited them with his own money, holding no office whatsoever."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Romersk legion",
+      "en": "Roman legion"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "roman-army"
+      }
+    ]
   },
-  "fact": {
-   "no": "De fornyet det for fem år til i 37 f.Kr. Det utløp i 33, og ingen av dem sluttet å styre.",
-   "en": "They renewed it for another five years in 37 BC. It lapsed in 33, and none of them stopped ruling."
+  "senate": {
+    "term": {
+      "no": "Senatet",
+      "en": "The Senate"
+    },
+    "short": {
+      "no": "Rundt seks hundre menn som hadde styrt Roma i fire hundre år. De var i ferd med å slutte å bety noe.",
+      "en": "Some six hundred men who had run Rome for four hundred years. They were about to stop mattering."
+    },
+    "body": {
+      "no": "Senatet var ikke en folkevalgt forsamling. Det var tidligere embetsmenn, medlemmer på livstid, i praksis et aristokrati av noen få slekter.\n\nDet hadde ingen egen hær og ingen formell rett til å befale. Makten lå i vane og anseelse — og da generalene begynte å ha egne hærer lojale mot seg selv, var det ikke noe igjen å true med. Senatet fortsatte å møtes gjennom hele Octavians regjeringstid. Det bestemte bare stadig mindre.",
+      "en": "The senate was not an elected assembly. It was former magistrates, members for life, in practice an aristocracy of a few families.\n\nIt had no army of its own and no formal right to command. Its power lay in habit and prestige — and once the generals had armies loyal to themselves, there was nothing left to threaten with. The senate went on meeting throughout Octavian's reign. It simply decided less and less."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Det romerske senatet",
+      "en": "Roman Senate"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "legion"
+      }
+    ]
   },
-  "kind": "concept",
-  "wiki": {
-   "no": "Det andre triumviratet",
-   "en": "Second Triumvirate"
+  "consul": {
+    "term": {
+      "no": "Konsul",
+      "en": "Consul"
+    },
+    "short": {
+      "no": "To menn, valgt for ett år, som kunne stanse hverandre. Det var meningen.",
+      "en": "Two men, elected for one year, who could block each other. That was the point."
+    },
+    "body": {
+      "no": "Konsulene var republikkens øverste embetsmenn. Det var alltid to, alltid valgt for bare ett år, og hver av dem kunne nedlegge veto mot den andre.\n\nHele konstruksjonen var laget for å hindre at én mann fikk for mye. Du måtte være førtitre år, du måtte ha gått gradene, og du måtte gi fra deg makten etter tolv måneder.\n\nOctavian ble konsul som nittenåring, ved å marsjere mot Roma med åtte legioner. Det sier alt om hvor lite loven veide når noen hadde en hær.",
+      "en": "The consuls were the republic's highest officials. There were always two, always elected for a single year, and each could veto the other.\n\nThe whole arrangement was built to stop any one man getting too much. You had to be forty-three, you had to have worked up through the offices, and you had to give the power back after twelve months.\n\nOctavian became consul at nineteen, by marching on Rome with eight legions. That tells you how much the law weighed once somebody had an army."
+    },
+    "fact": {
+      "no": "Året ble navngitt etter konsulene. Romerne sa ikke «43 f.Kr.», de sa «året til Hirtius og Pansa».",
+      "en": "The year was named after its consuls. Romans did not say '43 BC', they said 'the year of Hirtius and Pansa'."
+    },
+    "kind": "role",
+    "wiki": {
+      "no": "Konsul (Romerriket)",
+      "en": "Roman consul"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "senate"
+      },
+      {
+        "kind": "topic",
+        "id": "who-ruled-rome"
+      }
+    ]
   },
-  "seeAlso": [
-   {
-    "kind": "term",
-    "id": "proscription"
-   },
-   {
-    "kind": "person",
-    "id": "lepidus"
-   }
-  ]
- },
- "proscription": {
-  "term": {
-   "no": "Proskripsjon",
-   "en": "Proscription"
+  "province": {
+    "term": {
+      "no": "Provins",
+      "en": "Province"
+    },
+    "short": {
+      "no": "Et erobret land, styrt av én romer med hær, skattemyndighet og ingen over seg på nært hold.",
+      "en": "A conquered country run by one Roman with an army, the taxes, and nobody nearby to answer to."
+    },
+    "body": {
+      "no": "En provins var et område utenfor Italia som Roma hadde erobret og satte en guvernør over. Guvernøren hadde hæren, rettsvesenet og skatteinnkrevingen i samme hånd, og Roma lå flere ukers reise unna.\n\nDet gjorde provinsene til det de var: en måte å bli rik på. Mange guvernører kom hjem med formuer det ville tatt tjue liv å tjene ærlig.\n\nOg det gjorde dem farlige. En mann med en provins hadde en hær som var lojal mot ham. Cæsar hadde Gallia. Antonius fikk øst. Det er provinser som avgjør denne fortellingen, ikke taler i senatet.",
+      "en": "A province was territory outside Italy that Rome had conquered and put a governor over. The governor held the army, the courts and the tax collection in the same hand, and Rome was weeks of travel away.\n\nThat made provinces what they were: a way to get rich. Many governors came home with fortunes it would have taken twenty lifetimes to earn honestly.\n\nAnd it made them dangerous. A man with a province had an army loyal to him. Caesar had Gaul. Antony took the east. It is provinces that decide this story, not speeches in the senate."
+    },
+    "fact": {
+      "no": "Da Octavian delte provinsene med senatet i 27 f.Kr., beholdt han akkurat de som hadde legioner i seg.",
+      "en": "When Octavian split the provinces with the senate in 27 BC, he kept precisely the ones with legions in them."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Romersk provins",
+      "en": "Roman province"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "legion"
+      },
+      {
+        "kind": "topic",
+        "id": "roman-army"
+      }
+    ]
   },
-  "short": {
-   "no": "En liste med navn, slått opp på torget. Sto du på den, var du fredløs og hodet ditt var verdt penger.",
-   "en": "A list of names, posted in the forum. If you were on it you were outlawed, and your head was worth money."
+  "princeps": {
+    "term": {
+      "no": "Princeps",
+      "en": "Princeps"
+    },
+    "short": {
+      "no": "«Den fremste». Et ord uten makt i seg, valgt av en mann som hadde all makten.",
+      "en": "'The first one'. A word with no power in it, chosen by a man who had all of it."
+    },
+    "body": {
+      "no": "Princeps betydde omtrent «den fremste blant oss». Det var ikke et embete. Det ga ingen rettigheter, ingen hær, ingen myndighet. Det var et hedersord senatet hadde brukt om respekterte gamle menn i to hundre år.\n\nDet er nettopp derfor Octavian valgte det. Rex, konge, var det verste ordet i det romerske språket. Dictator hadde nettopp fått Cæsar drept.\n\nSå han tok et ord som ikke betydde noe, og la den virkelige makten et annet sted: i legionene, i provinsene og i pengene. Det er derfor det tok så lang tid før noen kunne peke på når republikken tok slutt.",
+      "en": "Princeps meant roughly 'the first among us'. It was not an office. It granted no rights, no army, no authority. It was a courtesy the senate had used about respected old men for two hundred years.\n\nWhich is exactly why Octavian chose it. Rex, king, was the worst word in the Roman language. Dictator had just got Caesar killed.\n\nSo he took a word that meant nothing, and put the real power somewhere else: in the legions, the provinces and the money. That is why it took so long before anyone could point to when the republic had ended."
+    },
+    "fact": {
+      "no": "Vårt ord «prins» kommer herfra. Det har blitt en tittel for kongens sønn — stikk motsatt av hva Augustus mente med det.",
+      "en": "Our word 'prince' comes from this. It has become a title for a king's son — the exact opposite of what Augustus meant by it."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Princeps",
+      "en": "Princeps"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "who-ruled-rome"
+      },
+      {
+        "kind": "term",
+        "id": "senate"
+      }
+    ]
   },
-  "body": {
-   "no": "Da triumvirene hadde delt makten, satte de opp en liste over fiender. Navnene ble slått opp offentlig. Den som drepte en mann på lista fikk betalt; den som skjulte ham kom selv på den.\n\nHensikten var todelt og helt åpen: å bli kvitt motstandere, og å skaffe penger. Fjorten legioner måtte lønnes, og de proskribertes eiendom gikk til staten. Roma hadde sett dette før, under Sulla, og visste nøyaktig hva det betydde.",
-   "en": "Once the triumvirs had divided power, they drew up a list of enemies. The names were posted in public. Kill a man on the list and you were paid; hide him and you went on it yourself.\n\nThe purpose was twofold and entirely open: to be rid of opponents, and to raise money. Fourteen legions had to be paid, and the property of the proscribed went to the state. Rome had seen this before, under Sulla, and knew exactly what it meant."
+  "tribunicia-potestas": {
+    "term": {
+      "no": "Tribunicia potestas",
+      "en": "Tribunicia potestas"
+    },
+    "short": {
+      "no": "En folketribuns makt, gitt til en mann som ikke er folketribun – og som aldri gir den fra seg.",
+      "en": "A tribune's power, given to a man who is not a tribune – and who never gives it back."
+    },
+    "body": {
+      "no": "Folketribunen var republikkens verneombud. Han var valgt av folket, han kunne nedlegge veto mot nesten hva som helst, og personen hans var ukrenkelig: å legge hånd på ham var en forbrytelse mot gudene.\n\nI 23 f.Kr. gikk Augustus av som konsul og tok denne makten i stedet, uten embetet. Han fikk den fornyet hvert år resten av livet, og telte årene etter den.\n\nDet er hele metoden i én setning: han tok ikke noe nytt, og han ga ikke noe tilbake.",
+      "en": "The tribune of the people was the republic's safety valve. He was elected by the people, he could veto almost anything, and his person was inviolable: laying a hand on him was an offence against the gods.\n\nIn 23 BC Augustus stepped down as consul and took this power instead, without the office. He had it renewed every year for the rest of his life, and numbered the years by it.\n\nThat is the whole method in one sentence: he took nothing new, and he gave nothing back."
+    },
+    "fact": {
+      "no": "Keisere etter ham fortsatte å telle regjeringsårene sine i tribunicia potestas, i tre hundre år.",
+      "en": "Emperors after him went on counting their regnal years in tribunicia potestas, for three hundred years."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Tribun",
+      "en": "Tribunician power"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "princeps"
+      },
+      {
+        "kind": "term",
+        "id": "consul"
+      }
+    ]
   },
-  "fact": {
-   "no": "Hvor mange som døde er omstridt. Appian sier tre hundre senatorer og to tusen riddere; andre kilder sier langt færre.",
-   "en": "How many died is disputed. Appian says three hundred senators and two thousand knights; other sources say far fewer."
+  "census": {
+    "term": {
+      "no": "Folketelling",
+      "en": "The census"
+    },
+    "short": {
+      "no": "Å telle folk er ikke nysgjerrighet. Det er skatt.",
+      "en": "Counting people is not curiosity. It is tax."
+    },
+    "body": {
+      "no": "En romersk folketelling registrerte borgere, formue og eiendom. Den avgjorde hvor mye du skulle betale, om du kunne tjene i hæren, og hvor du sto i samfunnet.\n\nAugustus holdt tre av dem, og den siste, i år 14 etter Kristus, talte nesten fem millioner romerske borgere. Det er ikke det samme som innbyggere: kvinner, slaver og folk uten borgerrett er ikke med.\n\nEn stat som ikke vet hvem som finnes, kan ikke kreve inn skatt, og en stat uten skatt kan ikke betale en hær.",
+      "en": "A Roman census recorded citizens, wealth and property. It decided how much you paid, whether you could serve in the army, and where you stood in society.\n\nAugustus held three of them, and the last, in the year 14 after Christ, counted nearly five million Roman citizens. That is not the same as inhabitants: women, slaves and people without citizenship are not in it.\n\nA state that does not know who exists cannot collect tax, and a state without tax cannot pay an army."
+    },
+    "fact": {
+      "no": "Lukasevangeliet begynner med en folketelling under Augustus. Historikere har kranglet om akkurat den i to hundre år.",
+      "en": "Luke's gospel opens with a census under Augustus. Historians have argued about that particular one for two hundred years."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Folketelling",
+      "en": "Census"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "taxes-and-census"
+      },
+      {
+        "kind": "term",
+        "id": "province"
+      }
+    ]
   },
-  "kind": "concept",
-  "wiki": {
-   "no": "Proskripsjon",
-   "en": "Proscription"
+  "praetorian-guard": {
+    "term": {
+      "no": "Pretorianergarden",
+      "en": "The praetorian guard"
+    },
+    "short": {
+      "no": "Den eneste hæren i Roma. Laget for å beskytte keiseren, og den kom til å drepe flere av dem.",
+      "en": "The only army in Rome. Made to protect the emperor, and it would go on to kill several."
+    },
+    "body": {
+      "no": "Augustus flyttet legionene ut til grensene og lot bare én styrke ligge igjen i nærheten av hovedstaden: ni kohorter livvakt, rundt ni tusen mann.\n\nDe fikk bedre lønn enn vanlige legionærer og kortere tjenestetid. De var det eneste organiserte maktmiddelet i byen.\n\nDet virket i hans levetid. Etterpå ble garden en maktfaktor i seg selv. I år 41 drepte den keiser Caligula og utropte Claudius. I år 193 solgte den keisertittelen på auksjon.",
+      "en": "Augustus moved the legions out to the frontiers and left only one force near the capital: nine cohorts of bodyguard, some nine thousand men.\n\nThey were better paid than ordinary legionaries and served for less time. They were the only organised force in the city.\n\nIt worked while he lived. Afterwards the guard became a power in its own right. In the year 41 it killed the emperor Caligula and proclaimed Claudius. In 193 it auctioned the throne."
+    },
+    "fact": {
+      "no": "Garden ble oppløst først i år 312, av Konstantin, fordi den hadde støttet feil side.",
+      "en": "The guard was only disbanded in the year 312, by Constantine, because it had backed the wrong side."
+    },
+    "kind": "institution",
+    "wiki": {
+      "no": "Pretorianergarden",
+      "en": "Praetorian Guard"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "legion"
+      },
+      {
+        "kind": "topic",
+        "id": "roman-army"
+      }
+    ]
   },
-  "seeAlso": [
-   {
-    "kind": "person",
-    "id": "cicero"
-   },
-   {
-    "kind": "term",
-    "id": "triumvirate"
-   }
-  ]
- },
- "legion": {
-  "term": {
-   "no": "Legion",
-   "en": "Legion"
-  },
-  "short": {
-   "no": "Rundt fem tusen mann. Den som kunne betale dem, hadde makt — uansett hva loven sa.",
-   "en": "About five thousand men. Whoever could pay them held power, whatever the law said."
-  },
-  "body": {
-   "no": "En legion var på papiret rundt fem tusen soldater. Etter Marius' reformer var de yrkessoldater som tjente i tjue år, og som fikk pensjon i form av jord når de var ferdige.\n\nDet er den detaljen som velter republikken. Jorda kom ikke fra staten, den kom fra generalen deres. Så soldatene var lojale mot mannen, ikke mot Roma — og en nittenåring med Cæsars navn og Cæsars penger kunne kjøpe seg en hær før senatet rakk å stemme over noe som helst.",
-   "en": "A legion was on paper about five thousand soldiers. After Marius' reforms they were professionals who served twenty years and were paid off in land at the end.\n\nThat detail is what topples the republic. The land did not come from the state, it came from their general. So the soldiers were loyal to the man, not to Rome — and a nineteen-year-old with Caesar's name and Caesar's money could buy an army before the senate had voted on anything at all."
-  },
-  "fact": {
-   "no": "Octavians to første legioner var Cæsars veteraner. Han vervet dem med egne penger, uten noe embete i det hele tatt.",
-   "en": "Octavian's first two legions were Caesar's veterans. He recruited them with his own money, holding no office whatsoever."
-  },
-  "kind": "concept",
-  "wiki": {
-   "no": "Romersk legion",
-   "en": "Roman legion"
-  },
-  "seeAlso": [
-   {
-    "kind": "topic",
-    "id": "roman-army"
-   }
-  ]
- },
- "senate": {
-  "term": {
-   "no": "Senatet",
-   "en": "The Senate"
-  },
-  "short": {
-   "no": "Rundt seks hundre menn som hadde styrt Roma i fire hundre år. De var i ferd med å slutte å bety noe.",
-   "en": "Some six hundred men who had run Rome for four hundred years. They were about to stop mattering."
-  },
-  "body": {
-   "no": "Senatet var ikke en folkevalgt forsamling. Det var tidligere embetsmenn, medlemmer på livstid, i praksis et aristokrati av noen få slekter.\n\nDet hadde ingen egen hær og ingen formell rett til å befale. Makten lå i vane og anseelse — og da generalene begynte å ha egne hærer lojale mot seg selv, var det ikke noe igjen å true med. Senatet fortsatte å møtes gjennom hele Octavians regjeringstid. Det bestemte bare stadig mindre.",
-   "en": "The senate was not an elected assembly. It was former magistrates, members for life, in practice an aristocracy of a few families.\n\nIt had no army of its own and no formal right to command. Its power lay in habit and prestige — and once the generals had armies loyal to themselves, there was nothing left to threaten with. The senate went on meeting throughout Octavian's reign. It simply decided less and less."
-  },
-  "kind": "concept",
-  "wiki": {
-   "no": "Det romerske senatet",
-   "en": "Roman Senate"
-  },
-  "seeAlso": [
-   {
-    "kind": "term",
-    "id": "legion"
-   }
-  ]
- },
- "consul": {
-  "term": {
-   "no": "Konsul",
-   "en": "Consul"
-  },
-  "short": {
-   "no": "To menn, valgt for ett år, som kunne stanse hverandre. Det var meningen.",
-   "en": "Two men, elected for one year, who could block each other. That was the point."
-  },
-  "body": {
-   "no": "Konsulene var republikkens øverste embetsmenn. Det var alltid to, alltid valgt for bare ett år, og hver av dem kunne nedlegge veto mot den andre.\n\nHele konstruksjonen var laget for å hindre at én mann fikk for mye. Du måtte være førtitre år, du måtte ha gått gradene, og du måtte gi fra deg makten etter tolv måneder.\n\nOctavian ble konsul som nittenåring, ved å marsjere mot Roma med åtte legioner. Det sier alt om hvor lite loven veide når noen hadde en hær.",
-   "en": "The consuls were the republic's highest officials. There were always two, always elected for a single year, and each could veto the other.\n\nThe whole arrangement was built to stop any one man getting too much. You had to be forty-three, you had to have worked up through the offices, and you had to give the power back after twelve months.\n\nOctavian became consul at nineteen, by marching on Rome with eight legions. That tells you how much the law weighed once somebody had an army."
-  },
-  "fact": {
-   "no": "Året ble navngitt etter konsulene. Romerne sa ikke «43 f.Kr.», de sa «året til Hirtius og Pansa».",
-   "en": "The year was named after its consuls. Romans did not say '43 BC', they said 'the year of Hirtius and Pansa'."
-  },
-  "kind": "role",
-  "wiki": {
-   "no": "Konsul (Romerriket)",
-   "en": "Roman consul"
-  },
-  "seeAlso": [
-   {
-    "kind": "term",
-    "id": "senate"
-   },
-   {
-    "kind": "topic",
-    "id": "who-ruled-rome"
-   }
-  ]
- },
- "province": {
-  "term": {
-   "no": "Provins",
-   "en": "Province"
-  },
-  "short": {
-   "no": "Et erobret land, styrt av én romer med hær, skattemyndighet og ingen over seg på nært hold.",
-   "en": "A conquered country run by one Roman with an army, the taxes, and nobody nearby to answer to."
-  },
-  "body": {
-   "no": "En provins var et område utenfor Italia som Roma hadde erobret og satte en guvernør over. Guvernøren hadde hæren, rettsvesenet og skatteinnkrevingen i samme hånd, og Roma lå flere ukers reise unna.\n\nDet gjorde provinsene til det de var: en måte å bli rik på. Mange guvernører kom hjem med formuer det ville tatt tjue liv å tjene ærlig.\n\nOg det gjorde dem farlige. En mann med en provins hadde en hær som var lojal mot ham. Cæsar hadde Gallia. Antonius fikk øst. Det er provinser som avgjør denne fortellingen, ikke taler i senatet.",
-   "en": "A province was territory outside Italy that Rome had conquered and put a governor over. The governor held the army, the courts and the tax collection in the same hand, and Rome was weeks of travel away.\n\nThat made provinces what they were: a way to get rich. Many governors came home with fortunes it would have taken twenty lifetimes to earn honestly.\n\nAnd it made them dangerous. A man with a province had an army loyal to him. Caesar had Gaul. Antony took the east. It is provinces that decide this story, not speeches in the senate."
-  },
-  "fact": {
-   "no": "Da Octavian delte provinsene med senatet i 27 f.Kr., beholdt han akkurat de som hadde legioner i seg.",
-   "en": "When Octavian split the provinces with the senate in 27 BC, he kept precisely the ones with legions in them."
-  },
-  "kind": "concept",
-  "wiki": {
-   "no": "Romersk provins",
-   "en": "Roman province"
-  },
-  "seeAlso": [
-   {
-    "kind": "term",
-    "id": "legion"
-   },
-   {
-    "kind": "topic",
-    "id": "roman-army"
-   }
-  ]
- },
- "princeps": {
-  "term": {
-   "no": "Princeps",
-   "en": "Princeps"
-  },
-  "short": {
-   "no": "«Den fremste». Et ord uten makt i seg, valgt av en mann som hadde all makten.",
-   "en": "'The first one'. A word with no power in it, chosen by a man who had all of it."
-  },
-  "body": {
-   "no": "Princeps betydde omtrent «den fremste blant oss». Det var ikke et embete. Det ga ingen rettigheter, ingen hær, ingen myndighet. Det var et hedersord senatet hadde brukt om respekterte gamle menn i to hundre år.\n\nDet er nettopp derfor Octavian valgte det. Rex, konge, var det verste ordet i det romerske språket. Dictator hadde nettopp fått Cæsar drept.\n\nSå han tok et ord som ikke betydde noe, og la den virkelige makten et annet sted: i legionene, i provinsene og i pengene. Det er derfor det tok så lang tid før noen kunne peke på når republikken tok slutt.",
-   "en": "Princeps meant roughly 'the first among us'. It was not an office. It granted no rights, no army, no authority. It was a courtesy the senate had used about respected old men for two hundred years.\n\nWhich is exactly why Octavian chose it. Rex, king, was the worst word in the Roman language. Dictator had just got Caesar killed.\n\nSo he took a word that meant nothing, and put the real power somewhere else: in the legions, the provinces and the money. That is why it took so long before anyone could point to when the republic had ended."
-  },
-  "fact": {
-   "no": "Vårt ord «prins» kommer herfra. Det har blitt en tittel for kongens sønn — stikk motsatt av hva Augustus mente med det.",
-   "en": "Our word 'prince' comes from this. It has become a title for a king's son — the exact opposite of what Augustus meant by it."
-  },
-  "kind": "concept",
-  "wiki": {
-   "no": "Princeps",
-   "en": "Princeps"
-  },
-  "seeAlso": [
-   {
-    "kind": "topic",
-    "id": "who-ruled-rome"
-   },
-   {
-    "kind": "term",
-    "id": "senate"
-   }
-  ]
- }
+  "res-gestae": {
+    "term": {
+      "no": "Res Gestae",
+      "en": "Res Gestae"
+    },
+    "short": {
+      "no": "Augustus' egen liste over hva han hadde gjort. Nesten alt i den er sant, og det er derfor den er så virkningsfull.",
+      "en": "The list Augustus made of what he had done. Almost all of it is true, which is what makes it work."
+    },
+    "body": {
+      "no": "Res Gestae Divi Augusti – den guddommelige Augustus' bedrifter – er en tekst på trettifem korte avsnitt, skrevet av ham selv og revidert til like før han døde.\n\nDen ble hugget i bronsetavler utenfor mausoleet hans i Roma. De tavlene er borte. Men teksten ble kopiert inn i tempelvegger i provinsene, og en nesten komplett kopi står ennå i Ankara.\n\nDet den forteller, er kontrollert og etterprøvbart: antall soldater bosatt, summer betalt, bygninger reist, kriger avsluttet. Det den ikke nevner, er like planlagt. Ordet proskripsjon står ikke i den. Antonius er ikke nevnt ved navn. Slaget ved Filippi er borte.\n\nDet er den beste øvelsen i kildekritikk antikken har etterlatt seg: en sann tekst som likevel lyver, fordi den velger.",
+      "en": "The Res Gestae Divi Augusti – the achievements of the deified Augustus – is a text in thirty-five short sections, written by him and revised until shortly before he died.\n\nIt was cut into bronze tablets outside his mausoleum in Rome. Those tablets are gone. But the text was copied into temple walls in the provinces, and an almost complete copy still stands at Ankara.\n\nWhat it reports is checkable: soldiers settled, sums paid, buildings raised, wars ended. What it leaves out is just as deliberate. The word proscription does not appear. Antony is not named. Philippi is gone.\n\nIt is the best exercise in reading a source that antiquity has left us: a truthful text that lies anyway, because it chooses."
+    },
+    "fact": {
+      "no": "Kopien i Ankara er tosidig: latin på den ene veggen, gresk på den andre. Den greske er ikke en direkte oversettelse.",
+      "en": "The Ankara copy is on two walls: Latin on one, Greek on the other. The Greek is not a straight translation."
+    },
+    "kind": "source",
+    "wiki": {
+      "no": "Res Gestae Divi Augusti",
+      "en": "Res Gestae Divi Augusti"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "how-we-know"
+      },
+      {
+        "kind": "topic",
+        "id": "propaganda"
+      }
+    ]
+  }
 }

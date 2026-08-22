@@ -62,5 +62,21 @@
     "artist": "",
     "licence": "CC BY 2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Agrippa_Gabii_Louvre_Ma1208.jpg"
+  },
+  "livia": {
+    "file": "livia.jpg",
+    "title": {},
+    "year": "",
+    "artist": "",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Livia_Drusilla_Louvre_Ma1233.jpg"
+  },
+  "tiberius": {
+    "file": "tiberius.jpg",
+    "title": {},
+    "year": "Taken on 11 May 2023",
+    "artist": "Didier Descouens",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:(Venice)_Tiberius_Portrait_of_the_%27Imperium_Maius%27_type_in_Museo_Archeologico_Nazionale.jpg"
   }
 }

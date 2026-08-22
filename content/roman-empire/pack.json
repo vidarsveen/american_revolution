@@ -6,8 +6,8 @@
     "en": "The Roman Empire"
   },
   "years": {
-    "no": "44–27 f.Kr.",
-    "en": "44–27 BC"
+    "no": "44 f.Kr.–14 e.Kr.",
+    "en": "44 BC – AD 14"
   },
   "//factions": [
     "Declared by HUE, not by design token. The Revolution pack names tokens",
@@ -70,6 +70,21 @@
       },
       "hue": 96,
       "sat": 0.35
+    },
+    "roman": {
+      "label": {
+        "no": "Romerriket",
+        "en": "The Roman empire"
+      },
+      "hue": 8
+    },
+    "germanic": {
+      "label": {
+        "no": "Germanske stammer",
+        "en": "Germanic tribes"
+      },
+      "hue": 132,
+      "sat": 0.6
     }
   },
   "map": {
@@ -161,13 +176,14 @@
   ],
   "era": {
     "start": "-0044-01-01",
-    "end": "-0027-12-31",
+    "end": "0014-12-31",
     "calendar": "julian",
     "calendarNote": {
       "no": "Datoene følger den julianske kalenderen, som Cæsar innførte i 45 f.Kr. — bare et år før han ble drept.",
       "en": "Dates follow the Julian calendar, which Caesar imposed in 45 BC — just a year before he was killed."
     },
-    "tickStep": "year"
+    "tickStep": "year",
+    "//end": "AD 14, the year Augustus died. Positive years are AD; -0044 is 44 BC. See core/era.js."
   },
   "narration": {
     "wps": [
@@ -209,6 +225,25 @@
         "en"
       ],
       "//langs": "Both recorded. The engine only probes for what is listed here."
+    },
+    {
+      "id": "chapter-27bc-augustus",
+      "title": {
+        "no": "Freden, og hva den kostet",
+        "en": "The peace, and what it cost"
+      },
+      "subtitle": {
+        "no": "27 f.Kr.–14 e.Kr.",
+        "en": "27 BC – AD 14"
+      },
+      "blurb": {
+        "no": "Han styrte i førtien år og kalte seg aldri konge. Da han døde, var republikken borte, og nesten ingen hadde sett det skje.",
+        "en": "He ruled for forty-one years and never called himself king. By the time he died the republic was gone, and almost nobody had seen it go."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "checks": {
@@ -224,7 +259,7 @@
     "en": "Rome"
   },
   "description": {
-    "no": "Hvordan Octavian tok makten — kart, kilder og mennesker, 44 til 27 f.Kr.",
-    "en": "How Octavian came to power — maps, sources and people, 44 to 27 BC."
+    "no": "Hvordan Octavian tok makten, og hva Augustus gjorde med den – kart, kilder og mennesker.",
+    "en": "How Octavian took power, and what Augustus did with it – maps, sources and people."
   }
 }

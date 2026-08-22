@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'va0d2f5862e';
+const VERSION = 'vce6a5322a3';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -34,17 +34,33 @@ const PRECACHE = [
   // levels are megabytes and are fetched when the camera asks for them; networkFirst
   // caches each one the first time it is used.
   './assets/geo/world-110m.json',
+  './content/roman-empire/chapter-27bc-augustus.json',
   './content/roman-empire/chapter-44bc-octavian.json',
   './content/roman-empire/geo/provinces.geojson',
   './content/roman-empire/media.json',
   './content/roman-empire/media/actium.jpg',
+  './content/roman-empire/media/appia.jpg',
+  './content/roman-empire/media/augustus-statue.jpg',
   './content/roman-empire/media/caesar-death.jpg',
+  './content/roman-empire/media/caesar-funeral.jpg',
+  './content/roman-empire/media/cleopatra-death.jpg',
   './content/roman-empire/media/colosseum.jpg',
+  './content/roman-empire/media/denarius.jpg',
   './content/roman-empire/media/forum.jpg',
   './content/roman-empire/media/legion.jpg',
+  './content/roman-empire/media/mausoleum.jpg',
   './content/roman-empire/media/nile.jpg',
+  './content/roman-empire/media/pantheon.jpg',
+  './content/roman-empire/media/philippi.jpg',
+  './content/roman-empire/media/proscriptions.jpg',
+  './content/roman-empire/media/res-gestae.jpg',
   './content/roman-empire/media/senate.jpg',
+  './content/roman-empire/media/siege.jpg',
+  './content/roman-empire/media/teutoburg.jpg',
+  './content/roman-empire/media/triumph.jpg',
   './content/roman-empire/people.json',
+  './content/roman-empire/timing.chapter-27bc-augustus.en.json',
+  './content/roman-empire/timing.chapter-27bc-augustus.no.json',
   './content/roman-empire/timing.chapter-44bc-octavian.en.json',
   './content/roman-empire/timing.chapter-44bc-octavian.no.json',
   './core/dossier.js',

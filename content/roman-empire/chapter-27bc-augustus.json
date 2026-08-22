@@ -1,0 +1,2367 @@
+{
+  "id": "chapter-27bc-augustus",
+  "pack": "roman-empire",
+  "work": {
+    "no": "Romerriket",
+    "en": "The Roman Empire"
+  },
+  "title": {
+    "no": "Freden, og hva den kostet",
+    "en": "The peace, and what it cost"
+  },
+  "subtitle": {
+    "no": "27 f.Kr.–14 e.Kr.",
+    "en": "27 BC – AD 14"
+  },
+  "blurb": {
+    "no": "Han styrte i førtien år og kalte seg aldri konge. Da han døde, var republikken borte, og nesten ingen hadde sett det skje.",
+    "en": "He ruled for forty-one years and never called himself king. By the time he died the republic was gone, and almost nobody had seen it go."
+  },
+  "voice": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural"
+  },
+  "rate": "-10%",
+  "home": "mediterranean",
+  "regions": "geo/provinces.geojson",
+  "places": {
+    "mediterranean": {
+      "coords": [
+        39.0,
+        16.0
+      ],
+      "zoom": 4.4,
+      "name": {
+        "no": "Middelhavet",
+        "en": "The Mediterranean"
+      },
+      "kind": "region",
+      "label": false
+    },
+    "roma": {
+      "coords": [
+        41.8931,
+        12.4828
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Roma",
+        "en": "Rome"
+      },
+      "kind": "city"
+    },
+    "nola": {
+      "coords": [
+        40.9256,
+        14.5281
+      ],
+      "zoom": 8.6,
+      "name": {
+        "no": "Nola",
+        "en": "Nola"
+      },
+      "kind": "town"
+    },
+    "ancyra": {
+      "coords": [
+        39.9334,
+        32.8597
+      ],
+      "zoom": 7.4,
+      "name": {
+        "no": "Ancyra",
+        "en": "Ancyra"
+      },
+      "kind": "city"
+    },
+    "teutoburg": {
+      "coords": [
+        52.4109,
+        8.13
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Teutoburgerskogen",
+        "en": "The Teutoburg Forest"
+      },
+      "kind": "battle"
+    },
+    "vetera": {
+      "coords": [
+        51.6558,
+        6.4517
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Vetera",
+        "en": "Vetera"
+      },
+      "kind": "town"
+    },
+    "germania": {
+      "coords": [
+        51.6,
+        9.2
+      ],
+      "zoom": 5.8,
+      "name": {
+        "no": "Germania",
+        "en": "Germania"
+      },
+      "kind": "region"
+    },
+    "rhodos": {
+      "coords": [
+        36.4349,
+        28.2176
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Rhodos",
+        "en": "Rhodes"
+      },
+      "kind": "island"
+    },
+    "alexandria": {
+      "coords": [
+        31.2001,
+        29.9187
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Alexandria",
+        "en": "Alexandria"
+      },
+      "kind": "city"
+    },
+    "pandateria": {
+      "coords": [
+        40.935,
+        13.43
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Pandateria",
+        "en": "Pandateria"
+      },
+      "kind": "island"
+    }
+  },
+  "routes": {
+    "varus-march": {
+      "side": "roman",
+      "label": {
+        "no": "Varus mot vinterleir",
+        "en": "Varus towards winter quarters"
+      },
+      "coords": [
+        [
+          52.2,
+          9.3
+        ],
+        [
+          52.28,
+          8.8
+        ],
+        [
+          52.36,
+          8.42
+        ],
+        [
+          52.4109,
+          8.13
+        ]
+      ],
+      "strength": 15000
+    },
+    "rhine-line": {
+      "side": "roman",
+      "label": {
+        "no": "Grensen ved Rhinen",
+        "en": "The Rhine frontier"
+      },
+      "coords": [
+        [
+          47.55,
+          7.59
+        ],
+        [
+          48.58,
+          7.75
+        ],
+        [
+          49.99,
+          8.27
+        ],
+        [
+          50.94,
+          6.96
+        ],
+        [
+          51.66,
+          6.45
+        ],
+        [
+          51.9,
+          6.1
+        ]
+      ],
+      "strength": 500
+    },
+    "grain-egypt": {
+      "side": "roman",
+      "label": {
+        "no": "Kornet fra Egypt",
+        "en": "The grain from Egypt"
+      },
+      "coords": [
+        [
+          31.2001,
+          29.9187
+        ],
+        [
+          33.5,
+          26.0
+        ],
+        [
+          36.5,
+          19.0
+        ],
+        [
+          39.0,
+          15.5
+        ],
+        [
+          41.4548,
+          12.286
+        ]
+      ],
+      "strength": 900
+    }
+  },
+  "quotes": {
+    "tiberius-adoption": {
+      "text": {
+        "no": "Dette gjør jeg for statens skyld.",
+        "en": "This I do for reasons of state."
+      },
+      "by": {
+        "no": "Augustus, gjengitt av Sveton",
+        "en": "Augustus, as Suetonius gives it"
+      },
+      "kind": "attributed"
+    },
+    "varus-legions": {
+      "text": {
+        "no": "Quinctilius Varus, gi meg legionene mine tilbake!",
+        "en": "Quinctilius Varus, give me back my legions!"
+      },
+      "by": {
+        "no": "Augustus, gjengitt av Sveton hundre år senere",
+        "en": "Augustus, as Suetonius gives it a hundred years later"
+      },
+      "kind": "attributed"
+    },
+    "the-play": {
+      "text": {
+        "no": "Har jeg spilt rollen godt? Klapp da, mens jeg går av scenen.",
+        "en": "Have I played the part well? Then applaud as I leave the stage."
+      },
+      "by": {
+        "no": "Augustus på dødsleiet, gjengitt av Sveton",
+        "en": "Augustus on his deathbed, as Suetonius gives it"
+      },
+      "kind": "attributed"
+    },
+    "res-gestae-open": {
+      "text": {
+        "no": "Nitten år gammel satte jeg opp en hær på eget initiativ og for egne penger.",
+        "en": "At nineteen years old I raised an army on my own initiative and at my own expense."
+      },
+      "by": {
+        "no": "Res Gestae, første setning. Skrevet av ham selv.",
+        "en": "Res Gestae, opening line. Written by him."
+      },
+      "kind": "said"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Makt uten embete",
+        "en": "Power without office"
+      },
+      "clock": {
+        "no": "27–23 f.Kr.",
+        "en": "27–23 BC"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Januar, år tjuesju før Kristus. Octavian går inn i senatet og gir fra seg alt han har.",
+            "en": "January, twenty-seven before Christ. Octavian walks into the senate and gives up everything he holds."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "border.set",
+              "country": false,
+              "state": false
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "Januar 27 f.Kr.",
+                "en": "January 27 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 5.6,
+              "over": 0.1
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:senatet",
+                "en": "word:senate"
+              },
+              "do": "plate.show",
+              "id": "senate",
+              "motion": "in",
+              "focus": [
+                0.46,
+                0.5
+              ],
+              "over": 20,
+              "dim": 0.14
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "Han får alt tilbake samme dag, og et nytt navn: Augustus. Men navnet er ikke det viktige. Det viktige er hva han beholder.",
+            "en": "He gets it all back the same day, and a new name: Augustus. But the name is not what matters. What matters is what he keeps."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Augustus",
+                "en": "word:Augustus"
+              },
+              "do": "portrait.show",
+              "id": "octavian"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "Han er konsul, år etter år. Det er en gammel og hederlig stilling. Det er også et problem, for det finnes bare to konsuler, og han opptar den ene plassen.",
+            "en": "He is consul, year after year. It is an old and honourable office. It is also a problem, because there are only two consuls, and he is taking up one of the seats."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:konsul",
+                "en": "word:consul"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "consul"
+            },
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "I år tjuetre blir han livsfarlig syk. Han tror han skal dø. Når han likevel blir frisk, gjør han noe ingen hadde ventet: han går av som konsul.",
+            "en": "In twenty-three he falls dangerously ill. He believes he is dying. When he recovers anyway, he does something nobody expected: he steps down as consul."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "23 f.Kr.",
+                "en": "23 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:frisk",
+                "en": "word:recovers"
+              },
+              "do": "plate.hide"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b5",
+          "say": {
+            "no": "I stedet tar han to fullmakter. Den første heter tribunicia potestas. Han får en folketribuns makt, uten å være folketribun.",
+            "en": "Instead he takes two powers. The first is called tribunicia potestas. He is given the authority of a tribune of the people, without being a tribune."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:fullmakter",
+                "en": "word:powers"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "tribunicia-potestas"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s0.b6",
+          "say": {
+            "no": "Den gir ham vetorett mot hva som helst, og gjør personen hans ukrenkelig. Å legge hånd på ham er en forbrytelse mot gudene.",
+            "en": "It gives him a veto over anything at all, and makes his person inviolable. To lay a hand on him is an offence against the gods."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b7",
+          "say": {
+            "no": "Den andre heter imperium maius, den større kommandoen. Med den kan han overstyre enhver guvernør i enhver provins.",
+            "en": "The second is called imperium maius, the greater command. With it he can overrule any governor in any province."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.3,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:provins",
+                "en": "word:province"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "province"
+            },
+            {
+              "on": {
+                "no": "word:provins",
+                "en": "word:province"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Aegyptus",
+                "Cyrenaica",
+                "Africa",
+                "Numidia",
+                "Mauretania",
+                "Sicilia"
+              ],
+              "side": "roman",
+              "over": 2.6,
+              "vary": false,
+              "strength": 1.1
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s0.b8",
+          "say": {
+            "no": "Ingen av delene er nye. Begge er republikanske. Han har bare aldri gitt dem fra seg igjen.",
+            "en": "Neither of them is new. Both are republican. He simply never gives them back."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:republikanske",
+                "en": "word:republican"
+              },
+              "do": "plate.show",
+              "id": "denarius",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 13,
+              "dim": 0.1
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b9",
+          "say": {
+            "no": "Det er hele trikset, og han bruker det i førtien år. Gamle former, ny mengde, ingen sluttdato.",
+            "en": "That is the whole trick, and he uses it for forty-one years. Old forms, new quantity, no end date."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:førtien",
+                "en": "word:forty-one"
+              },
+              "do": "stat.show",
+              "value": "41",
+              "label": {
+                "no": "år ved makten",
+                "en": "years in power"
+              },
+              "side": "roman"
+            },
+            {
+              "on": "end",
+              "do": "caption.note",
+              "value": {
+                "no": "27 f.Kr. – 14 e.Kr.",
+                "en": "27 BC – AD 14"
+              }
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "title": {
+        "no": "Murstein og marmor",
+        "en": "Brick and marble"
+      },
+      "clock": {
+        "no": "28–2 f.Kr.",
+        "en": "28–2 BC"
+      },
+      "beats": [
+        {
+          "id": "s1.b1",
+          "say": {
+            "no": "Roma er en by av leire, tre og trange trapper, med kanskje en million mennesker i seg.",
+            "en": "Rome is a city of clay, timber and narrow stairs, with perhaps a million people in it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 8.4,
+              "over": 3.2
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedOpen",
+              "gainDb": -11
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -18
+            },
+            {
+              "on": {
+                "no": "word:million",
+                "en": "word:million"
+              },
+              "do": "stat.show",
+              "value": "1 000 000",
+              "label": {
+                "no": "mennesker i Roma",
+                "en": "people in Rome"
+              },
+              "side": "roman"
+            },
+            {
+              "on": {
+                "no": "word:Roma",
+                "en": "word:Rome"
+              },
+              "do": "plate.show",
+              "id": "forum",
+              "motion": "right",
+              "focus": [
+                0.5,
+                0.52
+              ],
+              "over": 15,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s1.b2",
+          "say": {
+            "no": "Augustus skrøt senere av at han fant en by av murstein og etterlot en by av marmor. Det er en overdrivelse. Det er ikke en løgn.",
+            "en": "Augustus later boasted that he found a city of brick and left a city of marble. That is an exaggeration. It is not a lie."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:marmor",
+                "en": "word:marble"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "building-rome"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "Mannen som bygde det meste, het Agrippa. Det er den samme mannen som vant Actium.",
+            "en": "The man who built most of it was called Agrippa. It is the same man who won Actium."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Agrippa",
+                "en": "word:Agrippa"
+              },
+              "do": "portrait.show",
+              "id": "agrippa"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s1.b4",
+          "say": {
+            "no": "Agrippa førte friskt vann inn i byen i lange buer, bygde bad som var gratis å bruke, og reiste Pantheon.",
+            "en": "Agrippa carried fresh water into the city on long arches, built baths that were free to use, and raised the Pantheon."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Pantheon",
+                "en": "word:Pantheon"
+              },
+              "do": "plate.show",
+              "id": "pantheon",
+              "motion": "out",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 18,
+              "dim": 0.12
+            },
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b5",
+          "say": {
+            "no": "Roma fikk også noe kjedeligere og langt viktigere: en brannvakt. Sju kohorter, tusen mann i hver.",
+            "en": "Rome also got something duller and far more important: a fire brigade. Seven cohorts, a thousand men in each."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:brannvakt",
+                "en": "word:brigade"
+              },
+              "do": "sound.play",
+              "id": "alarmBell",
+              "gainDb": -17
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s1.b6",
+          "say": {
+            "no": "Før dette brant Roma jevnlig, og det var ingens jobb å slokke.",
+            "en": "Before this Rome burned regularly, and putting it out was nobody's job."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b7",
+          "say": {
+            "no": "Og en bygningstype til, som ikke ser ut som makt i det hele tatt: kornlagre. Byen spiste egyptisk korn, og Egypt var hans personlige eiendom.",
+            "en": "And one more kind of building, which does not look like power at all: granaries. The city ate Egyptian grain, and Egypt was his personal property."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:kornlagre",
+                "en": "word:granaries"
+              },
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.6,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:Egypt",
+                "en": "word:Egypt"
+              },
+              "do": "route.draw",
+              "id": "grain-egypt",
+              "over": 4.0
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b8",
+          "say": {
+            "no": "Han bygde ikke bare for å imponere. Han bygde det en storby trenger for å la være å gjøre opprør.",
+            "en": "He was not building only to impress. He was building what a large city needs in order not to revolt."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "route.clear"
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": {
+        "no": "Veiene og tallene",
+        "en": "The roads and the numbers"
+      },
+      "clock": {
+        "no": "27 f.Kr.–14 e.Kr.",
+        "en": "27 BC – AD 14"
+      },
+      "beats": [
+        {
+          "id": "s2.b1",
+          "say": {
+            "no": "Rundt Middelhavet bor det kanskje femti millioner mennesker. Ingen hadde styrt så mange før.",
+            "en": "Around the Mediterranean live perhaps fifty million people. Nobody had ever governed so many."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.3,
+              "over": 2.6
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -12
+            },
+            {
+              "on": {
+                "no": "word:millioner",
+                "en": "word:million"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Aegyptus",
+                "Cyrenaica",
+                "Africa",
+                "Numidia",
+                "Mauretania",
+                "Sicilia"
+              ],
+              "side": "roman",
+              "over": 2.4,
+              "vary": false,
+              "strength": 1.05
+            },
+            {
+              "on": {
+                "no": "word:millioner",
+                "en": "word:million"
+              },
+              "do": "stat.show",
+              "value": "50 000 000",
+              "label": {
+                "no": "mennesker i riket",
+                "en": "people in the empire"
+              },
+              "side": "roman"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b2",
+          "say": {
+            "no": "Det første han trenger, er å vite hvor mange de er. Han holder folketelling tre ganger mens han styrer.",
+            "en": "The first thing he needs is to know how many they are. He holds a census three times while he rules."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:folketelling",
+                "en": "word:census"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "census"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s2.b3",
+          "say": {
+            "no": "En folketelling er ikke nysgjerrighet. Det er skatt. Du kan ikke kreve inn penger fra folk du ikke vet finnes.",
+            "en": "A census is not curiosity. It is tax. You cannot collect money from people you do not know exist."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:skatt",
+                "en": "word:tax"
+              },
+              "do": "plate.show",
+              "id": "nile",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 16,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b4",
+          "say": {
+            "no": "Før dette ble skatten samlet inn av private oppkjøpere. De betalte staten på forskudd, og tok så inn så mye de klarte.",
+            "en": "Before this the tax was collected by private contractors. They paid the state up front, and then took in as much as they could."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:oppkjøpere",
+                "en": "word:contractors"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "taxes-and-census"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b5",
+          "say": {
+            "no": "Augustus setter lønnede embetsmenn til jobben i stedet. Det er fortsatt tungt å betale skatt. Men det er forutsigbart.",
+            "en": "Augustus puts salaried officials on the job instead. Paying tax is still hard. But it is predictable."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b6",
+          "say": {
+            "no": "Og han bygger veier. Ikke som en gave til reisende, men fordi en vei er det raskeste en hær kan bevege seg på.",
+            "en": "And he builds roads. Not as a gift to travellers, but because a road is the fastest thing an army can move on."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:veier",
+                "en": "word:roads"
+              },
+              "do": "plate.show",
+              "id": "appia",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.55
+              ],
+              "over": 18,
+              "dim": 0.12
+            },
+            {
+              "on": {
+                "no": "word:veier",
+                "en": "word:roads"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-roads"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b7",
+          "say": {
+            "no": "Langs veiene setter han opp stasjoner med hester som står klare. En melding fra Roma til Rhinen tar under en uke.",
+            "en": "Along the roads he sets up stations with horses standing ready. A message from Rome to the Rhine takes under a week."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:hester",
+                "en": "word:horses"
+              },
+              "do": "sound.play",
+              "id": "hooves",
+              "gainDb": -18
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b8",
+          "say": {
+            "no": "Det er raskere enn noe Europa kom til å ha igjen på fjorten hundre år.",
+            "en": "That is faster than anything Europe would have again for fourteen hundred years."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b9",
+          "say": {
+            "no": "Makt er ikke bare hærer. Makt er å få vite hva som skjer, mens det ennå er tid til å gjøre noe med det.",
+            "en": "Power is not only armies. Power is finding out what is happening while there is still time to do something about it."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": {
+        "no": "Hæren som ble et yrke",
+        "en": "The army becomes a job"
+      },
+      "clock": {
+        "no": "13 f.Kr.–6 e.Kr.",
+        "en": "13 BC – AD 6"
+      },
+      "beats": [
+        {
+          "id": "s3.b1",
+          "say": {
+            "no": "Problemet som drepte republikken, var enkelt: soldatene var lojale mot generalen sin, ikke mot staten.",
+            "en": "The problem that killed the republic was simple: soldiers were loyal to their general, not to the state."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch",
+              "gainDb": -12
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.4,
+              "over": 2.6
+            },
+            {
+              "on": {
+                "no": "word:soldatene",
+                "en": "word:soldiers"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-army"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b2",
+          "say": {
+            "no": "Grunnen var penger. En general som vant, skaffet jord til mennene sine. Staten ga dem ingenting.",
+            "en": "The reason was money. A general who won found land for his men. The state gave them nothing."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:vant",
+                "en": "word:won"
+              },
+              "do": "plate.show",
+              "id": "triumph",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 15,
+              "dim": 0.14
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b3",
+          "say": {
+            "no": "Augustus gjør om på det. Han fastsetter tjenestetiden: tjue år, senere tjuefem.",
+            "en": "Augustus changes that. He fixes the length of service: twenty years, later twenty-five."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tjenestetiden",
+                "en": "word:service"
+              },
+              "do": "sound.play",
+              "id": "boots",
+              "gainDb": -19
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s3.b4",
+          "say": {
+            "no": "Han fastsetter lønna. Og i år seks etter Kristus oppretter han en egen statskasse som bare skal betale pensjoner til soldater.",
+            "en": "He fixes the pay. And in the year six after Christ he sets up a treasury whose only job is to pay soldiers their pensions."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "6 e.Kr.",
+                "en": "AD 6"
+              }
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b5",
+          "say": {
+            "no": "Han legger inn en stor sum av sin egen formue først, og finner deretter en skatt som skal fylle den.",
+            "en": "He puts in a large sum of his own money first, and then finds a tax to keep it filled."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b6",
+          "say": {
+            "no": "Skatten er upopulær. Den rammer arv, og den rammer de rike. De klager på den i to hundre år.",
+            "en": "The tax is unpopular. It falls on inheritance, and it falls on the rich. They complain about it for two hundred years."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b7",
+          "say": {
+            "no": "Men nå får en soldat pengene sine fra staten, og ikke fra en mann. Det er den viktigste enkeltendringen han gjør.",
+            "en": "But now a soldier gets his money from the state, and not from a man. It is the single most important change he makes."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:staten",
+                "en": "word:state"
+              },
+              "do": "compare.show",
+              "parts": [
+                {
+                  "n": 60,
+                  "value": "60",
+                  "label": {
+                    "no": "legioner i borgerkrigen",
+                    "en": "legions in the civil war"
+                  },
+                  "side": "roman"
+                },
+                {
+                  "n": 28,
+                  "value": "28",
+                  "label": {
+                    "no": "legioner under Augustus",
+                    "en": "legions under Augustus"
+                  },
+                  "tone": "gold"
+                }
+              ],
+              "note": {
+                "no": "Færre menn under våpen, og de kostet mindre enn borgerkrig.",
+                "en": "Fewer men under arms, and cheaper than civil war."
+              },
+              "over": 1.4
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b8",
+          "say": {
+            "no": "Hæren settes til tjueåtte legioner, fast, og de plasseres ute ved grensene. Nesten ingen av dem står i Italia.",
+            "en": "The army is set at twenty-eight legions, permanently, and they are stationed out at the frontiers. Almost none of them are in Italy."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "compare.clear"
+            },
+            {
+              "on": {
+                "no": "word:grensene",
+                "en": "word:frontiers"
+              },
+              "do": "plate.show",
+              "id": "legion",
+              "motion": "right",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 15,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b9",
+          "say": {
+            "no": "Bare en styrke ligger i hovedstaden: pretorianergarden. Ni kohorter. Den skulle beskytte ham. Senere kom den til å velge keisere, og drepe dem.",
+            "en": "Only one force is kept in the capital: the praetorian guard. Nine cohorts. It was meant to protect him. Later it would choose emperors, and kill them."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:pretorianergarden",
+                "en": "word:praetorian"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "praetorian-guard"
+            },
+            {
+              "on": {
+                "no": "word:hovedstaden",
+                "en": "word:capital"
+              },
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 7.0,
+              "over": 3.0
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": {
+        "no": "Lover om hvordan man skal leve",
+        "en": "Laws about how to live"
+      },
+      "clock": {
+        "no": "18–2 f.Kr.",
+        "en": "18–2 BC"
+      },
+      "beats": [
+        {
+          "id": "s4.b1",
+          "say": {
+            "no": "Augustus mente Roma hadde mistet noe underveis, og at han kunne lovfeste det tilbake.",
+            "en": "Augustus believed Rome had lost something along the way, and that he could legislate it back."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -12
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "18 f.Kr.",
+                "en": "18 BC"
+              }
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b2",
+          "say": {
+            "no": "I år atten før Kristus kommer ekteskapslovene. Ugifte menn får ikke arve fritt. Barnløse par mister rettigheter.",
+            "en": "In the year eighteen before Christ the marriage laws arrive. Unmarried men may not inherit freely. Childless couples lose rights."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:ekteskapslovene",
+                "en": "word:marriage"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-marriage"
+            },
+            {
+              "on": {
+                "no": "word:ekteskapslovene",
+                "en": "word:marriage"
+              },
+              "do": "plate.show",
+              "id": "senate",
+              "motion": "out",
+              "focus": [
+                0.46,
+                0.5
+              ],
+              "over": 16,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b3",
+          "say": {
+            "no": "Tre barn gir en kvinne rett til å styre sin egen formue uten verge. Det er den mest konkrete rettigheten en romersk kvinne kunne få.",
+            "en": "Three children give a woman the right to manage her own property without a guardian. It is the most concrete right a Roman woman could get."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:kvinne",
+                "en": "word:woman"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-women"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b4",
+          "say": {
+            "no": "Utroskap gjøres om fra familiesak til forbrytelse mot staten. Før kunne en far straffe det selv. Nå er det domstolens sak.",
+            "en": "Adultery is turned from a family matter into a crime against the state. Before, a father could punish it himself. Now it belongs to the courts."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b5",
+          "say": {
+            "no": "Så, i år to før Kristus, bruker han loven på sin egen datter.",
+            "en": "Then, in the year two before Christ, he uses the law on his own daughter."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "2 f.Kr.",
+                "en": "2 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:datter",
+                "en": "word:daughter"
+              },
+              "do": "portrait.show",
+              "id": "julia"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b6",
+          "say": {
+            "no": "Julia var hans eneste barn. Han hadde giftet henne bort tre ganger, hver gang for å skaffe seg en arving.",
+            "en": "Julia was his only child. He had married her off three times, each time to get himself an heir."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b7",
+          "say": {
+            "no": "Han anklager henne offentlig for utroskap, og sender henne i eksil på en øy uten vin og uten besøk.",
+            "en": "He accuses her publicly of adultery, and sends her into exile on an island with no wine and no visitors."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:øy",
+                "en": "word:island"
+              },
+              "do": "map.flyTo",
+              "to": "pandateria",
+              "zoom": 8.0,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:eksil",
+                "en": "word:exile"
+              },
+              "do": "marker.show",
+              "at": "pandateria",
+              "label": {
+                "no": "Pandateria",
+                "en": "Pandateria"
+              },
+              "side": "roman",
+              "kind": "point"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b8",
+          "say": {
+            "no": "Hun kom aldri tilbake. Hun døde året etter faren, av sult eller av sorg, alt etter hvilken kilde du leser.",
+            "en": "She never came back. She died the year after her father, of starvation or of grief, depending which source you read."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b9",
+          "say": {
+            "no": "Kildene er enige om at han angret. De er ikke enige om hva som faktisk hadde skjedd, og det er verdt å merke seg.",
+            "en": "The sources agree that he regretted it. They do not agree on what actually happened, and that is worth noticing."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": {
+                "no": "word:Kildene",
+                "en": "word:sources"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": {
+        "no": "Arvingene som døde",
+        "en": "The heirs who died"
+      },
+      "clock": {
+        "no": "23 f.Kr.–4 e.Kr.",
+        "en": "23 BC – AD 4"
+      },
+      "beats": [
+        {
+          "id": "s5.b1",
+          "say": {
+            "no": "Systemet hadde ett hull, og Augustus visste om det: det fantes ingen regel for hvem som kom etter ham.",
+            "en": "The system had one hole in it, and Augustus knew about it: there was no rule for who came after him."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -11
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 6.4,
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "23 f.Kr.",
+                "en": "23 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:hull",
+                "en": "word:hole"
+              },
+              "do": "plate.show",
+              "id": "mausoleum",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.55
+              ],
+              "over": 20,
+              "dim": 0.14
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b2",
+          "say": {
+            "no": "Han var ikke konge. Konger har arvinger. En princeps har det ikke, i hvert fall ikke i teorien.",
+            "en": "He was not a king. Kings have heirs. A princeps does not, at least not in theory."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:princeps",
+                "en": "word:princeps"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "princeps"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b3",
+          "say": {
+            "no": "I praksis brukte han nesten tretti år på å skaffe seg en, og han mistet dem i tur og orden.",
+            "en": "In practice he spent nearly thirty years trying to produce one, and he lost them one after another."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b4",
+          "say": {
+            "no": "Først Marcellus, nevøen som også var svigersønnen hans. Han døde i år tjuetre før Kristus, tjue år gammel.",
+            "en": "First Marcellus, the nephew who was also his son-in-law. He died in twenty-three before Christ, aged twenty."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Marcellus",
+                "en": "word:Marcellus"
+              },
+              "do": "stat.show",
+              "value": "20",
+              "label": {
+                "no": "år gammel",
+                "en": "years old"
+              },
+              "side": "roman"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b5",
+          "say": {
+            "no": "Så Agrippa, den gamle vennen og generalen. Han giftet seg med Julia og fikk sønner med henne. Agrippa døde i år tolv.",
+            "en": "Then Agrippa, the old friend and general. He married Julia and had sons with her. Agrippa died in the year twelve."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Agrippa",
+                "en": "word:Agrippa"
+              },
+              "do": "portrait.show",
+              "id": "agrippa"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b6",
+          "say": {
+            "no": "Så Gaius og Lucius, Agrippas sønner, som Augustus adopterte da de var små. De døde i år to og år fire etter Kristus, atten og tjuefire år gamle.",
+            "en": "Then Gaius and Lucius, the sons of Agrippa, whom Augustus adopted while they were small. They died in the years two and four after Christ, aged eighteen and twenty-four."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "4 e.Kr.",
+                "en": "AD 4"
+              }
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b7",
+          "say": {
+            "no": "Fire arvinger på tjuesju år. Til slutt sto han igjen med Tiberius, stesønnen sin.",
+            "en": "Four heirs in twenty-seven years. In the end he was left with Tiberius, his stepson."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Tiberius",
+                "en": "word:Tiberius"
+              },
+              "do": "portrait.show",
+              "id": "tiberius"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b8",
+          "say": {
+            "no": "Tiberius var sønnen til Livia, kona hans gjennom femtien år, fra hennes første ekteskap. Augustus og Livia fikk aldri barn sammen.",
+            "en": "Tiberius was the son of Livia, his wife of fifty-one years, from her first marriage. Augustus and Livia never had a child together."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Livia",
+                "en": "word:Livia"
+              },
+              "do": "portrait.show",
+              "id": "livia"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b9",
+          "say": {
+            "no": "Romerske forfattere hundre år senere gjorde henne til giftblander, og lot henne rydde de andre arvingene av veien. Ingen kilde fra samtiden sier det. Historien festet seg likevel.",
+            "en": "Roman writers a hundred years later turned her into a poisoner, and had her clear the other heirs out of the way. No contemporary source says it. The story stuck anyway."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:kilde",
+                "en": "word:source"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            },
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b10",
+          "say": {
+            "no": "Augustus og Tiberius likte hverandre ikke. Tiberius hadde trukket seg tilbake til Rhodos i sju år, midt i det hele, uten å forklare hvorfor.",
+            "en": "Augustus and Tiberius did not like each other. Tiberius had withdrawn to Rhodes for seven years, in the middle of all of it, without explaining why."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Rhodos",
+                "en": "word:Rhodes"
+              },
+              "do": "map.flyTo",
+              "to": "rhodos",
+              "zoom": 6.6,
+              "over": 3.4
+            },
+            {
+              "on": {
+                "no": "word:Rhodos",
+                "en": "word:Rhodes"
+              },
+              "do": "marker.show",
+              "at": "rhodos",
+              "label": {
+                "no": "Rhodos",
+                "en": "Rhodes"
+              },
+              "side": "roman",
+              "kind": "point"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b11",
+          "say": {
+            "no": "Augustus adopterte ham likevel i år fire. Sveton forteller at han sa det rett ut hvorfor.",
+            "en": "Augustus adopted him anyway in the year four. Suetonius reports that he said plainly why."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Sveton",
+                "en": "word:Suetonius"
+              },
+              "do": "quote.show",
+              "id": "tiberius-adoption"
+            }
+          ],
+          "gapAfter": 2.2
+        },
+        {
+          "id": "s5.b12",
+          "say": {
+            "no": "Det er ikke en fars ord om en sønn. Det er en byggmesters ord om en stein som passer.",
+            "en": "Those are not a father's words about a son. They are a builder's words about a stone that fits."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": {
+        "no": "Varus, gi meg legionene mine tilbake",
+        "en": "Varus, give me back my legions"
+      },
+      "clock": {
+        "no": "9 e.Kr.",
+        "en": "AD 9"
+      },
+      "beats": [
+        {
+          "id": "s6.b1",
+          "say": {
+            "no": "I år ni etter Kristus marsjerer tre legioner vestover gjennom Germania, på vei mot vinterleir ved Rhinen.",
+            "en": "In the year nine after Christ three legions march west through Germania, heading for winter quarters on the Rhine."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -10
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "rain",
+              "gainDb": -19
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "storm"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "September, 9 e.Kr.",
+                "en": "September, AD 9"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "germania",
+              "zoom": 6.2,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:Rhinen",
+                "en": "word:Rhine"
+              },
+              "do": "route.draw",
+              "id": "rhine-line",
+              "over": 3.4
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s6.b2",
+          "say": {
+            "no": "De har med seg vogner, familier og kasser med penger. De går i en lang kolonne gjennom skog og myr.",
+            "en": "They have wagons, families and boxes of money with them. They move in a long column through forest and marsh."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:kolonne",
+                "en": "word:column"
+              },
+              "do": "route.draw",
+              "id": "varus-march",
+              "over": 5.0
+            },
+            {
+              "on": {
+                "no": "word:kolonne",
+                "en": "word:column"
+              },
+              "do": "plate.show",
+              "id": "legion",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 14,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s6.b3",
+          "say": {
+            "no": "Sjefen deres heter Varus. Han hadde styrt Syria, en rik og rolig provins, og han trodde Germania var kommet like langt.",
+            "en": "Their commander is called Varus. He had governed Syria, a rich and quiet province, and he believed Germania had come just as far."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Varus",
+                "en": "word:Varus"
+              },
+              "do": "portrait.show",
+              "id": "varus"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s6.b4",
+          "say": {
+            "no": "Mannen som viste dem veien, het Arminius. Han var germaner, romersk borger og offiser i den romerske hæren.",
+            "en": "The man showing them the way was called Arminius. He was a German, a Roman citizen and an officer in the Roman army."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:Arminius",
+                "en": "word:Arminius"
+              },
+              "do": "portrait.show",
+              "id": "arminius"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s6.b5",
+          "say": {
+            "no": "Han hadde lært hvordan romerne marsjerte ved å marsjere sammen med dem.",
+            "en": "He had learned how the Romans marched by marching with them."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:marsjerte",
+                "en": "word:marched"
+              },
+              "do": "plate.show",
+              "id": "teutoburg",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.48
+              ],
+              "over": 20,
+              "dim": 0.18
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s6.b6",
+          "say": {
+            "no": "Angrepet varte i tre eller fire dager, i regn, på en sti mellom myr og skråning. Der kunne ikke en legion stille seg opp i slagorden.",
+            "en": "The attack lasted three or four days, in rain, on a track between marsh and hillside. There a legion could not form up for battle."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:regn",
+                "en": "word:rain"
+              },
+              "do": "sound.play",
+              "id": "drums",
+              "gainDb": -16
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b7",
+          "say": {
+            "no": "Alle tre legioner ble utslettet. Sytten, atten og nitten. De numrene ble aldri brukt igjen.",
+            "en": "All three legions were destroyed. Seventeen, eighteen and nineteen. Those numbers were never used again."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:utslettet",
+                "en": "word:destroyed"
+              },
+              "do": "map.flash"
+            },
+            {
+              "on": {
+                "no": "word:utslettet",
+                "en": "word:destroyed"
+              },
+              "do": "marker.show",
+              "at": "teutoburg",
+              "label": {
+                "no": "Teutoburgerskogen",
+                "en": "Teutoburg Forest"
+              },
+              "side": "roman",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:nitten",
+                "en": "word:nineteen"
+              },
+              "do": "compare.show",
+              "parts": [
+                {
+                  "n": 28,
+                  "value": "28",
+                  "label": {
+                    "no": "legioner før",
+                    "en": "legions before"
+                  },
+                  "side": "roman"
+                },
+                {
+                  "n": 25,
+                  "value": "25",
+                  "label": {
+                    "no": "legioner etter",
+                    "en": "legions after"
+                  },
+                  "tone": "red"
+                }
+              ],
+              "note": {
+                "no": "Rundt femten tusen mann, borte på fire dager.",
+                "en": "Some fifteen thousand men, gone in four days."
+              },
+              "over": 1.4
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b8",
+          "say": {
+            "no": "Sveton forteller at Augustus lot skjegget gro, slo hodet mot dørkarmen og ropte det samme om og om igjen.",
+            "en": "Suetonius reports that Augustus let his beard grow, beat his head against the door frame and shouted the same thing over and over."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "compare.clear"
+            },
+            {
+              "on": {
+                "no": "word:Sveton",
+                "en": "word:Suetonius"
+              },
+              "do": "quote.show",
+              "id": "varus-legions"
+            }
+          ],
+          "gapAfter": 2.4
+        },
+        {
+          "id": "s6.b9",
+          "say": {
+            "no": "Grensen ble stående ved Rhinen. Romerriket sluttet å vokse nordover den uka, og begynte aldri igjen.",
+            "en": "The frontier stayed on the Rhine. The Roman empire stopped growing northwards that week, and never started again."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dusk"
+            },
+            {
+              "on": {
+                "no": "word:Rhinen",
+                "en": "word:Rhine"
+              },
+              "do": "map.flyTo",
+              "to": "germania",
+              "zoom": 5.4,
+              "over": 3.4
+            }
+          ],
+          "gapAfter": 1.5
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "title": {
+        "no": "Han skrev sin egen historie",
+        "en": "He wrote his own history"
+      },
+      "clock": {
+        "no": "14 e.Kr.",
+        "en": "AD 14"
+      },
+      "beats": [
+        {
+          "id": "s7.b1",
+          "say": {
+            "no": "Nittende august, år fjorten etter Kristus, dør Augustus i Nola, sør i Italia. Han er syttiseks år gammel.",
+            "en": "The nineteenth of August, in the year fourteen after Christ, Augustus dies at Nola in southern Italy. He is seventy-six years old."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -10
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "19. august 14 e.Kr.",
+                "en": "19 August AD 14"
+              }
+            },
+            {
+              "on": {
+                "no": "word:Nola",
+                "en": "word:Nola"
+              },
+              "do": "map.flyTo",
+              "to": "nola",
+              "zoom": 7.0,
+              "over": 3.6
+            },
+            {
+              "on": {
+                "no": "word:Nola",
+                "en": "word:Nola"
+              },
+              "do": "marker.show",
+              "at": "nola",
+              "label": {
+                "no": "Nola",
+                "en": "Nola"
+              },
+              "side": "roman",
+              "kind": "point"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b2",
+          "say": {
+            "no": "Sveton forteller at han spurte vennene sine om han hadde spilt rollen sin godt.",
+            "en": "Suetonius reports that he asked his friends whether he had played his part well."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Sveton",
+                "en": "word:Suetonius"
+              },
+              "do": "quote.show",
+              "id": "the-play"
+            }
+          ],
+          "gapAfter": 2.4
+        },
+        {
+          "id": "s7.b3",
+          "say": {
+            "no": "Sammen med testamentet lå det et dokument han hadde skrevet selv, og revidert i årevis.",
+            "en": "With the will lay a document he had written himself, and revised for years."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": {
+                "no": "word:dokument",
+                "en": "word:document"
+              },
+              "do": "plate.show",
+              "id": "res-gestae",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 20,
+              "dim": 0.14
+            },
+            {
+              "on": {
+                "no": "word:dokument",
+                "en": "word:document"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "res-gestae"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s7.b4",
+          "say": {
+            "no": "Det heter Res Gestae, det jeg har gjort. Det ble hugget i bronse utenfor graven hans, og kopiert inn i tempelvegger over hele riket.",
+            "en": "It is called the Res Gestae. That is Latin for the things I did. It was cut into bronze outside his tomb, and copied into temple walls across the empire."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s7.b5",
+          "say": {
+            "no": "En kopi står ennå i Ankara i Tyrkia. Det er derfra vi kan lese den i dag.",
+            "en": "One copy still stands at Ankara in Turkey. That is where we can read it today."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": {
+                "no": "word:Ankara",
+                "en": "word:Ankara"
+              },
+              "do": "map.flyTo",
+              "to": "ancyra",
+              "zoom": 6.0,
+              "over": 3.6
+            },
+            {
+              "on": {
+                "no": "word:Ankara",
+                "en": "word:Ankara"
+              },
+              "do": "marker.show",
+              "at": "ancyra",
+              "label": {
+                "no": "Ancyra",
+                "en": "Ancyra"
+              },
+              "side": "roman",
+              "kind": "point"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s7.b6",
+          "say": {
+            "no": "Det er den lengste selvbiografien vi har fra antikken, og nesten alt som står i den, er sant. Det den gjør, er å velge.",
+            "en": "It is the longest autobiography we have from antiquity, and almost everything in it is true. What it does is choose."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:lengste",
+                "en": "word:longest"
+              },
+              "do": "quote.show",
+              "id": "res-gestae-open"
+            }
+          ],
+          "gapAfter": 2.4
+        },
+        {
+          "id": "s7.b7",
+          "say": {
+            "no": "Han skriver hvor mange soldater han bosatte, og hva han betalte for jorda deres. Han skriver ikke ett ord om proskripsjonene.",
+            "en": "He writes how many soldiers he settled, and what he paid for their land. He does not write one word about the proscriptions."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": {
+                "no": "word:proskripsjonene",
+                "en": "word:proscriptions"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "proscription"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b8",
+          "say": {
+            "no": "Tiberius overtok uten at noen gjorde opprør. Det var beviset på at det Augustus hadde bygd, var et system og ikke en mann.",
+            "en": "Tiberius took over without anyone revolting. That was the proof that what Augustus had built was a system and not a man."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:Tiberius",
+                "en": "word:Tiberius"
+              },
+              "do": "portrait.show",
+              "id": "tiberius"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b9",
+          "say": {
+            "no": "Ingen romer under seksti år hadde opplevd noe annet enn ham. Republikken var ikke avskaffet. Det var bare ingen igjen som husket den.",
+            "en": "No Roman under sixty had known anything but him. The republic had not been abolished. There was simply nobody left who remembered it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.2,
+              "over": 5.0
+            },
+            {
+              "on": {
+                "no": "word:Republikken",
+                "en": "word:republic"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Aegyptus",
+                "Cyrenaica",
+                "Africa",
+                "Numidia",
+                "Mauretania",
+                "Sicilia"
+              ],
+              "side": "roman",
+              "over": 3.0,
+              "vary": false,
+              "strength": 1.1
+            },
+            {
+              "on": "end",
+              "do": "plate.show",
+              "id": "augustus-statue",
+              "motion": "out",
+              "focus": [
+                0.5,
+                0.32
+              ],
+              "over": 14,
+              "dim": 0.1
+            }
+          ],
+          "gapAfter": 2.0
+        }
+      ]
+    }
+  ]
+}
