@@ -164,6 +164,20 @@ python tools/check-published.py    # hashes every file index.html reaches
 
 ## Hazards that have bitten before
 
+**For ten minutes after a push, a browser can run half of one version against half of
+another.** GitHub Pages serves JavaScript with `Cache-Control: max-age=600`, and a returning
+visitor's HTTP cache does not expire every file at the same instant. So a fresh
+`engine/scenes/map.js` gets imported against a ten-minute-old `map/basemap.js`, and the module
+graph does not degrade — it throws *does not provide an export named `registerLevels`* and
+nothing loads at all. `check-published.py` reports the site perfect throughout, because the
+server really is correct; it is the visitor who is holding two versions.
+
+It self-heals within ten minutes, and a hard reload fixes it now. What matters is recognising
+it: an export error naming a module you did not touch, right after a deploy, is this and not
+your code. Do not go looking for the bug. And it is why the answer to "is it live?" is
+`check-published.py` *plus* a reload in a browser that has been there before — the two
+questions have different answers for ten minutes.
+
 **`sw.js`'s `PRECACHE` list and `VERSION` are generated — run `tools/build-sw.py`.** They used
 to be maintained by hand, so adding a file and forgetting the list meant it worked online and
 404s offline, silently, because the install uses `Promise.allSettled`; and forgetting to bump
