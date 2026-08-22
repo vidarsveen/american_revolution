@@ -2943,11 +2943,6 @@
               "over": 2.4,
               "vary": false,
               "strength": 1.15
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.8

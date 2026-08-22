@@ -1064,21 +1064,6 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "who-could-vote"
-            },
-            {
-              "on": {
-                "no": "word:parlamentet",
-                "en": "word:Parliament"
-              },
-              "do": "plate.show",
-              "id": "stamp-act",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 15,
-              "dim": 0.14
             }
           ],
           "gapAfter": 1.0
@@ -1125,21 +1110,6 @@
               "do": "term.mark",
               "kind": "term",
               "id": "tax"
-            },
-            {
-              "on": {
-                "no": "word:tolv",
-                "en": "word:twelve"
-              },
-              "do": "plate.show",
-              "id": "tea-party",
-              "motion": "in",
-              "focus": [
-                0.45,
-                0.55
-              ],
-              "over": 14,
-              "dim": 0.14
             }
           ],
           "gapAfter": 1.0
@@ -1171,11 +1141,6 @@
               "do": "map.flyTo",
               "to": "boston-wide",
               "over": 3.0
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.0
@@ -1278,10 +1243,7 @@
               "over": 3.4
             },
             {
-              "on": {
-                "no": "word:halvøy",
-                "en": "word:peninsula"
-              },
+              "on": "start",
               "do": "plate.show",
               "id": "boston-1768",
               "motion": "right",
@@ -1289,7 +1251,7 @@
                 0.5,
                 0.55
               ],
-              "over": 18,
+              "over": 22,
               "dim": 0.14
             }
           ],
@@ -1516,6 +1478,18 @@
               "do": "sound.ambience",
               "id": "wading",
               "gainDb": -10
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "boston-1768",
+              "motion": "in",
+              "focus": [
+                0.45,
+                0.6
+              ],
+              "over": 16,
+              "dim": 0.14
             }
           ],
           "gapAfter": 1.05
@@ -1527,6 +1501,11 @@
             "en": "Then they begin to walk."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.7
+            },
             {
               "on": {
                 "no": "word:gå",
@@ -1595,25 +1574,22 @@
               "to": "old-north"
             },
             {
-              "on": {
-                "no": "word:tårnet",
-                "en": "word:tower"
-              },
-              "do": "plate.show",
-              "id": "old-north",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.3
-              ],
-              "over": 16,
-              "dim": 0.15
-            },
-            {
               "on": "start",
               "do": "marker.show",
               "at": "old-north",
               "kind": "point"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "old-north",
+              "motion": "out",
+              "focus": [
+                0.5,
+                0.35
+              ],
+              "over": 18,
+              "dim": 0.14
             }
           ],
           "gapAfter": 0.75
@@ -1662,19 +1638,9 @@
               "id": "revere"
             },
             {
-              "on": {
-                "no": "word:sølvsmed",
-                "en": "word:silversmith"
-              },
-              "do": "plate.show",
-              "id": "boston-massacre",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.45
-              ],
-              "over": 16,
-              "dim": 0.16
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 0.95
@@ -1686,11 +1652,6 @@
             "en": "He is rowed across the river, past a British warship, with the oars wrapped in cloth so they make no sound. On the far side a horse is waiting."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.6
-            },
             {
               "on": {
                 "no": "word:hest",
@@ -1746,11 +1707,6 @@
               "do": "route.draw",
               "id": "dawes-ride",
               "over": 6
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.15
@@ -2073,20 +2029,7 @@
             "en": "Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
           },
           "gapAfter": 1.15,
-          "cues": [
-            {
-              "on": "start",
-              "do": "plate.show",
-              "id": "doolittle-1",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 26,
-              "dim": 0.12
-            }
-          ]
+          "cues": []
         },
         {
           "id": "s3.b3",
@@ -2099,11 +2042,6 @@
               "on": "word:Parker",
               "do": "portrait.show",
               "id": "parker"
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.25
@@ -2307,24 +2245,21 @@
                 "no": "word:salve",
                 "en": "word:volley"
               },
-              "do": "plate.show",
-              "id": "doolittle-1",
-              "motion": "left",
-              "focus": [
-                0.45,
-                0.5
-              ],
-              "over": 20,
-              "dim": 0.12
-            },
-            {
-              "on": {
-                "no": "word:salve",
-                "en": "word:volley"
-              },
               "do": "sound.play",
               "id": "volley",
               "gainDb": -2
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "doolittle-1",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 22,
+              "dim": 0.12
             }
           ],
           "gapAfter": 1.05
@@ -2381,10 +2316,6 @@
               "do": "stat.clear"
             },
             {
-              "on": "start",
-              "do": "plate.hide"
-            },
-            {
               "on": "word:Concord",
               "do": "map.flyTo",
               "to": "concord"
@@ -2406,6 +2337,11 @@
               "do": "sound.play",
               "id": "drums",
               "gainDb": -12
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 2.95
@@ -2489,27 +2425,24 @@
           "cues": [
             {
               "on": {
-                "no": "word:leter",
-                "en": "word:search"
-              },
-              "do": "plate.show",
-              "id": "doolittle-2",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 18,
-              "dim": 0.12
-            },
-            {
-              "on": {
                 "no": "word:brenne",
                 "en": "word:burn"
               },
               "do": "sound.ambience",
               "id": "fire",
               "gainDb": -13
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "doolittle-2",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 18,
+              "dim": 0.12
             }
           ],
           "gapAfter": 1.15
@@ -2525,10 +2458,6 @@
               "on": "start",
               "do": "sound.music",
               "id": "bedTension"
-            },
-            {
-              "on": "start",
-              "do": "plate.hide"
             },
             {
               "on": "start",
@@ -2589,6 +2518,11 @@
               "do": "term.mark",
               "kind": "term",
               "id": "militia"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.05
@@ -2694,7 +2628,7 @@
               "on": "start",
               "do": "plate.show",
               "id": "doolittle-3",
-              "motion": "right",
+              "motion": "in",
               "focus": [
                 0.5,
                 0.5
@@ -2726,11 +2660,6 @@
               "times": 2,
               "spread": 0.7,
               "gainDb": -5
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ]
         },
@@ -2741,6 +2670,11 @@
             "en": "The order is four words. Fire, fellow soldiers, fire."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.7
+            },
             {
               "on": "end",
               "do": "map.flash"
@@ -2915,10 +2849,7 @@
               "centre": false
             },
             {
-              "on": {
-                "no": "word:steinmur",
-                "en": "word:wall"
-              },
+              "on": "start",
               "do": "plate.show",
               "id": "doolittle-4",
               "motion": "left",
@@ -2926,7 +2857,7 @@
                 0.5,
                 0.5
               ],
-              "over": 24,
+              "over": 22,
               "dim": 0.12
             }
           ],
@@ -3116,8 +3047,15 @@
             },
             {
               "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
+              "do": "plate.show",
+              "id": "doolittle-4",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 18,
+              "dim": 0.14
             }
           ],
           "gapAfter": 0.9
@@ -3197,6 +3135,11 @@
               "do": "sound.ambience",
               "id": "rigging",
               "gainDb": -14
+            },
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.55
@@ -3367,10 +3310,7 @@
               "side": "patriot"
             },
             {
-              "on": {
-                "no": "word:bue",
-                "en": "word:arc"
-              },
+              "on": "start",
               "do": "plate.show",
               "id": "siege-map",
               "motion": "in",
@@ -3378,7 +3318,7 @@
                 0.5,
                 0.45
               ],
-              "over": 18,
+              "over": 20,
               "dim": 0.14
             }
           ],
@@ -3471,21 +3411,6 @@
               "on": "start",
               "do": "map.flyTo",
               "to": "wide"
-            },
-            {
-              "on": {
-                "no": "word:våpenlager",
-                "en": "word:store"
-              },
-              "do": "plate.show",
-              "id": "siege-map",
-              "motion": "out",
-              "focus": [
-                0.5,
-                0.45
-              ],
-              "over": 16,
-              "dim": 0.14
             }
           ],
           "gapAfter": 1.35
@@ -3515,11 +3440,6 @@
             {
               "on": "start",
               "do": "quote.hide"
-            },
-            {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
             }
           ],
           "gapAfter": 1.45
@@ -3572,10 +3492,7 @@
               "kind": "clash"
             },
             {
-              "on": {
-                "no": "word:jorde",
-                "en": "word:field"
-              },
+              "on": "start",
               "do": "plate.show",
               "id": "doolittle-1",
               "motion": "in",

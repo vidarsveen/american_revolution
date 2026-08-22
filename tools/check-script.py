@@ -125,6 +125,12 @@ READABLE = {
 # the scene wipe takes it away before anyone sees it -- which reads as a span
 # of zero or less, and is a picture nobody ever gets.
 PLATE_CEILING = 34.0
+# And a floor that works for a plate with NO hide, which runs to the scene
+# wipe. READABLE only measures show/hide pairs, so the closing picture of
+# chapter two was on screen for 2 seconds and nothing said so. Six, not
+# four: four is where a plate stops being legible, six is where it stops
+# being a shot and starts being a blink.
+PLATE_FLOOR = 6.0
 
 
 # Cues that PLAY OUT: a march that draws itself over seven seconds, a front
@@ -141,6 +147,43 @@ LOST_UNDER_PLATE = {"route.draw", "front.show", "crossing.draw", "map.flash"}
 # picture over the top is answering a question with the wrong thing. A tool
 # cannot read the sentence, so these are listed, not failed.
 STAGED_UNDER_PLATE = {"region.show", "marker.show", "battle.show", "area.show"}
+
+
+def check_plate_rhythm(chapter):
+    """A picture story, not a slideshow.
+
+    Two things went wrong often enough to be worth encoding. A plate shown
+    and hidden inside ONE beat is a flash, not a shot -- it arrives, the
+    drift has no time to start, and it is gone. And two DIFFERENT pictures
+    starting in adjacent beats read as channel-hopping; the eye has not
+    finished the first before the second replaces it.
+
+    Both are about beats rather than seconds on purpose: a beat is a
+    sentence, and the unit a viewer actually experiences.
+    """
+    found = []
+    for scene in chapter["scenes"]:
+        beats = scene["beats"]
+        open_i = open_id = None
+        last_show_i = last_show_id = None
+        for i, beat in enumerate(beats):
+            for cue in beat.get("cues", []):
+                if cue["do"] == "plate.show":
+                    mid = cue.get("id")
+                    if last_show_i is not None and i - last_show_i == 1 and mid != last_show_id:
+                        found.append(
+                            f"{beat['id']}: plate '{mid}' starts one beat after "
+                            f"'{last_show_id}' — two pictures back to back reads as "
+                            f"channel-hopping. Hold one, or drop one.")
+                    last_show_i, last_show_id = i, mid
+                    open_i, open_id = i, mid
+                elif cue["do"] == "plate.hide" and open_i is not None:
+                    if i == open_i:
+                        found.append(
+                            f"{beat['id']}: plate '{open_id}' is shown and hidden "
+                            f"inside one beat — that is a flash, not a shot.")
+                    open_i = open_id = None
+    return found
 
 
 def check_plates_over_map(chapter):
@@ -212,7 +255,12 @@ def check_plates_hold(chapter, timings, langs):
                 if open_at is None:
                     return
                 span = end - open_at
-                if span <= 0.5:
+                if 0.5 < span < PLATE_FLOOR:
+                    found.append(
+                        f"{open_beat}: '{lang}' plate '{open_id}' is on screen for "
+                        f"{span:.1f}s, under {PLATE_FLOOR:.0f}s — a blink, not a shot. "
+                        f"Show it earlier in the beat, or hide it later.")
+                elif span <= 0.5:
                     found.append(
                         f"{open_beat}: '{lang}' plate '{open_id}' is shown "
                         f"{-span:.1f}s after its scene ends — the wipe takes it "
@@ -423,6 +471,7 @@ def main():
     problems.extend(check_animations_finish(chapter, timings, langs))
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
+    problems.extend(check_plate_rhythm(chapter) or [])
     plate_bad, plate_note = check_plates_over_map(chapter)
     problems.extend(plate_bad)
     notes.extend(plate_note)

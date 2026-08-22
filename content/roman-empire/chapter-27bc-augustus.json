@@ -1204,10 +1204,7 @@
               "do": "compare.clear"
             },
             {
-              "on": {
-                "no": "word:grensene",
-                "en": "word:frontiers"
-              },
+              "on": "start",
               "do": "plate.show",
               "id": "legion",
               "motion": "right",
@@ -2348,7 +2345,10 @@
               "strength": 1.1
             },
             {
-              "on": "end",
+              "on": {
+                "no": "word:Republikken",
+                "en": "word:republic"
+              },
               "do": "plate.show",
               "id": "augustus-statue",
               "motion": "out",

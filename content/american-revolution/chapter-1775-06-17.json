@@ -2039,31 +2039,6 @@
               "gainDb": -10
             },
             {
-              "on": {
-                "no": "word:brenne",
-                "en": "word:burned"
-              },
-              "do": "plate.show",
-              "id": "charlestown-burning",
-              "motion": "in",
-              "focus": [
-                0.45,
-                0.5
-              ],
-              "over": 16,
-              "dim": 0.16
-            }
-          ],
-          "gapAfter": 1.15
-        },
-        {
-          "id": "s4.b13",
-          "say": {
-            "no": "Omtrent to tusen sju hundre mennesker bodde i Charlestown. De fleste hadde alt flyktet. Byen brant ned til grunnen mens slaget pågikk.",
-            "en": "About two thousand seven hundred people lived in Charlestown. Most had already fled. The town burned to the ground while the battle went on."
-          },
-          "cues": [
-            {
               "on": "start",
               "do": "plate.show",
               "id": "bunker-hill-attack",
@@ -2076,6 +2051,15 @@
               "dim": 0.15
             }
           ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s4.b13",
+          "say": {
+            "no": "Omtrent to tusen sju hundre mennesker bodde i Charlestown. De fleste hadde alt flyktet. Byen brant ned til grunnen mens slaget pågikk.",
+            "en": "About two thousand seven hundred people lived in Charlestown. Most had already fled. The town burned to the ground while the battle went on."
+          },
+          "cues": [],
           "gapAfter": 1.65
         }
       ]

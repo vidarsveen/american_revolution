@@ -83,30 +83,6 @@
     "licence": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_General_Warren_at_the_Battle_of_Bunker%27s_Hill.jpg"
   },
-  "join-or-die": {
-    "file": "join-or-die.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Bli med, eller dø",
-      "en": "Join, or Die"
-    },
-    "year": "1754",
-    "artist": "Benjamin Franklin",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Benjamin_Franklin_-_Join_or_Die.jpg"
-  },
-  "stamp-act": {
-    "file": "stamp-act.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Stempelavgiftens begravelse",
-      "en": "The funeral of the Stamp Act"
-    },
-    "year": "1766",
-    "artist": "Britisk satiretrykk",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Repeal_Or_the_Funeral_of_Miss_Ame-Stamp_(BM_J,1.54).jpg"
-  },
   "boston-1768": {
     "file": "boston-1768.jpg",
     "fit": "cover",
@@ -118,30 +94,6 @@
     "artist": "Paul Revere",
     "licence": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:A_view_of_part_of_the_town_of_Boston_in_New-England_and_Brittish(sic)_ships_of_war_landing_their_troops!_1768_(13429760603).jpg"
-  },
-  "tea-party": {
-    "file": "tea-party.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Teselskapet i Boston",
-      "en": "The Boston Tea Party"
-    },
-    "year": "1789",
-    "artist": "W. D. Cooper",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:1773_BostonTeaParty_Cooper.jpg"
-  },
-  "boston-massacre": {
-    "file": "boston-massacre.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Massakren i Boston",
-      "en": "The Boston Massacre"
-    },
-    "year": "1770",
-    "artist": "Paul Revere, etter Henry Pelham",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Paul_Revere,_after_Henry_Pelham,_The_Boston_Massacre,_1770,_NGA_11550.jpg"
   },
   "siege-map": {
     "file": "siege-map.jpg",
@@ -166,18 +118,6 @@
     "artist": "Henry Clinton",
     "licence": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:A_Plan_of_the_Battle_of_Bunker_Hill_LOC_83694241.jpg"
-  },
-  "charlestown-burning": {
-    "file": "charlestown-burning.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Charlestown brenner",
-      "en": "Charlestown burning"
-    },
-    "year": "1775",
-    "artist": "Samtidig trykk",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Attack_on_Bunker%27s_Hill,_with_the_burning_of_Charlestown.jpg"
   },
   "bunker-hill-assault": {
     "file": "bunker-hill-assault.jpg",

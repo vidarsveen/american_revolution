@@ -164,6 +164,31 @@ python tools/check-published.py    # hashes every file index.html reaches
 
 ## Hazards that have bitten before
 
+**A picture must show what the sentence is talking about, or it is worse than no
+picture.** This produced the single worst regression of the project, and every part of it
+was avoidable. Pictures were added beat by beat to raise the count, and the result was:
+Franklin's *Join, or Die* over the line "here they are, thirteen colonies" — covering the
+map that was drawing all thirteen, with a cartoon that has eight segments and was cut in
+1754 for a different war. An 1766 allegorical mock funeral under "no taxation without
+representation", an event the script never mentions. The Boston Massacre under a line
+about a silversmith and two lanterns. Two near-identical prints of the same scene in
+consecutive beats.
+
+Three of the four are now mechanically checkable and `check-script.py` fails on them: a
+plate over a cue that *animates* (a march drawing itself, a front advancing, a flash) —
+it plays out behind the picture and is never seen; a plate shown and hidden inside one
+beat, or two different plates starting in adjacent beats; and a plate under six seconds
+or over thirty-four.
+
+The fourth is not checkable and is the one that matters: **does this picture show the
+thing being said?** A tool cannot read the sentence. What it can do is *list* every plate
+that sits over a `region.show` or a `marker.show`, and it does — those are fine when the
+plate is pre-staging the map behind itself, and wrong when the line is pointing at it.
+Read that list.
+
+The rhythm is a property of the whole chapter, not of a beat. Print it — one line per
+scene, which pictures and for how long — before deciding anything is missing.
+
 **For ten minutes after a push, a browser can run half of one version against half of
 another.** GitHub Pages serves JavaScript with `Cache-Control: max-age=600`, and a returning
 visitor's HTTP cache does not expire every file at the same instant. So a fresh
