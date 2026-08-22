@@ -170,7 +170,11 @@ def main():
             }
             kb = os.path.getsize(dest) // 1024
             print(f"  {mid:16} ok  {im.size[0]}x{im.size[1]}  {kb:4} KB  [{meta['licence']}]")
-            if "public domain" not in meta["licence"].lower() and "pd" not in meta["licence"].lower():
+            # CC0 is a public-domain DEDICATION, not a restriction. Warning on it
+            # cried wolf on a third of the Roman pack and trained the eye to skip
+            # the line that is meant to stop a non-commercial image shipping.
+            lic = meta["licence"].lower()
+            if not any(k in lic for k in ("public domain", "pd", "cc0")):
                 print(f"  {'':16}     ! licence is not obviously public domain — check before shipping")
         except Exception as e:
             failed.append((mid, repr(e)[:90]))

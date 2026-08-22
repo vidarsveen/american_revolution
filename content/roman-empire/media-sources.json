@@ -1,63 +1,199 @@
 {
  "//": [
-  "Input to tools/fetch-media.py. Every one of these is public domain by age —",
-  "the newest is Maccari's 1880 fresco. That is deliberate: for this subject",
-  "the PD material is better than anything a permissive-but-modern search",
-  "turns up, so there is no reason to take on an attribution obligation or a",
+  "Input to tools/fetch-media.py. Almost all of these are public domain by age.",
+  "That is deliberate: for this subject the PD material is better than anything a",
+  "permissive-but-modern search turns up, so there is no reason to take on a",
   "non-commercial restriction to get pictures.",
   "",
-  "They are also honest about what they are: a nineteenth-century painting of",
-  "the Ides of March is a Roman scene imagined by a Roman-obsessed age, not",
-  "evidence. The credit line under each plate says the artist and the year, so",
-  "a reader can see they are looking at 1805 rather than 44 BC."
+  "Two kinds of picture, and the difference is the point. A nineteenth-century",
+  "painting of the Ides of March is a Roman scene imagined by a Roman-obsessed",
+  "age, not evidence. A coin struck in 29 BC and the Res Gestae cut into a temple",
+  "wall ARE evidence, and the chapters say so where they use them. The credit",
+  "line under every plate gives the artist and the year, so a reader can see",
+  "whether they are looking at 1805 or at 44 BC.",
+  "",
+  "Where the object is ancient but the photograph is not, the photograph carries",
+  "its own licence. CC BY-SA is fine and credited automatically; NC is not, and",
+  "would make the whole build non-commercial. Read the licence, not a summary."
  ],
-
  "caesar-death": {
   "commons": "File:Vincenzo Camuccini - La morte di Cesare (cropped 3-2).jpg",
   "artist": "Vincenzo Camuccini",
   "year": "1804–05",
-  "title": { "no": "Cæsars død", "en": "The Death of Caesar" }
+  "title": {
+   "no": "Cæsars død",
+   "en": "The Death of Caesar"
+  }
  },
-
  "senate": {
   "commons": "File:Cicero Denounces Catiline in the Roman Senate by Cesare Maccari.png",
   "artist": "Cesare Maccari",
   "year": "1880",
-  "title": { "no": "Senatet i Roma", "en": "The senate at Rome" }
+  "title": {
+   "no": "Senatet i Roma",
+   "en": "The senate at Rome"
+  }
  },
-
  "forum": {
   "commons": "File:View of the Campo Vaccino -Roman Forum with the Temple of Castor and Pollux to right-, from Vedute di Roma (Roman Views), part II MET DP260583.jpg",
   "artist": "Giovanni Battista Piranesi",
   "year": "1772",
-  "title": { "no": "Forum Romanum", "en": "The Roman Forum" }
+  "title": {
+   "no": "Forum Romanum",
+   "en": "The Roman Forum"
+  }
  },
-
  "actium": {
   "commons": "File:Castro Battle of Actium.jpg",
   "artist": "Lorenzo A. Castro",
   "year": "1672",
-  "title": { "no": "Slaget ved Actium", "en": "The Battle of Actium" }
+  "title": {
+   "no": "Slaget ved Actium",
+   "en": "The Battle of Actium"
+  }
  },
-
  "colosseum": {
   "commons": "File:Giovanni Battista Piranesi, Colosseum, 1760, KKSgb9862, Statens Museum for Kunst.jpg",
   "artist": "Giovanni Battista Piranesi",
   "year": "1760",
-  "title": { "no": "Roma", "en": "Rome" }
+  "title": {
+   "no": "Roma",
+   "en": "Rome"
+  }
  },
-
  "nile": {
   "commons": "File:Louis Haghe - Egypt and Nubia, Volume I- Pyramids of Geezeh, from the Nile - 2012.201 - Cleveland Museum of Art.tif",
   "artist": "Louis Haghe, after David Roberts",
   "year": "1846",
-  "title": { "no": "Nilen", "en": "The Nile" }
+  "title": {
+   "no": "Nilen",
+   "en": "The Nile"
+  }
  },
-
  "legion": {
   "commons": "File:Trajan's Column - NMR - panel 015 A.jpg",
   "artist": "Trajans søyle",
   "year": "113",
-  "title": { "no": "Legionærer på marsj", "en": "Legionaries on the march" }
+  "title": {
+   "no": "Legionærer på marsj",
+   "en": "Legionaries on the march"
+  }
+ },
+ "caesar-funeral": {
+  "commons": "File:Marc Antony's Oration at Caesar's Funeral by George Edward Robertson.jpg",
+  "artist": "George Edward Robertson",
+  "year": "ca. 1890",
+  "title": {
+   "no": "Antonius taler over Cæsars lik",
+   "en": "Antony speaks over Caesar's body"
+  }
+ },
+ "triumph": {
+  "commons": "File:A Roman Triumph, about 1630, Peter Paul Rubens.jpg",
+  "artist": "Peter Paul Rubens",
+  "year": "ca. 1630",
+  "title": {
+   "no": "Et romersk triumftog",
+   "en": "A Roman triumph"
+  }
+ },
+ "proscriptions": {
+  "commons": "File:Svedomsky-Fulvia.jpg",
+  "artist": "Pavel Svedomskij",
+  "year": "1898",
+  "title": {
+   "no": "Fulvia med Ciceros hode",
+   "en": "Fulvia with Cicero's head"
+  }
+ },
+ "philippi": {
+  "commons": "File:Pauwels Casteels - The Death of Brutus and Cassius at the Battle of Philippi.jpg",
+  "artist": "Pauwels Casteels",
+  "year": "ca. 1660",
+  "title": {
+   "no": "Brutus og Cassius faller ved Filippi",
+   "en": "Brutus and Cassius fall at Philippi"
+  }
+ },
+ "siege": {
+  "commons": "File:Gustave Brion, Siège d'une ville par les Romains. Batterie de balistes et catapultes, 1861.jpg",
+  "artist": "Gustave Brion",
+  "year": "1861",
+  "title": {
+   "no": "Romerne beleirer en by",
+   "en": "Romans besieging a town"
+  }
+ },
+ "cleopatra-death": {
+  "commons": "File:The Death of Cleopatra arthur.jpg",
+  "artist": "Reginald Arthur",
+  "year": "1892",
+  "title": {
+   "no": "Kleopatras død",
+   "en": "The death of Cleopatra"
+  }
+ },
+ "denarius": {
+  "commons": "File:Silver denarius of Octavian MET sf0817088r.jpg",
+  "artist": "Ukjent romersk myntmester",
+  "year": "29–27 f.Kr.",
+  "title": {
+   "no": "Denar med Octavians ansikt",
+   "en": "A denarius with Octavian's face"
+  }
+ },
+ "augustus-statue": {
+  "commons": "File:Beeldhouwwerk Augustus van Prima Porta Caesar Augustus, Vatican (titel op object), RP-F-F01143-CK.jpg",
+  "artist": "Ukjent fotograf, Rijksmuseum",
+  "year": "ca. 1860–1900",
+  "title": {
+   "no": "Augustus fra Prima Porta",
+   "en": "The Augustus of Prima Porta"
+  }
+ },
+ "res-gestae": {
+  "commons": "File:Monumentum Ancyranum Res Gestae Divi Augusti Part 1.jpg",
+  "artist": "Perrot, Guillaume og Delbet",
+  "year": "1872",
+  "title": {
+   "no": "Res Gestae, hugget i tempelveggen i Ankara",
+   "en": "The Res Gestae, cut into the temple wall at Ankara"
+  }
+ },
+ "pantheon": {
+  "commons": "File:The Pantheon exterior (Veduta del Pantheon d'Agrippa oggi Chiesa di S. Maria ad Martyres) MET DP828229.jpg",
+  "artist": "Giovanni Battista Piranesi",
+  "year": "ca. 1761",
+  "title": {
+   "no": "Pantheon, bygd av Agrippa",
+   "en": "The Pantheon, built by Agrippa"
+  }
+ },
+ "appia": {
+  "commons": "File:Giovanni Battista Piranesi, Parte dell'antica Via Appia fuori de Porta S. Sebastiano, 1748, NGA 125678.jpg",
+  "artist": "Giovanni Battista Piranesi",
+  "year": "1748",
+  "title": {
+   "no": "Via Appia utenfor Roma",
+   "en": "The Via Appia outside Rome"
+  }
+ },
+ "teutoburg": {
+  "commons": "File:Hermann (Arminius) at the battle of the Teutoburg Forest in 9 CE by Peter Jannsen, 1873, with painting creases and damage removed.jpg",
+  "artist": "Peter Janssen",
+  "year": "1873",
+  "title": {
+   "no": "Slaget i Teutoburgerskogen",
+   "en": "The battle in the Teutoburg Forest"
+  }
+ },
+ "mausoleum": {
+  "commons": "File:Mausoleum van Augustus te Rome Archeologische vondsten in en rond Rome (serietitel) Le Antichità Romane (serietitel), RP-P-OB-39.472.jpg",
+  "artist": "Giovanni Battista Piranesi",
+  "year": "ca. 1756",
+  "title": {
+   "no": "Augustus' mausoleum",
+   "en": "The mausoleum of Augustus"
+  }
  }
 }
