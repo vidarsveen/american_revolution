@@ -47,6 +47,9 @@ export function createDossier(host, opts = {}) {
     t = (k) => k,
     tx = (v) => (typeof v === 'string' ? v : (v?.no ?? v?.en ?? '')),
     resolve = () => null,
+    // Normalised below: a default only guards `undefined`, and a caller that
+    // computes this from a pack can hand us null. Interpolating null gives
+    // src="nulloctavian.jpg", which is a broken image and no error anywhere.
     portraitBase = './portraits/',
     formatDate = (d) => String(d ?? ''),
     formatNumber = (n) => String(n ?? ''),
@@ -57,6 +60,8 @@ export function createDossier(host, opts = {}) {
     // A getter, not a value: the reader can change language with a card open.
     lang = () => 'no',
   } = opts;
+
+  const faces = portraitBase || './portraits/';
 
   let mode = opts.mode || 'sheet';
   let current = null;
@@ -174,7 +179,7 @@ export function createDossier(host, opts = {}) {
 
   function renderPerson(p) {
     const img = p.portrait
-      ? `<img class="sheet__portrait" src="${portraitBase}${esc(p.portrait)}"
+      ? `<img class="sheet__portrait" src="${faces}${esc(p.portrait)}"
               alt="${esc(tx(p.name))}" decoding="async">`
       : `<div class="sheet__portrait sheet__portrait--none">${icoPersonPlaceholder}</div>`;
     // Some images are statues or stand-ins rather than likenesses. Say so.
@@ -259,7 +264,7 @@ export function createDossier(host, opts = {}) {
     const chips = items.map(({ id, r }) => {
       if (kind === 'person') {
         const av = r.portrait
-          ? `<img class="chip__av" src="${portraitBase}${esc(r.portrait)}" alt="" loading="lazy" decoding="async">`
+          ? `<img class="chip__av" src="${faces}${esc(r.portrait)}" alt="" loading="lazy" decoding="async">`
           : `<span class="chip__av chip__av--none">${icoPersonPlaceholder}</span>`;
         return `<button class="chip" type="button" data-ref="person:${esc(id)}">${av}<span>${esc(tx(r.name))}</span></button>`;
       }

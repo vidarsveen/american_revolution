@@ -27,7 +27,14 @@ export function mediaUrl(pack, file) {
   return file ? packUrl(pack, `media/${file}`) : null;
 }
 
-/** A face. `dir` comes from pack.json's pools, so a pack can put them anywhere. */
+/**
+ * A face. `dir` comes from pack.json's pools, so a pack can put them anywhere.
+ *
+ * Returns null when a person has no portrait, which is the caller's cue to
+ * draw the placeholder. Do NOT ask this for a *base* by passing an empty
+ * file: it answers null, and interpolating that gives src="nulloctavian.jpg" —
+ * a broken image with nothing in the console. Use packUrl(pack, dir).
+ */
 export function portraitUrl(pack, file, dir = 'portraits/') {
   return file ? packUrl(pack, `${dir}${file}`) : null;
 }

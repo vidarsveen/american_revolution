@@ -35,7 +35,7 @@
 
 import { createDossier } from '../core/dossier.js';
 import { getStoryMap } from './scenes/map.js';
-import { portraitUrl } from '../core/paths.js';
+import { packUrl } from '../core/paths.js';
 
 /** Where the rail earns its place. Below this it is a sheet over the map. */
 const RAIL_FROM = '(min-width: 1024px)';
@@ -74,7 +74,7 @@ export function mountDepth(storyRoot, opts) {
     t: opts.t,
     tx: opts.tx,
     lang: opts.lang,
-    portraitBase: portraitUrl(chapter.pack, '', portraitDir()),
+    portraitBase: packUrl(chapter.pack, portraitDir()),
     formatDate: (d) => String(d ?? ''),
     formatNumber: (n) => String(n ?? ''),
     resolve,
