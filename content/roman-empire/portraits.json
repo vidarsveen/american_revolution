@@ -1,0 +1,66 @@
+{
+  "octavian": {
+    "file": "octavian.jpg",
+    "title": {},
+    "year": "2023-09-08 08:02:05",
+    "artist": "Justin Benttinen",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Augustus_of_Prima_Porta.jpg"
+  },
+  "caesar": {
+    "file": "caesar.jpg",
+    "title": {},
+    "year": "",
+    "artist": "Ángel M. Felicísimo from Mérida, España",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Retrato_de_Julio_C%C3%A9sar_(26724093101)_(cropped).jpg"
+  },
+  "antony": {
+    "file": "antony.jpg",
+    "title": {},
+    "year": "2022-03-27",
+    "artist": "Bust: unknown ancient Roman artist of the 1st century AD; photo: unknown photographer.",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Marble_bust_of_Mark_Antony_(Vatican_Museums).jpg"
+  },
+  "cleopatra": {
+    "file": "cleopatra.jpg",
+    "title": {},
+    "year": "40-30 v. Chr. / 40-30 BC / spätptolemäisch / late Ptolemaic dynasty",
+    "artist": "Louis le Grand",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Kleopatra-VII.-Altes-Museum-Berlin1.jpg"
+  },
+  "brutus": {
+    "file": "brutus.jpg",
+    "title": {},
+    "year": "2019-10-12 17:20",
+    "artist": "Jamie Heath",
+    "licence": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_So-Called_Marcus_Junius_Brutus_(49345263686).jpg"
+  },
+  "cicero": {
+    "file": "cicero.jpg",
+    "title": {},
+    "year": "2016-09-24 13:48:30",
+    "artist": "José Luiz",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bust_of_Cicero_(1st-cent._BC)_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
+  },
+  "lepidus": {
+    "file": "lepidus.jpg",
+    "title": {},
+    "year": "2019",
+    "artist": "Shakko",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Marcus_Aemilius_Lepidus_(Musei_Vaticani)_replica_in_Pushkin_museum_01_by_shakko.jpg"
+  },
+  "agrippa": {
+    "file": "agrippa.jpg",
+    "title": {},
+    "year": "30-20 a.C.",
+    "artist": "",
+    "licence": "CC BY 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Agrippa_Gabii_Louvre_Ma1208.jpg"
+  }
+}

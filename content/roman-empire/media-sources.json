@@ -1,0 +1,63 @@
+{
+ "//": [
+  "Input to tools/fetch-media.py. Every one of these is public domain by age —",
+  "the newest is Maccari's 1880 fresco. That is deliberate: for this subject",
+  "the PD material is better than anything a permissive-but-modern search",
+  "turns up, so there is no reason to take on an attribution obligation or a",
+  "non-commercial restriction to get pictures.",
+  "",
+  "They are also honest about what they are: a nineteenth-century painting of",
+  "the Ides of March is a Roman scene imagined by a Roman-obsessed age, not",
+  "evidence. The credit line under each plate says the artist and the year, so",
+  "a reader can see they are looking at 1805 rather than 44 BC."
+ ],
+
+ "caesar-death": {
+  "commons": "File:Vincenzo Camuccini - La morte di Cesare (cropped 3-2).jpg",
+  "artist": "Vincenzo Camuccini",
+  "year": "1804–05",
+  "title": { "no": "Cæsars død", "en": "The Death of Caesar" }
+ },
+
+ "senate": {
+  "commons": "File:Cicero Denounces Catiline in the Roman Senate by Cesare Maccari.png",
+  "artist": "Cesare Maccari",
+  "year": "1880",
+  "title": { "no": "Senatet i Roma", "en": "The senate at Rome" }
+ },
+
+ "forum": {
+  "commons": "File:View of the Campo Vaccino -Roman Forum with the Temple of Castor and Pollux to right-, from Vedute di Roma (Roman Views), part II MET DP260583.jpg",
+  "artist": "Giovanni Battista Piranesi",
+  "year": "1772",
+  "title": { "no": "Forum Romanum", "en": "The Roman Forum" }
+ },
+
+ "actium": {
+  "commons": "File:Castro Battle of Actium.jpg",
+  "artist": "Lorenzo A. Castro",
+  "year": "1672",
+  "title": { "no": "Slaget ved Actium", "en": "The Battle of Actium" }
+ },
+
+ "colosseum": {
+  "commons": "File:Giovanni Battista Piranesi, Colosseum, 1760, KKSgb9862, Statens Museum for Kunst.jpg",
+  "artist": "Giovanni Battista Piranesi",
+  "year": "1760",
+  "title": { "no": "Roma", "en": "Rome" }
+ },
+
+ "nile": {
+  "commons": "File:Louis Haghe - Egypt and Nubia, Volume I- Pyramids of Geezeh, from the Nile - 2012.201 - Cleveland Museum of Art.tif",
+  "artist": "Louis Haghe, after David Roberts",
+  "year": "1846",
+  "title": { "no": "Nilen", "en": "The Nile" }
+ },
+
+ "legion": {
+  "commons": "File:Trajan's Column - NMR - panel 015 A.jpg",
+  "artist": "Trajans søyle",
+  "year": "113",
+  "title": { "no": "Legionærer på marsj", "en": "Legionaries on the march" }
+ }
+}

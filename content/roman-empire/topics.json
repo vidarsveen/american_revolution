@@ -1,0 +1,153 @@
+{
+ "roman-army": {
+  "title": { "no": "Å være soldat", "en": "Being a soldier" },
+  "hook": {
+   "no": "Tjue år i tjeneste, betalt i sølv, pensjonert med jord. Og jorda kom fra generalen din.",
+   "en": "Twenty years of service, paid in silver, retired with land. And the land came from your general."
+  },
+  "body": {
+   "no": "En legionær vervet seg for tjue år. Han fikk lønn, mat, og til slutt et jordstykke å bli gammel på. Han bar rundt tretti kilo, gikk tretti kilometer om dagen, og bygde leir hver eneste kveld.\n\nDet politisk avgjørende var pensjonen. Senatet ville sjelden bevilge jord til andres soldater, så generalen måtte skaffe den selv — ved lov, ved erobring, eller ved å ta den fra noen. Soldaten visste hvem han skyldte alderdommen sin.\n\nDerfor er det ikke Roma som har hærer i denne fortellingen. Det er Antonius som har en hær, og Octavian som har en, og Sextus Pompeius som har en flåte.",
+   "en": "A legionary signed on for twenty years. He got pay, food, and at the end a plot of land to grow old on. He carried about thirty kilos, marched thirty kilometres a day, and built a camp every single evening.\n\nThe politically decisive part was the pension. The senate would rarely vote land for another man's soldiers, so a general had to find it himself — by law, by conquest, or by taking it from somebody. The soldier knew who he owed his old age to.\n\nSo it is not Rome that has armies in this story. It is Antony who has an army, and Octavian who has one, and Sextus Pompeius who has a fleet."
+  },
+  "fact": {
+   "no": "Etter Filippi måtte det skaffes jord til over hundre tusen veteraner. Atten italienske byer fikk jorda si konfiskert.",
+   "en": "After Philippi land had to be found for over a hundred thousand veterans. Eighteen Italian towns had their land confiscated."
+  },
+  "figures": [
+   { "value": { "no": "ca. 5 000", "en": "about 5,000" }, "label": { "no": "mann i en legion", "en": "men in a legion" } },
+   { "value": { "no": "20 år", "en": "20 years" }, "label": { "no": "tjenestetid", "en": "term of service" } }
+  ],
+  "seeAlso": [
+   { "kind": "term", "id": "legion" },
+   { "kind": "topic", "id": "roman-slavery" }
+  ]
+ },
+
+ "roman-slavery": {
+  "title": { "no": "Slaveri i Roma", "en": "Slavery in Rome" },
+  "hook": {
+   "no": "Kanskje hver fjerde person i Italia var eid av en annen. Det var ikke et unntak i samfunnet. Det var grunnmuren.",
+   "en": "Perhaps one person in four in Italy was owned by another. It was not an exception in that society. It was the foundation."
+  },
+  "body": {
+   "no": "Slaver dyrket jorda, drev gruvene, underviste barna og førte regnskapene. En rik romer kunne eie hundrevis. Krigene skaffet dem: Cæsars felttog i Gallia alene sendte titusener til markedene.\n\nDe kunne frigis, og mange ble det. En frigitt manns sønn var romersk borger. Det gjorde slaveriet i Roma annerledes enn senere former, men ikke mildere: en slave var juridisk sett en ting, og kunne straffes, selges og drepes som en.\n\nDet er verdt å ha i bakhodet gjennom hele denne fortellingen. Når kildene snakker om «folket i Roma», mener de ikke flertallet av dem som bodde der.",
+   "en": "Slaves farmed the land, worked the mines, taught the children and kept the accounts. A rich Roman might own hundreds. The wars supplied them: Caesar's campaigns in Gaul alone sent tens of thousands to the markets.\n\nThey could be freed, and many were. A freedman's son was a Roman citizen. That made Roman slavery different from later forms, but not gentler: a slave was legally a thing, and could be punished, sold and killed as one.\n\nIt is worth holding on to through the whole of this story. When the sources say 'the people of Rome', they do not mean most of the people who lived there."
+  },
+  "fact": {
+   "no": "Anslagene spriker kraftig, fra rundt femten prosent til over trettifem. Ingen telte.",
+   "en": "Estimates vary widely, from around fifteen per cent to over thirty-five. Nobody was counting."
+  },
+  "figures": [
+   { "value": { "no": "15–35 %", "en": "15–35%" }, "label": { "no": "av befolkningen i Italia", "en": "of the population of Italy" } }
+  ],
+  "seeAlso": [
+   { "kind": "topic", "id": "roman-army" },
+   { "kind": "topic", "id": "grain-and-bread" }
+  ]
+ },
+
+ "who-ruled-rome": {
+  "title": { "no": "Hvem styrte Roma", "en": "Who ran Rome" },
+  "hook": {
+   "no": "En republikk uten president, uten grunnlov og uten politi. Den holdt i fire hundre år, og så gikk den i stykker.",
+   "en": "A republic with no president, no constitution and no police. It held for four hundred years, and then it broke."
+  },
+  "body": {
+   "no": "Roma hadde ingen konge og ingen skrevet grunnlov. To konsuler ble valgt hvert år og kunne stanse hverandre. Senatet ga råd. Folkeforsamlingene vedtok lover og valgte embetsmenn. Ingen kunne sitte lenge nok til å bygge seg fast.\n\nSystemet var laget for en bystat med en borgermilits. Da Roma ble et middelhavsrike med yrkeshærer og guvernører som styrte provinser på størrelse med land, holdt det ikke lenger.\n\nOctavian avskaffet det aldri. Han beholdt konsulene, senatet og valgene, og sørget for at han selv hadde hærene, provinsene og pengene. På papiret var republikken gjenopprettet i tjuesju før Kristus.",
+   "en": "Rome had no king and no written constitution. Two consuls were elected each year and could block each other. The senate advised. The assemblies passed laws and elected magistrates. Nobody could hold office long enough to settle into it.\n\nThe system was built for a city-state with a citizen militia. Once Rome was a Mediterranean empire with professional armies and governors running provinces the size of countries, it no longer held.\n\nOctavian never abolished it. He kept the consuls, the senate and the elections, and made sure he himself had the armies, the provinces and the money. On paper the republic was restored in twenty-seven before Christ."
+  },
+  "fact": {
+   "no": "Han kalte seg princeps, «den fremste». Ordet keiser kommer av imperator, som bare betydde hærfører.",
+   "en": "He called himself princeps, 'the first among us'. The word emperor comes from imperator, which merely meant army commander."
+  },
+  "seeAlso": [
+   { "kind": "term", "id": "senate" },
+   { "kind": "term", "id": "princeps" },
+   { "kind": "term", "id": "consul" }
+  ]
+ },
+
+ "grain-and-bread": {
+  "title": { "no": "Brød fra havet", "en": "Bread from the sea" },
+  "hook": {
+   "no": "En million mennesker i Roma, og nesten ingen av dem dyrket maten sin selv.",
+   "en": "A million people in Rome, and almost none of them grew their own food."
+  },
+  "body": {
+   "no": "Roma var i praksis verdens første millionby, og Italia kunne ikke fø den. Kornet kom sjøveien, fra Sicilia, fra Nord-Afrika, og framfor alt fra Egypt.\n\nStaten delte ut gratis korn til rundt to hundre tusen borgere hver måned. Ikke av godhet: en sulten by med en million mennesker er en by som brenner.\n\nDerfor er Sextus Pompeius og flåten hans en så alvorlig sak. Han trengte ikke å beleire Roma. Han trengte bare å ligge i veien for kornskipene, og så begynte byen å sulte av seg selv.",
+   "en": "Rome was in effect the world's first city of a million people, and Italy could not feed it. The grain came by sea, from Sicily, from North Africa, and above all from Egypt.\n\nThe state handed out free grain to some two hundred thousand citizens every month. Not out of kindness: a hungry city of a million people is a city that burns.\n\nThat is why Sextus Pompeius and his fleet are such a serious matter. He did not need to besiege Rome. He only had to sit in the way of the grain ships, and the city began to starve by itself."
+  },
+  "fact": {
+   "no": "Et kornskip fra Alexandria brukte to–tre uker til Roma med god vind, og opptil to måneder mot den.",
+   "en": "A grain ship from Alexandria took two or three weeks to Rome with a fair wind, and up to two months against it."
+  },
+  "figures": [
+   { "value": { "no": "ca. 1 million", "en": "about 1 million" }, "label": { "no": "innbyggere i Roma", "en": "people in Rome" } },
+   { "value": { "no": "ca. 200 000", "en": "about 200,000" }, "label": { "no": "fikk gratis korn", "en": "received free grain" } }
+  ],
+  "seeAlso": [
+   { "kind": "person", "id": "cleopatra" },
+   { "kind": "topic", "id": "roman-slavery" }
+  ]
+ },
+
+ "how-we-know": {
+  "title": { "no": "Hvordan vi vet dette", "en": "How we know any of this" },
+  "hook": {
+   "no": "Ingen som skrev om disse årene, var der. De nærmeste skrev hundre år etterpå.",
+   "en": "Nobody who wrote about these years was there. The closest wrote a century later."
+  },
+  "body": {
+   "no": "Vi har nesten ingen samtidige kilder til borgerkrigene. Ciceros brev er unntaket, og de stopper når han blir drept i førtitre.\n\nResten er senere. Appian skrev rundt hundre og seksti år etterpå. Cassius Dio rundt to hundre og femti. Sveton var hoffarkivar under en senere keiser og hadde tilgang til arkivene, men også en sak å føre.\n\nOg alle skrev etter at Augustus hadde vunnet. Historien om disse årene er i stor grad fortalt av folk som visste hvordan den endte, og som levde i staten den skapte.\n\nDerfor sier denne fortellingen «Appian sier» og «kildene spriker» i stedet for å velge et tall. Uenigheten mellom kildene er ikke en svakhet ved historien. Den er historien.",
+   "en": "We have almost no contemporary sources for the civil wars. Cicero's letters are the exception, and they stop when he is killed in forty-three.\n\nThe rest is later. Appian wrote about a hundred and sixty years afterwards. Cassius Dio about two hundred and fifty. Suetonius was a palace archivist under a later emperor with access to the records, and also a case to make.\n\nAnd all of them wrote after Augustus had won. The story of these years is largely told by people who knew how it ended, and who lived in the state it produced.\n\nThat is why this telling says 'Appian says' and 'the sources disagree' instead of picking a number. The disagreement is not a weakness in the history. It is the history."
+  },
+  "fact": {
+   "no": "Augustus skrev sin egen versjon, Res Gestae, og fikk den hugget i bronse utenfor gravmælet sitt.",
+   "en": "Augustus wrote his own version, the Res Gestae, and had it cut in bronze outside his tomb."
+  },
+  "seeAlso": [
+   { "kind": "person", "id": "cicero" },
+   { "kind": "topic", "id": "propaganda" }
+  ]
+ },
+
+ "propaganda": {
+  "title": { "no": "Å vinne med ord", "en": "Winning with words" },
+  "hook": {
+   "no": "Octavian vant Actium med skip. Han vant årene før det med rykter.",
+   "en": "Octavian won Actium with ships. He won the years before it with rumours."
+  },
+  "body": {
+   "no": "Krigen mot Antonius ble erklært mot Kleopatra. Det var et bevisst valg. Romerne var trøtte av borgerkrig, men en krig mot en utenlandsk dronning kunne alle stille seg bak.\n\nHistorien som ble fortalt, var at Antonius var forhekset: at han hadde glemt at han var romer, at han gikk i østlige klær, at han ville flytte hovedstaden til Alexandria. Noe av det var sant. Mye var pyntet på.\n\nMynter, taler, dikt og rykter trakk alle samme vei. Vergil og Horats skrev under Augustus, og skrev deretter.\n\nDet vi vet om Antonius og Kleopatra, kommer for det meste fra folk som hadde bruk for at de framsto slik.",
+   "en": "The war against Antony was declared against Cleopatra. That was a deliberate choice. Romans were sick of civil war, but a war against a foreign queen was something everyone could get behind.\n\nThe story told was that Antony was bewitched: that he had forgotten he was Roman, that he wore eastern clothes, that he meant to move the capital to Alexandria. Some of it was true. Much was dressed up.\n\nCoins, speeches, poems and rumours all pulled the same way. Virgil and Horace wrote under Augustus, and wrote accordingly.\n\nWhat we know about Antony and Cleopatra comes mostly from people who needed them to look like that."
+  },
+  "fact": {
+   "no": "Octavian slo mynter med sitt eget ansikt og ordet «Italias frelser». Det var ikke ment som beskjedenhet.",
+   "en": "Octavian struck coins with his own face and the words 'saviour of Italy'. It was not meant modestly."
+  },
+  "seeAlso": [
+   { "kind": "person", "id": "cleopatra" },
+   { "kind": "topic", "id": "how-we-know" }
+  ]
+ },
+
+ "roman-marriage": {
+  "title": { "no": "Ekteskap som politikk", "en": "Marriage as politics" },
+  "hook": {
+   "no": "Octavia ble giftet bort for å hindre en borgerkrig. Det virket i sju år.",
+   "en": "Octavia was married off to stop a civil war. It worked for seven years."
+  },
+  "body": {
+   "no": "I den romerske overklassen var ekteskap sjelden et privat valg. Det var en avtale mellom to slekter, og det kunne oppløses like fort som det ble inngått.\n\nDa Octavian og Antonius forliktes i Brundisium i førti, ble avtalen beseglet ved at Antonius giftet seg med Octavians søster Octavia. Hun var nettopp blitt enke. Hun ble ikke spurt.\n\nHun holdt faktisk freden i årevis, reiste mellom de to mennene og forhandlet. Da Antonius til slutt skilte seg fra henne i trettito, var det ikke bare en familiesak. Det var en krigserklæring, og alle forsto det slik.",
+   "en": "In the Roman upper class, marriage was rarely a private choice. It was an agreement between two families, and it could be dissolved as fast as it was made.\n\nWhen Octavian and Antony came to terms at Brundisium in forty, the deal was sealed by Antony marrying Octavian's sister Octavia. She had just been widowed. She was not asked.\n\nShe did in fact keep the peace for years, travelling between the two men and negotiating. When Antony finally divorced her in thirty-two, it was not merely a family matter. It was a declaration of war, and everyone understood it as one."
+  },
+  "fact": {
+   "no": "Octavia oppdro Antonius' barn med Kleopatra etter at begge foreldrene var døde.",
+   "en": "Octavia raised Antony's children by Cleopatra after both their parents were dead."
+  },
+  "seeAlso": [
+   { "kind": "person", "id": "antony" },
+   { "kind": "topic", "id": "who-ruled-rome" }
+  ]
+ }
+}

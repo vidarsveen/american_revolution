@@ -1,0 +1,230 @@
+{
+  "id": "roman-empire",
+  "version": 1,
+  "work": {
+    "no": "Romerriket",
+    "en": "The Roman Empire"
+  },
+  "years": {
+    "no": "44–27 f.Kr.",
+    "en": "44–27 BC"
+  },
+  "//factions": [
+    "Declared by HUE, not by design token. The Revolution pack names tokens",
+    "because a designer tuned that palette by hand; a new subject has nobody",
+    "to tune it yet, and core/palette.js derives fill and wash from the hue so",
+    "seven parties sit together instead of being invented one at a time.",
+    "",
+    "Seven, and two of them change sides. Octavian and Antony are allies in 43",
+    "and enemies in 32, which is exactly the thing four hardcoded names could",
+    "not express: a `side` is who someone is fighting for in THIS beat."
+  ],
+  "factions": {
+    "caesarian": {
+      "label": {
+        "no": "Cæsars arvinger",
+        "en": "Caesar's heirs"
+      },
+      "hue": 8
+    },
+    "liberatores": {
+      "label": {
+        "no": "Frigjørerne",
+        "en": "The liberators"
+      },
+      "hue": 214
+    },
+    "antonian": {
+      "label": {
+        "no": "Antonius",
+        "en": "Antony"
+      },
+      "hue": 274
+    },
+    "ptolemaic": {
+      "label": {
+        "no": "Ptolemeerne",
+        "en": "The Ptolemies"
+      },
+      "hue": 44
+    },
+    "pompeian": {
+      "label": {
+        "no": "Sextus Pompeius",
+        "en": "Sextus Pompeius"
+      },
+      "hue": 178
+    },
+    "senate": {
+      "label": {
+        "no": "Senatet",
+        "en": "The Senate"
+      },
+      "hue": 96,
+      "sat": 0.7
+    },
+    "neutral": {
+      "label": {
+        "no": "Andre",
+        "en": "Others"
+      },
+      "hue": 96,
+      "sat": 0.35
+    }
+  },
+  "map": {
+    "home": [
+      40.5,
+      15.0
+    ],
+    "zoom": {
+      "min": 3.2,
+      "max": 12,
+      "default": 5.0,
+      "maxFit": 9.0
+    },
+    "basemap": {
+      "levels": [
+        {
+          "name": "world-110m",
+          "maxZoom": 4.0
+        },
+        {
+          "name": "world-50m",
+          "maxZoom": 5.2
+        },
+        {
+          "name": "mediterranean-10m",
+          "maxZoom": null,
+          "regional": true,
+          "build": {
+            "scale": "10m",
+            "tol": 0.006,
+            "bbox": [
+              -11.0,
+              27.0,
+              45.0,
+              50.0
+            ]
+          }
+        }
+      ]
+    },
+    "//borders": [
+      "No modern national borders, at any level. Drawing Italy's 2024 frontier",
+      "across Cisalpine Gaul is the 'Massachusetts included Maine' mistake at",
+      "ten times the scale. The provinces come from the pack's own geometry."
+    ],
+    "borders": {
+      "country": false,
+      "state": false
+    },
+    "regions": "geo/provinces.geojson",
+    "credit": "Natural Earth",
+    "//accuracyNote": "Rendered once per chapter beside the credit. A known inaccuracy said out loud is a fact worth knowing; left unsaid it is a lie.",
+    "accuracyNote": {
+      "no": "Kystlinjen er dagens. På Octavians tid lå Ostia ved havet, og Nilen hadde sju munninger.",
+      "en": "The coastline is the modern one. In Octavian's day Ostia stood on the sea, and the Nile had seven mouths."
+    },
+    "explore": {
+      "bounds": [
+        [
+          30.0,
+          -6.0
+        ],
+        [
+          47.0,
+          38.0
+        ]
+      ],
+      "zoom": {
+        "min": 3.2,
+        "max": 11
+      }
+    },
+    "extent": [
+      [
+        20.0,
+        -12.0
+      ],
+      [
+        56.0,
+        56.0
+      ]
+    ]
+  },
+  "//era": [
+    "-0044 is 44 BC, not ISO's astronomical -44. See core/era.js.",
+    "Julian, because that is how the sources date it and converting would move",
+    "the Ides of March off 15 March. The calendar is itself a teachable fact",
+    "here: Caesar had imposed it fifteen months earlier."
+  ],
+  "era": {
+    "start": "-0044-01-01",
+    "end": "-0027-12-31",
+    "calendar": "julian",
+    "calendarNote": {
+      "no": "Datoene følger den julianske kalenderen, som Cæsar innførte i 45 f.Kr. — bare et år før han ble drept.",
+      "en": "Dates follow the Julian calendar, which Caesar imposed in 45 BC — just a year before he was killed."
+    },
+    "tickStep": "year"
+  },
+  "narration": {
+    "wps": [
+      1.9,
+      3.4
+    ],
+    "minContentWordMs": 100
+  },
+  "voices": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural",
+    "rate": "-10%"
+  },
+  "pools": {
+    "people": "people.json",
+    "terms": "terms.json",
+    "topics": "topics.json",
+    "placeNotes": "place-notes.json",
+    "portraits": "portraits/",
+    "areas": "geo/provinces.geojson"
+  },
+  "chapters": [
+    {
+      "id": "chapter-44bc-octavian",
+      "title": {
+        "no": "Hvordan Octavian tok makten",
+        "en": "How Octavian came to power"
+      },
+      "subtitle": {
+        "no": "44–27 f.Kr.",
+        "en": "44–27 BC"
+      },
+      "blurb": {
+        "no": "En nittenåring arver et navn, og bruker sytten år på å gjøre det om til enevelde.",
+        "en": "A nineteen-year-old inherits a name, and spends seventeen years turning it into sole rule."
+      },
+      "langs": [
+        "no",
+        "en"
+      ],
+      "//langs": "Both recorded. The engine only probes for what is listed here."
+    }
+  ],
+  "checks": {
+    "//": "Where the pixel checks point their camera. s2.b7 is the beat with every province on screen at once — the triumvirate division plus Egypt — which is what the neighbour-contrast measurement needs.",
+    "contrast": {
+      "chapter": "chapter-44bc-octavian",
+      "beat": "s2.b7",
+      "at": 2.0
+    }
+  },
+  "shortName": {
+    "no": "Romerriket",
+    "en": "Rome"
+  },
+  "description": {
+    "no": "Hvordan Octavian tok makten — kart, kilder og mennesker, 44 til 27 f.Kr.",
+    "en": "How Octavian came to power — maps, sources and people, 44 to 27 BC."
+  }
+}

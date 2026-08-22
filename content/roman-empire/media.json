@@ -1,0 +1,79 @@
+{
+  "caesar-death": {
+    "file": "caesar-death.jpg",
+    "title": {
+      "no": "Cæsars død",
+      "en": "The Death of Caesar"
+    },
+    "year": "1804–05",
+    "artist": "Vincenzo Camuccini",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Vincenzo_Camuccini_-_La_morte_di_Cesare_(cropped_3-2).jpg"
+  },
+  "senate": {
+    "file": "senate.jpg",
+    "title": {
+      "no": "Senatet i Roma",
+      "en": "The senate at Rome"
+    },
+    "year": "1880",
+    "artist": "Cesare Maccari",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Cicero_Denounces_Catiline_in_the_Roman_Senate_by_Cesare_Maccari.png"
+  },
+  "forum": {
+    "file": "forum.jpg",
+    "title": {
+      "no": "Forum Romanum",
+      "en": "The Roman Forum"
+    },
+    "year": "1772",
+    "artist": "Giovanni Battista Piranesi",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Campo_Vaccino_-Roman_Forum_with_the_Temple_of_Castor_and_Pollux_to_right-,_from_Vedute_di_Roma_(Roman_Views),_part_II_MET_DP260583.jpg"
+  },
+  "actium": {
+    "file": "actium.jpg",
+    "title": {
+      "no": "Slaget ved Actium",
+      "en": "The Battle of Actium"
+    },
+    "year": "1672",
+    "artist": "Lorenzo A. Castro",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Castro_Battle_of_Actium.jpg"
+  },
+  "colosseum": {
+    "file": "colosseum.jpg",
+    "title": {
+      "no": "Roma",
+      "en": "Rome"
+    },
+    "year": "1760",
+    "artist": "Giovanni Battista Piranesi",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi,_Colosseum,_1760,_KKSgb9862,_Statens_Museum_for_Kunst.jpg"
+  },
+  "nile": {
+    "file": "nile.jpg",
+    "title": {
+      "no": "Nilen",
+      "en": "The Nile"
+    },
+    "year": "1846",
+    "artist": "Louis Haghe, after David Roberts",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Louis_Haghe_-_Egypt_and_Nubia,_Volume_I-_Pyramids_of_Geezeh,_from_the_Nile_-_2012.201_-_Cleveland_Museum_of_Art.tif"
+  },
+  "legion": {
+    "file": "legion.jpg",
+    "title": {
+      "no": "Legionærer på marsj",
+      "en": "Legionaries on the march"
+    },
+    "year": "113",
+    "artist": "Trajans søyle",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Trajan%27s_Column_-_NMR_-_panel_015_A.jpg"
+  }
+}

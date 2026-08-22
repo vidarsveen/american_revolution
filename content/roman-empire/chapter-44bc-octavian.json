@@ -1,0 +1,3035 @@
+{
+  "id": "chapter-44bc-octavian",
+  "pack": "roman-empire",
+  "work": {
+    "no": "Romerriket",
+    "en": "The Roman Empire"
+  },
+  "title": {
+    "no": "Hvordan Octavian tok makten",
+    "en": "How Octavian came to power"
+  },
+  "subtitle": {
+    "no": "44–27 f.Kr.",
+    "en": "44–27 BC"
+  },
+  "blurb": {
+    "no": "En nittenåring arver et navn. Sytten år senere er republikken borte, og ingen kan si nøyaktig når den forsvant.",
+    "en": "A nineteen-year-old inherits a name. Seventeen years later the republic is gone, and nobody can say exactly when it went."
+  },
+  "voice": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural"
+  },
+  "rate": "-10%",
+  "home": "mediterranean",
+  "regions": "geo/provinces.geojson",
+  "places": {
+    "mediterranean": {
+      "coords": [
+        39.0,
+        16.0
+      ],
+      "zoom": 4.4,
+      "name": {
+        "no": "Middelhavet",
+        "en": "The Mediterranean"
+      },
+      "kind": "region",
+      "label": false
+    },
+    "roma": {
+      "coords": [
+        41.8931,
+        12.4828
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Roma",
+        "en": "Rome"
+      },
+      "kind": "city"
+    },
+    "apollonia": {
+      "coords": [
+        40.7208,
+        19.4747
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Apollonia",
+        "en": "Apollonia"
+      },
+      "kind": "town"
+    },
+    "brundisium": {
+      "coords": [
+        40.6327,
+        17.9418
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Brundisium",
+        "en": "Brundisium"
+      },
+      "kind": "town"
+    },
+    "philippi": {
+      "coords": [
+        41.0131,
+        24.2864
+      ],
+      "zoom": 7.6,
+      "name": {
+        "no": "Filippi",
+        "en": "Philippi"
+      },
+      "kind": "town"
+    },
+    "actium": {
+      "coords": [
+        38.9342,
+        20.7614
+      ],
+      "zoom": 7.8,
+      "name": {
+        "no": "Actium",
+        "en": "Actium"
+      },
+      "kind": "town"
+    },
+    "alexandria": {
+      "coords": [
+        31.2001,
+        29.9187
+      ],
+      "zoom": 7.6,
+      "name": {
+        "no": "Alexandria",
+        "en": "Alexandria"
+      },
+      "kind": "city"
+    },
+    "mutina": {
+      "coords": [
+        44.6471,
+        10.9252
+      ],
+      "zoom": 7.6,
+      "name": {
+        "no": "Mutina",
+        "en": "Mutina"
+      },
+      "kind": "town"
+    },
+    "perusia": {
+      "coords": [
+        43.1107,
+        12.3908
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Perusia",
+        "en": "Perusia"
+      },
+      "kind": "town"
+    },
+    "naulochus": {
+      "coords": [
+        38.15,
+        15.35
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Naulochus",
+        "en": "Naulochus"
+      },
+      "kind": "town"
+    },
+    "italia-view": {
+      "coords": [
+        42.2,
+        13.0
+      ],
+      "zoom": 5.5,
+      "name": {
+        "no": "Italia",
+        "en": "Italy"
+      },
+      "kind": "region",
+      "label": false
+    },
+    "greece-view": {
+      "coords": [
+        39.4,
+        22.0
+      ],
+      "zoom": 5.8,
+      "name": {
+        "no": "Hellas",
+        "en": "Greece"
+      },
+      "kind": "region",
+      "label": false
+    },
+    "east-view": {
+      "coords": [
+        34.0,
+        28.0
+      ],
+      "zoom": 4.9,
+      "name": {
+        "no": "Øst",
+        "en": "The east"
+      },
+      "kind": "region",
+      "label": false
+    },
+    "sicily-view": {
+      "coords": [
+        38.0,
+        14.5
+      ],
+      "zoom": 6.6,
+      "name": {
+        "no": "Sicilia",
+        "en": "Sicily"
+      },
+      "kind": "region",
+      "label": false
+    }
+  },
+  "routes": {
+    "apollonia-roma": {
+      "side": "caesarian",
+      "label": {
+        "no": "Octavian til Roma",
+        "en": "Octavian to Rome"
+      },
+      "coords": [
+        [
+          40.7208,
+          19.4747
+        ],
+        [
+          40.6327,
+          17.9418
+        ],
+        [
+          41.1,
+          15.6
+        ],
+        [
+          41.4,
+          14.0
+        ],
+        [
+          41.8931,
+          12.4828
+        ]
+      ],
+      "strength": 400
+    },
+    "veterans-to-rome": {
+      "side": "caesarian",
+      "label": {
+        "no": "Cæsars veteraner",
+        "en": "Caesar's veterans"
+      },
+      "coords": [
+        [
+          40.8,
+          14.3
+        ],
+        [
+          41.2,
+          13.6
+        ],
+        [
+          41.8931,
+          12.4828
+        ]
+      ],
+      "strength": 3000
+    },
+    "march-on-rome": {
+      "side": "caesarian",
+      "label": {
+        "no": "Åtte legioner mot Roma",
+        "en": "Eight legions on Rome"
+      },
+      "coords": [
+        [
+          44.6471,
+          10.9252
+        ],
+        [
+          43.7,
+          11.5
+        ],
+        [
+          42.8,
+          12.2
+        ],
+        [
+          41.8931,
+          12.4828
+        ]
+      ],
+      "strength": 30000
+    },
+    "east-to-philippi": {
+      "side": "liberatores",
+      "label": {
+        "no": "Brutus og Cassius samler øst",
+        "en": "Brutus and Cassius gather the east"
+      },
+      "coords": [
+        [
+          36.8,
+          34.6
+        ],
+        [
+          38.4,
+          30.0
+        ],
+        [
+          39.6,
+          26.4
+        ],
+        [
+          40.6,
+          24.9
+        ],
+        [
+          41.0131,
+          24.2864
+        ]
+      ],
+      "strength": 80000
+    },
+    "triumvirs-to-philippi": {
+      "side": "caesarian",
+      "label": {
+        "no": "Triumviratets hær",
+        "en": "The triumvirs' army"
+      },
+      "coords": [
+        [
+          40.6327,
+          17.9418
+        ],
+        [
+          40.5,
+          19.6
+        ],
+        [
+          40.7,
+          21.6
+        ],
+        [
+          41.0131,
+          24.2864
+        ]
+      ],
+      "strength": 90000
+    },
+    "sextus-blockade": {
+      "side": "pompeian",
+      "naval": true,
+      "label": {
+        "no": "Sextus' flåte",
+        "en": "Sextus' fleet"
+      },
+      "coords": [
+        [
+          38.2,
+          15.6
+        ],
+        [
+          39.6,
+          14.4
+        ],
+        [
+          40.9,
+          13.6
+        ],
+        [
+          41.5,
+          12.6
+        ]
+      ],
+      "strength": 200
+    },
+    "actium-breakout": {
+      "side": "antonian",
+      "naval": true,
+      "label": {
+        "no": "Kleopatras flåte bryter ut",
+        "en": "Cleopatra's fleet breaks out"
+      },
+      "coords": [
+        [
+          38.9342,
+          20.7614
+        ],
+        [
+          38.2,
+          21.0
+        ],
+        [
+          36.8,
+          22.6
+        ],
+        [
+          34.6,
+          26.0
+        ],
+        [
+          31.4,
+          29.6
+        ]
+      ],
+      "strength": 60
+    }
+  },
+  "quotes": {
+    "cicero-boy": {
+      "text": {
+        "no": "Den unge mannen må roses, heves — og fjernes.",
+        "en": "The young man must be praised, raised — and removed."
+      },
+      "by": {
+        "no": "Cicero, i et brev, 43 f.Kr.",
+        "en": "Cicero, in a letter, 43 BC"
+      },
+      "kind": "said"
+    },
+    "proscription-edict": {
+      "text": {
+        "no": "La ingen ta imot noen av dem, eller skjule dem, eller la seg bestikke av dem.",
+        "en": "Let no one receive any of them, or hide them, or be bribed by them."
+      },
+      "by": {
+        "no": "Fra proskripsjonsplakaten, gjengitt av Appian",
+        "en": "From the proscription edict, as Appian gives it"
+      },
+      "kind": "attributed"
+    },
+    "res-gestae": {
+      "text": {
+        "no": "Jeg overførte staten fra min egen makt tilbake til senatets og det romerske folks styre.",
+        "en": "I transferred the state from my own power back to the control of the senate and the Roman people."
+      },
+      "by": {
+        "no": "Augustus, om året 27 f.Kr.",
+        "en": "Augustus, on the year 27 BC"
+      },
+      "kind": "said"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Et navn i et testament",
+        "en": "A name in a will"
+      },
+      "clock": {
+        "no": "Mars–mai 44 f.Kr.",
+        "en": "March–May 44 BC"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Femtende mars, år førtifire før Kristus. Julius Cæsar blir drept i Roma, av rundt seksti menn han for det meste hadde tilgitt.",
+            "en": "The fifteenth of March, forty-four before Christ. Julius Caesar is killed in Rome, by some sixty men he had for the most part pardoned."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "border.set",
+              "country": false,
+              "state": false
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "15. mars 44 f.Kr.",
+                "en": "15 March 44 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 5.4,
+              "over": 0.1
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -8
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -17
+            },
+            {
+              "on": {
+                "no": "word:Roma",
+                "en": "word:Rome"
+              },
+              "do": "marker.show",
+              "at": "roma",
+              "label": {
+                "no": "Roma",
+                "en": "Rome"
+              },
+              "side": "senate",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:drept",
+                "en": "word:killed"
+              },
+              "do": "plate.show",
+              "id": "caesar-death",
+              "motion": "in",
+              "focus": [
+                0.52,
+                0.45
+              ],
+              "over": 22,
+              "dim": 0.15
+            }
+          ],
+          "gapAfter": 1.0
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "Drapsmennene har ingen plan for dagen etter. De tror republikken kommer tilbake av seg selv når tyrannen er borte.",
+            "en": "The assassins have no plan for the day after. They believe the republic will come back by itself once the tyrant is gone."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:republikken",
+                "en": "word:republic"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "who-ruled-rome"
+            },
+            {
+              "on": {
+                "no": "word:tyrannen",
+                "en": "word:tyrant"
+              },
+              "do": "portrait.show",
+              "id": "caesar"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "Den kommer ikke tilbake. Det som kommer, er fjorten år med borgerkrig, og en enehersker på den andre siden.",
+            "en": "It does not come back. What comes is fourteen years of civil war, and one man ruling alone at the end of it."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "Fire hundre kilometer unna, i Apollonia, studerer en nittenåring. Han heter Gaius Octavius, og han er Cæsars grandnevø.",
+            "en": "Four hundred kilometres away, at Apollonia, a nineteen-year-old is studying. His name is Gaius Octavius, and he is Caesar's great-nephew."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "sea",
+              "gainDb": -16
+            },
+            {
+              "on": {
+                "no": "word:Apollonia",
+                "en": "word:Apollonia"
+              },
+              "do": "map.flyTo",
+              "to": "apollonia",
+              "zoom": 6.4,
+              "over": 2.4
+            },
+            {
+              "on": {
+                "no": "word:Apollonia",
+                "en": "word:Apollonia"
+              },
+              "do": "marker.show",
+              "at": "apollonia",
+              "label": {
+                "no": "Apollonia",
+                "en": "Apollonia"
+              },
+              "side": "caesarian"
+            },
+            {
+              "on": {
+                "no": "word:grandnevø",
+                "en": "word:great-nephew"
+              },
+              "do": "portrait.show",
+              "id": "octavian"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b5",
+          "say": {
+            "no": "Testamentet gjør ham til Cæsars sønn og arving. Det er alt han får. Ingen hær, ingen embete, ingen erfaring.",
+            "en": "The will makes him Caesar's son and heir. That is all he gets. No army, no office, no experience."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:hær",
+                "en": "word:army"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "legion"
+            },
+            {
+              "on": "end",
+              "do": "stat.show",
+              "value": "19",
+              "label": {
+                "no": "år gammel",
+                "en": "years old"
+              },
+              "side": "caesarian"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s0.b6",
+          "say": {
+            "no": "Vennene hans råder ham til å legge seg lavt. Han gjør det motsatte. Han drar til Italia, og begynner å kalle seg Cæsar.",
+            "en": "His friends advise him to keep his head down. He does the opposite. He sails for Italy, and begins calling himself Caesar."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch",
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:Italia",
+                "en": "word:Italy"
+              },
+              "do": "route.draw",
+              "id": "apollonia-roma",
+              "over": 3.4
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b7",
+          "say": {
+            "no": "Navnet er det eneste våpenet han har, og det viser seg å være nok. Cæsars veteraner kommer til ham.",
+            "en": "The name is the only weapon he has, and it turns out to be enough. Caesar's veterans come to him."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:veteraner",
+                "en": "word:veterans"
+              },
+              "do": "route.draw",
+              "id": "veterans-to-rome",
+              "over": 2.6,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:veteraner",
+                "en": "word:veterans"
+              },
+              "do": "sound.play",
+              "id": "boots",
+              "gainDb": -10
+            },
+            {
+              "on": "end",
+              "do": "stat.show",
+              "value": "3 000",
+              "label": {
+                "no": "veteraner, betalt av ham selv",
+                "en": "veterans, paid by himself"
+              },
+              "side": "caesarian"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s0.b8",
+          "say": {
+            "no": "Han har ikke lov til å verve soldater. Han har ingen stilling som gir ham rett til det. Han gjør det likevel, og betaler dem av arven.",
+            "en": "He has no right to recruit soldiers. He holds no office that allows it. He does it anyway, and pays them out of the inheritance."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:soldater",
+                "en": "word:soldiers"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-army"
+            }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "title": {
+        "no": "Gutten og generalen",
+        "en": "The boy and the general"
+      },
+      "clock": {
+        "no": "44–43 f.Kr.",
+        "en": "44–43 BC"
+      },
+      "beats": [
+        {
+          "id": "s1.b1",
+          "say": {
+            "no": "Mannen som skulle arvet alt, heter Marcus Antonius. Han var Cæsars nestkommanderende, og han er konsul dette året.",
+            "en": "The man who should have inherited everything is called Mark Antony. He was Caesar's second-in-command, and he is consul this year."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "italia-view",
+              "over": 2.2
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "Høsten 44 f.Kr.",
+                "en": "Autumn 44 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -10
+            },
+            {
+              "on": {
+                "no": "word:Antonius",
+                "en": "word:Antony"
+              },
+              "do": "portrait.show",
+              "id": "antony"
+            },
+            {
+              "on": {
+                "no": "word:konsul",
+                "en": "word:consul"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "consul"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b2",
+          "say": {
+            "no": "Antonius nekter å gi arven fra seg. Han ser en syk nittenåring, og han tar helt feil om hva slags person det er.",
+            "en": "Antony refuses to hand the inheritance over. He sees a sickly nineteen-year-old, and he is entirely wrong about what kind of person that is."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "I senatet ser Cicero en sjanse. Han angriper Antonius i tale etter tale, og bygger opp gutten som motvekt.",
+            "en": "In the senate Cicero sees a chance. He attacks Antony in speech after speech, and builds up the boy as a counterweight."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:senatet",
+                "en": "word:senate"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "senate"
+            },
+            {
+              "on": {
+                "no": "word:Cicero",
+                "en": "word:Cicero"
+              },
+              "do": "portrait.show",
+              "id": "cicero"
+            },
+            {
+              "on": {
+                "no": "word:senatet",
+                "en": "word:senate"
+              },
+              "do": "plate.show",
+              "id": "senate",
+              "motion": "in",
+              "focus": [
+                0.38,
+                0.5
+              ],
+              "over": 20,
+              "dim": 0.2
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b4",
+          "say": {
+            "no": "Planen hans er å bruke Octavian mot Antonius, og så sette gutten til side. Han skriver det ned i et brev.",
+            "en": "His plan is to use Octavian against Antony, and then set the boy aside. He writes it down in a letter."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:brev",
+                "en": "word:letter"
+              },
+              "do": "quote.show",
+              "id": "cicero-boy"
+            }
+          ],
+          "gapAfter": 3.2
+        },
+        {
+          "id": "s1.b5",
+          "say": {
+            "no": "Våren førtitre møtes hærene ved Mutina, nord i Italia. Antonius taper. Men begge konsulene blir drept i slaget.",
+            "en": "In the spring of forty-three the armies meet at Mutina, in northern Italy. Antony loses. But both consuls are killed in the battle."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "April 43 f.Kr.",
+                "en": "April 43 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:Mutina",
+                "en": "word:Mutina"
+              },
+              "do": "map.flyTo",
+              "to": "mutina",
+              "zoom": 6.8,
+              "over": 2.6
+            },
+            {
+              "on": {
+                "no": "word:Mutina",
+                "en": "word:Mutina"
+              },
+              "do": "marker.show",
+              "at": "mutina",
+              "label": {
+                "no": "Mutina",
+                "en": "Mutina"
+              },
+              "side": "caesarian",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:slaget",
+                "en": "word:battle"
+              },
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b6",
+          "say": {
+            "no": "Det gjør Octavian til den eneste med en hær i Italia. Han sender bud til senatet og ber om å bli konsul.",
+            "en": "That leaves Octavian the only man in Italy with an army. He sends word to the senate and asks to be made consul."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b7",
+          "say": {
+            "no": "Senatet ler. Han er nitten år. Loven sier førtitre.",
+            "en": "The senate laughs. He is nineteen. The law says forty-three."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "stat.show",
+              "value": "19",
+              "label": {
+                "no": "hans alder",
+                "en": "his age"
+              },
+              "side": "caesarian"
+            },
+            {
+              "on": "end",
+              "do": "stat.show",
+              "value": "43",
+              "label": {
+                "no": "lovens krav",
+                "en": "what the law required"
+              },
+              "side": "senate"
+            }
+          ],
+          "gapAfter": 1.6
+        },
+        {
+          "id": "s1.b8",
+          "say": {
+            "no": "Så marsjerer han mot Roma med åtte legioner. Ingen stopper ham. I august er han konsul, og drapsmennene er dømt.",
+            "en": "So he marches on Rome with eight legions. Nobody stops him. By August he is consul, and the assassins are condemned."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedUrgent",
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:legioner",
+                "en": "word:legions"
+              },
+              "do": "route.draw",
+              "id": "march-on-rome",
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:august",
+                "en": "word:August"
+              },
+              "do": "map.time",
+              "value": {
+                "no": "August 43 f.Kr.",
+                "en": "August 43 BC"
+              }
+            }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": {
+        "no": "Verden delt i tre",
+        "en": "The world in three"
+      },
+      "clock": {
+        "no": "November 43 f.Kr.",
+        "en": "November 43 BC"
+      },
+      "beats": [
+        {
+          "id": "s2.b1",
+          "say": {
+            "no": "Nå skjer det ingen hadde ventet. Octavian og Antonius, som nettopp har kjempet mot hverandre, blir enige.",
+            "en": "Now something nobody expected happens. Octavian and Antony, who have just been fighting each other, come to terms."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "November 43 f.Kr.",
+                "en": "November 43 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mutina",
+              "zoom": 6.2,
+              "over": 2.4
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -10
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b2",
+          "say": {
+            "no": "De møtes på en øy i en elv, med Lepidus som tredje mann, og deler romerriket mellom seg.",
+            "en": "They meet on an island in a river, with Lepidus as the third man, and divide the Roman world between them."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Lepidus",
+                "en": "word:Lepidus"
+              },
+              "do": "portrait.show",
+              "id": "lepidus"
+            },
+            {
+              "on": {
+                "no": "word:deler",
+                "en": "word:divide"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "triumvirate"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b3",
+          "say": {
+            "no": "Octavian får vest. Antonius får øst. Lepidus får Africa, og er den ingen husker.",
+            "en": "Octavian takes the west. Antony takes the east. Lepidus takes Africa, and is the one nobody remembers."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "mediterranean"
+              ],
+              "over": 2.8
+            },
+            {
+              "on": {
+                "no": "word:vest",
+                "en": "word:west"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum"
+              ],
+              "side": "caesarian",
+              "over": 1.8,
+              "vary": false,
+              "strength": 1.15
+            },
+            {
+              "on": {
+                "no": "word:øst",
+                "en": "word:east"
+              },
+              "do": "region.show",
+              "names": [
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Cyrenaica"
+              ],
+              "side": "antonian",
+              "over": 1.8,
+              "vary": false,
+              "strength": 1.15
+            },
+            {
+              "on": {
+                "no": "word:Africa",
+                "en": "word:Africa"
+              },
+              "do": "region.show",
+              "names": [
+                "Africa",
+                "Numidia"
+              ],
+              "side": "neutral",
+              "over": 1.6,
+              "vary": false,
+              "strength": 1.15
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s2.b4",
+          "say": {
+            "no": "Dette er ikke en hemmelig avtale. Den blir vedtatt som lov, med en sluttdato fem år fram i tid.",
+            "en": "This is not a private arrangement. It is voted through as law, with an end date five years away."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b5",
+          "say": {
+            "no": "Formene holdes i live mens innholdet tømmes ut. Det er framgangsmåten Octavian bruker resten av livet.",
+            "en": "The forms are kept alive while the substance is poured out. It is the method Octavian uses for the rest of his life."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s2.b6",
+          "say": {
+            "no": "Sicilia holdes av en fjerde mann, Sextus Pompeius. Han har flåten, og flåten kan stanse kornet til Roma.",
+            "en": "Sicily is held by a fourth man, Sextus Pompeius. He has the fleet, and the fleet can stop the grain reaching Rome."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Sicilia",
+                "en": "word:Sicily"
+              },
+              "do": "region.show",
+              "names": [
+                "Sicilia"
+              ],
+              "side": "pompeian",
+              "over": 1.4,
+              "vary": false,
+              "strength": 1.15
+            },
+            {
+              "on": {
+                "no": "word:kornet",
+                "en": "word:grain"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "grain-and-bread"
+            },
+            {
+              "on": "end",
+              "do": "stat.show",
+              "value": "4",
+              "label": {
+                "no": "menn med hver sin hær",
+                "en": "men with an army each"
+              },
+              "side": "neutral"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s2.b7",
+          "say": {
+            "no": "Og Egypt står utenfor. Rikt, selvstendig, styrt av Kleopatra. Det er der pengene er.",
+            "en": "And Egypt stands outside. Rich, independent, ruled by Cleopatra. That is where the money is."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Egypt",
+                "en": "word:Egypt"
+              },
+              "do": "region.show",
+              "names": [
+                "Aegyptus"
+              ],
+              "side": "ptolemaic",
+              "over": 1.6,
+              "vary": false,
+              "strength": 1.15
+            },
+            {
+              "on": {
+                "no": "word:Kleopatra",
+                "en": "word:Cleopatra"
+              },
+              "do": "portrait.show",
+              "id": "cleopatra"
+            }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": {
+        "no": "Listen",
+        "en": "The list"
+      },
+      "clock": {
+        "no": "Desember 43 f.Kr.",
+        "en": "December 43 BC"
+      },
+      "beats": [
+        {
+          "id": "s3.b1",
+          "say": {
+            "no": "De tre trenger penger. Fjorten legioner må lønnes, og statskassa er tom.",
+            "en": "The three need money. Fourteen legions have to be paid, and the treasury is empty."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dusk"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "Desember 43 f.Kr.",
+                "en": "December 43 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 7.4,
+              "over": 2.6
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -8
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -16
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b2",
+          "say": {
+            "no": "Så setter de opp en liste med navn, og slår den opp på torget i Roma.",
+            "en": "So they draw up a list of names, and post it in the forum in Rome."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:liste",
+                "en": "word:list"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "proscription"
+            },
+            {
+              "on": {
+                "no": "word:torget",
+                "en": "word:forum"
+              },
+              "do": "marker.show",
+              "at": "roma",
+              "label": {
+                "no": "Roma",
+                "en": "Rome"
+              },
+              "side": "caesarian",
+              "kind": "target"
+            },
+            {
+              "on": {
+                "no": "word:torget",
+                "en": "word:forum"
+              },
+              "do": "plate.show",
+              "id": "forum",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.55
+              ],
+              "over": 24,
+              "dim": 0.3
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b3",
+          "say": {
+            "no": "Står du på lista, er du fredløs. Den som dreper deg får betalt. Den som skjuler deg havner selv på den.",
+            "en": "If you are on the list, you are outlawed. Whoever kills you is paid. Whoever hides you goes on it themselves."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "quote.show",
+              "id": "proscription-edict"
+            }
+          ],
+          "gapAfter": 3.4
+        },
+        {
+          "id": "s3.b4",
+          "say": {
+            "no": "Hensikten er todelt og helt åpen: å bli kvitt motstandere, og å ta eiendommen deres.",
+            "en": "The purpose is twofold and entirely open: to be rid of opponents, and to take their property."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b5",
+          "say": {
+            "no": "Antonius krever ett navn før alle andre. Cicero, som hadde skrevet at gutten burde fjernes.",
+            "en": "Antony demands one name before any other. Cicero, who had written that the boy should be removed."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:Cicero",
+                "en": "word:Cicero"
+              },
+              "do": "portrait.show",
+              "id": "cicero"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b6",
+          "say": {
+            "no": "Octavian protesterer i to dager. Så gir han etter. Cicero blir drept på flukt, sjuende desember.",
+            "en": "Octavian objects for two days. Then he gives way. Cicero is killed while fleeing, on the seventh of December."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:drept",
+                "en": "word:killed"
+              },
+              "do": "map.flash"
+            },
+            {
+              "on": {
+                "no": "word:drept",
+                "en": "word:killed"
+              },
+              "do": "sound.play",
+              "id": "musket",
+              "gainDb": -14
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s3.b7",
+          "say": {
+            "no": "Hvor mange som døde, vet vi ikke. Appian sier tre hundre senatorer og to tusen riddere. Andre kilder sier langt færre.",
+            "en": "How many died we do not know. Appian says three hundred senators and two thousand knights. Other sources say far fewer."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:senatorer",
+                "en": "word:senators"
+              },
+              "do": "compare.show",
+              "parts": [
+                {
+                  "n": 300,
+                  "value": "300",
+                  "label": {
+                    "no": "senatorer",
+                    "en": "senators"
+                  },
+                  "side": "senate"
+                },
+                {
+                  "n": 2000,
+                  "value": "2 000",
+                  "label": {
+                    "no": "riddere",
+                    "en": "knights"
+                  },
+                  "side": "senate"
+                }
+              ],
+              "note": {
+                "no": "Appians tall. Andre kilder sier langt færre.",
+                "en": "Appian's figures. Other sources say far fewer."
+              },
+              "over": 1.4
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s3.b8",
+          "say": {
+            "no": "At kildene spriker så kraftig, er i seg selv verdt å vite. Ingen talte. Alle hadde en grunn til å overdrive eller dempe.",
+            "en": "That the sources disagree this sharply is itself worth knowing. Nobody counted. Everyone had a reason to exaggerate or to play it down."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "compare.clear"
+            },
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:kildene",
+                "en": "word:sources"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.8
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": {
+        "no": "Filippi",
+        "en": "Philippi"
+      },
+      "clock": {
+        "no": "Oktober 42 f.Kr.",
+        "en": "October 42 BC"
+      },
+      "beats": [
+        {
+          "id": "s4.b1",
+          "say": {
+            "no": "Brutus og Cassius har flyktet østover. På to år har de bygd opp en hær av alt Hellas og Lilleasia kan gi dem.",
+            "en": "Brutus and Cassius have fled east. In two years they have built an army out of everything Greece and Asia Minor can give them."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "Oktober 42 f.Kr.",
+                "en": "October 42 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch",
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:Brutus",
+                "en": "word:Brutus"
+              },
+              "do": "portrait.show",
+              "id": "brutus"
+            },
+            {
+              "on": {
+                "no": "word:østover",
+                "en": "word:east"
+              },
+              "do": "map.flyTo",
+              "to": "greece-view",
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:hær",
+                "en": "word:army"
+              },
+              "do": "route.draw",
+              "id": "east-to-philippi",
+              "over": 3.4,
+              "fit": false
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b2",
+          "say": {
+            "no": "De har også pengene. De har presset provinsene i øst for ti års skatt på to år.",
+            "en": "They have the money too. They have squeezed the eastern provinces for ten years of tax in two."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:provinsene",
+                "en": "word:provinces"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "province"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b3",
+          "say": {
+            "no": "Triumviratet setter over til Hellas og møter dem ved Filippi, på en slette mellom fjellene og myra.",
+            "en": "The triumvirs cross to Greece and meet them at Philippi, on a plain between the mountains and the marsh."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Filippi",
+                "en": "word:Philippi"
+              },
+              "do": "route.draw",
+              "id": "triumvirs-to-philippi",
+              "over": 3.0,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:Filippi",
+                "en": "word:Philippi"
+              },
+              "do": "marker.show",
+              "at": "philippi",
+              "label": {
+                "no": "Filippi",
+                "en": "Philippi"
+              },
+              "side": "caesarian",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:slette",
+                "en": "word:plain"
+              },
+              "do": "sound.play",
+              "id": "drums",
+              "gainDb": -12
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b4",
+          "say": {
+            "no": "Nesten to hundre tusen mann står mot hverandre. Det er den største hæren romere noen gang har stilt mot romere.",
+            "en": "Almost two hundred thousand men face each other. It is the largest army Romans have ever put in the field against Romans."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tusen",
+                "en": "word:thousand"
+              },
+              "do": "stat.show",
+              "value": "≈200 000",
+              "label": {
+                "no": "romere mot romere",
+                "en": "Romans against Romans"
+              },
+              "side": "neutral"
+            },
+            {
+              "on": {
+                "no": "word:tusen",
+                "en": "word:thousand"
+              },
+              "do": "plate.show",
+              "id": "legion",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.45
+              ],
+              "over": 18,
+              "dim": 0.15
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s4.b5",
+          "say": {
+            "no": "Det blir to slag. I det første tar Cassius livet av seg, fordi han tror alt er tapt. Det var det ikke.",
+            "en": "There are two battles. In the first, Cassius kills himself because he believes all is lost. It was not."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:første",
+                "en": "word:first"
+              },
+              "do": "sound.play",
+              "id": "volley",
+              "gainDb": -10
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s4.b6",
+          "say": {
+            "no": "Tre uker senere taper Brutus det andre. Han gjør det samme. Med ham dør den siste hæren som kjempet for republikken.",
+            "en": "Three weeks later Brutus loses the second. He does the same. With him dies the last army that fought for the republic."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:taper",
+                "en": "word:loses"
+              },
+              "do": "map.flash"
+            },
+            {
+              "on": {
+                "no": "word:taper",
+                "en": "word:loses"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "gainDb": -10
+            },
+            {
+              "on": {
+                "no": "word:republikken",
+                "en": "word:republic"
+              },
+              "do": "portrait.show",
+              "id": "brutus"
+            }
+          ],
+          "gapAfter": 1.6
+        },
+        {
+          "id": "s4.b7",
+          "say": {
+            "no": "Etterpå må det skaffes jord til over hundre tusen veteraner. Atten italienske byer får jorda si konfiskert.",
+            "en": "Afterwards land has to be found for over a hundred thousand veterans. Eighteen Italian towns have their land confiscated."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:veteraner",
+                "en": "word:veterans"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-army"
+            },
+            {
+              "on": {
+                "no": "word:konfiskert",
+                "en": "word:confiscated"
+              },
+              "do": "stat.show",
+              "value": "18",
+              "label": {
+                "no": "byer mistet jorda si",
+                "en": "towns lost their land"
+              },
+              "side": "caesarian"
+            }
+          ],
+          "gapAfter": 1.8
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": {
+        "no": "Sult og sjøslag",
+        "en": "Hunger and sea battles"
+      },
+      "clock": {
+        "no": "41–36 f.Kr.",
+        "en": "41–36 BC"
+      },
+      "beats": [
+        {
+          "id": "s5.b1",
+          "say": {
+            "no": "Octavian får den utakknemlige jobben: å ta jord fra italienske bønder og gi den til soldater.",
+            "en": "Octavian gets the thankless job: taking land from Italian farmers and giving it to soldiers."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "41 f.Kr.",
+                "en": "41 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "italia-view",
+              "over": 2.8
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b2",
+          "say": {
+            "no": "Det blir opprør. Antonius' bror og kone leder det, og ender innesperret i Perusia gjennom vinteren.",
+            "en": "It turns into revolt. Antony's brother and wife lead it, and end up shut inside Perusia through the winter."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Perusia",
+                "en": "word:Perusia"
+              },
+              "do": "map.flyTo",
+              "to": "perusia",
+              "zoom": 7.2,
+              "over": 2.4
+            },
+            {
+              "on": {
+                "no": "word:Perusia",
+                "en": "word:Perusia"
+              },
+              "do": "marker.show",
+              "at": "perusia",
+              "label": {
+                "no": "Perusia",
+                "en": "Perusia"
+              },
+              "side": "caesarian",
+              "kind": "siege"
+            },
+            {
+              "on": {
+                "no": "word:vinteren",
+                "en": "word:winter"
+              },
+              "do": "map.mood",
+              "value": "storm"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b3",
+          "say": {
+            "no": "Byen sulter og overgir seg. Octavian sparer lederne og lar byen brenne. Han er tjuetre år.",
+            "en": "The town starves and surrenders. Octavian spares the leaders and lets the town burn. He is twenty-three."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:brenne",
+                "en": "word:burn"
+              },
+              "do": "sound.play",
+              "id": "alarmBell",
+              "gainDb": -13
+            },
+            {
+              "on": {
+                "no": "word:brenne",
+                "en": "word:burn"
+              },
+              "do": "map.mood",
+              "value": "dusk"
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s5.b4",
+          "say": {
+            "no": "Antonius kommer tilbake med flåten sin. I Brundisium ligger de to hærene og ser på hverandre.",
+            "en": "Antony comes back with his fleet. At Brundisium the two armies lie watching each other."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "40 f.Kr.",
+                "en": "40 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:Brundisium",
+                "en": "word:Brundisium"
+              },
+              "do": "map.flyTo",
+              "to": "brundisium",
+              "zoom": 6.8,
+              "over": 2.6
+            },
+            {
+              "on": {
+                "no": "word:Brundisium",
+                "en": "word:Brundisium"
+              },
+              "do": "marker.show",
+              "at": "brundisium",
+              "label": {
+                "no": "Brundisium",
+                "en": "Brundisium"
+              },
+              "side": "neutral",
+              "kind": "camp"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b5",
+          "say": {
+            "no": "Soldatene nekter å slåss mot hverandre. De har tjent under begge. Så generalene må forhandle.",
+            "en": "The soldiers refuse to fight each other. They have served under both. So the generals have to negotiate."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b6",
+          "say": {
+            "no": "Avtalen blir beseglet med et ekteskap. Antonius gifter seg med Octavians søster Octavia. Det holder i noen år.",
+            "en": "The deal is sealed with a marriage. Antony marries Octavian's sister Octavia. It holds for a few years."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:ekteskap",
+                "en": "word:marriage"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-marriage"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b7",
+          "say": {
+            "no": "Imens sulter Roma. Sextus Pompeius sitter på Sicilia med flåten sin og slipper ikke kornskipene forbi.",
+            "en": "Meanwhile Rome goes hungry. Sextus Pompeius sits on Sicily with his fleet and lets no grain ship past."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "sicily-view",
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "sea",
+              "gainDb": -15
+            },
+            {
+              "on": {
+                "no": "word:Sicilia",
+                "en": "word:Sicily"
+              },
+              "do": "region.show",
+              "names": [
+                "Sicilia"
+              ],
+              "side": "pompeian",
+              "over": 1.4,
+              "vary": false,
+              "strength": 1.15
+            },
+            {
+              "on": {
+                "no": "word:flåten",
+                "en": "word:fleet"
+              },
+              "do": "route.draw",
+              "id": "sextus-blockade",
+              "over": 3.0,
+              "fit": false
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b8",
+          "say": {
+            "no": "Det tar Octavian seks år og to ødelagte flåter å knekke ham. Det er Agrippa som til slutt gjør det, ved Naulochus.",
+            "en": "It takes Octavian six years and two wrecked fleets to break him. It is Agrippa who finally does it, at Naulochus."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "36 f.Kr.",
+                "en": "36 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:Agrippa",
+                "en": "word:Agrippa"
+              },
+              "do": "portrait.show",
+              "id": "agrippa"
+            },
+            {
+              "on": {
+                "no": "word:Naulochus",
+                "en": "word:Naulochus"
+              },
+              "do": "marker.show",
+              "at": "naulochus",
+              "label": {
+                "no": "Naulochus",
+                "en": "Naulochus"
+              },
+              "side": "caesarian",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:Naulochus",
+                "en": "word:Naulochus"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b9",
+          "say": {
+            "no": "Samme år prøver Lepidus å ta Sicilia for seg selv. Octavian går inn i leiren hans alene, og legionene går over til ham.",
+            "en": "The same year Lepidus tries to take Sicily for himself. Octavian walks into his camp alone, and the legions go over to him."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:Lepidus",
+                "en": "word:Lepidus"
+              },
+              "do": "portrait.show",
+              "id": "lepidus"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b10",
+          "say": {
+            "no": "Tre ble til to, uten et slag. Nå er det Octavian i vest og Antonius i øst, og ingenting imellom.",
+            "en": "Three became two, without a battle. Now it is Octavian in the west and Antony in the east, and nothing in between."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "mediterranean"
+              ],
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:vest",
+                "en": "word:west"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Sicilia",
+                "Africa",
+                "Numidia"
+              ],
+              "side": "caesarian",
+              "over": 2.0,
+              "vary": false,
+              "strength": 1.15
+            },
+            {
+              "on": {
+                "no": "word:øst",
+                "en": "word:east"
+              },
+              "do": "region.show",
+              "names": [
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Cyrenaica"
+              ],
+              "side": "antonian",
+              "over": 2.0,
+              "vary": false,
+              "strength": 1.15
+            }
+          ],
+          "gapAfter": 1.8
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": {
+        "no": "Østover",
+        "en": "Eastward"
+      },
+      "clock": {
+        "no": "36–32 f.Kr.",
+        "en": "36–32 BC"
+      },
+      "beats": [
+        {
+          "id": "s6.b1",
+          "say": {
+            "no": "Antonius har den rike halvdelen, og en plan: å gjøre det Cæsar aldri rakk, og slå Partherriket.",
+            "en": "Antony has the rich half, and a plan: to do what Caesar never got to, and beat Parthia."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "36 f.Kr.",
+                "en": "36 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "east-view",
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedOpen",
+              "gainDb": -10
+            },
+            {
+              "on": {
+                "no": "word:Partherriket",
+                "en": "word:Parthia"
+              },
+              "do": "region.show",
+              "names": [
+                "Parthia"
+              ],
+              "side": "neutral",
+              "over": 1.6,
+              "vary": false,
+              "strength": 1.0
+            },
+            {
+              "on": {
+                "no": "word:Antonius",
+                "en": "word:Antony"
+              },
+              "do": "portrait.show",
+              "id": "antony"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b2",
+          "say": {
+            "no": "Felttoget blir en katastrofe. Han mister en tredel av hæren og kommer tilbake uten noe å vise fram.",
+            "en": "The campaign is a disaster. He loses a third of his army and comes back with nothing to show."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tredel",
+                "en": "word:third"
+              },
+              "do": "stat.show",
+              "value": "⅓",
+              "label": {
+                "no": "av hæren tapt",
+                "en": "of the army lost"
+              },
+              "side": "antonian"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b3",
+          "say": {
+            "no": "For å bygge opp igjen trenger han penger. Egypt har dem, og Kleopatra vil ha noe tilbake.",
+            "en": "To rebuild he needs money. Egypt has it, and Cleopatra wants something in return."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:Egypt",
+                "en": "word:Egypt"
+              },
+              "do": "map.flyTo",
+              "to": "alexandria",
+              "zoom": 6.4,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:Kleopatra",
+                "en": "word:Cleopatra"
+              },
+              "do": "portrait.show",
+              "id": "cleopatra"
+            },
+            {
+              "on": {
+                "no": "word:Kleopatra",
+                "en": "word:Cleopatra"
+              },
+              "do": "marker.show",
+              "at": "alexandria",
+              "label": {
+                "no": "Alexandria",
+                "en": "Alexandria"
+              },
+              "side": "ptolemaic"
+            },
+            {
+              "on": {
+                "no": "word:Egypt",
+                "en": "word:Egypt"
+              },
+              "do": "plate.show",
+              "id": "nile",
+              "motion": "right",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 20,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b4",
+          "say": {
+            "no": "I Alexandria gir han bort romerske provinser til henne og til barna deres, i en seremoni foran hele byen.",
+            "en": "In Alexandria he gives Roman provinces away to her and to their children, in a ceremony in front of the whole city."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:seremoni",
+                "en": "word:ceremony"
+              },
+              "do": "sound.play",
+              "id": "crowd",
+              "gainDb": -12
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b5",
+          "say": {
+            "no": "For Octavian er dette en gave. Han trenger ikke lyve. Han trenger bare å fortelle det i Roma.",
+            "en": "For Octavian this is a gift. He does not need to lie. He only needs to tell Rome about it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 6.6,
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -10
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b6",
+          "say": {
+            "no": "I trettito skiller Antonius seg fra Octavia. Kort etter leser Octavian opp Antonius' testamente i senatet.",
+            "en": "In thirty-two Antony divorces Octavia. Soon after, Octavian reads Antony's will aloud in the senate."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "32 f.Kr.",
+                "en": "32 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:testamente",
+                "en": "word:will"
+              },
+              "do": "portrait.show",
+              "id": "octavian"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b7",
+          "say": {
+            "no": "Han har tatt det ulovlig fra vestalinnene. I det står det at Antonius vil begraves i Alexandria, ikke i Roma.",
+            "en": "He has taken it unlawfully from the Vestals. In it, Antony asks to be buried in Alexandria, not in Rome."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b8",
+          "say": {
+            "no": "Det er nok. Roma erklærer krig, ikke mot Antonius, men mot Kleopatra. En utenlandsk dronning, ikke enda en borgerkrig.",
+            "en": "That is enough. Rome declares war, not on Antony, but on Cleopatra. A foreign queen, not another civil war."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:krig",
+                "en": "word:war"
+              },
+              "do": "sound.play",
+              "id": "alarmBell",
+              "gainDb": -12
+            },
+            {
+              "on": {
+                "no": "word:borgerkrig",
+                "en": "word:civil"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "propaganda"
+            }
+          ],
+          "gapAfter": 1.8
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "title": {
+        "no": "Actium",
+        "en": "Actium"
+      },
+      "clock": {
+        "no": "31–30 f.Kr.",
+        "en": "31–30 BC"
+      },
+      "beats": [
+        {
+          "id": "s7.b1",
+          "say": {
+            "no": "Andre september, år trettien før Kristus. De to flåtene møtes utenfor Actium, på vestkysten av Hellas.",
+            "en": "The second of September, thirty-one before Christ. The two fleets meet off Actium, on the west coast of Greece."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "2. september 31 f.Kr.",
+                "en": "2 September 31 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dawn"
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedUrgent",
+              "gainDb": -8
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "sea",
+              "gainDb": -14
+            },
+            {
+              "on": {
+                "no": "word:Actium",
+                "en": "word:Actium"
+              },
+              "do": "map.flyTo",
+              "to": "actium",
+              "zoom": 7.2,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:Actium",
+                "en": "word:Actium"
+              },
+              "do": "marker.show",
+              "at": "actium",
+              "label": {
+                "no": "Actium",
+                "en": "Actium"
+              },
+              "side": "caesarian",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:flåtene",
+                "en": "word:fleets"
+              },
+              "do": "plate.show",
+              "id": "actium",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.55
+              ],
+              "over": 22,
+              "dim": 0.18
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b2",
+          "say": {
+            "no": "Antonius har de største skipene. Agrippa har de raskeste, og han har brukt måneder på å sulte ut motstanderen.",
+            "en": "Antony has the biggest ships. Agrippa has the fastest, and he has spent months starving the other side out."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Agrippa",
+                "en": "word:Agrippa"
+              },
+              "do": "portrait.show",
+              "id": "agrippa"
+            },
+            {
+              "on": "end",
+              "do": "compare.show",
+              "parts": [
+                {
+                  "n": 230,
+                  "value": "230",
+                  "label": {
+                    "no": "skip hos Antonius",
+                    "en": "ships with Antony"
+                  },
+                  "side": "antonian"
+                },
+                {
+                  "n": 400,
+                  "value": "400",
+                  "label": {
+                    "no": "skip hos Octavian",
+                    "en": "ships with Octavian"
+                  },
+                  "side": "caesarian"
+                }
+              ],
+              "note": {
+                "no": "Antonius' skip var større. Agrippas var raskere.",
+                "en": "Antony's ships were bigger. Agrippa's were faster."
+              },
+              "over": 1.4
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s7.b3",
+          "say": {
+            "no": "Slaget er over på en ettermiddag. Midt i det bryter Kleopatras seksti skip ut gjennom linja og setter kursen sørover.",
+            "en": "The battle is over in an afternoon. In the middle of it Cleopatra's sixty ships break out through the line and turn south."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "compare.clear"
+            },
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:bryter",
+                "en": "word:break"
+              },
+              "do": "route.draw",
+              "id": "actium-breakout",
+              "over": 3.6,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:bryter",
+                "en": "word:break"
+              },
+              "do": "sound.play",
+              "id": "cannon",
+              "gainDb": -9
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s7.b4",
+          "say": {
+            "no": "Antonius følger etter henne. Om det var avtalt eller om han rømte, har historikere kranglet om i to tusen år.",
+            "en": "Antony follows her. Whether it was agreed or whether he ran has been argued over by historians for two thousand years."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:historikere",
+                "en": "word:historians"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s7.b5",
+          "say": {
+            "no": "Resten av flåten overgir seg. Hæren hans, nitten legioner, venter noen dager og går så over til Octavian.",
+            "en": "The rest of the fleet surrenders. His army, nineteen legions, waits a few days and then goes over to Octavian."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:legioner",
+                "en": "word:legions"
+              },
+              "do": "stat.show",
+              "value": "19",
+              "label": {
+                "no": "legioner skiftet side",
+                "en": "legions changed sides"
+              },
+              "side": "caesarian"
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s7.b6",
+          "say": {
+            "no": "Ett år senere står Octavian utenfor Alexandria. Antonius tar sitt eget liv. Kleopatra gjør det samme, elleve dager etter.",
+            "en": "A year later Octavian stands outside Alexandria. Antony takes his own life. Cleopatra does the same, eleven days later."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "August 30 f.Kr.",
+                "en": "August 30 BC"
+              }
+            },
+            {
+              "on": {
+                "no": "word:Alexandria",
+                "en": "word:Alexandria"
+              },
+              "do": "map.flyTo",
+              "to": "alexandria",
+              "zoom": 6.8,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:Alexandria",
+                "en": "word:Alexandria"
+              },
+              "do": "marker.show",
+              "at": "alexandria",
+              "label": {
+                "no": "Alexandria",
+                "en": "Alexandria"
+              },
+              "side": "caesarian",
+              "kind": "siege"
+            },
+            {
+              "on": {
+                "no": "word:Kleopatra",
+                "en": "word:Cleopatra"
+              },
+              "do": "portrait.show",
+              "id": "cleopatra"
+            }
+          ],
+          "gapAfter": 1.6
+        },
+        {
+          "id": "s7.b7",
+          "say": {
+            "no": "Egypt blir en romersk provins, og Octavians personlige eiendom. Kornet og pengene er hans.",
+            "en": "Egypt becomes a Roman province, and Octavian's personal property. The grain and the money are his."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "mediterranean"
+              ],
+              "over": 3.2
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -11
+            },
+            {
+              "on": {
+                "no": "word:provins",
+                "en": "word:province"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Sicilia",
+                "Africa",
+                "Numidia",
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Cyrenaica",
+                "Aegyptus"
+              ],
+              "side": "caesarian",
+              "over": 2.4,
+              "vary": false,
+              "strength": 1.15
+            }
+          ],
+          "gapAfter": 1.8
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "title": {
+        "no": "Augustus",
+        "en": "Augustus"
+      },
+      "clock": {
+        "no": "27 f.Kr.",
+        "en": "27 BC"
+      },
+      "beats": [
+        {
+          "id": "s8.b1",
+          "say": {
+            "no": "Han er trettifem år, og han har vunnet. Nå kommer det vanskelige.",
+            "en": "He is thirty-five years old, and he has won. Now comes the hard part."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "16. januar 27 f.Kr.",
+                "en": "16 January 27 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 6.6,
+              "over": 3.0
+            },
+            {
+              "on": "start",
+              "do": "sound.ambience",
+              "id": "crowd",
+              "gainDb": -17
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s8.b2",
+          "say": {
+            "no": "Cæsar hadde tatt tittelen diktator på livstid, og ble drept for det. Octavian har sett nøyaktig hvordan det gikk.",
+            "en": "Caesar had taken the title dictator for life, and was killed for it. Octavian has seen exactly how that went."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Cæsar",
+                "en": "word:Caesar"
+              },
+              "do": "portrait.show",
+              "id": "caesar"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s8.b3",
+          "say": {
+            "no": "Så han gjør det motsatte. I januar tjuesju går han inn i senatet og gir all makt tilbake.",
+            "en": "So he does the opposite. In January twenty-seven he walks into the senate and hands all power back."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:senatet",
+                "en": "word:senate"
+              },
+              "do": "quote.show",
+              "id": "res-gestae"
+            }
+          ],
+          "gapAfter": 3.6
+        },
+        {
+          "id": "s8.b4",
+          "say": {
+            "no": "Senatet gir ham alt sammen tilbake med det samme, og legger på et nytt navn: Augustus, den opphøyde.",
+            "en": "The senate gives all of it straight back, and adds a new name: Augustus, the revered one."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": {
+                "no": "word:Augustus",
+                "en": "word:Augustus"
+              },
+              "do": "portrait.show",
+              "id": "octavian"
+            },
+            {
+              "on": {
+                "no": "word:Augustus",
+                "en": "word:Augustus"
+              },
+              "do": "sound.play",
+              "id": "churchBell",
+              "gainDb": -11
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s8.b5",
+          "say": {
+            "no": "Han er ikke konge. Han er ikke diktator. Han kaller seg princeps, den fremste blant likemenn.",
+            "en": "He is not a king. He is not a dictator. He calls himself princeps, the first among equals."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:princeps",
+                "en": "word:princeps"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "princeps"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s8.b6",
+          "say": {
+            "no": "Men han har alle legionene, alle provinsene som betyr noe, og alle pengene. Og han beholder dem i førtien år.",
+            "en": "But he holds every legion, every province that matters, and all the money. And he keeps them for forty-one years."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:førtien",
+                "en": "word:forty-one"
+              },
+              "do": "stat.show",
+              "value": "41",
+              "label": {
+                "no": "år ved makten",
+                "en": "years in power"
+              },
+              "side": "caesarian"
+            }
+          ],
+          "gapAfter": 1.6
+        },
+        {
+          "id": "s8.b7",
+          "say": {
+            "no": "Ingen kan si nøyaktig når republikken tok slutt. Det var ikke et statskupp. Det var femten år med små skritt.",
+            "en": "Nobody can say exactly when the republic ended. There was no coup. There were fifteen years of small steps."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:republikken",
+                "en": "word:republic"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "who-ruled-rome"
+            }
+          ],
+          "gapAfter": 1.6
+        },
+        {
+          "id": "s8.b8",
+          "say": {
+            "no": "Da han døde, hadde nesten ingen levende romer opplevd noe annet. Det er slik en republikk forsvinner.",
+            "en": "By the time he died, almost no living Roman had known anything else. That is how a republic goes."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -9
+            },
+            {
+              "on": "end",
+              "do": "caption.note",
+              "value": {
+                "no": "44 f.Kr. – 27 f.Kr.",
+                "en": "44 BC – 27 BC"
+              }
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "colosseum",
+              "motion": "out",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 26,
+              "dim": 0.2
+            }
+          ],
+          "gapAfter": 2.6
+        }
+      ]
+    }
+  ]
+}
