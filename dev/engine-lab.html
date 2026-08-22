@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="no" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motorlab — engine bench</title>
+
+<!-- The engine fetches its content with document-relative paths ('./content/…',
+     './assets/geo/…', './engine/verbs.json'), because in the app the document
+     IS the root. From dev/ that would resolve to dev/content/. One <base> puts
+     every one of them back on the repo root, and module imports are unaffected
+     because they resolve against the module's own URL, not this. -->
+<base href="../">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/atlas.css">
+<link rel="stylesheet" href="css/story.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  /* The stage is real and mounted, but it is not the point of this page —
+     the numbers are. It sits small both so the report has the room and
+     because every layer.add() schedules a canvas redraw: a full-window map
+     makes the sweep several times slower for a picture nobody reads. */
+  .stagewrap { position: relative; overflow: hidden; border-right: 1px solid var(--rule); }
+  #stage { position: absolute; inset: 0; }
+
+  .side { overflow-y: auto; padding: 14px 16px; background: var(--paper-raised); }
+  h1 { margin: 0 0 2px; font-family: var(--font-display); font-size: 17px; }
+  p.sub { margin: 0 0 12px; font-size: 11.5px; color: var(--ink-soft); }
+  .q {
+    margin: 0 0 14px; padding: 9px 11px;
+    border-left: 3px solid var(--gold);
+    background: var(--paper-sunken);
+    font-size: 12px; line-height: 1.45;
+  }
+  .bar { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+  button, select {
+    font: inherit; font-size: 12px; padding: 6px 10px;
+    border: 1px solid var(--rule-strong); border-radius: var(--r-sm);
+    background: var(--paper); color: var(--ink); cursor: pointer;
+  }
+  button:hover { background: var(--paper-sunken); }
+  #status { font-size: 11.5px; color: var(--ink-soft); }
+  #chapter { font-size: 11px; color: var(--ink-faint); margin-bottom: 10px; }
+
+  h2 { margin: 14px 0 8px; font-size: 14px; font-family: var(--font-display); }
+  h2 small { font-weight: 400; font-size: 11px; color: var(--ink-faint); margin-left: 6px; }
+  h3 { margin: 16px 0 5px; font-size: 10px; font-weight: 700;
+       letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+  p { margin: 0 0 6px; font-size: 12px; line-height: 1.45; }
+  pre {
+    margin: 5px 0 0; padding: 7px 8px; overflow-x: auto;
+    background: var(--paper-sunken); border-radius: var(--r-sm);
+    font-size: 10.5px; line-height: 1.4; white-space: pre;
+  }
+  .good { color: #2c6b3f; }
+  .bad { color: var(--red); }
+  .fail, .warn, .note {
+    margin: 0 0 8px; padding: 8px 10px; border-radius: var(--r-sm);
+    font-size: 11.5px; line-height: 1.45;
+  }
+  .fail { background: color-mix(in srgb, var(--red) 12%, transparent); border-left: 3px solid var(--red); }
+  .warn { background: color-mix(in srgb, var(--gold) 16%, transparent); border-left: 3px solid var(--gold); }
+  .note { background: var(--paper-sunken); border-left: 3px solid var(--rule-strong); }
+</style>
+</head>
+<body>
+
+<!-- .story because engine/depth.js mounts into the story root and the
+     rail CSS keys off it. The lab runs the real thing, not a stub. -->
+<div class="stagewrap story"><div id="stage" class="story__stage"></div></div>
+
+<div class="side">
+  <h1>Motorlab</h1>
+  <p class="sub">engine bench — script, player, stage</p>
+
+  <p class="q">
+    <b>Does <code>rebuildTo(t)</code> produce the same picture as playing
+    forward to <code>t</code>?</b><br>
+    Rule 1 says the picture is a function of time, not a history of events.
+    Everything else on this page is a corollary of that one question.
+  </p>
+
+  <div class="bar">
+    <select id="pick" aria-label="Chapter"></select>
+    <button id="run">Kjør alle</button>
+    <span id="status">…</span>
+  </div>
+  <div id="chapter"></div>
+
+  <div id="out"></div>
+</div>
+
+<script type="module" src="dev/engine-lab.js"></script>
+</body>
+</html>

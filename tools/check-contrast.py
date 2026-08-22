@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import http.server
+import json
 import socket
 import socketserver
 import sys
@@ -94,20 +95,68 @@ async (probes) => {
 """
 
 
-# The chapter and the beat that puts every colony on screen at once. If the
-# script moves, this moves with it — but the check is about the picture, so it
-# has to be taken from the real thing rather than from a fixture.
-STORY_CHAPTER = "american-revolution/chapter-1775-04-19"
-STORY_BEAT = ("s0.b5", 3.0)
+# The chapter and the beat that puts every named area on screen at once, and
+# the file whose shared vertices say which areas border each other. Both come
+# from content/<pack>/pack.json — `checks.contrast` and `pools.areas` — because
+# which beat shows the whole map is a fact about a script, not about a checker.
+# The check is about the picture, so it is taken from the real thing rather
+# than from a fixture.
+def pack_checks(pack):
+    mf = ROOT / "content" / pack / "pack.json"
+    manifest = json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else {}
+    spot = (manifest.get("checks") or {}).get("contrast") or {}
+    chapter = spot.get("chapter")
+    areas = (manifest.get("pools") or {}).get("areas")
+    return {
+        "chapter": f"{pack}/{chapter}" if chapter else None,
+        "beat": (spot.get("beat"), float(spot.get("at", 3.0))),
+        "areas": ROOT / "content" / pack / areas if areas else None,
+    }
+
+
+def packs_on_disk():
+    listed = ROOT / "content" / "packs.json"
+    if listed.exists():
+        return json.loads(listed.read_text(encoding="utf-8"))
+    return sorted(d.name for d in (ROOT / "content").iterdir()
+                  if d.is_dir() and not d.name.startswith("_"))
+
+CHECKS: dict = {}
 
 COLONIES_JS = """
-async ([beatId, offset]) => {
+async ([beatId, offset, chapterId]) => {
   const S = await import('/engine/story.js');
   const M = await import('/engine/scenes/map.js');
+
+  // Open the chapter the PACK named, rather than whichever one the cover
+  // opened by itself. This assumed the default chapter, which was true for
+  // exactly as long as there was one pack — and then quietly sampled the
+  // American Revolution while claiming to measure Rome.
+  if (chapterId && S.getChapter()?.id !== chapterId) {
+    // Re-query on every pass. Opening a chapter re-renders the cover, so a
+    // list of buttons captured once is a list of detached nodes after the
+    // first click — and clicking those does nothing at all, silently.
+    const n = document.querySelectorAll('[data-chapter]').length;
+    for (let i = 0; i < n; i += 1) {
+      if (S.getChapter()?.id === chapterId) break;
+      document.querySelectorAll('[data-chapter]')[i]?.click();
+      await new Promise(r => setTimeout(r, 1600));
+    }
+    document.querySelector('.story__cover')?.classList.remove('is-on');
+    await new Promise(r => setTimeout(r, 800));
+  }
+
   const p = S.getPlayer(), ch = S.getChapter();
-  let at = offset;
-  for (const s of ch.scenes) for (const b of s.beats) if (b.id === beatId) at = b.start + offset;
-  await p.goToScene(0, { autoplay: false, at });
+  // Find the SCENE the beat is in, not scene zero. This was hardcoded to 0,
+  // which worked for exactly as long as every pack's sample beat happened to
+  // be in the first scene — and silently sampled the wrong scene the moment
+  // one was not. tools/shoot.py learned the same lesson: derive the index
+  // from the beat id, because the two drift.
+  let at = offset, sceneIndex = 0;
+  ch.scenes.forEach((s, i) => {
+    for (const b of s.beats) if (b.id === beatId) { at = b.start + offset; sceneIndex = i; }
+  });
+  await p.goToScene(sceneIndex, { autoplay: false, at });
   S.storyInvalidate();
   await new Promise(r => setTimeout(r, 900));
 
@@ -133,6 +182,10 @@ async ([beatId, offset]) => {
     .map((r) => {
       const [x, y] = map.toScreen(r.centre[0], r.centre[1]);
       return { name: r.name, x: host.left + x, y: host.top + y,
+               // What the chapter ASKED for, so the checker can tell a
+               // deliberate single bloc from two areas that collided.
+               faction: r.faction ?? null,
+               vary: r.vary !== false,
                on: x > 0 && y > 0 && x < host.width && y < host.height };
     })
     .filter((r) => r.on);
@@ -142,7 +195,12 @@ async ([beatId, offset]) => {
 
 def adjacent_colonies(path: Path):
     """
-    Which colonies share a border, read off the geometry itself.
+    Which areas share a border, read off the geometry itself.
+
+    Whether a given pair is REQUIRED to be distinguishable is a separate
+    question, decided at sampling time from what the chapter actually drew —
+    see the `vary` filter in run_story(). Adjacency is geometry; the rule is
+    not.
 
     No point-in-polygon and no geometry library: since the borders are
     simplified as a network, two colonies that share a border share the very
@@ -158,8 +216,8 @@ def adjacent_colonies(path: Path):
         return {(x, y) for g in groups for ring in g for x, y in ring}
 
     data = json.loads(path.read_text(encoding="utf-8"))
-    verts = {f["properties"]["name"]: vertices(f["geometry"])
-             for f in data.get("features", [])}
+    feats = data.get("features", [])
+    verts = {f["properties"]["name"]: vertices(f["geometry"]) for f in feats}
     names = list(verts)
     pairs = []
     for i, a in enumerate(names):
@@ -361,8 +419,8 @@ def run_story(theme: str, width: int, height: int, shots: Path):
     Same idea, different page: boot the chapter, seek to the beat that puts all
     thirteen colonies on screen, and sample each one where its own name sits.
     """
-    geo = (ROOT / "content" / "american-revolution" / "geo" / "colonies.geojson")
-    if not geo.exists():
+    geo = CHECKS.get("areas")
+    if not geo or not geo.exists() or not CHECKS.get("chapter") or not CHECKS["beat"][0]:
         return [], [], None
     pairs = adjacent_colonies(geo)
 
@@ -389,7 +447,9 @@ def run_story(theme: str, width: int, height: int, shots: Path):
                 "async () => (await import('/engine/scenes/map.js')).getStoryMap()?.ready() === true",
                 timeout=20000)
             page.wait_for_timeout(900)
-            spots = page.evaluate(COLONIES_JS, list(STORY_BEAT))
+            chapter_id = (CHECKS.get("chapter") or "").split("/")[-1]
+            spots = page.evaluate(COLONIES_JS,
+                                  [*CHECKS["beat"], chapter_id])
             page.wait_for_timeout(400)
 
             shots.mkdir(parents=True, exist_ok=True)
@@ -401,6 +461,7 @@ def run_story(theme: str, width: int, height: int, shots: Path):
             # across at phone width, and a patch wide enough to be comfortable
             # would average in its neighbours and report them as identical.
             seen = {}
+            drawn = {sp['name']: sp for sp in spots}
             for sp in spots:
                 patch = median_patch(img, int(sp["x"] * 2), int(sp["y"] * 2), 2)
                 if patch is not None:
@@ -409,12 +470,30 @@ def run_story(theme: str, width: int, height: int, shots: Path):
             ctx.close()
             browser.close()
 
-        results = []
+        # Which neighbouring pairs are REQUIRED to be distinguishable.
+        #
+        # Two areas the chapter drew as one deliberate bloc are not a defect:
+        # `vary: false` says "this shot is about the side, not the areas", and
+        # Antony's five eastern provinces are supposed to read as one thing.
+        # Two areas on the same side with `vary` ON are the opposite case —
+        # thirteen colonies the reader has to tell apart — and there a
+        # collision IS the defect. Nothing about that can be read off the
+        # geometry; it is what the chapter asked the map to draw.
+        results, blocs = [], 0
         for a, b in pairs:
-            if a in seen and b in seen:
-                results.append(("colony/colony", f"{a} / {b}",
-                                delta_e(seen[a], seen[b])))
-        if not results:
+            if a not in seen or b not in seen:
+                continue
+            fa, fb = drawn.get(a, {}), drawn.get(b, {})
+            same_side = fa.get("faction") is not None and fa.get("faction") == fb.get("faction")
+            if same_side and not (fa.get("vary") and fb.get("vary")):
+                blocs += 1
+                continue
+            results.append(("colony/colony", f"{a} / {b}",
+                            delta_e(seen[a], seen[b])))
+        if blocs:
+            print(f"  ({blocs} neighbouring pair(s) drawn as one bloc on purpose "
+                  f"— vary: false — and not compared)")
+        if not results and not blocs:
             errors.append("no colonies were on screen at the sampled beat")
         return results, errors, shot
     finally:
@@ -423,6 +502,8 @@ def run_story(theme: str, width: int, height: int, shots: Path):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--pack", default=None,
+                    help="which pack to sample; default is the first in content/packs.json")
     ap.add_argument("--theme", choices=["light", "dark", "both"], default="both")
     ap.add_argument("--width", type=int, default=390)
     ap.add_argument("--height", type=int, default=844)
@@ -430,6 +511,15 @@ def main() -> int:
     ap.add_argument("--strict", action="store_true",
                     help="hold land/water to the authored-basemap target (dE 12)")
     args = ap.parse_args()
+
+    global CHECKS
+    packs = packs_on_disk()
+    pack = args.pack or (packs[0] if packs else None)
+    if not pack:
+        print("no packs in content/ — nothing to check", file=sys.stderr)
+        return 2
+    CHECKS = pack_checks(pack)
+    print(f"pack: {pack}")
 
     if args.strict:
         THRESHOLDS["land/water"] = (12.0, THRESHOLDS["land/water"][1])

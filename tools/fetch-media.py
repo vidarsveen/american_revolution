@@ -9,7 +9,7 @@ Reads a `media` block from the pack's media-sources.json, downloads each file,
 downscales it, and writes content/<pack>/media.json with the artist, date,
 source URL and licence for every image, so the app can credit them properly.
 
---portraits does the same job for the faces in assets/portraits/, reading
+--portraits does the same job for the faces in content/<pack>/portraits/, reading
 portrait-sources.json and writing portraits.json. The first 32 portraits
 arrived with no source list at all, which is a thing you cannot fix later by
 looking at a JPEG; every face added since goes through here.
@@ -34,7 +34,10 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "AmericanRevolutionTimeline/1.0 (personal learning project; vidarsveen@gmail.com)"
 API = "https://commons.wikimedia.org/w/api.php"
-MAX_W = 1200
+# Wide enough to fill a laptop screen. A plate is the WHOLE stage now, not a
+# card in a corner, and 1200 was visibly soft at 1280 CSS pixels on a 2x
+# display. Portraits stay small: they are shown at about a quarter width.
+MAX_W = 1800
 # A portrait is shown in a small card, never full bleed. The first 1200 px
 # fetch produced 230 KB faces next to the 30 KB ones already shipped.
 MAX_PORTRAIT_W = 640
@@ -96,7 +99,16 @@ def main():
     # that asked for them.
     src_name = "portrait-sources.json" if portraits else "media-sources.json"
     out_name = "portraits.json" if portraits else "media.json"
-    out_dir = (os.path.join(ROOT, "assets", "portraits") if portraits
+    # Both go INSIDE the pack. Portraits used to land in a global
+    # assets/portraits/, which is fine with one subject and wrong with two —
+    # the Roman pack has its own Caesar. The directory name comes from
+    # pack.json's pools so a pack can put them anywhere.
+    portrait_dir = "portraits/"
+    manifest_path = os.path.join(pack_dir, "pack.json")
+    if os.path.exists(manifest_path):
+        with open(manifest_path, encoding="utf-8") as fh:
+            portrait_dir = (json.load(fh).get("pools") or {}).get("portraits", "portraits/")
+    out_dir = (os.path.join(pack_dir, portrait_dir.rstrip("/")) if portraits
                else os.path.join(pack_dir, "media"))
 
     src_path = os.path.join(pack_dir, src_name)
@@ -112,6 +124,11 @@ def main():
     failed = []
 
     for mid, spec in sources.items():
+        # A "//" key is a comment. pack.json and the other manifests use them
+        # to explain themselves, and a source file should be allowed to say
+        # why its pictures were chosen.
+        if mid.startswith("//") or not isinstance(spec, dict):
+            continue
         title = spec["commons"]
         fname = f"{mid}.jpg"
         dest = os.path.join(out_dir, fname)

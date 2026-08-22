@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import functools
 import http.server
+import json
 import os
 import socket
 import socketserver
@@ -33,10 +34,31 @@ import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOTS = os.path.join(ROOT, 'shots')
-CHAPTERS = {
-    'lexington': 'american-revolution/chapter-1775-04-19',
-    'bunkerhill': 'american-revolution/chapter-1775-06-17',
-}
+def chapter_map():
+    """Short name -> '<pack>/<chapter>', discovered from content/packs.json.
+
+    Was a hardcoded pair. The short name is the chapter id with the pack's
+    common prefix stripped, so `--chapter chapter-1775-04-19` and the full
+    reference both work.
+    """
+    out = {}
+    listed = os.path.join(ROOT, "content", "packs.json")
+    packs = []
+    if os.path.exists(listed):
+        with open(listed, encoding="utf-8") as fh:
+            packs = json.load(fh)
+    for pack in packs:
+        mf = os.path.join(ROOT, "content", pack, "pack.json")
+        if not os.path.exists(mf):
+            continue
+        with open(mf, encoding="utf-8") as fh:
+            manifest = json.load(fh)
+        for ch in manifest.get("chapters", []):
+            out[ch["id"]] = f"{pack}/{ch['id']}"
+    return out
+
+
+CHAPTERS = chapter_map()
 
 # Each moment is (key, beat id, seconds into that beat, caption). Chosen to
 # cover every kind of thing the stage can put on screen.

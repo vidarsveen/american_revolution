@@ -36,9 +36,22 @@ ENDPOINTS = [
 ]
 
 # pack -> (south, west, north, east)
-THEATRES = {
-    "american-revolution": (42.05, -71.70, 42.75, -70.75),
-}
+def theatre(pack):
+    """The close-in box, from content/<pack>/pack.json map.detail.bbox.
+
+    It used to be a table in here keyed by pack name, which is a tool holding
+    a fact about a subject. The bbox is written [w, s, e, n] in the manifest,
+    the way GeoJSON and the map module write it; Overpass wants (s, w, n, e).
+    """
+    path = ROOT / "content" / pack / "pack.json"
+    if not path.exists():
+        return None
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    bbox = ((manifest.get("map") or {}).get("detail") or {}).get("bbox")
+    if not bbox or len(bbox) != 4:
+        return None
+    w, s_, e, n = bbox
+    return (s_, w, n, e)
 
 QUERY = """[out:json][timeout:180];
 (
@@ -207,12 +220,16 @@ def rings_of_geom(geom):
 
 
 def main() -> int:
-    pack = sys.argv[1] if len(sys.argv) > 1 else "american-revolution"
-    if pack not in THEATRES:
+    pack = sys.argv[1] if len(sys.argv) > 1 else None
+    if not pack:
+        print("usage: fetch-detail.py <pack>", file=sys.stderr)
+        return 2
+    box = theatre(pack)
+    if box is None:
         print(f"no theatre bbox declared for {pack}")
         return 1
 
-    s, w, n, e = THEATRES[pack]
+    s, w, n, e = box
 
     # Cache the raw response. Overpass is a shared public service and this
     # query is expensive; re-running the trim should not cost them anything.

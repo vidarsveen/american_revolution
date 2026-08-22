@@ -22,6 +22,7 @@ Output (committed, cached forever by the service worker):
 """
 from __future__ import annotations
 
+import argparse
 import json
 import math
 from pathlib import Path
@@ -33,13 +34,38 @@ OUT = ROOT / "assets" / "geo"
 # name -> (source scale, simplify tolerance in degrees, bbox or None)
 # Tolerance is chosen so a feature never wobbles by more than about a pixel at
 # the zoom the level is used at; past that you are storing detail nobody sees.
+# The two world levels every pack shares. Regional extracts come from the
+# packs themselves — a pack.json level with a `build` block says which scale,
+# what tolerance and which box, because the theatre of a subject is a fact
+# about the subject and not about this tool.
 LEVELS = {
-    "world-110m":   ("110m", 0.090, None),
-    "world-50m":    ("50m",  0.030, None),
-    # The theatre of this war, with room for Quebec, the Caribbean and the
-    # Atlantic crossing. A pack declares its own box; this is the default.
-    "atlantic-10m": ("10m",  0.004, (-98.0, 22.0, -55.0, 52.0)),
+    "world-110m": ("110m", 0.090, None),
+    "world-50m":  ("50m",  0.030, None),
 }
+
+
+def pack_levels(only=None):
+    """Regional levels declared by packs, as {name: (scale, tol, bbox)}."""
+    listed = ROOT / "content" / "packs.json"
+    if not listed.exists():
+        return {}
+    packs = json.loads(listed.read_text(encoding="utf-8"))
+    out = {}
+    for pack in packs:
+        if only and pack != only:
+            continue
+        mf = ROOT / "content" / pack / "pack.json"
+        if not mf.exists():
+            continue
+        manifest = json.loads(mf.read_text(encoding="utf-8"))
+        for lv in ((manifest.get("map") or {}).get("basemap") or {}).get("levels", []):
+            build = lv.get("build")
+            if not build:
+                continue          # a world level, already built above
+            out[lv["name"]] = (build.get("scale", "10m"),
+                               build.get("tol", 0.004),
+                               tuple(build["bbox"]) if build.get("bbox") else None)
+    return out
 
 LAYERS = ["land", "lakes", "rivers_lake_centerlines"]
 SHORT = {"land": "land", "lakes": "lakes", "rivers_lake_centerlines": "rivers"}
@@ -185,13 +211,24 @@ def build_layer(path: Path, tol, box, min_rank=None):
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pack", default=None,
+                    help="only this pack's regional level(s); default is every pack")
+    ap.add_argument("--only", nargs="*", default=None,
+                    help="only these level names")
+    args = ap.parse_args()
+
     if not SRC.exists():
         print(f"missing {SRC} — download the Natural Earth GeoJSON there first")
         return 1
 
     OUT.mkdir(parents=True, exist_ok=True)
 
-    for name, (scale, tol, box) in LEVELS.items():
+    wanted = {**LEVELS, **pack_levels(args.pack)}
+    if args.only:
+        wanted = {k: v for k, v in wanted.items() if k in args.only}
+
+    for name, (scale, tol, box) in wanted.items():
         result = {"name": name, "scale": scale, "bbox": box, "layers": {}}
         print(f"\n{name}  (Natural Earth {scale}, tolerance {tol} deg)")
 
@@ -208,7 +245,11 @@ def main() -> int:
             print(f"  {SHORT[layer]:8} {kept:5} shapes, {pts:7} points{note}")
 
         borders = []
-        for admin, scale_b, layer in BORDERS.get(name, []):
+        # A pack's own regional level gets country lines by default, and can
+        # turn them off entirely — Rome has no use for a 2024 border drawn
+        # across Cisalpine Gaul.
+        border_spec = BORDERS.get(name, [(0, "50m", "admin_0_boundary_lines_land")])
+        for admin, scale_b, layer in border_spec:
             bpath = SRC / f"ne_{scale_b}_{layer}.json"
             if not bpath.exists():
                 print(f"  border{admin} - not downloaded, skipping")

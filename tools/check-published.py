@@ -12,74 +12,22 @@ live site and compares its hash against the working tree.
     python tools/check-published.py
     python tools/check-published.py --base https://example.github.io/repo
 
+The walk itself lives in tools/graph.py, because build-sw.py needs the same
+one and two copies of it would drift.
+
 Exit code 1 if anything is missing or differs.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
-import re
 import sys
 import urllib.error
 import urllib.request
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+from graph import collect_graph, rel_posix
+
 DEFAULT_BASE = "https://vidarsveen.github.io/american_revolution"
-
-CSS_LINK = re.compile(r'<link[^>]+href="\./([^"]+\.css)"')
-SCRIPT_SRC = re.compile(r'<script[^>]+src="\./([^"]+\.js)"')
-IMPORT = re.compile(r"""(?:^|\n)\s*(?:import|export)[^'"\n]*?['"](\.[^'"]+\.js)['"]""")
-# Runtime data the app fetches by literal path.
-FETCH = re.compile(r"""fetch\(\s*['"`](\.[^'"`]+)['"`]""")
-
-
-def norm(base: Path, rel: str) -> Path | None:
-    p = (base.parent / rel).resolve()
-    try:
-        p.relative_to(ROOT)
-    except ValueError:
-        return None
-    return p
-
-
-def collect() -> set[Path]:
-    """Everything index.html pulls in, followed transitively."""
-    index = ROOT / "index.html"
-    html = index.read_text(encoding="utf-8")
-
-    seen: set[Path] = {index}
-    queue: list[Path] = []
-
-    for rel in CSS_LINK.findall(html) + SCRIPT_SRC.findall(html):
-        p = norm(index, "./" + rel)
-        if p and p.exists():
-            seen.add(p)
-            if p.suffix == ".js":
-                queue.append(p)
-
-    # sw.js is fetched by the registration, not by a tag.
-    sw = ROOT / "sw.js"
-    if sw.exists():
-        seen.add(sw)
-
-    while queue:
-        cur = queue.pop()
-        try:
-            src = cur.read_text(encoding="utf-8")
-        except OSError:
-            continue
-        for rel in IMPORT.findall(src):
-            p = norm(cur, rel)
-            if p and p.exists() and p not in seen:
-                seen.add(p)
-                queue.append(p)
-        for rel in FETCH.findall(src):
-            p = norm(cur, rel)
-            if p and p.exists():
-                seen.add(p)
-
-    return seen
 
 
 def sha(data: bytes) -> str:
@@ -92,12 +40,12 @@ def main() -> int:
     args = ap.parse_args()
     base = args.base.rstrip("/")
 
-    files = sorted(collect())
+    files = sorted(collect_graph())
     print(f"  {len(files)} files reachable from index.html\n")
 
     missing, stale, ok = [], [], 0
     for path in files:
-        rel = path.relative_to(ROOT).as_posix()
+        rel = rel_posix(path)
         local = path.read_bytes()
         try:
             req = urllib.request.Request(f"{base}/{rel}",

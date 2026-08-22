@@ -34,6 +34,20 @@ const VIEWS = {
 
 const strength = () => Number($('#strength').value);
 
+/* The lab draws real region geometry, but it must not know whose. Ask the
+   registry for the first pack and take whatever it calls its areas — so this
+   page keeps working when the subject changes, which is the whole point of
+   the pack boundary. */
+let areasUrl = null;
+async function packAreas() {
+  if (areasUrl) return areasUrl;
+  const packs = await fetch('../content/packs.json').then((r) => r.json());
+  const pack = packs[0];
+  const manifest = await fetch(`../content/${pack}/pack.json`).then((r) => r.json());
+  areasUrl = `../content/${pack}/${manifest.pools?.areas || 'geo/areas.geojson'}`;
+  return areasUrl;
+}
+
 const DEMOS = {
   places() {
     map.places.clear();
@@ -135,7 +149,7 @@ const DEMOS = {
   },
 
   async regionsColonies() {
-    const res = await fetch('../content/american-revolution/geo/colonies.geojson');
+    const res = await fetch(await packAreas());
     await map.useRegions(await res.json());
     map.regions.clear();
     map.setBorders({ state: false });
@@ -260,7 +274,7 @@ async function paletteTest() {
   const out = $('#testOut');
   out.textContent = 'Kjorer...';
 
-  const res = await fetch('../content/american-revolution/geo/colonies.geojson');
+  const res = await fetch(await packAreas());
   const geo = await res.json();
   await map.useRegions(geo);
 

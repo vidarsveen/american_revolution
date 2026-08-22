@@ -7,7 +7,12 @@ a missing translation, a person id that does not exist, coordinates in the
 wrong hemisphere, an event that falls between two chapters, a portrait file
 that was never downloaded.
 
-    python tools/check-data.py
+    python tools/check-data.py                     # every pack
+    python tools/check-data.py american-revolution
+
+The sides a pack recognises, the box its coordinates should fall in and where
+its portraits live all come from content/<pack>/pack.json, so a second subject
+does not mean a second copy of this file.
 
 Exits non-zero if anything is actually broken. Notes are advisory.
 """
@@ -17,9 +22,17 @@ import os
 import re
 import sys
 
+from era import parse_date
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = ("no", "en")
-DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+# Dates go through tools/era.py, the twin of core/era.js, so a checker and
+# the app agree about what "-0044" means (44 BC) and about there being no
+# year zero. A regex alone would accept 1775-13-45.
+DATE_RE = re.compile(r"-?\d{4}(-\d{2}(-\d{2})?)?$")
+
+PACK = "american-revolution"      # set per pack in main()
+MANIFEST: dict = {}
 
 problems: list[str] = []
 notes: list[str] = []
@@ -28,6 +41,23 @@ notes: list[str] = []
 def load(rel):
     with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
         return json.load(fh)
+
+
+def pack_load(name, default=None):
+    """A file inside the pack being checked."""
+    path = os.path.join(ROOT, "content", PACK, name)
+    if not os.path.exists(path):
+        return default
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def packs_on_disk():
+    # Everything on disk, NOT content/packs.json — that file says what ships,
+    # and a pack out of the build still has to stay correct.
+    base = os.path.join(ROOT, "content")
+    return sorted(d for d in os.listdir(base)
+                  if os.path.isdir(os.path.join(base, d)) and not d.startswith("_"))
 
 
 def bilingual(obj, field, where, minlen=1):
@@ -44,13 +74,43 @@ def bilingual(obj, field, where, minlen=1):
             problems.append(f"{where}: {field}.{lang} looks too short ({len(text)} chars)")
 
 
-def main():
-    events = load("content/american-revolution/events.json")
-    people = load("content/american-revolution/people.json")
-    chapters = load("content/american-revolution/chapters.json")
-    routes = load("content/american-revolution/geo/routes.json")
-    places = load("content/american-revolution/geo/places.json")
+def sides():
+    """The party names this pack recognises. Was a four-name tuple in here."""
+    return set((MANIFEST.get("factions") or {}).keys())
 
+
+def in_bounds(lat, lon):
+    """Inside the box the pack says its subject happens in.
+
+    A coordinate in the wrong hemisphere is the classic sign of a swapped
+    lat/lon, and the box that catches it is a fact about the subject: the
+    Atlantic and western Europe for this one, the Mediterranean for a Roman
+    one. Note this is `map.extent`, not `map.explore.bounds` — where the
+    subject happens, not where the camera opens. This war is fought on the
+    seaboard and decided partly in Paris.
+    """
+    box = (MANIFEST.get("map") or {}).get("extent")
+    if not box:
+        return True
+    (s_lat, w_lon), (n_lat, e_lon) = box
+    return s_lat <= lat <= n_lat and w_lon <= lon <= e_lon
+
+
+def check_pack(pack):
+    global PACK, MANIFEST
+    PACK = pack
+    MANIFEST = pack_load("pack.json", {}) or {}
+    if not MANIFEST:
+        problems.append(f"{pack}: no pack.json — nothing knows what sides it has")
+
+    pools = MANIFEST.get("pools", {})
+    events = pack_load(pools.get("events", "events.json"), [])
+    people = pack_load(pools.get("people", "people.json"), [])
+    chapters = pack_load(pools.get("episodes", "chapters.json"), [])
+    routes = pack_load(pools.get("routes", "geo/routes.json"), {"routes": []})
+    places = pack_load(pools.get("places", "geo/places.json"), [])
+
+    SIDES = sides()
     event_ids, person_ids = set(), set()
     route_ids = {r["id"] for r in routes["routes"]}
 
@@ -61,11 +121,12 @@ def main():
             problems.append(f"{where}: duplicate id")
         event_ids.add(e["id"])
 
-        if not DATE_RE.fullmatch(e.get("date", "")):
-            problems.append(f"{where}: date must be YYYY-MM-DD, got {e.get('date')!r}")
+        if not DATE_RE.fullmatch(e.get("date", "")) or not parse_date(e.get("date", "")):
+            problems.append(f"{where}: date must be YYYY-MM-DD (or -0044-03-15 for BC), "
+                            f"got {e.get('date')!r}")
         if e.get("kind") not in ("battle", "politics", "people"):
             problems.append(f"{where}: unknown kind {e.get('kind')!r}")
-        if e.get("side") not in ("british", "patriot", "french", "neutral"):
+        if e.get("side") not in SIDES:
             problems.append(f"{where}: unknown side {e.get('side')!r}")
         if e.get("importance") not in (1, 2, 3):
             problems.append(f"{where}: importance must be 1, 2 or 3")
@@ -79,7 +140,7 @@ def main():
         if "coords" in e:
             lat, lon = e["coords"]
             # The map can pan from the Caribbean to Paris and no further.
-            if not (14 <= lat <= 62 and -110 <= lon <= 22):
+            if not in_bounds(lat, lon):
                 problems.append(f"{where}: coords {e['coords']} are outside the map bounds")
         else:
             notes.append(f"{where}: no coords, so it appears only in the timeline")
@@ -93,7 +154,13 @@ def main():
             if words > 190:
                 notes.append(f"{where}: body.{lang} is {words} words - long for a phone")
 
-        if not any(c["from"] <= e["date"] <= c["to"] for c in chapters):
+        # Compared as Julian days, not as text. "-0100" sorts after
+        # "-0044-03-15" alphabetically and before it historically, so string
+        # comparison is right only as long as every year is positive and the
+        # same width — which is exactly the assumption this pass removes.
+        jd = (parse_date(e.get("date", "")) or {}).get("jd")
+        spans = [(parse_date(c.get("from")), parse_date(c.get("to"))) for c in chapters]
+        if jd is None or not any(a and b and a["jd"] <= jd <= b["jd"] for a, b in spans):
             problems.append(f"{where}: {e['date']} falls outside every chapter range")
 
     # ---- people -----------------------------------------------------------
@@ -112,8 +179,8 @@ def main():
         # named file must actually exist, and an image that is not a contemporary
         # likeness must carry a note saying so.
         portrait = p.get("portrait")
-        if portrait and not os.path.exists(os.path.join(ROOT, "assets/portraits", portrait)):
-            problems.append(f"{where}: portrait file assets/portraits/{portrait} is missing")
+        if portrait and not os.path.exists(os.path.join(ROOT, "content", PACK, "portraits", portrait)):
+            problems.append(f"{where}: portrait file content/{PACK}/portraits/{portrait} is missing")
         if not portrait and not p.get("portraitNote"):
             notes.append(f"{where}: no portrait and no note explaining why")
         if p.get("portraitNote"):
@@ -138,7 +205,7 @@ def main():
         where = f"route {r.get('id', '?')}"
         if len(r.get("coords", [])) < 2:
             problems.append(f"{where}: needs at least two points")
-        if not DATE_RE.fullmatch(r.get("from", "")):
+        if not DATE_RE.fullmatch(r.get("from", "")) or not parse_date(r.get("from", "")):
             problems.append(f"{where}: 'from' must be YYYY-MM-DD")
         bilingual(r, "label", where, 8)
 
@@ -157,6 +224,15 @@ def main():
     )
     turning = sum(1 for e in events if e.get("importance") == 3)
     print(f"{turning} turning points (these drive the guided tour and the gold markers)")
+    print(f"{len(SIDES)} sides: {', '.join(sorted(SIDES))}")
+
+
+def main():
+    wanted = sys.argv[1:] or packs_on_disk()
+    for i, pack in enumerate(wanted):
+        if len(wanted) > 1:
+            print(f"{'' if i == 0 else chr(10)}{pack}")
+        check_pack(pack)
 
     if notes:
         print(f"\nnotes ({len(notes)}):")
