@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vce6a5322a3';
+const VERSION = 'vceb09b8e04';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -34,6 +34,38 @@ const PRECACHE = [
   // levels are megabytes and are fetched when the camera asks for them; networkFirst
   // caches each one the first time it is used.
   './assets/geo/world-110m.json',
+  './content/american-revolution/chapter-1775-04-19.json',
+  './content/american-revolution/chapter-1775-06-17.json',
+  './content/american-revolution/chapters.json',
+  './content/american-revolution/events.json',
+  './content/american-revolution/geo/colonies.geojson',
+  './content/american-revolution/geo/places.json',
+  './content/american-revolution/geo/regions.geojson',
+  './content/american-revolution/geo/routes.json',
+  './content/american-revolution/media.json',
+  './content/american-revolution/media/boston-1768.jpg',
+  './content/american-revolution/media/boston-massacre.jpg',
+  './content/american-revolution/media/bunker-hill-assault.jpg',
+  './content/american-revolution/media/bunker-hill-attack.jpg',
+  './content/american-revolution/media/bunker-hill-plan.jpg',
+  './content/american-revolution/media/charlestown-burning.jpg',
+  './content/american-revolution/media/doolittle-1.jpg',
+  './content/american-revolution/media/doolittle-2.jpg',
+  './content/american-revolution/media/doolittle-3.jpg',
+  './content/american-revolution/media/doolittle-4.jpg',
+  './content/american-revolution/media/join-or-die.jpg',
+  './content/american-revolution/media/old-north.jpg',
+  './content/american-revolution/media/siege-map.jpg',
+  './content/american-revolution/media/stamp-act.jpg',
+  './content/american-revolution/media/tea-party.jpg',
+  './content/american-revolution/media/trumbull-warren.jpg',
+  './content/american-revolution/media/washington-cambridge.jpg',
+  './content/american-revolution/people.json',
+  './content/american-revolution/sound.json',
+  './content/american-revolution/timing.chapter-1775-04-19.en.json',
+  './content/american-revolution/timing.chapter-1775-04-19.no.json',
+  './content/american-revolution/timing.chapter-1775-06-17.en.json',
+  './content/american-revolution/timing.chapter-1775-06-17.no.json',
   './content/roman-empire/chapter-27bc-augustus.json',
   './content/roman-empire/chapter-44bc-octavian.json',
   './content/roman-empire/geo/provinces.geojson',
@@ -72,6 +104,7 @@ const PRECACHE = [
   './core/wiki.js',
   './css/atlas.css',
   './css/base.css',
+  './css/chooser.css',
   './css/dossier.css',
   './css/fonts.css',
   './css/map.css',
@@ -96,6 +129,7 @@ const PRECACHE = [
   // fetched by checkVerbManifest() through a default argument
   './engine/verbs.json',
   './index.html',
+  './js/chooser.js',
   './js/i18n.js',
   './js/main.js',
   './js/map.js',

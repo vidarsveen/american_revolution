@@ -67,5 +67,95 @@
   },
   "artist": "John Trumbull",
   "year": "1786"
+ },
+ "join-or-die": {
+  "commons": "File:Benjamin Franklin - Join or Die.jpg",
+  "artist": "Benjamin Franklin",
+  "year": "1754",
+  "title": {
+   "no": "Bli med, eller dø",
+   "en": "Join, or Die"
+  }
+ },
+ "stamp-act": {
+  "commons": "File:The Repeal Or the Funeral of Miss Ame-Stamp (BM J,1.54).jpg",
+  "artist": "Britisk satiretrykk",
+  "year": "1766",
+  "title": {
+   "no": "Stempelavgiftens begravelse",
+   "en": "The funeral of the Stamp Act"
+  }
+ },
+ "boston-1768": {
+  "commons": "File:A view of part of the town of Boston in New-England and Brittish(sic) ships of war landing their troops! 1768 (13429760603).jpg",
+  "artist": "Paul Revere",
+  "year": "1768",
+  "title": {
+   "no": "Britiske tropper går i land i Boston",
+   "en": "British troops landing at Boston"
+  }
+ },
+ "tea-party": {
+  "commons": "File:1773 BostonTeaParty Cooper.jpg",
+  "artist": "W. D. Cooper",
+  "year": "1789",
+  "title": {
+   "no": "Teselskapet i Boston",
+   "en": "The Boston Tea Party"
+  }
+ },
+ "boston-massacre": {
+  "commons": "File:Paul Revere, after Henry Pelham, The Boston Massacre, 1770, NGA 11550.jpg",
+  "artist": "Paul Revere, etter Henry Pelham",
+  "year": "1770",
+  "title": {
+   "no": "Massakren i Boston",
+   "en": "The Boston Massacre"
+  }
+ },
+ "siege-map": {
+  "commons": "File:A plan of Boston in New England with its environs, including Milton, Dorchester, Roxbury, Brooklin, Cambridge, Medford, Charlestown, parts of Malden and Chelsea with the military works constructed in LOC gm71000619.jpg",
+  "artist": "Henry Pelham",
+  "year": "1777",
+  "title": {
+   "no": "Boston med skansene rundt",
+   "en": "Boston with the works around it"
+  }
+ },
+ "bunker-hill-plan": {
+  "commons": "File:A Plan of the Battle of Bunker Hill LOC 83694241.jpg",
+  "artist": "Henry Clinton",
+  "year": "1775",
+  "title": {
+   "no": "Clintons egen plan over slaget",
+   "en": "Clinton's own plan of the battle"
+  }
+ },
+ "charlestown-burning": {
+  "commons": "File:View of the Attack on Bunker's Hill, with the burning of Charlestown.jpg",
+  "artist": "Samtidig trykk",
+  "year": "1775",
+  "title": {
+   "no": "Charlestown brenner",
+   "en": "Charlestown burning"
+  }
+ },
+ "bunker-hill-assault": {
+  "commons": "File:Bunker Hill by Pyle.jpg",
+  "artist": "Howard Pyle",
+  "year": "ca. 1897",
+  "title": {
+   "no": "Opp bakken, tredje gang",
+   "en": "Up the hill, the third time"
+  }
+ },
+ "washington-cambridge": {
+  "commons": "File:Washington Taking Command of the American Army – At Cambridge, Massachusetts, July 3rd, 1775 MET DP853566.jpg",
+  "artist": "Currier & Ives",
+  "year": "1876",
+  "title": {
+   "no": "Washington overtar kommandoen",
+   "en": "Washington takes command"
+  }
  }
 }

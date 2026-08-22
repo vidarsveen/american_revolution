@@ -75,5 +75,115 @@
     "artist": "John Trumbull",
     "licence": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_General_Warren_at_the_Battle_of_Bunker%27s_Hill.jpg"
+  },
+  "join-or-die": {
+    "file": "join-or-die.jpg",
+    "title": {
+      "no": "Bli med, eller dø",
+      "en": "Join, or Die"
+    },
+    "year": "1754",
+    "artist": "Benjamin Franklin",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Benjamin_Franklin_-_Join_or_Die.jpg"
+  },
+  "stamp-act": {
+    "file": "stamp-act.jpg",
+    "title": {
+      "no": "Stempelavgiftens begravelse",
+      "en": "The funeral of the Stamp Act"
+    },
+    "year": "1766",
+    "artist": "Britisk satiretrykk",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Repeal_Or_the_Funeral_of_Miss_Ame-Stamp_(BM_J,1.54).jpg"
+  },
+  "boston-1768": {
+    "file": "boston-1768.jpg",
+    "title": {
+      "no": "Britiske tropper går i land i Boston",
+      "en": "British troops landing at Boston"
+    },
+    "year": "1768",
+    "artist": "Paul Revere",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:A_view_of_part_of_the_town_of_Boston_in_New-England_and_Brittish(sic)_ships_of_war_landing_their_troops!_1768_(13429760603).jpg"
+  },
+  "tea-party": {
+    "file": "tea-party.jpg",
+    "title": {
+      "no": "Teselskapet i Boston",
+      "en": "The Boston Tea Party"
+    },
+    "year": "1789",
+    "artist": "W. D. Cooper",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:1773_BostonTeaParty_Cooper.jpg"
+  },
+  "boston-massacre": {
+    "file": "boston-massacre.jpg",
+    "title": {
+      "no": "Massakren i Boston",
+      "en": "The Boston Massacre"
+    },
+    "year": "1770",
+    "artist": "Paul Revere, etter Henry Pelham",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Paul_Revere,_after_Henry_Pelham,_The_Boston_Massacre,_1770,_NGA_11550.jpg"
+  },
+  "siege-map": {
+    "file": "siege-map.jpg",
+    "title": {
+      "no": "Boston med skansene rundt",
+      "en": "Boston with the works around it"
+    },
+    "year": "1777",
+    "artist": "Henry Pelham",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:A_plan_of_Boston_in_New_England_with_its_environs,_including_Milton,_Dorchester,_Roxbury,_Brooklin,_Cambridge,_Medford,_Charlestown,_parts_of_Malden_and_Chelsea_with_the_military_works_constructed_in_LOC_gm71000619.jpg"
+  },
+  "bunker-hill-plan": {
+    "file": "bunker-hill-plan.jpg",
+    "title": {
+      "no": "Clintons egen plan over slaget",
+      "en": "Clinton's own plan of the battle"
+    },
+    "year": "1775",
+    "artist": "Henry Clinton",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:A_Plan_of_the_Battle_of_Bunker_Hill_LOC_83694241.jpg"
+  },
+  "charlestown-burning": {
+    "file": "charlestown-burning.jpg",
+    "title": {
+      "no": "Charlestown brenner",
+      "en": "Charlestown burning"
+    },
+    "year": "1775",
+    "artist": "Samtidig trykk",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Attack_on_Bunker%27s_Hill,_with_the_burning_of_Charlestown.jpg"
+  },
+  "bunker-hill-assault": {
+    "file": "bunker-hill-assault.jpg",
+    "title": {
+      "no": "Opp bakken, tredje gang",
+      "en": "Up the hill, the third time"
+    },
+    "year": "ca. 1897",
+    "artist": "Howard Pyle",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Bunker_Hill_by_Pyle.jpg"
+  },
+  "washington-cambridge": {
+    "file": "washington-cambridge.jpg",
+    "title": {
+      "no": "Washington overtar kommandoen",
+      "en": "Washington takes command"
+    },
+    "year": "1876",
+    "artist": "Currier & Ives",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Washington_Taking_Command_of_the_American_Army_%E2%80%93_At_Cambridge,_Massachusetts,_July_3rd,_1775_MET_DP853566.jpg"
   }
 }
