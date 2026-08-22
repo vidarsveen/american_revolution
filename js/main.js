@@ -19,6 +19,7 @@ import { initStory, storyPause, storyInvalidate, storyRefreshTheme,
          storySetLang, setLangHandler } from '../engine/story.js';
 import { defaultPack, loadPack, poolUrl } from '../engine/pack.js';
 import { packUrl } from '../core/paths.js';
+import { chooseSubject, backToSubjects, hasSubjectChoice } from './chooser.js';
 import { setEra } from '../core/era.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark as domIsDark } from '../core/theme.js';
@@ -33,6 +34,7 @@ const VIEWS = [
 let data = { pack: null, manifest: null, events: [], people: [], chapters: [],
              places: [], colonies: null, routes: null };
 let tabEls = [];
+let canSwitch = false;
 
 boot();
 
@@ -41,7 +43,19 @@ async function boot() {
   applyTheme();
   applyLangAttr();
 
-  data = await loadData();
+  // Which subject, before anything is built around one. Everything below --
+  // the map's framing, the palette on :root, the era, the portrait base --
+  // is per-pack, so the choice has to happen while there is still nothing to
+  // tear down. Returns instantly when only one pack ships.
+  canSwitch = await hasSubjectChoice();
+  // The chooser IS the first screen when there is a choice, so the splash has
+  // done its job before it appears. Without this the splash sits at z-index
+  // 2000 over a chooser at 900, and the front door is a loading bar that
+  // never finishes.
+  if (canSwitch) finishBoot();
+  const chosen = await chooseSubject(document.body, { lang: state.lang, t });
+
+  data = await loadData(chosen);
   // The pack has to reach the map before it is created, and the palette has
   // to be on :root before anything that references --f-<side> is rendered.
   // Before the topbar, the document title or the boot line are written.
@@ -80,7 +94,7 @@ async function boot() {
 
   // Fortell is the front door; Explore lives behind the other tabs.
   setLangHandler((next) => set({ lang: next }));
-  initStory(document.querySelector('.view--story'), data.people, state.lang)
+  initStory(document.querySelector('.view--story'), data.people, state.lang, data.pack)
     .catch((err) => console.error('[story] failed to start', err));
 
   initRouting();
@@ -111,7 +125,7 @@ async function boot() {
    Data
    ------------------------------------------------------------ */
 
-async function loadData() {
+async function loadData(want) {
   const grab = async (path, fallback) => {
     try {
       const res = await fetch(path, { cache: 'no-cache' });
@@ -127,7 +141,7 @@ async function loadData() {
   // was six hardcoded './content/american-revolution/…' paths, which is the
   // single largest reason `grep -r american-revolution --include=*.js` used
   // to find anything at all.
-  const pack = await defaultPack();
+  const pack = want || await defaultPack();
   const manifest = pack ? await loadPack(pack) : null;
   const pool = (name, fallback) => {
     const url = poolUrl(manifest, pack, name);
@@ -160,6 +174,18 @@ function buildTopbar() {
   const mark = document.createElement('h1');
   mark.className = 'wordmark';
   bar.appendChild(mark);
+  // With more than one subject the title is also the way back to the front
+  // door. A logo that goes home is the one navigation everybody already
+  // knows, and it costs no room in a topbar that has none.
+  if (canSwitch) {
+    mark.classList.add('wordmark--linked');
+    mark.setAttribute('role', 'button');
+    mark.tabIndex = 0;
+    mark.addEventListener('click', backToSubjects);
+    mark.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); backToSubjects(); }
+    });
+  }
 
   const lang = document.createElement('button');
   lang.className = 'chip-btn lang-toggle';
@@ -325,8 +351,14 @@ function applyLangAttr() {
 function finishBoot() {
   const boot = document.querySelector('.boot');
   if (!boot) return;
-  onNextFrame(() => {
+  // Rule 2: timers are the contract, frames are the polish. This waited on
+  // onNextFrame alone, and a tab opened in the background is never given a
+  // frame -- so the splash stayed up for ever and the whole app sat behind
+  // it, reachable by nothing. Calling done() twice is harmless.
+  const done = () => {
     boot.classList.add('is-done');
     setTimeout(() => boot.remove(), 500);
-  });
+  };
+  onNextFrame(done);
+  setTimeout(done, 250);
 }

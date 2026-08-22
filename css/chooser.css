@@ -1,0 +1,186 @@
+/* ============================================================
+   chooser.css — the subject front door.
+
+   Shown only when more than one pack ships, and removed from the DOM the
+   moment one is picked, so nothing here can affect the app afterwards.
+
+   Everything is a token. The two subjects are eighteen hundred years apart
+   and must not be styled apart: whatever this becomes for a third subject,
+   it has to work without a rule that names one.
+   ============================================================ */
+
+.chooser {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: calc(var(--safe-t) + var(--s5)) var(--s5) calc(var(--safe-b) + var(--s5));
+  background: var(--paper);
+
+  /* Visible with no help from anything. Rule 2, and it took two goes to get
+     right. First the entry was a class set on requestAnimationFrame, and a
+     tab opened in the background never gets a frame -- so the front door of
+     the app was a blank sheet of paper. Replacing that with a CSS animation
+     from opacity 0 failed the SAME measurement, because a hidden tab does
+     not advance animations either: it just holds the first keyframe, which
+     was still invisible.
+
+     So nothing here may animate opacity on the way in. The cards rise a few
+     pixels instead, and if that never runs they are simply already up. */
+  opacity: 1;
+  transition: opacity var(--t-med) var(--ease-out);
+}
+.chooser.is-going { opacity: 0; pointer-events: none; }
+
+.chooser__inner {
+  width: 100%;
+  max-width: 62rem;
+  margin: auto;
+  text-align: center;
+}
+
+.chooser__kicker {
+  margin: 0;
+  font: var(--fs-2xs) / var(--lh-snug) var(--font-body);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.chooser__title {
+  margin: var(--s1) 0 calc(var(--s5) * .8);
+  font: var(--fs-xl) / var(--lh-tight) var(--font-display);
+  color: var(--ink);
+}
+
+.chooser__grid {
+  display: grid;
+  gap: var(--s5);
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+/* Two across as soon as there is room. Below this they stack, which is the
+   phone case and therefore the one that has to read well. */
+@media (min-width: 46rem) {
+  .chooser__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.chooser__cell {
+  display: flex;
+  /* Safe to freeze: the worst case is a card sitting eight pixels low. */
+  animation: subject-rise var(--t-med) var(--ease-out) both;
+}
+.chooser__cell:nth-child(2) { animation-delay: 60ms; }
+.chooser__cell:nth-child(3) { animation-delay: 120ms; }
+
+@keyframes subject-rise {
+  from { transform: translateY(8px); }
+  to   { transform: translateY(0); }
+}
+
+.subject {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast) var(--ease-out),
+              box-shadow var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .subject:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--rule-strong);
+  }
+}
+.subject:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.subject:active { transform: translateY(0); }
+
+/* A band, not a full bleed: the picture is a hint at the subject, and the
+   words are what you choose from. */
+.subject__art {
+  display: block;
+  aspect-ratio: 16 / 7;
+  background: var(--paper-sunken) center / cover no-repeat;
+  border-bottom: 1px solid var(--rule);
+  filter: saturate(var(--tile-sat, 1));
+}
+
+.subject__body {
+  display: block;
+  padding: var(--s5);
+}
+
+.subject__name {
+  display: block;
+  font: var(--fs-lg) / var(--lh-tight) var(--font-display);
+  color: var(--ink);
+}
+
+.subject__years {
+  display: block;
+  margin-top: 2px;
+  font: var(--fs-2xs) / var(--lh-snug) var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.subject__blurb {
+  display: block;
+  margin-top: var(--s1);
+  font: var(--fs-sm) / var(--lh-body) var(--font-body);
+  color: var(--ink-soft);
+}
+
+.subject__parts {
+  display: inline-block;
+  margin-top: var(--s1);
+  padding: 3px 10px;
+  font: var(--fs-2xs) / 1.6 var(--font-body);
+  color: var(--ink-soft);
+  background: var(--paper-sunken);
+  border-radius: 999px;
+}
+
+.chooser__foot {
+  margin: var(--s5) 0 0;
+  font: var(--fs-xs) / var(--lh-body) var(--font-body);
+  color: var(--ink-faint);
+}
+
+/* The wordmark becomes the way back, but only when there is somewhere to go. */
+.wordmark--linked {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.wordmark--linked:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chooser, .subject, .chooser__cell { transition: none; animation: none; }
+  .subject:hover { transform: none; }
+}

@@ -35,15 +35,21 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def default_pack():
+# What the app is called when it is not about one thing. Matches the i18n
+# fallback in js/i18n.js, which is what the chooser screen shows.
+NEUTRAL = "Fortell"
+
+
+def shipped():
+    """Every pack in the build, in order. The first one is the default."""
     listed = ROOT / "content" / "packs.json"
     if not listed.exists():
-        return None, {}
-    ids = json.loads(listed.read_text(encoding="utf-8"))
-    if not ids:
-        return None, {}
-    mf = ROOT / "content" / ids[0] / "pack.json"
-    return ids[0], (json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else {})
+        return []
+    out = []
+    for pid in json.loads(listed.read_text(encoding="utf-8")):
+        mf = ROOT / "content" / pid / "pack.json"
+        out.append((pid, json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else {}))
+    return out
 
 
 def pick(field, lang="no"):
@@ -54,16 +60,31 @@ def pick(field, lang="no"):
     return field.get(lang) or field.get("no") or field.get("en") or ""
 
 
-def build(manifest):
-    work = pick(manifest.get("work"))
-    years = pick(manifest.get("years"))
-    short = pick(manifest.get("shortName")) or work
-    desc = pick(manifest.get("description")) or work
+def build(packs):
+    """The four strings the browser reads before any JavaScript runs.
+
+    With one pack they name the subject, which is what a single-subject build
+    should say in a bookmark and on a home screen. With more than one they
+    must NOT: the page that loads is the chooser, and calling it Romerriket
+    when it is about to offer you two subjects is a lie told in the tab
+    title, where nobody thinks to look for one.
+    """
+    if len(packs) == 1:
+        m = packs[0][1]
+        work = pick(m.get("work"))
+        years = pick(m.get("years"))
+        return {
+            "title": f"{work} {years}".strip(),
+            "work": work,
+            "short": pick(m.get("shortName")) or work,
+            "desc": pick(m.get("description")) or work,
+        }
+    works = [pick(m.get("work")) for _, m in packs if pick(m.get("work"))]
     return {
-        "title": f"{work} {years}".strip(),
-        "work": work,
-        "short": short,
-        "desc": desc,
+        "title": NEUTRAL,
+        "work": NEUTRAL,
+        "short": NEUTRAL,
+        "desc": " · ".join(works) if works else NEUTRAL,
     }
 
 
@@ -103,11 +124,11 @@ def main() -> int:
     ap.add_argument("--check", action="store_true")
     args = ap.parse_args()
 
-    pack, manifest = default_pack()
-    if not pack:
+    packs = shipped()
+    if not packs:
         print("no packs in content/packs.json", file=sys.stderr)
         return 2
-    v = build(manifest)
+    v = build(packs)
 
     # What EXISTS, for the benches under dev/.
     #
@@ -137,7 +158,7 @@ def main() -> int:
         if not args.check:
             path.write_text(out, encoding="utf-8", newline="\n")
 
-    label = f"{pack}: {v['title']}"
+    label = f"{', '.join(p for p, _ in packs)}: {v['title']}"
     if args.check:
         if stale:
             print(f"shell is OUT OF DATE ({', '.join(stale)}) — "

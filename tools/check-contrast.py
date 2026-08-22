@@ -101,6 +101,18 @@ async (probes) => {
 # which beat shows the whole map is a fact about a script, not about a checker.
 # The check is about the picture, so it is taken from the real thing rather
 # than from a fixture.
+# Which subject to open. With more than one pack shipped, index.html shows the
+# chooser first and no map is ever created -- the probe then reads toScreen off
+# null. `?emne=` is how a headless driver says which subject it came for; it is
+# the same parameter the chooser writes when a person picks one.
+PACK = None
+
+
+def app_url(base, hash_part=""):
+    q = f"?emne={PACK}" if PACK else ""
+    return f"{base}/index.html{q}{hash_part}"
+
+
 def pack_checks(pack):
     mf = ROOT / "content" / pack / "pack.json"
     manifest = json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else {}
@@ -390,7 +402,7 @@ def run(theme: str, width: int, height: int, shots: Path):
             page = ctx.new_page()
             errors: list[str] = []
             page.on("pageerror", lambda e: errors.append(str(e)))
-            page.goto(f"{base}/index.html#/kart", wait_until="networkidle")
+            page.goto(app_url(base, "#/kart"), wait_until="networkidle")
             # Wait for the GROUND, not for a timer. The basemap level is
             # fetched from inside the first draw, so "network idle" can happen
             # before the land exists — and a screenshot taken then samples
@@ -437,7 +449,7 @@ def run_story(theme: str, width: int, height: int, shots: Path):
             page = ctx.new_page()
             errors: list[str] = []
             page.on("pageerror", lambda e: errors.append(str(e)))
-            page.goto(f"{base}/index.html", wait_until="networkidle")
+            page.goto(app_url(base), wait_until="networkidle")
             page.wait_for_function(
                 "() => !!document.querySelector('#story-map') && !document.querySelector('.boot')",
                 timeout=20000)
@@ -512,12 +524,13 @@ def main() -> int:
                     help="hold land/water to the authored-basemap target (dE 12)")
     args = ap.parse_args()
 
-    global CHECKS
+    global CHECKS, PACK
     packs = packs_on_disk()
     pack = args.pack or (packs[0] if packs else None)
     if not pack:
         print("no packs in content/ — nothing to check", file=sys.stderr)
         return 2
+    PACK = pack
     CHECKS = pack_checks(pack)
     print(f"pack: {pack}")
 

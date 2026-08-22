@@ -13,6 +13,12 @@ const STRINGS = {
     appTitle: 'Fortell', appTitleShort: 'Fortell',
     appYears: '', bootLine: 'Fortell',
 
+    // The front door, when more than one subject ships. Deliberately not
+    // from the pack: it is the screen you see BEFORE there is a pack.
+    chooseSubject: 'Hva vil du høre om?',
+    chooseSubjectFoot: 'Du kan bytte når som helst — trykk på navnet øverst.',
+    partOne: 'del', partMany: 'deler',
+
     tabStory: 'Fortell',
     tabMap: 'Kart',
     tabTimeline: 'Tidslinje',
@@ -79,6 +85,10 @@ const STRINGS = {
   en: {
     appTitle: 'Fortell', appTitleShort: 'Fortell',
     appYears: '', bootLine: 'Fortell',
+
+    chooseSubject: 'What would you like to hear about?',
+    chooseSubjectFoot: 'You can switch at any time — tap the name at the top.',
+    partOne: 'part', partMany: 'parts',
 
     tabStory: 'Story',
     tabMap: 'Map',

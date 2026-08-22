@@ -3,7 +3,7 @@
    ============================================================ */
 
 import { loadChapter } from './script.js';
-import { allChapters } from './pack.js';
+import { allChapters, chaptersOf } from './pack.js';
 import { mountDepth, unmountDepth, coach } from './depth.js';
 import { mountTransition, unmountTransition, LEAD_IN_MS } from './transition.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
@@ -68,7 +68,7 @@ let current = 0;
 let onLangChange = null;
 export function setLangHandler(fn) { onLangChange = fn; }
 
-export async function initStory(container, allPeople, language) {
+export async function initStory(container, allPeople, language, pack) {
   // Dev-time only: a drift between the handler table and the manifest
   // is invisible until a cue silently does nothing, so say it out loud.
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
@@ -87,7 +87,12 @@ export async function initStory(container, allPeople, language) {
       <div class="story__cover"></div>
     </div>`;
 
-  CHAPTERS = await allChapters();
+  // Only this subject's chapters. allChapters() spans every pack that
+  // ships, which is what the benches want and exactly what the episode
+  // list must not do: the session has already chosen a subject, and
+  // offering the other one's chapters here would put a Roman scene one
+  // tap away from a map framed on Boston.
+  CHAPTERS = pack ? await chaptersOf(pack) : await allChapters();
   if (!CHAPTERS.length) {
     view.querySelector('.story__cover').innerHTML =
       `<div class="cover__card"><p>${esc(t('noChapters'))}</p></div>`;

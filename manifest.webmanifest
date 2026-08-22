@@ -1,7 +1,7 @@
 {
-  "name": "Romerriket 44 f.Kr.–14 e.Kr.",
-  "short_name": "Romerriket",
-  "description": "Hvordan Octavian tok makten, og hva Augustus gjorde med den – kart, kilder og mennesker.",
+  "name": "Fortell",
+  "short_name": "Fortell",
+  "description": "Romerriket · Den amerikanske revolusjonen",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
