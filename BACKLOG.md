@@ -5,6 +5,173 @@ re-deriving why. Newest concerns first within each section.
 
 ---
 
+## The framework pass — phase 0, the safety net
+
+The app is being generalised into a framework for narrating any historical
+subject, with **Rome, episode one: how Octavian came to power** as the scoping
+target. Before any of that moves, there had to be something that could tell us
+whether it still worked. Phase 0 built it and changed nothing else.
+
+**`dev/engine-lab.html` — rule 1 is now measured, not trusted.** It compares a
+*stage signature* between playing forward to `t` and `rebuildTo(t)`, at every
+cue time ±40 ms plus a one-second grid: 1303 samples on 19 April, 1233 on
+17 June, both clean. `tools/check-engine.py` drives it headless. That baseline
+is the thing the pack boundary, the era model and the depth layer must not
+move. It also reports two things nobody could see before — anchors that fell
+back to the start of their beat (none, in either chapter), and beats whose
+picture is identical to the one before.
+
+**Eighteen beats of the Bunker Hill chapter change nothing on the stage**, against
+six in 19 April. Not a defect — a beat is allowed to sit still — but eighteen
+is the map sitting out a fifth of the chapter, and it is worth a look at which
+ones. The lab lists them by id.
+
+**The bench reported five failures before the engine produced one, and every
+one of them was the bench.** Worth writing down, because the next lab will be
+tempted the same way:
+
+- `over` is derived from `instant` at `engine/scenes/map.js:507`, so comparing
+  it reports correct behaviour as a defect.
+- `is-instant` is removed on the next animation frame, so whether it is present
+  records whether a frame fired, not what is on screen. It landed on the played
+  side in one scene and the sought side in the next.
+- A one-shot's DOM node always exists. Testing for the node rather than for
+  `is-on` reports a correctly hidden note as standing.
+- Replaying every cue from zero at each sample time is not "playing forward" —
+  it is a rebuild with `instant: false`. It could not have caught an
+  accumulation bug, because it wiped the accumulation each time. Two passes:
+  one play-through that keeps its state, then the seeks.
+- "Settled" has to be measured. A 400 ms wait, and then a quiesce that accepted
+  a single unchanged sample, both called a picture finished while a 372 KB
+  region file was still parsing — and then blamed the epoch guard. It now waits
+  on the geometry actually being there. (Also: `const f = window.fetch; f(…)`
+  throws *Illegal invocation*, `ensureRegions()` catches it and **memoises the
+  null**, and the regions then never load at all. Use `f.call(window, …)`.)
+
+The first three are named in `CLAUDE.md` next to the lab table, because they
+are properties of this engine that any future bench has to know.
+
+**`check-published.py` had never checked three of the files it loads.** Its
+import regex was single-line, so `import { … } from './basemap.js'` with the
+named list wrapped over two lines was invisible to the walk. `map/basemap.js`,
+`map/artifacts.js` and `core/theme.js` were reachable from the app and absent
+from the graph, and so were never once compared against the live site. The
+walk moved to `tools/graph.py` and handles a wrapped clause.
+
+**`sound.json` was never precached.** Found by generating the list instead of
+maintaining it: `engine/scenes/sound.js:68` fetches it at runtime, it was not
+in `PRECACHE`, so offline every one of the nine recorded effects fell back to
+its synthesised version. Silently, and only offline, which is why nobody heard
+it. `tools/build-sw.py` now writes the list and derives `VERSION` from the
+contents.
+
+**`core/theme.js` is dead code.** Nothing imports it; `js/main.js:218` and
+`map/index.js:1045` each define their own `isDark()` and `reducedMotion()`. It
+was precached for nothing and is now not. Phase 1 wants it back — `derivePalette`
+needs to know the theme — so the fix is to wire it up and delete the two local
+copies, not to delete the file.
+
+## The framework pass — phase 1, the pack boundary
+
+`grep -rn "american-revolution" --include=*.js` went from **31 hits across four
+files to zero**, which is better than the acceptance test this backlog set
+itself. `content/packs.json` is the registry and it is data; everything the
+engine used to know about this subject is now `content/<pack>/pack.json`.
+
+Moved out of code: the chapter list (was an array in `story.js`), the four
+faction names and their token map (was duplicated in `engine/scenes/map.js`
+**and** `js/map.js`, so adding a subject meant editing the same list twice and
+noticing neither), the Boston detail bbox and zoom bounds, `atlantic-10m` —
+which was inside `map/basemap.js`, where the grep would never have found it —
+Explore's six hardcoded fetches, its 1763–1783 home bounds, and 21
+faction-named CSS selectors. Portraits moved from a global `assets/portraits/`
+into the pack, because the Roman pack has its own Caesar.
+
+Worth knowing for the next phase:
+
+- **The colours are byte-identical.** A faction declares `token: "--red"` and
+  the value is read live, so the theme still flips it and `check-contrast`
+  measures the same 11.88 dE between Connecticut and New York that it did
+  before. Deriving from a `hue` is there for a pack nobody has tuned yet.
+- **`tone` was redefined rather than migrated.** It now means a palette role,
+  registered as synthetic factions `tone:red … tone:sage`, so both existing
+  chapters kept drawing without a single edit to either script.
+- **`--f-<side>` is published on `:root`, and must be referenced as a `var()`.**
+  Resolving it to a hex at render time would freeze the colour and stop it
+  flipping with the theme.
+- **`map.extent` and `map.explore.bounds` are different things.** Padding the
+  explore bounds and calling it the extent rejected Paris, Versailles and
+  Flamborough Head as bad coordinates. Where the camera opens is not where the
+  subject happens.
+- **`sw.js` still contains the pack name**, ~22 times, because the precache is
+  a list of paths. It is generated from `packs.json` by `tools/build-sw.py`, so
+  it is data rather than knowledge — a new pack appears there by running the
+  tool, not by editing it.
+- **`js/sheet.js` still reads `britishForces` / `americanForces` off an event.**
+  That is the Explore *content schema*, not the palette, and generalising it is
+  a separate job from this one.
+
+---
+
+## The framework pass — a second subject, brought forward
+
+Rome was planned last, on a finished framework. It was pulled forward instead,
+on the argument that phases 4–6 were all being designed for a subject that did
+not exist — and if the boundary was wrong somewhere, finding out after three
+more phases of building on it would cost far more.
+
+That argument was right. **A second pack found six defects in one afternoon,
+five of them in the framework and none of them findable from the Revolution.**
+
+- **`play()` hung for ever on a chapter with no audio.** `audio.play()` on an
+  element with no `src` returns a promise that never settles, so awaiting it
+  parked the player on the first frame with `playing` false and nothing said
+  why. That is rule 3 — audio failing is not the app failing — broken for the
+  one case nobody had: a pack still being authored. Now an unrecorded scene
+  goes straight to the timer, which is also what makes the documented
+  authoring order (cues first, narration last) actually possible.
+- **An unnarrated chapter compiled to a duration of zero.** Every beat started
+  at 0 and lasted 0. Beats without a recording are now laid end to end with a
+  duration estimated from their word count at the pack's speaking rate. It is
+  an estimate and the captions cannot highlight word by word, but the chapter
+  RUNS — the difference between a draft you can watch and one you cannot.
+- **`map.fitPlaces` with ONE place fitted a point**, so the camera went to the
+  frame ceiling and sat on top of a single town at zoom nine. Found by aiming
+  a whole-Mediterranean establishing shot at one pseudo-place. Fitting one
+  place now means flying to it at its declared zoom.
+- **`check-contrast.py` hardcoded scene 0**, which was true for exactly as long
+  as every pack's sample beat happened to be in the first scene. It also never
+  OPENED the pack's chapter — it sampled whichever one the cover loaded, so it
+  would have measured the American Revolution while reporting on Rome.
+- **The neighbour-contrast rule was wrong, not just its plumbing.** It demanded
+  every bordering pair be distinguishable. Thirteen colonies are all one side
+  and must be told apart; Antony's five eastern provinces are also one side and
+  must NOT be — `vary: false` says the shot is about the side, not the areas.
+  The check now reads what the chapter actually drew and only compares pairs
+  that are supposed to differ. Measuring a deliberate design decision as a
+  defect is worse than not measuring it.
+- **The engine probed for timing files that were never recorded**, logging four
+  404s per load. `pack.json` now declares `langs` per chapter, and an empty
+  list means "not narrated yet — run it on the timer".
+
+What held up without a change: the pack registry, `derivePalette`'s hue path
+(seven factions, none of them tuned by hand), `registerLevels`, the depth
+pools, `term.mark`, the era model with Julian BC dates, and `build-sw.py`.
+`grep -rn "american-revolution" --include=*.js` is still zero.
+
+**What Rome is right now:** a scaffold. Two scenes, no narration, fifteen
+schematic provinces (modern outlines grouped and renamed — see the header of
+`tools/build-provinces.py`), eight people, four terms, three topics, no
+portraits. It runs, it is checked by every tool, and it proves the boundary.
+It is not a chapter anybody should watch to learn history yet.
+
+Still to do: sources and certainty, `spoken`/`lexicon.json` for Latin names
+(untested and needed — `nb-NO-FinnNeural` on "Brundisium" is unheard), the six
+new verbs, and then Rome's remaining six scenes and its narration.
+The plan is in `.claude/plans/`.
+
+---
+
 ## Licence: the build is commercially usable
 
 **Every generated sound effect is Apache 2.0.** They come from

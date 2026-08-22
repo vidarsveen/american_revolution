@@ -12,9 +12,12 @@
      Wikipedia  → never cached here; wiki.js has its own session cache
    ============================================================ */
 
-const VERSION = 'v20';
-const APP_CACHE = `revolusjonen-app-${VERSION}`;
-const TILE_CACHE = `revolusjonen-tiles-${VERSION}`;
+/* BEGIN GENERATED — tools/build-sw.py */
+// Written by tools/build-sw.py from the files index.html actually reaches,
+// plus each pack's runtime data. Do not edit by hand — run the tool.
+const VERSION = 'v575be0e362';
+const APP_CACHE = `fortell-app-${VERSION}`;
+const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
 
 // Deliberately no audio here. The narration is ~7.6 MB across two languages,
@@ -23,78 +26,83 @@ const TILE_LIMIT = 400;
 // handler the first time they are played, so anything you have listened to
 // works offline afterwards.
 const PRECACHE = [
+  // the navigation fallback — a cold offline launch asks for the root
   './',
-  './index.html',
-  './manifest.webmanifest',
-  './css/fonts.css',
-  './css/tokens.css',
-  './css/base.css',
-  './css/shell.css',
-  './css/map.css',
-  './css/timeline.css',
-  './css/sheet.css',
-  './js/main.js',
-  './js/store.js',
-  './js/i18n.js',
-  './js/icons.js',
-  './js/map.js',
-  './js/scrubber.js',
-  './js/timeline.js',
-  './js/people.js',
-  './js/sheet.js',
-  './js/wiki.js',
-  './js/tour.js',
-  './js/routes.js',
-  './content/american-revolution/events.json',
-  './content/american-revolution/people.json',
-  './content/american-revolution/chapters.json',
-  './content/american-revolution/geo/places.json',
-  './content/american-revolution/geo/colonies.geojson',
-  './content/american-revolution/geo/routes.json',
-  './engine/scenes/map.js',
-  './engine/scenes/overlays.js',
-  './sound/mixer.js',
-  './sound/library.js',
-  './sound/soundscape.js',
-  './engine/scenes/sound.js',
-  './core/theme.js',
-  './css/atlas.css',
-  './map/geo.js',
-  './map/basemap.js',
-  './map/artifacts.js',
-  './map/regions.js',
-  './map/tint.js',
-  './map/index.js',
-  './engine/verbs.json',
-  // The coarse world level only — first paint needs it. The 50m, 10m and
-  // pack-detail levels are megabytes and are fetched when the camera asks
-  // for them; networkFirst caches each one the first time it is used.
+  // referenced from css/fonts.css by url(), which is not walked
+  './assets/fonts/fraunces-latin.woff2',
+  // the coarse world level only — first paint needs it. The 50m, 10m and pack-detail
+  // levels are megabytes and are fetched when the camera asks for them; networkFirst
+  // caches each one the first time it is used.
   './assets/geo/world-110m.json',
+  './content/roman-empire/chapter-44bc-octavian.json',
+  './content/roman-empire/geo/provinces.geojson',
+  './content/roman-empire/media.json',
+  './content/roman-empire/media/actium.jpg',
+  './content/roman-empire/media/caesar-death.jpg',
+  './content/roman-empire/media/colosseum.jpg',
+  './content/roman-empire/media/forum.jpg',
+  './content/roman-empire/media/legion.jpg',
+  './content/roman-empire/media/nile.jpg',
+  './content/roman-empire/media/senate.jpg',
+  './content/roman-empire/people.json',
+  './content/roman-empire/timing.chapter-44bc-octavian.en.json',
+  './content/roman-empire/timing.chapter-44bc-octavian.no.json',
+  './core/dossier.js',
+  './core/era.js',
+  './core/icons.js',
+  './core/palette.js',
+  './core/paths.js',
+  './core/theme.js',
+  './core/wiki.js',
+  './css/atlas.css',
+  './css/base.css',
+  './css/dossier.css',
+  './css/fonts.css',
+  './css/map.css',
+  './css/sheet.css',
+  './css/shell.css',
+  './css/story.css',
+  './css/timeline.css',
+  './css/tokens.css',
   './engine/captions.js',
   './engine/chrome.js',
+  './engine/depth.js',
+  './engine/pack.js',
   './engine/player.js',
+  './engine/scenes/map.js',
+  './engine/scenes/overlays.js',
+  './engine/scenes/plate.js',
+  './engine/scenes/sound.js',
   './engine/script.js',
   './engine/stage.js',
   './engine/story.js',
-  './css/story.css',
-  './content/american-revolution/chapter-1775-04-19.json',
-  './content/american-revolution/timing.chapter-1775-04-19.no.json',
-  './content/american-revolution/media/doolittle-1.jpg',
-  './content/american-revolution/media/doolittle-2.jpg',
-  './content/american-revolution/media/doolittle-3.jpg',
-  './content/american-revolution/media/doolittle-4.jpg',
-  './content/american-revolution/media/old-north.jpg',
-  './content/american-revolution/media.json',
-  './content/american-revolution/timing.chapter-1775-04-19.en.json',
-  './content/american-revolution/chapter-1775-06-17.json',
-  './content/american-revolution/timing.chapter-1775-06-17.no.json',
-  './content/american-revolution/timing.chapter-1775-06-17.en.json',
-  './content/american-revolution/media/bunker-hill-attack.jpg',
-  './content/american-revolution/media/trumbull-warren.jpg',
-  './content/american-revolution/geo/regions.geojson',
-  './assets/fonts/fraunces-latin.woff2',
+  './engine/transition.js',
+  // fetched by checkVerbManifest() through a default argument
+  './engine/verbs.json',
+  './index.html',
+  './js/i18n.js',
+  './js/main.js',
+  './js/map.js',
+  './js/people.js',
+  './js/routes.js',
+  './js/scrubber.js',
+  './js/sheet.js',
+  './js/store.js',
+  './js/timeline.js',
+  './js/tour.js',
+  // linked from index.html by rel=manifest, not by a script or style tag
+  './manifest.webmanifest',
+  './map/artifacts.js',
+  './map/basemap.js',
+  './map/geo.js',
+  './map/index.js',
+  './map/regions.js',
+  './map/tint.js',
+  './sound/library.js',
+  './sound/mixer.js',
+  './sound/soundscape.js',
 ];
-
+/* END GENERATED */
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(APP_CACHE)

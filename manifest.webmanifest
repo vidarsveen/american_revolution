@@ -1,7 +1,7 @@
 {
-  "name": "Den amerikanske revolusjonen",
-  "short_name": "Revolusjonen",
-  "description": "Interaktivt kart og tidslinje over den amerikanske revolusjonen 1763-1783.",
+  "name": "Romerriket 44–27 f.Kr.",
+  "short_name": "Romerriket",
+  "description": "Hvordan Octavian tok makten — kart, kilder og mennesker, 44 til 27 f.Kr.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -80,10 +80,19 @@ map/          the map module — no tiles, no Leaflet, we draw the ground (BOTH 
   regions.js    named administrative areas
   index.js      createMap(host, opts) -> an instance
 sound/        mixer, procedurally synthesised effect library, ducking
-core/         shared primitives (theme)
+core/         shared primitives, no DOM ownership
+  theme.js      isDark(el), watchTheme, reducedMotion
+  palette.js    a pack's factions -> what the map and the DOM draw
+  paths.js      where a pack's files are — the only place that knows
 engine/       narration: script -> player -> stage -> scenes/overlays
-js/           the Explore mode (still on Leaflet — see "In flight")
-content/<pack>/  one folder per subject
+  pack.js       content/packs.json + each pack.json; the only registry
+js/           the Explore mode
+content/
+  packs.json       the list of subjects. Data, not code.
+  <pack>/
+    pack.json      factions, map framing, era, voices, chapters, pools
+    chapter-*.json + timing.<chapter>.<lang>.json
+    portraits/ media/ sound/ geo/   the pack's own assets
 assets/geo/   built basemap data, committed
 dev/          per-module benches — open these, not the app
 tools/        python: build, fetch, narrate, check
@@ -96,9 +105,24 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 
 | Lab | The question it answers |
 |---|---|
+| `dev/engine-lab.html` | Does `rebuildTo(t)` produce the same picture as playing forward to `t`? |
 | `dev/map-lab.html` | Does `instant` reproduce the animated picture exactly? Is any frame blank? |
 | `dev/map-lab.html` | Can two regions that share a border be told apart, measured on the pixels? |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
+
+`dev/engine-lab.html` is the bench for rule 1, which until now was enforced by discipline
+alone. It compares a **stage signature** — every layer, every artifact, every declared
+property — between playing forward and seeking, at every cue time ±40 ms plus a one-second
+grid. `tools/check-engine.py` drives it headless and fails a build. Three things are
+deliberately outside the signature, and getting this wrong is how the bench reports correct
+behaviour as a defect (it did, on its first run):
+
+- **`t0`, `instant`, `over`** — the animation phase. `engine/scenes/map.js:507` sets
+  `over: instant ? 0 : 0.7`, so `over` is a statement about drawing time, not identity.
+- **`is-instant`** — `show()` in `engine/scenes/overlays.js` removes it on the next animation
+  frame, so its presence records whether a frame fired, not what is on screen.
+- **the one-shot surfaces** (`.ov-note`, `.atlas__flash`) and **the camera** — the first are
+  *supposed* to differ between the two passes, and the second is measured in `map-lab`.
 
 Add a verb and you must touch three things, not two: `engine/verbs.json`, the `VERBS` table in
 `engine/stage.js`, and — if it takes a reference type — the pool `tools/check-script.py`
@@ -111,9 +135,19 @@ most this year were invisible to reading and obvious to measurement.
 ## Checks to run before committing
 
 ```bash
+python tools/check-all.py          # all of the below, on every pack
+```
+
+It finds the chapters itself and starts its own server for the benches that need one, because
+the previous list was five commands, two of which needed a server in another shell and one of
+which had to be repeated per chapter — which is a list people run four fifths of. The
+individual tools still work on their own, and a failure reads the same either way:
+
+```bash
 python tools/check-script.py american-revolution/chapter-1775-04-19
-python tools/check-script.py american-revolution/chapter-1775-06-17
 python tools/check-data.py
+python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
+python tools/check-engine.py       # rule 1, measured — needs a server
 python tools/check-contrast.py     # samples real pixels; fails on an unreadable map
 python tools/check-sound.py        # 24 assertions on ducking and the silent fallback
 ```
@@ -130,10 +164,19 @@ python tools/check-published.py    # hashes every file index.html reaches
 
 ## Hazards that have bitten before
 
-**`sw.js` carries a hand-maintained `PRECACHE` list and a `VERSION`.** Add a file and forget
-the list, and it works online and 404s offline — silently, because the install uses
-`Promise.allSettled`. Every change that adds, moves or deletes a shipped file must update
-both.
+**`sw.js`'s `PRECACHE` list and `VERSION` are generated — run `tools/build-sw.py`.** They used
+to be maintained by hand, so adding a file and forgetting the list meant it worked online and
+404s offline, silently, because the install uses `Promise.allSettled`; and forgetting to bump
+`VERSION` served the old cache to everyone who already had one. Both halves were bookkeeping.
+The tool walks what `index.html` actually reaches (`tools/graph.py`) plus each pack's runtime
+data, and derives `VERSION` from the contents, so it moves exactly when the cache would serve
+something different. `--check` is in `check-all.py`.
+
+This is **not a build step**: `sw.js` stays committed and readable, nothing compiles at load,
+and only the block between the generated markers is touched — the fetch strategy below it is
+hand-written and must stay that way. Generating the list immediately found that
+`content/american-revolution/sound.json` had never been in it, so every recorded effect fell
+back to a synthesised one offline; and that `core/theme.js` was in it while nothing imports it.
 
 **The cue vocabulary lives in `engine/verbs.json` and nowhere else.** It used to be copied by
 hand into `engine/stage.js` and `tools/check-script.py`, so adding a verb to one and not the
@@ -245,6 +288,28 @@ nothing — with a 200 in the network panel. `mountMap` clears it. Anything else
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was
 disputed, and West Virginia did not exist. A historical pack overrides with its own
 `geo/borders.geojson`.
+
+**A pack declares what the engine used to know.** `content/<pack>/pack.json` carries the
+factions (arbitrary in number — Octavian's rise has seven and two of them change sides), the
+map framing, the era, the voices, the chapter list with titles, and where each pool lives.
+Three rules that are easy to get wrong:
+
+- **A faction names a colour three ways**: `token` (a CSS custom property, which flips with
+  the theme for free), `hue` (the framework derives fill and wash), or explicit `fill`. See
+  `core/palette.js`.
+- **`tone: red|blue|gold|sage` is a palette ROLE, not a party.** It used to alias a faction —
+  `TONE = { red: 'british' }` — which is the same leak in a smaller shape. Gold is the map's
+  look-here colour whatever the subject is.
+- **CSS must not select on a faction name.** `.mk--british { … }` bakes "there are four sides
+  and they are these" into a stylesheet, and how many there are is a property of the subject.
+  A node carries `--side: var(--f-british)` instead; `--f-*` is published on `:root` and
+  re-published on every theme change, which is why it must be a `var()` reference and not a
+  resolved hex.
+
+**`map.extent` is not `map.explore.bounds`.** The first is where the subject's coordinates are
+allowed to be, the second is where the camera opens. This war is fought on the seaboard and
+decided partly in Paris — `check-data.py` uses the extent to catch a swapped lat/lon, and the
+explore bounds would reject Paris as an error.
 
 ---
 

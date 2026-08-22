@@ -94,18 +94,21 @@ map/                       the map module — we draw the ground ourselves
 sound/                     mixer, synthesised effects, script-driven ducking
 
 dev/                       benches — open these, not the app
+  engine-lab.html does seeking produce the same picture as playing forward?
   map-lab.html    every map capability on one screen, both themes
   sound-lab.html  every effect, with the duck curve plotted
 
 assets/geo/                built by tools/build-basemap.py, committed
 content/<pack>/geo/        built by tools/fetch-detail.py — close-in water
 
+content/packs.json         the list of subjects — the only registry, and it is data
 content/american-revolution/    one folder per subject
+  pack.json                factions, map framing, era, voices, chapters, pools
   chapter-<date>.json      scenes -> beats -> cues, plus places, routes, quotes
   timing.<chapter>.no.json generated: beat offsets and per-word times
   audio/no/<chapter>/s1.mp3  generated: one gapless file per scene
   media.json  media/       generated: images with artist, licence, source
-  portraits.json           generated: the same record for assets/portraits/
+  portraits.json  portraits/  generated: the same record for the faces
   people.json  events.json  chapters.json  geo/
 
 Timings and audio are keyed by chapter as well as language. Scene ids restart at `s0` in
@@ -114,6 +117,12 @@ every chapter, so one timing file per pack meant chapter two silently overwrote 
 js/                        the Explore mode
 tools/                     narrate.py · fetch-media.py · check-script.py · check-data.py
 ```
+
+**`pack.json` is what makes this a framework rather than an app about one war.** It carries
+the factions — arbitrary in number, not the four this subject happens to have — the map
+framing, the era, the voices, and the chapter list. Nothing under `engine/`, `map/`, `core/`
+or `js/` names a subject: `grep -r "american-revolution" --include=*.js` returns nothing but
+comments explaining why it does not.
 
 **Cue vocabulary** — all subject-neutral. A topic without geography simply never uses the
 map verbs; one with different geography just ships different places.
@@ -128,10 +137,17 @@ map verbs; one with different geography just ships different places.
 | `marker.show/hide/clear` | a named pin |
 | `portrait.show/hide` | the person being spoken about, upright |
 | `image.show/hide` `quote.show/hide` `stat.show/clear` `caption.note` | the overlay cards |
-| `hold` `pause` | pacing; `pause` waits for a tap |
+| `front.show/hide/clear` | a line held, with a facing |
+| `road.draw` | standing scenery, drawn whole — the road a march travels along |
+| `region.show/clear` `border.set` | named areas, and which borders to draw |
+| `sound.play` `sound.ambience` `sound.music` | one-shots, a bed, a loop |
+| `pause` | waits for a tap |
 
-Adding a verb means adding it to the table in `engine/stage.js` **and** to `VERBS` in
-`tools/check-script.py`, or a typo in a chapter will silently do nothing.
+The full list with every argument, type and default is `engine/verbs.json` — 33 verbs, and the
+only place the vocabulary is written down. Adding one means the manifest entry and a handler
+in the `VERBS` table in `engine/stage.js`; `tools/check-script.py` reads the manifest, so it
+needs no change unless the verb takes a new *kind* of reference. `checkVerbManifest()` reports
+drift between the two at boot on localhost.
 
 ---
 
@@ -162,10 +178,14 @@ python tools/narrate.py ... --engine openai    # needs OPENAI_API_KEY
 python tools/fetch-media.py american-revolution
 python tools/fetch-media.py american-revolution --portraits   # the faces, same record
 
-# always run these before committing
+# always run this before committing — every check, every pack, own server
+python tools/check-all.py
+
+# or on their own
 python tools/check-script.py american-revolution/chapter-1775-04-19
-python tools/check-script.py american-revolution/chapter-1775-06-17
 python tools/check-data.py
+python tools/build-sw.py --check        # is sw.js's precache still what the graph says?
+python tools/check-engine.py            # rule 1: does seeking match playing forward?
 python tools/check-contrast.py          # both themes; fails on unreadable map
 python tools/check-sound.py             # ducking, instant suppression, silent fallback
 
