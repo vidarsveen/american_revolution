@@ -51,3 +51,6 @@ assets/geo/_src/
 # The README inside is kept, the audio is not.
 sound-candidates/*
 !sound-candidates/README.md
+
+# Git Bash crash dumps
+*.stackdump
