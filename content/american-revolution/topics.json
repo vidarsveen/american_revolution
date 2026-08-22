@@ -1,0 +1,121 @@
+{
+ "colonial-town": {
+  "title": { "no": "En koloniby", "en": "A colonial town" },
+  "hook": {
+   "no": "Rundt to tusen mennesker, en kirke, et vertshus — og et møte der hver mann kunne ta ordet.",
+   "en": "About two thousand people, a church, a tavern — and a meeting where every man could speak."
+  },
+  "body": {
+   "no": "En by i New England var ikke en by slik vi tenker på det nå. Concord hadde rundt to tusen innbyggere spredt over gårder, med en kirke, et par vertshus og et møtehus i midten.\n\nMøtehuset var poenget. Der samlet byen seg noen ganger i året og stemte over veier, lærerlønn, gjerder og skatt. Hver mann med litt eiendom hadde én stemme.\n\nDet er en av grunnene til at opprøret var så vanskelig å knuse. Det fantes ikke ett sted å slå til mot. Det var hundrevis av byer som allerede var vant til å bestemme selv.",
+   "en": "A New England town was not a town as we picture one now. Concord had about two thousand people spread across farms, with a church, a couple of taverns and a meeting house in the middle.\n\nThe meeting house was the point. There the town gathered a few times a year and voted on roads, the schoolmaster's pay, fences and taxes. Every man with a little property had one vote.\n\nIt is part of why the rebellion was so hard to crush. There was no single place to strike at. There were hundreds of towns already used to deciding things for themselves."
+  },
+  "fact": {
+   "no": "Byen betalte presten og læreren av egen kasse, og kranglet om begge summene.",
+   "en": "The town paid the minister and the schoolmaster out of its own pocket, and argued about both sums."
+  },
+  "figures": [
+   { "value": { "no": "ca. 2 000", "en": "about 2,000" }, "label": { "no": "innbyggere i Concord", "en": "people in Concord" } },
+   { "value": { "no": "ca. 2,5 millioner", "en": "about 2.5 million" }, "label": { "no": "i alle tretten koloniene", "en": "in all thirteen colonies" } }
+  ],
+  "seeAlso": [
+   { "kind": "term", "id": "militia" },
+   { "kind": "topic", "id": "who-could-vote" }
+  ]
+ },
+
+ "who-could-vote": {
+  "title": { "no": "Hvem fikk stemme", "en": "Who could vote" },
+  "hook": {
+   "no": "Flere enn i England. Langt færre enn alle.",
+   "en": "More than in England. Far fewer than everyone."
+  },
+  "body": {
+   "no": "For å stemme i en koloni måtte du være mann, voksen, og eie litt jord eller ha en viss inntekt. I New England, der jord var billig, klarte kanskje seksti til sytti prosent av de voksne mennene kravet. I England var tallet nærmere femten.\n\nUtenfor sto alle kvinner, alle slavebundne, de fleste frie svarte, og menn uten eiendom.\n\nNår en kilde sier at «folket» stemte for noe, er det denne gruppa den mener. Det er verdt å huske hver gang setningen dukker opp.",
+   "en": "To vote in a colony you had to be male, adult, and own a little land or earn a certain income. In New England, where land was cheap, perhaps sixty to seventy per cent of adult men met the bar. In England the figure was closer to fifteen.\n\nOutside it stood every woman, everyone enslaved, most free black people, and men without property.\n\nWhen a source says 'the people' voted for something, this is the group it means. It is worth remembering every time the phrase turns up."
+  },
+  "fact": {
+   "no": "New Jersey lot kvinner med egen eiendom stemme fram til 1807, og tok det så tilbake.",
+   "en": "New Jersey let women who owned property vote until 1807, then took it away again."
+  },
+  "figures": [
+   { "value": { "no": "60–70 %", "en": "60–70%" }, "label": { "no": "av voksne menn i New England", "en": "of adult men in New England" } },
+   { "value": { "no": "ca. 15 %", "en": "about 15%" }, "label": { "no": "av voksne menn i England", "en": "of adult men in England" } }
+  ],
+  "seeAlso": [
+   { "kind": "term", "id": "parliament" },
+   { "kind": "topic", "id": "slavery-in-the-colonies" }
+  ]
+ },
+
+ "slavery-in-the-colonies": {
+  "title": { "no": "Slaveri i koloniene", "en": "Slavery in the colonies" },
+  "hook": {
+   "no": "En femdel av alle som bodde i koloniene, var eid av noen andre. Frihetskravet gjaldt ikke dem.",
+   "en": "A fifth of everyone living in the colonies was owned by somebody else. The demand for liberty did not include them."
+  },
+  "body": {
+   "no": "I 1775 var rundt fem hundre tusen mennesker i de tretten koloniene slavebundne. De fleste i sør, der tobakk og ris ble dyrket, men slaveri fantes i alle tretten. Også i Boston.\n\nMotsetningen var åpenbar allerede da, og folk sa det høyt. Samuel Johnson spurte fra London hvorfor de høyeste ropene om frihet kom fra dem som drev slaver. Det var et godt spørsmål, og det hadde ikke noe godt svar.\n\nBritene så det også, og brukte det: i 1775 lovet guvernøren i Virginia frihet til slaver som rømte og sluttet seg til kongens styrker. Tusenvis gjorde det.",
+   "en": "In 1775 about five hundred thousand people in the thirteen colonies were enslaved. Most in the south, where tobacco and rice were grown, but slavery existed in all thirteen. In Boston too.\n\nThe contradiction was obvious at the time, and people said so out loud. Samuel Johnson asked from London why the loudest yelps for liberty came from the drivers of slaves. It was a good question, and it had no good answer.\n\nThe British saw it as well, and used it: in 1775 the governor of Virginia promised freedom to enslaved people who escaped and joined the king's forces. Thousands did."
+  },
+  "fact": {
+   "no": "Phillis Wheatley ble kjøpt som barn i Boston, lærte seg latin og gresk, og ga ut en diktsamling i 1773.",
+   "en": "Phillis Wheatley was bought as a child in Boston, taught herself Latin and Greek, and published a book of poems in 1773."
+  },
+  "figures": [
+   { "value": { "no": "ca. 500 000", "en": "about 500,000" }, "label": { "no": "slavebundne i koloniene", "en": "enslaved in the colonies" } },
+   { "value": { "no": "ca. 20 %", "en": "about 20%" }, "label": { "no": "av befolkningen", "en": "of the population" } }
+  ],
+  "seeAlso": [
+   { "kind": "person", "id": "wheatley" },
+   { "kind": "topic", "id": "who-could-vote" }
+  ]
+ },
+
+ "atlantic-crossing": {
+  "title": { "no": "Seks uker over Atlanteren", "en": "Six weeks across the Atlantic" },
+  "hook": {
+   "no": "En ordre fra London var to måneder gammel før den ble lest opp i Boston.",
+   "en": "An order from London was two months old before it was read out in Boston."
+  },
+  "body": {
+   "no": "Et brev fra London til Boston brukte seks til åtte uker vestover, og fire til seks tilbake med vinden. Et spørsmål og et svar tok altså et kvart år.\n\nDet forklarer mer av denne krigen enn folk tror. Gage i Boston måtte ta avgjørelser uten å vite hva London mente. London ga ordrer basert på rapporter fra i høst. Ingen av dem kunne føre en samtale.\n\nDet forklarer også hvorfor koloniene var vant til å styre seg selv. Når svaret på et spørsmål kommer tre måneder senere, slutter du å spørre.",
+   "en": "A letter from London to Boston took six to eight weeks going west, and four to six coming back with the wind. So a question and its answer took a quarter of a year.\n\nThat explains more of this war than people think. Gage in Boston had to make decisions without knowing what London wanted. London gave orders based on reports from the autumn. Neither of them could hold a conversation.\n\nIt also explains why the colonies were used to running themselves. When the answer to a question arrives three months later, you stop asking."
+  },
+  "fact": {
+   "no": "Nyheten om Lexington nådde London 28. mai — men opprørernes egen versjon kom fram elleve dager før Gages offisielle rapport.",
+   "en": "News of Lexington reached London on 28 May — but the rebels' own account arrived eleven days before Gage's official report."
+  },
+  "figures": [
+   { "value": { "no": "6–8 uker", "en": "6–8 weeks" }, "label": { "no": "London til Boston", "en": "London to Boston" } },
+   { "value": { "no": "ca. 3 måneder", "en": "about 3 months" }, "label": { "no": "spørsmål og svar", "en": "a question and its answer" } }
+  ],
+  "seeAlso": [
+   { "kind": "term", "id": "parliament" },
+   { "kind": "person", "id": "gage" }
+  ]
+ },
+
+ "a-musket": {
+  "title": { "no": "Å skyte med muskett", "en": "Firing a musket" },
+  "hook": {
+   "no": "Tre skudd i minuttet, hvis du var god. Og du traff neppe noen på hundre meter.",
+   "en": "Three shots a minute if you were good. And you were unlikely to hit anyone at a hundred metres."
+  },
+  "body": {
+   "no": "Musketten var glattboret. Kula var mindre enn løpet, så den sprett ut i en litt tilfeldig retning. På femti meter traff du en mann. På hundre traff du kanskje en låvevegg.\n\nDerfor sto soldater på rekke, skulder ved skulder, og skjøt samtidig. Det var ikke tapperhet eller dumhet. Det var den eneste måten å få nok kuler i lufta til at noen av dem traff.\n\nDet forklarer hvorfor britenes marsj tilbake fra Concord var så ille for dem. Militsen sto ikke på rekke. De skjøt fra bak steingjerder, enkeltvis, og gikk videre.",
+   "en": "The musket was smoothbore. The ball was smaller than the barrel, so it left in a slightly random direction. At fifty metres you would hit a man. At a hundred you might hit a barn.\n\nThat is why soldiers stood in a line, shoulder to shoulder, and fired together. It was not bravery or stupidity. It was the only way to get enough lead in the air for some of it to land.\n\nIt explains why the British march back from Concord was so bad for them. The militia did not stand in a line. They fired from behind stone walls, one at a time, and moved on."
+  },
+  "fact": {
+   "no": "Et musketløp måtte lades i tolv-tretten separate håndgrep. Under ild gikk det galt hele tiden.",
+   "en": "Loading a musket took twelve or thirteen separate movements. Under fire it went wrong constantly."
+  },
+  "figures": [
+   { "value": { "no": "3 skudd", "en": "3 shots" }, "label": { "no": "i minuttet, godt trent", "en": "a minute, well drilled" } },
+   { "value": { "no": "ca. 50 m", "en": "about 50 m" }, "label": { "no": "reell rekkevidde", "en": "realistic range" } }
+  ],
+  "seeAlso": [
+   { "kind": "term", "id": "militia" },
+   { "kind": "term", "id": "regulars" }
+  ]
+ }
+}

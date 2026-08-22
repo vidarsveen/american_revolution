@@ -56,18 +56,18 @@
     "licence": "Apache-2.0",
     "credit": "Generated with MOSS-SoundEffect v2.0 (OpenMOSS). Apache 2.0.",
     "source": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
-    "prompt": "many people talking at once outdoors in a town square, continuous murmur, no words distinguishable",
+    "prompt": "a restless crowd of men outdoors, low angry murmur rising and falling, no chanting, no words clear",
     "seed": 1001,
     "sampleRate": 48000,
     "levelled": {
-      "gain": 1.4995,
-      "peakBefore": 0.3668,
-      "rmsBefore": 0.0388,
+      "gain": 2.7465,
+      "peakBefore": 0.2003,
+      "rmsBefore": 0.0353,
       "peakAfter": 0.55,
-      "rmsAfter": 0.0581,
+      "rmsAfter": 0.0968,
       "bound": "peak"
     },
-    "candidate": "crowd-mtown-1"
+    "candidate": "crowd-mangry-1"
   },
   "oars": {
     "file": "sound/oars.wav",

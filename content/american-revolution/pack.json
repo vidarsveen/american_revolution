@@ -1,0 +1,216 @@
+{
+  "id": "american-revolution",
+  "version": 1,
+  "work": {
+    "no": "Den amerikanske revolusjonen",
+    "en": "The American Revolution"
+  },
+  "years": {
+    "no": "1763–1783",
+    "en": "1763–1783"
+  },
+  "//factions": [
+    "Arbitrary in number. Each declares its colour one of three ways, in",
+    "order of preference: `token` names a CSS custom property, which is what",
+    "a pack does when a designer has already tuned the palette by hand and",
+    "the theme flips it; `hue` lets the framework derive fill and wash, which",
+    "is what a new pack does before anyone has tuned anything; explicit",
+    "`fill`/`wash` hex is the escape hatch. This pack uses tokens, so the",
+    "colours are the same bytes they have always been.",
+    "The `side` values in events.json, people.json and the chapters are keys",
+    "into this table and nowhere else."
+  ],
+  "factions": {
+    "british": {
+      "label": {
+        "no": "Britiske styrker",
+        "en": "British forces"
+      },
+      "token": "--red"
+    },
+    "patriot": {
+      "label": {
+        "no": "Amerikanske styrker",
+        "en": "American forces"
+      },
+      "token": "--blue"
+    },
+    "french": {
+      "label": {
+        "no": "Franske styrker",
+        "en": "French forces"
+      },
+      "token": "--gold"
+    },
+    "neutral": {
+      "label": {
+        "no": "Andre",
+        "en": "Others"
+      },
+      "token": "--sage"
+    }
+  },
+  "map": {
+    "//": "Everything engine/scenes/map.js used to know about Boston.",
+    "home": [
+      42.3601,
+      -71.0589
+    ],
+    "zoom": {
+      "min": 1.8,
+      "max": 15,
+      "default": 10.5,
+      "maxFit": 13.5
+    },
+    "//minZoom": [
+      "Low enough that a phone can hold an ocean. At minZoom 3 a 393 px screen",
+      "shows 64 degrees of longitude, so the establishing shot could not fit",
+      "Boston and Britain at once however it was framed — Britain sat 46 px",
+      "off the right edge at the moment the narration named it."
+    ],
+    "basemap": {
+      "levels": [
+        {
+          "name": "world-110m",
+          "maxZoom": 4.0
+        },
+        {
+          "name": "world-50m",
+          "maxZoom": 6.5
+        },
+        {
+          "name": "atlantic-10m",
+          "maxZoom": null,
+          "regional": true
+        }
+      ]
+    },
+    "//detail": [
+      "Natural Earth is 1:10M and this pack's chapters play at zoom 11-13.5.",
+      "Without the pack's own geometry the harbour is a blob and the Charles",
+      "does not exist — emptier than the tiles this replaced, which would be",
+      "no trade. Built by tools/fetch-detail.py from this bbox."
+    ],
+    "detail": {
+      "url": "geo/detail.json",
+      "minZoom": 9.5,
+      "bbox": [
+        -71.7,
+        42.05,
+        -70.75,
+        42.75
+      ]
+    },
+    "borders": {
+      "country": true,
+      "state": false
+    },
+    "credit": "Natural Earth",
+    "explore": {
+      "bounds": [
+        [
+          31.2,
+          -82.0
+        ],
+        [
+          46.0,
+          -69.5
+        ]
+      ],
+      "zoom": {
+        "min": 2.6,
+        "max": 12
+      }
+    },
+    "//extent": [
+      "Where this subject's coordinates are allowed to be — not where the",
+      "camera starts. The war is fought on the seaboard but decided partly in",
+      "Paris and off Flamborough Head, so the box has to hold both.",
+      "tools/check-data.py uses it to catch a swapped lat/lon, which is what a",
+      "coordinate in the wrong hemisphere almost always is."
+    ],
+    "extent": [
+      [
+        14.0,
+        -110.0
+      ],
+      [
+        62.0,
+        22.0
+      ]
+    ]
+  },
+  "era": {
+    "start": "1763-01-01",
+    "end": "1783-12-31",
+    "calendar": "gregorian",
+    "tickStep": "year"
+  },
+  "voices": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural",
+    "rate": "-10%"
+  },
+  "pools": {
+    "people": "people.json",
+    "media": "media.json",
+    "sound": "sound.json",
+    "portraits": "portraits/",
+    "events": "events.json",
+    "episodes": "chapters.json",
+    "places": "geo/places.json",
+    "routes": "geo/routes.json",
+    "areas": "geo/colonies.geojson",
+    "terms": "terms.json",
+    "topics": "topics.json",
+    "placeNotes": "place-notes.json"
+  },
+  "chapters": [
+    {
+      "id": "chapter-1775-04-19",
+      "title": {
+        "no": "19. april 1775",
+        "en": "19 April 1775"
+      },
+      "subtitle": {
+        "no": "Dagen krigen begynte",
+        "en": "The day the war began"
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    },
+    {
+      "id": "chapter-1775-06-17",
+      "title": {
+        "no": "17. juni 1775",
+        "en": "17 June 1775"
+      },
+      "subtitle": {
+        "no": "Bunker Hill",
+        "en": "Bunker Hill"
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    }
+  ],
+  "//checks": "Where the pixel checks should point their camera.",
+  "checks": {
+    "contrast": {
+      "chapter": "chapter-1775-04-19",
+      "beat": "s0.b5",
+      "at": 3.0
+    }
+  },
+  "shortName": {
+    "no": "Revolusjonen",
+    "en": "The Revolution"
+  },
+  "description": {
+    "no": "Interaktivt kart og tidslinje over den amerikanske revolusjonen — slagene, menneskene og vendepunktene.",
+    "en": "An interactive map and timeline of the American Revolution — the battles, the people and the turning points."
+  }
+}

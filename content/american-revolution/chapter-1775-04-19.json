@@ -1,3401 +1,3518 @@
 {
-  "id": "chapter-1775-04-19",
-  "pack": "american-revolution",
-  "work": {
-    "no": "Den amerikanske revolusjonen",
-    "en": "The American Revolution"
+ "id": "chapter-1775-04-19",
+ "pack": "american-revolution",
+ "work": {
+  "no": "Den amerikanske revolusjonen",
+  "en": "The American Revolution"
+ },
+ "title": {
+  "no": "19. april 1775",
+  "en": "19 April 1775"
+ },
+ "subtitle": {
+  "no": "Dagen krigen begynte",
+  "en": "The day the war began"
+ },
+ "blurb": {
+  "no": "Britene marsjerte ut av Boston om natta for å hente et våpenlager, og trodde de skulle være tilbake til frokost. Her er hva som skjedde, time for time.",
+  "en": "The British marched out of Boston at night to seize a weapons store, expecting to be back for breakfast. Here is what happened, hour by hour."
+ },
+ "voice": {
+  "no": "nb-NO-FinnNeural",
+  "en": "en-GB-RyanNeural"
+ },
+ "rate": "-10%",
+ "poster": "doolittle-1",
+ "places": {
+  "boston": {
+   "coords": [
+    42.3601,
+    -71.0589
+   ],
+   "zoom": 11.4,
+   "name": {
+    "no": "Boston",
+    "en": "Boston"
+   }
   },
-  "title": {
-    "no": "19. april 1775",
-    "en": "19 April 1775"
+  "boston-common": {
+   "coords": [
+    42.355,
+    -71.0656
+   ],
+   "zoom": 13,
+   "name": {
+    "no": "Boston Common",
+    "en": "Boston Common"
+   }
   },
-  "subtitle": {
-    "no": "Dagen krigen begynte",
-    "en": "The day the war began"
+  "old-north": {
+   "coords": [
+    42.3663,
+    -71.0545
+   ],
+   "zoom": 13,
+   "name": {
+    "no": "Old North Church",
+    "en": "Old North Church"
+   }
   },
-  "blurb": {
-    "no": "Britene marsjerte ut av Boston om natta for å hente et våpenlager, og trodde de skulle være tilbake til frokost. Her er hva som skjedde, time for time.",
-    "en": "The British marched out of Boston at night to seize a weapons store, expecting to be back for breakfast. Here is what happened, hour by hour."
+  "lechmere": {
+   "coords": [
+    42.372,
+    -71.078
+   ],
+   "zoom": 12.5,
+   "name": {
+    "no": "Lechmere Point",
+    "en": "Lechmere Point"
+   },
+   "label": false
   },
-  "voice": {
-    "no": "nb-NO-FinnNeural",
-    "en": "en-GB-RyanNeural"
+  "charlestown": {
+   "coords": [
+    42.3782,
+    -71.0602
+   ],
+   "zoom": 12.5,
+   "name": {
+    "no": "Charlestown",
+    "en": "Charlestown"
+   }
   },
-  "rate": "-10%",
-  "poster": "doolittle-1",
-  "places": {
-    "boston": {
-      "coords": [
-        42.3601,
-        -71.0589
-      ],
-      "zoom": 11.4,
-      "name": {
-        "no": "Boston",
-        "en": "Boston"
-      }
-    },
-    "boston-common": {
-      "coords": [
-        42.355,
-        -71.0656
-      ],
-      "zoom": 13,
-      "name": {
-        "no": "Boston Common",
-        "en": "Boston Common"
-      }
-    },
-    "old-north": {
-      "coords": [
-        42.3663,
-        -71.0545
-      ],
-      "zoom": 13,
-      "name": {
-        "no": "Old North Church",
-        "en": "Old North Church"
-      }
-    },
-    "lechmere": {
-      "coords": [
-        42.372,
-        -71.078
-      ],
-      "zoom": 12.5,
-      "name": {
-        "no": "Lechmere Point",
-        "en": "Lechmere Point"
-      },
-      "label": false
-    },
-    "charlestown": {
-      "coords": [
-        42.3782,
-        -71.0602
-      ],
-      "zoom": 12.5,
-      "name": {
-        "no": "Charlestown",
-        "en": "Charlestown"
-      }
-    },
-    "menotomy": {
-      "coords": [
-        42.4154,
-        -71.1565
-      ],
-      "zoom": 12.5,
-      "name": {
-        "no": "Menotomy",
-        "en": "Menotomy"
-      }
-    },
-    "lexington-green": {
-      "coords": [
-        42.4492,
-        -71.2311
-      ],
-      "zoom": 13,
-      "name": {
-        "no": "Lexington Green",
-        "en": "Lexington Green"
-      }
-    },
-    "revere-capture": {
-      "coords": [
-        42.446,
-        -71.265
-      ],
-      "zoom": 12.5,
-      "name": {
-        "no": "Der Revere ble tatt",
-        "en": "Where Revere was taken"
-      },
-      "label": false
-    },
-    "concord": {
-      "coords": [
-        42.4604,
-        -71.3489
-      ],
-      "zoom": 12.5,
-      "name": {
-        "no": "Concord",
-        "en": "Concord"
-      }
-    },
-    "north-bridge": {
-      "coords": [
-        42.4693,
-        -71.352
-      ],
-      "zoom": 13.5,
-      "name": {
-        "no": "North Bridge",
-        "en": "North Bridge"
-      },
-      "label": false
-    },
-    "meriams-corner": {
-      "coords": [
-        42.458,
-        -71.326
-      ],
-      "zoom": 13,
-      "name": {
-        "no": "Meriams Corner",
-        "en": "Meriam's Corner"
-      }
-    },
-    "bloody-angle": {
-      "coords": [
-        42.452,
-        -71.276
-      ],
-      "zoom": 13,
-      "name": {
-        "no": "Bloody Angle",
-        "en": "Bloody Angle"
-      }
-    },
-    "the-road": {
-      "coords": [
-        42.438,
-        -71.195
-      ],
-      "zoom": 11,
-      "name": {
-        "no": "Veien tilbake",
-        "en": "The road back"
-      },
-      "label": false
-    },
-    "siege": {
-      "coords": [
-        42.385,
-        -71.12
-      ],
-      "zoom": 11,
-      "name": {
-        "no": "Boston beleiret",
-        "en": "Boston besieged"
-      },
-      "label": false
-    },
-    "wide": {
-      "coords": [
-        42.4,
-        -71.2
-      ],
-      "zoom": 10.5,
-      "name": {
-        "no": "Hele dagen",
-        "en": "The whole day"
-      },
-      "label": false
-    },
-    "reading": {
-      "coords": [
-        42.5254,
-        -71.1096
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Reading",
-        "en": "Reading"
-      }
-    },
-    "billerica": {
-      "coords": [
-        42.5584,
-        -71.2689
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Billerica",
-        "en": "Billerica"
-      }
-    },
-    "woburn": {
-      "coords": [
-        42.4793,
-        -71.1523
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Woburn",
-        "en": "Woburn"
-      }
-    },
-    "sudbury": {
-      "coords": [
-        42.3834,
-        -71.4162
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Sudbury",
-        "en": "Sudbury"
-      }
-    },
-    "danvers": {
-      "coords": [
-        42.5751,
-        -70.93
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Danvers",
-        "en": "Danvers"
-      }
-    },
-    "dedham": {
-      "coords": [
-        42.2436,
-        -71.1662
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Dedham",
-        "en": "Dedham"
-      }
-    },
-    "watertown": {
-      "coords": [
-        42.3709,
-        -71.1828
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Watertown",
-        "en": "Watertown"
-      }
-    },
-    "newton": {
-      "coords": [
-        42.337,
-        -71.2092
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Newton",
-        "en": "Newton"
-      }
-    },
-    "lynn": {
-      "coords": [
-        42.4668,
-        -70.9495
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Lynn",
-        "en": "Lynn"
-      }
-    },
-    "salem": {
-      "coords": [
-        42.5195,
-        -70.8967
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Salem",
-        "en": "Salem"
-      }
-    },
-    "roxbury": {
-      "coords": [
-        42.3125,
-        -71.09
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Roxbury",
-        "en": "Roxbury"
-      }
-    },
-    "chelmsford": {
-      "coords": [
-        42.5998,
-        -71.3673
-      ],
-      "zoom": 12,
-      "label": false,
-      "name": {
-        "no": "Chelmsford",
-        "en": "Chelmsford"
-      }
-    },
-    "world": {
-      "coords": [
-        44.0,
-        -42.0
-      ],
-      "zoom": 3.1,
-      "name": {
-        "no": "Atlanterhavet",
-        "en": "The Atlantic"
-      },
-      "label": false
-    },
-    "atlantic-nw": {
-      "coords": [
-        58.0,
-        -78.0
-      ],
-      "zoom": 3,
-      "name": {
-        "no": "Nordvest",
-        "en": "North-west"
-      },
-      "label": false
-    },
-    "atlantic-se": {
-      "coords": [
-        28.0,
-        10.0
-      ],
-      "zoom": 3,
-      "name": {
-        "no": "Sørøst",
-        "en": "South-east"
-      },
-      "label": false
-    },
-    "britain": {
-      "coords": [
-        53.2,
-        -2.2
-      ],
-      "zoom": 5.0,
-      "name": {
-        "no": "Storbritannia",
-        "en": "Britain"
-      },
-      "label": false
-    },
-    "france": {
-      "coords": [
-        46.8,
-        2.4
-      ],
-      "zoom": 5.0,
-      "name": {
-        "no": "Frankrike",
-        "en": "France"
-      },
-      "label": false
-    },
-    "london": {
-      "coords": [
-        51.5074,
-        -0.1278
-      ],
-      "zoom": 6.1,
-      "name": {
-        "no": "London",
-        "en": "London"
-      }
-    },
-    "colonies": {
-      "coords": [
-        39.2,
-        -74.6
-      ],
-      "zoom": 4.65,
-      "name": {
-        "no": "Koloniene",
-        "en": "The colonies"
-      },
-      "label": false
-    },
-    "boston-wide": {
-      "coords": [
-        42.36,
-        -71.06
-      ],
-      "zoom": 8.6,
-      "name": {
-        "no": "Boston",
-        "en": "Boston"
-      },
-      "label": false
-    },
-    "europe": {
-      "coords": [
-        50.0,
-        -2.0
-      ],
-      "zoom": 4.3,
-      "name": {
-        "no": "Europa",
-        "en": "Europe"
-      },
-      "label": false
-    },
-    "colonies-n": {
-      "coords": [
-        47.6,
-        -66.6
-      ],
-      "zoom": 6,
-      "name": {
-        "no": "Nord",
-        "en": "North"
-      },
-      "label": false
-    },
-    "colonies-s": {
-      "coords": [
-        30.2,
-        -86.2
-      ],
-      "zoom": 6,
-      "name": {
-        "no": "Sør",
-        "en": "South"
-      },
-      "label": false
-    }
+  "menotomy": {
+   "coords": [
+    42.4154,
+    -71.1565
+   ],
+   "zoom": 12.5,
+   "name": {
+    "no": "Menotomy",
+    "en": "Menotomy"
+   }
   },
-  "routes": {
-    "british-out": {
-      "side": "british",
-      "label": {
-        "no": "Britene marsjerer ut",
-        "en": "The British march out"
-      },
-      "coords": [
-        [
-          42.355,
-          -71.0656
-        ],
-        [
-          42.372,
-          -71.078
-        ],
-        [
-          42.3736,
-          -71.1097
-        ],
-        [
-          42.4154,
-          -71.1565
-        ],
-        [
-          42.4492,
-          -71.2311
-        ],
-        [
-          42.4604,
-          -71.3489
-        ]
-      ],
-      "strength": 700
-    },
-    "revere-ride": {
-      "side": "patriot",
-      "label": {
-        "no": "Reveres ritt",
-        "en": "Revere's ride"
-      },
-      "coords": [
-        [
-          42.3782,
-          -71.0602
-        ],
-        [
-          42.4184,
-          -71.1062
-        ],
-        [
-          42.4154,
-          -71.1565
-        ],
-        [
-          42.4492,
-          -71.2311
-        ]
-      ]
-    },
-    "dawes-ride": {
-      "side": "patriot",
-      "label": {
-        "no": "Dawes' ritt",
-        "en": "Dawes's ride"
-      },
-      "coords": [
-        [
-          42.343,
-          -71.062
-        ],
-        [
-          42.332,
-          -71.095
-        ],
-        [
-          42.348,
-          -71.121
-        ],
-        [
-          42.3736,
-          -71.1097
-        ],
-        [
-          42.4154,
-          -71.1565
-        ],
-        [
-          42.4492,
-          -71.2311
-        ]
-      ]
-    },
-    "prescott-ride": {
-      "side": "patriot",
-      "label": {
-        "no": "Prescott kommer fram",
-        "en": "Prescott gets through"
-      },
-      "coords": [
-        [
-          42.4492,
-          -71.2311
-        ],
-        [
-          42.446,
-          -71.265
-        ],
-        [
-          42.452,
-          -71.276
-        ],
-        [
-          42.458,
-          -71.326
-        ],
-        [
-          42.4604,
-          -71.3489
-        ]
-      ]
-    },
-    "british-retreat": {
-      "side": "british",
-      "label": {
-        "no": "Retretten",
-        "en": "The retreat"
-      },
-      "coords": [
-        [
-          42.4604,
-          -71.3489
-        ],
-        [
-          42.458,
-          -71.326
-        ],
-        [
-          42.452,
-          -71.276
-        ],
-        [
-          42.4492,
-          -71.2311
-        ],
-        [
-          42.4154,
-          -71.1565
-        ],
-        [
-          42.3782,
-          -71.0602
-        ]
-      ],
-      "strength": 700
-    },
-    "percy-relief": {
-      "side": "british",
-      "label": {
-        "no": "Percys unnsetning",
-        "en": "Percy's relief column"
-      },
-      "coords": [
-        [
-          42.3601,
-          -71.0589
-        ],
-        [
-          42.33,
-          -71.08
-        ],
-        [
-          42.355,
-          -71.13
-        ],
-        [
-          42.39,
-          -71.145
-        ],
-        [
-          42.4154,
-          -71.1565
-        ],
-        [
-          42.4492,
-          -71.2311
-        ]
-      ],
-      "strength": 1000
-    },
-    "atlantic": {
-      "side": "british",
-      "naval": true,
-      "label": {
-        "no": "Fem uker over Atlanteren",
-        "en": "Five weeks across the Atlantic"
-      },
-      "coords": [
-        [
-          51.4,
-          -1.0
-        ],
-        [
-          49.5,
-          -12.0
-        ],
-        [
-          45.0,
-          -30.0
-        ],
-        [
-          42.0,
-          -48.0
-        ],
-        [
-          42.2,
-          -62.0
-        ],
-        [
-          42.35,
-          -70.9
-        ]
-      ]
-    },
-    "militia-bridge": {
-      "side": "patriot",
-      "label": {
-        "no": "Militsen går ned mot brua",
-        "en": "The militia walk down to the bridge"
-      },
-      "strength": 400,
-      "coords": [
-        [
-          42.4771,
-          -71.3548
-        ],
-        [
-          42.4738,
-          -71.3536
-        ],
-        [
-          42.4693,
-          -71.352
-        ]
-      ]
-    },
-    "into-lexington": {
-      "side": "british",
-      "label": {
-        "no": "Kolonnen inn mot Lexington",
-        "en": "The column into Lexington"
-      },
-      "strength": 700,
-      "coords": [
-        [
-          42.4424,
-          -71.2162
-        ],
-        [
-          42.4462,
-          -71.2245
-        ],
-        [
-          42.4489,
-          -71.2303
-        ]
-      ]
-    },
-    "lexington-line": {
-      "side": "patriot",
-      "label": {
-        "no": "Militsen på grønningen",
-        "en": "The militia on the green"
-      },
-      "coords": [
-        [
-          42.4472,
-          -71.2326
-        ],
-        [
-          42.4492,
-          -71.2311
-        ],
-        [
-          42.4512,
-          -71.2296
-        ]
-      ]
-    },
-    "into-concord": {
-      "side": "british",
-      "label": {
-        "no": "Kolonnen inn i Concord",
-        "en": "The column into Concord"
-      },
-      "strength": 700,
-      "coords": [
-        [
-          42.4553,
-          -71.316
-        ],
-        [
-          42.4585,
-          -71.335
-        ],
-        [
-          42.4604,
-          -71.347
-        ]
-      ]
-    },
-    "bridge-british-line": {
-      "side": "british",
-      "label": {
-        "no": "Britene på østsiden av brua",
-        "en": "The British on the town side"
-      },
-      "coords": [
-        [
-          42.4677,
-          -71.3516
-        ],
-        [
-          42.4693,
-          -71.3512
-        ],
-        [
-          42.4709,
-          -71.3508
-        ]
-      ]
-    }
+  "lexington-green": {
+   "coords": [
+    42.4492,
+    -71.2311
+   ],
+   "zoom": 13,
+   "name": {
+    "no": "Lexington Green",
+    "en": "Lexington Green"
+   }
   },
-  "scenes": [
+  "revere-capture": {
+   "coords": [
+    42.446,
+    -71.265
+   ],
+   "zoom": 12.5,
+   "name": {
+    "no": "Der Revere ble tatt",
+    "en": "Where Revere was taken"
+   },
+   "label": false
+  },
+  "concord": {
+   "coords": [
+    42.4604,
+    -71.3489
+   ],
+   "zoom": 12.5,
+   "name": {
+    "no": "Concord",
+    "en": "Concord"
+   }
+  },
+  "north-bridge": {
+   "coords": [
+    42.4693,
+    -71.352
+   ],
+   "zoom": 13.5,
+   "name": {
+    "no": "North Bridge",
+    "en": "North Bridge"
+   },
+   "label": false
+  },
+  "meriams-corner": {
+   "coords": [
+    42.458,
+    -71.326
+   ],
+   "zoom": 13,
+   "name": {
+    "no": "Meriams Corner",
+    "en": "Meriam's Corner"
+   }
+  },
+  "bloody-angle": {
+   "coords": [
+    42.452,
+    -71.276
+   ],
+   "zoom": 13,
+   "name": {
+    "no": "Bloody Angle",
+    "en": "Bloody Angle"
+   }
+  },
+  "the-road": {
+   "coords": [
+    42.438,
+    -71.195
+   ],
+   "zoom": 11,
+   "name": {
+    "no": "Veien tilbake",
+    "en": "The road back"
+   },
+   "label": false
+  },
+  "siege": {
+   "coords": [
+    42.385,
+    -71.12
+   ],
+   "zoom": 11,
+   "name": {
+    "no": "Boston beleiret",
+    "en": "Boston besieged"
+   },
+   "label": false
+  },
+  "wide": {
+   "coords": [
+    42.4,
+    -71.2
+   ],
+   "zoom": 10.5,
+   "name": {
+    "no": "Hele dagen",
+    "en": "The whole day"
+   },
+   "label": false
+  },
+  "reading": {
+   "coords": [
+    42.5254,
+    -71.1096
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Reading",
+    "en": "Reading"
+   }
+  },
+  "billerica": {
+   "coords": [
+    42.5584,
+    -71.2689
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Billerica",
+    "en": "Billerica"
+   }
+  },
+  "woburn": {
+   "coords": [
+    42.4793,
+    -71.1523
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Woburn",
+    "en": "Woburn"
+   }
+  },
+  "sudbury": {
+   "coords": [
+    42.3834,
+    -71.4162
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Sudbury",
+    "en": "Sudbury"
+   }
+  },
+  "danvers": {
+   "coords": [
+    42.5751,
+    -70.93
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Danvers",
+    "en": "Danvers"
+   }
+  },
+  "dedham": {
+   "coords": [
+    42.2436,
+    -71.1662
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Dedham",
+    "en": "Dedham"
+   }
+  },
+  "watertown": {
+   "coords": [
+    42.3709,
+    -71.1828
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Watertown",
+    "en": "Watertown"
+   }
+  },
+  "newton": {
+   "coords": [
+    42.337,
+    -71.2092
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Newton",
+    "en": "Newton"
+   }
+  },
+  "lynn": {
+   "coords": [
+    42.4668,
+    -70.9495
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Lynn",
+    "en": "Lynn"
+   }
+  },
+  "salem": {
+   "coords": [
+    42.5195,
+    -70.8967
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Salem",
+    "en": "Salem"
+   }
+  },
+  "roxbury": {
+   "coords": [
+    42.3125,
+    -71.09
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Roxbury",
+    "en": "Roxbury"
+   }
+  },
+  "chelmsford": {
+   "coords": [
+    42.5998,
+    -71.3673
+   ],
+   "zoom": 12,
+   "label": false,
+   "name": {
+    "no": "Chelmsford",
+    "en": "Chelmsford"
+   }
+  },
+  "world": {
+   "coords": [
+    44.0,
+    -42.0
+   ],
+   "zoom": 3.1,
+   "name": {
+    "no": "Atlanterhavet",
+    "en": "The Atlantic"
+   },
+   "label": false
+  },
+  "atlantic-nw": {
+   "coords": [
+    58.0,
+    -78.0
+   ],
+   "zoom": 3,
+   "name": {
+    "no": "Nordvest",
+    "en": "North-west"
+   },
+   "label": false
+  },
+  "atlantic-se": {
+   "coords": [
+    28.0,
+    10.0
+   ],
+   "zoom": 3,
+   "name": {
+    "no": "Sørøst",
+    "en": "South-east"
+   },
+   "label": false
+  },
+  "britain": {
+   "coords": [
+    53.2,
+    -2.2
+   ],
+   "zoom": 5.0,
+   "name": {
+    "no": "Storbritannia",
+    "en": "Britain"
+   },
+   "label": false
+  },
+  "france": {
+   "coords": [
+    46.8,
+    2.4
+   ],
+   "zoom": 5.0,
+   "name": {
+    "no": "Frankrike",
+    "en": "France"
+   },
+   "label": false
+  },
+  "london": {
+   "coords": [
+    51.5074,
+    -0.1278
+   ],
+   "zoom": 6.1,
+   "name": {
+    "no": "London",
+    "en": "London"
+   }
+  },
+  "colonies": {
+   "coords": [
+    39.2,
+    -74.6
+   ],
+   "zoom": 4.65,
+   "name": {
+    "no": "Koloniene",
+    "en": "The colonies"
+   },
+   "label": false
+  },
+  "boston-wide": {
+   "coords": [
+    42.36,
+    -71.06
+   ],
+   "zoom": 8.6,
+   "name": {
+    "no": "Boston",
+    "en": "Boston"
+   },
+   "label": false
+  },
+  "europe": {
+   "coords": [
+    50.0,
+    -2.0
+   ],
+   "zoom": 4.3,
+   "name": {
+    "no": "Europa",
+    "en": "Europe"
+   },
+   "label": false
+  },
+  "colonies-n": {
+   "coords": [
+    47.6,
+    -66.6
+   ],
+   "zoom": 6,
+   "name": {
+    "no": "Nord",
+    "en": "North"
+   },
+   "label": false
+  },
+  "colonies-s": {
+   "coords": [
+    30.2,
+    -86.2
+   ],
+   "zoom": 6,
+   "name": {
+    "no": "Sør",
+    "en": "South"
+   },
+   "label": false
+  }
+ },
+ "routes": {
+  "british-out": {
+   "side": "british",
+   "label": {
+    "no": "Britene marsjerer ut",
+    "en": "The British march out"
+   },
+   "coords": [
+    [
+     42.355,
+     -71.0656
+    ],
+    [
+     42.372,
+     -71.078
+    ],
+    [
+     42.3736,
+     -71.1097
+    ],
+    [
+     42.4154,
+     -71.1565
+    ],
+    [
+     42.4492,
+     -71.2311
+    ],
+    [
+     42.4604,
+     -71.3489
+    ]
+   ],
+   "strength": 700
+  },
+  "revere-ride": {
+   "side": "patriot",
+   "label": {
+    "no": "Reveres ritt",
+    "en": "Revere's ride"
+   },
+   "coords": [
+    [
+     42.3782,
+     -71.0602
+    ],
+    [
+     42.4184,
+     -71.1062
+    ],
+    [
+     42.4154,
+     -71.1565
+    ],
+    [
+     42.4492,
+     -71.2311
+    ]
+   ]
+  },
+  "dawes-ride": {
+   "side": "patriot",
+   "label": {
+    "no": "Dawes' ritt",
+    "en": "Dawes's ride"
+   },
+   "coords": [
+    [
+     42.343,
+     -71.062
+    ],
+    [
+     42.332,
+     -71.095
+    ],
+    [
+     42.348,
+     -71.121
+    ],
+    [
+     42.3736,
+     -71.1097
+    ],
+    [
+     42.4154,
+     -71.1565
+    ],
+    [
+     42.4492,
+     -71.2311
+    ]
+   ]
+  },
+  "prescott-ride": {
+   "side": "patriot",
+   "label": {
+    "no": "Prescott kommer fram",
+    "en": "Prescott gets through"
+   },
+   "coords": [
+    [
+     42.4492,
+     -71.2311
+    ],
+    [
+     42.446,
+     -71.265
+    ],
+    [
+     42.452,
+     -71.276
+    ],
+    [
+     42.458,
+     -71.326
+    ],
+    [
+     42.4604,
+     -71.3489
+    ]
+   ]
+  },
+  "british-retreat": {
+   "side": "british",
+   "label": {
+    "no": "Retretten",
+    "en": "The retreat"
+   },
+   "coords": [
+    [
+     42.4604,
+     -71.3489
+    ],
+    [
+     42.458,
+     -71.326
+    ],
+    [
+     42.452,
+     -71.276
+    ],
+    [
+     42.4492,
+     -71.2311
+    ],
+    [
+     42.4154,
+     -71.1565
+    ],
+    [
+     42.3782,
+     -71.0602
+    ]
+   ],
+   "strength": 700
+  },
+  "percy-relief": {
+   "side": "british",
+   "label": {
+    "no": "Percys unnsetning",
+    "en": "Percy's relief column"
+   },
+   "coords": [
+    [
+     42.3601,
+     -71.0589
+    ],
+    [
+     42.33,
+     -71.08
+    ],
+    [
+     42.355,
+     -71.13
+    ],
+    [
+     42.39,
+     -71.145
+    ],
+    [
+     42.4154,
+     -71.1565
+    ],
+    [
+     42.4492,
+     -71.2311
+    ]
+   ],
+   "strength": 1000
+  },
+  "atlantic": {
+   "side": "british",
+   "naval": true,
+   "label": {
+    "no": "Fem uker over Atlanteren",
+    "en": "Five weeks across the Atlantic"
+   },
+   "coords": [
+    [
+     51.4,
+     -1.0
+    ],
+    [
+     49.5,
+     -12.0
+    ],
+    [
+     45.0,
+     -30.0
+    ],
+    [
+     42.0,
+     -48.0
+    ],
+    [
+     42.2,
+     -62.0
+    ],
+    [
+     42.35,
+     -70.9
+    ]
+   ]
+  },
+  "militia-bridge": {
+   "side": "patriot",
+   "label": {
+    "no": "Militsen går ned mot brua",
+    "en": "The militia walk down to the bridge"
+   },
+   "strength": 400,
+   "coords": [
+    [
+     42.4771,
+     -71.3548
+    ],
+    [
+     42.4738,
+     -71.3536
+    ],
+    [
+     42.4693,
+     -71.352
+    ]
+   ]
+  },
+  "into-lexington": {
+   "side": "british",
+   "label": {
+    "no": "Kolonnen inn mot Lexington",
+    "en": "The column into Lexington"
+   },
+   "strength": 700,
+   "coords": [
+    [
+     42.4424,
+     -71.2162
+    ],
+    [
+     42.4462,
+     -71.2245
+    ],
+    [
+     42.4489,
+     -71.2303
+    ]
+   ]
+  },
+  "lexington-line": {
+   "side": "patriot",
+   "label": {
+    "no": "Militsen på grønningen",
+    "en": "The militia on the green"
+   },
+   "coords": [
+    [
+     42.4472,
+     -71.2326
+    ],
+    [
+     42.4492,
+     -71.2311
+    ],
+    [
+     42.4512,
+     -71.2296
+    ]
+   ]
+  },
+  "into-concord": {
+   "side": "british",
+   "label": {
+    "no": "Kolonnen inn i Concord",
+    "en": "The column into Concord"
+   },
+   "strength": 700,
+   "coords": [
+    [
+     42.4553,
+     -71.316
+    ],
+    [
+     42.4585,
+     -71.335
+    ],
+    [
+     42.4604,
+     -71.347
+    ]
+   ]
+  },
+  "bridge-british-line": {
+   "side": "british",
+   "label": {
+    "no": "Britene på østsiden av brua",
+    "en": "The British on the town side"
+   },
+   "coords": [
+    [
+     42.4677,
+     -71.3516
+    ],
+    [
+     42.4693,
+     -71.3512
+    ],
+    [
+     42.4709,
+     -71.3508
+    ]
+   ]
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Før alt dette",
+    "en": "Before any of this"
+   },
+   "clock": {
+    "no": "1763–1775",
+    "en": "1763–1775"
+   },
+   "beats": [
     {
-      "id": "s0",
-      "title": {
-        "no": "Før alt dette",
-        "en": "Before any of this"
+     "id": "s0.b1",
+     "say": {
+      "no": "Krigen som skapte USA begynte med en krangel om penger.",
+      "en": "The war that made the United States began as an argument about money."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
       },
-      "clock": {
+      {
+       "on": "start",
+       "do": "border.set",
+       "country": true,
+       "state": false
+      },
+      {
+       "on": "start",
+       "do": "map.fitPlaces",
+       "places": [
+        "atlantic-nw",
+        "atlantic-se"
+       ],
+       "over": 0.1
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "day"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "I sytten sekstitre er Storbritannia det mektigste landet i verden. De har nettopp slått Frankrike i en krig som ble utkjempet på fire kontinenter.",
+      "en": "In seventeen sixty-three Britain is the most powerful country on earth. It has just beaten France in a war fought on four continents at once."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:Storbritannia",
+        "en": "word:Britain"
+       },
+       "do": "region.show",
+       "names": [
+        "Britain"
+       ],
+       "side": "british"
+      },
+      {
+       "on": {
+        "no": "word:Frankrike",
+        "en": "word:France"
+       },
+       "do": "region.show",
+       "names": [
+        "France"
+       ],
+       "side": "french"
+      },
+      {
+       "on": {
+        "no": "word:Frankrike",
+        "en": "word:France"
+       },
+       "do": "map.flyTo",
+       "to": "europe",
+       "over": 2.2
+      }
+     ],
+     "gapAfter": 1.0
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Men kriger koster. Storbritannia sitter igjen med en gjeld så stor at ingen i London helt vet hvordan den skal betales.",
+      "en": "But wars cost money. Britain is left with a debt so large that nobody in London is quite sure how to pay it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "region.clear"
+      },
+      {
+       "on": {
+        "no": "word:London",
+        "en": "word:London"
+       },
+       "do": "map.flyTo",
+       "to": "london",
+       "over": 2.4
+      },
+      {
+       "on": {
+        "no": "word:gjeld",
+        "en": "word:debt"
+       },
+       "do": "stat.show",
+       "value": "£130 000 000",
+       "label": {
+        "no": "britisk statsgjeld",
+        "en": "British national debt"
+       },
+       "side": "british"
+      }
+     ],
+     "gapAfter": 1.0
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Løsningen virker rimelig nok fra London. På den andre siden av Atlanteren ligger tretten kolonier som også vant den krigen. La dem betale sin del.",
+      "en": "From London the answer looks reasonable enough. On the other side of the Atlantic lie thirteen colonies who also won that war. Let them pay their share."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:Atlanteren",
+        "en": "word:Atlantic"
+       },
+       "do": "route.draw",
+       "id": "atlantic",
+       "over": 4.0
+      },
+      {
+       "on": {
+        "no": "word:kolonier",
+        "en": "word:colonies"
+       },
+       "do": "map.fitPlaces",
+       "places": [
+        "colonies-n",
+        "colonies-s"
+       ],
+       "over": 2.6
+      },
+      {
+       "on": {
+        "no": "word:Atlanteren",
+        "en": "word:Atlantic"
+       },
+       "do": "sound.ambience",
+       "id": "sea",
+       "gainDb": -14
+      }
+     ],
+     "gapAfter": 1.0
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Her er de. Tretten kolonier langs kysten, fra Georgia i sør til New Hampshire i nord. Rundt to og en halv million mennesker.",
+      "en": "Here they are. Thirteen colonies along the coast, from Georgia in the south to New Hampshire in the north. About two and a half million people."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "route.clear"
+      },
+      {
+       "on": {
+        "no": "word:Tretten",
+        "en": "word:Thirteen"
+       },
+       "do": "region.show",
+       "names": [
+        "New Hampshire",
+        "Massachusetts",
+        "Rhode Island",
+        "Connecticut",
+        "New York",
+        "New Jersey",
+        "Pennsylvania",
+        "Delaware",
+        "Maryland",
+        "Virginia",
+        "North Carolina",
+        "South Carolina",
+        "Georgia"
+       ],
+       "side": "patriot",
+       "over": 2.0
+      },
+      {
+       "on": {
+        "no": "word:million",
+        "en": "word:million"
+       },
+       "do": "stat.show",
+       "value": "2 500 000",
+       "label": {
+        "no": "innbyggere i koloniene",
+        "en": "people in the colonies"
+       },
+       "side": "patriot"
+      }
+     ],
+     "gapAfter": 1.2
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "De har ingen i det britiske parlamentet. Ingen som stemmer for dem, ingen som taler deres sak. Og nå skal de skatte.",
+      "en": "They have nobody in the British Parliament. Nobody voting for them, nobody arguing their case. And now they are to be taxed."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:parlamentet",
+        "en": "word:Parliament"
+       },
+       "do": "stat.show",
+       "value": "0",
+       "label": {
+        "no": "representanter i London",
+        "en": "seats in London"
+       },
+       "side": "patriot"
+      },
+      {
+       "on": {
+        "no": "word:parlamentet",
+        "en": "word:Parliament"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "parliament"
+      },
+      {
+       "on": {
+        "no": "word:stemmer",
+        "en": "word:voting"
+       },
+       "do": "term.mark",
+       "kind": "topic",
+       "id": "who-could-vote"
+      }
+     ],
+     "gapAfter": 1.0
+    },
+    {
+     "id": "s0.b7",
+     "say": {
+      "no": "Det er dette som blir slagordet: ingen skatt uten representasjon. I tolv år krangler de. Skatt etter skatt, boikott etter boikott.",
+      "en": "This becomes the slogan: no taxation without representation. For twelve years they argue. Tax after tax, boycott after boycott."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:slagordet",
+        "en": "word:slogan"
+       },
+       "do": "quote.show",
+       "id": "slogan"
+      },
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:tolv",
+        "en": "word:twelve"
+       },
+       "do": "caption.note",
+       "value": {
         "no": "1763–1775",
         "en": "1763–1775"
+       }
       },
-      "beats": [
-        {
-          "id": "s0.b1",
-          "say": {
-            "no": "Krigen som skapte USA begynte med en krangel om penger.",
-            "en": "The war that made the United States began as an argument about money."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedOpen"
-            },
-            {
-              "on": "start",
-              "do": "border.set",
-              "country": true,
-              "state": false
-            },
-            {
-              "on": "start",
-              "do": "map.fitPlaces",
-              "places": [
-                "atlantic-nw",
-                "atlantic-se"
-              ],
-              "over": 0.1
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "day"
-            }
-          ],
-          "gapAfter": 0.9
-        },
-        {
-          "id": "s0.b2",
-          "say": {
-            "no": "I sytten sekstitre er Storbritannia det mektigste landet i verden. De har nettopp slått Frankrike i en krig som ble utkjempet på fire kontinenter.",
-            "en": "In seventeen sixty-three Britain is the most powerful country on earth. It has just beaten France in a war fought on four continents at once."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:Storbritannia",
-                "en": "word:Britain"
-              },
-              "do": "region.show",
-              "names": [
-                "Britain"
-              ],
-              "side": "british"
-            },
-            {
-              "on": {
-                "no": "word:Frankrike",
-                "en": "word:France"
-              },
-              "do": "region.show",
-              "names": [
-                "France"
-              ],
-              "side": "french"
-            },
-            {
-              "on": {
-                "no": "word:Frankrike",
-                "en": "word:France"
-              },
-              "do": "map.flyTo",
-              "to": "europe",
-              "over": 2.2
-            }
-          ],
-          "gapAfter": 1.0
-        },
-        {
-          "id": "s0.b3",
-          "say": {
-            "no": "Men kriger koster. Storbritannia sitter igjen med en gjeld så stor at ingen i London helt vet hvordan den skal betales.",
-            "en": "But wars cost money. Britain is left with a debt so large that nobody in London is quite sure how to pay it."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "region.clear"
-            },
-            {
-              "on": {
-                "no": "word:London",
-                "en": "word:London"
-              },
-              "do": "map.flyTo",
-              "to": "london",
-              "over": 2.4
-            },
-            {
-              "on": {
-                "no": "word:gjeld",
-                "en": "word:debt"
-              },
-              "do": "stat.show",
-              "value": "£130 000 000",
-              "label": {
-                "no": "britisk statsgjeld",
-                "en": "British national debt"
-              },
-              "side": "british"
-            }
-          ],
-          "gapAfter": 1.0
-        },
-        {
-          "id": "s0.b4",
-          "say": {
-            "no": "Løsningen virker rimelig nok fra London. På den andre siden av Atlanteren ligger tretten kolonier som også vant den krigen. La dem betale sin del.",
-            "en": "From London the answer looks reasonable enough. On the other side of the Atlantic lie thirteen colonies who also won that war. Let them pay their share."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:Atlanteren",
-                "en": "word:Atlantic"
-              },
-              "do": "route.draw",
-              "id": "atlantic",
-              "over": 4.0
-            },
-            {
-              "on": {
-                "no": "word:kolonier",
-                "en": "word:colonies"
-              },
-              "do": "map.fitPlaces",
-              "places": [
-                "colonies-n",
-                "colonies-s"
-              ],
-              "over": 2.6
-            },
-            {
-              "on": {
-                "no": "word:Atlanteren",
-                "en": "word:Atlantic"
-              },
-              "do": "sound.ambience",
-              "id": "sea",
-              "gainDb": -14
-            }
-          ],
-          "gapAfter": 1.0
-        },
-        {
-          "id": "s0.b5",
-          "say": {
-            "no": "Her er de. Tretten kolonier langs kysten, fra Georgia i sør til New Hampshire i nord. Rundt to og en halv million mennesker.",
-            "en": "Here they are. Thirteen colonies along the coast, from Georgia in the south to New Hampshire in the north. About two and a half million people."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "route.clear"
-            },
-            {
-              "on": {
-                "no": "word:Tretten",
-                "en": "word:Thirteen"
-              },
-              "do": "region.show",
-              "names": [
-                "New Hampshire",
-                "Massachusetts",
-                "Rhode Island",
-                "Connecticut",
-                "New York",
-                "New Jersey",
-                "Pennsylvania",
-                "Delaware",
-                "Maryland",
-                "Virginia",
-                "North Carolina",
-                "South Carolina",
-                "Georgia"
-              ],
-              "side": "patriot",
-              "over": 2.0
-            },
-            {
-              "on": {
-                "no": "word:million",
-                "en": "word:million"
-              },
-              "do": "stat.show",
-              "value": "2 500 000",
-              "label": {
-                "no": "innbyggere i koloniene",
-                "en": "people in the colonies"
-              },
-              "side": "patriot"
-            }
-          ],
-          "gapAfter": 1.2
-        },
-        {
-          "id": "s0.b6",
-          "say": {
-            "no": "De har ingen i det britiske parlamentet. Ingen som stemmer for dem, ingen som taler deres sak. Og nå skal de skatte.",
-            "en": "They have nobody in the British Parliament. Nobody voting for them, nobody arguing their case. And now they are to be taxed."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:parlamentet",
-                "en": "word:Parliament"
-              },
-              "do": "stat.show",
-              "value": "0",
-              "label": {
-                "no": "representanter i London",
-                "en": "seats in London"
-              },
-              "side": "patriot"
-            }
-          ],
-          "gapAfter": 1.0
-        },
-        {
-          "id": "s0.b7",
-          "say": {
-            "no": "Det er dette som blir slagordet: ingen skatt uten representasjon. I tolv år krangler de. Skatt etter skatt, boikott etter boikott.",
-            "en": "This becomes the slogan: no taxation without representation. For twelve years they argue. Tax after tax, boycott after boycott."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:slagordet",
-                "en": "word:slogan"
-              },
-              "do": "quote.show",
-              "id": "slogan"
-            },
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:tolv",
-                "en": "word:twelve"
-              },
-              "do": "caption.note",
-              "value": {
-                "no": "1763–1775",
-                "en": "1763–1775"
-              }
-            },
-            {
-              "on": "end",
-              "do": "quote.hide"
-            }
-          ],
-          "gapAfter": 1.0
-        },
-        {
-          "id": "s0.b8",
-          "say": {
-            "no": "Ingen steder er det verre enn i én havneby i Massachusetts. London har stengt havna og fylt gatene med soldater.",
-            "en": "Nowhere is it worse than in one harbour town in Massachusetts. London has closed the port and filled the streets with soldiers."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:Massachusetts",
-                "en": "word:Massachusetts"
-              },
-              "do": "region.show",
-              "names": [
-                "Massachusetts"
-              ],
-              "side": "patriot",
-              "strength": 4.6
-            },
-            {
-              "on": {
-                "no": "word:havna",
-                "en": "word:port"
-              },
-              "do": "map.flyTo",
-              "to": "boston-wide",
-              "over": 3.0
-            }
-          ],
-          "gapAfter": 1.0
-        },
-        {
-          "id": "s0.b9",
-          "say": {
-            "no": "Byen er Boston. Og det er her tolv år med krangel skal bli til noe helt annet.",
-            "en": "The town is Boston. And this is where twelve years of argument turn into something else entirely."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "region.clear"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "dusk"
-            },
-            {
-              "on": {
-                "no": "word:Boston",
-                "en": "word:Boston"
-              },
-              "do": "marker.show",
-              "at": "boston",
-              "label": {
-                "no": "Boston",
-                "en": "Boston"
-              },
-              "side": "british"
-            },
-            {
-              "on": "start",
-              "do": "sound.ambience"
-            }
-          ],
-          "gapAfter": 1.4
-        }
-      ]
+      {
+       "on": "end",
+       "do": "quote.hide"
+      },
+      {
+       "on": {
+        "no": "word:skatt",
+        "en": "word:taxation"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "tax"
+      }
+     ],
+     "gapAfter": 1.0
     },
     {
-      "id": "s1",
-      "title": {
-        "no": "Kvelden før",
-        "en": "The night before"
+     "id": "s0.b8",
+     "say": {
+      "no": "Ingen steder er det verre enn i én havneby i Massachusetts. London har stengt havna og fylt gatene med soldater.",
+      "en": "Nowhere is it worse than in one harbour town in Massachusetts. London has closed the port and filled the streets with soldiers."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:Massachusetts",
+        "en": "word:Massachusetts"
+       },
+       "do": "region.show",
+       "names": [
+        "Massachusetts"
+       ],
+       "side": "patriot",
+       "strength": 4.6
       },
-      "clock": {
-        "no": "18. april 1775, kveld",
-        "en": "18 April 1775, evening"
-      },
-      "beats": [
-        {
-          "id": "s1.b1",
-          "say": {
-            "no": "Kvelden den attende april, sytten hundre og syttifem. Byen ligger på en halvøy, med én eneste smal vei ut til fastlandet.",
-            "en": "The evening of the eighteenth of April, seventeen seventy-five. The town sits on a peninsula, with one single narrow road out to the mainland."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedTension"
-            },
-            {
-              "on": "start",
-              "do": "road.draw",
-              "id": "british-out"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "night"
-            },
-            {
-              "on": "start",
-              "do": "map.time",
-              "value": {
-                "no": "18. april, kveld",
-                "en": "18 April, evening"
-              }
-            },
-            {
-              "on": {
-                "no": "word:Byen",
-                "en": "word:town"
-              },
-              "do": "map.flyTo",
-              "to": "boston",
-              "over": 3.4
-            }
-          ],
-          "gapAfter": 0.85
-        },
-        {
-          "id": "s1.b2",
-          "say": {
-            "no": "Her bor det rundt femten tusen mennesker. Og fire tusen britiske soldater som ingen har invitert.",
-            "en": "About fifteen thousand people live here. And four thousand British soldiers nobody invited."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:femten",
-                "en": "word:fifteen"
-              },
-              "do": "stat.show",
-              "value": "15 000",
-              "label": {
-                "no": "innbyggere",
-                "en": "residents"
-              }
-            },
-            {
-              "on": {
-                "no": "word:fire",
-                "en": "word:four"
-              },
-              "do": "stat.show",
-              "value": "4 000",
-              "label": {
-                "no": "britiske soldater",
-                "en": "British soldiers"
-              },
-              "side": "british"
-            }
-          ],
-          "gapAfter": 1.15
-        },
-        {
-          "id": "s1.b3",
-          "say": {
-            "no": "Mannen som har ansvaret heter Thomas Gage. Han er general og guvernør, og han har bodd i Amerika i nesten tjue år.",
-            "en": "The man in charge is called Thomas Gage. He is a general and a governor, and he has lived in America for almost twenty years."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": "word:Gage",
-              "do": "portrait.show",
-              "id": "gage"
-            }
-          ],
-          "gapAfter": 0.75
-        },
-        {
-          "id": "s1.b4",
-          "say": {
-            "no": "Han har prøvd å advare London. Skal dere slå ned dette, skrev han hjem, trenger dere en mye større hær enn dere tror. Ingen ville høre.",
-            "en": "He has tried to warn London. If you mean to put this down, he wrote home, you will need a far larger army than you think. Nobody wanted to hear it."
-          },
-          "gapAfter": 1.15,
-          "cues": [
-            {
-              "on": {
-                "no": "word:advare",
-                "en": "word:warn"
-              },
-              "do": "quote.show",
-              "id": "gage-warning"
-            },
-            {
-              "on": "end",
-              "do": "quote.hide"
-            }
-          ]
-        },
-        {
-          "id": "s1.b5",
-          "say": {
-            "no": "Den attende april får han en ordre han ikke kan si nei til. Marsjer ut til Concord, tretti kilometer vestover. Der har opprørerne samlet et våpenlager. Ta det. Gjør det om natta, og gjør det stille.",
-            "en": "On the eighteenth of April he receives an order he cannot refuse. March out to Concord, thirty kilometres west. The rebels have gathered a weapons store there. Take it. Do it at night, and do it quietly."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "portrait.hide"
-            },
-            {
-              "on": "word:Concord",
-              "do": "map.flyTo",
-              "to": "wide"
-            },
-            {
-              "on": "word:Concord",
-              "do": "marker.show",
-              "at": "concord",
-              "label": {
-                "no": "Concord",
-                "en": "Concord"
-              },
-              "kind": "target"
-            },
-            {
-              "on": {
-                "no": "word:Concord",
-                "en": "word:Concord"
-              },
-              "do": "place.highlight",
-              "at": "concord",
-              "tone": "gold",
-              "centre": false
-            }
-          ],
-          "gapAfter": 0.95
-        },
-        {
-          "id": "s1.b6",
-          "say": {
-            "no": "Gage forteller planen til svært få. Sannsynligvis også til kona si, Margaret, som er født i New Jersey. Hun har selv sagt at hun føler seg som en kvinne som er glad i to menn som slåss.",
-            "en": "Gage tells the plan to very few. Probably including his wife Margaret, who was born in New Jersey. She said herself that she felt like a woman fond of two men who were fighting."
-          },
-          "cues": [
-            {
-              "on": "word:Margaret",
-              "do": "portrait.show",
-              "id": "margaret-gage"
-            }
-          ],
-          "gapAfter": 0.85
-        },
-        {
-          "id": "s1.b7",
-          "say": {
-            "no": "Vi vet ikke om hun sa noe til noen. Vi vet bare at planen lekket samme kveld.",
-            "en": "We do not know whether she told anyone. We only know that the plan leaked that same evening."
-          },
-          "cues": [
-            {
-              "on": "end",
-              "do": "portrait.hide"
-            }
-          ],
-          "gapAfter": 1.75
-        },
-        {
-          "id": "s1.b8",
-          "say": {
-            "no": "Klokka ti om kvelden stiller sju hundre soldater opp nede ved vannet på Boston Common. De får ikke lov til å snakke. De blir rodd over til fastlandet i småbåter, i mørket, og går i land i vann til knærne.",
-            "en": "At ten in the evening, seven hundred soldiers form up by the water on Boston Common. They are forbidden to speak. They are rowed across to the mainland in small boats, in darkness, and wade ashore in water up to their knees."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedUrgent"
-            },
-            {
-              "on": "start",
-              "do": "marker.clear"
-            },
-            {
-              "on": {
-                "no": "word:Klokka",
-                "en": "word:ten"
-              },
-              "do": "map.time",
-              "value": {
-                "no": "22:00",
-                "en": "22:00"
-              }
-            },
-            {
-              "on": "word:Common",
-              "do": "map.flyTo",
-              "to": "boston-common"
-            },
-            {
-              "on": {
-                "no": "word:rodd",
-                "en": "word:rowed"
-              },
-              "do": "map.flyTo",
-              "to": "lechmere"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "boston-common",
-              "kind": "point"
-            },
-            {
-              "on": {
-                "no": "word:rodd",
-                "en": "word:rowed"
-              },
-              "do": "sound.ambience",
-              "id": "oars",
-              "gainDb": -11
-            },
-            {
-              "on": {
-                "no": "word:knærne",
-                "en": "word:wade"
-              },
-              "do": "sound.ambience",
-              "id": "wading",
-              "gainDb": -10
-            }
-          ],
-          "gapAfter": 1.05
-        },
-        {
-          "id": "s1.b9",
-          "say": {
-            "no": "Så begynner de å gå.",
-            "en": "Then they begin to walk."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:gå",
-                "en": "word:walk"
-              },
-              "do": "route.draw",
-              "id": "british-out",
-              "over": 4.0
-            },
-            {
-              "on": {
-                "no": "word:gå",
-                "en": "word:walk"
-              },
-              "do": "sound.ambience",
-              "id": "boots",
-              "gainDb": -13
-            }
-          ],
-          "gapAfter": 3.15
-        }
-      ]
+      {
+       "on": {
+        "no": "word:havna",
+        "en": "word:port"
+       },
+       "do": "map.flyTo",
+       "to": "boston-wide",
+       "over": 3.0
+      }
+     ],
+     "gapAfter": 1.0
     },
     {
-      "id": "s2",
-      "title": {
-        "no": "Rytterne",
-        "en": "The riders"
+     "id": "s0.b9",
+     "say": {
+      "no": "Byen er Boston. Og det er her tolv år med krangel skal bli til noe helt annet.",
+      "en": "The town is Boston. And this is where twelve years of argument turn into something else entirely."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "region.clear"
       },
-      "clock": {
-        "no": "18.–19. april, natt",
-        "en": "18–19 April, night"
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "dusk"
       },
-      "beats": [
-        {
-          "id": "s2.b1",
-          "say": {
-            "no": "Men byen har allerede sett dem. Oppe i tårnet på Old North Church er det avtalt et signal: én lykt i vinduet betyr at britene går landeveien. To lykter betyr at de kommer over vannet.",
-            "en": "But the town has already seen them. Up in the tower of the Old North Church a signal has been arranged: one lantern in the window means the British are going by land. Two lanterns mean they are coming by water."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedUrgent"
-            },
-            {
-              "on": "start",
-              "do": "road.draw",
-              "id": "british-out"
-            },
-            {
-              "on": "start",
-              "do": "place.clear"
-            },
-            {
-              "on": "start",
-              "do": "route.clear"
-            },
-            {
-              "on": {
-                "no": "word:tårnet",
-                "en": "word:tower"
-              },
-              "do": "map.flyTo",
-              "to": "old-north"
-            },
-            {
-              "on": {
-                "no": "word:tårnet",
-                "en": "word:tower"
-              },
-              "do": "image.show",
-              "id": "old-north",
-              "mode": "inset"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "old-north",
-              "kind": "point"
-            }
-          ],
-          "gapAfter": 0.75
-        },
-        {
-          "id": "s2.b1b",
-          "say": {
-            "no": "Denne kvelden blir det tent to.",
-            "en": "Tonight, two are lit."
-          },
-          "gapAfter": 1.35,
-          "cues": [
-            {
-              "on": {
-                "no": "word:tent",
-                "en": "word:lit"
-              },
-              "do": "caption.note",
-              "value": {
-                "no": "To lykter — over vannet",
-                "en": "Two lanterns — by water"
-              }
-            },
-            {
-              "on": {
-                "no": "word:tent",
-                "en": "word:lit"
-              },
-              "do": "place.highlight",
-              "at": "old-north",
-              "tone": "gold",
-              "centre": false
-            }
-          ]
-        },
-        {
-          "id": "s2.b2",
-          "say": {
-            "no": "Mannen bak signalet heter Paul Revere, og han er sølvsmed i Boston. Lyktene er hans beskjed til folkene på den andre siden av elva, i tilfelle han selv ikke kommer seg ut av byen i natt.",
-            "en": "The man behind the signal is called Paul Revere, and he is a silversmith in Boston. The lanterns are his message to the people on the far side of the river, in case he cannot get out of the town himself tonight."
-          },
-          "cues": [
-            {
-              "on": "word:Revere",
-              "do": "portrait.show",
-              "id": "revere"
-            },
-            {
-              "on": "end",
-              "do": "image.hide"
-            }
-          ],
-          "gapAfter": 0.95
-        },
-        {
-          "id": "s2.b3",
-          "say": {
-            "no": "Han blir rodd over elva, forbi et britisk krigsskip, med årene surret inn i tøy så de ikke skal lage lyd. På den andre siden står det en hest og venter.",
-            "en": "He is rowed across the river, past a British warship, with the oars wrapped in cloth so they make no sound. On the far side a horse is waiting."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:hest",
-                "en": "word:horse"
-              },
-              "do": "map.flyTo",
-              "to": "charlestown"
-            },
-            {
-              "on": "end",
-              "do": "route.draw",
-              "id": "revere-ride",
-              "over": 6
-            },
-            {
-              "on": {
-                "no": "word:hest",
-                "en": "word:horse"
-              },
-              "do": "sound.ambience",
-              "id": "hooves",
-              "gainDb": -13
-            },
-            {
-              "on": {
-                "no": "word:rodd",
-                "en": "word:rowed"
-              },
-              "do": "sound.ambience",
-              "id": "oars",
-              "gainDb": -16
-            }
-          ],
-          "gapAfter": 0.95
-        },
-        {
-          "id": "s2.b4",
-          "say": {
-            "no": "Samtidig rir en garver som heter William Dawes ut den andre veien, over landtunga, rett forbi de britiske vaktpostene. Han slipper igjennom fordi han ser ufarlig ut.",
-            "en": "At the same time a tanner called William Dawes rides out the other way, across the neck, straight past the British sentries. He gets through because he looks harmless."
-          },
-          "cues": [
-            {
-              "on": "word:Dawes",
-              "do": "portrait.show",
-              "id": "dawes"
-            },
-            {
-              "on": {
-                "no": "word:landtunga",
-                "en": "word:neck"
-              },
-              "do": "route.draw",
-              "id": "dawes-ride",
-              "over": 6
-            }
-          ],
-          "gapAfter": 1.15
-        },
-        {
-          "id": "s2.b5",
-          "say": {
-            "no": "Dette er ikke to modige menn. Dette er et system. For hver bygd de vekker, rir det nye folk videre i nye retninger. Kirkeklokker ringer. Skudd fyres av i lufta. På noen timer vet et helt landskap hva som er på vei.",
-            "en": "This is not two brave men. This is a system. For every town they wake, new riders go out in new directions. Church bells ring. Guns are fired into the air. Within hours, an entire countryside knows what is coming."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "portrait.hide"
-            },
-            {
-              "on": "word:system",
-              "do": "map.flyTo",
-              "to": "wide"
-            },
-            {
-              "on": {
-                "no": "word:kirkeklokker",
-                "en": "word:bells"
-              },
-              "do": "sound.play",
-              "id": "alarmBell",
-              "gainDb": -3
-            },
-            {
-              "on": {
-                "no": "word:Skudd",
-                "en": "word:Guns"
-              },
-              "do": "sound.play",
-              "id": "musket",
-              "times": 4,
-              "spread": 2.6,
-              "gainDb": -7
-            }
-          ],
-          "gapAfter": 1.35
-        },
-        {
-          "id": "s2.b6",
-          "say": {
-            "no": "Revere når Lexington rundt midnatt. I et prestehus i utkanten av bygda sover de to mennene britene aller helst vil ha tak i. Den ene er Samuel Adams, som har organisert motstanden i Boston.",
-            "en": "Revere reaches Lexington around midnight. In a parsonage on the edge of the village sleep the two men the British would most like to catch. One is Samuel Adams, who has organised the resistance in Boston."
-          },
-          "gapAfter": 0.85,
-          "cues": [
-            {
-              "on": "word:Lexington",
-              "do": "map.flyTo",
-              "to": "lexington-green"
-            },
-            {
-              "on": {
-                "no": "word:midnatt",
-                "en": "word:midnight"
-              },
-              "do": "map.time",
-              "value": {
-                "no": "00:00",
-                "en": "00:00"
-              }
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "lexington-green",
-              "kind": "point"
-            },
-            {
-              "on": "word:Samuel",
-              "do": "portrait.show",
-              "id": "sam-adams"
-            }
-          ]
-        },
-        {
-          "id": "s2.b6b",
-          "say": {
-            "no": "Den andre er John Hancock, den rikeste mannen i Boston, og han som betaler for det meste av det Adams setter i gang.",
-            "en": "The other is John Hancock, the richest man in Boston, and the one who pays for most of what Adams sets in motion."
-          },
-          "gapAfter": 0.9,
-          "cues": [
-            {
-              "on": "word:Hancock",
-              "do": "portrait.show",
-              "id": "hancock"
-            }
-          ]
-        },
-        {
-          "id": "s2.b6c",
-          "say": {
-            "no": "Revere banker på og får dem opp. Han roper ikke at britene kommer. Alle her er britiske. Han sier at de regulære troppene er på vei ut.",
-            "en": "Revere knocks and gets them up. He does not shout that the British are coming. Everyone here is British. He says the Regulars are coming out."
-          },
-          "gapAfter": 1.05,
-          "cues": [
-            {
-              "on": "start",
-              "do": "portrait.hide"
-            },
-            {
-              "on": {
-                "no": "word:banker",
-                "en": "word:knocks"
-              },
-              "do": "sound.play",
-              "id": "doorKnock",
-              "gainDb": -8
-            }
-          ]
-        },
-        {
-          "id": "s2.b7",
-          "say": {
-            "no": "På vei videre mot Concord møter han og Dawes en ung lege som heter Samuel Prescott, som er på vei hjem fra kjæresten sin.",
-            "en": "Riding on towards Concord, he and Dawes meet a young doctor called Samuel Prescott, on his way home from his sweetheart."
-          },
-          "cues": [
-            {
-              "on": "word:Prescott",
-              "do": "portrait.show",
-              "id": "prescott"
-            }
-          ],
-          "gapAfter": 0.85
-        },
-        {
-          "id": "s2.b8",
-          "say": {
-            "no": "Da kommer en britisk patrulje ut av mørket. Revere blir tatt til fange. Dawes blir kastet av hesten. Prescott hopper over en steinmur, forsvinner inn i en skog han har lekt i som barn, og rir videre alene.",
-            "en": "Then a British patrol comes out of the dark. Revere is captured. Dawes is thrown from his horse. Prescott jumps a stone wall, vanishes into woods he played in as a child, and rides on alone."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "portrait.hide"
-            },
-            {
-              "on": {
-                "no": "word:patrulje",
-                "en": "word:patrol"
-              },
-              "do": "map.flyTo",
-              "to": "revere-capture"
-            },
-            {
-              "on": "word:Prescott",
-              "do": "route.draw",
-              "id": "prescott-ride",
-              "over": 3.5
-            },
-            {
-              "on": {
-                "no": "word:patrulje",
-                "en": "word:patrol"
-              },
-              "do": "place.highlight",
-              "at": "revere-capture",
-              "tone": "red",
-              "centre": false
-            }
-          ],
-          "gapAfter": 1.05
-        },
-        {
-          "id": "s2.b9",
-          "say": {
-            "no": "Han er den eneste av de tre som kommer fram til Concord. Hele varslingen av byen henger på at en ung mann var ute for sent på natta.",
-            "en": "He is the only one of the three to reach Concord. The warning of the whole town comes down to a young man being out too late at night."
-          },
-          "cues": [],
-          "gapAfter": 1.15
-        },
-        {
-          "id": "s2.b9b",
-          "say": {
-            "no": "Og bak ham, i hver eneste bygd de har vekket, står det nå folk oppe i mørket med gevær i hendene. Lexington er en av dem. Der skal britene gjennom om fire timer.",
-            "en": "And behind him, in every town they have woken, people are standing up in the dark with guns in their hands. Lexington is one of them. The British have to pass through it in four hours."
-          },
-          "gapAfter": 2.95,
-          "cues": [
-            {
-              "on": "start",
-              "do": "route.clear"
-            },
-            {
-              "on": "start",
-              "do": "sound.ambience"
-            },
-            {
-              "on": "word:Lexington",
-              "do": "map.flyTo",
-              "to": "lexington-green"
-            },
-            {
-              "on": "word:Lexington",
-              "do": "place.highlight",
-              "at": "lexington-green",
-              "tone": "gold",
-              "centre": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "s3",
-      "title": {
-        "no": "Daggry på Lexington",
-        "en": "Dawn at Lexington"
+      {
+       "on": {
+        "no": "word:Boston",
+        "en": "word:Boston"
+       },
+       "do": "marker.show",
+       "at": "boston",
+       "label": {
+        "no": "Boston",
+        "en": "Boston"
+       },
+       "side": "british"
       },
-      "clock": {
-        "no": "19. april, 04:30",
-        "en": "19 April, 04:30"
+      {
+       "on": "start",
+       "do": "sound.ambience"
       },
-      "beats": [
-        {
-          "id": "s3.b1",
-          "say": {
-            "no": "Klokka er halv fem om morgenen, fire timer etter at Revere red gjennom Lexington. Det er kaldt, og det er så vidt lyst.",
-            "en": "It is half past four in the morning, four hours after Revere rode through Lexington. It is cold, and barely light."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -6
-            },
-            {
-              "on": "start",
-              "do": "road.draw",
-              "id": "british-out"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "dawn"
-            },
-            {
-              "on": "start",
-              "do": "map.time",
-              "value": {
-                "no": "04:30",
-                "en": "04:30"
-              }
-            },
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "lexington-green"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "lexington-green",
-              "kind": "point"
-            },
-            {
-              "on": {
-                "no": "word:kaldt",
-                "en": "word:cold"
-              },
-              "do": "sound.ambience",
-              "id": "wind",
-              "gainDb": -9
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s3.b2",
-          "say": {
-            "no": "På grønningen midt i Lexington står en klynge menn. De har stått her siden klokka ett i natt, fordi Revere vekket dem da han red forbi.",
-            "en": "On the green in the middle of Lexington stands a cluster of men. They have been here since one in the morning, because Revere woke them as he rode past."
-          },
-          "gapAfter": 0.85,
-          "cues": [
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "lexington-green",
-              "zoom": 13.6,
-              "over": 3.0
-            },
-            {
-              "on": {
-                "no": "word:klynge",
-                "en": "word:cluster"
-              },
-              "do": "front.show",
-              "id": "lexington-line",
-              "side": "patriot",
-              "facing": -1,
-              "fluid": true,
-              "over": 2.0
-            }
-          ]
-        },
-        {
-          "id": "s3.b2b",
-          "say": {
-            "no": "Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
-            "en": "Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
-          },
-          "gapAfter": 1.15,
-          "cues": []
-        },
-        {
-          "id": "s3.b3",
-          "say": {
-            "no": "Kapteinen deres heter John Parker. Han er førtifem år, han har tuberkulose, og han er så svak at han knapt får fram stemmen. Om fem måneder er han død.",
-            "en": "Their captain is called John Parker. He is forty-five, he has tuberculosis, and he is so weak he can barely raise his voice. In five months he will be dead."
-          },
-          "cues": [
-            {
-              "on": "word:Parker",
-              "do": "portrait.show",
-              "id": "parker"
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s3.b4",
-          "say": {
-            "no": "De er syttisju mann. Nedover veien kommer det sju hundre.",
-            "en": "There are seventy-seven of them. Coming down the road are seven hundred."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "portrait.hide"
-            },
-            {
-              "on": {
-                "no": "word:syttisju",
-                "en": "word:seventy-seven"
-              },
-              "do": "stat.show",
-              "value": "77",
-              "label": {
-                "no": "på plassen",
-                "en": "on the green"
-              },
-              "side": "patriot"
-            },
-            {
-              "on": {
-                "no": "word:hundre",
-                "en": "word:hundred"
-              },
-              "do": "stat.show",
-              "value": "700",
-              "label": {
-                "no": "på veien",
-                "en": "on the road"
-              },
-              "side": "british"
-            },
-            {
-              "on": {
-                "no": "word:Nedover",
-                "en": "word:Coming"
-              },
-              "do": "route.draw",
-              "id": "into-lexington",
-              "over": 4.5,
-              "fit": false
-            }
-          ],
-          "gapAfter": 1.65
-        },
-        {
-          "id": "s3.b5",
-          "say": {
-            "no": "Parker gir en ordre. Stå her. Ikke skyt med mindre de skyter først.",
-            "en": "Parker gives an order. Stand your ground. Do not fire unless fired upon."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:Stå",
-                "en": "word:Stand"
-              },
-              "do": "quote.show",
-              "id": "parker"
-            },
-            {
-              "on": "end",
-              "do": "quote.hide"
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s3.b6",
-          "say": {
-            "no": "Foran den britiske kolonnen rir major John Pitcairn fram. Han roper til bøndene at de skal spre seg og legge fra seg våpnene.",
-            "en": "At the head of the British column, Major John Pitcairn rides forward. He shouts at the farmers to disperse and lay down their arms."
-          },
-          "cues": [
-            {
-              "on": "word:Pitcairn",
-              "do": "portrait.show",
-              "id": "pitcairn"
-            },
-            {
-              "on": {
-                "no": "word:roper",
-                "en": "word:shouts"
-              },
-              "do": "quote.show",
-              "id": "pitcairn"
-            },
-            {
-              "on": "end",
-              "do": "quote.hide"
-            }
-          ],
-          "gapAfter": 0.85
-        },
-        {
-          "id": "s3.b7",
-          "say": {
-            "no": "Parker ser på styrken som kommer mot ham, og sier til mennene sine at de skal gå. De begynner å gå. Men de tar med seg geværene.",
-            "en": "Parker looks at the force coming towards him, and tells his men to go. They begin to go. But they take their guns with them."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "portrait.hide"
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s3.b8",
-          "say": {
-            "no": "Og da, ingen vet fra hvor, går det av et skudd.",
-            "en": "And then, nobody knows from where, a shot goes off."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music"
-            },
-            {
-              "on": "end",
-              "do": "map.flash"
-            },
-            {
-              "on": "end",
-              "do": "marker.show",
-              "at": "lexington-green",
-              "label": {
-                "no": "Lexington",
-                "en": "Lexington"
-              },
-              "kind": "clash"
-            },
-            {
-              "on": "end",
-              "do": "place.highlight",
-              "at": "lexington-green",
-              "tone": "red",
-              "centre": false
-            },
-            {
-              "on": {
-                "no": "word:skudd",
-                "en": "word:shot"
-              },
-              "do": "sound.play",
-              "id": "musket"
-            }
-          ],
-          "gapAfter": 2.15
-        },
-        {
-          "id": "s3.b9",
-          "say": {
-            "no": "Ingen har noen gang klart å si hvem som skjøt. Begge sider var helt sikre på at det var den andre.",
-            "en": "Nobody has ever been able to say who fired. Both sides were quite certain it was the other."
-          },
-          "gapAfter": 1.55,
-          "cues": [
-            {
-              "on": {
-                "no": "word:Ingen",
-                "en": "word:Nobody"
-              },
-              "do": "caption.note",
-              "value": {
-                "no": "Ingen vet hvem som skjøt",
-                "en": "Nobody knows who fired"
-              }
-            }
-          ]
-        },
-        {
-          "id": "s3.b10",
-          "say": {
-            "no": "De britiske soldatene fyrer av en salve, og så en til, og går fram med bajonett. Det hele er over på noen minutter.",
-            "en": "The British soldiers fire a volley, and then another, and come on with the bayonet. The whole thing is over in a few minutes."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:salve",
-                "en": "word:volley"
-              },
-              "do": "image.show",
-              "id": "doolittle-1",
-              "mode": "inset"
-            },
-            {
-              "on": {
-                "no": "word:salve",
-                "en": "word:volley"
-              },
-              "do": "sound.play",
-              "id": "volley",
-              "gainDb": -2
-            }
-          ],
-          "gapAfter": 1.05
-        },
-        {
-          "id": "s3.b11",
-          "say": {
-            "no": "Åtte amerikanere ligger døde på grønningen. Én britisk soldat er såret i beinet. Jonathan Harrington kryper hjem over veien og dør på sin egen dørstokk, foran kona si.",
-            "en": "Eight Americans lie dead on the green. One British soldier is wounded in the leg. Jonathan Harrington crawls back across the road and dies on his own doorstep, in front of his wife."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "front.clear"
-            },
-            {
-              "on": {
-                "no": "word:Åtte",
-                "en": "word:Eight"
-              },
-              "do": "stat.show",
-              "value": "8",
-              "label": {
-                "no": "amerikanere døde",
-                "en": "Americans dead"
-              },
-              "side": "patriot"
-            },
-            {
-              "on": {
-                "no": "word:Én",
-                "en": "word:One"
-              },
-              "do": "stat.show",
-              "value": "1",
-              "label": {
-                "no": "britisk såret",
-                "en": "British wounded"
-              },
-              "side": "british"
-            }
-          ],
-          "gapAfter": 1.85
-        },
-        {
-          "id": "s3.b12",
-          "say": {
-            "no": "Offiserene får sine egne menn under kontroll igjen med nød og neppe. Så samler kolonnen seg, spiller en seiersmarsj, og går videre mot Concord.",
-            "en": "The officers regain control of their own men only with difficulty. Then the column re-forms, plays a victory march, and moves on towards Concord."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": "start",
-              "do": "image.hide"
-            },
-            {
-              "on": "word:Concord",
-              "do": "map.flyTo",
-              "to": "concord"
-            },
-            {
-              "on": {
-                "no": "word:seiersmarsj",
-                "en": "word:march"
-              },
-              "do": "sound.play",
-              "id": "fife",
-              "gainDb": -9
-            },
-            {
-              "on": {
-                "no": "word:seiersmarsj",
-                "en": "word:march"
-              },
-              "do": "sound.play",
-              "id": "drums",
-              "gainDb": -12
-            }
-          ],
-          "gapAfter": 2.95
-        }
-      ]
-    },
-    {
-      "id": "s4",
-      "title": {
-        "no": "Broen ved Concord",
-        "en": "The bridge at Concord"
-      },
-      "clock": {
-        "no": "19. april, 07:00",
-        "en": "19 April, 07:00"
-      },
-      "beats": [
-        {
-          "id": "s4.b1",
-          "say": {
-            "no": "Klokka sju er britene i Concord. Byen er nesten tom. Folk har flyttet unna det de klarte i løpet av natta.",
-            "en": "By seven o'clock the British are in Concord. The town is almost empty. People moved what they could during the night."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "road.draw",
-              "id": "british-out"
-            },
-            {
-              "on": "start",
-              "do": "place.clear"
-            },
-            {
-              "on": "start",
-              "do": "front.clear"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "day"
-            },
-            {
-              "on": "start",
-              "do": "map.time",
-              "value": {
-                "no": "07:00",
-                "en": "07:00"
-              }
-            },
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "concord"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "concord",
-              "kind": "point"
-            },
-            {
-              "on": {
-                "no": "word:Klokka",
-                "en": "word:seven"
-              },
-              "do": "route.draw",
-              "id": "into-concord",
-              "over": 4.0,
-              "fit": false
-            }
-          ],
-          "gapAfter": 0.95
-        },
-        {
-          "id": "s4.b2",
-          "say": {
-            "no": "Soldatene leter i hus og låver. De finner noen kanonlaveter av tre, litt mel, noen kuler. Nesten ingenting. De bestemmer seg for å brenne det de fant.",
-            "en": "The soldiers search houses and barns. They find some wooden gun carriages, a little flour, some musket balls. Almost nothing. They decide to burn what they found."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:leter",
-                "en": "word:search"
-              },
-              "do": "image.show",
-              "id": "doolittle-2",
-              "mode": "inset"
-            },
-            {
-              "on": {
-                "no": "word:brenne",
-                "en": "word:burn"
-              },
-              "do": "sound.ambience",
-              "id": "fire",
-              "gainDb": -13
-            }
-          ],
-          "gapAfter": 1.15
-        },
-        {
-          "id": "s4.b3",
-          "say": {
-            "no": "Og der gjør de dagens dyreste feil. For røyken stiger opp over byen.",
-            "en": "And there they make the most expensive mistake of the day. Because the smoke rises over the town."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedTension"
-            },
-            {
-              "on": "start",
-              "do": "image.hide"
-            },
-            {
-              "on": "start",
-              "do": "route.clear"
-            },
-            {
-              "on": {
-                "no": "word:røyken",
-                "en": "word:smoke"
-              },
-              "do": "map.flyTo",
-              "to": "north-bridge"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "north-bridge",
-              "kind": "point"
-            },
-            {
-              "on": {
-                "no": "word:røyken",
-                "en": "word:smoke"
-              },
-              "do": "place.highlight",
-              "at": "concord",
-              "tone": "red",
-              "centre": false
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s4.b4",
-          "say": {
-            "no": "Fire hundre milits står på en høyde nord for elva og ser det. De tror britene brenner Concord ned.",
-            "en": "Four hundred militia stand on a hill north of the river and see it. They think the British are burning Concord down."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:hundre",
-                "en": "word:hundred"
-              },
-              "do": "stat.show",
-              "value": "400",
-              "label": {
-                "no": "milits på høyden",
-                "en": "militia on the hill"
-              },
-              "side": "patriot"
-            }
-          ],
-          "gapAfter": 1.05
-        },
-        {
-          "id": "s4.b5",
-          "say": {
-            "no": "En offiser spør høyt: Skal vi la dem brenne byen vår ned?",
-            "en": "An officer asks aloud: will you let them burn the town down?"
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:Skal",
-                "en": "word:Will"
-              },
-              "do": "quote.show",
-              "id": "hosmer"
-            },
-            {
-              "on": "end",
-              "do": "quote.hide"
-            }
-          ],
-          "gapAfter": 1.45
-        },
-        {
-          "id": "s4.b6",
-          "say": {
-            "no": "De går nedover mot broa. I kolonne. To og to. Uten å skyte.",
-            "en": "They walk down towards the bridge. In column. Two by two. Without firing."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:broa",
-                "en": "word:bridge"
-              },
-              "do": "image.show",
-              "id": "doolittle-3",
-              "mode": "inset"
-            },
-            {
-              "on": {
-                "no": "word:broa",
-                "en": "word:bridge"
-              },
-              "do": "front.show",
-              "id": "bridge-british-line",
-              "side": "british",
-              "facing": 1,
-              "over": 1.4
-            },
-            {
-              "on": {
-                "no": "word:går",
-                "en": "word:walk"
-              },
-              "do": "route.draw",
-              "id": "militia-bridge",
-              "over": 5.0
-            },
-            {
-              "on": {
-                "no": "word:kolonne",
-                "en": "word:column"
-              },
-              "do": "sound.ambience",
-              "id": "boots",
-              "gainDb": -13
-            }
-          ],
-          "gapAfter": 1.35
-        },
-        {
-          "id": "s4.b7",
-          "say": {
-            "no": "De britiske soldatene ved broa er hundre mann. De trekker seg tilbake over elva, blir usikre, og noen av dem fyrer av et skudd. Så en hel salve.",
-            "en": "The British at the bridge are a hundred men. They pull back across the river, waver, and some of them fire a shot. Then a full volley."
-          },
-          "gapAfter": 1.15,
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music"
-            },
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "north-bridge",
-              "zoom": 13.5,
-              "over": 7.0
-            },
-            {
-              "on": {
-                "no": "word:hundre",
-                "en": "word:hundred"
-              },
-              "do": "stat.show",
-              "value": "100",
-              "label": {
-                "no": "ved brua",
-                "en": "at the bridge"
-              },
-              "side": "british"
-            }
-          ]
-        },
-        {
-          "id": "s4.b8",
-          "say": {
-            "no": "To amerikanere faller. Og for første gang i historien gir en amerikansk offiser ordre om å skyte på kongens soldater.",
-            "en": "Two Americans fall. And for the first time in history, an American officer gives the order to fire on the king's soldiers."
-          },
-          "gapAfter": 1.25,
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:faller",
-                "en": "word:fall"
-              },
-              "do": "sound.play",
-              "id": "musket",
-              "times": 2,
-              "spread": 0.7,
-              "gainDb": -5
-            }
-          ]
-        },
-        {
-          "id": "s4.b9",
-          "say": {
-            "no": "Ordren er tre ord. Skyt, karer, skyt.",
-            "en": "The order is four words. Fire, fellow soldiers, fire."
-          },
-          "cues": [
-            {
-              "on": "end",
-              "do": "map.flash"
-            },
-            {
-              "on": "end",
-              "do": "marker.show",
-              "at": "north-bridge",
-              "label": {
-                "no": "North Bridge",
-                "en": "North Bridge"
-              },
-              "kind": "clash"
-            },
-            {
-              "on": "end",
-              "do": "place.highlight",
-              "at": "north-bridge",
-              "tone": "red",
-              "centre": false
-            },
-            {
-              "on": {
-                "no": "word:Skyt",
-                "en": "word:Fire"
-              },
-              "do": "sound.play",
-              "id": "volley",
-              "gainDb": -3
-            },
-            {
-              "on": {
-                "no": "word:Skyt",
-                "en": "word:Fire"
-              },
-              "do": "quote.show",
-              "id": "buttrick"
-            }
-          ],
-          "gapAfter": 1.95
-        },
-        {
-          "id": "s4.b10",
-          "say": {
-            "no": "Britene ved broa mister tre mann på to minutter, og løper. Det er første gang den dagen at britiske soldater snur.",
-            "en": "The British at the bridge lose three men in two minutes, and run. It is the first time that day that British soldiers turn."
-          },
-          "cues": [
-            {
-              "on": "end",
-              "do": "image.hide"
-            },
-            {
-              "on": "start",
-              "do": "quote.hide"
-            },
-            {
-              "on": {
-                "no": "word:løper",
-                "en": "word:run"
-              },
-              "do": "front.hide",
-              "id": "bridge-british-line"
-            },
-            {
-              "on": "end",
-              "do": "sound.ambience"
-            }
-          ],
-          "gapAfter": 2.95
-        }
-      ]
-    },
-    {
-      "id": "s5",
-      "title": {
-        "no": "Den lange veien tilbake",
-        "en": "The long road back"
-      },
-      "clock": {
-        "no": "19. april, 12:00",
-        "en": "19 April, 12:00"
-      },
-      "beats": [
-        {
-          "id": "s5.b1",
-          "say": {
-            "no": "Klokka tolv begynner britene å gå tilbake til Boston. De har tretti kilometer foran seg.",
-            "en": "At noon the British begin to march back to Boston. They have thirty kilometres ahead of them."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedMarch"
-            },
-            {
-              "on": "start",
-              "do": "road.draw",
-              "id": "british-out"
-            },
-            {
-              "on": "start",
-              "do": "place.clear"
-            },
-            {
-              "on": "start",
-              "do": "map.time",
-              "value": {
-                "no": "12:00",
-                "en": "12:00"
-              }
-            },
-            {
-              "on": "start",
-              "do": "map.fitRoute",
-              "id": "british-retreat"
-            },
-            {
-              "on": {
-                "no": "word:tretti",
-                "en": "word:thirty"
-              },
-              "do": "stat.show",
-              "value": "30 km",
-              "label": {
-                "no": "til Boston",
-                "en": "to Boston"
-              }
-            }
-          ],
-          "gapAfter": 1.05
-        },
-        {
-          "id": "s5.b2",
-          "say": {
-            "no": "Og landskapet rundt dem er ikke tomt lenger.",
-            "en": "And the countryside around them is no longer empty."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": "end",
-              "do": "route.draw",
-              "id": "british-retreat",
-              "over": 16
-            }
-          ],
-          "gapAfter": 1.55
-        },
-        {
-          "id": "s5.b3",
-          "say": {
-            "no": "Ved Meriams Corner, en drøy kilometer utenfor Concord, kommer det første skuddet fra bak en steinmur.",
-            "en": "At Meriam's Corner, a kilometre outside Concord, the first shot comes from behind a stone wall."
-          },
-          "cues": [
-            {
-              "on": "word:Meriams",
-              "do": "marker.show",
-              "at": "meriams-corner",
-              "label": {
-                "no": "Meriams Corner",
-                "en": "Meriam's Corner"
-              },
-              "kind": "clash"
-            },
-            {
-              "on": "word:Meriams",
-              "do": "place.highlight",
-              "at": "meriams-corner",
-              "tone": "red",
-              "centre": false
-            }
-          ],
-          "gapAfter": 1.15
-        },
-        {
-          "id": "s5.b4",
-          "say": {
-            "no": "Fra det øyeblikket slutter det ikke. Bygd etter bygd har hørt klokkene om natta. Nå kommer de. Fra Reading, fra Billerica, fra Woburn, fra Sudbury.",
-            "en": "From that moment it does not stop. Town after town heard the bells in the night. Now they come. From Reading, from Billerica, from Woburn, from Sudbury."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:Reading",
-                "en": "word:Reading"
-              },
-              "do": "converge",
-              "from": [
-                "reading",
-                "billerica",
-                "woburn",
-                "sudbury"
-              ],
-              "to": "bloody-angle",
-              "side": "patriot",
-              "over": 3.6,
-              "strength": 300
-            }
-          ],
-          "gapAfter": 0.95
-        },
-        {
-          "id": "s5.b5",
-          "say": {
-            "no": "Og de stiller seg ikke opp på ei slette slik en hær skal. De legger seg bak murer og trær langs veien.",
-            "en": "And they do not line up in a field the way an army is supposed to. They lie down behind walls and trees along the road."
-          },
-          "gapAfter": 1.35,
-          "cues": [
-            {
-              "on": {
-                "no": "word:legger",
-                "en": "word:lie"
-              },
-              "do": "map.flyTo",
-              "to": "the-road",
-              "zoom": 12.4,
-              "over": 7.0
-            }
-          ]
-        },
-        {
-          "id": "s5.b6",
-          "say": {
-            "no": "Ved en sving som i dag heter Bloody Angle mister britene tretti mann på noen minutter.",
-            "en": "At a bend now called Bloody Angle, the British lose thirty men in a few minutes."
-          },
-          "cues": [
-            {
-              "on": "word:Bloody",
-              "do": "marker.show",
-              "at": "bloody-angle",
-              "label": {
-                "no": "Bloody Angle",
-                "en": "Bloody Angle"
-              },
-              "kind": "clash"
-            },
-            {
-              "on": "word:Bloody",
-              "do": "map.flyTo",
-              "to": "bloody-angle"
-            }
-          ],
-          "gapAfter": 1.45
-        },
-        {
-          "id": "s5.b7",
-          "say": {
-            "no": "Dette er ikke et slag. Det er tretti kilometer med bakhold.",
-            "en": "This is not a battle. It is thirty kilometres of ambush."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "the-road"
-            }
-          ],
-          "gapAfter": 1.65
-        },
-        {
-          "id": "s5.b8",
-          "say": {
-            "no": "Soldatene har vært våkne i over et døgn. De har gått over førti kilometer. Mange er tomme for ammunisjon. Noen begynner å løpe.",
-            "en": "The soldiers have been awake for over a day. They have marched more than forty kilometres. Many are out of ammunition. Some begin to run."
-          },
-          "gapAfter": 1.25,
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.ambience",
-              "id": "boots",
-              "gainDb": -11
-            },
-            {
-              "on": {
-                "no": "word:førti",
-                "en": "word:forty"
-              },
-              "do": "stat.show",
-              "value": "40 km",
-              "label": {
-                "no": "marsjert",
-                "en": "marched"
-              },
-              "side": "british"
-            }
-          ]
-        },
-        {
-          "id": "s5.b9",
-          "say": {
-            "no": "I Lexington møter de en unnsetningsstyrke på tusen mann med kanoner, sendt ut fra Boston av lord Percy. Uten den hadde hele kolonnen sannsynligvis blitt tatt.",
-            "en": "At Lexington they meet a relief force of a thousand men with cannon, sent out from Boston by Lord Percy. Without it the whole column would probably have been taken."
-          },
-          "cues": [
-            {
-              "on": "word:Percy",
-              "do": "image.show",
-              "id": "doolittle-4",
-              "mode": "inset"
-            },
-            {
-              "on": "word:Percy",
-              "do": "route.draw",
-              "id": "percy-relief",
-              "over": 5
-            },
-            {
-              "on": {
-                "no": "word:kanoner",
-                "en": "word:cannon"
-              },
-              "do": "sound.play",
-              "id": "cannon",
-              "gainDb": -6
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s5.b10",
-          "say": {
-            "no": "Men de siste kilometrene, gjennom landsbyen Menotomy, er de verste. Der går kampene fra hus til hus. Flere dør her enn ved Lexington og Concord til sammen.",
-            "en": "But the last few kilometres, through the village of Menotomy, are the worst. There the fighting goes house to house. More die here than at Lexington and Concord combined."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music"
-            },
-            {
-              "on": "word:Menotomy",
-              "do": "map.flyTo",
-              "to": "menotomy"
-            },
-            {
-              "on": "word:Menotomy",
-              "do": "marker.show",
-              "at": "menotomy",
-              "label": {
-                "no": "Menotomy",
-                "en": "Menotomy"
-              },
-              "kind": "clash"
-            },
-            {
-              "on": {
-                "no": "word:Menotomy",
-                "en": "word:Menotomy"
-              },
-              "do": "place.highlight",
-              "at": "menotomy",
-              "tone": "red",
-              "centre": false
-            }
-          ],
-          "gapAfter": 0.9
-        },
-        {
-          "id": "s5.b10b",
-          "say": {
-            "no": "Her møter Samuel Whittemore, syttiåtte år gammel, kolonnen alene. Han blir skutt i ansiktet, stukket med bajonett og etterlatt som død. Han lever til han er nittiseks.",
-            "en": "Here Samuel Whittemore, seventy-eight years old, meets the column alone. He is shot in the face, bayoneted and left for dead. He lives to be ninety-six."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:syttiåtte",
-                "en": "word:seventy-eight"
-              },
-              "do": "stat.show",
-              "value": "78",
-              "label": {
-                "no": "år gammel",
-                "en": "years old"
-              },
-              "side": "patriot"
-            },
-            {
-              "on": {
-                "no": "word:nittiseks",
-                "en": "word:ninety-six"
-              },
-              "do": "stat.show",
-              "value": "96",
-              "label": {
-                "no": "ble han",
-                "en": "he lived to"
-              },
-              "side": "patriot"
-            }
-          ],
-          "gapAfter": 1.2
-        },
-        {
-          "id": "s5.b11",
-          "say": {
-            "no": "Ved solnedgang kommer restene av kolonnen seg over til Charlestown, i ly av kanonene på krigsskipene.",
-            "en": "At sunset the remains of the column get across to Charlestown, under the guns of the warships."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "image.hide"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "dusk"
-            },
-            {
-              "on": "start",
-              "do": "map.time",
-              "value": {
-                "no": "19:00",
-                "en": "19:00"
-              }
-            },
-            {
-              "on": "word:Charlestown",
-              "do": "map.flyTo",
-              "to": "charlestown"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "charlestown",
-              "kind": "point"
-            },
-            {
-              "on": {
-                "no": "word:krigsskipene",
-                "en": "word:warships"
-              },
-              "do": "sound.ambience",
-              "id": "rigging",
-              "gainDb": -14
-            }
-          ],
-          "gapAfter": 1.55
-        },
-        {
-          "id": "s5.b12",
-          "say": {
-            "no": "Britene har mistet to hundre og syttitre mann, drept, såret eller savnet. Amerikanerne nittifem.",
-            "en": "The British have lost two hundred and seventy-three men, killed, wounded or missing. The Americans, ninety-five."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:syttitre",
-                "en": "word:seventy-three"
-              },
-              "do": "stat.show",
-              "value": "273",
-              "label": {
-                "no": "britiske tap",
-                "en": "British losses"
-              },
-              "side": "british"
-            },
-            {
-              "on": {
-                "no": "word:nittifem",
-                "en": "word:ninety-five"
-              },
-              "do": "stat.show",
-              "value": "95",
-              "label": {
-                "no": "amerikanske tap",
-                "en": "American losses"
-              },
-              "side": "patriot"
-            }
-          ],
-          "gapAfter": 3.15
-        }
-      ]
-    },
-    {
-      "id": "s6",
-      "title": {
-        "no": "Om kvelden",
-        "en": "That evening"
-      },
-      "clock": {
-        "no": "19.–20. april",
-        "en": "19–20 April"
-      },
-      "beats": [
-        {
-          "id": "s6.b1",
-          "say": {
-            "no": "Men det som skjer den kvelden er egentlig viktigere enn tallene.",
-            "en": "But what happens that evening matters more than the numbers."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedSolemn"
-            },
-            {
-              "on": "start",
-              "do": "road.draw",
-              "id": "british-out"
-            },
-            {
-              "on": "start",
-              "do": "place.clear"
-            },
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": "start",
-              "do": "route.clear"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "night"
-            },
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "boston",
-              "zoom": 10.6
-            }
-          ],
-          "gapAfter": 1.35
-        },
-        {
-          "id": "s6.b2",
-          "say": {
-            "no": "For militsen går ikke hjem. De blir liggende. Og gjennom natta og de neste dagene kommer det stadig flere, fra hele New England.",
-            "en": "Because the militia do not go home. They stay where they are. And through the night and the days that follow, more keep arriving, from all over New England."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:flere",
-                "en": "word:arriving"
-              },
-              "do": "converge",
-              "from": [
-                "salem",
-                "danvers",
-                "lynn",
-                "reading",
-                "billerica",
-                "chelmsford",
-                "sudbury",
-                "dedham",
-                "roxbury",
-                "watertown",
-                "newton",
-                "woburn"
-              ],
-              "to": "boston",
-              "side": "patriot",
-              "over": 4.4,
-              "strength": 1200
-            },
-            {
-              "on": {
-                "no": "word:flere",
-                "en": "word:arriving"
-              },
-              "do": "sound.ambience",
-              "id": "crowd",
-              "gainDb": -15
-            }
-          ],
-          "gapAfter": 1.25
-        },
-        {
-          "id": "s6.b3",
-          "say": {
-            "no": "I løpet av en uke ligger det rundt femten tusen bevæpnede menn i en bue rundt Boston.",
-            "en": "Within a week, around fifteen thousand armed men are lying in an arc around Boston."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:femten",
-                "en": "word:fifteen"
-              },
-              "do": "stat.show",
-              "value": "15 000",
-              "label": {
-                "no": "rundt Boston",
-                "en": "around Boston"
-              },
-              "side": "patriot"
-            }
-          ],
-          "gapAfter": 1.65
-        },
-        {
-          "id": "s6.b4",
-          "say": {
-            "no": "Ingen har bestemt at det skulle bli en beleiring. Ingen kongress har vedtatt noe. Ingen har erklært krig.",
-            "en": "Nobody decided there would be a siege. No congress voted on it. Nobody declared war."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            }
-          ],
-          "gapAfter": 1.45
-        },
-        {
-          "id": "s6.b5",
-          "say": {
-            "no": "Den er der bare, om morgenen den tjuende april, fordi tusenvis av mennesker gjorde det samme uten å avtale det med hverandre.",
-            "en": "It is simply there, on the morning of the twentieth of April, because thousands of people did the same thing without arranging it with each other."
-          },
-          "gapAfter": 3.35,
-          "cues": [
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "siege",
-              "zoom": 10.2,
-              "over": 9.0
-            },
-            {
-              "on": "end",
-              "do": "sound.ambience"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "s7",
-      "title": {
-        "no": "Hva det betydde",
-        "en": "What it meant"
-      },
-      "clock": {
-        "no": "Etterpå",
-        "en": "Afterwards"
-      },
-      "beats": [
-        {
-          "id": "s7.b1",
-          "say": {
-            "no": "Britene hadde marsjert ut for å hente et våpenlager, og regnet med å være tilbake til frokost.",
-            "en": "The British had marched out to collect a weapons store, expecting to be back for breakfast."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedSolemn"
-            },
-            {
-              "on": "start",
-              "do": "place.clear"
-            },
-            {
-              "on": "start",
-              "do": "map.mood",
-              "value": "day"
-            },
-            {
-              "on": "start",
-              "do": "map.time",
-              "value": null
-            },
-            {
-              "on": "start",
-              "do": "map.flyTo",
-              "to": "wide"
-            }
-          ],
-          "gapAfter": 1.35
-        },
-        {
-          "id": "s7.b2",
-          "say": {
-            "no": "Lord Percy, som hadde sett det på nært hold, skrev dagen etter: Den som tror disse folkene bare er en udisiplinert pøbel, tar grundig feil.",
-            "en": "Lord Percy, who had seen it at close quarters, wrote the next day: whoever looks upon them as an irregular mob will find himself much mistaken."
-          },
-          "cues": [
-            {
-              "on": "word:Percy",
-              "do": "quote.show",
-              "id": "percy"
-            }
-          ],
-          "gapAfter": 1.95
-        },
-        {
-          "id": "s7.b3",
-          "say": {
-            "no": "Ingen av de syttisju mennene på plassen i Lexington sto der for å starte en revolusjon. De sto der fordi noen kom mot bygda deres med gevær.",
-            "en": "None of the seventy-seven men on the green at Lexington stood there to start a revolution. They stood there because someone was coming at their town with guns."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "quote.hide"
-            }
-          ],
-          "gapAfter": 1.45
-        },
-        {
-          "id": "s7.b4",
-          "say": {
-            "no": "Men etter denne dagen fantes det ingen vei tilbake. Det som hadde vært en krangel om skatter, var blitt en krig. Og den kom til å vare i åtte år.",
-            "en": "But after this day there was no way back. What had been an argument about taxes had become a war. And it would last eight years."
-          },
-          "cues": [
-            {
-              "on": {
-                "no": "word:åtte",
-                "en": "word:eight"
-              },
-              "do": "stat.show",
-              "value": "8",
-              "label": {
-                "no": "år med krig",
-                "en": "years of war"
-              }
-            }
-          ],
-          "gapAfter": 1.75
-        },
-        {
-          "id": "s7.b5",
-          "say": {
-            "no": "Den begynte her. På et jorde, i grålysningen, med syttisju mann som ikke ante hva de var i ferd med å sette i gang.",
-            "en": "It began here. On a field, at first light, with seventy-seven men who had no idea what they were setting in motion."
-          },
-          "cues": [
-            {
-              "on": "start",
-              "do": "stat.clear"
-            },
-            {
-              "on": {
-                "no": "word:her",
-                "en": "word:here"
-              },
-              "do": "map.flyTo",
-              "to": "lexington-green"
-            },
-            {
-              "on": "start",
-              "do": "marker.show",
-              "at": "lexington-green",
-              "kind": "clash"
-            }
-          ],
-          "gapAfter": 3.95
-        }
-      ]
+      {
+       "on": {
+        "no": "word:Byen",
+        "en": "word:town"
+       },
+       "do": "term.mark",
+       "kind": "topic",
+       "id": "colonial-town"
+      }
+     ],
+     "gapAfter": 1.4
     }
-  ],
-  "quotes": {
-    "percy": {
-      "text": {
-        "no": "Den som tror disse folkene bare er en udisiplinert pøbel, tar grundig feil.",
-        "en": "Whoever looks upon them as an irregular mob will find himself much mistaken."
-      },
-      "by": {
-        "no": "Lord Percy, brev, 20. april 1775",
-        "en": "Lord Percy, letter, 20 April 1775"
-      }
-    },
-    "gage-warning": {
-      "text": {
-        "no": "Hvis dere mener alvor med å slå dette ned, trenger dere en langt større hær enn dere tror.",
-        "en": "If you mean to put this down, you will need a far larger army than you think."
-      },
-      "by": {
-        "no": "General Thomas Gage, brev til London, 1774",
-        "en": "General Thomas Gage, letter to London, 1774"
-      }
-    },
-    "slogan": {
-      "text": {
-        "no": "Ingen skatt uten representasjon.",
-        "en": "No taxation without representation."
-      },
-      "by": {
-        "no": "Slagordet i koloniene, fra 1765",
-        "en": "The colonists’ slogan, from 1765"
-      }
-    },
-    "parker": {
-      "text": {
-        "no": "Stå på deres plass. Ikke skyt med mindre det blir skutt på dere.",
-        "en": "Stand your ground. Do not fire unless fired upon."
-      },
-      "by": {
-        "no": "Kaptein John Parker til militsen, Lexington, 19. april 1775",
-        "en": "Captain John Parker to the militia, Lexington, 19 April 1775"
-      }
-    },
-    "pitcairn": {
-      "text": {
-        "no": "Spre dere, karer! Legg ned våpnene, og spre dere!",
-        "en": "Disperse, you men! Lay down your arms, and disperse!"
-      },
-      "by": {
-        "no": "Major John Pitcairn, slik det ble husket etterpå",
-        "en": "Major John Pitcairn, as it was remembered afterwards"
-      }
-    },
-    "hosmer": {
-      "text": {
-        "no": "Vil dere la dem brenne byen ned?",
-        "en": "Will you let them burn the town down?"
-      },
-      "by": {
-        "no": "Joseph Hosmer til militsen over Concord, 19. april 1775",
-        "en": "Joseph Hosmer to the militia above Concord, 19 April 1775"
-      }
-    },
-    "buttrick": {
-      "text": {
-        "no": "Skyt, karer, skyt!",
-        "en": "Fire, fellow soldiers, fire!"
-      },
-      "by": {
-        "no": "Major John Buttrick ved North Bridge — den første ordren om å skyte på kongens soldater",
-        "en": "Major John Buttrick at the North Bridge — the first order to fire on the king’s soldiers"
-      }
-    }
+   ]
   },
-  "home": "world",
-  "regions": "geo/regions.geojson"
+  {
+   "id": "s1",
+   "title": {
+    "no": "Kvelden før",
+    "en": "The night before"
+   },
+   "clock": {
+    "no": "18. april 1775, kveld",
+    "en": "18 April 1775, evening"
+   },
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Kvelden den attende april, sytten hundre og syttifem. Byen ligger på en halvøy, med én eneste smal vei ut til fastlandet.",
+      "en": "The evening of the eighteenth of April, seventeen seventy-five. The town sits on a peninsula, with one single narrow road out to the mainland."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "road.draw",
+       "id": "british-out"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "night"
+      },
+      {
+       "on": "start",
+       "do": "map.time",
+       "value": {
+        "no": "18. april, kveld",
+        "en": "18 April, evening"
+       }
+      },
+      {
+       "on": {
+        "no": "word:Byen",
+        "en": "word:town"
+       },
+       "do": "map.flyTo",
+       "to": "boston",
+       "over": 3.4
+      }
+     ],
+     "gapAfter": 0.85
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Her bor det rundt femten tusen mennesker. Og fire tusen britiske soldater som ingen har invitert.",
+      "en": "About fifteen thousand people live here. And four thousand British soldiers nobody invited."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:femten",
+        "en": "word:fifteen"
+       },
+       "do": "stat.show",
+       "value": "15 000",
+       "label": {
+        "no": "innbyggere",
+        "en": "residents"
+       }
+      },
+      {
+       "on": {
+        "no": "word:fire",
+        "en": "word:four"
+       },
+       "do": "stat.show",
+       "value": "4 000",
+       "label": {
+        "no": "britiske soldater",
+        "en": "British soldiers"
+       },
+       "side": "british"
+      }
+     ],
+     "gapAfter": 1.15
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Mannen som har ansvaret heter Thomas Gage. Han er general og guvernør, og han har bodd i Amerika i nesten tjue år.",
+      "en": "The man in charge is called Thomas Gage. He is a general and a governor, and he has lived in America for almost twenty years."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "word:Gage",
+       "do": "portrait.show",
+       "id": "gage"
+      },
+      {
+       "on": {
+        "no": "word:guvernør",
+        "en": "word:governor"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "governor"
+      }
+     ],
+     "gapAfter": 0.75
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Han har prøvd å advare London. Skal dere slå ned dette, skrev han hjem, trenger dere en mye større hær enn dere tror. Ingen ville høre.",
+      "en": "He has tried to warn London. If you mean to put this down, he wrote home, you will need a far larger army than you think. Nobody wanted to hear it."
+     },
+     "gapAfter": 1.15,
+     "cues": [
+      {
+       "on": {
+        "no": "word:advare",
+        "en": "word:warn"
+       },
+       "do": "quote.show",
+       "id": "gage-warning"
+      },
+      {
+       "on": "end",
+       "do": "quote.hide"
+      }
+     ]
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Den attende april får han en ordre han ikke kan si nei til. Marsjer ut til Concord, tretti kilometer vestover. Der har opprørerne samlet et våpenlager. Ta det. Gjør det om natta, og gjør det stille.",
+      "en": "On the eighteenth of April he receives an order he cannot refuse. March out to Concord, thirty kilometres west. The rebels have gathered a weapons store there. Take it. Do it at night, and do it quietly."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "portrait.hide"
+      },
+      {
+       "on": "word:Concord",
+       "do": "map.flyTo",
+       "to": "wide"
+      },
+      {
+       "on": "word:Concord",
+       "do": "marker.show",
+       "at": "concord",
+       "label": {
+        "no": "Concord",
+        "en": "Concord"
+       },
+       "kind": "target"
+      },
+      {
+       "on": {
+        "no": "word:Concord",
+        "en": "word:Concord"
+       },
+       "do": "place.highlight",
+       "at": "concord",
+       "tone": "gold",
+       "centre": false
+      }
+     ],
+     "gapAfter": 0.95
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Gage forteller planen til svært få. Sannsynligvis også til kona si, Margaret, som er født i New Jersey. Hun har selv sagt at hun føler seg som en kvinne som er glad i to menn som slåss.",
+      "en": "Gage tells the plan to very few. Probably including his wife Margaret, who was born in New Jersey. She said herself that she felt like a woman fond of two men who were fighting."
+     },
+     "cues": [
+      {
+       "on": "word:Margaret",
+       "do": "portrait.show",
+       "id": "margaret-gage"
+      }
+     ],
+     "gapAfter": 0.85
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Vi vet ikke om hun sa noe til noen. Vi vet bare at planen lekket samme kveld.",
+      "en": "We do not know whether she told anyone. We only know that the plan leaked that same evening."
+     },
+     "cues": [
+      {
+       "on": "end",
+       "do": "portrait.hide"
+      }
+     ],
+     "gapAfter": 1.75
+    },
+    {
+     "id": "s1.b8",
+     "say": {
+      "no": "Klokka ti om kvelden stiller sju hundre soldater opp nede ved vannet på Boston Common. De får ikke lov til å snakke. De blir rodd over til fastlandet i småbåter, i mørket, og går i land i vann til knærne.",
+      "en": "At ten in the evening, seven hundred soldiers form up by the water on Boston Common. They are forbidden to speak. They are rowed across to the mainland in small boats, in darkness, and wade ashore in water up to their knees."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedUrgent"
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": {
+        "no": "word:Klokka",
+        "en": "word:ten"
+       },
+       "do": "map.time",
+       "value": {
+        "no": "22:00",
+        "en": "22:00"
+       }
+      },
+      {
+       "on": "word:Common",
+       "do": "map.flyTo",
+       "to": "boston-common"
+      },
+      {
+       "on": {
+        "no": "word:rodd",
+        "en": "word:rowed"
+       },
+       "do": "map.flyTo",
+       "to": "lechmere"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "boston-common",
+       "kind": "point"
+      },
+      {
+       "on": {
+        "no": "word:rodd",
+        "en": "word:rowed"
+       },
+       "do": "sound.ambience",
+       "id": "oars",
+       "gainDb": -11
+      },
+      {
+       "on": {
+        "no": "word:knærne",
+        "en": "word:wade"
+       },
+       "do": "sound.ambience",
+       "id": "wading",
+       "gainDb": -10
+      }
+     ],
+     "gapAfter": 1.05
+    },
+    {
+     "id": "s1.b9",
+     "say": {
+      "no": "Så begynner de å gå.",
+      "en": "Then they begin to walk."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:gå",
+        "en": "word:walk"
+       },
+       "do": "route.draw",
+       "id": "british-out",
+       "over": 4.0
+      },
+      {
+       "on": {
+        "no": "word:gå",
+        "en": "word:walk"
+       },
+       "do": "sound.ambience",
+       "id": "boots",
+       "gainDb": -13
+      }
+     ],
+     "gapAfter": 3.15
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Rytterne",
+    "en": "The riders"
+   },
+   "clock": {
+    "no": "18.–19. april, natt",
+    "en": "18–19 April, night"
+   },
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Men byen har allerede sett dem. Oppe i tårnet på Old North Church er det avtalt et signal: én lykt i vinduet betyr at britene går landeveien. To lykter betyr at de kommer over vannet.",
+      "en": "But the town has already seen them. Up in the tower of the Old North Church a signal has been arranged: one lantern in the window means the British are going by land. Two lanterns mean they are coming by water."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedUrgent"
+      },
+      {
+       "on": "start",
+       "do": "road.draw",
+       "id": "british-out"
+      },
+      {
+       "on": "start",
+       "do": "place.clear"
+      },
+      {
+       "on": "start",
+       "do": "route.clear"
+      },
+      {
+       "on": {
+        "no": "word:tårnet",
+        "en": "word:tower"
+       },
+       "do": "map.flyTo",
+       "to": "old-north"
+      },
+      {
+       "on": {
+        "no": "word:tårnet",
+        "en": "word:tower"
+       },
+       "do": "plate.show",
+       "id": "old-north",
+       "motion": "in",
+       "focus": [
+        0.5,
+        0.3
+       ],
+       "over": 16,
+       "dim": 0.15
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "old-north",
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.75
+    },
+    {
+     "id": "s2.b1b",
+     "say": {
+      "no": "Denne kvelden blir det tent to.",
+      "en": "Tonight, two are lit."
+     },
+     "gapAfter": 1.35,
+     "cues": [
+      {
+       "on": {
+        "no": "word:tent",
+        "en": "word:lit"
+       },
+       "do": "caption.note",
+       "value": {
+        "no": "To lykter — over vannet",
+        "en": "Two lanterns — by water"
+       }
+      },
+      {
+       "on": {
+        "no": "word:tent",
+        "en": "word:lit"
+       },
+       "do": "place.highlight",
+       "at": "old-north",
+       "tone": "gold",
+       "centre": false
+      }
+     ]
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Mannen bak signalet heter Paul Revere, og han er sølvsmed i Boston. Lyktene er hans beskjed til folkene på den andre siden av elva, i tilfelle han selv ikke kommer seg ut av byen i natt.",
+      "en": "The man behind the signal is called Paul Revere, and he is a silversmith in Boston. The lanterns are his message to the people on the far side of the river, in case he cannot get out of the town himself tonight."
+     },
+     "cues": [
+      {
+       "on": "word:Revere",
+       "do": "portrait.show",
+       "id": "revere"
+      },
+      {
+       "on": "end",
+       "do": "plate.hide"
+      }
+     ],
+     "gapAfter": 0.95
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Han blir rodd over elva, forbi et britisk krigsskip, med årene surret inn i tøy så de ikke skal lage lyd. På den andre siden står det en hest og venter.",
+      "en": "He is rowed across the river, past a British warship, with the oars wrapped in cloth so they make no sound. On the far side a horse is waiting."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:hest",
+        "en": "word:horse"
+       },
+       "do": "map.flyTo",
+       "to": "charlestown"
+      },
+      {
+       "on": "end",
+       "do": "route.draw",
+       "id": "revere-ride",
+       "over": 6
+      },
+      {
+       "on": {
+        "no": "word:hest",
+        "en": "word:horse"
+       },
+       "do": "sound.ambience",
+       "id": "hooves",
+       "gainDb": -13
+      },
+      {
+       "on": {
+        "no": "word:rodd",
+        "en": "word:rowed"
+       },
+       "do": "sound.ambience",
+       "id": "oars",
+       "gainDb": -16
+      }
+     ],
+     "gapAfter": 0.95
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Samtidig rir en garver som heter William Dawes ut den andre veien, over landtunga, rett forbi de britiske vaktpostene. Han slipper igjennom fordi han ser ufarlig ut.",
+      "en": "At the same time a tanner called William Dawes rides out the other way, across the neck, straight past the British sentries. He gets through because he looks harmless."
+     },
+     "cues": [
+      {
+       "on": "word:Dawes",
+       "do": "portrait.show",
+       "id": "dawes"
+      },
+      {
+       "on": {
+        "no": "word:landtunga",
+        "en": "word:neck"
+       },
+       "do": "route.draw",
+       "id": "dawes-ride",
+       "over": 6
+      }
+     ],
+     "gapAfter": 1.15
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Dette er ikke to modige menn. Dette er et system. For hver bygd de vekker, rir det nye folk videre i nye retninger. Kirkeklokker ringer. Skudd fyres av i lufta. På noen timer vet et helt landskap hva som er på vei.",
+      "en": "This is not two brave men. This is a system. For every town they wake, new riders go out in new directions. Church bells ring. Guns are fired into the air. Within hours, an entire countryside knows what is coming."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "portrait.hide"
+      },
+      {
+       "on": "word:system",
+       "do": "map.flyTo",
+       "to": "wide"
+      },
+      {
+       "on": {
+        "no": "word:kirkeklokker",
+        "en": "word:bells"
+       },
+       "do": "sound.play",
+       "id": "alarmBell",
+       "gainDb": -3
+      },
+      {
+       "on": {
+        "no": "word:Skudd",
+        "en": "word:Guns"
+       },
+       "do": "sound.play",
+       "id": "musket",
+       "times": 4,
+       "spread": 2.6,
+       "gainDb": -7
+      },
+      {
+       "on": {
+        "no": "word:bygd",
+        "en": "word:town"
+       },
+       "do": "term.mark",
+       "kind": "topic",
+       "id": "colonial-town"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Revere når Lexington rundt midnatt. I et prestehus i utkanten av bygda sover de to mennene britene aller helst vil ha tak i. Den ene er Samuel Adams, som har organisert motstanden i Boston.",
+      "en": "Revere reaches Lexington around midnight. In a parsonage on the edge of the village sleep the two men the British would most like to catch. One is Samuel Adams, who has organised the resistance in Boston."
+     },
+     "gapAfter": 0.85,
+     "cues": [
+      {
+       "on": "word:Lexington",
+       "do": "map.flyTo",
+       "to": "lexington-green"
+      },
+      {
+       "on": {
+        "no": "word:midnatt",
+        "en": "word:midnight"
+       },
+       "do": "map.time",
+       "value": {
+        "no": "00:00",
+        "en": "00:00"
+       }
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "lexington-green",
+       "kind": "point"
+      },
+      {
+       "on": "word:Samuel",
+       "do": "portrait.show",
+       "id": "sam-adams"
+      }
+     ]
+    },
+    {
+     "id": "s2.b6b",
+     "say": {
+      "no": "Den andre er John Hancock, den rikeste mannen i Boston, og han som betaler for det meste av det Adams setter i gang.",
+      "en": "The other is John Hancock, the richest man in Boston, and the one who pays for most of what Adams sets in motion."
+     },
+     "gapAfter": 0.9,
+     "cues": [
+      {
+       "on": "word:Hancock",
+       "do": "portrait.show",
+       "id": "hancock"
+      }
+     ]
+    },
+    {
+     "id": "s2.b6c",
+     "say": {
+      "no": "Revere banker på og får dem opp. Han roper ikke at britene kommer. Alle her er britiske. Han sier at de regulære troppene er på vei ut.",
+      "en": "Revere knocks and gets them up. He does not shout that the British are coming. Everyone here is British. He says the Regulars are coming out."
+     },
+     "gapAfter": 1.05,
+     "cues": [
+      {
+       "on": "start",
+       "do": "portrait.hide"
+      },
+      {
+       "on": {
+        "no": "word:banker",
+        "en": "word:knocks"
+       },
+       "do": "sound.play",
+       "id": "doorKnock",
+       "gainDb": -8
+      }
+     ]
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "På vei videre mot Concord møter han og Dawes en ung lege som heter Samuel Prescott, som er på vei hjem fra kjæresten sin.",
+      "en": "Riding on towards Concord, he and Dawes meet a young doctor called Samuel Prescott, on his way home from his sweetheart."
+     },
+     "cues": [
+      {
+       "on": "word:Prescott",
+       "do": "portrait.show",
+       "id": "prescott"
+      }
+     ],
+     "gapAfter": 0.85
+    },
+    {
+     "id": "s2.b8",
+     "say": {
+      "no": "Da kommer en britisk patrulje ut av mørket. Revere blir tatt til fange. Dawes blir kastet av hesten. Prescott hopper over en steinmur, forsvinner inn i en skog han har lekt i som barn, og rir videre alene.",
+      "en": "Then a British patrol comes out of the dark. Revere is captured. Dawes is thrown from his horse. Prescott jumps a stone wall, vanishes into woods he played in as a child, and rides on alone."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "portrait.hide"
+      },
+      {
+       "on": {
+        "no": "word:patrulje",
+        "en": "word:patrol"
+       },
+       "do": "map.flyTo",
+       "to": "revere-capture"
+      },
+      {
+       "on": "word:Prescott",
+       "do": "route.draw",
+       "id": "prescott-ride",
+       "over": 3.5
+      },
+      {
+       "on": {
+        "no": "word:patrulje",
+        "en": "word:patrol"
+       },
+       "do": "place.highlight",
+       "at": "revere-capture",
+       "tone": "red",
+       "centre": false
+      }
+     ],
+     "gapAfter": 1.05
+    },
+    {
+     "id": "s2.b9",
+     "say": {
+      "no": "Han er den eneste av de tre som kommer fram til Concord. Hele varslingen av byen henger på at en ung mann var ute for sent på natta.",
+      "en": "He is the only one of the three to reach Concord. The warning of the whole town comes down to a young man being out too late at night."
+     },
+     "cues": [],
+     "gapAfter": 1.15
+    },
+    {
+     "id": "s2.b9b",
+     "say": {
+      "no": "Og bak ham, i hver eneste bygd de har vekket, står det nå folk oppe i mørket med gevær i hendene. Lexington er en av dem. Der skal britene gjennom om fire timer.",
+      "en": "And behind him, in every town they have woken, people are standing up in the dark with guns in their hands. Lexington is one of them. The British have to pass through it in four hours."
+     },
+     "gapAfter": 2.95,
+     "cues": [
+      {
+       "on": "start",
+       "do": "route.clear"
+      },
+      {
+       "on": "start",
+       "do": "sound.ambience"
+      },
+      {
+       "on": "word:Lexington",
+       "do": "map.flyTo",
+       "to": "lexington-green"
+      },
+      {
+       "on": "word:Lexington",
+       "do": "place.highlight",
+       "at": "lexington-green",
+       "tone": "gold",
+       "centre": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Daggry på Lexington",
+    "en": "Dawn at Lexington"
+   },
+   "clock": {
+    "no": "19. april, 04:30",
+    "en": "19 April, 04:30"
+   },
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Klokka er halv fem om morgenen, fire timer etter at Revere red gjennom Lexington. Det er kaldt, og det er så vidt lyst.",
+      "en": "It is half past four in the morning, four hours after Revere rode through Lexington. It is cold, and barely light."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedStill",
+       "gainDb": -6
+      },
+      {
+       "on": "start",
+       "do": "road.draw",
+       "id": "british-out"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "dawn"
+      },
+      {
+       "on": "start",
+       "do": "map.time",
+       "value": {
+        "no": "04:30",
+        "en": "04:30"
+       }
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "lexington-green"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "lexington-green",
+       "kind": "point"
+      },
+      {
+       "on": {
+        "no": "word:kaldt",
+        "en": "word:cold"
+       },
+       "do": "sound.ambience",
+       "id": "wind",
+       "gainDb": -9
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "På grønningen midt i Lexington står en klynge menn. De har stått her siden klokka ett i natt, fordi Revere vekket dem da han red forbi.",
+      "en": "On the green in the middle of Lexington stands a cluster of men. They have been here since one in the morning, because Revere woke them as he rode past."
+     },
+     "gapAfter": 0.85,
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "lexington-green",
+       "zoom": 13.6,
+       "over": 3.0
+      },
+      {
+       "on": {
+        "no": "word:klynge",
+        "en": "word:cluster"
+       },
+       "do": "front.show",
+       "id": "lexington-line",
+       "side": "patriot",
+       "facing": -1,
+       "fluid": true,
+       "over": 2.0
+      }
+     ]
+    },
+    {
+     "id": "s3.b2b",
+     "say": {
+      "no": "Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
+      "en": "Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
+     },
+     "gapAfter": 1.15,
+     "cues": []
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Kapteinen deres heter John Parker. Han er førtifem år, han har tuberkulose, og han er så svak at han knapt får fram stemmen. Om fem måneder er han død.",
+      "en": "Their captain is called John Parker. He is forty-five, he has tuberculosis, and he is so weak he can barely raise his voice. In five months he will be dead."
+     },
+     "cues": [
+      {
+       "on": "word:Parker",
+       "do": "portrait.show",
+       "id": "parker"
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "De er syttisju mann. Nedover veien kommer det sju hundre.",
+      "en": "There are seventy-seven of them. Coming down the road are seven hundred."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "portrait.hide"
+      },
+      {
+       "on": {
+        "no": "word:Nedover",
+        "en": "word:Coming"
+       },
+       "do": "route.draw",
+       "id": "into-lexington",
+       "over": 4.5,
+       "fit": false
+      },
+      {
+       "on": {
+        "no": "word:syttisju",
+        "en": "word:seventy-seven"
+       },
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 77,
+         "value": "77",
+         "label": {
+          "no": "på plassen",
+          "en": "on the green"
+         },
+         "side": "patriot"
+        },
+        {
+         "n": 700,
+         "value": "700",
+         "label": {
+          "no": "på veien",
+          "en": "on the road"
+         },
+         "side": "british"
+        }
+       ],
+       "over": 1.4
+      }
+     ],
+     "gapAfter": 1.65
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Parker gir en ordre. Stå her. Ikke skyt med mindre de skyter først.",
+      "en": "Parker gives an order. Stand your ground. Do not fire unless fired upon."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:Stå",
+        "en": "word:Stand"
+       },
+       "do": "quote.show",
+       "id": "parker"
+      },
+      {
+       "on": "end",
+       "do": "quote.hide"
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Foran den britiske kolonnen rir major John Pitcairn fram. Han roper til bøndene at de skal spre seg og legge fra seg våpnene.",
+      "en": "At the head of the British column, Major John Pitcairn rides forward. He shouts at the farmers to disperse and lay down their arms."
+     },
+     "cues": [
+      {
+       "on": "word:Pitcairn",
+       "do": "portrait.show",
+       "id": "pitcairn"
+      },
+      {
+       "on": {
+        "no": "word:roper",
+        "en": "word:shouts"
+       },
+       "do": "quote.show",
+       "id": "pitcairn"
+      },
+      {
+       "on": "end",
+       "do": "quote.hide"
+      }
+     ],
+     "gapAfter": 0.85
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Parker ser på styrken som kommer mot ham, og sier til mennene sine at de skal gå. De begynner å gå. Men de tar med seg geværene.",
+      "en": "Parker looks at the force coming towards him, and tells his men to go. They begin to go. But they take their guns with them."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "portrait.hide"
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Og da, ingen vet fra hvor, går det av et skudd.",
+      "en": "And then, nobody knows from where, a shot goes off."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": "start",
+       "do": "sound.music"
+      },
+      {
+       "on": "end",
+       "do": "map.flash"
+      },
+      {
+       "on": "end",
+       "do": "marker.show",
+       "at": "lexington-green",
+       "label": {
+        "no": "Lexington",
+        "en": "Lexington"
+       },
+       "kind": "clash"
+      },
+      {
+       "on": "end",
+       "do": "place.highlight",
+       "at": "lexington-green",
+       "tone": "red",
+       "centre": false
+      },
+      {
+       "on": {
+        "no": "word:skudd",
+        "en": "word:shot"
+       },
+       "do": "sound.play",
+       "id": "musket"
+      }
+     ],
+     "gapAfter": 2.15
+    },
+    {
+     "id": "s3.b9",
+     "say": {
+      "no": "Ingen har noen gang klart å si hvem som skjøt. Begge sider var helt sikre på at det var den andre.",
+      "en": "Nobody has ever been able to say who fired. Both sides were quite certain it was the other."
+     },
+     "gapAfter": 1.55,
+     "cues": [
+      {
+       "on": {
+        "no": "word:Ingen",
+        "en": "word:Nobody"
+       },
+       "do": "caption.note",
+       "value": {
+        "no": "Ingen vet hvem som skjøt",
+        "en": "Nobody knows who fired"
+       }
+      }
+     ]
+    },
+    {
+     "id": "s3.b10",
+     "say": {
+      "no": "De britiske soldatene fyrer av en salve, og så en til, og går fram med bajonett. Det hele er over på noen minutter.",
+      "en": "The British soldiers fire a volley, and then another, and come on with the bayonet. The whole thing is over in a few minutes."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:salve",
+        "en": "word:volley"
+       },
+       "do": "plate.show",
+       "id": "doolittle-1",
+       "motion": "left",
+       "focus": [
+        0.45,
+        0.5
+       ],
+       "over": 20,
+       "dim": 0.12
+      },
+      {
+       "on": {
+        "no": "word:salve",
+        "en": "word:volley"
+       },
+       "do": "sound.play",
+       "id": "volley",
+       "gainDb": -2
+      }
+     ],
+     "gapAfter": 1.05
+    },
+    {
+     "id": "s3.b11",
+     "say": {
+      "no": "Åtte amerikanere ligger døde på grønningen. Én britisk soldat er såret i beinet. Jonathan Harrington kryper hjem over veien og dør på sin egen dørstokk, foran kona si.",
+      "en": "Eight Americans lie dead on the green. One British soldier is wounded in the leg. Jonathan Harrington crawls back across the road and dies on his own doorstep, in front of his wife."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "front.clear"
+      },
+      {
+       "on": {
+        "no": "word:Åtte",
+        "en": "word:Eight"
+       },
+       "do": "stat.show",
+       "value": "8",
+       "label": {
+        "no": "amerikanere døde",
+        "en": "Americans dead"
+       },
+       "side": "patriot"
+      },
+      {
+       "on": {
+        "no": "word:Én",
+        "en": "word:One"
+       },
+       "do": "stat.show",
+       "value": "1",
+       "label": {
+        "no": "britisk såret",
+        "en": "British wounded"
+       },
+       "side": "british"
+      }
+     ],
+     "gapAfter": 1.85
+    },
+    {
+     "id": "s3.b12",
+     "say": {
+      "no": "Offiserene får sine egne menn under kontroll igjen med nød og neppe. Så samler kolonnen seg, spiller en seiersmarsj, og går videre mot Concord.",
+      "en": "The officers regain control of their own men only with difficulty. Then the column re-forms, plays a victory march, and moves on towards Concord."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide"
+      },
+      {
+       "on": "word:Concord",
+       "do": "map.flyTo",
+       "to": "concord"
+      },
+      {
+       "on": {
+        "no": "word:seiersmarsj",
+        "en": "word:march"
+       },
+       "do": "sound.play",
+       "id": "fife",
+       "gainDb": -9
+      },
+      {
+       "on": {
+        "no": "word:seiersmarsj",
+        "en": "word:march"
+       },
+       "do": "sound.play",
+       "id": "drums",
+       "gainDb": -12
+      }
+     ],
+     "gapAfter": 2.95
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Broen ved Concord",
+    "en": "The bridge at Concord"
+   },
+   "clock": {
+    "no": "19. april, 07:00",
+    "en": "19 April, 07:00"
+   },
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Klokka sju er britene i Concord. Byen er nesten tom. Folk har flyttet unna det de klarte i løpet av natta.",
+      "en": "By seven o'clock the British are in Concord. The town is almost empty. People moved what they could during the night."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "road.draw",
+       "id": "british-out"
+      },
+      {
+       "on": "start",
+       "do": "place.clear"
+      },
+      {
+       "on": "start",
+       "do": "front.clear"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "day"
+      },
+      {
+       "on": "start",
+       "do": "map.time",
+       "value": {
+        "no": "07:00",
+        "en": "07:00"
+       }
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "concord"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "concord",
+       "kind": "point"
+      },
+      {
+       "on": {
+        "no": "word:Klokka",
+        "en": "word:seven"
+       },
+       "do": "route.draw",
+       "id": "into-concord",
+       "over": 4.0,
+       "fit": false
+      }
+     ],
+     "gapAfter": 0.95
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Soldatene leter i hus og låver. De finner noen kanonlaveter av tre, litt mel, noen kuler. Nesten ingenting. De bestemmer seg for å brenne det de fant.",
+      "en": "The soldiers search houses and barns. They find some wooden gun carriages, a little flour, some musket balls. Almost nothing. They decide to burn what they found."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:leter",
+        "en": "word:search"
+       },
+       "do": "plate.show",
+       "id": "doolittle-2",
+       "motion": "in",
+       "focus": [
+        0.5,
+        0.5
+       ],
+       "over": 18,
+       "dim": 0.12
+      },
+      {
+       "on": {
+        "no": "word:brenne",
+        "en": "word:burn"
+       },
+       "do": "sound.ambience",
+       "id": "fire",
+       "gainDb": -13
+      }
+     ],
+     "gapAfter": 1.15
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Og der gjør de dagens dyreste feil. For røyken stiger opp over byen.",
+      "en": "And there they make the most expensive mistake of the day. Because the smoke rises over the town."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide"
+      },
+      {
+       "on": "start",
+       "do": "route.clear"
+      },
+      {
+       "on": {
+        "no": "word:røyken",
+        "en": "word:smoke"
+       },
+       "do": "map.flyTo",
+       "to": "north-bridge"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "north-bridge",
+       "kind": "point"
+      },
+      {
+       "on": {
+        "no": "word:røyken",
+        "en": "word:smoke"
+       },
+       "do": "place.highlight",
+       "at": "concord",
+       "tone": "red",
+       "centre": false
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Fire hundre milits står på en høyde nord for elva og ser det. De tror britene brenner Concord ned.",
+      "en": "Four hundred militia stand on a hill north of the river and see it. They think the British are burning Concord down."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:hundre",
+        "en": "word:hundred"
+       },
+       "do": "stat.show",
+       "value": "400",
+       "label": {
+        "no": "milits på høyden",
+        "en": "militia on the hill"
+       },
+       "side": "patriot"
+      },
+      {
+       "on": {
+        "no": "word:milits",
+        "en": "word:militia"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "militia"
+      }
+     ],
+     "gapAfter": 1.05
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "En offiser spør høyt: Skal vi la dem brenne byen vår ned?",
+      "en": "An officer asks aloud: will you let them burn the town down?"
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:Skal",
+        "en": "word:Will"
+       },
+       "do": "quote.show",
+       "id": "hosmer"
+      }
+     ],
+     "gapAfter": 1.45
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "De går nedover mot broa. I kolonne. To og to. Uten å skyte.",
+      "en": "They walk down towards the bridge. In column. Two by two. Without firing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "quote.hide"
+      },
+      {
+       "on": {
+        "no": "word:broa",
+        "en": "word:bridge"
+       },
+       "do": "plate.show",
+       "id": "doolittle-3",
+       "motion": "right",
+       "focus": [
+        0.5,
+        0.5
+       ],
+       "over": 22,
+       "dim": 0.12
+      },
+      {
+       "on": {
+        "no": "word:broa",
+        "en": "word:bridge"
+       },
+       "do": "front.show",
+       "id": "bridge-british-line",
+       "side": "british",
+       "facing": 1,
+       "over": 1.4
+      },
+      {
+       "on": {
+        "no": "word:går",
+        "en": "word:walk"
+       },
+       "do": "route.draw",
+       "id": "militia-bridge",
+       "over": 5.0
+      },
+      {
+       "on": {
+        "no": "word:kolonne",
+        "en": "word:column"
+       },
+       "do": "sound.ambience",
+       "id": "boots",
+       "gainDb": -13
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "De britiske soldatene ved broa er hundre mann. De trekker seg tilbake over elva, blir usikre, og noen av dem fyrer av et skudd. Så en hel salve.",
+      "en": "The British at the bridge are a hundred men. They pull back across the river, waver, and some of them fire a shot. Then a full volley."
+     },
+     "gapAfter": 1.15,
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "north-bridge",
+       "zoom": 13.5,
+       "over": 7.0
+      },
+      {
+       "on": {
+        "no": "word:hundre",
+        "en": "word:hundred"
+       },
+       "do": "stat.show",
+       "value": "100",
+       "label": {
+        "no": "ved brua",
+        "en": "at the bridge"
+       },
+       "side": "british"
+      }
+     ]
+    },
+    {
+     "id": "s4.b8",
+     "say": {
+      "no": "To amerikanere faller. Og for første gang i historien gir en amerikansk offiser ordre om å skyte på kongens soldater.",
+      "en": "Two Americans fall. And for the first time in history, an American officer gives the order to fire on the king's soldiers."
+     },
+     "gapAfter": 1.25,
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:faller",
+        "en": "word:fall"
+       },
+       "do": "sound.play",
+       "id": "musket",
+       "times": 2,
+       "spread": 0.7,
+       "gainDb": -5
+      }
+     ]
+    },
+    {
+     "id": "s4.b9",
+     "say": {
+      "no": "Ordren er tre ord. Skyt, karer, skyt.",
+      "en": "The order is four words. Fire, fellow soldiers, fire."
+     },
+     "cues": [
+      {
+       "on": "end",
+       "do": "map.flash"
+      },
+      {
+       "on": "end",
+       "do": "marker.show",
+       "at": "north-bridge",
+       "label": {
+        "no": "North Bridge",
+        "en": "North Bridge"
+       },
+       "kind": "clash"
+      },
+      {
+       "on": "end",
+       "do": "place.highlight",
+       "at": "north-bridge",
+       "tone": "red",
+       "centre": false
+      },
+      {
+       "on": {
+        "no": "word:Skyt",
+        "en": "word:Fire"
+       },
+       "do": "sound.play",
+       "id": "volley",
+       "gainDb": -3
+      },
+      {
+       "on": {
+        "no": "word:Skyt",
+        "en": "word:Fire"
+       },
+       "do": "quote.show",
+       "id": "buttrick"
+      }
+     ],
+     "gapAfter": 1.95
+    },
+    {
+     "id": "s4.b10",
+     "say": {
+      "no": "Britene ved broa mister tre mann på to minutter, og løper. Det er første gang den dagen at britiske soldater snur.",
+      "en": "The British at the bridge lose three men in two minutes, and run. It is the first time that day that British soldiers turn."
+     },
+     "cues": [
+      {
+       "on": "end",
+       "do": "plate.hide"
+      },
+      {
+       "on": "start",
+       "do": "quote.hide"
+      },
+      {
+       "on": {
+        "no": "word:løper",
+        "en": "word:run"
+       },
+       "do": "front.hide",
+       "id": "bridge-british-line"
+      },
+      {
+       "on": "end",
+       "do": "sound.ambience"
+      }
+     ],
+     "gapAfter": 2.95
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Den lange veien tilbake",
+    "en": "The long road back"
+   },
+   "clock": {
+    "no": "19. april, 12:00",
+    "en": "19 April, 12:00"
+   },
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Klokka tolv begynner britene å gå tilbake til Boston. De har tretti kilometer foran seg.",
+      "en": "At noon the British begin to march back to Boston. They have thirty kilometres ahead of them."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedMarch"
+      },
+      {
+       "on": "start",
+       "do": "road.draw",
+       "id": "british-out"
+      },
+      {
+       "on": "start",
+       "do": "place.clear"
+      },
+      {
+       "on": "start",
+       "do": "map.time",
+       "value": {
+        "no": "12:00",
+        "en": "12:00"
+       }
+      },
+      {
+       "on": "start",
+       "do": "map.fitRoute",
+       "id": "british-retreat"
+      },
+      {
+       "on": {
+        "no": "word:tretti",
+        "en": "word:thirty"
+       },
+       "do": "stat.show",
+       "value": "30 km",
+       "label": {
+        "no": "til Boston",
+        "en": "to Boston"
+       }
+      }
+     ],
+     "gapAfter": 1.05
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Og landskapet rundt dem er ikke tomt lenger.",
+      "en": "And the countryside around them is no longer empty."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "end",
+       "do": "route.draw",
+       "id": "british-retreat",
+       "over": 16
+      }
+     ],
+     "gapAfter": 1.55
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Ved Meriams Corner, en drøy kilometer utenfor Concord, kommer det første skuddet fra bak en steinmur.",
+      "en": "At Meriam's Corner, a kilometre outside Concord, the first shot comes from behind a stone wall."
+     },
+     "cues": [
+      {
+       "on": "word:Meriams",
+       "do": "marker.show",
+       "at": "meriams-corner",
+       "label": {
+        "no": "Meriams Corner",
+        "en": "Meriam's Corner"
+       },
+       "kind": "clash"
+      },
+      {
+       "on": "word:Meriams",
+       "do": "place.highlight",
+       "at": "meriams-corner",
+       "tone": "red",
+       "centre": false
+      }
+     ],
+     "gapAfter": 1.15
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Fra det øyeblikket slutter det ikke. Bygd etter bygd har hørt klokkene om natta. Nå kommer de. Fra Reading, fra Billerica, fra Woburn, fra Sudbury.",
+      "en": "From that moment it does not stop. Town after town heard the bells in the night. Now they come. From Reading, from Billerica, from Woburn, from Sudbury."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:Reading",
+        "en": "word:Reading"
+       },
+       "do": "converge",
+       "from": [
+        "reading",
+        "billerica",
+        "woburn",
+        "sudbury"
+       ],
+       "to": "bloody-angle",
+       "side": "patriot",
+       "over": 3.6,
+       "strength": 300
+      }
+     ],
+     "gapAfter": 0.95
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Og de stiller seg ikke opp på ei slette slik en hær skal. De legger seg bak murer og trær langs veien.",
+      "en": "And they do not line up in a field the way an army is supposed to. They lie down behind walls and trees along the road."
+     },
+     "gapAfter": 1.35,
+     "cues": [
+      {
+       "on": {
+        "no": "word:legger",
+        "en": "word:lie"
+       },
+       "do": "map.flyTo",
+       "to": "the-road",
+       "zoom": 12.4,
+       "over": 7.0
+      }
+     ]
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Ved en sving som i dag heter Bloody Angle mister britene tretti mann på noen minutter.",
+      "en": "At a bend now called Bloody Angle, the British lose thirty men in a few minutes."
+     },
+     "cues": [
+      {
+       "on": "word:Bloody",
+       "do": "marker.show",
+       "at": "bloody-angle",
+       "label": {
+        "no": "Bloody Angle",
+        "en": "Bloody Angle"
+       },
+       "kind": "clash"
+      },
+      {
+       "on": "word:Bloody",
+       "do": "map.flyTo",
+       "to": "bloody-angle"
+      }
+     ],
+     "gapAfter": 1.45
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Dette er ikke et slag. Det er tretti kilometer med bakhold.",
+      "en": "This is not a battle. It is thirty kilometres of ambush."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "the-road"
+      }
+     ],
+     "gapAfter": 1.65
+    },
+    {
+     "id": "s5.b8",
+     "say": {
+      "no": "Soldatene har vært våkne i over et døgn. De har gått over førti kilometer. Mange er tomme for ammunisjon. Noen begynner å løpe.",
+      "en": "The soldiers have been awake for over a day. They have marched more than forty kilometres. Many are out of ammunition. Some begin to run."
+     },
+     "gapAfter": 1.25,
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.ambience",
+       "id": "boots",
+       "gainDb": -11
+      },
+      {
+       "on": {
+        "no": "word:førti",
+        "en": "word:forty"
+       },
+       "do": "stat.show",
+       "value": "40 km",
+       "label": {
+        "no": "marsjert",
+        "en": "marched"
+       },
+       "side": "british"
+      }
+     ]
+    },
+    {
+     "id": "s5.b9",
+     "say": {
+      "no": "I Lexington møter de en unnsetningsstyrke på tusen mann med kanoner, sendt ut fra Boston av lord Percy. Uten den hadde hele kolonnen sannsynligvis blitt tatt.",
+      "en": "At Lexington they meet a relief force of a thousand men with cannon, sent out from Boston by Lord Percy. Without it the whole column would probably have been taken."
+     },
+     "cues": [
+      {
+       "on": "word:Percy",
+       "do": "plate.show",
+       "id": "doolittle-4",
+       "motion": "in",
+       "focus": [
+        0.4,
+        0.5
+       ],
+       "over": 20,
+       "dim": 0.12
+      },
+      {
+       "on": "word:Percy",
+       "do": "route.draw",
+       "id": "percy-relief",
+       "over": 5
+      },
+      {
+       "on": {
+        "no": "word:kanoner",
+        "en": "word:cannon"
+       },
+       "do": "sound.play",
+       "id": "cannon",
+       "gainDb": -6
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s5.b10",
+     "say": {
+      "no": "Men de siste kilometrene, gjennom landsbyen Menotomy, er de verste. Der går kampene fra hus til hus. Flere dør her enn ved Lexington og Concord til sammen.",
+      "en": "But the last few kilometres, through the village of Menotomy, are the worst. There the fighting goes house to house. More die here than at Lexington and Concord combined."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music"
+      },
+      {
+       "on": "word:Menotomy",
+       "do": "map.flyTo",
+       "to": "menotomy"
+      },
+      {
+       "on": "word:Menotomy",
+       "do": "marker.show",
+       "at": "menotomy",
+       "label": {
+        "no": "Menotomy",
+        "en": "Menotomy"
+       },
+       "kind": "clash"
+      },
+      {
+       "on": {
+        "no": "word:Menotomy",
+        "en": "word:Menotomy"
+       },
+       "do": "place.highlight",
+       "at": "menotomy",
+       "tone": "red",
+       "centre": false
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b10b",
+     "say": {
+      "no": "Her møter Samuel Whittemore, syttiåtte år gammel, kolonnen alene. Han blir skutt i ansiktet, stukket med bajonett og etterlatt som død. Han lever til han er nittiseks.",
+      "en": "Here Samuel Whittemore, seventy-eight years old, meets the column alone. He is shot in the face, bayoneted and left for dead. He lives to be ninety-six."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:syttiåtte",
+        "en": "word:seventy-eight"
+       },
+       "do": "stat.show",
+       "value": "78",
+       "label": {
+        "no": "år gammel",
+        "en": "years old"
+       },
+       "side": "patriot"
+      },
+      {
+       "on": {
+        "no": "word:nittiseks",
+        "en": "word:ninety-six"
+       },
+       "do": "stat.show",
+       "value": "96",
+       "label": {
+        "no": "ble han",
+        "en": "he lived to"
+       },
+       "side": "patriot"
+      }
+     ],
+     "gapAfter": 1.2
+    },
+    {
+     "id": "s5.b11",
+     "say": {
+      "no": "Ved solnedgang kommer restene av kolonnen seg over til Charlestown, i ly av kanonene på krigsskipene.",
+      "en": "At sunset the remains of the column get across to Charlestown, under the guns of the warships."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "dusk"
+      },
+      {
+       "on": "start",
+       "do": "map.time",
+       "value": {
+        "no": "19:00",
+        "en": "19:00"
+       }
+      },
+      {
+       "on": "word:Charlestown",
+       "do": "map.flyTo",
+       "to": "charlestown"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "charlestown",
+       "kind": "point"
+      },
+      {
+       "on": {
+        "no": "word:krigsskipene",
+        "en": "word:warships"
+       },
+       "do": "sound.ambience",
+       "id": "rigging",
+       "gainDb": -14
+      }
+     ],
+     "gapAfter": 1.55
+    },
+    {
+     "id": "s5.b12",
+     "say": {
+      "no": "Britene har mistet to hundre og syttitre mann, drept, såret eller savnet. Amerikanerne nittifem.",
+      "en": "The British have lost two hundred and seventy-three men, killed, wounded or missing. The Americans, ninety-five."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:syttitre",
+        "en": "word:seventy-three"
+       },
+       "do": "stat.show",
+       "value": "273",
+       "label": {
+        "no": "britiske tap",
+        "en": "British losses"
+       },
+       "side": "british"
+      },
+      {
+       "on": {
+        "no": "word:nittifem",
+        "en": "word:ninety-five"
+       },
+       "do": "stat.show",
+       "value": "95",
+       "label": {
+        "no": "amerikanske tap",
+        "en": "American losses"
+       },
+       "side": "patriot"
+      }
+     ],
+     "gapAfter": 3.15
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Om kvelden",
+    "en": "That evening"
+   },
+   "clock": {
+    "no": "19.–20. april",
+    "en": "19–20 April"
+   },
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Men det som skjer den kvelden er egentlig viktigere enn tallene.",
+      "en": "But what happens that evening matters more than the numbers."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedSolemn"
+      },
+      {
+       "on": "start",
+       "do": "road.draw",
+       "id": "british-out"
+      },
+      {
+       "on": "start",
+       "do": "place.clear"
+      },
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "route.clear"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "night"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "boston",
+       "zoom": 10.6
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "For militsen går ikke hjem. De blir liggende. Og gjennom natta og de neste dagene kommer det stadig flere, fra hele New England.",
+      "en": "Because the militia do not go home. They stay where they are. And through the night and the days that follow, more keep arriving, from all over New England."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:flere",
+        "en": "word:arriving"
+       },
+       "do": "converge",
+       "from": [
+        "salem",
+        "danvers",
+        "lynn",
+        "reading",
+        "billerica",
+        "chelmsford",
+        "sudbury",
+        "dedham",
+        "roxbury",
+        "watertown",
+        "newton",
+        "woburn"
+       ],
+       "to": "boston",
+       "side": "patriot",
+       "over": 4.4,
+       "strength": 1200
+      },
+      {
+       "on": {
+        "no": "word:flere",
+        "en": "word:arriving"
+       },
+       "do": "sound.ambience",
+       "id": "crowd",
+       "gainDb": -15
+      },
+      {
+       "on": {
+        "no": "word:militsen",
+        "en": "word:militia"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "militia"
+      }
+     ],
+     "gapAfter": 1.25
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "I løpet av en uke ligger det rundt femten tusen bevæpnede menn i en bue rundt Boston.",
+      "en": "Within a week, around fifteen thousand armed men are lying in an arc around Boston."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:femten",
+        "en": "word:fifteen"
+       },
+       "do": "stat.show",
+       "value": "15 000",
+       "label": {
+        "no": "rundt Boston",
+        "en": "around Boston"
+       },
+       "side": "patriot"
+      }
+     ],
+     "gapAfter": 1.65
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Ingen har bestemt at det skulle bli en beleiring. Ingen kongress har vedtatt noe. Ingen har erklært krig.",
+      "en": "Nobody decided there would be a siege. No congress voted on it. Nobody declared war."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:kongress",
+        "en": "word:congress"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "congress"
+      }
+     ],
+     "gapAfter": 1.45
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Den er der bare, om morgenen den tjuende april, fordi tusenvis av mennesker gjorde det samme uten å avtale det med hverandre.",
+      "en": "It is simply there, on the morning of the twentieth of April, because thousands of people did the same thing without arranging it with each other."
+     },
+     "gapAfter": 3.35,
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "siege",
+       "zoom": 10.2,
+       "over": 9.0
+      },
+      {
+       "on": "end",
+       "do": "sound.ambience"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "title": {
+    "no": "Hva det betydde",
+    "en": "What it meant"
+   },
+   "clock": {
+    "no": "Etterpå",
+    "en": "Afterwards"
+   },
+   "beats": [
+    {
+     "id": "s7.b1",
+     "say": {
+      "no": "Britene hadde marsjert ut for å hente et våpenlager, og regnet med å være tilbake til frokost.",
+      "en": "The British had marched out to collect a weapons store, expecting to be back for breakfast."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedSolemn"
+      },
+      {
+       "on": "start",
+       "do": "place.clear"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "day"
+      },
+      {
+       "on": "start",
+       "do": "map.time",
+       "value": null
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "wide"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s7.b2",
+     "say": {
+      "no": "Lord Percy, som hadde sett det på nært hold, skrev dagen etter: Den som tror disse folkene bare er en udisiplinert pøbel, tar grundig feil.",
+      "en": "Lord Percy, who had seen it at close quarters, wrote the next day: whoever looks upon them as an irregular mob will find himself much mistaken."
+     },
+     "cues": [
+      {
+       "on": "word:Percy",
+       "do": "quote.show",
+       "id": "percy"
+      }
+     ],
+     "gapAfter": 1.95
+    },
+    {
+     "id": "s7.b3",
+     "say": {
+      "no": "Ingen av de syttisju mennene på plassen i Lexington sto der for å starte en revolusjon. De sto der fordi noen kom mot bygda deres med gevær.",
+      "en": "None of the seventy-seven men on the green at Lexington stood there to start a revolution. They stood there because someone was coming at their town with guns."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "quote.hide"
+      }
+     ],
+     "gapAfter": 1.45
+    },
+    {
+     "id": "s7.b4",
+     "say": {
+      "no": "Men etter denne dagen fantes det ingen vei tilbake. Det som hadde vært en krangel om skatter, var blitt en krig. Og den kom til å vare i åtte år.",
+      "en": "But after this day there was no way back. What had been an argument about taxes had become a war. And it would last eight years."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:åtte",
+        "en": "word:eight"
+       },
+       "do": "stat.show",
+       "value": "8",
+       "label": {
+        "no": "år med krig",
+        "en": "years of war"
+       }
+      }
+     ],
+     "gapAfter": 1.75
+    },
+    {
+     "id": "s7.b5",
+     "say": {
+      "no": "Den begynte her. På et jorde, i grålysningen, med syttisju mann som ikke ante hva de var i ferd med å sette i gang.",
+      "en": "It began here. On a field, at first light, with seventy-seven men who had no idea what they were setting in motion."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": {
+        "no": "word:her",
+        "en": "word:here"
+       },
+       "do": "map.flyTo",
+       "to": "lexington-green"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "lexington-green",
+       "kind": "clash"
+      }
+     ],
+     "gapAfter": 3.95
+    }
+   ]
+  }
+ ],
+ "quotes": {
+  "percy": {
+   "text": {
+    "no": "Den som tror disse folkene bare er en udisiplinert pøbel, tar grundig feil.",
+    "en": "Whoever looks upon them as an irregular mob will find himself much mistaken."
+   },
+   "by": {
+    "no": "Lord Percy, brev, 20. april 1775",
+    "en": "Lord Percy, letter, 20 April 1775"
+   }
+  },
+  "gage-warning": {
+   "text": {
+    "no": "Hvis dere mener alvor med å slå dette ned, trenger dere en langt større hær enn dere tror.",
+    "en": "If you mean to put this down, you will need a far larger army than you think."
+   },
+   "by": {
+    "no": "General Thomas Gage, brev til London, 1774",
+    "en": "General Thomas Gage, letter to London, 1774"
+   }
+  },
+  "slogan": {
+   "text": {
+    "no": "Ingen skatt uten representasjon.",
+    "en": "No taxation without representation."
+   },
+   "by": {
+    "no": "Slagordet i koloniene, fra 1765",
+    "en": "The colonists’ slogan, from 1765"
+   }
+  },
+  "parker": {
+   "text": {
+    "no": "Stå på deres plass. Ikke skyt med mindre det blir skutt på dere.",
+    "en": "Stand your ground. Do not fire unless fired upon."
+   },
+   "by": {
+    "no": "Kaptein John Parker til militsen, Lexington, 19. april 1775",
+    "en": "Captain John Parker to the militia, Lexington, 19 April 1775"
+   }
+  },
+  "pitcairn": {
+   "text": {
+    "no": "Spre dere, karer! Legg ned våpnene, og spre dere!",
+    "en": "Disperse, you men! Lay down your arms, and disperse!"
+   },
+   "by": {
+    "no": "Major John Pitcairn, slik det ble husket etterpå",
+    "en": "Major John Pitcairn, as it was remembered afterwards"
+   }
+  },
+  "hosmer": {
+   "text": {
+    "no": "Vil dere la dem brenne byen ned?",
+    "en": "Will you let them burn the town down?"
+   },
+   "by": {
+    "no": "Joseph Hosmer til militsen over Concord, 19. april 1775",
+    "en": "Joseph Hosmer to the militia above Concord, 19 April 1775"
+   }
+  },
+  "buttrick": {
+   "text": {
+    "no": "Skyt, karer, skyt!",
+    "en": "Fire, fellow soldiers, fire!"
+   },
+   "by": {
+    "no": "Major John Buttrick ved North Bridge — den første ordren om å skyte på kongens soldater",
+    "en": "Major John Buttrick at the North Bridge — the first order to fire on the king’s soldiers"
+   }
+  }
+ },
+ "home": "world",
+ "regions": "geo/regions.geojson"
 }
