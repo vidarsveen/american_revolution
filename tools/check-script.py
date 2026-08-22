@@ -127,6 +127,51 @@ READABLE = {
 PLATE_CEILING = 34.0
 
 
+# Cues that PLAY OUT: a march that draws itself over seven seconds, a front
+# that advances, a flash. Run one of these under a plate and it finishes
+# behind the picture -- when the plate lifts the march is simply already
+# there, and the viewer never saw it move. That is the same defect as an
+# animation outliving its scene, which check_animations_finish already
+# catches; this is the other way to lose one.
+LOST_UNDER_PLATE = {"route.draw", "front.show", "crossing.draw", "map.flash"}
+
+# Cues that leave something STANDING. These survive behind a plate and are
+# there when it lifts, so they are not lost -- but if the sentence is pointing
+# at the map ("here they are: thirteen colonies along the coast") then a
+# picture over the top is answering a question with the wrong thing. A tool
+# cannot read the sentence, so these are listed, not failed.
+STAGED_UNDER_PLATE = {"region.show", "marker.show", "battle.show", "area.show"}
+
+
+def check_plates_over_map(chapter):
+    """What a plate is covering, beat by beat."""
+    bad, seen = [], []
+    for scene in chapter["scenes"]:
+        up = None
+        for beat in scene["beats"]:
+            dos = [c["do"] for c in beat.get("cues", [])]
+            # A plate shown in this beat covers the rest of the beat; one
+            # hidden here uncovers it. Both are judged on what else is here.
+            for cue in beat.get("cues", []):
+                if cue["do"] == "plate.show":
+                    up = cue.get("id")
+                elif cue["do"] == "plate.hide":
+                    up = None
+            if not up:
+                continue
+            lost = sorted(set(dos) & LOST_UNDER_PLATE)
+            staged = sorted(set(dos) & STAGED_UNDER_PLATE)
+            if lost:
+                bad.append(f"{beat['id']}: plate '{up}' covers {', '.join(lost)} — "
+                           f"that animation plays out behind the picture and is "
+                           f"never seen. Move the plate, or the cue.")
+            if staged:
+                seen.append(f"{beat['id']}: plate '{up}' is over {', '.join(staged)} "
+                            f"— fine if the plate is pre-staging the map, wrong if "
+                            f"the line is pointing at it.")
+    return bad, seen
+
+
 def check_plates_hold(chapter, timings, langs):
     """Every plate's real time on screen, including the ones with no hide.
 
@@ -378,6 +423,9 @@ def main():
     problems.extend(check_animations_finish(chapter, timings, langs))
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
+    plate_bad, plate_note = check_plates_over_map(chapter)
+    problems.extend(plate_bad)
+    notes.extend(plate_note)
 
     # totals
     print(f"{len(chapter['scenes'])} scenes, {n_beats} beats, {n_cues} cues "

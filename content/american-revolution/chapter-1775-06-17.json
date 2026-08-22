@@ -799,21 +799,6 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "colonial-town"
-            },
-            {
-              "on": {
-                "no": "word:bue",
-                "en": "word:arc"
-              },
-              "do": "plate.show",
-              "id": "siege-map",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.45
-              ],
-              "over": 16,
-              "dim": 0.14
             }
           ],
           "gapAfter": 1.35
@@ -838,6 +823,18 @@
               "at": "boston-neck",
               "tone": "gold",
               "centre": false
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "siege-map",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.45
+              ],
+              "over": 16,
+              "dim": 0.14
             }
           ],
           "gapAfter": 1.25
@@ -2439,21 +2436,6 @@
               "do": "sound.play",
               "id": "volley",
               "gainDb": -6
-            },
-            {
-              "on": {
-                "no": "word:Britene",
-                "en": "word:British"
-              },
-              "do": "plate.show",
-              "id": "bunker-hill-assault",
-              "motion": "left",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 20,
-              "dim": 0.16
             }
           ],
           "gapAfter": 1.35

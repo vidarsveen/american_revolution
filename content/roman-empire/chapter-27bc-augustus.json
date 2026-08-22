@@ -1835,21 +1835,6 @@
               "do": "route.draw",
               "id": "varus-march",
               "over": 5.0
-            },
-            {
-              "on": {
-                "no": "word:kolonne",
-                "en": "word:column"
-              },
-              "do": "plate.show",
-              "id": "legion",
-              "motion": "left",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 14,
-              "dim": 0.12
             }
           ],
           "gapAfter": 1.2
@@ -1868,6 +1853,18 @@
               },
               "do": "portrait.show",
               "id": "varus"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "legion",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 14,
+              "dim": 0.12
             }
           ],
           "gapAfter": 1.2

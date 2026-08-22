@@ -661,6 +661,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "plate.hide",
+              "over": 0.6
+            },
+            {
+              "on": "start",
               "do": "portrait.hide"
             },
             {
@@ -1031,21 +1036,6 @@
                 "no": "August 43 f.Kr.",
                 "en": "August 43 BC"
               }
-            },
-            {
-              "on": {
-                "no": "word:legioner",
-                "en": "word:legions"
-              },
-              "do": "plate.show",
-              "id": "legion",
-              "motion": "left",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 9,
-              "dim": 0.1
             }
           ],
           "gapAfter": 1.6
@@ -1503,21 +1493,6 @@
               "do": "sound.play",
               "id": "musket",
               "gainDb": -14
-            },
-            {
-              "on": {
-                "no": "word:drept",
-                "en": "word:killed"
-              },
-              "do": "plate.show",
-              "id": "proscriptions",
-              "motion": "in",
-              "focus": [
-                0.42,
-                0.5
-              ],
-              "over": 17,
-              "dim": 0.2
             }
           ],
           "gapAfter": 1.5
@@ -1564,6 +1539,18 @@
                 "en": "Appian's figures. Other sources say far fewer."
               },
               "over": 1.4
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "proscriptions",
+              "motion": "in",
+              "focus": [
+                0.42,
+                0.5
+              ],
+              "over": 17,
+              "dim": 0.2
             }
           ],
           "gapAfter": 1.4
@@ -1812,6 +1799,11 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.6
+            },
+            {
               "on": {
                 "no": "word:taper",
                 "en": "word:loses"
@@ -1834,21 +1826,6 @@
               },
               "do": "portrait.show",
               "id": "brutus"
-            },
-            {
-              "on": {
-                "no": "word:Brutus",
-                "en": "word:Brutus"
-              },
-              "do": "plate.show",
-              "id": "philippi",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.52
-              ],
-              "over": 16,
-              "dim": 0.15
             }
           ],
           "gapAfter": 1.6
@@ -2163,21 +2140,6 @@
               "id": "sextus-blockade",
               "over": 3.0,
               "fit": false
-            },
-            {
-              "on": {
-                "no": "word:Roma",
-                "en": "word:Rome"
-              },
-              "do": "plate.show",
-              "id": "forum",
-              "motion": "right",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 16,
-              "dim": 0.12
             }
           ],
           "gapAfter": 1.4
@@ -2227,6 +2189,18 @@
               "do": "sound.play",
               "id": "cannon",
               "gainDb": -11
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "forum",
+              "motion": "right",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 16,
+              "dim": 0.12
             }
           ],
           "gapAfter": 1.4
@@ -2756,6 +2730,11 @@
             "en": "The battle is over in an afternoon. In the middle of it Cleopatra's sixty ships break out through the line and turn south."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.6
+            },
             {
               "on": "start",
               "do": "compare.clear"

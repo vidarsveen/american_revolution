@@ -968,21 +968,6 @@
               "do": "sound.ambience",
               "id": "sea",
               "gainDb": -14
-            },
-            {
-              "on": {
-                "no": "word:betale",
-                "en": "word:pay"
-              },
-              "do": "plate.show",
-              "id": "stamp-act",
-              "motion": "in",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 15,
-              "dim": 0.14
             }
           ],
           "gapAfter": 1.0
@@ -1034,21 +1019,6 @@
                 "en": "people in the colonies"
               },
               "side": "patriot"
-            },
-            {
-              "on": {
-                "no": "word:kolonier",
-                "en": "word:colonies"
-              },
-              "do": "plate.show",
-              "id": "join-or-die",
-              "motion": "still",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 14,
-              "dim": 0.12
             }
           ],
           "gapAfter": 1.2
@@ -1094,6 +1064,21 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "who-could-vote"
+            },
+            {
+              "on": {
+                "no": "word:parlamentet",
+                "en": "word:Parliament"
+              },
+              "do": "plate.show",
+              "id": "stamp-act",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 15,
+              "dim": 0.14
             }
           ],
           "gapAfter": 1.0
@@ -1142,9 +1127,19 @@
               "id": "tax"
             },
             {
-              "on": "start",
-              "do": "plate.hide",
-              "over": 0.9
+              "on": {
+                "no": "word:tolv",
+                "en": "word:twelve"
+              },
+              "do": "plate.show",
+              "id": "tea-party",
+              "motion": "in",
+              "focus": [
+                0.45,
+                0.55
+              ],
+              "over": 14,
+              "dim": 0.14
             }
           ],
           "gapAfter": 1.0
@@ -1178,19 +1173,9 @@
               "over": 3.0
             },
             {
-              "on": {
-                "no": "word:havna",
-                "en": "word:port"
-              },
-              "do": "plate.show",
-              "id": "tea-party",
-              "motion": "in",
-              "focus": [
-                0.45,
-                0.55
-              ],
-              "over": 15,
-              "dim": 0.14
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
             }
           ],
           "gapAfter": 1.0
@@ -1236,21 +1221,6 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "colonial-town"
-            },
-            {
-              "on": {
-                "no": "word:Boston",
-                "en": "word:Boston"
-              },
-              "do": "plate.show",
-              "id": "boston-1768",
-              "motion": "left",
-              "focus": [
-                0.5,
-                0.55
-              ],
-              "over": 15,
-              "dim": 0.12
             }
           ],
           "gapAfter": 1.4
@@ -1717,6 +1687,11 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.6
+            },
+            {
               "on": {
                 "no": "word:hest",
                 "en": "word:horse"
@@ -2088,12 +2063,19 @@
               "facing": -1,
               "fluid": true,
               "over": 2.0
-            },
+            }
+          ]
+        },
+        {
+          "id": "s3.b2b",
+          "say": {
+            "no": "Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
+            "en": "Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
+          },
+          "gapAfter": 1.15,
+          "cues": [
             {
-              "on": {
-                "no": "word:Lexington",
-                "en": "word:Lexington"
-              },
+              "on": "start",
               "do": "plate.show",
               "id": "doolittle-1",
               "motion": "in",
@@ -2105,15 +2087,6 @@
               "dim": 0.12
             }
           ]
-        },
-        {
-          "id": "s3.b2b",
-          "say": {
-            "no": "Noen av dem er nitten. Noen er over seksti. De er ikke soldater. De er bønder, snekkere, en skomaker. Én av dem, Prince Estabrook, er slave.",
-            "en": "Some of them are nineteen. Some are over sixty. They are not soldiers. They are farmers, carpenters, a shoemaker. One of them, Prince Estabrook, is a slave."
-          },
-          "gapAfter": 1.15,
-          "cues": []
         },
         {
           "id": "s3.b3",
@@ -2658,21 +2631,6 @@
                 "no": "word:broa",
                 "en": "word:bridge"
               },
-              "do": "plate.show",
-              "id": "doolittle-3",
-              "motion": "right",
-              "focus": [
-                0.5,
-                0.5
-              ],
-              "over": 22,
-              "dim": 0.12
-            },
-            {
-              "on": {
-                "no": "word:broa",
-                "en": "word:bridge"
-              },
               "do": "front.show",
               "id": "bridge-british-line",
               "side": "british",
@@ -2731,6 +2689,18 @@
                 "en": "at the bridge"
               },
               "side": "british"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "doolittle-3",
+              "motion": "right",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 22,
+              "dim": 0.12
             }
           ]
         },
@@ -3090,18 +3060,6 @@
             "en": "At Lexington they meet a relief force of a thousand men with cannon, sent out from Boston by Lord Percy. Without it the whole column would probably have been taken."
           },
           "cues": [
-            {
-              "on": "word:Percy",
-              "do": "plate.show",
-              "id": "doolittle-4",
-              "motion": "in",
-              "focus": [
-                0.4,
-                0.5
-              ],
-              "over": 20,
-              "dim": 0.12
-            },
             {
               "on": "word:Percy",
               "do": "route.draw",
