@@ -3,11 +3,12 @@
    ============================================================ */
 
 import {
-  state, set, subscribe, START, END, SPAN,
+  state, set, subscribe, era,
   fracToDate, dateToFrac, yearOf, parseDate,
 } from './store.js';
-import { t, tx } from './i18n.js';
-import { icoPlay, icoPause } from './icons.js';
+import { t, tx, formatYear } from './i18n.js';
+import { fromJD, niceStep, tickYears, jdOfYear } from '../core/era.js';
+import { icoPlay, icoPause } from '../core/icons.js';
 
 let root, trackEl, railEl, fillEl, thumbEl, yearEl, chapEl, countEl, playBtn;
 let events = [];
@@ -34,10 +35,10 @@ export function initScrubber(container, allEvents, allChapters, handlers = {}) {
       <div class="scrubber__count"><b></b><span></span></div>
     </div>
     <div class="scrubber__track" role="slider"
-         aria-valuemin="${START}" aria-valuemax="${END}" tabindex="0">
+         aria-valuemin="${era.jdStart}" aria-valuemax="${era.jdEnd}" tabindex="0">
       <div class="scrubber__rail"><div class="scrubber__fill"></div></div>
     </div>
-    <div class="scrubber__scale"><span>1763</span><span>1773</span><span>1783</span></div>
+    <div class="scrubber__scale">${scaleHtml()}</div>
   `;
   container.appendChild(root);
 
@@ -74,12 +75,29 @@ function syncLabels() {
   trackEl.setAttribute('aria-label', t('scrubberLabel'));
 }
 
+/* Three labels across the rail: where the era starts, the middle, and where
+   it ends. Was three literals reading 1763, 1773, 1783 — which is a fact
+   about one subject, and wrong by seventeen centuries for the next. */
+function scaleHtml() {
+  const mid = fromJD(era.jdStart + era.span / 2).y;
+  return [era.start?.y, mid, era.end?.y]
+    .map((y) => `<span>${escapeHtml(formatYear(y))}</span>`).join('');
+}
+
 function buildTicks() {
-  for (let y = 1763; y <= 1783; y++) {
+  // A tick per year over twenty years; one per century over seventeen of
+  // them. niceStep picks, and tickYears counts through BC without ever
+  // landing on the year zero that does not exist.
+  const years = Math.abs((era.end?.y ?? 0) - (era.start?.y ?? 0)) + 1;
+  // About two dozen ticks whatever the era: one a year across twenty years,
+  // one a century across seventeen of them. Majors about every fifth tick.
+  const step = niceStep(years, 24);
+  const major = Math.max(step, niceStep(years, 5));
+  for (const y of tickYears(step)) {
     const tick = document.createElement('div');
-    const major = y % 5 === 0 || y === 1763 || y === 1783;
-    tick.className = 'scrubber__tick' + (major ? ' scrubber__tick--major' : '');
-    tick.style.left = pct(Date.UTC(y, 0, 1));
+    const isMajor = y % major === 0 || y === era.start?.y || y === era.end?.y;
+    tick.className = 'scrubber__tick' + (isMajor ? ' scrubber__tick--major' : '');
+    tick.style.left = pct(jdOfYear(y));
     trackEl.appendChild(tick);
   }
 }
@@ -173,21 +191,23 @@ function wireDrag() {
 }
 
 function wireKeys() {
-  const DAY = 86400000;
+  // Julian days, so a step is a day. It used to be milliseconds.
   trackEl.addEventListener('keydown', (e) => {
-    const step = e.shiftKey ? 365 * DAY : 30 * DAY;
+    const step = e.shiftKey ? 365 : 30;
     let d = state.date;
     if (e.key === 'ArrowRight' || e.key === 'ArrowUp') d += step;
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') d -= step;
-    else if (e.key === 'Home') d = START;
-    else if (e.key === 'End') d = END;
+    else if (e.key === 'Home') d = era.jdStart;
+    else if (e.key === 'End') d = era.jdEnd;
     else return;
     e.preventDefault();
-    set({ date: Math.max(START, Math.min(END, d)) });
+    set({ date: Math.max(era.jdStart, Math.min(era.jdEnd, d)) });
   });
 }
+
+const escapeHtml = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => (
+  { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 /* ---------- For the tour ----------------------------------- */
 
 export function scrubberEl() { return root; }
-export { SPAN };

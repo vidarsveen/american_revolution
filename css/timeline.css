@@ -310,10 +310,7 @@
   border: 2.5px solid var(--ink-faint);
   transition: transform var(--t-med) var(--ease-spring), border-color var(--t-fast);
 }
-.tl-card--british .tl-card__node { border-color: var(--red); }
-.tl-card--patriot .tl-card__node { border-color: var(--blue); }
-.tl-card--french  .tl-card__node { border-color: var(--gold); }
-.tl-card--neutral .tl-card__node { border-color: var(--sage); }
+.tl-card .tl-card__node { border-color: var(--side, var(--rule-strong)); }
 .tl-card--imp3 .tl-card__node {
   width: 15px; height: 15px;
   margin-top: 13px;
@@ -438,10 +435,7 @@
   border-radius: 50%;
   box-shadow: 0 0 0 2px rgba(255, 250, 240, .8);
 }
-.pcard--british .pcard__side { background: var(--red); }
-.pcard--patriot .pcard__side { background: var(--blue); }
-.pcard--french  .pcard__side { background: var(--gold); }
-.pcard--neutral .pcard__side { background: var(--sage); }
+.pcard__side { background: var(--side, var(--ink-faint)); }
 
 .pcard__name {
   position: absolute;

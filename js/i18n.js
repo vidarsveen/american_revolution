@@ -4,13 +4,14 @@
    ============================================================ */
 
 import { state } from './store.js';
+import { formatDate as eraFormat, formatYear as eraYear } from '../core/era.js';
 
 const STRINGS = {
   no: {
-    appTitle: 'Den amerikanske revolusjonen',
-    appTitleShort: 'Revolusjonen',
-    appYears: '1763–1783',
-    bootLine: 'Den amerikanske revolusjonen',
+    // Fallbacks only. The real values come from the pack — see
+    // setSubject() below. These show if a manifest fails to load.
+    appTitle: 'Fortell', appTitleShort: 'Fortell',
+    appYears: '', bootLine: 'Fortell',
 
     tabStory: 'Fortell',
     tabMap: 'Kart',
@@ -69,13 +70,15 @@ const STRINGS = {
     monthNames: ['januar', 'februar', 'mars', 'april', 'mai', 'juni',
       'juli', 'august', 'september', 'oktober', 'november', 'desember'],
     dateJoin: (d, m, y) => `${d}. ${m} ${y}`,
+    bcSuffix: 'f.Kr.', adSuffix: 'e.Kr.',
+    kindPlace: 'Sted', kindTopic: 'Slik levde de', kindTerm: 'Ord',
+    seeAlso: 'Se også', moreAbout: 'Mer om dette',
+    tapToRead: 'Trykk for å lese mer',
   },
 
   en: {
-    appTitle: 'The American Revolution',
-    appTitleShort: 'The Revolution',
-    appYears: '1763–1783',
-    bootLine: 'The American Revolution',
+    appTitle: 'Fortell', appTitleShort: 'Fortell',
+    appYears: '', bootLine: 'Fortell',
 
     tabStory: 'Story',
     tabMap: 'Map',
@@ -134,11 +137,42 @@ const STRINGS = {
     monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'],
     dateJoin: (d, m, y) => `${d} ${m} ${y}`,
+    bcSuffix: 'BC', adSuffix: 'AD',
+    kindPlace: 'Place', kindTopic: 'How they lived', kindTerm: 'Word',
+    seeAlso: 'See also', moreAbout: 'More about this',
+    tapToRead: 'Tap to read more',
   },
 };
 
 /** UI string in the current language. */
+/* What this build is ABOUT.
+ *
+ * The dictionary carries the words of the interface — "Play", "Close",
+ * "Read more" — which are the same whatever the subject is. The name of the
+ * subject is not one of those, and having "Den amerikanske revolusjonen"
+ * sitting in here is the same leak as a faction table in the engine: it makes
+ * the shell know which pack it is showing.
+ *
+ * So the pack says. `work` and `years` are already in every pack.json because
+ * the cover needed them; the topbar and the document title read the same two
+ * fields now. */
+let subject = null;
+
+export function setSubject(manifest) { subject = manifest || null; }
+
+function fromPack(key) {
+  if (!subject) return null;
+  const lang = state.lang;
+  const pick = (f) => (typeof f === 'string' ? f : (f?.[lang] ?? f?.no ?? f?.en ?? null));
+  if (key === 'appTitle' || key === 'bootLine') return pick(subject.work);
+  if (key === 'appTitleShort') return pick(subject.shortName) || pick(subject.work);
+  if (key === 'appYears') return pick(subject.years);
+  return null;
+}
+
 export function t(key) {
+  const own = fromPack(key);
+  if (own) return own;
   const dict = STRINGS[state.lang] || STRINGS.no;
   const v = dict[key];
   return v === undefined ? (STRINGS.no[key] ?? key) : v;
@@ -153,13 +187,28 @@ export function tx(field) {
 }
 
 /** 'YYYY-MM-DD' → '19. april 1775' / '19 April 1775'. */
+/**
+ * A date as a reader would say it.
+ *
+ * The calendar is core/era.js — including whether there is a year zero, which
+ * there is not — and the words are here. This used to split on '-' and hand
+ * the pieces to a template, which works for 1775 and produces "-0044" for
+ * 44 BC.
+ */
 export function formatDate(iso) {
-  const [y, m, d] = iso.split('-').map(Number);
   const dict = STRINGS[state.lang] || STRINGS.no;
-  if (!m) return String(y);
-  const month = dict.monthNames[m - 1];
-  if (!d) return `${month} ${y}`;
-  return dict.dateJoin(d, month, y);
+  return eraFormat(iso, {
+    months: dict.monthNames,
+    join: dict.dateJoin,
+    bc: dict.bcSuffix,
+    ad: dict.adSuffix,
+  });
+}
+
+/** A bare year, with an era suffix only where one is needed. */
+export function formatYear(y) {
+  const dict = STRINGS[state.lang] || STRINGS.no;
+  return eraYear(y, { bc: dict.bcSuffix, ad: dict.adSuffix });
 }
 
 /** 6200 → '6 200' (no) / '6,200' (en) */

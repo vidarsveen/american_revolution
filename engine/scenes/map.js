@@ -11,6 +11,10 @@
    ============================================================ */
 
 import { createMap } from '../../map/index.js';
+import { registerLevels } from '../../map/basemap.js';
+import { derivePalette, toneFactions, factionOf } from '../../core/palette.js';
+import { isDark } from '../../core/theme.js';
+import { packUrl } from '../../core/paths.js';
 
 let map = null;
 let chapter = null;
@@ -20,23 +24,36 @@ let hostEl = null;
 /** Places the chapter named, so a pin can suppress the standing label. */
 const pinned = new Set();
 
-/* Sides are read from the design tokens rather than hard-coded, so they flip
-   with the theme and there is still exactly one place that decides what
-   "British" looks like. When packs land, this comes from pack.json instead. */
-const SIDES = ['british', 'patriot', 'french', 'neutral'];
-const TOKEN = { british: '--red', patriot: '--blue', french: '--gold', neutral: '--sage' };
-const WASH = { british: '--red-wash', patriot: '--blue-wash',
-               french: '--gold-wash', neutral: '--sage-wash' };
+/* What a side looks like now comes from the pack, not from a table here.
 
-function readFactions(el) {
-  const cs = getComputedStyle(el);
-  const out = {};
-  for (const id of SIDES) {
-    const fill = cs.getPropertyValue(TOKEN[id]).trim() || '#55704c';
-    const wash = cs.getPropertyValue(WASH[id]).trim() || fill;
-    out[id] = { label: id, fill, line: fill, wash, flag: '' };
-  }
-  return out;
+   This used to be four names and two maps from name to CSS token, which is
+   fine for one subject and wrong for the next: Octavian's rise has seven
+   parties and two of them change sides halfway through. core/palette.js
+   resolves whatever pack.json declares — a design token, a hue, or explicit
+   hex — and the four palette *roles* (tone:red … tone:sage) ride along beside
+   them so a cue can point at something without naming a party. */
+function paletteFor(el) {
+  const dark = isDark(el);
+  return {
+    ...derivePalette(pack()?.factions, { el, dark }),
+    ...toneFactions(el),
+  };
+}
+
+/** The pack manifest this chapter belongs to. */
+function pack() { return chapter?.packInfo || null; }
+
+/** The map block of it, with the defaults a pack may leave out. */
+function mapConf() {
+  const m = pack()?.map || {};
+  return {
+    home: m.home || null,
+    zoom: { min: 2, max: 15, default: 10.5, maxFit: 13.5, ...(m.zoom || {}) },
+    detail: m.detail || null,
+    borders: m.borders || { country: true, state: false },
+    credit: m.credit || 'Natural Earth',
+    levels: m.basemap?.levels || null,
+  };
 }
 
 export function mountMap(container, ch, language) {
@@ -58,28 +75,31 @@ export function mountMap(container, ch, language) {
   container.appendChild(hostEl);
 
   const host = hostEl.querySelector('#story-map');
+  const conf = mapConf();
+
+  // Which coastline to draw at which zoom is a property of the subject: this
+  // pack has a close extract of the Atlantic seaboard, a Roman one wants the
+  // Mediterranean, and map/basemap.js should know about neither.
+  if (conf.levels) registerLevels(conf.levels);
+
   map = createMap(host, {
     // The narration drives the camera; a stray finger must not fight it.
     interactive: false,
     center: homeCentre(),
-    zoom: 10.5,
-    // Low enough that a phone can hold an ocean. At minZoom 3 a 393 px screen
-    // shows 64 degrees of longitude, so the establishing shot could not fit
-    // Boston and Britain at once however it was framed — Britain sat 46 px off
-    // the right edge at the moment the narration named it. A wide screen never
-    // showed the problem, because 64 degrees is what it has to spare.
-    minZoom: 1.8,
-    maxZoom: 15,
+    zoom: conf.zoom.default,
+    // How far out a phone can go. Declared by the pack, because it is a
+    // statement about the subject's geography — this one has to hold Boston
+    // and Britain on one screen at the moment the narration names them.
+    minZoom: conf.zoom.min,
+    maxZoom: conf.zoom.max,
     geoBase: './assets/geo',
-    // Natural Earth is 1:10M and this chapter plays at zoom 11-13.5. Without
-    // the pack's own geometry the harbour is a blob and the Charles does not
-    // exist — emptier than the tiles this replaced, which would be no trade.
-    detail: {
-      url: `./content/${ch.pack}/geo/detail.json`,
-      minZoom: 9.5,
-      bbox: [-71.70, 42.05, -70.75, 42.75],
-    },
-    factions: readFactions(document.documentElement),
+    // The pack's own close-in geometry, where it has any. Without it the
+    // harbour is a blob and the Charles does not exist.
+    detail: conf.detail
+      ? { ...conf.detail, url: packUrl(ch.pack, conf.detail.url) }
+      : null,
+    credit: conf.credit,
+    factions: paletteFor(document.documentElement),
     lang,
   });
 
@@ -104,12 +124,29 @@ function refreshTheme() {
   if (!map) return;
   map.refreshTheme();
   // Faction colours are design tokens too, and they differ per theme.
-  map.setFactions(readFactions(document.documentElement));
+  map.setFactions(paletteFor(document.documentElement));
 }
 
 function homeCentre() {
   const home = chapter.places?.[chapter.home] || Object.values(chapter.places || {})[0];
   return home ? home.coords : [0, 0];
+}
+
+/**
+ * Is there anything written about this place?
+ *
+ * A tap affordance that opens nothing is worse than none: the dotted rule is
+ * a promise, and a reader who taps two dead ones stops tapping. So a pin
+ * becomes a button only when the pack actually has prose for it, and the
+ * marks appear as the pack is written rather than all at once.
+ */
+function readable(id) {
+  return Boolean(chapter?.placeNotes?.[id]);
+}
+
+/** What a tap on this place should open, or nothing. */
+function placeTap(id) {
+  return readable(id) ? { kind: 'place', id } : null;
 }
 
 const pick = (field) => {
@@ -157,7 +194,7 @@ export function resetMap() {
   if (!map) return;
   regionEpoch += 1;
   map.reset();
-  map.setBorders({ country: true, state: false });
+  map.setBorders(mapConf().borders);
   pinned.clear();
   drawStandingLabels();
 }
@@ -247,7 +284,8 @@ export function flyTo(cue, instant) {
 
 function frame(points, instant, over) {
   if (!map || !points.length) return;
-  map.fitCoords(points, { padding: framePadding(), instant, over, maxZ: 13.5 });
+  map.fitCoords(points, { padding: framePadding(), instant, over,
+                          maxZ: mapConf().zoom.maxFit });
 }
 
 export function fitRoute(cue, instant) {
@@ -256,9 +294,24 @@ export function fitRoute(cue, instant) {
 }
 
 export function fitPlaces(cue, instant) {
-  const pts = (cue.places || [])
-    .map((id) => chapter.places?.[id]?.coords)
-    .filter(Boolean);
+  const ids = (cue.places || []).filter((id) => chapter.places?.[id]);
+  const pts = ids.map((id) => chapter.places[id].coords);
+
+  // Fitting ONE place is fitting a point, and a point has no extent — so the
+  // camera went to the frame ceiling and sat on top of a single town. A
+  // single place means "show me this place", which is what its declared zoom
+  // is for. Found by pointing a whole-Mediterranean shot at one pseudo-place
+  // and arriving at zoom nine.
+  if (ids.length === 1) {
+    const only = chapter.places[ids[0]];
+    map?.flyTo({
+      to: only.coords,
+      zoom: cue.zoom ?? only.zoom ?? mapConf().zoom.default,
+      over: cue.over,
+      instant,
+    });
+    return;
+  }
   frame(pts, instant, cue.over);
 }
 
@@ -304,7 +357,7 @@ export function drawRoute(cue, instant) {
   if (cue.fit !== false) frame(route.coords, instant, 1.6);
 
   const id = `route:${cue.id}`;
-  const faction = route.side || cue.side || 'neutral';
+  const faction = route.side || cue.side || 'tone:sage';
   const strength = cue.strength ?? route.strength;
 
   if (strength) {
@@ -376,7 +429,7 @@ export function showFront(cue, instant) {
   map.fronts.add({
     id: `front:${cue.id}`,
     coords: route.coords,
-    faction: factionOf(cue, route.side || 'neutral'),
+    faction: factionOf(cue, route.side || 'tone:sage'),
     facing: cue.facing ?? 1,
     // A dashed line for a body of men who have not formed up properly. Most
     // of this chapter is exactly that, which is rather the point of it.
@@ -418,7 +471,7 @@ export function converge(cue, instant) {
     map.arrows.add({
       id: `converge:${cue.to}:${i}`,
       coords: bow(place.coords, target.coords, i),
-      faction: cue.side || 'patriot',
+      faction: factionOf(cue, 'tone:blue'),
       strength: cue.strength ?? 600,
       over: cue.over ?? 3.2,
       instant,
@@ -469,11 +522,11 @@ function bow([aLat, aLon], [bLat, bLon], i) {
  * nothing at all. Every "red" ring drew gold and every pin drew British,
  * which is most of why Lexington and the North Bridge had no picture to
  * follow: the cues were there, the colours were not.
+ *
+ * `factionOf` now lives in core/palette.js and resolves a tone to the palette
+ * ROLE of that name rather than to a party, so the engine has stopped
+ * believing that red means British.
  */
-const TONE = { red: 'british', blue: 'patriot', gold: 'french', sage: 'neutral' };
-
-const factionOf = (cue, fallback) => cue.side || TONE[cue.tone] || fallback;
-
 /**
  * Which glyph, if any, belongs under a pin.
  *
@@ -490,7 +543,8 @@ export function showMarker(cue, instant) {
     id: `mk:${cue.at}`,
     at: place.coords,
     label: pick(cue.label) || pick(place.name) || '',
-    faction: factionOf(cue, 'british'),
+    faction: factionOf(cue, 'tone:red'),
+    tap: placeTap(cue.at),
     instant,
   });
 
@@ -502,7 +556,7 @@ export function showMarker(cue, instant) {
       id: `glyph:${cue.at}`,
       at: place.coords,
       kind: glyph,
-      faction: factionOf(cue, 'french'),
+      faction: factionOf(cue, 'tone:gold'),
       scale: cue.scale ?? 2,
       over: instant ? 0 : 0.7,
       instant,
@@ -533,7 +587,7 @@ export function highlight(cue, instant) {
   map.highlights.add({
     id: `ring:${cue.at}`,
     at: place.coords,
-    faction: factionOf(cue, 'french'),
+    faction: factionOf(cue, 'tone:gold'),
     instant,
   });
   if (cue.centre !== false && !instant) {

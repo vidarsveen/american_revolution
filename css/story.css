@@ -103,10 +103,8 @@
 
 /* Routes */
 .story-route { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.story-route--british { stroke: var(--red); }
-.story-route--patriot { stroke: var(--blue); }
-.story-route--french  { stroke: var(--gold); }
-.story-route--neutral { stroke: var(--sage); }
+/* .story-route--* / .story-converge--* were the pre-map-module SVG classes.
+   Superseded by the .atlas-* set in css/atlas.css. */
 .story-route--naval   { stroke-dasharray: 1 8; }
 
 /* Lines coming in from outside — the towns that turned out */
@@ -116,10 +114,7 @@
   stroke-width: 2;
   opacity: .5;
 }
-.story-converge--patriot { stroke: var(--blue); }
-.story-converge--british { stroke: var(--red); }
-.story-converge--french  { stroke: var(--gold); }
-.story-converge--neutral { stroke: var(--sage); }
+
 
 /* Attention ring — pointing at the map while you talk */
 .story-ring-wrap { background: none; border: 0; pointer-events: none; }
@@ -186,6 +181,27 @@
 
 .stage-overlays { position: absolute; inset: 0; z-index: 30; pointer-events: none; }
 
+/* A face on screen is the moment you are curious about the person, and there
+   was no way to get from the one to the other: the card was shown, the
+   dossier existed, and nothing connected them. The deck stays inert so it
+   never swallows a tap meant for the map; the card itself opts back in. */
+.stage-overlays [data-tap] { pointer-events: auto; cursor: pointer; }
+.ov-portrait__card[data-tap] { position: relative; }
+.ov-portrait__card[data-tap]::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1px dashed transparent;
+  transition: border-color var(--t-fast) var(--ease-out);
+  pointer-events: none;
+}
+.ov-portrait__card[data-tap]:focus-visible { outline: none; }
+.ov-portrait__card[data-tap]:focus-visible::after { border-color: var(--gold); }
+@media (hover: hover) {
+  .ov-portrait__card[data-tap]:hover::after { border-color: var(--gold); }
+}
+
 .ov-deck { position: absolute; left: 0; right: 0; padding: 0 var(--s3); }
 .ov-deck--top {
   top: calc(var(--s3) + 42px);
@@ -229,7 +245,9 @@
 .ov-portrait__card {
   position: relative;
   margin: 0;
-  width: min(46vw, 212px);
+  /* Wider than it was: the card now carries a sentence, not just a name and
+     a job title, and 212px wrapped that sentence into six cramped lines. */
+  width: min(52vw, 268px);
   padding: 8px 8px 10px;
   border-radius: var(--r-md);
   background: var(--paper-veil);
@@ -285,6 +303,26 @@
   color: var(--ink-faint);
   font-variant-numeric: lining-nums tabular-nums;
 }
+/* The line that makes you care.
+
+   A name, a job title and two dates is a filing card. The hook is one
+   sentence saying why this person is on screen at all — "Hersker over det
+   rikeste landet ved Middelhavet, og den siste i sitt dynasti" — and
+   people.json has carried one per person all along while the card threw it
+   away. Set slightly apart with a hairline, because it is a different KIND
+   of statement from the two lines above it. */
+.ov-portrait__card q {
+  display: block;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--rule);
+  font-size: 11px;
+  line-height: 1.38;
+  color: var(--ink);
+  quotes: none;
+}
+.ov-portrait__card q::before, .ov-portrait__card q::after { content: none; }
+
 .ov-portrait__card::before {
   content: '';
   position: absolute;
@@ -292,10 +330,7 @@
   width: 3px; height: 32px;
   border-radius: 0 3px 3px 0;
 }
-.ov-portrait__card.side--british::before { background: var(--red); }
-.ov-portrait__card.side--patriot::before { background: var(--blue); }
-.ov-portrait__card.side--french::before  { background: var(--gold); }
-.ov-portrait__card.side--neutral::before { background: var(--sage); }
+.ov-portrait__card::before { background: var(--side, var(--ink-faint)); }
 
 /* ---------- Picture ----------------------------------------- */
 
@@ -412,8 +447,7 @@
   line-height: 1.25;
   color: var(--ink-soft);
 }
-.stat-chip--british b { color: var(--red); }
-.stat-chip--patriot b { color: var(--blue); }
+.stat-chip b { color: var(--side, inherit); }
 
 /* ---------- Passing note ------------------------------------ */
 
@@ -465,6 +499,31 @@
 .captions__line.is-in { animation: cap-in 320ms var(--ease-out); }
 @keyframes cap-in { from { opacity: 0; transform: translateY(4px); } }
 .captions__line span { transition: color 120ms linear; }
+
+/* A word you can open. Same dotted rule as a tappable map label, so the
+   grammar is one idea. Deliberately quiet: the caption is the sentence, and a
+   line of underlined links would read as a form rather than as narration.
+   A multi-word term marks every word it covers, so the rule runs under the
+   whole phrase and a tap anywhere in it opens the same card. */
+.captions__line .w-term {
+  /* The caption slot is pointer-events: none — it is a display surface, and a
+     tap on ordinary caption text has to fall through to "tap to continue".
+     A marked word is the one exception, and re-enables only itself. */
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: underline dotted currentColor;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  opacity: .92;
+}
+.captions__line .w-term:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+@media (hover: hover) {
+  .captions__line .w-term:hover { text-decoration-color: var(--gold); }
+}
 .captions__line span.is-said { color: var(--ink-soft); }
 .captions__line span.is-now  { color: var(--ink); font-weight: 600; }
 
@@ -620,12 +679,25 @@
 }
 
 /* The real slider lies over the hairline: invisible, but grabbable. */
+/* The invisible slider sits exactly over the seek hairline.
+
+   It used to be positioned against the whole transport with hardcoded insets
+   (left 64px, right 58px) tuned to the buttons that existed at the time — so
+   it reached across the caption toggle and swallowed its clicks, and adding
+   one more button made that visible. Wrapping it with the seek area means it
+   is the right size by construction, whatever else is in the row. */
+.transport__seekwrap {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  min-width: 0;
+}
+.transport__seekwrap .transport__seek { flex: 1 1 auto; }
 .transport__range {
   position: absolute;
-  left: 64px;
-  right: 58px;
-  bottom: var(--s2);
-  height: 34px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   margin: 0;
   opacity: 0;
   cursor: pointer;
@@ -884,4 +956,207 @@
   margin: 2px 0 2px -8px;
   border-radius: var(--r-pill);
   background: var(--gold);
+}
+
+/* The transport's language button.
+
+   The topbar's NO/EN is folded away by .app.is-immersive while a chapter
+   plays, so during the story — which is when you actually discover the voice
+   is not the one you wanted — there was no way to reach it. This is the same
+   control, in the place you are looking. */
+.tp-btn--lang {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  min-width: 34px;
+  padding-inline: 8px;
+}
+
+/* ---------- Scene transition -------------------------------
+   The join between two scenes, as a device rather than a seam. See the
+   header of engine/transition.js: the audio gap is 60-325 ms and inaudible;
+   what was jarring was that nothing filled it while the map cut to somewhere
+   else. The veil hides the cut, the card names where we have arrived. */
+.scene-wipe {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+.scene-wipe.is-on { opacity: 1; visibility: visible; transition: opacity 220ms var(--ease-out); }
+.scene-wipe.is-lifting { opacity: 0; transition: opacity 520ms var(--ease-in-out); }
+
+/* Not opaque. The map keeps moving underneath, which is what makes this read
+   as a dissolve rather than a curtain. */
+.scene-wipe__veil {
+  position: absolute;
+  inset: 0;
+  background: var(--paper-sunken);
+  opacity: .82;
+}
+.scene-wipe__card {
+  position: relative;
+  text-align: center;
+  padding: 0 var(--s5);
+  transform: translateY(6px);
+  transition: transform 420ms var(--ease-out);
+}
+.scene-wipe.is-on .scene-wipe__card { transform: none; }
+
+.scene-wipe__clock {
+  margin: 0 0 var(--s2);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.scene-wipe__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 40, 'WONK' 1;
+  line-height: 1.15;
+  color: var(--ink);
+  max-width: 18ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-wipe { display: none; }
+}
+
+/* ---------- Comparison --------------------------------------
+   Two or three quantities as one picture. The bars are measured against the
+   largest, so the RATIO is what you see first — which is the thing the
+   sentence is actually about. See showCompare in engine/scenes/overlays.js. */
+.ov-compare { width: min(420px, 92vw); }
+.ov-cmp {
+  padding: var(--s3) var(--s4);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--paper-raised) 92%, transparent);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(2px);
+}
+.ov-cmp__row {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr auto;
+  align-items: center;
+  gap: var(--s2) var(--s3);
+  padding: 3px 0;
+}
+.ov-cmp__k {
+  font-size: var(--fs-2xs);
+  color: var(--ink-soft);
+  text-align: right;
+  line-height: 1.25;
+}
+.ov-cmp__track {
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: var(--paper-sunken);
+  overflow: hidden;
+}
+.ov-cmp__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: var(--r-pill);
+  background: var(--side, var(--ink-faint));
+  transition-property: width;
+  transition-timing-function: var(--ease-out);
+}
+/* is-instant kills every transition on the card, which is what makes a seek
+   draw the finished bars rather than replaying the growth. */
+.ov-compare.is-instant .ov-cmp__fill { transition: none; }
+.ov-cmp__v {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--side, var(--ink));
+}
+.ov-cmp__note {
+  margin: var(--s2) 0 0;
+  font-size: var(--fs-2xs);
+  color: var(--ink-faint);
+  text-align: center;
+}
+/* Shares of one whole read as one bar cut into pieces, not as three bars. */
+.ov-cmp--ratio .ov-cmp__track { background: none; }
+
+/* ---------- The plate ---------------------------------------
+   A picture as the whole stage, drifting slowly. See the header of
+   engine/scenes/plate.js: the map is not unmounted underneath, it is simply
+   covered — it costs nothing while the camera is not moving, and remounting
+   it per scene would re-trigger the measures-as-zero hazard.
+
+   z-index 20: above the map surface (1) and its vignette (5), below the
+   overlay decks (30) so a quote or a number still reads over the picture. */
+.stage-plate {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  background: var(--paper-sunken);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--plate-out, .9s) var(--ease-in-out), visibility 0s linear var(--plate-out, .9s);
+}
+.stage-plate.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .9s var(--ease-in-out), visibility 0s;
+}
+/* A seek must not cross-dissolve. It is a jump, and it should look like one. */
+.stage-plate.is-instant { transition: none; }
+
+.plate__fig { position: absolute; inset: 0; margin: 0; }
+.plate__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+/* Darkens the picture so words over it stay readable, only when asked. */
+.plate__dim {
+  position: absolute;
+  inset: 0;
+  background: #0d0b08;
+  opacity: calc(var(--plate-dim, 0) * .55);
+  pointer-events: none;
+}
+/* A gentle floor so a caption never sits on a bright sky. */
+.plate__fig::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 52%;
+  background: linear-gradient(to top, rgba(13,11,8,.42), transparent);
+  pointer-events: none;
+}
+.plate__cap {
+  position: absolute;
+  left: var(--s3);
+  right: var(--s3);
+  /* Clear of the transport and the caption box, the same way the stats deck
+     is. It sat at bottom: 8px and was drawn behind the controls, which is the
+     same defect the numbers had — invisible rather than missing, and it takes
+     a screenshot to notice. */
+  bottom: calc(var(--transport-h) + var(--caption-h, 0px) + var(--s3));
+  font-size: var(--fs-2xs);
+  line-height: 1.3;
+  color: rgba(255,255,255,.72);
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-plate, .plate__img { transition: none; }
 }

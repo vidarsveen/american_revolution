@@ -1,563 +1,698 @@
 {
-  "version": 1,
-  "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
-  "refTypes": {
-    "place": "chapter.places",
-    "route": "chapter.routes",
-    "person": "pack.people",
-    "media": "pack.media",
-    "quote": "chapter.quotes",
-    "sound": "pack.sound",
-    "region": "chapter.regions"
-  },
-  "verbs": {
-    "map.flyTo": {
-      "summary": {
-        "no": "Fly kameraet til et sted",
-        "en": "Fly the camera to a place"
-      },
-      "args": {
-        "to": {
-          "type": "place",
-          "required": true
-        },
-        "zoom": {
-          "type": "number",
-          "min": 1,
-          "max": 18
-        },
-        "over": {
-          "type": "seconds"
-        }
-      }
+ "version": 1,
+ "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
+ "refTypes": {
+  "place": "chapter.places",
+  "route": "chapter.routes",
+  "person": "pack.people",
+  "media": "pack.media",
+  "quote": "chapter.quotes",
+  "sound": "pack.sound",
+  "region": "chapter.regions",
+  "term": "pack.terms",
+  "topic": "pack.topics"
+ },
+ "verbs": {
+  "map.flyTo": {
+   "summary": {
+    "no": "Fly kameraet til et sted",
+    "en": "Fly the camera to a place"
+   },
+   "args": {
+    "to": {
+     "type": "place",
+     "required": true
     },
-    "map.fitRoute": {
-      "summary": {
-        "no": "Ramme inn en hel rute",
-        "en": "Frame a whole route"
-      },
-      "args": {
-        "id": {
-          "type": "route",
-          "required": true
-        },
-        "over": {
-          "type": "seconds"
-        }
-      }
+    "zoom": {
+     "type": "number",
+     "min": 1,
+     "max": 18
     },
-    "map.fitPlaces": {
-      "summary": {
-        "no": "Ramme inn flere steder",
-        "en": "Frame several places"
-      },
-      "args": {
-        "places": {
-          "type": "place[]",
-          "required": true
-        },
-        "over": {
-          "type": "seconds"
-        }
-      }
-    },
-    "map.time": {
-      "summary": {
-        "no": "Sett klokkeslettet på kartet",
-        "en": "Set the clock on the map"
-      },
-      "note": "value: null clears the clock — the epilogue steps outside the day.",
-      "args": {
-        "value": {
-          "type": "i18n"
-        }
-      }
-    },
-    "map.mood": {
-      "summary": {
-        "no": "Tid på døgnet",
-        "en": "Time of day"
-      },
-      "args": {
-        "value": {
-          "type": "enum",
-          "values": [
-            "day",
-            "dawn",
-            "dusk",
-            "night",
-            "storm"
-          ],
-          "required": true
-        }
-      }
-    },
-    "map.flash": {
-      "summary": {
-        "no": "Et skudd går av",
-        "en": "A shot goes off"
-      },
-      "args": {}
-    },
-    "region.show": {
-      "summary": {
-        "no": "Vis et navngitt område",
-        "en": "Show a named region"
-      },
-      "note": "Names resolve against the file the chapter declares in `regions`.",
-      "args": {
-        "names": {
-          "type": "region[]",
-          "required": true
-        },
-        "side": {
-          "type": "faction"
-        },
-        "label": {
-          "type": "boolean",
-          "default": true
-        },
-        "over": {
-          "type": "seconds"
-        },
-        "strength": {
-          "type": "number",
-          "default": 1
-        },
-        "vary": {
-          "type": "boolean",
-          "default": true,
-          "note": "Give each region its own colour inside the side's family. On by default: thirteen colonies filled with one wash read as one shape, not thirteen. Set false when a shot is about the side and not about the individual areas."
-        }
-      }
-    },
-    "region.clear": {
-      "summary": {
-        "no": "Fjern områdene",
-        "en": "Clear the regions"
-      },
-      "args": {}
-    },
-    "border.set": {
-      "summary": {
-        "no": "Slå grenser av og på",
-        "en": "Turn boundaries on and off"
-      },
-      "note": "0 country, 1 state/province. A pack decides what those mean.",
-      "args": {
-        "country": {
-          "type": "boolean"
-        },
-        "state": {
-          "type": "boolean"
-        }
-      }
-    },
-    "route.draw": {
-      "summary": {
-        "no": "En marsj tegner seg selv",
-        "en": "A march draws itself"
-      },
-      "args": {
-        "id": {
-          "type": "route",
-          "required": true
-        },
-        "over": {
-          "type": "seconds"
-        },
-        "fit": {
-          "type": "boolean",
-          "default": true
-        },
-        "strength": {
-          "type": "number",
-          "note": "How many people are moving. A route with a strength draws an army arrow sized by it; a route without one stays a thin line, which is what a single rider or a ship should be. Normally set on the route itself rather than the cue, because it is a fact about who is moving, not about this moment."
-        }
-      },
-      "note": "Arrow or line is decided by whether anyone declared a strength — see that argument. Seven hundred regulars and one silversmith must not look alike."
-    },
-    "route.clear": {
-      "summary": {
-        "no": "Fjern alle ruter",
-        "en": "Clear every route"
-      },
-      "args": {}
-    },
-    "front.show": {
-      "summary": {
-        "no": "En linje som står og venter",
-        "en": "A line of men, holding"
-      },
-      "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
-      "args": {
-        "id": {
-          "type": "route",
-          "required": true
-        },
-        "side": {
-          "type": "faction"
-        },
-        "tone": {
-          "type": "enum",
-          "values": [
-            "red",
-            "blue",
-            "gold",
-            "sage"
-          ]
-        },
-        "facing": {
-          "type": "number",
-          "default": 1,
-          "note": "Which side of the line the ticks hang from: 1 or -1. Which way they are looking."
-        },
-        "fluid": {
-          "type": "boolean",
-          "default": false,
-          "note": "Dashed, for a body of men who have not formed up properly. Most of this chapter."
-        },
-        "over": {
-          "type": "seconds"
-        },
-        "fit": {
-          "type": "boolean",
-          "default": false,
-          "note": "Off by default: a front is usually drawn inside a shot the camera has already framed."
-        }
-      }
-    },
-    "front.hide": {
-      "summary": {
-        "no": "Fjern én linje",
-        "en": "Remove one front"
-      },
-      "args": {
-        "id": {
-          "type": "route",
-          "required": true
-        }
-      }
-    },
-    "front.clear": {
-      "summary": {
-        "no": "Fjern alle linjer",
-        "en": "Clear every front"
-      },
-      "args": {}
-    },
-    "marker.show": {
-      "summary": {
-        "no": "En navngitt nål",
-        "en": "A named pin"
-      },
-      "args": {
-        "at": {
-          "type": "place",
-          "required": true
-        },
-        "label": {
-          "type": "i18n"
-        },
-        "side": {
-          "type": "faction"
-        },
-        "kind": {
-          "type": "enum",
-          "values": [
-            "point",
-            "clash",
-            "target",
-            "camp",
-            "siege"
-          ],
-          "default": "point",
-          "note": "point is a plain pin and draws no glyph."
-        },
-        "tone": {
-          "type": "enum",
-          "values": [
-            "red",
-            "blue",
-            "gold",
-            "sage"
-          ]
-        }
-      },
-      "note": "`kind` decides what happened there, and drops the matching glyph from the map's battle set under the pin. `tone` names a palette colour when the point is not about a side — a bridge people fought over is not a claim about who owns it."
-    },
-    "marker.hide": {
-      "summary": {
-        "no": "Fjern én nål",
-        "en": "Remove one pin"
-      },
-      "args": {
-        "at": {
-          "type": "place",
-          "required": true
-        }
-      }
-    },
-    "marker.clear": {
-      "summary": {
-        "no": "Fjern alle nåler",
-        "en": "Clear every pin"
-      },
-      "args": {}
-    },
-    "place.highlight": {
-      "summary": {
-        "no": "Peke på kartet mens du snakker",
-        "en": "Point at the map while you talk"
-      },
-      "args": {
-        "at": {
-          "type": "place",
-          "required": true
-        },
-        "side": {
-          "type": "faction"
-        },
-        "centre": {
-          "type": "boolean",
-          "default": true
-        },
-        "tone": {
-          "type": "enum",
-          "values": [
-            "red",
-            "blue",
-            "gold",
-            "sage"
-          ],
-          "note": "A colour, not a side. Defaults to gold, the map’s \"look here\" colour."
-        }
-      }
-    },
-    "place.clear": {
-      "summary": {
-        "no": "Fjern ringene",
-        "en": "Clear the rings"
-      },
-      "args": {}
-    },
-    "converge": {
-      "summary": {
-        "no": "Styrker som kommer inn og møtes",
-        "en": "Forces coming in and joining"
-      },
-      "args": {
-        "from": {
-          "type": "place[]",
-          "required": true
-        },
-        "to": {
-          "type": "place",
-          "required": true
-        },
-        "side": {
-          "type": "faction"
-        },
-        "strength": {
-          "type": "number"
-        },
-        "over": {
-          "type": "seconds"
-        },
-        "fit": {
-          "type": "boolean",
-          "default": true
-        }
-      }
-    },
-    "portrait.show": {
-      "summary": {
-        "no": "Personen det snakkes om",
-        "en": "The person being spoken about"
-      },
-      "args": {
-        "id": {
-          "type": "person",
-          "required": true
-        }
-      }
-    },
-    "portrait.hide": {
-      "summary": {
-        "no": "Skjul portrettet",
-        "en": "Hide the portrait"
-      },
-      "args": {}
-    },
-    "image.show": {
-      "summary": {
-        "no": "Et bilde i full bredde",
-        "en": "A full-bleed image"
-      },
-      "args": {
-        "id": {
-          "type": "media",
-          "required": true
-        },
-        "mode": {
-          "type": "enum",
-          "values": [
-            "inset",
-            "full"
-          ],
-          "default": "inset"
-        }
-      }
-    },
-    "image.hide": {
-      "summary": {
-        "no": "Skjul bildet",
-        "en": "Hide the image"
-      },
-      "args": {}
-    },
-    "quote.show": {
-      "summary": {
-        "no": "Et sitat fra en kilde",
-        "en": "A quote from a source"
-      },
-      "args": {
-        "id": {
-          "type": "quote",
-          "required": true
-        }
-      }
-    },
-    "quote.hide": {
-      "summary": {
-        "no": "Skjul sitatet",
-        "en": "Hide the quote"
-      },
-      "args": {}
-    },
-    "stat.show": {
-      "summary": {
-        "no": "Et tall som teller",
-        "en": "A number that matters"
-      },
-      "args": {
-        "value": {
-          "type": "string",
-          "required": true
-        },
-        "label": {
-          "type": "i18n"
-        },
-        "side": {
-          "type": "faction"
-        }
-      }
-    },
-    "stat.clear": {
-      "summary": {
-        "no": "Fjern tallene",
-        "en": "Clear the numbers"
-      },
-      "args": {}
-    },
-    "caption.note": {
-      "summary": {
-        "no": "En kort merknad under teksten",
-        "en": "A short note under the caption"
-      },
-      "args": {
-        "value": {
-          "type": "i18n",
-          "required": true
-        }
-      }
-    },
-    "pause": {
-      "summary": {
-        "no": "Vent på et trykk",
-        "en": "Wait for a tap"
-      },
-      "args": {},
-      "handledBy": "player"
-    },
-    "sound.play": {
-      "summary": {
-        "no": "Spill en lyd én gang",
-        "en": "Play a sound once"
-      },
-      "note": "A single event: a shot, a bell, a fife. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
-      "args": {
-        "id": {
-          "type": "sound",
-          "required": true
-        },
-        "times": {
-          "type": "number",
-          "default": 1,
-          "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering."
-        },
-        "spread": {
-          "type": "seconds",
-          "default": 0
-        },
-        "gainDb": {
-          "type": "number",
-          "default": 0
-        },
-        "rate": {
-          "type": "number",
-          "default": 1
-        }
-      }
-    },
-    "sound.ambience": {
-      "summary": {
-        "no": "Legg en lydkulisse under",
-        "en": "Lay a bed of place under it"
-      },
-      "note": "Continuous: wind, sea, a crowd. Crossfades. Omit `id` to stop it.",
-      "args": {
-        "id": {
-          "type": "sound"
-        },
-        "gainDb": {
-          "type": "number",
-          "default": 0
-        }
-      }
-    },
-    "sound.music": {
-      "summary": {
-        "no": "Musikk under fortellingen",
-        "en": "Music under the narration"
-      },
-      "note": "Ducks under the voice on its own, from the script word timings. Omit `id` to stop it.",
-      "args": {
-        "id": {
-          "type": "sound"
-        },
-        "gainDb": {
-          "type": "number",
-          "default": 0
-        }
-      }
-    },
-    "road.draw": {
-      "summary": {
-        "no": "Legg ned en vei",
-        "en": "Lay a road down"
-      },
-      "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
-      "args": {
-        "id": {
-          "type": "route",
-          "required": true
-        },
-        "width": {
-          "type": "number",
-          "default": 1.8
-        }
-      }
+    "over": {
+     "type": "seconds"
     }
+   }
+  },
+  "map.fitRoute": {
+   "summary": {
+    "no": "Ramme inn en hel rute",
+    "en": "Frame a whole route"
+   },
+   "args": {
+    "id": {
+     "type": "route",
+     "required": true
+    },
+    "over": {
+     "type": "seconds"
+    }
+   }
+  },
+  "map.fitPlaces": {
+   "summary": {
+    "no": "Ramme inn flere steder",
+    "en": "Frame several places"
+   },
+   "args": {
+    "places": {
+     "type": "place[]",
+     "required": true
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "zoom": {
+     "type": "number",
+     "min": 1,
+     "max": 18,
+     "note": "Only meaningful when `places` names exactly one place, where fitting is flying. Ignored otherwise."
+    }
+   }
+  },
+  "map.time": {
+   "summary": {
+    "no": "Sett klokkeslettet på kartet",
+    "en": "Set the clock on the map"
+   },
+   "note": "value: null clears the clock — the epilogue steps outside the day.",
+   "args": {
+    "value": {
+     "type": "i18n"
+    }
+   }
+  },
+  "map.mood": {
+   "summary": {
+    "no": "Tid på døgnet",
+    "en": "Time of day"
+   },
+   "args": {
+    "value": {
+     "type": "enum",
+     "values": [
+      "day",
+      "dawn",
+      "dusk",
+      "night",
+      "storm"
+     ],
+     "required": true
+    }
+   }
+  },
+  "map.flash": {
+   "summary": {
+    "no": "Et skudd går av",
+    "en": "A shot goes off"
+   },
+   "args": {}
+  },
+  "region.show": {
+   "summary": {
+    "no": "Vis et navngitt område",
+    "en": "Show a named region"
+   },
+   "note": "Names resolve against the file the chapter declares in `regions`.",
+   "args": {
+    "names": {
+     "type": "region[]",
+     "required": true
+    },
+    "side": {
+     "type": "faction"
+    },
+    "label": {
+     "type": "boolean",
+     "default": true
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "strength": {
+     "type": "number",
+     "default": 1
+    },
+    "vary": {
+     "type": "boolean",
+     "default": true,
+     "note": "Give each region its own colour inside the side's family. On by default: thirteen colonies filled with one wash read as one shape, not thirteen. Set false when a shot is about the side and not about the individual areas."
+    }
+   }
+  },
+  "region.clear": {
+   "summary": {
+    "no": "Fjern områdene",
+    "en": "Clear the regions"
+   },
+   "args": {}
+  },
+  "border.set": {
+   "summary": {
+    "no": "Slå grenser av og på",
+    "en": "Turn boundaries on and off"
+   },
+   "note": "0 country, 1 state/province. A pack decides what those mean.",
+   "args": {
+    "country": {
+     "type": "boolean"
+    },
+    "state": {
+     "type": "boolean"
+    }
+   }
+  },
+  "route.draw": {
+   "summary": {
+    "no": "En marsj tegner seg selv",
+    "en": "A march draws itself"
+   },
+   "args": {
+    "id": {
+     "type": "route",
+     "required": true
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "fit": {
+     "type": "boolean",
+     "default": true
+    },
+    "strength": {
+     "type": "number",
+     "note": "How many people are moving. A route with a strength draws an army arrow sized by it; a route without one stays a thin line, which is what a single rider or a ship should be. Normally set on the route itself rather than the cue, because it is a fact about who is moving, not about this moment."
+    }
+   },
+   "note": "Arrow or line is decided by whether anyone declared a strength — see that argument. Seven hundred regulars and one silversmith must not look alike."
+  },
+  "route.clear": {
+   "summary": {
+    "no": "Fjern alle ruter",
+    "en": "Clear every route"
+   },
+   "args": {}
+  },
+  "front.show": {
+   "summary": {
+    "no": "En linje som står og venter",
+    "en": "A line of men, holding"
+   },
+   "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
+   "args": {
+    "id": {
+     "type": "route",
+     "required": true
+    },
+    "side": {
+     "type": "faction"
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    },
+    "facing": {
+     "type": "number",
+     "default": 1,
+     "note": "Which side of the line the ticks hang from: 1 or -1. Which way they are looking."
+    },
+    "fluid": {
+     "type": "boolean",
+     "default": false,
+     "note": "Dashed, for a body of men who have not formed up properly. Most of this chapter."
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "fit": {
+     "type": "boolean",
+     "default": false,
+     "note": "Off by default: a front is usually drawn inside a shot the camera has already framed."
+    }
+   }
+  },
+  "front.hide": {
+   "summary": {
+    "no": "Fjern én linje",
+    "en": "Remove one front"
+   },
+   "args": {
+    "id": {
+     "type": "route",
+     "required": true
+    }
+   }
+  },
+  "front.clear": {
+   "summary": {
+    "no": "Fjern alle linjer",
+    "en": "Clear every front"
+   },
+   "args": {}
+  },
+  "marker.show": {
+   "summary": {
+    "no": "En navngitt nål",
+    "en": "A named pin"
+   },
+   "args": {
+    "at": {
+     "type": "place",
+     "required": true
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "side": {
+     "type": "faction"
+    },
+    "kind": {
+     "type": "enum",
+     "values": [
+      "point",
+      "clash",
+      "target",
+      "camp",
+      "siege"
+     ],
+     "default": "point",
+     "note": "point is a plain pin and draws no glyph."
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    }
+   },
+   "note": "`kind` decides what happened there, and drops the matching glyph from the map's battle set under the pin. `tone` names a palette colour when the point is not about a side — a bridge people fought over is not a claim about who owns it."
+  },
+  "marker.hide": {
+   "summary": {
+    "no": "Fjern én nål",
+    "en": "Remove one pin"
+   },
+   "args": {
+    "at": {
+     "type": "place",
+     "required": true
+    }
+   }
+  },
+  "marker.clear": {
+   "summary": {
+    "no": "Fjern alle nåler",
+    "en": "Clear every pin"
+   },
+   "args": {}
+  },
+  "place.highlight": {
+   "summary": {
+    "no": "Peke på kartet mens du snakker",
+    "en": "Point at the map while you talk"
+   },
+   "args": {
+    "at": {
+     "type": "place",
+     "required": true
+    },
+    "side": {
+     "type": "faction"
+    },
+    "centre": {
+     "type": "boolean",
+     "default": true
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ],
+     "note": "A colour, not a side. Defaults to gold, the map’s \"look here\" colour."
+    }
+   }
+  },
+  "place.clear": {
+   "summary": {
+    "no": "Fjern ringene",
+    "en": "Clear the rings"
+   },
+   "args": {}
+  },
+  "converge": {
+   "summary": {
+    "no": "Styrker som kommer inn og møtes",
+    "en": "Forces coming in and joining"
+   },
+   "args": {
+    "from": {
+     "type": "place[]",
+     "required": true
+    },
+    "to": {
+     "type": "place",
+     "required": true
+    },
+    "side": {
+     "type": "faction"
+    },
+    "strength": {
+     "type": "number"
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "fit": {
+     "type": "boolean",
+     "default": true
+    }
+   }
+  },
+  "portrait.show": {
+   "summary": {
+    "no": "Personen det snakkes om",
+    "en": "The person being spoken about"
+   },
+   "args": {
+    "id": {
+     "type": "person",
+     "required": true
+    }
+   }
+  },
+  "portrait.hide": {
+   "summary": {
+    "no": "Skjul portrettet",
+    "en": "Hide the portrait"
+   },
+   "args": {}
+  },
+  "image.show": {
+   "summary": {
+    "no": "Et bilde i full bredde",
+    "en": "A full-bleed image"
+   },
+   "args": {
+    "id": {
+     "type": "media",
+     "required": true
+    },
+    "mode": {
+     "type": "enum",
+     "values": [
+      "inset",
+      "full"
+     ],
+     "default": "inset"
+    }
+   }
+  },
+  "image.hide": {
+   "summary": {
+    "no": "Skjul bildet",
+    "en": "Hide the image"
+   },
+   "args": {}
+  },
+  "quote.show": {
+   "summary": {
+    "no": "Et sitat fra en kilde",
+    "en": "A quote from a source"
+   },
+   "args": {
+    "id": {
+     "type": "quote",
+     "required": true
+    }
+   }
+  },
+  "quote.hide": {
+   "summary": {
+    "no": "Skjul sitatet",
+    "en": "Hide the quote"
+   },
+   "args": {}
+  },
+  "stat.show": {
+   "summary": {
+    "no": "Et tall som teller",
+    "en": "A number that matters"
+   },
+   "args": {
+    "value": {
+     "type": "string",
+     "required": true
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "side": {
+     "type": "faction"
+    }
+   }
+  },
+  "stat.clear": {
+   "summary": {
+    "no": "Fjern tallene",
+    "en": "Clear the numbers"
+   },
+   "args": {}
+  },
+  "caption.note": {
+   "summary": {
+    "no": "En kort merknad under teksten",
+    "en": "A short note under the caption"
+   },
+   "args": {
+    "value": {
+     "type": "i18n",
+     "required": true
+    }
+   }
+  },
+  "pause": {
+   "summary": {
+    "no": "Vent på et trykk",
+    "en": "Wait for a tap"
+   },
+   "args": {},
+   "handledBy": "player"
+  },
+  "sound.play": {
+   "summary": {
+    "no": "Spill en lyd én gang",
+    "en": "Play a sound once"
+   },
+   "note": "A single event: a shot, a bell, a fife. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
+   "args": {
+    "id": {
+     "type": "sound",
+     "required": true
+    },
+    "times": {
+     "type": "number",
+     "default": 1,
+     "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering."
+    },
+    "spread": {
+     "type": "seconds",
+     "default": 0
+    },
+    "gainDb": {
+     "type": "number",
+     "default": 0
+    },
+    "rate": {
+     "type": "number",
+     "default": 1
+    }
+   }
+  },
+  "sound.ambience": {
+   "summary": {
+    "no": "Legg en lydkulisse under",
+    "en": "Lay a bed of place under it"
+   },
+   "note": "Continuous: wind, sea, a crowd. Crossfades. Omit `id` to stop it.",
+   "args": {
+    "id": {
+     "type": "sound"
+    },
+    "gainDb": {
+     "type": "number",
+     "default": 0
+    }
+   }
+  },
+  "sound.music": {
+   "summary": {
+    "no": "Musikk under fortellingen",
+    "en": "Music under the narration"
+   },
+   "note": "Ducks under the voice on its own, from the script word timings. Omit `id` to stop it.",
+   "args": {
+    "id": {
+     "type": "sound"
+    },
+    "gainDb": {
+     "type": "number",
+     "default": 0
+    }
+   }
+  },
+  "road.draw": {
+   "summary": {
+    "no": "Legg ned en vei",
+    "en": "Lay a road down"
+   },
+   "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
+   "args": {
+    "id": {
+     "type": "route",
+     "required": true
+    },
+    "width": {
+     "type": "number",
+     "default": 1.8
+    }
+   }
+  },
+  "term.mark": {
+   "summary": {
+    "no": "Gjør et ord i teksten trykkbart",
+    "en": "Make a word in the caption tappable"
+   },
+   "note": "Marks a word so a reader can tap it and read more. Resolved when the chapter is compiled, NOT when the cue fires — the mark is a property of the sentence, not a thing on the stage, so it cannot violate the rule that the picture is a function of time. There is deliberately no `dossier.show`: a cue that OPENED a card would be replayed on every seek, and forty cards would try to open at once. Same reason a musket must not fire forty times when you scrub back through Lexington. term.mark marks; the reader decides whether to look.",
+   "handledBy": "script",
+   "args": {
+    "kind": {
+     "type": "enum",
+     "required": true,
+     "values": [
+      "term",
+      "person",
+      "place",
+      "topic"
+     ],
+     "note": "Which pool the id resolves against."
+    },
+    "id": {
+     "type": "string",
+     "required": true,
+     "note": "Checked against the pool named by `kind`."
+    },
+    "span": {
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 6,
+     "note": "How many words the term covers. 'Second Continental Congress' is a span of three."
+    }
+   }
+  },
+  "compare.show": {
+   "summary": {
+    "no": "To eller tre tall som ett bilde",
+    "en": "Two or three numbers as one picture"
+   },
+   "note": "Seventy-seven against seven hundred lands as an argument when it is one picture and as trivia when it is two unrelated chips. Same for 230 ships against 400, and for three shares of the Roman world. `n` sizes the bar; `value` is what is printed. They are separate because the pack writes numbers the way they are SPOKEN in the prose and the way they are READ on screen, and a bar needs neither — it needs a number to measure. A part with no `n` falls back to parsing `value`.",
+   "args": {
+    "parts": {
+     "type": "part[]",
+     "required": true,
+     "min": 2,
+     "max": 4,
+     "note": "Each: { n, value, label, side or tone }."
+    },
+    "mode": {
+     "type": "enum",
+     "values": [
+      "bar",
+      "ratio"
+     ],
+     "default": "bar",
+     "note": "`bar` measures them against the largest. `ratio` sets them side by side as one width."
+    },
+    "note": {
+     "type": "i18n",
+     "note": "One line under the bars, where the comparison needs a caveat."
+    },
+    "over": {
+     "type": "seconds",
+     "default": 1.1
+    }
+   }
+  },
+  "compare.clear": {
+   "summary": {
+    "no": "Fjern sammenlikningen",
+    "en": "Remove the comparison"
+   },
+   "args": {}
+  },
+  "plate.show": {
+   "summary": {
+    "no": "Fyll skjermen med et bilde, og la kameraet gli",
+    "en": "Fill the screen with a picture, and let the camera drift"
+   },
+   "note": "The map is not the only stage. A chapter has moments that are not on a map at all — the Ides of March happens in a room, the will is read in a senate, the Forum is a place you should SEE rather than see a dot for — and until now the only answer was a small inset card over a map that was still the subject of the screen. A plate takes the whole frame, and drifts: the slow push that is the visual grammar of every history documentary ever made, and the reason a still photograph holds attention for twelve seconds instead of two. The map keeps running underneath and is never unmounted — it costs nothing while covered, because paintGround only re-bakes when the camera moves, and a camera under a plate does not move. Under `instant` the drift does not animate: the plate appears already at its end framing, the same discipline as a march that draws itself whole when you seek.",
+   "args": {
+    "id": {
+     "type": "media",
+     "required": true
+    },
+    "motion": {
+     "type": "enum",
+     "values": [
+      "in",
+      "out",
+      "left",
+      "right",
+      "still"
+     ],
+     "default": "in",
+     "note": "Which way the camera drifts. `in` is the push."
+    },
+    "focus": {
+     "type": "number[]",
+     "note": "[x, y] as fractions of the image, what the drift aims at. Default centre, slightly high — faces are rarely in the middle."
+    },
+    "over": {
+     "type": "seconds",
+     "default": 14,
+     "note": "How long the drift takes. Longer than the beat, on purpose: motion you can SEE is motion that distracts."
+    },
+    "dim": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "note": "Darken the plate so a caption or quote over it stays readable."
+    }
+   }
+  },
+  "plate.hide": {
+   "summary": {
+    "no": "Tilbake til kartet",
+    "en": "Back to the map"
+   },
+   "args": {
+    "over": {
+     "type": "seconds",
+     "default": 0.9,
+     "note": "The cross-dissolve back to the map."
+    }
+   }
   }
+ }
 }

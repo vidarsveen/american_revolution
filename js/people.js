@@ -4,11 +4,18 @@
 
 import { state, set, subscribe } from './store.js';
 import { t, tx } from './i18n.js';
-import { icoPersonPlaceholder } from './icons.js';
+import { icoPersonPlaceholder } from '../core/icons.js';
 import { escapeHtml } from './map.js';
 
 let root, gridEl, introEl;
 let people = [];
+
+/* Where this pack keeps its faces. Handed in at boot rather than assumed,
+   because a global assets/portraits/ is fine with one subject and wrong with
+   two. Defaulted so a caller that has not been updated still renders. */
+let portraitBase = './portraits/';
+
+export function setPortraitBase(base) { portraitBase = base || './portraits/'; }
 
 export function initPeople(container, allPeople) {
   people = allPeople;
@@ -44,7 +51,7 @@ function cardHtml(p) {
   const side = p.side || 'neutral';
   const img = p.portrait
     ? `<span class="pcard__img">
-         <img src="./assets/portraits/${escapeHtml(p.portrait)}"
+         <img src="${portraitBase}${escapeHtml(p.portrait)}"
               alt="${escapeHtml(tx(p.name))}" loading="lazy" decoding="async">
          <span class="pcard__side"></span>
          <span class="pcard__name">${escapeHtml(tx(p.name))}</span>
@@ -56,7 +63,7 @@ function cardHtml(p) {
        </span>`;
 
   return `
-    <button class="pcard pcard--${side}" type="button" data-id="${escapeHtml(p.id)}">
+    <button class="pcard" style="--side: var(--f-${side}, var(--ink-faint))" type="button" data-id="${escapeHtml(p.id)}">
       ${img}
       <span class="pcard__meta">
         <span class="pcard__role">${escapeHtml(tx(p.role))}</span>

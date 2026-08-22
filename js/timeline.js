@@ -98,7 +98,7 @@ function cardHtml(ev) {
   const tag = ev.importance === 3
     ? `<span class="tl-card__tag">${escapeHtml(t('filterTurning'))}</span>` : '';
   return `
-    <button class="tl-card tl-card--${side}${imp}" type="button" data-id="${escapeHtml(ev.id)}"
+    <button class="tl-card${imp}" style="--side: var(--f-${side}, var(--rule-strong))" type="button" data-id="${escapeHtml(ev.id)}"
             data-at="${parseDate(ev.date)}">
       <span class="tl-card__node"></span>
       <span class="tl-card__body">

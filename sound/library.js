@@ -928,7 +928,9 @@ export function createLibrary({ manifest = null, base = '' } = {}) {
       label: f?.title ?? c?.label ?? { no: name, en: name },
       source: f ? 'file' : 'synth',
       licence: f?.licence ?? 'Synthesised in this repository',
-      credit: f?.credit ?? 'Den amerikanske revolusjonen',
+      // A synthesised effect has no author to credit. Naming a subject here
+      // was a leak: the same catalogue serves every pack.
+      credit: f?.credit ?? 'Synthesised',
     };
   }
 

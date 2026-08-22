@@ -5,7 +5,7 @@
    Any touch hands control straight back.
    ============================================================ */
 
-import { state, set, parseDate, START } from './store.js';
+import { state, set, parseDate, era } from './store.js';
 import { tx, formatDate } from './i18n.js';
 import { flyToEvent, getMap, mapHeight } from './map.js';
 
@@ -72,7 +72,8 @@ async function start() {
 
   // If we are at (or past) the end, rewind so play always means something.
   const last = parseDate(stops[stops.length - 1].date);
-  if (state.date >= last - 1) set({ date: START }, { silent: true });
+  // One Julian day, not one millisecond — the unit changed with core/era.js.
+  if (state.date >= last - 1) set({ date: era.jdStart }, { silent: true });
 
   const remaining = stops.filter((s) => parseDate(s.date) > state.date);
   const queue = remaining.length ? remaining : stops;

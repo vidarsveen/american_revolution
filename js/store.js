@@ -3,9 +3,25 @@
    No framework; every view subscribes and re-renders what changed.
    ============================================================ */
 
-export const START = Date.UTC(1763, 0, 1);
-export const END   = Date.UTC(1783, 11, 31);
-export const SPAN  = END - START;
+/* The timeline runs on Julian day numbers, not milliseconds, and the span
+   comes from the pack rather than from two literals that said 1763 and 1783.
+   A millisecond count cannot hold 44 BC — see the header of core/era.js, and
+   note that `Date.UTC(-44, …)` does not mean what it looks like it means. */
+export { era, fracToJD, jdToFrac, yearOf, parseRange } from '../core/era.js';
+import { parseDate as parseFull } from '../core/era.js';
+
+/**
+ * A date string to one orderable number — its Julian day.
+ *
+ * Every caller in js/ compares and subtracts these ("is this event before the
+ * playhead?"), so the export has to stay a number. core/era.js returns the
+ * whole {y, m, d, prec, jd} record, which is what you want when rendering and
+ * emphatically not what you want in `a.date - b.date`.
+ */
+export const parseDate = (input) => parseFull(input)?.jd ?? NaN;
+
+/** The full record, for anything that needs the parts rather than the order. */
+export { parseDate as parseDateParts } from '../core/era.js';
 
 const listeners = new Set();
 
@@ -13,7 +29,7 @@ export const state = {
   lang: 'no',            // 'no' | 'en'
   theme: 'auto',         // 'auto' | 'light' | 'dark'
   view: 'story',         // 'story' | 'map' | 'timeline' | 'people'
-  date: START,           // scrubber position, ms
+  date: 0,               // scrubber position, as a Julian day
   filter: 'all',         // 'all' | 'battle' | 'politics' | 'turning-point'
   selected: null,        // { type: 'event' | 'person', id }
   playing: false,
@@ -50,7 +66,7 @@ function shallowEq(a, b) {
 
 /* ---------- Persistence ------------------------------------ */
 
-const LS = 'revolusjonen:prefs';
+const LS = 'fortell:prefs';
 
 export function loadPrefs() {
   try {
@@ -149,17 +165,11 @@ export function onNextFrame(fn) {
   setTimeout(run, 48);
 }
 
-/* ---------- Date helpers ----------------------------------- */
+/* ---------- Date helpers -----------------------------------
+   All of these moved to core/era.js and are re-exported above, so the two
+   modes share one calendar and neither of them owns it. The old names are
+   kept where they read well; `fracToDate`/`dateToFrac` are the same
+   functions under their era.js names. */
 
-/** Scrubber fraction (0–1) → ms */
-export const fracToDate = (f) => START + Math.max(0, Math.min(1, f)) * SPAN;
-/** ms → scrubber fraction (0–1) */
-export const dateToFrac = (d) => Math.max(0, Math.min(1, (d - START) / SPAN));
-
-export const yearOf = (ms) => new Date(ms).getUTCFullYear();
-
-/** Parse 'YYYY-MM-DD' as UTC so timezones never shift a date across midnight. */
-export function parseDate(iso) {
-  const [y, m, d] = iso.split('-').map(Number);
-  return Date.UTC(y, (m || 1) - 1, d || 1);
-}
+/** Scrubber fraction (0–1) → a Julian day. */
+export { fracToJD as fracToDate, jdToFrac as dateToFrac } from '../core/era.js';

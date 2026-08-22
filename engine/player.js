@@ -42,6 +42,8 @@ export class Player {
     this._raf = 0;
     this._lastBeat = null;
     this._lastWord = -1;
+    /** Silence at a scene join. Set by the shell; 0 disables it. */
+    this.leadInMs = 0;
 
     this.audio.addEventListener('ended', () => this.next());
     this.audio.addEventListener('seeked', () => { this._seeking = false; });
@@ -108,7 +110,10 @@ export class Player {
     if (changed) {
       this.audio.pause();
       if (scene.audio) this.audio.src = scene.audio;
-      this.onScene(scene, i);
+      // `at` is passed because onScene fires BEFORE setNow — anything asking
+      // now() here would be told where we just left, not where we landed.
+      this.onScene(scene, i, at);
+      this.warmNext(i);
     }
     this.rebuildTo(at);
     this.setNow(at);
@@ -116,7 +121,48 @@ export class Player {
     this._lastBeat = beat;
     this._lastWord = wordAt(beat, at);
     this.onTick(at, scene, beat, this._lastWord);
-    if (autoplay) await this.play(); else this.onState(this.state());
+
+    if (!autoplay) { this.onState(this.state()); return; }
+
+    // A beat of silence at a scene join, so the title card gets clear air.
+    // Without it the card and the first sentence of the new scene arrived at
+    // the same instant, which is two things asking for attention at once.
+    //
+    // `playing` is set BEFORE the wait: the chapter is running, it is simply
+    // not making a sound yet. Leaving it false would fold the topbar back in
+    // for a second and then out again.
+    if (changed && at === 0 && this.leadInMs > 0 && this.sceneIndex > 0) {
+      this.playing = true;
+      this.onState(this.state());
+      await new Promise((r) => setTimeout(r, this.leadInMs));
+      // The viewer may have scrubbed somewhere else while we waited.
+      if (this.sceneIndex !== i) return;
+    }
+    await this.play();
+  }
+
+  /**
+   * Pull the next scene's audio into the browser cache.
+   *
+   * Measured, before deciding it was worth doing: the gap between asking for
+   * the next scene and hearing sound is 60-325 ms, and the variable part of
+   * that is the fetch. Warming it makes the join consistent, which matters
+   * more than making it short — a transition you can design around has to be
+   * the same length every time.
+   *
+   * A detached Audio element, never played, never attached to the document:
+   * this is a cache warm, not a second player. Nothing here can make a sound.
+   */
+  warmNext(i) {
+    const next = this.chapter.scenes[i + 1];
+    if (!next?.audio || next.audio === this._warmed) return;
+    this._warmed = next.audio;
+    try {
+      const a = new Audio();
+      a.preload = 'auto';
+      a.src = next.audio;
+      this._warm = a;                 // hold a reference or it may be collected
+    } catch { /* a browser that will not preload still plays fine */ }
   }
 
   next() {
@@ -139,13 +185,27 @@ export class Player {
   async play() {
     if (!this.scene) return;
     this.waitingForTap = false;
-    try {
-      await this.audio.play();
-      this.silent = false;
-    } catch {
-      // Browsers refuse to start audio before a real gesture. Rather than sit
-      // dead, run the chapter silently — the captions carry the words.
+
+    if (!this.scene.audio) {
+      // Nothing recorded for this scene yet. Do NOT ask the element to play:
+      // an <audio> with no src returns a promise from play() that never
+      // settles, so awaiting it hangs here for ever — the chapter sits on the
+      // first frame, `playing` stays false, and nothing says why.
+      //
+      // That is rule 3 exactly: audio failing is not the app failing. A
+      // chapter with no narration still has to run on the timer, which is
+      // also what makes it possible to author cues and captions BEFORE
+      // recording anything, the way the authoring order says to.
       this.silent = true;
+    } else {
+      try {
+        await this.audio.play();
+        this.silent = false;
+      } catch {
+        // Browsers refuse to start audio before a real gesture. Rather than
+        // sit dead, run the chapter silently — the captions carry the words.
+        this.silent = true;
+      }
     }
     this._t0 = performance.now();
     this.playing = true;

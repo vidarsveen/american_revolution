@@ -90,6 +90,30 @@
 
 .atlas__canvas   { position: absolute; inset: 0; display: block; }
 .atlas__overlay  { position: absolute; inset: 0; pointer-events: none; }
+
+/* Tappable things opt back into pointer events one at a time. The overlay
+   stays inert so a wide label box never swallows the neighbour it overlaps —
+   the same reason .mk-wrap is inert in the Explore map. */
+.atlas__overlay [data-tap] {
+  pointer-events: auto;
+  cursor: pointer;
+}
+/* One visual grammar, learned once: a hairline dotted rule under anything you
+   can open. It is the same mark the caption uses for a term, so "dotted means
+   there is more" is a single idea rather than four. */
+.atlas__overlay .atlas-place[data-tap] {
+  text-decoration: underline dotted var(--label-ink-quiet);
+  text-underline-offset: 3px;
+}
+.atlas__overlay [data-tap]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+@media (hover: hover) {
+  .atlas__overlay [data-tap]:hover { text-decoration-color: var(--gold); }
+  .atlas__overlay .atlas-pin[data-tap]:hover { filter: brightness(1.15); }
+}
 .atlas__grain,
 .atlas__vignette { position: absolute; inset: 0; pointer-events: none; }
 

@@ -230,3 +230,12 @@
   0%   { transform: translateX(-100%); }
   100% { transform: translateX(350%); }
 }
+
+/* A pack does not have to be everything.
+
+   The Roman pack is a narrated chapter and a set of people — no event list,
+   so Explore's map and timeline would open on nothing. js/main.js drops those
+   tabs; when only one view is left the bar itself is just chrome, and the
+   story gets the height back. */
+.tabbar.is-single { display: none; }
+.app--single-view { --tabbar-h: 0px; }

@@ -33,7 +33,7 @@ const AUTO_FOLD_MS = 3600;
  *                            than inside the bar — mounting it in the bar is
  *                            what left it stacked behind the controls.
  */
-export function mountChrome(host, root, chapter, player, strings) {
+export function mountChrome(host, root, chapter, player, strings, onLang) {
   const el = document.createElement('div');
   el.className = 'transport is-min';
   el.innerHTML = `
@@ -56,18 +56,22 @@ export function mountChrome(host, root, chapter, player, strings) {
       <button class="tp-btn tp-btn--main" data-act="toggle" aria-label="${strings.play}">
         <span class="ico-play">${ICON.play}</span><span class="ico-pause">${ICON.pause}</span>
       </button>
-      <button class="transport__seek" data-act="expand" aria-label="${strings.controls}">
-        <span class="transport__seek-track"></span>
-        <span class="transport__seek-fill"></span>
-      </button>
+      <span class="transport__seekwrap">
+        <button class="transport__seek" data-act="expand" aria-label="${strings.controls}">
+          <span class="transport__seek-track"></span>
+          <span class="transport__seek-fill"></span>
+        </button>
+        <input class="transport__range" type="range" min="0" max="1000" value="0" step="1"
+               aria-label="${strings.seek}">
+      </span>
       <span class="transport__time">0:00</span>
       <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
               aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
+      <button class="tp-btn tp-btn--lang" data-act="lang"
+              aria-label="${strings.language}">${strings.langShort}</button>
       <button class="tp-btn tp-btn--icon" data-act="episodes"
               aria-label="${strings.episodes}">${ICON.list}</button>
     </div>
-    <input class="transport__range" type="range" min="0" max="1000" value="0" step="1"
-           aria-label="${strings.seek}">
   `;
   host.appendChild(el);
 
@@ -187,13 +191,20 @@ export function mountChrome(host, root, chapter, player, strings) {
     if (act === 'expand') { expand(); return; }
     if (act === 'text') { sheet.classList.add('is-open'); return; }
     if (act === 'episodes') { openEpisodes(); return; }
+    if (act === 'lang') {
+      // The topbar's NO/EN sits behind the immersive fold while a chapter is
+      // playing, so there was no way to change language without leaving the
+      // story. This is the same control, where you are.
+      onLang?.();
+      return;
+    }
     if (act === 'cc') {
       const next = !captionsOn();
       setCaptionsOn(next);
       for (const b of el.querySelectorAll('[data-act=cc]')) {
         b.setAttribute('aria-pressed', String(next));
       }
-      try { localStorage.setItem('revolusjonen:captions', next ? '1' : '0'); } catch { /* private mode */ }
+      try { localStorage.setItem('fortell:captions', next ? '1' : '0'); } catch { /* private mode */ }
       return;   // do not fold: turning captions off is not "done fiddling"
     }
     const seg = e.target.closest('.rail-seg');

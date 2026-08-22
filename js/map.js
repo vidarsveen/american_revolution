@@ -22,31 +22,33 @@
 
 import { state, subscribe, parseDate, yearOf, onNextFrame, matchesFilter } from './store.js';
 import { tx, t } from './i18n.js';
-import { GLYPH, icoTarget } from './icons.js';
+import { GLYPH, icoTarget } from '../core/icons.js';
+import { derivePalette, toneFactions } from '../core/palette.js';
+import { isDark } from '../core/theme.js';
 import { createMap } from '../map/index.js';
 
-/* Roughly the theatre of the war: New England down to Georgia.
-   We fit these bounds rather than fixing a zoom, so a tall phone and a
-   wide laptop both frame the same story. */
-const HOME_BOUNDS = [[31.2, -82.0], [46.0, -69.5]];
+/* Where the map opens when a pack does not say. Bounds rather than a fixed
+   zoom, so a tall phone and a wide laptop frame the same thing — but WHICH
+   bounds is a fact about the subject, and lives in pack.json under
+   map.explore.bounds. This is only the fallback, so it is the whole world
+   rather than somebody's theatre of war. */
+const HOME_BOUNDS = [[-55, -170], [70, 170]];
 
-/* Sides are design tokens, so they flip with the theme and there is one place
-   that decides what "British" looks like. Same table the story stage reads. */
-const SIDES = ['british', 'patriot', 'french', 'neutral'];
-const TOKEN = { british: '--red', patriot: '--blue', french: '--gold', neutral: '--sage' };
-const WASH = { british: '--red-wash', patriot: '--blue-wash',
-               french: '--gold-wash', neutral: '--sage-wash' };
-
+/* What a side looks like comes from the pack, the same way the story stage
+   gets it. This was a duplicate of the engine's four-name table, so adding a
+   subject meant editing the same list in two files and noticing neither. */
 function readFactions() {
-  const cs = getComputedStyle(document.documentElement);
-  const out = {};
-  for (const id of SIDES) {
-    const fill = cs.getPropertyValue(TOKEN[id]).trim() || '#55704c';
-    const wash = cs.getPropertyValue(WASH[id]).trim() || fill;
-    out[id] = { label: id, fill, line: fill, wash, flag: '' };
-  }
-  return out;
+  const el = document.documentElement;
+  return {
+    ...derivePalette(manifest?.factions, { el, dark: isDark(el) }),
+    ...toneFactions(el),
+  };
 }
+
+/** The pack manifest, handed in by main.js at boot. */
+let manifest = null;
+
+export function usePack(m) { manifest = m || null; }
 
 let map = null;
 let host = null;
@@ -56,9 +58,10 @@ const markers = new Map();
 let events = [];
 let onSelect = () => {};
 
-/* ------------------------------------------------------------
-   Boot
-   ------------------------------------------------------------ */
+/** Where the map opens. A fact about the subject, so the pack says it. */
+function homeBounds() {
+  return manifest?.map?.explore?.bounds || HOME_BOUNDS;
+}
 
 export function initMap(allEvents, handlers = {}) {
   events = allEvents;
@@ -67,13 +70,13 @@ export function initMap(allEvents, handlers = {}) {
   host = document.getElementById('map');
   map = createMap(host, {
     interactive: true,
-    minZoom: 2.6,
-    maxZoom: 12,
+    minZoom: manifest?.map?.explore?.zoom?.min ?? 2.6,
+    maxZoom: manifest?.map?.explore?.zoom?.max ?? 12,
     geoBase: './assets/geo',
     factions: readFactions(),
     onCamera: applyZoomClass,
   });
-  map.fitBounds(HOME_BOUNDS, { padding: 12, instant: true });
+  map.fitBounds(homeBounds(), { padding: 12, instant: true });
 
   buildMarkers();
   refresh();
@@ -105,7 +108,7 @@ function applyZoomClass({ zoom }) {
 function markerHtml(ev) {
   const glyph = GLYPH[ev.kind] || GLYPH.battle;
   return (
-    `<div class="mk" data-id="${escapeHtml(ev.id)}">` +
+    `<div class="mk" data-id="${escapeHtml(ev.id)}" style="--mk-color: var(--f-${escapeHtml(ev.side || 'neutral')}, var(--ink-faint))">` +
       `<span class="mk__ring"></span>` +
       `<span class="mk__body">${glyph}</span>` +
       `<span class="mk__label">${escapeHtml(tx(ev.title))}</span>` +
@@ -128,7 +131,6 @@ function markerClass(ev) {
   const sel = state.selected?.type === 'event' && state.selected.id === ev.id;
   return [
     'mk-wrap',
-    `mk--${ev.side || 'neutral'}`,
     `mk--imp${ev.importance || 2}`,
     isNow ? 'mk--now' : 'mk--past',
     sel ? 'mk--sel' : '',
@@ -259,7 +261,7 @@ export function flyToEvent(id, { zoom, offsetY = 0, instant = false } = {}) {
 
 export function resetView(animate = true) {
   if (!map) return;
-  map.fitBounds(HOME_BOUNDS, { padding: 12, instant: !animate, over: 0.9 });
+  map.fitBounds(homeBounds(), { padding: 12, instant: !animate, over: 0.9 });
 }
 
 /** The ground is ours and drawn from design tokens, so a theme flip redraws it. */

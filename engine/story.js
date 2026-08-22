@@ -3,6 +3,11 @@
    ============================================================ */
 
 import { loadChapter } from './script.js';
+import { allChapters } from './pack.js';
+import { mountDepth, unmountDepth, coach } from './depth.js';
+import { mountTransition, unmountTransition, LEAD_IN_MS } from './transition.js';
+import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
+import { isDark } from '../core/theme.js';
 import { checkVerbManifest, mountStage } from './stage.js';
 import { Player } from './player.js';
 import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
@@ -10,36 +15,39 @@ import { mountChrome } from './chrome.js';
 import { soundScene, unlockSound, setSilentSound, startSoundClock,
          stopSoundClock, pauseSound, resumeSound, stopSound } from './scenes/sound.js';
 
-// In order. The cover lists them when there is more than one, and a chapter
-// that fails to load is dropped from the list rather than taking the mode
-// down with it.
-const CHAPTERS = [
-  { pack: 'american-revolution', id: 'chapter-1775-04-19' },
-  { pack: 'american-revolution', id: 'chapter-1775-06-17' },
-];
+// Every narrated chapter of every pack, in order, filled in at boot from
+// content/packs.json and each pack.json. It was a hardcoded array of two,
+// which is the single reason the engine knew what subject it was about.
+let CHAPTERS = [];
 
 const STR = {
   no: {
     play: 'Spill av', pause: 'Pause', back: 'Forrige', forward: 'Neste',
+    language: 'Bytt språk', langShort: 'EN',
     captions: 'Undertekst', transcript: 'Manus', close: 'Lukk', seek: 'Spol',
     controls: 'Kontroller', hideControls: 'Skjul kontroller',
     start: 'Start', resume: 'Fortsett', replay: 'Spill igjen',
     tapToContinue: 'Trykk for å fortsette',
-    noAudio: 'Lyden er ikke generert ennå. Kjør tools/narrate.py.',
+    noAudio: 'Denne fortellingen er ikke lest inn ennå. Teksten går av seg selv.',
     onlyIn: 'Denne fortellingen finnes foreløpig bare på norsk.',
     listen: 'Lytt', minutes: 'min', chapters: 'Kapitler', finished: 'Ferdig',
     episodes: 'Episoder',
+    noChapters: 'Ingen kapitler funnet. Sjekk content/packs.json.',
+    tapToRead: 'Trykk for å lese mer',
   },
   en: {
     play: 'Play', pause: 'Pause', back: 'Previous', forward: 'Next',
+    language: 'Change language', langShort: 'NO',
     captions: 'Captions', transcript: 'Transcript', close: 'Close', seek: 'Seek',
     controls: 'Controls', hideControls: 'Hide controls',
     start: 'Start', resume: 'Resume', replay: 'Play again',
     tapToContinue: 'Tap to continue',
-    noAudio: 'Audio has not been generated yet. Run tools/narrate.py.',
+    noAudio: 'This chapter has not been recorded yet. The text runs on its own.',
     onlyIn: 'This chapter is only narrated in Norwegian so far.',
     listen: 'Listen', minutes: 'min', chapters: 'Chapters', finished: 'Finished',
     episodes: 'Episodes',
+    noChapters: 'No chapters found. Check content/packs.json.',
+    tapToRead: 'Tap to read more',
   },
 };
 
@@ -51,7 +59,14 @@ let people = [];
 let lang = 'no';
 let started = false;
 let stageApi = null;
+let depth = null;
+let transition = null;
 let current = 0;
+
+/** Set by the shell, so the story can ask for a language change rather
+    than performing one behind the rest of the app's back. */
+let onLangChange = null;
+export function setLangHandler(fn) { onLangChange = fn; }
 
 export async function initStory(container, allPeople, language) {
   // Dev-time only: a drift between the handler table and the manifest
@@ -71,6 +86,14 @@ export async function initStory(container, allPeople, language) {
       <div class="story__chrome"></div>
       <div class="story__cover"></div>
     </div>`;
+
+  CHAPTERS = await allChapters();
+  if (!CHAPTERS.length) {
+    view.querySelector('.story__cover').innerHTML =
+      `<div class="cover__card"><p>${esc(t('noChapters'))}</p></div>`;
+    view.querySelector('.story__cover').classList.add('is-on');
+    return null;
+  }
 
   wireCover(view.querySelector('.story__cover'));
   wireKeys();
@@ -101,17 +124,59 @@ async function openChapter(index) {
     return null;
   }
 
+  // Publish this chapter's pack palette as --f-<side> before anything that
+  // references it is rendered. js/main.js does the same at boot for the
+  // default pack; a chapter from a second pack has different sides, and
+  // without this its stat chips would quietly draw the first pack's colours.
+  const el = document.documentElement;
+  applyPaletteVars(el, {
+    ...derivePalette(chapter.packInfo?.factions, { el, dark: isDark(el) }),
+    ...toneFactions(el),
+  });
+
   const stage = view.querySelector('.story__stage');
-  stageApi = mountStage(stage, chapter, people, chapter.narrationLang);
+  // The chapter's OWN people, not whichever pack booted first.
+  const cast = chapter.people?.length ? chapter.people : people;
+  stageApi = mountStage(stage, chapter, cast, chapter.narrationLang);
   mountCaptions(view.querySelector('.story__caption-slot'));
+
+  // Depth mounts before the player so the panel exists by the first beat.
+  // A SIBLING of .story__stage, deliberately: resetStage() empties the stage
+  // on every seek, and a card is not stage state.
+  transition = mountTransition(view.querySelector('.story'));
+
+  depth = mountDepth(view.querySelector('.story'), {
+    chapter,
+    people: cast,
+    get player() { return player; },
+    t,
+    tx: pickLang,
+    lang: () => lang,
+    onReframe: () => stageApi?.reframe?.(),
+  });
+  coach.label = t('tapToRead');
 
   player = new Player(chapter, {
     onTick: (t2, scene, beat, word) => {
       chrome?.tick(t2, scene, player.sceneIndex);
-      if (beat !== undefined) renderCaption(beat, word);
+      if (beat !== undefined) {
+        renderCaption(beat, word);
+        // Introduce the dotted underline the first time one is on screen,
+        // once ever. coach() takes itself away and refuses to run when the
+        // picture is being rebuilt, so scrubbing never re-fires it.
+        if (beat?.terms?.length) coach();
+      }
     },
-    onScene: (scene) => {
+    onScene: (scene, index, at = 0) => {
       clearCaption();
+      // Announce where we have arrived. Declines when this is not an opening
+      // — a seek into the middle of a scene is you looking for something, not
+      // the scene beginning — and when the chapter is not running.
+      transition?.announce(scene, {
+        at,
+        playing: Boolean(player?.playing),
+        first: index === 0,
+      });
       // The ducking schedule is a property of the scene, and it has to be in
       // place before the first word — not discovered as the voice arrives.
       soundScene(scene, { silent: player.silent });
@@ -142,15 +207,21 @@ async function openChapter(index) {
     },
   });
 
+  // The pause the title card lives in.
+  player.leadInMs = LEAD_IN_MS;
+
   chrome = mountChrome(
     view.querySelector('.story__chrome'),
     view.querySelector('.story'),
-    chapter, player, STR[lang] || STR.no);
+    chapter, player, STR[lang] || STR.no,
+    // The transport's language button. It goes through onLangChange so the
+    // Explore store, the URL and the stored preference all move together —
+    // the story mode must not end up in a different language from the app.
+    () => onLangChange?.(lang === 'no' ? 'en' : 'no'));
   setCaptionsOn(storedCaptionsOn());
 
   TITLES[chapter.id] = chapter.title;
   showCover('start');
-  learnTitles();
   return { player, chapter };
 }
 
@@ -163,17 +234,12 @@ async function openChapter(index) {
  * only redrawn if it is still the thing on screen — coming back to it later
  * would otherwise wipe a "replay" cover and put "start" back.
  */
-function learnTitles() {
-  const missing = CHAPTERS.filter((c) => !TITLES[c.id]);
-  if (!missing.length) return;
-  Promise.all(missing.map((c) => fetch(`./content/${c.pack}/${c.id}.json`)
-    .then((r) => (r.ok ? r.json() : null))
-    .then((j) => { if (j) TITLES[c.id] = pickLang(j.title); })
-    .catch(() => {})))
-    .then(() => {
-      const cover = view?.querySelector('.story__cover');
-      if (cover?.classList.contains('is-on') && !started) showCover('start');
-    });
+/* Chapter titles come from pack.json, which is the point of having one.
+   The cover used to fetch every unopened chapter — two files, about 200 KB of
+   prose — after it was already on screen, purely to find out what they were
+   called. Fine at two chapters and wrong at ten. */
+function titleOf(c) {
+  return TITLES[c.id] || pickLang(c.title) || c.id;
 }
 
 function pickLang(field) {
@@ -184,6 +250,10 @@ function pickLang(field) {
 /** Undo everything openChapter() built, in the reverse order it built it. */
 function teardown() {
   if (!player) return;
+  unmountDepth();
+  depth = null;
+  unmountTransition();
+  transition = null;
   stopSoundClock();
   stopSound();
   player.destroy();
@@ -248,7 +318,7 @@ function chapterList() {
     <li><button class="cover__chapter${i === current ? ' is-current' : ''}"
                 type="button" data-chapter="${i}"
                 ${i === current ? 'aria-current="true"' : ''}>
-      <b>${i + 1}</b><span>${esc(TITLES[c.id] || c.id)}</span>
+      <b>${i + 1}</b><span>${esc(titleOf(c))}</span>
     </button></li>`).join('');
   return `<div class="cover__chapters">
       <p class="cover__chapters-label">${esc(t('chapters'))}</p>
@@ -256,7 +326,8 @@ function chapterList() {
     </div>`;
 }
 
-/** Chapter id -> the title in the reader's language, once we have seen it. */
+/** Chapter id -> the title of a chapter we have actually opened, which may
+    be more current than the manifest if someone edited one and not the other. */
 const TITLES = {};
 
 function wireCover(cover) {
@@ -286,6 +357,10 @@ function wireCover(cover) {
   view.addEventListener('click', (e) => {
     if (!player?.waitingForTap) return;
     if (e.target.closest('.transport') || e.target.closest('.transcript')) return;
+    // …but not a tap that is asking to read something. Without this, tapping
+    // a pin during a held beat both opens the card and starts the narration
+    // talking over it — the two affordances fighting for the same gesture.
+    if (e.target.closest('.dossier, .story__depth, [data-tap]')) return;
     player.play();
   });
 }
@@ -307,6 +382,35 @@ function wireKeys() {
 }
 
 /* ------------------------------------------------------------ */
+
+/**
+ * Change the narration language, mid-chapter.
+ *
+ * The chapter has to be reloaded, not re-labelled: the audio, the word times
+ * and every word-anchored cue are properties of the recording, and there is a
+ * different recording per language. Switching the store's `lang` used to do
+ * nothing at all here — the UI relabelled and the Norwegian voice carried on.
+ *
+ * Position is kept to the SCENE, not the second. The two recordings are
+ * different lengths and a beat does not land at the same time in both, so
+ * pretending to hold the exact moment would be a lie; the top of the scene
+ * you were in is honest and predictable.
+ */
+export async function storySetLang(next) {
+  if (!next || next === lang) return;
+  lang = next;
+  if (!player) return;
+  const scene = player.sceneIndex >= 0 ? player.sceneIndex : 0;
+  const wasPlaying = player.playing;
+  const wasStarted = started;
+  await openChapter(current);
+  if (!wasStarted) return;
+  const cover = view.querySelector('.story__cover');
+  cover?.classList.remove('is-on');
+  started = true;
+  player.goToScene(Math.min(scene, chapter.scenes.length - 1),
+                   { autoplay: wasPlaying });
+}
 
 export function storyPause() { player?.pause(); }
 

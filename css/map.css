@@ -144,10 +144,10 @@
   from { opacity: 0; transform: scale(.3) translateY(6px); }
 }
 
-.mk--british { --mk-color: var(--red); }
-.mk--patriot { --mk-color: var(--blue); }
-.mk--french  { --mk-color: var(--gold); }
-.mk--neutral { --mk-color: var(--sage); }
+/* The colour rides in as an inline --mk-color, set from the pack's palette.
+   These used to be one rule per side, which bakes "there are four sides, and
+   they are these four" into a stylesheet — and how many sides there are is a
+   property of the subject. See core/palette.js. */
 
 .mk__body {
   position: relative;
@@ -315,9 +315,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.route--british { stroke: var(--red); }
-.route--patriot { stroke: var(--blue); }
-.route--french  { stroke: var(--gold); }
+/* .route--* lived here for the Leaflet SVG overlay, which is gone. */
 .route--naval   { stroke-dasharray: 1 8; stroke-width: 3.5; }
 
 /* Where the weight of the war sits this year — deliberately vague. */

@@ -51,6 +51,51 @@ export function createMap(host, opts = {}) {
   canvas.className = 'atlas__canvas';
   const overlay = document.createElement('div');
   overlay.className = 'atlas__overlay';
+
+  /* Tappable things.
+
+     ONE delegated listener, not a closure per node. The pins layer already
+     had to work around the per-node version going stale when a spec is
+     re-added under the same id, and the same trap is waiting here.
+
+     The map dispatches `atlas:tap` on its host and knows nothing else: what a
+     'person' or a 'term' is belongs to whatever mounted it. Nothing in this
+     module learns that dossiers exist. */
+  const tapTarget = (e) => e.target.closest?.('[data-tap]');
+  overlay.addEventListener('click', (e) => {
+    const el = tapTarget(e);
+    if (!el) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const [kind, ...rest] = el.dataset.tap.split(':');
+    host.dispatchEvent(new CustomEvent('atlas:tap', {
+      bubbles: true, detail: { kind, id: rest.join(':') },
+    }));
+  });
+  overlay.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const el = tapTarget(e);
+    if (!el) return;
+    e.preventDefault();
+    el.click();
+  });
+
+  /* A node is a target only while it is a target. Re-applying the same spec
+     without `tap` has to take the affordance away, or a seek leaves a button
+     behind that opens the wrong thing. */
+  function setTap(n, tap, label) {
+    if (tap && tap.id) {
+      n.dataset.tap = `${tap.kind || 'place'}:${tap.id}`;
+      n.tabIndex = 0;
+      n.setAttribute('role', 'button');
+      if (label) n.setAttribute('aria-label', label);
+    } else if (n.dataset.tap) {
+      delete n.dataset.tap;
+      n.removeAttribute('tabindex');
+      n.removeAttribute('role');
+      n.removeAttribute('aria-label');
+    }
+  }
   const grain = document.createElement('div');
   grain.className = 'atlas__grain';
   const vignette = document.createElement('div');
@@ -298,7 +343,7 @@ export function createMap(host, opts = {}) {
       const mppNow = metresPerPixel(cam.lat, cam.zoom);
       drawGlow(ctx, toScreen(s.at[0], s.at[1]),
                (s.radiusKm * 1000) / mppNow,
-               { fill: colourOf(s.faction || 'french').fill, progress: progressOf(s) });
+               { fill: colourOf(s.faction).fill, progress: progressOf(s) });
     }
 
     // Regions sit under the campaign: they are the ground's political shape,
@@ -466,6 +511,12 @@ export function createMap(host, opts = {}) {
         el.className = 'atlas-place atlas-place--region';
         return el;
       });
+      // You tap the NAME, not the polygon. That is honest — the canvas has no
+      // hit-testing and adding it would mean either a second render per frame
+      // or point-in-polygon on every pointerdown — and it composes with the
+      // declutter pass for free: a label that got dropped is not a target,
+      // which is correct, because an invisible target is a bug.
+      setTap(n, s.tap, s.name);
 
       const [x0, y] = toScreen(s.centre[0], s.centre[1]);
       // How much room the region itself offers, in pixels, right now.
@@ -502,6 +553,7 @@ export function createMap(host, opts = {}) {
       n.style.setProperty('--faction', colourOf(s.faction).fill);
       n.querySelector('b').textContent = s.label || '';
       n.classList.toggle('atlas-pin--bare', !s.label);
+      setTap(n, s.tap, s.label);
       const [x, y] = toScreen(s.at[0], s.at[1]);
       n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       n.style.visibility = onScreen(x, y, 120) ? '' : 'hidden';

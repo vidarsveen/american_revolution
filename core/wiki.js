@@ -8,7 +8,12 @@
      - if both fail, the block simply is not shown.
    ============================================================ */
 
-import { state } from './store.js';
+/* The reader's language is passed in rather than imported.
+
+   This module used to reach into js/store.js for state.lang, which made a
+   core/ primitive depend on the Explore mode — so the narrated mode could not
+   use it without dragging Explore's whole state object along. Which language
+   to prefer is a question the caller can always answer. */
 
 const TIMEOUT_MS = 6500;
 const memory = new Map();
@@ -81,10 +86,10 @@ async function fetchOne(lang, title) {
  * @param {{no?:string, en?:string}} titles
  * @returns {Promise<null | {lang, title, extract, thumb, url, fallback:boolean}>}
  */
-export async function getSummary(titles) {
+export async function getSummary(titles, lang = 'no') {
   if (!titles) return null;
 
-  const prefer = state.lang;
+  const prefer = lang === 'en' ? 'en' : 'no';
   const other = prefer === 'no' ? 'en' : 'no';
 
   if (titles[prefer]) {

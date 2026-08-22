@@ -12,12 +12,41 @@ import { project, scaleFor, WORLD } from './geo.js';
 
 /* Which level to draw at which zoom. Below 4 the 50m coastline is finer than
    one screen pixel; above 6.5 it is visibly a straight line where a real
-   shore bends, so the theatre extract takes over. */
-const LEVELS = [
+   shore bends, so a regional extract takes over.
+
+   WHICH regional extract is a property of the subject, not of the renderer.
+   This list used to name `atlantic-10m` outright, which put the American
+   Revolution inside the map module — where `grep american-revolution` would
+   never have found it. A pack declares its own levels; these are the fallback
+   for a lab page or a pack that only ever shows the whole world.
+
+   A level marked `regional` is skipped when the camera is outside the bbox of
+   the data actually loaded for it, because outside the extract there is
+   nothing to draw and an empty ocean is worse than a coarse coastline. */
+const DEFAULT_LEVELS = [
   { name: 'world-110m', maxZoom: 4.0 },
-  { name: 'world-50m', maxZoom: 6.5 },
-  { name: 'atlantic-10m', maxZoom: Infinity },
+  { name: 'world-50m', maxZoom: Infinity },
 ];
+
+let LEVELS = DEFAULT_LEVELS;
+
+export function registerLevels(levels) {
+  LEVELS = (levels && levels.length)
+    ? levels.map((lv) => ({ ...lv, maxZoom: lv.maxZoom ?? Infinity }))
+    : DEFAULT_LEVELS;
+  // A level list is a different world; nothing baked for the old one applies.
+  for (const key of [...cache.keys()]) {
+    if (!LEVELS.some((lv) => lv.name === key)) cache.delete(key);
+  }
+}
+
+/** The coarsest level that covers everywhere — what a regional one falls back to. */
+function globalFallback() {
+  for (let i = LEVELS.length - 1; i >= 0; i -= 1) {
+    if (!LEVELS[i].regional) return LEVELS[i].name;
+  }
+  return LEVELS[0]?.name || 'world-50m';
+}
 
 const cache = new Map();
 
@@ -158,17 +187,18 @@ export function levelReady(name) {
 export function levelFor(zoom, lon, lat) {
   for (const lv of LEVELS) {
     if (zoom >= lv.maxZoom) continue;
-    if (lv.name === 'atlantic-10m') {
-      const bb = cache.get('atlantic-10m')?.bbox;
-      // Outside the theatre extract there is nothing to draw; fall back
-      // rather than render an empty ocean.
+    if (lv.regional) {
+      const bb = cache.get(lv.name)?.bbox;
+      // Outside the extract there is nothing to draw; fall back rather than
+      // render an empty ocean. Before the data has loaded there is no bbox to
+      // test, so it is used — which is right: it is about to arrive.
       if (bb && (lon < bb[0] || lon > bb[2] || lat < bb[1] || lat > bb[3])) {
-        return 'world-50m';
+        return globalFallback();
       }
     }
     return lv.name;
   }
-  return 'world-50m';
+  return globalFallback();
 }
 
 export function preload(base) {

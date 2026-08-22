@@ -59,7 +59,7 @@ export function setCaptionsOn(value) {
 
 /** Whatever you chose last time. Captions default to on. */
 export function storedCaptionsOn() {
-  try { return localStorage.getItem('revolusjonen:captions') !== '0'; }
+  try { return localStorage.getItem('fortell:captions') !== '0'; }
   catch { return true; }
 }
 
@@ -76,23 +76,57 @@ export function renderCaption(beat, wordIndex) {
     // Wrap the *written* tokens, not the spoken ones — the TTS word list has
     // the punctuation stripped, and a caption without full stops reads badly.
     const written = beat.text.split(/\s+/).filter(Boolean);
+    const term = termIndex(beat);
     lineEl.innerHTML = (beat.words.length && written.length === beat.words.length)
-      ? written.map((w, i) => `<span data-w="${i}">${esc(w)}</span>`).join(' ')
+      ? written.map((w, i) => wordSpan(w, i, term.get(i))).join(' ')
       : (beat.words.length
-          ? beat.words.map((w, i) => `<span data-w="${i}">${esc(w.w)}</span>`).join(' ')
+          ? beat.words.map((w, i) => wordSpan(w.w, i, term.get(i))).join(' ')
           : esc(beat.text));
     lineEl.classList.remove('is-in');
     void lineEl.offsetWidth;
     lineEl.classList.add('is-in');
   }
 
-  const spans = lineEl.children;
+  // Query the word spans rather than walking children: a term is a span like
+  // any other today, but the moment anything wraps or sits beside a word,
+  // "child i is word i" stops being true and the karaoke highlight drifts
+  // silently. Cheap now, and it removes the assumption.
+  const spans = lineEl.querySelectorAll('[data-w]');
   for (let i = 0; i < spans.length; i++) {
     const s = spans[i];
     const said = i <= wordIndex;
     s.classList.toggle('is-said', said);
     s.classList.toggle('is-now', i === wordIndex);
   }
+}
+
+/**
+ * Word index -> the term covering it, from the marks the compiler resolved.
+ *
+ * A multi-word term marks every index it covers with the same reference, so
+ * the dotted rule runs under the whole phrase and a tap anywhere in it opens
+ * the same card.
+ */
+function termIndex(beat) {
+  const out = new Map();
+  for (const t of beat.terms || []) {
+    for (let k = 0; k < (t.span || 1); k += 1) out.set(t.i + k, t);
+  }
+  return out;
+}
+
+/**
+ * One word.
+ *
+ * A term is the SAME element as an ordinary word, with a class and a data
+ * attribute — not a wrapper. `.is-said` and `.is-now` are toggled on
+ * `[data-w]` nodes, so a term that wrapped its word would drop out of the
+ * karaoke highlight, and the word would simply stop lighting up.
+ */
+function wordSpan(word, i, term) {
+  if (!term) return `<span data-w="${i}">${esc(word)}</span>`;
+  return `<span data-w="${i}" class="w-term" role="button" tabindex="0"`
+    + ` data-tap="${esc(term.kind)}:${esc(term.id)}">${esc(word)}</span>`;
 }
 
 export function clearCaption() {

@@ -18,15 +18,32 @@
   --rule:           rgba(36, 31, 24, .13);
   --rule-strong:    rgba(36, 31, 24, .26);
 
-  /* --- Sides --------------------------------------------- */
-  --red:            #a8322d;   /* British */
+  /* --- The palette ---------------------------------------
+     Colour names, not party names. Which side is red is a fact about a
+     pack, and it lives in content/<pack>/pack.json. */
+  --red:            #a8322d;
   --red-soft:       rgba(168, 50, 45, .12);
-  --blue:           #2c4a6e;   /* Continental / patriot */
+  --blue:           #2c4a6e;
   --blue-soft:      rgba(44, 74, 110, .12);
-  --gold:           #b0803c;   /* French / turning points */
+  --gold:           #b0803c;
   --gold-soft:      rgba(176, 128, 60, .15);
-  --sage:           #55704c;   /* neutral / other peoples */
+  --sage:           #55704c;
   --sage-soft:      rgba(85, 112, 76, .13);
+
+  /* --- Palette roles --------------------------------------
+     `tone: gold` on a cue used to be an alias for "French", which is the
+     same leak in a smaller shape. A tone now means a role: gold is the
+     map's look-here colour whatever the subject is, and a chapter about
+     Rome can point at Actium without the engine believing Actium is
+     French. Aliases, so a theme only has to flip the colour once. */
+  --tone-red:       var(--red);
+  --tone-red-wash:  var(--red-wash);
+  --tone-blue:      var(--blue);
+  --tone-blue-wash: var(--blue-wash);
+  --tone-gold:      var(--gold);
+  --tone-gold-wash: var(--gold-wash);
+  --tone-sage:      var(--sage);
+  --tone-sage-wash: var(--sage-wash);
 
   /* Fills for large areas. The side colours above are tuned for lines and
      arrows — dark and restrained, which is right for a stroke and reads as

@@ -153,10 +153,7 @@
   border-radius: 50%;
   flex: none;
 }
-.side--british .dot { background: var(--red); }
-.side--patriot .dot { background: var(--blue); }
-.side--french  .dot { background: var(--gold); }
-.side--neutral .dot { background: var(--sage); }
+.sheet__kicker .dot { background: var(--side, var(--ink-faint)); }
 .sheet__date { color: var(--ink-soft); font-variant-numeric: lining-nums tabular-nums; }
 
 .sheet__title {
@@ -224,8 +221,7 @@
   font-variant-numeric: lining-nums tabular-nums;
   margin-top: 1px;
 }
-.stat--british .stat__v { color: var(--red); }
-.stat--patriot .stat__v { color: var(--blue); }
+.stat .stat__v { color: var(--side, inherit); }
 
 /* ---------- Callouts --------------------------------------- */
 .callout {

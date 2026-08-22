@@ -49,7 +49,7 @@ export function mountSound(chapter) {
     scape = null;
     library = null;
   }
-  if (scape && chapter?.pack) loadPackSounds(chapter.pack);
+  if (scape && chapter?.pack) loadPackSounds(chapter.pack, chapter.packInfo);
   return scape;
 }
 
@@ -62,10 +62,16 @@ export function mountSound(chapter) {
  * before — the file-based path is an override, not a dependency. A pack with
  * no sound.json is the normal case and must not log anything alarming.
  */
-async function loadPackSounds(pack) {
+async function loadPackSounds(pack, manifest) {
   const base = `./content/${pack}/`;
+  // Only ask if the pack says it has one. The catch below always handled a
+  // missing file correctly, but the browser still logged a 404 on every load
+  // of a pack that ships no audio — which is the normal case, and a console
+  // full of red for normal behaviour trains you to ignore it.
+  const declared = manifest?.pools?.sound;
+  if (manifest && !declared) return;
   try {
-    const res = await fetch(`${base}sound.json`, { cache: 'no-cache' });
+    const res = await fetch(`${base}${declared || 'sound.json'}`, { cache: 'no-cache' });
     if (!res.ok) return;                       // 404 is the normal case
     const taken = library.addManifest(await res.json(), { base });
     if (taken) console.info(`[sound] ${pack}: ${taken} recorded effect(s) override the synth`);
@@ -124,8 +130,13 @@ export function resetSound() {
 
 function resolveWanted() {
   if (!scape) return;
-  if (!wantMusic) scape.stopMusic({ instant: true });
-  if (!wantAmbience) scape.setAmbience(null, { instant: true });
+  // Fade, do not cut. A bed that stops dead at a scene boundary is the
+  // "sound from the last section stops too quickly" complaint: the narration
+  // has trailing silence baked into its mp3, so the music was the only thing
+  // still sounding, and it vanished on a frame. stopMusic already knew how to
+  // fade; this was asking it not to.
+  if (!wantMusic) scape.stopMusic({ fadeMs: 900 });
+  if (!wantAmbience) scape.setAmbience(null, { fadeMs: 900 });
 }
 
 export function setSilentSound(on) {

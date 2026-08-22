@@ -12,6 +12,7 @@
 
 import * as M from './scenes/map.js';
 import * as O from './scenes/overlays.js';
+import * as P from './scenes/plate.js';
 import * as S from './scenes/sound.js';
 
 let lang = 'no';
@@ -19,6 +20,9 @@ let lang = 'no';
 export function mountStage(container, chapter, people, language) {
   lang = language;
   const map = M.mountMap(container, chapter, language);
+  // Between the map and the overlay cards: a plate covers the ground and is
+  // covered by the captions, quotes and numbers drawn over it.
+  P.mountPlate(container, chapter, language);
   O.mountOverlays(container, chapter, people, language);
   S.mountSound(chapter);
   return map;
@@ -27,6 +31,7 @@ export function mountStage(container, chapter, people, language) {
 /** Back to a blank slate, before cues are re-applied. */
 export function resetStage() {
   M.resetMap();
+  P.resetPlate();
   O.resetOverlays();
   S.resetSound();
 }
@@ -77,6 +82,10 @@ const VERBS = {
   'portrait.hide':    ()     => O.hidePortrait(),
 
   'image.show':       (c, i) => O.showImage(c, i),
+
+  // The picture as the whole stage, with the slow documentary push.
+  'plate.show':       (c, i) => P.showPlate(c, i),
+  'plate.hide':       (c)    => P.hidePlate(c),
   'image.hide':       ()     => O.hideImage(),
 
   'quote.show':       (c, i) => O.showQuote(c, i),
@@ -85,11 +94,19 @@ const VERBS = {
   'stat.show':        (c, i) => O.showStat(c, i),
   'stat.clear':       ()     => O.clearStats(),
 
+  // Two or three numbers as one picture, rather than as unrelated chips.
+  'compare.show':     (c, i) => O.showCompare(c, i),
+  'compare.clear':    ()     => O.clearCompare(),
+
   'caption.note':     (c, i) => O.showNote(c, i),
 
 
   // Pacing verbs are handled by the player, not the stage.
+  // Both of these are handled before a cue list exists: `pause` by the
+  // player, `term.mark` by the compiler in script.js. They sit here so
+  // checkVerbManifest() does not report drift against engine/verbs.json.
   pause: () => {},
+  'term.mark': () => {},
 };
 
 export function applyCue(cue, instant = false) {

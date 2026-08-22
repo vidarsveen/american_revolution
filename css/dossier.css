@@ -1,0 +1,117 @@
+/* ============================================================
+   dossier.css — the "read more" panel, in its two shapes.
+
+   Loaded immediately after sheet.css, which it extends rather than replaces:
+   the card's insides (title, hook, callouts, chips, wiki block) are still
+   .sheet__* and are shared by both shapes. What is here is only the two
+   containers and the affordances that lead to them.
+
+   SHEET, below 1024px: a bottom sheet over the map, dragged by its grip.
+   RAIL, at 1024px and up: a column beside the map.
+
+   The rail is the point of the breakpoint. Desktop was mobile-with-margins,
+   so on a large screen the thing that explains the map covered the map —
+   which is a phone compromise, made because a phone has no room, applied to a
+   screen that has plenty. The camera clears the rail rather than sitting
+   behind it: see framePadding() in engine/scenes/map.js.
+   ============================================================ */
+
+/* The rail's host. Zero-width until there is something in it, so the story
+   grid is unchanged for the whole time nobody has tapped anything. */
+.story__depth { display: contents; }
+
+/* ---------- affordances ------------------------------------ */
+
+/* One-time hint at the first tappable word. Nobody taps a thing they do not
+   know is a thing, and the dotted underline is quiet by design. */
+.coach {
+  position: fixed;
+  z-index: 80;
+  transform: translate(-50%, -140%);
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--fs-2xs);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease-out);
+}
+.coach.is-on { opacity: .94; }
+.coach::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: -4px;
+  width: 8px; height: 8px;
+  translate: -50% 0;
+  rotate: 45deg;
+  background: var(--ink);
+}
+
+/* ---------- rail ------------------------------------------- */
+
+@media (min-width: 1024px) {
+  /* The rail is a column the stage is inset FROM, not a panel laid over it.
+
+     Everything inside .story — the map, the caption slot, the transport — is
+     absolutely positioned against .story, so a grid on .story does not
+     constrain any of it: the map stayed full width and the rail sat on top of
+     the very thing it was explaining. One custom property that those elements
+     already respect is both simpler and honest about how this layout works. */
+  .story { --rail-w: 0px; }
+  .story.has-depth { --rail-w: min(380px, 32vw); }
+
+  .story .stage-map,
+  .story__caption-slot,
+  .story .transport,
+  .story__cover {
+    right: var(--rail-w);
+    transition: right var(--t-med) var(--ease-out);
+  }
+
+  .story__depth {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: min(380px, 32vw);
+    z-index: 60;
+    pointer-events: none;
+  }
+
+  /* In rail mode the panel is a plain column: no drag, no backdrop, no
+     rounded lip, and not fixed to the viewport — it is part of the layout,
+     which is what stops it covering the thing it describes. */
+  .dossier--rail {
+    position: absolute;
+    inset: 0;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+    border-left: 1px solid var(--rule);
+    transform: translateX(100%);
+    transition: transform var(--t-med) var(--ease-out);
+    pointer-events: auto;
+  }
+  .dossier--rail.is-open { transform: none; }
+  .dossier--rail .sheet__grip { display: none; }
+  .story__depth .sheet-backdrop { display: none; }
+  .dossier--rail .sheet__scroll { padding-bottom: var(--s6); }
+}
+
+/* Below the breakpoint the rail host must not take part in layout at all. */
+@media (max-width: 1023.98px) {
+  .story__depth { display: contents; }
+  .dossier--rail { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story,
+  .dossier--rail,
+  .coach { transition: none; }
+}
