@@ -75,6 +75,18 @@ export function resetPlate() {
   root.classList.remove('is-on');
   imgEl.style.transition = 'none';
   imgEl.style.transform = '';
+  // Everything this module set, put back. The class and the src used to
+  // survive a reset -- invisible, because the plate is hidden either way, but
+  // it meant the stage after a seek was not the stage after playing there,
+  // and that is the difference rule 1 exists to forbid. The engine lab said
+  // so the first time it was allowed to look at plates at all.
+  //
+  // removeAttribute, not src = '': an empty src resolves to the page URL and
+  // sends the browser off to fetch the document as an image.
+  root.classList.remove('is-contain');
+  imgEl.removeAttribute('src');
+  imgEl.alt = '';
+  if (capEl) capEl.innerHTML = '';
 }
 
 /* The framings the drift runs between, as [scale, x%, y%].

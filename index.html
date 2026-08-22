@@ -84,6 +84,35 @@
       }
       return;
     }
+    // Was an OLD worker already in charge when this page loaded? If so, the
+    // assets on screen came out of its cache, and they are the previous
+    // build. The new worker calls skipWaiting() and clients.claim(), so it
+    // takes over a second or two later -- and at THAT moment one reload is
+    // the difference between a deploy landing and a person being told to
+    // clear their cache.
+    //
+    // This is the fix for a real, twice-reported problem: a change was live
+    // on the server, check-published.py said so, and the browser kept
+    // showing the previous version because networkFirst answered from cache.
+    //
+    // Guards, all three necessary: nothing to replace on a first-ever visit
+    // (controller was null); never more than once per session, or a worker
+    // that keeps claiming becomes a reload loop; and never while the
+    // narration is actually playing, because yanking the page out from under
+    // someone mid-sentence is worse than a stale picture.
+    var KEY = 'fortell:sw-reloaded';
+    var hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (!hadController) return;
+      var a = document.querySelector('audio');
+      if (a && !a.paused) return;
+      try {
+        if (sessionStorage.getItem(KEY)) return;
+        sessionStorage.setItem(KEY, '1');
+      } catch (e) { return; }
+      location.reload();
+    });
+
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('./sw.js').catch(function () {});
     });

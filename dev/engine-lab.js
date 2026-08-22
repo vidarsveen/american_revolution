@@ -132,6 +132,17 @@ function signature() {
       lines.push(`dom/${sel}  ${stateClasses(node)}  ${normaliseHtml(node.innerHTML)}`);
     }
   }
+  // The plate is the whole screen, and it was not in here at all. It was
+  // added after this bench was written, so for two subjects and four
+  // chapters the one surface that can hide the entire map was the one
+  // surface nothing checked. Which picture, and whether it is up -- but NOT
+  // the inline transform, which is the drift, and therefore animation phase:
+  // the same exclusion as `over` on a route.
+  for (const node of document.querySelectorAll('.stage-plate')) {
+    const img = node.querySelector('.plate__img');
+    const src = ((img && img.getAttribute('src')) || '').split('/').pop();
+    lines.push(`dom/.stage-plate  ${stateClasses(node)}  src=${src}`);
+  }
   return lines.join('\n');
 }
 
