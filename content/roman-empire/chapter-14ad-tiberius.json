@@ -1,0 +1,1833 @@
+{
+  "id": "chapter-14ad-tiberius",
+  "pack": "roman-empire",
+  "work": {
+    "no": "Romerriket",
+    "en": "The Roman Empire"
+  },
+  "title": {
+    "no": "Maskinen uten mannen",
+    "en": "The machine without the man"
+  },
+  "subtitle": {
+    "no": "14–37 e.Kr.",
+    "en": "AD 14–37"
+  },
+  "blurb": {
+    "no": "Tiberius ville ikke ha jobben, tok den i tjuetre år, og tilbrakte de siste elleve på en øy. Riket merket det knapt.",
+    "en": "Tiberius did not want the job, held it for twenty-three years, and spent the last eleven on an island. The empire barely noticed."
+  },
+  "voice": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural"
+  },
+  "rate": "-10%",
+  "home": "mediterranean",
+  "regions": "geo/provinces.geojson",
+  "places": {
+    "mediterranean": {
+      "coords": [
+        39.0,
+        16.0
+      ],
+      "zoom": 4.4,
+      "name": {
+        "no": "Middelhavet",
+        "en": "The Mediterranean"
+      },
+      "kind": "region",
+      "label": false
+    },
+    "roma": {
+      "coords": [
+        41.8931,
+        12.4828
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Roma",
+        "en": "Rome"
+      },
+      "kind": "city"
+    },
+    "capri": {
+      "coords": [
+        40.5532,
+        14.2222
+      ],
+      "zoom": 8.8,
+      "name": {
+        "no": "Capri",
+        "en": "Capri"
+      },
+      "kind": "island"
+    },
+    "misenum": {
+      "coords": [
+        40.7847,
+        14.0819
+      ],
+      "zoom": 8.6,
+      "name": {
+        "no": "Misenum",
+        "en": "Misenum"
+      },
+      "kind": "town"
+    },
+    "rhinen": {
+      "coords": [
+        50.94,
+        6.96
+      ],
+      "zoom": 6.4,
+      "name": {
+        "no": "Rhinen",
+        "en": "The Rhine"
+      },
+      "kind": "region"
+    },
+    "pannonia": {
+      "coords": [
+        45.8,
+        17.5
+      ],
+      "zoom": 6.2,
+      "name": {
+        "no": "Pannonia",
+        "en": "Pannonia"
+      },
+      "kind": "region"
+    },
+    "germania": {
+      "coords": [
+        51.6,
+        9.2
+      ],
+      "zoom": 5.8,
+      "name": {
+        "no": "Germania",
+        "en": "Germania"
+      },
+      "kind": "region"
+    },
+    "teutoburg": {
+      "coords": [
+        52.4109,
+        8.13
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Teutoburgerskogen",
+        "en": "The Teutoburg Forest"
+      },
+      "kind": "battle"
+    },
+    "antiokia": {
+      "coords": [
+        36.2021,
+        36.1604
+      ],
+      "zoom": 7.6,
+      "name": {
+        "no": "Antiokia",
+        "en": "Antioch"
+      },
+      "kind": "city"
+    },
+    "brundisium": {
+      "coords": [
+        40.6327,
+        17.9418
+      ],
+      "zoom": 8.2,
+      "name": {
+        "no": "Brundisium",
+        "en": "Brundisium"
+      },
+      "kind": "town"
+    },
+    "rhodos": {
+      "coords": [
+        36.4349,
+        28.2176
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Rhodos",
+        "en": "Rhodes"
+      },
+      "kind": "island"
+    }
+  },
+  "routes": {
+    "germanicus-north": {
+      "side": "roman",
+      "label": {
+        "no": "Germanicus over Rhinen",
+        "en": "Germanicus across the Rhine"
+      },
+      "coords": [
+        [
+          50.94,
+          6.96
+        ],
+        [
+          51.5,
+          7.6
+        ],
+        [
+          52.0,
+          8.0
+        ],
+        [
+          52.4109,
+          8.13
+        ]
+      ],
+      "strength": 30000
+    },
+    "germanicus-east": {
+      "side": "roman",
+      "label": {
+        "no": "Germanicus østover",
+        "en": "Germanicus to the east"
+      },
+      "coords": [
+        [
+          41.8931,
+          12.4828
+        ],
+        [
+          40.0,
+          18.5
+        ],
+        [
+          37.5,
+          23.7
+        ],
+        [
+          36.9,
+          30.7
+        ],
+        [
+          36.2021,
+          36.1604
+        ]
+      ],
+      "strength": 700
+    },
+    "rome-capri": {
+      "side": "roman",
+      "label": {
+        "no": "Tiberius forlater Roma",
+        "en": "Tiberius leaves Rome"
+      },
+      "coords": [
+        [
+          41.8931,
+          12.4828
+        ],
+        [
+          41.2,
+          13.4
+        ],
+        [
+          40.75,
+          14.1
+        ],
+        [
+          40.5532,
+          14.2222
+        ]
+      ],
+      "strength": 400
+    }
+  },
+  "quotes": {
+    "tiberius-wolf": {
+      "text": {
+        "no": "Jeg holder en ulv i ørene.",
+        "en": "I am holding a wolf by the ears."
+      },
+      "by": {
+        "no": "Tiberius om å styre, gjengitt av Sveton",
+        "en": "Tiberius on ruling, as Suetonius gives it"
+      },
+      "kind": "attributed"
+    },
+    "slaves-ready": {
+      "text": {
+        "no": "Disse menneskene er modne for trældom.",
+        "en": "These men are ripe for slavery."
+      },
+      "by": {
+        "no": "Tiberius om senatet, på vei ut fra et møte — gjengitt av Tacitus, åtti år etterpå",
+        "en": "Tiberius on the senate, leaving a meeting — as Tacitus gives it, eighty years later"
+      },
+      "kind": "attributed"
+    },
+    "maiestas-open": {
+      "text": {
+        "no": "Skal det også være en forbrytelse å si dette?",
+        "en": "Is it to be a crime to say this too?"
+      },
+      "by": {
+        "no": "Tilskrevet en senator under de første sakene, gjengitt av Tacitus",
+        "en": "Ascribed to a senator during the first trials, as Tacitus gives it"
+      },
+      "kind": "attributed"
+    },
+    "tacitus-verdict": {
+      "text": {
+        "no": "Ingen historie er skrevet med mer hat enn den om levende førstemenn.",
+        "en": "No history is written with more hatred than that of living rulers."
+      },
+      "by": {
+        "no": "Tacitus om sitt eget fag, Annalene, rundt år 115",
+        "en": "Tacitus on his own trade, the Annals, around AD 115"
+      },
+      "kind": "said"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Mannen som ikke ville ha det",
+        "en": "The man who did not want it"
+      },
+      "clock": {
+        "no": "August–september 14 e.Kr.",
+        "en": "August–September AD 14"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Augustus er død. Og nå oppdager Roma noe ingen hadde tenkt på: det finnes ingen regel for hva som skjer nå.",
+            "en": "Augustus is dead. And now Rome discovers something nobody had thought about: there is no rule for what happens next."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "border.set",
+              "country": false,
+              "state": false
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "August, 14 e.Kr.",
+                "en": "August, AD 14"
+              }
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 5.8,
+              "over": 0.1
+            },
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -9
+            },
+            {
+              "on": {
+                "no": "word:regel",
+                "en": "word:rule"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "princeps"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "Tiberius har alt han trenger. Han har hæren, han har pengene, og han har fullmaktene Augustus lot ham få mens han levde.",
+            "en": "Tiberius has everything he needs. He has the army, he has the money, and he has the powers Augustus let him take while he was alive."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Tiberius",
+                "en": "word:Tiberius"
+              },
+              "do": "portrait.show",
+              "id": "tiberius"
+            }
+          ],
+          "gapAfter": 1.1
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "Men han er ikke konge, for det finnes ingen kongetittel. Han kan ikke arve, for det finnes ingenting å arve. Stillingen han skal overta, finnes ikke på papiret.",
+            "en": "But he is not a king, because there is no royal title. He cannot inherit, because there is nothing to inherit. The position he is taking over does not exist on paper."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "Så senatet møtes, og det blir en pinlig dag.",
+            "en": "So the senate meets, and it is an embarrassing day."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:senatet",
+                "en": "word:senate"
+              },
+              "do": "plate.show",
+              "id": "senate",
+              "motion": "in",
+              "focus": [
+                0.46,
+                0.5
+              ],
+              "over": 20,
+              "dim": 0.14
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b5",
+          "say": {
+            "no": "Tiberius sier at byrden er for tung for én mann. Senatorene ber ham ta den. Han sier nei igjen. De ber igjen.",
+            "en": "Tiberius says the burden is too heavy for one man. The senators beg him to take it. He says no again. They beg again."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b6",
+          "say": {
+            "no": "Det fortsetter i timevis. Til slutt sier en senator rett ut: bestem deg, er du snill.",
+            "en": "It goes on for hours. In the end one senator says it outright: make up your mind, please."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s0.b7",
+          "say": {
+            "no": "Vi vet ikke om han mente det. Tacitus, som skriver åtti år senere og ikke liker ham, er sikker på at det var skuespill. Andre har ment at han faktisk var redd for jobben.",
+            "en": "We do not know whether he meant it. Tacitus, writing eighty years later and not liking him, is certain it was theatre. Others have thought he was genuinely afraid of the job."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Tacitus",
+                "en": "word:Tacitus"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s0.b8",
+          "say": {
+            "no": "Men det som skjedde den dagen, forteller noe uansett hva han mente. Ingen visste hvordan makt skulle gis videre, så de fant på en seremoni.",
+            "en": "But what happened that day tells you something whatever he meant. Nobody knew how power was supposed to be handed on, so they invented a ceremony."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b9",
+          "say": {
+            "no": "Og en seremoni er ikke en regel. Det problemet kommer til å drepe romerske keisere i fire hundre år.",
+            "en": "And a ceremony is not a rule. That problem is going to kill Roman emperors for four hundred years."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "caption.note",
+              "value": {
+                "no": "14 e.Kr. – 37 e.Kr.",
+                "en": "AD 14 – AD 37"
+              }
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "title": {
+        "no": "Mytteriet",
+        "en": "The mutiny"
+      },
+      "clock": {
+        "no": "September 14 e.Kr.",
+        "en": "September AD 14"
+      },
+      "beats": [
+        {
+          "id": "s1.b1",
+          "say": {
+            "no": "Nyheten om at Augustus er død, når Rhinen og Donau i løpet av noen uker. Og hærene der gjør opprør.",
+            "en": "The news that Augustus is dead reaches the Rhine and the Danube within a few weeks. And the armies there mutiny."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -10
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "pannonia",
+              "zoom": 5.4,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:Donau",
+                "en": "word:Danube"
+              },
+              "do": "marker.show",
+              "at": "pannonia",
+              "label": {
+                "no": "Pannonia",
+                "en": "Pannonia"
+              },
+              "side": "roman",
+              "kind": "camp"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b2",
+          "say": {
+            "no": "Kravene er ikke politiske. De handler om lønn, om tjenestetid, og om at menn som skulle vært dimittert for lenge siden, fortsatt står i leiren.",
+            "en": "The demands are not political. They are about pay, about length of service, and about men who should have been discharged long ago and are still in camp."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tjenestetid",
+                "en": "word:service"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "roman-army"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "Det er nøyaktig det Augustus hadde bygd en egen statskasse for å hindre. Systemet holdt så lenge han levde. Uka etter at han døde, sprakk det.",
+            "en": "That is exactly what Augustus had built a treasury to prevent. The system held as long as he lived. The week after he died, it cracked."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b4",
+          "say": {
+            "no": "Ved Rhinen går det lenger. Der tilbyr legionene keisertittelen til generalen sin.",
+            "en": "On the Rhine it goes further. There the legions offer the throne to their general."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "rhinen",
+              "zoom": 6.0,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:legionene",
+                "en": "word:legions"
+              },
+              "do": "plate.show",
+              "id": "legion",
+              "motion": "left",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 16,
+              "dim": 0.12
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b5",
+          "say": {
+            "no": "Generalen heter Germanicus. Han er Tiberius' nevø og adoptivsønn, han er tretti år, og han er den mest populære mannen i riket.",
+            "en": "The general is called Germanicus. He is Tiberius's nephew and adopted son, he is thirty years old, and he is the most popular man in the empire."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Germanicus",
+                "en": "word:Germanicus"
+              },
+              "do": "portrait.show",
+              "id": "germanicus"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b6",
+          "say": {
+            "no": "Han sier nei. Han sier det så hardt at han trekker sverdet og retter det mot seg selv, foran mennene.",
+            "en": "He says no. He says it so hard that he draws his sword and turns it on himself, in front of the men."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b7",
+          "say": {
+            "no": "En soldat rekker ham sitt eget sverd og sier at det er skarpere. Kildene er ikke enige om historien er sann.",
+            "en": "A soldier hands him his own sword and says it is sharper. The sources do not agree on whether the story is true."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b8",
+          "say": {
+            "no": "Mytteriet blir slått ned, delvis med innrømmelser og delvis med henrettelser. Men noe er lært, av begge sider.",
+            "en": "The mutiny is put down, partly with concessions and partly with executions. But something has been learned, on both sides."
+          },
+          "cues": [
+            {
+              "on": "end",
+              "do": "portrait.hide"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b9",
+          "say": {
+            "no": "Hæren har oppdaget at den kan velge. Det tok den bare femti år å bruke det.",
+            "en": "The army has discovered that it can choose. It only took fifty years to use that."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": {
+        "no": "Germanicus",
+        "en": "Germanicus"
+      },
+      "clock": {
+        "no": "14–19 e.Kr.",
+        "en": "AD 14–19"
+      },
+      "beats": [
+        {
+          "id": "s2.b1",
+          "say": {
+            "no": "De neste to årene fører Germanicus store hærer over Rhinen. Han vil ta tilbake det Varus mistet.",
+            "en": "For the next two years Germanicus leads large armies across the Rhine. He wants to take back what Varus lost."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedMarch",
+              "gainDb": -12
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "germania",
+              "zoom": 6.0,
+              "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:Rhinen",
+                "en": "word:Rhine"
+              },
+              "do": "route.draw",
+              "id": "germanicus-north",
+              "over": 4.2
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b2",
+          "say": {
+            "no": "Han finner slagmarken fra år ni. Beina ligger fortsatt der, seks år etter, og hærens folk begraver dem.",
+            "en": "He finds the battlefield from the year nine. The bones are still lying there, six years on, and his men bury them."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:slagmarken",
+                "en": "word:battlefield"
+              },
+              "do": "marker.show",
+              "at": "teutoburg",
+              "label": {
+                "no": "Teutoburgerskogen",
+                "en": "Teutoburg Forest"
+              },
+              "side": "roman",
+              "kind": "clash"
+            },
+            {
+              "on": {
+                "no": "word:slagmarken",
+                "en": "word:battlefield"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "teutoburg"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b3",
+          "say": {
+            "no": "Han vinner to av tre ørner tilbake. Han vinner slag. Han erobrer ingenting som blir liggende.",
+            "en": "He wins back two of the three eagles. He wins battles. He conquers nothing that stays conquered."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b4",
+          "say": {
+            "no": "I år seksten kaller Tiberius ham hjem. Begrunnelsen er at Germania koster mer enn det er verdt, og at germanerne nå kan overlates til å slåss mot hverandre.",
+            "en": "In the year sixteen Tiberius calls him home. The reason given is that Germania costs more than it is worth, and that the Germans can now be left to fight each other."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "16 e.Kr.",
+                "en": "AD 16"
+              }
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b5",
+          "say": {
+            "no": "Det er sannsynligvis riktig regnestykke. Det er også en måte å få den mest populære mannen i riket vekk fra tretti tusen soldater som elsker ham.",
+            "en": "It is probably the right arithmetic. It is also a way of getting the most popular man in the empire away from thirty thousand soldiers who love him."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:populære",
+                "en": "word:popular"
+              },
+              "do": "portrait.show",
+              "id": "germanicus"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b6",
+          "say": {
+            "no": "Germanicus får en triumf i Roma, og deretter et stort oppdrag i øst. Han drar. Der krangler han med guvernøren i Syria, en mann som heter Piso.",
+            "en": "Germanicus is given a triumph in Rome, and then a large command in the east. He goes. There he quarrels with the governor of Syria, a man called Piso."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:øst",
+                "en": "word:east"
+              },
+              "do": "map.flyTo",
+              "to": "antiokia",
+              "zoom": 5.6,
+              "over": 3.6
+            },
+            {
+              "on": {
+                "no": "word:Syria",
+                "en": "word:Syria"
+              },
+              "do": "route.draw",
+              "id": "germanicus-east",
+              "over": 4.4
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b7",
+          "say": {
+            "no": "I oktober år nitten dør Germanicus i Antiokia, trettitre år gammel. På dødsleiet sier han at han er forgiftet, og han ber vennene sine hevne ham.",
+            "en": "In October in the year nineteen Germanicus dies at Antioch, aged thirty-three. On his deathbed he says he has been poisoned, and asks his friends to avenge him."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:Antiokia",
+                "en": "word:Antioch"
+              },
+              "do": "marker.show",
+              "at": "antiokia",
+              "label": {
+                "no": "Antiokia",
+                "en": "Antioch"
+              },
+              "side": "roman",
+              "kind": "point"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b8",
+          "say": {
+            "no": "Enka hans, Agrippina, tar med seg asken og seiler hjem. Hun går i land i Brundisium med urnen i armene, og folk står langs veien hele veien til Roma.",
+            "en": "His widow, Agrippina, takes the ashes and sails home. She lands at Brundisium with the urn in her arms, and people line the road the whole way to Rome."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": {
+                "no": "word:Brundisium",
+                "en": "word:Brundisium"
+              },
+              "do": "map.flyTo",
+              "to": "brundisium",
+              "zoom": 6.4,
+              "over": 3.6
+            },
+            {
+              "on": {
+                "no": "word:Brundisium",
+                "en": "word:Brundisium"
+              },
+              "do": "plate.show",
+              "id": "agrippina-ashes",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 20,
+              "dim": 0.14
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b9",
+          "say": {
+            "no": "Piso blir stilt for retten i Roma og tar sitt eget liv før dommen. Om han forgiftet Germanicus, vet vi ikke. Om Tiberius ba ham om det, vet vi enda mindre.",
+            "en": "Piso is put on trial in Rome and takes his own life before the verdict. Whether he poisoned Germanicus we do not know. Whether Tiberius asked him to, we know even less."
+          },
+          "cues": [],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s2.b10",
+          "say": {
+            "no": "Men fra nå av tror halve Roma at keiseren drepte sin egen sønn. Og Agrippina tror det høyest av alle.",
+            "en": "But from now on half of Rome believes the emperor killed his own son. And Agrippina believes it loudest of all."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            }
+          ],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": {
+        "no": "En lov som ikke ble endret",
+        "en": "A law that was never changed"
+      },
+      "clock": {
+        "no": "15–31 e.Kr.",
+        "en": "AD 15–31"
+      },
+      "beats": [
+        {
+          "id": "s3.b1",
+          "say": {
+            "no": "Det finnes en gammel romersk lov som heter maiestas. Den handler om forbrytelser mot statens verdighet: å svikte en hær, å starte opprør, å hjelpe fienden.",
+            "en": "There is an old Roman law called maiestas. It is about crimes against the dignity of the state: betraying an army, starting a revolt, helping the enemy."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -12
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 7.4,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:maiestas",
+                "en": "word:maiestas"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "maiestas"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s3.b2",
+          "say": {
+            "no": "Under Augustus begynner den å gjelde noe nytt: ord. Skrift som skader noens rykte. Og førstemannen er også staten, så ord om ham er ord om staten.",
+            "en": "Under Augustus it starts to cover something new: words. Writing that damages a reputation. And the first man is also the state, so words about him are words about the state."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b3",
+          "say": {
+            "no": "Under Tiberius vokser det. Ikke fordi loven endres — teksten er den samme — men fordi flere og flere ting begynner å telle.",
+            "en": "Under Tiberius it grows. Not because the law changes — the text is the same — but because more and more things begin to count."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b4",
+          "say": {
+            "no": "Å selge en statue av keiseren. Å ta med seg en mynt med hans ansikt inn på et toalett. Å bytte klær foran et bilde av ham.",
+            "en": "Selling a statue of the emperor. Carrying a coin with his face on it into a latrine. Changing your clothes in front of an image of him."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:mynt",
+                "en": "word:coin"
+              },
+              "do": "plate.show",
+              "id": "denarius",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 15,
+              "dim": 0.1
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b5",
+          "say": {
+            "no": "Tiberius avviste flere slike saker selv, og sa at ord ikke var noe å straffe. Men han avviste ikke alle, og han stoppet ikke ordningen.",
+            "en": "Tiberius threw several such cases out himself, and said words were not something to punish. But he did not throw out all of them, and he did not stop the arrangement."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b6",
+          "say": {
+            "no": "For det er en ordning. Den som anklaget noen og vant, fikk en firedel av den dømtes formue.",
+            "en": "Because it is an arrangement. Whoever accused someone and won took a quarter of the condemned man's property."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:firedel",
+                "en": "word:quarter"
+              },
+              "do": "stat.show",
+              "value": "25 %",
+              "label": {
+                "no": "til den som anklaget",
+                "en": "to the accuser"
+              },
+              "side": "roman"
+            },
+            {
+              "on": {
+                "no": "word:anklaget",
+                "en": "word:accused"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "delator"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b7",
+          "say": {
+            "no": "Det skaper et yrke. Menn som heter delatores, angivere, lever av å finne noe å anklage rike menn for.",
+            "en": "That creates a profession. Men called delatores, informers, make a living finding something to accuse rich men of."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b8",
+          "say": {
+            "no": "Ingen fant på dette. Ingen vedtok det. En gammel lov og en gammel belønningsregel møttes, og resultatet var et system ingen hadde bestemt seg for.",
+            "en": "Nobody invented this. Nobody voted for it. An old law and an old reward rule met, and the result was a system nobody had decided on."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b9",
+          "say": {
+            "no": "Det er verdt å legge merke til, for det er ikke sjeldent. Det er som regel slik det går til.",
+            "en": "That is worth noticing, because it is not rare. It is usually how these things happen."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": {
+        "no": "Sejanus",
+        "en": "Sejanus"
+      },
+      "clock": {
+        "no": "23–31 e.Kr.",
+        "en": "AD 23–31"
+      },
+      "beats": [
+        {
+          "id": "s4.b1",
+          "say": {
+            "no": "Sjefen for pretorianergarden heter Lucius Aelius Sejanus. Han er ikke senator. Han er ridder, fra en by i Etruria, og han er den dyktigste mannen Tiberius har.",
+            "en": "The commander of the praetorian guard is called Lucius Aelius Sejanus. He is not a senator. He is an equestrian, from a town in Etruria, and he is the ablest man Tiberius has."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -11
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "23 e.Kr.",
+                "en": "AD 23"
+              }
+            },
+            {
+              "on": {
+                "no": "word:pretorianergarden",
+                "en": "word:praetorian"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "praetorian-guard"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s4.b2",
+          "say": {
+            "no": "I år tjuetre gjør han én ting som forandrer alt, og den ser ut som administrasjon.",
+            "en": "In the year twenty-three he does one thing that changes everything, and it looks like administration."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b3",
+          "say": {
+            "no": "Garden hadde ligget spredt i småleire rundt Italia. Sejanus samler den i én stor leir like utenfor bymuren i Roma.",
+            "en": "The guard had been spread among small camps around Italy. Sejanus gathers it into one large camp just outside the city wall of Rome."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:leir",
+                "en": "word:camp"
+              },
+              "do": "marker.show",
+              "at": "roma",
+              "label": {
+                "no": "Castra Praetoria",
+                "en": "Castra Praetoria"
+              },
+              "side": "roman",
+              "kind": "camp"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b4",
+          "say": {
+            "no": "Begrunnelsen er disiplin, og den er god. Virkningen er at ni tusen soldater nå står samlet på ett sted, en halvtimes marsj fra senatet, og lyder én mann.",
+            "en": "The reason given is discipline, and it is a good one. The effect is that nine thousand soldiers now stand in one place, half an hour's march from the senate, and obey one man."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b5",
+          "say": {
+            "no": "Samme år dør Drusus, Tiberius' eneste gjenlevende sønn. Åtte år senere kommer det fram at Sejanus sannsynligvis fikk ham forgiftet.",
+            "en": "The same year Drusus dies, Tiberius's only surviving son. Eight years later it comes out that Sejanus probably had him poisoned."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b6",
+          "say": {
+            "no": "Sannsynligvis. Kilden er en tilståelse fra en kvinne under tortur, åtte år etterpå, i en sak der alle hadde grunn til å si det som passet.",
+            "en": "Probably. The source is a confession from a woman under torture, eight years later, in a case where everyone had a reason to say what suited."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tilståelse",
+                "en": "word:confession"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s4.b7",
+          "say": {
+            "no": "Det som er sikkert, er hva Sejanus blir. Han bestemmer hvem som får møte keiseren. Han bestemmer hvilke brev som kommer fram.",
+            "en": "What is certain is what Sejanus becomes. He decides who gets to see the emperor. He decides which letters get through."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b8",
+          "say": {
+            "no": "Agrippina og de to eldste sønnene hennes blir anklaget, forvist og sultet i hjel, én etter én.",
+            "en": "Agrippina and her two eldest sons are accused, exiled and starved to death, one after another."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Agrippina",
+                "en": "word:Agrippina"
+              },
+              "do": "map.flash"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b9",
+          "say": {
+            "no": "Statuer av Sejanus står i templene ved siden av keiserens. Senatet feirer bursdagen hans. Han er forlovet med en av familien.",
+            "en": "Statues of Sejanus stand in the temples beside the emperor's. The senate celebrates his birthday. He is engaged to one of the family."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": {
+        "no": "Elleve år på en øy",
+        "en": "Eleven years on an island"
+      },
+      "clock": {
+        "no": "26–37 e.Kr.",
+        "en": "AD 26–37"
+      },
+      "beats": [
+        {
+          "id": "s5.b1",
+          "say": {
+            "no": "I år tjueseks forlater Tiberius Roma. Han er sekstisju år gammel, og han kommer aldri tilbake.",
+            "en": "In the year twenty-six Tiberius leaves Rome. He is sixty-seven years old, and he never comes back."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -12
+            },
+            {
+              "on": "start",
+              "do": "map.time",
+              "value": {
+                "no": "26 e.Kr.",
+                "en": "AD 26"
+              }
+            },
+            {
+              "on": {
+                "no": "word:forlater",
+                "en": "word:leaves"
+              },
+              "do": "route.draw",
+              "id": "rome-capri",
+              "over": 4.0
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b2",
+          "say": {
+            "no": "Han slår seg ned på Capri, en øy utenfor Napoli med bratte klipper på alle kanter og én havn.",
+            "en": "He settles on Capri, an island off Naples with steep cliffs on every side and one harbour."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Capri",
+                "en": "word:Capri"
+              },
+              "do": "map.flyTo",
+              "to": "capri",
+              "zoom": 8.4,
+              "over": 3.8
+            },
+            {
+              "on": {
+                "no": "word:Capri",
+                "en": "word:Capri"
+              },
+              "do": "marker.show",
+              "at": "capri",
+              "label": {
+                "no": "Capri",
+                "en": "Capri"
+              },
+              "side": "roman",
+              "kind": "point"
+            },
+            {
+              "on": {
+                "no": "word:Capri",
+                "en": "word:Capri"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "capri"
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s5.b3",
+          "say": {
+            "no": "Derfra styrer han verdens største rike i elleve år, med brev.",
+            "en": "From there he governs the largest empire in the world for eleven years, by letter."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b4",
+          "say": {
+            "no": "Og det virker. Skattene kommer inn. Grensene holder. Provinsene får guvernører som blir sittende lenge, fordi Tiberius ikke gidder å bytte dem.",
+            "en": "And it works. The taxes come in. The frontiers hold. The provinces get governors who stay a long time, because Tiberius cannot be bothered to replace them."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.3,
+              "over": 3.4
+            },
+            {
+              "on": {
+                "no": "word:Provinsene",
+                "en": "word:provinces"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Aegyptus",
+                "Cyrenaica",
+                "Africa",
+                "Numidia",
+                "Mauretania",
+                "Sicilia"
+              ],
+              "side": "roman",
+              "over": 2.6,
+              "vary": false,
+              "strength": 1.05
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b5",
+          "say": {
+            "no": "Det er faktisk et argument for at han styrte godt. Riket merket det knapt at mannen som styrte det, hadde flyttet.",
+            "en": "That is actually an argument that he governed well. The empire barely noticed that the man governing it had moved away."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b6",
+          "say": {
+            "no": "Men tenk over hva det betyr. Augustus hadde bygd en maskin som ikke trengte ham. Nå viste den at den ikke trengte etterfølgeren hans heller.",
+            "en": "But think about what that means. Augustus had built a machine that did not need him. Now it showed that it did not need his successor either."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b7",
+          "say": {
+            "no": "I Roma vokser det historier om hva han driver med der ute. Sveton skriver dem ned åtti år senere, i stor detalj, og de er grufulle.",
+            "en": "In Rome stories grow about what he is doing out there. Suetonius writes them down eighty years later, in great detail, and they are appalling."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Sveton",
+                "en": "word:Suetonius"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b8",
+          "say": {
+            "no": "Ingen samtidig kilde sier noe slikt. Det betyr ikke at det er løgn. Det betyr at vi ikke vet, og at den som forteller oss det, skrev for et publikum som ville høre det.",
+            "en": "No contemporary source says anything of the kind. That does not mean it is false. It means we do not know, and that the man telling us wrote for an audience that wanted to hear it."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b9",
+          "say": {
+            "no": "Det er den vanskeligste øvelsen i historie: å la et spørsmål stå åpent når det finnes et svar som er mye morsommere.",
+            "en": "That is the hardest exercise in history: leaving a question open when there is an answer available that is far more entertaining."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "region.clear"
+            }
+          ],
+          "gapAfter": 1.5
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": {
+        "no": "Brevet",
+        "en": "The letter"
+      },
+      "clock": {
+        "no": "18. oktober 31 e.Kr.",
+        "en": "18 October AD 31"
+      },
+      "beats": [
+        {
+          "id": "s6.b1",
+          "say": {
+            "no": "Attende oktober år trettien møtes senatet. Sejanus kommer inn. Han vet at det skal leses opp et brev fra Capri, og han tror han vet hva som står i det.",
+            "en": "On the eighteenth of October in the year thirty-one the senate meets. Sejanus comes in. He knows a letter from Capri is to be read out, and he thinks he knows what is in it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedTension",
+              "gainDb": -9
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 7.6,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:senatet",
+                "en": "word:senate"
+              },
+              "do": "plate.show",
+              "id": "senate",
+              "motion": "in",
+              "focus": [
+                0.46,
+                0.5
+              ],
+              "over": 22,
+              "dim": 0.16
+            }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s6.b2",
+          "say": {
+            "no": "Han tror han skal få tribunmakten. Det er fullmakten Augustus tok i stedet for et embete, og den gjør ham til nummer to i riket, offisielt.",
+            "en": "He thinks he is to be given the tribune's power. That is the authority Augustus took instead of an office, and it makes him the second man in the empire, officially."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tribunmakten",
+                "en": "word:power"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "tribunicia-potestas"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b3",
+          "say": {
+            "no": "Brevet er langt. Det begynner et sted langt unna. Det tar en omvei. Det roser Sejanus.",
+            "en": "The letter is long. It begins somewhere far away. It takes a detour. It praises Sejanus."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 0.9
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b4",
+          "say": {
+            "no": "Så kommer en liten klage. Så en til. Så, mot slutten, ber det senatet arrestere ham.",
+            "en": "Then comes a small complaint. Then another. Then, towards the end, it asks the senate to arrest him."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b5",
+          "say": {
+            "no": "Senatorene som satt nærmest ham, flytter seg vekk mens det leses.",
+            "en": "The senators sitting nearest him move away while it is read."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:flytter",
+                "en": "word:move"
+              },
+              "do": "plate.show",
+              "id": "sejanus-fall",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.5
+              ],
+              "over": 18,
+              "dim": 0.16
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b6",
+          "say": {
+            "no": "Han blir ført ut samme dag og kvalt i fengselet samme kveld. Folkemengden river ned statuene hans før kvelden er omme.",
+            "en": "He is led out the same day and strangled in prison the same evening. The crowd pulls down his statues before the evening is over."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b7",
+          "say": {
+            "no": "Navnet hans blir hugget vekk fra innskrifter over hele riket. Det er derfor vi ikke vet hvordan han så ut. Det finnes ikke ett sikkert portrett av mannen som nesten arvet Roma.",
+            "en": "His name is chiselled off inscriptions across the empire. That is why we do not know what he looked like. There is not one certain portrait of the man who nearly inherited Rome."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": {
+                "no": "word:portrett",
+                "en": "word:portrait"
+              },
+              "do": "term.mark",
+              "kind": "person",
+              "id": "sejanus"
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b8",
+          "say": {
+            "no": "Så kommer oppgjøret. Alle som hadde stått ham nær, blir anklaget. Barna hans blir henrettet, og det var ikke lov å henrette en jomfru, så bøddelen løste det først.",
+            "en": "Then comes the reckoning. Everyone who had stood close to him is accused. His children are executed, and it was not lawful to execute a virgin, so the executioner dealt with that first."
+          },
+          "cues": [],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s6.b9",
+          "say": {
+            "no": "Maiestas-sakene som fulgte, varte i seks år. Tiberius kom fortsatt ikke til Roma.",
+            "en": "The treason trials that followed lasted six years. Tiberius still did not come to Rome."
+          },
+          "cues": [],
+          "gapAfter": 1.5
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "title": {
+        "no": "Hva vi vet, og hvem som fortalte oss det",
+        "en": "What we know, and who told us"
+      },
+      "clock": {
+        "no": "16. mars 37 e.Kr.",
+        "en": "16 March AD 37"
+      },
+      "beats": [
+        {
+          "id": "s7.b1",
+          "say": {
+            "no": "Sekstende mars år trettisju dør Tiberius i Misenum, ved Napoli, syttisju år gammel.",
+            "en": "On the sixteenth of March in the year thirty-seven Tiberius dies at Misenum, near Naples, aged seventy-seven."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -10
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "misenum",
+              "zoom": 7.2,
+              "over": 3.6
+            },
+            {
+              "on": {
+                "no": "word:Misenum",
+                "en": "word:Misenum"
+              },
+              "do": "marker.show",
+              "at": "misenum",
+              "label": {
+                "no": "Misenum",
+                "en": "Misenum"
+              },
+              "side": "roman",
+              "kind": "point"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b2",
+          "say": {
+            "no": "Tacitus skriver at han ble kvalt med en dyne av garden da han våknet igjen etter å ha virket død. Sveton skriver det samme. Begge skrev åtti år senere.",
+            "en": "Tacitus writes that he was smothered with a blanket by the guard when he woke again after appearing to be dead. Suetonius writes the same. Both wrote eighty years later."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s7.b3",
+          "say": {
+            "no": "Etterfølgeren er Germanicus' yngste sønn. Han vokste opp i leiren ved Rhinen, og soldatene kalte ham Lillestøvel, fordi han hadde barnestøvler som lignet deres.",
+            "en": "The successor is the youngest son of Germanicus. He grew up in the camp on the Rhine, and the soldiers called him Little Boot, because he wore child-sized army boots like theirs."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": {
+                "no": "word:Lillestøvel",
+                "en": "word:Boot"
+              },
+              "do": "portrait.show",
+              "id": "caligula"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b4",
+          "say": {
+            "no": "På latin er Lillestøvel Caligula. Roma feiret i dagevis da han overtok.",
+            "en": "In Latin, Little Boot is Caligula. Rome celebrated for days when he took over."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s7.b5",
+          "say": {
+            "no": "Augustus etterlot seg Res Gestae, sin egen liste over hva han hadde gjort. Tiberius etterlot seg ingenting.",
+            "en": "Augustus left the Res Gestae, his own list of what he had done. Tiberius left nothing."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:liste",
+                "en": "word:list"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "res-gestae"
+            }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s7.b6",
+          "say": {
+            "no": "Så alt vi vet om ham, kommer fra menn som skrev tre generasjoner senere, under keisere som hadde interesse av at han så ille ut.",
+            "en": "So everything we know about him comes from men writing three generations later, under emperors who had an interest in making him look bad."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:menn",
+                "en": "word:men"
+              },
+              "do": "plate.show",
+              "id": "tacitus-ms",
+              "motion": "in",
+              "focus": [
+                0.5,
+                0.45
+              ],
+              "over": 20,
+              "dim": 0.14
+            }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s7.b7",
+          "say": {
+            "no": "Den viktigste av dem er Tacitus. Han er en glimrende forfatter, han er ærlig om at han hater det han beskriver, og nesten hele Annalene hans finnes i én eneste håndskrift fra ellevehundretallet.",
+            "en": "The most important of them is Tacitus. He is a superb writer, he is honest that he hates what he describes, and nearly all of his Annals survives in a single manuscript from the eleventh century."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:håndskrift",
+                "en": "word:manuscript"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "how-we-know"
+            }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s7.b8",
+          "say": {
+            "no": "Én bok, kopiert av en munk tusen år etter at det skjedde. Det er tråden alt henger i.",
+            "en": "One book, copied by a monk a thousand years after it happened. That is the thread all of it hangs by."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:munk",
+                "en": "word:monk"
+              },
+              "do": "quote.show",
+              "id": "tacitus-verdict"
+            }
+          ],
+          "gapAfter": 2.6
+        },
+        {
+          "id": "s7.b9",
+          "say": {
+            "no": "Så spørsmålet er ikke om Tiberius var en god eller en dårlig mann. Det er om maskinen Augustus bygde, gjorde det til slutt likegyldig.",
+            "en": "So the question is not whether Tiberius was a good man or a bad one. It is whether the machine Augustus built made that, in the end, beside the point."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "mediterranean",
+              "zoom": 4.2,
+              "over": 5.0
+            },
+            {
+              "on": {
+                "no": "word:maskinen",
+                "en": "word:machine"
+              },
+              "do": "region.show",
+              "names": [
+                "Italia",
+                "Hispania",
+                "Gallia",
+                "Illyricum",
+                "Macedonia",
+                "Achaea",
+                "Asia",
+                "Syria",
+                "Aegyptus",
+                "Cyrenaica",
+                "Africa",
+                "Numidia",
+                "Mauretania",
+                "Sicilia"
+              ],
+              "side": "roman",
+              "over": 3.0,
+              "vary": false,
+              "strength": 1.1
+            }
+          ],
+          "gapAfter": 2.0
+        }
+      ]
+    }
+  ]
+}

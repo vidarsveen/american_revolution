@@ -300,5 +300,47 @@
       "no": "Romerne hadde ført krig øst for Rhinen i tjue år før år 9, og regnet området som i ferd med å bli provins. Det var leirer, veier og markeder der, og romerske skatteinnkrevere var begynt å arbeide.\n\nEtter Teutoburgerskogen ble grensen trukket tilbake til Rhinen. Senere felttog gikk inn igjen og vant slag, men ingen forsøkte å gjøre landet om til provins på nytt.\n\nDet er en av de få gangene vi kan peke på en uke og si at kartet ble stående slik i fire hundre år på grunn av den.",
       "en": "The Romans had campaigned east of the Rhine for twenty years before the year 9, and treated the region as a province in the making. There were camps, roads and markets there, and Roman tax collectors had started work.\n\nAfter the Teutoburg Forest the frontier was pulled back to the Rhine. Later campaigns went in again and won battles, but nobody tried to make the country a province again.\n\nIt is one of the few times we can point at a single week and say the map stayed that way for four hundred years because of it."
     }
+  },
+  "capri": {
+    "name": {
+      "no": "Capri",
+      "en": "Capri"
+    },
+    "short": {
+      "no": "Øya der en keiser styrte verdens største rike i elleve år, med brev.",
+      "en": "The island where an emperor governed the largest empire in the world for eleven years, by letter."
+    },
+    "body": {
+      "no": "Capri ligger utenfor Napoli og er nesten bare klippe. Det finnes én havn å komme i land i, og resten av øya reiser seg rett opp av sjøen. Augustus hadde likt seg der; Tiberius flyttet dit for godt i år 26.\n\nHan bygde tolv villaer på øya. Den største, Villa Jovis, ligger på østspissen tre hundre meter over vannet, og ruinene står ennå.\n\nGeografien er poenget. Ingen kommer uanmeldt til Capri. Alt som skulle fram til keiseren, måtte gjennom noen få hender — og de hendene tilhørte i åtte år Sejanus.\n\nAt riket fungerte helt fint mens mannen som styrte det satt på en klippe elleve dagsreiser unna, sier mer om Augustus' maskineri enn om Tiberius.",
+      "en": "Capri lies off Naples and is almost entirely rock. There is one harbour to land in, and the rest of the island rises straight out of the sea. Augustus had liked it there; Tiberius moved there for good in the year 26.\n\nHe built twelve villas on the island. The largest, the Villa Jovis, stands on the eastern point three hundred metres above the water, and the ruins are still there.\n\nThe geography is the point. Nobody arrives at Capri unannounced. Everything meant for the emperor had to pass through a few hands — and for eight years those hands were Sejanus's.\n\nThat the empire worked perfectly well while the man running it sat on a cliff eleven days' travel away says more about Augustus's machinery than about Tiberius."
+    }
+  },
+  "antiokia": {
+    "name": {
+      "no": "Antiokia",
+      "en": "Antioch"
+    },
+    "short": {
+      "no": "Rikets tredje største by, og stedet der Germanicus døde og anklaget noen for det.",
+      "en": "The third city of the empire, and where Germanicus died accusing someone of it."
+    },
+    "body": {
+      "no": "Antiokia lå ved Orontes-elva i Syria og var etter Roma og Alexandria den største byen i riket — et gresktalende handelssentrum med et par hundre tusen innbyggere.\n\nGermanicus kom hit i år 18 med et stort oppdrag over hele øst. Guvernøren i Syria, Gnaeus Piso, motarbeidet ham åpent, og de to kranglet i full offentlighet.\n\nDa Germanicus ble syk høsten 19, var han overbevist om at Piso hadde forgiftet ham. Han sa det høyt før han døde, og ba vennene sine om hevn.\n\nPiso ble stilt for retten i Roma og tok sitt eget liv før dommen falt. Senatets vedtak i saken er faktisk bevart — en bronsetavle funnet i Spania i 1988 — og den er merkelig ivrig etter å frikjenne keiserfamilien.",
+      "en": "Antioch stood on the Orontes in Syria and was, after Rome and Alexandria, the largest city in the empire — a Greek-speaking trading centre of a couple of hundred thousand people.\n\nGermanicus came here in the year 18 with a wide command over the whole east. The governor of Syria, Gnaeus Piso, obstructed him openly, and the two quarrelled in full public view.\n\nWhen Germanicus fell ill in the autumn of 19 he was convinced Piso had poisoned him. He said so aloud before he died, and asked his friends for vengeance.\n\nPiso was put on trial in Rome and took his own life before the verdict. The senate's decree in the case actually survives — a bronze tablet found in Spain in 1988 — and it is oddly eager to clear the imperial family."
+    }
+  },
+  "misenum": {
+    "name": {
+      "no": "Misenum",
+      "en": "Misenum"
+    },
+    "short": {
+      "no": "Flåtebasen ved Napoli der Tiberius døde — og der ingen er helt sikre på hvordan.",
+      "en": "The naval base near Naples where Tiberius died — and where nobody is quite sure how."
+    },
+    "body": {
+      "no": "Misenum var hovedbase for den romerske vestflåten, ytterst på nordsiden av Napolibukta. Det lå praktisk til for noen som pendlet mellom Capri og fastlandet.\n\nTiberius ble syk her i mars år 37, syttisju år gammel. Ifølge Tacitus og Sveton virket han død, folk begynte å hylle Caligula — og så våknet han igjen.\n\nBegge forteller at pretorianerprefekten Macro da lot ham kvele under en dyne. Begge skrev åtti år senere. Ingen samtidig kilde sier noe om det.\n\nDet er verdt å merke seg mønsteret: hver eneste keiserdød i denne perioden får en fortelling med mord i seg. Noen av dem er sikkert sanne.",
+      "en": "Misenum was the main base of the Roman western fleet, at the far north-western tip of the Bay of Naples. It was conveniently placed for someone commuting between Capri and the mainland.\n\nTiberius fell ill here in March in the year 37, aged seventy-seven. According to Tacitus and Suetonius he appeared to die, people began hailing Caligula — and then he woke up again.\n\nBoth report that the praetorian prefect Macro then had him smothered with a blanket. Both wrote eighty years later. No contemporary source says anything about it.\n\nThe pattern is worth noticing: every single imperial death in this period acquires a story with a murder in it. Some of them are certainly true."
+    }
   }
 }

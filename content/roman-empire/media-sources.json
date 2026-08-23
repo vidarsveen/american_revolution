@@ -196,5 +196,33 @@
    "no": "Augustus' mausoleum",
    "en": "The mausoleum of Augustus"
   }
+ },
+ "agrippina-ashes": {
+  "commons": "File:Benjamin West - Agrippina Landing at Brundisium with the Ashes of Germanicu - 1947.16 - Yale University Art Gallery.jpg",
+  "artist": "Benjamin West",
+  "year": "1768",
+  "title": {
+   "no": "Agrippina går i land med Germanicus' aske",
+   "en": "Agrippina lands with the ashes of Germanicus"
+  }
+ },
+ "sejanus-fall": {
+  "commons": "File:Sejanus is arrested and condemned to death.jpg",
+  "artist": "Bartolomeo Pinelli",
+  "year": "1810",
+  "title": {
+   "no": "Sejanus arresteres i senatet",
+   "en": "Sejanus arrested in the senate"
+  }
+ },
+ "tacitus-ms": {
+  "commons": "File:Tacitus, Annals, Florence, Plut. 68,2.jpg",
+  "artist": "Ukjent munk, Monte Cassino",
+  "year": "1000-tallet",
+  "fit": "contain",
+  "title": {
+   "no": "Tacitus' Annaler, kopiert på 1000-tallet",
+   "en": "Tacitus's Annals, copied in the eleventh century"
+  }
  }
 }

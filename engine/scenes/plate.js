@@ -105,7 +105,18 @@ export function showPlate(cue, instant) {
   const m = (chapter?.media || {})[cue.id];
   if (!m || !root) return;
 
-  const spec = MOTION[cue.motion] || MOTION.in;
+  /* A letterboxed plate does not drift.
+
+     `contain` is chosen when the whole frame IS the information -- a map, a
+     coin, an inscription, a manuscript page. The push is scale 1.16, so on a
+     contained picture the camera zooms straight past the edges it was
+     letterboxed to protect: the Tacitus page lost its bottom four lines to
+     the drift that exists to stop a still looking dead.
+
+     A document is something you READ. Holding it still is not a compromise
+     here, it is the correct shot. */
+  const fit = cue.fit || m.fit || 'cover';
+  const spec = fit === 'contain' ? MOTION.still : (MOTION[cue.motion] || MOTION.in);
   const [fx, fy] = Array.isArray(cue.focus) ? cue.focus : [0.5, 0.42];
   const over = cue.over ?? 14;
 
@@ -124,7 +135,6 @@ export function showPlate(cue, instant) {
   // the whole point of the picture. media.json carries a fit worked out from
   // the image's own shape; a cue may override it. Measured before it was
   // fixed: the 1205x1800 plan of Boston was showing 38% of itself.
-  const fit = cue.fit || m.fit || 'cover';
   root.classList.toggle('is-contain', fit === 'contain');
   // Aim the zoom at what matters. A face is rarely in the middle of a frame.
   imgEl.style.transformOrigin = `${(fx * 100).toFixed(1)}% ${(fy * 100).toFixed(1)}%`;

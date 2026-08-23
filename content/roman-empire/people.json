@@ -437,5 +437,139 @@
       "no": "Det finnes ikke noe antikt portrett av Arminius. Statuene av ham er fra attenhundretallet, og handler om Tyskland like mye som om Roma.",
       "en": "There is no ancient portrait of Arminius. The statues of him are nineteenth-century, and are about Germany as much as about Rome."
     }
+  },
+  {
+    "id": "germanicus",
+    "side": "roman",
+    "lived": "15 f.Kr.–19 e.Kr.",
+    "name": {
+      "no": "Germanicus",
+      "en": "Germanicus"
+    },
+    "role": {
+      "no": "Tiberius' nevø og adoptivsønn",
+      "en": "Tiberius's nephew and adopted son"
+    },
+    "hook": {
+      "no": "Den mest populære mannen i riket, som fikk tilbudt keisertittelen av hæren og sa nei.",
+      "en": "The most popular man in the empire, offered the throne by the army and refusing it."
+    },
+    "body": {
+      "no": "Germanicus var sønn av Tiberius' bror, og Augustus fikk Tiberius til å adoptere ham — så arverekkefølgen var bestemt over hodet på begge to.\n\nHan førte hærene over Rhinen i to år etter Varus-katastrofen, fant slagmarken, begravde de døde og vant to av de tre tapte ørnene tilbake. Så ble han kalt hjem.\n\nHan døde i Antiokia i år 19, trettitre år gammel, og sa på dødsleiet at han var forgiftet. Sorgen i Roma var enorm, og mistanken pekte oppover.\n\nDet vi vet om ham, kommer i hovedsak fra Tacitus, som bruker ham som motsatsen til Tiberius: ung, åpen, elsket. En figur som er så nyttig for forfatteren sin, er verdt å lese med et halvt øye lukket.",
+      "en": "Germanicus was the son of Tiberius's brother, and Augustus made Tiberius adopt him — so the line of succession was settled over the heads of both of them.\n\nHe led the armies across the Rhine for two years after the Varus disaster, found the battlefield, buried the dead and won back two of the three lost eagles. Then he was called home.\n\nHe died at Antioch in the year 19, aged thirty-three, saying on his deathbed that he had been poisoned. The grief in Rome was enormous, and the suspicion pointed upwards.\n\nWhat we know of him comes mainly from Tacitus, who uses him as the opposite of Tiberius: young, open, loved. A figure that useful to his author is worth reading with one eye half shut."
+    },
+    "fact": {
+      "no": "Sønnen hans vokste opp i leiren og fikk kallenavnet Caligula, «lillestøvel», av soldatene.",
+      "en": "His son grew up in camp and was nicknamed Caligula, “little boot”, by the soldiers."
+    },
+    "wiki": {
+      "no": "Germanicus",
+      "en": "Germanicus"
+    },
+    "portrait": "germanicus.jpg",
+    "portraitNote": {
+      "no": "Byste i Getty-museet. Portretter av Germanicus ble laget i mengder etter at han døde.",
+      "en": "Bust in the Getty Museum. Portraits of Germanicus were made in quantity after he died."
+    }
+  },
+  {
+    "id": "sejanus",
+    "side": "roman",
+    "lived": "ca. 20 f.Kr.–31 e.Kr.",
+    "name": {
+      "no": "Sejanus",
+      "en": "Sejanus"
+    },
+    "role": {
+      "no": "Sjef for pretorianergarden",
+      "en": "Commander of the praetorian guard"
+    },
+    "hook": {
+      "no": "Han samlet garden i én leir utenfor Roma, og oppdaget hva det gjorde ham til.",
+      "en": "He gathered the guard into one camp outside Rome, and discovered what that made him."
+    },
+    "body": {
+      "no": "Sejanus var ridder, ikke senator — han kom fra en by i Etruria og hadde ingen adelig slekt bak seg. Han steg fordi han var dyktig, og fordi Tiberius stolte på ham.\n\nI år 23 flyttet han pretorianergarden fra spredte leire rundt i Italia til én stor leir utenfor bymuren i Roma. Begrunnelsen var disiplin. Virkningen var at ni tusen soldater sto samlet en halvtimes marsj fra senatet og lød én mann.\n\nDe neste åtte årene kontrollerte han hvem som fikk møte keiseren og hvilke brev som kom fram. Agrippina og de to eldste sønnene hennes ble anklaget, forvist og sultet i hjel.\n\nDen attende oktober 31 ble et brev fra Capri lest opp i senatet. Det var langt, det roste ham først, og mot slutten ba det senatet arrestere ham. Han ble kvalt samme kveld.",
+      "en": "Sejanus was an equestrian, not a senator — he came from a town in Etruria with no noble family behind him. He rose because he was able, and because Tiberius trusted him.\n\nIn the year 23 he moved the praetorian guard from scattered camps around Italy into one large camp outside the city wall of Rome. The reason given was discipline. The effect was that nine thousand soldiers stood together half an hour's march from the senate, obeying one man.\n\nFor the next eight years he controlled who saw the emperor and which letters got through. Agrippina and her two eldest sons were accused, exiled and starved to death.\n\nOn the eighteenth of October 31 a letter from Capri was read out in the senate. It was long, it praised him first, and towards the end it asked the senate to arrest him. He was strangled the same evening."
+    },
+    "fact": {
+      "no": "Garden han samlet, ble værende. I år 41 drepte den keiser Caligula, og i 193 solgte den keisertittelen på auksjon.",
+      "en": "The guard he gathered stayed gathered. In the year 41 it killed the emperor Caligula, and in 193 it auctioned the throne."
+    },
+    "wiki": {
+      "no": "Sejanus",
+      "en": "Sejanus"
+    },
+    "portraitNote": {
+      "no": "Det finnes ikke ett sikkert portrett av Sejanus. Navnet hans ble hugget vekk fra innskrifter over hele riket etter at han falt, og ansiktet forsvant med det.",
+      "en": "There is not one certain portrait of Sejanus. His name was chiselled off inscriptions across the empire after he fell, and his face went with it."
+    }
+  },
+  {
+    "id": "agrippina-elder",
+    "side": "roman",
+    "lived": "14 f.Kr.–33 e.Kr.",
+    "name": {
+      "no": "Agrippina den eldre",
+      "en": "Agrippina the Elder"
+    },
+    "role": {
+      "no": "Germanicus' enke, Augustus' barnebarn",
+      "en": "Widow of Germanicus, granddaughter of Augustus"
+    },
+    "hook": {
+      "no": "Hun bar mannens aske gjennom Italia, og brukte resten av livet på å si høyt hvem hun mente hadde drept ham.",
+      "en": "She carried her husband's ashes through Italy, and spent the rest of her life saying aloud who she thought had killed him."
+    },
+    "body": {
+      "no": "Agrippina var datter av Agrippa og Julia, altså Augustus' barnebarn, og hun fulgte Germanicus på felttog med barna. Ved Rhinen skal hun ha stått på brua og delt ut forsyninger til soldatene som kom tilbake — noe Tacitus bemerker at en general ikke liker å se sin kone gjøre.\n\nDa Germanicus døde, tok hun asken med hjem selv og gikk i land i Brundisium med urnen i armene. Folk sto langs veien hele veien til Roma.\n\nHun sluttet aldri å antyde at Tiberius sto bak. I år 29 ble hun anklaget og forvist til Pandateria — samme øy som farmoren Julia. Hun døde der i 33, av sult. Kildene er ikke enige om det var pålagt eller selvvalgt.\n\nTo av sønnene hennes døde i fangenskap. Den tredje ble keiser.",
+      "en": "Agrippina was the daughter of Agrippa and Julia, and so Augustus's granddaughter, and she followed Germanicus on campaign with the children. On the Rhine she is said to have stood on the bridge handing out supplies to the returning soldiers — something Tacitus notes a general does not like to see his wife doing.\n\nWhen Germanicus died she brought the ashes home herself and landed at Brundisium with the urn in her arms. People lined the road the whole way to Rome.\n\nShe never stopped implying that Tiberius was behind it. In the year 29 she was accused and exiled to Pandateria — the same island as her grandmother Julia. She died there in 33, of starvation. The sources do not agree whether it was imposed or chosen.\n\nTwo of her sons died in captivity. The third became emperor."
+    },
+    "fact": {
+      "no": "Hun ble sendt til Pandateria, akkurat som Julia. Øya ble brukt til det samme igjen og igjen i to tusen år.",
+      "en": "She was sent to Pandateria, exactly as Julia was. The island was used the same way again and again for two thousand years."
+    },
+    "wiki": {
+      "no": "Agrippina den eldre",
+      "en": "Agrippina the Elder"
+    },
+    "portraitNote": {
+      "no": "Flere bygster er blitt kalt Agrippina den eldre, men identifiseringene er omstridte. Vi vet ikke sikkert hvordan hun så ut.",
+      "en": "Several busts have been called Agrippina the Elder, but the identifications are disputed. We do not know for certain what she looked like."
+    }
+  },
+  {
+    "id": "caligula",
+    "side": "roman",
+    "lived": "12–41 e.Kr.",
+    "name": {
+      "no": "Caligula",
+      "en": "Caligula"
+    },
+    "role": {
+      "no": "Keiser fra 37",
+      "en": "Emperor from 37"
+    },
+    "hook": {
+      "no": "Soldatene kalte ham Lillestøvel da han var fire. Roma feiret i dagevis da han overtok.",
+      "en": "The soldiers called him Little Boot when he was four. Rome celebrated for days when he took over."
+    },
+    "body": {
+      "no": "Gaius var Germanicus' yngste sønn, og han vokste opp i leiren ved Rhinen. Moren kledde ham i en liten soldatuniform, med barnestøvler som lignet legionærenes caligae, og soldatene begynte å kalle ham Caligula — lillestøvel. Han hatet navnet resten av livet.\n\nHan var den eneste av Germanicus' sønner som overlevde årene under Sejanus, delvis fordi han var for ung til å regnes som en trussel. De siste seks årene bodde han hos Tiberius på Capri.\n\nDa han overtok i 37, var forventningene enorme: sønnen til den elskede Germanicus, etter tjuetre år med en keiser som ikke gadd å komme til byen. De første månedene gikk godt.\n\nSå ble han syk. Etterpå var han en annen. Fire år senere drepte pretorianergarden ham i en korridor — den garden Sejanus hadde samlet på ett sted.",
+      "en": "Gaius was the youngest son of Germanicus, and he grew up in the camp on the Rhine. His mother dressed him in a little soldier's uniform, with child-sized boots like the legionaries' caligae, and the soldiers began calling him Caligula — little boot. He hated the name for the rest of his life.\n\nHe was the only one of Germanicus's sons to survive the years under Sejanus, partly because he was too young to count as a threat. He spent the last six years living with Tiberius on Capri.\n\nWhen he took over in 37 the expectations were enormous: the son of the beloved Germanicus, after twenty-three years of an emperor who could not be bothered to come to the city. The first months went well.\n\nThen he fell ill. Afterwards he was a different man. Four years later the praetorian guard killed him in a corridor — the guard Sejanus had gathered into one place."
+    },
+    "fact": {
+      "no": "Historien om at han gjorde hesten sin til konsul kommer fra Sveton, som skrev åtti år senere og selv kaller den et rykte.",
+      "en": "The story that he made his horse a consul comes from Suetonius, who wrote eighty years later and calls it a rumour himself."
+    },
+    "wiki": {
+      "no": "Caligula",
+      "en": "Caligula"
+    },
+    "portrait": "caligula.jpg",
+    "portraitNote": {
+      "no": "Bronsebyste i Metropolitan Museum, laget mens han levde. Mange av portrettene hans ble hugget om til andre ansikter etter at han ble drept.",
+      "en": "Bronze bust in the Metropolitan Museum, made while he lived. Many of his portraits were recut into other faces after he was killed."
+    }
   }
 ]

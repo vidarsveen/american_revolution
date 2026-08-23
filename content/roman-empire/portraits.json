@@ -1,6 +1,7 @@
 {
   "octavian": {
     "file": "octavian.jpg",
+    "fit": "contain",
     "title": {},
     "year": "2023-09-08 08:02:05",
     "artist": "Justin Benttinen",
@@ -9,6 +10,7 @@
   },
   "caesar": {
     "file": "caesar.jpg",
+    "fit": "contain",
     "title": {},
     "year": "",
     "artist": "Ángel M. Felicísimo from Mérida, España",
@@ -17,6 +19,7 @@
   },
   "antony": {
     "file": "antony.jpg",
+    "fit": "contain",
     "title": {},
     "year": "2022-03-27",
     "artist": "Bust: unknown ancient Roman artist of the 1st century AD; photo: unknown photographer.",
@@ -25,6 +28,7 @@
   },
   "cleopatra": {
     "file": "cleopatra.jpg",
+    "fit": "contain",
     "title": {},
     "year": "40-30 v. Chr. / 40-30 BC / spätptolemäisch / late Ptolemaic dynasty",
     "artist": "Louis le Grand",
@@ -33,6 +37,7 @@
   },
   "brutus": {
     "file": "brutus.jpg",
+    "fit": "contain",
     "title": {},
     "year": "2019-10-12 17:20",
     "artist": "Jamie Heath",
@@ -41,6 +46,7 @@
   },
   "cicero": {
     "file": "cicero.jpg",
+    "fit": "contain",
     "title": {},
     "year": "2016-09-24 13:48:30",
     "artist": "José Luiz",
@@ -49,6 +55,7 @@
   },
   "lepidus": {
     "file": "lepidus.jpg",
+    "fit": "contain",
     "title": {},
     "year": "2019",
     "artist": "Shakko",
@@ -57,6 +64,7 @@
   },
   "agrippa": {
     "file": "agrippa.jpg",
+    "fit": "contain",
     "title": {},
     "year": "30-20 a.C.",
     "artist": "",
@@ -65,6 +73,7 @@
   },
   "livia": {
     "file": "livia.jpg",
+    "fit": "contain",
     "title": {},
     "year": "",
     "artist": "",
@@ -73,10 +82,29 @@
   },
   "tiberius": {
     "file": "tiberius.jpg",
+    "fit": "contain",
     "title": {},
     "year": "Taken on 11 May 2023",
     "artist": "Didier Descouens",
     "licence": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:(Venice)_Tiberius_Portrait_of_the_%27Imperium_Maius%27_type_in_Museo_Archeologico_Nazionale.jpg"
+  },
+  "germanicus": {
+    "file": "germanicus.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "",
+    "artist": "J. Paul Getty Museum",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bust_of_Germanicus,_front_-_Getty_Museum_(2021.66).jpg"
+  },
+  "caligula": {
+    "file": "caligula.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "ca. A.D. 37–41",
+    "artist": "",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bronze_portrait_bust_of_the_emperor_Gaius_(Caligula)_MET_GR736.jpg"
   }
 }

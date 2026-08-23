@@ -6,8 +6,8 @@
     "en": "The Roman Empire"
   },
   "years": {
-    "no": "44 f.Kr.–14 e.Kr.",
-    "en": "44 BC – AD 14"
+    "no": "44 f.Kr.–37 e.Kr.",
+    "en": "44 BC – AD 37"
   },
   "//factions": [
     "Declared by HUE, not by design token. The Revolution pack names tokens",
@@ -176,14 +176,14 @@
   ],
   "era": {
     "start": "-0044-01-01",
-    "end": "0014-12-31",
+    "end": "0037-12-31",
     "calendar": "julian",
     "calendarNote": {
       "no": "Datoene følger den julianske kalenderen, som Cæsar innførte i 45 f.Kr. — bare et år før han ble drept.",
       "en": "Dates follow the Julian calendar, which Caesar imposed in 45 BC — just a year before he was killed."
     },
     "tickStep": "year",
-    "//end": "AD 14, the year Augustus died. Positive years are AD; -0044 is 44 BC. See core/era.js."
+    "//end": "AD 37, the year Tiberius died. -0044 means 44 BC; see core/era.js."
   },
   "narration": {
     "wps": [
@@ -244,6 +244,25 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-14ad-tiberius",
+      "title": {
+        "no": "Maskinen uten mannen",
+        "en": "The machine without the man"
+      },
+      "subtitle": {
+        "no": "14–37 e.Kr.",
+        "en": "AD 14–37"
+      },
+      "blurb": {
+        "no": "Tiberius ville ikke ha jobben, tok den i tjuetre år, og tilbrakte de siste elleve på en øy. Riket merket det knapt.",
+        "en": "Tiberius did not want the job, held it for twenty-three years, and spent the last eleven on an island. The empire barely noticed."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "checks": {
@@ -259,8 +278,8 @@
     "en": "Rome"
   },
   "description": {
-    "no": "Hvordan Octavian tok makten, og hva Augustus gjorde med den – kart, kilder og mennesker.",
-    "en": "How Octavian took power, and what Augustus did with it – maps, sources and people."
+    "no": "Fra Cæsars død til Tiberius’ – hvordan republikken ble et keiserrike, og hva det kostet.",
+    "en": "From the death of Caesar to the death of Tiberius – how a republic became an empire, and what it cost."
   },
   "poster": "colosseum.jpg"
 }

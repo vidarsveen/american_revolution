@@ -238,5 +238,41 @@
     "artist": "Giovanni Battista Piranesi",
     "licence": "CC0",
     "source": "https://commons.wikimedia.org/wiki/File:Mausoleum_van_Augustus_te_Rome_Archeologische_vondsten_in_en_rond_Rome_(serietitel)_Le_Antichit%C3%A0_Romane_(serietitel),_RP-P-OB-39.472.jpg"
+  },
+  "agrippina-ashes": {
+    "file": "agrippina-ashes.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Agrippina går i land med Germanicus' aske",
+      "en": "Agrippina lands with the ashes of Germanicus"
+    },
+    "year": "1768",
+    "artist": "Benjamin West",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Benjamin_West_-_Agrippina_Landing_at_Brundisium_with_the_Ashes_of_Germanicu_-_1947.16_-_Yale_University_Art_Gallery.jpg"
+  },
+  "sejanus-fall": {
+    "file": "sejanus-fall.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Sejanus arresteres i senatet",
+      "en": "Sejanus arrested in the senate"
+    },
+    "year": "1810",
+    "artist": "Bartolomeo Pinelli",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Sejanus_is_arrested_and_condemned_to_death.jpg"
+  },
+  "tacitus-ms": {
+    "file": "tacitus-ms.jpg",
+    "fit": "contain",
+    "title": {
+      "no": "Tacitus' Annaler, kopiert på 1000-tallet",
+      "en": "Tacitus's Annals, copied in the eleventh century"
+    },
+    "year": "1000-tallet",
+    "artist": "Ukjent munk, Monte Cassino",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Tacitus,_Annals,_Florence,_Plut._68,2.jpg"
   }
 }

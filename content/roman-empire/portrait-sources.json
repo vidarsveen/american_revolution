@@ -1,32 +1,38 @@
 {
- "octavian": {
-  "commons": "File:Augustus_of_Prima_Porta.jpg"
- },
- "caesar": {
-  "commons": "File:Retrato_de_Julio_César_(26724093101)_(cropped).jpg"
- },
- "antony": {
-  "commons": "File:Marble bust of Mark Antony (Vatican Museums).jpg"
- },
- "cleopatra": {
-  "commons": "File:Kleopatra-VII.-Altes-Museum-Berlin1.jpg"
- },
- "brutus": {
-  "commons": "File:The So-Called Marcus Junius Brutus (49345263686).jpg"
- },
- "cicero": {
-  "commons": "File:Bust_of_Cicero_(1st-cent._BC)_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
- },
- "lepidus": {
-  "commons": "File:Marcus Aemilius Lepidus (Musei Vaticani) replica in Pushkin museum 01 by shakko.jpg"
- },
- "agrippa": {
-  "commons": "File:Agrippa_Gabii_Louvre_Ma1208.jpg"
- },
- "livia": {
-  "commons": "File:Livia Drusilla Louvre Ma1233.jpg"
- },
- "tiberius": {
-  "commons": "File:(Venice) Tiberius Portrait of the 'Imperium Maius' type in Museo Archeologico Nazionale.jpg"
- }
+  "octavian": {
+    "commons": "File:Augustus_of_Prima_Porta.jpg"
+  },
+  "caesar": {
+    "commons": "File:Retrato_de_Julio_César_(26724093101)_(cropped).jpg"
+  },
+  "antony": {
+    "commons": "File:Marble bust of Mark Antony (Vatican Museums).jpg"
+  },
+  "cleopatra": {
+    "commons": "File:Kleopatra-VII.-Altes-Museum-Berlin1.jpg"
+  },
+  "brutus": {
+    "commons": "File:The So-Called Marcus Junius Brutus (49345263686).jpg"
+  },
+  "cicero": {
+    "commons": "File:Bust_of_Cicero_(1st-cent._BC)_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
+  },
+  "lepidus": {
+    "commons": "File:Marcus Aemilius Lepidus (Musei Vaticani) replica in Pushkin museum 01 by shakko.jpg"
+  },
+  "agrippa": {
+    "commons": "File:Agrippa_Gabii_Louvre_Ma1208.jpg"
+  },
+  "livia": {
+    "commons": "File:Livia Drusilla Louvre Ma1233.jpg"
+  },
+  "tiberius": {
+    "commons": "File:(Venice) Tiberius Portrait of the 'Imperium Maius' type in Museo Archeologico Nazionale.jpg"
+  },
+  "germanicus": {
+    "commons": "File:Bust of Germanicus, front - Getty Museum (2021.66).jpg"
+  },
+  "caligula": {
+    "commons": "File:Bronze portrait bust of the emperor Gaius (Caligula) MET GR736.jpg"
+  }
 }

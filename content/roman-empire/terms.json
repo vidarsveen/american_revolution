@@ -349,5 +349,71 @@
         "id": "propaganda"
       }
     ]
+  },
+  "maiestas": {
+    "term": {
+      "no": "Maiestas",
+      "en": "Maiestas"
+    },
+    "short": {
+      "no": "Loven om forbrytelser mot staten — som ble en lov om ord, uten at teksten ble endret.",
+      "en": "The law on crimes against the state — which became a law about words, without the text changing."
+    },
+    "body": {
+      "no": "Maiestas betyr storhet, og loven gjaldt opprinnelig handlinger som skadet den romerske statens storhet: å svikte en hær, å starte oppstand, å hjelpe en fiende.\n\nUnder Augustus begynte den å dekke skrift som skadet noens rykte. Og siden førstemannen nå også var staten, ble ord om ham til ord om staten.\n\nUnder Tiberius vokste den videre, uten at én bokstav ble endret. Å selge en statue av keiseren. Å ta med en mynt med hans ansikt på inn på et toalett. Å bytte klær foran et bilde av ham.\n\nDette er den viktigste tingen å ta med seg fra kapittelet: en lov kan skifte betydning fullstendig mens teksten står stille. Det som endret seg, var hvem som brukte den, og hva de fikk igjen for det.",
+      "en": "Maiestas means greatness, and the law originally covered acts that damaged the greatness of the Roman state: betraying an army, raising a revolt, helping an enemy.\n\nUnder Augustus it began to cover writing that damaged a reputation. And since the first man was now also the state, words about him became words about the state.\n\nUnder Tiberius it grew further, without one letter of it changing. Selling a statue of the emperor. Carrying a coin with his face into a latrine. Changing your clothes in front of an image of him.\n\nThis is the most important thing to take from this chapter: a law can change meaning completely while its text stands still. What changed was who used it, and what they got out of it."
+    },
+    "fact": {
+      "no": "Tiberius avviste flere slike saker selv og sa at ord ikke var noe å straffe. Han avviste ikke alle, og han fjernet ikke belønningen.",
+      "en": "Tiberius threw several such cases out himself and said words were not something to punish. He did not throw out all of them, and he did not remove the reward."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Majestetsfornærmelse",
+      "en": "Laesa maiestas"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "delator"
+      },
+      {
+        "kind": "topic",
+        "id": "how-we-know"
+      }
+    ]
+  },
+  "delator": {
+    "term": {
+      "no": "Delator",
+      "en": "Delator"
+    },
+    "short": {
+      "no": "En angiver. Vant du saken, fikk du en firedel av formuen til den du fikk dømt.",
+      "en": "An informer. Win the case, and you took a quarter of the property of the man you convicted."
+    },
+    "body": {
+      "no": "Roma hadde ingen statsadvokat. Ville du ha noen dømt, måtte en privatperson reise saken selv — og for å få noen til å ta den risikoen, ga loven vinneren en andel av det den dømte eide. Vanligvis en firedel.\n\nDet er en fornuftig ordning i en stat uten påtalemyndighet, og den hadde eksistert lenge. Sammen med en majestetslov som stadig dekket mer, ble den noe annet: et yrke.\n\nDelatores var ofte veltalende og fattige menn med utdannelse og ingen formue. En dømt senator kunne gjøre en av dem rik for livet.\n\nIngen bestemte at det skulle bli slik. To gamle regler møttes, og resultatet var et system ingen hadde vedtatt.",
+      "en": "Rome had no public prosecutor. If you wanted someone convicted, a private citizen had to bring the case — and to get anyone to take that risk, the law gave the winner a share of what the condemned man owned. Usually a quarter.\n\nThat is a reasonable arrangement in a state with no prosecution service, and it had existed for a long time. Put together with a treason law that kept covering more, it became something else: a profession.\n\nDelatores were often eloquent, poor men with an education and no property. One convicted senator could make one of them rich for life.\n\nNobody decided it should work this way. Two old rules met, and the result was a system nobody had voted for."
+    },
+    "fact": {
+      "no": "Da Tiberius døde, hadde flere av de mest kjente angiverne selv blitt anklaget og dømt av andre angivere.",
+      "en": "By the time Tiberius died, several of the best-known informers had themselves been accused and convicted by other informers."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Delator",
+      "en": "Delator"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "maiestas"
+      },
+      {
+        "kind": "term",
+        "id": "senate"
+      }
+    ]
   }
 }
