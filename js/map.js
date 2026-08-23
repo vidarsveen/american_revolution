@@ -63,11 +63,24 @@ function homeBounds() {
   return manifest?.map?.explore?.bounds || HOME_BOUNDS;
 }
 
-export function initMap(allEvents, handlers = {}) {
-  events = allEvents;
-  onSelect = handlers.onSelect || (() => {});
+/* Explore's map is built the first time somebody asks to see it.
 
-  host = document.getElementById('map');
+   It used to be built at boot, whether or not the Map tab was ever opened --
+   so every session carried TWO full-resolution canvases: the story's and this
+   one, each 3088x1518 backing store, about 36 MB apiece, one of them blank
+   for ever. It also meant two region label layers, which is why "VIRGINIA"
+   and "Virginia" printed on top of each other in the Explore map, and why
+   regions.geojson was fetched twice on every load.
+
+   Anything that wants to draw before then queues. */
+let pending = [];
+
+export function whenMap(fn) {
+  if (map) fn(map); else pending.push(fn);
+}
+
+function ensureMap() {
+  if (map) return map;
   map = createMap(host, {
     interactive: true,
     minZoom: manifest?.map?.explore?.zoom?.min ?? 2.6,
@@ -75,24 +88,47 @@ export function initMap(allEvents, handlers = {}) {
     geoBase: './assets/geo',
     factions: readFactions(),
     onCamera: applyZoomClass,
+    // The map has had a setLang since it was written and nothing had ever
+    // called it, so Explore drew every region name in Norwegian whatever the
+    // interface was set to -- "NORD-CAROLINA" next to "New England".
+    lang: state.lang,
   });
+  map.setBorders(manifest?.map?.borders || {});
   map.fitBounds(homeBounds(), { padding: 12, instant: true });
-
   buildMarkers();
   refresh();
+  const queued = pending;
+  pending = [];
+  for (const fn of queued) fn(map);
+  return map;
+}
+
+export function initMap(allEvents, handlers = {}) {
+  events = allEvents;
+  onSelect = handlers.onSelect || (() => {});
+  host = document.getElementById('map');
 
   subscribe((s, changed) => {
-    if (changed.has('date') || changed.has('filter')) refresh();
-    if (changed.has('selected')) refreshSelection();
-    if (changed.has('lang')) relabel();
     if (changed.has('view') && s.view === 'map') {
+      ensureMap();
       // A map laid out while its container was hidden measured as zero.
       onNextFrame(() => map.invalidate());
     }
+    if (!map) return;
+    if (changed.has('date') || changed.has('filter')) refresh();
+    if (changed.has('selected')) refreshSelection();
+    if (changed.has('lang')) { map.setLang(s.lang); relabel(); }
   });
 
-  return map;
+  // A shared link can land straight on #/kart, and then there is nothing to
+  // defer -- the map IS the view being asked for.
+  if (state.view === 'map') ensureMap();
+
+  return null;
 }
+
+/** Build it now, for a caller that needs the map before the tab is opened. */
+export function readyMap() { return ensureMap(); }
 
 /** Label density is a function of zoom; the CSS decides what that means. */
 function applyZoomClass({ zoom }) {
@@ -203,6 +239,7 @@ let placesCache = [];
 
 export function drawPlaces(places) {
   placesCache = places || [];
+  if (!map) { whenMap(() => drawPlaces(placesCache)); return; }
   for (const p of placesCache) {
     const cls = p.type === 'region' ? 'place place--region' : 'place place--city';
     map.pins.add({
@@ -222,7 +259,8 @@ export function drawPlaces(places) {
  * shows you the same country.
  */
 export function drawColonies(geojson) {
-  if (!geojson || !map) return;
+  if (!geojson) return;
+  if (!map) { whenMap(() => drawColonies(geojson)); return; }
   map.useRegions(geojson).then((set) => {
     if (!set) return;
     for (const name of map.regionNames()) {

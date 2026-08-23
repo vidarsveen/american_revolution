@@ -67,10 +67,21 @@ function shallowEq(a, b) {
 /* ---------- Persistence ------------------------------------ */
 
 const LS = 'fortell:prefs';
+/* The key used before the app stopped being about one subject. Read once, so
+   the rename does not silently throw away the language and theme of everyone
+   who was already using it, and then cleared. */
+const LS_OLD = 'revolusjonen:prefs';
 
 export function loadPrefs() {
   try {
-    const raw = localStorage.getItem(LS);
+    let raw = localStorage.getItem(LS);
+    if (!raw) {
+      raw = localStorage.getItem(LS_OLD);
+      if (raw) {
+        localStorage.setItem(LS, raw);
+        localStorage.removeItem(LS_OLD);
+      }
+    }
     if (!raw) return;
     const p = JSON.parse(raw);
     if (p.lang === 'no' || p.lang === 'en') state.lang = p.lang;

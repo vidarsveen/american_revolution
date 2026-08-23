@@ -369,7 +369,10 @@
 .atlas__credit {
   position: absolute;
   right: 0;
-  bottom: 0;
+  /* Clear of the tab bar, which sits over the bottom of the map and was
+     cutting the attribution in half. Natural Earth asks for the credit and
+     the OSM data REQUIRES it, so it has to be legible, not merely present. */
+  bottom: var(--credit-clear, 0px);
   z-index: 6;
   max-width: 66%;
   padding: 1px 6px;

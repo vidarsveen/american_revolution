@@ -159,9 +159,30 @@ const pick = (field) => {
    Standing place names
    ------------------------------------------------------------ */
 
+/* Which scene we are in, so a place can arrive when the story reaches it.
+
+   Standing labels are drawn for the whole chapter at once, which is right for
+   geography -- Boston is Boston all day -- and wrong for a name that only
+   exists BECAUSE of something that happens later. "Bloody Angle" was on the
+   map at half past four in the morning, seven hours before the fight that
+   named it. A place may now say `"label": "s5"` and appear from that scene on.
+
+   resetMap() re-runs this on every scene rebuild, and onScene sets the index
+   before the rebuild, so it stays a pure function of time. */
+let sceneAt = 0;
+
+export function mapScene(i) { sceneAt = Number(i) || 0; }
+
+function sceneIndexOf(id) {
+  const scenes = chapter?.scenes || [];
+  const i = scenes.findIndex((s) => s.id === id);
+  return i < 0 ? 0 : i;
+}
+
 function drawStandingLabels() {
   for (const [id, place] of Object.entries(chapter.places || {})) {
     if (place.label === false) continue;
+    if (typeof place.label === 'string' && sceneIndexOf(place.label) > sceneAt) continue;
     map.places.add({
       id: `place:${id}`,
       name: pick(place.name) || id,

@@ -501,12 +501,25 @@
   transition: opacity var(--t-med) var(--ease-out);
 }
 .captions.is-off { opacity: 0; }
+/* Nothing to say, nothing on screen. A seek clears the line and the next beat
+   fills it, and in between the card was a blank slab of frosted glass over the
+   map -- most visible exactly when you are scrubbing and want to SEE the map.
+   :has() so the box goes, not just its text. */
+.captions:has(.captions__line:empty) {
+  opacity: 0;
+  pointer-events: none;
+}
 .captions__line {
   margin: 0;
-  font-size: var(--fs-base);
+  /* Rule 3 says the captions carry the words when the audio does not, so this
+     is a reading surface and has to pass as one. It was --ink-faint, measured
+     at 3.11:1 against the veil -- below AA, for the majority of every line at
+     any instant, because most of a sentence has not been spoken yet. The
+     karaoke progression still reads: soft, then full ink, then bold. */
+  font-size: var(--fs-md);
   line-height: 1.5;
   text-align: center;
-  color: var(--ink-faint);
+  color: var(--ink-soft);
 }
 .captions__line.is-in { animation: cap-in 320ms var(--ease-out); }
 @keyframes cap-in { from { opacity: 0; transform: translateY(4px); } }
@@ -536,7 +549,7 @@
 @media (hover: hover) {
   .captions__line .w-term:hover { text-decoration-color: var(--gold); }
 }
-.captions__line span.is-said { color: var(--ink-soft); }
+.captions__line span.is-said { color: var(--ink); }
 .captions__line span.is-now  { color: var(--ink); font-weight: 600; }
 
 /* ---------- Transport --------------------------------------
@@ -845,6 +858,37 @@
 
 /* The other chapters. Under the play button and quieter than it: the cover
    is still an invitation to start the one it is describing, not a menu. */
+/* The caveat the pack declares about its own map. Quiet, but present: this
+   is the difference between a known inaccuracy and an unmarked one. */
+/* The subtitle is what tells you which chapter this is. "17. juni 1775" is a
+   date; "Bunker Hill" is the thing you were promised. */
+.cover__chapter span i {
+  display: block;
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  color: var(--ink-faint);
+  margin-top: 1px;
+}
+
+/* The line being read now. The transcript is also a way to jump, so every
+   beat is already a target; this says which one you are standing on. */
+.transcript__beat.is-now {
+  color: var(--ink);
+  font-weight: 600;
+  border-left: 2px solid var(--gold);
+  padding-left: var(--s3);
+  margin-left: calc(var(--s3) * -1 - 2px);
+}
+
+.cover__accuracy {
+  margin: var(--s4) auto 0;
+  max-width: 42ch;
+  font: var(--fs-2xs) / var(--lh-body) var(--font-body);
+  color: var(--ink-faint);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s3);
+}
+
 .cover__chapters { margin-top: var(--s7); }
 .cover__chapters-label {
   margin: 0 0 var(--s3);

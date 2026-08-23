@@ -1,152 +1,266 @@
 {
- "parliament": {
-  "term": { "no": "Parlamentet", "en": "Parliament" },
-  "short": {
-   "no": "Forsamlingen i London som vedtok lovene — også for folk som ikke hadde stemt på den.",
-   "en": "The assembly in London that made the laws — including for people who had never voted for it."
+  "parliament": {
+    "term": {
+      "no": "Parlamentet",
+      "en": "Parliament"
+    },
+    "short": {
+      "no": "Forsamlingen i London som vedtok lovene — også for folk som ikke hadde stemt på den.",
+      "en": "The assembly in London that made the laws — including for people who had never voted for it."
+    },
+    "body": {
+      "no": "Det britiske parlamentet hadde to kamre. Underhuset ble valgt, men bare av menn med eiendom, og bare i Storbritannia. Ingen av de tretten koloniene hadde en eneste representant.\n\nLondon mente det ikke gjorde noe. Tanken var at en representant talte for hele riket, ikke bare for dem som hadde stemt på ham. Koloniene mente det motsatte: den som skal ta pengene dine, må du kunne stemme bort.",
+      "en": "The British Parliament had two houses. The Commons was elected, but only by men with property, and only in Britain. Not one of the thirteen colonies had a single representative.\n\nLondon did not think this mattered. The idea was that a member spoke for the whole realm, not only for the people who had voted for him. The colonies thought the opposite: whoever takes your money is someone you must be able to vote out."
+    },
+    "fact": {
+      "no": "Flere byer i England hadde heller ingen representant. Manchester, med tjuefem tusen innbyggere, hadde null.",
+      "en": "Several English towns had no representative either. Manchester, with twenty-five thousand people, had none."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Storbritannias parlament",
+      "en": "Parliament of Great Britain"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "tax"
+      },
+      {
+        "kind": "topic",
+        "id": "who-could-vote"
+      }
+    ]
   },
-  "body": {
-   "no": "Det britiske parlamentet hadde to kamre. Underhuset ble valgt, men bare av menn med eiendom, og bare i Storbritannia. Ingen av de tretten koloniene hadde en eneste representant.\n\nLondon mente det ikke gjorde noe. Tanken var at en representant talte for hele riket, ikke bare for dem som hadde stemt på ham. Koloniene mente det motsatte: den som skal ta pengene dine, må du kunne stemme bort.",
-   "en": "The British Parliament had two houses. The Commons was elected, but only by men with property, and only in Britain. Not one of the thirteen colonies had a single representative.\n\nLondon did not think this mattered. The idea was that a member spoke for the whole realm, not only for the people who had voted for him. The colonies thought the opposite: whoever takes your money is someone you must be able to vote out."
+  "tax": {
+    "term": {
+      "no": "Skatt",
+      "en": "Tax"
+    },
+    "short": {
+      "no": "Krangelen handlet aldri om beløpet. Den handlet om hvem som fikk bestemme det.",
+      "en": "The argument was never about the amount. It was about who got to decide it."
+    },
+    "body": {
+      "no": "Koloniene betalte lite skatt til London, og mindre enn folk i England gjorde. Krigen mot Frankrike hadde vært dyr, og London mente koloniene burde betale en del av regningen for sitt eget forsvar.\n\nDet som gjorde det uutholdelig, var ikke summen. Det var at en forsamling de ikke hadde valgt, kunne bestemme den. Godtok du en liten skatt du ikke hadde stemt over, hadde du godtatt prinsippet — og da kunne den neste bli hvor stor som helst.",
+      "en": "The colonies paid little tax to London, less than people in England did. The war against France had been expensive, and London thought the colonies should pay part of the bill for their own defence.\n\nWhat made it unbearable was not the sum. It was that an assembly they had not elected could set it. Accept a small tax you never voted on and you have accepted the principle — and the next one could be any size at all."
+    },
+    "fact": {
+      "no": "Te-skatten som utløste Boston Tea Party gjorde faktisk teen billigere.",
+      "en": "The tea tax that set off the Boston Tea Party actually made tea cheaper."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Stamp Act",
+      "en": "Stamp Act 1765"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "parliament"
+      },
+      {
+        "kind": "topic",
+        "id": "who-could-vote"
+      }
+    ]
   },
-  "fact": {
-   "no": "Flere byer i England hadde heller ingen representant. Manchester, med tjuefem tusen innbyggere, hadde null.",
-   "en": "Several English towns had no representative either. Manchester, with twenty-five thousand people, had none."
+  "militia": {
+    "term": {
+      "no": "Milits",
+      "en": "Militia"
+    },
+    "short": {
+      "no": "Ikke soldater. Naboer med gevær, som gikk hjem igjen etterpå.",
+      "en": "Not soldiers. Neighbours with guns, who went home again afterwards."
+    },
+    "body": {
+      "no": "Hver by i New England hadde plikt til å stille en milits. Alle våpenføre menn mellom seksten og seksti sto på lista, møtte til øvelse noen dager i året, og hadde sitt eget gevær hjemme.\n\nDe var ikke trente soldater, og de dro hjem til gården når slaget var over. Men de var mange, de kjente terrenget, og de kunne være på plass på en time. Det er det som gjør nittende april så farlig for britene: de slåss ikke mot en hær, de slåss mot et landskap fullt av folk.",
+      "en": "Every town in New England was required to raise a militia. Every able-bodied man between sixteen and sixty was on the list, turned out for drill a few days a year, and kept his own musket at home.\n\nThey were not trained soldiers, and they went home to the farm when the fighting stopped. But there were a lot of them, they knew the ground, and they could be there within the hour. That is what makes the nineteenth of April so dangerous for the British: they are not fighting an army, they are fighting a landscape full of people."
+    },
+    "fact": {
+      "no": "Minutemenn var militsens raskeste tredel — de som hadde lovet å være klare på ett minutts varsel.",
+      "en": "Minutemen were the fastest third of the militia — the ones who had promised to be ready at a minute's notice."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Minutemen",
+      "en": "Minutemen"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "colonial-town"
+      },
+      {
+        "kind": "term",
+        "id": "regulars"
+      },
+      {
+        "kind": "topic",
+        "id": "a-musket"
+      }
+    ]
   },
-  "kind": "concept",
-  "wiki": { "no": "Storbritannias parlament", "en": "Parliament of Great Britain" },
-  "seeAlso": [
-   { "kind": "term", "id": "tax" },
-   { "kind": "topic", "id": "who-could-vote" }
-  ]
- },
-
- "tax": {
-  "term": { "no": "Skatt", "en": "Tax" },
-  "short": {
-   "no": "Krangelen handlet aldri om beløpet. Den handlet om hvem som fikk bestemme det.",
-   "en": "The argument was never about the amount. It was about who got to decide it."
+  "regulars": {
+    "term": {
+      "no": "Regulære soldater",
+      "en": "Regulars"
+    },
+    "short": {
+      "no": "Yrkessoldater i røde jakker. Den best trente hæren i verden, sendt for å holde ro i en by.",
+      "en": "Professional soldiers in red coats. The best-drilled army in the world, sent to police a town."
+    },
+    "body": {
+      "no": "En britisk soldat vervet seg på livstid eller nær det. Han ble trent til å lade og skyte på kommando, holde rekka under ild, og gå framover mens folk rundt ham falt. I åpen mark var han overlegen alt militsen kunne stille.\n\nMen han var trent til et slag, ikke til en okkupasjon. I Boston fra sytten sekstiåtte og framover bodde han i en by som ikke ville ha ham, med dårlig lønn og ingenting å gjøre.\n\nKoloniene kalte dem «regulars» eller «redcoats». Soldatene kalte seg selv «the King's own».",
+      "en": "A British soldier enlisted for life or close to it. He was trained to load and fire on command, hold the line under fire, and walk forward while men around him fell. In open country he was better than anything the militia could put up.\n\nBut he was trained for a battle, not an occupation. In Boston from sixty-eight onwards he lived in a town that did not want him, on poor pay, with nothing to do.\n\nThe colonists called them regulars, or redcoats. The soldiers called themselves the King's own."
+    },
+    "fact": {
+      "no": "En soldat tjente åtte pence dagen, og trakk fra for mat, klær og pudder til håret.",
+      "en": "A soldier earned eightpence a day, with deductions for food, clothing and powder for his hair."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Den britiske hæren",
+      "en": "British Army"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "militia"
+      },
+      {
+        "kind": "topic",
+        "id": "a-musket"
+      }
+    ]
   },
-  "body": {
-   "no": "Koloniene betalte lite skatt til London, og mindre enn folk i England gjorde. Krigen mot Frankrike hadde vært dyr, og London mente koloniene burde betale en del av regningen for sitt eget forsvar.\n\nDet som gjorde det uutholdelig, var ikke summen. Det var at en forsamling de ikke hadde valgt, kunne bestemme den. Godtok du en liten skatt du ikke hadde stemt over, hadde du godtatt prinsippet — og da kunne den neste bli hvor stor som helst.",
-   "en": "The colonies paid little tax to London, less than people in England did. The war against France had been expensive, and London thought the colonies should pay part of the bill for their own defence.\n\nWhat made it unbearable was not the sum. It was that an assembly they had not elected could set it. Accept a small tax you never voted on and you have accepted the principle — and the next one could be any size at all."
+  "governor": {
+    "term": {
+      "no": "Guvernør",
+      "en": "Governor"
+    },
+    "short": {
+      "no": "Kongens mann i kolonien. I Massachusetts i 1775 var han også general.",
+      "en": "The king's man in the colony. In Massachusetts in 1775 he was also a general."
+    },
+    "body": {
+      "no": "En koloni styrte stort sett seg selv gjennom en valgt forsamling, men på toppen satt en guvernør utnevnt fra London. Han kunne oppløse forsamlingen, og forsamlingen kunne nekte å betale ham lønn. Det var en maktbalanse som fungerte så lenge ingen presset den.\n\nI sytten sytti-fire sluttet den å fungere. London gjorde Thomas Gage til både guvernør og øverstkommanderende, og satte hæren til å styre en koloni som allerede hadde begynt å styre seg selv utenom ham.",
+      "en": "A colony largely ran itself through an elected assembly, but above it sat a governor appointed from London. He could dissolve the assembly, and the assembly could refuse to pay his salary. It was a balance that worked as long as nobody pushed it.\n\nIn seventeen seventy-four it stopped working. London made Thomas Gage both governor and commander-in-chief, and set the army to run a colony that had already begun running itself around him."
+    },
+    "kind": "role",
+    "wiki": {
+      "no": "Thomas Gage",
+      "en": "Thomas Gage"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "gage"
+      },
+      {
+        "kind": "topic",
+        "id": "atlantic-crossing"
+      }
+    ]
   },
-  "fact": {
-   "no": "Te-skatten som utløste Boston Tea Party gjorde faktisk teen billigere.",
-   "en": "The tea tax that set off the Boston Tea Party actually made tea cheaper."
+  "congress": {
+    "term": {
+      "no": "Kongressen",
+      "en": "Congress"
+    },
+    "short": {
+      "no": "Tretten kolonier som ikke likte hverandre særlig, tvunget til å møtes fordi London hadde gjort dem like sinte.",
+      "en": "Thirteen colonies that did not much like each other, forced to meet because London had made them equally angry."
+    },
+    "body": {
+      "no": "Koloniene hadde aldri hatt en felles regjering. De handlet mer med Storbritannia enn med hverandre, og kranglet om grenser og fiske.\n\nDen første kontinentalkongressen møttes i Philadelphia høsten sytten syttifire, som svar på straffelovene mot Massachusetts. Den andre møttes i mai syttifem, tre uker etter Lexington — og oppdaget at den plutselig hadde en krig å styre.\n\nDen hadde ingen rett til å gjøre noe av det den gjorde. Den kunne ikke kreve inn skatt eller tvinge en koloni til noe. Den utnevnte likevel Washington til øverstkommanderende og begynte å trykke penger.",
+      "en": "The colonies had never had a common government. They traded more with Britain than with each other, and quarrelled over borders and fishing rights.\n\nThe First Continental Congress met in Philadelphia in the autumn of seventeen seventy-four, in answer to the punitive laws against Massachusetts. The Second met in May seventy-five, three weeks after Lexington — and found it suddenly had a war to run.\n\nIt had no right to do any of what it did. It could not levy a tax or compel a colony to anything. It appointed Washington commander-in-chief anyway, and started printing money."
+    },
+    "fact": {
+      "no": "Kongressen valgte Washington delvis fordi han var fra Virginia. En New England-krig trengte en sørstatsgeneral for å bli alles krig.",
+      "en": "Congress chose Washington partly because he was from Virginia. A New England war needed a southern general to become everybody's war."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Kontinentalkongressen",
+      "en": "Continental Congress"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "washington"
+      },
+      {
+        "kind": "person",
+        "id": "john-adams"
+      }
+    ]
   },
-  "kind": "concept",
-  "wiki": { "no": "Stamp Act", "en": "Stamp Act 1765" },
-  "seeAlso": [
-   { "kind": "term", "id": "parliament" },
-   { "kind": "topic", "id": "who-could-vote" }
-  ]
- },
-
- "militia": {
-  "term": { "no": "Milits", "en": "Militia" },
-  "short": {
-   "no": "Ikke soldater. Naboer med gevær, som gikk hjem igjen etterpå.",
-   "en": "Not soldiers. Neighbours with guns, who went home again afterwards."
+  "loyalist": {
+    "term": {
+      "no": "Lojalist",
+      "en": "Loyalist"
+    },
+    "short": {
+      "no": "Kanskje hver femte kolonist holdt med kongen. Det var også en borgerkrig.",
+      "en": "Perhaps one colonist in five stayed with the king. This was a civil war too."
+    },
+    "body": {
+      "no": "Ikke alle ville ha opprør. Anslag varierer, men rundt tjue prosent av de hvite kolonistene holdt med kronen, og kanskje like mange prøvde å holde seg utenfor.\n\nDe var ikke en type. Noen var embetsmenn og kjøpmenn med bånd til London. Noen var nybyggere som stolte mer på kongen enn på naboens forsamling. Mange var folk som rett og slett ikke trodde det kunne gå bra.\n\nDe ble trakassert, tjæret, fikk eiendommen konfiskert, og rundt seksti tusen forlot landet da krigen var over. De fleste dro til Canada.",
+      "en": "Not everyone wanted a rebellion. Estimates vary, but around twenty per cent of white colonists stayed with the crown, and perhaps as many again tried to stay out of it.\n\nThey were not one kind of person. Some were officials and merchants with ties to London. Some were settlers who trusted the king more than their neighbour's assembly. Many simply did not believe it could end well.\n\nThey were harassed, tarred, had property confiscated, and around sixty thousand left the country when the war ended. Most went to Canada."
+    },
+    "fact": {
+      "no": "Benjamin Franklins sønn William var lojalist og guvernør i New Jersey. Far og sønn snakket aldri ordentlig sammen igjen.",
+      "en": "Benjamin Franklin's son William was a loyalist and governor of New Jersey. Father and son never properly spoke again."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Lojalist (Amerika)",
+      "en": "Loyalist (American Revolution)"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "franklin"
+      },
+      {
+        "kind": "topic",
+        "id": "colonial-town"
+      }
+    ]
   },
-  "body": {
-   "no": "Hver by i New England hadde plikt til å stille en milits. Alle våpenføre menn mellom seksten og seksti sto på lista, møtte til øvelse noen dager i året, og hadde sitt eget gevær hjemme.\n\nDe var ikke trente soldater, og de dro hjem til gården når slaget var over. Men de var mange, de kjente terrenget, og de kunne være på plass på en time. Det er det som gjør nittende april så farlig for britene: de slåss ikke mot en hær, de slåss mot et landskap fullt av folk.",
-   "en": "Every town in New England was required to raise a militia. Every able-bodied man between sixteen and sixty was on the list, turned out for drill a few days a year, and kept his own musket at home.\n\nThey were not trained soldiers, and they went home to the farm when the fighting stopped. But there were a lot of them, they knew the ground, and they could be there within the hour. That is what makes the nineteenth of April so dangerous for the British: they are not fighting an army, they are fighting a landscape full of people."
-  },
-  "fact": {
-   "no": "Minutemenn var militsens raskeste tredel — de som hadde lovet å være klare på ett minutts varsel.",
-   "en": "Minutemen were the fastest third of the militia — the ones who had promised to be ready at a minute's notice."
-  },
-  "kind": "concept",
-  "wiki": { "no": "Minutemen", "en": "Minutemen" },
-  "seeAlso": [
-   { "kind": "topic", "id": "colonial-town" },
-   { "kind": "term", "id": "regulars" },
-   { "kind": "topic", "id": "a-musket" }
-  ]
- },
-
- "regulars": {
-  "term": { "no": "Regulære soldater", "en": "Regulars" },
-  "short": {
-   "no": "Yrkessoldater i røde jakker. Den best trente hæren i verden, sendt for å holde ro i en by.",
-   "en": "Professional soldiers in red coats. The best-drilled army in the world, sent to police a town."
-  },
-  "body": {
-   "no": "En britisk soldat vervet seg på livstid eller nær det. Han ble trent til å lade og skyte på kommando, holde rekka under ild, og gå framover mens folk rundt ham falt. I åpen mark var han overlegen alt militsen kunne stille.\n\nMen han var trent til et slag, ikke til en okkupasjon. I Boston fra sytten sekstiåtte og framover bodde han i en by som ikke ville ha ham, med dårlig lønn og ingenting å gjøre.\n\nKoloniene kalte dem «regulars» eller «redcoats». Soldatene kalte seg selv «the King's own».",
-   "en": "A British soldier enlisted for life or close to it. He was trained to load and fire on command, hold the line under fire, and walk forward while men around him fell. In open country he was better than anything the militia could put up.\n\nBut he was trained for a battle, not an occupation. In Boston from sixty-eight onwards he lived in a town that did not want him, on poor pay, with nothing to do.\n\nThe colonists called them regulars, or redcoats. The soldiers called themselves the King's own."
-  },
-  "fact": {
-   "no": "En soldat tjente åtte pence dagen, og trakk fra for mat, klær og pudder til håret.",
-   "en": "A soldier earned eightpence a day, with deductions for food, clothing and powder for his hair."
-  },
-  "kind": "concept",
-  "wiki": { "no": "Den britiske hæren", "en": "British Army" },
-  "seeAlso": [
-   { "kind": "term", "id": "militia" },
-   { "kind": "topic", "id": "a-musket" }
-  ]
- },
-
- "governor": {
-  "term": { "no": "Guvernør", "en": "Governor" },
-  "short": {
-   "no": "Kongens mann i kolonien. I Massachusetts i 1775 var han også general.",
-   "en": "The king's man in the colony. In Massachusetts in 1775 he was also a general."
-  },
-  "body": {
-   "no": "En koloni styrte stort sett seg selv gjennom en valgt forsamling, men på toppen satt en guvernør utnevnt fra London. Han kunne oppløse forsamlingen, og forsamlingen kunne nekte å betale ham lønn. Det var en maktbalanse som fungerte så lenge ingen presset den.\n\nI sytten sytti-fire sluttet den å fungere. London gjorde Thomas Gage til både guvernør og øverstkommanderende, og satte hæren til å styre en koloni som allerede hadde begynt å styre seg selv utenom ham.",
-   "en": "A colony largely ran itself through an elected assembly, but above it sat a governor appointed from London. He could dissolve the assembly, and the assembly could refuse to pay his salary. It was a balance that worked as long as nobody pushed it.\n\nIn seventeen seventy-four it stopped working. London made Thomas Gage both governor and commander-in-chief, and set the army to run a colony that had already begun running itself around him."
-  },
-  "kind": "role",
-  "wiki": { "no": "Thomas Gage", "en": "Thomas Gage" },
-  "seeAlso": [
-   { "kind": "person", "id": "gage" },
-   { "kind": "topic", "id": "atlantic-crossing" }
-  ]
- },
-
- "congress": {
-  "term": { "no": "Kongressen", "en": "Congress" },
-  "short": {
-   "no": "Tretten kolonier som ikke likte hverandre særlig, tvunget til å møtes fordi London hadde gjort dem like sinte.",
-   "en": "Thirteen colonies that did not much like each other, forced to meet because London had made them equally angry."
-  },
-  "body": {
-   "no": "Koloniene hadde aldri hatt en felles regjering. De handlet mer med Storbritannia enn med hverandre, og kranglet om grenser og fiske.\n\nDen første kontinentalkongressen møttes i Philadelphia høsten sytten syttifire, som svar på straffelovene mot Massachusetts. Den andre møttes i mai syttifem, tre uker etter Lexington — og oppdaget at den plutselig hadde en krig å styre.\n\nDen hadde ingen rett til å gjøre noe av det den gjorde. Den kunne ikke kreve inn skatt eller tvinge en koloni til noe. Den utnevnte likevel Washington til øverstkommanderende og begynte å trykke penger.",
-   "en": "The colonies had never had a common government. They traded more with Britain than with each other, and quarrelled over borders and fishing rights.\n\nThe First Continental Congress met in Philadelphia in the autumn of seventeen seventy-four, in answer to the punitive laws against Massachusetts. The Second met in May seventy-five, three weeks after Lexington — and found it suddenly had a war to run.\n\nIt had no right to do any of what it did. It could not levy a tax or compel a colony to anything. It appointed Washington commander-in-chief anyway, and started printing money."
-  },
-  "fact": {
-   "no": "Kongressen valgte Washington delvis fordi han var fra Virginia. En New England-krig trengte en sørstatsgeneral for å bli alles krig.",
-   "en": "Congress chose Washington partly because he was from Virginia. A New England war needed a southern general to become everybody's war."
-  },
-  "kind": "concept",
-  "wiki": { "no": "Kontinentalkongressen", "en": "Continental Congress" },
-  "seeAlso": [
-   { "kind": "person", "id": "washington" },
-   { "kind": "person", "id": "john-adams" }
-  ]
- },
-
- "loyalist": {
-  "term": { "no": "Lojalist", "en": "Loyalist" },
-  "short": {
-   "no": "Kanskje hver femte kolonist holdt med kongen. Det var også en borgerkrig.",
-   "en": "Perhaps one colonist in five stayed with the king. This was a civil war too."
-  },
-  "body": {
-   "no": "Ikke alle ville ha opprør. Anslag varierer, men rundt tjue prosent av de hvite kolonistene holdt med kronen, og kanskje like mange prøvde å holde seg utenfor.\n\nDe var ikke en type. Noen var embetsmenn og kjøpmenn med bånd til London. Noen var nybyggere som stolte mer på kongen enn på naboens forsamling. Mange var folk som rett og slett ikke trodde det kunne gå bra.\n\nDe ble trakassert, tjæret, fikk eiendommen konfiskert, og rundt seksti tusen forlot landet da krigen var over. De fleste dro til Canada.",
-   "en": "Not everyone wanted a rebellion. Estimates vary, but around twenty per cent of white colonists stayed with the crown, and perhaps as many again tried to stay out of it.\n\nThey were not one kind of person. Some were officials and merchants with ties to London. Some were settlers who trusted the king more than their neighbour's assembly. Many simply did not believe it could end well.\n\nThey were harassed, tarred, had property confiscated, and around sixty thousand left the country when the war ended. Most went to Canada."
-  },
-  "fact": {
-   "no": "Benjamin Franklins sønn William var lojalist og guvernør i New Jersey. Far og sønn snakket aldri ordentlig sammen igjen.",
-   "en": "Benjamin Franklin's son William was a loyalist and governor of New Jersey. Father and son never properly spoke again."
-  },
-  "kind": "concept",
-  "wiki": { "no": "Lojalist (Amerika)", "en": "Loyalist (American Revolution)" },
-  "seeAlso": [
-   { "kind": "person", "id": "franklin" },
-   { "kind": "topic", "id": "colonial-town" }
-  ]
- }
+  "committee-of-safety": {
+    "term": {
+      "no": "Sikkerhetskomiteen",
+      "en": "The Committee of Safety"
+    },
+    "short": {
+      "no": "En komité som ikke hadde noen lovlig rett til å kommandere noen — og kommanderte en hær.",
+      "en": "A committee with no lawful right to command anyone — commanding an army."
+    },
+    "body": {
+      "no": "Da guvernør Gage oppløste folkeforsamlingen i Massachusetts i sytten syttifire, møttes de valgte mennene igjen noen mil unna og kalte seg noe annet. En av tingene de opprettet, var en sikkerhetskomité.\n\nKomiteen hadde ingen kongelig fullmakt. Den hadde ingen lov bak seg. Den hadde bare det at bygdene rundt gjorde som den sa.\n\nDet var den som samlet våpenlageret i Concord, og det var den som ga ordre om å befeste Bunker Hill natt til syttende juni. En provisorisk komité kommanderte femten tusen bevæpnede menn, fordi ingen andre gjorde det.\n\nDette er hvordan en revolusjon faktisk ser ut mens den skjer: ikke en erklæring, men et møte som fortsetter å møtes etter at det er oppløst.",
+      "en": "When Governor Gage dissolved the Massachusetts assembly in seventeen seventy-four, the elected men met again a few miles away and called themselves something else. One of the things they set up was a committee of safety.\n\nThe committee had no royal authority. It had no law behind it. All it had was that the towns around did what it said.\n\nIt was the committee that gathered the weapons store at Concord, and the committee that ordered Bunker Hill fortified on the night of the sixteenth of June. A provisional committee was commanding fifteen thousand armed men, because nobody else was.\n\nThis is what a revolution actually looks like while it is happening: not a declaration, but a meeting that goes on meeting after it has been dissolved."
+    },
+    "fact": {
+      "no": "Komiteen ga ordre om Bunker Hill. Mennene gravde på Breed's Hill. Ingen komité kunne gjøre noe med det.",
+      "en": "The committee ordered Bunker Hill. The men dug on Breed's Hill. No committee could do anything about that."
+    },
+    "kind": "institution",
+    "wiki": {
+      "no": "Sikkerhetskomité",
+      "en": "Committee of safety (American Revolution)"
+    },
+    "seeAlso": [
+      {
+        "kind": "term",
+        "id": "governor"
+      },
+      {
+        "kind": "term",
+        "id": "militia"
+      }
+    ]
+  }
 }

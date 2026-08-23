@@ -5,6 +5,7 @@
 import { loadChapter } from './script.js';
 import { allChapters, chaptersOf } from './pack.js';
 import { mountDepth, unmountDepth, coach } from './depth.js';
+import { mapScene } from './scenes/map.js';
 import { mountTransition, unmountTransition, LEAD_IN_MS } from './transition.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark } from '../core/theme.js';
@@ -174,6 +175,9 @@ async function openChapter(index) {
     },
     onScene: (scene, index, at = 0) => {
       clearCaption();
+      // Before the rebuild, so a place that only exists from a later scene is
+      // not on the map before the story gets there.
+      mapScene(index);
       // Announce where we have arrived. Declines when this is not an opening
       // — a seek into the middle of a scene is you looking for something, not
       // the scene beginning — and when the chapter is not running.
@@ -303,6 +307,7 @@ function showCover(mode) {
       </button>
       ${chapter.hasAudio ? '' : `<p class="cover__warn">${esc(t('noAudio'))}</p>`}
       ${chapter.dubbed ? `<p class="cover__note">${esc(t('onlyIn'))}</p>` : ''}
+      ${accuracyNote()}
       ${chapterList()}
     </div>`;
   cover.classList.add('is-on');
@@ -317,13 +322,22 @@ function showCover(mode) {
  * holds whatever we have learned so far, so the list fills in as chapters
  * are opened and is complete on the second visit.
  */
+/* What the map cannot show. Every basemap here is modern, and for a
+   historical subject that is wrong in specific, teachable ways -- Ostia
+   stood on the sea, Back Bay was water. The pack declares the caveat and
+   this is what finally puts it on a screen. */
+function accuracyNote() {
+  const note = pickLang(chapter?.packInfo?.map?.accuracyNote);
+  return note ? `<p class="cover__accuracy">${esc(note)}</p>` : '';
+}
+
 function chapterList() {
   if (CHAPTERS.length < 2) return '';
   const rows = CHAPTERS.map((c, i) => `
     <li><button class="cover__chapter${i === current ? ' is-current' : ''}"
                 type="button" data-chapter="${i}"
                 ${i === current ? 'aria-current="true"' : ''}>
-      <b>${i + 1}</b><span>${esc(titleOf(c))}</span>
+      <b>${i + 1}</b><span>${esc(titleOf(c))}${c.subtitle ? `<i>${esc(pickLang(c.subtitle))}</i>` : ''}</span>
     </button></li>`).join('');
   return `<div class="cover__chapters">
       <p class="cover__chapters-label">${esc(t('chapters'))}</p>

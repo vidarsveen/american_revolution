@@ -1,67 +1,198 @@
 {
- "//": [
-  "Prose about a place. The geometry — coords, zoom, label — stays in the",
-  "chapter, because that is what the camera needs. The reading lives here so",
-  "two chapters can share one Boston without either of them owning it.",
-  "Keyed by the same ids the chapter uses in `places`."
- ],
-
- "boston": {
-  "name": { "no": "Boston", "en": "Boston" },
-  "hook": {
-   "no": "En by på en halvøy, med én vei ut — og britiske vaktposter på den.",
-   "en": "A city on a peninsula with one road out — and British sentries on it."
+  "//": [
+    "Prose about a place. The geometry — coords, zoom, label — stays in the",
+    "chapter, because that is what the camera needs. The reading lives here so",
+    "two chapters can share one Boston without either of them owning it.",
+    "Keyed by the same ids the chapter uses in `places`."
+  ],
+  "boston": {
+    "name": {
+      "no": "Boston",
+      "en": "Boston"
+    },
+    "hook": {
+      "no": "En by på en halvøy, med én vei ut — og britiske vaktposter på den.",
+      "en": "A city on a peninsula with one road out — and British sentries on it."
+    },
+    "body": {
+      "no": "Boston i sytten syttifem lå nesten som en øy. En smal landtange, Boston Neck, bandt byen til fastlandet. Resten var vann.\n\nRundt femten tusen mennesker bodde der, og etter sytten sekstiåtte delte de byen med en britisk garnison. Soldater innkvartert i en by som ikke ville ha dem, år etter år.\n\nGeografien forklarer mye av det som skjer denne natta. Skal du ut av Boston i all hast, må du enten forbi vaktposten på Necket eller over vannet i båt. Revere tok båten.",
+      "en": "Boston in seventeen seventy-five sat almost like an island. A narrow neck of land, Boston Neck, tied the town to the mainland. The rest was water.\n\nAbout fifteen thousand people lived there, and after seventeen sixty-eight they shared the town with a British garrison. Soldiers quartered in a town that did not want them, year after year.\n\nThe geography explains a lot of what happens that night. To leave Boston in a hurry you had to pass the sentries on the Neck or cross the water by boat. Revere took the boat."
+    },
+    "fact": {
+      "no": "Landtangen var så smal at høyvann kunne slå over veien.",
+      "en": "The neck was so narrow that a high tide could wash over the road."
+    },
+    "wiki": {
+      "no": "Boston",
+      "en": "Boston"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "revere"
+      },
+      {
+        "kind": "term",
+        "id": "governor"
+      }
+    ]
   },
-  "body": {
-   "no": "Boston i sytten syttifem lå nesten som en øy. En smal landtange, Boston Neck, bandt byen til fastlandet. Resten var vann.\n\nRundt femten tusen mennesker bodde der, og etter sytten sekstiåtte delte de byen med en britisk garnison. Soldater innkvartert i en by som ikke ville ha dem, år etter år.\n\nGeografien forklarer mye av det som skjer denne natta. Skal du ut av Boston i all hast, må du enten forbi vaktposten på Necket eller over vannet i båt. Revere tok båten.",
-   "en": "Boston in seventeen seventy-five sat almost like an island. A narrow neck of land, Boston Neck, tied the town to the mainland. The rest was water.\n\nAbout fifteen thousand people lived there, and after seventeen sixty-eight they shared the town with a British garrison. Soldiers quartered in a town that did not want them, year after year.\n\nThe geography explains a lot of what happens that night. To leave Boston in a hurry you had to pass the sentries on the Neck or cross the water by boat. Revere took the boat."
+  "concord": {
+    "name": {
+      "no": "Concord",
+      "en": "Concord"
+    },
+    "hook": {
+      "no": "Tretti kilometer fra Boston. Langt nok til at noen rakk å varsle.",
+      "en": "Thirty kilometres from Boston. Far enough that somebody had time to warn."
+    },
+    "body": {
+      "no": "Concord var en helt vanlig jordbruksby, og opprørerne valgte den nettopp derfor. Den lå langt nok fra Boston til at britene ikke kunne rykke ut og tilbake på én dag uten at noen oppdaget det først.\n\nDet var lageret britene kom etter — kanoner, kuler, mel og salt, gjemt på gårder rundt om i bygda. Det meste var flyttet før de kom fram.",
+      "en": "Concord was an ordinary farming town, and the rebels chose it for exactly that reason. It lay far enough from Boston that the British could not march out and back in a day without somebody noticing first.\n\nThe stores were what the British came for — cannon, shot, flour and salt, hidden on farms around the parish. Most of it had been moved before they arrived."
+    },
+    "fact": {
+      "no": "Britene fant fire kanonlaveter av tre — understellene, ikke kanonene. De hadde ventet å finne mange flere.",
+      "en": "The British found four wooden gun carriages — the mountings, not the guns. They had expected a great many more."
+    },
+    "wiki": {
+      "no": "Concord (Massachusetts)",
+      "en": "Concord, Massachusetts"
+    },
+    "seeAlso": [
+      {
+        "kind": "topic",
+        "id": "colonial-town"
+      },
+      {
+        "kind": "term",
+        "id": "militia"
+      }
+    ]
   },
-  "fact": {
-   "no": "Landtangen var så smal at høyvann kunne slå over veien.",
-   "en": "The neck was so narrow that a high tide could wash over the road."
+  "lexington-green": {
+    "name": {
+      "no": "Lexington Green",
+      "en": "Lexington Green"
+    },
+    "hook": {
+      "no": "En trekantet gressplen midt i bygda. Ingen strategisk verdi overhodet.",
+      "en": "A triangle of grass in the middle of the village. Of no strategic value at all."
+    },
+    "body": {
+      "no": "Lexington Green var ikke et sted noen ville forsvare. Det var beitemark og møteplass, der veien til Concord delte seg rundt møtehuset.\n\nDet er nettopp derfor det som skjedde der er så vanskelig å forklare bort. Syttisju mann stilte seg opp på en plen de umulig kunne holde, foran en kolonne på sju hundre. De sto der for å bli sett stå der.",
+      "en": "Lexington Green was not a place anyone would defend. It was grazing land and a gathering place, where the road to Concord split around the meeting house.\n\nThat is exactly why what happened there is so hard to explain away. Seventy-seven men lined up on a green they could not possibly hold, in front of a column of seven hundred. They stood there to be seen standing there."
+    },
+    "wiki": {
+      "no": "Slaget ved Lexington og Concord",
+      "en": "Battles of Lexington and Concord"
+    },
+    "seeAlso": [
+      {
+        "kind": "person",
+        "id": "parker"
+      },
+      {
+        "kind": "term",
+        "id": "militia"
+      }
+    ]
   },
-  "wiki": { "no": "Boston", "en": "Boston" },
-  "seeAlso": [
-   { "kind": "person", "id": "revere" },
-   { "kind": "term", "id": "governor" }
-  ]
- },
-
- "concord": {
-  "name": { "no": "Concord", "en": "Concord" },
-  "hook": {
-   "no": "Tretti kilometer fra Boston. Langt nok til at noen rakk å varsle.",
-   "en": "Thirty kilometres from Boston. Far enough that somebody had time to warn."
+  "breeds-hill": {
+    "name": {
+      "no": "Breed's Hill",
+      "en": "Breed's Hill"
+    },
+    "hook": {
+      "no": "Åsen de gravde seg ned på — som ikke var den de hadde fått ordre om.",
+      "en": "The hill they dug in on — which was not the one they were ordered to take."
+    },
+    "body": {
+      "no": "Ordren fra sikkerhetskomiteen gjaldt Bunker Hill: den høyeste åsen, nærmest halsen, den de kunne trekke seg tilbake fra. I mørket gikk de forbi den og begynte å grave på Breed's Hill i stedet.\n\nBreed's er lavere, den ligger nærmere Boston, og den har ingen vei ut bak seg. Militært var det et dårligere valg på alle tre punkter.\n\nIngen vet sikkert hvorfor. Kanskje var det en misforståelse i mørket, kanskje var det med vilje — herfra kunne kanoner nå britiske skip i havna, og det var hele poenget med å være der.\n\nSlaget har hetet Bunker Hill i to hundre og femti år. Det ble utkjempet på Breed's.",
+      "en": "The order from the committee of safety named Bunker Hill: the higher hill, closest to the neck, the one they could fall back from. In the dark they walked past it and began digging on Breed's Hill instead.\n\nBreed's is lower, it sits closer to Boston, and it has no way out behind it. Militarily it was the worse choice on all three counts.\n\nNobody knows for certain why. It may have been a misunderstanding in the dark, or it may have been deliberate — from here guns could reach British ships in the harbour, and that was the whole point of being there.\n\nThe battle has been called Bunker Hill for two hundred and fifty years. It was fought on Breed's."
+    }
   },
-  "body": {
-   "no": "Concord var en helt vanlig jordbruksby, og opprørerne valgte den nettopp derfor. Den lå langt nok fra Boston til at britene ikke kunne rykke ut og tilbake på én dag uten at noen oppdaget det først.\n\nDet var lageret britene kom etter — kanoner, kuler, mel og salt, gjemt på gårder rundt om i bygda. Det meste var flyttet før de kom fram.",
-   "en": "Concord was an ordinary farming town, and the rebels chose it for exactly that reason. It lay far enough from Boston that the British could not march out and back in a day without somebody noticing first.\n\nThe stores were what the British came for — cannon, shot, flour and salt, hidden on farms around the parish. Most of it had been moved before they arrived."
+  "bunker-hill": {
+    "name": {
+      "no": "Bunker Hill",
+      "en": "Bunker Hill"
+    },
+    "hook": {
+      "no": "Åsen slaget er oppkalt etter, og som det ikke ble utkjempet på.",
+      "en": "The hill the battle is named after, and was not fought on."
+    },
+    "body": {
+      "no": "Bunker Hill er den høyeste av de to åsene på Charlestown-halvøya, og den ligger nærmest halsen som binder halvøya til fastlandet. Det gjør den til den forsvarlige av de to: en styrke som graver seg ned her, kan komme seg ut igjen.\n\nAmerikanerne gravde på Breed's Hill i stedet, en drøy fire hundre meter nærmere Boston. Bunker Hill fikk en halvferdig skanse som aldri ble brukt, og som de trakk seg tilbake forbi da Breed's falt.\n\nNavnet på slaget kom fra ordren, ikke fra bakken.",
+      "en": "Bunker Hill is the higher of the two hills on the Charlestown peninsula, and it sits closest to the neck that ties the peninsula to the mainland. That makes it the defensible one: a force that digs in here can get out again.\n\nThe Americans dug on Breed's Hill instead, about four hundred metres closer to Boston. Bunker Hill got a half-finished work that was never used, and that they retreated past when Breed's fell.\n\nThe battle took its name from the order, not from the ground."
+    }
   },
-  "fact": {
-   "no": "Britene fant fire kanonlaveter av tre — understellene, ikke kanonene. De hadde ventet å finne mange flere.",
-   "en": "The British found four wooden gun carriages — the mountings, not the guns. They had expected a great many more."
+  "charlestown-neck": {
+    "name": {
+      "no": "Halsen",
+      "en": "The Neck"
+    },
+    "hook": {
+      "no": "En stripe land så smal at én kanonbåt kunne stenge den — og gjorde det.",
+      "en": "A strip of land so narrow one gunboat could close it — and did."
+    },
+    "body": {
+      "no": "Charlestown-halvøya henger fast i fastlandet i en landtange som på det smaleste er noen få titalls meter bred, med vann på begge sider.\n\nDet er hele grunnen til at Clinton ville sette folk i land der. Tar du halsen, er alle på halvøya fanget, og du trenger ikke gå opp noen bakke i det hele tatt.\n\nHowe valgte det motsatte. Gjennom hele dagen lå britiske krigsskip og skjøt langs halsen, og amerikanske forsterkninger måtte krysse den under ild. Flere nektet. Det er en av grunnene til at bare rundt tolv hundre mann sto på høyden mot slutten, av en hær på femten tusen.",
+      "en": "The Charlestown peninsula hangs on to the mainland by a spit of land a few dozen metres wide at its narrowest, with water on both sides.\n\nThat is the whole reason Clinton wanted to land men there. Take the neck and everyone on the peninsula is caught, and you need not walk up any hill at all.\n\nHowe chose the opposite. All day British warships fired along the neck, and American reinforcements had to cross it under that fire. Several refused. It is one reason only about twelve hundred men were on the hill by the end, out of an army of fifteen thousand."
+    }
   },
-  "wiki": { "no": "Concord (Massachusetts)", "en": "Concord, Massachusetts" },
-  "seeAlso": [
-   { "kind": "topic", "id": "colonial-town" },
-   { "kind": "term", "id": "militia" }
-  ]
- },
-
- "lexington-green": {
-  "name": { "no": "Lexington Green", "en": "Lexington Green" },
-  "hook": {
-   "no": "En trekantet gressplen midt i bygda. Ingen strategisk verdi overhodet.",
-   "en": "A triangle of grass in the middle of the village. Of no strategic value at all."
+  "charlestown-town": {
+    "name": {
+      "no": "Charlestown",
+      "en": "Charlestown"
+    },
+    "hook": {
+      "no": "To tusen sju hundre mennesker bodde her om morgenen. Om kvelden sto ingenting.",
+      "en": "Two thousand seven hundred people lived here in the morning. By evening nothing stood."
+    },
+    "body": {
+      "no": "Charlestown lå ved foten av åsene, rett over vannet fra Boston. De fleste innbyggerne hadde alt flyktet etter nittende april, men byen sto der: rundt fire hundre hus, verksteder, kirker, brygger.\n\nKlokka to om ettermiddagen ga Howe ordre om å brenne den, fordi amerikanske skarpskyttere skjøt fra husene mot flanken hans. Skipene skjøt brannkuler inn i byen, og et batteri på Copp's Hill i Boston gjorde det samme.\n\nDen brant ned. Folk sto på takene i Boston og så på. Det var ikke en ulykke i kampen — det var et valg, tatt av en general som trengte flanken sin fri.",
+      "en": "Charlestown lay at the foot of the hills, straight across the water from Boston. Most of its people had already fled after the nineteenth of April, but the town stood: some four hundred houses, workshops, churches, wharves.\n\nAt two in the afternoon Howe ordered it burned, because American marksmen were firing from the houses into his flank. The ships fired incendiary shot into the town, and a battery on Copp's Hill in Boston did the same.\n\nIt burned to the ground. People stood on the rooftops in Boston and watched. It was not an accident of the fighting — it was a decision, made by a general who needed his flank clear."
+    }
   },
-  "body": {
-   "no": "Lexington Green var ikke et sted noen ville forsvare. Det var beitemark og møteplass, der veien til Concord delte seg rundt møtehuset.\n\nDet er nettopp derfor det som skjedde der er så vanskelig å forklare bort. Syttisju mann stilte seg opp på en plen de umulig kunne holde, foran en kolonne på sju hundre. De sto der for å bli sett stå der.",
-   "en": "Lexington Green was not a place anyone would defend. It was grazing land and a gathering place, where the road to Concord split around the meeting house.\n\nThat is exactly why what happened there is so hard to explain away. Seventy-seven men lined up on a green they could not possibly hold, in front of a column of seven hundred. They stood there to be seen standing there."
+  "mystic-beach": {
+    "name": {
+      "no": "Stranda ved Mystic",
+      "en": "The Mystic beach"
+    },
+    "hook": {
+      "no": "Hullet i den amerikanske linja — som John Stark så, og lukket med en steinmur.",
+      "en": "The gap in the American line — which John Stark saw, and closed with a stone wall."
+    },
+    "body": {
+      "no": "Den amerikanske linja gikk fra skansen på Breed's Hill nordover bak et gjerde. Så stoppet den, og mellom enden av gjerdet og Mystic-elva lå en åpen strandstripe.\n\nEn kolonne som gikk der, kom rundt hele linja bakfra. Howe så det også, og sendte eliteinfanteriet sitt dit.\n\nStark kom over halsen med mennene fra New Hampshire, så hullet med én gang, og bygde en steinmur ned til vannkanten på noen få minutter. Han satte en påle i bakken foran den og sa at ingen skulle skyte før britene var forbi den.\n\nPå under et kvarter lå nesten hundre briter igjen på sanda. Det var den avgjørende delen av dagen, og den er den minst kjente.",
+      "en": "The American line ran from the redoubt on Breed's Hill northwards behind a fence. Then it stopped, and between the end of the fence and the Mystic river lay an open stretch of beach.\n\nA column going along it would come round the whole line from behind. Howe saw it too, and sent his light infantry there.\n\nStark came over the neck with the New Hampshire men, saw the gap at once, and built a stone wall down to the water in a few minutes. He put a stake in the ground in front of it and said nobody was to fire until the British passed it.\n\nIn under a quarter of an hour nearly a hundred British lay on the sand. It was the decisive part of the day, and it is the least known."
+    }
   },
-  "wiki": { "no": "Slaget ved Lexington og Concord", "en": "Battles of Lexington and Concord" },
-  "seeAlso": [
-   { "kind": "person", "id": "parker" },
-   { "kind": "term", "id": "militia" }
-  ]
- }
+  "boston-neck": {
+    "name": {
+      "no": "Boston Neck",
+      "en": "Boston Neck"
+    },
+    "hook": {
+      "no": "Den ene veien ut av Boston, og britene hadde satt skanser over den.",
+      "en": "The one road out of Boston, and the British had thrown works across it."
+    },
+    "body": {
+      "no": "Boston lå på en halvøy, og Boston Neck var landtangen som bandt den til fastlandet. Ved høyvann var den knapt tjue meter bred noen steder.\n\nBritene befestet den i sytten syttifire, med porter, kanoner og vaktposter. Alt som gikk inn eller ut av byen over land, gikk forbi dem.\n\nDet er derfor Revere tok båten nittende april, og det er derfor beleiringen fungerte: amerikanerne trengte ikke storme byen. De trengte bare å holde den ene veien ut.",
+      "en": "Boston sat on a peninsula, and Boston Neck was the spit of land that tied it to the mainland. At high tide it was barely twenty metres wide in places.\n\nThe British fortified it in seventeen seventy-four, with gates, guns and sentries. Everything going in or out of the town by land went past them.\n\nThat is why Revere took the boat on the nineteenth of April, and why the siege worked: the Americans did not need to storm the town. They only needed to hold the one road out."
+    }
+  },
+  "dorchester-heights": {
+    "name": {
+      "no": "Dorchester Heights",
+      "en": "Dorchester Heights"
+    },
+    "hook": {
+      "no": "Høyden ingen tok i juni — og som avgjorde hele beleiringen ni måneder senere.",
+      "en": "The high ground nobody took in June — and which decided the whole siege nine months later."
+    },
+    "body": {
+      "no": "Sør for Boston ligger Dorchester Heights, høyt nok til at kanoner derfra når hele byen og havna.\n\nBritene bestemte femtende juni at de skulle ta den attende. Amerikanerne fikk vite det dagen etter, og svarte med å befeste Charlestown-halvøya i nord i stedet. Slaget ble utkjempet der, og Dorchester ble stående tom.\n\nI mars sytten syttiseks trakk Washington femti kanoner over land fra Ticonderoga og satte dem opp på Dorchester Heights på én natt. Britene så dem om morgenen, regnet på det, og forlot Boston uten kamp elleve dager senere.\n\nDen ene høyden avgjorde beleiringen. Den andre kostet tusen mann.",
+      "en": "South of Boston lie the Dorchester Heights, high enough that guns there reach the whole town and harbour.\n\nThe British decided on the fifteenth of June to take them on the eighteenth. The Americans learned of it the next day, and answered by fortifying the Charlestown peninsula to the north instead. The battle was fought there, and Dorchester was left empty.\n\nIn March seventeen seventy-six Washington dragged fifty guns overland from Ticonderoga and set them on Dorchester Heights in a single night. The British saw them in the morning, did the arithmetic, and left Boston without a fight eleven days later.\n\nOne piece of high ground decided the siege. The other cost a thousand men."
+    }
+  }
 }

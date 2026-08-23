@@ -42,6 +42,37 @@ const PEEK = 40;   // % of sheet height hidden when peeking
  * @param host   where to mount. document.body for the sheet; a panel for the rail.
  * @param opts   see the destructuring below — everything is injected.
  */
+/* The card's own words.
+
+   These used to come entirely from whoever mounted it, and the two callers do
+   not have the same vocabulary: Explore injects the app's full dictionary,
+   while the story injects the narration chrome's -- which has `close` and
+   nothing else the card needs. So in story mode `L('fact')` and
+   `L('readMore')` fell through to the default `(k) => k` and the interface
+   rendered the literal strings "fact" and "readMore", in both languages.
+
+   A component that has its own UI should own its own labels. An injected `t`
+   still wins where it has an answer, so Explore's translations stay
+   authoritative and nothing is duplicated in practice. */
+const OWN = {
+  no: {
+    why: 'Hvorfor det betyr noe', fact: 'Visste du at', peopleHere: 'Hvem var med',
+    partOf: 'Var med på', readMore: 'Les mer', close: 'Lukk',
+    seeAlso: 'Se også', aside: 'Merk',
+    showOnMap: 'Vis på kartet',
+    wikiCredit: 'Kilde: Wikipedia (CC BY-SA)', wikiOpen: 'Åpne artikkelen',
+    wikiInEnglish: 'på engelsk', wikiNone: 'Fant ingen artikkel å hente.',
+  },
+  en: {
+    why: 'Why it matters', fact: 'Did you know', peopleHere: 'Who was there',
+    partOf: 'Took part in', readMore: 'Read more', close: 'Close',
+    seeAlso: 'See also', aside: 'Note',
+    showOnMap: 'Show on the map',
+    wikiCredit: 'Source: Wikipedia (CC BY-SA)', wikiOpen: 'Open the article',
+    wikiInEnglish: 'in English', wikiNone: 'No article found.',
+  },
+};
+
 export function createDossier(host, opts = {}) {
   const {
     t = (k) => k,
@@ -62,6 +93,14 @@ export function createDossier(host, opts = {}) {
   } = opts;
 
   const faces = portraitBase || './portraits/';
+
+  /* An injected label if the host has one, our own if not. */
+  const L = (k) => {
+    const v = t(k);
+    if (v && v !== k) return v;
+    const l = typeof lang === 'function' ? lang() : lang;
+    return (OWN[l] || OWN.no)[k] ?? k;
+  };
 
   let mode = opts.mode || 'sheet';
   let current = null;
@@ -89,7 +128,7 @@ export function createDossier(host, opts = {}) {
   const gripEl = panel.querySelector('.sheet__grip');
   const closeBtn = panel.querySelector('.sheet__close');
   closeBtn.addEventListener('click', () => close());
-  closeBtn.setAttribute('aria-label', t('close'));
+  closeBtn.setAttribute('aria-label', L('close'));
 
   scroller.addEventListener('click', onBodyClick);
   wireDrag();
@@ -167,13 +206,13 @@ export function createDossier(host, opts = {}) {
       <p class="sheet__hook">${esc(tx(ev.hook))}</p>
       ${statsHtml(ev)}
       <div class="sheet__body">${prose(tx(ev.body))}</div>
-      ${calloutHtml('why', t('why'), tx(ev.why))}
-      ${calloutHtml('fact', t('fact'), tx(ev.fact))}
-      ${chipsFor(ev.people, 'person', t('peopleHere'))}
+      ${calloutHtml('why', L('why'), tx(ev.why))}
+      ${calloutHtml('fact', L('fact'), tx(ev.fact))}
+      ${chipsFor(ev.people, 'person', L('peopleHere'))}
       ${wikiBlock(ev.wiki)}
       <div class="sheet__actions">
         ${ev.coords && onShowOnMap ? `<button class="btn btn--primary" data-map="${esc(ev.id)}">
-          ${icoPin}<span>${esc(t('showOnMap'))}</span></button>` : ''}
+          ${icoPin}<span>${esc(L('showOnMap'))}</span></button>` : ''}
       </div>`;
   }
 
@@ -196,8 +235,8 @@ export function createDossier(host, opts = {}) {
       <h2 class="sheet__title">${esc(tx(p.name))}</h2>
       <p class="sheet__hook">${esc(tx(p.hook))}</p>
       <div class="sheet__body">${prose(tx(p.body))}</div>
-      ${calloutHtml('fact', t('fact'), tx(p.fact))}
-      ${chipsFor(p.events, 'event', t('partOf'))}
+      ${calloutHtml('fact', L('fact'), tx(p.fact))}
+      ${chipsFor(p.events, 'event', L('partOf'))}
       ${wikiBlock(p.wiki)}`;
   }
 
@@ -220,7 +259,7 @@ export function createDossier(host, opts = {}) {
       <h2 class="sheet__title">${esc(tx(r.term || r.title || r.name))}</h2>
       ${r.short || r.hook ? `<p class="sheet__hook">${esc(tx(r.short || r.hook))}</p>` : ''}
       <div class="sheet__body">${prose(tx(r.body))}</div>
-      ${calloutHtml('fact', t('fact'), tx(r.fact))}
+      ${calloutHtml('fact', L('fact'), tx(r.fact))}
       ${figuresHtml(r.figures)}
       ${seeAlsoHtml(r.seeAlso)}
       ${wikiBlock(r.wiki)}`;
@@ -283,7 +322,7 @@ export function createDossier(host, opts = {}) {
       return `<button class="chip chip--plain" type="button" data-ref="${esc(r.kind)}:${esc(r.id)}">${esc(name)}</button>`;
     }).filter(Boolean).join('');
     if (!chips) return '';
-    return `<div class="chips__k">${esc(t('seeAlso'))}</div><div class="chips">${chips}</div>`;
+    return `<div class="chips__k">${esc(L('seeAlso'))}</div><div class="chips">${chips}</div>`;
   }
 
   function wikiBlock(titles) {
@@ -292,7 +331,7 @@ export function createDossier(host, opts = {}) {
       <div class="wiki" data-wiki="${esc(JSON.stringify(titles))}">
         <button class="wiki__toggle" type="button" aria-expanded="false">
           <span class="w-ico">${icoBook}</span>
-          <span>${esc(t('readMore'))}</span>
+          <span>${esc(L('readMore'))}</span>
           <span class="w-caret">${icoCaret}</span>
         </button>
         <div class="wiki__panel"><div class="wiki__inner"><div class="wiki__pad"></div></div></div>
@@ -346,21 +385,21 @@ export function createDossier(host, opts = {}) {
       if (token !== renderToken) return;   // the reader moved on while we waited
 
       if (!data) {
-        pad.innerHTML = `<p class="wiki__extract">${esc(t('wikiNone'))}</p>`;
+        pad.innerHTML = `<p class="wiki__extract">${esc(L('wikiNone'))}</p>`;
         return;
       }
       const thumb = data.thumb
         ? `<img class="wiki__thumb" src="${esc(data.thumb)}" alt="" loading="lazy" decoding="async">`
         : '';
       const flag = data.fallback
-        ? `<span class="wiki__lang">${esc(t('wikiInEnglish'))}</span>` : '';
+        ? `<span class="wiki__lang">${esc(L('wikiInEnglish'))}</span>` : '';
       pad.innerHTML = `
         ${thumb}
         <p class="wiki__extract">${esc(data.extract)}</p>
         <div class="wiki__foot">
-          <span>${esc(t('wikiCredit'))} ${flag}</span>
+          <span>${esc(L('wikiCredit'))} ${flag}</span>
           <a href="${esc(data.url)}" target="_blank" rel="noopener noreferrer">
-            <span>${esc(t('wikiOpen'))}</span>${icoExternal}
+            <span>${esc(L('wikiOpen'))}</span>${icoExternal}
           </a>
         </div>`;
     });

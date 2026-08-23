@@ -89,7 +89,8 @@
       "name": {
         "no": "Menotomy",
         "en": "Menotomy"
-      }
+      },
+      "label": "s5"
     },
     "lexington-green": {
       "coords": [
@@ -146,7 +147,8 @@
       "name": {
         "no": "Meriams Corner",
         "en": "Meriam's Corner"
-      }
+      },
+      "label": "s5"
     },
     "bloody-angle": {
       "coords": [
@@ -157,7 +159,8 @@
       "name": {
         "no": "Bloody Angle",
         "en": "Bloody Angle"
-      }
+      },
+      "label": "s5"
     },
     "the-road": {
       "coords": [

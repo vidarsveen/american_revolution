@@ -105,7 +105,7 @@
         "no": "Den amerikanske linja",
         "en": "The American line"
       },
-      "label": false
+      "label": "s4"
     },
     "bunker-hill": {
       "coords": [
@@ -138,7 +138,8 @@
       "name": {
         "no": "Moulton's Point",
         "en": "Moulton's Point"
-      }
+      },
+      "label": "s4"
     },
     "mystic-beach": {
       "coords": [
@@ -150,7 +151,7 @@
         "no": "Stranda ved Mystic",
         "en": "The Mystic beach"
       },
-      "label": false
+      "label": "s4"
     },
     "copps-hill": {
       "coords": [
@@ -841,6 +842,15 @@
               ],
               "over": 16,
               "dim": 0.14
+            },
+            {
+              "on": {
+                "no": "word:landtunge",
+                "en": "word:neck"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "boston-neck"
             }
           ],
           "gapAfter": 1.25
@@ -1038,6 +1048,15 @@
                 "no": "Halvøya",
                 "en": "The peninsula"
               }
+            },
+            {
+              "on": {
+                "no": "word:Dorchester",
+                "en": "word:Dorchester"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "dorchester-heights"
             }
           ],
           "gapAfter": 1.15
@@ -1139,6 +1158,15 @@
               "at": "bunker-hill",
               "side": "patriot",
               "centre": false
+            },
+            {
+              "on": {
+                "no": "word:Sikkerhetskomiteen",
+                "en": "word:Committee"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "committee-of-safety"
             }
           ],
           "gapAfter": 1.15
@@ -1340,6 +1368,15 @@
               ],
               "over": 18,
               "dim": 0.12
+            },
+            {
+              "on": {
+                "no": "word:Bunker",
+                "en": "word:Bunker"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "bunker-hill"
             }
           ],
           "gapAfter": 1.15
@@ -1367,6 +1404,15 @@
               "to": "the-line",
               "zoom": 14.5,
               "over": 3.0
+            },
+            {
+              "on": {
+                "no": "word:Breed's",
+                "en": "word:Breed's"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "breeds-hill"
             }
           ],
           "gapAfter": 1.25
@@ -1439,6 +1485,15 @@
                 "en": "on each side"
               },
               "side": "patriot"
+            },
+            {
+              "on": {
+                "no": "word:skanse",
+                "en": "word:redoubt"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "a-musket"
             }
           ],
           "gapAfter": 1.25
@@ -1782,6 +1837,15 @@
               "on": "word:Clinton",
               "do": "portrait.show",
               "id": "clinton"
+            },
+            {
+              "on": {
+                "no": "word:halsen",
+                "en": "word:neck"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "charlestown-neck"
             }
           ],
           "gapAfter": 1.15
@@ -1977,6 +2041,15 @@
               "at": "mystic-beach",
               "tone": "red",
               "centre": false
+            },
+            {
+              "on": {
+                "no": "word:stranda",
+                "en": "word:beach"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "mystic-beach"
             }
           ],
           "gapAfter": 1.15
@@ -2065,7 +2138,17 @@
             "no": "Omtrent to tusen sju hundre mennesker bodde i Charlestown. De fleste hadde alt flyktet. Byen brant ned til grunnen mens slaget pågikk.",
             "en": "About two thousand seven hundred people lived in Charlestown. Most had already fled. The town burned to the ground while the battle went on."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": {
+                "no": "word:Charlestown",
+                "en": "word:Charlestown"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "charlestown-town"
+            }
+          ],
           "gapAfter": 1.65
         }
       ]
@@ -2202,6 +2285,15 @@
                 "en": "rounds per man"
               },
               "side": "patriot"
+            },
+            {
+              "on": {
+                "no": "word:amerikanerne",
+                "en": "word:Americans"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "black-soldiers"
             }
           ],
           "gapAfter": 1.25
@@ -2476,6 +2568,15 @@
               "on": "start",
               "do": "plate.hide",
               "over": 0.9
+            },
+            {
+              "on": {
+                "no": "word:geværkolber",
+                "en": "word:musket"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "a-musket"
             }
           ],
           "gapAfter": 1.05
@@ -3068,6 +3169,24 @@
               "on": "start",
               "do": "plate.hide",
               "over": 0.9
+            },
+            {
+              "on": {
+                "no": "word:Amerikanerne",
+                "en": "word:Americans"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "who-could-vote"
+            },
+            {
+              "on": {
+                "no": "word:bøndene",
+                "en": "word:farmers"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "militia"
             }
           ],
           "gapAfter": 1.35

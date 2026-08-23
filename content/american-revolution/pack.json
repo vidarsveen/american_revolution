@@ -102,7 +102,7 @@
       ]
     },
     "borders": {
-      "country": true,
+      "country": false,
       "state": false
     },
     "credit": "Natural Earth",
@@ -138,7 +138,12 @@
         62.0,
         22.0
       ]
-    ]
+    ],
+    "//borders": "No modern national borders. There was no United States and no Canada in 1775, and a dashed 2024 line through the Great Lakes is the 'Massachusetts included Maine' mistake in another form. The colonies carry the political information; the coastline carries the geography.",
+    "accuracyNote": {
+      "no": "Kystlinjen er dagens. I 1775 var Back Bay fortsatt sjø, og Boston hang sammen med fastlandet i én smal landtunge som siden er bygd bort.",
+      "en": "The coastline is the modern one. In 1775 Back Bay was still water, and Boston hung on to the mainland by one narrow neck that has since been built over."
+    }
   },
   "era": {
     "start": "1763-01-01",

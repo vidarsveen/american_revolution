@@ -214,6 +214,28 @@ export function mountChrome(host, root, chapter, player, strings, onLang) {
     }
   });
 
+  /* Where you are, in the transcript.
+
+     It was a wall of text with no marker: with the player at 0:48 no line was
+     highlighted, so you could not find your place or tell what was being read
+     now. Only touched while the sheet is actually open -- there is no reason
+     to walk the DOM sixty times a second for something nobody is looking at. */
+  let lastBeat = null;
+
+  function markTranscript(scene, t) {
+    if (!sheet.classList.contains('is-open')) { lastBeat = null; return; }
+    const beat = [...scene.beats].reverse().find((b) => b.start <= t + 0.01);
+    if (!beat || beat.id === lastBeat) return;
+    lastBeat = beat.id;
+    for (const el of sheet.querySelectorAll('.transcript__beat.is-now')) {
+      el.classList.remove('is-now');
+    }
+    const el = sheet.querySelector(`.transcript__beat[data-beat="${CSS.escape(beat.id)}"]`);
+    if (!el) return;
+    el.classList.add('is-now');
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+
   sheet.addEventListener('click', (e) => {
     if (e.target.closest('[data-act=close-text]')) { sheet.classList.remove('is-open'); return; }
     const beat = e.target.closest('.transcript__beat');
@@ -343,6 +365,7 @@ export function mountChrome(host, root, chapter, player, strings, onLang) {
       timeEl.textContent = clockText(t);
       sceneEl.textContent = scene.title;
       clockEl.textContent = scene.clock || '';
+      markTranscript(scene, t);
     },
   };
 }

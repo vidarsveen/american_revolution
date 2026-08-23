@@ -118,6 +118,12 @@
   opacity: 0;
   pointer-events: none;
 }
+/* The map fills the view and the tab bar floats over its bottom edge, so the
+   attribution has to be lifted clear of it. In immersive mode the bar folds
+   away and the credit can sit at the edge again. */
+.view--map, .view--story { --credit-clear: calc(var(--tabbar-h) + var(--safe-b)); }
+.app.is-immersive .view--story { --credit-clear: 0px; }
+
 .topbar, .tabbar {
   transition: margin var(--t-slow) var(--ease-out), opacity var(--t-med) var(--ease-out);
 }

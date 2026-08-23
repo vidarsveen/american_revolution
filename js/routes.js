@@ -13,7 +13,7 @@
    ============================================================ */
 
 import { state, subscribe, parseDate } from './store.js';
-import { getMap } from './map.js';
+import { whenMap } from './map.js';
 
 /* Long enough to read as movement, short enough that dragging the scrubber
    across five years does not queue up a minute of animation. */
@@ -27,14 +27,18 @@ const drawn = new Set();
 let theatreId = null;
 
 export function initRoutes(data) {
-  map = getMap();
-  if (!map || !data) return;
-
-  routes = data.routes || [];
-  theatres = data.theatres || [];
-
-  refresh();
-  subscribe((s, changed) => { if (changed.has('date')) refresh(); });
+  if (!data) return;
+  // Explore's map is built the first time the tab is opened, so this waits
+  // rather than giving up. It used to call getMap() at boot and return early
+  // if it was not there yet, which with a deferred map means the routes are
+  // simply never drawn.
+  whenMap((m) => {
+    map = m;
+    routes = data.routes || [];
+    theatres = data.theatres || [];
+    refresh();
+    subscribe((s, changed) => { if (changed.has('date')) refresh(); });
+  });
 }
 
 /* ------------------------------------------------------------
