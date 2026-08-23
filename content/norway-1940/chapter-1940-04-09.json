@@ -1,0 +1,1503 @@
+{
+  "id": "chapter-1940-04-09",
+  "pack": "norway-1940",
+  "work": {
+    "no": "Kampen om Narvik",
+    "en": "The Battle of Narvik"
+  },
+  "title": {
+    "no": "Ti jagere opp fjorden",
+    "en": "Ten destroyers up the fjord"
+  },
+  "subtitle": {
+    "no": "9.–13. april 1940",
+    "en": "9–13 April 1940"
+  },
+  "blurb": {
+    "no": "De kom inn i snøkave og tok byen på en formiddag. Så oppdaget de at de ikke hadde olje nok til å komme seg ut igjen.",
+    "en": "They came in through driving snow and took the town in a morning. Then they found they had not oil enough to get out again."
+  },
+  "voice": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural"
+  },
+  "rate": "-10%",
+  "home": "ofotfjord",
+  "places": {
+    "norge": {
+      "coords": [64.6, 12.0],
+      "zoom": 4.3,
+      "name": { "no": "Norge", "en": "Norway" },
+      "kind": "region",
+      "label": false
+    },
+    "narvik": {
+      "coords": [68.438, 17.428],
+      "zoom": 11.4,
+      "name": { "no": "Narvik", "en": "Narvik" },
+      "kind": "city"
+    },
+    "malmkaia": {
+      "coords": [68.437, 17.413],
+      "zoom": 13.0,
+      "name": { "no": "Malmkaia", "en": "The ore quay" },
+      "kind": "town"
+    },
+    "narvik-havn": {
+      "coords": [68.4383, 17.4185],
+      "zoom": 12.8,
+      "name": { "no": "Narvik havn", "en": "Narvik harbour" },
+      "kind": "town",
+      "label": false
+    },
+    "eidsvold-pos": {
+      "coords": [68.4268, 17.3905],
+      "zoom": 12.6,
+      "name": { "no": "Eidsvold", "en": "Eidsvold" },
+      "kind": "battle",
+      "label": false
+    },
+    "norge-pos": {
+      "coords": [68.4372, 17.4245],
+      "zoom": 12.6,
+      "name": { "no": "Norge", "en": "Norge" },
+      "kind": "battle",
+      "label": false
+    },
+    "ofotfjord": {
+      "coords": [68.4287, 16.898],
+      "zoom": 9.4,
+      "name": { "no": "Ofotfjorden", "en": "Ofotfjord" },
+      "kind": "region"
+    },
+    "ofotfjord-vest": {
+      "coords": [68.4, 16.5],
+      "zoom": 10.0,
+      "name": { "no": "Vestre Ofotfjord", "en": "Western Ofotfjord" },
+      "kind": "region",
+      "label": false
+    },
+    "rombaken": {
+      "coords": [68.4605, 17.5947],
+      "zoom": 10.8,
+      "name": { "no": "Rombaken", "en": "Rombaken" },
+      "kind": "region"
+    },
+    "rombaksbotn": {
+      "coords": [68.4173, 17.9058],
+      "zoom": 11.6,
+      "name": { "no": "Rombaksbotn", "en": "Rombaksbotn" },
+      "kind": "town"
+    },
+    "herjangsfjorden": {
+      "coords": [68.4986, 17.4168],
+      "zoom": 10.6,
+      "name": { "no": "Herjangsfjorden", "en": "Herjangsfjord" },
+      "kind": "region"
+    },
+    "ballangen": {
+      "coords": [68.3064, 16.7442],
+      "zoom": 10.6,
+      "name": { "no": "Ballangen", "en": "Ballangen" },
+      "kind": "town"
+    },
+    "vidrek": {
+      "coords": [68.3897, 17.1425],
+      "zoom": 11.8,
+      "name": { "no": "Vidrek", "en": "Vidrek" },
+      "kind": "town"
+    },
+    "elvegardsmoen": {
+      "coords": [68.5421, 17.6097],
+      "zoom": 11.6,
+      "name": { "no": "Elvegårdsmoen", "en": "Elvegårdsmoen" },
+      "kind": "town"
+    },
+    "tranoy": {
+      "coords": [68.1843, 15.5989],
+      "zoom": 10.4,
+      "name": { "no": "Tranøy", "en": "Tranøy" },
+      "kind": "town"
+    },
+    "vestfjorden": {
+      "coords": [67.95, 14.7],
+      "zoom": 7.4,
+      "name": { "no": "Vestfjorden", "en": "Vestfjord" },
+      "kind": "region"
+    },
+    "minefelt": {
+      "coords": [67.4, 14.6],
+      "zoom": 8.4,
+      "name": { "no": "Minefeltet", "en": "The minefield" },
+      "kind": "battle"
+    },
+    "glomfjord": {
+      "coords": [66.812, 13.955],
+      "zoom": 9.6,
+      "name": { "no": "Glomfjord", "en": "Glomfjord" },
+      "kind": "town"
+    },
+    "bjornfjell": {
+      "coords": [68.4323, 18.0711],
+      "zoom": 11.2,
+      "name": { "no": "Bjørnfjell", "en": "Bjørnfjell" },
+      "kind": "town"
+    },
+    "riksgrensen": {
+      "coords": [68.4278, 18.1222],
+      "zoom": 10.6,
+      "name": { "no": "Riksgrensen", "en": "The frontier" },
+      "kind": "town"
+    },
+    "kiruna": {
+      "coords": [67.8489, 20.3028],
+      "zoom": 8.6,
+      "name": { "no": "Kiruna", "en": "Kiruna" },
+      "kind": "city"
+    },
+    "lulea": {
+      "coords": [65.5844, 22.1539],
+      "zoom": 8.0,
+      "name": { "no": "Luleå", "en": "Luleå" },
+      "kind": "city"
+    },
+    "ostersjoen": {
+      "coords": [57.8, 18.6],
+      "zoom": 4.8,
+      "name": { "no": "Østersjøen", "en": "The Baltic" },
+      "kind": "region"
+    },
+    "nordsjoen": {
+      "coords": [57.4, 3.6],
+      "zoom": 4.6,
+      "name": { "no": "Nordsjøen", "en": "The North Sea" },
+      "kind": "region"
+    },
+    "bremerhaven": {
+      "coords": [53.54, 8.58],
+      "zoom": 8.0,
+      "name": { "no": "Bremerhaven", "en": "Bremerhaven" },
+      "kind": "city"
+    },
+    "finland": {
+      "coords": [63.0, 26.5],
+      "zoom": 4.9,
+      "name": { "no": "Finland", "en": "Finland" },
+      "kind": "region"
+    },
+    "london": {
+      "coords": [51.5072, -0.1275],
+      "zoom": 7.0,
+      "name": { "no": "London", "en": "London" },
+      "kind": "city"
+    }
+  },
+  "routes": {
+    "//": "Rail lines and sea lanes both. A route with no `strength` draws as a thin line, which is right for a railway and for a ship; `naval` dashes it. The only arrows in this chapter are the two thousand mountain troops, because they are the only body of people that moves.",
+    "ofotbanen": {
+      "side": "neutral",
+      "label": {
+        "no": "Ofotbanen",
+        "en": "The Ofoten Line"
+      },
+      "coords": [
+        [68.438, 17.428],
+        [68.4405, 17.56],
+        [68.4338, 17.706],
+        [68.424, 17.872],
+        [68.4208, 17.98],
+        [68.4323, 18.0711],
+        [68.4278, 18.1222]
+      ]
+    },
+    "malm-vinter": {
+      "side": "neutral",
+      "label": {
+        "no": "Malmen over fjellet",
+        "en": "The ore over the mountain"
+      },
+      "coords": [
+        [67.8489, 20.3028],
+        [68.15, 19.4],
+        [68.36, 18.78],
+        [68.4278, 18.1222],
+        [68.4323, 18.0711],
+        [68.424, 17.872],
+        [68.4405, 17.56],
+        [68.438, 17.428]
+      ]
+    },
+    "malm-atlanterhav": {
+      "side": "neutral",
+      "naval": true,
+      "label": {
+        "no": "Ut i Atlanterhavet",
+        "en": "Out into the Atlantic"
+      },
+      "coords": [
+        [68.438, 17.428],
+        [68.43, 17.0],
+        [68.4, 16.4],
+        [68.25, 15.7],
+        [68.0, 14.9],
+        [67.3, 13.3],
+        [66.0, 11.0],
+        [64.0, 8.0],
+        [61.5, 4.6],
+        [58.6, 4.4],
+        [56.4, 6.6],
+        [54.3, 8.2]
+      ]
+    },
+    "malm-sommer": {
+      "side": "neutral",
+      "label": {
+        "no": "Malmen østover",
+        "en": "The ore eastward"
+      },
+      "coords": [
+        [67.8489, 20.3028],
+        [67.176, 20.659],
+        [66.4, 21.3],
+        [65.83, 21.69],
+        [65.5844, 22.1539]
+      ]
+    },
+    "malm-ostersjoen": {
+      "side": "neutral",
+      "naval": true,
+      "label": {
+        "no": "Ned Østersjøen",
+        "en": "Down the Baltic"
+      },
+      "coords": [
+        [65.5844, 22.1539],
+        [64.5, 22.0],
+        [63.2, 20.4],
+        [61.4, 19.6],
+        [59.4, 19.6],
+        [57.4, 18.2],
+        [55.6, 16.0],
+        [54.5, 13.6],
+        [54.1, 11.2]
+      ]
+    },
+    "allierte-plan": {
+      "side": "british",
+      "label": {
+        "no": "Hjelpen som aldri kom",
+        "en": "The help that never came"
+      },
+      "coords": [
+        [68.438, 17.428],
+        [68.4278, 18.1222],
+        [67.8489, 20.3028],
+        [67.176, 20.659],
+        [66.0, 23.5],
+        [64.8, 25.6],
+        [63.0, 26.5]
+      ]
+    },
+    "gruppe1-nord": {
+      "side": "german",
+      "strength": 1900,
+      "label": {
+        "no": "Gruppe 1 nordover",
+        "en": "Group 1 heading north"
+      },
+      "coords": [
+        [53.6, 8.3],
+        [55.2, 6.6],
+        [57.0, 4.6],
+        [59.0, 3.6],
+        [61.4, 3.6],
+        [63.6, 6.2],
+        [65.6, 9.6],
+        [67.3, 12.6],
+        [68.05, 15.0],
+        [68.22, 15.85]
+      ]
+    },
+    "inn-ofotfjord": {
+      "side": "german",
+      "strength": 1900,
+      "label": {
+        "no": "Inn Ofotfjorden",
+        "en": "Up Ofotfjord"
+      },
+      "coords": [
+        [68.1843, 15.5989],
+        [68.3, 16.05],
+        [68.4, 16.45],
+        [68.43, 16.9],
+        [68.44, 17.2],
+        [68.438, 17.42]
+      ]
+    },
+    "hardy-inn": {
+      "side": "british",
+      "naval": true,
+      "label": {
+        "no": "Warburton-Lee går inn",
+        "en": "Warburton-Lee goes in"
+      },
+      "coords": [
+        [68.1843, 15.5989],
+        [68.29, 16.05],
+        [68.4, 16.45],
+        [68.43, 16.9],
+        [68.44, 17.2],
+        [68.4375, 17.415]
+      ]
+    },
+    "hardy-ut": {
+      "side": "british",
+      "naval": true,
+      "label": {
+        "no": "Ut igjen",
+        "en": "Out again"
+      },
+      "coords": [
+        [68.4375, 17.415],
+        [68.435, 17.15],
+        [68.42, 16.98],
+        [68.3897, 17.1425]
+      ]
+    },
+    "warspite-inn": {
+      "side": "british",
+      "naval": true,
+      "label": {
+        "no": "Warspite går inn",
+        "en": "Warspite goes in"
+      },
+      "coords": [
+        [68.05, 15.1],
+        [68.22, 15.85],
+        [68.34, 16.3],
+        [68.43, 16.9],
+        [68.44, 17.25],
+        [68.4375, 17.415]
+      ]
+    },
+    "inn-i-rombaken": {
+      "side": "german",
+      "naval": true,
+      "label": {
+        "no": "Innerst i Rombaken",
+        "en": "To the head of Rombaken"
+      },
+      "coords": [
+        [68.4383, 17.445],
+        [68.452, 17.55],
+        [68.4435, 17.7],
+        [68.428, 17.83],
+        [68.4173, 17.9058]
+      ]
+    }
+  },
+  "quotes": {
+    "churchill-malm": {
+      "text": {
+        "no": "En effektiv stans i den norske malmtransporten til Tyskland må regnes som en stor offensiv operasjon i denne krigen.",
+        "en": "The effectual stoppage of the Norwegian ore supplies to Germany ranks as a major offensive operation of the war."
+      },
+      "by": {
+        "no": "Winston Churchill, marineminister, i et notat til krigskabinettet 16. desember 1939",
+        "en": "Winston Churchill, First Lord of the Admiralty, in a memorandum to the War Cabinet, 16 December 1939"
+      },
+      "kind": "said"
+    },
+    "jeg-angriper": {
+      "text": {
+        "no": "Jeg angriper.",
+        "en": "I am attacking."
+      },
+      "by": {
+        "no": "Sagt å være Odd Isaachsen Willochs siste melding fra Eidsvold, 9. april 1940. Fortalt videre etter krigen. Bare seks eller åtte mann overlevde skipet, og setningen står ikke i noen samtidig kilde.",
+        "en": "Said to be Odd Isaachsen Willoch's last message from Eidsvold, 9 April 1940. Passed on after the war. Only six or eight men survived the ship, and the sentence appears in no contemporary source."
+      },
+      "kind": "attributed"
+    },
+    "wl-hensikt": {
+      "text": {
+        "no": "Har til hensikt å angripe ved daggry, på høyvann.",
+        "en": "Intend attacking at dawn, high water."
+      },
+      "by": {
+        "no": "Bernard Warburton-Lee til Admiralitetet, kvelden 9. april 1940. Ordlyden er hentet fra marinehistoriske framstillinger; Victoria Cross-sitasjonen gjengir bare innholdet.",
+        "en": "Bernard Warburton-Lee to the Admiralty, the evening of 9 April 1940. The wording comes from naval histories; the Victoria Cross citation only paraphrases it."
+      },
+      "kind": "attributed"
+    },
+    "admiralitetet": {
+      "text": {
+        "no": "Bare De kan avgjøre om angrepet skal settes inn. Vi støtter den avgjørelsen De tar.",
+        "en": "You alone can judge whether the attack should be made. We shall support whatever decision you take."
+      },
+      "by": {
+        "no": "Admiralitetet i London til Warburton-Lee, natten mellom 9. og 10. april 1940",
+        "en": "The Admiralty in London to Warburton-Lee, the night of 9–10 April 1940"
+      },
+      "kind": "said"
+    },
+    "siste-signal": {
+      "text": {
+        "no": "Fortsett å angripe fienden.",
+        "en": "Continue to engage the enemy."
+      },
+      "by": {
+        "no": "Bernard Warburton-Lees siste signal fra HMS Hardy, 10. april 1940. Ordlyden står i Victoria Cross-sitasjonen hans i The London Gazette.",
+        "en": "Bernard Warburton-Lee's last signal from HMS Hardy, 10 April 1940. The wording is in his Victoria Cross citation in The London Gazette."
+      },
+      "kind": "said"
+    },
+    "amery": {
+      "text": {
+        "no": "De har sittet her for lenge til noe godt. Gå, sier jeg, og la oss bli ferdige med Dem. I Guds navn, gå.",
+        "en": "You have sat too long here for any good you have been doing. Depart, I say, and let us have done with you. In the name of God, go."
+      },
+      "by": {
+        "no": "Leo Amery til statsminister Neville Chamberlain i Underhuset, 7. mai 1940. Han siterte Cromwell.",
+        "en": "Leo Amery to Prime Minister Neville Chamberlain in the House of Commons, 7 May 1940. He was quoting Cromwell."
+      },
+      "kind": "said"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Jern og is",
+        "en": "Iron and ice"
+      },
+      "clock": {
+        "no": "Vinteren 1940",
+        "en": "The winter of 1940"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Det ligger en by helt nord i Norge som både Hitler og Churchill hadde ringet inn på kartet vinteren nittenførti. Den heter Narvik.",
+            "en": "There is a town in the far north of Norway that both Hitler and Churchill had ringed on the map in the winter of nineteen forty. It is called Narvik."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "day" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "Vinteren 1940", "en": "Winter 1940" } },
+            { "on": "start", "do": "map.flyTo", "to": "norge", "zoom": 4.3, "over": 0.1 },
+            { "on": "start", "do": "sound.music", "id": "bedOpen", "gainDb": -9 },
+            { "on": "word:Narvik", "do": "map.flyTo", "to": "narvik", "zoom": 6.4, "over": 3.2 },
+            { "on": "word:Narvik", "do": "marker.show", "at": "narvik", "tone": "gold", "label": { "no": "Narvik", "en": "Narvik" } }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "Byen er liten. Den ligger nord for polarsirkelen, innerst i en fjord som er sju mil lang. Og havna der fryser aldri til.",
+            "en": "The town is small. It lies north of the Arctic Circle, at the head of a fjord seventy kilometres long. And the harbour there never freezes."
+          },
+          "cues": [
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 8.4, "over": 3.0 },
+            { "on": "start", "do": "sound.ambience", "id": "wind", "gainDb": -17 },
+            { "on": { "no": "word:fjord", "en": "word:fjord" }, "do": "place.highlight", "at": "ofotfjord", "tone": "gold", "centre": false }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "Fra havna går det en jernbane østover. Den klatrer opp gjennom fjellet og krysser grensen til Sverige, fire mil fra sjøen.",
+            "en": "From the harbour a railway runs east. It climbs up through the mountains and crosses the frontier into Sweden, forty kilometres from the sea."
+          },
+          "cues": [
+            { "on": "start", "do": "place.clear" },
+            { "on": "start", "do": "map.fitPlaces", "places": ["narvik", "riksgrensen"], "over": 2.8 },
+            { "on": { "no": "word:jernbane", "en": "word:railway" }, "do": "road.draw", "id": "ofotbanen", "width": 2.2 },
+            { "on": { "no": "word:Sverige", "en": "word:Sweden" }, "do": "marker.show", "at": "riksgrensen", "tone": "sage", "label": { "no": "Riksgrensen", "en": "The frontier" } }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "På den andre siden ligger Kiruna. Der er fjellet jernmalm hele veien gjennom, og det er et av de rikeste malmfeltene i verden.",
+            "en": "On the other side lies Kiruna. There the mountain is iron ore the whole way through, and it is one of the richest orefields in the world."
+          },
+          "cues": [
+            { "on": "start", "do": "map.fitPlaces", "places": ["narvik", "kiruna"], "over": 3.0 },
+            { "on": "word:Kiruna", "do": "marker.show", "at": "kiruna", "side": "neutral", "label": { "no": "Kiruna", "en": "Kiruna" } },
+            { "on": { "no": "word:jernmalm", "en": "word:ore" }, "do": "term.mark", "kind": "term", "id": "jernmalm" }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s0.b5",
+          "say": {
+            "no": "Malmen skal til Tyskland. Der smeltes den om til stål, og av stålet blir det kanoner, skip og stridsvogner.",
+            "en": "The ore is bound for Germany. There it is smelted into steel, and out of the steel come guns, ships and tanks."
+          },
+          "cues": [
+            { "on": { "no": "word:stål", "en": "word:steel" }, "do": "plate.show", "id": "malmtog", "motion": "in", "focus": [0.5, 0.55], "over": 24, "dim": 0.12 }
+          ],
+          "gapAfter": 1.15
+        },
+        {
+          "id": "s0.b6",
+          "say": {
+            "no": "Nesten halvparten av jernet tysk industri brukte, kom fra svenske gruver. Uten den malmen stopper krigsmaskinen.",
+            "en": "Almost half the iron German industry used came out of Swedish mines. Without that ore the war machine stops."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s0.b7",
+          "say": {
+            "no": "Om sommeren går malmen den korte veien. Med tog til Luleå, og derfra med skip ned Bottenvika og over Østersjøen. Trygt, og langt unna britiske krigsskip.",
+            "en": "In summer the ore goes the short way. By train to Luleå, and from there by ship down the Gulf of Bothnia and across the Baltic. Safe, and a long way from British warships."
+          },
+          "cues": [
+            { "on": "start", "do": "plate.hide", "over": 0.9 },
+            { "on": "start", "do": "map.fitPlaces", "places": ["kiruna", "ostersjoen"], "over": 3.2 },
+            { "on": { "no": "word:tog", "en": "word:train" }, "do": "route.draw", "id": "malm-sommer", "over": 2.0, "fit": false },
+            { "on": { "no": "word:skip", "en": "word:ship" }, "do": "route.draw", "id": "malm-ostersjoen", "over": 3.2, "fit": false }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s0.b8",
+          "say": {
+            "no": "Om vinteren fryser Bottenvika til. Da er det bare én vei igjen: vestover, over fjellet, til Narvik og rett ut i Atlanterhavet.",
+            "en": "In winter the Gulf of Bothnia freezes over. Then there is only one road left: west, over the mountain, to Narvik and straight out into the Atlantic."
+          },
+          "cues": [
+            { "on": "start", "do": "route.clear" },
+            { "on": "start", "do": "map.fitPlaces", "places": ["kiruna", "vestfjorden"], "over": 3.2 },
+            { "on": { "no": "word:vestover", "en": "word:west" }, "do": "route.draw", "id": "malm-vinter", "over": 2.6, "fit": false },
+            { "on": { "no": "word:Atlanterhavet", "en": "word:Atlantic" }, "do": "route.draw", "id": "malm-atlanterhav", "over": 4.5, "fit": false }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s0.b9",
+          "say": {
+            "no": "Og der ute venter Royal Navy. Churchill var marineminister, og han hadde skrevet det ned allerede i desember.",
+            "en": "And out there the Royal Navy is waiting. Churchill was First Lord of the Admiralty, and he had written it down back in December."
+          },
+          "cues": [
+            { "on": "word:Churchill", "do": "portrait.show", "id": "churchill" },
+            { "on": "end", "do": "quote.show", "id": "churchill-malm" }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s0.b10",
+          "say": {
+            "no": "Narvik er altså verdt en krig. Ikke på grunn av byen. På grunn av det som kjøres gjennom den.",
+            "en": "So Narvik is worth a war. Not because of the town. Because of what is carried through it."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "end", "do": "quote.hide" },
+            { "on": "end", "do": "caption.note", "value": { "no": "Narvik, vinteren 1939–40", "en": "Narvik, winter 1939–40" } }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "title": {
+        "no": "Begge planla det samme",
+        "en": "Both sides had the same plan"
+      },
+      "clock": {
+        "no": "Mars–april 1940",
+        "en": "March–April 1940"
+      },
+      "beats": [
+        {
+          "id": "s1.b1",
+          "say": {
+            "no": "Norge var nøytralt. Landet hadde holdt seg utenfor hele første verdenskrig, og regjeringen trodde det ville gå en gang til.",
+            "en": "Norway was neutral. The country had stayed out of the whole First World War, and the government believed it would work once more."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "day" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "Mars 1940", "en": "March 1940" } },
+            { "on": "start", "do": "map.flyTo", "to": "norge", "zoom": 4.4, "over": 0.1 },
+            { "on": "start", "do": "sound.music", "id": "bedTension", "gainDb": -11 },
+            { "on": { "no": "word:nøytralt", "en": "word:neutral" }, "do": "term.mark", "kind": "term", "id": "noytralitet" }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s1.b2",
+          "say": {
+            "no": "Men denne vinteren hadde begge sider bestemt seg for å bryte den nøytraliteten. De visste bare ikke om hverandre.",
+            "en": "But that winter both sides had decided to break that neutrality. They simply did not know about each other."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "De allierte kom først på en idé. Sovjetunionen hadde angrepet Finland i november, og britene og franskmennene tilbød seg å sende hjelp.",
+            "en": "The Allies had an idea first. The Soviet Union had attacked Finland in November, and the British and French offered to send help."
+          },
+          "cues": [
+            { "on": "start", "do": "map.fitPlaces", "places": ["narvik", "finland"], "over": 3.0 },
+            { "on": "word:Finland", "do": "marker.show", "at": "finland", "tone": "sage", "label": { "no": "Finland", "en": "Finland" } }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b4",
+          "say": {
+            "no": "Hjelpen skulle gå i land i Narvik og ta toget østover gjennom Sverige. Underveis ville den tilfeldigvis passere malmfeltene, og bli stående der.",
+            "en": "The help would land at Narvik and take the train east through Sweden. On the way it would happen to pass the orefields, and it would stay there."
+          },
+          "cues": [
+            { "on": { "no": "word:toget", "en": "word:train" }, "do": "route.draw", "id": "allierte-plan", "over": 4.2, "fit": false }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b5",
+          "say": {
+            "no": "Så sluttet Finland fred, den tolvte mars. Hele påskuddet forsvant på én dag.",
+            "en": "Then Finland made peace, on the twelfth of March. The whole pretext vanished in a day."
+          },
+          "cues": [
+            { "on": "start", "do": "route.clear" },
+            { "on": "start", "do": "marker.clear" }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s1.b6",
+          "say": {
+            "no": "Britene lagde seg et nytt. De skulle legge miner i norsk farvann og tvinge malmskipene ut på åpent hav, der Royal Navy ventet.",
+            "en": "The British made themselves a new one. They would lay mines in Norwegian waters and force the ore ships out into open sea, where the Royal Navy was waiting."
+          },
+          "cues": [
+            { "on": "start", "do": "map.flyTo", "to": "vestfjorden", "zoom": 7.2, "over": 3.0 },
+            { "on": { "no": "word:miner", "en": "word:mines" }, "do": "marker.show", "at": "minefelt", "kind": "target", "tone": "gold", "label": { "no": "Minefeltet", "en": "The minefield" } }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s1.b7",
+          "say": {
+            "no": "Minene ble lagt den åttende april, i innløpet til Vestfjorden. Bak dem lå soldater klare til å gå i land i Narvik så snart tyskerne reagerte.",
+            "en": "The mines were laid on the eighth of April, in the entrance to Vestfjord. Behind them soldiers stood ready to land at Narvik the moment the Germans reacted."
+          },
+          "cues": [
+            { "on": "start", "do": "map.time", "value": { "no": "8. april 1940", "en": "8 April 1940" } },
+            { "on": { "no": "word:Narvik", "en": "word:Narvik" }, "do": "marker.show", "at": "narvik", "side": "british", "kind": "target", "label": { "no": "Narvik", "en": "Narvik" } }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b8",
+          "say": {
+            "no": "Men tyskerne hadde ikke tenkt å reagere. De var allerede på vei.",
+            "en": "But the Germans were not going to react. They were already on their way."
+          },
+          "cues": [
+            { "on": "start", "do": "marker.clear" },
+            { "on": "start", "do": "map.fitPlaces", "places": ["bremerhaven", "vestfjorden"], "over": 3.2 },
+            { "on": "start", "do": "sound.music", "id": "bedUrgent", "gainDb": -11 }
+          ],
+          "gapAfter": 1.2
+        },
+        {
+          "id": "s1.b9",
+          "say": {
+            "no": "Ti tyske jagere var på vei nordover langs norskekysten. Om bord lå nesten to tusen fjelljegere under general Eduard Dietl.",
+            "en": "Ten German destroyers were steering north along the Norwegian coast. On board were nearly two thousand mountain troops under General Eduard Dietl."
+          },
+          "cues": [
+            { "on": { "no": "word:jagere", "en": "word:destroyers" }, "do": "route.draw", "id": "gruppe1-nord", "over": 6.5, "fit": false },
+            { "on": { "no": "word:jagere", "en": "word:destroyers" }, "do": "term.mark", "kind": "term", "id": "jager" },
+            { "on": { "no": "word:fjelljegere", "en": "word:troops" }, "do": "term.mark", "kind": "term", "id": "fjelljeger" },
+            { "on": "word:Dietl", "do": "portrait.show", "id": "dietl" }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s1.b10",
+          "say": {
+            "no": "De skulle til Narvik. Og de skulle være der før britene rakk å tenke seg om.",
+            "en": "They were bound for Narvik. And they meant to be there before the British had time to think."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "end", "do": "caption.note", "value": { "no": "Operasjon Weserübung, 9. april 1940", "en": "Operation Weserübung, 9 April 1940" } }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": {
+        "no": "Niende april, klokka fire om morgenen",
+        "en": "The ninth of April, four in the morning"
+      },
+      "clock": {
+        "no": "9. april, 03:10",
+        "en": "9 April, 03:10"
+      },
+      "beats": [
+        {
+          "id": "s2.b1",
+          "say": {
+            "no": "Det er litt over tre om natten den niende april. Det er mørkt, det snør tett, og ti jagere kommer inn Ofotfjorden uten lanterner.",
+            "en": "It is a little after three in the morning on the ninth of April. It is dark, the snow is thick, and ten destroyers are coming up Ofotfjord without lights."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "night" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "9. april, 03:10", "en": "9 April, 03:10" } },
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 9.2, "over": 0.1 },
+            { "on": "start", "do": "sound.music", "id": "bedUrgent", "gainDb": -12 },
+            { "on": "start", "do": "sound.ambience", "id": "sea", "gainDb": -15 },
+            { "on": { "no": "word:jagere", "en": "word:destroyers" }, "do": "route.draw", "id": "inn-ofotfjord", "over": 6.0, "fit": false }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b2",
+          "say": {
+            "no": "Ved innløpet til havna ligger to norske panserskip. De heter Eidsvold og Norge, og de er de tyngste skipene marinen har.",
+            "en": "At the mouth of the harbour lie two Norwegian coastal defence ships. They are called Eidsvold and Norge, and they are the heaviest ships the navy has."
+          },
+          "cues": [
+            { "on": "start", "do": "map.flyTo", "to": "narvik-havn", "zoom": 11.8, "over": 3.4 },
+            { "on": "word:Eidsvold", "do": "marker.show", "at": "eidsvold-pos", "side": "norwegian", "label": { "no": "Eidsvold", "en": "Eidsvold" } },
+            { "on": "word:Norge", "do": "marker.show", "at": "norge-pos", "side": "norwegian", "label": { "no": "Norge", "en": "Norge" } },
+            { "on": { "no": "word:panserskip", "en": "word:coastal" }, "do": "term.mark", "kind": "term", "id": "panserskip", "span": 3 }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b3",
+          "say": {
+            "no": "De er førti år gamle. De gjør knapt ti knop, og kanonene deres er fra en annen tid. Mannskapene vet det godt.",
+            "en": "They are forty years old. They barely make ten knots, and their guns belong to another age. The crews know it perfectly well."
+          },
+          "cues": [
+            { "on": { "no": "word:gamle", "en": "word:old" }, "do": "plate.show", "id": "eidsvold", "motion": "in", "focus": [0.5, 0.5], "over": 20, "dim": 0.14 }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s2.b4",
+          "say": {
+            "no": "En tysk offiser kommer om bord på Eidsvold med et krav. Skipet skal overgis. Tyskerne kommer som venner, sier han.",
+            "en": "A German officer comes aboard Eidsvold with a demand. The ship is to be handed over. The Germans come as friends, he says."
+          },
+          "cues": [],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s2.b5",
+          "say": {
+            "no": "Kaptein Odd Isaachsen Willoch svarer nei. To ganger. Så sender han en melding bort til søsterskipet inne på havna.",
+            "en": "Captain Odd Isaachsen Willoch says no. Twice. Then he sends a message across to the sister ship inside the harbour."
+          },
+          "cues": [
+            { "on": "start", "do": "plate.hide", "over": 0.9 },
+            { "on": "word:Willoch", "do": "portrait.show", "id": "willoch" },
+            { "on": { "no": "word:melding", "en": "word:message" }, "do": "quote.show", "id": "jeg-angriper" }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s2.b6",
+          "say": {
+            "no": "Han rakk det aldri. To torpedoer gikk inn i siden på Eidsvold. Skipet brakk i to og var borte på sekunder.",
+            "en": "He never managed it. Two torpedoes went into Eidsvold's side. The ship broke in two and was gone in seconds."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "end", "do": "quote.hide" },
+            { "on": { "no": "word:torpedoer", "en": "word:torpedoes" }, "do": "map.flash" },
+            { "on": { "no": "word:torpedoer", "en": "word:torpedoes" }, "do": "sound.play", "id": "cannon", "gainDb": -3 },
+            { "on": "end", "do": "marker.show", "at": "eidsvold-pos", "kind": "clash", "tone": "red", "label": { "no": "Eidsvold", "en": "Eidsvold" } }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s2.b7",
+          "say": {
+            "no": "Hundre og syttifem mann gikk ned med henne. En håndfull ble reddet opp av vannet. Kildene er ikke enige om det var seks eller åtte.",
+            "en": "A hundred and seventy-five men went down with her. A handful were pulled out of the water. The sources do not agree on whether it was six or eight."
+          },
+          "cues": [
+            { "on": { "no": "word:syttifem", "en": "word:seventy-five" }, "do": "stat.show", "value": "175", "label": { "no": "døde på Eidsvold", "en": "dead on Eidsvold" }, "side": "norwegian" },
+            { "on": { "no": "word:kildene", "en": "word:sources" }, "do": "term.mark", "kind": "topic", "id": "hvordan-vet-vi-det" }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s2.b8",
+          "say": {
+            "no": "Inne på havna åpnet Norge ild mot jageren Bernd von Arnim. Kaptein Per Askim fikk av noen få skudd. Så fant torpedoene ham også.",
+            "en": "Inside the harbour Norge opened fire on the destroyer Bernd von Arnim. Captain Per Askim got off a few rounds. Then the torpedoes found him too."
+          },
+          "cues": [
+            { "on": "start", "do": "stat.clear" },
+            { "on": { "no": "word:ild", "en": "word:fire" }, "do": "map.flash" },
+            { "on": { "no": "word:ild", "en": "word:fire" }, "do": "sound.play", "id": "cannon", "times": 3, "spread": 2.4, "gainDb": -6 },
+            { "on": "end", "do": "marker.show", "at": "norge-pos", "kind": "clash", "tone": "red", "label": { "no": "Norge", "en": "Norge" } }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s2.b9",
+          "say": {
+            "no": "Hundre og én mann døde, og nitti ble reddet. På tjue minutter hadde marinen mistet to hundre og syttiseks sjøfolk, og ikke skadet et eneste tysk skip.",
+            "en": "A hundred and one men died, and ninety were saved. In twenty minutes the navy had lost two hundred and seventy-six sailors, and damaged not one German ship."
+          },
+          "cues": [
+            { "on": { "no": "word:syttiseks", "en": "word:seventy-six" }, "do": "compare.show", "parts": [
+              { "n": 175, "value": "175", "label": { "no": "Eidsvold", "en": "Eidsvold" }, "side": "norwegian" },
+              { "n": 101, "value": "101", "label": { "no": "Norge", "en": "Norge" }, "side": "norwegian" }
+            ], "mode": "bar", "note": { "no": "Norske døde, 9. april 1940", "en": "Norwegian dead, 9 April 1940" }, "over": 1.2 }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s2.b10",
+          "say": {
+            "no": "Klokka kvart over seks overga oberst Konrad Sundlo byen uten kamp. Generalen hans hadde beordret ham til å forsvare den. Han gjorde det ikke.",
+            "en": "At a quarter past six Colonel Konrad Sundlo handed the town over without a fight. His own general had ordered him to defend it. He did not."
+          },
+          "cues": [
+            { "on": "start", "do": "compare.clear" },
+            { "on": "start", "do": "map.mood", "value": "dawn" },
+            { "on": "start", "do": "map.time", "value": { "no": "9. april, 06:15", "en": "9 April, 06:15" } },
+            { "on": "start", "do": "map.flyTo", "to": "narvik", "zoom": 11.6, "over": 3.4 },
+            { "on": "word:Sundlo", "do": "portrait.show", "id": "sundlo" }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s2.b11",
+          "say": {
+            "no": "Etter krigen ble Sundlo frikjent for landssvik den niende april, men dømt for ikke å ha forberedt forsvaret av byen, og for det han gjorde under okkupasjonen. Forskjellen er verdt å merke seg.",
+            "en": "After the war Sundlo was acquitted of treason for the ninth of April, but convicted of failing to prepare the town's defence, and of what he did under the occupation. The difference is worth noticing."
+          },
+          "cues": [
+            { "on": "end", "do": "portrait.hide" }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s2.b12",
+          "say": {
+            "no": "Klokka åtte om morgenen sto det tyske soldater på malmkaia. Det hadde tatt dem fem timer å ta Narvik.",
+            "en": "By eight in the morning German soldiers were standing on the ore quay. Taking Narvik had cost them five hours."
+          },
+          "cues": [
+            { "on": "start", "do": "marker.clear" },
+            { "on": "start", "do": "map.flyTo", "to": "malmkaia", "zoom": 12.6, "over": 3.2 },
+            { "on": { "no": "word:malmkaia", "en": "word:quay" }, "do": "marker.show", "at": "malmkaia", "side": "german", "kind": "camp", "label": { "no": "Malmkaia", "en": "The ore quay" } },
+            { "on": "end", "do": "caption.note", "value": { "no": "Narvik, 9. april 1940", "en": "Narvik, 9 April 1940" } }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": {
+        "no": "De kommer seg ikke ut",
+        "en": "They cannot get out"
+      },
+      "clock": {
+        "no": "9. april, ettermiddag",
+        "en": "9 April, afternoon"
+      },
+      "beats": [
+        {
+          "id": "s3.b1",
+          "say": {
+            "no": "Tyskerne hadde tatt Narvik på en formiddag. Utpå dagen oppdaget de problemet.",
+            "en": "The Germans had taken Narvik in a morning. Later that day they discovered the problem."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "day" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "9. april, ettermiddag", "en": "9 April, afternoon" } },
+            { "on": "start", "do": "map.flyTo", "to": "narvik-havn", "zoom": 12.0, "over": 0.1 },
+            { "on": "start", "do": "marker.show", "at": "malmkaia", "side": "german", "kind": "camp", "label": { "no": "Malmkaia", "en": "The ore quay" } },
+            { "on": "start", "do": "sound.music", "id": "bedTension", "gainDb": -11 },
+            { "on": "start", "do": "sound.ambience", "id": "sea", "gainDb": -17 }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s3.b2",
+          "say": {
+            "no": "Jagerne hadde brukt nesten all oljen sin på turen nordover. De var raske skip, og raske skip drikker. Nå måtte de fylle før de kunne dra hjem.",
+            "en": "The destroyers had burned nearly all their oil on the run north. They were fast ships, and fast ships drink. Now they had to refuel before they could go home."
+          },
+          "cues": [
+            { "on": { "no": "word:oljen", "en": "word:oil" }, "do": "plate.show", "id": "tyske-jagere", "motion": "left", "focus": [0.45, 0.55], "over": 22, "dim": 0.12 }
+          ],
+          "gapAfter": 1.25
+        },
+        {
+          "id": "s3.b3",
+          "say": {
+            "no": "Tre tankskip var sendt av gårde for å møte dem i Narvik. Ett kom fram.",
+            "en": "Three tankers had been sent to meet them at Narvik. One arrived."
+          },
+          "cues": [
+            { "on": { "no": "word:tankskip", "en": "word:tankers" }, "do": "compare.show", "parts": [
+              { "n": 3, "value": "3", "label": { "no": "sendt", "en": "sent" }, "side": "german" },
+              { "n": 1, "value": "1", "label": { "no": "kom fram", "en": "arrived" }, "side": "german" }
+            ], "mode": "bar", "over": 1.2 }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s3.b4",
+          "say": {
+            "no": "Kattegat ble stanset av et norsk oppsynsskip i Glomfjord og senket samme kveld. Skagerrak ble tatt av en britisk krysser fem dager senere.",
+            "en": "Kattegat was stopped by a Norwegian fishery protection vessel in Glomfjord and sunk that same evening. Skagerrak was caught by a British cruiser five days later."
+          },
+          "cues": [
+            { "on": "start", "do": "compare.clear" },
+            { "on": "start", "do": "plate.hide", "over": 0.9 },
+            { "on": "start", "do": "map.fitPlaces", "places": ["glomfjord", "narvik"], "over": 3.2 },
+            { "on": "word:Glomfjord", "do": "marker.show", "at": "glomfjord", "kind": "clash", "tone": "red", "label": { "no": "Kattegat senket", "en": "Kattegat sunk" } }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b5",
+          "say": {
+            "no": "Igjen sto Jan Wellem. Et gammelt hvalkokeri med provisoriske slanger og dårlige pumper. Hun kunne fylle to jagere om gangen, og hver fylling tok sju eller åtte timer.",
+            "en": "That left Jan Wellem. An old whale factory ship with improvised hoses and poor pumps. She could fuel two destroyers at a time, and each pair took seven or eight hours."
+          },
+          "cues": [
+            { "on": "start", "do": "marker.clear" },
+            { "on": "start", "do": "map.flyTo", "to": "narvik-havn", "zoom": 12.2, "over": 3.0 },
+            { "on": "start", "do": "marker.show", "at": "malmkaia", "side": "german", "kind": "camp", "label": { "no": "Jan Wellem", "en": "Jan Wellem" } }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b6",
+          "say": {
+            "no": "Regn på det. Ti jagere, to om gangen, åtte timer hver. Det er førti timer med stillestående skip i en fjord britene visste at de lå i.",
+            "en": "Do the arithmetic. Ten destroyers, two at a time, eight hours a pair. That is forty hours of ships standing still in a fjord the British knew they were in."
+          },
+          "cues": [
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 9.6, "over": 3.4 },
+            { "on": { "no": "word:førti", "en": "word:forty" }, "do": "stat.show", "value": "40 t", "label": { "no": "for å fylle alle ti", "en": "to fuel all ten" }, "side": "german" }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s3.b7",
+          "say": {
+            "no": "Klokka fire neste morgen var tre jagere fylt opp og to lå til kai. De fem andre lå spredt utover fjorden.",
+            "en": "By four the next morning three destroyers were full and two lay alongside. The other five were spread out along the fjord."
+          },
+          "cues": [
+            { "on": "start", "do": "stat.clear" },
+            { "on": "start", "do": "map.time", "value": { "no": "10. april, 04:00", "en": "10 April, 04:00" } },
+            { "on": { "no": "word:kai", "en": "word:alongside" }, "do": "marker.show", "at": "narvik-havn", "side": "german", "kind": "camp", "label": { "no": "Fem jagere i havna", "en": "Five destroyers in harbour" } }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b8",
+          "say": {
+            "no": "Noen lå i Herjangsfjorden, noen ved Ballangen. Kommodor Friedrich Bonte hadde satt ut en vaktpost ute ved fjordmunningen.",
+            "en": "Some lay in Herjangsfjord, some off Ballangen. Commodore Friedrich Bonte had put a picket out at the mouth of the fjord."
+          },
+          "cues": [
+            { "on": { "no": "word:Herjangsfjorden", "en": "word:Herjangsfjord" }, "do": "marker.show", "at": "herjangsfjorden", "side": "german", "kind": "camp", "label": { "no": "Herjangsfjorden", "en": "Herjangsfjord" } },
+            { "on": "word:Ballangen", "do": "marker.show", "at": "ballangen", "side": "german", "kind": "camp", "label": { "no": "Ballangen", "en": "Ballangen" } },
+            { "on": "word:Bonte", "do": "portrait.show", "id": "bonte" }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s3.b9",
+          "say": {
+            "no": "Det snødde så tett at vaktposten ikke så noe som helst. Ute i Vestfjorden lå fem britiske jagere og ventet på lyset.",
+            "en": "The snow was so thick that the picket saw nothing at all. Out in Vestfjord five British destroyers lay waiting for the light."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "start", "do": "sound.ambience", "id": "wind", "gainDb": -13 },
+            { "on": { "no": "word:britiske", "en": "word:British" }, "do": "marker.show", "at": "tranoy", "side": "british", "kind": "camp", "label": { "no": "Fem britiske jagere", "en": "Five British destroyers" } },
+            { "on": "end", "do": "caption.note", "value": { "no": "Natten mellom 9. og 10. april", "en": "The night of 9–10 April" } }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": {
+        "no": "Fem jagere i snøkave",
+        "en": "Five destroyers in the snow"
+      },
+      "clock": {
+        "no": "10. april, morgen",
+        "en": "10 April, morning"
+      },
+      "beats": [
+        {
+          "id": "s4.b1",
+          "say": {
+            "no": "Kaptein Bernard Warburton-Lee førte den andre jagerflotiljen. Kvelden før hadde han sendt en offiser i land på loskontoret på Tranøy for å spørre hva som var der inne.",
+            "en": "Captain Bernard Warburton-Lee commanded the Second Destroyer Flotilla. The evening before, he had sent an officer ashore to the pilot station at Tranøy to ask what was in there."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "storm" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "9. april, kveld", "en": "9 April, evening" } },
+            { "on": "start", "do": "map.flyTo", "to": "tranoy", "zoom": 9.8, "over": 0.1 },
+            { "on": "start", "do": "sound.music", "id": "bedTension", "gainDb": -11 },
+            { "on": "start", "do": "sound.ambience", "id": "wind", "gainDb": -13 },
+            { "on": "word:Tranøy", "do": "marker.show", "at": "tranoy", "side": "british", "kind": "camp", "label": { "no": "Tranøy", "en": "Tranøy" } },
+            { "on": "word:Warburton-Lee", "do": "portrait.show", "id": "warburton-lee" }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b2",
+          "say": {
+            "no": "Losene fortalte at det lå seks store jagere og en ubåt inne i Narvik, og at leia kanskje var minelagt. Warburton-Lee hadde fem jagere.",
+            "en": "The pilots told him six large destroyers and a submarine lay inside Narvik, and that the channel might be mined. Warburton-Lee had five destroyers."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": { "no": "word:fem", "en": "word:five" }, "do": "compare.show", "parts": [
+              { "n": 6, "value": "6", "label": { "no": "tyske jagere, meldt", "en": "German destroyers, reported" }, "side": "german" },
+              { "n": 5, "value": "5", "label": { "no": "britiske jagere", "en": "British destroyers" }, "side": "british" }
+            ], "mode": "ratio", "note": { "no": "Det lå ti tyske jagere der inne, ikke seks.", "en": "There were ten German destroyers in there, not six." }, "over": 1.2 }
+          ],
+          "gapAfter": 1.45
+        },
+        {
+          "id": "s4.b3",
+          "say": {
+            "no": "Han telegraferte til Admiralitetet i London hva han hadde tenkt å gjøre.",
+            "en": "He signalled the Admiralty in London what he intended to do."
+          },
+          "cues": [
+            { "on": "start", "do": "compare.clear" },
+            { "on": { "no": "word:telegraferte", "en": "word:signalled" }, "do": "quote.show", "id": "wl-hensikt" }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s4.b4",
+          "say": {
+            "no": "Svaret kom om natten, og det la hele avgjørelsen på ham selv.",
+            "en": "The answer came in the night, and it put the whole decision on him."
+          },
+          "cues": [
+            { "on": { "no": "word:Svaret", "en": "word:answer" }, "do": "quote.show", "id": "admiralitetet" }
+          ],
+          "gapAfter": 1.6
+        },
+        {
+          "id": "s4.b5",
+          "say": {
+            "no": "Ved daggry gikk han inn. Snøbygene var så tette at de fem skipene knapt så hverandre, og ingen tysk utkikk så dem komme.",
+            "en": "At daybreak he went in. The snow squalls were so thick the five ships could barely see each other, and no German lookout saw them coming."
+          },
+          "cues": [
+            { "on": "start", "do": "quote.hide" },
+            { "on": "start", "do": "map.time", "value": { "no": "10. april, daggry", "en": "10 April, daybreak" } },
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 9.6, "over": 3.4 },
+            { "on": "start", "do": "sound.music", "id": "bedUrgent", "gainDb": -10 },
+            { "on": { "no": "word:inn", "en": "word:in" }, "do": "route.draw", "id": "hardy-inn", "over": 6.0, "fit": false }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b6",
+          "say": {
+            "no": "Den første torpedosalven traff Wilhelm Heidkamp i akterskipet og sprengte ammunisjonen. Kommodor Bonte døde om bord.",
+            "en": "The first spread of torpedoes hit Wilhelm Heidkamp aft and blew up her magazine. Commodore Bonte died on board."
+          },
+          "cues": [
+            { "on": "start", "do": "map.flyTo", "to": "narvik-havn", "zoom": 11.8, "over": 3.2 },
+            { "on": { "no": "word:sprengte", "en": "word:blew" }, "do": "map.flash" },
+            { "on": { "no": "word:sprengte", "en": "word:blew" }, "do": "sound.play", "id": "cannon", "gainDb": -2 },
+            { "on": "word:Bonte", "do": "marker.show", "at": "narvik-havn", "kind": "clash", "tone": "red", "label": { "no": "Wilhelm Heidkamp", "en": "Wilhelm Heidkamp" } }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s4.b7",
+          "say": {
+            "no": "Anton Schmitt gikk ned like etter. Diether von Roeder ble skutt sønder og sammen ved kaia. På under en time senket fem britiske jagere to tyske og elleve handelsskip.",
+            "en": "Anton Schmitt went down just after. Diether von Roeder was shot to pieces at the quay. In under an hour five British destroyers sank two German ones and eleven merchant ships."
+          },
+          "cues": [
+            { "on": "start", "do": "sound.play", "id": "cannon", "times": 5, "spread": 6.0, "gainDb": -8 },
+            { "on": { "no": "word:elleve", "en": "word:eleven" }, "do": "stat.show", "value": "13", "label": { "no": "skip senket på under en time", "en": "ships sunk in under an hour" }, "side": "british" }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s4.b8",
+          "say": {
+            "no": "Så snudde de for å gå ut igjen. Og da kom de fem andre tyske jagerne ut av sidefjordene, bak dem.",
+            "en": "Then they turned to go out again. And that was when the other five German destroyers came out of the side fjords, behind them."
+          },
+          "cues": [
+            { "on": "start", "do": "stat.clear" },
+            { "on": "start", "do": "marker.clear" },
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 9.8, "over": 3.2 },
+            { "on": { "no": "word:sidefjordene", "en": "word:fjords" }, "do": "converge", "from": ["herjangsfjorden", "ballangen"], "to": "ofotfjord-vest", "side": "german", "strength": 1200, "over": 3.4, "fit": false }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s4.b9",
+          "say": {
+            "no": "Hardy ble skutt i stykker og satt på grunn ved Vidrek. Hunter ble senket. Hundre og seks mann fulgte henne ned.",
+            "en": "Hardy was shot to pieces and run aground at Vidrek. Hunter was sunk. A hundred and six men went down with her."
+          },
+          "cues": [
+            { "on": "word:Vidrek", "do": "marker.show", "at": "vidrek", "kind": "clash", "tone": "red", "label": { "no": "HMS Hardy", "en": "HMS Hardy" } },
+            { "on": { "no": "word:seks", "en": "word:six" }, "do": "stat.show", "value": "106", "label": { "no": "døde med HMS Hunter", "en": "dead with HMS Hunter" }, "side": "british" }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s4.b10",
+          "say": {
+            "no": "Warburton-Lee ble truffet på broa på Hardy og døde. Det siste signalet han sendte, står ordrett i Victoria Cross-sitasjonen hans.",
+            "en": "Warburton-Lee was hit on Hardy's bridge and died. The last signal he sent stands word for word in his Victoria Cross citation."
+          },
+          "cues": [
+            { "on": "start", "do": "stat.clear" },
+            { "on": "word:Warburton-Lee", "do": "portrait.show", "id": "warburton-lee" },
+            { "on": { "no": "word:signalet", "en": "word:signal" }, "do": "quote.show", "id": "siste-signal" }
+          ],
+          "gapAfter": 1.7
+        },
+        {
+          "id": "s4.b11",
+          "say": {
+            "no": "Det ble det første Victoria-korset som ble delt ut i denne krigen. På vei ut sprengte britene i tillegg ammunisjonsskipet Rauenfels, det eneste som hadde nådd fram til Narvik.",
+            "en": "It became the first Victoria Cross awarded in this war. On the way out the British also blew up the ammunition ship Rauenfels, the only one that had reached Narvik."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "start", "do": "quote.hide" },
+            { "on": { "no": "word:Victoria-korset", "en": "word:Victoria" }, "do": "term.mark", "kind": "term", "id": "victoria-cross", "span": 2 },
+            { "on": { "no": "word:Rauenfels", "en": "word:Rauenfels" }, "do": "map.flash" },
+            { "on": "end", "do": "caption.note", "value": { "no": "Første sjøslag om Narvik, 10. april 1940", "en": "The first naval battle of Narvik, 10 April 1940" } }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": {
+        "no": "Warspite",
+        "en": "Warspite"
+      },
+      "clock": {
+        "no": "13. april",
+        "en": "13 April"
+      },
+      "beats": [
+        {
+          "id": "s5.b1",
+          "say": {
+            "no": "Tre dager senere kom britene tilbake. Denne gangen tok de med seg et slagskip.",
+            "en": "Three days later the British came back. This time they brought a battleship."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "day" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "13. april, 12:30", "en": "13 April, 12:30" } },
+            { "on": "start", "do": "map.flyTo", "to": "vestfjorden", "zoom": 8.2, "over": 0.1 },
+            { "on": "start", "do": "sound.music", "id": "bedMarch", "gainDb": -11 },
+            { "on": "start", "do": "sound.ambience", "id": "sea", "gainDb": -15 },
+            { "on": { "no": "word:slagskip", "en": "word:battleship" }, "do": "plate.show", "id": "warspite", "motion": "in", "focus": [0.5, 0.55], "over": 22, "dim": 0.1 }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b2",
+          "say": {
+            "no": "Warspite var tjuefem år gammel og hadde vært med i Jyllandsslaget. Hun hadde åtte kanoner på femten tommer. Én granat fra dem veide over åtte hundre kilo.",
+            "en": "Warspite was twenty-five years old and had fought at Jutland. She carried eight guns of fifteen inches. One shell from them weighed over eight hundred kilos."
+          },
+          "cues": [],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b3",
+          "say": {
+            "no": "Med henne fulgte ni jagere, og viseadmiral William Whitworth hadde ingen ordre om å være forsiktig.",
+            "en": "With her came nine destroyers, and Vice-Admiral William Whitworth had no orders to be careful."
+          },
+          "cues": [
+            { "on": "start", "do": "plate.hide", "over": 0.9 },
+            { "on": "word:Whitworth", "do": "portrait.show", "id": "whitworth" }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b4",
+          "say": {
+            "no": "Warspite hadde et sjøfly stående på katapulten. Det gikk opp foran flåten og speidet innover fjorden.",
+            "en": "Warspite had a floatplane sitting on her catapult. It took off ahead of the fleet and scouted up the fjord."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 9.4, "over": 3.4 },
+            { "on": { "no": "word:sjøfly", "en": "word:floatplane" }, "do": "route.draw", "id": "warspite-inn", "over": 5.5, "fit": false }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b5",
+          "say": {
+            "no": "Det fant en tysk ubåt til ankers i Herjangsfjorden og senket den med to bomber. U-sekstifire ble den første ubåten i krigen som ble senket fra lufta.",
+            "en": "It found a German submarine at anchor in Herjangsfjord and sank her with two bombs. U-sixty-four became the first submarine in the war to be sunk from the air."
+          },
+          "cues": [
+            { "on": { "no": "word:Herjangsfjorden", "en": "word:Herjangsfjord" }, "do": "marker.show", "at": "herjangsfjorden", "kind": "clash", "tone": "red", "label": { "no": "U-64", "en": "U-64" } },
+            { "on": { "no": "word:bomber", "en": "word:bombs" }, "do": "map.flash" },
+            { "on": { "no": "word:bomber", "en": "word:bombs" }, "do": "sound.play", "id": "cannon", "gainDb": -5 }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b6",
+          "say": {
+            "no": "Så gikk Warspite oppover fjorden og skjøt på alt som var igjen. De tyske jagerne hadde nesten ingen torpedoer og nesten ingen granater igjen etter den tiende.",
+            "en": "Then Warspite went up the fjord and fired at everything that was left. The German destroyers had almost no torpedoes and almost no shells left after the tenth."
+          },
+          "cues": [
+            { "on": "start", "do": "map.flyTo", "to": "narvik-havn", "zoom": 11.4, "over": 3.4 },
+            { "on": { "no": "word:skjøt", "en": "word:fired" }, "do": "sound.play", "id": "cannon", "times": 6, "spread": 7.0, "gainDb": -6 },
+            { "on": { "no": "word:skjøt", "en": "word:fired" }, "do": "map.flash" }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b7",
+          "say": {
+            "no": "De trakk seg innover i Rombaken, så langt inn som det gikk an å komme, og skjøt til de var tomme.",
+            "en": "They pulled back into Rombaken, as far in as it was possible to go, and fired until they were empty."
+          },
+          "cues": [
+            { "on": "start", "do": "marker.clear" },
+            { "on": "start", "do": "map.fitPlaces", "places": ["narvik-havn", "rombaksbotn"], "over": 3.4 },
+            { "on": "word:Rombaken", "do": "route.draw", "id": "inn-i-rombaken", "over": 4.0, "fit": false }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s5.b8",
+          "say": {
+            "no": "Georg Thiele gikk på grunn i fjæra og brakk i to. Resten senket mannskapene selv, innerst i Rombaksbotn.",
+            "en": "Georg Thiele ran aground in the shallows and broke in two. The rest were scuttled by their own crews, at the head of Rombaksbotn."
+          },
+          "cues": [
+            { "on": { "no": "word:mannskapene", "en": "word:crews" }, "do": "plate.show", "id": "georg-thiele", "motion": "in", "focus": [0.5, 0.5], "over": 18, "dim": 0.1 }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s5.b9",
+          "say": {
+            "no": "Da det var over, hadde Tyskland mistet alle ti jagerne som ble sendt til Narvik. Det var omtrent halve den tyske jagerflåten, på tre dager.",
+            "en": "When it was over Germany had lost all ten destroyers sent to Narvik. That was roughly half the German destroyer force, in three days."
+          },
+          "cues": [],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s5.b10",
+          "say": {
+            "no": "To tusen seks hundre tyske sjøfolk kom seg i land. De fikk norske geværer fra depotet på Elvegårdsmoen og ble satt inn som infanteri.",
+            "en": "Two thousand six hundred German sailors got ashore. They were handed Norwegian rifles from the depot at Elvegårdsmoen and put into the line as infantry."
+          },
+          "cues": [
+            { "on": "start", "do": "plate.hide", "over": 0.9 },
+            { "on": "start", "do": "map.fitPlaces", "places": ["narvik", "elvegardsmoen"], "over": 3.4 },
+            { "on": "word:Elvegårdsmoen", "do": "marker.show", "at": "elvegardsmoen", "side": "german", "kind": "camp", "label": { "no": "Elvegårdsmoen", "en": "Elvegårdsmoen" } },
+            { "on": { "no": "word:sjøfolk", "en": "word:sailors" }, "do": "stat.show", "value": "2 600", "label": { "no": "sjøfolk i land, som infanteri", "en": "sailors ashore, as infantry" }, "side": "german" },
+            { "on": "end", "do": "caption.note", "value": { "no": "Andre sjøslag om Narvik, 13. april 1940", "en": "The second naval battle of Narvik, 13 April 1940" } }
+          ],
+          "gapAfter": 1.6
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": {
+        "no": "Regningen",
+        "en": "The bill"
+      },
+      "clock": {
+        "no": "April–mai 1940",
+        "en": "April–May 1940"
+      },
+      "beats": [
+        {
+          "id": "s6.b1",
+          "say": {
+            "no": "Regnskapet etter fire døgn i Ofotfjorden ser slik ut.",
+            "en": "The reckoning after four days in Ofotfjord looks like this."
+          },
+          "cues": [
+            { "on": "start", "do": "map.mood", "value": "day" },
+            { "on": "start", "do": "border.set", "country": true, "state": false },
+            { "on": "start", "do": "map.time", "value": { "no": "13. april 1940", "en": "13 April 1940" } },
+            { "on": "start", "do": "map.flyTo", "to": "ofotfjord", "zoom": 9.4, "over": 0.1 },
+            { "on": "start", "do": "sound.music", "id": "bedSolemn", "gainDb": -10 },
+            { "on": "start", "do": "sound.ambience", "id": "sea", "gainDb": -17 },
+            { "on": { "no": "word:Ofotfjorden", "en": "word:Ofotfjord" }, "do": "plate.show", "id": "vrak-narvik", "motion": "out", "focus": [0.5, 0.5], "over": 24, "dim": 0.12 }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b2",
+          "say": {
+            "no": "Tyskland mistet ti jagere, en ubåt og et titalls forsyningsskip. Storbritannia mistet to jagere og rundt hundre og femti mann.",
+            "en": "Germany lost ten destroyers, one submarine and a dozen supply ships. Britain lost two destroyers and around a hundred and fifty men."
+          },
+          "cues": [],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s6.b3",
+          "say": {
+            "no": "Norge mistet to panserskip og to hundre og syttiseks sjøfolk, på tjue minutter, uten å ha rukket å skyte tilbake.",
+            "en": "Norway lost two coastal defence ships and two hundred and seventy-six sailors, in twenty minutes, without getting the chance to shoot back."
+          },
+          "cues": [
+            { "on": "start", "do": "plate.hide", "over": 0.9 },
+            { "on": { "no": "word:syttiseks", "en": "word:seventy-six" }, "do": "compare.show", "parts": [
+              { "n": 10, "value": "10", "label": { "no": "tyske jagere", "en": "German destroyers" }, "side": "german" },
+              { "n": 2, "value": "2", "label": { "no": "britiske jagere", "en": "British destroyers" }, "side": "british" },
+              { "n": 2, "value": "2", "label": { "no": "norske panserskip", "en": "Norwegian ships" }, "side": "norwegian" }
+            ], "mode": "bar", "note": { "no": "Skip tapt i Ofotfjorden, 9.–13. april", "en": "Ships lost in Ofotfjord, 9–13 April" }, "over": 1.2 }
+          ],
+          "gapAfter": 1.5
+        },
+        {
+          "id": "s6.b4",
+          "say": {
+            "no": "Og likevel sto tyskerne fortsatt i Narvik. Dietl hadde nå flere folk enn han hadde hatt den niende april, siden sjøfolkene kom i land. Men han hadde ingen skip å reise med.",
+            "en": "And still the Germans held Narvik. Dietl now had more men than he had on the ninth of April, because the sailors had come ashore. But he had no ships to leave in."
+          },
+          "cues": [
+            { "on": "start", "do": "compare.clear" },
+            { "on": "start", "do": "map.flyTo", "to": "narvik", "zoom": 10.8, "over": 3.4 },
+            { "on": "word:Dietl", "do": "portrait.show", "id": "dietl" }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s6.b5",
+          "say": {
+            "no": "Han hadde jernbanen bak seg og den svenske grensen fire mil unna. Han gravde seg ned og ventet på at noen skulle komme og ta byen fra ham.",
+            "en": "He had the railway behind him and the Swedish frontier forty kilometres away. He dug in and waited for someone to come and take the town off him."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "start", "do": "map.fitPlaces", "places": ["narvik", "riksgrensen"], "over": 3.4 },
+            { "on": { "no": "word:jernbanen", "en": "word:railway" }, "do": "road.draw", "id": "ofotbanen", "width": 2.2 },
+            { "on": { "no": "word:grensen", "en": "word:frontier" }, "do": "marker.show", "at": "bjornfjell", "side": "german", "kind": "camp", "label": { "no": "Bjørnfjell", "en": "Bjørnfjell" } }
+          ],
+          "gapAfter": 1.35
+        },
+        {
+          "id": "s6.b6",
+          "say": {
+            "no": "I London gikk det verre for regjeringen enn for flåten. Den sjuende mai begynte Underhuset å diskutere hva som hadde gått galt i Norge.",
+            "en": "In London it went worse for the government than for the navy. On the seventh of May the House of Commons began debating what had gone wrong in Norway."
+          },
+          "cues": [
+            { "on": "start", "do": "marker.clear" },
+            { "on": "start", "do": "map.time", "value": { "no": "7. mai 1940", "en": "7 May 1940" } },
+            { "on": "start", "do": "map.flyTo", "to": "london", "zoom": 5.4, "over": 3.6 }
+          ],
+          "gapAfter": 1.3
+        },
+        {
+          "id": "s6.b7",
+          "say": {
+            "no": "Debatten varte i to dager, og den ble en dom over hele måten krigen var blitt ført på. Leo Amery snudde seg mot sin egen partileder.",
+            "en": "The debate lasted two days, and it became a verdict on the whole way the war had been run. Leo Amery turned on his own party leader."
+          },
+          "cues": [
+            { "on": { "no": "word:dom", "en": "word:verdict" }, "do": "quote.show", "id": "amery" }
+          ],
+          "gapAfter": 1.8
+        },
+        {
+          "id": "s6.b8",
+          "say": {
+            "no": "Chamberlain vant avstemningen og mistet flertallet sitt. Den tiende mai gikk han av.",
+            "en": "Chamberlain won the vote and lost his majority. On the tenth of May he resigned."
+          },
+          "cues": [
+            { "on": "start", "do": "quote.hide" },
+            { "on": { "no": "word:flertallet", "en": "word:majority" }, "do": "compare.show", "parts": [
+              { "n": 213, "value": "213", "label": { "no": "flertall før", "en": "majority before" }, "tone": "sage" },
+              { "n": 81, "value": "81", "label": { "no": "flertall etter", "en": "majority after" }, "tone": "gold" }
+            ], "mode": "bar", "over": 1.2 }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b9",
+          "say": {
+            "no": "Samme dag rykket tyske hærer inn i Nederland, Belgia og Frankrike. Og samme dag ble Winston Churchill statsminister.",
+            "en": "That same day German armies moved into the Netherlands, Belgium and France. And that same day Winston Churchill became Prime Minister."
+          },
+          "cues": [
+            { "on": "start", "do": "compare.clear" },
+            { "on": "word:Churchill", "do": "portrait.show", "id": "churchill" }
+          ],
+          "gapAfter": 1.4
+        },
+        {
+          "id": "s6.b10",
+          "say": {
+            "no": "Mannen som hadde presset hardest på for å gå inn i Norge, ble båret til makten av at det gikk galt. Og oppe i Narvik hadde ingen ennå tatt byen tilbake.",
+            "en": "The man who had pushed hardest to go into Norway was carried into power by its going wrong. And up in Narvik nobody had taken the town back yet."
+          },
+          "cues": [
+            { "on": "start", "do": "portrait.hide" },
+            { "on": "start", "do": "map.flyTo", "to": "narvik", "zoom": 10.4, "over": 3.6 },
+            { "on": "start", "do": "map.time", "value": { "no": "10. mai 1940", "en": "10 May 1940" } },
+            { "on": "end", "do": "caption.note", "value": { "no": "Fortsettelsen: Byen de tok tilbake", "en": "Continued in: The town they took back" } }
+          ],
+          "gapAfter": 2.0
+        }
+      ]
+    }
+  ]
+}

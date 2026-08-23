@@ -1,0 +1,101 @@
+{
+  "dietl": {
+    "file": "dietl.jpg",
+    "fit": "cover",
+    "title": {},
+    "year": "July 1941 date QS:P571,+1941-07-00T00:00:00Z/10",
+    "artist": "Witt",
+    "licence": "CC BY-SA 3.0 de",
+    "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-B16420,_Russland,_General_Eduard_Dietl.jpg"
+  },
+  "bonte": {
+    "file": "bonte.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "before 1940 date QS:P,+1940-00-00T00:00:00Z/7,P1326,+1940-00-00T00:00:00Z/9",
+    "artist": "No data",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Friedrich_Bonte,_komandor_niemieckiej_marynarki_wojennej._Fotografia_portretowa_w_stroju_cywilnym.jpg"
+  },
+  "willoch": {
+    "file": "willoch.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "2019-12-15",
+    "artist": "Unknown photographer",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Odd_Isaachsen_Willoch_Captain_of_HNoMS_Eidsvold.png"
+  },
+  "sundlo": {
+    "file": "sundlo.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "2017-02-09 18:01:15",
+    "artist": "NTB (Norwegian News Agency)",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Konrad_Sundlo_1940_(cropped).jpg"
+  },
+  "warburton-lee": {
+    "file": "warburton-lee.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "",
+    "artist": "",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:VCBernardArmitageWarburtonWarburton-Lee.jpg"
+  },
+  "whitworth": {
+    "file": "whitworth.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "between 1944 and 1945 date QS:P571,+1944-00-00T00:00:00Z/8,P1319,+1944-00-00T00:00:00Z/9,P1326,+1945-00-00T00:00:00Z/9",
+    "artist": "Cooksey D W (Sub Lt), Royal Navy official photographer",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Admiral_Sir_William_Jock_Whitworth_A27653_(cropped).jpg"
+  },
+  "fleischer": {
+    "file": "fleischer.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "1940-08-14",
+    "artist": "Unknown (Bassano Ltd.)",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Carl_Gustav_Fleischer_1940b.jpg"
+  },
+  "auchinleck": {
+    "file": "auchinleck.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "1940 date QS:P571,+1940-00-00T00:00:00Z/9",
+    "artist": "Reginald Grenville Eves",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Auchinleck_(1940_portrait).jpg"
+  },
+  "bohusz-szyszko": {
+    "file": "bohusz-szyszko.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "before 14 March 1934 date QS:P,+1934-03-14T00:00:00Z/7,P1326,+1934-03-14T00:00:00Z/11",
+    "artist": "Unknown author Unknown author",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Zygmunt_Bohusz-Szyszko_p%C5%82k_dypl._kawaler_VM.jpg"
+  },
+  "haakon": {
+    "file": "haakon.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "presumably 5 January 1940",
+    "artist": "Unknown author Unknown author",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:King_Haakon_VII_of_Norway.jpg"
+  },
+  "churchill": {
+    "file": "churchill.jpg",
+    "fit": "contain",
+    "title": {},
+    "year": "30 December 1941",
+    "artist": "Yousuf Karsh",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Sir_Winston_Churchill_-_19086236948.jpg"
+  }
+}

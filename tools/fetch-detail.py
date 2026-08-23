@@ -24,8 +24,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from shapely.geometry import LineString, box, mapping, shape
+from shapely.geometry import LineString, Point, box, mapping, shape
+from shapely.geometry.polygon import orient
 from shapely.ops import polygonize, unary_union
+from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
@@ -157,9 +159,8 @@ def build_land(coast_rings, bbox, ne_land_path):
     about a kilometre apart.
 
     The assembly: cut the bounding box along the coastline and polygonize the
-    result, which yields faces that are each wholly land or wholly sea. Then
-    ask Natural Earth which is which — it is too coarse to draw with, but it
-    is entirely accurate enough to classify a face tens of kilometres across.
+    result, which yields faces that are each wholly land or wholly sea. Which
+    is which comes from the coastline's own direction — see classify() below.
     """
     w, s_, e, n = bbox
     frame = box(w, s_, e, n)
@@ -177,16 +178,85 @@ def build_land(coast_rings, bbox, ne_land_path):
     print(f"  coastline splits the box into {len(faces)} faces")
 
     ne = load_ne_land(ne_land_path, frame)
-    if ne is None:
-        return []
-
-    land = [f for f in faces if ne.contains(f.representative_point())]
+    land = classify(faces, lines, ne)
     print(f"  {len(land)} of them are land")
     if not land:
         return []
 
     merged = unary_union(land).intersection(frame)
     return merged
+
+
+# A ring edge either lies ON a coastline segment or it does not. Noding splits
+# segments; it does not move their points, so the distance is a floating-point
+# residue rather than a tolerance to tune.
+ON_LINE = 1e-9
+
+
+def classify(faces, lines, ne):
+    """Which faces are land, from the coastline's own direction.
+
+    OSM draws `natural=coastline` with LAND ON THE LEFT of the way. That is
+    the only statement in the data about which side is which, and it is the
+    one that holds at any scale.
+
+    This used to ask Natural Earth instead — is this face's representative
+    point inside NE's land polygon? — on the reasoning that 1:10M is coarse to
+    draw with but accurate enough to classify a face tens of kilometres
+    across. That reasoning is true for a harbour and false for a fjord, and
+    the difference is not a matter of degree. Natural Earth has no Ofotfjord
+    at all: the whole of Nordland is one land polygon, so every face inside it
+    — sea and mountain alike — came back "land", and the Narvik pack rendered
+    a hundred kilometres of coast with no water anywhere in it. It looked like
+    a rendering bug and it was a classification bug.
+
+    So the test is on the EDGE, not on the middle of the face. Orient the face
+    counter-clockwise, which puts its interior on the left of its own ring, and
+    find a ring edge that lies on a coastline segment. If the two run the same
+    way, land-on-the-left and interior-on-the-left are the same side, and the
+    face is land. If they run opposite, it is sea. Comparing a point in the
+    middle of the face against the NEAREST coastline instead fails wherever a
+    channel is narrow, because the nearest coast is then the far shore: it put
+    Ofotfjord on the land side of both its own banks at once.
+
+    A face that touches no coastline at all — open sea past the last island, or
+    inland past the last shore — has nothing to be left or right of, and
+    Natural Earth decides that one, which is what it is good at.
+    """
+    segs = []
+    for line in lines:
+        cs = list(line.coords)
+        segs.extend((a, b) for a, b in zip(cs, cs[1:]) if a != b)
+    if not segs:
+        return [f for f in faces if ne is not None
+                and ne.contains(f.representative_point())]
+
+    tree = STRtree([LineString(s) for s in segs])
+    land, by_ne = [], 0
+
+    for f in faces:
+        ring = orient(f, 1.0).exterior          # CCW: interior on the left
+        cs = list(ring.coords)
+        verdict = None
+        for a, b in zip(cs, cs[1:]):
+            mid = Point((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+            i = tree.nearest(mid)
+            (sa, sb) = segs[i]
+            if mid.distance(LineString((sa, sb))) > ON_LINE:
+                continue                        # this edge is frame, not coast
+            same = ((b[0] - a[0]) * (sb[0] - sa[0])
+                    + (b[1] - a[1]) * (sb[1] - sa[1])) > 0
+            verdict = same
+            break
+        if verdict is None:
+            by_ne += 1
+            verdict = ne is not None and ne.contains(f.representative_point())
+        if verdict:
+            land.append(f)
+
+    if by_ne:
+        print(f"  {by_ne} face(s) touch no coastline — classified from Natural Earth")
+    return land
 
 
 def load_ne_land(path: Path, frame):
@@ -207,10 +277,18 @@ def load_ne_land(path: Path, frame):
 
 
 def rings_of_geom(geom):
-    """Flatten a (Multi)Polygon into exterior + interior rings."""
+    """Flatten a (Multi)Polygon into exterior + interior rings.
+
+    Tolerates a GeometryCollection: unioning a few thousand faces and clipping
+    to the frame can leave a stray LineString where two of them met along an
+    edge, and one of those used to stop the whole build with
+    'GeometryCollection object has no attribute exterior'.
+    """
     if geom.is_empty:
         return []
-    polys = geom.geoms if geom.geom_type == "MultiPolygon" else [geom]
+    polys = (list(geom.geoms) if geom.geom_type in ("MultiPolygon", "GeometryCollection")
+             else [geom])
+    polys = [p for p in polys if p.geom_type == "Polygon" and not p.is_empty]
     out = []
     for poly in polys:
         parts = [list(poly.exterior.coords)]

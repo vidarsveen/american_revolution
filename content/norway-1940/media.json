@@ -1,0 +1,158 @@
+{
+  "malmtog": {
+    "file": "malmtog.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Malmtog på Ofotbanen ved Narvik",
+      "en": "An ore train on the Ofoten Line at Narvik"
+    },
+    "year": "1906",
+    "artist": "Anders Beer Wilse",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Malmtog_i_Narvik_1906.jpeg"
+  },
+  "eidsvold": {
+    "file": "eidsvold.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Panserskipet Eidsvold",
+      "en": "The coastal defence ship Eidsvold"
+    },
+    "year": "1905",
+    "artist": "B. Weyer",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Eidsvold_(1900)_a.jpg"
+  },
+  "tyske-jagere": {
+    "file": "tyske-jagere.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Tyske jagere i Narvik havn, april 1940",
+      "en": "German destroyers in Narvik harbour, April 1940"
+    },
+    "year": "1940",
+    "artist": "Max Ehlert, Bundesarchiv",
+    "licence": "CC BY-SA 3.0 de",
+    "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_101I-758-0056-35,_Norwegen,_deutsche_Kriegsschiffe.jpg"
+  },
+  "warspite": {
+    "file": "warspite.jpg",
+    "fit": "contain",
+    "title": {
+      "no": "Warspite og tre jagere inne i Ofotfjorden",
+      "en": "Warspite and three destroyers inside Ofotfjord"
+    },
+    "year": "13. april 1940",
+    "artist": "Royal Navy, offisielt fotografi",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Second_British_Naval_Action_Off_Narvik._13_April_1940,_Aerial_Photographs_From_a_Fleet_Air_Arm_Aircraft._A39.jpg"
+  },
+  "georg-thiele": {
+    "file": "georg-thiele.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Jageren Georg Thiele på grunn i Rombaken",
+      "en": "The destroyer Georg Thiele aground in Rombaken"
+    },
+    "year": "april 1940",
+    "artist": "Royal Navy, offisielt fotografi",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_German_Invasion_of_Norway,_1940._A24.jpg"
+  },
+  "vrak-narvik": {
+    "file": "vrak-narvik.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Vrak i Narvik havn etter kampene",
+      "en": "Wrecks in Narvik harbour after the fighting"
+    },
+    "year": "juni 1940",
+    "artist": "Franz Hollerweger, Arkiv i Nordland",
+    "licence": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Several_shipwrecks_after_the_battle_of_Narvik.jpg"
+  },
+  "bergjegere": {
+    "file": "bergjegere.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Tyske fjelljegere i terrenget ved Narvik",
+      "en": "German mountain troops in the country around Narvik"
+    },
+    "year": "1940",
+    "artist": "Ukjent fotograf, Bundesarchiv",
+    "licence": "CC BY-SA 3.0 de",
+    "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-2005-1202-500,_Norwegen,_bei_Narvik,_Gebirgsj%C3%A4ger.jpg"
+  },
+  "koalisjonen": {
+    "file": "koalisjonen.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Franske, britiske og norske soldater om bord i et britisk krigsskip",
+      "en": "French, British and Norwegian soldiers aboard a Royal Navy warship"
+    },
+    "year": "8. mai 1940",
+    "artist": "Pressefotograf, Imperial War Museums",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_German_Invasion_of_Norway,_1940_HU93727.jpg"
+  },
+  "polakkene": {
+    "file": "polakkene.jpg",
+    "fit": "contain",
+    "title": {
+      "no": "Den polske fjellbrigaden forlater Harstad havn",
+      "en": "The Polish Highland Brigade leaving Harstad harbour"
+    },
+    "year": "14. mai 1940",
+    "artist": "H. Marshall Bishop, War Office",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Narvik_Campaign,_1940_N184.jpg"
+  },
+  "bjerkvik-landgang": {
+    "file": "bjerkvik-landgang.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Franske soldater i båtene utenfor Bjerkvik",
+      "en": "French troops in the boats off Bjerkvik"
+    },
+    "year": "13. mai 1940",
+    "artist": "Ukjent fotograf, Imperial War Museums",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_French_Army_in_the_Norwegian_Campaign,_1940_HU91803.jpg"
+  },
+  "allierte-soldater": {
+    "file": "allierte-soldater.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Engelske og franske soldater under kampene om Narvik",
+      "en": "English and French soldiers during the fighting for Narvik"
+    },
+    "year": "juni 1940",
+    "artist": "Ukjent fotograf, Arkiv i Nordland",
+    "licence": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Allied_soldiers_during_the_battle_of_Narvik.jpg"
+  },
+  "glorious": {
+    "file": "glorious.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Hangarskipet Glorious, fotografert fem år før",
+      "en": "The carrier Glorious, photographed five years earlier"
+    },
+    "year": "1935",
+    "artist": "Royal Navy, offisielt fotografi",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:HMS_Glorious_FL22991.jpg"
+  },
+  "narvik-etter": {
+    "file": "narvik-etter.jpg",
+    "fit": "cover",
+    "title": {
+      "no": "Sentrum av Narvik etter bombardementet",
+      "en": "The centre of Narvik after the bombardment"
+    },
+    "year": "13. juni 1940",
+    "artist": "Ukjent fotograf, Arkiv i Nordland",
+    "licence": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_center_of_Narvik_after_bombardment.jpg"
+  }
+}

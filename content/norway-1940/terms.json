@@ -1,0 +1,251 @@
+{
+  "//": [
+    "Words the chapters mark as tappable. A term is here because a fifteen-year-old",
+    "would stop at it, not because it is technical: 'panserskip' and 'nøytralitet'",
+    "both stop a reader, for different reasons.",
+    "",
+    "These are read on screen, not spoken, so digits are used here. The script says",
+    "them as words."
+  ],
+  "jernmalm": {
+    "term": {
+      "no": "Jernmalm",
+      "en": "Iron ore"
+    },
+    "short": {
+      "no": "Stein med så mye jern i at det lønner seg å grave den ut.",
+      "en": "Rock with enough iron in it to be worth digging up."
+    },
+    "body": {
+      "no": "Malmen i Kiruna og Malmberget er magnetitt, og den holder rundt 60–70 prosent jern. Det er uvanlig rikt. Til sammenlikning ligger mye annen malm i verden på under 40 prosent.\n\nJern blir til stål når det smeltes sammen med litt karbon. Stål er det du bygger kanoner, skip, stridsvogner og granater av, og en industrikrig bruker det opp fortere enn noen hadde regnet med i 1939.\n\nTyskland hadde egen malm, men den var fattig og dyr å bruke. Svensk malm var både rikere og nærmere enn noe annet Tyskland kunne nå uten å seile forbi Royal Navy.",
+      "en": "The ore at Kiruna and Malmberget is magnetite, and it runs at around 60–70 per cent iron. That is unusually rich. Much of the world's ore sits below 40 per cent.\n\nIron becomes steel when it is melted together with a little carbon. Steel is what you build guns, ships, tanks and shells out of, and an industrial war uses it up faster than anyone had reckoned on in 1939.\n\nGermany had ore of its own, but it was poor and expensive to work. Swedish ore was both richer and closer than anything else Germany could reach without sailing past the Royal Navy."
+    },
+    "fact": {
+      "no": "Sverige sto for rundt 43 prosent av jernmalmen Tyskland brukte i årene 1933–43.",
+      "en": "Sweden supplied around 43 per cent of the iron ore Germany used in the years 1933–43."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Jernmalm",
+      "en": "Iron ore"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "jernmalmen-og-krigen" },
+      { "kind": "term", "id": "noytralitet" }
+    ]
+  },
+  "noytralitet": {
+    "term": {
+      "no": "Nøytralitet",
+      "en": "Neutrality"
+    },
+    "short": {
+      "no": "Å stå utenfor krigen — og å bli respektert for det, så lenge det passer de andre.",
+      "en": "Staying out of the war — and being respected for it, for as long as it suits the others."
+    },
+    "body": {
+      "no": "Nøytralitet er både en erklæring og et sett regler. Et nøytralt land skal ikke hjelpe noen av partene, og de krigførende skal la det være i fred. Reglene sto skrevet ned i Haag-konvensjonene fra 1907.\n\nNorge hadde klart seg gjennom hele første verdenskrig på den avtalen, selv om nesten to tusen norske sjøfolk omkom. Regjeringen Nygaardsvold trodde det samme ville holde en gang til, og brukte lite penger på forsvaret gjennom 1930-tallet.\n\nVåren 1940 hadde begge sider bestemt seg for å bryte nøytraliteten, hver for seg og uten å vite om hverandre. Britene la miner i norsk farvann 8. april. Tyskerne gikk i land 9. april. Poenget er ikke at de var like — okkupasjonen var noe helt annet enn et minefelt — men at nøytralitet bare virker så lenge de store lar den virke.",
+      "en": "Neutrality is both a declaration and a set of rules. A neutral country is not to help either side, and the belligerents are to leave it alone. The rules were written down in the Hague Conventions of 1907.\n\nNorway had come through the whole of the First World War on that agreement, even though nearly two thousand Norwegian sailors died. The Nygaardsvold government believed it would hold once more, and spent little on defence through the 1930s.\n\nIn the spring of 1940 both sides had decided to break that neutrality, separately and without knowing about each other. The British laid mines in Norwegian waters on 8 April. The Germans landed on 9 April. The point is not that the two were the same — an occupation is a very different thing from a minefield — but that neutrality only works for as long as the great powers let it."
+    },
+    "fact": {
+      "no": "Norge hadde bestilt moderne jagerfly og luftvern, men mye av det var ikke levert da krigen kom.",
+      "en": "Norway had ordered modern fighters and anti-aircraft guns, but much of it had not been delivered when the war arrived."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Nøytralitet",
+      "en": "Neutral country"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "hvem-styrte-norge" },
+      { "kind": "term", "id": "jernmalm" }
+    ]
+  },
+  "jager": {
+    "term": {
+      "no": "Jager",
+      "en": "Destroyer"
+    },
+    "short": {
+      "no": "Et raskt, lite krigsskip med torpedoer. Bygd for å angripe, ikke for å tåle treff.",
+      "en": "A fast, small warship with torpedoes. Built to attack, not to take hits."
+    },
+    "body": {
+      "no": "En jager i 1940 var på 1 500–2 500 tonn, gjorde over tretti knop og hadde noen få kanoner og et batteri torpedorør. Panseret var tynt eller fraværende. Én torpedo eller en heldig granat kunne være nok.\n\nDe tyske jagerne som gikk til Narvik, var store og moderne, men de var også nybygde og hadde tekniske problemer med dampanleggene. Og de brukte mye olje. En jager på full fart tømmer tankene på et døgn eller to.\n\nDet er nettopp derfor de ble stående i Ofotfjorden. Et skip som er bygd for fart, kan ikke stå stille — men et skip uten olje kan ikke annet.",
+      "en": "A destroyer in 1940 ran to 1,500–2,500 tons, made over thirty knots and carried a few guns and a bank of torpedo tubes. Armour was thin or absent. One torpedo, or one lucky shell, could be enough.\n\nThe German destroyers that went to Narvik were large and modern, but they were also new and had persistent trouble with their high-pressure steam plant. And they drank oil. A destroyer at full speed empties her tanks in a day or two.\n\nThat is exactly why they were left sitting in Ofotfjord. A ship built for speed cannot stand still — but a ship with no oil can do nothing else."
+    },
+    "fact": {
+      "no": "Tyskland hadde bare rundt tjue jagere i april 1940. Ti av dem gikk tapt i Narvik på tre dager.",
+      "en": "Germany had only about twenty destroyers in April 1940. Ten of them were lost at Narvik in three days."
+    },
+    "kind": "thing",
+    "wiki": {
+      "no": "Jager (skip)",
+      "en": "Destroyer"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "panserskip" }
+    ]
+  },
+  "panserskip": {
+    "term": {
+      "no": "Panserskip",
+      "en": "Coastal defence ship"
+    },
+    "short": {
+      "no": "Et lite slagskip bygd for å forsvare egen kyst, og bare den.",
+      "en": "A small battleship built to defend its own coast, and nothing else."
+    },
+    "body": {
+      "no": "Eidsvold og Norge ble bygd i England rundt år 1900 og var på rundt 4 200 tonn. De hadde to kanoner på 21 centimeter og seks på 15, og panser i sidene. De gjorde sytten knop da de var nye.\n\nTanken var enkel: et lite land har ikke råd til en flåte som kan møte en stormakt på åpent hav, men det har råd til noen tungt bevæpnede skip som ligger i fjordene og gjør det dyrt å komme inn.\n\nI 1940 var de førti år gamle. Kanonene var fremdeles tunge nok til å skade en jager, men ildledningen var gammel, farten var borte, og de hadde ikke noe luftvern å snakke om. Begge ble senket av torpedoer 9. april 1940, før de rakk å gjøre skade.",
+      "en": "Eidsvold and Norge were built in England around 1900 and displaced about 4,200 tons. They carried two 21 cm guns and six of 15 cm, with armour along the sides. They made seventeen knots when they were new.\n\nThe idea was simple: a small country cannot afford a fleet that can meet a great power in open water, but it can afford a few heavily armed ships that sit in the fjords and make coming in expensive.\n\nBy 1940 they were forty years old. The guns were still heavy enough to hurt a destroyer, but the fire control was old, the speed was gone, and they had next to no anti-aircraft armament. Both were sunk by torpedoes on 9 April 1940, before they could do any damage."
+    },
+    "fact": {
+      "no": "Vrakene ligger fortsatt i Ofotfjorden. Begge er krigsgraver, og dykking er forbudt.",
+      "en": "Both wrecks still lie in Ofotfjord. Both are war graves, and diving on them is forbidden."
+    },
+    "kind": "thing",
+    "wiki": {
+      "no": "Panserskip",
+      "en": "Coastal defence ship"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "willoch" },
+      { "kind": "person", "id": "askim" }
+    ]
+  },
+  "fjelljeger": {
+    "term": {
+      "no": "Fjelljeger",
+      "en": "Mountain troops"
+    },
+    "short": {
+      "no": "Tyske soldater trent for fjell, snø og ski. Merket deres var en edelweiss.",
+      "en": "German soldiers trained for mountains, snow and skis. Their badge was an edelweiss."
+    },
+    "body": {
+      "no": "Gebirgsjäger var Wehrmachts fjellsoldater, rekruttert i stor grad fra Bayern og Østerrike. De var vant til bratt terreng, bar mindre utstyr enn vanlig infanteri og kunne bevege seg der kjøretøy ikke kom fram.\n\nDe som ble satt i land i Narvik, kom fra 139. bergjegerregiment i 3. bergdivisjon. Det var nettopp derfor de ble valgt: målet lå i et landskap uten veier, med fjell rett opp fra fjorden.\n\nDet er verdt å merke seg at norske og tyske soldater i Narvik hadde nokså like forutsetninger. Begge kunne gå på ski, begge kunne fjellet. Forskjellen lå i utstyr, i luftstøtte og i hvem som fikk forsyninger.",
+      "en": "The Gebirgsjäger were the Wehrmacht's mountain soldiers, recruited largely from Bavaria and Austria. They were used to steep ground, carried less than ordinary infantry and could move where vehicles could not.\n\nThe men put ashore at Narvik came from the 139th Mountain Regiment of the 3rd Mountain Division. That is precisely why they were chosen: the objective lay in a landscape without roads, with mountains rising straight out of the fjord.\n\nIt is worth noticing that Norwegian and German soldiers at Narvik were fairly evenly matched. Both could ski, both knew mountains. The difference lay in equipment, in air support, and in who was getting supplied."
+    },
+    "fact": {
+      "no": "Etter kampene laget Tyskland et eget «Narvikskjold» i metall til alle som hadde vært med. Det var det første av sitt slag.",
+      "en": "After the fighting Germany struck a metal 'Narvik Shield' for everyone who had been there. It was the first award of its kind."
+    },
+    "kind": "thing",
+    "wiki": {
+      "no": "Gebirgsjäger",
+      "en": "Gebirgsjäger"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "dietl" }
+    ]
+  },
+  "fremmedlegionen": {
+    "term": {
+      "no": "Fremmedlegionen",
+      "en": "The Foreign Legion"
+    },
+    "short": {
+      "no": "Fransk hæravdeling der soldatene kommer fra alle land unntatt Frankrike.",
+      "en": "A French army corps whose soldiers come from every country except France."
+    },
+    "body": {
+      "no": "Den franske fremmedlegionen ble opprettet i 1831 og tok inn utlendinger som ville tjene i den franske hæren. Offiserene var franske; mannskapene kom fra hele Europa og etter hvert fra hele verden.\n\nAvdelingen som kom til Narvik, var 13. halvbrigade. Den var satt opp i 1939, og mange av soldatene var flyktninger fra Tyskland, Østerrike, Spania og Sentral-Europa — blant dem en god del jøder og republikanere som hadde tapt den spanske borgerkrigen.\n\nDet gjør landgangen ved Bjerkvik til et underlig øyeblikk i historien: menn som var drevet ut av Europa av nazismen, gikk i land i Nord-Norge for å slåss mot den.",
+      "en": "The French Foreign Legion was founded in 1831 and took in foreigners willing to serve in the French army. The officers were French; the men came from all over Europe and in time from all over the world.\n\nThe unit that came to Narvik was the 13th Demi-Brigade. It had been raised in 1939, and many of its soldiers were refugees from Germany, Austria, Spain and central Europe — among them a good number of Jews and of republicans who had lost the Spanish Civil War.\n\nThat makes the landing at Bjerkvik a strange moment in history: men driven out of Europe by Nazism came ashore in northern Norway to fight it."
+    },
+    "fact": {
+      "no": "13. halvbrigade mistet 31 mann den dagen Narvik ble tatt tilbake, blant dem tre offiserer.",
+      "en": "The 13th Demi-Brigade lost 31 men on the day Narvik was retaken, three of them officers."
+    },
+    "kind": "group",
+    "wiki": {
+      "no": "Den franske fremmedlegionen",
+      "en": "French Foreign Legion"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "landgangsfartoy" },
+      { "kind": "person", "id": "bethouart" }
+    ]
+  },
+  "landgangsfartoy": {
+    "term": {
+      "no": "Landgangsfartøy",
+      "en": "Landing craft"
+    },
+    "short": {
+      "no": "En flatbunnet båt med rampe i baugen, laget for å sette soldater rett i fjæra.",
+      "en": "A flat-bottomed boat with a ramp in the bow, made to put soldiers straight onto a beach."
+    },
+    "body": {
+      "no": "Å sette soldater i land på en strand fienden holder, er en av de vanskeligste tingene en hær kan gjøre. Soldatene er samlet, langsomme og uten dekning i akkurat det øyeblikket de er mest utsatt.\n\nBritene hadde noen få nybygde landgangsbåter i 1940 — Landing Craft Assault. De kunne ta rundt tretti mann hver og gikk helt inn i fjæra. Ved Bjerkvik natten til 13. mai ble de brukt mot en forsvart strand for første gang i krigen.\n\nErfaringene derfra gikk rett inn i planleggingen av alt som kom siden, fra Nord-Afrika til Normandie. Bjerkvik er en liten bygd i Nordland, og den står i historien om D-dagen.",
+      "en": "Putting soldiers ashore on a beach the enemy is holding is one of the hardest things an army can do. The men are bunched, slow and without cover at exactly the moment they are most exposed.\n\nThe British had a few newly built landing craft in 1940 — Landing Craft Assault. Each carried about thirty men and went right up onto the shore. At Bjerkvik on the night of 13 May they were used against a defended beach for the first time in the war.\n\nWhat was learned there went straight into the planning of everything that followed, from North Africa to Normandy. Bjerkvik is a small village in Nordland, and it belongs to the story of D-Day."
+    },
+    "fact": {
+      "no": "Landgangen ved Bjerkvik hadde med fem franske lette stridsvogner. De ble kjørt rett fra båtene og opp på land.",
+      "en": "The Bjerkvik landing brought five French light tanks. They were driven straight off the craft and up onto the shore."
+    },
+    "kind": "thing",
+    "wiki": {
+      "no": "Landgangsfartøy",
+      "en": "Landing craft"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "fremmedlegionen" },
+      { "kind": "topic", "id": "sivile-i-krigen" }
+    ]
+  },
+  "victoria-cross": {
+    "term": {
+      "no": "Victoriakorset",
+      "en": "The Victoria Cross"
+    },
+    "short": {
+      "no": "Den høyeste britiske tapperhetsmedaljen. Den deles ut svært sjelden.",
+      "en": "The highest British award for gallantry. It is given very rarely."
+    },
+    "body": {
+      "no": "Victoriakorset ble innstiftet av dronning Victoria i 1856, etter Krimkrigen. Det kan gis til hvem som helst i de britiske styrkene, uansett grad, og kriteriet er «fremragende tapperhet i møte med fienden».\n\nDet ble delt ut 182 ganger under hele andre verdenskrig. Rundt en tredjedel av dem gikk til folk som var døde da avgjørelsen falt.\n\nBernard Warburton-Lee fikk det første i denne krigen, for angrepet i Ofotfjorden 10. april 1940. Han døde på broa på HMS Hardy samme morgen. Sitasjonen — den offisielle begrunnelsen, trykt i The London Gazette — gjengir det siste signalet hans ordrett, og det er derfor vi vet nøyaktig hva det sa.",
+      "en": "The Victoria Cross was instituted by Queen Victoria in 1856, after the Crimean War. It can go to anyone in British service, of any rank, and the criterion is 'most conspicuous bravery in the presence of the enemy'.\n\nIt was awarded 182 times in the whole of the Second World War. Around a third of those went to men who were already dead when the decision was made.\n\nBernard Warburton-Lee received the first of the war, for the attack up Ofotfjord on 10 April 1940. He died on HMS Hardy's bridge the same morning. The citation — the official justification, printed in The London Gazette — reproduces his last signal word for word, and that is why we know exactly what it said."
+    },
+    "fact": {
+      "no": "Et sitat som står i en trykt sitasjon, er en helt annen slags kilde enn et sitat som er fortalt videre. Warburton-Lees siste ord er av den første sorten.",
+      "en": "A quotation printed in an official citation is a very different kind of source from one passed on by word of mouth. Warburton-Lee's last words are of the first kind."
+    },
+    "kind": "thing",
+    "wiki": {
+      "no": "Victoriakorset",
+      "en": "Victoria Cross"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "warburton-lee" },
+      { "kind": "topic", "id": "hvordan-vet-vi-det" }
+    ]
+  },
+  "kapitulasjon": {
+    "term": {
+      "no": "Kapitulasjon",
+      "en": "Capitulation"
+    },
+    "short": {
+      "no": "En avtale om å slutte å slåss. Ikke det samme som å overgi landet.",
+      "en": "An agreement to stop fighting. Not the same as surrendering the country."
+    },
+    "body": {
+      "no": "Det ble undertegnet to kapitulasjoner i Norge i juni 1940. Den ene gjaldt styrkene på fastlandet sør for Narvik og ble undertegnet i Trondheim 10. juni. Den andre gjaldt 6. divisjon og ble undertegnet samme dag oppe på Bjørnfjell, av general Dietl og en norsk oberstløytnant.\n\nBegge var militære avtaler mellom hærstyrker. Kongen og regjeringen kapitulerte aldri. De reiste til Storbritannia 7. juni og fortsatte som Norges lovlige regjering derfra, med handelsflåten som sitt viktigste bidrag til krigen.\n\nDet er derfor Norge regnes som en av de allierte gjennom hele krigen, selv om landet var okkupert fra 1940 til 1945. Forskjellen mellom en militær kapitulasjon og en statlig overgivelse er akkurat den forskjellen Vidkun Quisling forsøkte å viske ut da han gikk i radioen 9. april og utropte seg selv til statsminister.",
+      "en": "Two capitulations were signed in Norway in June 1940. One covered the forces on the mainland south of Narvik and was signed at Trondheim on 10 June. The other covered the 6th Division and was signed the same day up at Bjørnfjell, by General Dietl and a Norwegian lieutenant colonel.\n\nBoth were military agreements between armies. The King and the government never capitulated. They left for Britain on 7 June and carried on as Norway's lawful government from there, with the merchant fleet as their most important contribution to the war.\n\nThat is why Norway counts as one of the Allies for the whole war, even though the country was occupied from 1940 to 1945. The difference between a military capitulation and a surrender by the state is exactly the difference Vidkun Quisling tried to erase when he went on the radio on 9 April and declared himself prime minister."
+    },
+    "fact": {
+      "no": "Kapitulasjonen på Bjørnfjell var den siste i felttoget. Da hadde Norge holdt ut i 62 dager.",
+      "en": "The capitulation at Bjørnfjell was the last of the campaign. By then Norway had held out for 62 days."
+    },
+    "kind": "concept",
+    "wiki": {
+      "no": "Kapitulasjon",
+      "en": "Capitulation (surrender)"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "haakon" },
+      { "kind": "topic", "id": "hvem-styrte-norge" }
+    ]
+  }
+}

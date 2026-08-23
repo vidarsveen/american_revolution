@@ -1,0 +1,50 @@
+{
+ "//": [
+  "Input to tools/fetch-media.py --portraits. Same licensing rule as the plates,",
+  "and it bites harder here: a face from 1940 is often a press photograph whose",
+  "copyright has not expired anywhere.",
+  "",
+  "Two people are shipped without a face on purpose. Per Askim has no portrait on",
+  "Commons under a licence that is safe to use commercially, and Antoine Béthouart",
+  "has only pictures uploaded recently by people who plainly did not take them.",
+  "Both carry a portraitNote in people.json saying so, which is better than a",
+  "quiet gap.",
+  "",
+  "Konrad Sundlo's photograph is from an NS meeting in Oslo in October 1940,",
+  "six months after he handed Narvik over. That is the only free image of him,",
+  "and it is not a neutral one — worth knowing while looking at it."
+ ],
+ "dietl": {
+  "commons": "File:Bundesarchiv Bild 183-B16420, Russland, General Eduard Dietl.jpg"
+ },
+ "bonte": {
+  "commons": "File:Friedrich Bonte, komandor niemieckiej marynarki wojennej. Fotografia portretowa w stroju cywilnym.jpg"
+ },
+ "willoch": {
+  "commons": "File:Odd Isaachsen Willoch Captain of HNoMS Eidsvold.png"
+ },
+ "sundlo": {
+  "commons": "File:Konrad Sundlo 1940 (cropped).jpg"
+ },
+ "warburton-lee": {
+  "commons": "File:VCBernardArmitageWarburtonWarburton-Lee.jpg"
+ },
+ "whitworth": {
+  "commons": "File:Admiral Sir William Jock Whitworth A27653 (cropped).jpg"
+ },
+ "fleischer": {
+  "commons": "File:Carl Gustav Fleischer 1940b.jpg"
+ },
+ "auchinleck": {
+  "commons": "File:Claude Auchinleck (1940 portrait).jpg"
+ },
+ "bohusz-szyszko": {
+  "commons": "File:Zygmunt Bohusz-Szyszko płk dypl. kawaler VM.jpg"
+ },
+ "haakon": {
+  "commons": "File:King Haakon VII of Norway.jpg"
+ },
+ "churchill": {
+  "commons": "File:Sir Winston Churchill - 19086236948.jpg"
+ }
+}

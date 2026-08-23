@@ -1,0 +1,416 @@
+{
+  "//": [
+    "Prose about a place. The geometry — coords, zoom, label — stays in the",
+    "chapter, because that is what the camera needs. The reading lives here so",
+    "both chapters can share one Narvik without either of them owning it.",
+    "Keyed by the same ids the chapters use in `places`."
+  ],
+  "narvik": {
+    "name": {
+      "no": "Narvik",
+      "en": "Narvik"
+    },
+    "hook": {
+      "no": "En by som ble bygd fordi det lå malm i et fjell i et annet land.",
+      "en": "A town that exists because there is ore in a mountain in another country."
+    },
+    "body": {
+      "no": "Det bodde nesten ingen på stedet før jernbanen kom. Anleggsarbeidet på Ofotbanen begynte i 1880-årene, og byen vokste opp rundt utskipningshavnen for svensk malm. Den fikk bystatus i 1902, samme år som banen sto ferdig.\n\nNarvik ligger på en halvøy som stikker ut i Ofotfjorden, med Rombaken på nordsiden og Beisfjorden på sørsiden. Det er en av grunnene til at kampene i 1940 ble som de ble: skal du inn til byen over land, må du enten forbi Ankenes i sør eller over vannet i nord.\n\nHavna er isfri hele året. Golfstrømmen holder kysten åpen helt opp til Ishavet, og det er den ene grunnen til at hele felttoget fant sted.\n\nByen ble bombet gjennom mai og juni 1940 og måtte gjenoppbygges nesten fra grunnen. I dag bor det rundt tjue tusen mennesker der, og malmtogene går fortsatt.",
+      "en": "Almost nobody lived here before the railway came. Construction on the Ofoten Line began in the 1880s, and the town grew up around the export harbour for Swedish ore. It was chartered in 1902, the year the line was finished.\n\nNarvik sits on a peninsula sticking out into Ofotfjord, with Rombaken on the north side and Beisfjord on the south. That is one reason the fighting in 1940 went as it did: to reach the town by land you must come either past Ankenes in the south or across the water in the north.\n\nThe harbour is ice-free all year. The Gulf Stream keeps the coast open all the way to the Arctic, and that single fact is why the whole campaign happened.\n\nThe town was bombed through May and June 1940 and had to be rebuilt almost from nothing. Around twenty thousand people live there today, and the ore trains still run."
+    },
+    "fact": {
+      "no": "Byen het opprinnelig Victoriahavn, etter kronprinsesse Victoria av Sverige og Norge.",
+      "en": "The town was originally called Victoriahavn, after Crown Princess Victoria of Sweden and Norway."
+    },
+    "wiki": {
+      "no": "Narvik",
+      "en": "Narvik"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "jernmalmen-og-krigen" },
+      { "kind": "topic", "id": "sivile-i-krigen" }
+    ]
+  },
+  "malmkaia": {
+    "name": {
+      "no": "Malmkaia",
+      "en": "The ore quay"
+    },
+    "hook": {
+      "no": "Grunnen til at noen brydde seg om Narvik i det hele tatt.",
+      "en": "The reason anybody cared about Narvik at all."
+    },
+    "body": {
+      "no": "Malmen kom med tog fra Kiruna, ble tømt i store siloer over kaia, og rant derfra rett ned i lasterommene på skipene. Det var en effektiv maskin, og den var hele poenget med byen.\n\nTyske soldater sto på kaia klokka åtte om morgenen den niende april 1940. Da de allierte tok byen tilbake den tjueåttende mai, sprengte de kaia og alt utstyret på den før de reiste igjen elleve dager senere.\n\nDet virket, en stund. Malmtrafikken gjennom Narvik falt til under en halv million tonn i 1940. Men Sverige sendte akkurat like mye jern til Tyskland det året som året før — det gikk bare østover til Luleå i stedet.",
+      "en": "The ore came by train from Kiruna, was tipped into big silos above the quay, and ran from there straight down into the holds of the ships. It was an efficient machine, and it was the entire point of the town.\n\nGerman soldiers were standing on the quay by eight in the morning on the ninth of April 1940. When the Allies took the town back on the twenty-eighth of May, they blew up the quay and everything on it before leaving again eleven days later.\n\nIt worked, for a while. Ore traffic through Narvik fell to under half a million tonnes in 1940. But Sweden sent exactly as much iron to Germany that year as the year before — it simply went east to Luleå instead."
+    },
+    "fact": {
+      "no": "Malmkaia i Narvik laster fortsatt svensk jernmalm i dag, over hundre og tjue år etter at den første lasten gikk ut.",
+      "en": "The ore quay at Narvik still loads Swedish iron ore today, over a hundred and twenty years after the first cargo went out."
+    },
+    "wiki": {
+      "no": "Ofotbanen",
+      "en": "Iron Ore Line"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "jernmalm" }
+    ]
+  },
+  "ofotfjord": {
+    "name": {
+      "no": "Ofotfjorden",
+      "en": "Ofotfjord"
+    },
+    "hook": {
+      "no": "Sju mil inn, og bare én vei ut igjen.",
+      "en": "Seventy kilometres in, and only one way out again."
+    },
+    "body": {
+      "no": "Ofotfjorden går østover fra Vestfjorden og inn til Narvik. Den er rundt sytti kilometer lang og på det smaleste bare et par kilometer bred, med fjell som stiger bratt opp på begge sider.\n\nFor ti tyske jagere som hadde brukt opp oljen sin, var det en felle. Det finnes ingen annen vei ut enn den de kom inn. Da britene kom tilbake den tiende og igjen den trettende april, kunne tyskerne bare trekke seg lenger inn.\n\nFjorden er dyp, og de fleste vrakene ligger fortsatt der de sank i 1940.",
+      "en": "Ofotfjord runs east from Vestfjord in to Narvik. It is around seventy kilometres long and at its narrowest only a couple of kilometres wide, with mountains rising steeply on both sides.\n\nFor ten German destroyers that had burned their oil, it was a trap. There is no way out other than the one they came in by. When the British came back on the tenth and again on the thirteenth of April, the Germans could only pull further in.\n\nThe fjord is deep, and most of the wrecks still lie where they sank in 1940."
+    },
+    "fact": {
+      "no": "Ofotfjorden er over fem hundre meter dyp på det dypeste. Det er dypere enn det meste av Nordsjøen.",
+      "en": "Ofotfjord is over five hundred metres deep at its deepest. That is deeper than most of the North Sea."
+    },
+    "wiki": {
+      "no": "Ofotfjorden",
+      "en": "Ofotfjorden"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "jager" }
+    ]
+  },
+  "rombaken": {
+    "name": {
+      "no": "Rombaken",
+      "en": "Rombaken"
+    },
+    "hook": {
+      "no": "Blindveien der de siste tyske jagerne endte.",
+      "en": "The dead end where the last German destroyers finished."
+    },
+    "body": {
+      "no": "Rombaken er armen som går østover fra Narvik, forbi et trangt sund og inn til Rombaksbotn. Det er et vakkert sted og en umulig retrettvei: det er ingenting i den andre enden.\n\nDen trettende april 1940 trakk de siste tyske jagerne seg inn hit da Warspite kom oppover fjorden. De hadde nesten ingen torpedoer og nesten ingen granater igjen etter slaget tre dager før. Georg Thiele gikk på grunn i fjæra og brakk i to; resten ble senket av mannskapene selv.\n\nFjorten dager senere gikk franske legionærer og en norsk bataljon over det samme vannet, fra Øyjord til Orneset, i tre landgangsfartøy og noen småbåter. Det var den veien Narvik ble tatt tilbake.",
+      "en": "Rombaken is the arm that runs east from Narvik, through a narrow sound and in to Rombaksbotn. It is a beautiful place and an impossible line of retreat: there is nothing at the far end.\n\nOn the thirteenth of April 1940 the last German destroyers pulled in here as Warspite came up the fjord. They had almost no torpedoes and almost no shells left after the battle three days before. Georg Thiele ran aground in the shallows and broke in two; the rest were scuttled by their own crews.\n\nA fortnight later French legionnaires and a Norwegian battalion crossed the same water, from Øyjord to Orneset, in three landing craft and some small boats. That was the way Narvik was taken back."
+    },
+    "fact": {
+      "no": "Vrakdeler etter de tyske jagerne lå synlige i Rombaksbotn i mange tiår etter krigen.",
+      "en": "Parts of the German destroyers were still visible in Rombaksbotn for decades after the war."
+    },
+    "wiki": {
+      "no": "Rombaken",
+      "en": "Rombaken"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "whitworth" },
+      { "kind": "term", "id": "landgangsfartoy" }
+    ]
+  },
+  "vestfjorden": {
+    "name": {
+      "no": "Vestfjorden",
+      "en": "Vestfjord"
+    },
+    "hook": {
+      "no": "Der Royal Navy la minene, og der de britiske jagerne lå og ventet på lyset.",
+      "en": "Where the Royal Navy laid its mines, and where the British destroyers lay waiting for the light."
+    },
+    "body": {
+      "no": "Vestfjorden er det store, åpne farvannet mellom Lofoten og fastlandet. Alt som skal til eller fra Narvik, må gjennom det.\n\nDen åttende april 1940 la britiske minefartøy et minefelt i innløpet. Det var Operasjon Wilfred, og hensikten var å tvinge de tyske malmskipene ut av norsk farvann og ut på åpent hav, der Royal Navy kunne ta dem.\n\nMinene virket aldri. Under et døgn senere kom den tyske invasjonsflåten forbi på vei nordover, og etter det handlet ikke krigen om miner lenger.",
+      "en": "Vestfjord is the wide open water between the Lofoten islands and the mainland. Everything going to or from Narvik must pass through it.\n\nOn the eighth of April 1940 British minelayers laid a minefield in the entrance. That was Operation Wilfred, and the point was to force the German ore ships out of Norwegian waters and into the open sea, where the Royal Navy could take them.\n\nThe mines never mattered. Less than a day later the German invasion fleet went past on its way north, and after that the war was not about mines any more."
+    },
+    "fact": {
+      "no": "Minefeltet ble lagt av fire britiske jagere, eskortert av nettopp Warburton-Lees flotilje.",
+      "en": "The minefield was laid by four British destroyers, escorted by Warburton-Lee's own flotilla."
+    },
+    "wiki": {
+      "no": "Vestfjorden",
+      "en": "Vestfjorden"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "vinterkrigen" }
+    ]
+  },
+  "tranoy": {
+    "name": {
+      "no": "Tranøy",
+      "en": "Tranøy"
+    },
+    "hook": {
+      "no": "Et loskontor på Hamarøy, der en britisk offiser gikk i land og spurte hva som var der inne.",
+      "en": "A pilot station on Hamarøy, where a British officer went ashore and asked what was in there."
+    },
+    "body": {
+      "no": "Tranøy fyr ligger ved innløpet til Vestfjorden. Losene der kjente farvannet bedre enn noen, og de hadde sett de tyske skipene gå inn.\n\nOm ettermiddagen den niende april 1940 satte Warburton-Lee en offiser i land for å snakke med dem. De fortalte at det lå seks store jagere og en ubåt inne i Narvik, og at leia kanskje var minelagt.\n\nDet var ikke helt riktig. Det lå ti jagere der inne. Men Warburton-Lee gikk inn på den opplysningen han hadde, og angrepet lyktes likevel — akkurat lenge nok.",
+      "en": "Tranøy lighthouse stands at the entrance to Vestfjord. The pilots there knew the water better than anyone, and they had seen the German ships go in.\n\nOn the afternoon of the ninth of April 1940 Warburton-Lee put an officer ashore to talk to them. They told him six large destroyers and a submarine lay inside Narvik, and that the channel might be mined.\n\nIt was not quite right. There were ten destroyers in there. But Warburton-Lee went in on the information he had, and the attack succeeded anyway — for just long enough."
+    },
+    "fact": {
+      "no": "Etterretning som er nesten riktig, er en helt vanlig ting i krig. Her var feilen på fire jagere.",
+      "en": "Intelligence that is nearly right is an entirely ordinary thing in war. Here the error was four destroyers."
+    },
+    "wiki": {
+      "no": "Tranøy fyr",
+      "en": "Tranøy Lighthouse"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "warburton-lee" }
+    ]
+  },
+  "bjerkvik": {
+    "name": {
+      "no": "Bjerkvik",
+      "en": "Bjerkvik"
+    },
+    "hook": {
+      "no": "En liten bygd innerst i Herjangsfjorden, og et sted i historien om D-dagen.",
+      "en": "A small village at the head of Herjangsfjord, and a place in the story of D-Day."
+    },
+    "body": {
+      "no": "Natten til trettende mai 1940 gikk britiske landgangsfartøy inn mot Bjerkvik med franske fremmedlegionærer og fem lette stridsvogner om bord. Først skjøt et slagskip, to kryssere og fem jagere på stranda i over en time.\n\nDet var det første angrepet fra sjøen mot en forsvart strand i denne krigen, og erfaringene gikk rett inn i planleggingen av alt som kom siden.\n\nDe allierte hadde fått høre at bygda var evakuert. Den var det ikke. Mellom fjorten og atten sivile ble drept, og nesten hele Bjerkvik brant ned. Tallene spriker fordi ingen fikk telle ordentlig etterpå.",
+      "en": "On the night of the thirteenth of May 1940 British landing craft went in towards Bjerkvik with French legionnaires and five light tanks aboard. First a battleship, two cruisers and five destroyers shelled the shore for over an hour.\n\nIt was the first assault from the sea against a defended beach in this war, and what was learned went straight into the planning of everything that followed.\n\nThe Allies had been told the village was evacuated. It was not. Between fourteen and eighteen civilians were killed, and nearly all of Bjerkvik burned down. The figures diverge because nobody was able to count properly afterwards."
+    },
+    "fact": {
+      "no": "Landgangsbåtene het Landing Craft Assault og tok rundt tretti mann hver. Fire år senere var det tusenvis av dem i Normandie.",
+      "en": "The boats were called Landing Craft Assault and carried about thirty men each. Four years later there were thousands of them off Normandy."
+    },
+    "wiki": {
+      "no": "Bjerkvik",
+      "en": "Bjerkvik"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "sivile-i-krigen" },
+      { "kind": "term", "id": "landgangsfartoy" }
+    ]
+  },
+  "elvegardsmoen": {
+    "name": {
+      "no": "Elvegårdsmoen",
+      "en": "Elvegårdsmoen"
+    },
+    "hook": {
+      "no": "Et norsk militærdepot som bevæpnet tyske sjøfolk i seks uker.",
+      "en": "A Norwegian military depot that armed German sailors for six weeks."
+    },
+    "body": {
+      "no": "Elvegårdsmoen ved Bjerkvik var leir og depot for norske avdelinger i Ofoten. Da tyskerne tok det den niende april 1940, fikk de hånd om utstyr til flere tusen mann: geværer, mitraljøser, ammunisjon og uniformer.\n\nDet ble avgjørende noen dager senere. Etter det andre sjøslaget kom rundt to tusen seks hundre tyske sjøfolk i land uten annet enn det de sto og gikk i. De ble bevæpnet med norske Krag-Jørgensen-geværer fra dette depotet og satt inn som infanteri.\n\nDe allierte tok depotet tilbake under landgangen ved Bjerkvik den trettende mai.",
+      "en": "Elvegårdsmoen near Bjerkvik was a camp and depot for the Norwegian units in Ofoten. When the Germans took it on the ninth of April 1940, they got their hands on equipment for several thousand men: rifles, machine guns, ammunition and uniforms.\n\nThat turned out to matter a few days later. After the second naval battle around two thousand six hundred German sailors came ashore with nothing but what they stood up in. They were armed with Norwegian Krag-Jørgensen rifles from this depot and put into the line as infantry.\n\nThe Allies took the depot back during the landing at Bjerkvik on the thirteenth of May."
+    },
+    "fact": {
+      "no": "Tyske kilder oppgir at det ble tatt rundt åtte tusen geværer og over tre hundre mitraljøser der.",
+      "en": "German sources give the haul as around eight thousand rifles and over three hundred machine guns."
+    },
+    "wiki": {
+      "no": "Elvegårdsmoen",
+      "en": "Elvegårdsmoen"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "dietl" }
+    ]
+  },
+  "ankenes": {
+    "name": {
+      "no": "Ankenes",
+      "en": "Ankenes"
+    },
+    "hook": {
+      "no": "Halvøya sør for byen, der polakkene lå.",
+      "en": "The peninsula south of the town, where the Poles were."
+    },
+    "body": {
+      "no": "Ankenes ligger rett over vannet fra Narvik, på sørsiden av fjorden. Fra høydene der ser du rett bort på byen.\n\nDen polske fjellbrigaden ble satt inn her fra midten av mai 1940 og kjempet seg østover mot Beisfjord. Under sluttangrepet den tjueåttende mai tok polakkene høydene sør for byen og stengte den veien ut for tyskerne.\n\nRundt nitti polske soldater mistet livet i kampene om Narvik. De hadde reist fra et land som var okkupert, gjennom Romania og Ungarn til Frankrike, og videre hit.",
+      "en": "Ankenes lies straight across the water from Narvik, on the south side of the fjord. From the heights there you look directly over at the town.\n\nThe Polish Highland Brigade was put in here from the middle of May 1940 and fought its way east towards Beisfjord. During the final attack on the twenty-eighth of May the Poles took the heights south of the town and closed that way out for the Germans.\n\nAround ninety Polish soldiers were killed in the fighting for Narvik. They had come from an occupied country, through Romania and Hungary to France, and on to here."
+    },
+    "fact": {
+      "no": "Det står et polsk minnesmerke på Ankenes. Brigaden ble oppløst etter at Frankrike falt noen uker senere.",
+      "en": "There is a Polish memorial at Ankenes. The brigade was disbanded after France fell a few weeks later."
+    },
+    "wiki": {
+      "no": "Ankenes",
+      "en": "Ankenes"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "bohusz-szyszko" }
+    ]
+  },
+  "gratangen": {
+    "name": {
+      "no": "Gratangen",
+      "en": "Gratangen"
+    },
+    "hook": {
+      "no": "En bunn med høydedrag rundt på alle kanter, og en bataljon som la seg til å sove der.",
+      "en": "A hollow with high ground all round it, and a battalion that lay down to sleep there."
+    },
+    "body": {
+      "no": "Natten til tjuefemte april 1940 kom en norsk bataljon over fjellet til Gratangsbotn og fant de tyske stillingene forlatt. Mennene var utslitt etter en marsj i uvær og dyp snø, og de gikk inn i husene for å hvile. Vaktholdet ble ikke satt ordentlig ut.\n\nVed daggry kom tyskerne ned fra høydene rundt og skjøt inn i husene. Trettifire nordmenn ble drept, sekstifire såret og hundre og tretti tatt til fange. Tre av fem kompanisjefer falt. Tyskerne mistet seks mann.\n\nDet er den verste enkeltdagen 6. divisjon hadde. Likevel måtte tyskerne gi opp Gratangen kort etter, fordi resten av divisjonen fortsatte å presse på.",
+      "en": "On the night of the twenty-fifth of April 1940 a Norwegian battalion came over the mountain to Gratangsbotn and found the German positions abandoned. The men were exhausted after a march in foul weather and deep snow, and they went into the houses to rest. Sentries were not properly posted.\n\nAt daybreak the Germans came down off the surrounding heights and fired into the houses. Thirty-four Norwegians were killed, sixty-four wounded and a hundred and thirty taken prisoner. Three of the five company commanders fell. The Germans lost six men.\n\nIt was the worst single day the 6th Division had. Even so, the Germans had to give Gratangen up shortly afterwards, because the rest of the division kept pushing."
+    },
+    "fact": {
+      "no": "Mange av de norske tapene ved Gratangen var forfrysninger, ikke sår. Å ligge stille i snø i timevis er farlig i seg selv.",
+      "en": "Many of the Norwegian casualties at Gratangen were frostbite rather than wounds. Lying still in snow for hours is dangerous in itself."
+    },
+    "wiki": {
+      "no": "Slaget ved Gratangen",
+      "en": "Battle of Gratangen"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "nord-norge-1940" },
+      { "kind": "person", "id": "fleischer" }
+    ]
+  },
+  "harstad": {
+    "name": {
+      "no": "Harstad",
+      "en": "Harstad"
+    },
+    "hook": {
+      "no": "De alliertes hovedkvarter, seks mil fra byen de skulle ta, og bombet nesten daglig.",
+      "en": "The Allied headquarters, sixty kilometres from the town they were to take, and bombed almost daily."
+    },
+    "body": {
+      "no": "Britene satte opp hovedkvarter i Harstad den fjortende april 1940. Byen hadde havn, den lå utenfor tysk rekkevidde på bakken, og den var det nærmeste stedet det gikk an å samle en styrke.\n\nHer kom alt i land: britiske gardebataljoner, franske alpejegere, Fremmedlegionen, den polske fjellbrigaden. Og her satt de i seks uker mens admiralen og generalen var uenige om hva som skulle gjøres.\n\nTyske fly fra Værnes ved Trondheim bombet Harstad nesten hver dag. De allierte hadde ingen flyplass i Nord-Norge før langt ut i mai, da britiske jagerfly begynte å operere fra Bardufoss.",
+      "en": "The British set up headquarters at Harstad on the fourteenth of April 1940. The town had a harbour, it lay out of German reach on the ground, and it was the nearest place a force could be gathered.\n\nEverything came ashore here: British guards battalions, French alpine troops, the Foreign Legion, the Polish Highland Brigade. And here they sat for six weeks while the admiral and the general disagreed about what should be done.\n\nGerman aircraft from Værnes near Trondheim bombed Harstad almost every day. The Allies had no airfield in northern Norway until well into May, when British fighters began operating from Bardufoss."
+    },
+    "fact": {
+      "no": "Bardufoss ble den første flyplassen i Nord-Norge de allierte kunne bruke. Flyene derfra ble til slutt fløyet ombord på Glorious.",
+      "en": "Bardufoss became the first airfield in northern Norway the Allies could use. Its aircraft were in the end flown aboard Glorious."
+    },
+    "wiki": {
+      "no": "Harstad",
+      "en": "Harstad"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "auchinleck" }
+    ]
+  },
+  "bjornfjell": {
+    "name": {
+      "no": "Bjørnfjell",
+      "en": "Bjørnfjell"
+    },
+    "hook": {
+      "no": "En jernbanestasjon på snaufjellet, fire mil fra havet og seks kilometer fra Sverige.",
+      "en": "A railway station on the bare mountain, forty kilometres from the sea and six from Sweden."
+    },
+    "body": {
+      "no": "Bjørnfjell er nest siste stasjon på Ofotbanen før grensen. Det er ingenting der oppe: snaufjell, snø til langt ut i juni, og en jernbanelinje.\n\nDa Dietl mistet Narvik den tjueåttende mai 1940, trakk han seg hit. Herfra hadde han to muligheter: å bli stående til forsyningene tok slutt, eller å gå de siste kilometerne over til Sverige og bli internert.\n\nDet ble ikke nødvendig. De allierte reiste hjem, og tyskerne gikk tilbake ned til byen den åttende juni. To dager senere ble kapitulasjonen for 6. divisjon undertegnet nettopp her, av general Dietl og en norsk oberstløytnant.",
+      "en": "Bjørnfjell is the last station but one on the Ofoten Line before the frontier. There is nothing up there: bare mountain, snow well into June, and a railway line.\n\nWhen Dietl lost Narvik on the twenty-eighth of May 1940, he pulled back here. From here he had two options: stand until the supplies ran out, or walk the last few kilometres into Sweden and be interned.\n\nIt did not come to that. The Allies went home, and the Germans walked back down to the town on the eighth of June. Two days later the capitulation of the 6th Division was signed right here, by General Dietl and a Norwegian lieutenant colonel."
+    },
+    "fact": {
+      "no": "Tyskerne fikk forsyninger sluppet ned fra fly her oppe gjennom hele mai, og noen transportfly landet på isen på fjellvannene.",
+      "en": "The Germans were supplied by air drop up here through the whole of May, and some transport aircraft landed on the ice of the mountain lakes."
+    },
+    "wiki": {
+      "no": "Bjørnfjell",
+      "en": "Bjørnfjell"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "kapitulasjon" },
+      { "kind": "person", "id": "dietl" }
+    ]
+  },
+  "kiruna": {
+    "name": {
+      "no": "Kiruna",
+      "en": "Kiruna"
+    },
+    "hook": {
+      "no": "Et fjell som er jernmalm hele veien gjennom, i et land som var nøytralt.",
+      "en": "A mountain that is iron ore the whole way through, in a country that was neutral."
+    },
+    "body": {
+      "no": "Kirunavaara er et av verdens største sammenhengende jernmalmfelt. Malmen holder rundt seksti til sytti prosent jern, som er uvanlig rikt, og den strekker seg flere kilometer nedover i bakken.\n\nGruvebyen ble grunnlagt i 1900, samtidig med jernbanen som skulle frakte malmen ut. Kiruna og Narvik er tvillingbyer på hver sin side av fjellet, bygd av det samme selskapet, i samme tiår, av samme grunn.\n\nSverige var nøytralt gjennom hele krigen og fortsatte å selge malm til Tyskland. Det er en av de vanskeligste delene av nordisk krigshistorie, og den blir fortsatt diskutert i Sverige.",
+      "en": "Kirunavaara is one of the largest continuous iron orefields in the world. The ore runs at around sixty to seventy per cent iron, which is unusually rich, and it extends several kilometres down into the ground.\n\nThe mining town was founded in 1900, at the same time as the railway that was to carry the ore out. Kiruna and Narvik are twin towns on either side of the mountain, built by the same company, in the same decade, for the same reason.\n\nSweden stayed neutral through the whole war and went on selling ore to Germany. It is one of the hardest parts of Nordic war history, and it is still argued about in Sweden."
+    },
+    "fact": {
+      "no": "Gruva i Kiruna er fortsatt i drift, og byen flyttes nå fysisk noen kilometer fordi bakken under den synker.",
+      "en": "The Kiruna mine is still working, and the town is now being physically moved a few kilometres because the ground under it is subsiding."
+    },
+    "wiki": {
+      "no": "Kiruna",
+      "en": "Kiruna"
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "jernmalm" },
+      { "kind": "topic", "id": "jernmalmen-og-krigen" }
+    ]
+  },
+  "orneset": {
+    "name": {
+      "no": "Orneset",
+      "en": "Orneset"
+    },
+    "hook": {
+      "no": "Fjæra der Narvik ble tatt tilbake, om morgenen den 28. mai 1940.",
+      "en": "The shore where Narvik was taken back, on the morning of 28 May 1940."
+    },
+    "body": {
+      "no": "Orneset ligger på sørsiden av Rombaken, like øst for Narvik sentrum. Fra Øyjord på nordsiden er det knapt to kilometer over vannet.\n\nOm morgenen den tjueåttende mai 1940 gikk to bataljoner fra Fremmedlegionen og en norsk bataljon i land her, etter en natt med bombardement fra skipene. Det var tre landgangsfartøy og noen småbåter, så styrken måtte komme i puljer, og de første som kom, lå nede i fjæra og ble skutt på ovenfra mens båtene dro tilbake etter de neste.\n\nDe holdt stand, og utover formiddagen ga tyskerne opp byen.",
+      "en": "Orneset lies on the south shore of Rombaken, just east of the centre of Narvik. From Øyjord on the north side it is barely two kilometres across the water.\n\nOn the morning of the twenty-eighth of May 1940 two battalions of the Foreign Legion and a Norwegian battalion landed here, after a night of bombardment from the ships. There were three landing craft and some small boats, so the force had to come in waves, and the first men ashore lay down on the shore and were shot at from above while the boats went back for the next lot.\n\nThey held on, and through the morning the Germans gave up the town."
+    },
+    "fact": {
+      "no": "Norske og franske avdelinger gikk inn i byen sammen. Kildene fra de to landene legger vekt på hver sin, og begge har rett.",
+      "en": "Norwegian and French units entered the town together. The sources from the two countries each emphasise their own, and both are right."
+    },
+    "wiki": {
+      "no": "Slaget om Narvik",
+      "en": "Battles of Narvik"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "forste-seier" },
+      { "kind": "term", "id": "fremmedlegionen" }
+    ]
+  },
+  "tromso": {
+    "name": {
+      "no": "Tromsø",
+      "en": "Tromsø"
+    },
+    "hook": {
+      "no": "Norges hovedstad i fem uker, våren 1940.",
+      "en": "Norway's capital for five weeks in the spring of 1940."
+    },
+    "body": {
+      "no": "Da konge, regjering og storting flyktet nordover fra Oslo, endte de til slutt i Tromsø. Fra begynnelsen av mai 1940 ble byen i praksis landets hovedstad, med regjeringskontorer i lånte lokaler.\n\nDet var også hit general Fleischer fløy den tiende april for å sette i gang mobiliseringen av 6. divisjon.\n\nDen sjuende juni gikk kong Haakon, kronprins Olav og regjeringen om bord i den britiske krysseren Devonshire i Tromsø og forlot landet. De kom tilbake nøyaktig fem år senere, den sjuende juni 1945.",
+      "en": "When the King, the government and parliament fled north from Oslo, they ended up at Tromsø. From the beginning of May 1940 the town was in practice the country's capital, with government offices in borrowed rooms.\n\nIt was also where General Fleischer flew on the tenth of April to set the mobilisation of the 6th Division going.\n\nOn the seventh of June King Haakon, Crown Prince Olav and the government went aboard the British cruiser Devonshire at Tromsø and left the country. They came back exactly five years later, on the seventh of June 1945."
+    },
+    "fact": {
+      "no": "Devonshire hadde 461 passasjerer om bord. Hun seilte i radiotaushet og passerte ikke langt fra der Glorious ble senket dagen etter.",
+      "en": "Devonshire had 461 passengers aboard. She sailed under radio silence and passed not far from where Glorious was sunk the following day."
+    },
+    "wiki": {
+      "no": "Tromsø",
+      "en": "Tromsø"
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "haakon" },
+      { "kind": "topic", "id": "hvem-styrte-norge" }
+    ]
+  },
+  "glorious": {
+    "name": {
+      "no": "HMS Glorious",
+      "en": "HMS Glorious"
+    },
+    "hook": {
+      "no": "Et hangarskip som ble senket på under to timer, med femten hundre mann om bord.",
+      "en": "An aircraft carrier sunk in under two hours, with fifteen hundred men aboard."
+    },
+    "body": {
+      "no": "Glorious var bygd som slagkrysser i første verdenskrig og gjort om til hangarskip på tjuetallet. I juni 1940 hadde hun hentet inn britiske jagerfly fra Bardufoss — blant annet Hurricane-fly som landet på dekk uten fangkroker, noe ingen hadde gjort før.\n\nDen åttende juni seilte hun hjemover for seg selv, med to jagere som eskorte, uten fly i lufta og uten utkikk i masten. De tyske slagskipene Scharnhorst og Gneisenau oppdaget henne først.\n\nHun ble truffet i flydekket etter få minutter, slik at ingen fly kunne komme opp, og sank rundt klokka seks om ettermiddagen. Jagerne Acasta og Ardent gikk ned mens de forsøkte å dekke henne. Acasta rakk å treffe Scharnhorst med en torpedo.\n\nFemten hundre og nitten mann omkom. Rundt førti ble reddet. Det er flere døde på én ettermiddag enn i alle kampene om Narvik til sammen.",
+      "en": "Glorious was built as a battlecruiser in the First World War and converted to a carrier in the 1920s. In June 1940 she had taken aboard British fighters from Bardufoss — among them Hurricanes that landed on deck without arrester hooks, which nobody had done before.\n\nOn the eighth of June she was steaming home on her own, with two destroyers as escort, no aircraft up and no lookout in the masthead. The German battleships Scharnhorst and Gneisenau saw her first.\n\nShe was hit in the flight deck within minutes, so no aircraft could get off, and sank around six in the evening. The destroyers Acasta and Ardent went down trying to cover her. Acasta got a torpedo into Scharnhorst before she sank.\n\nFifteen hundred and nineteen men died. Around forty were saved. That is more dead in one afternoon than in all the fighting for Narvik put together."
+    },
+    "fact": {
+      "no": "Hvorfor Glorious seilte alene og uten luftvakt, er fremdeles omstridt. Rapportene fra den gangen svarer ikke på det.",
+      "en": "Why Glorious sailed alone and without an air patrol is still disputed. The reports from the time do not answer it."
+    },
+    "wiki": {
+      "no": "HMS Glorious",
+      "en": "HMS Glorious"
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "hvordan-vet-vi-det" }
+    ]
+  }
+}

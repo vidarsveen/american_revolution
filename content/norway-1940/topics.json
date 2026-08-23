@@ -1,0 +1,195 @@
+{
+  "//": [
+    "Longer reads. A topic is a question a chapter raises and cannot answer in a",
+    "sentence read aloud: why the ore mattered, who was actually running Norway,",
+    "what happened to the people who lived where the fighting was, and how anyone",
+    "knows any of it eighty-five years later.",
+    "",
+    "`hvordan-vet-vi-det` is marked three times across the two chapters, on purpose.",
+    "It is the one this whole app exists for."
+  ],
+  "jernmalmen-og-krigen": {
+    "title": {
+      "no": "Malmen som startet det hele",
+      "en": "The ore that started it"
+    },
+    "hook": {
+      "no": "Hele felttoget handlet om stein. Ikke om Norge, og ikke om nordmenn.",
+      "en": "The whole campaign was about rock. Not about Norway, and not about Norwegians."
+    },
+    "body": {
+      "no": "Tysk industri trengte jern, og den beste jernmalmen Tyskland kunne nå, lå i Nord-Sverige. Fra Kiruna og Malmberget går det jernbane to veier: østover til Luleå ved Bottenvika, og vestover over fjellet til Narvik.\n\nLuleå fryser inne om vinteren. Narvik gjør det aldri, fordi Golfstrømmen holder kysten åpen helt opp til Ishavet. Så mellom desember og april var Narvik den eneste utskipningshavnen som virket — og den lå i et nøytralt land, med en lang norsk kyst foran seg der tyske skip kunne seile innaskjærs, beskyttet av nøytraliteten, nesten hele veien hjem.\n\nBritene så det samme kartet. Churchill hadde presset på for å stoppe malmtrafikken siden høsten 1939. Tyskerne så at britene så det, og fryktet at Norge skulle bli en base for angrep mot malmen. Begge sider snakket om Norge som et problem som måtte løses, og ingen av dem spurte nordmennene.\n\nDet ironiske er hvordan det endte. Malmkaia i Narvik ble sprengt, og trafikken derfra falt til under en halv million tonn i 1940. Men Sverige sendte like mye jern til Tyskland det året som året før. Malmen gikk bare østover i stedet. Prisen var betalt i Narvik; gevinsten ble aldri hentet.",
+      "en": "German industry needed iron, and the best iron ore Germany could reach lay in northern Sweden. From Kiruna and Malmberget the railway runs two ways: east to Luleå on the Gulf of Bothnia, and west over the mountains to Narvik.\n\nLuleå freezes in for the winter. Narvik never does, because the Gulf Stream keeps the coast open all the way to the Arctic. So between December and April Narvik was the only export harbour that worked — and it lay in a neutral country, with a long Norwegian coast in front of it where German ships could sail inside the islands, protected by that neutrality, almost the whole way home.\n\nThe British were looking at the same map. Churchill had been pressing to stop the ore traffic since the autumn of 1939. The Germans could see that the British could see it, and feared Norway becoming a base for attacks on the ore. Both sides talked about Norway as a problem to be solved, and neither of them asked the Norwegians.\n\nThe ironic part is how it ended. The ore quay at Narvik was blown up, and traffic from there fell to under half a million tonnes in 1940. But Sweden sent as much iron to Germany that year as the year before. The ore simply went east instead. The price was paid at Narvik; the prize was never collected."
+    },
+    "fact": {
+      "no": "Ofotbanen er 43 kilometer på norsk side og ble åpnet i 1902. Den er fremdeles den eneste jernbanen i Norge som ikke henger sammen med resten av det norske nettet.",
+      "en": "The Ofoten Line is 43 kilometres on the Norwegian side and opened in 1902. It is still the only railway in Norway that is not connected to the rest of the Norwegian network."
+    },
+    "figures": [
+      {
+        "value": { "no": "ca. 43 %", "en": "about 43%" },
+        "label": { "no": "av tysk jernmalm kom fra Sverige", "en": "of German iron ore came from Sweden" }
+      },
+      {
+        "value": { "no": "43 km", "en": "43 km" },
+        "label": { "no": "fra Narvik til svenskegrensen", "en": "from Narvik to the Swedish frontier" }
+      }
+    ],
+    "seeAlso": [
+      { "kind": "term", "id": "jernmalm" },
+      { "kind": "term", "id": "noytralitet" }
+    ]
+  },
+  "vinterkrigen": {
+    "title": {
+      "no": "Vinterkrigen, og hva den ble brukt til",
+      "en": "The Winter War, and what it was used for"
+    },
+    "hook": {
+      "no": "Sovjetunionen angrep Finland. Britene og franskmennene tilbød hjelp — og det de egentlig var ute etter, lå i Sverige.",
+      "en": "The Soviet Union attacked Finland. Britain and France offered help — and what they were really after lay in Sweden."
+    },
+    "body": {
+      "no": "Den 30. november 1939 angrep Sovjetunionen Finland. Finnene slo tilbake langt hardere enn noen hadde ventet, og saken vakte enorm sympati i hele Vesten. Rundt åtte tusen frivillige fra andre land reiste for å slåss for Finland, over åtte hundre av dem fra Norge.\n\nDe allierte tilbød seg å sende en ekspedisjonsstyrke. Ruten de foreslo, gikk i land i Narvik og videre med tog gjennom Sverige. Se på kartet, og det er lett å se hva den ruten går rett gjennom: malmfeltene.\n\nBåde Norge og Sverige sa nei. Begge var nøytrale, og begge skjønte hva som ville skje med dem hvis en alliert hær marsjerte gjennom dem. Da Finland sluttet fred 12. mars 1940, falt påskuddet bort.\n\nDa lagde britene i stedet Operasjon Wilfred: legge miner i norsk farvann, tvinge malmskipene ut på åpent hav. Minene ble lagt 8. april. Tyske skip var da allerede på vei nordover, av samme grunn.",
+      "en": "On 30 November 1939 the Soviet Union attacked Finland. The Finns hit back far harder than anyone had expected, and the cause drew enormous sympathy across the West. Around eight thousand foreign volunteers went to fight for Finland, over eight hundred of them Norwegians.\n\nThe Allies offered to send an expeditionary force. The route they proposed landed at Narvik and went on by train through Sweden. Look at the map, and it is easy to see what that route runs straight through: the orefields.\n\nBoth Norway and Sweden said no. Both were neutral, and both could see what would happen to them if an Allied army marched through. When Finland made peace on 12 March 1940, the pretext fell away.\n\nSo the British made Operation Wilfred instead: lay mines in Norwegian waters, force the ore ships out into open sea. The mines went down on 8 April. German ships were by then already steaming north, for the same reason."
+    },
+    "fact": {
+      "no": "Da minene ble lagt 8. april, var den tyske invasjonsflåten allerede til sjøs. De to operasjonene bommet på hverandre med under et døgn.",
+      "en": "When the mines were laid on 8 April the German invasion fleet was already at sea. The two operations missed each other by less than a day."
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "jernmalmen-og-krigen" },
+      { "kind": "term", "id": "noytralitet" }
+    ]
+  },
+  "hvem-styrte-norge": {
+    "title": {
+      "no": "Hvem styrte Norge i 1940",
+      "en": "Who was running Norway in 1940"
+    },
+    "hook": {
+      "no": "En konge som var valgt, en regjering som hadde spart på forsvaret, og en mann i radioen som ingen hadde bedt om.",
+      "en": "An elected king, a government that had saved money on defence, and a man on the radio nobody had asked for."
+    },
+    "body": {
+      "no": "Norge hadde vært selvstendig siden 1905 og hadde valgt seg en konge: Haakon VII, dansk prins, som lot folket stemme over ham før han takket ja.\n\nRegjeringen var Arbeiderpartiets, med Johan Nygaardsvold som statsminister siden 1935. Den hadde bygd trygdeordninger og skapt arbeid gjennom depresjonen, og den hadde brukt lite på forsvaret. Det var ikke bare gjerrighet: Arbeiderpartiet hadde vært prinsipielt mot opprustning, og nøytraliteten hadde jo virket sist.\n\nNatten til 9. april flyktet konge, regjering og storting fra Oslo nordover. Samme kveld gikk Vidkun Quisling inn i radiohuset og utropte seg selv til statsminister. Kuppet var hans eget påfunn, og det gjorde tyskerne mer skade enn nytte: nordmenn som hadde vært i tvil, sluttet å være det.\n\nDa tyskerne krevde at kongen skulle utnevne en ny regjering, sa Haakon at han ville abdisere før han gjorde det, og at regjeringen fikk bestemme selv. Regjeringen sa nei. Det er den avgjørelsen som gjorde at Norge fortsatte å eksistere som stat gjennom hele krigen, med regjering i London og verdens fjerde største handelsflåte i alliert tjeneste.",
+      "en": "Norway had been independent since 1905 and had chosen itself a king: Haakon VII, a Danish prince, who insisted the people vote on him before he accepted.\n\nThe government was Labour's, with Johan Nygaardsvold as prime minister since 1935. It had built social insurance and made work through the depression, and it had spent little on defence. That was not only thrift: Labour had been opposed to rearmament on principle, and neutrality had after all worked last time.\n\nOn the night of 9 April the King, the government and parliament fled north from Oslo. That same evening Vidkun Quisling walked into the broadcasting house and declared himself prime minister. The coup was his own idea, and it did the Germans more harm than good: Norwegians who had been in doubt stopped being in doubt.\n\nWhen the Germans demanded that the King appoint a new government, Haakon said he would abdicate before he did it, and that the government must decide for itself. The government said no. That decision is why Norway went on existing as a state right through the war, with a government in London and the world's fourth largest merchant fleet in Allied service."
+    },
+    "fact": {
+      "no": "Haakon VII ble utropt til konge etter en folkeavstemning i 1905. Nesten 79 prosent stemte for monarki.",
+      "en": "Haakon VII was made king after a referendum in 1905. Almost 79 per cent voted for a monarchy."
+    },
+    "seeAlso": [
+      { "kind": "person", "id": "haakon" },
+      { "kind": "term", "id": "kapitulasjon" }
+    ]
+  },
+  "sivile-i-krigen": {
+    "title": {
+      "no": "De som bodde der",
+      "en": "The people who lived there"
+    },
+    "hook": {
+      "no": "Narvik ble bombet av begge sider i to måneder. Folk mistet husene sine uansett hvem som vant.",
+      "en": "Narvik was bombed by both sides for two months. People lost their houses whoever won."
+    },
+    "body": {
+      "no": "Kampene om Narvik foregikk i og rundt bygder der det bodde folk. Bjerkvik ble skutt i brann av britiske og franske skip natten til 13. mai. De allierte hadde fått høre at bygda var evakuert. Den var ikke det.\n\nHvor mange sivile som døde i Bjerkvik, er ikke sikkert. Lokalhistoriske kilder oppgir 18 døde og 95 hus ødelagt; andre framstillinger sier 14 døde og 178 bygninger. Sprikende tall er ikke uvanlig når ingen fikk telle ordentlig etterpå — og når det som skjedde, ble gjort av dem som skulle være på din side.\n\nNarvik by ble bombet gjennom hele mai, først av tyske fly som prøvde å forsyne Dietl og ramme britene, og siden av alliert artilleri og skipsskyts. Da byen ble tatt tilbake 28. mai, var store deler av den ødelagt. Da tyskerne kom tilbake 8. juni, brant det fortsatt.\n\nMange av innbyggerne var evakuert til bygdene rundt. Andre satt i kjellere. Det finnes lite plass til dem i de fleste framstillingene av slaget, som handler om skip og generaler. Det er verdt å legge merke til hvem en fortelling har plass til, og hvem den ikke har plass til.",
+      "en": "The fighting for Narvik took place in and around villages where people lived. Bjerkvik was set on fire by British and French ships on the night of 13 May. The Allies had been told the village was evacuated. It was not.\n\nHow many civilians died at Bjerkvik is not certain. Local history sources give 18 dead and 95 houses destroyed; other accounts say 14 dead and 178 buildings. Diverging figures are not unusual when nobody was able to count properly afterwards — and when what happened was done by the people who were supposed to be on your side.\n\nThe town of Narvik was bombed through the whole of May, first by German aircraft trying to supply Dietl and hit the British, later by Allied artillery and naval guns. When the town was retaken on 28 May, much of it was destroyed. When the Germans came back on 8 June, it was still burning.\n\nMany of the inhabitants had been evacuated to the villages around. Others sat in cellars. There is little room for them in most accounts of the battle, which are about ships and generals. It is worth noticing who a story has room for, and who it does not."
+    },
+    "fact": {
+      "no": "Narvik ble gjenoppbygd etter krigen. Byen fikk sitt eget krigsmuseum i 1964, midt i sentrum.",
+      "en": "Narvik was rebuilt after the war. The town got its own war museum in 1964, in the middle of the centre."
+    },
+    "seeAlso": [
+      { "kind": "topic", "id": "hvordan-vet-vi-det" },
+      { "kind": "term", "id": "landgangsfartoy" }
+    ]
+  },
+  "forste-seier": {
+    "title": {
+      "no": "«Den første allierte seieren»",
+      "en": "'The first Allied victory'"
+    },
+    "hook": {
+      "no": "Narvik blir kalt den første allierte seieren på land. Det stemmer. Det er bare verdt å si nøyaktig hva det betyr.",
+      "en": "Narvik is called the first Allied victory on land. That is true. It is just worth saying exactly what it means."
+    },
+    "body": {
+      "no": "Store norske leksikon skriver at gjenerobringen av Narvik 28. mai 1940 var «den første allierte militære seieren over tyske styrker på land under krigen». Det er en riktig setning. Tyske styrker ble kastet ut av en by de hadde tatt, av soldater på bakken, og det hadde ikke skjedd noe sted før.\n\nSamtidig: nettstedet Norgeshistorie, drevet av Universitetet i Oslo, kaller seieren «amputert». Grunnen er enkel. De allierte hadde bestemt seg for å forlate Nord-Norge fire dager før de tok byen. Narvik ble holdt i elleve dager. Den 8. juni var den tysk igjen.\n\nBegge deler er sanne samtidig, og det er hele poenget. En historisk påstand kan være riktig og likevel gi et galt inntrykk, hvis den står alene. «Første allierte seier på land» er riktig; «de allierte vant ved Narvik» er det ikke.\n\nDet som virkelig ble vunnet, var to ting. Tyskland mistet halve jagerflåten sin i Ofotfjorden, og fikk den aldri tilbake. Og det ble slått fast, foran hele verden, at tyske styrker kunne slås. I mai 1940 var det ikke en selvfølge.",
+      "en": "Store norske leksikon, the Norwegian national encyclopaedia, writes that the recapture of Narvik on 28 May 1940 was 'the first Allied military victory over German forces on land during the war'. That is a correct sentence. German forces were thrown out of a town they had taken, by soldiers on the ground, and that had not happened anywhere before.\n\nAt the same time: Norgeshistorie, run by the University of Oslo, calls the victory 'amputated'. The reason is simple. The Allies had decided to leave northern Norway four days before they took the town. Narvik was held for eleven days. On 8 June it was German again.\n\nBoth things are true at once, and that is the whole point. A historical claim can be correct and still leave a false impression, if it stands on its own. 'The first Allied land victory' is correct; 'the Allies won at Narvik' is not.\n\nWhat was really won was two things. Germany lost half its destroyer force in Ofotfjord and never got it back. And it was demonstrated, in front of the whole world, that German forces could be beaten. In May 1940 that was not obvious."
+    },
+    "fact": {
+      "no": "Da Hitler senere skulle planlegge invasjon av England, manglet han jagere til å eskortere den. Ti av dem lå i Rombaken.",
+      "en": "When Hitler later came to plan the invasion of England, he lacked destroyers to escort it. Ten of them were lying in Rombaken."
+    },
+    "figures": [
+      {
+        "value": { "no": "11 dager", "en": "11 days" },
+        "label": { "no": "holdt de allierte Narvik", "en": "the Allies held Narvik" }
+      },
+      {
+        "value": { "no": "10 av 20", "en": "10 of 20" },
+        "label": { "no": "tyske jagere tapt her", "en": "German destroyers lost here" }
+      }
+    ],
+    "seeAlso": [
+      { "kind": "person", "id": "fleischer" },
+      { "kind": "topic", "id": "hvordan-vet-vi-det" }
+    ]
+  },
+  "hvordan-vet-vi-det": {
+    "title": {
+      "no": "Hvordan vet vi det?",
+      "en": "How do we know?"
+    },
+    "hook": {
+      "no": "Alt i denne fortellingen kommer fra noen. Spørsmålet er alltid hvem, og når.",
+      "en": "Everything in this story comes from somebody. The question is always who, and when."
+    },
+    "body": {
+      "no": "Kildene til slagene om Narvik er ujevne, og det er lærerikt å se hvorfor.\n\nDet beste vi har, er samtidige dokumenter: krigsdagbøker fra begge mariner, signaler som ble sendt og loggført, og den offisielle britiske Victoria Cross-sitasjonen. Når vi vet nøyaktig hva Warburton-Lee signaliserte fra HMS Hardy, er det fordi ordlyden er trykt i The London Gazette. Det er en kilde du kan slå opp i.\n\nVerre står det til med det som skjedde om bord på Eidsvold. Skipet sank på sekunder, og bare seks eller åtte mann overlevde. Setningen «Jeg angriper» blir sitert overalt, men den finnes ikke i noen samtidig kilde vi kan peke på. Den er fortalt videre. Det gjør den ikke nødvendigvis usann — men den er en annen slags påstand enn et signal i en logg, og appen merker den derfor som gjengitt av andre.\n\nEn tredje sort er minnene. Fridtjof Haug fortalte om Gratangen til NRK i 2014, syttifire år etter. Det er en ekte kilde, fra en mann som var der. Men et menneske som husker noe i syttifire år, husker det gjennom alt som har skjedd siden. Slike sitater merkes «nedtegnet lenge etterpå».\n\nSelv tall spriker. Døde på Eidsvold: 175, det er de fleste enige om. Overlevende: seks eller åtte. Sivile drept i Bjerkvik: fjorten eller atten. Når kilder er uenige, sier denne appen det, i stedet for å velge et tall og late som om det er sikkert.",
+      "en": "The sources for the battles of Narvik are uneven, and it is instructive to see why.\n\nThe best we have are contemporary documents: war diaries from both navies, signals that were sent and logged, and the official British Victoria Cross citation. When we know exactly what Warburton-Lee signalled from HMS Hardy, it is because the wording is printed in The London Gazette. That is a source you can look up.\n\nIt is worse for what happened aboard Eidsvold. The ship sank in seconds, and only six or eight men survived. The sentence 'I am attacking' is quoted everywhere, but it appears in no contemporary source we can point to. It was passed on. That does not make it untrue — but it is a different kind of claim from a signal in a log, and so this app marks it as reported by others.\n\nA third kind is memory. Fridtjof Haug told NRK about Gratangen in 2014, seventy-four years afterwards. That is a real source, from a man who was there. But a person who remembers something for seventy-four years remembers it through everything that has happened since. Quotations like that are marked 'written down long afterwards'.\n\nEven numbers disagree. Dead on Eidsvold: 175, and most sources agree. Survivors: six or eight. Civilians killed at Bjerkvik: fourteen or eighteen. When sources disagree, this app says so, instead of picking a number and pretending it is certain."
+    },
+    "fact": {
+      "no": "De tyske krigsdagbøkene fra 1940 ble tatt av de allierte i 1945 og oversatt. Derfor vet vi ofte mer om hva tyske sjefer tenkte enn om hva norske menige opplevde.",
+      "en": "The German war diaries from 1940 were captured by the Allies in 1945 and translated. That is why we often know more about what German commanders were thinking than about what Norwegian privates went through."
+    },
+    "seeAlso": [
+      { "kind": "term", "id": "victoria-cross" },
+      { "kind": "topic", "id": "sivile-i-krigen" }
+    ]
+  },
+  "nord-norge-1940": {
+    "title": {
+      "no": "Å slåss i Nord-Norge i april",
+      "en": "Fighting in North Norway in April"
+    },
+    "hook": {
+      "no": "Meterdyp snø, hardt frostvær om natten, og sol hele døgnet fra slutten av mai.",
+      "en": "Snow metres deep, hard frost at night, and daylight round the clock from the end of May."
+    },
+    "body": {
+      "no": "Terrenget rundt Narvik gjorde felttoget til det det ble. Fjellene går rett opp fra fjorden, det finnes nesten ingen veier, og i april ligger snøen flere meter dyp over tregrensen.\n\nDet betyr at alt måtte fraktes på ski, på rygg eller med båt. En bataljon som skulle flyttes fem kilometer i luftlinje, kunne bruke et døgn på det. Kanoner måtte dras. Sårede måtte bæres, ofte i timevis, ofte forgjeves.\n\nKulden var den andre fienden. Ved Gratangen ble mange av de norske tapene forfrysninger, ikke sår. Å ligge stille i snø i mange timer er farlig i seg selv, og en soldat som er våt og sliten, blir kald mye fortere enn en som ikke er det.\n\nOg fra midten av mai kommer midnattssolen. Nord for polarsirkelen går ikke sola ned. Det tar bort natten som skjul, både for angrep og for forsyninger — og det er en av grunnene til at britiske skip måtte gjøre alt de gjorde, i fullt dagslys.",
+      "en": "The ground around Narvik made the campaign what it was. The mountains rise straight out of the fjord, there are almost no roads, and in April the snow lies several metres deep above the treeline.\n\nThat means everything had to be moved on skis, on a man's back, or by boat. A battalion moving five kilometres as the crow flies could spend a day and a night doing it. Guns had to be dragged. Wounded men had to be carried, often for hours, often for nothing.\n\nThe cold was the second enemy. At Gratangen many of the Norwegian casualties were frostbite rather than wounds. Lying still in snow for hours is dangerous in itself, and a soldier who is wet and tired gets cold far faster than one who is not.\n\nAnd from the middle of May the midnight sun arrives. North of the Arctic Circle the sun does not set. That takes away night as cover, for attacks and for supply alike — and it is one reason British ships had to do everything they did in broad daylight."
+    },
+    "fact": {
+      "no": "I Narvik er sola over horisonten døgnet rundt fra rundt 25. mai til 18. juli.",
+      "en": "At Narvik the sun stays above the horizon around the clock from about 25 May to 18 July."
+    },
+    "figures": [
+      {
+        "value": { "no": "68° nord", "en": "68° north" },
+        "label": { "no": "Narviks breddegrad", "en": "the latitude of Narvik" }
+      },
+      {
+        "value": { "no": "43 km", "en": "43 km" },
+        "label": { "no": "jernbane, og ingen vei over fjellet", "en": "of railway, and no road over the mountain" }
+      }
+    ],
+    "seeAlso": [
+      { "kind": "term", "id": "fjelljeger" },
+      { "kind": "person", "id": "fleischer" }
+    ]
+  }
+}

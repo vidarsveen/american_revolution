@@ -1,0 +1,260 @@
+{
+  "id": "norway-1940",
+  "version": 1,
+  "work": {
+    "no": "Kampen om Narvik",
+    "en": "The Battle of Narvik"
+  },
+  "years": {
+    "no": "1940",
+    "en": "1940"
+  },
+  "//factions": [
+    "Declared by HUE, like the Roman pack: nobody has hand-tuned a palette for",
+    "this subject, and core/palette.js keeps the relationship between fill and",
+    "wash consistent however many sides there turn out to be.",
+    "",
+    "Six, and the point of six is the coalition. Narvik was retaken by",
+    "Norwegian, French, Polish and British troops fighting the same day, and",
+    "folding them into one 'allied' colour would hide the one thing about the",
+    "land battle a reader should remember. Sweden is `neutral` and stays that",
+    "way: the ore is the reason for the whole campaign and never picks a side."
+  ],
+  "factions": {
+    "german": {
+      "label": {
+        "no": "Tyske styrker",
+        "en": "German forces"
+      },
+      "hue": 352,
+      "sat": 0.95
+    },
+    "norwegian": {
+      "label": {
+        "no": "Norske styrker",
+        "en": "Norwegian forces"
+      },
+      "hue": 214
+    },
+    "british": {
+      "label": {
+        "no": "Britiske styrker",
+        "en": "British forces"
+      },
+      "hue": 186,
+      "sat": 0.9
+    },
+    "french": {
+      "label": {
+        "no": "Franske styrker",
+        "en": "French forces"
+      },
+      "hue": 268,
+      "sat": 0.8
+    },
+    "polish": {
+      "label": {
+        "no": "Polske styrker",
+        "en": "Polish forces"
+      },
+      "hue": 40
+    },
+    "neutral": {
+      "label": {
+        "no": "Nøytrale",
+        "en": "Neutrals"
+      },
+      "hue": 96,
+      "sat": 0.4
+    }
+  },
+  "map": {
+    "home": [
+      68.438,
+      17.427
+    ],
+    "zoom": {
+      "min": 2.6,
+      "max": 15,
+      "default": 8.4,
+      "maxFit": 12.6
+    },
+    "//basemap": [
+      "No regional Natural Earth extract. The two world levels carry the wide",
+      "shots — the North Sea, the ore route down the Baltic — and everything",
+      "closer than zoom 9.5 comes from the pack's own OSM detail below. Ofotfjord",
+      "is two kilometres wide and Natural Earth at 1:10M does not have it."
+    ],
+    "basemap": {
+      "levels": [
+        {
+          "name": "world-110m",
+          "maxZoom": 4.0
+        },
+        {
+          "name": "world-50m",
+          "maxZoom": null
+        }
+      ]
+    },
+    "//detail": [
+      "Built by tools/fetch-detail.py from this bbox. The chapters play at zoom",
+      "10-12.5, standing on the quay at Narvik, and the whole story is about a",
+      "fjord: ten destroyers went up it and could not come out. Without the",
+      "pack's own coastline the fjord is not on the map at all."
+    ],
+    "detail": {
+      "url": "geo/detail.json",
+      "minZoom": 9.2,
+      "bbox": [
+        15.4,
+        68.1,
+        18.5,
+        68.95
+      ]
+    },
+    "//borders": [
+      "Country borders ON, which is the opposite of the two historical packs and",
+      "is right here for one reason: the ore is Swedish and the port is",
+      "Norwegian, and that border is the whole subject. It is also one of the",
+      "oldest unchanged borders in Europe — fixed in 1751 and not moved since —",
+      "so drawing today's line across 1940 is honest rather than the",
+      "'Massachusetts included Maine' mistake."
+    ],
+    "borders": {
+      "country": true,
+      "state": false
+    },
+    "credit": "Natural Earth",
+    "accuracyNote": {
+      "no": "Grensene er dagens. Grensen mellom Norge og Sverige har ligget der siden 1751, men Finland hadde ennå ikke mistet Petsamo, og hadde derfor kyst mot Ishavet.",
+      "en": "The borders are the modern ones. The line between Norway and Sweden has stood since 1751, but Finland had not yet lost Petsamo, and so still had a coast on the Arctic Ocean."
+    },
+    "explore": {
+      "bounds": [
+        [
+          65.8,
+          11.0
+        ],
+        [
+          70.2,
+          23.0
+        ]
+      ],
+      "zoom": {
+        "min": 3.0,
+        "max": 13
+      }
+    },
+    "//extent": [
+      "Where this subject's coordinates are allowed to be. The fighting is inside",
+      "one fjord, but the story reaches Wilhelmshaven, Scapa Flow, Luleå on the",
+      "Baltic and Paris — the campaign was called off because of France, not",
+      "because of Narvik. check-data.py uses this to catch a swapped lat/lon."
+    ],
+    "extent": [
+      [
+        44.0,
+        -12.0
+      ],
+      [
+        72.0,
+        32.0
+      ]
+    ]
+  },
+  "era": {
+    "start": "1940-04-08",
+    "end": "1940-06-10",
+    "calendar": "gregorian",
+    "tickStep": "day"
+  },
+  "narration": {
+    "wps": [
+      1.9,
+      3.4
+    ],
+    "minContentWordMs": 100
+  },
+  "voices": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural",
+    "rate": "-10%"
+  },
+  "pools": {
+    "people": "people.json",
+    "media": "media.json",
+    "terms": "terms.json",
+    "topics": "topics.json",
+    "placeNotes": "place-notes.json",
+    "portraits": "portraits/"
+  },
+  "chapters": [
+    {
+      "id": "chapter-1940-04-09",
+      "title": {
+        "no": "Ti jagere opp fjorden",
+        "en": "Ten destroyers up the fjord"
+      },
+      "subtitle": {
+        "no": "9.–13. april 1940",
+        "en": "9–13 April 1940"
+      },
+      "blurb": {
+        "no": "De kom inn i snøkave og tok byen på en time. Så oppdaget de at de ikke hadde nok olje til å komme seg ut igjen.",
+        "en": "They came in through driving snow and took the town in an hour. Then they found they had not enough oil to get out again."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    },
+    {
+      "id": "chapter-1940-05-28",
+      "title": {
+        "no": "Byen de tok tilbake",
+        "en": "The town they took back"
+      },
+      "subtitle": {
+        "no": "April–juni 1940",
+        "en": "April–June 1940"
+      },
+      "blurb": {
+        "no": "Nordmenn, franskmenn, polakker og briter tok Narvik tilbake den 28. mai. Elleve dager senere seilte de alle sammen bort.",
+        "en": "Norwegians, Frenchmen, Poles and Britons took Narvik back on the twenty-eighth of May. Eleven days later all of them sailed away."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    }
+  ],
+  "checks": {
+    "//": [
+      "Where the pixel checks point their camera. s3.b8 is the beat with the whole",
+      "of Ofotfjord framed at zoom 9.6 and German markers at Herjangsfjorden,",
+      "Ballangen and the harbour — so land, water, place labels and side-coloured",
+      "markers are all in the same frame. `at` is 6s because those markers are",
+      "anchored to words that land four to six seconds in; sampling earlier finds",
+      "an empty fjord and reports it as no data rather than as a fail.",
+      "",
+      "Zoom 9.6 is also above map.detail.minZoom, so this samples the pack's own",
+      "OSM coastline rather than Natural Earth. Ofotfjord is two kilometres wide;",
+      "at 1:10M there is nothing there to have contrast with."
+    ],
+    "contrast": {
+      "chapter": "chapter-1940-04-09",
+      "beat": "s3.b8",
+      "at": 6.0
+    }
+  },
+  "shortName": {
+    "no": "Narvik",
+    "en": "Narvik"
+  },
+  "description": {
+    "no": "Malmen, fjorden og de to sjøslagene – og byen som ble tatt tilbake og forlatt i samme uke.",
+    "en": "The ore, the fjord and the two sea battles – and the town retaken and abandoned in the same week."
+  },
+  "poster": "warspite.jpg"
+}

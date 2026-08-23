@@ -1,0 +1,346 @@
+[
+  {
+    "id": "dietl",
+    "side": "german",
+    "lived": "1890–1944",
+    "portrait": "dietl.jpg",
+    "name": {
+      "no": "Eduard Dietl",
+      "en": "Eduard Dietl"
+    },
+    "role": {
+      "no": "Tysk generalløytnant, sjef for fjelljegerne i Narvik",
+      "en": "German lieutenant general, commanding the mountain troops at Narvik"
+    },
+    "hook": {
+      "no": "Han tok Narvik på fem timer, og ble sittende fast der i to måneder uten skip å reise med.",
+      "en": "He took Narvik in five hours, and then sat stuck there for two months with no ships to leave in."
+    },
+    "body": {
+      "no": "Dietl var bayrer, fjellsoldat og tidlig nazist — han hadde vært med i partiet allerede på tjuetallet. I 1940 var han sjef for tredje bergdivisjon, og det var hans folk som ble stuet om bord i jagerne som gikk til Narvik.\n\nDen niende april tok han byen uten kamp. Så mistet han hele flåten som skulle hente ham, og satt igjen med rundt to tusen fjelljegere og to tusen seks hundre sjøfolk uten skip, omringet i et fjellandskap uten veier.\n\nDen syttende april var Hitler så sikker på at Narvik var tapt at han ville la Dietl gå over grensen til Sverige og bli internert der. To generaler snakket ham fra det, og ordren som gikk nordover, sa i stedet at byen skulle holdes så lenge som mulig.\n\nDietl mistet Narvik den tjueåttende mai og fikk den tilbake elleve dager senere, uten kamp, fordi de allierte reiste hjem. Han ble den første i Wehrmacht som fikk eikeløv til Ridderkorset, og propagandaen gjorde ham til «helten fra Narvik». Han døde i en flyulykke i 1944.",
+      "en": "Dietl was a Bavarian, a mountain soldier and an early Nazi — he had joined the party back in the 1920s. In 1940 he commanded the 3rd Mountain Division, and it was his men who were packed aboard the destroyers that went to Narvik.\n\nOn the ninth of April he took the town without a fight. Then he lost the entire flotilla that was supposed to fetch him, and was left with some two thousand mountain troops and two thousand six hundred sailors with no ships, surrounded in a mountain landscape without roads.\n\nOn the seventeenth of April Hitler was so certain Narvik was lost that he wanted to let Dietl cross into Sweden and be interned there. Two generals talked him out of it, and the order that went north said instead that the town was to be held as long as possible.\n\nDietl lost Narvik on the twenty-eighth of May and had it back eleven days later, without a fight, because the Allies went home. He became the first man in the Wehrmacht to receive the Oak Leaves to the Knight's Cross, and propaganda made him 'the hero of Narvik'. He died in an air crash in 1944."
+    },
+    "fact": {
+      "no": "Hans egen soldater kalte fjellstillingen hans «Narvikfronten». Det var i praksis en jernbanelinje og noen fjelltopper.",
+      "en": "His own men called his mountain position 'the Narvik front'. In practice it was a railway line and a few mountain tops."
+    }
+  },
+  {
+    "id": "bonte",
+    "side": "german",
+    "lived": "1896–1940",
+    "portrait": "bonte.jpg",
+    "name": {
+      "no": "Friedrich Bonte",
+      "en": "Friedrich Bonte"
+    },
+    "role": {
+      "no": "Kommodor, sjef for de ti tyske jagerne",
+      "en": "Commodore, commanding the ten German destroyers"
+    },
+    "hook": {
+      "no": "Han fikk soldatene trygt i land, og klarte aldri å få skipene sine ut igjen.",
+      "en": "He got the soldiers safely ashore, and never managed to get his ships out again."
+    },
+    "body": {
+      "no": "Bonte førte Gruppe 1, de ti jagerne som fraktet Dietls fjelljegere til Narvik. Selve seilasen var et sjømannskapsstykke: over åtte hundre nautiske mil nordover i dårlig vær, uten å bli oppdaget, og fram i tide.\n\nProblemet begynte da de kom fram. Jagerne hadde brukt nesten all oljen, og bare ett av tre tankskip nådde Narvik. Fyllingen tok sju–åtte timer per par. Bonte spredte skipene sine ut i sidefjordene og satte ut en vaktpost ved fjordmunningen, men snøkavet gjorde vaktposten verdiløs.\n\nOm morgenen tiende april traff en britisk torpedo Wilhelm Heidkamp i akterskipet og detonerte ammunisjonen. Bonte var om bord og døde med rundt åtti av mannskapet. Han fikk Ridderkorset posthumt.\n\nEtter ham overtok Fritz Bey, som tre dager senere måtte se de åtte siste jagerne bli senket eller senke seg selv innerst i Rombaken.",
+      "en": "Bonte commanded Group 1, the ten destroyers that carried Dietl's mountain troops to Narvik. The passage itself was a feat of seamanship: over eight hundred nautical miles north in bad weather, undetected, and on time.\n\nThe trouble began when they arrived. The destroyers had burned nearly all their oil, and only one of three tankers reached Narvik. Refuelling took seven or eight hours a pair. Bonte spread his ships out into the side fjords and put a picket at the mouth of the fjord, but the driving snow made the picket worthless.\n\nOn the morning of the tenth of April a British torpedo hit Wilhelm Heidkamp aft and detonated her magazine. Bonte was aboard and died with around eighty of the crew. He was awarded the Knight's Cross posthumously.\n\nHe was succeeded by Fritz Bey, who three days later had to watch the last eight destroyers sunk or scuttled at the head of Rombaken."
+    },
+    "fact": {
+      "no": "Bonte hadde vært jagerkaptein siden 1930-tallet og regnes som en av de dyktigste tyske sjøoffiserene i sin generasjon.",
+      "en": "Bonte had commanded destroyers since the 1930s and is reckoned one of the ablest German sea officers of his generation."
+    }
+  },
+  {
+    "id": "willoch",
+    "side": "norwegian",
+    "lived": "1885–1940",
+    "portrait": "willoch.jpg",
+    "name": {
+      "no": "Odd Isaachsen Willoch",
+      "en": "Odd Isaachsen Willoch"
+    },
+    "role": {
+      "no": "Kommandørkaptein, sjef på panserskipet Eidsvold",
+      "en": "Commander, captain of the coastal defence ship Eidsvold"
+    },
+    "hook": {
+      "no": "Han sa nei to ganger til den tyske utsendingen, og fikk aldri fyrt av et skudd.",
+      "en": "He said no twice to the German envoy, and never got a shot away."
+    },
+    "body": {
+      "no": "Willoch var født i Larvik og hadde vært i marinen hele sitt voksne liv. Natten til niende april 1940 lå Eidsvold ved innløpet til Narvik havn, i mørke og tett snø.\n\nDa de tyske jagerne kom, avfyrte han et varselskudd og tok imot en tysk korvettkaptein som kom om bord med et krav om at skipet skulle overgis. Tyskerne kom som venner, sa utsendingen. Willoch avviste ham to ganger.\n\nRett etter at utsendingen forlot dekket, ble Eidsvold truffet av torpedoer fra Wilhelm Heidkamp. Skipet brakk i to og forsvant på sekunder. Hundre og syttifem mann døde, deriblant Willoch selv. Kildene er uenige om det var seks eller åtte som ble reddet.\n\nDen berømte setningen «Jeg angriper» blir gjengitt som hans siste melding. Den er verdt å behandle forsiktig: den står ikke i noen samtidig kilde, og nesten ingen som var på broa, overlevde til å fortelle den videre.",
+      "en": "Willoch was born at Larvik and had spent his whole adult life in the navy. On the night of the ninth of April 1940 Eidsvold lay at the mouth of Narvik harbour, in darkness and thick snow.\n\nWhen the German destroyers came he fired a warning shot and received a German lieutenant commander who came aboard with a demand that the ship be handed over. The Germans came as friends, the envoy said. Willoch refused him twice.\n\nJust after the envoy left the deck, Eidsvold was hit by torpedoes from Wilhelm Heidkamp. The ship broke in two and was gone in seconds. A hundred and seventy-five men died, Willoch among them. Sources disagree on whether six or eight were saved.\n\nThe famous sentence 'I am attacking' is given as his last message. It is worth handling carefully: it appears in no contemporary source, and almost nobody who was on the bridge survived to pass it on."
+    },
+    "fact": {
+      "no": "Vraket av Eidsvold ligger fortsatt i Ofotfjorden og er fredet som krigsgrav. Det er forbudt å dykke på det.",
+      "en": "The wreck of Eidsvold still lies in Ofotfjord and is protected as a war grave. Diving on it is forbidden."
+    }
+  },
+  {
+    "id": "askim",
+    "side": "norwegian",
+    "lived": "1884–1966",
+    "name": {
+      "no": "Per Askim",
+      "en": "Per Askim"
+    },
+    "role": {
+      "no": "Kommandør, sjef på panserskipet Norge og eldste sjøoffiser i Narvik",
+      "en": "Captain of the coastal defence ship Norge, and senior naval officer at Narvik"
+    },
+    "hook": {
+      "no": "Han rakk å fyre av noen skudd fra fire hundre meters hold. Ingen av dem traff.",
+      "en": "He got a few rounds away at four hundred metres. None of them hit."
+    },
+    "body": {
+      "no": "Askim førte Norge, søsterskipet til Eidsvold, og var eldste sjøoffiser på stedet. Skipet lå inne på havna i Narvik da de tyske jagerne kom inn i mørket.\n\nDa Eidsvold ble senket, åpnet Norge ild mot jageren Bernd von Arnim på kort hold. Skuddene bommet — kanonene var gamle, ildledningen var det også, og skipet lå stille. Arnim svarte med tre torpedosalver. Den tredje traff, og Norge sank på under et minutt med propellene fortsatt i gang.\n\nHundre og én mann omkom. Nitti ble reddet, blant dem Askim selv. Han overlevde krigen og skrev senere om det som skjedde. Nettopp fordi han overlevde, finnes det en øyenvitneskildring fra det ene skipet og nesten ingen fra det andre — og det er en god påminnelse om hvorfor historien om Eidsvold er tynnere enn historien om Norge.",
+      "en": "Askim commanded Norge, sister ship to Eidsvold, and was the senior naval officer on the spot. His ship lay inside Narvik harbour when the German destroyers came in out of the dark.\n\nWhen Eidsvold was sunk, Norge opened fire on the destroyer Bernd von Arnim at close range. The rounds missed — the guns were old, so was the fire control, and the ship was lying still. Arnim answered with three spreads of torpedoes. The third hit, and Norge sank in under a minute with her propellers still turning.\n\nA hundred and one men died. Ninety were saved, Askim among them. He survived the war and later wrote about what happened. Precisely because he survived, there is an eyewitness account from one ship and almost none from the other — a useful reminder of why the story of Eidsvold is thinner than the story of Norge."
+    },
+    "fact": {
+      "no": "Norge ligger på rundt tjue meters dyp midt i Narvik havn. Ankeret hennes står i dag utenfor krigsmuseet i byen.",
+      "en": "Norge lies at about twenty metres in the middle of Narvik harbour. Her anchor stands today outside the town's war museum."
+    },
+    "portraitNote": {
+      "no": "Det finnes ikke noe portrett av Askim på Wikimedia Commons med en lisens som er trygg å bruke her.",
+      "en": "There is no portrait of Askim on Wikimedia Commons under a licence that is safe to use here."
+    }
+  },
+  {
+    "id": "sundlo",
+    "side": "norwegian",
+    "lived": "1881–1965",
+    "portrait": "sundlo.jpg",
+    "name": {
+      "no": "Konrad Sundlo",
+      "en": "Konrad Sundlo"
+    },
+    "role": {
+      "no": "Oberst, sjef for garnisonen i Narvik",
+      "en": "Colonel, commanding the garrison at Narvik"
+    },
+    "hook": {
+      "no": "Han overga byen uten kamp, mot ordre. Etter krigen ble han frikjent for det verste og dømt for resten.",
+      "en": "He handed the town over without a fight, against orders. After the war he was acquitted of the worst charge and convicted of the rest."
+    },
+    "body": {
+      "no": "Sundlo hadde vært medlem av Nasjonal Samling siden 1933, altså av Quislings parti, og det var kjent. Han var likevel sjef for garnisonen i Narvik da tyskerne kom.\n\nDen niende april ringte han sin egen divisjonssjef, general Fleischer, og argumenterte for at forsvar var nytteløst. Fleischer beordret ham til å bryte forhandlingene og organisere forsvaret. Sundlo gjorde det ikke. Fleischer ga da kommandoen til en underordnet, med ordre om å arrestere Sundlo og samle troppene øst for byen. Klokka kvart over seks overga Sundlo Narvik.\n\nI 1947 ble han stilt for retten. Han ble frikjent for landssvik den niende april — retten fant ikke bevist at han hadde handlet etter avtale med tyskerne — men dømt for uaktsomhet, for ikke å ha forberedt forsvaret av byen, og for samarbeid under okkupasjonen. Dommen ble livsvarig tvangsarbeid. Han ble benådet i 1952.\n\nForskjellen mellom de to tiltalepunktene er verdt å holde fast ved. Det er lettere å fortelle historien om en forræder enn om en offiser som var uenig med ordren han fikk, og som ikke fulgte den.",
+      "en": "Sundlo had been a member of Nasjonal Samling — Quisling's party — since 1933, and this was known. He was nevertheless in command of the garrison at Narvik when the Germans came.\n\nOn the ninth of April he telephoned his own divisional commander, General Fleischer, and argued that defence was pointless. Fleischer ordered him to break off negotiations and organise the defence. Sundlo did not. Fleischer then handed command to a subordinate, with orders to arrest Sundlo and gather the troops east of the town. At a quarter past six Sundlo handed Narvik over.\n\nIn 1947 he was tried. He was acquitted of treason for the ninth of April — the court did not find it proved that he had acted in agreement with the Germans — but convicted of negligence, for failing to prepare the town's defence, and of collaboration during the occupation. The sentence was life with hard labour. He was pardoned in 1952.\n\nThe difference between the two charges is worth holding on to. It is easier to tell the story of a traitor than the story of an officer who disagreed with the order he was given, and did not obey it."
+    },
+    "fact": {
+      "no": "Tre av de åtte dommerne stemte for dødsstraff. Fem gjorde det ikke.",
+      "en": "Three of the eight judges voted for the death penalty. Five did not."
+    }
+  },
+  {
+    "id": "warburton-lee",
+    "side": "british",
+    "lived": "1895–1940",
+    "portrait": "warburton-lee.jpg",
+    "name": {
+      "no": "Bernard Warburton-Lee",
+      "en": "Bernard Warburton-Lee"
+    },
+    "role": {
+      "no": "Kaptein i Royal Navy, sjef for andre jagerflotilje",
+      "en": "Captain, Royal Navy, commanding the Second Destroyer Flotilla"
+    },
+    "hook": {
+      "no": "Han fikk vite at det lå seks store jagere der inne. Han hadde fem, og gikk inn likevel.",
+      "en": "He was told six large destroyers lay in there. He had five, and went in anyway."
+    },
+    "body": {
+      "no": "Warburton-Lee var walisisk, førtifire år gammel og hadde vært til sjøs siden han var tretten. Den niende april 1940 lå flotiljen hans ute i Vestfjorden.\n\nHan sendte en offiser i land på loskontoret på Tranøy for å høre hva som var inne i Ofotfjorden. Svaret var seks store jagere og en ubåt, og at leia kanskje var minelagt. Han telegraferte til Admiralitetet at han hadde tenkt å angripe ved daggry. Svaret la avgjørelsen på ham selv, og lovet å støtte den uansett hva den ble.\n\nHan gikk inn i snøkave om morgenen tiende april. Angrepet senket to tyske jagere og elleve handelsskip på under en time. Så kom fem tyske jagere ut av sidefjordene bak ham. Hardy ble skutt i stykker og satt på grunn ved Vidrek; Hunter ble senket.\n\nWarburton-Lee ble truffet på broa og døde. Det siste signalet hans — «Fortsett å angripe fienden» — er gjengitt ordrett i Victoria Cross-sitasjonen hans, den første som ble delt ut i andre verdenskrig.",
+      "en": "Warburton-Lee was Welsh, forty-four years old, and had been at sea since he was thirteen. On the ninth of April 1940 his flotilla lay out in Vestfjord.\n\nHe sent an officer ashore to the pilot station at Tranøy to ask what was inside Ofotfjord. The answer was six large destroyers and a submarine, and that the channel might be mined. He signalled the Admiralty that he intended to attack at dawn. The answer put the decision on him, and promised to support it whatever it turned out to be.\n\nHe went in through driving snow on the morning of the tenth. The attack sank two German destroyers and eleven merchant ships in under an hour. Then five German destroyers came out of the side fjords behind him. Hardy was shot to pieces and run aground at Vidrek; Hunter was sunk.\n\nWarburton-Lee was hit on the bridge and died. His last signal — 'Continue to engage the enemy' — is quoted word for word in his Victoria Cross citation, the first awarded in the Second World War."
+    },
+    "fact": {
+      "no": "Trettifire av mannskapene fra Hardy og Hunter ligger begravet på Håkvik gravlund utenfor Narvik.",
+      "en": "Thirty-four of the men from Hardy and Hunter are buried at Håkvik cemetery outside Narvik."
+    }
+  },
+  {
+    "id": "whitworth",
+    "side": "british",
+    "lived": "1884–1973",
+    "portrait": "whitworth.jpg",
+    "name": {
+      "no": "William Whitworth",
+      "en": "William Whitworth"
+    },
+    "role": {
+      "no": "Viseadmiral i Royal Navy, sjef for angrepet 13. april",
+      "en": "Vice-Admiral, Royal Navy, commanding the attack of 13 April"
+    },
+    "hook": {
+      "no": "Han tok med seg et slagskip inn i en fjord som er to kilometer bred.",
+      "en": "He took a battleship into a fjord two kilometres wide."
+    },
+    "body": {
+      "no": "Etter at Warburton-Lees angrep hadde vist at tyskerne fremdeles lå i Ofotfjorden, ble Whitworth sendt tilbake for å gjøre jobben ferdig. Han hadde flagget sitt på slagskipet Warspite og ni jagere i følge.\n\nÅ ta et slagskip på tretti tusen tonn inn i en trang fjord med mulige miner og fiendtlige torpedoer er ikke lærebokstoff. Whitworth gjorde det likevel, den trettende april. Sjøflyet fra Warspite gikk foran og speidet, og oppdaget en tysk ubåt til ankers i Herjangsfjorden. Det senket den med to bomber — den første ubåten i krigen som ble senket fra lufta.\n\nDe åtte gjenværende tyske jagerne hadde nesten ingen torpedoer og nesten ingen granater igjen. De trakk seg innover i Rombaken og ble senket eller senket seg selv. Britene mistet ingen skip, men tjueåtte mann.\n\nWhitworth foreslo etterpå at marinen kunne ta byen med sjøfolk og marinesoldater med en gang. Hærsjefen i land mente det ville være et blodbad, og det ble ikke gjort. Om Whitworth hadde rett, er en av de mest diskuterte hva-om-ene i felttoget.",
+      "en": "After Warburton-Lee's attack had shown that the Germans were still in Ofotfjord, Whitworth was sent back to finish the job. He flew his flag in the battleship Warspite, with nine destroyers in company.\n\nTaking a thirty-thousand-ton battleship into a narrow fjord with possible mines and hostile torpedoes is not textbook practice. Whitworth did it anyway, on the thirteenth of April. Warspite's floatplane went ahead to scout and found a German submarine at anchor in Herjangsfjord. It sank her with two bombs — the first submarine in the war to be sunk from the air.\n\nThe eight remaining German destroyers had almost no torpedoes and almost no shells left. They pulled back into Rombaken and were sunk or scuttled. The British lost no ships, but twenty-eight men.\n\nWhitworth afterwards proposed that the navy take the town at once with sailors and marines. The army commander ashore thought it would be a bloodbath, and it was not done. Whether Whitworth was right is one of the most argued-over what-ifs of the campaign."
+    },
+    "fact": {
+      "no": "Warspite var bygd i 1913 og hadde vært med i Jyllandsslaget i 1916. Hun tjenestegjorde helt til 1945.",
+      "en": "Warspite was built in 1913 and had fought at Jutland in 1916. She served until 1945."
+    }
+  },
+  {
+    "id": "fleischer",
+    "side": "norwegian",
+    "lived": "1883–1942",
+    "portrait": "fleischer.jpg",
+    "name": {
+      "no": "Carl Gustav Fleischer",
+      "en": "Carl Gustav Fleischer"
+    },
+    "role": {
+      "no": "Generalmajor, sjef for 6. divisjon i Nord-Norge",
+      "en": "Major General, commanding the 6th Division in North Norway"
+    },
+    "hook": {
+      "no": "Han ledet den eneste norske divisjonen som ikke ble overrumplet, og den eneste som vant.",
+      "en": "He commanded the one Norwegian division that was not caught out, and the only one that won."
+    },
+    "body": {
+      "no": "Fleischer hadde hatt kommandoen i Nord-Norge siden januar 1940. Den niende april var han på inspeksjonsreise i Finnmark og ble snødd inne. Dagen etter fløy han til Tromsø og satte i gang full mobilisering.\n\nSjette divisjon ble den eneste norske divisjonen som kom seg opp i full styrke. På noen uker hadde han mellom åtte og ti tusen mann, mest bønder og fiskere fra Troms og Finnmark, folk som kunne gå på ski og kjente fjellet. Fra 24. april presset de tyskerne sørover, høyde for høyde, gjennom mai.\n\nDen tjueåttende mai ble Narvik tatt tilbake av norske, franske og polske avdelinger sammen. Det regnes som den første allierte seieren over tyske styrker på land i krigen. Elleve dager senere måtte alt forlates, fordi de allierte hadde bestemt seg for å dra.\n\nFleischer fulgte kongen til Storbritannia. Han ble ikke forsvarssjef, slik mange mente han burde bli, og fikk til slutt en stilling uten reell kommando i Canada. Der tok han sitt eget liv 19. desember 1942. At det var selvmord, ble holdt hemmelig helt til 1995.",
+      "en": "Fleischer had commanded in North Norway since January 1940. On the ninth of April he was on an inspection tour in Finnmark and was snowed in. The next day he flew to Tromsø and set full mobilisation going.\n\nThe 6th Division became the only Norwegian division to reach full strength. In a few weeks he had between eight and ten thousand men, mostly farmers and fishermen from Troms and Finnmark, men who could ski and knew the mountains. From 24 April they pushed the Germans south, hill by hill, through May.\n\nOn the twenty-eighth of May Narvik was retaken by Norwegian, French and Polish units together. It is reckoned the first Allied victory over German forces on land in the war. Eleven days later all of it had to be abandoned, because the Allies had decided to leave.\n\nFleischer followed the King to Britain. He was not made commander-in-chief, as many thought he should be, and ended with a post carrying no real command in Canada. There he took his own life on 19 December 1942. That it was suicide was kept secret until 1995."
+    },
+    "fact": {
+      "no": "Han ble hentet hjem og gravlagt på nytt i Norge i 1945, med statsbegravelse.",
+      "en": "He was brought home and reburied in Norway in 1945, with a state funeral."
+    }
+  },
+  {
+    "id": "auchinleck",
+    "side": "british",
+    "lived": "1884–1981",
+    "portrait": "auchinleck.jpg",
+    "name": {
+      "no": "Claude Auchinleck",
+      "en": "Claude Auchinleck"
+    },
+    "role": {
+      "no": "Britisk generalløytnant, sjef for de allierte landstyrkene fra 13. mai",
+      "en": "British lieutenant general, commanding Allied land forces from 13 May"
+    },
+    "hook": {
+      "no": "Han overtok kommandoen to uker før alt skulle pakkes ned igjen.",
+      "en": "He took over the command a fortnight before everything had to be packed up again."
+    },
+    "body": {
+      "no": "Den allierte styrken ved Narvik hadde en delt kommando gjennom hele april. Admiral Lord Cork ville storme byen med en gang; generalmajor Mackesy nektet å sende soldater rett i land på en forsvart strand uten skikkelig støtte. Resultatet var seks uker der lite skjedde.\n\nAuchinleck kom i mai og overtok landkommandoen 13. mai. Han var en erfaren offiser fra den indiske hæren, og han satte i gang det som ble Bjerkvik-landgangen og til slutt gjenerobringen av byen.\n\nHan fikk beskjeden om evakuering nesten samtidig. Den tjuefjerde mai bestemte London at hele Nord-Norge skulle forlates, fordi Frankrike holdt på å falle. Auchinleck ble sittende med den underlige oppgaven å ta en by han visste han skulle forlate — og med ordre om ikke å fortelle nordmennene om det.\n\nSenere ble han øverstkommanderende i Midtøsten og stanset Rommel ved El Alamein sommeren 1942.",
+      "en": "The Allied force at Narvik had a divided command through the whole of April. Admiral Lord Cork wanted to storm the town at once; Major General Mackesy refused to put soldiers straight ashore on a defended beach without proper support. The result was six weeks in which little happened.\n\nAuchinleck arrived in May and took over the land command on 13 May. He was an experienced officer of the Indian Army, and he set going what became the Bjerkvik landing and finally the recapture of the town.\n\nHe received the evacuation order almost at the same time. On the twenty-fourth of May London decided that the whole of northern Norway was to be abandoned, because France was collapsing. Auchinleck was left with the strange task of taking a town he knew he was going to leave — and with orders not to tell the Norwegians about it.\n\nHe later became commander-in-chief in the Middle East and stopped Rommel at El Alamein in the summer of 1942."
+    },
+    "fact": {
+      "no": "Styrken han overtok, het North Western Expeditionary Force. Den fantes i under to måneder.",
+      "en": "The force he took over was called the North Western Expeditionary Force. It existed for under two months."
+    }
+  },
+  {
+    "id": "bethouart",
+    "side": "french",
+    "lived": "1889–1982",
+    "name": {
+      "no": "Antoine Béthouart",
+      "en": "Antoine Béthouart"
+    },
+    "role": {
+      "no": "Fransk brigadegeneral, sjef for de franske og polske avdelingene",
+      "en": "French brigadier general, commanding the French and Polish units"
+    },
+    "hook": {
+      "no": "Han planla og gjennomførte det første angrepet fra sjøen mot en forsvart strand i denne krigen.",
+      "en": "He planned and carried out the first assault from the sea against a defended beach in this war."
+    },
+    "body": {
+      "no": "Béthouart kom til Nord-Norge i slutten av april med franske alpejegere, to bataljoner fra Fremmedlegionen og noen få lette stridsvogner. Under seg fikk han også den polske fjellbrigaden.\n\nNatten til trettende mai satte han legionærene i land ved Bjerkvik fra britiske landgangsfartøy, etter en times bombardement fra slagskip, kryssere og jagere. Angrepet lyktes, og de allierte fikk tilbake det store norske depotet på Elvegårdsmoen. Prisen ble betalt av bygda, som ble skutt i brann med folk igjen i husene.\n\nTo uker senere planla han krysningen av Rombaken. Fremmedlegionen og en norsk bataljon gikk i land ved Orneset øst for byen om morgenen den tjueåttende mai, mens polakkene presset fram fra Ankenes i sør. Narvik falt samme dag.\n\nBéthouart nektet senere å følge Vichy-regimet og gikk over til de frie franske styrkene. Han kom tilbake til Norge etter krigen som gjest, og er en av de få utenlandske offiserene som har en gate oppkalt etter seg i Narvik.",
+      "en": "Béthouart reached northern Norway at the end of April with French alpine troops, two battalions of the Foreign Legion and a handful of light tanks. The Polish Highland Brigade was placed under him as well.\n\nOn the night of the thirteenth of May he put the legionnaires ashore at Bjerkvik from British landing craft, after an hour of bombardment by battleship, cruisers and destroyers. The attack succeeded, and the Allies recovered the large Norwegian depot at Elvegårdsmoen. The price was paid by the village, which was set on fire with people still in the houses.\n\nA fortnight later he planned the crossing of Rombaken. The Foreign Legion and a Norwegian battalion landed at Orneset east of the town on the morning of the twenty-eighth of May, while the Poles pushed up from Ankenes in the south. Narvik fell the same day.\n\nBéthouart later refused to follow the Vichy regime and went over to the Free French. He returned to Norway after the war as a guest, and is one of very few foreign officers with a street named after him in Narvik."
+    },
+    "fact": {
+      "no": "Han fikk et norsk krigskors med sverd for innsatsen ved Narvik.",
+      "en": "He was given a Norwegian War Cross with sword for what he did at Narvik."
+    },
+    "portraitNote": {
+      "no": "Bildene av Béthouart på Wikimedia Commons har uklar opphavsrett, og er derfor ikke hentet inn her.",
+      "en": "The photographs of Béthouart on Wikimedia Commons have unclear copyright, and so are not used here."
+    }
+  },
+  {
+    "id": "bohusz-szyszko",
+    "side": "polish",
+    "lived": "1893–1982",
+    "portrait": "bohusz-szyszko.jpg",
+    "name": {
+      "no": "Zygmunt Bohusz-Szyszko",
+      "en": "Zygmunt Bohusz-Szyszko"
+    },
+    "role": {
+      "no": "Polsk general, sjef for den selvstendige polske fjellbrigaden",
+      "en": "Polish general, commanding the Independent Polish Highland Brigade"
+    },
+    "hook": {
+      "no": "Han førte nesten fem tusen polakker i land i Nord-Norge. Ingen av dem hadde et land å reise hjem til.",
+      "en": "He brought nearly five thousand Poles ashore in northern Norway. Not one of them had a country to go home to."
+    },
+    "body": {
+      "no": "Polen ble angrepet av Tyskland 1. september 1939 og av Sovjetunionen 17. september. Landet var okkupert i løpet av fem uker. Titusener av polske soldater kom seg ut, mange via Romania og Ungarn, og ble satt opp på nytt i Frankrike.\n\nEn av avdelingene som ble bygd der, var fjellbrigaden — Podhale-brigaden — under general Bohusz-Szyszko. Den kom til Harstad og Tromsø i begynnelsen av mai 1940, rundt fire tusen sju hundre mann.\n\nPolakkene ble satt inn sør for Narvik, på Ankenes-halvøya, og kjempet seg fram mot Beisfjord. Under sluttangrepet den tjueåttende mai tok de høydene sør for byen og stengte veien ut den veien for Dietl.\n\nDe ble evakuert med resten i juni. Brigaden kom til Frankrike i tide til at Frankrike falt, og ble oppløst. Bohusz-Szyszko havnet siden i Sovjetunionen, der han var med på å bygge opp Anders' hær av polske krigsfanger, og endte krigen i Italia.",
+      "en": "Poland was attacked by Germany on 1 September 1939 and by the Soviet Union on 17 September. The country was occupied within five weeks. Tens of thousands of Polish soldiers got out, many through Romania and Hungary, and were re-formed in France.\n\nOne of the units built there was the Highland Brigade — the Podhale Brigade — under General Bohusz-Szyszko. It reached Harstad and Tromsø at the beginning of May 1940, some four thousand seven hundred men.\n\nThe Poles were put in south of Narvik, on the Ankenes peninsula, and fought their way towards Beisfjord. During the final attack on the twenty-eighth of May they took the heights south of the town and closed Dietl's way out in that direction.\n\nThey were evacuated with the rest in June. The brigade reached France in time for France to fall, and was disbanded. Bohusz-Szyszko later ended up in the Soviet Union, where he helped build Anders' army out of Polish prisoners of war, and finished the war in Italy."
+    },
+    "fact": {
+      "no": "Det står et polsk minnesmerke ved Ankenes. Polakkene mistet rundt nitti mann i kampene om Narvik.",
+      "en": "There is a Polish memorial at Ankenes. The Poles lost around ninety men in the fighting for Narvik."
+    }
+  },
+  {
+    "id": "haakon",
+    "side": "norwegian",
+    "lived": "1872–1957",
+    "portrait": "haakon.jpg",
+    "name": {
+      "no": "Haakon VII",
+      "en": "Haakon VII"
+    },
+    "role": {
+      "no": "Norges konge fra 1905 til 1957",
+      "en": "King of Norway from 1905 to 1957"
+    },
+    "hook": {
+      "no": "Han var dansk prins og ble valgt til konge av en folkeavstemning. I 1940 sa han nei til tyskerne, og lot regjeringen bestemme.",
+      "en": "He was a Danish prince chosen king by referendum. In 1940 he said no to the Germans, and let the government decide."
+    },
+    "body": {
+      "no": "Prins Carl av Danmark ble tilbudt den norske tronen i 1905, etter at unionen med Sverige var oppløst. Han krevde en folkeavstemning først. Nesten seksti tusen stemte imot og over to hundre og femti tusen for. Da tok han navnet Haakon VII.\n\nNatten til 9. april 1940 flyktet han fra Oslo sammen med regjering og storting. Noen dager senere krevde den tyske sendemannen at kongen skulle utnevne en regjering med Quisling. Haakon svarte at han ville abdisere før han gjorde det, men at avgjørelsen lå hos regjeringen. Regjeringen sa nei.\n\nDen sjuende juni 1940 gikk han om bord i en britisk krysser i Tromsø sammen med kronprins Olav og regjeringen. De kom hjem igjen 7. juni 1945, på dagen fem år senere.\n\nI London ble han et samlingspunkt. H7-monogrammet ble malt på vegger over hele Norge under okkupasjonen, og å bære det kunne gi fengsel.",
+      "en": "Prince Carl of Denmark was offered the Norwegian throne in 1905, after the union with Sweden was dissolved. He insisted on a referendum first. Nearly sixty thousand voted against and over two hundred and fifty thousand for. Then he took the name Haakon VII.\n\nOn the night of 9 April 1940 he fled Oslo with the government and parliament. A few days later the German minister demanded that the King appoint a government under Quisling. Haakon answered that he would abdicate before he did it, but that the decision lay with the government. The government said no.\n\nOn 7 June 1940 he went aboard a British cruiser at Tromsø with Crown Prince Olav and the government. They came home again on 7 June 1945, five years later to the day.\n\nIn London he became a rallying point. The H7 monogram was painted on walls all over Norway during the occupation, and wearing it could earn you prison."
+    },
+    "fact": {
+      "no": "Kongen og regjeringen tok med seg gullbeholdningen fra Norges Bank ut av landet — femti tonn gull, fraktet på lastebil og fiskebåt.",
+      "en": "The King and the government took the Bank of Norway's gold reserve out of the country — fifty tonnes of it, moved by lorry and fishing boat."
+    }
+  },
+  {
+    "id": "churchill",
+    "side": "british",
+    "lived": "1874–1965",
+    "portrait": "churchill.jpg",
+    "name": {
+      "no": "Winston Churchill",
+      "en": "Winston Churchill"
+    },
+    "role": {
+      "no": "Britisk marineminister, fra 10. mai 1940 statsminister",
+      "en": "First Lord of the Admiralty, and from 10 May 1940 Prime Minister"
+    },
+    "hook": {
+      "no": "Han presset hardest på for å gå inn i Norge. Da det gikk galt, ble han statsminister.",
+      "en": "He pushed hardest to go into Norway. When it went wrong, he became Prime Minister."
+    },
+    "body": {
+      "no": "Churchill var marineminister fra september 1939. Fra første stund var han opptatt av den svenske jernmalmen, og han skrev i et notat til krigskabinettet i desember 1939 at å stanse malmtransporten gjennom Norge måtte regnes som en stor offensiv operasjon i seg selv.\n\nDet var han som drev fram Operasjon Wilfred, mineleggingen i norsk farvann 8. april 1940. Tyskerne kom dagen etter, med en plan de hadde laget uavhengig, av samme grunn.\n\nFelttoget som fulgte, gikk dårlig for britene overalt unntatt til sjøs. I Underhuset 7. og 8. mai ble regjeringen tatt fullstendig fra hverandre for det. Chamberlain vant avstemningen, men flertallet hans falt fra to hundre og tretten til åttien. Den tiende mai gikk han av, og Churchill overtok.\n\nDet er en av krigens merkeligste ironier: mannen som hadde ansvar for mye av det som gikk galt i Norge, ble løftet til makten av at det gikk galt.",
+      "en": "Churchill was First Lord of the Admiralty from September 1939. From the start he was preoccupied with Swedish iron ore, and in a memorandum to the War Cabinet in December 1939 he wrote that stopping the ore traffic through Norway should count as a major offensive operation in itself.\n\nIt was he who drove Operation Wilfred, the mining of Norwegian waters on 8 April 1940. The Germans came the next day, with a plan they had made independently, for the same reason.\n\nThe campaign that followed went badly for the British everywhere except at sea. In the House of Commons on 7 and 8 May the government was taken apart for it. Chamberlain won the vote, but his majority fell from two hundred and thirteen to eighty-one. On the tenth of May he resigned, and Churchill took over.\n\nIt is one of the strangest ironies of the war: the man responsible for much of what went wrong in Norway was carried into power by its going wrong."
+    },
+    "fact": {
+      "no": "Samme dag som Churchill ble statsminister, gikk tyske hærer inn i Nederland, Belgia og Frankrike.",
+      "en": "On the same day Churchill became Prime Minister, German armies moved into the Netherlands, Belgium and France."
+    }
+  }
+]
