@@ -126,12 +126,25 @@ NOTE = {
 # misleading. Virginia ran west to Kentucky and North Carolina to Tennessee,
 # so their centroids land in the mountains — but the settled part, and the
 # part a reader is looking at, is the coast.
+# Where each colony's name sits. All thirteen are listed on purpose: the
+# declutter pass drops a label that collides with a bigger neighbour's, so
+# leaving the small ones to a computed centroid meant Rhode Island,
+# Connecticut and Delaware never appeared -- on a beat whose whole line is
+# "thirteen colonies along the coast". Those three are placed offshore.
 LABEL_AT = {
-    "Virginia":       [37.8, -78.2],
-    "North Carolina": [35.6, -79.2],
-    "Massachusetts":  [42.3, -71.9],
-    "New York":       [42.9, -75.4],
-    "Georgia":        [32.7, -83.2],
+    "New Hampshire":   [43.55, -71.55],
+    "Massachusetts":   [42.35, -71.95],
+    "Rhode Island":    [41.35, -69.95],
+    "Connecticut":     [40.6, -72.6],
+    "New York":        [42.9, -75.4],
+    "New Jersey":      [40.05, -74.05],
+    "Pennsylvania":    [41.0, -77.6],
+    "Delaware":        [38.6, -74.05],
+    "Maryland":        [39.15, -77.25],
+    "Virginia":        [37.8, -78.2],
+    "North Carolina":  [35.6, -79.2],
+    "South Carolina":  [33.9, -80.75],
+    "Georgia":         [32.7, -83.2],
 }
 
 # ~900 m. The colonies are only ever drawn at seaboard zoom, where finer

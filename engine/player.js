@@ -186,6 +186,16 @@ export class Player {
     if (!this.scene) return;
     this.waitingForTap = false;
 
+    // Say something INSTANTLY. `await audio.play()` does not resolve until the
+    // element has buffered enough to actually make sound -- measured at 3.4
+    // seconds on a warm localhost, and worse on school wifi. For all of that
+    // time `playing` stayed false, so the transport drew a play triangle and
+    // 0:00: the exact pixels that mean "not started". The first thing anyone
+    // does with this app looked broken, and the natural response -- press it
+    // again -- pauses it.
+    this.starting = true;
+    this.onState(this.state());
+
     if (!this.scene.audio) {
       // Nothing recorded for this scene yet. Do NOT ask the element to play:
       // an <audio> with no src returns a promise from play() that never
@@ -208,6 +218,7 @@ export class Player {
       }
     }
     this._t0 = performance.now();
+    this.starting = false;
     this.playing = true;
     this.loop();
     this.onState(this.state());
@@ -350,6 +361,7 @@ export class Player {
   state() {
     return {
       playing: this.playing,
+      starting: this.starting,
       waitingForTap: this.waitingForTap,
       sceneIndex: this.sceneIndex,
       scene: this.scene,

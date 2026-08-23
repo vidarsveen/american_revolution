@@ -44,18 +44,30 @@
 .wordmark span { color: var(--ink-faint); }
 
 /* On a narrow phone the years are the first thing to go, then the letter
-   spacing — the title itself should never be clipped to an ellipsis. */
-/* On a phone there is no room for one line, so give it two rather than
-   truncating the name of the thing to an ellipsis. */
+   spacing — the title itself should never be clipped to an ellipsis.
+   
+   That was the intent; the rule did the opposite. `overflow: visible` with the
+   years on their own line gave "Den amerikanske revolusjonen 1763–1783" three
+   lines and 73 px of height inside a 52 px bar that centres its children — so
+   it hung 11 px ABOVE the top of the screen and the first line was cut off,
+   on the first thing a phone user ever sees. Measured at 390 px.
+
+   So: drop the years, which the comment always said should go first, and hold
+   the title to two lines. The bar keeps its fixed height, which matters
+   because the immersive fold slides it away by exactly --topbar-h. */
 @media (max-width: 460px) {
   .wordmark {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     white-space: normal;
-    overflow: visible;
+    overflow: hidden;
     letter-spacing: .08em;
     line-height: 1.12;
     font-size: 10.5px;
   }
-  .wordmark span { display: block; letter-spacing: .1em; }
+  .wordmark span { display: none; }
 }
 
 /* Small round chrome buttons (language, theme) */

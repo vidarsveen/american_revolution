@@ -103,7 +103,10 @@ export function mountDepth(storyRoot, opts) {
   mql.addEventListener('change', onMode);
 
   wireTaps(storyRoot);
-  return { open, close: () => dossier.close(), isOpen: () => dossier.isOpen(), coach };
+  // `current` so a language change can put the same card back, in the new
+  // language, instead of leaving a stale one open across the reload.
+  return { open, close: () => dossier.close(), isOpen: () => dossier.isOpen(),
+           current: () => dossier.current(), coach };
 }
 
 export function unmountDepth() {

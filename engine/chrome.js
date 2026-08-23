@@ -68,7 +68,7 @@ export function mountChrome(host, root, chapter, player, strings, onLang) {
       <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
               aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
       <button class="tp-btn tp-btn--lang" data-act="lang"
-              aria-label="${strings.language}">${strings.langShort}</button>
+              aria-label="${strings.language}">${strings.langMark}</button>
       <button class="tp-btn tp-btn--icon" data-act="episodes"
               aria-label="${strings.episodes}">${ICON.list}</button>
     </div>
@@ -309,8 +309,11 @@ export function mountChrome(host, root, chapter, player, strings, onLang) {
       markEpisodes(state.sceneIndex);
       el.classList.toggle('is-playing', state.playing);
       el.classList.toggle('is-waiting', Boolean(state.waitingForTap));
-      el.querySelector('[data-act=toggle]')
-        .setAttribute('aria-label', state.playing ? strings.pause : strings.play);
+      // Between the tap and the first sound. See player.play().
+      el.classList.toggle('is-starting', Boolean(state.starting));
+      const toggle = el.querySelector('[data-act=toggle]');
+      toggle.setAttribute('aria-label', state.playing ? strings.pause : strings.play);
+      toggle.setAttribute('aria-busy', state.starting ? 'true' : 'false');
       if (state.scene) {
         sceneEl.textContent = state.scene.title;
         clockEl.textContent = state.scene.clock || '';

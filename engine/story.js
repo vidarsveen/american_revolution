@@ -23,7 +23,7 @@ let CHAPTERS = [];
 const STR = {
   no: {
     play: 'Spill av', pause: 'Pause', back: 'Forrige', forward: 'Neste',
-    language: 'Bytt språk', langShort: 'EN',
+    language: 'Bytt språk', langMark: '<b>NO</b><i>/EN</i>',
     captions: 'Undertekst', transcript: 'Manus', close: 'Lukk', seek: 'Spol',
     controls: 'Kontroller', hideControls: 'Skjul kontroller',
     start: 'Start', resume: 'Fortsett', replay: 'Spill igjen',
@@ -37,7 +37,7 @@ const STR = {
   },
   en: {
     play: 'Play', pause: 'Pause', back: 'Previous', forward: 'Next',
-    language: 'Change language', langShort: 'NO',
+    language: 'Change language', langMark: '<i>NO/</i><b>EN</b>',
     captions: 'Captions', transcript: 'Transcript', close: 'Close', seek: 'Seek',
     controls: 'Controls', hideControls: 'Hide controls',
     start: 'Start', resume: 'Resume', replay: 'Play again',
@@ -401,20 +401,54 @@ function wireKeys() {
  * pretending to hold the exact moment would be a lie; the top of the scene
  * you were in is honest and predictable.
  */
+/**
+ * Change the language of the narration.
+ *
+ * This reloads the chapter, because audio, word timings and therefore every
+ * cue time are properties of the RECORDING, not of the labels. Three things
+ * have to survive that, and none of them used to:
+ *
+ *   - WHERE YOU WERE. It restarted the scene. On a fourteen-minute chapter
+ *     that is the whole cost of the one feature a bilingual classroom
+ *     actually uses. The two recordings are not the same length, so the
+ *     position is carried as a FRACTION of the scene rather than as seconds.
+ *
+ *   - THE OPEN CARD. A person sheet left open across the reload kept its old
+ *     markup and then emptied itself, leaving a blank dark panel over half a
+ *     phone screen. It is closed first and reopened after, in the new
+ *     language, which is also what a reader wants.
+ *
+ *   - EVERYTHING ELSE ON SCREEN. The reload has to actually finish before
+ *     `lang` is believed anywhere, or the chrome relabels itself while the
+ *     stage is still holding the previous language's quote card.
+ */
 export async function storySetLang(next) {
   if (!next || next === lang) return;
   lang = next;
   if (!player) return;
+
   const scene = player.sceneIndex >= 0 ? player.sceneIndex : 0;
+  const dur = player.scene?.dur || 0;
+  const frac = dur > 0 ? Math.min(1, Math.max(0, player.now() / dur)) : 0;
   const wasPlaying = player.playing;
   const wasStarted = started;
+
+  const card = depth?.current?.() || null;
+  depth?.close();
+
   await openChapter(current);
   if (!wasStarted) return;
   const cover = view.querySelector('.story__cover');
   cover?.classList.remove('is-on');
   started = true;
-  player.goToScene(Math.min(scene, chapter.scenes.length - 1),
-                   { autoplay: wasPlaying });
+
+  const i = Math.min(scene, chapter.scenes.length - 1);
+  const target = chapter.scenes[i];
+  // Land at the same PLACE in the scene, not the same number of seconds:
+  // the Norwegian recording of a scene is not the length of the English one.
+  const at = target ? Math.max(0, Math.min(target.dur - 0.5, frac * target.dur)) : 0;
+  player.goToScene(i, { autoplay: wasPlaying, at });
+  if (card) depth?.open(card);
 }
 
 export function storyPause() { player?.pause(); }
