@@ -1026,8 +1026,8 @@
         {
           "id": "s0.b6",
           "say": {
-            "no": "De har ingen i det britiske parlamentet. Ingen som stemmer for dem, ingen som taler deres sak. Og nå skal de skatte.",
-            "en": "They have nobody in the British Parliament. Nobody voting for them, nobody arguing their case. And now they are to be taxed."
+            "no": "De har ingen i det britiske parlamentet. Ingen som er valgt av dem. Noen få briter taler deres sak, og taper hver gang. Og nå skal de skatte.",
+            "en": "They have nobody in the British Parliament. Nobody elected by them. A few Britons argue their case, and lose every time. And now they are to be taxed."
           },
           "cues": [
             {
@@ -1058,8 +1058,8 @@
             },
             {
               "on": {
-                "no": "word:stemmer",
-                "en": "word:voting"
+                "no": "word:valgt",
+                "en": "word:elected"
               },
               "do": "term.mark",
               "kind": "topic",
@@ -2987,8 +2987,8 @@
         {
           "id": "s5.b9",
           "say": {
-            "no": "I Lexington møter de en unnsetningsstyrke på tusen mann med kanoner, sendt ut fra Boston av lord Percy. Uten den hadde hele kolonnen sannsynligvis blitt tatt.",
-            "en": "At Lexington they meet a relief force of a thousand men with cannon, sent out from Boston by Lord Percy. Without it the whole column would probably have been taken."
+            "no": "I Lexington møter de en unnsetningsstyrke på tusen mann med kanoner, sendt ut fra Boston av Gage og ført av lord Percy. Uten den hadde hele kolonnen sannsynligvis blitt tatt.",
+            "en": "At Lexington they meet a relief force of a thousand men with cannon, sent out from Boston by Gage and led by Lord Percy. Without it the whole column would probably have been taken."
           },
           "cues": [
             {
@@ -3518,17 +3518,19 @@
       "by": {
         "no": "Lord Percy, brev, 20. april 1775",
         "en": "Lord Percy, letter, 20 April 1775"
-      }
+      },
+      "kind": "said"
     },
     "gage-warning": {
       "text": {
-        "no": "Hvis dere mener alvor med å slå dette ned, trenger dere en langt større hær enn dere tror.",
-        "en": "If you mean to put this down, you will need a far larger army than you think."
+        "no": "Mener dere ti tusen mann er nok, så send tjue. Mener dere én million er nok, så gi to. Dere sparer både blod og penger til slutt.",
+        "en": "If you think ten thousand men sufficient, send twenty; if one million is thought enough, give two. You save both blood and treasure in the end."
       },
       "by": {
-        "no": "General Thomas Gage, brev til London, 1774",
-        "en": "General Thomas Gage, letter to London, 1774"
-      }
+        "no": "General Thomas Gage, brev til lord Barrington, 2. november 1774",
+        "en": "General Thomas Gage, letter to Lord Barrington, 2 November 1774"
+      },
+      "kind": "said"
     },
     "slogan": {
       "text": {
@@ -3538,7 +3540,8 @@
       "by": {
         "no": "Slagordet i koloniene, fra 1765",
         "en": "The colonists’ slogan, from 1765"
-      }
+      },
+      "kind": "slogan"
     },
     "parker": {
       "text": {
@@ -3546,9 +3549,10 @@
         "en": "Stand your ground. Do not fire unless fired upon."
       },
       "by": {
-        "no": "Kaptein John Parker til militsen, Lexington, 19. april 1775",
-        "en": "Captain John Parker to the militia, Lexington, 19 April 1775"
-      }
+        "no": "Kaptein John Parker på Lexington Green — skrevet ned femti år senere av en som var der",
+        "en": "Captain John Parker at Lexington Green — written down fifty years later by a man who was there"
+      },
+      "kind": "later"
     },
     "pitcairn": {
       "text": {
@@ -3558,7 +3562,8 @@
       "by": {
         "no": "Major John Pitcairn, slik det ble husket etterpå",
         "en": "Major John Pitcairn, as it was remembered afterwards"
-      }
+      },
+      "kind": "attributed"
     },
     "hosmer": {
       "text": {
@@ -3566,9 +3571,10 @@
         "en": "Will you let them burn the town down?"
       },
       "by": {
-        "no": "Joseph Hosmer til militsen over Concord, 19. april 1775",
-        "en": "Joseph Hosmer to the militia above Concord, 19 April 1775"
-      }
+        "no": "Joseph Hosmer til militsen over Concord — nedtegnet først på attenhundretallet",
+        "en": "Joseph Hosmer to the militia above Concord — not written down until the nineteenth century"
+      },
+      "kind": "later"
     },
     "buttrick": {
       "text": {
@@ -3576,9 +3582,10 @@
         "en": "Fire, fellow soldiers, fire!"
       },
       "by": {
-        "no": "Major John Buttrick ved North Bridge — den første ordren om å skyte på kongens soldater",
-        "en": "Major John Buttrick at the North Bridge — the first order to fire on the king’s soldiers"
-      }
+        "no": "Major John Buttrick ved North Bridge — nedtegnet lenge etterpå, og huskes som den første ordren om å skyte på kongens soldater",
+        "en": "Major John Buttrick at the North Bridge — written down long afterwards, and remembered as the first order to fire on the king’s soldiers"
+      },
+      "kind": "later"
     }
   },
   "home": "world",

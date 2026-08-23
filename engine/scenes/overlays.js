@@ -157,11 +157,31 @@ export function hideImage() { hide(imageEl); }
 
 /* ---------- Quote ------------------------------------------- */
 
+/* How sure we are that anybody said this.
+
+   Every quote in every pack carries a `kind`, and for a long time NOTHING
+   read it -- so on screen Percy's genuine letter of 20 April 1775, a line
+   somebody's grandson wrote down fifty years later, and a slogan nobody in
+   particular ever said were typographically identical. In an app whose whole
+   argument is that you should ask where a source comes from, that was the
+   one thing it refused to tell you.
+
+   `said` gets no mark: a real quotation is the default and does not need
+   apologising for. The other three do. */
+const QUOTE_KIND = {
+  attributed: { no: 'Gjengitt av andre', en: 'As others reported it' },
+  later:      { no: 'Nedtegnet lenge etterpå', en: 'Written down long afterwards' },
+  slogan:     { no: 'Slagord — ingen bestemt opphavsmann',
+                en: 'A slogan — nobody in particular said it' },
+};
+
 export function showQuote(cue, instant) {
   const q = (chapter.quotes || {})[cue.id];
   if (!q) return;
+  const mark = QUOTE_KIND[q.kind];
   show(quoteEl, `
-    <blockquote class="ov-quote__card">
+    <blockquote class="ov-quote__card${mark ? ' is-hedged' : ''}">
+      ${mark ? `<p class="ov-quote__kind">${esc(pick(mark))}</p>` : ''}
       <p>${esc(pick(q.text))}</p>
       <cite>${esc(pick(q.by))}</cite>
     </blockquote>`, instant);

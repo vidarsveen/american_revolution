@@ -400,10 +400,10 @@
         "en": "The young man must be praised, raised — and removed."
       },
       "by": {
-        "no": "Cicero, i et brev, 43 f.Kr.",
-        "en": "Cicero, in a letter, 43 BC"
+        "no": "Gjengitt av Decimus Brutus i et brev til Cicero, 43 f.Kr. Ingen tekst av Cicero sier det.",
+        "en": "Reported by Decimus Brutus in a letter to Cicero, 43 BC. No text of Cicero says it."
       },
-      "kind": "said"
+      "kind": "attributed"
     },
     "proscription-edict": {
       "text": {
@@ -422,10 +422,10 @@
         "en": "I transferred the state from my own power back to the control of the senate and the Roman people."
       },
       "by": {
-        "no": "Augustus, om året 27 f.Kr.",
-        "en": "Augustus, on the year 27 BC"
+        "no": "Augustus om året 27 f.Kr., skrevet av ham selv rundt førti år etterpå",
+        "en": "Augustus on the year 27 BC, written by him some forty years afterwards"
       },
-      "kind": "said"
+      "kind": "later"
     }
   },
   "scenes": [
@@ -556,8 +556,8 @@
         {
           "id": "s0.b4",
           "say": {
-            "no": "Fire hundre kilometer unna, i Apollonia, studerer en nittenåring. Han heter Gaius Octavius, og han er Cæsars grandnevø.",
-            "en": "Four hundred kilometres away, at Apollonia, a nineteen-year-old is studying. His name is Gaius Octavius, and he is Caesar's great-nephew."
+            "no": "Over seks hundre kilometer unna, i Apollonia, studerer en nittenåring. Han heter Gaius Octavius, og han er Cæsars grandnevø.",
+            "en": "More than six hundred kilometres away, at Apollonia, a nineteen-year-old is studying. His name is Gaius Octavius, and he is Caesar's great-nephew."
           },
           "cues": [
             {
@@ -611,7 +611,7 @@
         {
           "id": "s0.b5",
           "say": {
-            "no": "Testamentet gjør ham til Cæsars sønn og arving. Det er alt han får. Ingen hær, ingen embete, ingen erfaring.",
+            "no": "Testamentet gjør ham til Cæsars sønn og arving. Det er alt han får. Ingen hær, ingen stilling, ingen erfaring.",
             "en": "The will makes him Caesar's son and heir. That is all he gets. No army, no office, no experience."
           },
           "cues": [
@@ -883,14 +883,14 @@
         {
           "id": "s1.b4",
           "say": {
-            "no": "Planen hans er å bruke Octavian mot Antonius, og så sette gutten til side. Han skriver det ned i et brev.",
-            "en": "His plan is to use Octavian against Antony, and then set the boy aside. He writes it down in a letter."
+            "no": "Planen hans er å bruke Octavian mot Antonius, og så sette gutten til side. Andre hevdet at han sa det rett ut.",
+            "en": "His plan is to use Octavian against Antony, and then set the boy aside. Others claimed he said so outright."
           },
           "cues": [
             {
               "on": {
-                "no": "word:brev",
-                "en": "word:letter"
+                "no": "word:hevdet",
+                "en": "word:claimed"
               },
               "do": "quote.show",
               "id": "cicero-boy"
@@ -901,8 +901,8 @@
         {
           "id": "s1.b5",
           "say": {
-            "no": "Våren førtitre møtes hærene ved Mutina, nord i Italia. Antonius taper. Men begge konsulene blir drept i slaget.",
-            "en": "In the spring of forty-three the armies meet at Mutina, in northern Italy. Antony loses. But both consuls are killed in the battle."
+            "no": "Våren førtitre møtes hærene ved Mutina, nord i Italia. Antonius taper to slag på en uke. Men begge konsulene dør.",
+            "en": "In the spring of forty-three the armies meet at Mutina, in northern Italy. Antony loses two battles in a week. But both consuls die."
           },
           "cues": [
             {
@@ -951,8 +951,8 @@
             },
             {
               "on": {
-                "no": "word:slaget",
-                "en": "word:battle"
+                "no": "word:slag",
+                "en": "word:battles"
               },
               "do": "sound.play",
               "id": "volley",
@@ -1122,8 +1122,8 @@
         {
           "id": "s2.b3",
           "say": {
-            "no": "Octavian får vest. Antonius får øst. Lepidus får Africa, og er den ingen husker.",
-            "en": "Octavian takes the west. Antony takes the east. Lepidus takes Africa, and is the one nobody remembers."
+            "no": "Antonius får Gallia. Lepidus får Spania. Octavian får Africa og øyene, som han ikke engang kontrollerer.",
+            "en": "Antony takes Gaul. Lepidus takes Spain. Octavian takes Africa and the islands, which he does not even control."
           },
           "cues": [
             {
@@ -1140,35 +1140,28 @@
             },
             {
               "on": {
-                "no": "word:vest",
-                "en": "word:west"
+                "no": "word:Gallia",
+                "en": "word:Gaul"
               },
               "do": "region.show",
               "names": [
-                "Italia",
-                "Hispania",
-                "Gallia",
-                "Illyricum"
+                "Gallia"
               ],
-              "side": "caesarian",
+              "side": "antonian",
               "over": 1.8,
               "vary": false,
               "strength": 1.15
             },
             {
               "on": {
-                "no": "word:øst",
-                "en": "word:east"
+                "no": "word:Spania",
+                "en": "word:Spain"
               },
               "do": "region.show",
               "names": [
-                "Macedonia",
-                "Achaea",
-                "Asia",
-                "Syria",
-                "Cyrenaica"
+                "Hispania"
               ],
-              "side": "antonian",
+              "side": "neutral",
               "over": 1.8,
               "vary": false,
               "strength": 1.15
@@ -1183,8 +1176,8 @@
                 "Africa",
                 "Numidia"
               ],
-              "side": "neutral",
-              "over": 1.6,
+              "side": "caesarian",
+              "over": 1.8,
               "vary": false,
               "strength": 1.15
             }
@@ -1325,8 +1318,8 @@
         {
           "id": "s3.b1",
           "say": {
-            "no": "De tre trenger penger. Fjorten legioner må lønnes, og statskassa er tom.",
-            "en": "The three need money. Fourteen legions have to be paid, and the treasury is empty."
+            "no": "De tre trenger penger. Førtitre legioner må lønnes, og statskassa er tom.",
+            "en": "The three need money. Forty-three legions have to be paid, and the treasury is empty."
           },
           "cues": [
             {
@@ -3089,8 +3082,8 @@
         {
           "id": "s8.b5",
           "say": {
-            "no": "Han er ikke konge. Han er ikke diktator. Han kaller seg princeps, den fremste blant likemenn.",
-            "en": "He is not a king. He is not a dictator. He calls himself princeps, the first among equals."
+            "no": "Han er ikke konge. Han er ikke diktator. Han kaller seg princeps, den fremste av oss.",
+            "en": "He is not a king. He is not a dictator. He calls himself princeps, the first among us."
           },
           "cues": [
             {
@@ -3150,8 +3143,8 @@
         {
           "id": "s8.b7",
           "say": {
-            "no": "Ingen kan si nøyaktig når republikken tok slutt. Det var ikke et statskupp. Det var femten år med små skritt.",
-            "en": "Nobody can say exactly when the republic ended. There was no coup. There were fifteen years of small steps."
+            "no": "Ingen kan si nøyaktig når republikken tok slutt. Det var ikke et statskupp. Det var sytten år med små skritt.",
+            "en": "Nobody can say exactly when the republic ended. There was no coup. There were seventeen years of small steps."
           },
           "cues": [
             {

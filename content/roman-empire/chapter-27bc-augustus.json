@@ -1092,8 +1092,8 @@
         {
           "id": "s3.b3",
           "say": {
-            "no": "Augustus gjør om på det. Han fastsetter tjenestetiden: tjue år, senere tjuefem.",
-            "en": "Augustus changes that. He fixes the length of service: twenty years, later twenty-five."
+            "no": "Augustus gjør om på det. Han fastsetter tjenestetiden: seksten år, senere tjue.",
+            "en": "Augustus changes that. He fixes the length of service: sixteen years, later twenty."
           },
           "cues": [
             {
@@ -1427,8 +1427,8 @@
         {
           "id": "s4.b8",
           "say": {
-            "no": "Hun kom aldri tilbake. Hun døde året etter faren, av sult eller av sorg, alt etter hvilken kilde du leser.",
-            "en": "She never came back. She died the year after her father, of starvation or of grief, depending which source you read."
+            "no": "Hun kom aldri tilbake. Hun døde noen måneder etter faren, av sult eller av sorg, alt etter hvilken kilde du leser.",
+            "en": "She never came back. She died a few months after her father, of starvation or of grief, depending which source you read."
           },
           "cues": [
             {
@@ -1601,8 +1601,8 @@
         {
           "id": "s5.b6",
           "say": {
-            "no": "Så Gaius og Lucius, Agrippas sønner, som Augustus adopterte da de var små. De døde i år to og år fire etter Kristus, atten og tjuefire år gamle.",
-            "en": "Then Gaius and Lucius, the sons of Agrippa, whom Augustus adopted while they were small. They died in the years two and four after Christ, aged eighteen and twenty-four."
+            "no": "Så Lucius og Gaius, Agrippas sønner, som Augustus adopterte da de var små. Lucius døde i år to, nitten år gammel. Gaius i år fire, tjuetre.",
+            "en": "Then Lucius and Gaius, the sons of Agrippa, whom Augustus adopted while they were small. Lucius died in the year two, aged nineteen. Gaius in the year four, aged twenty-three."
           },
           "cues": [
             {
@@ -1716,7 +1716,7 @@
         {
           "id": "s5.b11",
           "say": {
-            "no": "Augustus adopterte ham likevel i år fire. Sveton forteller at han sa det rett ut hvorfor.",
+            "no": "Augustus adopterte ham likevel i år fire. Sveton forteller at han sa rett ut hvorfor.",
             "en": "Augustus adopted him anyway in the year four. Suetonius reports that he said plainly why."
           },
           "cues": [
@@ -2028,8 +2028,8 @@
         {
           "id": "s6.b9",
           "say": {
-            "no": "Grensen ble stående ved Rhinen. Romerriket sluttet å vokse nordover den uka, og begynte aldri igjen.",
-            "en": "The frontier stayed on the Rhine. The Roman empire stopped growing northwards that week, and never started again."
+            "no": "Grensen ble stående ved Rhinen. Roma ga opp Germania den uka, og prøvde aldri igjen.",
+            "en": "The frontier stayed on the Rhine. Rome gave up Germania that week, and never tried again."
           },
           "cues": [
             {
@@ -2074,8 +2074,8 @@
         {
           "id": "s7.b1",
           "say": {
-            "no": "Nittende august, år fjorten etter Kristus, dør Augustus i Nola, sør i Italia. Han er syttiseks år gammel.",
-            "en": "The nineteenth of August, in the year fourteen after Christ, Augustus dies at Nola in southern Italy. He is seventy-six years old."
+            "no": "Nittende august, år fjorten etter Kristus, dør Augustus i Nola, sør i Italia. Han er syttifem år gammel.",
+            "en": "The nineteenth of August, in the year fourteen after Christ, Augustus dies at Nola in southern Italy. He is seventy-five years old."
           },
           "cues": [
             {

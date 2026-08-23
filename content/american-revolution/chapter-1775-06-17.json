@@ -572,9 +572,10 @@
         "en": "What! Ten thousand peasants keep five thousand king's troops shut up? Let us get in, and we'll soon find elbow room."
       },
       "by": {
-        "no": "General John Burgoyne, da han kom til Boston i mai 1775",
-        "en": "General John Burgoyne, on reaching Boston in May 1775"
-      }
+        "no": "General John Burgoyne, slik det ble fortalt etter at han kom til Boston i mai 1775",
+        "en": "General John Burgoyne, as the story was told after he reached Boston in May 1775"
+      },
+      "kind": "attributed"
     },
     "willard": {
       "text": {
@@ -584,7 +585,8 @@
       "by": {
         "no": "Abijah Willard til general Gage, slik det ble fortalt etterpå",
         "en": "Abijah Willard to General Gage, as the story was told afterwards"
-      }
+      },
+      "kind": "attributed"
     },
     "whites": {
       "text": {
@@ -594,7 +596,8 @@
       "by": {
         "no": "Ordren alle husker – som historikere mener ingen ga",
         "en": "The order everybody remembers — which historians think nobody gave"
-      }
+      },
+      "kind": "slogan"
     },
     "gage-bunker": {
       "text": {
@@ -604,7 +607,8 @@
       "by": {
         "no": "General Thomas Gage, brev til London, juni 1775",
         "en": "General Thomas Gage, letter to London, June 1775"
-      }
+      },
+      "kind": "said"
     },
     "clinton": {
       "text": {
@@ -614,7 +618,8 @@
       "by": {
         "no": "General Henry Clinton, i dagboka, 17. juni 1775",
         "en": "General Henry Clinton, in his diary, 17 June 1775"
-      }
+      },
+      "kind": "said"
     },
     "greene": {
       "text": {
@@ -624,7 +629,8 @@
       "by": {
         "no": "Nathanael Greene, brev, juni 1775",
         "en": "Nathanael Greene, letter, June 1775"
-      }
+      },
+      "kind": "said"
     }
   },
   "scenes": [
@@ -806,8 +812,8 @@
         {
           "id": "s0.b6",
           "say": {
-            "no": "Boston er nesten en øy. Én smal landtunge binder byen til fastlandet, og den tungen holdt amerikanerne. Britene hadde en hel by, og ingen steder å gå.",
-            "en": "Boston is almost an island. One narrow neck of land ties the town to the mainland, and the Americans held that neck. The British had a whole town, and nowhere to go."
+            "no": "Boston er nesten en øy. Én smal landtunge binder byen til fastlandet, og britene har sperret den med skanser. Utenfor står amerikanerne. Britene hadde en hel by, og ingen steder å gå.",
+            "en": "Boston is almost an island. One narrow neck of land ties the town to the mainland, and the British have barred it with earthworks. Beyond it stand the Americans. The British had a whole town, and nowhere to go."
           },
           "cues": [
             {
@@ -2731,8 +2737,8 @@
         {
           "id": "s6.b10",
           "say": {
-            "no": "Det er den første gangen vi vet om at et menneske ble identifisert på tennene sine.",
-            "en": "It is the first case we know of where a human being was identified from their teeth."
+            "no": "Det er den første gangen vi vet om i Amerika at et menneske ble identifisert på tennene sine.",
+            "en": "It is the first case we know of in America where a human being was identified from their teeth."
           },
           "cues": [
             {

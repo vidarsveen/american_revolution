@@ -376,6 +376,18 @@
 
 .ov-quote { width: min(86vw, 460px); transform: scale(.97); }
 .ov-quote.is-on { opacity: 1; transform: none; }
+/* The provenance mark on a quote that is not a plain quotation. Small, above
+   the words, and in the same gold the map uses for "look here" -- it is a
+   caveat, not a decoration, and it has to be readable before the sentence is. */
+.ov-quote__kind {
+  margin: 0 0 var(--s1);
+  font: var(--fs-2xs) / var(--lh-snug) var(--font-body);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.ov-quote__card.is-hedged { border-left: 2px solid var(--gold-soft, var(--gold)); padding-left: var(--s4, 12px); }
+
 .ov-quote__card {
   margin: 0;
   padding: var(--s5);

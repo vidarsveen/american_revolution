@@ -247,11 +247,11 @@
     }
   ],
   "checks": {
-    "//": "Where the pixel checks point their camera. s2.b7 is the beat with every province on screen at once — the triumvirate division plus Egypt — which is what the neighbour-contrast measurement needs.",
+    "//": "Where the pixel checks point their camera. s5.b10 is the beat with every province on screen at once - Octavian's west against Antony's east after 36 BC. `at` is 7.5s because the two region.show cues are anchored to the words 'vest' and 'ost', which land 4.8s and 6.0s into the beat; sampling earlier finds an empty map and reports it as no data rather than as a fail.",
     "contrast": {
       "chapter": "chapter-44bc-octavian",
-      "beat": "s2.b7",
-      "at": 2.0
+      "beat": "s5.b10",
+      "at": 7.5
     }
   },
   "shortName": {
