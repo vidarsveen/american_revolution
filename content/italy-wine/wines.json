@@ -1,0 +1,83 @@
+{
+ "//": "Navngitte viner. Kind `wine`. Et navn på en italiensk flaske er nesten alltid et sted; her står det hva stedet betyr.",
+ "barolo": {
+  "name": {
+   "no": "Barolo",
+   "en": "Barolo"
+  },
+  "hook": {
+   "no": "Nebbiolo fra elleve kommuner sør for Alba.",
+   "en": "Nebbiolo from eleven communes south of Alba."
+  },
+  "body": {
+   "no": "Minst trettiåtte måneders lagring før salg, derav atten på trefat. Det er over tre år før produsenten ser en krone.\n\nOmrådet er lite: under to tusen hektar, mot Bordeaux' hundre og ti tusen. Innenfor det finnes nesten to hundre navngitte enkeltmarker, og de beste — Cannubi, Brunate, Cerequio — har hatt rykte i to hundre år.\n\nUng Barolo er stram og nesten ubehagelig. Den samme flaska etter tjue år er noe helt annet.",
+   "en": "At least thirty-eight months of ageing before sale, of which eighteen in wood. That is over three years before the producer sees anything.\n\nThe zone is small: under two thousand hectares against Bordeaux's hundred and ten thousand. Inside it are nearly two hundred named single vineyards, and the best — Cannubi, Brunate, Cerequio — have had their reputation for two hundred years.\n\nYoung Barolo is severe and nearly unpleasant. The same bottle at twenty years is a different thing entirely."
+  },
+  "grape": "nebbiolo",
+  "colour": "red"
+ },
+ "barbaresco": {
+  "name": {
+   "no": "Barbaresco",
+   "en": "Barbaresco"
+  },
+  "hook": {
+   "no": "Samme drue som Barolo, atten kilometer unna.",
+   "en": "The same grape as Barolo, eighteen kilometres away."
+  },
+  "body": {
+   "no": "Barbaresco ligger lavere og nærmere elva Tanaro enn Barolo. Det gir litt varmere netter, og druene modner noen dager tidligere.\n\nNoen få dager høres ingenting ut. I praksis er det forskjellen på en vin du kan drikke etter fem år og en du bør vente ti på. Minstekravet er tjueseks måneder mot Barolos trettiåtte.\n\nSonen er enda mindre: rundt sju hundre hektar.",
+   "en": "Barbaresco sits lower and closer to the river Tanaro than Barolo. That gives slightly warmer nights, and the grapes ripen a few days earlier.\n\nA few days sounds like nothing. In practice it is the difference between a wine you can drink at five years and one you should wait ten for. The minimum is twenty-six months against Barolo's thirty-eight.\n\nThe zone is smaller still: around seven hundred hectares."
+  },
+  "grape": "nebbiolo",
+  "colour": "red"
+ },
+ "barbera-dasti": {
+  "name": {
+   "no": "Barbera d’Asti",
+   "en": "Barbera d’Asti"
+  },
+  "hook": {
+   "no": "Druen Barbera fra området Asti.",
+   "en": "The grape Barbera from the district of Asti."
+  },
+  "body": {
+   "no": "Her står både drue og sted på flaska, som er uvanlig for Italia. Første halvdel er druen, andre halvdel er stedet.\n\nMørk farge, høy syre og nesten ingen tannin. Den passer til mat med fett i — og det er ikke tilfeldig, for syre skjærer gjennom fett. Det er derfor den er hverdagsvinen akkurat der.",
+   "en": "Here both the grape and the place are on the bottle, which is unusual for Italy. First half the grape, second half the place.\n\nDark colour, high acid, almost no tannin. It suits food with fat in it — and that is not coincidence, because acid cuts through fat. It is why this is the everyday wine exactly there."
+  },
+  "grape": "barbera",
+  "colour": "red"
+ },
+ "moscato-dasti": {
+  "name": {
+   "no": "Moscato d’Asti",
+   "en": "Moscato d’Asti"
+  },
+  "hook": {
+   "no": "Søt, lett perlende, fem prosent alkohol.",
+   "en": "Sweet, lightly fizzing, five per cent alcohol."
+  },
+  "body": {
+   "no": "Gjæringen stanses ved kulde mens halve sukkeret ennå er igjen, og karbondioksiden som alt er dannet blir sittende i vinen.\n\nDet gir en av svært få viner i verden du kan drikke et glass av til frokost uten å være bekymret. Den skal drikkes ung — helst innen et år eller to.",
+   "en": "The fermentation is stopped with cold while half the sugar is still there, and the carbon dioxide already formed stays in the wine.\n\nThat gives one of very few wines on earth you can have a glass of at breakfast without concern. It should be drunk young — within a year or two."
+  },
+  "grape": "moscato",
+  "colour": "sweet"
+ },
+ "chianti": {
+  "name": {
+   "no": "Chianti",
+   "en": "Chianti"
+  },
+  "hook": {
+   "no": "Toscana. Sangiovese, og et sted.",
+   "en": "Tuscany. Sangiovese, and a place."
+  },
+  "body": {
+   "no": "Chianti er et område mellom Firenze og Siena, ikke en drue. Druen er Sangiovese, og den står sjelden på flaska, fordi alle som kjøper Chianti antas å vite det.\n\nChianti Classico er kjerneområdet, med et svart hane som merke. Vanlig Chianti er et mye større område rundt det.",
+   "en": "Chianti is an area between Florence and Siena, not a grape. The grape is Sangiovese, and it rarely appears on the bottle, because anyone buying Chianti is assumed to know.\n\nChianti Classico is the historic core, marked with a black rooster. Plain Chianti is a much larger area around it."
+  },
+  "grape": "sangiovese",
+  "colour": "red"
+ }
+}

@@ -110,5 +110,89 @@
    "no": "Langhe er et bølgende høydedrag sør for elva Tanaro. Jorda er marine avsetninger — kalkrik leire og sandstein fra den gang hele området lå under havet.\n\nBakkene er ikke høye, to til fire hundre meter, men de er bratte og vender alle veier. Det er hele poenget: en sørvendt skråning får nok sol til at Nebbiolo modner, en nordvendt gjør det ikke. Vinmarkene ligger derfor i et lappeteppe, ikke i felt.\n\nOmrådet kom på UNESCOs verdensarvliste i to tusen og fjorten, for kulturlandskapet.",
    "en": "The Langhe is a range of rolling hills south of the river Tanaro. The soil is marine sediment — chalky clay and sandstone from when the whole area lay under the sea.\n\nThe hills are not high, two to four hundred metres, but they are steep and face every direction. That is the entire point: a south-facing slope gets enough sun to ripen Nebbiolo and a north-facing one does not. So the vineyards lie in a patchwork rather than in fields.\n\nThe area became a UNESCO World Heritage Site in 2014, for the landscape itself."
   }
+ },
+ "syre": {
+  "name": {
+   "no": "Syre",
+   "en": "Acidity"
+  },
+  "hook": {
+   "no": "Det som gjør at det siler i munnen og at vinen kjennes frisk.",
+   "en": "What makes your mouth water and the wine taste fresh."
+  },
+  "body": {
+   "no": "Syre er hovedsakelig vinsyre og eplesyre fra druen selv. Den gjør at spyttet renner, og det er derfor en syrlig vin kjennes forfriskende og en vin uten syre kjennes slapp.\n\nVarme netter brenner opp syre. Kjølige netter bevarer den. Det er hele grunnen til at høyde og breddegrad betyr så mye for hvor vin kan dyrkes.\n\nSyre er også det som gjør vin god til mat: den skjærer gjennom fett på samme måte som et sitronskvett.",
+   "en": "Acidity is mostly tartaric and malic acid from the grape itself. It makes your saliva run, which is why a tart wine feels refreshing and a wine without acid feels flabby.\n\nWarm nights burn acid off. Cool nights preserve it. That is the whole reason altitude and latitude matter so much to where wine can be grown.\n\nAcid is also what makes wine work with food: it cuts through fat the way a squeeze of lemon does."
+  }
+ },
+ "fylde": {
+  "name": {
+   "no": "Fylde",
+   "en": "Body"
+  },
+  "hook": {
+   "no": "Hvor tung vinen kjennes i munnen.",
+   "en": "How heavy the wine feels in your mouth."
+  },
+  "body": {
+   "no": "Fylde er ikke smak, det er tekstur — forskjellen mellom skummet melk og fløte.\n\nDet meste av den kommer fra alkohol. En vin på fjorten og en halv prosent kjennes tyngre enn en på elleve, selv om de smaker likt. Sukker og glyserol bidrar også.\n\nDerfor kjennes Barolo tung og Moscato d’Asti lett: fjorten og en halv mot fem prosent.",
+   "en": "Body is not flavour, it is texture — the difference between skimmed milk and cream.\n\nMost of it comes from alcohol. A wine at fourteen and a half per cent feels heavier than one at eleven even if they taste the same. Sugar and glycerol contribute too.\n\nIt is why Barolo feels heavy and Moscato d’Asti feels light: fourteen and a half against five."
+  }
+ },
+ "gjaering": {
+  "name": {
+   "no": "Gjæring",
+   "en": "Fermentation"
+  },
+  "hook": {
+   "no": "Gjær spiser sukker og lager alkohol.",
+   "en": "Yeast eats sugar and makes alcohol."
+  },
+  "body": {
+   "no": "Gjærceller omdanner druesukker til alkohol og karbondioksid. Det er hele prosessen, og den skjer av seg selv — det finnes gjær på druskallene og i kjelleren.\n\nStopper du gjæringen tidlig, blir det sukker igjen og vinen blir søt. Lar du den gå til ende, blir den tørr. Moscato d’Asti er stanset, Barolo er ikke.\n\nGjæringen varmer, og en kjeller som blir for varm gir vin som smaker kokt. Temperaturkontroll er den største tekniske endringen i vin de siste femti årene.",
+   "en": "Yeast cells turn grape sugar into alcohol and carbon dioxide. That is the whole process, and it happens by itself — there is yeast on the skins and in the cellar.\n\nStop it early and sugar remains and the wine is sweet. Let it run to the end and it is dry. Moscato d'Asti is stopped, Barolo is not.\n\nFermentation makes heat, and a cellar that gets too warm gives wine that tastes cooked. Temperature control is the biggest technical change in wine in fifty years."
+  }
+ },
+ "eik": {
+  "name": {
+   "no": "Eik",
+   "en": "Oak"
+  },
+  "hook": {
+   "no": "Fatet er en ingrediens, ikke bare en beholder.",
+   "en": "The barrel is an ingredient, not just a container."
+  },
+  "body": {
+   "no": "Et nytt eikefat gir vanilje, kokos, krydder og røyk. Et gammelt fat gir nesten ingenting og fungerer bare som en beholder som puster.\n\nStørrelsen avgjør like mye. Et lite fat på to hundre og tjuefem liter har mye treflate per liter vin; et stort på tjue hektoliter har lite. Det er derfor tradisjonell Barolo på store gamle fat smaker helt annerledes enn moderne Barolo på små nye.\n\nStriden om nettopp det delte Piemonte i to leirer på nittiåttitallet.",
+   "en": "A new oak barrel gives vanilla, coconut, spice and smoke. An old one gives almost nothing and works as a container that breathes.\n\nSize matters as much. A small 225-litre barrel has a lot of wood surface per litre; a twenty-hectolitre cask has little. It is why traditional Barolo in big old casks tastes nothing like modern Barolo in small new ones.\n\nThe argument over exactly that split Piedmont into two camps in the 1980s."
+  }
+ },
+ "argang": {
+  "name": {
+   "no": "Årgang",
+   "en": "Vintage"
+  },
+  "hook": {
+   "no": "Året druene ble plukket — altså været det året.",
+   "en": "The year the grapes were picked — which means that year's weather."
+  },
+  "body": {
+   "no": "Årgangen på flaska er ikke pynt. I et kjølig, marginalt klima er forskjellen mellom en varm og en kald høst forskjellen mellom moden frukt og sur frukt.\n\nJo lenger nord, jo mer betyr årgangen. I Sør-Italia er det stort sett varmt nok hvert år, og forskjellen blir mindre.\n\nDet er også derfor gamle årganger prises ulikt: noen år var rett og slett bedre vær.",
+   "en": "The year on the bottle is not decoration. In a cool, marginal climate the difference between a warm autumn and a cold one is the difference between ripe fruit and sour fruit.\n\nThe further north, the more the vintage matters. In southern Italy most years are warm enough and the difference narrows.\n\nIt is also why old vintages are priced differently: some years simply had better weather."
+  }
+ },
+ "avling": {
+  "name": {
+   "no": "Avling",
+   "en": "Yield"
+  },
+  "hook": {
+   "no": "Hvor mye hver plante får bære — og hvorfor mindre er dyrere.",
+   "en": "How much each vine is allowed to carry — and why less costs more."
+  },
+  "body": {
+   "no": "En vinranke kan bære mye eller lite. Bærer den mye, fordeles den samme mengden vann og næring på flere druer, og saften blir tynnere.\n\nDe beste produsentene klipper bort klaser midt i sesongen for å konsentrere resten. Det betyr færre flasker fra samme mark, og de flaskene må bære hele kostnaden.\n\nLoven setter et tak. De som bryr seg ligger langt under det.",
+   "en": "A vine can carry a lot or a little. Carrying a lot spreads the same water and nutrients across more grapes, and the juice comes out thinner.\n\nThe best producers cut bunches off mid-season to concentrate what is left. That means fewer bottles from the same plot, and those bottles carry the whole cost.\n\nThe law sets a ceiling. Those who care sit far below it."
+  }
  }
 }

@@ -165,6 +165,15 @@ async function loadData(want) {
     pool('placeNotes', {}),
   ]);
 
+  // Every kind the pack declares, not a fixed four. A wine course has grapes
+  // and wines; a war has people. The pool name comes from the declaration so
+  // a new kind is a pack.json edit and a JSON file, with no code change.
+  const declared = manifest?.entries || {};
+  const extraKinds = Object.entries(declared)
+    .filter(([id]) => !['person', 'term', 'topic', 'place'].includes(id));
+  const extra = Object.fromEntries(await Promise.all(
+    extraKinds.map(async ([id, spec]) => [id, await pool(spec.from || id, {})])));
+
   return {
     pack, manifest,
     events: events.sort((a, b) => parseDate(a.date) - parseDate(b.date)),
@@ -173,7 +182,7 @@ async function loadData(want) {
     // files keep their names and their shapes; entries.js normalises the
     // three spellings of "name" and stamps a kind.
     entries: buildEntries({ person: people, term: terms, topic: topics,
-                            place: placeNotes }, manifest),
+                            place: placeNotes, ...extra }, manifest),
   };
 }
 

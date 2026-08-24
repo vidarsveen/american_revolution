@@ -135,7 +135,9 @@
     "topics": "topics.json",
     "placeNotes": "place-notes.json",
     "media": "media.json",
-    "areas": "geo/regions.geojson"
+    "areas": "geo/regions.geojson",
+    "grapes": "grapes.json",
+    "wines": "wines.json"
   },
   "//media": [
     "allowPhoto is TRUE here, and it is the only pack where it is. The rule it",
@@ -187,6 +189,22 @@
   },
   "//entries": "What a reader can look up in this pack, and what to call it. The tab is built from this rather than compiled into js/main.js, which is why a subject with no people in it can still have a library.",
   "entries": {
+    "grape": {
+      "label": {
+        "no": "Druer",
+        "en": "Grapes"
+      },
+      "from": "grapes",
+      "browse": true
+    },
+    "wine": {
+      "label": {
+        "no": "Viner",
+        "en": "Wines"
+      },
+      "from": "wines",
+      "browse": true
+    },
     "term": {
       "label": {
         "no": "Ordbok",
