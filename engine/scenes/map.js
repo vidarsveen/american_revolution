@@ -390,7 +390,10 @@ export function drawRoute(cue, instant) {
   } else {
     map.marches.add({
       id, coords: route.coords, faction,
-      naval: route.naval,
+      // A track over water draws dashed, whether or not somebody remembered
+      // to set `naval` — the route already says it travels by sea, and two
+      // fields meaning the same thing is how one of them goes stale.
+      naval: route.naval ?? (route.medium === 'sea' || route.medium === 'shore'),
       over: cue.over ?? 2.6,
       instant,
     });
@@ -422,6 +425,39 @@ export function drawRoad(cue) {
 export function clearRoutes() {
   map?.marches.clear();
   map?.arrows.clear();
+  map?.fleets.clear();
+}
+
+/* ------------------------------------------------------------
+   Fleets — ships, drawn as ships
+   ------------------------------------------------------------ */
+
+/**
+ * A squadron under way along a declared sea route.
+ *
+ * `t0` is preserved for a fleet already on the map with the same id, the same
+ * way a march is: re-showing a squadron to change nothing must not send it
+ * back to the mouth of the fjord mid-sentence.
+ */
+export function drawFleetCue(cue, instant) {
+  const route = chapter.routes?.[cue.id];
+  if (!route || !map) return;
+  map.fleets.add({
+    id: `fleet:${cue.id}`,
+    coords: route.coords,
+    faction: factionOf(cue, route.side || 'neutral'),
+    kind: cue.kind || 'destroyer',
+    ships: cue.ships ?? 3,
+    spacing: cue.spacing ?? 20,
+    over: instant ? 0 : (cue.over ?? 4),
+    instant,
+  });
+}
+
+export function clearFleet(cue) {
+  if (!map) return;
+  if (cue?.id) map.fleets.remove(`fleet:${cue.id}`);
+  else map.fleets.clear();
 }
 
 /* ------------------------------------------------------------

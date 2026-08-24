@@ -149,6 +149,61 @@ LOST_UNDER_PLATE = {"route.draw", "front.show", "crossing.draw", "map.flash"}
 STAGED_UNDER_PLATE = {"region.show", "marker.show", "battle.show", "area.show"}
 
 
+# A number on screen is a claim about the sentence being spoken. Two at once
+# is a comparison; five at once is a scoreboard, and the oldest of them is
+# about something the narration left a minute ago.
+STAT_STACK = 3
+# How long a chip or a bar may stand. Longer than a plate, because a number is
+# small and sits at the edge -- but a stat with no stat.clear runs to the
+# scene wipe, and that is how one ended up on screen for seventy-two seconds
+# under three later ones.
+STAT_CEILING = 45.0
+
+
+def check_numbers_clear(chapter, timings, langs):
+    """Stat chips and comparison bars: how many, and for how long."""
+    found = []
+    for scene in chapter["scenes"]:
+        live = 0
+        for beat in scene["beats"]:
+            for cue in beat.get("cues", []):
+                if cue["do"] == "stat.show":
+                    live += 1
+                    if live > STAT_STACK:
+                        found.append(
+                            f"{beat['id']}: {live} stat chips on screen at once, over "
+                            f"{STAT_STACK} — the older ones are about a sentence that "
+                            f"has gone. Add a stat.clear.")
+                elif cue["do"] == "stat.clear":
+                    live = 0
+
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            st = tm["scenes"].get(scene["id"])
+            if not st:
+                continue
+            end = st.get("dur") or 0
+            for show, clear, what in (("stat.show", "stat.clear", "stat"),
+                                      ("compare.show", "compare.clear", "compare")):
+                at = bid = None
+                for beat in scene["beats"]:
+                    tb = timing_beat(tm, scene["id"], beat["id"])
+                    for cue in beat.get("cues", []):
+                        if cue["do"] == show and at is None:
+                            at, bid = cue_time(cue, tb, lang), beat["id"]
+                        elif cue["do"] == clear and at is not None:
+                            at = None
+                if at is not None and end - at > STAT_CEILING:
+                    found.append(
+                        f"{bid}: '{lang}' {what} stands for {end - at:.0f}s to the scene "
+                        f"wipe, over {STAT_CEILING:.0f}s. Clear it when the narration "
+                        f"moves on.")
+    return found
+
+
 def check_plate_rhythm(chapter):
     """A picture story, not a slideshow.
 
@@ -472,6 +527,7 @@ def main():
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
     problems.extend(check_plate_rhythm(chapter) or [])
+    problems.extend(check_numbers_clear(chapter, timings, langs) or [])
     plate_bad, plate_note = check_plates_over_map(chapter)
     problems.extend(plate_bad)
     notes.extend(plate_note)

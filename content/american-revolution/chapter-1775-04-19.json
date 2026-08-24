@@ -3071,6 +3071,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
               "on": {
                 "no": "word:syttiåtte",
                 "en": "word:seventy-eight"
@@ -3154,6 +3158,10 @@
             "en": "The British have lost two hundred and seventy-three men, killed, wounded or missing. The Americans, ninety-five."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
             {
               "on": {
                 "no": "word:syttitre",

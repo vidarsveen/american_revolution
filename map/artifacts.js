@@ -509,3 +509,121 @@ export function drawBattle(ctx, [x, y], { line, fill, scale = 2, kind = 'battle'
   }
   ctx.restore();
 }
+
+/* ------------------------------------------------------------
+   Fleets
+   ------------------------------------------------------------ */
+
+/* How big each kind of ship draws, in pixels, and how long its wake runs.
+
+   A land march gets a thick arrow whose width means men per metre of front.
+   A squadron has no front and no width — ten destroyers in a fjord are ten
+   objects in a line, and drawing them as one fat arrow says something untrue
+   about what was there. So a fleet is drawn as ships.
+
+   The sizes are deliberately not to scale with each other: at the zoom a
+   fjord is read at, a real destroyer is under a pixel. These are symbols
+   sized to be legible and to rank correctly against each other. */
+const HULLS = {
+  destroyer:  { len: 15, beam: 5.0, wake: 30 },
+  battleship: { len: 24, beam: 8.0, wake: 46 },
+  convoy:     { len: 13, beam: 6.5, wake: 20 },
+  submarine:  { len: 12, beam: 4.0, wake: 14 },
+};
+
+/**
+ * A squadron under way along a track.
+ *
+ * The ships sit on the part of the path already travelled, in line ahead,
+ * with the leader at the head of the advance — so `progress` moves the whole
+ * formation up the fjord and the wakes trail behind it. Everything is derived
+ * from (coords, progress), nothing accumulates, and `progress: 1` draws the
+ * finished picture, which is what a seek has to produce.
+ *
+ * `ships` is how many are actually drawn, capped: past about eight, another
+ * lozenge adds no information and the line stops reading as a line.
+ */
+export function drawFleet(ctx, screenPts, {
+  line, fill, halo, progress = 1, ships = 3, kind = 'destroyer', spacing = 26,
+} = {}) {
+  if (screenPts.length < 2) return;
+  const hull = HULLS[kind] || HULLS.destroyer;
+  const smooth = catmullRom(screenPts, 160);
+  const { cum, total } = arcLength(smooth);
+  if (!total) return;
+
+  const head = Math.max(0, Math.min(1, progress)) * total;
+  const n = Math.max(1, Math.min(8, Math.round(ships)));
+
+  // Where along the path each ship is, and which way it is pointing.
+  const at = (d) => {
+    const t = Math.max(0, Math.min(total, d));
+    let i = 1;
+    while (i < cum.length && cum[i] < t) i++;
+    const a = smooth[Math.max(0, i - 1)], b = smooth[Math.min(smooth.length - 1, i)];
+    const span = (cum[i] ?? total) - (cum[i - 1] ?? 0) || 1;
+    const f = (t - (cum[i - 1] ?? 0)) / span;
+    return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f,
+            Math.atan2(b[1] - a[1], b[0] - a[0])];
+  };
+
+  ctx.save();
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+
+  for (let k = 0; k < n; k++) {
+    const d = head - k * spacing;
+    if (d < 0) break;                       // astern of the start: not yet under way
+    const [x, y, ang] = at(d);
+
+    // The wake first, so the hull sits on top of its own water.
+    const wake = Math.min(hull.wake, d);
+    if (wake > 2) {
+      const [wx, wy] = at(d - wake);
+      const grad = ctx.createLinearGradient(x, y, wx, wy);
+      grad.addColorStop(0, line);
+      grad.addColorStop(1, 'transparent');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = hull.beam * 0.55;
+      ctx.globalAlpha = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(wx, wy);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+
+    // A hull: pointed bow, square stern. Not a chevron — a chevron reads as
+    // an arrowhead, and this line already has one meaning too many.
+    const L = hull.len, B = hull.beam;
+    // save/restore around the rotation. Composing the inverse by hand is how
+    // you end up drawing the ground at half size -- setTransform REPLACES the
+    // DPR transform rather than composing with it, which this repo has paid
+    // for once already.
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(ang);
+    ctx.beginPath();
+    ctx.moveTo(L * 0.5, 0);                 // bow
+    ctx.lineTo(L * 0.05, -B * 0.5);
+    ctx.lineTo(-L * 0.5, -B * 0.42);
+    ctx.lineTo(-L * 0.5, B * 0.42);
+    ctx.lineTo(L * 0.05, B * 0.5);
+    ctx.closePath();
+    // A halo first, so a hull reads as an object sitting ON the track rather
+    // than as a fatter dash in it. Measured the hard way: the first version
+    // drew the ships in the same colour as the line they follow, and at fjord
+    // zoom they were indistinguishable from the dashes.
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = halo || 'rgba(255,255,255,0.85)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.fillStyle = fill || line;
+    ctx.fill();
+    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = line;
+    ctx.stroke();
+    ctx.restore();
+  }
+  ctx.restore();
+}

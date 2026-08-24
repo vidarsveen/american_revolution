@@ -115,6 +115,13 @@ def main() -> int:
     if "data" not in skip:
         ok &= run("check-data", ["tools/check-data.py"])
 
+        # A ship's track has to stay in the water. Only packs with their own
+        # close-in coastline can be asked, so the rest are skipped silently.
+        for pack in packs_on_disk():
+            if (ROOT / "content" / pack / "geo" / "detail.json").exists():
+                ok &= run(f"check-sealanes {pack}",
+                          ["tools/check-sealanes.py", pack])
+
     if "effects" not in skip:
         ok &= run("check-effects", ["tools/check-effects.py"])
 

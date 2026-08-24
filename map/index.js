@@ -18,7 +18,7 @@ import { loadLevel, levelFor, levelReady, preload, drawBasemap, registerDetail,
 import { loadRegions, fromGeoJSON } from './regions.js';
 import { tintFor } from './tint.js';
 import {
-  drawArrow, drawMarch, drawFront, drawArea, drawRegions, drawCrossing,
+  drawArrow, drawMarch, drawFront, drawArea, drawRegions, drawCrossing, drawFleet,
   drawBattle, drawGlow, widthForStrength,
 } from './artifacts.js';
 
@@ -168,6 +168,7 @@ export function createMap(host, opts = {}) {
   const layers = {
     areas: new Map(), roads: new Map(), fronts: new Map(),
     marches: new Map(), arrows: new Map(), crossings: new Map(),
+    fleets: new Map(),
     battles: new Map(), places: new Map(), units: new Map(),
     regions: new Map(), markers: new Map(), highlights: new Map(),
     pins: new Map(), glows: new Map(),
@@ -370,6 +371,16 @@ export function createMap(host, opts = {}) {
     for (const s of layers.marches.values()) {
       drawMarch(ctx, pts(s.coords), { line: colourOf(s.faction).line, naval: s.naval,
                                       width: s.width || 3.2, progress: progressOf(s) });
+    }
+    // Ships ride ON the water and under the pins, so they draw after the
+    // marches and before the arrows.
+    for (const s of layers.fleets.values()) {
+      const c = colourOf(s.faction);
+      drawFleet(ctx, pts(s.coords), { line: c.line, fill: c.fill, kind: s.kind,
+                                      // No halo colour passed: the default is
+                                      // white, and a ship is always on water.
+                                      ships: s.ships,
+                                      spacing: s.spacing, progress: progressOf(s) });
     }
     const mpp = metresPerPixel(cam.lat, cam.zoom);
     for (const s of layers.arrows.values()) {
@@ -1031,6 +1042,7 @@ export function createMap(host, opts = {}) {
     units: makeLayer('units', { dom: true }),
     roads: makeLayer('roads'),
     marches: makeLayer('marches'),
+    fleets: makeLayer('fleets'),
     arrows: makeLayer('arrows'),
     fronts: makeLayer('fronts'),
     areas: makeLayer('areas'),

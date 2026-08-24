@@ -58,6 +58,11 @@ const VERBS = {
   'sound.music':      (c, i) => S.playMusicCue(c, i),
 
   'road.draw':        (c)    => M.drawRoad(c),
+
+  // A squadron under way. A march arrow says men per metre of front, which
+  // is a true thing about an army and a false one about ten destroyers.
+  'fleet.draw':       (c, i) => M.drawFleetCue(c, i),
+  'fleet.clear':      (c)    => M.clearFleet(c),
   'route.draw':       (c, i) => M.drawRoute(c, i),
   'route.clear':      ()     => M.clearRoutes(),
 

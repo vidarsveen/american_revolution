@@ -701,6 +701,60 @@
           "note": "The cross-dissolve back to the map."
         }
       }
+    },
+    "fleet.draw": {
+      "summary": {
+        "no": "En eskadre på vei",
+        "en": "A squadron under way"
+      },
+      "note": "Ships, not an arrow. route.draw sizes its arrow by `strength`, which means men per metre of front -- a true statement about an army and a meaningless one about a squadron, where ten destroyers are ten objects in a line. A fleet draws the hulls in line ahead along the travelled part of the track, with wakes trailing, so `over` moves the formation up the fjord and a seek lands it wherever it had got to. The track itself must be water: declare the route `\"medium\": \"sea\"` and tools/check-sealanes.py will hold you to it.",
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "ships": {
+          "type": "number",
+          "min": 1,
+          "max": 8,
+          "default": 3,
+          "note": "How many hulls to draw. Capped at eight: past that another lozenge adds nothing and the line stops reading as a line."
+        },
+        "kind": {
+          "type": "enum",
+          "values": [
+            "destroyer",
+            "battleship",
+            "convoy",
+            "submarine"
+          ],
+          "default": "destroyer",
+          "note": "Sizes the hull and the wake. Not to scale with each other -- at the zoom a fjord is read at a real destroyer is under a pixel."
+        },
+        "side": {
+          "type": "faction"
+        },
+        "spacing": {
+          "type": "number",
+          "default": 20,
+          "note": "Pixels between hulls, in line ahead."
+        },
+        "over": {
+          "type": "seconds",
+          "default": 4
+        }
+      }
+    },
+    "fleet.clear": {
+      "summary": {
+        "no": "Ta eskadren av kartet",
+        "en": "Take the squadron off the map"
+      },
+      "args": {
+        "id": {
+          "type": "route"
+        }
+      }
     }
   }
 }
