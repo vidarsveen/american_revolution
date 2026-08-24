@@ -1,146 +1,174 @@
 {
-  "doolittle-1": {
-    "file": "doolittle-1.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Slaget ved Lexington, plate I",
-      "en": "The Battle of Lexington, Plate I"
-    },
-    "year": "1775",
-    "artist": "Amos Doolittle",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Plate_I,_The_Battle_of_Lexington,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05585.JPG"
+ "//": [
+  "Every entry carries a `kind`:",
+  "",
+  "  archive  a real picture from the period -- photograph, print, painting,",
+  "           map. It is a RECORD. Carries artist, year, source.",
+  "  made     generated or drawn. It is an ILLUSTRATION, and says so on screen.",
+  "           Additionally requires method, claims and omits. check-data.py",
+  "           fails a `made` entry missing any of them.",
+  "",
+  "`claims` is one line saying what the picture asserts. `omits` is one line",
+  "saying what was deliberately kept OUT of frame because we do not know it.",
+  "The second field is the one that matters: the spike that produced this",
+  "taxonomy generated a grape bunch that is beautiful and is not Nebbiolo, and",
+  "a hillside with a steamboat on it in 1775. A picture may not be more",
+  "specific than the evidence, and `omits` is where that is written down."
+ ],
+ "doolittle-1": {
+  "kind": "archive",
+  "file": "doolittle-1.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Slaget ved Lexington, plate I",
+   "en": "The Battle of Lexington, Plate I"
   },
-  "doolittle-2": {
-    "file": "doolittle-2.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Utsikt over Concord, plate II",
-      "en": "A View of the Town of Concord, Plate II"
-    },
-    "year": "1775",
-    "artist": "Amos Doolittle",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Plate_II,_A_View_of_the_Town_of_Concord,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05584.JPG"
+  "year": "1775",
+  "artist": "Amos Doolittle",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Plate_I,_The_Battle_of_Lexington,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05585.JPG"
+ },
+ "doolittle-2": {
+  "kind": "archive",
+  "file": "doolittle-2.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Utsikt over Concord, plate II",
+   "en": "A View of the Town of Concord, Plate II"
   },
-  "doolittle-3": {
-    "file": "doolittle-3.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Kampen ved North Bridge, plate III",
-      "en": "The Engagement at the North Bridge, Plate III"
-    },
-    "year": "1775",
-    "artist": "Amos Doolittle",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Plate_III,_The_Engagement_at_Concord,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05586.JPG"
+  "year": "1775",
+  "artist": "Amos Doolittle",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Plate_II,_A_View_of_the_Town_of_Concord,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05584.JPG"
+ },
+ "doolittle-3": {
+  "kind": "archive",
+  "file": "doolittle-3.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Kampen ved North Bridge, plate III",
+   "en": "The Engagement at the North Bridge, Plate III"
   },
-  "doolittle-4": {
-    "file": "doolittle-4.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Percys unnsetning ved Lexington, plate IV",
-      "en": "Percy's Relief at Lexington, Plate IV"
-    },
-    "year": "1775",
-    "artist": "Amos Doolittle",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Plate_IV,_A_View_of_South_Lexington,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05587.JPG"
+  "year": "1775",
+  "artist": "Amos Doolittle",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Plate_III,_The_Engagement_at_Concord,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05586.JPG"
+ },
+ "doolittle-4": {
+  "kind": "archive",
+  "file": "doolittle-4.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Percys unnsetning ved Lexington, plate IV",
+   "en": "Percy's Relief at Lexington, Plate IV"
   },
-  "old-north": {
-    "file": "old-north.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Tårnet på Old North Church",
-      "en": "The tower of the Old North Church"
-    },
-    "year": "ca. 1878",
-    "artist": "Ukjent fotograf",
-    "licence": "No restrictions",
-    "source": "https://commons.wikimedia.org/wiki/File:History_of_Paul_Revere%27s_signal_lanterns,_April_18,_1775,_in_the_steeple_of_the_North_Church-_with_an_account_of_the_tablet_on_Christ_Church_and_the_monuments_at_Highland_Park_and_Dorchester_Heights_(14777037692).jpg"
+  "year": "1775",
+  "artist": "Amos Doolittle",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Plate_IV,_A_View_of_South_Lexington,_Amos_Doolittle_engravings_of_the_Battle_of_Lexington_and_Concord,_December_1775,_reprint_by_Charles_E._Goodspeed,_Boston,_1903_-_Concord_Museum_-_Concord,_MA_-_DSC05587.JPG"
+ },
+ "old-north": {
+  "kind": "archive",
+  "file": "old-north.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Tårnet på Old North Church",
+   "en": "The tower of the Old North Church"
   },
-  "bunker-hill-attack": {
-    "file": "bunker-hill-attack.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Angrepet på Bunker Hill, mens Charlestown brenner",
-      "en": "The attack on Bunker's Hill, with Charlestown burning"
-    },
-    "year": "1783",
-    "artist": "John Lodge, etter Millar",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_attack_on_Bunker%27s_Hill,_with_the_burning_of_Charles_Town,_June_17,_1775_-_drawn_by_Mr._Millar_;_engraved_by_Lodge._LCCN2004670002.jpg"
+  "year": "ca. 1878",
+  "artist": "Ukjent fotograf",
+  "licence": "No restrictions",
+  "source": "https://commons.wikimedia.org/wiki/File:History_of_Paul_Revere%27s_signal_lanterns,_April_18,_1775,_in_the_steeple_of_the_North_Church-_with_an_account_of_the_tablet_on_Christ_Church_and_the_monuments_at_Highland_Park_and_Dorchester_Heights_(14777037692).jpg"
+ },
+ "bunker-hill-attack": {
+  "kind": "archive",
+  "file": "bunker-hill-attack.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Angrepet på Bunker Hill, mens Charlestown brenner",
+   "en": "The attack on Bunker's Hill, with Charlestown burning"
   },
-  "trumbull-warren": {
-    "file": "trumbull-warren.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "General Warrens død ved Bunker Hill",
-      "en": "The Death of General Warren at the Battle of Bunker's Hill"
-    },
-    "year": "1786",
-    "artist": "John Trumbull",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_General_Warren_at_the_Battle_of_Bunker%27s_Hill.jpg"
+  "year": "1783",
+  "artist": "John Lodge, etter Millar",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:View_of_the_attack_on_Bunker%27s_Hill,_with_the_burning_of_Charles_Town,_June_17,_1775_-_drawn_by_Mr._Millar_;_engraved_by_Lodge._LCCN2004670002.jpg"
+ },
+ "trumbull-warren": {
+  "kind": "archive",
+  "file": "trumbull-warren.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "General Warrens død ved Bunker Hill",
+   "en": "The Death of General Warren at the Battle of Bunker's Hill"
   },
-  "boston-1768": {
-    "file": "boston-1768.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Britiske tropper går i land i Boston",
-      "en": "British troops landing at Boston"
-    },
-    "year": "1768",
-    "artist": "Paul Revere",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:A_view_of_part_of_the_town_of_Boston_in_New-England_and_Brittish(sic)_ships_of_war_landing_their_troops!_1768_(13429760603).jpg"
+  "year": "1786",
+  "artist": "John Trumbull",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_General_Warren_at_the_Battle_of_Bunker%27s_Hill.jpg"
+ },
+ "boston-1768": {
+  "kind": "archive",
+  "file": "boston-1768.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Britiske tropper går i land i Boston",
+   "en": "British troops landing at Boston"
   },
-  "siege-map": {
-    "file": "siege-map.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Boston med skansene rundt",
-      "en": "Boston with the works around it"
-    },
-    "year": "1777",
-    "artist": "Henry Pelham",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:A_plan_of_Boston_in_New_England_with_its_environs,_including_Milton,_Dorchester,_Roxbury,_Brooklin,_Cambridge,_Medford,_Charlestown,_parts_of_Malden_and_Chelsea_with_the_military_works_constructed_in_LOC_gm71000619.jpg"
+  "year": "1768",
+  "artist": "Paul Revere",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:A_view_of_part_of_the_town_of_Boston_in_New-England_and_Brittish(sic)_ships_of_war_landing_their_troops!_1768_(13429760603).jpg"
+ },
+ "siege-map": {
+  "kind": "archive",
+  "file": "siege-map.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Boston med skansene rundt",
+   "en": "Boston with the works around it"
   },
-  "bunker-hill-plan": {
-    "file": "bunker-hill-plan.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Clintons egen plan over slaget",
-      "en": "Clinton's own plan of the battle"
-    },
-    "year": "1775",
-    "artist": "Henry Clinton",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:A_Plan_of_the_Battle_of_Bunker_Hill_LOC_83694241.jpg"
+  "year": "1777",
+  "artist": "Henry Pelham",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:A_plan_of_Boston_in_New_England_with_its_environs,_including_Milton,_Dorchester,_Roxbury,_Brooklin,_Cambridge,_Medford,_Charlestown,_parts_of_Malden_and_Chelsea_with_the_military_works_constructed_in_LOC_gm71000619.jpg"
+ },
+ "bunker-hill-plan": {
+  "kind": "archive",
+  "file": "bunker-hill-plan.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Clintons egen plan over slaget",
+   "en": "Clinton's own plan of the battle"
   },
-  "bunker-hill-assault": {
-    "file": "bunker-hill-assault.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Opp bakken, tredje gang",
-      "en": "Up the hill, the third time"
-    },
-    "year": "ca. 1897",
-    "artist": "Howard Pyle",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Bunker_Hill_by_Pyle.jpg"
+  "year": "1775",
+  "artist": "Henry Clinton",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:A_Plan_of_the_Battle_of_Bunker_Hill_LOC_83694241.jpg"
+ },
+ "bunker-hill-assault": {
+  "kind": "archive",
+  "file": "bunker-hill-assault.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Opp bakken, tredje gang",
+   "en": "Up the hill, the third time"
   },
-  "washington-cambridge": {
-    "file": "washington-cambridge.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Washington overtar kommandoen",
-      "en": "Washington takes command"
-    },
-    "year": "1876",
-    "artist": "Currier & Ives",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Washington_Taking_Command_of_the_American_Army_%E2%80%93_At_Cambridge,_Massachusetts,_July_3rd,_1775_MET_DP853566.jpg"
-  }
+  "year": "ca. 1897",
+  "artist": "Howard Pyle",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Bunker_Hill_by_Pyle.jpg"
+ },
+ "washington-cambridge": {
+  "kind": "archive",
+  "file": "washington-cambridge.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Washington overtar kommandoen",
+   "en": "Washington takes command"
+  },
+  "year": "1876",
+  "artist": "Currier & Ives",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Washington_Taking_Command_of_the_American_Army_%E2%80%93_At_Cambridge,_Massachusetts,_July_3rd,_1775_MET_DP853566.jpg"
+ }
 }

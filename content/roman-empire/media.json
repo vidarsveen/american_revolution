@@ -1,278 +1,317 @@
 {
-  "caesar-death": {
-    "file": "caesar-death.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Cæsars død",
-      "en": "The Death of Caesar"
-    },
-    "year": "1804–05",
-    "artist": "Vincenzo Camuccini",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Vincenzo_Camuccini_-_La_morte_di_Cesare_(cropped_3-2).jpg"
+ "//": [
+  "Every entry carries a `kind`:",
+  "",
+  "  archive  a real picture from the period -- photograph, print, painting,",
+  "           map. It is a RECORD. Carries artist, year, source.",
+  "  made     generated or drawn. It is an ILLUSTRATION, and says so on screen.",
+  "           Additionally requires method, claims and omits. check-data.py",
+  "           fails a `made` entry missing any of them.",
+  "",
+  "`claims` is one line saying what the picture asserts. `omits` is one line",
+  "saying what was deliberately kept OUT of frame because we do not know it.",
+  "The second field is the one that matters: the spike that produced this",
+  "taxonomy generated a grape bunch that is beautiful and is not Nebbiolo, and",
+  "a hillside with a steamboat on it in 1775. A picture may not be more",
+  "specific than the evidence, and `omits` is where that is written down."
+ ],
+ "caesar-death": {
+  "kind": "archive",
+  "file": "caesar-death.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Cæsars død",
+   "en": "The Death of Caesar"
   },
-  "senate": {
-    "file": "senate.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Senatet i Roma",
-      "en": "The senate at Rome"
-    },
-    "year": "1880",
-    "artist": "Cesare Maccari",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Cicero_Denounces_Catiline_in_the_Roman_Senate_by_Cesare_Maccari.png"
+  "year": "1804–05",
+  "artist": "Vincenzo Camuccini",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Vincenzo_Camuccini_-_La_morte_di_Cesare_(cropped_3-2).jpg"
+ },
+ "senate": {
+  "kind": "archive",
+  "file": "senate.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Senatet i Roma",
+   "en": "The senate at Rome"
   },
-  "forum": {
-    "file": "forum.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Forum Romanum",
-      "en": "The Roman Forum"
-    },
-    "year": "1772",
-    "artist": "Giovanni Battista Piranesi",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Campo_Vaccino_-Roman_Forum_with_the_Temple_of_Castor_and_Pollux_to_right-,_from_Vedute_di_Roma_(Roman_Views),_part_II_MET_DP260583.jpg"
+  "year": "1880",
+  "artist": "Cesare Maccari",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cicero_Denounces_Catiline_in_the_Roman_Senate_by_Cesare_Maccari.png"
+ },
+ "forum": {
+  "kind": "archive",
+  "file": "forum.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Forum Romanum",
+   "en": "The Roman Forum"
   },
-  "actium": {
-    "file": "actium.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Slaget ved Actium",
-      "en": "The Battle of Actium"
-    },
-    "year": "1672",
-    "artist": "Lorenzo A. Castro",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Castro_Battle_of_Actium.jpg"
+  "year": "1772",
+  "artist": "Giovanni Battista Piranesi",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Campo_Vaccino_-Roman_Forum_with_the_Temple_of_Castor_and_Pollux_to_right-,_from_Vedute_di_Roma_(Roman_Views),_part_II_MET_DP260583.jpg"
+ },
+ "actium": {
+  "kind": "archive",
+  "file": "actium.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Slaget ved Actium",
+   "en": "The Battle of Actium"
   },
-  "colosseum": {
-    "file": "colosseum.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Roma",
-      "en": "Rome"
-    },
-    "year": "1760",
-    "artist": "Giovanni Battista Piranesi",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi,_Colosseum,_1760,_KKSgb9862,_Statens_Museum_for_Kunst.jpg"
+  "year": "1672",
+  "artist": "Lorenzo A. Castro",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Castro_Battle_of_Actium.jpg"
+ },
+ "colosseum": {
+  "kind": "archive",
+  "file": "colosseum.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Roma",
+   "en": "Rome"
   },
-  "nile": {
-    "file": "nile.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Nilen",
-      "en": "The Nile"
-    },
-    "year": "1846",
-    "artist": "Louis Haghe, after David Roberts",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Louis_Haghe_-_Egypt_and_Nubia,_Volume_I-_Pyramids_of_Geezeh,_from_the_Nile_-_2012.201_-_Cleveland_Museum_of_Art.tif"
+  "year": "1760",
+  "artist": "Giovanni Battista Piranesi",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi,_Colosseum,_1760,_KKSgb9862,_Statens_Museum_for_Kunst.jpg"
+ },
+ "nile": {
+  "kind": "archive",
+  "file": "nile.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Nilen",
+   "en": "The Nile"
   },
-  "legion": {
-    "file": "legion.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Legionærer på marsj",
-      "en": "Legionaries on the march"
-    },
-    "year": "113",
-    "artist": "Trajans søyle",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Trajan%27s_Column_-_NMR_-_panel_015_A.jpg"
+  "year": "1846",
+  "artist": "Louis Haghe, after David Roberts",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Louis_Haghe_-_Egypt_and_Nubia,_Volume_I-_Pyramids_of_Geezeh,_from_the_Nile_-_2012.201_-_Cleveland_Museum_of_Art.tif"
+ },
+ "legion": {
+  "kind": "archive",
+  "file": "legion.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Legionærer på marsj",
+   "en": "Legionaries on the march"
   },
-  "caesar-funeral": {
-    "file": "caesar-funeral.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Antonius taler over Cæsars lik",
-      "en": "Antony speaks over Caesar's body"
-    },
-    "year": "ca. 1890",
-    "artist": "George Edward Robertson",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Marc_Antony%27s_Oration_at_Caesar%27s_Funeral_by_George_Edward_Robertson.jpg"
+  "year": "113",
+  "artist": "Trajans søyle",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Trajan%27s_Column_-_NMR_-_panel_015_A.jpg"
+ },
+ "caesar-funeral": {
+  "kind": "archive",
+  "file": "caesar-funeral.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Antonius taler over Cæsars lik",
+   "en": "Antony speaks over Caesar's body"
   },
-  "triumph": {
-    "file": "triumph.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Et romersk triumftog",
-      "en": "A Roman triumph"
-    },
-    "year": "ca. 1630",
-    "artist": "Peter Paul Rubens",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:A_Roman_Triumph,_about_1630,_Peter_Paul_Rubens.jpg"
+  "year": "ca. 1890",
+  "artist": "George Edward Robertson",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Marc_Antony%27s_Oration_at_Caesar%27s_Funeral_by_George_Edward_Robertson.jpg"
+ },
+ "triumph": {
+  "kind": "archive",
+  "file": "triumph.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Et romersk triumftog",
+   "en": "A Roman triumph"
   },
-  "proscriptions": {
-    "file": "proscriptions.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Fulvia med Ciceros hode",
-      "en": "Fulvia with Cicero's head"
-    },
-    "year": "1898",
-    "artist": "Pavel Svedomskij",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Svedomsky-Fulvia.jpg"
+  "year": "ca. 1630",
+  "artist": "Peter Paul Rubens",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:A_Roman_Triumph,_about_1630,_Peter_Paul_Rubens.jpg"
+ },
+ "proscriptions": {
+  "kind": "archive",
+  "file": "proscriptions.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Fulvia med Ciceros hode",
+   "en": "Fulvia with Cicero's head"
   },
-  "philippi": {
-    "file": "philippi.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Brutus og Cassius faller ved Filippi",
-      "en": "Brutus and Cassius fall at Philippi"
-    },
-    "year": "ca. 1660",
-    "artist": "Pauwels Casteels",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Pauwels_Casteels_-_The_Death_of_Brutus_and_Cassius_at_the_Battle_of_Philippi.jpg"
+  "year": "1898",
+  "artist": "Pavel Svedomskij",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Svedomsky-Fulvia.jpg"
+ },
+ "philippi": {
+  "kind": "archive",
+  "file": "philippi.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Brutus og Cassius faller ved Filippi",
+   "en": "Brutus and Cassius fall at Philippi"
   },
-  "siege": {
-    "file": "siege.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Romerne beleirer en by",
-      "en": "Romans besieging a town"
-    },
-    "year": "1861",
-    "artist": "Gustave Brion",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Gustave_Brion,_Si%C3%A8ge_d%27une_ville_par_les_Romains._Batterie_de_balistes_et_catapultes,_1861.jpg"
+  "year": "ca. 1660",
+  "artist": "Pauwels Casteels",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Pauwels_Casteels_-_The_Death_of_Brutus_and_Cassius_at_the_Battle_of_Philippi.jpg"
+ },
+ "siege": {
+  "kind": "archive",
+  "file": "siege.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Romerne beleirer en by",
+   "en": "Romans besieging a town"
   },
-  "cleopatra-death": {
-    "file": "cleopatra-death.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Kleopatras død",
-      "en": "The death of Cleopatra"
-    },
-    "year": "1892",
-    "artist": "Reginald Arthur",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_Cleopatra_arthur.jpg"
+  "year": "1861",
+  "artist": "Gustave Brion",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Gustave_Brion,_Si%C3%A8ge_d%27une_ville_par_les_Romains._Batterie_de_balistes_et_catapultes,_1861.jpg"
+ },
+ "cleopatra-death": {
+  "kind": "archive",
+  "file": "cleopatra-death.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Kleopatras død",
+   "en": "The death of Cleopatra"
   },
-  "denarius": {
-    "file": "denarius.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Denar med Octavians ansikt",
-      "en": "A denarius with Octavian's face"
-    },
-    "year": "29–27 f.Kr.",
-    "artist": "Ukjent romersk myntmester",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Silver_denarius_of_Octavian_MET_sf0817088r.jpg"
+  "year": "1892",
+  "artist": "Reginald Arthur",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:The_Death_of_Cleopatra_arthur.jpg"
+ },
+ "denarius": {
+  "kind": "archive",
+  "file": "denarius.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Denar med Octavians ansikt",
+   "en": "A denarius with Octavian's face"
   },
-  "augustus-statue": {
-    "file": "augustus-statue.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Augustus fra Prima Porta",
-      "en": "The Augustus of Prima Porta"
-    },
-    "year": "ca. 1860–1900",
-    "artist": "Ukjent fotograf, Rijksmuseum",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Beeldhouwwerk_Augustus_van_Prima_Porta_Caesar_Augustus,_Vatican_(titel_op_object),_RP-F-F01143-CK.jpg"
+  "year": "29–27 f.Kr.",
+  "artist": "Ukjent romersk myntmester",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Silver_denarius_of_Octavian_MET_sf0817088r.jpg"
+ },
+ "augustus-statue": {
+  "kind": "archive",
+  "file": "augustus-statue.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Augustus fra Prima Porta",
+   "en": "The Augustus of Prima Porta"
   },
-  "res-gestae": {
-    "file": "res-gestae.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Res Gestae, hugget i tempelveggen i Ankara",
-      "en": "The Res Gestae, cut into the temple wall at Ankara"
-    },
-    "year": "1872",
-    "artist": "Perrot, Guillaume og Delbet",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Monumentum_Ancyranum_Res_Gestae_Divi_Augusti_Part_1.jpg"
+  "year": "ca. 1860–1900",
+  "artist": "Ukjent fotograf, Rijksmuseum",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Beeldhouwwerk_Augustus_van_Prima_Porta_Caesar_Augustus,_Vatican_(titel_op_object),_RP-F-F01143-CK.jpg"
+ },
+ "res-gestae": {
+  "kind": "archive",
+  "file": "res-gestae.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Res Gestae, hugget i tempelveggen i Ankara",
+   "en": "The Res Gestae, cut into the temple wall at Ankara"
   },
-  "pantheon": {
-    "file": "pantheon.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Pantheon, bygd av Agrippa",
-      "en": "The Pantheon, built by Agrippa"
-    },
-    "year": "ca. 1761",
-    "artist": "Giovanni Battista Piranesi",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Pantheon_exterior_(Veduta_del_Pantheon_d%27Agrippa_oggi_Chiesa_di_S._Maria_ad_Martyres)_MET_DP828229.jpg"
+  "year": "1872",
+  "artist": "Perrot, Guillaume og Delbet",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Monumentum_Ancyranum_Res_Gestae_Divi_Augusti_Part_1.jpg"
+ },
+ "pantheon": {
+  "kind": "archive",
+  "file": "pantheon.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Pantheon, bygd av Agrippa",
+   "en": "The Pantheon, built by Agrippa"
   },
-  "appia": {
-    "file": "appia.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Via Appia utenfor Roma",
-      "en": "The Via Appia outside Rome"
-    },
-    "year": "1748",
-    "artist": "Giovanni Battista Piranesi",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi,_Parte_dell%27antica_Via_Appia_fuori_de_Porta_S._Sebastiano,_1748,_NGA_125678.jpg"
+  "year": "ca. 1761",
+  "artist": "Giovanni Battista Piranesi",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:The_Pantheon_exterior_(Veduta_del_Pantheon_d%27Agrippa_oggi_Chiesa_di_S._Maria_ad_Martyres)_MET_DP828229.jpg"
+ },
+ "appia": {
+  "kind": "archive",
+  "file": "appia.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Via Appia utenfor Roma",
+   "en": "The Via Appia outside Rome"
   },
-  "teutoburg": {
-    "file": "teutoburg.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Slaget i Teutoburgerskogen",
-      "en": "The battle in the Teutoburg Forest"
-    },
-    "year": "1873",
-    "artist": "Peter Janssen",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Hermann_(Arminius)_at_the_battle_of_the_Teutoburg_Forest_in_9_CE_by_Peter_Jannsen,_1873,_with_painting_creases_and_damage_removed.jpg"
+  "year": "1748",
+  "artist": "Giovanni Battista Piranesi",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi,_Parte_dell%27antica_Via_Appia_fuori_de_Porta_S._Sebastiano,_1748,_NGA_125678.jpg"
+ },
+ "teutoburg": {
+  "kind": "archive",
+  "file": "teutoburg.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Slaget i Teutoburgerskogen",
+   "en": "The battle in the Teutoburg Forest"
   },
-  "mausoleum": {
-    "file": "mausoleum.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Augustus' mausoleum",
-      "en": "The mausoleum of Augustus"
-    },
-    "year": "ca. 1756",
-    "artist": "Giovanni Battista Piranesi",
-    "licence": "CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Mausoleum_van_Augustus_te_Rome_Archeologische_vondsten_in_en_rond_Rome_(serietitel)_Le_Antichit%C3%A0_Romane_(serietitel),_RP-P-OB-39.472.jpg"
+  "year": "1873",
+  "artist": "Peter Janssen",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Hermann_(Arminius)_at_the_battle_of_the_Teutoburg_Forest_in_9_CE_by_Peter_Jannsen,_1873,_with_painting_creases_and_damage_removed.jpg"
+ },
+ "mausoleum": {
+  "kind": "archive",
+  "file": "mausoleum.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Augustus' mausoleum",
+   "en": "The mausoleum of Augustus"
   },
-  "agrippina-ashes": {
-    "file": "agrippina-ashes.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Agrippina går i land med Germanicus' aske",
-      "en": "Agrippina lands with the ashes of Germanicus"
-    },
-    "year": "1768",
-    "artist": "Benjamin West",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Benjamin_West_-_Agrippina_Landing_at_Brundisium_with_the_Ashes_of_Germanicu_-_1947.16_-_Yale_University_Art_Gallery.jpg"
+  "year": "ca. 1756",
+  "artist": "Giovanni Battista Piranesi",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mausoleum_van_Augustus_te_Rome_Archeologische_vondsten_in_en_rond_Rome_(serietitel)_Le_Antichit%C3%A0_Romane_(serietitel),_RP-P-OB-39.472.jpg"
+ },
+ "agrippina-ashes": {
+  "kind": "archive",
+  "file": "agrippina-ashes.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Agrippina går i land med Germanicus' aske",
+   "en": "Agrippina lands with the ashes of Germanicus"
   },
-  "sejanus-fall": {
-    "file": "sejanus-fall.jpg",
-    "fit": "cover",
-    "title": {
-      "no": "Sejanus arresteres i senatet",
-      "en": "Sejanus arrested in the senate"
-    },
-    "year": "1810",
-    "artist": "Bartolomeo Pinelli",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Sejanus_is_arrested_and_condemned_to_death.jpg"
+  "year": "1768",
+  "artist": "Benjamin West",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Benjamin_West_-_Agrippina_Landing_at_Brundisium_with_the_Ashes_of_Germanicu_-_1947.16_-_Yale_University_Art_Gallery.jpg"
+ },
+ "sejanus-fall": {
+  "kind": "archive",
+  "file": "sejanus-fall.jpg",
+  "fit": "cover",
+  "title": {
+   "no": "Sejanus arresteres i senatet",
+   "en": "Sejanus arrested in the senate"
   },
-  "tacitus-ms": {
-    "file": "tacitus-ms.jpg",
-    "fit": "contain",
-    "title": {
-      "no": "Tacitus' Annaler, kopiert på 1000-tallet",
-      "en": "Tacitus's Annals, copied in the eleventh century"
-    },
-    "year": "1000-tallet",
-    "artist": "Ukjent munk, Monte Cassino",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Tacitus,_Annals,_Florence,_Plut._68,2.jpg"
-  }
+  "year": "1810",
+  "artist": "Bartolomeo Pinelli",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Sejanus_is_arrested_and_condemned_to_death.jpg"
+ },
+ "tacitus-ms": {
+  "kind": "archive",
+  "file": "tacitus-ms.jpg",
+  "fit": "contain",
+  "title": {
+   "no": "Tacitus' Annaler, kopiert på 1000-tallet",
+   "en": "Tacitus's Annals, copied in the eleventh century"
+  },
+  "year": "1000-tallet",
+  "artist": "Ukjent munk, Monte Cassino",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Tacitus,_Annals,_Florence,_Plut._68,2.jpg"
+ }
 }

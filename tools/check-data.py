@@ -96,6 +96,65 @@ def in_bounds(lat, lon):
     return s_lat <= lat <= n_lat and w_lon <= lon <= e_lon
 
 
+def check_media(pack, problems, notes):
+    """A picture is a record or it is an illustration, and it must say which.
+
+    `archive` is a real picture from the period and needs its provenance.
+    `made` is generated or drawn, says so on the plate, and additionally
+    carries `claims` and `omits`.
+
+    `omits` is the field that earns its place. The spike that produced this
+    taxonomy generated a grape bunch that is beautiful and is not Nebbiolo,
+    and an eighteenth-century hillside with a steamboat behind it. Neither is
+    a rendering fault -- the model draws well and reasons badly -- so the only
+    defence is writing down what the picture is NOT claiming, next to it, in
+    the file, where the next person will read it.
+    """
+    # pack_load already prefixes content/<pack>/. Passing the pack again gave
+    # content/<pack>/<pack>/media.json, which does not exist, so the default
+    # came back and the check reported a clean zero on 48 real pictures. A
+    # check that passes because it found nothing is the worst kind.
+    media = pack_load("media.json")
+    if media is None:
+        notes.append("no media.json in this pack")
+        return {"archive": 0, "made": 0}
+    counts = {"archive": 0, "made": 0}
+    for mid, m in media.items():
+        if mid.startswith("//") or not isinstance(m, dict):
+            continue
+        where = f"media {mid!r}"
+        kind = m.get("kind")
+        if kind not in ("archive", "made"):
+            problems.append(f"{where}: kind must be 'archive' or 'made', got {kind!r}")
+            continue
+        counts[kind] += 1
+        if kind == "archive":
+            if not m.get("licence"):
+                problems.append(f"{where}: archive picture with no licence")
+            if not m.get("source"):
+                notes.append(f"{where}: archive picture with no source url")
+            continue
+
+        for field in ("method", "claims", "omits", "licence", "credit"):
+            if not str(m.get(field, "")).strip():
+                problems.append(
+                    f"{where}: kind 'made' requires {field!r} "
+                    f"(what it is, what it asserts, what it leaves out)")
+        # A made picture that names a real person is the one thing the pack
+        # already refuses on principle -- two men ship faceless rather than
+        # guess, and inventing a face would be worse than the doubtful
+        # photograph that was turned down.
+        people = pack_load("people.json", []) or []
+        names = {p.get("id") for p in people if isinstance(p, dict)}
+        blob = json.dumps(m, ensure_ascii=False).lower()
+        for pid in sorted(n for n in names if n):
+            if f'"{pid}"' in blob or f" {pid} " in blob:
+                problems.append(
+                    f"{where}: generated picture references the real person "
+                    f"{pid!r} -- faces of named people are never generated")
+    return counts
+
+
 def check_pack(pack):
     global PACK, MANIFEST
     PACK = pack
@@ -212,6 +271,8 @@ def check_pack(pack):
     for t in routes.get("theatres", []):
         bilingual(t, "label", f"theatre {t.get('id', '?')}", 3)
 
+    media_counts = check_media(pack, problems, notes)
+
     for i, pl in enumerate(places):
         bilingual(pl, "name", f"place #{i}", 2)
         if pl.get("type") not in ("city", "region"):
@@ -222,6 +283,8 @@ def check_pack(pack):
         f"{len(events)} events, {len(people)} people, {len(chapters)} chapters, "
         f"{len(routes['routes'])} routes, {len(places)} place labels"
     )
+    print(f"{media_counts['archive']} archive pictures, "
+          f"{media_counts['made']} made (generated or drawn)")
     turning = sum(1 for e in events if e.get("importance") == 3)
     print(f"{turning} turning points (these drive the guided tour and the gold markers)")
     print(f"{len(SIDES)} sides: {', '.join(sorted(SIDES))}")

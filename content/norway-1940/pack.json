@@ -256,5 +256,12 @@
     "no": "Malmen, fjorden og de to sjøslagene – og byen som ble tatt tilbake og forlatt i samme uke.",
     "en": "The ore, the fjord and the two sea battles – and the town retaken and abandoned in the same week."
   },
-  "poster": "warspite.jpg"
+  "poster": "warspite.jpg",
+  "media": {
+    "generated": {
+      "allowPhoto": false,
+      "badge": true,
+      "//": "Photographic-looking generated plates are refused while allowPhoto is false. badge draws the \"illustration\" mark on every kind:made picture."
+    }
+  }
 }

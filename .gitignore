@@ -54,3 +54,9 @@ sound-candidates/*
 
 # Git Bash crash dumps
 *.stackdump
+
+# Generated image candidates, waiting to be looked at. Top level and in plain
+# English for the same reason sound-candidates is: they get opened by hand.
+# Only what gen-image.py --accept promotes into content/<pack>/media/ is
+# committed, and that carries its licence, prompt and claims in media.json.
+image-candidates/

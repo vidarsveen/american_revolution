@@ -1292,3 +1292,29 @@
 @media (prefers-reduced-motion: reduce) {
   .stage-plate, .plate__img { transition: none; }
 }
+
+/* The mark on a picture that is not a record.
+
+   Top-left, not bottom: the caption rail at the bottom is already crowded by
+   the transport and the caption box, and two things anchored to one edge
+   fight -- which is how every stat the chapter drew ended up behind the
+   caption box for months. Nothing else claims the top-left of a plate.
+
+   Legible over any picture without a backdrop plate would be luck, so it
+   carries its own. Small, but a mark nobody can read is not a disclosure. */
+.plate__badge {
+  position: absolute;
+  top: var(--s3);
+  left: var(--s3);
+  z-index: 2;
+  padding: .18em .5em;
+  border-radius: var(--r-1, 3px);
+  background: rgba(13,11,8,.62);
+  color: rgba(255,255,255,.9);
+  font-size: var(--fs-2xs);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+.plate__badge[hidden] { display: none; }

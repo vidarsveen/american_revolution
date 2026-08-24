@@ -218,5 +218,12 @@
     "no": "De to dagene i 1775 som gjorde en protest om til en krig – kart, kilder og mennesker.",
     "en": "The two days in 1775 that turned a protest into a war – maps, sources and people."
   },
-  "poster": "trumbull-warren.jpg"
+  "poster": "trumbull-warren.jpg",
+  "media": {
+    "generated": {
+      "allowPhoto": false,
+      "badge": true,
+      "//": "Photographic-looking generated plates are refused while allowPhoto is false. badge draws the \"illustration\" mark on every kind:made picture."
+    }
+  }
 }

@@ -1548,6 +1548,17 @@
               "at": "jossingfjord",
               "kind": "clash",
               "side": "british"
+            },
+            {
+              "on": {
+                "no": "word:torpedobåter",
+                "en": "word:torpedo"
+              },
+              "do": "plate.show",
+              "id": "torpedobat-kjell",
+              "motion": "in",
+              "over": 16,
+              "dim": 0.15
             }
           ]
         },
@@ -1558,6 +1569,10 @@
             "en": "The Altmark affair, it was called. For Hitler it was an answer. Norway was not going to defend its own neutrality, and if so, somebody else could come and take it."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "plate.hide"
+            },
             {
               "on": "start",
               "do": "marker.clear"

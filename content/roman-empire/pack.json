@@ -281,5 +281,12 @@
     "no": "Fra Cæsars død til Tiberius’ – hvordan republikken ble et keiserrike, og hva det kostet.",
     "en": "From the death of Caesar to the death of Tiberius – how a republic became an empire, and what it cost."
   },
-  "poster": "colosseum.jpg"
+  "poster": "colosseum.jpg",
+  "media": {
+    "generated": {
+      "allowPhoto": false,
+      "badge": true,
+      "//": "Photographic-looking generated plates are refused while allowPhoto is false. badge draws the \"illustration\" mark on every kind:made picture."
+    }
+  }
 }

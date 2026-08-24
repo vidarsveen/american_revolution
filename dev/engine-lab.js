@@ -141,7 +141,15 @@ function signature() {
   for (const node of document.querySelectorAll('.stage-plate')) {
     const img = node.querySelector('.plate__img');
     const src = ((img && img.getAttribute('src')) || '').split('/').pop();
-    lines.push(`dom/.stage-plate  ${stateClasses(node)}  src=${src}`);
+    // The "made" badge IS stage state — it is on the screen, and it is a pure
+    // function of the media entry, so seeking and playing must land on the
+    // same one. It was not in the signature when it was added, which means a
+    // badge left standing over the next picture, or over the map after a
+    // reset, would have passed this bench silently. src and is-contain both
+    // got here the same way.
+    const badge = node.querySelector('.plate__badge');
+    const mark = badge && !badge.hidden ? (badge.textContent || '') : '';
+    lines.push(`dom/.stage-plate  ${stateClasses(node)}  src=${src}  badge=${mark}`);
   }
   return lines.join('\n');
 }

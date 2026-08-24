@@ -44,6 +44,7 @@ let root = null;
 let figEl = null;
 let imgEl = null;
 let capEl = null;
+let badgeEl = null;
 let chapter = null;
 let lang = 'no';
 let showing = null;
@@ -60,12 +61,14 @@ export function mountPlate(container, ch, language) {
     <figure class="plate__fig">
       <img class="plate__img" alt="" decoding="async">
       <span class="plate__dim"></span>
+      <span class="plate__badge" aria-hidden="true"></span>
       <figcaption class="plate__cap"></figcaption>
     </figure>`;
   container.appendChild(root);
   figEl = root.querySelector('.plate__fig');
   imgEl = root.querySelector('.plate__img');
   capEl = root.querySelector('.plate__cap');
+  badgeEl = root.querySelector('.plate__badge');
   showing = null;
 }
 
@@ -87,6 +90,7 @@ export function resetPlate() {
   imgEl.removeAttribute('src');
   imgEl.alt = '';
   if (capEl) capEl.innerHTML = '';
+  if (badgeEl) { badgeEl.textContent = ''; badgeEl.hidden = true; }
 }
 
 /* The framings the drift runs between, as [scale, x%, y%].
@@ -130,6 +134,9 @@ export function showPlate(cue, instant) {
     imgEl.src = mediaUrl(chapter.pack, m.file);
     imgEl.alt = pick(m.title) || '';
     capEl.innerHTML = creditFor(m);
+    const mark = badgeFor(m);
+    badgeEl.textContent = mark;
+    badgeEl.hidden = !mark;
   }
   // A wide stage crops a tall picture, and for a map or a coin the crop is
   // the whole point of the picture. media.json carries a fit worked out from
@@ -171,6 +178,12 @@ export function hidePlate(cue) {
   const over = cue?.over ?? 0.9;
   root.style.setProperty('--plate-out', `${over}s`);
   root.classList.remove('is-on');
+  // Clear the badge too. Leaving it set is invisible — the whole plate is at
+  // opacity 0 — but it is stale stage state, and the next picture would carry
+  // the previous one's mark through the cross-dissolve before showPlate()
+  // gets to it. "Invisible rather than missing" is how the stats deck hid
+  // behind the caption box for months.
+  if (badgeEl) { badgeEl.textContent = ''; badgeEl.hidden = true; }
 }
 
 /* ------------------------------------------------------------ */
@@ -182,13 +195,42 @@ export function hidePlate(cue) {
  * artist and a date worth knowing, and a CC-BY photograph without its
  * attribution is a licence breach — media.json carries both because
  * tools/fetch-media.py captured them at download time.
+ *
+ * artist/year/licence used to be esc()'d on the way into the array AND again
+ * by the map() below, so an artist called O'Brien rendered as O&amp;#39;Brien.
+ * Escape once, at the end.
  */
 function creditFor(m) {
   const bits = [pick(m.title)];
-  if (m.artist) bits.push(esc(m.artist));
-  if (m.year) bits.push(esc(String(m.year)));
-  if (m.licence) bits.push(esc(m.licence));
+  if (m.artist) bits.push(m.artist);
+  if (m.year) bits.push(String(m.year));
+  if (m.licence) bits.push(m.licence);
   return bits.filter(Boolean).map(esc).join(' · ');
+}
+
+/* The words on the badge. Deliberately in the reader's own language and
+   deliberately short: a mark nobody can read is not a disclosure. */
+const MADE_LABEL = {
+  no: { drawn: 'Tegnet', generated: 'Generert bilde' },
+  en: { drawn: 'Drawn', generated: 'Generated image' },
+};
+
+/**
+ * The mark on a picture that is not a record.
+ *
+ * ON the picture, not in the caption and not in a dossier: a disclosure
+ * nobody opens has not disclosed anything. An `archive` entry gets nothing —
+ * a real photograph should not be labelled as if it were in doubt.
+ *
+ * This is derived from the media entry and nothing else, which is what makes
+ * it safe under rule 1: showPlate() is replayed on every seek, and a badge
+ * that is a pure function of `m` lands identically every time. Anything that
+ * counted, toggled or animated here would be the musket problem again.
+ */
+function badgeFor(m) {
+  if (m.kind !== 'made') return '';
+  const words = MADE_LABEL[lang] || MADE_LABEL.en;
+  return esc(m.method === 'svg' ? words.drawn : words.generated);
 }
 
 function pick(field) {
