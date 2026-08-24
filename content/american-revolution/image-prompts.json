@@ -1,0 +1,108 @@
+{
+ "//": [
+  "Input to tools/gen-image.py. Every entry needs `claims` and `omits`.",
+  "",
+  "This pack sets allowPhoto FALSE, and gen-image.py enforces it. A plate that",
+  "looks like a photograph reads as a RECORD, and there is no photographic",
+  "record of 1775 for it to be mistaken for. So every prompt here asks for an",
+  "oil painting, and the style suffix is the SAME on all of them -- the Phase 0",
+  "spike produced one oil painting and one piece of digital concept art from",
+  "two prompts written a minute apart, and mixed like that in one chapter it",
+  "would read as a scrapbook.",
+  "",
+  "Nothing here names a person, a regiment, a uniform facing or a flag. The",
+  "spike's redoubt came back as a pit because the model does not know what a",
+  "redoubt is, and its prettier second attempt had a STEAMBOAT in an",
+  "eighteenth-century river. Distance, weather and backs of heads are what it",
+  "renders well and are also what the evidence supports. Where a detail is",
+  "unknown, it is composed out of frame and said so in `omits`."
+ ],
+ "vei-ved-daggry": {
+  "prompt": "an empty country road at first light winding between low dry-stone walls and bare trees, heavy dew, mist lying in the fields either side, no people, no buildings, cold spring morning",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Veien ved daggry",
+   "en": "The road at first light"
+  },
+  "claims": "An empty country road between stone walls at dawn in early spring, the kind of ground the day was fought over.",
+  "omits": "Not an identified road or place. No people, so nothing is claimed about who was on it or when."
+ },
+ "kolonne-paa-avstand": {
+  "prompt": "a long column of soldiers in dark coats marching away along a road seen from a hillside far above, the figures small enough that no faces or uniform detail can be made out, dust rising, open farmland, early morning light",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Kolonnen på marsj",
+   "en": "The column on the march"
+  },
+  "claims": "A column of troops on a road, seen from far enough away that it reads as a body of men rather than as individuals.",
+  "omits": "No uniform facing, regiment, flag or face is visible, and none is claimed. The distance is deliberate: the detail is not known."
+ },
+ "stein-gjerde-roykskyer": {
+  "prompt": "powder smoke drifting low across a field behind a dry-stone wall, bare April trees beyond, a few indistinct dark figures crouched behind the wall seen from behind, grey overcast light",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Bak muren",
+   "en": "Behind the wall"
+  },
+  "claims": "Powder smoke over a field and a stone wall, with figures using the wall as cover.",
+  "omits": "Seen from behind and through smoke: no faces, no uniforms, no weapons in detail. Not a depiction of any identified engagement."
+ },
+ "havn-og-master": {
+  "prompt": "a colonial harbour at dusk with the bare masts and rigging of many anchored ships crowding the waterfront, low wooden warehouses along the quay, still water, lamps just being lit",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Havna om kvelden",
+   "en": "The harbour at dusk"
+  },
+  "claims": "A crowded eighteenth-century harbour of masts and warehouses at dusk.",
+  "omits": "Not an identified port, ship or company. No name or sign is legible anywhere in the frame."
+ },
+ "leir-om-natten": {
+  "prompt": "a field encampment at night, rows of pale canvas tents lit from within, a few low campfires, dark treeline behind, cold mist across the ground, distant figures as silhouettes only",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Leiren om natten",
+   "en": "The camp at night"
+  },
+  "claims": "A canvas encampment at night, the ordinary condition of an army in the field.",
+  "omits": "No standard, unit or person is identifiable. Not a depiction of any particular camp."
+ },
+ "baater-over-vannet": {
+  "prompt": "several open rowing boats crossing dark still water at night, seen from the shore, muffled oars, crowded low silhouettes aboard, a faint line of land on the far side, moonlight behind cloud",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Over vannet i mørket",
+   "en": "Across the water in the dark"
+  },
+  "claims": "Open boats crossing water at night with men aboard, the ordinary way a river was crossed unseen.",
+  "omits": "Silhouettes only. No face, uniform or boat type is identified, and this is not a depiction of a named crossing."
+ },
+ "gresskledd-bakke": {
+  "prompt": "a bare grassy hillside rising above a wide harbour, low earth banks freshly turned near the crest, the town and its water far below and behind, hazy summer morning light, no figures in the foreground",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Bakken over byen",
+   "en": "The hill above the town"
+  },
+  "claims": "A grassy hill above a harbour with freshly turned earth banks near its top.",
+  "omits": "Not an identified hill or town, and the earthwork is generic. No troops are shown, so nothing is claimed about who held it."
+ },
+ "vinterveien-hjem": {
+  "prompt": "a rutted muddy road in late afternoon with long shadows, a scatter of small dark figures walking away in ones and twos far ahead, bare hedgerows, a cold clear sky, no buildings",
+  "style": "muted historical oil painting on canvas, restrained palette, soft edges",
+  "aspect": "square",
+  "title": {
+   "no": "Veien tilbake",
+   "en": "The road back"
+  },
+  "claims": "A rutted road at the end of a day with a few figures walking away in the distance.",
+  "omits": "The figures are too distant to identify as anything in particular. Not a depiction of a named retreat or march."
+ }
+}

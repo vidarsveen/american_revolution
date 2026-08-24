@@ -166,6 +166,18 @@
         "en": "Tunis"
       },
       "kind": "city"
+    },
+    "capo-passero": {
+      "coords": [
+        36.685,
+        15.135
+      ],
+      "zoom": 10.0,
+      "name": {
+        "no": "Capo Passero",
+        "en": "Capo Passero"
+      },
+      "kind": "town"
     }
   },
   "scenes": [
@@ -243,7 +255,8 @@
               "dim": 0.16,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s0.b2",
@@ -256,7 +269,8 @@
               "on": "start",
               "do": "stat.clear"
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s0.b3",
@@ -287,7 +301,8 @@
               "dim": 0.14,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s0.b4",
@@ -316,7 +331,8 @@
                 "en": "Piedmont, north-west Italy"
               }
             }
-          ]
+          ],
+          "gapAfter": 2.0
         }
       ]
     },
@@ -351,7 +367,8 @@
               "on": "start",
               "do": "region.clear"
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s1.b2",
@@ -366,9 +383,13 @@
                 "en": "word:Sicily"
               },
               "do": "marker.show",
-              "at": "palermo",
+              "at": "capo-passero",
               "kind": "point",
-              "tone": "gold"
+              "tone": "gold",
+              "label": {
+                "no": "Sicilias sørspiss",
+                "en": "The southern tip of Sicily"
+              }
             },
             {
               "on": {
@@ -380,7 +401,8 @@
               "kind": "point",
               "tone": "sage"
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s1.b3",
@@ -410,7 +432,8 @@
               "dim": 0.12,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s1.b4",
@@ -418,7 +441,8 @@
             "no": "Resten er fjell og åser. Og høyde gir kalde netter, selv der dagene er brennhete.",
             "en": "The rest is mountain and hill. And altitude gives cold nights, even where the days are fierce."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s1.b5",
@@ -432,8 +456,16 @@
               "do": "term.mark",
               "kind": "term",
               "id": "terroir"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "etna",
+              "zoom": 8.6,
+              "over": 4.5
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s1.b6",
@@ -445,19 +477,7 @@
             {
               "on": "start",
               "do": "plate.hide",
-              "over": 1.1
-            },
-            {
-              "on": {
-                "no": "word:Etna",
-                "en": "word:Etna"
-              },
-              "do": "map.fitPlaces",
-              "places": [
-                "etna",
-                "palermo"
-              ],
-              "over": 3.6
+              "over": 1.2
             },
             {
               "on": {
@@ -469,7 +489,8 @@
               "kind": "point",
               "tone": "red"
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s1.b7",
@@ -487,9 +508,10 @@
               "do": "map.flyTo",
               "to": "roma",
               "zoom": 4.8,
-              "over": 4.2
+              "over": 5.0
             }
-          ]
+          ],
+          "gapAfter": 2.0
         }
       ]
     },
@@ -525,7 +547,8 @@
               "zoom": 5.2,
               "over": 3.8
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s2.b2",
@@ -544,7 +567,8 @@
               "dim": 0.16,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b3",
@@ -552,7 +576,8 @@
             "no": "Ingen av dem byttet stiklinger, fordi det var to dagsreiser med muldyr imellom. Så begge beholdt sitt.",
             "en": "Neither of them swapped cuttings, because it was two days by mule between them. So both kept their own."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b4",
@@ -579,7 +604,8 @@
               },
               "side": "red"
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b5",
@@ -605,7 +631,8 @@
               "label": true,
               "over": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b6",
@@ -640,7 +667,8 @@
               "label": true,
               "over": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b7",
@@ -671,7 +699,8 @@
               "kind": "term",
               "id": "nebbiolo"
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b8",
@@ -691,7 +720,8 @@
               "id": "lese-etiketten",
               "span": 1
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s2.b9",
@@ -699,7 +729,8 @@
             "no": "Barolo er et sted. Chianti er et sted. Druen står det sjelden noe om, fordi alle på stedet vet hvilken det er.",
             "en": "Barolo is a place. Chianti is a place. The grape often goes unmentioned, because everyone there knows which one it is."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 2.0
         }
       ]
     },
@@ -748,7 +779,8 @@
               "label": true,
               "over": 1.6
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s3.b2",
@@ -767,7 +799,8 @@
               "dim": 0.1,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s3.b3",
@@ -785,7 +818,8 @@
               "kind": "term",
               "id": "nebbiolo"
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s3.b4",
@@ -809,7 +843,8 @@
               "dim": 0.14,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s3.b5",
@@ -817,7 +852,8 @@
             "no": "Ingen av forklaringene kan bevises. Men begge sier det samme om druen: den blir hengende lenge etter at alt annet er plukket.",
             "en": "Neither explanation can be proved. But both say the same thing about the grape: it hangs on long after everything else has been picked."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s3.b6",
@@ -857,7 +893,8 @@
               "kind": "term",
               "id": "langhe"
             }
-          ]
+          ],
+          "gapAfter": 2.0
         }
       ]
     },
@@ -906,7 +943,8 @@
               "dim": 0.14,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s4.b2",
@@ -924,7 +962,8 @@
               "kind": "term",
               "id": "tannin"
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s4.b3",
@@ -938,7 +977,8 @@
               "do": "plate.hide",
               "over": 1.1
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s4.b4",
@@ -960,7 +1000,8 @@
               },
               "side": "red"
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s4.b5",
@@ -983,7 +1024,8 @@
               "dim": 0.12,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s4.b6",
@@ -991,7 +1033,8 @@
             "no": "Folk har prøvd å dyrke den i California, i Australia og i Argentina i over hundre år. Det blir aldri riktig.",
             "en": "People have tried to grow it in California, Australia and Argentina for over a hundred years. It never comes out right."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s4.b7",
@@ -1022,7 +1065,8 @@
                 "en": "The Langhe, south of Alba"
               }
             }
-          ]
+          ],
+          "gapAfter": 2.0
         }
       ]
     },
@@ -1055,7 +1099,8 @@
               ],
               "over": 3.8
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s5.b2",
@@ -1092,7 +1137,8 @@
               "kind": "point",
               "tone": "gold"
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s5.b3",
@@ -1100,7 +1146,8 @@
             "no": "Barbaresco ligger litt lavere og litt nærmere elva. Det gir varmere netter, og druene modner noen dager tidligere.",
             "en": "Barbaresco sits a little lower and a little nearer the river. That gives warmer nights, and the grapes ripen a few days earlier."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s5.b4",
@@ -1108,7 +1155,8 @@
             "no": "Noen få dager høres ingenting ut. I praksis er det forskjellen på en vin du kan drikke etter fem år og en du bør vente ti på.",
             "en": "A few days sounds like nothing. In practice it is the difference between a wine you can drink at five years and one you should wait ten for."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 1.35
         },
         {
           "id": "s5.b5",
@@ -1169,7 +1217,8 @@
               "dim": 0.18,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s5.b6",
@@ -1177,7 +1226,8 @@
             "no": "Det er over tre år der vinen koster penger og ikke tjener noen. Mye av prisen på flaska er den ventinga.",
             "en": "That is over three years in which the wine costs money and earns nobody anything. Much of the price on the bottle is that wait."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 1.35
         },
         {
           "id": "s5.b7",
@@ -1205,7 +1255,8 @@
               "dim": 0.16,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s5.b8",
@@ -1229,7 +1280,8 @@
               "kind": "term",
               "id": "docg"
             }
-          ]
+          ],
+          "gapAfter": 2.0
         }
       ]
     },
@@ -1268,7 +1320,8 @@
               ],
               "over": 4.0
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s6.b2",
@@ -1296,7 +1349,8 @@
               "dim": 0.16,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s6.b3",
@@ -1304,7 +1358,8 @@
             "no": "Barbera fikk historisk de markene Nebbiolo ikke ville ha. Den modner tidligere og klager mindre.",
             "en": "Barbera historically got the sites Nebbiolo would not take. It ripens earlier and complains less."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s6.b4",
@@ -1312,7 +1367,8 @@
             "no": "Derfor ble den regnet som bondevin i lang tid. Det endret seg på nittenåttitallet, da noen begynte å ta den alvorlig.",
             "en": "So it was thought of as peasant wine for a long time. That changed in the 1980s, when some producers began taking it seriously."
           },
-          "cues": []
+          "cues": [],
+          "gapAfter": 0.9
         },
         {
           "id": "s6.b5",
@@ -1349,7 +1405,8 @@
               "kind": "term",
               "id": "moscato"
             }
-          ]
+          ],
+          "gapAfter": 1.35
         },
         {
           "id": "s6.b6",
@@ -1368,7 +1425,8 @@
               "dim": 0.14,
               "into": 1.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s6.b7",
@@ -1409,7 +1467,8 @@
                 "en": "Typical alcoholic strength."
               }
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s6.b8",
@@ -1441,7 +1500,8 @@
               "zoom": 4.8,
               "over": 4.4
             }
-          ]
+          ],
+          "gapAfter": 0.9
         },
         {
           "id": "s6.b9",
@@ -1471,7 +1531,8 @@
                 "en": "Next: Tuscany and Sangiovese"
               }
             }
-          ]
+          ],
+          "gapAfter": 2.0
         }
       ]
     }

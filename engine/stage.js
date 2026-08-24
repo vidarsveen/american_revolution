@@ -29,9 +29,9 @@ export function mountStage(container, chapter, people, language) {
 }
 
 /** Back to a blank slate, before cues are re-applied. */
-export function resetStage() {
+export function resetStage({ soft = false } = {}) {
   M.resetMap();
-  P.resetPlate();
+  P.resetPlate({ soft });
   O.resetOverlays();
   S.resetSound();
 }

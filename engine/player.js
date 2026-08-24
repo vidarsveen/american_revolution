@@ -115,7 +115,7 @@ export class Player {
       this.onScene(scene, i, at);
       this.warmNext(i);
     }
-    this.rebuildTo(at);
+    this.rebuildTo(at, { soft: true });
     this.setNow(at);
     const beat = beatAt(scene, at);
     this._lastBeat = beat;
@@ -294,10 +294,15 @@ export class Player {
    * picture matches the moment exactly. Cheap enough to run on every seek —
    * a scene has a few dozen cues.
    */
-  rebuildTo(t) {
+  rebuildTo(t, { soft = false } = {}) {
     const scene = this.scene;
     if (!scene) return;
-    resetStage();
+    // `soft` reaches resetPlate: a SCENE CHANGE fades the outgoing picture,
+    // a SCRUB cuts it. Same end state either way, so rule 1 does not care --
+    // only the pixels in between differ. Cutting on a scene change is the
+    // "abrupt transitions" complaint, and the scene card's veil is 0.82
+    // opaque, so the cut showed through it.
+    resetStage({ soft });
     this.cursor = 0;
     while (this.cursor < scene.cues.length && scene.cues[this.cursor].t <= t) {
       applyCue(scene.cues[this.cursor], true);

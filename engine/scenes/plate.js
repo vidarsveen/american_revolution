@@ -75,12 +75,44 @@ export function mountPlate(container, ch, language) {
   showing = null;
 }
 
-export function resetPlate() {
+/**
+ * Take the plate down.
+ *
+ * `soft` fades it; the default cuts it. Both end in exactly the same state,
+ * which is what keeps this out of rule 1's way -- the difference is only how
+ * long the pixels take to get there.
+ *
+ * The distinction exists because one function was doing two jobs. A SEEK must
+ * land clean and instantly: it is a jump and should look like one. A SCENE
+ * CHANGE is not a jump, and cutting there was the "abrupt transitions"
+ * complaint -- resetPlate removed `is-on` and cleared `src` in the same turn,
+ * so the 0.9 s CSS fade ran on an <img> with no source. The picture vanished
+ * on a frame and a blank rectangle faded out after it.
+ */
+export function resetPlate({ soft = false } = {}) {
   showing = null;
+  if (!root) return;
+  if (soft && root.classList.contains('is-on')) {
+    root.style.setProperty('--plate-out', '0.9s');
+    root.classList.remove('is-on');
+    // Hold the picture until the fade has run, THEN clear. The token guards
+    // against a second reset landing mid-fade and a stale timer wiping the
+    // picture the newer scene has already put up.
+    const token = (softToken += 1);
+    setTimeout(() => { if (token === softToken) hardClear(); }, 950);
+    return;
+  }
+  hardClear();
+}
+
+let softToken = 0;
+
+function hardClear() {
   if (!root) return;
   root.classList.remove('is-on');
   imgEl.style.transition = 'none';
   imgEl.style.transform = '';
+  imgEl.style.opacity = '';
   // Everything this module set, put back. The class and the src used to
   // survive a reset -- invisible, because the plate is hidden either way, but
   // it meant the stage after a seek was not the stage after playing there,
