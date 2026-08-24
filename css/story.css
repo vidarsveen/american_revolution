@@ -226,12 +226,32 @@
   transition: bottom var(--t-med) var(--ease-out);
 }
 
-.ov-portrait, .ov-image, .ov-quote, .ov-note {
+/* The hidden state EVERY overlay needs.
+
+   `.ov-fact` and `.ov-compare` were both missing from this list, and missing
+   from it means there is no hidden state at all: show() sets the content and
+   adds `is-on`, hide() removes `is-on`, and removing it did nothing, because
+   nothing ever said the element was invisible without it.
+   
+   So a fact box appeared when its cue fired and then stayed on the screen for
+   the rest of the chapter, whatever the timeline said. Four rounds of "fixing"
+   the timing missed it completely, because every probe I wrote asked whether
+   the element still had `is-on` -- and it correctly did not. The class was
+   right. The pixels were not. A visibility check that reads a class name is
+   not a visibility check.
+   
+   Adding an overlay now means adding it here, and that is the whole
+   maintenance burden of this rule. */
+.ov-portrait, .ov-image, .ov-quote, .ov-note, .ov-fact, .ov-compare {
   opacity: 0;
   transition: opacity var(--t-slow) var(--ease-out), transform var(--t-slow) var(--ease-out);
 }
-.ov-portrait.is-instant, .ov-image.is-instant,
-.ov-quote.is-instant, .ov-note.is-instant { transition: none; }
+.ov-portrait.is-on, .ov-image.is-on, .ov-quote.is-on,
+.ov-note.is-on, .ov-fact.is-on, .ov-compare.is-on { opacity: 1; }
+.ov-portrait.is-instant, .ov-image.is-instant, .ov-quote.is-instant,
+.ov-note.is-instant, .ov-fact.is-instant, .ov-compare.is-instant { transition: none; }
+/* Nothing invisible may swallow a tap. */
+.ov-fact:not(.is-on), .ov-compare:not(.is-on) { pointer-events: none; }
 
 /* ---------- Portrait -----------------------------------------
    A face gets the same slot and the same weight as a historical picture:
