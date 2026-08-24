@@ -204,6 +204,29 @@ def check_numbers_clear(chapter, timings, langs):
     return found
 
 
+def check_places_have_ground(chapter):
+    """A place a cue points at must have somewhere to be pointed.
+
+    `places` is a dict, so a typo in the key is a new place rather than an
+    error, and a place written with `at:` instead of `coords:` validates
+    clean as a reference and then throws in the browser -- mapScene reads
+    `place.coords[0]` and gets undefined. Caught once, on Jossingfjord, and
+    only because check-engine reads the console.
+    """
+    found = []
+    for pid, place in (chapter.get("places") or {}).items():
+        c = place.get("coords")
+        if c is None:
+            if "at" in place or "lat" in place or "coord" in place:
+                found.append(f"place '{pid}': coordinates are there but not under `coords` "
+                             f"-- the map reads coords[0] and will throw")
+            continue
+        if not isinstance(c, list) or len(c) != 2 or not all(
+                isinstance(v, (int, float)) for v in c):
+            found.append(f"place '{pid}': coords must be [lat, lon], got {c!r}")
+    return found
+
+
 def check_plate_rhythm(chapter):
     """A picture story, not a slideshow.
 
@@ -527,6 +550,7 @@ def main():
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
     problems.extend(check_plate_rhythm(chapter) or [])
+    problems.extend(check_places_have_ground(chapter) or [])
     problems.extend(check_numbers_clear(chapter, timings, langs) or [])
     plate_bad, plate_note = check_plates_over_map(chapter)
     problems.extend(plate_bad)

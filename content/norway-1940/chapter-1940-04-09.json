@@ -352,6 +352,18 @@
         "en": "London"
       },
       "kind": "city"
+    },
+    "jossingfjord": {
+      "coords": [
+        58.3122,
+        6.3236
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Jøssingfjord",
+        "en": "Jøssingfjord"
+      },
+      "kind": "town"
     }
   },
   "routes": {
@@ -1516,6 +1528,54 @@
         {
           "id": "s1.b2",
           "say": {
+            "no": "Den sekstende februar gikk en britisk jager inn i Jøssingfjord på Sørlandet og bordet et tysk skip. Nesten tre hundre britiske fanger satt i lasterommet. To norske torpedobåter så på.",
+            "en": "On the sixteenth of February a British destroyer went into Jøssingfjord in southern Norway and boarded a German ship. Nearly three hundred British prisoners were in the hold. Two Norwegian torpedo boats watched."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "jossingfjord",
+              "zoom": 6.2,
+              "over": 3.2
+            },
+            {
+              "on": {
+                "no": "word:Jøssingfjord",
+                "en": "word:Jøssingfjord"
+              },
+              "do": "marker.show",
+              "at": "jossingfjord",
+              "kind": "clash",
+              "side": "british"
+            }
+          ]
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "Altmark-affæren, ble den kalt. For Hitler var den et svar. Norge kom ikke til å forsvare sin egen nøytralitet, og da kunne noen andre komme og ta den.",
+            "en": "The Altmark affair, it was called. For Hitler it was an answer. Norway was not going to defend its own neutrality, and if so, somebody else could come and take it."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": {
+                "no": "word:Altmark-affæren",
+                "en": "word:Altmark"
+              },
+              "do": "term.mark",
+              "kind": "place",
+              "id": "jossingfjord"
+            }
+          ]
+        },
+        {
+          "id": "s1.b4",
+          "say": {
             "no": "Men denne vinteren hadde begge sider bestemt seg for å bryte den nøytraliteten. De visste bare ikke om hverandre.",
             "en": "But that winter both sides had decided to break that neutrality. They simply did not know about each other."
           },
@@ -1523,7 +1583,7 @@
           "gapAfter": 1.3
         },
         {
-          "id": "s1.b3",
+          "id": "s1.b5",
           "say": {
             "no": "De allierte kom først på en idé. Sovjetunionen hadde angrepet Finland i november, og britene og franskmennene tilbød seg å sende hjelp.",
             "en": "The Allies had an idea first. The Soviet Union had attacked Finland in November, and the British and French offered to send help."
@@ -1552,7 +1612,7 @@
           "gapAfter": 1.2
         },
         {
-          "id": "s1.b4",
+          "id": "s1.b6",
           "say": {
             "no": "Hjelpen skulle gå i land i Narvik og ta toget østover gjennom Sverige. Underveis ville den tilfeldigvis passere malmfeltene, og bli stående der.",
             "en": "The help would land at Narvik and take the train east through Sweden. On the way it would happen to pass the orefields, and it would stay there."
@@ -1572,7 +1632,7 @@
           "gapAfter": 1.3
         },
         {
-          "id": "s1.b5",
+          "id": "s1.b7",
           "say": {
             "no": "Så sluttet Finland fred, den tolvte mars. Hele påskuddet forsvant på én dag.",
             "en": "Then Finland made peace, on the twelfth of March. The whole pretext vanished in a day."
@@ -1590,7 +1650,7 @@
           "gapAfter": 1.25
         },
         {
-          "id": "s1.b6",
+          "id": "s1.b8",
           "say": {
             "no": "Britene lagde seg et nytt. De skulle legge miner i norsk farvann og tvinge malmskipene ut på åpent hav, der Royal Navy ventet.",
             "en": "The British made themselves a new one. They would lay mines in Norwegian waters and force the ore ships out into open sea, where the Royal Navy was waiting."
@@ -1621,10 +1681,10 @@
           "gapAfter": 1.25
         },
         {
-          "id": "s1.b7",
+          "id": "s1.b9",
           "say": {
-            "no": "Minene ble lagt den åttende april, i innløpet til Vestfjorden. Bak dem lå soldater klare til å gå i land i Narvik så snart tyskerne reagerte.",
-            "en": "The mines were laid on the eighth of April, in the entrance to Vestfjord. Behind them soldiers stood ready to land at Narvik the moment the Germans reacted."
+            "no": "Minene ble lagt den åttende april, i innløpet til Vestfjorden. Bak dem lå soldater klare til å gå i land i Narvik og Trondheim hvis tyskerne reagerte. Planen het R fire.",
+            "en": "The mines went down on the eighth of April, in the entrance to Vestfjorden. Behind them sat troops ready to land at Narvik and Trondheim if the Germans reacted. The plan was called R four."
           },
           "cues": [
             {
@@ -1653,7 +1713,7 @@
           "gapAfter": 1.3
         },
         {
-          "id": "s1.b8",
+          "id": "s1.b10",
           "say": {
             "no": "Men tyskerne hadde ikke tenkt å reagere. De var allerede på vei.",
             "en": "But the Germans were not going to react. They were already on their way."
@@ -1682,7 +1742,7 @@
           "gapAfter": 1.2
         },
         {
-          "id": "s1.b9",
+          "id": "s1.b11",
           "say": {
             "no": "Ti tyske jagere var på vei nordover langs norskekysten. Om bord lå nesten to tusen fjelljegere under general Eduard Dietl.",
             "en": "Ten German destroyers were steering north along the Norwegian coast. On board were nearly two thousand mountain troops under General Eduard Dietl."
@@ -1736,7 +1796,7 @@
           "gapAfter": 1.3
         },
         {
-          "id": "s1.b10",
+          "id": "s1.b12",
           "say": {
             "no": "De skulle til Narvik. Og de skulle være der før britene rakk å tenke seg om.",
             "en": "They were bound for Narvik. And they meant to be there before the British had time to think."

@@ -3125,16 +3125,34 @@
               "on": "word:Fleischer",
               "do": "portrait.show",
               "id": "fleischer"
-            },
-            {
-              "on": "end",
-              "do": "portrait.hide"
             }
           ],
           "gapAfter": 1.45
         },
         {
           "id": "s6.b10",
+          "say": {
+            "no": "Otto Ruge, som hadde ledet hele forsvaret siden ellevte april, ble igjen. Han overga de siste norske styrkene den tiende juni og satt fem år i tysk fangenskap.",
+            "en": "Otto Ruge, who had commanded the whole defence since the eleventh of April, stayed. He surrendered the last Norwegian forces on the tenth of June and spent five years a German prisoner."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:Ruge",
+                "en": "word:Ruge"
+              },
+              "do": "term.mark",
+              "kind": "person",
+              "id": "ruge"
+            }
+          ]
+        },
+        {
+          "id": "s6.b11",
           "say": {
             "no": "Fridtjof Haug fortalte om Gratangen til NRK i to tusen og fjorten, syttifire år etterpå. Helt til slutt stilte han ett spørsmål tilbake.",
             "en": "Fridtjof Haug told NRK about Gratangen in twenty fourteen, seventy-four years afterwards. Right at the end, he asked one question back."
@@ -3149,7 +3167,7 @@
           "gapAfter": 2.0
         },
         {
-          "id": "s6.b11",
+          "id": "s6.b12",
           "say": {
             "no": "Det er derfor kildene står i denne appen. Alt du har hørt nå, kommer fra noen. Noen som var der, eller noen som skrev det ned etterpå.",
             "en": "That is why the sources are printed in this app. Everything you have heard comes from somebody. Somebody who was there, or somebody who wrote it down afterwards."

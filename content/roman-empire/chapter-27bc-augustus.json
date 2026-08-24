@@ -449,8 +449,8 @@
         {
           "id": "s0.b7",
           "say": {
-            "no": "Den andre heter imperium maius, den større kommandoen. Med den kan han overstyre enhver guvernør i enhver provins.",
-            "en": "The second is called imperium maius, the greater command. With it he can overrule any governor in any province."
+            "no": "Den andre heter imperium maius, den større kommandoen. Med den kan han overstyre enhver guvernør i enhver provins. Sitter det en prokonsul i Asia med tre legioner bak seg, gjør han likevel som Augustus sier.",
+            "en": "The second is called imperium maius, the greater command. With it he can overrule any governor in any province. If a proconsul sits in Asia with three legions behind him, he still does what Augustus says."
           },
           "cues": [
             {

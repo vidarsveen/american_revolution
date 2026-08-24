@@ -958,8 +958,8 @@
         {
           "id": "s1.b1",
           "say": {
-            "no": "Her må du se på kartet et øyeblikk, for resten av dagen henger på det.",
-            "en": "Here you need to look at the map for a moment, because the rest of the day hangs on it."
+            "no": "Alt som skjer denne dagen henger på hvordan landet ligger rundt Boston.",
+            "en": "Everything that happens this day hangs on how the ground lies around Boston."
           },
           "cues": [
             {
@@ -980,8 +980,8 @@
             },
             {
               "on": {
-                "no": "word:kartet",
-                "en": "word:map"
+                "no": "word:Boston",
+                "en": "word:Boston"
               },
               "do": "plate.show",
               "id": "bunker-hill-plan",
@@ -2900,8 +2900,8 @@
         {
           "id": "s7.b2",
           "say": {
-            "no": "Av rundt to tusen to hundre briter som gikk til angrep, ble over tusen skutt. To hundre og tjueseks av dem døde.",
-            "en": "Of the two thousand two hundred British who attacked, over a thousand were shot down. Two hundred and twenty-six of them died."
+            "no": "Av rundt to tusen to hundre briter som gikk opp bakken, ble over tusen skutt. Nesten halvparten.",
+            "en": "Of about two thousand two hundred British who went up the hill, over a thousand were shot down. Nearly half."
           },
           "cues": [
             {
@@ -2914,19 +2914,6 @@
               "label": {
                 "no": "britiske tap",
                 "en": "British casualties"
-              },
-              "side": "british"
-            },
-            {
-              "on": {
-                "no": "word:døde",
-                "en": "word:died"
-              },
-              "do": "stat.show",
-              "value": "226",
-              "label": {
-                "no": "britiske døde",
-                "en": "British dead"
               },
               "side": "british"
             },
@@ -2951,8 +2938,8 @@
         {
           "id": "s7.b3",
           "say": {
-            "no": "Det er det største tapet britene hadde i én enkelt kamp i hele krigen. Nitten britiske offiserer døde her, og sekstito ble såret.",
-            "en": "That is the heaviest loss the British took in any single fight of the entire war. Nineteen British officers were killed here, and sixty-two were wounded."
+            "no": "Det er det største tapet britene hadde i én enkelt kamp i hele krigen. Nitten av de døde var offiserer.",
+            "en": "It is the heaviest loss the British took in any single action of the whole war. Nineteen of the dead were officers."
           },
           "cues": [
             {
@@ -2978,8 +2965,8 @@
         {
           "id": "s7.b4",
           "say": {
-            "no": "Amerikanerne mistet rundt fire hundre og femti mann. Hundre og trettiåtte av dem døde.",
-            "en": "The Americans lost around four hundred and fifty men in all. A hundred and thirty-eight of them died."
+            "no": "Amerikanerne mistet omtrent fire hundre og femti mann. En tredjedel så mange.",
+            "en": "The Americans lost about four hundred and fifty men. A third as many."
           },
           "cues": [
             {
@@ -2988,16 +2975,35 @@
             },
             {
               "on": {
-                "no": "word:femti",
-                "en": "word:fifty"
+                "no": "word:tredjedel",
+                "en": "word:third"
               },
-              "do": "stat.show",
-              "value": "450",
-              "label": {
-                "no": "amerikanske tap",
-                "en": "American casualties"
-              },
-              "side": "patriot"
+              "do": "compare.show",
+              "mode": "bar",
+              "parts": [
+                {
+                  "n": 1054,
+                  "value": "1054",
+                  "label": {
+                    "no": "britiske tap",
+                    "en": "British losses"
+                  },
+                  "side": "british"
+                },
+                {
+                  "n": 450,
+                  "value": "450",
+                  "label": {
+                    "no": "amerikanske tap",
+                    "en": "American losses"
+                  },
+                  "side": "patriot"
+                }
+              ],
+              "note": {
+                "no": "Døde: 226 britiske, 138 amerikanske.",
+                "en": "Dead: 226 British, 138 American."
+              }
             }
           ],
           "gapAfter": 1.35
@@ -3009,6 +3015,10 @@
             "en": "Among the British dead was Major John Pitcairn. He was the man who rode out in front of the line on Lexington Green two months earlier."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "compare.clear"
+            },
             {
               "on": "start",
               "do": "stat.clear"
