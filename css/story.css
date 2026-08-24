@@ -1332,3 +1332,54 @@
   pointer-events: none;
 }
 .stage-plate.is-contain .plate__ghost { object-fit: contain; }
+
+/* ---- the fact box ----------------------------------------------------
+
+   A one-line definition, on screen while the word is being said.
+
+   term.mark already made the word tappable and almost nobody taps while a
+   voice is running, so the definition was there and was never seen. This is
+   the same information at the moment it is wanted.
+
+   Sits in the mid deck with the quote and the compare bars, so it inherits
+   their clearance above the transport and the caption box. Two things
+   anchored to that edge fight and the later one wins -- which is how every
+   number the chapter drew spent months behind the caption box.                */
+.ov-fact {
+  display: flex;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+.ov-fact__card {
+  pointer-events: auto;
+  max-width: min(30ch, 78%);
+  padding: var(--s2) var(--s3);
+  border-radius: var(--r-2, 6px);
+  border-left: 3px solid var(--gold, var(--ink-faint));
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 2px 10px rgba(0,0,0,.14);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+}
+.ov-fact__kind {
+  margin: 0 0 .1em;
+  font-size: var(--fs-3xs, var(--fs-2xs));
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.ov-fact__name {
+  margin: 0;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  line-height: 1.2;
+}
+.ov-fact__hook {
+  margin: .15em 0 0;
+  font-size: var(--fs-xs);
+  line-height: 1.35;
+  color: var(--ink-soft);
+}

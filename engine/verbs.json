@@ -765,6 +765,39 @@
      "type": "route"
     }
    }
+  },
+  "fact.show": {
+   "summary": {
+    "no": "Vis en kort forklaring",
+    "en": "Show a short definition"
+   },
+   "note": "A one-line definition on screen while the word is being said. term.mark makes a word tappable, and almost nobody taps while a voice is running -- so the definition existed and was never seen. This is stage state, shown and hidden by cues, so seeking into the middle of a definition shows the definition. It carries the entry's HOOK, never its body: a fact box is a glance you can read without stopping listening, and the card itself opens the full entry.",
+   "args": {
+    "kind": {
+     "type": "enum",
+     "required": true,
+     "values": [
+      "term",
+      "topic",
+      "place",
+      "person",
+      "grape",
+      "wine"
+     ],
+     "note": "Which pool the id resolves against, as term.mark."
+    },
+    "id": {
+     "type": "string",
+     "required": true
+    }
+   }
+  },
+  "fact.hide": {
+   "summary": {
+    "no": "Skjul forklaringen",
+    "en": "Hide the definition"
+   },
+   "args": {}
   }
  }
 }

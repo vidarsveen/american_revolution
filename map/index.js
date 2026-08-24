@@ -985,6 +985,30 @@ export function createMap(host, opts = {}) {
     canvas,
     camera: () => ({ ...cam, size: { ...size } }),
     setView, flyTo, fitBounds, fitCoords,
+
+    /**
+     * Resolves when the camera has stopped moving.
+     *
+     * flyTo already returns a promise, but a CUE swallows it -- applyCue is
+     * synchronous and has nowhere to put one. So the story could not tell
+     * whether the opening shot had landed, and started narrating over a map
+     * still in flight: you watched it arrive while the first sentence was
+     * already running.
+     *
+     * Polls rather than chaining, because several cues can fly in one beat
+     * and only the last one's promise would be the right one to wait on.
+     */
+    settled(timeoutMs = 6000) {
+      if (!flight) return Promise.resolve();
+      return new Promise((resolve) => {
+        const t0 = now();
+        const tick = () => {
+          if (!flight || now() - t0 > timeoutMs) return resolve();
+          setTimeout(tick, 60);         // a timer, never a frame: a
+        };                              // backgrounded tab stops rAF and
+        setTimeout(tick, 60);           // this must still resolve
+      });
+    },
     /** Seconds for a middling camera move. A pack or a script sets this once. */
     setFlightSpeed(seconds) { speed = clamp(seconds, 0.2, 12); },
     flightSpeed: () => speed,

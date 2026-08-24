@@ -29,6 +29,8 @@ let people = new Map();
 let chapter = null;
 let lang = 'no';
 let storyRoot = null;
+let factEl = null;
+let entries = null;
 
 export function mountOverlays(container, ch, allPeople, language) {
   chapter = ch;
@@ -47,6 +49,7 @@ export function mountOverlays(container, ch, allPeople, language) {
       <div class="ov-note"></div>
       <div class="ov-compare"></div>
       <div class="ov-quote"></div>
+      <div class="ov-fact"></div>
     </div>
     <div class="ov-deck ov-deck--lower">
       <div class="ov-stats"></div>
@@ -60,10 +63,11 @@ export function mountOverlays(container, ch, allPeople, language) {
   statsEl = root.querySelector('.ov-stats');
   noteEl = root.querySelector('.ov-note');
   compareEl = root.querySelector('.ov-compare');
+  factEl = root.querySelector('.ov-fact');
 }
 
 export function resetOverlays() {
-  for (const el of [portraitEl, imageEl, quoteEl, noteEl, compareEl]) {
+  for (const el of [portraitEl, imageEl, quoteEl, noteEl, compareEl, factEl]) {
     if (!el) continue;
     el.classList.remove('is-on');
     el.innerHTML = '';
@@ -188,6 +192,55 @@ export function showQuote(cue, instant) {
 }
 
 export function hideQuote() { hide(quoteEl); }
+
+/* ---------- Fact boxes -------------------------------------- */
+
+/** The entry index, handed in at mount so this module does no fetching. */
+export function useEntries(index) { entries = index; }
+
+/**
+ * A short definition, on screen while the word is being said.
+ *
+ * term.mark already made a word tappable, and tapping is a thing almost
+ * nobody does while a voice is running -- the reader is listening, not
+ * hunting for underlines. So the definition was there and was never seen.
+ * This puts it on the screen at the moment the word is spoken, which is the
+ * only moment it is wanted.
+ *
+ * Deliberately the HOOK and not the body. A fact box is a glance: one line
+ * that lets you keep listening. The body is what the library and the dossier
+ * are for, and the card says so.
+ *
+ * It is stage state, not a one-shot: shown by a cue and hidden by a cue, so
+ * seeking to the middle of a definition shows the definition. That is the
+ * same contract as quote.show and the reason this is not a caption.note.
+ */
+export function showFact(cue, instant) {
+  if (!factEl) return;
+  const e = entries?.get(cue.kind, cue.id);
+  if (!e) return;
+  const label = KIND_LABEL[cue.kind];
+  show(factEl, `
+    <aside class="ov-fact__card" data-tap="${esc(cue.kind)}:${esc(cue.id)}"
+           role="button" tabindex="0">
+      ${label ? `<p class="ov-fact__kind">${esc(pick(label))}</p>` : ''}
+      <p class="ov-fact__name">${esc(pick(e.name))}</p>
+      <p class="ov-fact__hook">${esc(pick(e.hook))}</p>
+    </aside>`, instant);
+}
+
+export function hideFact() { hide(factEl); }
+
+/* What to call each kind on the card. A reader should know whether they are
+   being told about a word, a plant or a place before they read the line. */
+const KIND_LABEL = {
+  term:  { no: 'Ord', en: 'Term' },
+  grape: { no: 'Drue', en: 'Grape' },
+  wine:  { no: 'Vin', en: 'Wine' },
+  topic: { no: 'Tema', en: 'Topic' },
+  place: { no: 'Sted', en: 'Place' },
+  person: { no: 'Person', en: 'Person' },
+};
 
 /* ---------- Numbers ----------------------------------------- */
 

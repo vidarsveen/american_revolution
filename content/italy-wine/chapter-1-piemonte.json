@@ -254,6 +254,15 @@
               "over": 20,
               "dim": 0.16,
               "into": 1.4
+            },
+            {
+              "on": {
+                "no": "word:druesorter",
+                "en": "word:varieties"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "drue"
             }
           ],
           "gapAfter": 0.9
@@ -265,6 +274,10 @@
             "en": "Most of them grow nowhere else on earth. Not in Chile, not in California, not in Australia."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "stat.clear"
@@ -698,6 +711,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "nebbiolo"
+            },
+            {
+              "on": {
+                "no": "word:Nebbiolo",
+                "en": "word:Nebbiolo"
+              },
+              "do": "fact.show",
+              "kind": "grape",
+              "id": "nebbiolo"
             }
           ],
           "gapAfter": 0.9
@@ -709,6 +731,10 @@
             "en": "One more thing before we go. The name on an Italian bottle is nearly always a place, not a grape."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "region.clear"
@@ -892,6 +918,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "langhe"
+            },
+            {
+              "on": {
+                "no": "word:Langhe",
+                "en": "word:Langhe"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "langhe"
             }
           ],
           "gapAfter": 2.0
@@ -912,6 +947,10 @@
             "en": "Nebbiolo is a dark grape that makes a strikingly pale wine. After a few years in the bottle it is almost orange at the rim."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "sound.music",
@@ -961,6 +1000,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "tannin"
+            },
+            {
+              "on": {
+                "no": "word:tanninrike",
+                "en": "word:tannic"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "tannin"
             }
           ],
           "gapAfter": 0.9
@@ -987,6 +1035,10 @@
             "en": "It is also why the wine can be kept. A young Barolo is nearly unpleasant. The same bottle at twenty years is a different thing entirely."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:tjue",
@@ -1064,6 +1116,15 @@
                 "no": "Langhe, sør for Alba",
                 "en": "The Langhe, south of Alba"
               }
+            },
+            {
+              "on": {
+                "no": "word:terroir",
+                "en": "word:terroir"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "terroir"
             }
           ],
           "gapAfter": 2.0
@@ -1084,6 +1145,10 @@
             "en": "Nebbiolo makes two famous wines, and they are named after two villages eighteen kilometres apart."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "sound.music",
@@ -1136,6 +1201,15 @@
               },
               "kind": "point",
               "tone": "gold"
+            },
+            {
+              "on": {
+                "no": "word:Barolo",
+                "en": "word:Barolo"
+              },
+              "do": "fact.show",
+              "kind": "wine",
+              "id": "barolo"
             }
           ],
           "gapAfter": 0.9
@@ -1155,7 +1229,12 @@
             "no": "Noen få dager høres ingenting ut. I praksis er det forskjellen på en vin du kan drikke etter fem år og en du bør vente ti på.",
             "en": "A few days sounds like nothing. In practice it is the difference between a wine you can drink at five years and one you should wait ten for."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.35
         },
         {
@@ -1279,6 +1358,12 @@
               "do": "term.mark",
               "kind": "term",
               "id": "docg"
+            },
+            {
+              "on": "start",
+              "do": "fact.show",
+              "kind": "term",
+              "id": "docg"
             }
           ],
           "gapAfter": 2.0
@@ -1299,6 +1384,10 @@
             "en": "But hardly anyone in Piedmont drinks Barolo on a weekday. It is expensive, and it is heavy."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "sound.music",
@@ -1348,6 +1437,15 @@
               "over": 20,
               "dim": 0.16,
               "into": 1.4
+            },
+            {
+              "on": {
+                "no": "word:Barbera",
+                "en": "word:Barbera"
+              },
+              "do": "fact.show",
+              "kind": "grape",
+              "id": "barbera"
             }
           ],
           "gapAfter": 0.9
@@ -1367,7 +1465,12 @@
             "no": "Derfor ble den regnet som bondevin i lang tid. Det endret seg på nittenåttitallet, da noen begynte å ta den alvorlig.",
             "en": "So it was thought of as peasant wine for a long time. That changed in the 1980s, when some producers began taking it seriously."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 0.9
         },
         {
@@ -1404,6 +1507,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "moscato"
+            },
+            {
+              "on": {
+                "no": "word:Moscato",
+                "en": "word:Moscato"
+              },
+              "do": "fact.show",
+              "kind": "grape",
+              "id": "moscato"
             }
           ],
           "gapAfter": 1.35
@@ -1435,6 +1547,10 @@
             "en": "The result is sweet, lightly fizzing and only about five per cent alcohol. A third of a Barolo."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:fem",

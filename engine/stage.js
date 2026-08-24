@@ -24,6 +24,8 @@ export function mountStage(container, chapter, people, language) {
   // covered by the captions, quotes and numbers drawn over it.
   P.mountPlate(container, chapter, language);
   O.mountOverlays(container, chapter, people, language);
+  // fact.show resolves against every declared kind, not four fixed pools.
+  O.useEntries(chapter.entries || null);
   S.mountSound(chapter);
   return map;
 }
@@ -102,6 +104,8 @@ const VERBS = {
   // Two or three numbers as one picture, rather than as unrelated chips.
   'compare.show':     (c, i) => O.showCompare(c, i),
   'compare.clear':    ()     => O.clearCompare(),
+  'fact.show':        (c, i) => O.showFact(c, i),
+  'fact.hide':        ()     => O.hideFact(),
 
   'caption.note':     (c, i) => O.showNote(c, i),
 

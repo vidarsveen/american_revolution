@@ -5,7 +5,7 @@
 import { loadChapter } from './script.js';
 import { allChapters, chaptersOf } from './pack.js';
 import { mountDepth, unmountDepth, coach } from './depth.js';
-import { mapScene } from './scenes/map.js';
+import { mapScene, getStoryMap } from './scenes/map.js';
 import { mountTransition, unmountTransition, LEAD_IN_MS } from './transition.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark } from '../core/theme.js';
@@ -361,7 +361,6 @@ function wireCover(cover) {
       return;
     }
     if (!e.target.closest('.cover__go')) return;
-    cover.classList.remove('is-on');
     started = true;
     // The only real user gesture the chapter is guaranteed to get. A browser
     // will not build an audio context without one, and Safari only counts it
@@ -369,7 +368,35 @@ function wireCover(cover) {
     // Deliberately not awaited: sound is an enhancement and must never stand
     // between the tap and the story starting.
     unlockSound();
-    player.goToScene(0, { autoplay: true });
+    // Let the opening shot LAND before anyone starts talking over it.
+    //
+    // This used to be goToScene(0, { autoplay: true }), which replays the
+    // scene's cues -- including its map.flyTo -- and starts the narration in
+    // the same turn. So the chapter opened with the camera visibly travelling
+    // while the first sentence was already running, which reads as the story
+    // starting before the picture is ready.
+    //
+    // Apply the cues, wait for the camera, then play. settled() resolves
+    // immediately when nothing is moving, so a chapter that opens on a static
+    // frame is not delayed at all.
+    // Build the opening frame BEHIND the cover, then lift it, then talk.
+    //
+    // The order used to be: drop the cover, then goToScene(0, autoplay). So
+    // the camera's jump to the opening position -- measured at zoom 10.5 to
+    // 2.53 in a single frame on the Revolution -- happened in full view, and
+    // the first sentence started over it. Rebuilding first means the map is
+    // already where the story begins when the cover comes off, and settled()
+    // covers the case where an opening shot actually animates.
+    player.goToScene(0, { autoplay: false });
+    const map = getStoryMap();
+    Promise.resolve(map ? map.settled() : null).then(() => {
+      cover.classList.remove('is-on');
+      // A frame for the cover to start fading before the voice arrives, so
+      // the two are not competing for the same instant.
+      setTimeout(() => {
+        if (started && !player.playing) player.play();
+      }, 260);
+    });
   });
 
   // A pause cue holds the picture until the viewer taps anywhere.

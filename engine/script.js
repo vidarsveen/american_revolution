@@ -12,6 +12,7 @@
    ============================================================ */
 
 import { loadPack } from './pack.js';
+import { buildEntries } from '../core/entries.js';
 import { packBase } from '../core/paths.js';
 
 /** Anchors we understand on a cue's `on` field. */
@@ -49,6 +50,15 @@ export async function loadChapter(pack, chapterId, lang) {
     // American revolutionaries and drew nothing at all.
     pool('people', []),
   ]);
+
+  // Every OTHER entry kind the pack declares -- grapes, wines, whatever a
+  // subject turns out to need. In the same wave as the rest, deliberately: a
+  // fact box is driven by a cue, and a cue handler that awaited would be the
+  // Massachusetts-washed-blue bug again.
+  const declaredKinds = Object.entries(packInfo?.entries || {})
+    .filter(([id]) => !['person', 'term', 'topic', 'place'].includes(id));
+  const extraPools = Object.fromEntries(await Promise.all(
+    declaredKinds.map(async ([id, spec]) => [id, await pool(spec.from || id, {})])));
   if (!chapter) throw new Error(`chapter ${chapterId} could not be loaded`);
 
   // A chapter is only narrated in the languages that have been recorded. If the
@@ -83,6 +93,9 @@ export async function loadChapter(pack, chapterId, lang) {
     packInfo: packInfo || null,
     terms: terms || {},
     topics: topics || {},
+    entries: buildEntries({ person: people || [], term: terms || {},
+                            topic: topics || {}, place: placeNotes || {},
+                            ...extraPools }, packInfo),
     placeNotes: placeNotes || {},
     people: people || [],
   }, timing, narrationLang, base, lang);
@@ -227,6 +240,9 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
     topics: chapter.topics || {},
     placeNotes: chapter.placeNotes || {},
     people: chapter.people || [],
+    // One index over every lookup pool, so fact.show can resolve any kind
+    // without the overlay module knowing which pools exist.
+    entries: chapter.entries || null,
     media: chapter.media || {},
     quotes: chapter.quotes || {},
     poster: chapter.poster || null,

@@ -157,7 +157,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "two hands cutting a bunch of dark grapes from a vine with small curved shears, seen close over the shoulder, leaves around, no face in frame, morning light"
+  "prompt": "a close view of one hand holding a bunch of dark grapes steady by its stem while the other hand closes a small pair of pruning shears on the stem just above the bunch, vine leaves around, seen over the shoulder from behind, no face in frame, soft morning light"
  },
  "flasker-liggende": {
   "kind": "made",
