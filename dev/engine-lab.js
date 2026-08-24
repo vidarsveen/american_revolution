@@ -126,8 +126,19 @@ function signature() {
   // The overlay decks are stage state too — a stat chip or a portrait that
   // survives a seek is the same class of defect as an arrow that does. The
   // one-shot surfaces are deliberately absent; see ONE_SHOT_DOM.
-  for (const sel of ['.ov-deck--upper', '.ov-deck--lower', '.ov-portrait',
-    '.ov-image', '.ov-quote']) {
+  // Every overlay that is STAGE STATE — shown by a cue and hidden by a cue,
+  // so seeking and playing must agree on whether it is up. The one-shot
+  // surfaces are deliberately absent; see ONE_SHOT_DOM.
+  //
+  // `.ov-deck--upper` used to be in this list and matches nothing: the deck
+  // is `.ov-deck--top`. Harmless, because the portrait and the image inside
+  // it are named directly — but it is a selector that has been quietly
+  // testing air, which is the kind of false confidence a bench exists to not
+  // have. `.ov-compare` and `.ov-fact` were simply never added, so a compare
+  // deck or a definition left standing after a seek would have passed here
+  // without a word.
+  for (const sel of ['.ov-deck--top', '.ov-deck--lower', '.ov-portrait',
+    '.ov-image', '.ov-quote', '.ov-compare', '.ov-fact']) {
     for (const node of document.querySelectorAll(sel)) {
       lines.push(`dom/${sel}  ${stateClasses(node)}  ${normaliseHtml(node.innerHTML)}`);
     }
@@ -177,6 +188,16 @@ function normaliseHtml(html) {
       const kept = list.split(/\s+/).filter((c) => c && c !== 'is-instant').sort();
       return `class="${kept.join(' ')}"`;
     })
+    // Animation phase, written into markup rather than onto a spec.
+    //
+    // showCompare() bakes `transition-duration: ${over}s` into each bar, and
+    // `over` is 1.1 when playing and 0 when seeking — by design, exactly as
+    // `over: instant ? 0 : 0.7` is on the battle glyph. VOLATILE already
+    // excludes it from map specs for that reason; this is the same statement
+    // in a different syntax, and comparing it reports the rule being kept as
+    // the rule being broken. It surfaced the moment `.ov-compare` was added
+    // to the signature, which is the first time anything looked.
+    .replace(/transition-duration:\s*[\d.]+s;?/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
