@@ -1,0 +1,78 @@
+{
+ "//": [
+  "Input to tools/gen-image.py. Every entry needs `claims` and `omits` before",
+  "it can be accepted; check-data.py refuses a made picture without them.",
+  "",
+  "This pack sets allowPhoto true, and it is the only one that does. The rule",
+  "it relaxes exists because a photographic plate reads as a RECORD, and for",
+  "a subject that predates photography there is no record for it to be",
+  "mistaken for. A hillside in October is a present-day thing that",
+  "photographs, so photographing it asserts nothing false.",
+  "",
+  "The text rule does NOT relax, and this is the pack it was written for. No",
+  "labels, no capsules, no appellation bands, no producer names, no signage.",
+  "An invented battle is an illustration; an invented Barolo label is a",
+  "forgery, because a label is a legal instrument naming a producer and a",
+  "protected origin. Bottles are shot unlabelled, from behind, or cropped.",
+  "",
+  "And nothing here claims a VARIETY. The spike generated a beautiful bunch",
+  "of grapes that is not Nebbiolo, and no prompt can fix that: the model",
+  "cannot tell Nebbiolo from Barbera from Sangiovese. So the grape pictures",
+  "say 'dark grapes' in their claims and say so again in their omits. A",
+  "varietal close-up, if this course ever needs one, has to be archive."
+ ],
+
+ "langhe-take": {
+  "prompt": "rolling vineyard hills in autumn under a sea of low morning fog, only the tops of the ridges showing above the mist, bare rows of vines on the slopes, soft grey light just after sunrise, no buildings in the foreground",
+  "style": "natural light landscape photograph, muted colour, shallow atmosphere haze",
+  "aspect": "square",
+  "title": {"no": "Tåke over åsene om høsten", "en": "Fog over the hills in autumn"},
+  "claims": "Rolling hill country under autumn morning fog, of the kind that fills the valleys of north-west Italy in October.",
+  "omits": "Not a photograph of any identified hill, village or vineyard. No place is being named."
+ },
+
+ "vinmark-helling": {
+  "prompt": "steep terraced vineyard rows in late autumn colour, orange and yellow leaves, dry chalky pale soil between the rows, the slope falling away to a misty valley, low afternoon sun",
+  "style": "natural light landscape photograph, muted colour",
+  "aspect": "square",
+  "title": {"no": "Vinmark i helling", "en": "Vines on a slope"},
+  "claims": "Vines planted in rows on a steep slope with pale chalky soil, in autumn leaf.",
+  "omits": "Not a named vineyard and not a named region. The variety of vine is not identifiable and is not claimed."
+ },
+
+ "kjeller-fat": {
+  "prompt": "a dim cellar with very large old oak barrels standing in a row, iron hoops, packed earth floor, one shaft of light from a small high window, dust in the air, no people",
+  "style": "natural light interior photograph, warm shadow, shallow depth of field",
+  "aspect": "square",
+  "title": {"no": "Fatkjeller", "en": "A barrel cellar"},
+  "claims": "Large wooden casks in an old cellar, the traditional vessel for long ageing.",
+  "omits": "Not any particular producer's cellar. Nothing in frame identifies an estate."
+ },
+
+ "glass-blek-rod": {
+  "prompt": "a single stemmed wine glass holding a small amount of pale garnet red wine, held against a plain bright window, the rim of the wine showing orange, plain grey background, nothing else on the table",
+  "style": "natural light still life photograph, shallow depth of field, muted colour",
+  "aspect": "square",
+  "title": {"no": "Blek, granatrød", "en": "Pale, garnet red"},
+  "claims": "A glass of pale garnet-red wine showing an orange rim, which is what a well-aged red of this type looks like.",
+  "omits": "No bottle and no label, so no wine, producer or vintage is being identified. The colour is typical, not a measurement."
+ },
+
+ "druer-kasse": {
+  "prompt": "dark blue-black wine grapes in a shallow wooden picking crate, dusty bloom on the skins, a few green leaves among them, resting on soil at the end of a vine row, overcast daylight",
+  "style": "natural light photograph, shallow depth of field, muted colour",
+  "aspect": "square",
+  "title": {"no": "Innhøsting", "en": "Picked fruit"},
+  "claims": "Dark wine grapes in a picking crate at harvest, with the natural bloom on the skins.",
+  "omits": "NOT a variety. The model cannot tell Nebbiolo from Barbera from Sangiovese, and nothing here should be read as identifying which grape this is."
+ },
+
+ "bord-middag": {
+  "prompt": "a worn wooden table set for an ordinary weekday dinner, a plain glass carafe of dark red wine, two simple tumblers, a bowl of pasta with butter and a little grated cheese, a folded cloth, warm evening light from one side",
+  "style": "natural light food photograph, shallow depth of field, muted colour",
+  "aspect": "square",
+  "title": {"no": "Hverdagsmiddag", "en": "A weekday dinner"},
+  "claims": "An everyday table with wine served from a plain carafe, which is how the local red is usually drunk at home.",
+  "omits": "No bottle and no label, so no wine is identified. The dish is generic and is not a named regional recipe."
+ }
+}

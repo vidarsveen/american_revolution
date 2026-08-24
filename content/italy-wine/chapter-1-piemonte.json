@@ -1,0 +1,1258 @@
+{
+  "id": "chapter-1-piemonte",
+  "pack": "italy-wine",
+  "title": {
+    "no": "Tåka og tørsten",
+    "en": "The fog and the thirst"
+  },
+  "subtitle": {
+    "no": "Italia, og først Piemonte",
+    "en": "Italy, and Piedmont first"
+  },
+  "regions": "geo/regions.geojson",
+  "places": {
+    "torino": {
+      "coords": [
+        45.0703,
+        7.6869
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Torino",
+        "en": "Turin"
+      },
+      "kind": "city"
+    },
+    "milano": {
+      "coords": [
+        45.4642,
+        9.19
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Milano",
+        "en": "Milan"
+      },
+      "kind": "city"
+    },
+    "roma": {
+      "coords": [
+        41.9028,
+        12.4964
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Roma",
+        "en": "Rome"
+      },
+      "kind": "city"
+    },
+    "napoli": {
+      "coords": [
+        40.8518,
+        14.2681
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Napoli",
+        "en": "Naples"
+      },
+      "kind": "city"
+    },
+    "palermo": {
+      "coords": [
+        38.1157,
+        13.3615
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Palermo",
+        "en": "Palermo"
+      },
+      "kind": "city"
+    },
+    "firenze": {
+      "coords": [
+        43.7696,
+        11.2558
+      ],
+      "zoom": 9.0,
+      "name": {
+        "no": "Firenze",
+        "en": "Florence"
+      },
+      "kind": "city"
+    },
+    "alba": {
+      "coords": [
+        44.7009,
+        8.0353
+      ],
+      "zoom": 11.4,
+      "name": {
+        "no": "Alba",
+        "en": "Alba"
+      },
+      "kind": "town"
+    },
+    "barolo": {
+      "coords": [
+        44.61,
+        7.943
+      ],
+      "zoom": 12.4,
+      "name": {
+        "no": "Barolo",
+        "en": "Barolo"
+      },
+      "kind": "town"
+    },
+    "barbaresco": {
+      "coords": [
+        44.725,
+        8.084
+      ],
+      "zoom": 12.4,
+      "name": {
+        "no": "Barbaresco",
+        "en": "Barbaresco"
+      },
+      "kind": "town"
+    },
+    "asti": {
+      "coords": [
+        44.9009,
+        8.2064
+      ],
+      "zoom": 10.6,
+      "name": {
+        "no": "Asti",
+        "en": "Asti"
+      },
+      "kind": "town"
+    },
+    "langhe": {
+      "coords": [
+        44.645,
+        8.01
+      ],
+      "zoom": 11.0,
+      "name": {
+        "no": "Langhe",
+        "en": "The Langhe"
+      },
+      "kind": "region"
+    },
+    "etna": {
+      "coords": [
+        37.751,
+        14.9934
+      ],
+      "zoom": 10.0,
+      "name": {
+        "no": "Etna",
+        "en": "Etna"
+      },
+      "kind": "hill"
+    },
+    "tunis": {
+      "coords": [
+        36.8065,
+        10.1815
+      ],
+      "zoom": 8.0,
+      "name": {
+        "no": "Tunis",
+        "en": "Tunis"
+      },
+      "kind": "city"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s0",
+      "title": {
+        "no": "Fem hundre druer",
+        "en": "Five hundred grapes"
+      },
+      "beats": [
+        {
+          "id": "s0.b1",
+          "say": {
+            "no": "Det finnes over fem hundre druesorter i vanlig bruk i Italia. Frankrike har rundt to hundre. Spania færre enn det.",
+            "en": "There are over five hundred grape varieties in commercial use in Italy. France has around two hundred. Spain fewer than that."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -9
+            },
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 4.9,
+              "over": 3.4
+            },
+            {
+              "on": {
+                "no": "word:fem",
+                "en": "word:five"
+              },
+              "do": "stat.show",
+              "value": "500+",
+              "label": {
+                "no": "druesorter i Italia",
+                "en": "grape varieties in Italy"
+              },
+              "side": "red"
+            },
+            {
+              "on": {
+                "no": "word:Frankrike",
+                "en": "word:France"
+              },
+              "do": "stat.show",
+              "value": "~200",
+              "label": {
+                "no": "i Frankrike",
+                "en": "in France"
+              },
+              "side": "neutral"
+            },
+            {
+              "on": "start",
+              "do": "term.mark",
+              "kind": "term",
+              "id": "drue"
+            }
+          ]
+        },
+        {
+          "id": "s0.b2",
+          "say": {
+            "no": "De fleste av dem vokser ikke noe annet sted i verden. Ikke i Chile, ikke i California, ikke i Australia.",
+            "en": "Most of them grow nowhere else on earth. Not in Chile, not in California, not in Australia."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            }
+          ]
+        },
+        {
+          "id": "s0.b3",
+          "say": {
+            "no": "Grunnen er verken klima eller flaks. Grunnen er at Italia ble ett land veldig seint, og at det er fullt av fjell.",
+            "en": "The reason is neither climate nor luck. The reason is that Italy became one country very late, and that it is full of mountains."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "hvorfor-italia",
+              "span": 1
+            }
+          ]
+        },
+        {
+          "id": "s0.b4",
+          "say": {
+            "no": "Dette er første del av en reise nedover støvelen. Vi begynner helt nordvest, i tåka.",
+            "en": "This is the first part of a journey down the boot. We start in the far north-west, in the fog."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "torino",
+              "zoom": 6.4,
+              "over": 4.0
+            },
+            {
+              "on": "end",
+              "do": "caption.note",
+              "value": {
+                "no": "Piemonte, nordvest i Italia",
+                "en": "Piedmont, north-west Italy"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "title": {
+        "no": "Et land som står på høykant",
+        "en": "A country stood on its edge"
+      },
+      "beats": [
+        {
+          "id": "s1.b1",
+          "say": {
+            "no": "Se på formen først. Italia er tolv hundre kilometer langt, og det gjør nesten alt mulig.",
+            "en": "Look at the shape first. Italy is twelve hundred kilometres long, and that makes almost anything possible."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 4.8,
+              "over": 3.6
+            },
+            {
+              "on": "start",
+              "do": "region.clear"
+            }
+          ]
+        },
+        {
+          "id": "s1.b2",
+          "say": {
+            "no": "I nord ligger Alpene, med snø hele året. Sør på Sicilia er du lenger sør enn Tunis i Nord-Afrika.",
+            "en": "In the north lie the Alps, under snow all year. In the south of Sicily you are further south than Tunis in North Africa."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Sicilia",
+                "en": "word:Sicily"
+              },
+              "do": "marker.show",
+              "at": "palermo",
+              "kind": "point",
+              "tone": "gold"
+            },
+            {
+              "on": {
+                "no": "word:Tunis",
+                "en": "word:Tunis"
+              },
+              "do": "marker.show",
+              "at": "tunis",
+              "kind": "point",
+              "tone": "sage"
+            }
+          ]
+        },
+        {
+          "id": "s1.b3",
+          "say": {
+            "no": "Men lengden er ikke det viktigste. Det viktigste er at bare en firedel av landet er flatt.",
+            "en": "But the length is not the main thing. The main thing is that only a quarter of the country is flat."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "firenze",
+              "zoom": 5.6,
+              "over": 3.4
+            }
+          ]
+        },
+        {
+          "id": "s1.b4",
+          "say": {
+            "no": "Resten er fjell og åser. Og høyde gir kalde netter, selv der dagene er brennhete.",
+            "en": "The rest is mountain and hill. And altitude gives cold nights, even where the days are fierce."
+          },
+          "cues": []
+        },
+        {
+          "id": "s1.b5",
+          "say": {
+            "no": "Kalde netter er alt for en drue. Sola bygger sukker om dagen, og kulda om natta holder på syren og lukten.",
+            "en": "Cold nights are everything for a grape. The sun builds sugar in the day, and the cold at night holds on to the acid and the smell."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "term.mark",
+              "kind": "term",
+              "id": "terroir"
+            }
+          ]
+        },
+        {
+          "id": "s1.b6",
+          "say": {
+            "no": "Uten den kulda blir vinen slapp. Det er derfor Etna på Sicilia, ni hundre meter opp på en vulkan, lager friskere vin enn markene nede ved kysten.",
+            "en": "Without that cold the wine goes flabby. It is why Etna in Sicily, nine hundred metres up a volcano, makes fresher wine than the fields down at the coast."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Etna",
+                "en": "word:Etna"
+              },
+              "do": "map.fitPlaces",
+              "places": [
+                "etna",
+                "palermo"
+              ],
+              "over": 3.6
+            },
+            {
+              "on": {
+                "no": "word:Etna",
+                "en": "word:Etna"
+              },
+              "do": "marker.show",
+              "at": "etna",
+              "kind": "point",
+              "tone": "red"
+            }
+          ]
+        },
+        {
+          "id": "s1.b7",
+          "say": {
+            "no": "Og fjellene gjorde en ting til. De holdt folk fra hverandre i tusen år.",
+            "en": "And the mountains did one more thing. They kept people apart for a thousand years."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 4.8,
+              "over": 4.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": {
+        "no": "Hver dal sin drue",
+        "en": "Every valley its own grape"
+      },
+      "beats": [
+        {
+          "id": "s2.b1",
+          "say": {
+            "no": "Italia ble ett land i attensekstien. Før det var det kongedømmer, hertugdømmer og bystater som knapt handlet med hverandre.",
+            "en": "Italy became one country in 1861. Before that it was kingdoms, duchies and city states that barely traded with each other."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "firenze",
+              "zoom": 5.2,
+              "over": 3.8
+            }
+          ]
+        },
+        {
+          "id": "s2.b2",
+          "say": {
+            "no": "En bonde i en dal plantet det som vokste i den dalen. Naboen over fjellet plantet noe annet.",
+            "en": "A farmer in one valley planted what grew in that valley. His neighbour over the mountain planted something else."
+          },
+          "cues": []
+        },
+        {
+          "id": "s2.b3",
+          "say": {
+            "no": "Ingen av dem byttet stiklinger, fordi det var to dagsreiser med muldyr imellom. Så begge beholdt sitt.",
+            "en": "Neither of them swapped cuttings, because it was two days by mule between them. So both kept their own."
+          },
+          "cues": []
+        },
+        {
+          "id": "s2.b4",
+          "say": {
+            "no": "Gjenta det i tusen år, i et land med fjell overalt, og du sitter igjen med fem hundre druer.",
+            "en": "Repeat that for a thousand years, in a country with mountains everywhere, and you end up with five hundred grapes."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:fem",
+                "en": "word:five"
+              },
+              "do": "stat.show",
+              "value": "500+",
+              "label": {
+                "no": "druesorter",
+                "en": "grape varieties"
+              },
+              "side": "red"
+            }
+          ]
+        },
+        {
+          "id": "s2.b5",
+          "say": {
+            "no": "Nesten hver region har minst én drue som er dens egen. Toscana har Sangiovese.",
+            "en": "Almost every region has at least one grape that is its own. Tuscany has Sangiovese."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            },
+            {
+              "on": {
+                "no": "word:Toscana",
+                "en": "word:Tuscany"
+              },
+              "do": "region.show",
+              "names": [
+                "Toscana"
+              ],
+              "side": "red",
+              "label": true,
+              "over": 1.4
+            }
+          ]
+        },
+        {
+          "id": "s2.b6",
+          "say": {
+            "no": "Veneto har Corvina, og lager Amarone av den. Campania har Aglianico, som romerne allerede drakk.",
+            "en": "Veneto has Corvina, and makes Amarone from it. Campania has Aglianico, which the Romans were already drinking."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Veneto",
+                "en": "word:Veneto"
+              },
+              "do": "region.show",
+              "names": [
+                "Veneto"
+              ],
+              "side": "red",
+              "label": true,
+              "over": 1.4
+            },
+            {
+              "on": {
+                "no": "word:Campania",
+                "en": "word:Campania"
+              },
+              "do": "region.show",
+              "names": [
+                "Campania"
+              ],
+              "side": "red",
+              "label": true,
+              "over": 1.4
+            }
+          ]
+        },
+        {
+          "id": "s2.b7",
+          "say": {
+            "no": "Og Piemonte, helt nordvest, har Nebbiolo. Det er den vi skal se på i dag.",
+            "en": "And Piedmont, in the far north-west, has Nebbiolo. That is the one we are looking at today."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Piemonte",
+                "en": "word:Piedmont"
+              },
+              "do": "region.show",
+              "names": [
+                "Piemonte"
+              ],
+              "side": "red",
+              "label": true,
+              "over": 1.6
+            },
+            {
+              "on": {
+                "no": "word:Nebbiolo",
+                "en": "word:Nebbiolo"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "nebbiolo"
+            }
+          ]
+        },
+        {
+          "id": "s2.b8",
+          "say": {
+            "no": "En ting til, før vi drar. Navnet på en italiensk flaske er nesten alltid et sted, ikke en drue.",
+            "en": "One more thing before we go. The name on an Italian bottle is nearly always a place, not a grape."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": "start",
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "lese-etiketten",
+              "span": 1
+            }
+          ]
+        },
+        {
+          "id": "s2.b9",
+          "say": {
+            "no": "Barolo er et sted. Chianti er et sted. Druen står det sjelden noe om, fordi alle på stedet vet hvilken det er.",
+            "en": "Barolo is a place. Chianti is a place. The grape often goes unmentioned, because everyone there knows which one it is."
+          },
+          "cues": []
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": {
+        "no": "Tåka",
+        "en": "The fog"
+      },
+      "beats": [
+        {
+          "id": "s3.b1",
+          "say": {
+            "no": "Piemonte betyr ved foten av fjellet. Alpene ligger rundt det på tre kanter, som en skål.",
+            "en": "Piemonte means at the foot of the mountain. The Alps stand around it on three sides, like a bowl."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dawn"
+            },
+            {
+              "on": "start",
+              "do": "map.flyTo",
+              "to": "torino",
+              "zoom": 7.6,
+              "over": 4.0
+            },
+            {
+              "on": {
+                "no": "word:Piemonte",
+                "en": "word:Piemonte"
+              },
+              "do": "region.show",
+              "names": [
+                "Piemonte"
+              ],
+              "side": "red",
+              "label": true,
+              "over": 1.6
+            }
+          ]
+        },
+        {
+          "id": "s3.b2",
+          "say": {
+            "no": "Om høsten fylles den skåla med tåke. Den ligger i dalbunnen om morgenen og brenner av utover dagen.",
+            "en": "In autumn that bowl fills with fog. It lies in the valley floors in the morning and burns off through the day."
+          },
+          "cues": []
+        },
+        {
+          "id": "s3.b3",
+          "say": {
+            "no": "Italiensk for tåke er nebbia. Og det er nesten helt sikkert der druen har navnet sitt fra.",
+            "en": "The Italian for fog is nebbia. And that is almost certainly where the grape gets its name."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:nebbia",
+                "en": "word:nebbia"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "nebbiolo"
+            }
+          ]
+        },
+        {
+          "id": "s3.b4",
+          "say": {
+            "no": "Enten fordi den modner så seint at høstingen skjer i tåke i oktober. Eller fordi skallet har et grått belegg som ser ut som tåke.",
+            "en": "Either because it ripens so late that picking happens in October fog. Or because the skins carry a grey bloom that looks like fog."
+          },
+          "cues": []
+        },
+        {
+          "id": "s3.b5",
+          "say": {
+            "no": "Begge forklaringene er gamle, og ingen av dem kan bevises. Det er greit. Navnet betyr tåke uansett.",
+            "en": "Both explanations are old, and neither can be proved. That is fine. The name means fog either way."
+          },
+          "cues": []
+        },
+        {
+          "id": "s3.b6",
+          "say": {
+            "no": "Sør for Torino ligger elva Tanaro, og sør for elva reiser bakkene seg. De heter Langhe.",
+            "en": "South of Turin runs the river Tanaro, and south of the river the hills rise. They are called the Langhe."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "region.clear"
+            },
+            {
+              "on": {
+                "no": "word:Langhe",
+                "en": "word:Langhe"
+              },
+              "do": "map.fitPlaces",
+              "places": [
+                "alba",
+                "barolo",
+                "barbaresco"
+              ],
+              "over": 4.2
+            },
+            {
+              "on": {
+                "no": "word:Langhe",
+                "en": "word:Langhe"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "langhe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": {
+        "no": "En drue som ikke vil flytte",
+        "en": "A grape that will not move"
+      },
+      "beats": [
+        {
+          "id": "s4.b1",
+          "say": {
+            "no": "Nebbiolo er en mørk drue som lager en påfallende blek vin. Etter noen år i flaska er den nesten oransje i kanten.",
+            "en": "Nebbiolo is a dark grape that makes a strikingly pale wine. After a few years in the bottle it is almost orange at the rim."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "day"
+            },
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "alba",
+                "barolo",
+                "barbaresco"
+              ],
+              "over": 3.4
+            }
+          ]
+        },
+        {
+          "id": "s4.b2",
+          "say": {
+            "no": "Den ser altså tynn ut, og er samtidig blant de mest tanninrike vinene som lages noe sted.",
+            "en": "So it looks thin, and is at the same time among the most tannic wines made anywhere."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tanninrike",
+                "en": "word:tannic"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "tannin"
+            }
+          ]
+        },
+        {
+          "id": "s4.b3",
+          "say": {
+            "no": "Tanniner er stoffer fra skallet og stilkene. De binder seg til spyttet ditt, og munnen føles tørr. Samme følelse som sterk svart te.",
+            "en": "Tannins come from the skins and the stems. They bind to your saliva, and your mouth feels dry. The same sensation as strong black tea."
+          },
+          "cues": []
+        },
+        {
+          "id": "s4.b4",
+          "say": {
+            "no": "Det er også derfor vinen tåler å ligge. En ung Barolo er nesten ubehagelig. Den samme flaska etter tjue år er noe helt annet.",
+            "en": "It is also why the wine can be kept. A young Barolo is nearly unpleasant. The same bottle at twenty years is a different thing entirely."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:tjue",
+                "en": "word:twenty"
+              },
+              "do": "stat.show",
+              "value": "20+",
+              "label": {
+                "no": "år den kan lagres",
+                "en": "years it will keep"
+              },
+              "side": "red"
+            }
+          ]
+        },
+        {
+          "id": "s4.b5",
+          "say": {
+            "no": "Og så er den håpløst kresen. Nebbiolo krever kalkrik leire, sørvendt helling og en lang høst.",
+            "en": "And then it is hopelessly fussy. Nebbiolo demands chalky clay, a south-facing slope and a long autumn."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "stat.clear"
+            }
+          ]
+        },
+        {
+          "id": "s4.b6",
+          "say": {
+            "no": "Folk har prøvd å dyrke den i California, i Australia og i Argentina i over hundre år. Det blir aldri riktig.",
+            "en": "People have tried to grow it in California, Australia and Argentina for over a hundred years. It never comes out right."
+          },
+          "cues": []
+        },
+        {
+          "id": "s4.b7",
+          "say": {
+            "no": "Nesten all Nebbiolo i verden vokser innenfor noen få mil her. Det er den beste illustrasjonen jeg kjenner på hva terroir betyr.",
+            "en": "Almost all the Nebbiolo in the world grows within a few dozen kilometres of here. It is the best illustration I know of what terroir means."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:terroir",
+                "en": "word:terroir"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "terroir"
+            },
+            {
+              "on": "end",
+              "do": "caption.note",
+              "value": {
+                "no": "Langhe, sør for Alba",
+                "en": "The Langhe, south of Alba"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": {
+        "no": "To landsbyer",
+        "en": "Two villages"
+      },
+      "beats": [
+        {
+          "id": "s5.b1",
+          "say": {
+            "no": "Nebbiolo lager to berømte viner, og de er oppkalt etter to landsbyer som ligger atten kilometer fra hverandre.",
+            "en": "Nebbiolo makes two famous wines, and they are named after two villages eighteen kilometres apart."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "barolo",
+                "barbaresco"
+              ],
+              "over": 3.8
+            }
+          ]
+        },
+        {
+          "id": "s5.b2",
+          "say": {
+            "no": "Barolo ligger sørvest for Alba. Barbaresco ligger nordøst. Samme drue, samme fylke, to forskjellige viner.",
+            "en": "Barolo lies south-west of Alba. Barbaresco lies north-east. Same grape, same county, two different wines."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Barolo",
+                "en": "word:Barolo"
+              },
+              "do": "marker.show",
+              "at": "barolo",
+              "label": {
+                "no": "Barolo",
+                "en": "Barolo"
+              },
+              "kind": "point",
+              "tone": "red"
+            },
+            {
+              "on": {
+                "no": "word:Barbaresco",
+                "en": "word:Barbaresco"
+              },
+              "do": "marker.show",
+              "at": "barbaresco",
+              "label": {
+                "no": "Barbaresco",
+                "en": "Barbaresco"
+              },
+              "kind": "point",
+              "tone": "gold"
+            }
+          ]
+        },
+        {
+          "id": "s5.b3",
+          "say": {
+            "no": "Barbaresco ligger litt lavere og litt nærmere elva. Det gir varmere netter, og druene modner noen dager tidligere.",
+            "en": "Barbaresco sits a little lower and a little nearer the river. That gives warmer nights, and the grapes ripen a few days earlier."
+          },
+          "cues": []
+        },
+        {
+          "id": "s5.b4",
+          "say": {
+            "no": "Noen få dager høres ingenting ut. I praksis er det forskjellen på en vin du kan drikke etter fem år og en du bør vente ti på.",
+            "en": "A few days sounds like nothing. In practice it is the difference between a wine you can drink at five years and one you should wait ten for."
+          },
+          "cues": []
+        },
+        {
+          "id": "s5.b5",
+          "say": {
+            "no": "Barolo må ligge minst trettiåtte måneder før den selges. Minst atten av dem på trefat.",
+            "en": "Barolo must be held at least thirty-eight months before sale. At least eighteen of them in wood."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:trettiåtte",
+                "en": "word:thirty-eight"
+              },
+              "do": "compare.show",
+              "mode": "bar",
+              "parts": [
+                {
+                  "n": 38,
+                  "value": "38 mnd",
+                  "label": {
+                    "no": "Barolo",
+                    "en": "Barolo"
+                  },
+                  "side": "red"
+                },
+                {
+                  "n": 26,
+                  "value": "26 mnd",
+                  "label": {
+                    "no": "Barbaresco",
+                    "en": "Barbaresco"
+                  },
+                  "side": "sweet"
+                }
+              ],
+              "note": {
+                "no": "Minste lagringstid før salg.",
+                "en": "Minimum ageing before sale."
+              }
+            },
+            {
+              "on": {
+                "no": "word:trettiåtte",
+                "en": "word:thirty-eight"
+              },
+              "do": "term.mark",
+              "kind": "topic",
+              "id": "hva-koster",
+              "span": 1
+            }
+          ]
+        },
+        {
+          "id": "s5.b6",
+          "say": {
+            "no": "Det er over tre år der vinen koster penger og ikke tjener noen. Mye av prisen på flaska er den ventinga.",
+            "en": "That is over three years in which the wine costs money and earns nobody anything. Much of the price on the bottle is that wait."
+          },
+          "cues": []
+        },
+        {
+          "id": "s5.b7",
+          "say": {
+            "no": "Resten av prisen ligger i bakken. En teig i Cannubi koster mer enn en lik teig to kilometer unna, fordi den har gitt bedre vin i to hundre år.",
+            "en": "The rest of the price is in the hillside. A plot in Cannubi costs more than an identical plot two kilometres away, because it has given better wine for two hundred years."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "compare.clear"
+            }
+          ]
+        },
+        {
+          "id": "s5.b8",
+          "say": {
+            "no": "Hele det italienske systemet bygger på at det er sant. At stedet smakes.",
+            "en": "The whole Italian system rests on that being true. That the place can be tasted."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": "start",
+              "do": "term.mark",
+              "kind": "term",
+              "id": "docg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": {
+        "no": "Det de faktisk drikker",
+        "en": "What they actually drink"
+      },
+      "beats": [
+        {
+          "id": "s6.b1",
+          "say": {
+            "no": "Men nesten ingen i Piemonte drikker Barolo til hverdags. Det er dyrt, og det er tungt.",
+            "en": "But hardly anyone in Piedmont drinks Barolo on a weekday. It is expensive, and it is heavy."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "map.mood",
+              "value": "dusk"
+            },
+            {
+              "on": "start",
+              "do": "map.fitPlaces",
+              "places": [
+                "asti",
+                "alba",
+                "torino"
+              ],
+              "over": 4.0
+            }
+          ]
+        },
+        {
+          "id": "s6.b2",
+          "say": {
+            "no": "Til middag drikker de Barbera. Mørk farge, høy syre, nesten ingen tannin. Den er lett å like fra første slurk.",
+            "en": "With dinner they drink Barbera. Dark colour, high acid, almost no tannin. It is easy to like from the first mouthful."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Barbera",
+                "en": "word:Barbera"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "barbera"
+            }
+          ]
+        },
+        {
+          "id": "s6.b3",
+          "say": {
+            "no": "Barbera fikk historisk de markene Nebbiolo ikke ville ha. Den modner tidligere og klager mindre.",
+            "en": "Barbera historically got the sites Nebbiolo would not take. It ripens earlier and complains less."
+          },
+          "cues": []
+        },
+        {
+          "id": "s6.b4",
+          "say": {
+            "no": "Derfor ble den regnet som bondevin i lang tid. Det endret seg på nittenåttitallet, da noen begynte å ta den alvorlig.",
+            "en": "So it was thought of as peasant wine for a long time. That changed in the 1980s, when some producers began taking it seriously."
+          },
+          "cues": []
+        },
+        {
+          "id": "s6.b5",
+          "say": {
+            "no": "Og nord for Alba, rundt Asti, lager de noe helt annet igjen. Moscato.",
+            "en": "And north of Alba, around Asti, they make something else altogether. Moscato."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Asti",
+                "en": "word:Asti"
+              },
+              "do": "marker.show",
+              "at": "asti",
+              "label": {
+                "no": "Asti",
+                "en": "Asti"
+              },
+              "kind": "point",
+              "tone": "gold"
+            },
+            {
+              "on": {
+                "no": "word:Moscato",
+                "en": "word:Moscato"
+              },
+              "do": "term.mark",
+              "kind": "term",
+              "id": "moscato"
+            }
+          ]
+        },
+        {
+          "id": "s6.b6",
+          "say": {
+            "no": "Gjæringen stanses midtveis ved å kjøle vinen ned. Halvparten av sukkeret blir igjen, og boblene som alt er dannet blir sittende.",
+            "en": "The fermentation is stopped halfway by chilling the wine. Half the sugar stays, and the bubbles already formed stay with it."
+          },
+          "cues": []
+        },
+        {
+          "id": "s6.b7",
+          "say": {
+            "no": "Resultatet er søtt, lett perlende og bare rundt fem prosent alkohol. En tredel av en Barolo.",
+            "en": "The result is sweet, lightly fizzing and only about five per cent alcohol. A third of a Barolo."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:fem",
+                "en": "word:five"
+              },
+              "do": "compare.show",
+              "mode": "bar",
+              "parts": [
+                {
+                  "n": 145,
+                  "value": "14,5 %",
+                  "label": {
+                    "no": "Barolo",
+                    "en": "Barolo"
+                  },
+                  "side": "red"
+                },
+                {
+                  "n": 50,
+                  "value": "5 %",
+                  "label": {
+                    "no": "Moscato d’Asti",
+                    "en": "Moscato d’Asti"
+                  },
+                  "side": "sweet"
+                }
+              ],
+              "note": {
+                "no": "Typisk alkoholstyrke.",
+                "en": "Typical alcoholic strength."
+              }
+            }
+          ]
+        },
+        {
+          "id": "s6.b8",
+          "say": {
+            "no": "Én region. Én av tjue. Tre helt forskjellige viner, og vi har ikke nevnt de hvite ennå.",
+            "en": "One region. One of twenty. Three completely different wines, and we have not mentioned the whites yet."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "compare.clear"
+            },
+            {
+              "on": "start",
+              "do": "marker.clear"
+            },
+            {
+              "on": {
+                "no": "word:tjue",
+                "en": "word:twenty"
+              },
+              "do": "map.flyTo",
+              "to": "roma",
+              "zoom": 4.8,
+              "over": 4.4
+            }
+          ]
+        },
+        {
+          "id": "s6.b9",
+          "say": {
+            "no": "Neste gang drar vi sørover, til Toscana, og til druen som lager Chianti.",
+            "en": "Next time we go south, to Tuscany, and to the grape that makes Chianti."
+          },
+          "cues": [
+            {
+              "on": {
+                "no": "word:Toscana",
+                "en": "word:Tuscany"
+              },
+              "do": "region.show",
+              "names": [
+                "Toscana"
+              ],
+              "side": "red",
+              "label": true,
+              "over": 1.8
+            },
+            {
+              "on": "end",
+              "do": "caption.note",
+              "value": {
+                "no": "Neste: Toscana og Sangiovese",
+                "en": "Next: Tuscany and Sangiovese"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

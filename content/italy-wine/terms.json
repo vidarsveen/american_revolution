@@ -1,0 +1,114 @@
+{
+ "drue": {
+  "term": {
+   "no": "Druesort",
+   "en": "Grape variety"
+  },
+  "short": {
+   "no": "Planten. Alt begynner her.",
+   "en": "The plant. Everything starts here."
+  },
+  "body": {
+   "no": "En druesort er en bestemt type vinranke, formert ved stiklinger, så hver plante er en klon av den forrige. Cabernet Sauvignon i Chile og Cabernet Sauvignon i Bordeaux er genetisk samme plante.\n\nItalia har over fem hundre druesorter i kommersiell bruk. Frankrike har rundt to hundre. Grunnen er dels geografi og dels historie: fjellene delte landet i små dalfører som ikke snakket sammen, og hver av dem beholdt sitt.\n\nDe fleste av dem finnes ikke noe annet sted i verden.",
+   "en": "A grape variety is one particular vine, propagated by cuttings, so every plant is a clone of the last. Cabernet Sauvignon in Chile and Cabernet Sauvignon in Bordeaux are genetically the same plant.\n\nItaly has over five hundred varieties in commercial use. France has around two hundred. The reason is partly geography and partly history: the mountains split the country into small valleys that did not talk to each other, and each kept its own.\n\nMost of them grow nowhere else on earth."
+  }
+ },
+ "nebbiolo": {
+  "term": {
+   "no": "Nebbiolo",
+   "en": "Nebbiolo"
+  },
+  "short": {
+   "no": "Mørk drue, blek vin, svært lang levetid.",
+   "en": "A dark grape making a pale wine that lasts for decades."
+  },
+  "body": {
+   "no": "Nebbiolo gir en vin som er merkelig blek — nesten oransje i kanten etter noen år — og som samtidig er blant de mest tanninrike i verden. Den lukter av roser, tjære og kirsebær.\n\nNavnet kommer trolig av nebbia, italiensk for tåke. Enten fordi druen modnes så seint at høsten skjer i tåka i oktober, eller fordi skallet har et grått belegg som ser ut som tåke.\n\nDen er håpløst kresen. Nebbiolo trenger kalkrik leire, sørvendt helling og en lang høst, og har aldri lyktes ordentlig utenfor det nordvestlige Italia. Folk har prøvd i hundre år.",
+   "en": "Nebbiolo makes a wine that is oddly pale — almost orange at the rim after a few years — and at the same time among the most tannic in the world. It smells of roses, tar and sour cherry.\n\nThe name probably comes from nebbia, Italian for fog. Either because the grape ripens so late that picking happens in October fog, or because the skins carry a grey bloom that looks like fog.\n\nIt is hopelessly fussy. Nebbiolo wants chalky clay, a south-facing slope and a long autumn, and has never really succeeded outside north-west Italy. People have been trying for a hundred years."
+  }
+ },
+ "tannin": {
+  "term": {
+   "no": "Tannin",
+   "en": "Tannin"
+  },
+  "short": {
+   "no": "Stoffet som gjør munnen tørr.",
+   "en": "The thing that dries your mouth out."
+  },
+  "body": {
+   "no": "Tanniner er stoffer fra skall, stilker og kjerner. De binder seg til proteinene i spyttet, og resultatet kjennes som strævhet — samme følelse som sterk svart te.\n\nDe er også grunnen til at noen viner tåler lagring. Tanninene bindes sammen til stadig større kjeder over år, faller ut som bunnfall, og vinen blir mykere. En ung Barolo kan være nesten ubehagelig å drikke. Den samme flasken etter tjue år er noe helt annet.",
+   "en": "Tannins come from skins, stems and pips. They bind to the proteins in your saliva, and the result feels like roughness — the same sensation as strong black tea.\n\nThey are also why some wines can be aged. Over years the tannins link into longer and longer chains, drop out as sediment, and the wine softens. A young Barolo can be almost unpleasant to drink. The same bottle at twenty years is a different thing entirely."
+  }
+ },
+ "docg": {
+  "term": {
+   "no": "DOCG",
+   "en": "DOCG"
+  },
+  "short": {
+   "no": "Italias strengeste opprinnelsesmerking.",
+   "en": "Italy's strictest origin tier."
+  },
+  "body": {
+   "no": "Italia begynte å lovregulere vin i nittensekstitre. Systemet sier hvor en vin kan lages, hvilke druer den kan lages av, hvor lenge den må lagres og hvor mye hver plante får bære.\n\nDOCG er det strengeste nivået. Det betyr at vinen også må gjennom en smakskontroll før den kan selges under navnet.\n\nEn viktig ting å forstå: merkingen sier hvor vinen kommer fra og hvordan den er laget. Den sier ingenting om at den er god. Det finnes kjedelig DOCG, og det finnes utmerket vin uten merking i det hele tatt.",
+   "en": "Italy began regulating wine by law in 1963. The system says where a wine may be made, which grapes it may be made from, how long it must age, and how much each vine is allowed to carry.\n\nDOCG is the strictest tier. It means the wine must also pass a tasting panel before it can be sold under the name.\n\nOne thing worth understanding: the label says where a wine is from and how it was made. It says nothing about whether it is good. There is dull DOCG, and there is excellent wine with no classification at all."
+  }
+ },
+ "terroir": {
+  "term": {
+   "no": "Terroir",
+   "en": "Terroir"
+  },
+  "short": {
+   "no": "Stedet, som smak.",
+   "en": "The place, as a taste."
+  },
+  "body": {
+   "no": "Terroir er et fransk ord uten god norsk oversettelse. Det betyr summen av alt et sted gjør med en plante: jordsmonn, helling, høyde over havet, hvor sola treffer, hvor kaldt det blir om natta.\n\nTo vinmarker som ligger fire hundre meter fra hverandre, med samme drue og samme vinmaker, gir merkbart forskjellig vin. Det er ikke mystikk. Den ene ligger i en søkk der kald luft samler seg, den andre på en rygg der den renner av.\n\nHele det italienske systemet bygger på at dette er sant.",
+   "en": "Terroir is a French word with no clean English equivalent. It means the sum of everything a place does to a plant: soil, slope, altitude, where the sun falls, how cold it gets at night.\n\nTwo vineyards four hundred metres apart, with the same grape and the same winemaker, give noticeably different wine. This is not mysticism. One sits in a dip where cold air pools; the other on a ridge where it drains away.\n\nThe whole Italian system is built on this being true."
+  }
+ },
+ "barbera": {
+  "term": {
+   "no": "Barbera",
+   "en": "Barbera"
+  },
+  "short": {
+   "no": "Hverdagsvinen i Piemonte. Syrlig, mørk, lite tannin.",
+   "en": "Piedmont's everyday wine. Tart, dark, low in tannin."
+  },
+  "body": {
+   "no": "Barbera er den druen folk i Piemonte faktisk drikker til middag. Den har høy syre, dyp farge og lite tannin — nesten det motsatte av Nebbiolo.\n\nDen er også mye lettere å dyrke. Barbera modner tidligere og tåler dårligere jord, så den fikk de plassene Nebbiolo ikke ville ha. I lang tid ble den regnet som bondevin.\n\nDet endret seg på nittenåttitallet, da noen produsenter begynte å lagre den på nye eikefat og ta den alvorlig.",
+   "en": "Barbera is the grape people in Piedmont actually drink with dinner. High acid, deep colour, low tannin — nearly the opposite of Nebbiolo.\n\nIt is also far easier to grow. Barbera ripens earlier and tolerates poorer soil, so it got the sites Nebbiolo would not take. For a long time it was thought of as peasant wine.\n\nThat changed in the 1980s, when some producers began ageing it in new oak and taking it seriously."
+  }
+ },
+ "moscato": {
+  "term": {
+   "no": "Moscato",
+   "en": "Moscato"
+  },
+  "short": {
+   "no": "Søt, lett perlende, fem prosent alkohol.",
+   "en": "Sweet, lightly fizzing, five per cent alcohol."
+  },
+  "body": {
+   "no": "Moscato Bianco er en av de eldste druesortene som fortsatt dyrkes. Den lukter påfallende likt selve druen — de fleste vindruer gjør ikke det.\n\nMoscato d’Asti stanses midt i gjæringen ved å kjøle den ned. Halvparten av sukkeret er da fortsatt igjen, og karbondioksiden som er dannet blir sittende i vinen. Resultatet er søtt, lett perlende og bare rundt fem prosent alkohol.\n\nDet er en av få viner i verden du kan drikke et glass av til frokost uten å være bekymret.",
+   "en": "Moscato Bianco is one of the oldest varieties still grown. It smells strikingly like the grape itself — most wine grapes do not.\n\nMoscato d’Asti is stopped mid-fermentation by chilling it. Half the sugar is still there, and the carbon dioxide already formed stays in the wine. The result is sweet, lightly fizzing, and only about five per cent alcohol.\n\nIt is one of very few wines you can have a glass of at breakfast without concern."
+  }
+ },
+ "langhe": {
+  "term": {
+   "no": "Langhe",
+   "en": "The Langhe"
+  },
+  "short": {
+   "no": "Bakkene sør for Alba. Der de dyre vinene vokser.",
+   "en": "The hills south of Alba, where the expensive wine grows."
+  },
+  "body": {
+   "no": "Langhe er et bølgende høydedrag sør for elva Tanaro. Jorda er marine avsetninger — kalkrik leire og sandstein fra den gang hele området lå under havet.\n\nBakkene er ikke høye, to til fire hundre meter, men de er bratte og vender alle veier. Det er hele poenget: en sørvendt skråning får nok sol til at Nebbiolo modner, en nordvendt gjør det ikke. Vinmarkene ligger derfor i et lappeteppe, ikke i felt.\n\nOmrådet kom på UNESCOs verdensarvliste i to tusen og fjorten, for kulturlandskapet.",
+   "en": "The Langhe is a range of rolling hills south of the river Tanaro. The soil is marine sediment — chalky clay and sandstone from when the whole area lay under the sea.\n\nThe hills are not high, two to four hundred metres, but they are steep and face every direction. That is the entire point: a south-facing slope gets enough sun to ripen Nebbiolo and a north-facing one does not. So the vineyards lie in a patchwork rather than in fields.\n\nThe area became a UNESCO World Heritage Site in 2014, for the landscape itself."
+  }
+ }
+}

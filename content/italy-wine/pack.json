@@ -1,0 +1,188 @@
+{
+  "id": "italy-wine",
+  "version": 1,
+  "work": {
+    "no": "Vin fra Italia",
+    "en": "The Wines of Italy"
+  },
+  "years": {
+    "no": "I dag",
+    "en": "Today"
+  },
+  "description": {
+    "no": "Landet med flest druesorter i verden, region for region — hva de dyrker, hvorfor det vokser akkurat der, og hva det smaker av.",
+    "en": "The country with more grape varieties than any other, region by region — what they grow, why it grows there, and what it tastes of."
+  },
+  "//factions": [
+    "Not sides in a war. A pack's factions are just named colours the map and",
+    "the DOM can both reach, and for a subject with no combatants the honest",
+    "use is the thing the subject actually divides into: what is in the glass.",
+    "",
+    "Four, because four is what a wine map needs to say anything: red, white,",
+    "sparkling and sweet. A region lights up in the colour of what it is known",
+    "for. `neutral` is everywhere that grows nothing worth a chapter, and it",
+    "has to exist or the rest of the country vanishes."
+  ],
+  "factions": {
+    "red": {
+      "label": {
+        "no": "Rødvin",
+        "en": "Red wine"
+      },
+      "hue": 348,
+      "sat": 0.85
+    },
+    "white": {
+      "label": {
+        "no": "Hvitvin",
+        "en": "White wine"
+      },
+      "hue": 48,
+      "sat": 0.72
+    },
+    "sparkling": {
+      "label": {
+        "no": "Musserende",
+        "en": "Sparkling"
+      },
+      "hue": 190,
+      "sat": 0.7
+    },
+    "sweet": {
+      "label": {
+        "no": "Søtvin",
+        "en": "Sweet wine"
+      },
+      "hue": 28,
+      "sat": 0.8
+    },
+    "neutral": {
+      "label": {
+        "no": "Øvrige",
+        "en": "Elsewhere"
+      },
+      "hue": 96,
+      "sat": 0.28
+    }
+  },
+  "map": {
+    "home": [
+      43.4,
+      12.2
+    ],
+    "zoom": {
+      "min": 3.4,
+      "max": 13,
+      "default": 5.6,
+      "maxFit": 10.5
+    },
+    "//basemap": [
+      "The Mediterranean extract already exists -- it was built for Rome, and",
+      "Italy is the middle of it. A subject does not need its own basemap",
+      "level when a shipped one covers the ground."
+    ],
+    "basemap": {
+      "levels": [
+        {
+          "name": "world-110m",
+          "maxZoom": 4.0
+        },
+        {
+          "name": "world-50m",
+          "maxZoom": 5.2
+        },
+        {
+          "name": "mediterranean-10m",
+          "maxZoom": null,
+          "regional": true
+        }
+      ]
+    },
+    "//borders": [
+      "Modern borders, and for once that is simply correct. CLAUDE.md's rule",
+      "is that modern boundaries are wrong for history -- Massachusetts",
+      "included Maine. Wine is grown in Italy's present regions and the",
+      "appellation map is drawn on them, so the shipped default is the honest",
+      "one here."
+    ],
+    "borders": {
+      "country": true,
+      "state": false
+    },
+    "regions": "geo/regions.geojson",
+    "credit": "Natural Earth"
+  },
+  "era": {
+    "start": "1963-01-01",
+    "end": "2026-12-31",
+    "//start": "1963 is when Italy's appellation law was passed, which is the oldest date this course has any reason to put on a scrubber.",
+    "tickStep": "year"
+  },
+  "voices": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural",
+    "rate": "-8%"
+  },
+  "narration": {
+    "wps": [
+      1.9,
+      3.4
+    ],
+    "minContentWordMs": 100
+  },
+  "pools": {
+    "terms": "terms.json",
+    "topics": "topics.json",
+    "placeNotes": "place-notes.json",
+    "media": "media.json",
+    "areas": "geo/regions.geojson"
+  },
+  "//media": [
+    "allowPhoto is TRUE here, and it is the only pack where it is. The rule it",
+    "relaxes exists because a photographic plate reads as a RECORD, and for a",
+    "subject that predates photography there is no such record to be mistaken",
+    "for. A bowl of food and a hillside in October are present-day things that",
+    "photograph, so a photographic picture of one asserts nothing false.",
+    "",
+    "The text rule does NOT relax, and this is the pack it was written for. An",
+    "invented battle is an illustration; an invented Barolo label is a forgery",
+    "-- a label is a legal instrument naming a producer and a protected",
+    "origin, so a generated one depicts a product that does not exist wearing",
+    "a controlled designation. No badge fixes that. Bottles are shot",
+    "unlabelled, from behind, or cropped."
+  ],
+  "media": {
+    "generated": {
+      "allowPhoto": true,
+      "badge": true
+    }
+  },
+  "chapters": [
+    {
+      "id": "chapter-1-piemonte",
+      "title": {
+        "no": "Tåka og tørsten",
+        "en": "The fog and the thirst"
+      },
+      "subtitle": {
+        "no": "Italia, og først Piemonte",
+        "en": "Italy, and Piedmont first"
+      },
+      "blurb": {
+        "no": "Ingen land dyrker så mange druesorter. Vi begynner nordvest, i tåka, med en drue som nekter å modne noe annet sted.",
+        "en": "No country grows so many grape varieties. We start in the north-west, in the fog, with a grape that refuses to ripen anywhere else."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    }
+  ],
+  "checks": {
+    "contrast": {
+      "chapter": "chapter-1-piemonte",
+      "beat": "s2.b6",
+      "at": 6.0
+    }
+  }
+}

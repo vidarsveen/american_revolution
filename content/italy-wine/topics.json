@@ -1,0 +1,45 @@
+{
+ "//": "Background a reader can tap, so the narration does not have to spend a minute on it.",
+ "hvorfor-italia": {
+  "title": {
+   "no": "Hvorfor akkurat Italia",
+   "en": "Why Italy in particular"
+  },
+  "hook": {
+   "no": "Tolv hundre kilometer fra Alpene til Afrikas breddegrad, og fjell nesten overalt.",
+   "en": "Twelve hundred kilometres from the Alps to the latitude of Africa, and mountains nearly everywhere."
+  },
+  "body": {
+   "no": "Italia strekker seg fra rundt førtisju grader nord i Alpene til under trettisju grader på Sicilia — lenger sør enn Tunis. Det gir plass til nesten alt.\n\nMen det avgjørende er ikke lengden. Det er at landet er nesten helt dekket av fjell og åser. Bare rundt en firedel er slette. Høyde gir kjølige netter selv der dagene er brennhete, og kjølige netter er det som bevarer syre og aroma i en drue.\n\nOg fjellene gjorde noe til: de holdt folk fra hverandre. Dalene utviklet sine egne druer, sine egne måter og sine egne navn, og fordi Italia først ble ett land i attensekstien, fikk de tusen år på seg.",
+   "en": "Italy runs from about 47 degrees north in the Alps to under 37 in Sicily — further south than Tunis. That leaves room for almost anything.\n\nBut the length is not the decisive thing. It is that the country is almost entirely mountain and hill: only about a quarter is plain. Altitude gives cool nights even where the days are fierce, and cool nights are what preserve acidity and aroma in a grape.\n\nAnd the mountains did something else: they kept people apart. Valleys developed their own grapes, their own methods and their own names — and because Italy only became one country in 1861, they had a thousand years to do it in."
+  }
+ },
+ "lese-etiketten": {
+  "title": {
+   "no": "Å lese en italiensk etikett",
+   "en": "Reading an Italian label"
+  },
+  "hook": {
+   "no": "Navnet på flasken er som oftest et sted, ikke en drue.",
+   "en": "The name on the bottle is usually a place, not a grape."
+  },
+  "body": {
+   "no": "En italiensk etikett sier hvor. En australsk eller amerikansk sier hva. Det er hele forskjellen, og det er derfor italienske viner virker vanskelige.\n\nBarolo er et sted. Druen er Nebbiolo, men det står ikke nødvendigvis noe sted på flasken, fordi alle som kjøper Barolo antas å vite det. Chianti er et sted. Druen er Sangiovese.\n\nNoen ganger står begge deler: Barbera d’Asti er druen Barbera fra området Asti. Da er første halvdel druen og andre halvdel stedet.\n\nOg noen ganger står det et tredje ord — riserva, som betyr at vinen er lagret lenger enn minstekravet.",
+   "en": "An Italian label tells you where. An Australian or American one tells you what. That is the whole difference, and it is why Italian wines feel difficult.\n\nBarolo is a place. The grape is Nebbiolo, but that may not appear on the bottle at all, because anyone buying Barolo is assumed to know. Chianti is a place. The grape is Sangiovese.\n\nSometimes you get both: Barbera d’Asti is the grape Barbera from the district of Asti. First half the grape, second half the place.\n\nAnd sometimes there is a third word — riserva, meaning the wine was aged longer than the minimum."
+  }
+ },
+ "hva-koster": {
+  "title": {
+   "no": "Hvorfor noen flasker koster ti ganger mer",
+   "en": "Why some bottles cost ten times more"
+  },
+  "hook": {
+   "no": "Det meste av forskjellen ligger i bakken, ikke i kjelleren.",
+   "en": "Most of the difference is in the hillside, not the cellar."
+  },
+  "body": {
+   "no": "Tre ting driver prisen på en flaske Barolo.\n\nDet første er avling. Loven begrenser hvor mye hver plante får bære, og de beste produsentene går langt under grensa. Færre klaser per plante gir mer konsentrert saft — og færre flasker å dele kostnadene på.\n\nDet andre er tid. Barolo må lagres i minst trettiåtte måneder før salg, derav minst atten på fat. Det er over tre år med kapital bundet i en kjeller.\n\nDet tredje er bakken selv. En vinmark i Cannubi eller Brunate koster mer enn en tilsvarende teig to kilometer unna, fordi den har gitt bedre vin i to hundre år, og alle vet det.",
+   "en": "Three things drive the price of a bottle of Barolo.\n\nThe first is yield. The law caps how much each vine may carry, and the best producers go far below the cap. Fewer bunches per vine means more concentrated juice — and fewer bottles to spread the cost across.\n\nThe second is time. Barolo must be aged at least thirty-eight months before sale, of which at least eighteen in barrel. That is over three years of capital sitting in a cellar.\n\nThe third is the hillside itself. A vineyard in Cannubi or Brunate costs more than an equivalent plot two kilometres away, because it has given better wine for two hundred years and everybody knows it."
+  }
+ }
+}

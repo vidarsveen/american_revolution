@@ -286,10 +286,25 @@ def main():
     with open(path, encoding="utf-8") as fh:
         chapter = json.load(fh)
 
-    voice = args.voice or (chapter.get("voice") or {}).get(args.lang)
+    # The voice belongs to the SUBJECT, not to one chapter of it -- every
+    # chapter of a pack is read by the same reader, and pack.json has declared
+    # `voices` since the pack boundary landed. Reading it only off the chapter
+    # meant the same value written into every chapter file by hand, which is
+    # the shape of every drift bug in this repo. Chapter still wins if it sets
+    # one, so nothing that already works changes.
+    manifest = {}
+    mpath = os.path.join(ROOT, "content", pack, "pack.json")
+    if os.path.exists(mpath):
+        with open(mpath, encoding="utf-8") as fh:
+            manifest = json.load(fh)
+    voices = manifest.get("voices") or {}
+    voice = (args.voice
+             or (chapter.get("voice") or {}).get(args.lang)
+             or voices.get(args.lang))
     if not voice:
-        die(f"no voice for language '{args.lang}' — pass --voice")
-    rate = args.rate or chapter.get("rate", "+0%")
+        die(f"no voice for language '{args.lang}' — set voices in "
+            f"content/{pack}/pack.json, or pass --voice")
+    rate = args.rate or chapter.get("rate") or voices.get("rate") or "+0%"
     backend = BACKENDS[args.engine]()
 
     print(f"chapter : {chapter['id']}")

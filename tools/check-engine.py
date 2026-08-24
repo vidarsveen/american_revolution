@@ -144,6 +144,12 @@ def main() -> int:
             page.on("pageerror", lambda e: errors.append(str(e)))
             page.on("console",
                     lambda m: errors.append(m.text) if m.type == "error" else None)
+            # "Failed to load resource: 404" without the URL is a message that
+            # tells you a file is missing and refuses to say which. Catch the
+            # response instead, so the report names the path.
+            page.on("response",
+                    lambda r: errors.append(f"HTTP {r.status}  {r.url}")
+                    if r.status >= 400 else None)
 
             page.goto(f"{BASE}/dev/engine-lab.html", wait_until="load")
             page.wait_for_function(
@@ -167,7 +173,8 @@ def main() -> int:
         # A console error during the sweep is a failure even if every
         # comparison passed: the picture matching by accident is not the same
         # as the engine working.
-        real = [e for e in errors if "favicon" not in e.lower()]
+        real = [e for e in errors if "favicon" not in e.lower()
+                and not e.startswith("Failed to load resource")]
         if real:
             failed = True
             print(f"\n  {len(real)} console error(s):")

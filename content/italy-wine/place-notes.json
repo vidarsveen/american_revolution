@@ -1,0 +1,86 @@
+{
+ "barolo": {
+  "name": {
+   "no": "Barolo",
+   "en": "Barolo"
+  },
+  "hook": {
+   "no": "Landsbyen som ga navn til vinen, ikke omvendt.",
+   "en": "The village that gave the wine its name, not the other way round."
+  },
+  "body": {
+   "no": "Barolo er en landsby med rundt sju hundre innbyggere, sørvest for Alba. Vinen har navnet sitt fra stedet, slik nesten alle italienske viner har.\n\nOmrådet som får kalle vinen sin Barolo er lite: elleve kommuner, til sammen under to tusen hektar. Til sammenligning er Bordeaux rundt hundre og ti tusen hektar. Det er en av grunnene til at prisen er som den er.\n\nInnenfor de elleve kommunene finnes det nesten to hundre navngitte enkeltmarker. De beste av dem — Cannubi, Brunate, Cerequio — har hatt rykte i to hundre år, og en teig der koster deretter.",
+   "en": "Barolo is a village of about seven hundred people, south-west of Alba. The wine takes its name from the place, as nearly all Italian wines do.\n\nThe area allowed to call its wine Barolo is small: eleven communes, under two thousand hectares in total. Bordeaux, for comparison, is around a hundred and ten thousand. That is one reason the price is what it is.\n\nInside those eleven communes there are nearly two hundred named individual vineyards. The best of them — Cannubi, Brunate, Cerequio — have had their reputation for two hundred years, and a plot there costs accordingly."
+  }
+ },
+ "barbaresco": {
+  "name": {
+   "no": "Barbaresco",
+   "en": "Barbaresco"
+  },
+  "hook": {
+   "no": "Samme drue som Barolo, atten kilometer unna, og en annen vin.",
+   "en": "The same grape as Barolo, eighteen kilometres away, and a different wine."
+  },
+  "body": {
+   "no": "Barbaresco ligger nordøst for Alba, på den andre siden av byen fra Barolo. Området er enda mindre — rundt syv hundre hektar.\n\nForskjellen på de to vinene er ikke druen. Det er høyden og elva. Barbaresco ligger lavere og nærmere Tanaro, som gir litt varmere netter, og druene modner noen dager tidligere.\n\nResultatet er en vin som er litt mindre stram i ungdommen og som er drikkeklar tidligere. Minstekravet til lagring er tjueseks måneder mot Barolos trettiåtte.",
+   "en": "Barbaresco lies north-east of Alba, on the other side of the town from Barolo. The zone is smaller still — around seven hundred hectares.\n\nThe difference between the two wines is not the grape. It is altitude and the river. Barbaresco sits lower and closer to the Tanaro, which gives slightly warmer nights, and the grapes ripen a few days earlier.\n\nThe result is a wine a little less severe in youth and ready sooner. The minimum ageing is twenty-six months against Barolo's thirty-eight."
+  }
+ },
+ "alba": {
+  "name": {
+   "no": "Alba",
+   "en": "Alba"
+  },
+  "hook": {
+   "no": "Byen i midten. Kjent for vin og for hvit trøffel.",
+   "en": "The town in the middle. Known for wine, and for white truffles."
+  },
+  "body": {
+   "no": "Alba ligger ved Tanaro, mellom Barolo i sørvest og Barbaresco i nordøst. Det er handelsbyen for hele området.\n\nByen er like kjent for noe annet: hvit trøffel. Den vokser vilt i skogene rundt om høsten, kan ikke dyrkes, og selges på et marked i byen fra oktober til desember. Prisen svinger med været og har vært over tre tusen euro kiloen.\n\nDe to tingene henger sammen. Det er den samme høsten, den samme tåka og de samme kalkrike bakkene.",
+   "en": "Alba sits on the Tanaro, between Barolo to the south-west and Barbaresco to the north-east. It is the market town for the whole area.\n\nIt is equally known for something else: white truffle. It grows wild in the woods around in autumn, cannot be cultivated, and is sold at a market in the town from October to December. The price moves with the weather and has been over three thousand euro a kilo.\n\nThe two things are connected. It is the same autumn, the same fog and the same chalky hills."
+  }
+ },
+ "asti": {
+  "name": {
+   "no": "Asti",
+   "en": "Asti"
+  },
+  "hook": {
+   "no": "Nord for Alba. Her lages det søte og det musserende.",
+   "en": "North of Alba. Where the sweet and the sparkling are made."
+  },
+  "body": {
+   "no": "Asti er en by på rundt syttiseks tusen mennesker, nord for Alba. Området rundt er kjent for to helt forskjellige ting.\n\nDet ene er Barbera d’Asti — den mørke, syrlige hverdagsvinen som folk i Piemonte faktisk drikker til middag.\n\nDet andre er Moscato d’Asti, som er søt, lett perlende og rundt fem prosent alkohol. Den lages ved å stanse gjæringen med kulde mens halve sukkeret ennå er igjen.\n\nDet er verdt å merke seg at samme lille område lager både den tørreste hverdagsvinen og den søteste festvinen i regionen.",
+   "en": "Asti is a town of about seventy-six thousand people, north of Alba. The district around it is known for two entirely different things.\n\nOne is Barbera d’Asti — the dark, tart everyday wine that people in Piedmont actually drink with dinner.\n\nThe other is Moscato d’Asti, which is sweet, lightly fizzing and about five per cent alcohol. It is made by stopping the fermentation with cold while half the sugar is still there.\n\nIt is worth noticing that one small district makes both the driest everyday wine and the sweetest celebration wine in the region."
+  }
+ },
+ "langhe": {
+  "name": {
+   "no": "Langhe",
+   "en": "The Langhe"
+  },
+  "hook": {
+   "no": "Bakkene selv. Verdensarv siden to tusen og fjorten.",
+   "en": "The hills themselves. A World Heritage Site since 2014."
+  },
+  "body": {
+   "no": "Langhe er høydedraget sør for Tanaro. Navnet betyr omtrent tunger, etter formen på ryggene.\n\nJorda er marine avsetninger fra miocen — kalkrik leire, sandstein og merg fra den gang hele Po-sletta lå under havet.\n\nBakkene er to til fire hundre meter høye og vender alle veier. Det er hele poenget: en sørvendt skråning modner Nebbiolo, en nordvendt gjør det ikke, og de kan ligge hundre meter fra hverandre. Derfor ligger vinmarkene i et lappeteppe.\n\nUNESCO tok området inn på verdensarvlisten i to tusen og fjorten, for kulturlandskapet — altså for måten folk har formet bakkene på, ikke for naturen.",
+   "en": "The Langhe is the range of hills south of the Tanaro. The name means roughly tongues, after the shape of the ridges.\n\nThe soil is Miocene marine sediment — chalky clay, sandstone and marl from when the whole Po plain lay under the sea.\n\nThe hills are two to four hundred metres and face every direction. That is the entire point: a south-facing slope ripens Nebbiolo and a north-facing one does not, and they can be a hundred metres apart. So the vineyards lie in a patchwork.\n\nUNESCO added the area to the World Heritage list in 2014 for the cultural landscape — that is, for the way people have shaped the hills, not for the nature."
+  }
+ },
+ "etna": {
+  "name": {
+   "no": "Etna",
+   "en": "Etna"
+  },
+  "hook": {
+   "no": "Vin på en aktiv vulkan, tolv hundre meter opp.",
+   "en": "Wine on an active volcano, twelve hundred metres up."
+  },
+  "body": {
+   "no": "Etna er Europas høyeste aktive vulkan, og det dyrkes vin i skråningene opp til rundt tolv hundre meter.\n\nDet virker bakvendt: Sicilia er varmt, og vin liker det kjølig. Men høyden løser nettopp det. Dagene er varme og nettene er kalde, og forskjellen er det som holder på syren i druen.\n\nJorda er dessuten vulkansk sand og lava, som drenerer fort og er full av mineraler. Og fordi lavastrømmene har lagt seg i lag over tusenvis av år, er jorda ulik fra teig til teig på en måte som er påfallende selv her.\n\nDruene heter Nerello Mascalese og Carricante, og vokser nesten ingen andre steder.",
+   "en": "Etna is Europe's highest active volcano, and wine is grown on its slopes up to around twelve hundred metres.\n\nIt seems backwards: Sicily is hot, and wine likes it cool. But the altitude solves exactly that. The days are hot and the nights are cold, and the gap is what holds the acid in the grape.\n\nThe soil is volcanic sand and lava, which drains fast and is full of minerals. And because the lava flows have laid down in layers over thousands of years, the soil differs from plot to plot in a way that is striking even here.\n\nThe grapes are called Nerello Mascalese and Carricante, and grow almost nowhere else."
+  }
+ }
+}

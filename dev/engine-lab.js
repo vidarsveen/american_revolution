@@ -35,7 +35,7 @@ import { mountStage, resetStage, applyCue } from '../engine/stage.js';
 import { getStoryMap } from '../engine/scenes/map.js';
 import { getSoundscape } from '../engine/scenes/sound.js';
 import { Player } from '../engine/player.js';
-import { allChapters, useRegistry } from '../engine/pack.js';
+import { allChapters, useRegistry, loadPack } from '../engine/pack.js';
 import { mountDepth, unmountDepth, open as openDepth,
          depthIsOpen } from '../engine/depth.js';
 import * as era from '../core/era.js';
@@ -649,9 +649,18 @@ async function load(which) {
   unmountDepth();
   el.stage.innerHTML = '';
 
-  people = await fetch(`./content/${spec.pack}/people.json`)
-    .then((r) => (r.ok ? r.json() : []))
-    .catch(() => []);
+  // Only ask if the pack says it has one. The catch below always handled a
+  // missing file, but the browser still logged a 404 — and check-engine
+  // treats any console error as a failure, so a perfectly correct pack with
+  // no people in it failed the bench for a file it was right not to have.
+  // Same fix, same reasoning, as loadPackSounds() in engine/scenes/sound.js.
+  const packInfo = await loadPack(spec.pack);
+  const peopleRel = packInfo?.pools?.people;
+  people = peopleRel
+    ? await fetch(`./content/${spec.pack}/${peopleRel}`)
+        .then((r) => (r.ok ? r.json() : []))
+        .catch(() => [])
+    : [];
 
   chapter = await loadChapter(spec.pack, spec.id, 'no');
   mountStage(el.stage, chapter, people, chapter.narrationLang || 'no');
