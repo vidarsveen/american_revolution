@@ -385,6 +385,58 @@ def check_route(g: Ground, rid, route, fix):
     return problems, ([list(p) for p in out] if fix and moved else None)
 
 
+# What each kind of place is standing on. A ship position, a wreck or a sea
+# battle has to be in the water; a town, a camp or a hill has to be on land.
+# A `region` names an area rather than a point and is not checked.
+# `battle` is deliberately NOT here. A battle can be fought on a beach as
+# easily as in a fjord, and Orneset is both -- men coming out of landing craft
+# onto a shore. Only the kinds that can be in one element are tested.
+PLACE_GROUND = {
+    "city": "land", "town": "land", "camp": "land", "hill": "land",
+    "island": "land", "wreck": "water", "anchorage": "water",
+}
+
+
+def check_places(g: Ground, path, places, fix):
+    """Where each named place is standing.
+
+    This was the hole. The route checker repaired every sea lane in the pack
+    and left a coastal defence ship on a hillside and a village five
+    kilometres up a mountain, because it only ever looked at `routes`. The
+    same land/water test answers both questions; it was simply never asked of
+    `places`.
+    """
+    found = []
+    for pid, place in (places or {}).items():
+        if not isinstance(place, dict):
+            continue
+        coords = place.get("coords")
+        kind = place.get("kind")
+        want = PLACE_GROUND.get(kind)
+        if not want or not coords or len(coords) != 2:
+            continue
+        lat, lon = coords
+        if not g.covered(lat, lon):
+            continue
+        on_land = g.land(lat, lon)
+        if (want == "land") == on_land:
+            continue
+        if not fix:
+            found.append(f"{pid}: a `{kind}` is "
+                         f"{'on land' if on_land else 'in the water'} and should be "
+                         f"{'in the water' if want == 'water' else 'ashore'}")
+            continue
+        moved = (nearest_water if want == "water" else nearest_land)(g, lat, lon)
+        if moved:
+            found.append(f"{pid}: `{kind}` was {'on land' if on_land else 'in the water'}, "
+                         f"moved {metres((lat, lon), moved):.0f} m")
+            place["coords"] = [moved[0], moved[1]]
+        else:
+            found.append(f"{pid}: `{kind}` is in the wrong element and nothing "
+                         f"suitable within {MAX_SNAP_M} m — needs a human")
+    return found
+
+
 def main() -> int:
     # Norwegian place names in a Windows console, without a crash.
     try:
@@ -410,6 +462,14 @@ def main() -> int:
         ch = json.loads(path.read_text(encoding="utf-8"))
         routes = ch.get("routes") or {}
         changed = False
+
+        place_found = check_places(g, path, ch.get("places"), args.fix)
+        for f in place_found:
+            print(f"  {path.name}: {f}")
+        problems += sum(1 for f in place_found
+                        if "needs a human" in f or (not args.fix and "should be" in f))
+        if args.fix and any("moved" in f for f in place_found):
+            changed = True
         for rid, route in routes.items():
             if not isinstance(route, dict):
                 continue

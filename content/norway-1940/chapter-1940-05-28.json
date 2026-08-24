@@ -59,7 +59,7 @@
         "no": "Narvik havn",
         "en": "Narvik harbour"
       },
-      "kind": "town",
+      "kind": "anchorage",
       "label": false
     },
     "ofotfjord": {
@@ -100,8 +100,8 @@
     },
     "orneset": {
       "coords": [
-        68.4536,
-        17.4652
+        68.4491,
+        17.4552
       ],
       "zoom": 12.6,
       "name": {
@@ -256,8 +256,8 @@
     },
     "riksgrensen": {
       "coords": [
-        68.4278,
-        18.1222
+        68.427,
+        18.085
       ],
       "zoom": 10.6,
       "name": {
@@ -1234,8 +1234,8 @@
         {
           "id": "s1.b2",
           "say": {
-            "no": "Det begynte oppe på Lapphaugen, i uvær og dyp snø. Etter et døgn ga tyskerne opp høyden og trakk seg tilbake.",
-            "en": "It began up at Lapphaugen, in foul weather and deep snow. After a day and a night the Germans gave up the hill and pulled back."
+            "no": "Det begynte oppe på Lapphaugen, i uvær og dyp snø. I samme snøkave trakk tyskerne seg ut, både fra høyden og fra Gratangsbotn, uten at noen så dem gå.",
+            "en": "It began up at Lapphaugen, in foul weather and deep snow. In the same snow the Germans pulled out of both the hill and Gratangsbotn, and nobody saw them go."
           },
           "cues": [
             {
@@ -1266,8 +1266,8 @@
         {
           "id": "s1.b3",
           "say": {
-            "no": "Neste natt gikk en norsk bataljon over fjellet til Gratangen. De fant de tyske stillingene tomme, og gikk inn i husene for å sove.",
-            "en": "The next night a Norwegian battalion crossed the mountain to Gratangen. They found the German positions empty, and went into the houses to sleep."
+            "no": "Natt til tjuefemte april kom Trønderbataljonen over fjellet ned i Gratangsbotn. De fant stillingene tomme, og gikk inn i husene for å sove.",
+            "en": "On the night of the twenty-fifth of April the Trøndelag battalion came over the mountain into Gratangsbotn. They found the positions empty, and went into the houses to sleep."
           },
           "cues": [
             {
@@ -1291,7 +1291,7 @@
               "over": 3.4
             },
             {
-              "on": "word:Gratangen",
+              "on": "word:Gratangsbotn",
               "do": "marker.show",
               "at": "gratangen",
               "side": "norwegian",
@@ -1365,14 +1365,14 @@
         {
           "id": "s1.b6",
           "say": {
-            "no": "Trettifire nordmenn ble drept, sekstifire såret og hundre og tretti tatt til fange. Tre av fem kompanisjefer falt. Tyskerne mistet seks mann.",
-            "en": "Thirty-four Norwegians were killed, sixty-four wounded and a hundred and thirty taken prisoner. Three of the five company commanders fell. The Germans lost six men."
+            "no": "Trettifire nordmenn ble drept, sekstifire såret og hundre og tretti tatt til fange. Tre av fem kompanisjefer falt. Tyskerne mistet seks døde og nitten såret.",
+            "en": "Thirty-four Norwegians were killed, sixty-four wounded and a hundred and thirty taken prisoner. Three of the five company commanders fell. The Germans lost six dead and nineteen wounded."
           },
           "cues": [
             {
               "on": {
-                "no": "word:seks",
-                "en": "word:six"
+                "no": "word:nitten",
+                "en": "word:nineteen"
               },
               "do": "compare.show",
               "parts": [
@@ -1380,8 +1380,8 @@
                   "n": 228,
                   "value": "228",
                   "label": {
-                    "no": "norske tap",
-                    "en": "Norwegian losses"
+                    "no": "norske tap i alt",
+                    "en": "Norwegian losses, all"
                   },
                   "side": "norwegian"
                 },
@@ -1389,8 +1389,8 @@
                   "n": 25,
                   "value": "25",
                   "label": {
-                    "no": "tyske tap",
-                    "en": "German losses"
+                    "no": "tyske tap i alt",
+                    "en": "German losses, all"
                   },
                   "side": "german"
                 }
@@ -1465,10 +1465,35 @@
         {
           "id": "s1.b9",
           "say": {
+            "no": "De kjempet i fjellet i seks uker. En av dem, Odin Nilsen, fortalte om det syttifire år etterpå.",
+            "en": "They fought in the mountains for six weeks. One of them, Odin Nilsen, spoke about it seventy-four years later."
+          },
+          "cues": [
+            {
+              "on": "start",
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:Nilsen",
+                "en": "word:Nilsen"
+              },
+              "do": "quote.show",
+              "id": "nilsen-lik"
+            }
+          ]
+        },
+        {
+          "id": "s1.b10",
+          "say": {
             "no": "Tyskerne måtte gi opp Gratangen likevel. Gjennom hele mai presset sjette divisjon dem sørover, høyde for høyde, mot Bjerkvik og fjorden.",
             "en": "The Germans had to give up Gratangen anyway. All through May the Sixth Division pushed them south, hill by hill, towards Bjerkvik and the fjord."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "quote.hide"
+            },
             {
               "on": "start",
               "do": "map.fitPlaces",
@@ -1477,13 +1502,6 @@
                 "gratangen"
               ],
               "over": 3.4
-            },
-            {
-              "on": {
-                "no": "word:presset",
-                "en": "word:pushed"
-              },
-              "do": "route.clear"
             },
             {
               "on": {
@@ -1707,8 +1725,8 @@
         {
           "id": "s2.b6",
           "say": {
-            "no": "Og den femte mai kom nesten fem tusen polakker i tillegg. De hadde ikke noe land å reise hjem til. Polen hadde vært okkupert siden september.",
-            "en": "And on the fifth of May nearly five thousand Poles arrived as well. They had no country to go home to. Poland had been occupied since September."
+            "no": "Og den åttende mai kom nesten fem tusen polakker i tillegg. De hadde ikke noe land å reise hjem til. Polen hadde vært okkupert siden september.",
+            "en": "And on the eighth of May nearly five thousand Poles arrived as well. They had no country to go home to. Poland had been occupied since September."
           },
           "cues": [
             {
@@ -2130,8 +2148,8 @@
         {
           "id": "s4.b1",
           "say": {
-            "no": "Narvik ligger på en halvøy. Skal du inn til byen over land, må du enten forbi Ankenes i sør eller over Rombaken i nord.",
-            "en": "Narvik sits on a peninsula. To reach the town by land you must come either past Ankenes in the south or across Rombaken in the north."
+            "no": "Narvik ligger på en halvøy. Skal du inn til byen over land, må du enten forbi Ankenes i sør eller hele veien rundt Rombaken i nord. General Antoine Béthouart valgte å ikke gå over land i det hele tatt.",
+            "en": "Narvik sits on a peninsula. To reach the town by land you must come past Ankenes in the south or the whole way round Rombaken in the north. General Antoine Béthouart chose not to go by land at all."
           },
           "cues": [
             {
@@ -2200,6 +2218,16 @@
               "at": "rombaken",
               "tone": "gold",
               "centre": false
+            },
+            {
+              "on": {
+                "no": "word:Béthouart",
+                "en": "word:Béthouart"
+              },
+              "do": "term.mark",
+              "kind": "person",
+              "id": "bethouart",
+              "span": 1
             }
           ],
           "gapAfter": 1.3
@@ -2252,8 +2280,8 @@
         {
           "id": "s4.b3",
           "say": {
-            "no": "Fra Øyjord på nordsiden gikk det tre landgangsfartøy og noen småbåter over fjorden. Om bord lå to bataljoner fra Fremmedlegionen og en norsk bataljon.",
-            "en": "From Øyjord on the north side three landing craft and some small boats went across the fjord. On board were two battalions of the Foreign Legion and a Norwegian battalion."
+            "no": "Fra Øyjord på nordsiden gikk det fem landgangsfartøy over fjorden, med under tre hundre mann om bord. Først en bataljon fra Fremmedlegionen, og en norsk bataljon etter i fiskebåter.",
+            "en": "From Øyjord on the north side five landing craft went across the fjord, with under three hundred men aboard. A Foreign Legion battalion first, and a Norwegian battalion after them in fishing boats."
           },
           "cues": [
             {
@@ -2351,8 +2379,8 @@
         {
           "id": "s4.b5",
           "say": {
-            "no": "Sør for byen gikk polakkene fram fra Ankenes mot Beisfjord og tok høydene bak. Tyskerne fikk ingen vei ut den veien.",
-            "en": "South of the town the Poles pushed forward from Ankenes towards Beisfjord and took the heights behind. That closed the Germans' way out to the south."
+            "no": "Sør for byen gikk polakkene fram fra Ankenes mot Beisfjord og tok høydene bak. General Zygmunt Bohusz-Szyszko førte dem. Tyskerne der holdt stand lenger enn noen andre.",
+            "en": "South of the town the Poles pushed from Ankenes towards Beisfjord and took the heights behind. General Zygmunt Bohusz-Szyszko led them. The Germans there held out longer than anyone else."
           },
           "cues": [
             {
@@ -2382,6 +2410,14 @@
                 "no": "Beisfjord",
                 "en": "Beisfjord"
               }
+            },
+            {
+              "on": {
+                "no": "word:Bohusz-Szyszko",
+                "en": "word:Bohusz-Szyszko"
+              },
+              "do": "portrait.show",
+              "id": "bohusz-szyszko"
             }
           ],
           "gapAfter": 1.35
@@ -2393,6 +2429,10 @@
             "en": "Through the morning Dietl gave up the town. He pulled back east along the railway, towards Bjørnfjell and the Swedish frontier."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "portrait.hide"
+            },
             {
               "on": "start",
               "do": "map.fitPlaces",
@@ -2427,8 +2467,8 @@
         {
           "id": "s4.b7",
           "say": {
-            "no": "Norske og franske soldater gikk inn i Narvik sammen. Fremmedlegionen mistet trettien mann den dagen. De franske og polske avdelingene mistet rundt hundre og femti til sammen.",
-            "en": "Norwegian and French soldiers walked into Narvik together. The Foreign Legion lost thirty-one men that day. The French and Polish units lost around a hundred and fifty between them."
+            "no": "Norske og franske soldater gikk inn i Narvik sammen. Fremmedlegionen mistet trettien mann den dagen. De franske og polske avdelingene mistet rundt fem hundre i drepte og sårede til sammen.",
+            "en": "Norwegian and French soldiers walked into Narvik together. The Foreign Legion lost thirty-one men that day. The French and Polish units lost around five hundred killed and wounded between them."
           },
           "cues": [
             {
@@ -2521,8 +2561,8 @@
         {
           "id": "s5.b1",
           "say": {
-            "no": "Den tjuefjerde mai ga London ordre om å evakuere Nord-Norge. Grunnen lå ikke i Norge. Den lå i Frankrike.",
-            "en": "On the twenty-fourth of May London gave the order to evacuate northern Norway. The reason was not in Norway. It was in France."
+            "no": "Den tjuefjerde mai ga London ordre om å evakuere Nord-Norge. Operasjon Alphabet, het den. Grunnen lå ikke i Norge, men i Frankrike.",
+            "en": "On the twenty-fourth of May London ordered northern Norway evacuated. Operation Alphabet, it was called. The reason was not in Norway. It was in France."
           },
           "cues": [
             {
@@ -2719,8 +2759,8 @@
         {
           "id": "s5.b6",
           "say": {
-            "no": "Dagen etter møtte to tyske slagskip hangarskipet Glorious ute i Norskehavet. Glorious hadde ingen fly i lufta og ingen utkikk oppe.",
-            "en": "The next day two German battleships met the aircraft carrier Glorious out in the Norwegian Sea. Glorious had no aircraft up and no lookout aloft."
+            "no": "Dagen etter møtte to tyske slagskip hangarskipet Glorious ute i Norskehavet. Glorious hadde ingen fly i lufta, og oppdaget dem alt for seint.",
+            "en": "The next day two German battleships met the carrier Glorious out in the Norwegian Sea. Glorious had nothing in the air, and saw them far too late."
           },
           "cues": [
             {
@@ -2787,8 +2827,8 @@
         {
           "id": "s5.b8",
           "say": {
-            "no": "Det var flere døde på én ettermiddag enn i alle kampene om Narvik til sammen. Krysseren som fraktet kong Haakon, passerte ikke langt unna, i radiotaushet.",
-            "en": "That was more dead in one afternoon than in all the fighting for Narvik put together. The cruiser carrying King Haakon passed not far away, under radio silence."
+            "no": "Mer enn en tredjedel av alle som døde i kampen om Narvik, døde den ettermiddagen. Krysseren som fraktet kong Haakon, passerte ikke langt unna, i radiotaushet.",
+            "en": "More than a third of everyone who died in the battle for Narvik died that afternoon. The cruiser carrying King Haakon passed not far away, under radio silence."
           },
           "cues": [
             {
@@ -3077,8 +3117,8 @@
         {
           "id": "s6.b9",
           "say": {
-            "no": "Fleischer kom seg til Storbritannia med kongen. Han ble aldri forsvarssjef, og han tok sitt eget liv i Canada i nittenførtito. Hvorfor, ble holdt hemmelig til nittennittifem.",
-            "en": "Fleischer got to Britain with the King. He never became commander-in-chief, and he took his own life in Canada in nineteen forty-two. Why was kept secret until nineteen ninety-five."
+            "no": "Fleischer kom seg til Storbritannia med kongen. Han ble aldri forsvarssjef, og han tok sitt eget liv i Canada i nittenførtito. Hvorfor, ble stående ubesvart offentlig i femti år.",
+            "en": "Fleischer got to Britain with the King. He never became commander-in-chief, and he took his own life in Canada in nineteen forty-two. Why went publicly unanswered for fifty years."
           },
           "cues": [
             {

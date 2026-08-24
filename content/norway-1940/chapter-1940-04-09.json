@@ -14,8 +14,8 @@
     "en": "9–13 April 1940"
   },
   "blurb": {
-    "no": "De kom inn i snøkave og tok byen på en formiddag. Så oppdaget de at de ikke hadde olje nok til å komme seg ut igjen.",
-    "en": "They came in through driving snow and took the town in a morning. Then they found they had not oil enough to get out again."
+    "no": "De kom inn i snøkave og tok byen på tre timer. Så oppdaget de at de ikke hadde olje nok til å komme seg ut igjen.",
+    "en": "They came in through a snowstorm and took the town in three hours. Then they found they had not oil enough to get out again."
   },
   "voice": {
     "no": "nb-NO-FinnNeural",
@@ -71,7 +71,7 @@
         "no": "Narvik havn",
         "en": "Narvik harbour"
       },
-      "kind": "town",
+      "kind": "anchorage",
       "label": false
     },
     "eidsvold-pos": {
@@ -84,7 +84,7 @@
         "no": "Eidsvold",
         "en": "Eidsvold"
       },
-      "kind": "battle",
+      "kind": "wreck",
       "label": false
     },
     "norge-pos": {
@@ -97,7 +97,7 @@
         "no": "Norge",
         "en": "Norge"
       },
-      "kind": "battle",
+      "kind": "wreck",
       "label": false
     },
     "ofotfjord": {
@@ -163,8 +163,8 @@
     },
     "ballangen": {
       "coords": [
-        68.3064,
-        16.7442
+        68.343,
+        16.831
       ],
       "zoom": 10.6,
       "name": {
@@ -231,7 +231,7 @@
         "no": "Minefeltet",
         "en": "The minefield"
       },
-      "kind": "battle"
+      "kind": "region"
     },
     "glomfjord": {
       "coords": [
@@ -259,8 +259,8 @@
     },
     "riksgrensen": {
       "coords": [
-        68.4278,
-        18.1222
+        68.427,
+        18.085
       ],
       "zoom": 10.6,
       "name": {
@@ -1045,8 +1045,8 @@
         "en": "I am attacking."
       },
       "by": {
-        "no": "Sagt å være Odd Isaachsen Willochs siste melding fra Eidsvold, 9. april 1940. Fortalt videre etter krigen. Bare seks eller åtte mann overlevde skipet, og setningen står ikke i noen samtidig kilde.",
-        "en": "Said to be Odd Isaachsen Willoch's last message from Eidsvold, 9 April 1940. Passed on after the war. Only six or eight men survived the ship, and the sentence appears in no contemporary source."
+        "no": "Willochs siste melding fra Eidsvold, slik Per Askim gjengir den i sin rapport fra 1947. Askim hørte den på radio fra Norge. Ingen om bord på Eidsvold overlevde til å bekrefte den.",
+        "en": "Willoch's last signal from Eidsvold, as Per Askim reports it in 1947. Askim heard it by radio from Norge. Nobody aboard Eidsvold survived to confirm it."
       },
       "kind": "attributed"
     },
@@ -1059,12 +1059,12 @@
         "no": "Bernard Warburton-Lee til Admiralitetet, kvelden 9. april 1940. Ordlyden er hentet fra marinehistoriske framstillinger; Victoria Cross-sitasjonen gjengir bare innholdet.",
         "en": "Bernard Warburton-Lee to the Admiralty, the evening of 9 April 1940. The wording comes from naval histories; the Victoria Cross citation only paraphrases it."
       },
-      "kind": "attributed"
+      "kind": "said"
     },
     "admiralitetet": {
       "text": {
-        "no": "Bare De kan avgjøre om angrepet skal settes inn. Vi støtter den avgjørelsen De tar.",
-        "en": "You alone can judge whether the attack should be made. We shall support whatever decision you take."
+        "no": "De norske panserskipene kan være på tyske hender. Bare De kan avgjøre om angrepet skal settes inn under disse omstendighetene. Vi støtter den avgjørelsen De tar.",
+        "en": "Norwegian coast defence ships may be in German hands. You alone can judge whether in these circumstances attack should be made. We shall support your decision."
       },
       "by": {
         "no": "Admiralitetet i London til Warburton-Lee, natten mellom 9. og 10. april 1940",
@@ -1310,8 +1310,8 @@
         {
           "id": "s0.b6",
           "say": {
-            "no": "Nesten halvparten av jernet tysk industri brukte, kom fra svenske gruver. Uten den malmen stopper krigsmaskinen.",
-            "en": "Almost half the iron German industry used came out of Swedish mines. Without that ore the war machine stops."
+            "no": "Rundt fire tideler av jernet tysk industri brukte, kom fra svenske gruver. Uten den malmen stopper krigsmaskinen.",
+            "en": "About four tenths of the iron German industry used came out of Swedish mines. Without that ore the war machine stops."
           },
           "cues": [],
           "gapAfter": 1.3
@@ -1762,8 +1762,8 @@
     {
       "id": "s2",
       "title": {
-        "no": "Niende april, klokka fire om morgenen",
-        "en": "The ninth of April, four in the morning"
+        "no": "Niende april, litt over tre om morgenen",
+        "en": "The ninth of April, a little after three"
       },
       "clock": {
         "no": "9. april, 03:10",
@@ -1889,8 +1889,8 @@
         {
           "id": "s2.b3",
           "say": {
-            "no": "De er førti år gamle. De gjør knapt ti knop, og kanonene deres er fra en annen tid. Mannskapene vet det godt.",
-            "en": "They are forty years old. They barely make ten knots, and their guns belong to another age. The crews know it perfectly well."
+            "no": "De er førti år gamle. De ble bygd for sytten knop, og kanonene deres er fra en annen tid. Mannskapene vet det godt.",
+            "en": "They are forty years old. They were built for seventeen knots, and their guns belong to another age. The crews know it perfectly well."
           },
           "cues": [
             {
@@ -1923,8 +1923,8 @@
         {
           "id": "s2.b5",
           "say": {
-            "no": "Kaptein Odd Isaachsen Willoch svarer nei. To ganger. Så sender han en melding bort til søsterskipet inne på havna.",
-            "en": "Captain Odd Isaachsen Willoch says no. Twice. Then he sends a message across to the sister ship inside the harbour."
+            "no": "Kommandørkaptein Willoch svarer nei. To ganger. Så sender han en melding bort til søsterskipet inne på havna.",
+            "en": "Commander Odd Isaachsen Willoch says no. Twice. Then he sends a message across to the sister ship inside the harbour."
           },
           "cues": [
             {
@@ -1951,8 +1951,8 @@
         {
           "id": "s2.b6",
           "say": {
-            "no": "Han rakk det aldri. To torpedoer gikk inn i siden på Eidsvold. Skipet brakk i to og var borte på sekunder.",
-            "en": "He never managed it. Two torpedoes went into Eidsvold's side. The ship broke in two and was gone in seconds."
+            "no": "Meldingen kom fram. Willoch gjorde det ikke. To torpedoer gikk inn i siden på Eidsvold, og skipet brakk i to.",
+            "en": "The signal got through. Willoch did not. Two torpedoes went into Eidsvold’s side, and the ship broke in two."
           },
           "cues": [
             {
@@ -1996,8 +1996,8 @@
         {
           "id": "s2.b7",
           "say": {
-            "no": "Hundre og syttifem mann gikk ned med henne. En håndfull ble reddet opp av vannet. Kildene er ikke enige om det var seks eller åtte.",
-            "en": "A hundred and seventy-five men went down with her. A handful were pulled out of the water. The sources do not agree on whether it was six or eight."
+            "no": "Hundre og syttifem mann gikk ned med henne. Bare en håndfull ble reddet opp av vannet. Kildene er ikke enige om hvor mange, og de er ikke enige om hvor mange som var om bord heller.",
+            "en": "A hundred and seventy-five men went down with her. Only a handful were pulled out of the water. The sources do not agree on how many, and they do not agree on how many were aboard either."
           },
           "cues": [
             {
@@ -2028,8 +2028,8 @@
         {
           "id": "s2.b8",
           "say": {
-            "no": "Inne på havna åpnet Norge ild mot jageren Bernd von Arnim. Kaptein Per Askim fikk av noen få skudd. Så fant torpedoene ham også.",
-            "en": "Inside the harbour Norge opened fire on the destroyer Bernd von Arnim. Captain Per Askim got off a few rounds. Then the torpedoes found him too."
+            "no": "Inne på havna åpnet Norge ild mot jageren Bernd von Arnim. Kommandør Per Askim fikk av noen få skudd. Så fant torpedoene ham også.",
+            "en": "Inside the harbour Norge opened fire on the destroyer Bernd von Arnim. Commodore Per Askim got off a few rounds. Then the torpedoes found him too."
           },
           "cues": [
             {
@@ -2064,6 +2064,16 @@
                 "no": "Norge",
                 "en": "Norge"
               }
+            },
+            {
+              "on": {
+                "no": "word:Askim",
+                "en": "word:Askim"
+              },
+              "do": "term.mark",
+              "kind": "person",
+              "id": "askim",
+              "span": 1
             }
           ],
           "gapAfter": 1.35
@@ -2167,8 +2177,8 @@
         {
           "id": "s2.b12",
           "say": {
-            "no": "Klokka åtte om morgenen sto det tyske soldater på malmkaia. Det hadde tatt dem fem timer å ta Narvik.",
-            "en": "By eight in the morning German soldiers were standing on the ore quay. Taking Narvik had cost them five hours."
+            "no": "Klokka åtte om morgenen sto det tyske soldater på malmkaia. Det hadde tatt dem tre timer å ta Narvik.",
+            "en": "By eight in the morning German soldiers were standing on the ore quay. Taking Narvik had cost them three hours."
           },
           "cues": [
             {
@@ -2483,8 +2493,8 @@
         {
           "id": "s3.b8",
           "say": {
-            "no": "Noen lå i Herjangsfjorden, noen ved Ballangen. Kommodor Friedrich Bonte hadde satt ut en vaktpost ute ved fjordmunningen.",
-            "en": "Some lay in Herjangsfjord, some off Ballangen. Commodore Friedrich Bonte had put a picket out at the mouth of the fjord."
+            "no": "Noen lå i Herjangsfjorden, noen ved Ballangen. Kommodor Friedrich Bonte hadde en jager ute på vakt ved fjordmunningen.",
+            "en": "Some lay in Herjangsfjord, some off Ballangen. Commodore Friedrich Bonte had a destroyer on watch at the mouth of the fjord."
           },
           "cues": [
             {
@@ -2523,8 +2533,8 @@
         {
           "id": "s3.b9",
           "say": {
-            "no": "Det snødde så tett at vaktposten ikke så noe som helst. Ute i Vestfjorden lå fem britiske jagere og ventet på lyset.",
-            "en": "The snow was so thick that the picket saw nothing at all. Out in Vestfjord five British destroyers lay waiting for the light."
+            "no": "Kapteinen om bord mente ordren gjaldt til daggry, og gikk inn igjen til havna. Ute i Vestfjorden lå fem britiske jagere og ventet på lyset.",
+            "en": "Her captain took his orders to run only until dawn, and went back into harbour. Out in Vestfjord five British destroyers lay waiting for the light."
           },
           "cues": [
             {
@@ -2829,8 +2839,8 @@
         {
           "id": "s4.b7",
           "say": {
-            "no": "Anton Schmitt gikk ned like etter. Diether von Roeder ble skutt sønder og sammen ved kaia. På under en time senket fem britiske jagere to tyske og elleve handelsskip.",
-            "en": "Anton Schmitt went down just after. Diether von Roeder was shot to pieces at the quay. In under an hour five British destroyers sank two German ones and eleven merchant ships."
+            "no": "Anton Schmitt gikk ned like etter. Diether von Roeder ble skutt sønder og sammen ved kaia. På under en time senket fem britiske jagere to tyske jagere og elleve handelsskip. Bare seks av dem var tyske.",
+            "en": "Anton Schmitt went down just after. Diether von Roeder was shot to pieces at the quay. In under an hour five British destroyers sank two German destroyers and eleven merchant ships. Only six of them were German."
           },
           "cues": [
             {
@@ -2894,6 +2904,34 @@
               "strength": 1200,
               "over": 3.4,
               "fit": false
+            },
+            {
+              "on": {
+                "no": "word:snudde",
+                "en": "word:turned"
+              },
+              "do": "route.clear"
+            },
+            {
+              "on": {
+                "no": "word:snudde",
+                "en": "word:turned"
+              },
+              "do": "route.draw",
+              "id": "hardy-ut",
+              "over": 4.0,
+              "fit": false
+            },
+            {
+              "on": {
+                "no": "word:snudde",
+                "en": "word:turned"
+              },
+              "do": "fleet.draw",
+              "id": "hardy-ut",
+              "ships": 5,
+              "kind": "destroyer",
+              "over": 4.0
             }
           ],
           "gapAfter": 1.35
@@ -2901,8 +2939,8 @@
         {
           "id": "s4.b9",
           "say": {
-            "no": "Hardy ble skutt i stykker og satt på grunn ved Vidrek. Hunter ble senket. Hundre og seks mann fulgte henne ned.",
-            "en": "Hardy was shot to pieces and run aground at Vidrek. Hunter was sunk. A hundred and six men went down with her."
+            "no": "Hardy ble skutt i stykker og satt på grunn ved Vidrek. Hunter ble senket. Hundre og tolv mann fulgte henne ned.",
+            "en": "Hardy was shot to pieces and run aground at Vidrek. Hunter was sunk. A hundred and twelve men went down with her."
           },
           "cues": [
             {
@@ -2918,11 +2956,11 @@
             },
             {
               "on": {
-                "no": "word:seks",
-                "en": "word:six"
+                "no": "word:tolv",
+                "en": "word:twelve"
               },
               "do": "stat.show",
-              "value": "106",
+              "value": "112",
               "label": {
                 "no": "døde med HMS Hunter",
                 "en": "dead with HMS Hunter"
@@ -2962,8 +3000,8 @@
         {
           "id": "s4.b11",
           "say": {
-            "no": "Det ble det første Victoria-korset som ble delt ut i denne krigen. På vei ut sprengte britene i tillegg ammunisjonsskipet Rauenfels, det eneste som hadde nådd fram til Narvik.",
-            "en": "It became the first Victoria Cross awarded in this war. On the way out the British also blew up the ammunition ship Rauenfels, the only one that had reached Narvik."
+            "no": "Det ble det første Victoria-korset som ble kunngjort i denne krigen. På vei ut møtte britene ammunisjonsskipet Rauenfels på vei inn, og sprengte det ute i Ofotfjorden.",
+            "en": "It was the first Victoria Cross gazetted in this war. On the way out the British met the ammunition ship Rauenfels coming in, and blew her up out in Ofotfjord."
           },
           "cues": [
             {
@@ -3152,8 +3190,8 @@
         {
           "id": "s5.b5",
           "say": {
-            "no": "Det fant en tysk ubåt til ankers i Herjangsfjorden og senket den med to bomber. U-sekstifire ble den første ubåten i krigen som ble senket fra lufta.",
-            "en": "It found a German submarine at anchor in Herjangsfjord and sank her with two bombs. U-sixty-four became the first submarine in the war to be sunk from the air."
+            "no": "Det fant en tysk ubåt til ankers i Herjangsfjorden og senket den med to bomber. U-sekstifire ble den første ubåten som ble senket av et fly fra et krigsskip.",
+            "en": "It found a German submarine at anchor in Herjangsfjord and sank her with two bombs. U-sixty-four became the first submarine sunk by an aircraft flown off a warship."
           },
           "cues": [
             {
