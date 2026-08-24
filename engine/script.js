@@ -161,6 +161,11 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
       };
     });
 
+    /* Where this scene stops. Needed BEFORE the cues are laid out, because a
+       derived hide has to be clamped to it — see below. */
+    const lastBeat = beats[beats.length - 1];
+    const sceneEnd = lastBeat ? lastBeat.start + lastBeat.dur : 0;
+
     // Flatten every cue in the scene onto one timeline.
     const cues = [];
     for (const beat of beats) {
@@ -209,8 +214,19 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
            pill would have failed that: seeking into the middle of a
            definition would show nothing. */
         if (cue.do === 'fact.show') {
-          cues.push({ do: 'fact.hide', t: at + (cue.until ?? FACT_SECONDS),
-                      beat: beat.id, _derived: true });
+          /* Clamped to the scene, and this is the whole bug.
+             A box shown near the end of a scene had its hide land PAST the
+             last cue, so the player never reached it: the definition sat
+             through the scene-title card and only went when resetStage()
+             wiped it on the far side. Which is exactly "it does not disappear
+             when you move on" — the cue existed, the compiled span said 6.5 s,
+             and the screen disagreed with both.
+             Measured: langhe showed at 52.7 s of a 56.3 s scene, terroir at
+             68.5 of 72.6. Two of nine, so it looked fine most of the time,
+             which is how it survived being pointed at repeatedly. */
+          const wanted = at + (cue.until ?? FACT_SECONDS);
+          const t = sceneEnd > at ? Math.min(wanted, sceneEnd - 0.15) : wanted;
+          cues.push({ do: 'fact.hide', t, beat: beat.id, _derived: true });
         }
       }
     }

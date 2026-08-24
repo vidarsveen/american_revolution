@@ -404,7 +404,43 @@ def check_overlays_readable(chapter, timings, langs):
                         events.append((at, cue, beat["id"]))
             events.sort(key=lambda e: e[0])
 
-            # The hide is derived at compile time from `until`, so there is nothing
+            # A box shown near the end of a scene whose lifetime runs PAST that scene.
+    #
+    # The derived hide is clamped in engine/script.js, so this cannot happen
+    # any more -- but it is the defect that survived being reported repeatedly,
+    # because it hit two boxes out of nine and the compiled span said 6.5 s
+    # while the screen disagreed. A rule that only lives in one function is a
+    # rule nobody can see, so it is measured here too.
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            beats = scene["beats"]
+            last = timing_beat(tm, scene["id"], beats[-1]["id"]) if beats else None
+            if not last:
+                continue
+            scene_end = last.get("start", 0.0) + last.get("dur", 0.0)
+            for beat in beats:
+                tb = timing_beat(tm, scene["id"], beat["id"])
+                if not tb:
+                    continue
+                for cue in beat.get("cues", []):
+                    if cue["do"] != "fact.show":
+                        continue
+                    at = cue_time(cue, tb, lang)
+                    if at is None:
+                        continue
+                    over = (at + cue.get("until", FACT_SECONDS)) - scene_end
+                    if over > 0.2:
+                        found.append(
+                            f"{beat['id']}: '{lang}' fact box '{cue.get('id')}' would "
+                            f"outlive its scene by {over:.1f}s. It is clamped at "
+                            f"runtime, but the box then sits through the scene card "
+                            f"and reads as never going away. Show it earlier, or "
+                            f"give it a shorter `until`.")
+
+    # The hide is derived at compile time from `until`, so there is nothing
     # in the file to measure a span between. Check the declared lifetime.
     for scene in chapter["scenes"]:
         for beat in scene["beats"]:

@@ -922,15 +922,6 @@
               "do": "term.mark",
               "kind": "term",
               "id": "langhe"
-            },
-            {
-              "on": {
-                "no": "word:Langhe",
-                "en": "word:Langhe"
-              },
-              "do": "fact.show",
-              "kind": "term",
-              "id": "langhe"
             }
           ],
           "gapAfter": 2.0
@@ -1112,15 +1103,6 @@
                 "no": "Langhe, sør for Alba",
                 "en": "The Langhe, south of Alba"
               }
-            },
-            {
-              "on": {
-                "no": "word:terroir",
-                "en": "word:terroir"
-              },
-              "do": "fact.show",
-              "kind": "term",
-              "id": "terroir"
             }
           ],
           "gapAfter": 2.0
