@@ -208,8 +208,18 @@ function buildTopbar() {
   // door. A logo that goes home is the one navigation everybody already
   // knows, and it costs no room in a topbar that has none.
   if (canSwitch) {
+    // An arrow in front of the title, so it READS as the way back instead of
+    // being one secretly. The wordmark has been the only route to the subject
+    // list since the front door existed, and a title being a button is not
+    // something anyone guesses -- which is exactly what it was reported as.
+    //
+    // The way-out button covers this while a chapter plays, and it hides
+    // itself when the frame is up: paused, on the cover, or in Explore. So
+    // without this the reader is back where they started the moment they
+    // pause.
     mark.classList.add('wordmark--linked');
     mark.setAttribute('role', 'button');
+    mark.setAttribute('aria-label', t('waySubjects'));
     mark.tabIndex = 0;
     mark.addEventListener('click', backToSubjects);
     mark.addEventListener('keydown', (e) => {
@@ -236,7 +246,12 @@ function buildTopbar() {
 
 function relabelChrome() {
   const mark = document.querySelector('.wordmark');
-  if (mark) mark.innerHTML = `${t('appTitle')} <span>${t('appYears')}</span>`;
+  if (mark) {
+    const back = mark.classList.contains('wordmark--linked')
+      ? '<span class="wordmark__back" aria-hidden="true">←</span>' : '';
+    mark.innerHTML = `${back}${t('appTitle')} <span>${t('appYears')}</span>`;
+    if (back) mark.setAttribute('aria-label', t('waySubjects'));
+  }
 
   const lang = document.querySelector('.lang-toggle');
   if (lang) {
