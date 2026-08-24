@@ -1305,7 +1305,11 @@
 .plate__badge {
   position: absolute;
   top: var(--s3);
-  left: var(--s3);
+  /* Top-RIGHT. It was top-left, and the way-out button now lives there and
+     never folds away -- two things anchored to one corner fight and the later
+     one wins, which is the same defect the stats deck had against the caption
+     box. Nothing else claims the top right while a chapter plays. */
+  right: var(--s3);
   z-index: 2;
   padding: .18em .5em;
   border-radius: var(--r-1, 3px);
@@ -1383,3 +1387,86 @@
   line-height: 1.35;
   color: var(--ink-soft);
 }
+
+/* ============================================================
+   ONE GRAMMAR FOR "you can open this"
+
+   There were four answers to this and one of them did not work on the
+   primary device. A caption term had a dotted underline (always visible), a
+   portrait card had a dashed border on :hover and :focus-visible ONLY — and a
+   phone has no hover, so on the device this app is built for it had no mark
+   at all — a fact box had nothing, and a map pin had its own thing in
+   atlas.css.
+
+   So: one mark, in gold, always visible without hovering. Gold is already the
+   map's "look here" colour and already a token, and it means a ROLE rather
+   than a faction, so it carries across subjects.
+
+   Hover and focus stay, as intensifiers. They are not the signal.
+   ============================================================ */
+
+/* The chevron. A door, not a decoration — put on cards big enough to hold
+   one. Small surfaces (a word, a pin) use the underline and the ring. */
+.ov-fact__card,
+.ov-portrait__card[data-tap],
+.ecard,
+.pcard {
+  position: relative;
+}
+.ov-fact__card::after,
+.ov-portrait__card[data-tap]::before,
+.ecard::after {
+  content: '›';
+  position: absolute;
+  top: var(--s2);
+  right: var(--s2);
+  z-index: 1;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: .85;
+  pointer-events: none;
+}
+/* The portrait card is a photograph; its chevron needs a ground to sit on. */
+.ov-portrait__card[data-tap]::before {
+  padding: .05em .3em .15em;
+  border-radius: 999px;
+  background: rgba(13, 11, 8, .5);
+  color: #fff;
+}
+
+/* The caption's dotted underline was already right — it only needed to be
+   the same colour as everything else that opens. */
+.captions__line .w-term {
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1.5px;
+}
+
+/* The portrait card's dashed border stops being the only signal and becomes
+   what it should always have been: the hover state of a mark that is already
+   there. */
+.ov-portrait__card[data-tap]::after { border-color: var(--gold-soft); }
+
+/* Language, on the cover, said in words.
+
+   The NO/EN chip in the topbar was the only way to change it, and it is a
+   small unlabelled control that folds away the instant a chapter starts.
+   Choosing a language is a decision you make BEFORE you begin, so it belongs
+   where you begin. */
+.cover__lang {
+  margin: var(--s3) 0 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-soft);
+}
+.cover__lang-btn {
+  border: 0;
+  background: none;
+  padding: 0 0 1px;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline dotted var(--gold);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+.cover__lang-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }

@@ -240,7 +240,10 @@
               "side": "neutral"
             },
             {
-              "on": "start",
+              "on": {
+                "no": "word:druesorter",
+                "en": "word:varieties"
+              },
               "do": "term.mark",
               "kind": "term",
               "id": "drue"
@@ -298,7 +301,10 @@
               "over": 1.1
             },
             {
-              "on": "start",
+              "on": {
+                "no": "word:fjell",
+                "en": "word:mountains"
+              },
               "do": "term.mark",
               "kind": "topic",
               "id": "hvorfor-italia",
@@ -465,7 +471,10 @@
           },
           "cues": [
             {
-              "on": "start",
+              "on": {
+                "no": "word:syren",
+                "en": "word:acid"
+              },
               "do": "term.mark",
               "kind": "term",
               "id": "terroir"
@@ -740,7 +749,10 @@
               "do": "region.clear"
             },
             {
-              "on": "start",
+              "on": {
+                "no": "word:flaske",
+                "en": "word:bottle"
+              },
               "do": "term.mark",
               "kind": "topic",
               "id": "lese-etiketten",
@@ -1354,7 +1366,10 @@
               "do": "marker.clear"
             },
             {
-              "on": "start",
+              "on": {
+                "no": "word:systemet",
+                "en": "word:system"
+              },
               "do": "term.mark",
               "kind": "term",
               "id": "docg"

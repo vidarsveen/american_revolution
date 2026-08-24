@@ -24,6 +24,10 @@ const STRINGS = {
     tabTimeline: 'Tidslinje',
     tabPeople: 'Personer',
     tabLibrary: 'Bibliotek',
+    menu: 'Meny',
+    waySubjects: '← Alle emner',
+    wayLibrary: 'Bibliotek',
+    wayLanguage: 'Språk',
 
     play: 'Ta meg gjennom krigen',
     pause: 'Pause',
@@ -99,6 +103,10 @@ const STRINGS = {
     tabTimeline: 'Timeline',
     tabPeople: 'People',
     tabLibrary: 'Library',
+    menu: 'Menu',
+    waySubjects: '← All subjects',
+    wayLibrary: 'Library',
+    wayLanguage: 'Language',
 
     play: 'Take me through the war',
     pause: 'Pause',

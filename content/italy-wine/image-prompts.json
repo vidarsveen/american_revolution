@@ -121,15 +121,15 @@
   "omits": "NOT a variety, and not an age. The model cannot distinguish one vine species from another and nothing here should be read as identifying the grape."
  },
  "hender-host": {
-  "prompt": "a close view of one hand holding a bunch of dark grapes steady by its stem while the other hand closes a small pair of pruning shears on the stem just above the bunch, vine leaves around, seen over the shoulder from behind, no face in frame, soft morning light",
+  "prompt": "a bunch of dark blue grapes hanging on the vine with a small pair of steel pruning shears resting open against the stem just above it, no hands and no people in frame, vine leaves behind, dew on the skins, soft morning light",
   "style": "natural light photograph, muted colour, shallow depth of field",
   "aspect": "square",
   "title": {
-   "no": "Innhøsting for hånd",
-   "en": "Picking by hand"
+   "no": "Klar til å plukkes",
+   "en": "Ready to pick"
   },
-  "claims": "Grapes being cut from the vine by hand with shears, as harvest is still done on steep ground.",
-  "omits": "No face is shown and no person is identified. The variety of grape is not claimed."
+  "claims": "A bunch of dark grapes on the vine with shears at the stem, the moment before picking.",
+  "omits": "No hands and no person in frame. NOT a variety -- the model cannot tell one dark grape from another and nothing here identifies which this is."
  },
  "flasker-liggende": {
   "prompt": "rows of dusty dark green wine bottles lying on their sides in a stone cellar rack, seen end on so only the bases face the camera, thick dust, dim light, no paper on the glass",

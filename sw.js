@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v929b8bfda2';
+const VERSION = 'va43f3261d9';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -189,6 +189,7 @@ const PRECACHE = [
   './js/store.js',
   './js/timeline.js',
   './js/tour.js',
+  './js/wayout.js',
   // linked from index.html by rel=manifest, not by a script or style tag
   './manifest.webmanifest',
   './map/artifacts.js',

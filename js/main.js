@@ -17,10 +17,11 @@ import { buildEntries } from '../core/entries.js';
 import { initSheet, setPortraitBase as setSheetPortraits } from './sheet.js';
 import * as tour from './tour.js';
 import { initStory, storyPause, storyInvalidate, storyRefreshTheme,
-         storySetLang, setLangHandler } from '../engine/story.js';
+         storySetLang, setLangHandler, setLibraryHandler } from '../engine/story.js';
 import { defaultPack, loadPack, poolUrl } from '../engine/pack.js';
 import { packUrl } from '../core/paths.js';
 import { chooseSubject, backToSubjects, hasSubjectChoice } from './chooser.js';
+import { mountWayOut } from './wayout.js';
 import { setEra } from '../core/era.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark as domIsDark } from '../core/theme.js';
@@ -76,6 +77,12 @@ async function boot() {
 
   buildTopbar();
   buildTabs();
+  // The one control that survives immersive mode. Mounted on .app rather
+  // than in the topbar, because the topbar is exactly what folds away.
+  mountWayOut(document.querySelector('.app'), {
+    canSwitch,
+    hasLibrary: Boolean(data.entries?.kinds?.length),
+  });
 
   const mapView = document.querySelector('.view--map');
   const tlView = document.querySelector('.view--timeline');
@@ -98,6 +105,7 @@ async function boot() {
 
   // Fortell is the front door; Explore lives behind the other tabs.
   setLangHandler((next) => set({ lang: next }));
+  setLibraryHandler(() => set({ view: 'library' }));
   initStory(document.querySelector('.view--story'), data.people, state.lang, data.pack)
     .catch((err) => console.error('[story] failed to start', err));
 

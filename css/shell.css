@@ -257,3 +257,75 @@
    story gets the height back. */
 .tabbar.is-single { display: none; }
 .app--single-view { --tabbar-h: 0px; }
+
+/* ---- the way out ------------------------------------------------------
+
+   One control that survives .is-immersive. Everything else in the frame
+   folds away while a chapter plays, which was right for the picture and
+   wrong for the reader: back, language and the library all went with it, so
+   there was no way to look a word up at the moment you heard it and no way
+   out of a subject you had opened by mistake.
+
+   Top-LEFT, because the transport owns the bottom and the language chip owns
+   the top right when the topbar is up. Nothing else claims this corner.     */
+.wayout {
+  position: fixed;
+  top: calc(var(--safe-t) + var(--s2));
+  left: var(--s2);
+  z-index: 60;                    /* over the plate (20) and the cover */
+}
+.wayout__btn {
+  width: var(--tap, 44px);
+  height: var(--tap, 44px);
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(4px);
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.wayout__btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.wayout__sheet {
+  position: absolute;
+  top: calc(var(--tap, 44px) + var(--s1));
+  left: 0;
+  min-width: 13rem;
+  padding: var(--s1);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2, 6px);
+  background: var(--paper);
+  box-shadow: 0 6px 22px rgba(0,0,0,.18);
+  display: grid;
+  gap: 2px;
+}
+.wayout__sheet[hidden] { display: none; }
+.wayout__row {
+  padding: .6em .8em;
+  border: 0;
+  border-radius: var(--r-1, 4px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: var(--fs-sm);
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.wayout__row:hover,
+.wayout__row:focus-visible { background: var(--paper-sunken); outline: none; }
+
+/* It exists BECAUSE the frame folds away, so while the frame is up it is
+   redundant — and worse than redundant, because it lands on the wordmark in
+   the same corner. Two things anchored to one corner fight; this one yields,
+   since the topbar behind it already offers everything the sheet does. */
+.app:not(.is-immersive) .wayout { display: none; }
+
+/* Folded: the button is the only chrome left, so it dims rather than shouting
+   over the picture — but it never disappears, which is the whole point. */
+.app.is-immersive .wayout__btn { opacity: .55; }
+.app.is-immersive .wayout__btn:hover,
+.app.is-immersive .wayout__btn:focus-visible { opacity: 1; }

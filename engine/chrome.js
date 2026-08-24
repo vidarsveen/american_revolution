@@ -16,6 +16,7 @@ const ICON = {
   back:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 6 5 12l6 6"/><path d="M19 6l-6 6 6 6"/></svg>',
   fwd:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 6l6 6-6 6"/><path d="M5 6l6 6-6 6"/></svg>',
   cc:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M10 10.5a2.4 2.4 0 1 0 0 3"/><path d="M16.5 10.5a2.4 2.4 0 1 0 0 3"/></svg>',
+  book:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H5.5A1.5 1.5 0 0 1 4 15.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h4.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>',
   text:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M5 6.5h14M5 11h14M5 15.5h9"/></svg>',
   close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
   down:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 10 6 6 6-6"/></svg>',
@@ -33,7 +34,7 @@ const AUTO_FOLD_MS = 3600;
  *                            than inside the bar — mounting it in the bar is
  *                            what left it stacked behind the controls.
  */
-export function mountChrome(host, root, chapter, player, strings, onLang) {
+export function mountChrome(host, root, chapter, player, strings, onLang, onLibrary) {
   const el = document.createElement('div');
   el.className = 'transport is-min';
   el.innerHTML = `
@@ -69,6 +70,8 @@ export function mountChrome(host, root, chapter, player, strings, onLang) {
               aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
       <button class="tp-btn tp-btn--lang" data-act="lang"
               aria-label="${strings.language}">${strings.langMark}</button>
+      <button class="tp-btn tp-btn--icon" data-act="library"
+              aria-label="${strings.library}">${ICON.book}</button>
       <button class="tp-btn tp-btn--icon" data-act="episodes"
               aria-label="${strings.episodes}">${ICON.list}</button>
     </div>
@@ -191,6 +194,13 @@ export function mountChrome(host, root, chapter, player, strings, onLang) {
     if (act === 'expand') { expand(); return; }
     if (act === 'text') { sheet.classList.add('is-open'); return; }
     if (act === 'episodes') { openEpisodes(); return; }
+    if (act === 'library') {
+      // Looking a word up is a transport-level action: it is the thing you
+      // want at the moment you HEAR the word, and the tab bar that used to
+      // carry it is folded away by then.
+      onLibrary?.();
+      return;
+    }
     if (act === 'lang') {
       // The topbar's NO/EN sits behind the immersive fold while a chapter is
       // playing, so there was no way to change language without leaving the

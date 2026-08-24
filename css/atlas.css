@@ -102,8 +102,23 @@
    can open. It is the same mark the caption uses for a term, so "dotted means
    there is more" is a single idea rather than four. */
 .atlas__overlay .atlas-place[data-tap] {
-  text-decoration: underline dotted var(--label-ink-quiet);
+  /* Gold, not the quiet label ink. The mark has to mean the same thing here
+     as it does in a caption and on a fact card, and it was the one place
+     using a different colour for the same idea. */
+  text-decoration: underline dotted var(--gold);
   text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+/* A pin you can open is a RING; a pin you cannot is a dot. Visible without
+   hovering, which the old treatment was not. */
+.atlas__overlay .atlas-pin[data-tap]::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 1.5px solid var(--gold);
+  opacity: .75;
+  pointer-events: none;
 }
 .atlas__overlay [data-tap]:focus-visible {
   outline: 2px solid var(--gold);

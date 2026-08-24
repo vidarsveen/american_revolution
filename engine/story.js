@@ -33,6 +33,9 @@ const STR = {
     onlyIn: 'Denne fortellingen finnes foreløpig bare på norsk.',
     listen: 'Lytt', minutes: 'min', chapters: 'Kapitler', finished: 'Ferdig',
     episodes: 'Episoder',
+    library: 'Bibliotek',
+    coverLangLead: 'Språk:',
+    coverLangOther: 'Bytt til engelsk',
     noChapters: 'Ingen kapitler funnet. Sjekk content/packs.json.',
     tapToRead: 'Trykk for å lese mer',
   },
@@ -47,6 +50,9 @@ const STR = {
     onlyIn: 'This chapter is only narrated in Norwegian so far.',
     listen: 'Listen', minutes: 'min', chapters: 'Chapters', finished: 'Finished',
     episodes: 'Episodes',
+    library: 'Library',
+    coverLangLead: 'Language:',
+    coverLangOther: 'Switch to Norwegian',
     noChapters: 'No chapters found. Check content/packs.json.',
     tapToRead: 'Tap to read more',
   },
@@ -68,6 +74,9 @@ let current = 0;
     than performing one behind the rest of the app's back. */
 let onLangChange = null;
 export function setLangHandler(fn) { onLangChange = fn; }
+let onOpenLibrary = null;
+/** What "go to the library" means. engine/ owns no routing; the host does. */
+export function setLibraryHandler(fn) { onOpenLibrary = fn; }
 
 export async function initStory(container, allPeople, language, pack) {
   // Dev-time only: a drift between the handler table and the manifest
@@ -226,7 +235,11 @@ async function openChapter(index) {
     // The transport's language button. It goes through onLangChange so the
     // Explore store, the URL and the stored preference all move together —
     // the story mode must not end up in a different language from the app.
-    () => onLangChange?.(lang === 'no' ? 'en' : 'no'));
+    () => onLangChange?.(lang === 'no' ? 'en' : 'no'),
+    // The library, from inside a running chapter. engine/ owns no routing, so
+    // the host decides what "go to the library" means -- the same shape as
+    // the language handler above.
+    () => onOpenLibrary?.());
   setCaptionsOn(storedCaptionsOn());
 
   TITLES[chapter.id] = chapter.title;
@@ -305,6 +318,10 @@ function showCover(mode) {
         <span>${esc(label)}</span>
         <i>${mins} ${esc(t('minutes'))}</i>
       </button>
+      <p class="cover__lang">
+        ${esc(t('coverLangLead'))}
+        <button class="cover__lang-btn" type="button" data-cover-lang>${esc(t('coverLangOther'))}</button>
+      </p>
       ${chapter.hasAudio ? '' : `<p class="cover__warn">${esc(t('noAudio'))}</p>`}
       ${chapter.dubbed ? `<p class="cover__note">${esc(t('onlyIn'))}</p>` : ''}
       ${accuracyNote()}
@@ -358,6 +375,13 @@ function wireCover(cover) {
     if (pick) {
       const i = Number(pick.dataset.chapter);
       if (i !== current) openChapter(i);
+      return;
+    }
+    // Choosing your language is a decision you make BEFORE you start, not a
+    // setting to hunt for. The topbar chip was the only route and it is a
+    // small unlabelled control that folds away the moment you press play.
+    if (e.target.closest('[data-cover-lang]')) {
+      onLangChange?.(lang === 'no' ? 'en' : 'no');
       return;
     }
     if (!e.target.closest('.cover__go')) return;
