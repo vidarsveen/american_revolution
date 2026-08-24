@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vb5f04357e8';
+const VERSION = 'v4f057e824f';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -60,6 +60,7 @@ const PRECACHE = [
   './content/american-revolution/media/stein-gjerde-roykskyer.jpg',
   './content/american-revolution/media/trumbull-warren.jpg',
   './content/american-revolution/media/vei-ved-daggry.jpg',
+  './content/american-revolution/media/vinterveien-hjem.jpg',
   './content/american-revolution/media/washington-cambridge.jpg',
   './content/american-revolution/people.json',
   './content/american-revolution/sound.json',

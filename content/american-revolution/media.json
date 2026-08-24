@@ -266,5 +266,21 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "several open rowing boats crossing dark still water at night, seen from the shore, muffled oars, crowded low silhouettes aboard, a faint line of land on the far side, moonlight behind cloud"
+ },
+ "vinterveien-hjem": {
+  "kind": "made",
+  "file": "vinterveien-hjem.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Veien tilbake",
+   "en": "The road back"
+  },
+  "claims": "A rutted road at the end of a day with a few figures walking away in the distance.",
+  "omits": "The figures are too distant to identify as anything in particular. Not a depiction of a named retreat or march.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a rutted muddy road in late afternoon with long shadows, a scatter of small dark figures walking away in ones and twos far ahead, bare hedgerows, a cold clear sky, no buildings"
  }
 }

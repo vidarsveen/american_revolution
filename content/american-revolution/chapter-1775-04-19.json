@@ -3494,6 +3494,16 @@
               "on": "start",
               "do": "map.flyTo",
               "to": "wide"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "vinterveien-hjem",
+              "motion": "in",
+              "push": 0.12,
+              "over": 20,
+              "dim": 0.16,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.35
@@ -3520,6 +3530,11 @@
             "en": "None of the seventy-seven men on the green at Lexington stood there to start a revolution. They stood there because someone was coming at their town with guns."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "plate.hide",
+              "over": 1.2
+            },
             {
               "on": "start",
               "do": "quote.hide"

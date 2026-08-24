@@ -84,7 +84,7 @@
   "omits": "Silhouettes only. No face, uniform or boat type is identified, and this is not a depiction of a named crossing."
  },
  "gresskledd-bakke": {
-  "prompt": "a bare grassy hillside rising above a wide harbour, low earth banks freshly turned near the crest, the town and its water far below and behind, hazy summer morning light, no figures in the foreground",
+  "prompt": "a bare grassy hillside in the foreground rising above wide empty water, low earth banks freshly turned along the crest, the far shore distant and hazy with only a faint scatter of low roofs, no boats and nothing on the water, hazy summer morning light, no figures",
   "style": "muted historical oil painting on canvas, restrained palette, soft edges",
   "aspect": "square",
   "title": {
