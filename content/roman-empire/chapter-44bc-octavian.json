@@ -559,12 +559,7 @@
             "no": "Den kommer ikke tilbake. Det som kommer, er fjorten år med borgerkrig, og en enehersker på den andre siden.",
             "en": "It does not come back. What comes is fourteen years of civil war, and one man ruling alone at the end of it."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -854,12 +849,7 @@
             "no": "Antonius nekter å gi arven fra seg. Han ser en syk nittenåring, og han tar helt feil om hva slags person det er.",
             "en": "Antony refuses to hand the inheritance over. He sees a sickly nineteen-year-old, and he is entirely wrong about what kind of person that is."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -1163,10 +1153,6 @@
             "en": "Antony takes Gaul. Lepidus takes Spain. Octavian takes Africa and the islands, which he does not even control."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "portrait.hide"
@@ -1738,10 +1724,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": {
                 "no": "word:Filippi",
                 "en": "word:Philippi"
@@ -2157,10 +2139,6 @@
             "en": "Meanwhile Rome goes hungry. Sextus Pompeius sits on Sicily with his fleet and lets no grain ship past."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "marker.clear"
@@ -3181,10 +3159,6 @@
             "en": "But he holds every legion, every province that matters, and all the money. And he keeps them for forty-one years."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "portrait.hide"

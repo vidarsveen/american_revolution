@@ -133,6 +133,10 @@ READABLE = {
 # running. Measured before this existed: median 21.3 s, worst 37.9, and 31 of
 # 45 over twenty seconds -- the stats-deck problem again, in a different box.
 FACT_CEILING = 14.0
+# Must match FACT_SECONDS in engine/script.js. Two copies of one number
+# is the verbs.json mistake in miniature, so it is named in both places
+# and any drift shows up as a chapter that checks clean and plays wrong.
+FACT_SECONDS = 6.5
 
 PLATE_CEILING = 34.0
 # And a floor that works for a plate with NO hide, which runs to the scene
@@ -400,33 +404,24 @@ def check_overlays_readable(chapter, timings, langs):
                         events.append((at, cue, beat["id"]))
             events.sort(key=lambda e: e[0])
 
-            # The other end of the same measurement: a box nobody had time to read,
-    # and a box that outstayed the sentence it belonged to.
-    for lang in langs:
-        tm = timings.get(lang)
-        if not tm:
-            continue
-        for scene in chapter["scenes"]:
-            open_at = open_id = open_beat = None
-            for beat in scene["beats"]:
-                tb = timing_beat(tm, scene["id"], beat["id"])
-                if not tb:
+            # The hide is derived at compile time from `until`, so there is nothing
+    # in the file to measure a span between. Check the declared lifetime.
+    for scene in chapter["scenes"]:
+        for beat in scene["beats"]:
+            for cue in beat.get("cues", []):
+                if cue["do"] != "fact.show":
                     continue
-                for cue in beat.get("cues", []):
-                    at = cue_time(cue, tb, lang)
-                    if at is None:
-                        continue
-                    if cue["do"] == "fact.show":
-                        open_at, open_id, open_beat = at, cue.get("id"), beat["id"]
-                    elif cue["do"] == "fact.hide" and open_at is not None:
-                        span = at - open_at
-                        if span > FACT_CEILING:
-                            found.append(
-                                f"{open_beat}: '{lang}' fact box '{open_id}' stands for "
-                                f"{span:.0f}s, over {FACT_CEILING:.0f}s — a definition "
-                                f"that outstays its sentence stops being read. "
-                                f"Hide it a beat earlier.")
-                        open_at = None
+                secs = cue.get("until", FACT_SECONDS)
+                if secs > FACT_CEILING:
+                    found.append(
+                        f"{beat['id']}: fact box '{cue.get('id')}' declares "
+                        f"until={secs}s, over {FACT_CEILING:.0f}s — a definition "
+                        f"that outstays its sentence stops being read.")
+                elif secs < 3.0:
+                    found.append(
+                        f"{beat['id']}: fact box '{cue.get('id')}' declares "
+                        f"until={secs}s — under three seconds is a flicker, not "
+                        f"something read.")
 
     for what, (show, hide, floor) in READABLE.items():
                 open_at = None

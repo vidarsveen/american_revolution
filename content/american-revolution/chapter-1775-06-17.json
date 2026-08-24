@@ -828,10 +828,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "fact.hide"
-            },
-            {
-              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -1542,10 +1538,6 @@
             "en": "None of them has slept. They have had no water. And they are now the only visible target in the whole of Boston harbour."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "stat.clear"
@@ -2354,12 +2346,7 @@
             "no": "Ordren som gikk langs linja var enkel. Ikke skyt før du er sikker på at du treffer.",
             "en": "The order that went along the line was a simple one. Do not fire until you are sure you will hit."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 0.95
         },
         {

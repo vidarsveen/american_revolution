@@ -111,6 +111,11 @@ async function getJSON(url) {
    Compile
    ------------------------------------------------------------ */
 
+/* How long a fact box stays up, in seconds. Long enough to read three short
+   lines while a voice is running, short enough to be gone when the narration
+   moves on. Measured before it existed: median 21 s, worst 38. */
+const FACT_SECONDS = 6.5;
+
 function compile(chapter, timing, lang, base, uiLang = lang) {
   const warnings = [];
 
@@ -187,6 +192,26 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
 
         const at = resolve(on, beat, warnings);
         cues.push({ ...cue, t: at, beat: beat.id });
+
+        /* A definition that outlives its sentence stops being read.
+
+           `fact.hide` used to be authored on a later BEAT, and a beat is the
+           wrong unit for this: a beat can be three sentences, so the box for
+           "druesort" sat there for 9.6 s and the one for "barolo" for 11.7
+           while the narration had long moved on.
+
+           So the hide is DERIVED here, against the recorded timing, at a
+           fixed number of seconds after the show. Resolved per language, so
+           it lands the same distance after the word whether the sentence is
+           Norwegian or English, and it is an ordinary cue on the timeline —
+           nothing on a timer, nothing a seek could disagree with, which is
+           what keeps it inside rule 1. A caption.note-style self-removing
+           pill would have failed that: seeking into the middle of a
+           definition would show nothing. */
+        if (cue.do === 'fact.show') {
+          cues.push({ do: 'fact.hide', t: at + (cue.until ?? FACT_SECONDS),
+                      beat: beat.id, _derived: true });
+        }
       }
     }
     // Stable sort: equal times keep their authored order, which matters when a

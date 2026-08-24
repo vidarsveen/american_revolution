@@ -1311,10 +1311,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": {
                 "no": "word:stål",
                 "en": "word:steel"
@@ -1554,10 +1550,6 @@
             "en": "On the sixteenth of February a British destroyer went into Jøssingfjord in southern Norway and boarded a German ship. Nearly three hundred British prisoners were in the hold. Two Norwegian torpedo boats watched."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -1854,10 +1846,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "fact.hide"
-            },
-            {
-              "on": "start",
               "do": "portrait.hide"
             },
             {
@@ -2017,10 +2005,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": {
                 "no": "word:gamle",
                 "en": "word:old"
@@ -2168,10 +2152,6 @@
             "en": "Inside the harbour Norge opened fire on the destroyer Bernd von Arnim. Commodore Per Askim got off a few rounds. Then the torpedoes found him too."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "stat.clear"

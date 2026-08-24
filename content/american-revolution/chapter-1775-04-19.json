@@ -1103,10 +1103,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": {
                 "no": "word:slagordet",
                 "en": "word:slogan"
@@ -1368,10 +1364,6 @@
           },
           "gapAfter": 1.15,
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:advare",
@@ -3399,10 +3391,6 @@
             "en": "Within a week, around fifteen thousand armed men are lying in an arc around Boston."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:femten",

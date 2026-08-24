@@ -279,10 +279,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "fact.hide"
-            },
-            {
-              "on": "start",
               "do": "stat.clear"
             }
           ],
@@ -742,10 +738,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "fact.hide"
-            },
-            {
-              "on": "start",
               "do": "region.clear"
             },
             {
@@ -939,10 +931,6 @@
               "do": "fact.show",
               "kind": "term",
               "id": "langhe"
-            },
-            {
-              "on": "end",
-              "do": "fact.hide"
             }
           ],
           "gapAfter": 2.0
@@ -1032,10 +1020,6 @@
             "en": "Tannins come from the skins and the stems. They bind to your saliva, and your mouth feels dry. The same sensation as strong black tea."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "plate.hide",
@@ -1137,10 +1121,6 @@
               "do": "fact.show",
               "kind": "term",
               "id": "terroir"
-            },
-            {
-              "on": "end",
-              "do": "fact.hide"
             }
           ],
           "gapAfter": 2.0
@@ -1232,12 +1212,7 @@
             "no": "Barbaresco ligger litt lavere og litt nærmere elva. Det gir varmere netter, og druene modner noen dager tidligere.",
             "en": "Barbaresco sits a little lower and a little nearer the river. That gives warmer nights, and the grapes ripen a few days earlier."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 0.9
         },
         {
@@ -1379,10 +1354,6 @@
               "do": "fact.show",
               "kind": "term",
               "id": "docg"
-            },
-            {
-              "on": "end",
-              "do": "fact.hide"
             }
           ],
           "gapAfter": 2.0
@@ -1471,12 +1442,7 @@
             "no": "Barbera fikk historisk de markene Nebbiolo ikke ville ha. Den modner tidligere og klager mindre.",
             "en": "Barbera historically got the sites Nebbiolo would not take. It ripens earlier and complains less."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 0.9
         },
         {
@@ -1542,10 +1508,6 @@
             "en": "The fermentation is stopped halfway by chilling the wine. Half the sugar stays, and the bubbles already formed stay with it."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "plate.show",

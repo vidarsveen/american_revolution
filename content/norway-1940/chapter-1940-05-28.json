@@ -1379,10 +1379,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": {
                 "no": "word:nitten",
                 "en": "word:nineteen"
@@ -2359,10 +2355,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": "word:Orneset",
               "do": "route.draw",
               "id": "rombak-over",
@@ -3137,12 +3129,7 @@
             "no": "Byen ble holdt i elleve dager. De allierte hadde alt bestemt seg for å dra da de tok den. Og Dietl ble aldri slått ferdig, fordi de som kunne gjort det, måtte om bord i båtene.",
             "en": "The town was held for eleven days. The Allies had already decided to leave when they took it. And Dietl was never finished off, because the men who could have done it had to get on the boats."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.45
         },
         {

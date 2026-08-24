@@ -369,10 +369,6 @@
           },
           "cues": [
             {
-              "on": "start",
-              "do": "fact.hide"
-            },
-            {
               "on": {
                 "no": "word:Tiberius",
                 "en": "word:Tiberius"
@@ -482,10 +478,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "fact.hide"
-            },
-            {
-              "on": "start",
               "do": "plate.hide"
             }
           ],
@@ -593,12 +585,7 @@
             "no": "Det er nøyaktig det Augustus hadde bygd en egen statskasse for å hindre. Systemet holdt så lenge han levde. Uka etter at han døde, sprakk det.",
             "en": "That is exactly what Augustus had built a treasury to prevent. The system held as long as he lived. The week after he died, it cracked."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -1007,12 +994,7 @@
             "no": "Under Augustus begynner den å gjelde noe nytt: ord. Skrift som skader noens rykte. Og førstemannen er også staten, så ord om ham er ord om staten.",
             "en": "Under Augustus it starts to cover something new: words. Writing that damages a reputation. And the first man is also the state, so words about him are words about the state."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -1110,12 +1092,7 @@
             "no": "Det skaper et yrke. Menn som heter delatores, angivere, lever av å finne noe å anklage rike menn for.",
             "en": "That creates a profession. Men called delatores, informers, make a living finding something to accuse rich men of."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {

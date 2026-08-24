@@ -789,6 +789,10 @@
     "id": {
      "type": "string",
      "required": true
+    },
+    "until": {
+     "type": "seconds",
+     "note": "How long the box stays up. Default 6.5. The hide is derived from this at compile time against the recorded timing, so it lands the same distance after the spoken word in every language. Authoring the hide on a later BEAT was the previous design and a beat is the wrong unit: a beat can be three sentences."
     }
    }
   },
@@ -797,7 +801,8 @@
     "no": "Skjul forklaringen",
     "en": "Hide the definition"
    },
-   "args": {}
+   "args": {},
+   "note": "Rarely authored. fact.show derives its own hide from `until`; write this only to take a box down EARLY."
   }
  }
 }

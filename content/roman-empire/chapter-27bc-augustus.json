@@ -452,12 +452,7 @@
             "no": "Den gir ham vetorett mot hva som helst, og gjør personen hans ukrenkelig. Å legge hånd på ham er en forbrytelse mot gudene.",
             "en": "It gives him a veto over anything at all, and makes his person inviolable. To lay a hand on him is an offence against the gods."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.2
         },
         {
@@ -682,10 +677,6 @@
             "en": "The man who built most of it was called Agrippa. It is the same man who won Actium."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "stat.clear"
@@ -923,10 +914,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "fact.hide"
-            },
-            {
-              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -1120,10 +1107,6 @@
             "en": "The reason was money. A general who won found land for his men. The state gave them nothing."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:vant",
@@ -1409,12 +1392,7 @@
             "no": "Utroskap gjøres om fra familiesak til forbrytelse mot staten. Før kunne en far straffe det selv. Nå er det domstolens sak.",
             "en": "Adultery is turned from a family matter into a crime against the state. Before, a father could punish it himself. Now it belongs to the courts."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.2
         },
         {
@@ -1621,12 +1599,7 @@
             "no": "I praksis brukte han nesten tretti år på å skaffe seg en, og han mistet dem i tur og orden.",
             "en": "In practice he spent nearly thirty years trying to produce one, and he lost them one after another."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.2
         },
         {
@@ -1776,10 +1749,6 @@
             "en": "Augustus and Tiberius did not like each other. Tiberius had withdrawn to Rhodes for seven years, in the middle of all of it, without explaining why."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:Rhodos",
