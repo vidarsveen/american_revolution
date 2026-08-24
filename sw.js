@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v8868ef9aa4';
+const VERSION = 'v93575d80f7';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -66,8 +66,13 @@ const PRECACHE = [
   './content/italy-wine/media.json',
   './content/italy-wine/media/alpene-over.jpg',
   './content/italy-wine/media/bord-middag.jpg',
+  './content/italy-wine/media/dal-avstengt.jpg',
   './content/italy-wine/media/druer-kasse.jpg',
+  './content/italy-wine/media/flasker-liggende.jpg',
+  './content/italy-wine/media/gammel-stokk.jpg',
   './content/italy-wine/media/glass-blek-rod.jpg',
+  './content/italy-wine/media/glass-perler.jpg',
+  './content/italy-wine/media/hender-host.jpg',
   './content/italy-wine/media/kjeller-fat.jpg',
   './content/italy-wine/media/langhe-take.jpg',
   './content/italy-wine/media/vinmark-helling.jpg',

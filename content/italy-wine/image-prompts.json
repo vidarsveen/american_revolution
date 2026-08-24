@@ -107,7 +107,7 @@
    "en": "A valley on its own"
   },
   "claims": "A narrow steep valley with a single road, the kind of terrain that isolated communities from each other.",
-  "omits": "Not a named valley and not a named country. Nothing here dates the scene."
+  "omits": "Not a named valley and not a named country. The road is a modern one, so the picture stands for the shape of the terrain, not for any period."
  },
  "gammel-stokk": {
   "prompt": "the gnarled twisted trunk of a very old grapevine close up, thick rough bark, one green shoot coming from it, dry pale stony ground behind, low side light",
@@ -140,7 +140,7 @@
    "en": "Bottles waiting"
   },
   "claims": "Bottles binned on their sides in a cellar, which is how wine is held for long ageing.",
-  "omits": "Shot end-on so nothing on the glass is visible. No wine, producer, vintage or region is identified."
+  "omits": "Shot end-on, so no front label is in frame. One bottle carries a small blank cellar tag with nothing legible on it. No wine, producer, vintage or region is identified."
  },
  "glass-perler": {
   "prompt": "a small tulip glass of very pale straw-coloured wine with fine bubbles rising, condensation on the outside, plain pale background, a bowl of peaches out of focus behind",

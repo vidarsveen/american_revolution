@@ -110,5 +110,85 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "high snow-covered alpine peaks rising behind low green foothills, clear cold air, the snowline sharp against bare rock, small terraced fields far below in shadow"
+ },
+ "dal-avstengt": {
+  "kind": "made",
+  "file": "dal-avstengt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "En dal for seg selv",
+   "en": "A valley on its own"
+  },
+  "claims": "A narrow steep valley with a single road, the kind of terrain that isolated communities from each other.",
+  "omits": "Not a named valley and not a named country. The road is a modern one, so the picture stands for the shape of the terrain, not for any period.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a narrow steep-sided valley in low cloud, one thin road winding along the floor, dense forest on both walls, no cars, no people, cool grey light"
+ },
+ "gammel-stokk": {
+  "kind": "made",
+  "file": "gammel-stokk.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "En gammel stokk",
+   "en": "An old vine"
+  },
+  "claims": "The trunk of an old vine, thick and gnarled, still putting out new growth.",
+  "omits": "NOT a variety, and not an age. The model cannot distinguish one vine species from another and nothing here should be read as identifying the grape.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "the gnarled twisted trunk of a very old grapevine close up, thick rough bark, one green shoot coming from it, dry pale stony ground behind, low side light"
+ },
+ "hender-host": {
+  "kind": "made",
+  "file": "hender-host.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Innhøsting for hånd",
+   "en": "Picking by hand"
+  },
+  "claims": "Grapes being cut from the vine by hand with shears, as harvest is still done on steep ground.",
+  "omits": "No face is shown and no person is identified. The variety of grape is not claimed.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "two hands cutting a bunch of dark grapes from a vine with small curved shears, seen close over the shoulder, leaves around, no face in frame, morning light"
+ },
+ "flasker-liggende": {
+  "kind": "made",
+  "file": "flasker-liggende.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Flasker som venter",
+   "en": "Bottles waiting"
+  },
+  "claims": "Bottles binned on their sides in a cellar, which is how wine is held for long ageing.",
+  "omits": "Shot end-on, so no front label is in frame. One bottle carries a small blank cellar tag with nothing legible on it. No wine, producer, vintage or region is identified.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "rows of dusty dark green wine bottles lying on their sides in a stone cellar rack, seen end on so only the bases face the camera, thick dust, dim light, no paper on the glass"
+ },
+ "glass-perler": {
+  "kind": "made",
+  "file": "glass-perler.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Lett og perlende",
+   "en": "Light and fizzing"
+  },
+  "claims": "A glass of pale, lightly sparkling wine with fine bubbles.",
+  "omits": "No bottle and no label, so no wine is identified. The colour is typical of a light sweet style, not a measurement.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a small tulip glass of very pale straw-coloured wine with fine bubbles rising, condensation on the outside, plain pale background, a bowl of peaches out of focus behind"
  }
 }

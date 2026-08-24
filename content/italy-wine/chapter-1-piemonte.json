@@ -276,6 +276,16 @@
               "kind": "topic",
               "id": "hvorfor-italia",
               "span": 1
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "dal-avstengt",
+              "motion": "in",
+              "push": 0.2,
+              "over": 20,
+              "dim": 0.14,
+              "into": 1.4
             }
           ]
         },
@@ -523,7 +533,18 @@
             "no": "En bonde i en dal plantet det som vokste i den dalen. Naboen over fjellet plantet noe annet.",
             "en": "A farmer in one valley planted what grew in that valley. His neighbour over the mountain planted something else."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "gammel-stokk",
+              "motion": "in",
+              "push": 0.08,
+              "over": 18,
+              "dim": 0.16,
+              "into": 1.4
+            }
+          ]
         },
         {
           "id": "s2.b3",
@@ -777,6 +798,16 @@
               "on": "start",
               "do": "plate.hide",
               "over": 1.1
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "hender-host",
+              "motion": "in",
+              "push": 0.1,
+              "over": 18,
+              "dim": 0.14,
+              "into": 1.4
             }
           ]
         },
@@ -1163,6 +1194,16 @@
             {
               "on": "start",
               "do": "compare.clear"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "flasker-liggende",
+              "motion": "in",
+              "push": 0.1,
+              "over": 16,
+              "dim": 0.16,
+              "into": 1.4
             }
           ]
         },
@@ -1316,7 +1357,18 @@
             "no": "Gjæringen stanses midtveis ved å kjøle vinen ned. Halvparten av sukkeret blir igjen, og boblene som alt er dannet blir sittende.",
             "en": "The fermentation is stopped halfway by chilling the wine. Half the sugar stays, and the bubbles already formed stay with it."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "glass-perler",
+              "motion": "in",
+              "push": 0.07,
+              "over": 18,
+              "dim": 0.14,
+              "into": 1.4
+            }
+          ]
         },
         {
           "id": "s6.b7",
