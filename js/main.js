@@ -12,7 +12,8 @@ import { initMap, drawPlaces, drawColonies, flyToEvent, mountTools, mapHeight, r
 import { initRoutes } from './routes.js';
 import { initScrubber } from './scrubber.js';
 import { initTimeline, scrollToDate } from './timeline.js';
-import { initPeople, setPortraitBase as setPeoplePortraits } from './people.js';
+import { initLibrary, setPortraitBase as setLibraryPortraits } from './library.js';
+import { buildEntries } from '../core/entries.js';
 import { initSheet, setPortraitBase as setSheetPortraits } from './sheet.js';
 import * as tour from './tour.js';
 import { initStory, storyPause, storyInvalidate, storyRefreshTheme,
@@ -28,11 +29,14 @@ const VIEWS = [
   { id: 'story', label: 'tabStory', icon: icoStory },
   { id: 'map', label: 'tabMap', icon: icoMap },
   { id: 'timeline', label: 'tabTimeline', icon: icoTimeline },
-  { id: 'people', label: 'tabPeople', icon: icoPeople },
+  // Was 'people', hardcoded, gated on data.people.length -- so a subject
+  // with no people in it (a wine course) got no browsable anything at all.
+  // The tab is now whatever the pack declares; see core/entries.js.
+  { id: 'library', label: 'tabLibrary', icon: icoPeople },
 ];
 
 let data = { pack: null, manifest: null, events: [], people: [], chapters: [],
-             places: [], colonies: null, routes: null };
+             places: [], colonies: null, routes: null, entries: null };
 let tabEls = [];
 let canSwitch = false;
 
@@ -67,7 +71,7 @@ async function boot() {
   set({ date: era.jdStart }, { silent: true });
   publishPalette();
   const faces = packUrl(data.pack, data.manifest?.pools?.portraits || 'portraits/');
-  setPeoplePortraits(faces);
+  setLibraryPortraits(faces);
   setSheetPortraits(faces);
 
   buildTopbar();
@@ -75,7 +79,7 @@ async function boot() {
 
   const mapView = document.querySelector('.view--map');
   const tlView = document.querySelector('.view--timeline');
-  const peopleView = document.querySelector('.view--people');
+  const libraryView = document.querySelector('.view--library');
 
   initMap(data.events, { onSelect: onMarkerTap });
   drawColonies(data.colonies);
@@ -89,7 +93,7 @@ async function boot() {
   tour.initTour(mapView, data.events);
 
   initTimeline(tlView, data.events, data.chapters);
-  initPeople(peopleView, data.people);
+  initLibrary(libraryView, data.entries);
   initSheet(data.events, data.people, { onShowOnMap: showOnMap });
 
   // Fortell is the front door; Explore lives behind the other tabs.
@@ -148,19 +152,28 @@ async function loadData(want) {
     return url ? grab(url, fallback) : Promise.resolve(fallback);
   };
 
-  const [events, people, chapters, places, colonies, routes] = await Promise.all([
+  const [events, people, chapters, places, colonies, routes,
+         terms, topics, placeNotes] = await Promise.all([
     pool('events', []),
     pool('people', []),
     pool('episodes', []),
     pool('places', []),
     pool('areas', null),
     pool('routes', { routes: [], theatres: [] }),
+    pool('terms', {}),
+    pool('topics', {}),
+    pool('placeNotes', {}),
   ]);
 
   return {
     pack, manifest,
     events: events.sort((a, b) => parseDate(a.date) - parseDate(b.date)),
     people, chapters, places, colonies, routes,
+    // One index over every pool a reader can look something up in. The four
+    // files keep their names and their shapes; entries.js normalises the
+    // three spellings of "name" and stamps a kind.
+    entries: buildEntries({ person: people, term: terms, topic: topics,
+                            place: placeNotes }, manifest),
   };
 }
 
@@ -236,7 +249,8 @@ function relabelChrome() {
  */
 function viewHasContent(id) {
   if (id === 'story') return true;                       // always
-  if (id === 'people') return (data.people || []).length > 0;
+  // Anything browsable, in any kind this pack declares.
+  if (id === 'library') return Boolean(data.entries?.kinds?.length);
   // The map and the timeline are both driven by the event list. Provinces
   // alone are a picture, not a thing to browse.
   return (data.events || []).length > 0;

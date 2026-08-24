@@ -288,5 +288,37 @@
       "badge": true,
       "//": "Photographic-looking generated plates are refused while allowPhoto is false. badge draws the \"illustration\" mark on every kind:made picture."
     }
+  },
+  "//entries": "What a reader can look up in this pack, and what to call it. The tab is built from this rather than compiled into js/main.js, which is why a subject with no people in it can still have a library.",
+  "entries": {
+    "person": {
+      "label": {
+        "no": "Personer",
+        "en": "People"
+      },
+      "browse": true,
+      "portrait": true
+    },
+    "topic": {
+      "label": {
+        "no": "Tema",
+        "en": "Topics"
+      },
+      "browse": true
+    },
+    "term": {
+      "label": {
+        "no": "Ordbok",
+        "en": "Glossary"
+      },
+      "browse": true
+    },
+    "place": {
+      "label": {
+        "no": "Steder",
+        "en": "Places"
+      },
+      "browse": true
+    }
   }
 }

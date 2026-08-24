@@ -23,6 +23,7 @@ const STRINGS = {
     tabMap: 'Kart',
     tabTimeline: 'Tidslinje',
     tabPeople: 'Personer',
+    tabLibrary: 'Bibliotek',
 
     play: 'Ta meg gjennom krigen',
     pause: 'Pause',
@@ -68,6 +69,9 @@ const STRINGS = {
     outDraw: 'Uavgjort',
 
     peopleIntro: 'Menneskene bak historien — på begge sider. Trykk på et portrett.',
+    libraryIntro: 'Alt dette emnet kan forklare. Trykk på et kort for å lese mer.',
+    librarySearch: 'Søk',
+    librarySearchEmpty: 'Ingen treff.',
     timelineIntro: 'Alt som skjedde, i rekkefølge. Kapitlene følger episodene i serien.',
 
     langLabel: 'Bytt språk',
@@ -94,6 +98,7 @@ const STRINGS = {
     tabMap: 'Map',
     tabTimeline: 'Timeline',
     tabPeople: 'People',
+    tabLibrary: 'Library',
 
     play: 'Take me through the war',
     pause: 'Pause',
@@ -139,6 +144,9 @@ const STRINGS = {
     outDraw: 'Inconclusive',
 
     peopleIntro: 'The people behind the story — on both sides. Tap a portrait.',
+    libraryIntro: 'Everything this subject can explain. Tap a card to read more.',
+    librarySearch: 'Search',
+    librarySearchEmpty: 'Nothing found.',
     timelineIntro: 'Everything that happened, in order. Chapters follow the series.',
 
     langLabel: 'Change language',

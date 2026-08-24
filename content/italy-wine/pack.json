@@ -184,5 +184,29 @@
       "beat": "s2.b6",
       "at": 6.0
     }
+  },
+  "//entries": "What a reader can look up in this pack, and what to call it. The tab is built from this rather than compiled into js/main.js, which is why a subject with no people in it can still have a library.",
+  "entries": {
+    "term": {
+      "label": {
+        "no": "Ordbok",
+        "en": "Glossary"
+      },
+      "browse": true
+    },
+    "topic": {
+      "label": {
+        "no": "Tema",
+        "en": "Topics"
+      },
+      "browse": true
+    },
+    "place": {
+      "label": {
+        "no": "Steder",
+        "en": "Places"
+      },
+      "browse": true
+    }
   }
 }

@@ -497,3 +497,104 @@
   .tour-caption { left: 50%; right: auto; width: min(560px, calc(100% - var(--s7))); transform: translateX(-50%) translateY(-10px); }
   .tour-caption.is-on { transform: translateX(-50%); }
 }
+
+/* ---- the library ------------------------------------------------------
+
+   Was .people, and the shape is the same: a scrolling column with a grid in
+   it. What is new is that a pack can have SEVERAL kinds of entry — people
+   and topics for a war, a glossary and grapes and wines for a course — so
+   there is a row of kind chips above the grid and a search across all of
+   them. See core/entries.js.                                            */
+
+.library {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: var(--s4) var(--s4) var(--s8);
+}
+.library__intro {
+  margin: 0 0 var(--s3);
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+.library__filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  margin-bottom: var(--s3);
+}
+.library__kind {
+  padding: .38em .85em;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: var(--fs-xs);
+  cursor: pointer;
+}
+.library__kind.is-on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.library__search {
+  width: 100%;
+  padding: .55em .8em;
+  margin-bottom: var(--s3);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-1, 4px);
+  background: var(--paper-sunken);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-sm);
+}
+.library__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s2);
+}
+/* Faces want a wider, shorter cell; text entries want a readable line. */
+.library__grid--faces {
+  grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+  gap: var(--s3);
+}
+.library__empty {
+  color: var(--ink-faint);
+  font-size: var(--fs-sm);
+}
+
+/* A text entry. Deliberately NOT a portrait frame with nothing in it: a
+   glossary of forty terms rendered as forty empty faces is worse than a
+   list. */
+.ecard {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--s3);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2, 6px);
+  background: var(--paper-raised, var(--paper));
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.ecard:hover, .ecard:focus-visible { border-color: var(--ink-faint); }
+.ecard__name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: .15em;
+}
+.ecard__hook {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+
+@media (min-width: 720px) {
+  .library { max-width: 760px; margin-inline: auto; }
+  .library__grid { grid-template-columns: 1fr 1fr; }
+}

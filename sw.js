@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vbe5525c3a4';
+const VERSION = 'va158183fa1';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -136,6 +136,7 @@ const PRECACHE = [
   './content/roman-empire/timing.chapter-44bc-octavian.en.json',
   './content/roman-empire/timing.chapter-44bc-octavian.no.json',
   './core/dossier.js',
+  './core/entries.js',
   './core/era.js',
   './core/icons.js',
   './core/palette.js',
@@ -171,9 +172,9 @@ const PRECACHE = [
   './index.html',
   './js/chooser.js',
   './js/i18n.js',
+  './js/library.js',
   './js/main.js',
   './js/map.js',
-  './js/people.js',
   './js/routes.js',
   './js/scrubber.js',
   './js/sheet.js',
