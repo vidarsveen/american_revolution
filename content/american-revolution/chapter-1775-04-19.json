@@ -891,6 +891,16 @@
               "do": "map.flyTo",
               "to": "europe",
               "over": 2.2
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "havn-og-master",
+              "motion": "in",
+              "push": 0.14,
+              "over": 22,
+              "dim": 0.16,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.0
@@ -938,6 +948,11 @@
             "en": "From London the answer looks reasonable enough. On the other side of the Atlantic lie thirteen colonies who also won that war. Let them pay their share."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "stat.clear"
@@ -1485,14 +1500,16 @@
             {
               "on": "start",
               "do": "plate.show",
-              "id": "boston-1768",
+              "id": "baater-over-vannet",
               "motion": "in",
               "focus": [
                 0.45,
                 0.6
               ],
               "over": 16,
-              "dim": 0.14
+              "dim": 0.18,
+              "push": 0.1,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.05
@@ -1992,6 +2009,16 @@
               "do": "sound.ambience",
               "id": "wind",
               "gainDb": -9
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "vei-ved-daggry",
+              "motion": "in",
+              "push": 0.1,
+              "over": 16,
+              "dim": 0.14,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.25
@@ -2004,6 +2031,11 @@
           },
           "gapAfter": 0.85,
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -2954,6 +2986,16 @@
               "on": "start",
               "do": "map.flyTo",
               "to": "the-road"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "stein-gjerde-roykskyer",
+              "motion": "in",
+              "push": 0.12,
+              "over": 15,
+              "dim": 0.18,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.65
@@ -2984,6 +3026,16 @@
                 "en": "marched"
               },
               "side": "british"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "kolonne-paa-avstand",
+              "motion": "out",
+              "push": 0.18,
+              "over": 16,
+              "dim": 0.16,
+              "into": 1.4
             }
           ]
         },
@@ -2994,6 +3046,11 @@
             "en": "At Lexington they meet a relief force of a thousand men with cannon, sent out from Boston by Gage and led by Lord Percy. Without it the whole column would probably have been taken."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "word:Percy",
               "do": "route.draw",
@@ -3354,6 +3411,16 @@
               "do": "term.mark",
               "kind": "term",
               "id": "congress"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "leir-om-natten",
+              "motion": "in",
+              "push": 0.1,
+              "over": 18,
+              "dim": 0.16,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.45
@@ -3366,6 +3433,11 @@
           },
           "gapAfter": 3.35,
           "cues": [
+            {
+              "on": "end",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "map.flyTo",

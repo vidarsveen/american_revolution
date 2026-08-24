@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v96f4124213';
+const VERSION = 'vb5f04357e8';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -43,6 +43,7 @@ const PRECACHE = [
   './content/american-revolution/geo/regions.geojson',
   './content/american-revolution/geo/routes.json',
   './content/american-revolution/media.json',
+  './content/american-revolution/media/baater-over-vannet.jpg',
   './content/american-revolution/media/boston-1768.jpg',
   './content/american-revolution/media/bunker-hill-assault.jpg',
   './content/american-revolution/media/bunker-hill-attack.jpg',
@@ -51,9 +52,14 @@ const PRECACHE = [
   './content/american-revolution/media/doolittle-2.jpg',
   './content/american-revolution/media/doolittle-3.jpg',
   './content/american-revolution/media/doolittle-4.jpg',
+  './content/american-revolution/media/havn-og-master.jpg',
+  './content/american-revolution/media/kolonne-paa-avstand.jpg',
+  './content/american-revolution/media/leir-om-natten.jpg',
   './content/american-revolution/media/old-north.jpg',
   './content/american-revolution/media/siege-map.jpg',
+  './content/american-revolution/media/stein-gjerde-roykskyer.jpg',
   './content/american-revolution/media/trumbull-warren.jpg',
+  './content/american-revolution/media/vei-ved-daggry.jpg',
   './content/american-revolution/media/washington-cambridge.jpg',
   './content/american-revolution/people.json',
   './content/american-revolution/sound.json',
