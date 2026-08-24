@@ -37,18 +37,31 @@
    stacked on the screen.
    ============================================================ */
 
-const IN_MS = 320;
-/* Long enough to read a title, look at it, and register the date underneath.
-   1500 ms was measured against nothing and felt rushed: a viewer has to
-   notice the card, read two lines, and understand that a section has ended —
-   and the narration is arriving underneath while they do it. */
-const HOLD_MS = 2600;
-const OUT_MS = 700;
+/* All four numbers come from docs/design-direction.md, and they are one
+   number: --t-turn, 1200 ms, the whole frame becoming something else.
+
+   They used to be 320 / 2600 / 700 / 900, chosen alone. 320 ms in is a cut
+   wearing a fade — the slowest thing on this screen is a 14 s drift on a
+   still, so an arrival a fortieth of that length is from a different film.
+
+       t = 0      the veil begins to close                     IN_MS
+       t = 1200   the veil is opaque. The stage is rebuilt HERE.
+                  The card is at rest: clock, then title.
+       t = 2800   the veil begins to lift, the narrator speaks  OUT_MS
+       t = 4000   the veil is gone, and the card went with it.
+
+   The card is fully legible for 1.6 s and readable through both ramps —
+   about 2.6 s, the same floor check-script.py puts on a portrait's name.
+   Total 4.0 s against 3.62 before: the silence triples, the length barely
+   moves. */
+export const IN_MS = 1200;
+const HOLD_MS = 1600;
+const OUT_MS = 1200;
 
 /* Silence before the next scene speaks, so the card gets clear air.
    Without it the title appeared at the same instant the new sentence began,
    which is two things asking for attention at once. */
-export const LEAD_IN_MS = 900;
+export const LEAD_IN_MS = 2800;
 
 let host = null;
 let cardEl = null;
@@ -92,14 +105,21 @@ function clear() {
  *                 04:12 is not the scene beginning, it is you looking for
  *                 something.
  * @param opts.silent  no card when the chapter is not actually running.
+ *
+ * @returns true if a card is running, so the caller knows it has IN_MS of
+ *          cover to rebuild the stage behind. Returning nothing was why the
+ *          map's cut happened in FRONT of the device built to hide it.
  */
 function announce(scene, { at = 0, playing = true, first = false } = {}) {
-  if (!host || !scene) return;
+  if (!host || !scene) return false;
   // Not an opening, not running, or the very first scene of the chapter —
   // which already had a cover with the title on it two seconds ago.
-  if (!playing || at > 1.5 || first) return;
-  if (!scene.title && !scene.clock) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!playing || at > 1.5 || first) return false;
+  if (!scene.title && !scene.clock) return false;
+  // Reduced motion is NOT handled here any more. The card carries the scene's
+  // title and clock, which is information, and suppressing it left a
+  // reduced-motion viewer with LEAD_IN_MS of silence and no idea why. It cuts
+  // instead of fading; css/story.css does that with `transition: none`.
 
   clear();
   host.querySelector('.scene-wipe__title').textContent = scene.title || '';
@@ -112,4 +132,5 @@ function announce(scene, { at = 0, playing = true, first = false } = {}) {
 
   timers.push(setTimeout(() => host?.classList.add('is-lifting'), IN_MS + HOLD_MS));
   timers.push(setTimeout(() => clear(), IN_MS + HOLD_MS + OUT_MS));
+  return true;
 }

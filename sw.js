@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v81b34ffab6';
+const VERSION = 'v9ba8137755';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -165,6 +165,7 @@ const PRECACHE = [
   './engine/captions.js',
   './engine/chrome.js',
   './engine/depth.js',
+  './engine/ending.js',
   './engine/pack.js',
   './engine/player.js',
   './engine/scenes/map.js',

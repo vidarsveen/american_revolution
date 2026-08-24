@@ -50,9 +50,20 @@ export function mountOverlays(container, ch, allPeople, language) {
       <div class="ov-note"></div>
       <div class="ov-compare"></div>
       <div class="ov-quote"></div>
-      <div class="ov-fact"></div>
     </div>
+    <!-- The fact box lives DOWN HERE, not in the middle deck.
+
+         A definition is an aside. It was sitting at top:32% -- the middle of
+         the map -- so at s2.b7 of the wine chapter the line "Og Piemonte,
+         helt nordvest, har Nebbiolo" put the card explaining Nebbiolo squarely
+         on top of Piemonte. The picture must show the thing the sentence is
+         talking about, and the overlay explaining it was covering it.
+
+         Bottom-left, opposite the stats, above the caption: it interrupts the
+         picture's EDGE and nothing else, which is what
+         docs/design-direction.md says a fact box is allowed to do. -->
     <div class="ov-deck ov-deck--lower">
+      <div class="ov-fact"></div>
       <div class="ov-stats"></div>
     </div>
   `;

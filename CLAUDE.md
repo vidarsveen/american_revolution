@@ -6,6 +6,12 @@ historical subject on a map. Norwegian and English, mobile first.
 
 Read `README.md` first for what the app *is*. This file is about how to work on it.
 
+Read `docs/design-direction.md` before changing anything a viewer can see. It is the
+standard — one motion scale, one type scale, one sound grammar, all in numbers — and it
+exists because the alternative was four different answers to "how long does a thing take
+to arrive", each chosen alone. A duration, a font size or a level that is not derived
+from that document is a defect, whatever it looks like.
+
 ---
 
 ## Hard constraints
@@ -109,6 +115,8 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `dev/map-lab.html` | Does `instant` reproduce the animated picture exactly? Is any frame blank? |
 | `dev/map-lab.html` | Can two regions that share a border be told apart, measured on the pixels? |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
+| `tools/check-turn.py` | At the instant the stage is rebuilt, is the veil actually opaque? |
+| `tools/check-plate.py` | When one picture replaces another, were both on screen at once? |
 
 `dev/engine-lab.html` is the bench for rule 1, which until now was enforced by discipline
 alone. It compares a **stage signature** — every layer, every artifact, every declared
@@ -148,6 +156,8 @@ python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
+python tools/check-turn.py         # is the scene change behind the veil? — needs a server
+python tools/check-plate.py        # does a picture ever cut instead of dissolve?
 python tools/check-contrast.py     # samples real pixels; fails on an unreadable map
 python tools/check-sound.py        # 24 assertions on ducking and the silent fallback
 ```
@@ -233,6 +243,17 @@ glyph ever appeared — and `check-script.py` passed it clean, because it only e
 *names*. It now rejects undeclared arguments and validates enum values. The lesson generalises:
 the manifest is the contract, and anything not in it is decoration.
 
+**A probe that reads a class name is not a visibility check.** `.ov-fact` had no hidden
+state in the stylesheet at all, so removing `is-on` changed nothing a viewer could see — and
+the fact box was reported fixed four times running, because every probe asked the DOM what
+class it had rather than asking the browser what it looked like. The same shape appeared one
+layer up: `engine/transition.js` dimmed the stage for a scene change while `rebuildTo()` cut
+the picture at t=0, so the device existed, its class was on, and the cut it was built to hide
+happened in front of it at 0.008 opacity. Both are now measured on **effective opacity** —
+`display`, `visibility` and every ancestor folded in — by `dev/engine-lab.js` and
+`tools/check-turn.py`, and both benches were confirmed by reintroducing the bug and watching
+them fail.
+
 **Two overlays anchored to the same edge will fight, and the later one wins.** The stats deck
 and the caption box were both `bottom: calc(var(--transport-h) + ...)`, and the caption sits on
 a higher layer — so every number the chapter shows was drawn behind it. Invisible, not missing,
@@ -307,6 +328,14 @@ and `audio/<lang>/<chapter>/<scene>.mp3`. Scene ids restart at `s0` in every cha
 original one-file-per-pack layout had a second chapter overwriting the first scene for scene
 — and the overwrite is silent, because a timing file for the wrong chapter still parses and
 still has an `s0`. Adding a chapter therefore also means four new lines in `sw.js`.
+
+**A card is not stage state, and must be mounted where `resetStage()` cannot reach it.**
+The scene card (`engine/transition.js`) and the end card (`engine/ending.js`) are both
+siblings of `.story__stage` for this reason, and neither is a cue: a cue replays on every
+seek, so scrubbing past the end would stack end cards the way it would fire forty muskets.
+What a card SAYS can still be authored — `chapter.ending` is metadata — but anything the
+engine reads has to be named in the whitelist in `compile()` (`engine/script.js`), or the
+field silently does nothing.
 
 **A scene change wipes the stage, so nothing standing survives it.** Rule 1 says the picture
 is a function of time; seeking re-applies only the cues of the scene you land in. So a front,

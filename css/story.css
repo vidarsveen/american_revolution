@@ -23,7 +23,10 @@
   position: absolute;
   pointer-events: none;
   mix-blend-mode: multiply;
-  transition: background 2.4s var(--ease-in-out), opacity 2.4s var(--ease-in-out);
+  /* Twice the turn. The ground is not an object arriving, it is the light
+     changing, and it has to stay below noticing. */
+  transition: background calc(2 * var(--t-turn)) var(--ease-in-out),
+              opacity    calc(2 * var(--t-turn)) var(--ease-in-out);
 }
 .stage-map__mood[data-mood="day"]   { background: transparent; opacity: 0; }
 .stage-map__mood[data-mood="dawn"]  { background: linear-gradient(180deg, #ffd2a0, #f8cba4 45%, #e6d2bc); opacity: .26; }
@@ -70,10 +73,9 @@
   font-variant-numeric: lining-nums tabular-nums;
   color: var(--ink);
   opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+  transition: opacity var(--t-exit) var(--ease-out);
 }
-.stage-map__time.is-on { opacity: 1; transform: none; }
+.stage-map__time.is-on { opacity: 1; transition: opacity var(--t-enter) var(--ease-out); }
 
 /* Standing place names — what makes the ground legible */
 .story-place-wrap { background: none; border: 0; }
@@ -92,7 +94,7 @@
   text-shadow: 0 1px 0 rgba(255, 250, 238, .85), 0 0 7px rgba(255, 250, 238, .95);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--t-slow) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
 }
 :root[data-theme="dark"] .story-place {
   text-shadow: 0 1px 0 rgba(10, 12, 16, .9), 0 0 8px rgba(10, 12, 16, .95);
@@ -125,7 +127,10 @@
   margin: -12px 0 0 -12px;
   border-radius: 50%;
   border: 2.5px solid var(--gold);
-  animation: ring-pulse 2.8s var(--ease-out) infinite;
+  /* Three times, not for ever: 3 x 2.8s = 8.4s, which is one sentence,
+     which is how long the highlight is about anything. After the second
+     cycle a pulse is not saying "look here", it is the map twitching. */
+  animation: ring-pulse 2.8s var(--ease-out) 3;
 }
 .story-ring--red  { border-color: var(--red); }
 .story-ring--blue { border-color: var(--blue); }
@@ -143,10 +148,10 @@
   display: grid;
   place-items: center;
   width: 100%; height: 100%;
-  animation: mk-pop 460ms var(--ease-spring) backwards;
+  animation: mk-pop var(--t-enter) var(--ease-out) backwards;
 }
 .story-mk.is-instant { animation: none; }
-@keyframes mk-pop { from { opacity: 0; transform: scale(.4); } }
+@keyframes mk-pop { from { opacity: 0; } }
 
 .story-mk__dot {
   width: 12px; height: 12px;
@@ -193,7 +198,7 @@
   inset: -3px;
   border-radius: inherit;
   border: 1px dashed transparent;
-  transition: border-color var(--t-fast) var(--ease-out);
+  transition: border-color var(--t-tap) var(--ease-out);
   pointer-events: none;
 }
 .ov-portrait__card[data-tap]:focus-visible { outline: none; }
@@ -211,6 +216,10 @@
   gap: var(--s3);
 }
 .ov-deck--mid { top: 32%; display: grid; justify-items: center; gap: var(--s3); }
+/* The fact box is the left half of the lower deck, the stats the right. It
+   must not stretch: a one-line definition spanning the screen reads as a
+   banner. */
+.ov-deck--lower > .ov-fact { flex: 0 1 auto; max-width: 62%; }
 .ov-deck--lower {
   /* Above the caption, not behind it. Both used to be anchored to the
      transport, so they claimed the same strip and the caption — later in the
@@ -223,7 +232,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--s3);
-  transition: bottom var(--t-med) var(--ease-out);
+  transition: bottom var(--t-tap) var(--ease-out);
 }
 
 /* The hidden state EVERY overlay needs.
@@ -244,10 +253,17 @@
    maintenance burden of this rule. */
 .ov-portrait, .ov-image, .ov-quote, .ov-note, .ov-fact, .ov-compare {
   opacity: 0;
-  transition: opacity var(--t-slow) var(--ease-out), transform var(--t-slow) var(--ease-out);
+  /* The base rule carries the DEPARTURE and .is-on carries the ARRIVAL, which
+     is the only way one surface can have two durations. Transform is gone from
+     both: nothing on this stage translates or scales on entry. A card that
+     slides in is a UI mannerism; a card that fades in is film. */
+  transition: opacity var(--t-exit) var(--ease-out);
 }
 .ov-portrait.is-on, .ov-image.is-on, .ov-quote.is-on,
-.ov-note.is-on, .ov-fact.is-on, .ov-compare.is-on { opacity: 1; }
+.ov-note.is-on, .ov-fact.is-on, .ov-compare.is-on {
+  opacity: 1;
+  transition: opacity var(--t-enter) var(--ease-out);
+}
 .ov-portrait.is-instant, .ov-image.is-instant, .ov-quote.is-instant,
 .ov-note.is-instant, .ov-fact.is-instant, .ov-compare.is-instant { transition: none; }
 /* Nothing invisible may swallow a tap. */
@@ -259,8 +275,7 @@
    corner, where the transport covered it on a phone.
    ------------------------------------------------------------ */
 
-.ov-portrait { transform: translateY(-10px) scale(.97); transform-origin: top right; }
-.ov-portrait.is-on { opacity: 1; transform: none; }
+.ov-portrait.is-on { opacity: 1; }
 
 .ov-portrait__card {
   position: relative;
@@ -354,8 +369,7 @@
 
 /* ---------- Picture ----------------------------------------- */
 
-.ov-image { transform: translateY(-10px); }
-.ov-image.is-on { opacity: 1; transform: none; }
+.ov-image.is-on { opacity: 1; }
 .ov-image__card { margin: 0; }
 .ov-image__card img {
   display: block;
@@ -394,8 +408,8 @@
 
 /* ---------- Quote ------------------------------------------- */
 
-.ov-quote { width: min(86vw, 460px); transform: scale(.97); }
-.ov-quote.is-on { opacity: 1; transform: none; }
+.ov-quote { width: min(86vw, 460px); }
+.ov-quote.is-on { opacity: 1; }
 /* The provenance mark on a quote that is not a plain quotation. Small, above
    the words, and in the same gold the map uses for "look here" -- it is a
    caveat, not a decoration, and it has to be readable before the sentence is. */
@@ -445,9 +459,9 @@
   gap: var(--s2);
   margin-left: auto;
   opacity: 0;
-  transition: opacity var(--t-med) var(--ease-out);
+  transition: opacity var(--t-exit) var(--ease-out);
 }
-.ov-stats.is-on { opacity: 1; }
+.ov-stats.is-on { opacity: 1; transition: opacity var(--t-enter) var(--ease-out); }
 .stat-chip {
   padding: var(--s2) var(--s3);
   border-radius: var(--r-md);
@@ -457,10 +471,10 @@
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-sm);
   text-align: center;
-  animation: chip-in 520ms var(--ease-spring) backwards;
+  animation: chip-in var(--t-enter) var(--ease-out) backwards;
 }
 .stat-chip.is-instant { animation: none; }
-@keyframes chip-in { from { opacity: 0; transform: translateY(10px) scale(.9); } }
+@keyframes chip-in { from { opacity: 0; } }
 .stat-chip b {
   display: block;
   font-family: var(--font-display);
@@ -483,8 +497,7 @@
 
 /* ---------- Passing note ------------------------------------ */
 
-.ov-note { transform: translateY(-8px); }
-.ov-note.is-on { opacity: 1; transform: none; }
+.ov-note.is-on { opacity: 1; }
 .ov-note__pill {
   display: inline-block;
   padding: 4px var(--s3);
@@ -507,7 +520,7 @@
   justify-content: center;
   padding: 0 var(--s4);
   pointer-events: none;
-  transition: bottom var(--t-med) var(--ease-out);
+  transition: bottom var(--t-tap) var(--ease-out);
 }
 .captions {
   max-width: min(92vw, 540px);
@@ -518,7 +531,7 @@
   -webkit-backdrop-filter: blur(14px) saturate(1.5);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-sm);
-  transition: opacity var(--t-med) var(--ease-out);
+  transition: opacity var(--t-tap) var(--ease-out);
 }
 .captions.is-off { opacity: 0; }
 /* Nothing to say, nothing on screen. A seek clears the line and the next beat
@@ -541,8 +554,8 @@
   text-align: center;
   color: var(--ink-soft);
 }
-.captions__line.is-in { animation: cap-in 320ms var(--ease-out); }
-@keyframes cap-in { from { opacity: 0; transform: translateY(4px); } }
+/* The caption cuts. It carries the words, the words start immediately, and a
+   sentence that fades in arrives after itself. */
 .captions__line span { transition: color 120ms linear; }
 
 /* A word you can open. Same dotted rule as a tappable map label, so the
@@ -598,8 +611,8 @@
 .transport__full {
   max-height: 260px;
   overflow: hidden;
-  transition: max-height var(--t-med) var(--ease-out),
-              opacity var(--t-fast) var(--ease-out);
+  transition: max-height var(--t-enter) var(--ease-out),
+              opacity var(--t-enter) var(--ease-out);
 }
 .transport.is-min .transport__full { max-height: 0; opacity: 0; }
 
@@ -684,7 +697,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  transition: transform var(--t-fast) var(--ease-out), background var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), background var(--t-tap);
 }
 /* A finger is bigger than an icon. The ghost and icon buttons draw at 38 and
    36 px because that is what looks right in a 58 px bar -- so the TARGET is
@@ -831,7 +844,7 @@
   -webkit-backdrop-filter: blur(10px) saturate(1.3);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--t-slow) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
 }
 .story__cover.is-on { opacity: 1; pointer-events: auto; }
 
@@ -868,7 +881,7 @@
   font-size: var(--fs-md);
   font-weight: 700;
   box-shadow: var(--shadow-md);
-  transition: transform var(--t-fast) var(--ease-spring);
+  transition: transform var(--t-tap) var(--ease-out);
 }
 .cover__go:active { transform: scale(.96); }
 .cover__go-ico { font-size: 14px; }
@@ -967,7 +980,7 @@
   flex-direction: column;
   background: var(--paper);
   transform: translateY(100%);
-  transition: transform var(--t-slow) var(--ease-out);
+  transition: transform var(--t-enter) var(--ease-out);
 }
 .transcript.is-open { transform: none; }
 .transcript__bar {
@@ -1001,7 +1014,7 @@
   line-height: var(--lh-body);
   color: var(--ink-soft);
   cursor: pointer;
-  transition: background var(--t-fast);
+  transition: background var(--t-tap);
 }
 .transcript__beat:hover  { background: var(--paper-raised); }
 .transcript__beat:active { background: var(--paper-sunken); }
@@ -1047,7 +1060,7 @@
   background: none;
   text-align: left;
   cursor: pointer;
-  transition: background var(--t-fast);
+  transition: background var(--t-tap);
 }
 .epitem:hover  { background: var(--paper-raised); }
 .epitem:active { background: var(--paper-sunken); }
@@ -1131,25 +1144,25 @@
   opacity: 0;
   visibility: hidden;
 }
-.scene-wipe.is-on { opacity: 1; visibility: visible; transition: opacity 220ms var(--ease-out); }
-.scene-wipe.is-lifting { opacity: 0; transition: opacity 520ms var(--ease-in-out); }
+.scene-wipe.is-on { opacity: 1; visibility: visible; transition: opacity var(--t-turn) var(--ease-in-out); }
+.scene-wipe.is-lifting { opacity: 0; transition: opacity var(--t-turn) var(--ease-in-out); }
 
-/* Not opaque. The map keeps moving underneath, which is what makes this read
-   as a dissolve rather than a curtain. */
+/* Opaque, and it was not. At .82 the map's cut to the next scene was still
+   18% visible through the thing whose whole job is to hide it -- and the cut
+   was happening before the veil closed anyway (see engine/story.js). What
+   makes this read as a dissolve rather than a curtain is the 1.2 s ramp, not
+   a gap you can see through. */
 .scene-wipe__veil {
   position: absolute;
   inset: 0;
   background: var(--paper-sunken);
-  opacity: .82;
+  opacity: 1;
 }
 .scene-wipe__card {
   position: relative;
   text-align: center;
   padding: 0 var(--s5);
-  transform: translateY(6px);
-  transition: transform 420ms var(--ease-out);
 }
-.scene-wipe.is-on .scene-wipe__card { transform: none; }
 
 .scene-wipe__clock {
   margin: 0 0 var(--s2);
@@ -1171,7 +1184,144 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scene-wipe { display: none; }
+  /* The card CUTS. It does not disappear.
+     Hiding it entirely still left LEAD_IN_MS running, so a reduced-motion
+     viewer got 2.8 s of silence over a stage that had just changed and was
+     never told a scene had ended. The title and the clock are information;
+     only the fade was decoration, and the concern here is vestibular --
+     movement, not change. */
+  .scene-wipe.is-on,
+  .scene-wipe.is-lifting { transition: none; }
+}
+
+/* ---------- The end of a chapter ----------------------------
+   Not a menu. The last picture the chapter drew stays underneath and is
+   still legible through the veil — throwing it away for a cover was the
+   single worst thing the old ending did. See engine/ending.js.
+   ------------------------------------------------------------ */
+.story-end {
+  position: absolute;
+  inset: 0;
+  z-index: 46;
+  display: grid;
+  place-items: center;
+  padding: var(--s6) var(--s5);
+  opacity: 0;
+  transition: opacity var(--t-turn) var(--ease-in-out);
+}
+.story-end.is-on { opacity: 1; }
+.story-end__veil {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  /* Deliberately not opaque: the arc of redoubts, the two villages, the
+     region the chapter ended on — that is the ground this card belongs on. */
+  opacity: .52;
+}
+/* The words need ground of their own. At a flat veil the map's own labels
+   read straight through the title — "Tåka og tørsten" came out with Torino
+   and Toscana inside it. A soft radial scrim gives the type somewhere to sit
+   while the picture stays visible all round it, which a hard card would not. */
+.story-end__card::before {
+  content: '';
+  position: absolute;
+  inset: -20% -34%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+              color-mix(in srgb, var(--paper) 90%, transparent) 0%,
+              color-mix(in srgb, var(--paper) 78%, transparent) 58%,
+              transparent 100%);
+}
+.story-end__card {
+  position: relative;
+  isolation: isolate;
+  text-align: center;
+  max-width: 30ch;
+  display: grid;
+  gap: var(--s3);
+  justify-items: center;
+}
+.story-end__when {
+  margin: 0;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.story-end__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 40, 'WONK' 1;
+  line-height: var(--lh-tight);
+  color: var(--ink);
+}
+.story-end__say {
+  margin: 0;
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+  color: var(--ink-soft);
+}
+.story-end__fig {
+  margin: 0;
+  display: grid;
+  gap: 2px;
+}
+.story-end__fig b {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--ink);
+}
+.story-end__fig span {
+  font-size: var(--fs-2xs);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.story-end__doors {
+  margin-top: var(--s3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  justify-content: center;
+}
+.story-end__door {
+  min-height: var(--tap);
+  padding: var(--s2) var(--s5);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t-tap) var(--ease-out);
+}
+.story-end__door:hover { background: var(--paper-sunken); }
+.story-end__door:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.story-end__door--go {
+  display: grid;
+  gap: 1px;
+  border-color: transparent;
+  background: var(--ink);
+  color: var(--paper);
+}
+.story-end__door--go:hover { background: var(--ink); opacity: .9; }
+.story-end__door--go i {
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  opacity: .8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-end { transition: none; }
 }
 
 /* ---------- Comparison --------------------------------------
@@ -1248,12 +1398,13 @@
   background: var(--paper-sunken);
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--plate-out, .9s) var(--ease-in-out), visibility 0s linear var(--plate-out, .9s);
+  transition: opacity var(--plate-out, var(--t-dissolve)) var(--ease-in-out),
+              visibility 0s linear var(--plate-out, var(--t-dissolve));
 }
 .stage-plate.is-on {
   opacity: 1;
   visibility: visible;
-  transition: opacity .9s var(--ease-in-out), visibility 0s;
+  transition: opacity var(--t-dissolve) var(--ease-in-out), visibility 0s;
 }
 /* A seek must not cross-dissolve. It is a jump, and it should look like one. */
 .stage-plate.is-instant { transition: none; }

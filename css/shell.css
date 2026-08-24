@@ -87,9 +87,9 @@
   font-size: var(--fs-xs);
   font-weight: 700;
   letter-spacing: .06em;
-  transition: background var(--t-fast) var(--ease-out),
-              color var(--t-fast) var(--ease-out),
-              transform var(--t-fast) var(--ease-out);
+  transition: background var(--t-tap) var(--ease-out),
+              color var(--t-tap) var(--ease-out),
+              transform var(--t-tap) var(--ease-out);
   /* keep the visual chip small but the touch area finger-sized */
   position: relative;
 }
@@ -125,7 +125,7 @@
 .app.is-immersive .view--story { --credit-clear: 0px; }
 
 .topbar, .tabbar {
-  transition: margin var(--t-slow) var(--ease-out), opacity var(--t-med) var(--ease-out);
+  transition: margin var(--t-enter) var(--ease-out), opacity var(--t-enter) var(--ease-out);
 }
 
 /* ---------- View stack ------------------------------------- */
@@ -141,16 +141,16 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: opacity var(--t-med) var(--ease-out),
-              transform var(--t-med) var(--ease-out),
-              visibility 0s linear var(--t-med);
+  transition: opacity var(--t-enter) var(--ease-out),
+              transform var(--t-enter) var(--ease-out),
+              visibility 0s linear var(--t-enter);
 }
 .view.is-active {
   opacity: 1;
   visibility: visible;
   transform: none;
-  transition: opacity var(--t-med) var(--ease-out),
-              transform var(--t-med) var(--ease-out),
+  transition: opacity var(--t-enter) var(--ease-out),
+              transform var(--t-enter) var(--ease-out),
               visibility 0s;
 }
 /* The map must never be display:none — Leaflet needs a real size */
@@ -182,12 +182,12 @@
   font-size: var(--fs-2xs);
   font-weight: 600;
   letter-spacing: .02em;
-  transition: color var(--t-fast) var(--ease-out);
+  transition: color var(--t-tap) var(--ease-out);
   position: relative;
 }
 .tab svg { width: 22px; height: 22px; display: block; }
 .tab .tab__ico {
-  transition: transform var(--t-med) var(--ease-spring);
+  transition: transform var(--t-enter) var(--ease-out);
 }
 .tab[aria-selected="true"] { color: var(--ink); }
 .tab[aria-selected="true"] .tab__ico { transform: translateY(-1px) scale(1.08); }
@@ -202,7 +202,7 @@
   border-radius: 0 0 2px 2px;
   background: var(--gold);
   transform: scaleX(0);
-  transition: transform var(--t-med) var(--ease-spring);
+  transition: transform var(--t-enter) var(--ease-out);
 }
 .tab[aria-selected="true"]::before { transform: scaleX(1); }
 
@@ -218,7 +218,7 @@
   gap: var(--s4);
   justify-items: center;
   background: var(--paper);
-  transition: opacity var(--t-slow) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
 }
 .boot.is-done { opacity: 0; pointer-events: none; }
 .boot__mark {

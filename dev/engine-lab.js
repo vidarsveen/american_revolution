@@ -631,6 +631,89 @@ async function checkBeatsEarnTheirPlace() {
   return idle;
 }
 
+/**
+ * Does an overlay that a cue hides actually leave the screen?
+ *
+ * Every probe in this repo reads a class name, and for four rounds that was
+ * enough to report the fact box as fixed while it sat on screen for half a
+ * minute: `.ov-fact` had no hidden state in the stylesheet at all, so removing
+ * `is-on` changed nothing a viewer could see. A signature built out of class
+ * lists cannot catch that by construction — both passes agree, and both are
+ * wrong.
+ *
+ * So this one reads pixels. Effective opacity, with `display`, `visibility`
+ * and every ancestor's opacity folded in, which is the only number that
+ * answers "can you see it". It drives the real cue pair ANIMATED rather than
+ * instant, because the animated path is where the defect lived, and it polls
+ * instead of waiting a fixed time so it stays correct when a duration changes.
+ *
+ * Both halves are asserted. A surface that never appeared would otherwise
+ * pass as a surface that hides perfectly — the bench testing air, which this
+ * repo has already paid for once.
+ */
+const HIDEABLE = [
+  { show: 'fact.show',     hide: 'fact.hide',     sel: '.ov-fact' },
+  { show: 'quote.show',    hide: 'quote.hide',    sel: '.ov-quote' },
+  { show: 'portrait.show', hide: 'portrait.hide', sel: '.ov-portrait' },
+  { show: 'image.show',    hide: 'image.hide',    sel: '.ov-image' },
+  { show: 'compare.show',  hide: 'compare.clear', sel: '.ov-compare' },
+  { show: 'plate.show',    hide: 'plate.hide',    sel: '.stage-plate' },
+  { show: 'stat.show',     hide: 'stat.clear',    sel: '.stat-chip' },
+];
+
+/** What a viewer can actually see of `sel`, 0 to 1. */
+function seen(sel) {
+  let best = 0;
+  for (const node of document.querySelectorAll(sel)) {
+    // No box at all is the honest zero: display:none, or removed from flow.
+    if (!node.getClientRects().length) continue;
+    let o = 1;
+    for (let n = node; n && n !== document.documentElement; n = n.parentElement) {
+      const cs = getComputedStyle(n);
+      if (cs.display === 'none' || cs.visibility === 'hidden') { o = 0; break; }
+      o *= Number(cs.opacity);
+      if (o < 0.005) break;
+    }
+    best = Math.max(best, o);
+  }
+  return best;
+}
+
+async function checkOverlaysActuallyHide() {
+  const problems = [];
+  const checked = [];
+  const cues = chapter.scenes.flatMap((s) => s.cues);
+
+  for (const surf of HIDEABLE) {
+    const onCue = cues.find((c) => c.do === surf.show);
+    const offCue = cues.find((c) => c.do === surf.hide);
+    // A chapter that never shows a surface says nothing about it either way.
+    if (!onCue || !offCue) continue;
+
+    resetStage();
+    await settleSlow(80);
+
+    applyCue(onCue, false);
+    if (!await until(() => seen(surf.sel) > 0.5, 5000, 60)) {
+      problems.push(`${surf.show} left ${surf.sel} at opacity `
+        + `${seen(surf.sel).toFixed(2)} — it never came up, so nothing below `
+        + 'this line is being tested');
+      continue;
+    }
+
+    applyCue(offCue, false);
+    if (!await until(() => seen(surf.sel) < 0.01, 5000, 60)) {
+      problems.push(`${surf.hide} left ${surf.sel} on screen at opacity `
+        + `${seen(surf.sel).toFixed(2)} — the hide has no visible effect`);
+    }
+    checked.push(surf.sel);
+  }
+
+  resetStage();
+  await settleSlow(80);
+  return { problems, checked };
+}
+
 /* ------------------------------------------------------------
    Reporting
    ------------------------------------------------------------ */
@@ -723,9 +806,11 @@ async function runAll() {
   const dates = await checkEra();
   const depth = await checkDepthIsNotStageState();
   const idle = await checkBeatsEarnTheirPlace();
+  const visible = await checkOverlaysActuallyHide();
 
   const fails = sweep.failures.length + oneShots.problems.length
-    + epoch.problems.length + dates.problems.length + depth.problems.length;
+    + epoch.problems.length + dates.problems.length + depth.problems.length
+    + visible.problems.length;
 
   report(`<h2 class="${fails ? 'bad' : 'good'}">
     ${fails ? `${fails} rule-1 violation(s)` : 'Rule 1 holds'}
@@ -773,6 +858,14 @@ async function runAll() {
       : `<p class="good">Yes — same picture, same playhead, and a seek with the
          card open still rebuilds correctly.</p>`));
 
+  report(`<h3>Does every overlay a cue hides actually leave the screen?</h3>`);
+  report(visible.problems.length
+    ? visible.problems.map((p) => `<div class="fail">${esc(p)}</div>`).join('')
+    : (visible.checked.length
+      ? `<p class="good">Yes — ${visible.checked.length} surface(s) measured on
+         effective opacity, not on class names: ${esc(visible.checked.join(', '))}.</p>`
+      : `<p class="note">This chapter shows no hideable overlay — nothing to measure.</p>`));
+
   report(`<h3>Did every word anchor resolve?</h3>`);
   report(anchors.length
     ? `<div class="warn">${anchors.length} fell back to the start of the beat:
@@ -788,7 +881,7 @@ async function runAll() {
 
   status(fails ? `${fails} violation(s)` : 'clean');
   // The screenshot harness reads this.
-  window.__engineLab = { fails, sweep, oneShots, epoch, dates, depth, anchors, idle };
+  window.__engineLab = { fails, sweep, oneShots, epoch, dates, depth, anchors, idle, visible };
 }
 
 async function boot() {

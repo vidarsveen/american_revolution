@@ -92,7 +92,7 @@ def main() -> int:
     ap.add_argument("packs", nargs="*", help="default: every pack in content/")
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
-                    help="any of: script era data effects shell sw engine sound contrast")
+                    help="any of: script era data effects shell sw engine turn plate sound contrast")
     args = ap.parse_args()
 
     packs = args.packs or packs_on_disk()
@@ -135,6 +135,15 @@ def main() -> int:
     # reported before you have waited two minutes for a screenshot.
     if "engine" not in skip:
         ok &= run("check-engine", ["tools/check-engine.py"], env)
+
+    if "turn" not in skip:
+        ok &= run("check-turn", ["tools/check-turn.py"], env)
+
+    if "plate" not in skip:
+        for pack, chapter in [("italy-wine", "chapter-1-piemonte"),
+                              ("american-revolution", "chapter-1775-04-19")]:
+            ok &= run(f"check-plate {pack}", ["tools/check-plate.py",
+                                              "--pack", pack, "--chapter", chapter], env)
 
     if "sound" not in skip:
         ok &= run("check-sound", ["tools/check-sound.py"], env)

@@ -103,6 +103,10 @@
   --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
+  --fs-3xs:  0.625rem;               /* 10 — provenance only: a credit, a
+                                        licence, a made-mark. Never a sentence.
+                                        story.css read var(--fs-3xs) for months
+                                        against a token that existed nowhere. */
   --fs-2xs:  0.6875rem;              /* 11 */
   --fs-xs:   0.75rem;                /* 12 */
   --fs-sm:   0.8125rem;              /* 13 */
@@ -122,13 +126,31 @@
 
   --r-sm: 8px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
 
-  /* --- Motion -------------------------------------------- */
+  /* --- Motion --------------------------------------------
+     One scale. Every duration in the app is one of these six, and a number
+     written anywhere else is a defect -- see docs/design-direction.md.
+
+     They are derived rather than chosen. The unit of this film is a spoken
+     sentence, measured across three chapters at a median 8.3-9.5 s, and the
+     slow end is the 14 s drift on a still. Between those two the app used to
+     have four different answers to "how long does a thing take to arrive" --
+     220, 320, 420 and 900 ms -- none of them derived from anything, which is
+     how you get a scene card that is a cut wearing a fade.
+
+     900 ms is the anchor: it is the plate fade, the one arrival nobody ever
+     complained about, and about a tenth of a beat -- so a picture is complete
+     before the clause that named it is finished. */
   --ease-out:    cubic-bezier(.22, 1, .36, 1);
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
-  --ease-spring: cubic-bezier(.34, 1.32, .64, 1);
-  --t-fast: 140ms;
-  --t-med:  260ms;
-  --t-slow: 420ms;
+  /* --ease-spring is deleted, not renamed. A pin that pops past its size and
+     settles back is a notification; nothing in a documentary overshoots. */
+
+  --t-tap:      160ms;   /* a control answering a finger. Chrome only. */
+  --t-enter:    900ms;   /* a thing arriving: card, pin, number, fact, label */
+  --t-exit:     600ms;   /* the same thing leaving */
+  --t-dissolve: 1200ms;  /* one thing replacing another across the whole frame */
+  --t-turn:     1200ms;  /* the scene turning over: the veil closing, lifting */
+  --t-drift:    14s;     /* the slow push on a still */
 
   /* --- Chrome -------------------------------------------- */
   --topbar-h: 52px;

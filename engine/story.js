@@ -6,7 +6,8 @@ import { loadChapter } from './script.js';
 import { allChapters, chaptersOf } from './pack.js';
 import { mountDepth, unmountDepth, coach } from './depth.js';
 import { mapScene, getStoryMap } from './scenes/map.js';
-import { mountTransition, unmountTransition, LEAD_IN_MS } from './transition.js';
+import { mountTransition, unmountTransition, LEAD_IN_MS, IN_MS } from './transition.js';
+import { mountEnding, unmountEnding } from './ending.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark } from '../core/theme.js';
 import { checkVerbManifest, mountStage } from './stage.js';
@@ -15,7 +16,8 @@ import { Player } from './player.js';
 import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
 import { mountChrome } from './chrome.js';
 import { soundScene, unlockSound, setSilentSound, startSoundClock,
-         stopSoundClock, pauseSound, resumeSound, stopSound } from './scenes/sound.js';
+         stopSoundClock, pauseSound, resumeSound, stopSound,
+         fadeOutSound } from './scenes/sound.js';
 
 // Every narrated chapter of every pack, in order, filled in at boot from
 // content/packs.json and each pack.json. It was a hardcoded array of two,
@@ -39,6 +41,7 @@ const STR = {
     coverLangOther: 'Bytt til engelsk',
     noChapters: 'Ingen kapitler funnet. Sjekk content/packs.json.',
     tapToRead: 'Trykk for å lese mer',
+    endNext: 'Neste kapittel', endOverview: 'Til oversikten',
   },
   en: {
     play: 'Play', pause: 'Pause', back: 'Previous', forward: 'Next',
@@ -56,6 +59,7 @@ const STR = {
     coverLangOther: 'Switch to Norwegian',
     noChapters: 'No chapters found. Check content/packs.json.',
     tapToRead: 'Tap to read more',
+    endNext: 'Next chapter', endOverview: 'All chapters',
   },
 };
 
@@ -69,6 +73,7 @@ let started = false;
 let stageApi = null;
 let depth = null;
 let transition = null;
+let ending = null;
 let current = 0;
 
 /** Set by the shell, so the story can ask for a language change rather
@@ -161,6 +166,28 @@ async function openChapter(index) {
   // on every seek, and a card is not stage state.
   transition = mountTransition(view.querySelector('.story'));
 
+  // Also a sibling of the stage, and for the same reason: the end card sits
+  // ON the last picture, so resetStage() must not be able to reach it.
+  ending = mountEnding(view.querySelector('.story'), (what) => {
+    if (what === 'next' && current + 1 < CHAPTERS.length) {
+      ending.cancel();
+      fadeOutSound();
+      openChapter(current + 1);
+      return;
+    }
+    ending.cancel();
+    if (what === 'replay') {
+      // The bed goes with the ending, not with the chapter: a replay starts
+      // scene zero and its own cues bring the music back.
+      stopSound();
+      player.goToScene(0, { autoplay: false, at: 0 });
+      showCover('replay');
+      return;
+    }
+    fadeOutSound();
+    showCover('replay');
+  });
+
   depth = mountDepth(view.querySelector('.story'), {
     chapter,
     people: cast,
@@ -194,7 +221,7 @@ async function openChapter(index) {
       // Announce where we have arrived. Declines when this is not an opening
       // — a seek into the middle of a scene is you looking for something, not
       // the scene beginning — and when the chapter is not running.
-      transition?.announce(scene, {
+      const covered = transition?.announce(scene, {
         at,
         playing: Boolean(player?.playing),
         first: index === 0,
@@ -202,6 +229,10 @@ async function openChapter(index) {
       // The ducking schedule is a property of the scene, and it has to be in
       // place before the first word — not discovered as the voice arrives.
       soundScene(scene, { silent: player.silent });
+      // Tell the player whether it has cover. Returning this is the whole
+      // mechanism that moves the map's cut behind the veil: measured by
+      // tools/check-turn.py, which fails at 0.008 opacity without it.
+      return Boolean(covered);
     },
     onState: (s) => {
       chrome?.update(s);
@@ -223,14 +254,33 @@ async function openChapter(index) {
         stopSoundClock();
         pauseSound();
       }
-      // The end is not a pause. The cover is back and there is no narration
-      // left for a bed to sit under, so this one is a real stop.
-      if (s.finished) { stopSound(); showCover('replay'); }
+      // The end is not a pause, and it is not a menu either. The chapter
+      // used to stop on its last beat, cut the sound dead and put the cover
+      // back — fourteen minutes of building a picture thrown away in one
+      // frame. Now the picture HOLDS, the bed comes up as the ducking stops
+      // with the clock, and a card arrives after two seconds of silence and
+      // waits to be dismissed. See engine/ending.js.
+      if (s.finished) {
+        const nextTitle = current + 1 < CHAPTERS.length
+          ? titleOf(CHAPTERS[current + 1]) : null;
+        if (!ending?.show(chapter, { next: nextTitle, t })) {
+          stopSound();
+          showCover('replay');
+        }
+      } else {
+        // Scrubbed back in, or replayed. An end card that outlived the end
+        // would be the musket problem in a bigger shape.
+        ending?.cancel();
+      }
     },
   });
 
-  // The pause the title card lives in.
+  // The pause the title card lives in, and how long the veil takes to close
+  // over the outgoing picture. Both are properties of the device in
+  // engine/transition.js; the player is told them and knows nothing else
+  // about it.
   player.leadInMs = LEAD_IN_MS;
+  player.coverMs = IN_MS;
 
   chrome = mountChrome(
     view.querySelector('.story__chrome'),
@@ -279,6 +329,8 @@ function teardown() {
   unmountDepth();
   depth = null;
   unmountTransition();
+  unmountEnding();
+  ending = null;
   transition = null;
   stopSoundClock();
   stopSound();

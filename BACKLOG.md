@@ -5,6 +5,193 @@ re-deriving why. Newest concerns first within each section.
 
 ---
 
+## The design direction, and the app reconciled to it
+
+Work had become reactive — the fade is too fast, the term box stays too long,
+the region label looks odd, there are no sound effects — each fixed by hand
+against no stated standard. Measured, the numbers plainly disagreed: **four
+different answers to "how long does a thing take to arrive"** (220, 320, 420,
+900 ms), and a 117x range between the fastest thing on screen and the slowest,
+with nothing in between chosen on purpose.
+
+So the first deliverable was not a fix. `docs/design-direction.md` is the
+standard, `CLAUDE.md` links it, and everything below is a consequence of it.
+
+**One motion scale, six tokens**, derived rather than picked: the unit of the
+film is a spoken sentence (median beat 8.3–9.5 s across three chapters) and the
+slow end is the 14 s drift on a still. `--t-tap 160` `--t-enter 900`
+`--t-exit 600` `--t-dissolve 1200` `--t-turn 1200` `--t-drift 14s`. 900 ms is
+the anchor because it is the plate fade — the one arrival nobody complained
+about — and about a tenth of a beat. `--t-fast/-med/-slow` are gone from all
+nine stylesheets; `--ease-spring` is deleted, and the same curve written out by
+hand in `atlas.css` went with it.
+
+**Nothing on the stage translates or scales on entry any more.** `mk-pop`'s
+`scale(.4)`, `chip-in`'s translate+scale, the portrait's and quote's
+`scale(.97)`, three `translateY`s, and `cap-in` — the caption cuts now, because
+it carries the words and the words start immediately.
+
+**The scene turn was a cut wearing a fade**: 320 in, 700 out, 900 ms of
+silence. Now 1200 / 1600 / 1200 with `LEAD_IN_MS` 2800 — total 4.0 s against
+3.62, so the silence triples and the length barely moves.
+
+**And the device was running in front of the thing it existed to hide.**
+`engine/story.js` called `mapScene()` and the player called `rebuildTo()` at
+t = 0, while the veil was still transparent — measured at **0.008 opacity when
+the picture changed**. The veil was also .82 rather than opaque, so even once
+it arrived the cut showed through. `onScene` now returns whether a card is up,
+`player.coverMs` defers the rebuild until the veil is closed, and every rebuild
+bumps `_rebuildToken` so a scrub landing inside that 1200 ms window wins — the
+async-cue hazard in a new shape. `tools/check-turn.py` measures it: the rebuild
+now lands at ~1100 ms with the veil at 1.000, and the check was confirmed by
+putting the old ordering back and watching it fail.
+
+**Reduced motion no longer suppresses the scene card.** It returned early while
+`LEAD_IN_MS` still ran, so a reduced-motion viewer got 2.8 s of silence over a
+stage that had changed and was never told a scene had ended. The card cuts in
+and out instead: the concern is vestibular — movement, not change.
+
+**The region label was a watermark.** Italic, uppercase, .18em, 14px — larger
+than every label it sat among while naming the least important thing on screen,
+and at 14px that tracking is 2.5px between letters, which destroys word shape.
+Now 11px / 600 / .08em, upright, mixed case. That is the "text looks very
+weird" complaint.
+
+**A probe that reads a class name is not a visibility check.** `dev/engine-lab.js`
+now measures effective opacity — `display`, `visibility` and every ancestor's
+opacity folded in — for six overlay surfaces, driving the real show/hide pair
+animated and polling rather than waiting a fixed time. Reintroducing the
+`.ov-fact` bug makes it fail with `fact.hide left .ov-fact on screen at opacity
+1.00`. Clean on all eight chapters in both motion modes.
+
+**The plate-to-plate transition never ran at all.** "Every transition is
+poor", and this was the biggest one. Three beats of the wine chapter write
+"replace this picture" as a `plate.hide` and a `plate.show` both at `start` of
+the same beat (s0.b3, s3.b4, s5.b7; s6.b5-b6 does it a beat apart).
+`showPlate()` decided whether to cross-dissolve by asking whether the container
+still had `is-on` — and `hidePlate()` had just removed it. So every replacement
+took the hard-cut branch. Measured at s0.b3: `druer-kasse` at scale 1.100 and
+full opacity in one 80 ms sample, `dal-avstengt` at scale 1.000 and full opacity
+in the next, ghost at 0 throughout. The picture snapped back to its opening
+framing and swapped source inside one frame — "at the end of that one it is
+basically rescaling, for a microsecond". The engine has had a ghost element for
+carrying the outgoing picture since plates were built; it simply never ran.
+
+The test is now whether the old picture is *visible* — computed opacity and
+visibility — not whether it holds a class. Same lesson as `.ov-fact` and the
+scene veil, three layers apart.
+
+**And the outgoing picture used to freeze.** Now that dissolves happen, the
+ghost carries on drifting at the rate it already had: a moving image dissolving
+into a still one reads as a stall, and it is most of the difference between a
+transition and a swap. The live transform is a matrix, so carrying the drift on
+means scaling the matrix, not editing a `scale()` string — `carriedOn()`.
+
+`tools/check-plate.py` asks "when the picture changed, was there a window in
+which both were on screen?", which is what a dissolve is and nothing else
+produces. **Its first version passed cleanly on the bug it was written for**,
+because it looked for a jump in scale on one image and excluded samples where
+the source changed — the only moment this can happen. Its second version
+reported three false failures, because reusing one page means seeking backwards
+between beats and a media element reports where it IS, not where it was told to
+go, so the cues were applied by the rebuild instead of live. A fresh page per
+beat. Confirmed by reintroducing the bug and watching it fail.
+
+**The region label was made worse before it was made better.** The first pass
+took it to 11px on this document's own argument that a region is "the least
+important thing on screen". That made it the smallest type on the map and
+brought the complaint back sharper — "tiny, and not professional". The premise
+was wrong: a named region here is usually the subject of the sentence. The
+honest distinction is of kind, not rank — a point name is small, dark, tight,
+with a dot; an area name is larger, lighter, spread, quieter, with no dot.
+15px/550/.05em, and `docs/design-direction.md` was corrected rather than quietly
+deviated from.
+
+**Composition: two faults, both fixed, neither in the script.** At `s2.b7` the
+line is "Og Piemonte, helt nordvest, har Nebbiolo" and the frame showed neither.
+
+- **The fact box was sitting in the middle of the map.** `.ov-deck--mid` is
+  `top: 32%`, so the card explaining Nebbiolo landed squarely on Piemonte — the
+  overlay explaining the subject was covering the subject. It is the left half
+  of the lower deck now, opposite the stats and above the caption: it
+  interrupts the picture's edge and nothing else, which is all the direction
+  ever allowed it.
+- **A named region could never win a label collision.** `declutter()` sorts by
+  rank and a city was 3 while a region maxed at 2.9, so Torino — a standing
+  label nobody asked for — beat Piemonte, which the narration was naming. A
+  region is only in that layer because `region.show` put it there, so it now
+  outranks a standing city at 4 + area. All four regions in the shot are named
+  now, where one was. The shrink pass three lines above says in a comment that
+  it exists to stop exactly this, and the sort order guaranteed it anyway.
+
+Still open: at the last beat the camera sits on all of central Europe while
+`Alba`, `Barolo`, `Barbaresco`, `Langhe` and `Asti` pile into a ten-pixel box.
+A region too small on screen to carry its own name is a camera fault, and no
+label size or rank fixes it — the places want a `minZoom`, or the beat wants a
+camera.
+
+**The chapter has an ending now.** It used to be `stopSound(); showCover('replay')`
+— stop on the last beat, cut the sound dead, throw away the picture fourteen
+minutes went into building, and put a menu there. `engine/ending.js`: two
+seconds of silence with the last picture holding, then a veil at .52 that the
+stage is still legible through, then a card with the date line, the chapter
+title, one written sentence, one number with its label, and its doors. **Held
+until tapped** — the narrator sets the pace for the whole chapter, and this is
+the one moment the viewer holds.
+
+Three things it gets right by construction:
+
+- **The stage is not reset.** The card sits on the map the chapter ended on,
+  which is the ground it belongs on. Mounted as a sibling of `.story__stage`
+  so `resetStage()` cannot reach it, exactly as the scene card is.
+- **`chapter.ending` is metadata, not a cue** — a cue would replay on every
+  seek and stack end cards, which is the musket problem. Optional: a chapter
+  without one still gets a card, just a barer one. It has to be named in the
+  whitelist in `engine/script.js:compile()` or it silently does nothing, which
+  is the mistake that comment warns about.
+- **The bed comes up on its own**, because the ducking schedule stops with the
+  clock. `fadeOutSound()` lets it go over four seconds when the card is
+  dismissed, instead of the hard `stopSound()` that is still right for tearing
+  a chapter down.
+
+Two faults found by shooting it rather than reading it: the subtitle printed
+twice, once as the kicker and once as the sentence, because the sentence fell
+back to it; and the map's own labels read straight through the title —
+"Tåka og tørsten" came out with Torino and Toscana inside it. A soft radial
+scrim gives the type ground while the picture stays visible around it.
+
+`content/italy-wine/chapter-1-piemonte.json` is the only chapter with an
+`ending` written. The other seven fall back to title and date, and want one
+sentence and one number each.
+
+Still open from the direction, in its own order:
+
+- **Sound.** The grammar is written and nothing is applied yet: one bed per
+  scene in its first beat, at least one unscored scene per chapter, one effect
+  per beat and none within 20 s, ambience never ducks, and levels stated
+  against the bed rather than per cue. **One measurement is owed first** —
+  every `sound.music` cue carries −6…−12 dB on top of the bus's own −14, so
+  deleting the cue gains before moving the level into `bedDb` would make every
+  chapter's music three times louder on the same day.
+- **`content/roman-empire/chapter-44bc-octavian.json` fires `cannon` ×3,
+  `musket`, `volley` ×2, `alarmBell` ×2 and a `churchBell` — in 44 BC.** Found
+  by the direction pass, not by any tool. Every catalogue entry wants a year
+  range and `check-script.py` should refuse one the pack's era does not
+  contain.
+- **The ending.** Still `stopSound(); showCover('replay')`. The direction
+  prescribes 2 s of silence, a veil at .62 over the *unreset* stage, the bed
+  rising from ducked to 0, and a held card the viewer dismisses.
+- **Etna.** `s1.b6` says the vineyards sit nine hundred metres up a volcano and
+  shows a map pin. It wants a picture and a cross-section. Note that the beat
+  already carries a `plate.hide` at `start` and a `marker.show`, and
+  `check-script.py` rejects a plate over an animating cue — so it is a re-cut
+  of two beats, not a one-line addition.
+- **34 literal font sizes across `css/`**, thirteen in `story.css`. The scale
+  now has `--fs-3xs`, which `story.css:1393` had been reading against a token
+  that existed nowhere.
+
+---
+
 ## The framework pass — phase 0, the safety net
 
 The app is being generalised into a framework for narrating any historical

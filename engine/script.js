@@ -277,6 +277,19 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
     title: pick(chapter.title, lang),
     subtitle: pick(chapter.subtitle, lang),
     blurb: pick(chapter.blurb, lang),
+    // How the chapter LANDS. Metadata, not a cue: a cue would replay on every
+    // seek and stack end cards, which is the musket problem. Optional — a
+    // chapter with none still gets an end card, just a barer one. Resolved
+    // here because everything the engine reads has to be in this whitelist;
+    // leaving it out means the field silently does nothing.
+    ending: chapter.ending ? {
+      say: pick(chapter.ending.say, lang),
+      figure: chapter.ending.figure ? {
+        value: pick(chapter.ending.figure.value, lang)
+               ?? chapter.ending.figure.value,
+        label: pick(chapter.ending.figure.label, lang),
+      } : null,
+    } : null,
     places: chapter.places || {},
     routes: chapter.routes || {},
     // Where region names resolve from, relative to the pack. compile() passes

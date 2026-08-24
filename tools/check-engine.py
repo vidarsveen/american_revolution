@@ -101,6 +101,18 @@ def report(r, name) -> bool:
             bad = True
             print(f"    FAIL {p}")
 
+    vis = r.get("visible") or {}
+    if not vis:
+        pass
+    elif not vis.get("checked") and not vis.get("problems"):
+        print("  overlays hide     : no hideable overlay in this chapter")
+    else:
+        print(f"  overlays hide     : {len(vis.get('checked', []))} surface(s) "
+              f"measured on pixels, {len(vis.get('problems', []))} problem(s)")
+        for p in vis.get("problems", []):
+            bad = True
+            print(f"    FAIL {p}")
+
     if r["anchors"]:
         print(f"  word anchors      : {len(r['anchors'])} fell back to the "
               f"start of the beat")

@@ -118,7 +118,7 @@
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-sm);
   color: var(--ink-soft);
-  transition: transform var(--t-fast) var(--ease-out), color var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), color var(--t-tap);
 }
 .map-tool:active { transform: scale(.92); }
 .map-tool svg { width: 20px; height: 20px; }
@@ -138,10 +138,10 @@
   background: none;
   border: 0;
   transform-origin: 50% 50%;
-  animation: mk-in 420ms var(--ease-spring) backwards;
+  animation: mk-in var(--t-enter) var(--ease-out) backwards;
 }
 @keyframes mk-in {
-  from { opacity: 0; transform: scale(.3) translateY(6px); }
+  from { opacity: 0; }
 }
 
 /* The colour rides in as an inline --mk-color, set from the pack's palette.
@@ -161,8 +161,8 @@
   color: #fff8ea;
   border: 1.5px solid rgba(255, 250, 240, .92);
   box-shadow: var(--shadow-marker);
-  transition: transform var(--t-med) var(--ease-spring),
-              opacity var(--t-med) var(--ease-out);
+  transition: transform var(--t-enter) var(--ease-out),
+              opacity var(--t-enter) var(--ease-out);
 }
 .mk__body svg { width: 62%; height: 62%; display: block; }
 
@@ -229,7 +229,7 @@
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--t-med) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
 }
 /* Labels only once there is room for them */
 .map-z-mid .mk--imp3 .mk__label,
@@ -290,7 +290,7 @@
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--t-med) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
 }
 .place--region {
   font-size: 13px;

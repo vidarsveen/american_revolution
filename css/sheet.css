@@ -9,7 +9,7 @@
   background: rgba(24, 18, 10, .42);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--t-med) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
 }
@@ -27,7 +27,7 @@
   background: var(--paper-raised);
   box-shadow: var(--shadow-lg);
   transform: translateY(100%);
-  transition: transform var(--t-slow) var(--ease-out);
+  transition: transform var(--t-enter) var(--ease-out);
   will-change: transform;
   overscroll-behavior: contain;
 }
@@ -78,7 +78,7 @@
   border-radius: 50%;
   background: var(--paper-sunken);
   color: var(--ink-soft);
-  transition: transform var(--t-fast) var(--ease-out);
+  transition: transform var(--t-tap) var(--ease-out);
 }
 .sheet__close::after {
   content: '';
@@ -282,7 +282,7 @@
   font-weight: 600;
   color: var(--ink);
   text-align: left;
-  transition: transform var(--t-fast) var(--ease-out), background var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), background var(--t-tap);
 }
 .chip:active { transform: scale(.95); }
 .chip--plain { padding-left: var(--s3); }
@@ -328,7 +328,7 @@
   margin-left: auto;
   width: 15px; height: 15px;
   color: var(--ink-faint);
-  transition: transform var(--t-med) var(--ease-out);
+  transition: transform var(--t-enter) var(--ease-out);
 }
 .wiki[open] .w-caret,
 .wiki.is-open .w-caret { transform: rotate(180deg); }
@@ -336,7 +336,7 @@
 .wiki__panel {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--t-slow) var(--ease-out);
+  transition: grid-template-rows var(--t-enter) var(--ease-out);
 }
 .wiki.is-open .wiki__panel { grid-template-rows: 1fr; }
 .wiki__inner { overflow: hidden; }
@@ -422,7 +422,7 @@
   border-radius: var(--r-md);
   font-size: var(--fs-sm);
   font-weight: 700;
-  transition: transform var(--t-fast) var(--ease-out), background var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), background var(--t-tap);
 }
 .btn svg { width: 17px; height: 17px; flex: none; }
 .btn:active { transform: scale(.97); }

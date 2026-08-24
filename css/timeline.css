@@ -18,7 +18,7 @@
   -webkit-backdrop-filter: blur(16px) saturate(1.5);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-md);
-  transition: transform var(--t-med) var(--ease-out), opacity var(--t-med);
+  transition: transform var(--t-enter) var(--ease-out), opacity var(--t-enter);
 }
 /* Slide it out of the way while the sheet is up */
 .sheet-open .scrubber { transform: translateY(140%); opacity: 0; pointer-events: none; }
@@ -40,7 +40,7 @@
   background: var(--ink);
   color: var(--paper);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--t-fast) var(--ease-spring), background var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), background var(--t-tap);
 }
 .play-btn:active { transform: scale(.9); }
 .play-btn svg { width: 18px; height: 18px; }
@@ -133,7 +133,7 @@
   background: var(--ink-faint);
   transform: translateX(-50%);
   opacity: .5;
-  transition: opacity var(--t-fast), background var(--t-fast);
+  transition: opacity var(--t-tap), background var(--t-tap);
 }
 .scrubber__dot--imp3 { width: 7px; height: 7px; margin-top: -12px; background: var(--gold); opacity: .95; }
 .scrubber__dot--seen { opacity: .95; background: var(--blue); }
@@ -149,7 +149,7 @@
   border: 2.5px solid var(--ink);
   box-shadow: var(--shadow-sm);
   pointer-events: none;
-  transition: transform var(--t-fast) var(--ease-out);
+  transition: transform var(--t-tap) var(--ease-out);
 }
 .scrubber__track.is-dragging .scrubber__thumb { transform: scale(1.25); }
 
@@ -180,7 +180,7 @@
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
-  transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out), transform var(--t-enter) var(--ease-out);
 }
 .tour-caption.is-on { opacity: 1; transform: none; }
 .tour-caption__date {
@@ -240,7 +240,7 @@
   font-weight: 600;
   color: var(--ink-soft);
   white-space: nowrap;
-  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+  transition: background var(--t-tap), color var(--t-tap), border-color var(--t-tap);
 }
 .filter[aria-pressed="true"] {
   background: var(--ink);
@@ -308,7 +308,7 @@
   border-radius: 50%;
   background: var(--paper);
   border: 2.5px solid var(--ink-faint);
-  transition: transform var(--t-med) var(--ease-spring), border-color var(--t-fast);
+  transition: transform var(--t-enter) var(--ease-out), border-color var(--t-tap);
 }
 .tl-card .tl-card__node { border-color: var(--side, var(--rule-strong)); }
 .tl-card--imp3 .tl-card__node {
@@ -326,7 +326,7 @@
   background: var(--paper-raised);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--t-fast) var(--ease-out), box-shadow var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), box-shadow var(--t-tap);
 }
 .tl-card:active .tl-card__body { transform: scale(.985); box-shadow: none; }
 
@@ -404,7 +404,7 @@
   background: var(--paper-raised);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--t-fast) var(--ease-out), box-shadow var(--t-fast);
+  transition: transform var(--t-tap) var(--ease-out), box-shadow var(--t-tap);
 }
 .pcard:active { transform: scale(.975); box-shadow: none; }
 

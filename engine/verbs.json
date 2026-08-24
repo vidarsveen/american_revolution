@@ -695,7 +695,7 @@
     },
     "into": {
      "type": "seconds",
-     "note": "The cross-dissolve when this plate REPLACES another one that is already up. Default 1.1. Ignored when the plate is coming up over the map, which the whole plate already dissolves for."
+     "note": "The cross-dissolve when this plate REPLACES another one that is already up. Default 1.2 (--t-dissolve). Ignored when the plate is coming up over the map, which the whole plate already dissolves for."
     }
    }
   },
@@ -707,8 +707,8 @@
    "args": {
     "over": {
      "type": "seconds",
-     "default": 0.9,
-     "note": "The cross-dissolve back to the map."
+     "default": 1.2,
+     "note": "The cross-dissolve back to the map. --t-dissolve in docs/design-direction.md."
     }
    }
   },

@@ -152,7 +152,7 @@
   font-family: var(--font-display, Georgia, serif);
   font-size: 13px;
   font-weight: 650;
-  letter-spacing: .04em;
+  letter-spacing: .01em;
   white-space: nowrap;
   color: var(--atlas-ink);
   /* A halo, not a glow: repeating the blurred shadow compounds its alpha
@@ -173,18 +173,38 @@
   background: var(--atlas-ink);
   box-shadow: 0 0 0 1.5px var(--atlas-halo);
 }
+/* AN AREA NAME, not a watermark and not a shrunken town.
+
+   It was italic, uppercase, tracked .18em at 14px. At that size .18em is
+   2.5px between letters, which destroys word shape, so it read slower than a
+   town name a third of its size -- shouting and mumbling at once, which is
+   what "looks very weird" meant.
+
+   The first fix took it to 11px on the argument that a region is the least
+   important thing on screen, and that was simply wrong: it made this the
+   SMALLEST type on the map and brought the complaint straight back as "tiny,
+   and not professional". In this app a named region is usually the subject of
+   the sentence -- "Og Piemonte, helt nordvest, har Nebbiolo" -- not
+   background.
+
+   The honest distinction is of KIND, not rank. A point label names somewhere
+   you could stand: small, dark, tightly set, with a dot. An area label names
+   ground you would be inside: larger, lighter, slightly spread, quieter, no
+   dot. Larger AND quieter at once is what stops it reading as another pin,
+   and it is how every atlas sets a region bigger than the towns within it
+   without the region ever shouting. docs/design-direction.md, "A label is not
+   a watermark". */
 .atlas-place--region {
-  font-style: italic;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: .05em;
   color: var(--atlas-ink-quiet);
   margin-left: 0;
   transform-origin: 0 0;
 }
 .atlas-place--region::before { display: none; }
-.atlas-place--town { font-size: 11.5px; font-weight: 550; color: var(--atlas-ink-quiet); }
+.atlas-place--town { font-size: 11px; font-weight: 550; letter-spacing: .01em;
+                     color: var(--atlas-ink-quiet); }
 
 /* ---------- Unit counters: flag, commander, strength ---------- */
 .atlas-unit {
@@ -271,7 +291,8 @@
   inset: 0;
   pointer-events: none;
   mix-blend-mode: multiply;
-  transition: background 2.4s var(--ease-in-out, ease), opacity 2.4s var(--ease-in-out, ease);
+  transition: background calc(2 * var(--t-turn)) var(--ease-in-out),
+              opacity    calc(2 * var(--t-turn)) var(--ease-in-out);
 }
 .atlas__mood[data-mood="day"]   { background: transparent; opacity: 0; }
 .atlas__mood[data-mood="dawn"]  { background: linear-gradient(180deg, #ffd2a0, #f8cba4 45%, #e6d2bc); opacity: .30; }
@@ -313,7 +334,7 @@
   pointer-events: none;
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity var(--t-med, .26s), transform var(--t-med, .26s);
+  transition: opacity var(--t-enter), transform var(--t-enter);
 }
 .atlas__time.is-on { opacity: 1; transform: none; }
 
@@ -326,9 +347,9 @@
   gap: 6px;
   pointer-events: none;
   transform-origin: 0 50%;
-  animation: atlas-pop 380ms cubic-bezier(.34, 1.32, .64, 1) backwards;
+  animation: atlas-pop var(--t-enter) var(--ease-out) backwards;
 }
-@keyframes atlas-pop { from { opacity: 0; transform: scale(.4); } }
+@keyframes atlas-pop { from { opacity: 0; } }
 .atlas-pin i {
   flex: none;
   width: 11px; height: 11px;

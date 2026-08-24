@@ -547,8 +547,16 @@ export function createMap(host, opts = {}) {
       const [, top] = toScreen(s.bounds ? s.bounds[1][0] : 0, 0);
       const [, bottom] = toScreen(s.bounds ? s.bounds[0][0] : 0, 0);
       const area = Math.abs(right - left) * Math.abs(bottom - top);
+      /* A SHOWN REGION OUTRANKS A STANDING CITY.
+         It used to be 2 + area, against 3 for every city, so a region could
+         never win a collision -- and a region is only in this layer because
+         `region.show` put it there, which means the script is talking about
+         it. Measured: "Og Piemonte, helt nordvest, har Nebbiolo" drew Piemonte
+         as an unlabelled patch of colour, because Torino sits inside it and
+         Torino was rank 3. That is the exact failure the shrink pass above
+         says it exists to prevent, still guaranteed by the sort order. */
       // `shrink` is the smaller form declutter tries before dropping the name.
-      labels.push({ n, x: placed.x, y, rank: 2 + Math.min(0.9, area / 4e5),
+      labels.push({ n, x: placed.x, y, rank: 4 + Math.min(0.9, area / 4e5),
                     centred: true, w: placed.w, shrink: placed.shrink });
     }
 
@@ -809,7 +817,11 @@ export function createMap(host, opts = {}) {
     const [bx, by] = project(to.lon, to.lat);
     const screens = (Math.hypot(bx - ax, by - ay) * s) / Math.max(size.w, size.h, 1);
     const dz = Math.abs(to.zoom - from.zoom);
-    return clamp(speed * (0.5 + 0.5 * Math.min(screens, 3) + 0.15 * dz), 0.9, 7);
+    // A camera flight is a distance, not a duration -- but it is bounded.
+    // Below 1.4 s a fly is a cut and the eye loses the ground it was holding;
+    // above 6 s it is two thirds of a spoken sentence spent travelling.
+    // docs/design-direction.md.
+    return clamp(speed * (0.5 + 0.5 * Math.min(screens, 3) + 0.15 * dz), 1.4, 6);
   }
 
   /**

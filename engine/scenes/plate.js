@@ -46,6 +46,12 @@ let imgEl = null;
 let capEl = null;
 let badgeEl = null;
 let ghostEl = null;
+/* How fast the picture that is currently up is drifting, in scale per second,
+   and where it is heading. The ghost needs it: an outgoing frame that FREEZES
+   under a moving incoming one is what makes a dissolve look cheap -- the eye
+   reads the stillness as a stall. Kept as a rate rather than a timer so it
+   survives being recomputed at any moment. */
+let drift = { rate: 0, dx: 0, dy: 0 };
 let chapter = null;
 let lang = 'no';
 let showing = null;
@@ -157,14 +163,44 @@ function clearGhost() {
   ghostEl.removeAttribute('src');
 }
 
-function dissolveFrom(prevSrc, prevTransform, over) {
+/**
+ * Where the outgoing picture would have got to, `over` seconds from now.
+ *
+ * The live transform is a MATRIX, not the `scale(...) translate(...)` that was
+ * written -- getComputedStyle resolves it, and percentage translations are
+ * already in pixels by the time we read it. So carrying the drift on means
+ * scaling the matrix, not editing a string.
+ *
+ * Scaling the whole matrix by k is exactly right rather than approximately:
+ * `scale(s) translate(t%)` composes to a matrix whose translation is s*t, so
+ * taking s to s' takes the translation to (s'/s)*(s*t) -- which is what
+ * multiplying every component by k does.
+ */
+function carriedOn(fromTransform, over) {
+  if (!fromTransform || fromTransform === 'none') return null;
+  let m;
+  try { m = new DOMMatrixReadOnly(fromTransform); } catch { return null; }
+  if (!m.a || !drift.rate) return null;
+  const k = (m.a + drift.rate * over) / m.a;
+  return `matrix(${m.a * k}, ${m.b * k}, ${m.c * k}, ${m.d * k}, ${m.e * k}, ${m.f * k})`;
+}
+
+function dissolveFrom(prevSrc, prevTransform, over, origin) {
   if (!ghostEl || !prevSrc) return;
   ghostEl.src = prevSrc;
   ghostEl.style.transition = 'none';
+  ghostEl.style.transformOrigin = origin || '';
   ghostEl.style.transform = prevTransform || '';
   ghostEl.style.opacity = '1';
   void ghostEl.offsetWidth;
-  ghostEl.style.transition = `opacity ${over}s var(--ease-in-out, ease-in-out)`;
+  // The outgoing picture keeps moving at the rate it already had. A dissolve
+  // between a moving image and a frozen one reads as a stall, and it is the
+  // difference between a transition and a swap.
+  const on = carriedOn(prevTransform, over);
+  ghostEl.style.transition = on
+    ? `opacity ${over}s var(--ease-in-out, ease-in-out), transform ${over}s linear`
+    : `opacity ${over}s var(--ease-in-out, ease-in-out)`;
+  if (on) ghostEl.style.transform = on;
   ghostEl.style.opacity = '0';
 }
 
@@ -212,7 +248,11 @@ export function showPlate(cue, instant) {
   showing = cue.id;
 
   const prevSrc = imgEl.getAttribute('src');
-  const prevTransform = imgEl.style.transform;
+  // The LIVE transform, not the declared one: mid-drift the inline style still
+  // says where the picture is going, and the ghost has to start where it
+  // actually IS or the handover jumps by the whole remaining push.
+  const prevTransform = getComputedStyle(imgEl).transform;
+  const prevOrigin = getComputedStyle(imgEl).transformOrigin;
   if (!same) {
     imgEl.src = mediaUrl(chapter.pack, m.file);
     imgEl.alt = pick(m.title) || '';
@@ -232,6 +272,9 @@ export function showPlate(cue, instant) {
 
   const start = `scale(${spec.from}) translate(${spec.dx}%, ${spec.dy}%)`;
   const end = `scale(${spec.to}) translate(${-spec.dx}%, ${-spec.dy}%)`;
+  // Recorded for the NEXT picture's ghost, so the outgoing frame carries on at
+  // the speed it was going rather than freezing.
+  drift = { rate: over > 0 ? (spec.to - spec.from) / over : 0, dx: spec.dx, dy: spec.dy };
 
   if (instant || reduced()) {
     // Land on the END framing with no animation. Replaying fourteen seconds
@@ -253,9 +296,34 @@ export function showPlate(cue, instant) {
     // Replacing a picture that is already up: carry the old one under the new
     // one and fade between them. Replacing nothing (the plate was down) needs
     // no ghost -- the whole plate cross-dissolves from the map already.
-    const over = cue.into ?? 1.1;
-    if (prevSrc && root.classList.contains('is-on')) {
-      dissolveFrom(prevSrc, prevTransform, over);
+    // --t-dissolve. One thing replacing another across the whole frame is
+    // one event at one duration, whether it is a plate over a plate or a
+    // plate over the map. 1.1 was close and arbitrary; 1.2 is the scale's.
+    const over = cue.into ?? 1.2;
+
+    /* IS THE OLD PICTURE STILL ON THE SCREEN -- not "does it still have the
+       class that usually means it is".
+
+       Three beats of the wine chapter write "replace this picture" as a
+       `plate.hide` and a `plate.show` both at `start` of the same beat, and
+       hidePlate() removes `is-on`. So this test was false at the exact moment
+       it mattered most, the ghost was skipped, and the replacement became a
+       HARD CUT: measured at s0.b3, druer-kasse at scale 1.100 and full
+       opacity in one sample, dal-avstengt at scale 1.000 and full opacity in
+       the next, with the ghost at 0 throughout. The picture visibly snapped
+       back to its opening framing and swapped in one frame -- "at the end of
+       that one it is basically rescaling, for a microsecond".
+
+       The class was never the question. The question is whether a viewer can
+       still see it, and only the computed style answers that: the fade-out
+       may be a frame old or most of a second old, and either way the old
+       picture is on screen and has to be carried. This is the same lesson as
+       .ov-fact and the scene veil -- a probe that reads a class name is not
+       looking at the screen. */
+    const cs = getComputedStyle(root);
+    const stillUp = cs.visibility !== 'hidden' && Number(cs.opacity) > 0.01;
+    if (prevSrc && stillUp) {
+      dissolveFrom(prevSrc, prevTransform, over, prevOrigin);
       imgEl.style.transition = 'none';
       imgEl.style.opacity = '0';
       imgEl.style.transform = start;
@@ -281,7 +349,7 @@ export function showPlate(cue, instant) {
 export function hidePlate(cue) {
   if (!root) return;
   showing = null;
-  const over = cue?.over ?? 0.9;
+  const over = cue?.over ?? 1.2;   // --t-dissolve, as above
   root.style.setProperty('--plate-out', `${over}s`);
   root.classList.remove('is-on');
   // Clear the badge too. Leaving it set is invisible — the whole plate is at

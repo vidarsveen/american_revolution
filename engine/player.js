@@ -44,6 +44,21 @@ export class Player {
     this._lastWord = -1;
     /** Silence at a scene join. Set by the shell; 0 disables it. */
     this.leadInMs = 0;
+    /**
+     * How long the scene card's veil takes to become opaque. Set by the
+     * shell; 0 disables the deferral. The player does not import the device
+     * — it is told a number, the same way it is told leadInMs.
+     */
+    this.coverMs = 0;
+    /**
+     * Bumped by every rebuild, from anywhere. A scene change defers its own
+     * rebuild until the veil is closed, and a scrub landing inside that
+     * window must win — so the deferred one carries the token it was issued
+     * and drops itself if anything rebuilt in the meantime. This is the
+     * async-cue hazard in CLAUDE.md in a new shape: an awaited handler that
+     * lands out of order and undoes a later, correct picture.
+     */
+    this._rebuildToken = 0;
 
     this.audio.addEventListener('ended', () => this.next());
     this.audio.addEventListener('seeked', () => { this._seeking = false; });
@@ -112,8 +127,20 @@ export class Player {
       if (scene.audio) this.audio.src = scene.audio;
       // `at` is passed because onScene fires BEFORE setNow — anything asking
       // now() here would be told where we just left, not where we landed.
-      this.onScene(scene, i, at);
+      //
+      // It returns true when it put a title card up, which is the same thing
+      // as saying "there is a veil closing, change the picture behind it".
+      const covered = this.onScene(scene, i, at);
       this.warmNext(i);
+      // The cut used to happen HERE, at t=0, while the veil was still fully
+      // transparent — the device built to hide the scene change ran in front
+      // of it, and the change it was hiding was the first thing you saw.
+      if (covered && this.coverMs > 0) {
+        const token = this._rebuildToken;
+        await new Promise((r) => setTimeout(r, this.coverMs));
+        // Scrubbed, or sent somewhere else, while the veil was closing.
+        if (token !== this._rebuildToken || this.sceneIndex !== i) return;
+      }
     }
     this.rebuildTo(at, { soft: true });
     this.setNow(at);
@@ -297,11 +324,14 @@ export class Player {
   rebuildTo(t, { soft = false } = {}) {
     const scene = this.scene;
     if (!scene) return;
+    // Any rebuild, from anywhere, retires a deferred one. See _rebuildToken.
+    this._rebuildToken += 1;
     // `soft` reaches resetPlate: a SCENE CHANGE fades the outgoing picture,
     // a SCRUB cuts it. Same end state either way, so rule 1 does not care --
     // only the pixels in between differ. Cutting on a scene change is the
-    // "abrupt transitions" complaint, and the scene card's veil is 0.82
-    // opaque, so the cut showed through it.
+    // "abrupt transitions" complaint. The veil is opaque now and the rebuild
+    // waits for it, so this fade is belt and braces rather than the only
+    // cover -- which is what it used to be, at 0.82, and it showed.
     resetStage({ soft });
     this.cursor = 0;
     while (this.cursor < scene.cues.length && scene.cues[this.cursor].t <= t) {

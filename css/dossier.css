@@ -36,7 +36,7 @@
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--t-med) var(--ease-out);
+  transition: opacity var(--t-enter) var(--ease-out);
 }
 .coach.is-on { opacity: .94; }
 .coach::after {
@@ -67,7 +67,7 @@
   .story .transport,
   .story__cover {
     right: var(--rail-w);
-    transition: right var(--t-med) var(--ease-out);
+    transition: right var(--t-enter) var(--ease-out);
   }
 
   .story__depth {
@@ -95,7 +95,7 @@
     border-radius: 0;
     border-left: 1px solid var(--rule);
     transform: translateX(100%);
-    transition: transform var(--t-med) var(--ease-out);
+    transition: transform var(--t-enter) var(--ease-out);
     pointer-events: auto;
   }
   .dossier--rail.is-open { transform: none; }

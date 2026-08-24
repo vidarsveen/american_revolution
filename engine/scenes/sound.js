@@ -194,6 +194,24 @@ export function resumeSound() {
  * Safe to start again — reset() leaves the soundscape holding no voices, so
  * replaying the chapter rebuilds scene zero and its cues start the bed afresh.
  */
+/**
+ * Let the bed go, over four seconds, instead of cutting it.
+ *
+ * The end card holds until the viewer taps, and the music holds under it. The
+ * hard `stopSound()` below is still right for a chapter being torn down or
+ * switched away from; this is for the one place where the sound is part of
+ * the ending rather than left over from it.
+ */
+export function fadeOutSound(ms = 4000) {
+  stopSoundClock();
+  clearTimeout(settle);
+  wantMusic = null;
+  wantAmbience = null;
+  if (!scape) return;
+  scape.stopMusic({ fadeMs: ms });
+  scape.setAmbience(null, { fadeMs: ms });
+}
+
 export function stopSound() {
   stopSoundClock();
   clearTimeout(settle);
