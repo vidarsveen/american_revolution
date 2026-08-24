@@ -230,14 +230,15 @@ def check_places_have_ground(chapter):
 def check_plate_rhythm(chapter):
     """A picture story, not a slideshow.
 
-    Two things went wrong often enough to be worth encoding. A plate shown
-    and hidden inside ONE beat is a flash, not a shot -- it arrives, the
-    drift has no time to start, and it is gone. And two DIFFERENT pictures
-    starting in adjacent beats read as channel-hopping; the eye has not
-    finished the first before the second replaces it.
+    A plate shown and hidden inside ONE beat is a flash, not a shot: it
+    arrives, the drift has no time to start, and it is gone.
 
-    Both are about beats rather than seconds on purpose: a beat is a
-    sentence, and the unit a viewer actually experiences.
+    Adjacent plates were forbidden here too, until plate.js learned to
+    cross-dissolve. See the note in the loop -- the rule was protecting
+    against a hard cut, and a hard cut is not the same thing as a sequence.
+
+    Beats rather than seconds on purpose: a beat is a sentence, and the unit
+    a viewer actually experiences.
     """
     found = []
     for scene in chapter["scenes"]:
@@ -248,11 +249,18 @@ def check_plate_rhythm(chapter):
             for cue in beat.get("cues", []):
                 if cue["do"] == "plate.show":
                     mid = cue.get("id")
-                    if last_show_i is not None and i - last_show_i == 1 and mid != last_show_id:
-                        found.append(
-                            f"{beat['id']}: plate '{mid}' starts one beat after "
-                            f"'{last_show_id}' — two pictures back to back reads as "
-                            f"channel-hopping. Hold one, or drop one.")
+                    # Adjacent plates USED to be forbidden outright. That rule
+                    # was guarding a missing transition, not a real defect:
+                    # showPlate() reassigned one <img>'s src, so a second
+                    # picture arrived as a hard cut and read as
+                    # channel-hopping. plate.js cross-dissolves now, and a
+                    # sequence of pictures is how a picture-led story is told
+                    # at all -- the wine course is mostly pictures and the map
+                    # is the interruption.
+                    #
+                    # What is left is the defect underneath: a picture nobody
+                    # had time to see. That is check_plates_hold()'s floor, and
+                    # it applies to every plate whether or not another follows.
                     last_show_i, last_show_id = i, mid
                     open_i, open_id = i, mid
                 elif cue["do"] == "plate.hide" and open_i is not None:

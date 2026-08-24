@@ -21,58 +21,136 @@
   "say 'dark grapes' in their claims and say so again in their omits. A",
   "varietal close-up, if this course ever needs one, has to be archive."
  ],
-
  "langhe-take": {
   "prompt": "rolling vineyard hills in autumn under a sea of low morning fog, only the tops of the ridges showing above the mist, bare rows of vines on the slopes, soft grey light just after sunrise, no buildings in the foreground",
   "style": "natural light landscape photograph, muted colour, shallow atmosphere haze",
   "aspect": "square",
-  "title": {"no": "Tåke over åsene om høsten", "en": "Fog over the hills in autumn"},
+  "title": {
+   "no": "Tåke over åsene om høsten",
+   "en": "Fog over the hills in autumn"
+  },
   "claims": "Rolling hill country under autumn morning fog, of the kind that fills the valleys of north-west Italy in October.",
   "omits": "Not a photograph of any identified hill, village or vineyard. No place is being named."
  },
-
  "vinmark-helling": {
   "prompt": "steep terraced vineyard rows in late autumn colour, orange and yellow leaves, dry chalky pale soil between the rows, the slope falling away to a misty valley, low afternoon sun",
   "style": "natural light landscape photograph, muted colour",
   "aspect": "square",
-  "title": {"no": "Vinmark i helling", "en": "Vines on a slope"},
+  "title": {
+   "no": "Vinmark i helling",
+   "en": "Vines on a slope"
+  },
   "claims": "Vines planted in rows on a steep slope with pale chalky soil, in autumn leaf.",
   "omits": "Not a named vineyard and not a named region. The variety of vine is not identifiable and is not claimed."
  },
-
  "kjeller-fat": {
   "prompt": "a dim cellar with very large old oak barrels standing in a row, iron hoops, packed earth floor, one shaft of light from a small high window, dust in the air, no people",
   "style": "natural light interior photograph, warm shadow, shallow depth of field",
   "aspect": "square",
-  "title": {"no": "Fatkjeller", "en": "A barrel cellar"},
+  "title": {
+   "no": "Fatkjeller",
+   "en": "A barrel cellar"
+  },
   "claims": "Large wooden casks in an old cellar, the traditional vessel for long ageing.",
   "omits": "Not any particular producer's cellar. Nothing in frame identifies an estate."
  },
-
  "glass-blek-rod": {
   "prompt": "a single stemmed wine glass holding a small amount of pale garnet red wine, held against a plain bright window, the rim of the wine showing orange, plain grey background, nothing else on the table",
   "style": "natural light still life photograph, shallow depth of field, muted colour",
   "aspect": "square",
-  "title": {"no": "Blek, granatrød", "en": "Pale, garnet red"},
+  "title": {
+   "no": "Blek, granatrød",
+   "en": "Pale, garnet red"
+  },
   "claims": "A glass of pale garnet-red wine showing an orange rim, which is what a well-aged red of this type looks like.",
   "omits": "No bottle and no label, so no wine, producer or vintage is being identified. The colour is typical, not a measurement."
  },
-
  "druer-kasse": {
   "prompt": "dark blue-black wine grapes in a shallow wooden picking crate, dusty bloom on the skins, a few green leaves among them, resting on soil at the end of a vine row, overcast daylight",
   "style": "natural light photograph, shallow depth of field, muted colour",
   "aspect": "square",
-  "title": {"no": "Innhøsting", "en": "Picked fruit"},
+  "title": {
+   "no": "Innhøsting",
+   "en": "Picked fruit"
+  },
   "claims": "Dark wine grapes in a picking crate at harvest, with the natural bloom on the skins.",
   "omits": "NOT a variety. The model cannot tell Nebbiolo from Barbera from Sangiovese, and nothing here should be read as identifying which grape this is."
  },
-
  "bord-middag": {
   "prompt": "a worn wooden table set for an ordinary weekday dinner, a plain glass carafe of dark red wine, two simple tumblers, a bowl of pasta with butter and a little grated cheese, a folded cloth, warm evening light from one side",
   "style": "natural light food photograph, shallow depth of field, muted colour",
   "aspect": "square",
-  "title": {"no": "Hverdagsmiddag", "en": "A weekday dinner"},
+  "title": {
+   "no": "Hverdagsmiddag",
+   "en": "A weekday dinner"
+  },
   "claims": "An everyday table with wine served from a plain carafe, which is how the local red is usually drunk at home.",
   "omits": "No bottle and no label, so no wine is identified. The dish is generic and is not a named regional recipe."
+ },
+ "alpene-over": {
+  "prompt": "high snow-covered alpine peaks rising behind low green foothills, clear cold air, the snowline sharp against bare rock, small terraced fields far below in shadow",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "Alpene over dalene",
+   "en": "The Alps above the valleys"
+  },
+  "claims": "High snow-covered mountains standing over lower cultivated foothills.",
+  "omits": "Not an identified peak, valley or country. The terrain is generic mountain country."
+ },
+ "dal-avstengt": {
+  "prompt": "a narrow steep-sided valley in low cloud, one thin road winding along the floor, dense forest on both walls, no cars, no people, cool grey light",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "En dal for seg selv",
+   "en": "A valley on its own"
+  },
+  "claims": "A narrow steep valley with a single road, the kind of terrain that isolated communities from each other.",
+  "omits": "Not a named valley and not a named country. Nothing here dates the scene."
+ },
+ "gammel-stokk": {
+  "prompt": "the gnarled twisted trunk of a very old grapevine close up, thick rough bark, one green shoot coming from it, dry pale stony ground behind, low side light",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "En gammel stokk",
+   "en": "An old vine"
+  },
+  "claims": "The trunk of an old vine, thick and gnarled, still putting out new growth.",
+  "omits": "NOT a variety, and not an age. The model cannot distinguish one vine species from another and nothing here should be read as identifying the grape."
+ },
+ "hender-host": {
+  "prompt": "two hands cutting a bunch of dark grapes from a vine with small curved shears, seen close over the shoulder, leaves around, no face in frame, morning light",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "Innhøsting for hånd",
+   "en": "Picking by hand"
+  },
+  "claims": "Grapes being cut from the vine by hand with shears, as harvest is still done on steep ground.",
+  "omits": "No face is shown and no person is identified. The variety of grape is not claimed."
+ },
+ "flasker-liggende": {
+  "prompt": "rows of dusty dark green wine bottles lying on their sides in a stone cellar rack, seen end on so only the bases face the camera, thick dust, dim light, no paper on the glass",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "Flasker som venter",
+   "en": "Bottles waiting"
+  },
+  "claims": "Bottles binned on their sides in a cellar, which is how wine is held for long ageing.",
+  "omits": "Shot end-on so nothing on the glass is visible. No wine, producer, vintage or region is identified."
+ },
+ "glass-perler": {
+  "prompt": "a small tulip glass of very pale straw-coloured wine with fine bubbles rising, condensation on the outside, plain pale background, a bowl of peaches out of focus behind",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "Lett og perlende",
+   "en": "Light and fizzing"
+  },
+  "claims": "A glass of pale, lightly sparkling wine with fine bubbles.",
+  "omits": "No bottle and no label, so no wine is identified. The colour is typical of a light sweet style, not a measurement."
  }
 }

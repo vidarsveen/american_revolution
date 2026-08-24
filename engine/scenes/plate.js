@@ -45,6 +45,7 @@ let figEl = null;
 let imgEl = null;
 let capEl = null;
 let badgeEl = null;
+let ghostEl = null;
 let chapter = null;
 let lang = 'no';
 let showing = null;
@@ -59,6 +60,7 @@ export function mountPlate(container, ch, language) {
   root.setAttribute('aria-hidden', 'true');
   root.innerHTML = `
     <figure class="plate__fig">
+      <img class="plate__ghost" alt="" aria-hidden="true" decoding="async">
       <img class="plate__img" alt="" decoding="async">
       <span class="plate__dim"></span>
       <span class="plate__badge" aria-hidden="true"></span>
@@ -69,6 +71,7 @@ export function mountPlate(container, ch, language) {
   imgEl = root.querySelector('.plate__img');
   capEl = root.querySelector('.plate__cap');
   badgeEl = root.querySelector('.plate__badge');
+  ghostEl = root.querySelector('.plate__ghost');
   showing = null;
 }
 
@@ -89,6 +92,7 @@ export function resetPlate() {
   root.classList.remove('is-contain');
   imgEl.removeAttribute('src');
   imgEl.alt = '';
+  clearGhost();
   if (capEl) capEl.innerHTML = '';
   if (badgeEl) { badgeEl.textContent = ''; badgeEl.hidden = true; }
 }
@@ -97,6 +101,41 @@ export function resetPlate() {
 
    Small numbers on purpose. A push from 1.0 to 1.16 over fourteen seconds is
    about half a pixel a frame — present, and invisible while it happens. */
+/**
+ * Carry the outgoing picture while the new one fades up over it.
+ *
+ * One <img> meant that replacing a plate was a HARD CUT: src was reassigned
+ * and the next frame was a different picture. That is the whole reason
+ * check-script forbade two plates in adjacent beats -- the rule was guarding
+ * against a missing transition, not against sequences of pictures. A picture
+ * story needs sequences, so the transition had to exist before the rule could
+ * be relaxed.
+ *
+ * The ghost is decorative and ALWAYS ends at opacity 0, which is what keeps it
+ * out of rule 1. It is never read by the stage signature, it is wiped under
+ * `instant`, and nothing about which picture it holds can survive into the
+ * next beat. A ghost that could persist would be exactly the accumulating
+ * state the whole engine is built to forbid.
+ */
+function clearGhost() {
+  if (!ghostEl) return;
+  ghostEl.style.transition = 'none';
+  ghostEl.style.opacity = '0';
+  ghostEl.style.transform = '';
+  ghostEl.removeAttribute('src');
+}
+
+function dissolveFrom(prevSrc, prevTransform, over) {
+  if (!ghostEl || !prevSrc) return;
+  ghostEl.src = prevSrc;
+  ghostEl.style.transition = 'none';
+  ghostEl.style.transform = prevTransform || '';
+  ghostEl.style.opacity = '1';
+  void ghostEl.offsetWidth;
+  ghostEl.style.transition = `opacity ${over}s var(--ease-in-out, ease-in-out)`;
+  ghostEl.style.opacity = '0';
+}
+
 const MOTION = {
   in:    { from: 1.0,  to: 1.16, dx: 0,   dy: 0 },
   out:   { from: 1.16, to: 1.0,  dx: 0,   dy: 0 },
@@ -120,7 +159,17 @@ export function showPlate(cue, instant) {
      A document is something you READ. Holding it still is not a compromise
      here, it is the correct shot. */
   const fit = cue.fit || m.fit || 'cover';
-  const spec = fit === 'contain' ? MOTION.still : (MOTION[cue.motion] || MOTION.in);
+  const base = fit === 'contain' ? MOTION.still : (MOTION[cue.motion] || MOTION.in);
+  // `push` scales how far the camera travels. The default 0.16 is the number
+  // that was hard-coded; a wide establishing shot wants more, a face wants
+  // almost none. Scaling the SPAN rather than replacing it keeps every
+  // existing cue drawing exactly as before.
+  const k = Number.isFinite(cue.push) ? cue.push / 0.16 : 1;
+  const spec = k === 1 ? base : {
+    from: 1 + (base.from - 1) * k,
+    to: 1 + (base.to - 1) * k,
+    dx: base.dx * k, dy: base.dy * k,
+  };
   const [fx, fy] = Array.isArray(cue.focus) ? cue.focus : [0.5, 0.42];
   const over = cue.over ?? 14;
 
@@ -130,6 +179,8 @@ export function showPlate(cue, instant) {
   const same = showing === cue.id;
   showing = cue.id;
 
+  const prevSrc = imgEl.getAttribute('src');
+  const prevTransform = imgEl.style.transform;
   if (!same) {
     imgEl.src = mediaUrl(chapter.pack, m.file);
     imgEl.alt = pick(m.title) || '';
@@ -152,8 +203,12 @@ export function showPlate(cue, instant) {
 
   if (instant || reduced()) {
     // Land on the END framing with no animation. Replaying fourteen seconds
-    // of push on every scrub is exactly the thing rule 1 forbids.
+    // of push on every scrub is exactly the thing rule 1 forbids -- and the
+    // dissolve is the same argument: a seek is a jump and should look like
+    // one, so the ghost is wiped rather than faded.
+    clearGhost();
     imgEl.style.transition = 'none';
+    imgEl.style.opacity = '1';
     imgEl.style.transform = end;
     root.classList.add('is-instant');
     root.classList.add('is-on');
@@ -163,11 +218,30 @@ export function showPlate(cue, instant) {
 
   root.classList.remove('is-instant');
   if (!same) {
-    imgEl.style.transition = 'none';
-    imgEl.style.transform = start;
-    void imgEl.offsetWidth;              // commit the start framing
+    // Replacing a picture that is already up: carry the old one under the new
+    // one and fade between them. Replacing nothing (the plate was down) needs
+    // no ghost -- the whole plate cross-dissolves from the map already.
+    const over = cue.into ?? 1.1;
+    if (prevSrc && root.classList.contains('is-on')) {
+      dissolveFrom(prevSrc, prevTransform, over);
+      imgEl.style.transition = 'none';
+      imgEl.style.opacity = '0';
+      imgEl.style.transform = start;
+      void imgEl.offsetWidth;
+      imgEl.style.transition = `opacity ${over}s var(--ease-in-out, ease-in-out)`;
+      imgEl.style.opacity = '1';
+    } else {
+      clearGhost();
+      imgEl.style.opacity = '1';
+      imgEl.style.transition = 'none';
+      imgEl.style.transform = start;
+      void imgEl.offsetWidth;              // commit the start framing
+    }
   }
-  imgEl.style.transition = `transform ${over}s linear`;
+  const held = imgEl.style.transition;
+  imgEl.style.transition = held && held.includes('opacity')
+    ? `${held}, transform ${over}s linear`
+    : `transform ${over}s linear`;
   imgEl.style.transform = end;
   root.classList.add('is-on');
 }

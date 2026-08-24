@@ -94,6 +94,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SDCPP = os.environ.get("FORTELL_SDCPP",
@@ -142,6 +143,49 @@ TEXT_WORDS = re.compile(
 PHOTO_WORDS = re.compile(
     r"\b(photo|photograph|photographic|photorealistic|dslr|35mm|"
     r"kodak|polaroid|film\s?still|documentary\s?photo)\b", re.I)
+
+
+class GpuLock:
+    """One generation run at a time, per machine.
+
+    Two sd-cli processes on one 8 GB card do not queue and do not OOM
+    cleanly. They die with
+
+        CUDA error: unspecified launch failure
+          in ggml_cuda_flash_attn_ext_mma_f16_case
+
+    which reads like a driver fault or a broken build, and is neither -- it is
+    simply two processes asking for the same shared memory. Cost: a whole
+    batch of six prompts, silently, because each failure is one line in a log
+    nobody was watching. A lock is cheaper than recognising that twice.
+    """
+
+    def __init__(self):
+        self.path = os.path.join(ROOT, "image-candidates", ".gpu-lock")
+
+    def __enter__(self):
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
+        try:
+            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            age = time.time() - os.path.getmtime(self.path)
+            if age < 3600:
+                die(f"another gen-image run holds the GPU "
+                    f"({age / 60:.0f} min old). Two sd-cli processes on one "
+                    f"card fail with a CUDA launch error that looks like a "
+                    f"driver fault. Wait for it, or delete {self.path} if it "
+                    f"is stale.")
+            os.unlink(self.path)
+            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, str(os.getpid()).encode())
+        os.close(fd)
+        return self
+
+    def __exit__(self, *exc):
+        try:
+            os.unlink(self.path)
+        except OSError:
+            pass
 
 
 def die(msg: str) -> None:
@@ -379,7 +423,8 @@ def main() -> int:
     if a.all:
         media = jload(os.path.join(pack_dir(a.pack), "media.json"), {}) or {}
         todo = [p for p in specs if p not in media]
-    for pid in todo:
+    with GpuLock():
+      for pid in todo:
         spec = specs.get(pid)
         if not spec:
             die(f"no prompt {pid!r} in image-prompts.json")

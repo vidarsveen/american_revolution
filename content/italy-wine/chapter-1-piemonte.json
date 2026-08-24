@@ -186,7 +186,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
+              "id": "bedOpen",
               "gainDb": -9
             },
             {
@@ -232,6 +232,16 @@
               "do": "term.mark",
               "kind": "term",
               "id": "drue"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "druer-kasse",
+              "motion": "in",
+              "push": 0.1,
+              "over": 20,
+              "dim": 0.16,
+              "into": 1.4
             }
           ]
         },
@@ -257,6 +267,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
+            {
+              "on": "start",
               "do": "term.mark",
               "kind": "topic",
               "id": "hvorfor-italia",
@@ -271,6 +286,11 @@
             "en": "This is the first part of a journey down the boot. We start in the far north-west, in the fog."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -304,6 +324,12 @@
             "en": "Look at the shape first. Italy is twelve hundred kilometres long, and that makes almost anything possible."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -10
+            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -397,6 +423,11 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
+            {
               "on": {
                 "no": "word:Etna",
                 "en": "word:Etna"
@@ -458,6 +489,12 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -11
+            },
+            {
+              "on": "start",
               "do": "map.mood",
               "value": "day"
             },
@@ -493,6 +530,11 @@
             "en": "Repeat that for a thousand years, in a country with mountains everywhere, and you end up with five hundred grapes."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": {
                 "no": "word:fem",
@@ -646,6 +688,12 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -10
+            },
+            {
+              "on": "start",
               "do": "map.mood",
               "value": "dawn"
             },
@@ -683,16 +731,18 @@
               "do": "plate.show",
               "id": "langhe-take",
               "motion": "in",
-              "over": 18,
-              "dim": 0.1
+              "push": 0.18,
+              "over": 22,
+              "dim": 0.1,
+              "into": 1.4
             }
           ]
         },
         {
           "id": "s3.b3",
           "say": {
-            "no": "Italiensk for tåke er nebbia. Og det er nesten helt sikkert der druen har navnet sitt fra.",
-            "en": "The Italian for fog is nebbia. And that is almost certainly where the grape gets its name."
+            "no": "Nebbia, heter det på italiensk. Og derfra har druen navnet sitt.",
+            "en": "Nebbia, it is called in Italian. And that is where the grape gets its name."
           },
           "cues": [
             {
@@ -709,21 +759,22 @@
         {
           "id": "s3.b4",
           "say": {
-            "no": "Enten fordi den modner så seint at høstingen skjer i tåke i oktober. Eller fordi skallet har et grått belegg som ser ut som tåke.",
-            "en": "Either because it ripens so late that picking happens in October fog. Or because the skins carry a grey bloom that looks like fog."
+            "no": "Enten fordi den modnes så seint at den henger igjen til oktober, når dalen står full om morgenen. Eller fordi skallet har et grått belegg som ligner.",
+            "en": "Either because it ripens so late that it hangs on into October, when the valley is full of it every morning. Or because the skins carry a grey bloom that looks like it."
           },
           "cues": [
             {
               "on": "start",
-              "do": "plate.hide"
+              "do": "plate.hide",
+              "over": 1.1
             }
           ]
         },
         {
           "id": "s3.b5",
           "say": {
-            "no": "Begge forklaringene er gamle, og ingen av dem kan bevises. Det er greit. Navnet betyr tåke uansett.",
-            "en": "Both explanations are old, and neither can be proved. That is fine. The name means fog either way."
+            "no": "Ingen av forklaringene kan bevises. Men begge sier det samme om druen: den blir hengende lenge etter at alt annet er plukket.",
+            "en": "Neither explanation can be proved. But both say the same thing about the grape: it hangs on long after everything else has been picked."
           },
           "cues": []
         },
@@ -734,6 +785,11 @@
             "en": "South of Turin runs the river Tanaro, and south of the river the hills rise. They are called the Langhe."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "region.clear"
@@ -780,6 +836,12 @@
           "cues": [
             {
               "on": "start",
+              "do": "sound.music",
+              "id": "bedStill",
+              "gainDb": -10
+            },
+            {
+              "on": "start",
               "do": "map.mood",
               "value": "day"
             },
@@ -792,6 +854,16 @@
                 "barbaresco"
               ],
               "over": 3.4
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "glass-blek-rod",
+              "motion": "in",
+              "push": 0.07,
+              "over": 18,
+              "dim": 0.14,
+              "into": 1.4
             }
           ]
         },
@@ -819,7 +891,13 @@
             "no": "Tanniner er stoffer fra skallet og stilkene. De binder seg til spyttet ditt, og munnen føles tørr. Samme følelse som sterk svart te.",
             "en": "Tannins come from the skins and the stems. They bind to your saliva, and your mouth feels dry. The same sensation as strong black tea."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            }
+          ]
         },
         {
           "id": "s4.b4",
@@ -853,6 +931,16 @@
             {
               "on": "start",
               "do": "stat.clear"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "vinmark-helling",
+              "motion": "left",
+              "push": 0.18,
+              "over": 22,
+              "dim": 0.12,
+              "into": 1.4
             }
           ]
         },
@@ -862,16 +950,7 @@
             "no": "Folk har prøvd å dyrke den i California, i Australia og i Argentina i over hundre år. Det blir aldri riktig.",
             "en": "People have tried to grow it in California, Australia and Argentina for over a hundred years. It never comes out right."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "plate.show",
-              "id": "vinmark-helling",
-              "motion": "in",
-              "over": 18,
-              "dim": 0.1
-            }
-          ]
+          "cues": []
         },
         {
           "id": "s4.b7",
@@ -881,6 +960,11 @@
           },
           "cues": [
             {
+              "on": "end",
+              "do": "plate.hide",
+              "over": 1.1
+            },
+            {
               "on": {
                 "no": "word:terroir",
                 "en": "word:terroir"
@@ -888,10 +972,6 @@
               "do": "term.mark",
               "kind": "term",
               "id": "terroir"
-            },
-            {
-              "on": "end",
-              "do": "plate.hide"
             },
             {
               "on": "end",
@@ -919,6 +999,12 @@
             "en": "Nebbiolo makes two famous wines, and they are named after two villages eighteen kilometres apart."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedSolemn",
+              "gainDb": -10
+            },
             {
               "on": "start",
               "do": "map.fitPlaces",
@@ -1031,6 +1117,16 @@
               "kind": "topic",
               "id": "hva-koster",
               "span": 1
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "kjeller-fat",
+              "motion": "in",
+              "push": 0.14,
+              "over": 18,
+              "dim": 0.18,
+              "into": 1.4
             }
           ]
         },
@@ -1051,6 +1147,11 @@
           "cues": [
             {
               "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
+            {
+              "on": "start",
               "do": "compare.clear"
             }
           ]
@@ -1062,6 +1163,11 @@
             "en": "The whole Italian system rests on that being true. That the place can be tasted."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "marker.clear"
@@ -1090,6 +1196,12 @@
             "en": "But hardly anyone in Piedmont drinks Barolo on a weekday. It is expensive, and it is heavy."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "sound.music",
+              "id": "bedOpen",
+              "gainDb": -9
+            },
             {
               "on": "start",
               "do": "map.mood",
@@ -1122,6 +1234,16 @@
               "do": "term.mark",
               "kind": "term",
               "id": "barbera"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "bord-middag",
+              "motion": "in",
+              "push": 0.09,
+              "over": 20,
+              "dim": 0.16,
+              "into": 1.4
             }
           ]
         },
@@ -1131,16 +1253,7 @@
             "no": "Barbera fikk historisk de markene Nebbiolo ikke ville ha. Den modner tidligere og klager mindre.",
             "en": "Barbera historically got the sites Nebbiolo would not take. It ripens earlier and complains less."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "plate.show",
-              "id": "kjeller-fat",
-              "motion": "in",
-              "over": 16,
-              "dim": 0.12
-            }
-          ]
+          "cues": []
         },
         {
           "id": "s6.b4",
@@ -1159,7 +1272,8 @@
           "cues": [
             {
               "on": "start",
-              "do": "plate.hide"
+              "do": "plate.hide",
+              "over": 1.1
             },
             {
               "on": {
@@ -1242,6 +1356,11 @@
             "en": "One region. One of twenty. Three completely different wines, and we have not mentioned the whites yet."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide",
+              "over": 1.1
+            },
             {
               "on": "start",
               "do": "compare.clear"

@@ -1318,3 +1318,17 @@
   pointer-events: none;
 }
 .plate__badge[hidden] { display: none; }
+
+/* The outgoing picture, while the new one fades up over it. Decorative and
+   always ending at opacity 0 — see clearGhost() in engine/scenes/plate.js for
+   why that matters to rule 1. */
+.plate__ghost {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+}
+.stage-plate.is-contain .plate__ghost { object-fit: contain; }

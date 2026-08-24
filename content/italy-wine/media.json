@@ -46,5 +46,53 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "steep terraced vineyard rows in late autumn colour, orange and yellow leaves, dry chalky pale soil between the rows, the slope falling away to a misty valley, low afternoon sun"
+ },
+ "glass-blek-rod": {
+  "kind": "made",
+  "file": "glass-blek-rod.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Blek, granatrød",
+   "en": "Pale, garnet red"
+  },
+  "claims": "A glass of pale garnet-red wine showing an orange rim, which is what a well-aged red of this type looks like.",
+  "omits": "No bottle and no label, so no wine, producer or vintage is being identified. The colour is typical, not a measurement.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a single stemmed wine glass holding a small amount of pale garnet red wine, held against a plain bright window, the rim of the wine showing orange, plain grey background, nothing else on the table"
+ },
+ "druer-kasse": {
+  "kind": "made",
+  "file": "druer-kasse.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Innhøsting",
+   "en": "Picked fruit"
+  },
+  "claims": "Dark wine grapes in a picking crate at harvest, with the natural bloom on the skins.",
+  "omits": "NOT a variety. The model cannot tell Nebbiolo from Barbera from Sangiovese, and nothing here should be read as identifying which grape this is.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "dark blue-black wine grapes in a shallow wooden picking crate, dusty bloom on the skins, a few green leaves among them, resting on soil at the end of a vine row, overcast daylight"
+ },
+ "bord-middag": {
+  "kind": "made",
+  "file": "bord-middag.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Hverdagsmiddag",
+   "en": "A weekday dinner"
+  },
+  "claims": "An everyday table with wine served from a plain carafe, which is how the local red is usually drunk at home.",
+  "omits": "No bottle and no label, so no wine is identified. The dish is generic and is not a named regional recipe.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a worn wooden table set for an ordinary weekday dinner, a plain glass carafe of dark red wine, two simple tumblers, a bowl of pasta with butter and a little grated cheese, a folded cloth, warm evening light from one side"
  }
 }
