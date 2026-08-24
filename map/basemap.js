@@ -72,8 +72,11 @@ export async function loadDetail() {
   for (const [layer, shapes] of Object.entries(data.layers || {})) {
     const path = new Path2D();
     const closed = layer === 'land' || layer === 'lakes';
+    let rings = 0;
     for (const parts of shapes) {
       for (const flat of parts) {
+        if (flat.length < 4) continue;
+        rings += 1;
         for (let i = 0; i < flat.length; i += 2) {
           const [x, y] = project(flat[i], flat[i + 1]);
           if (i === 0) path.moveTo(x, y);
@@ -82,7 +85,17 @@ export async function loadDetail() {
         if (closed) path.closePath();
       }
     }
-    paths[layer] = path;
+    // An EMPTY Path2D is still an object, and therefore truthy. The draw
+    // below guards the repaint on `d.paths.land`, fills the whole detail box
+    // with deep water and then carves the land back out of it -- so a layer
+    // that came back with no rings at all painted the entire box as sea.
+    //
+    // No coastal pack ever hit it, because a coastline always has land. The
+    // first INLAND pack did, immediately: Piemonte has no coast, OSM returned
+    // `land 0`, and the Langhe rendered as ocean with woodland floating on
+    // it. Same shape as the cached ground buffer that had to remember whether
+    // it had any ground.
+    if (rings) paths[layer] = path;
   }
   detail.data = { paths, bbox: data.bbox, credit: data.credit };
   return detail.data;
@@ -266,7 +279,7 @@ export function drawBasemap(ctx, cam, size, palette, levelName, borders = {}) {
   if (detailShowing(cam.zoom, ...centreOf(cam, size)) && detail.data) {
     const d = detail.data;
     const bb = d.bbox || detail.bbox;
-    if (bb && d.paths.land) {
+    if (bb) {
       const [x0, y0] = project(bb[0], bb[3]);
       const [x1, y1] = project(bb[2], bb[1]);
 
@@ -275,15 +288,27 @@ export function drawBasemap(ctx, cam, size, palette, levelName, borders = {}) {
       ctx.rect(x0, y0, x1 - x0, y1 - y0);
       ctx.clip();
 
-      ctx.fillStyle = palette.waterDeep;
-      ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+      /* Replacing the ground is only right where the detail HAS a coastline.
+         Inland there is none to replace: OSM ships `natural=coastline` and a
+         landlocked box comes back with none, so filling the box with sea and
+         carving land back out of an empty path painted the whole Langhe as
+         ocean with woodland floating on it.
 
-      ctx.fillStyle = palette.land;
-      ctx.strokeStyle = palette.coast;
-      ctx.lineWidth = palette.coastW * px;
-      ctx.lineJoin = 'round';
-      ctx.fill(d.paths.land, 'evenodd');
-      ctx.stroke(d.paths.land);
+         So the repaint is conditional and everything below it is not. Rivers,
+         lakes and woods are additions to whatever ground is already there,
+         which is what they always were -- they were simply nested inside the
+         coastal case because until now every pack had a coast. */
+      if (d.paths.land) {
+        ctx.fillStyle = palette.waterDeep;
+        ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+
+        ctx.fillStyle = palette.land;
+        ctx.strokeStyle = palette.coast;
+        ctx.lineWidth = palette.coastW * px;
+        ctx.lineJoin = 'round';
+        ctx.fill(d.paths.land, 'evenodd');
+        ctx.stroke(d.paths.land);
+      }
 
       /* Woodland, on the land and under the water.
 

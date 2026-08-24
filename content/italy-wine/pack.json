@@ -74,7 +74,7 @@
       "min": 3.4,
       "max": 13,
       "default": 5.6,
-      "maxFit": 10.5
+      "maxFit": 12.6
     },
     "//basemap": [
       "The Mediterranean extract already exists -- it was built for Rome, and",
@@ -110,7 +110,31 @@
       "state": false
     },
     "regions": "geo/regions.geojson",
-    "credit": "Natural Earth"
+    "credit": "Natural Earth",
+    "//detail": [
+      "Built by tools/fetch-detail.py from this bbox. The chapter plays at zoom",
+      "10.6 to 12.4 -- standing in Barolo -- and Natural Earth at 1:10M has",
+      "literally nothing there: a beige field and one dot. That was the",
+      "'you only see map without details' complaint, and it is the same absence",
+      "norway-1940 fixed a month ago.",
+      "",
+      "Inland, so there is no coastline to fetch. What comes back is the Tanaro",
+      "and its tributaries, still water, and woodland -- and woodland is not a",
+      "consolation prize here, it is the subject. A south-facing slope in the",
+      "Langhe carries vines and a north-facing one carries trees, which is why",
+      "the vineyards lie in a patchwork rather than in fields. The forest",
+      "polygons ARE that patchwork, seen from above."
+    ],
+    "detail": {
+      "url": "geo/detail.json",
+      "minZoom": 9.4,
+      "bbox": [
+        7.75,
+        44.5,
+        8.35,
+        45.0
+      ]
+    }
   },
   "era": {
     "start": "1963-01-01",
