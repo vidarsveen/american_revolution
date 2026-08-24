@@ -128,8 +128,35 @@ def precache() -> list[str]:
 
 
 def version_for(urls: list[str]) -> str:
-    """A hash of what is in the cache, so it moves only when the cache would."""
+    """A hash of what is in the cache, so it moves only when the cache would.
+
+    AND of sw.js's own hand-written half, which is the part this function used
+    to be blind to.
+
+    VERSION drives the cache name, and a new VERSION is the only thing that
+    makes a browser install a new worker. So a change to the FETCH STRATEGY --
+    the hand-written block below the generated markers -- produced no version
+    change and therefore reached nobody: the fix shipped, check-published.py
+    confirmed the server was byte-perfect, and every returning reader carried
+    on running the old strategy out of a cache that had no reason to expire.
+
+    That is the shape of the bug this was written for. A worker installing
+    within ten minutes of a reader's last visit was filling its brand-new
+    cache through the HTTP cache, baking stale JavaScript into a fresh
+    version. Fixing that in sw.js could not ship until VERSION could see it.
+    """
     h = hashlib.sha256()
+    try:
+        body = (Path(ROOT) / "sw.js").read_bytes().replace(b"\r\n", b"\n")
+        # Only the part a human wrote: the generated block is these urls, and
+        # hashing it twice would make VERSION depend on its own last value.
+        marker = b"/* END GENERATED */"
+        if marker in body:
+            body = body.split(marker, 1)[1]
+        h.update(b"strategy-marker")
+        h.update(hashlib.sha256(body).digest())
+    except OSError:
+        h.update(b"no-sw")
     for url in urls:
         if url == "./":
             continue

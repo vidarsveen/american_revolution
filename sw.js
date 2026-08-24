@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v86d825017d';
+const VERSION = 'vf9f7737600';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -206,8 +206,28 @@ const PRECACHE = [
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(APP_CACHE)
-      // One bad URL must not sink the whole install.
-      .then((c) => Promise.allSettled(PRECACHE.map((u) => c.add(u))))
+      /* `cache: 'reload'` — and this is not a detail.
+
+         The cache name carries VERSION and `activate` deletes every older
+         one, so a new build cannot serve an old cache. What it CAN do is
+         fill the new cache from a stale one: c.add(u) goes through the
+         browser's HTTP cache, and GitHub Pages serves JS with
+         `Cache-Control: max-age=600`. So a worker installing within ten
+         minutes of the reader's previous visit baked ten-minute-old
+         JavaScript into a brand-new version-scoped cache — and then served
+         it for as long as that version lived, because networkFirst prefers
+         the cache whenever the network is slower than NET_TIMEOUT_MS.
+
+         CLAUDE.md documents the ten-minute window as something that
+         self-heals. It does not self-heal if the service worker writes it
+         down. That is how a fix could be live and correct on the server,
+         verified byte for byte by check-published.py, and still not be what
+         the reader was running.
+
+         `reload` bypasses the HTTP cache for the precache, so a new VERSION
+         always means genuinely new files. */
+      .then((c) => Promise.allSettled(
+        PRECACHE.map((u) => c.add(new Request(u, { cache: 'reload' })))))
       .then(() => self.skipWaiting())
   );
 });
