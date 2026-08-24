@@ -1082,6 +1082,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "who-could-vote"
+            },
+            {
+              "on": {
+                "no": "word:parlamentet",
+                "en": "word:Parliament"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "parliament"
             }
           ],
           "gapAfter": 1.0
@@ -1139,6 +1148,10 @@
             "en": "Nowhere is it worse than in one harbour town in Massachusetts. London has closed the port and filled the streets with soldiers."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:Massachusetts",
@@ -1334,6 +1347,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "governor"
+            },
+            {
+              "on": {
+                "no": "word:guvernør",
+                "en": "word:governor"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "governor"
             }
           ],
           "gapAfter": 0.75
@@ -1372,6 +1394,10 @@
             "en": "On the eighteenth of April he receives an order he cannot refuse. March out to Concord, thirty kilometres west. The rebels have gathered a weapons store there. Take it. Do it at night, and do it quietly."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "portrait.hide"
@@ -1775,6 +1801,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "colonial-town"
+            },
+            {
+              "on": {
+                "no": "word:bygd",
+                "en": "word:town"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "colonial-town"
             }
           ],
           "gapAfter": 1.35
@@ -1824,6 +1859,10 @@
           },
           "gapAfter": 0.9,
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "word:Hancock",
               "do": "portrait.show",
@@ -3353,6 +3392,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "militia"
+            },
+            {
+              "on": {
+                "no": "word:militsen",
+                "en": "word:militia"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "militia"
             }
           ],
           "gapAfter": 1.25
@@ -3399,6 +3447,10 @@
             "en": "Nobody decided there would be a siege. No congress voted on it. Nobody declared war."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "stat.clear"

@@ -806,6 +806,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "colonial-town"
+            },
+            {
+              "on": {
+                "no": "word:byen",
+                "en": "word:town"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "colonial-town"
             }
           ],
           "gapAfter": 1.35
@@ -862,6 +871,10 @@
             "en": "On the twenty-fifth of May, ships arrived from England with reinforcements — and with three generals: William Howe, Henry Clinton and John Burgoyne."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "place.clear"
@@ -1509,6 +1522,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "a-musket"
+            },
+            {
+              "on": {
+                "no": "word:skanse",
+                "en": "word:redoubt"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "a-musket"
             }
           ],
           "gapAfter": 1.25
@@ -1520,6 +1542,10 @@
             "en": "None of them has slept. They have had no water. And they are now the only visible target in the whole of Boston harbour."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "stat.clear"
@@ -2309,6 +2335,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "black-soldiers"
+            },
+            {
+              "on": {
+                "no": "word:amerikanerne",
+                "en": "word:Americans"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "black-soldiers"
             }
           ],
           "gapAfter": 1.25
@@ -2329,6 +2364,10 @@
             "en": "Everybody remembers it in another form. Don't fire till you see the whites of their eyes."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:hvite",

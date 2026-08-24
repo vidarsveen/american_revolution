@@ -433,6 +433,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "tribunicia-potestas"
+            },
+            {
+              "on": {
+                "no": "word:fullmakter",
+                "en": "word:powers"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "tribunicia-potestas"
             }
           ],
           "gapAfter": 1.1
@@ -453,6 +462,10 @@
             "en": "The second is called imperium maius, the greater command. With it he can overrule any governor in any province. If a proconsul sits in Asia with three legions behind him, he still does what Augustus says."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -648,6 +661,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "building-rome"
+            },
+            {
+              "on": {
+                "no": "word:marmor",
+                "en": "word:marble"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "building-rome"
             }
           ],
           "gapAfter": 1.2
@@ -686,6 +708,10 @@
             "en": "Agrippa carried fresh water into the city on long arches, built baths that were free to use, and raised the Pantheon."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:Pantheon",
@@ -874,6 +900,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "census"
+            },
+            {
+              "on": {
+                "no": "word:folketelling",
+                "en": "word:census"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "census"
             }
           ],
           "gapAfter": 1.1
@@ -914,6 +949,10 @@
             "en": "Before this the tax was collected by private contractors. They paid the state up front, and then took in as much as they could."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:oppkjøpere",
@@ -1060,6 +1099,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "roman-army"
+            },
+            {
+              "on": {
+                "no": "word:soldatene",
+                "en": "word:soldiers"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "roman-army"
             }
           ],
           "gapAfter": 1.2
@@ -1096,6 +1144,10 @@
             "en": "Augustus changes that. He fixes the length of service: sixteen years, later twenty."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:tjenestetiden",
@@ -1337,6 +1389,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "roman-women"
+            },
+            {
+              "on": {
+                "no": "word:kvinne",
+                "en": "word:woman"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "roman-women"
             }
           ],
           "gapAfter": 1.2
@@ -1357,6 +1418,10 @@
             "en": "Then, in the year two before Christ, he uses the law on his own daughter."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "map.time",
@@ -1535,6 +1600,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "princeps"
+            },
+            {
+              "on": {
+                "no": "word:princeps",
+                "en": "word:princeps"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "princeps"
             }
           ],
           "gapAfter": 1.2
@@ -1555,6 +1629,10 @@
             "en": "First Marcellus, the nephew who was also his son-in-law. He died in twenty-three before Christ, aged twenty."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:Marcellus",
@@ -1675,6 +1753,15 @@
             {
               "on": "end",
               "do": "portrait.hide"
+            },
+            {
+              "on": {
+                "no": "word:kilde",
+                "en": "word:source"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "how-we-know"
             }
           ],
           "gapAfter": 1.3
@@ -1720,6 +1807,10 @@
             "en": "Augustus adopted him anyway in the year four. Suetonius reports that he said plainly why."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:Sveton",

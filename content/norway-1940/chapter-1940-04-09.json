@@ -1290,6 +1290,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "jernmalm"
+            },
+            {
+              "on": {
+                "no": "word:jernmalm",
+                "en": "word:ore"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "jernmalm"
             }
           ],
           "gapAfter": 1.2
@@ -1325,7 +1334,12 @@
             "no": "Rundt fire tideler av jernet tysk industri brukte, kom fra svenske gruver. Uten den malmen stopper krigsmaskinen.",
             "en": "About four tenths of the iron German industry used came out of Swedish mines. Without that ore the war machine stops."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -1521,6 +1535,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "noytralitet"
+            },
+            {
+              "on": {
+                "no": "word:nøytralt",
+                "en": "word:neutral"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "noytralitet"
             }
           ],
           "gapAfter": 1.25
@@ -1569,6 +1592,10 @@
             "en": "The Altmark affair, it was called. For Hitler it was an answer. Norway was not going to defend its own neutrality, and if so, somebody else could come and take it."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "end",
               "do": "plate.hide"
@@ -1806,6 +1833,15 @@
               "kind": "destroyer",
               "ships": 8,
               "over": 6.5
+            },
+            {
+              "on": {
+                "no": "word:jagere",
+                "en": "word:destroyers"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "jager"
             }
           ],
           "gapAfter": 1.3
@@ -1817,6 +1853,10 @@
             "en": "They were bound for Narvik. And they meant to be there before the British had time to think."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "portrait.hide"
@@ -1957,6 +1997,15 @@
               "kind": "term",
               "id": "panserskip",
               "span": 3
+            },
+            {
+              "on": {
+                "no": "word:panserskip",
+                "en": "word:coastal"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "panserskip"
             }
           ],
           "gapAfter": 1.25
@@ -1992,7 +2041,12 @@
             "no": "En tysk offiser kommer om bord på Eidsvold med et krav. Skipet skal overgis. Tyskerne kommer som venner, sier han.",
             "en": "A German officer comes aboard Eidsvold with a demand. The ship is to be handed over. The Germans come as friends, he says."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -2096,6 +2150,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "hvordan-vet-vi-det"
+            },
+            {
+              "on": {
+                "no": "word:kildene",
+                "en": "word:sources"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "hvordan-vet-vi-det"
             }
           ],
           "gapAfter": 1.4
@@ -2160,6 +2223,10 @@
             "en": "A hundred and one men died, and ninety were saved. In twenty minutes the navy had lost two hundred and seventy-six sailors, and damaged not one German ship."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:syttiseks",

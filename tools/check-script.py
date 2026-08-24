@@ -110,6 +110,10 @@ READABLE = {
     "portrait": ("portrait.show", "portrait.hide", 2.5),
     "image":    ("image.show",    "image.hide",    2.0),
     "quote":    ("quote.show",    "quote.hide",    3.0),
+    # A fact box is three short lines. Under three seconds it is a
+    # flicker in the corner of the eye rather than something read,
+    # and the reader is listening to a voice at the same time.
+    "fact":     ("fact.show",     "fact.hide",     3.0),
     # A plate takes the whole screen and drifts. Under about four seconds it
     # reads as a flicker rather than a shot, and the drift never gets going.
     "plate":    ("plate.show",    "plate.hide",    4.0),

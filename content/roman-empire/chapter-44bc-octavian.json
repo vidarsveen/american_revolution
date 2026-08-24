@@ -540,6 +540,15 @@
               },
               "do": "portrait.show",
               "id": "caesar"
+            },
+            {
+              "on": {
+                "no": "word:republikken",
+                "en": "word:republic"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "who-ruled-rome"
             }
           ],
           "gapAfter": 1.1
@@ -560,6 +569,10 @@
             "en": "More than six hundred kilometres away, at Apollonia, a nineteen-year-old is studying. His name is Gaius Octavius, and he is Caesar's great-nephew."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "plate.hide"
@@ -821,6 +834,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "consul"
+            },
+            {
+              "on": {
+                "no": "word:konsul",
+                "en": "word:consul"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "consul"
             }
           ],
           "gapAfter": 1.2
@@ -841,6 +863,10 @@
             "en": "In the senate Cicero sees a chance. He attacks Antony in speech after speech, and builds up the boy as a counterweight."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "portrait.hide"
@@ -1115,6 +1141,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "triumvirate"
+            },
+            {
+              "on": {
+                "no": "word:deler",
+                "en": "word:divide"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "triumvirate"
             }
           ],
           "gapAfter": 1.3
@@ -1191,6 +1226,10 @@
             "en": "This is not a private arrangement. It is voted through as law, with an end date five years away."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:lov",
@@ -1676,6 +1715,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "province"
+            },
+            {
+              "on": {
+                "no": "word:provinsene",
+                "en": "word:provinces"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "province"
             }
           ],
           "gapAfter": 1.2
@@ -1730,6 +1778,10 @@
             "en": "Almost two hundred thousand men face each other. It is the largest army Romans have ever put in the field against Romans."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": {
                 "no": "word:tusen",
@@ -2083,6 +2135,15 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "roman-marriage"
+            },
+            {
+              "on": {
+                "no": "word:ekteskap",
+                "en": "word:marriage"
+              },
+              "do": "fact.show",
+              "kind": "topic",
+              "id": "roman-marriage"
             }
           ],
           "gapAfter": 1.4
@@ -2144,6 +2205,10 @@
             "en": "It takes Octavian six years and two wrecked fleets to break him. It is Agrippa who finally does it, at Naulochus."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "map.time",
@@ -3094,6 +3159,15 @@
               "do": "term.mark",
               "kind": "term",
               "id": "princeps"
+            },
+            {
+              "on": {
+                "no": "word:princeps",
+                "en": "word:princeps"
+              },
+              "do": "fact.show",
+              "kind": "term",
+              "id": "princeps"
             }
           ],
           "gapAfter": 1.4
@@ -3147,6 +3221,10 @@
             "en": "Nobody can say exactly when the republic ended. There was no coup. There were seventeen years of small steps."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            },
             {
               "on": "start",
               "do": "stat.clear"
