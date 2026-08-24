@@ -10,6 +10,7 @@ import { mountTransition, unmountTransition, LEAD_IN_MS } from './transition.js'
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark } from '../core/theme.js';
 import { checkVerbManifest, mountStage } from './stage.js';
+import { factBeatIs } from './scenes/overlays.js';
 import { Player } from './player.js';
 import { mountCaptions, renderCaption, clearCaption, setCaptionsOn, storedCaptionsOn } from './captions.js';
 import { mountChrome } from './chrome.js';
@@ -175,6 +176,9 @@ async function openChapter(index) {
     onTick: (t2, scene, beat, word) => {
       chrome?.tick(t2, scene, player.sceneIndex);
       if (beat !== undefined) {
+        // A definition dies with the sentence that raised it. See
+        // factBeatIs() — this is the guarantee, the cue is the timing.
+        factBeatIs(beat?.id);
         renderCaption(beat, word);
         // Introduce the dotted underline the first time one is on screen,
         // once ever. coach() takes itself away and refuses to run when the

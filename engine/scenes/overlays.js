@@ -31,6 +31,7 @@ let lang = 'no';
 let storyRoot = null;
 let factEl = null;
 let entries = null;
+let factBeat = null;
 
 export function mountOverlays(container, ch, allPeople, language) {
   chapter = ch;
@@ -67,6 +68,7 @@ export function mountOverlays(container, ch, allPeople, language) {
 }
 
 export function resetOverlays() {
+  factBeat = null;
   for (const el of [portraitEl, imageEl, quoteEl, noteEl, compareEl, factEl]) {
     if (!el) continue;
     el.classList.remove('is-on');
@@ -219,6 +221,7 @@ export function showFact(cue, instant) {
   if (!factEl) return;
   const e = entries?.get(cue.kind, cue.id);
   if (!e) return;
+  factBeat = cue.beat ?? null;
   const label = KIND_LABEL[cue.kind];
   show(factEl, `
     <aside class="ov-fact__card" data-tap="${esc(cue.kind)}:${esc(cue.id)}"
@@ -229,7 +232,31 @@ export function showFact(cue, instant) {
     </aside>`, instant);
 }
 
-export function hideFact() { hide(factEl); }
+export function hideFact() { factBeat = null; hide(factEl); }
+
+/**
+ * The box belongs to the sentence that said the word.
+ *
+ * Called on every tick with the beat the caption is showing. If that is not
+ * the beat the box was raised in, the box goes — whatever the cue timeline
+ * happens to say.
+ *
+ * This is a belt as well as braces. compile() already caps the derived hide
+ * at the end of its own beat, so in a correct build this never fires. It
+ * exists because the bug that would not die was exactly this shape: a hide
+ * that never ran, and a definition sitting over a sentence it had nothing to
+ * do with while three different "fixes" measured the cue list and pronounced
+ * it fine. A rule this simple should be enforced where it can be SEEN to
+ * hold, not only where it is calculated.
+ *
+ * Safe under rule 1: "visible only during the beat it was shown in" is a
+ * function of time, not of history. Seeking to a later beat hides it, exactly
+ * as playing to one does.
+ */
+export function factBeatIs(beatId) {
+  if (!factBeat || beatId === undefined || beatId === factBeat) return;
+  hideFact();
+}
 
 /* What to call each kind on the card. A reader should know whether they are
    being told about a word, a plant or a place before they read the line. */

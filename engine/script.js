@@ -224,8 +224,21 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
              Measured: langhe showed at 52.7 s of a 56.3 s scene, terroir at
              68.5 of 72.6. Two of nine, so it looked fine most of the time,
              which is how it survived being pointed at repeatedly. */
-          const wanted = at + (cue.until ?? FACT_SECONDS);
-          const t = sceneEnd > at ? Math.min(wanted, sceneEnd - 0.15) : wanted;
+          /* Gone when the sentence on screen is finished.
+
+             That is the rule, and it is simpler than everything I built
+             before it: two beats, then one beat, then a 6.5 s timer, then a
+             clamp to the scene. All of those could still leave the box up
+             after the caption had moved to a different sentence, which is
+             the only thing anyone actually notices.
+
+             So: the END OF ITS OWN BEAT is the ceiling, and `until` can only
+             make it shorter. A beat is the sentence the caption is showing,
+             so the box cannot outlive the words it belongs to -- and because
+             a beat always ends inside its scene, the scene clamp is now
+             implied rather than a second rule to keep in step. */
+          const beatEnd = beat.start + beat.dur;
+          const t = Math.min(at + (cue.until ?? FACT_SECONDS), beatEnd);
           cues.push({ do: 'fact.hide', t, beat: beat.id, _derived: true });
         }
       }
