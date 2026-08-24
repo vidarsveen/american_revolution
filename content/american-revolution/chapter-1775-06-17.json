@@ -1167,6 +1167,16 @@
               "do": "term.mark",
               "kind": "term",
               "id": "committee-of-safety"
+            },
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "gresskledd-bakke",
+              "motion": "in",
+              "push": 0.16,
+              "over": 20,
+              "dim": 0.14,
+              "into": 1.4
             }
           ],
           "gapAfter": 1.15
@@ -1178,6 +1188,11 @@
             "en": "It was a dangerous order. The peninsula hangs off the mainland by a neck a few hundred metres wide. Anything that goes in there can be shut in."
           },
           "cues": [
+            {
+              "on": "end",
+              "do": "plate.hide",
+              "over": 1.2
+            },
             {
               "on": {
                 "no": "word:hals",
