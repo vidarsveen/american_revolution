@@ -1,1 +1,50 @@
-{}
+{
+ "langhe-take": {
+  "kind": "made",
+  "file": "langhe-take.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tåke over åsene om høsten",
+   "en": "Fog over the hills in autumn"
+  },
+  "claims": "Rolling hill country under autumn morning fog, of the kind that fills the valleys of north-west Italy in October.",
+  "omits": "Not a photograph of any identified hill, village or vineyard. No place is being named.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "rolling vineyard hills in autumn under a sea of low morning fog, only the tops of the ridges showing above the mist, bare rows of vines on the slopes, soft grey light just after sunrise, no buildings in the foreground"
+ },
+ "kjeller-fat": {
+  "kind": "made",
+  "file": "kjeller-fat.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fatkjeller",
+   "en": "A barrel cellar"
+  },
+  "claims": "Large wooden casks in an old cellar, the traditional vessel for long ageing.",
+  "omits": "Not any particular producer's cellar. Nothing in frame identifies an estate.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a dim cellar with very large old oak barrels standing in a row, iron hoops, packed earth floor, one shaft of light from a small high window, dust in the air, no people"
+ },
+ "vinmark-helling": {
+  "kind": "made",
+  "file": "vinmark-helling.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Vinmark i helling",
+   "en": "Vines on a slope"
+  },
+  "claims": "Vines planted in rows on a steep slope with pale chalky soil, in autumn leaf.",
+  "omits": "Not a named vineyard and not a named region. The variety of vine is not identifiable and is not claimed.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "steep terraced vineyard rows in late autumn colour, orange and yellow leaves, dry chalky pale soil between the rows, the slope falling away to a misty valley, low afternoon sun"
+ }
+}

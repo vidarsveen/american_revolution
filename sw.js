@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vac5cdc566c';
+const VERSION = 'v4eda1c4994';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -64,6 +64,9 @@ const PRECACHE = [
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/geo/regions.geojson',
   './content/italy-wine/media.json',
+  './content/italy-wine/media/kjeller-fat.jpg',
+  './content/italy-wine/media/langhe-take.jpg',
+  './content/italy-wine/media/vinmark-helling.jpg',
   './content/italy-wine/timing.chapter-1-piemonte.en.json',
   './content/italy-wine/timing.chapter-1-piemonte.no.json',
   './content/norway-1940/chapter-1940-04-09.json',

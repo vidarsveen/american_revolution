@@ -677,7 +677,16 @@
             "no": "Om høsten fylles den skåla med tåke. Den ligger i dalbunnen om morgenen og brenner av utover dagen.",
             "en": "In autumn that bowl fills with fog. It lies in the valley floors in the morning and burns off through the day."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "langhe-take",
+              "motion": "in",
+              "over": 18,
+              "dim": 0.1
+            }
+          ]
         },
         {
           "id": "s3.b3",
@@ -703,7 +712,12 @@
             "no": "Enten fordi den modner så seint at høstingen skjer i tåke i oktober. Eller fordi skallet har et grått belegg som ser ut som tåke.",
             "en": "Either because it ripens so late that picking happens in October fog. Or because the skins carry a grey bloom that looks like fog."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            }
+          ]
         },
         {
           "id": "s3.b5",
@@ -848,7 +862,16 @@
             "no": "Folk har prøvd å dyrke den i California, i Australia og i Argentina i over hundre år. Det blir aldri riktig.",
             "en": "People have tried to grow it in California, Australia and Argentina for over a hundred years. It never comes out right."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "vinmark-helling",
+              "motion": "in",
+              "over": 18,
+              "dim": 0.1
+            }
+          ]
         },
         {
           "id": "s4.b7",
@@ -865,6 +888,10 @@
               "do": "term.mark",
               "kind": "term",
               "id": "terroir"
+            },
+            {
+              "on": "end",
+              "do": "plate.hide"
             },
             {
               "on": "end",
@@ -1104,7 +1131,16 @@
             "no": "Barbera fikk historisk de markene Nebbiolo ikke ville ha. Den modner tidligere og klager mindre.",
             "en": "Barbera historically got the sites Nebbiolo would not take. It ripens earlier and complains less."
           },
-          "cues": []
+          "cues": [
+            {
+              "on": "start",
+              "do": "plate.show",
+              "id": "kjeller-fat",
+              "motion": "in",
+              "over": 16,
+              "dim": 0.12
+            }
+          ]
         },
         {
           "id": "s6.b4",
@@ -1121,6 +1157,10 @@
             "en": "And north of Alba, around Asti, they make something else altogether. Moscato."
           },
           "cues": [
+            {
+              "on": "start",
+              "do": "plate.hide"
+            },
             {
               "on": {
                 "no": "word:Asti",
