@@ -1,0 +1,319 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900"
+     role="img" aria-labelledby="ttl desc">
+  <title id="ttl">Torpedobåten Kjell i Jøssingfjord, 16. februar 1940</title>
+  <desc id="desc">Tegnet rekonstruksjon av en norsk førsteklasses torpedobåt, sett fra siden i en
+    trang fjord med bratte, snøstripete fjellsider. Lavt skrog, skilpaddedekk framme, én skorstein,
+    to torpedorør på dekk og orlogsflagget på flaggstangen akter. Drawn reconstruction of a Norwegian
+    first-class torpedo boat in profile, in a narrow steep-sided fjord.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#7f8d99"/>
+      <stop offset="0.5"  stop-color="#a9b3bb"/>
+      <stop offset="0.88" stop-color="#c8ced1"/>
+      <stop offset="1"    stop-color="#d6dadb"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#54646b"/>
+      <stop offset="0.18" stop-color="#3b4d56"/>
+      <stop offset="0.6"  stop-color="#283a43"/>
+      <stop offset="1"    stop-color="#16232b"/>
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#98a1a7"/>
+      <stop offset="0.35" stop-color="#79838a"/>
+      <stop offset="0.8"  stop-color="#5a646a"/>
+      <stop offset="1"    stop-color="#4a545a"/>
+    </linearGradient>
+    <linearGradient id="cliffFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8894a0"/><stop offset="1" stop-color="#66727d"/>
+    </linearGradient>
+    <linearGradient id="cliffNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#414a52"/><stop offset="1" stop-color="#212830"/>
+    </linearGradient>
+    <linearGradient id="funnel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#4a5359"/>
+      <stop offset="0.38" stop-color="#7e878d"/>
+      <stop offset="1"   stop-color="#464e53"/>
+    </linearGradient>
+    <linearGradient id="tube" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#a3acb1"/>
+      <stop offset="0.42" stop-color="#717a80"/>
+      <stop offset="1"    stop-color="#424a4f"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d6dadb" stop-opacity="0"/>
+      <stop offset="1" stop-color="#d6dadb" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="soften" x="-25%" y="-60%" width="150%" height="260%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <radialGradient id="puff" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"    stop-color="#606870" stop-opacity="0.5"/>
+      <stop offset="0.55" stop-color="#69717a" stop-opacity="0.22"/>
+      <stop offset="1"    stop-color="#69717a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Waterline is 610. Everything below it is water drawn OVER the boat,
+         which is the only way a hull looks afloat rather than parked. -->
+    <path id="hullPath" d="
+      M 268 589
+      C 430 581, 720 577, 1042 571
+      C 1152 567, 1252 553, 1352 546
+      L 1403 557
+      C 1399 591, 1389 619, 1371 643
+      C 1180 659, 700 661, 400 651
+      C 332 647, 292 627, 268 589 Z"/>
+    <clipPath id="hullClip"><use href="#hullPath"/></clipPath>
+    <clipPath id="belowWL"><rect x="0" y="610" width="1600" height="290"/></clipPath>
+    <clipPath id="cliffOnly">
+      <path d="M 0 470 L 0 88 C 96 124, 176 210, 246 298 C 302 370, 350 428, 396 470 Z"/>
+      <path d="M 1600 470 L 1600 52 C 1494 98, 1414 192, 1344 290 C 1290 366, 1244 428, 1206 470 Z"/>
+    </clipPath>
+    <clipPath id="seaClip"><rect x="0" y="466" width="1600" height="434"/></clipPath>
+
+    <!-- Norwegian naval ensign, hoist-left, 22x16 units plus the swallowtail.
+         Bands run 6:1:2:1:12 across and 6:1:2:1:6 down; getting those wrong is
+         the difference between the flag and a red rag with a stripe on it. -->
+    <g id="ensign">
+      <clipPath id="flagClip">
+        <path d="M 0 0 H 100 L 79.2 28.8 L 100 57.6 H 0 Z"/>
+      </clipPath>
+      <g clip-path="url(#flagClip)">
+        <rect x="0" y="0" width="100" height="57.6" fill="#ba0c2f"/>
+        <rect x="21.6" y="0" width="14.4" height="57.6" fill="#ffffff"/>
+        <rect x="0" y="21.6" width="100" height="14.4" fill="#ffffff"/>
+        <rect x="25.2" y="0" width="7.2" height="57.6" fill="#00205b"/>
+        <rect x="0" y="25.2" width="100" height="7.2" fill="#00205b"/>
+      </g>
+      <path d="M 0 0 H 100 L 79.2 28.8 L 100 57.6 H 0 Z"
+            fill="none" stroke="#000000" stroke-opacity="0.28" stroke-width="1"/>
+    </g>
+  </defs>
+
+  <!-- ── sky, fjord walls, water ────────────────────────────────── -->
+  <rect width="1600" height="470" fill="url(#sky)"/>
+  <rect y="466" width="1600" height="434" fill="url(#sea)"/>
+
+  <!-- Jossingfjord is a slot between cliffs. The walls are the reason two
+       torpedo boats could lie a few hundred metres off and see everything. -->
+  <path d="M 0 470 L 0 88 C 96 124, 176 210, 246 298 C 302 370, 350 428, 396 470 Z"
+        fill="url(#cliffFar)" opacity="0.9"/>
+  <path d="M 1600 470 L 1600 52 C 1494 98, 1414 192, 1344 290 C 1290 366, 1244 428, 1206 470 Z"
+        fill="url(#cliffFar)" opacity="0.9"/>
+  <path d="M 0 470 L 0 206 C 68 244, 128 316, 178 390 C 206 430, 228 454, 244 470 Z"
+        fill="url(#cliffNear)"/>
+  <path d="M 1600 470 L 1600 160 C 1520 202, 1458 282, 1410 356 C 1382 398, 1362 446, 1352 470 Z"
+        fill="url(#cliffNear)"/>
+  <!-- snow lying in the gullies: it is February above the sixtieth parallel -->
+  <g fill="#eef2f4" opacity="0.5" clip-path="url(#cliffOnly)">
+    <path d="M 46 204 C 74 240, 98 288, 114 332 L 90 336 C 74 292, 54 246, 32 212 Z"/>
+    <path d="M 150 326 C 170 352, 186 390, 196 422 L 176 426 C 166 394, 150 358, 134 332 Z"/>
+    <path d="M 214 402 C 226 424, 236 448, 242 468 L 226 468 C 218 448, 206 424, 196 406 Z"/>
+    <path d="M 1548 206 C 1522 242, 1498 290, 1482 334 L 1506 338 C 1522 294, 1542 248, 1564 214 Z"/>
+    <path d="M 1438 340 C 1420 366, 1406 402, 1398 432 L 1418 436 C 1426 406, 1440 372, 1456 346 Z"/>
+    <path d="M 1370 414 C 1360 434, 1352 452, 1348 468 L 1364 468 C 1370 452, 1380 432, 1388 418 Z"/>
+  </g>
+  <!-- haze seats the cliffs into the water instead of pasting them on it -->
+  <rect y="330" width="1600" height="140" fill="url(#haze)"/>
+  <rect y="462" width="1600" height="8" fill="#2c3b44" opacity="0.5"/>
+
+  <!-- ── funnel smoke, behind the ship, streaming aft ────────────── -->
+  <g filter="url(#soften)" opacity="0.58" transform="translate(0 26) scale(1 0.62) translate(0 168)">
+    <path d="M 862 452
+             C 812 430, 740 404, 648 388
+             C 546 370, 420 362, 268 366
+             C 150 370, 62 380, 8 392
+             C 66 356, 168 330, 300 318
+             C 452 304, 596 316, 706 344
+             C 788 364, 842 400, 874 436 Z"
+          fill="#6b737b"/>
+    <path d="M 858 448 C 800 424, 700 400, 574 392 C 448 384, 320 392, 214 410
+             C 320 372, 470 356, 606 372 C 712 384, 806 414, 866 442 Z"
+          fill="#7d858c" opacity="0.7"/>
+    <path d="M 852 444 C 806 424, 742 408, 664 404 C 586 400, 508 410, 448 424
+             C 520 396, 618 384, 700 396 C 768 406, 826 424, 858 440 Z"
+          fill="#949ba1" opacity="0.5"/>
+  </g>
+
+  <!-- ══ the boat ═══════════════════════════════════════════════ -->
+  <g id="boat">
+
+    <use href="#hullPath" fill="url(#hull)"/>
+    <g clip-path="url(#hullClip)">
+      <!-- plating seams, following the sheer -->
+      <g stroke="#4b545a" stroke-width="1.5" fill="none" opacity="0.42">
+        <path d="M 262 600 C 430 592, 720 588, 1044 582 C 1156 578, 1256 564, 1360 557"/>
+        <path d="M 262 616 C 430 608, 720 604, 1044 598 C 1156 594, 1256 580, 1360 573"/>
+      </g>
+      <!-- boot topping at the waterline -->
+      <rect x="240" y="600" width="1200" height="12" fill="#41302b" opacity="0.9"/>
+      <text x="1186" y="592" font-family="Georgia, 'Times New Roman', serif" font-size="21"
+            fill="#e2e7e9" opacity="0.62" letter-spacing="4">KJELL</text>
+    </g>
+    <use href="#hullPath" fill="none" stroke="#2e363b" stroke-width="2.4"/>
+
+    <!-- turtleback forecastle: the shell that gives these boats their look -->
+    <path d="M 1152 566 C 1230 551, 1312 542, 1396 552 C 1330 566, 1240 574, 1152 572 Z"
+          fill="#848d93" stroke="#374045" stroke-width="1.8"/>
+    <path d="M 1180 566 C 1250 556, 1318 550, 1376 554" fill="none"
+          stroke="#a8b0b5" stroke-width="1.6" opacity="0.6"/>
+
+    <!-- deck -->
+    <path d="M 272 586 C 430 578, 720 574, 1042 568 L 1044 578 C 720 584, 430 588, 274 596 Z"
+          fill="#5e676d"/>
+
+    <!-- bulwark stanchions and rail, aft half -->
+    <g stroke="#394247" stroke-width="1.5" fill="none">
+      <path d="M 292 584 L 292 562 M 356 582 L 356 560 M 420 581 L 420 559
+               M 484 580 L 484 558 M 548 579 L 548 557 M 612 578 L 612 556"/>
+      <path d="M 288 560 C 400 557, 510 555, 624 553"/>
+      <path d="M 288 570 C 400 567, 510 565, 624 563" opacity="0.65"/>
+    </g>
+
+    <!-- two 45 cm torpedo tubes on the centreline -->
+    <g>
+      <rect x="392" y="534" width="178" height="27" rx="13.5" fill="url(#tube)"
+            stroke="#323a3f" stroke-width="1.8"/>
+      <circle cx="570" cy="547.5" r="13.5" fill="#3b434a" stroke="#2a3136" stroke-width="1.6"/>
+      <path d="M 448 561 h 62 v 12 l -10 6 h -42 l -10 -6 Z" fill="#4f585e"
+            stroke="#323a3f" stroke-width="1.4"/>
+      <rect x="640" y="530" width="178" height="27" rx="13.5" fill="url(#tube)"
+            stroke="#323a3f" stroke-width="1.8"/>
+      <circle cx="818" cy="543.5" r="13.5" fill="#3b434a" stroke="#2a3136" stroke-width="1.6"/>
+      <path d="M 696 557 h 62 v 12 l -10 6 h -42 l -10 -6 Z" fill="#4f585e"
+            stroke="#323a3f" stroke-width="1.4"/>
+    </g>
+
+    <!-- ensign staff at the stern, and the ensign over open water -->
+    <line x1="279" y1="592" x2="279" y2="498" stroke="#4a5258" stroke-width="4"/>
+    <circle cx="279" cy="496" r="4" fill="#4a5258"/>
+    <g transform="translate(276 506) scale(-0.6 0.6) rotate(-4)">
+      <use href="#ensign"/>
+    </g>
+
+    <!-- ship's boat on the after deck -->
+    <g>
+      <path d="M 298 570 C 322 559, 368 556, 402 561 C 396 574, 316 578, 298 570 Z"
+            fill="#8a765a" stroke="#3a332a" stroke-width="1.6"/>
+      <path d="M 306 566 C 332 561, 372 559, 398 562" fill="none" stroke="#5e5340" stroke-width="1.4"/>
+    </g>
+
+    <!-- funnel, raked aft, with cap and steam pipe -->
+    <path d="M 858 566 L 918 566 L 892 450 L 840 450 Z" fill="url(#funnel)"
+          stroke="#2e363b" stroke-width="2"/>
+    <path d="M 838 458 L 894 458 L 891 442 L 835 442 Z" fill="#2b3236"/>
+    <path d="M 848 512 L 908 512 L 905 500 L 845 500 Z" fill="#394247" opacity="0.75"/>
+    <line x1="828" y1="566" x2="818" y2="456" stroke="#4c555b" stroke-width="4"/>
+
+    <!-- cowl ventilators -->
+    <g fill="#6f787e" stroke="#323a3f" stroke-width="1.6">
+      <path d="M 812 566 L 812 518 C 812 504, 794 504, 794 518 L 802 522 L 804 566 Z"/>
+      <path d="M 946 564 L 946 516 C 946 502, 928 502, 928 516 L 936 520 L 938 564 Z"/>
+    </g>
+
+    <!-- mast, gaff, standing rigging -->
+    <line x1="988" y1="570" x2="988" y2="350" stroke="#4a5258" stroke-width="6"/>
+    <g stroke="#2f373c" stroke-width="1.1" opacity="0.65">
+      <line x1="988" y1="354" x2="1132" y2="522"/>
+      <line x1="988" y1="354" x2="846" y2="518"/>
+      <line x1="988" y1="354" x2="988" y2="418"/>
+    </g>
+    <circle cx="988" cy="348" r="5" fill="#4a5258"/>
+
+    <!-- bridge: charthouse, open bridge above, canvas dodger -->
+    <rect x="1010" y="534" width="130" height="36" fill="#6b747a" stroke="#323a3f" stroke-width="1.8"/>
+    <g fill="#394247">
+      <rect x="1022" y="544" width="15" height="13"/>
+      <rect x="1045" y="544" width="15" height="13"/>
+      <rect x="1068" y="544" width="15" height="13"/>
+      <rect x="1091" y="544" width="15" height="13"/>
+    </g>
+    <rect x="1028" y="500" width="96" height="34" fill="#808990" stroke="#323a3f" stroke-width="1.8"/>
+    <rect x="1028" y="486" width="96" height="16" rx="4" fill="#949a9f" stroke="#323a3f" stroke-width="1.6"/>
+    <g fill="#3d454b">
+      <rect x="1038" y="510" width="17" height="15"/>
+      <rect x="1063" y="510" width="17" height="15"/>
+      <rect x="1088" y="510" width="17" height="15"/>
+    </g>
+    <circle cx="1076" cy="474" r="11" fill="#ccd1d4" stroke="#323a3f" stroke-width="1.6"/>
+    <line x1="1076" y1="463" x2="1076" y2="486" stroke="#323a3f" stroke-width="2"/>
+    <!-- two men on the bridge wing: the only scale in the picture -->
+    <g fill="#262d33">
+      <circle cx="1140" cy="490" r="5"/>
+      <path d="M 1135 496 h 10 v 17 l -3 13 h -3.5 l 1 -13 h -4.5 Z"/>
+      <circle cx="1157" cy="493" r="5"/>
+      <path d="M 1152 499 h 10 v 15 l -3 12 h -3.5 l 1 -12 h -4.5 Z"/>
+    </g>
+
+    <!-- 76 mm gun forward, on the turtleback -->
+    <g>
+      <path d="M 1222 560 L 1268 560 L 1263 538 L 1227 538 Z" fill="#6b747a"
+            stroke="#323a3f" stroke-width="1.8"/>
+      <g transform="rotate(-10 1256 530)">
+        <rect x="1256" y="526" width="82" height="8" rx="4" fill="#5d666c"
+              stroke="#323a3f" stroke-width="1.6"/>
+      </g>
+      <circle cx="1245" cy="540" r="9" fill="#4a535a" stroke="#2e363b" stroke-width="1.4"/>
+    </g>
+
+    <!-- jackstaff, anchor, hawse -->
+    <line x1="1392" y1="552" x2="1392" y2="496" stroke="#4a5258" stroke-width="4"/>
+    <g stroke="#333b40" stroke-width="3" fill="none">
+      <path d="M 1346 570 v 20 M 1337 570 h 18 M 1337 584 c 0 11, 18 11, 18 0"/>
+    </g>
+    <circle cx="1318" cy="576" r="5" fill="#2e363b"/>
+  </g>
+
+  <!-- ══ water OVER the hull: this is what makes her float ═══════ -->
+  <g clip-path="url(#belowWL)">
+    <rect y="466" width="1600" height="434" fill="url(#sea)"/>
+  </g>
+  <!-- a hint of the hull carried under the surface -->
+  <g clip-path="url(#hullClip)">
+    <rect x="240" y="610" width="1200" height="26" fill="#0d1a21" opacity="0.3"/>
+  </g>
+
+  <g clip-path="url(#seaClip)">
+    <!-- bow wave, attached to the stem -->
+    <path d="M 1338 606 C 1382 596, 1436 604, 1476 626 C 1424 638, 1368 628, 1332 616 Z"
+          fill="#e6ecee" opacity="0.85"/>
+    <path d="M 1310 618 C 1380 610, 1452 622, 1500 642 C 1424 652, 1348 640, 1300 628 Z"
+          fill="#c2ccd0" opacity="0.5"/>
+    <path d="M 1268 610 C 1320 604, 1360 608, 1392 616 C 1348 622, 1300 618, 1264 614 Z"
+          fill="#f2f6f7" opacity="0.4"/>
+    <!-- wash along the waterline, and the wake running aft -->
+    <path d="M 300 616 C 620 610, 1000 606, 1300 610 C 1000 620, 620 624, 300 626 Z"
+          fill="#dfe8ea" opacity="0.28"/>
+    <g stroke="#cfd9dd" fill="none" opacity="0.38">
+      <path d="M 108 640 C 268 630, 480 626, 690 630" stroke-width="4"/>
+      <path d="M 46 672 C 236 658, 512 654, 742 660" stroke-width="3"/>
+      <path d="M 176 620 C 300 615, 424 613, 548 615" stroke-width="2.2"/>
+    </g>
+    <g stroke="#8ea0a9" fill="none" opacity="0.3">
+      <path d="M 190 720 C 420 708, 706 706, 950 714" stroke-width="3"/>
+      <path d="M 470 772 C 716 760, 1002 758, 1246 766" stroke-width="3"/>
+      <path d="M 110 816 C 416 802, 822 800, 1186 810" stroke-width="3.5"/>
+      <path d="M 630 862 C 896 852, 1240 850, 1524 858" stroke-width="3"/>
+      <path d="M 1180 690 C 1320 684, 1450 684, 1580 690" stroke-width="2.6"/>
+    </g>
+    <!-- reflection, broken by the swell -->
+    <g opacity="0.22" fill="#0b141a">
+      <path d="M 320 646 C 640 642, 1040 638, 1348 634 L 1348 654 C 1040 660, 640 664, 320 668 Z"/>
+      <path d="M 430 690 C 706 686, 1020 684, 1276 682 L 1276 698 C 1020 702, 706 704, 430 708 Z"/>
+      <path d="M 560 742 C 800 738, 1060 736, 1250 736 L 1250 750 C 1060 754, 800 756, 560 760 Z"/>
+    </g>
+  </g>
+
+  <!-- ── caption ────────────────────────────────────────────────── -->
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <rect x="0" y="806" width="1600" height="94" fill="#0d151a" opacity="0.9"/>
+    <text x="64" y="846" font-size="27" fill="#eef2f3">
+      Torpedobåten <tspan font-style="italic">Kjell</tspan> — Jøssingfjord, 16. februar 1940
+    </text>
+    <text x="64" y="878" font-size="17" fill="#98a5ab">
+      Tegnet rekonstruksjon av typen, ikke et fotografi og ikke målt fra tegninger av dette skroget.
+      · Drawn reconstruction of the type, not a photograph.
+    </text>
+  </g>
+</svg>
