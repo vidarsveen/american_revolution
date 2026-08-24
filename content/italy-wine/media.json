@@ -94,5 +94,21 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a worn wooden table set for an ordinary weekday dinner, a plain glass carafe of dark red wine, two simple tumblers, a bowl of pasta with butter and a little grated cheese, a folded cloth, warm evening light from one side"
+ },
+ "alpene-over": {
+  "kind": "made",
+  "file": "alpene-over.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Alpene over dalene",
+   "en": "The Alps above the valleys"
+  },
+  "claims": "High snow-covered mountains standing over lower cultivated foothills.",
+  "omits": "Not an identified peak, valley or country. The terrain is generic mountain country.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "high snow-covered alpine peaks rising behind low green foothills, clear cold air, the snowline sharp against bare rock, small terraced fields far below in shadow"
  }
 }
