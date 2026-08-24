@@ -828,6 +828,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -871,10 +875,6 @@
             "en": "On the twenty-fifth of May, ships arrived from England with reinforcements — and with three generals: William Howe, Henry Clinton and John Burgoyne."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "place.clear"
@@ -1543,7 +1543,7 @@
           },
           "cues": [
             {
-              "on": "end",
+              "on": "start",
               "do": "fact.hide"
             },
             {
@@ -2354,7 +2354,12 @@
             "no": "Ordren som gikk langs linja var enkel. Ikke skyt før du er sikker på at du treffer.",
             "en": "The order that went along the line was a simple one. Do not fire until you are sure you will hit."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 0.95
         },
         {
@@ -2364,10 +2369,6 @@
             "en": "Everybody remembers it in another form. Don't fire till you see the whites of their eyes."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:hvite",

@@ -559,7 +559,12 @@
             "no": "Den kommer ikke tilbake. Det som kommer, er fjorten år med borgerkrig, og en enehersker på den andre siden.",
             "en": "It does not come back. What comes is fourteen years of civil war, and one man ruling alone at the end of it."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -569,10 +574,6 @@
             "en": "More than six hundred kilometres away, at Apollonia, a nineteen-year-old is studying. His name is Gaius Octavius, and he is Caesar's great-nephew."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "plate.hide"
@@ -853,7 +854,12 @@
             "no": "Antonius nekter å gi arven fra seg. Han ser en syk nittenåring, og han tar helt feil om hva slags person det er.",
             "en": "Antony refuses to hand the inheritance over. He sees a sickly nineteen-year-old, and he is entirely wrong about what kind of person that is."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -863,10 +869,6 @@
             "en": "In the senate Cicero sees a chance. He attacks Antony in speech after speech, and builds up the boy as a counterweight."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "portrait.hide"
@@ -1163,6 +1165,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "portrait.hide"
             },
             {
@@ -1226,10 +1232,6 @@
             "en": "This is not a private arrangement. It is voted through as law, with an end date five years away."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:lov",
@@ -1736,6 +1738,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:Filippi",
                 "en": "word:Philippi"
@@ -1778,10 +1784,6 @@
             "en": "Almost two hundred thousand men face each other. It is the largest army Romans have ever put in the field against Romans."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:tusen",
@@ -2157,6 +2159,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "marker.clear"
             },
             {
@@ -2205,10 +2211,6 @@
             "en": "It takes Octavian six years and two wrecked fleets to break him. It is Agrippa who finally does it, at Naulochus."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "map.time",
@@ -3181,6 +3183,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "portrait.hide"
             },
             {
@@ -3221,10 +3227,6 @@
             "en": "Nobody can say exactly when the republic ended. There was no coup. There were seventeen years of small steps."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "stat.clear"

@@ -1311,6 +1311,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:stål",
                 "en": "word:steel"
@@ -1334,12 +1338,7 @@
             "no": "Rundt fire tideler av jernet tysk industri brukte, kom fra svenske gruver. Uten den malmen stopper krigsmaskinen.",
             "en": "About four tenths of the iron German industry used came out of Swedish mines. Without that ore the war machine stops."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -1557,6 +1556,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "map.flyTo",
               "to": "jossingfjord",
               "zoom": 6.2,
@@ -1592,10 +1595,6 @@
             "en": "The Altmark affair, it was called. For Hitler it was an answer. Norway was not going to defend its own neutrality, and if so, somebody else could come and take it."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "end",
               "do": "plate.hide"
@@ -1854,7 +1853,7 @@
           },
           "cues": [
             {
-              "on": "end",
+              "on": "start",
               "do": "fact.hide"
             },
             {
@@ -2018,6 +2017,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:gamle",
                 "en": "word:old"
@@ -2041,12 +2044,7 @@
             "no": "En tysk offiser kommer om bord på Eidsvold med et krav. Skipet skal overgis. Tyskerne kommer som venner, sier han.",
             "en": "A German officer comes aboard Eidsvold with a demand. The ship is to be handed over. The Germans come as friends, he says."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -2172,6 +2170,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -2223,10 +2225,6 @@
             "en": "A hundred and one men died, and ninety were saved. In twenty minutes the navy had lost two hundred and seventy-six sailors, and damaged not one German ship."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:syttiseks",

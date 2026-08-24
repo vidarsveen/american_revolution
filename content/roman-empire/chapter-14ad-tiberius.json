@@ -369,6 +369,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:Tiberius",
                 "en": "word:Tiberius"
@@ -385,12 +389,7 @@
             "no": "Men han er ikke konge, for det finnes ingen kongetittel. Han kan ikke arve, for det finnes ingenting å arve. Stillingen han skal overta, finnes ikke på papiret.",
             "en": "But he is not a king, because there is no royal title. He cannot inherit, because there is nothing to inherit. The position he is taking over does not exist on paper."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.2
         },
         {
@@ -483,6 +482,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "plate.hide"
             }
           ],
@@ -495,10 +498,6 @@
             "en": "And a ceremony is not a rule. That problem is going to kill Roman emperors for four hundred years."
           },
           "cues": [
-            {
-              "on": "end",
-              "do": "fact.hide"
-            },
             {
               "on": "end",
               "do": "caption.note",
@@ -594,7 +593,12 @@
             "no": "Det er nøyaktig det Augustus hadde bygd en egen statskasse for å hindre. Systemet holdt så lenge han levde. Uka etter at han døde, sprakk det.",
             "en": "That is exactly what Augustus had built a treasury to prevent. The system held as long as he lived. The week after he died, it cracked."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -604,10 +608,6 @@
             "en": "On the Rhine it goes further. There the legions offer the throne to their general."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -1007,7 +1007,12 @@
             "no": "Under Augustus begynner den å gjelde noe nytt: ord. Skrift som skader noens rykte. Og førstemannen er også staten, så ord om ham er ord om staten.",
             "en": "Under Augustus it starts to cover something new: words. Writing that damages a reputation. And the first man is also the state, so words about him are words about the state."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -1016,12 +1021,7 @@
             "no": "Under Tiberius vokser det. Ikke fordi loven endres — teksten er den samme — men fordi flere og flere ting begynner å telle.",
             "en": "Under Tiberius it grows. Not because the law changes — the text is the same — but because more and more things begin to count."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.3
         },
         {
@@ -1110,7 +1110,12 @@
             "no": "Det skaper et yrke. Menn som heter delatores, angivere, lever av å finne noe å anklage rike menn for.",
             "en": "That creates a profession. Men called delatores, informers, make a living finding something to accuse rich men of."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.3
         },
         {
@@ -1120,10 +1125,6 @@
             "en": "Nobody invented this. Nobody voted for it. An old law and an old reward rule met, and the result was a system nobody had decided on."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "stat.clear"
@@ -1182,15 +1183,6 @@
               "do": "term.mark",
               "kind": "term",
               "id": "praetorian-guard"
-            },
-            {
-              "on": {
-                "no": "word:pretorianergarden",
-                "en": "word:praetorian"
-              },
-              "do": "fact.show",
-              "kind": "term",
-              "id": "praetorian-guard"
             }
           ],
           "gapAfter": 1.2
@@ -1211,10 +1203,6 @@
             "en": "The guard had been spread among small camps around Italy. Sejanus gathers it into one large camp just outside the city wall of Rome."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:leir",
@@ -1265,15 +1253,6 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "how-we-know"
-            },
-            {
-              "on": {
-                "no": "word:tilståelse",
-                "en": "word:confession"
-              },
-              "do": "fact.show",
-              "kind": "topic",
-              "id": "how-we-know"
             }
           ],
           "gapAfter": 1.4
@@ -1294,10 +1273,6 @@
             "en": "Agrippina and her two eldest sons are accused, exiled and starved to death, one after another."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:Agrippina",

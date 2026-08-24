@@ -1379,6 +1379,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:nitten",
                 "en": "word:nineteen"
@@ -1421,10 +1425,6 @@
             "en": "One of the men lying in the snow with a machine gun that morning was Fridtjof Haug from Kviby near Alta. He was twenty-one years old. He told this to NRK many decades later."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "compare.clear"
@@ -2114,15 +2114,6 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "hvordan-vet-vi-det"
-            },
-            {
-              "on": {
-                "no": "word:kildene",
-                "en": "word:sources"
-              },
-              "do": "fact.show",
-              "kind": "topic",
-              "id": "hvordan-vet-vi-det"
             }
           ],
           "gapAfter": 1.45
@@ -2134,10 +2125,6 @@
             "en": "That is the part of the story that stands least in the books. The town was taken back, and some people paid for it without having chosen anything at all."
           },
           "cues": [
-            {
-              "on": "end",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:betalte",
@@ -2372,6 +2359,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": "word:Orneset",
               "do": "route.draw",
               "id": "rombak-over",
@@ -2418,10 +2409,6 @@
             "en": "South of the town the Poles pushed from Ankenes towards Beisfjord and took the heights behind. General Zygmunt Bohusz-Szyszko led them. The Germans there held out longer than anyone else."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -3150,7 +3137,12 @@
             "no": "Byen ble holdt i elleve dager. De allierte hadde alt bestemt seg for å dra da de tok den. Og Dietl ble aldri slått ferdig, fordi de som kunne gjort det, måtte om bord i båtene.",
             "en": "The town was held for eleven days. The Allies had already decided to leave when they took it. And Dietl was never finished off, because the men who could have done it had to get on the boats."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.45
         },
         {
@@ -3159,12 +3151,7 @@
             "no": "Men noe var likevel bevist. Tyske styrker kunne slås. Det var det ingen hadde sett noen gjøre på bakken før den tjueåttende mai.",
             "en": "But something had been proved all the same. German forces could be beaten. Nobody had seen anyone do that on the ground before the twenty-eighth of May."
           },
-          "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.4
         },
         {

@@ -128,6 +128,12 @@ READABLE = {
 # The other end of the same defect is a plate shown so late in its scene that
 # the scene wipe takes it away before anyone sees it -- which reads as a span
 # of zero or less, and is a picture nobody ever gets.
+# How long a definition can sit on screen before it stops being information.
+# Three short lines is four to six seconds of reading while a voice is
+# running. Measured before this existed: median 21.3 s, worst 37.9, and 31 of
+# 45 over twenty seconds -- the stats-deck problem again, in a different box.
+FACT_CEILING = 14.0
+
 PLATE_CEILING = 34.0
 # And a floor that works for a plate with NO hide, which runs to the scene
 # wipe. READABLE only measures show/hide pairs, so the closing picture of
@@ -394,7 +400,35 @@ def check_overlays_readable(chapter, timings, langs):
                         events.append((at, cue, beat["id"]))
             events.sort(key=lambda e: e[0])
 
-            for what, (show, hide, floor) in READABLE.items():
+            # The other end of the same measurement: a box nobody had time to read,
+    # and a box that outstayed the sentence it belonged to.
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            open_at = open_id = open_beat = None
+            for beat in scene["beats"]:
+                tb = timing_beat(tm, scene["id"], beat["id"])
+                if not tb:
+                    continue
+                for cue in beat.get("cues", []):
+                    at = cue_time(cue, tb, lang)
+                    if at is None:
+                        continue
+                    if cue["do"] == "fact.show":
+                        open_at, open_id, open_beat = at, cue.get("id"), beat["id"]
+                    elif cue["do"] == "fact.hide" and open_at is not None:
+                        span = at - open_at
+                        if span > FACT_CEILING:
+                            found.append(
+                                f"{open_beat}: '{lang}' fact box '{open_id}' stands for "
+                                f"{span:.0f}s, over {FACT_CEILING:.0f}s — a definition "
+                                f"that outstays its sentence stops being read. "
+                                f"Hide it a beat earlier.")
+                        open_at = None
+
+    for what, (show, hide, floor) in READABLE.items():
                 open_at = None
                 open_id = None
                 open_beat = None

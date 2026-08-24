@@ -452,7 +452,12 @@
             "no": "Den gir ham vetorett mot hva som helst, og gjør personen hans ukrenkelig. Å legge hånd på ham er en forbrytelse mot gudene.",
             "en": "It gives him a veto over anything at all, and makes his person inviolable. To lay a hand on him is an offence against the gods."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.2
         },
         {
@@ -462,10 +467,6 @@
             "en": "The second is called imperium maius, the greater command. With it he can overrule any governor in any province. If a proconsul sits in Asia with three legions behind him, he still does what Augustus says."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "map.flyTo",
@@ -683,6 +684,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -708,10 +713,6 @@
             "en": "Agrippa carried fresh water into the city on long arches, built baths that were free to use, and raised the Pantheon."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:Pantheon",
@@ -922,6 +923,10 @@
           "cues": [
             {
               "on": "start",
+              "do": "fact.hide"
+            },
+            {
+              "on": "start",
               "do": "stat.clear"
             },
             {
@@ -949,10 +954,6 @@
             "en": "Before this the tax was collected by private contractors. They paid the state up front, and then took in as much as they could."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:oppkjøpere",
@@ -1120,6 +1121,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:vant",
                 "en": "word:won"
@@ -1144,10 +1149,6 @@
             "en": "Augustus changes that. He fixes the length of service: sixteen years, later twenty."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:tjenestetiden",
@@ -1408,7 +1409,12 @@
             "no": "Utroskap gjøres om fra familiesak til forbrytelse mot staten. Før kunne en far straffe det selv. Nå er det domstolens sak.",
             "en": "Adultery is turned from a family matter into a crime against the state. Before, a father could punish it himself. Now it belongs to the courts."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.2
         },
         {
@@ -1418,10 +1424,6 @@
             "en": "Then, in the year two before Christ, he uses the law on his own daughter."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": "start",
               "do": "map.time",
@@ -1619,7 +1621,12 @@
             "no": "I praksis brukte han nesten tretti år på å skaffe seg en, og han mistet dem i tur og orden.",
             "en": "In practice he spent nearly thirty years trying to produce one, and he lost them one after another."
           },
-          "cues": [],
+          "cues": [
+            {
+              "on": "start",
+              "do": "fact.hide"
+            }
+          ],
           "gapAfter": 1.2
         },
         {
@@ -1629,10 +1636,6 @@
             "en": "First Marcellus, the nephew who was also his son-in-law. He died in twenty-three before Christ, aged twenty."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:Marcellus",
@@ -1774,6 +1777,10 @@
           },
           "cues": [
             {
+              "on": "start",
+              "do": "fact.hide"
+            },
+            {
               "on": {
                 "no": "word:Rhodos",
                 "en": "word:Rhodes"
@@ -1807,10 +1814,6 @@
             "en": "Augustus adopted him anyway in the year four. Suetonius reports that he said plainly why."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "fact.hide"
-            },
             {
               "on": {
                 "no": "word:Sveton",
