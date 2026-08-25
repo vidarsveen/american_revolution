@@ -110,8 +110,17 @@
   text-decoration-thickness: 1.5px;
 }
 /* A pin you can open is a RING; a pin you cannot is a dot. Visible without
-   hovering, which the old treatment was not. */
-.atlas__overlay .atlas-pin[data-tap]::after {
+   hovering, which the old treatment was not.
+
+   The ring goes round the DOT, which is what the sentence above always said
+   and what the rule did not do: `inset: -4px` on `.atlas-pin` is 4px outside
+   the whole flex row, so it drew a gold capsule round the dot AND the name.
+   That was invisible as a fault while the name sat on its own bordered plate
+   -- one box more or less -- and became the loudest thing on the map the
+   moment the plate came off. `i` is the only element here whose box is the
+   dot, so the ring belongs on it. */
+.atlas__overlay .atlas-pin[data-tap] i { position: relative; }
+.atlas__overlay .atlas-pin[data-tap] i::after {
   content: '';
   position: absolute;
   inset: -4px;
@@ -143,35 +152,91 @@
 }
 .atlas__vignette { background: var(--atlas-vignette); }
 
-/* ---------- Place names ---------- */
-.atlas-place {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: -0.7em 0 0 0.55em;
-  font-family: var(--font-display, Georgia, serif);
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: .01em;
-  white-space: nowrap;
-  color: var(--atlas-ink);
-  /* A halo, not a glow: repeating the blurred shadow compounds its alpha
-     into an opaque ring, and the four offsets close the corners. */
+/* ---------- Place names ----------
+
+   THE HALO IS SHARED, because three surfaces need it and it is one idea.
+   A halo, not a glow: repeating the blurred shadow compounds its alpha into
+   an opaque ring, and the four offsets close the corners. Anything on this
+   map that is type standing on the ground wears it -- a place name, a pin's
+   name, the clock -- which is what lets all three drop their plates.
+
+   Written out in a rule rather than parked in a custom property on :root.
+   A var() inside a custom property resolves where the property is DECLARED,
+   so a --halo-shadow composed at :root would be a working but fragile thing
+   the moment anything wanted to override --atlas-halo lower down. */
+.atlas-place,
+.atlas-pin b,
+.atlas__time {
   text-shadow:
     0 0 2px var(--atlas-halo), 0 0 2px var(--atlas-halo), 0 0 3px var(--atlas-halo),
     1px 1px 0 var(--atlas-halo), -1px 1px 0 var(--atlas-halo),
     1px -1px 0 var(--atlas-halo), -1px -1px 0 var(--atlas-halo);
 }
+
+.atlas-place {
+  /* The gap between the dot and the words, and how far the words ride above
+     the dot. Named rather than written into the margin, because the placement
+     pass in map/index.js needs both numbers and reads them off the node's own
+     offsetLeft/offsetTop -- so they are defined here, once, and the module
+     never carries a second copy that can drift. */
+  --dot-gap:  .55em;
+  --dot-rise: .7em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: calc(-1 * var(--dot-rise)) 0 0 var(--dot-gap);
+  font-family: var(--font-display, Georgia, serif);
+  /* --fs-sm IS the map's place-label step: docs/design-direction.md section 2
+     names it "a card's name line. Map place labels." It read 13px there and
+     13px here, which is how a literal survives a review -- it is the right
+     number until the scale moves, and then it is the only number that did
+     not. The three map steps were --fs-2xs / --fs-sm / --fs-base all along;
+     they are written that way now, so the map moves with the scale. */
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  color: var(--atlas-ink);
+}
 .atlas-place::before {
   content: '';
   position: absolute;
-  left: -0.55em;
-  top: 50%;
+  left: calc(-1 * var(--dot-gap));
+  /* Exactly cancels the box's own margin-top, so the dot sits ON the
+     coordinate. `top: 50%` put it a pixel or so above, because half the line
+     box is not the same as the rise the margin applies. */
+  top: var(--dot-rise);
   width: 5px; height: 5px;
   margin: -2.5px 0 0 -2.5px;
   border-radius: 50%;
   background: var(--atlas-ink);
   box-shadow: 0 0 0 1.5px var(--atlas-halo);
+}
+
+/* THE WORDS MOVE; THE DOT DOES NOT.
+
+   `white-space: nowrap` running rightward from the anchor is how Barbaresco
+   put 65 px of an 80 px name off the right edge of a 390 px phone while the
+   visibility test called it shown: the anchor was on screen and the name was
+   not. A point label is attached to its dot, so it cannot slide the way an
+   area name can -- slide it and it is naming the next village along. It goes
+   to the other SIDE of the dot instead: right, then left, then above, then
+   below, first fit wins, nothing at all if none fits.
+
+   Only the dot's own position is mirrored here. Where the BOX lands is
+   arithmetic in placePoint() (map/index.js), off the same two custom
+   properties. */
+.atlas-place--left::before {
+  left: auto; right: calc(-1 * var(--dot-gap));
+  margin: -2.5px -2.5px 0 0;
+}
+.atlas-place--above::before {
+  left: 50%; top: auto; bottom: calc(-1 * var(--dot-gap));
+  margin: 0 0 -2.5px -2.5px;
+}
+.atlas-place--below::before {
+  left: 50%; top: calc(-1 * var(--dot-gap));
+  margin: -2.5px 0 0 -2.5px;
 }
 /* AN AREA NAME, not a watermark and not a shrunken town.
 
@@ -193,17 +258,30 @@
    dot. Larger AND quieter at once is what stops it reading as another pin,
    and it is how every atlas sets a region bigger than the towns within it
    without the region ever shouting. docs/design-direction.md, "A label is not
-   a watermark". */
+   a watermark".
+
+   ON THE SCALE: 15px was --fs-base under the old scale and is 17px under the
+   new one. The step, not the pixel, is what the direction fixed -- one notch
+   above the city name, two above the town, which is the ratio that made the
+   three tell apart. Keeping 15 while the city moved to 15 would have collapsed
+   two of the three steps into one, which is the watermark bug from the other
+   side. The token's job line says "body text", and that is a naming mismatch
+   worth fixing in the scale, not here: nothing on the map is body text. */
 .atlas-place--region {
-  font-size: 15px;
+  font-size: var(--fs-base);
   font-weight: 550;
   letter-spacing: .05em;
   color: var(--atlas-ink-quiet);
-  margin-left: 0;
+  /* No dot, so no gap to leave for one -- and the placement pass reads that
+     straight off the margin this collapses to. */
+  --dot-gap: 0px;
   transform-origin: 0 0;
 }
 .atlas-place--region::before { display: none; }
-.atlas-place--town { font-size: 11px; font-weight: 550; letter-spacing: .01em;
+/* The smallest of the three steps, and still not the smallest type on the map
+   -- that is the credit, at --fs-3xs, which is what the provenance step is
+   for. A town name is information; a licence line is a footnote. */
+.atlas-place--town { font-size: var(--fs-2xs); font-weight: 550; letter-spacing: .01em;
                      color: var(--atlas-ink-quiet); }
 
 /* ---------- Unit counters: flag, commander, strength ---------- */
@@ -217,7 +295,7 @@
   padding: 4px 9px 4px 4px;
   border-radius: 6px;
   background: var(--atlas-halo);
-  border: 1px solid var(--faction, #55704c);
+  border: 1px solid var(--faction, var(--sage));
   border-left-width: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .28), 0 4px 12px rgba(0, 0, 0, .16);
   pointer-events: auto;
@@ -231,7 +309,7 @@
   right: 100%;
   top: 50%;
   width: 12px;
-  border-top: 1.5px dotted var(--faction, #55704c);
+  border-top: 1.5px dotted var(--faction, var(--sage));
 }
 .atlas-unit__flag {
   display: block;
@@ -243,12 +321,19 @@
 }
 .atlas-unit__flag svg { display: block; width: 100%; height: 100%; }
 .atlas-unit__text { display: flex; flex-direction: column; line-height: 1.15; }
+/* A commander's name and his strength are the counter's two lines, and they
+   sit between the town step and the city step so a counter never outweighs
+   the ground it stands on. 12.5px and 10.5px were half-steps that existed
+   nowhere in the scale; --fs-xs and --fs-2xs are the two rungs they were
+   reaching for. They differ in more than size -- display against system,
+   700 against normal, full ink against quiet -- which is the same rule the
+   three place steps keep. */
 .atlas-unit__name {
   font-family: var(--font-display, Georgia, serif);
-  font-size: 12.5px; font-weight: 700; color: var(--atlas-ink);
+  font-size: var(--fs-xs); font-weight: 700; color: var(--atlas-ink);
 }
 .atlas-unit__n {
-  font-size: 10.5px; font-variant-numeric: tabular-nums;
+  font-size: var(--fs-2xs); font-variant-numeric: tabular-nums;
   color: var(--atlas-ink-quiet);
 }
 
@@ -317,20 +402,30 @@
   100% { opacity: 0; }
 }
 
+/* THE CLOCK IS A DATE STAMP, NOT A BADGE.
+
+   It was a 999px pill at 14px on an opaque plate with a 1px border: the exact
+   shape of a chip in a settings screen, sitting on top of a documentary. A
+   film says when it is by stamping the date on the picture -- small, tracked,
+   upright, standing on the image with nothing behind it -- and that is also
+   what docs/design-direction.md already calls this: `--fs-2xs` is "a kicker:
+   the small word above a thing saying what kind of thing it is -- a scene
+   clock". The kicker rule is the one place uppercase is allowed, at 2xs or
+   3xs with .06-.14em, so .10em, and never with italic.
+
+   The plate goes because the shared halo above does the same job without
+   drawing a box: type on the ground, like every other piece of type here. */
 .atlas__time {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 5px 11px;
-  border-radius: var(--r-pill, 999px);
-  background: var(--atlas-halo);
-  border: 1px solid var(--atlas-border-0);
+  top: var(--s4);
+  left: var(--s4);
   color: var(--atlas-ink);
   font-family: var(--font-display, Georgia, serif);
-  font-size: 14px;
+  font-size: var(--fs-2xs);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  letter-spacing: .04em;
+  text-transform: uppercase;
+  letter-spacing: .10em;
   pointer-events: none;
   opacity: 0;
   transform: translateY(-4px);
@@ -355,23 +450,79 @@
   width: 11px; height: 11px;
   margin: -5.5px 0 0 -5.5px;
   border-radius: 50%;
-  background: var(--faction, #a8322d);
-  border: 2px solid var(--atlas-halo);
+  /* Never a faction colour as the fallback -- #a8322d is this pack's
+     British red, and a pin the module was told nothing about is just a
+     place. Same defect as the ring's, one rule down. */
+  background: var(--faction, var(--ink));
+  /* The ring is INK, not halo, and that is the whole of what made a pin ugly.
+     --atlas-halo is near-white on light and near-black on dark, so the ring
+     was always about the same value as the ground it sat on: measured against
+     --atlas-land, 1.11 in light and 2.15 in dark. It separated nothing, and a
+     dark-red dot on dark-olive ground read as a smudge rather than a marker.
+     --atlas-ink is the opposite of the ground by definition in both themes:
+     14.54 and 8.13. It is also what a printed map does -- a coloured disc with
+     a dark keyline -- so the pin reads as drawn rather than as spilt.
+
+     This is also the 3:1 failure check-contrast found. measure_markers scores
+     max(fill, ring) precisely because the ring is meant to do this work; it
+     just never did. */
+  border: 2px solid var(--atlas-ink);
   box-shadow: 0 1px 4px rgba(0, 0, 0, .45);
 }
+/* A PIN'S NAME IS A PLACE NAME, SET LOUDER -- NOT A TEXT BOX.
+
+   It was 12px/700 body type on an opaque plate with a 1px border and a 5px
+   radius, which is a tooltip. Read against the ground it sits on, that plate
+   was the loudest object on the map: a white rounded rectangle over the
+   coastline, saying "interface" in a frame that is trying to say "1775".
+
+   Everything the plate was there for is already solved one rule up. The halo
+   is what makes type legible over any ground -- it is why a place name needs
+   no plate -- so the chip wears the same halo and drops the box. What is left
+   is the honest difference: this is the one spot the narration is pointing at
+   right now, so it is the same step as a place name (--fs-sm) in the same
+   display face, one weight heavier, in full ink. The dot beside it is already
+   bigger than a place dot and carries a faction colour inside an ink keyline.
+
+   The dot does not move. `.atlas-pin` is a flex row and pinMetrics() in
+   map/index.js MEASURES where the dot lands in each of the four arrangements
+   and translates the whole pin to put it back on its coordinate -- so losing
+   8px of padding on either side cannot walk the dot off the place it names,
+   the way `align-items: center` once put it 5.75px low. */
 .atlas-pin b {
-  margin-top: -5px;
-  padding: 3px 8px;
-  border-radius: 5px;
-  background: var(--atlas-halo);
-  border: 1px solid var(--atlas-border-0);
+  /* Sits the words on the dot's line rather than centred through it, which is
+     where --dot-rise puts a place name. em, so it tracks the type. */
+  margin-top: -.3em;
   color: var(--atlas-ink);
-  font-family: var(--font-body);
-  font-size: 12px;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--fs-sm);
   font-weight: 700;
+  letter-spacing: .01em;
   white-space: nowrap;
 }
 .atlas-pin--bare b { display: none; }
+
+/* The same four placements as a place name, in a flex row.
+
+   A pin is [dot, chip], so putting the chip on the left means reversing the
+   row -- and the negative margin that pulls the dot half over the anchor has
+   to mirror with it, or the dot ends up an eleventh of an inch off the place
+   it names. Above and below stack the chip over the dot instead, which is the
+   only thing left when a long chip fits on neither side of a 390 px screen.
+
+   Nothing here computes where the dot lands. map/index.js MEASURES it in each
+   configuration and translates the whole pin so the dot sits on its
+   coordinate, so these rules can change without the pin drifting off the map:
+   the dot is the truth, and only the words move. */
+.atlas-pin--left  { flex-direction: row-reverse; }
+.atlas-pin--left i { margin: -5.5px -5.5px 0 0; }
+.atlas-pin--above,
+.atlas-pin--below { flex-direction: column; align-items: center; }
+.atlas-pin--above { flex-direction: column-reverse; }
+.atlas-pin--above i,
+.atlas-pin--below i { margin: 0; }
+.atlas-pin--above b,
+.atlas-pin--below b { margin-top: 0; }
 
 /* ---------- Highlight ring: pointing while you talk ---------- */
 .atlas-ring {
@@ -380,22 +531,58 @@
   width: 22px; height: 22px;
   margin: -11px 0 0 -11px;
   border-radius: 50%;
-  border: 2.5px solid var(--faction, #a8322d);
+  /* Gold is the map's look-here colour whatever the subject is -- it is a
+     palette ROLE, not a party. The fallback here used to be #a8322d, which is
+     this pack's British red, resolved to a hex, in a stylesheet: both of the
+     things CLAUDE.md forbids about faction colour, in four bytes. A cue always
+     sets --faction, so it only ever showed when one did not. */
+  border: 2.5px solid var(--faction, var(--gold));
+  opacity: .8;
   pointer-events: none;
-  animation: atlas-ping 2.4s cubic-bezier(.22, 1, .36, 1) infinite;
 }
-/* On a seek we rebuild the picture, and a ring mid-pulse would be a
-   different picture every time you scrubbed to the same moment. */
-.atlas-ring--still { animation: none; opacity: .8; }
+
+/* THE PULSE IS A SECOND RING, thrown outwards from the first.
+   It used to be the ring itself, running `infinite`, and that was wrong twice.
+
+   A pulse that never stops stops meaning "look here" after the second cycle;
+   after that it is the map twitching for the rest of the scene. That is
+   docs/design-direction.md section 1, and the rule was WRITTEN -- it was just
+   applied to `.story-ring` in css/story.css, which nothing has painted since
+   the map module landed. See the note at the top of that file.
+
+   And because the ring WAS the pulse, playing forward left it mid-cycle while
+   a seek to the same second drew it still: one moment, two pictures, which is
+   rule 1. Now the ring stands and the ping leaves it, three times --
+   3 x 2.8s = 8.4s, one sentence, which is how long a highlight is about
+   anything -- and what is left when the ping is done is the ring the seek
+   draws. Forward and sought agree. */
+.atlas-ring::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 22px; height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 2.5px solid var(--faction, var(--gold));
+  /* var(--ease-out) IS cubic-bezier(.22, 1, .36, 1) -- the curve is unchanged,
+     it just stops being written out by hand outside css/tokens.css. */
+  animation: atlas-ping 2.8s var(--ease-out) 3 both;
+}
+/* On a seek we rebuild the picture, and a ping mid-flight would be a different
+   picture every time you scrubbed to the same moment. The ring underneath is
+   already the state the ping settles to, so there is nothing to stand in for. */
+.atlas-ring--still::after { animation: none; opacity: 0; }
 @keyframes atlas-ping {
-  0%   { opacity: .85; transform: scale(.6); }
+  0%   { opacity: .85; transform: scale(1); }
   70%  { opacity: 0;   transform: scale(2.6); }
   100% { opacity: 0;   transform: scale(2.6); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .atlas-ring { animation: none; opacity: .8; }
-  .atlas-pin  { animation: none; }
+  /* The concern is vestibular -- movement, not change. A ping travels, so it
+     goes; the ring itself is not motion and stays exactly as it is. */
+  .atlas-ring::after { animation: none; opacity: 0; }
+  .atlas-pin { animation: none; }
 }
 
 /* ---------- Data credit ----------
@@ -407,18 +594,37 @@
   right: 0;
   /* Clear of the tab bar, which sits over the bottom of the map and was
      cutting the attribution in half. Natural Earth asks for the credit and
-     the OSM data REQUIRES it, so it has to be legible, not merely present. */
-  bottom: var(--credit-clear, 0px);
+     the OSM data REQUIRES it, so it has to be legible, not merely present.
+
+     AND clear of the transport AND of the caption, which is the half that was
+     missing. css/shell.css sets --credit-clear from the TAB BAR, and zeroes
+     it outright for the immersive story view -- where the tabbar is indeed
+     gone and a 78px transport is standing in exactly the same place, with the
+     caption box above that. So the credit was drawn under the play button in
+     every shipped frame: emitted, not legible, which is not what ODbL asks
+     for. This is the hazard CLAUDE.md already names -- two overlays anchored
+     to the same edge fight and the later one wins -- and the two names for
+     that edge already exist: `--floor` (css/story.css: transport-h + safe-b)
+     and `--caption-h` (published by engine/captions.js, the way the transport
+     publishes its own height). Both are undefined outside a chapter, so this
+     resolves to --credit-clear alone in Explore. */
+  bottom: max(var(--credit-clear, 0px),
+              calc(var(--floor, 0px) + var(--caption-h, 0px) + var(--s1)));
   z-index: 6;
-  max-width: 66%;
-  padding: 1px 6px;
+  /* Was 66%, which at 9px cut nothing and at the readable size cut ", ODbL"
+     -- the four characters that are the actual obligation. The box is
+     shrink-to-fit, so this only ever caps it. */
+  max-width: calc(100% - var(--s2));
+  padding: 2px 8px;
   border-radius: var(--r-pill, 999px) 0 0 0;
   background: var(--paper-veil, rgba(0, 0, 0, .25));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: var(--atlas-ink-quiet);
-  font-size: 9px;
-  line-height: 1.6;
+  /* 9px is a credit nobody can read, and this one is a licence condition.
+     --fs-3xs is the provenance step and exists for exactly this line. */
+  font-size: var(--fs-3xs);
+  line-height: 1.5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

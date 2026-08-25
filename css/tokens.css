@@ -25,7 +25,18 @@
   --red-soft:       rgba(168, 50, 45, .12);
   --blue:           #2c4a6e;
   --blue-soft:      rgba(44, 74, 110, .12);
-  --gold:           #b0803c;
+  /* Darkened from #b0803c, and it is the only palette role that needed it.
+     Measured against the light map ground (#efe6d4): red 5.36, blue 7.33,
+     sage 4.45, gold 2.94 — and 1.4.11 asks 3:1 of a graphical object. Gold is
+     the map's look-here colour, so it was the one role that failed and the one
+     that can least afford to. #a07436 is the same hue and saturation two
+     points darker: 3.36, which is a change nobody will see and a floor it now
+     clears. Dark theme was never in question (8.73) and is unchanged.
+
+     Found because a pin learned to flip to the left of its dot. Until then
+     check-contrast sampled the "ground" 15 px to the RIGHT of the dot, which
+     was inside the pin's own chip, and scored gold against its own plate. */
+  --gold:           #a07436;
   --gold-soft:      rgba(176, 128, 60, .15);
   --sage:           #55704c;
   --sage-soft:      rgba(85, 112, 76, .13);
@@ -103,18 +114,43 @@
   --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
-  --fs-3xs:  0.625rem;               /* 10 — provenance only: a credit, a
+  /* THE SCALE MOVED UP A STEP, AND THE CAPTION STOPPED BEING BODY TEXT.
+     "The text is too small" was said four times and answered each time by
+     looking at the number rather than at what the number is FOR. Measured: the
+     caption was 17px on an 844px phone, which is 2.01% of screen height.
+     Broadcast subtitle practice is 2.5-3% — 21 to 25px here. A caption is a
+     SUBTITLE, read at arm's length with the eye mostly on the picture, and a
+     subtitle is a share of the screen. It is not body text, which is read
+     close and can be fixed in px. Sizing it as body is why it kept coming back.
+
+     So --fs-md is now viewport-relative like the display steps, and everything
+     else moves up one notch with it so the relationships hold.
+
+     The cost is honest and worth stating: the caption box goes 103 -> 152px at
+     390 wide, and the map loses 49px of frame. Bigger type means less map. That
+     is an argument about how much the map should be carrying, not a reason to
+     keep the type small. */
+  --fs-3xs:  0.6875rem;              /* 11 — provenance only: a credit, a
                                         licence, a made-mark. Never a sentence.
                                         story.css read var(--fs-3xs) for months
                                         against a token that existed nowhere. */
-  --fs-2xs:  0.6875rem;              /* 11 */
-  --fs-xs:   0.75rem;                /* 12 */
-  --fs-sm:   0.8125rem;              /* 13 */
-  --fs-base: 0.9375rem;              /* 15 — body on phone */
-  --fs-md:   1.0625rem;              /* 17 */
-  --fs-lg:   clamp(1.15rem, 4.2vw, 1.4rem);
-  --fs-xl:   clamp(1.45rem, 6vw, 1.95rem);
-  --fs-2xl:  clamp(1.9rem, 9vw, 2.75rem);
+  --fs-2xs:  0.75rem;                /* 12 — a kicker, and a TOWN on the map */
+  --fs-xs:   0.8125rem;              /* 13 — a secondary line inside a card */
+  --fs-sm:   0.9375rem;              /* 15 — a card's name line, a CITY on the
+                                        map, and a pinned place */
+  --fs-base: 1.0625rem;              /* 17 — body: library, transcript. And an
+                                        AREA name on the map, which is not body
+                                        text but has to be the step above a
+                                        city: an area name is larger AND quieter
+                                        than the city inside it. See section 2. */
+  --fs-md:   clamp(1.1875rem, 5.4vw, 1.5rem);   /* 19-21-24 — THE CAPTION, and
+                                        only the caption. 5.4vw puts it at 2.5%
+                                        of an 844px screen, the floor of
+                                        subtitle practice; the clamp keeps it
+                                        sane on a watch and on a desktop. */
+  --fs-lg:   clamp(1.35rem, 5.6vw, 1.7rem);     /* a quotation, a stat number */
+  --fs-xl:   clamp(1.9rem, 8.5vw, 2.6rem);      /* a scene title, on the card */
+  --fs-2xl:  clamp(2.3rem, 11vw, 3.3rem);       /* the chapter title, once */
 
   --lh-tight: 1.14;
   --lh-snug:  1.32;
@@ -157,6 +193,14 @@
   --tabbar-h: 58px;
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-t: env(safe-area-inset-top, 0px);
+  /* And the sides, because manifest.webmanifest declares orientation "any".
+     A notched phone held sideways puts the cutout on the LEFT or RIGHT, and
+     until now nothing in the app had an inline-axis inset at all — the topbar
+     wordmark and the tab labels ran straight under it. Two tokens rather than
+     one because the notch is on one side only and which side depends on how
+     the phone is being held. */
+  --safe-l: env(safe-area-inset-left, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
   --tap: 44px;                        /* minimum touch target */
 }
 

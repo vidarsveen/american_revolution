@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v9ba8137755';
+const VERSION = 'v3bfe0003ab';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -30,10 +30,12 @@ const PRECACHE = [
   './',
   // referenced from css/fonts.css by url(), which is not walked
   './assets/fonts/fraunces-latin.woff2',
-  // the coarse world level only — first paint needs it. The 50m, 10m and pack-detail
-  // levels are megabytes and are fetched when the camera asks for them; networkFirst
-  // caches each one the first time it is used.
+  './assets/geo/atlantic-10m.json',
+  './assets/geo/mediterranean-10m.json',
+  // the coarse world level. Every pack's level ladder starts here, and it is the
+  // fallback when a pack declares none at all (DEFAULT_LEVELS in map/basemap.js).
   './assets/geo/world-110m.json',
+  './assets/geo/world-50m.json',
   './content/american-revolution/chapter-1775-04-19.json',
   './content/american-revolution/chapter-1775-06-17.json',
   './content/american-revolution/chapters.json',

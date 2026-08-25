@@ -75,8 +75,14 @@
   /* Safe to freeze: the worst case is a card sitting eight pixels low. */
   animation: subject-rise var(--t-enter) var(--ease-out) both;
 }
-.chooser__cell:nth-child(2) { animation-delay: 60ms; }
-.chooser__cell:nth-child(3) { animation-delay: 120ms; }
+/* No stagger. There was one — 60ms and 120ms on the second and third cards —
+   and it was two numbers derived from nothing, which the motion scale does
+   not allow. It was also broken and had been since the fourth pack shipped:
+   the rules stopped at :nth-child(3), so card four rose in step with card
+   one and cards five and six would too. Nobody saw it, which is the strongest
+   thing that can be said about what the stagger was contributing.
+
+   All four rise together over --t-enter. */
 
 @keyframes subject-rise {
   from { transform: translateY(8px); }
@@ -165,19 +171,107 @@
   color: var(--ink-faint);
 }
 
-/* The wordmark becomes the way back, but only when there is somewhere to go. */
-.wordmark--linked {
-  cursor: pointer;
-  background: none;
-  border: 0;
-  padding: 0;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-}
-.wordmark--linked:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 3px;
+/* The wordmark's rules live in css/shell.css, where the wordmark lives, and
+   there is no second copy here.
+
+   There was, and it was the worst defect this file has produced. This block
+   used to hold a button reset — `font: inherit` among it — for a `.wordmark`
+   that js/main.js has never built as a <button>: it is an <h1 role="button">,
+   so every property of the reset was inert except the one that was not.
+   chooser.css is linked AFTER shell.css and `.wordmark--linked` carries the
+   same specificity as `.wordmark`, so `font: inherit` beat the topbar's own
+   type — including the narrow-phone rule inside a media query, which adds no
+   specificity. Measured at 360 px: the wordmark rendered at 17px/27.5 in
+   system-ui instead of 12px/1.12 in Fraunces, filling 55.1 px of a 52 px bar
+   and hanging 2 px above the top of the screen with its second line cut off.
+
+   That is the regression shell.css:46-57 documents as fixed, back again by a
+   route the comment could not see — the file order in index.html, which
+   CLAUDE.md warns is load-bearing and which nothing measures. */
+
+/* ============================================================
+   THE NARROW PHONE — 30rem (480 px) and below. The one breakpoint; see the
+   block at the end of css/shell.css for why that number and why in rem.
+
+   WHAT WAS MEASURED. Four subjects, stacked, at 360 px: cards 330-354 px tall,
+   1539 px of content in an 844 px screen — 1.82 screens. You saw one card and
+   the top of a photograph, which does not read as a list of four things; it
+   reads as one thing with something under it. That is the front door, and it
+   is the whole of "the menu is 80% usability".
+
+   WHAT CHANGED, AND WHAT DID NOT. Not the type: the scale has just moved UP
+   because "the text is too small" was said four times, and shrinking the
+   front door's names to fit more of them in would be answering the same
+   complaint with the same wrong answer. What changed is the SHAPE. The art
+   goes from a full-width band to a column beside the words, the two pieces of
+   metadata that were on two lines share one, and the blurb is held to two
+   lines. A card goes 330 -> ~180 px and the four of them fit a phone.
+
+   The picture survives as what the file always said it was — "a hint at the
+   subject", not the thing you choose from. Cropped to a column it is smaller;
+   it is also next to the name it belongs to instead of above it, which is
+   what makes four of them scannable at a glance.
+   ============================================================ */
+@media (max-width: 30rem) {
+  /* 8 px back on each side goes straight into the card. The safe area stays
+     ADDED to the block padding — it is the notch and the home indicator, not
+     spacing, and it does not shrink because the screen is narrow. */
+  .chooser {
+    padding-top: calc(var(--safe-t) + var(--s4));
+    padding-bottom: calc(var(--safe-b) + var(--s4));
+    padding-left: var(--s4);
+    padding-right: var(--s4);
+  }
+  .chooser__grid { gap: var(--s3); }
+
+  .subject { flex-direction: row; align-items: stretch; }
+
+  .subject__art {
+    flex: none;
+    width: 6.5rem;
+    /* A fixed width that stretches to the card's height, so aspect-ratio has
+       to go or the two fight and the band collapses. */
+    aspect-ratio: auto;
+    align-self: stretch;
+    border-bottom: 0;
+    border-right: 1px solid var(--rule);
+  }
+
+  .subject__body {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: var(--s4);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "name  name"
+      "years parts"
+      "blurb blurb";
+    align-content: start;
+    row-gap: var(--s1);
+  }
+
+  .subject__name  { grid-area: name; }
+  /* One metadata line, not two. "1763-1783" and "2 deler" are the same kind
+     of fact and were costing 50 px between them. */
+  .subject__years { grid-area: years; margin-top: 0; align-self: center; }
+  .subject__parts {
+    grid-area: parts;
+    justify-self: start;
+    align-self: center;
+    margin: 0 0 0 var(--s2);
+  }
+  .subject__blurb {
+    grid-area: blurb;
+    margin-top: 0;
+    /* Two lines. A third line of blurb is the least useful 24 px on the
+       screen; a fourth card is the most useful. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -8,6 +8,38 @@
   overflow: hidden;
   background: var(--paper-sunken);
   --transport-h: 78px;          /* published by chrome.js as it folds/opens */
+  /* The bottom of the stage, once. Every deck, the caption slot and the
+     plate's credit line clear the transport, and every one of them cleared
+     --transport-h ALONE — while .story__chrome was pinned to bottom: 0. On a
+     notched iPhone that put the play button under the home indicator and
+     every surface above it 34 px lower than it thought. css/shell.css has
+     used --safe-b since the tabbar landed; this file had never mentioned it.
+     One definition, four users, so the next thing anchored to this edge
+     cannot get it wrong on its own. */
+  --floor: calc(var(--transport-h) + var(--safe-b));
+
+  /* Where the overlay decks stop. Both of them, in one place, for the reason
+     above: the lower deck, the mid deck, the caption slot and the plate's
+     credit line are four things anchored to one edge, and the file already
+     records twice what that costs when they are each given their own answer. */
+  --deck-floor: calc(var(--floor) + var(--caption-h, 0px) + var(--s3) * 2);
+}
+
+/* A plate is on, so there is a CREDIT down there too.
+
+   .plate__cap sits var(--s3) above the caption and the decks sat var(--s3)*2 —
+   twelve pixels apart, with a credit 28.6 px tall between them. So the stats
+   chip was drawn straight over "· Amos Doolittle · 1775 · Public domain" in
+   36 of 646 measured frames, and the contrast probe scored that credit 1.49:1
+   because the pale chip, not the picture, was the ground under it.
+
+   The reserve is measured: all 92 credit strings the four packs ship, rendered
+   at 390 wide in --fs-3xs — worst 28.6 px (two lines, at 103 characters),
+   median 14.3. Plus the scrim's --s2 overhang and a gap: --s7 on top of the
+   --s3 * 2 the decks already keep. It costs nothing, because when a plate is on
+   the thing being pushed off is the picture the plate has already covered. */
+.story:has(.stage-plate.is-on) {
+  --deck-floor: calc(var(--floor) + var(--caption-h, 0px) + var(--s3) * 2 + var(--s7));
 }
 
 /* ---------- Map surface ------------------------------------ */
@@ -15,170 +47,37 @@
 .stage-map { position: absolute; inset: 0; }
 .stage-map__canvas { position: absolute; inset: 0; z-index: 1; background: var(--paper-sunken); }
 
-/* Time of day, over the tiles and under the parchment wash so it tints the
-   whole picture rather than sitting on top of it. */
-/* Lives in the texture pane now, positioned and sized by map/texture.js —
-   so no inset and no z-index of its own. */
-.stage-map__mood {
-  position: absolute;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  /* Twice the turn. The ground is not an object arriving, it is the light
-     changing, and it has to stay below noticing. */
-  transition: background calc(2 * var(--t-turn)) var(--ease-in-out),
-              opacity    calc(2 * var(--t-turn)) var(--ease-in-out);
-}
-.stage-map__mood[data-mood="day"]   { background: transparent; opacity: 0; }
-.stage-map__mood[data-mood="dawn"]  { background: linear-gradient(180deg, #ffd2a0, #f8cba4 45%, #e6d2bc); opacity: .26; }
-.stage-map__mood[data-mood="dusk"]  { background: linear-gradient(180deg, #9a8fb4, #d0997c 60%, #8a7a84); opacity: .26; }
-/* Night used to be an opaque slab at .52 that hid the map entirely — the
-   scenes set at night read as a loading screen. It should say "this is
-   happening in the dark", not stop you seeing where. */
-.stage-map__mood[data-mood="night"] { background: linear-gradient(180deg, #33456f, #253154); opacity: .30; }
-:root[data-theme="dark"] .stage-map__mood[data-mood="night"] { opacity: .18; }
+/* The mood wash, the muzzle flash and the clock used to be styled here as
+   .stage-map__mood, .stage-map__flash and .stage-map__time. The map module
+   draws them as .atlas__mood, .atlas__flash and .atlas__time (map/index.js
+   111-116) and css/atlas.css carries the live rules, gradients and all.
 
-/* Wash and grain are ordered by the pane; only the vignette is still a
-   sibling of the canvas out here. */
+   Worth knowing before deleting a copy like this: the two had DRIFTED. Night
+   sat at .30 here and .34 there, the flash ran 700ms against 620ms, and the
+   clock was var(--fs-xs) here and a literal 14px there. Every one of those
+   pairs is a decision someone made twice and could only see once.
+
+   docs/design-direction.md section 7 still cites "css/story.css:26" as where
+   map.mood lives. It was already pointing at the dead copy. The live rule got
+   the 2 x --t-turn treatment anyway, which is luck rather than process --
+   see the .story-ring note below for the case where the luck ran out. */
+
 .stage-map .map-vignette { z-index: 5; }
 
-/* Muzzle flash */
-.stage-map__flash {
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(60% 45% at 50% 44%, rgba(255, 236, 194, .95), rgba(255, 200, 120, 0) 70%);
-}
-.stage-map__flash.is-on { animation: flashfire 700ms var(--ease-out) 1; }
-@keyframes flashfire { 0% { opacity: 0; } 6% { opacity: .92; } 100% { opacity: 0; } }
+/* The map's own furniture — place names, routes, converge lines, the
+   attention ring, the pins — used to be styled here as .story-place,
+   .story-route, .story-converge, .story-ring and .story-mk. It is drawn by
+   map/index.js as the .atlas-* set in css/atlas.css, and has been since the
+   map module landed. The rules here rendered nothing.
 
-/* Clock */
-.stage-map__time {
-  position: absolute;
-  z-index: 20;
-  top: var(--s3);
-  left: var(--s3);
-  padding: 5px var(--s3);
-  border-radius: var(--r-pill);
-  background: var(--paper-veil);
-  backdrop-filter: blur(10px) saturate(1.4);
-  -webkit-backdrop-filter: blur(10px) saturate(1.4);
-  border: 1px solid var(--rule);
-  box-shadow: var(--shadow-sm);
-  font-family: var(--font-display);
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  letter-spacing: .06em;
-  font-variant-numeric: lining-nums tabular-nums;
-  color: var(--ink);
-  opacity: 0;
-  transition: opacity var(--t-exit) var(--ease-out);
-}
-.stage-map__time.is-on { opacity: 1; transition: opacity var(--t-enter) var(--ease-out); }
+   That is not tidiness. It is a bug that had already cost a fix: the
+   direction's "no infinite animation" rule was applied to .story-ring, which
+   nobody paints, while the live ring — .atlas-ring — kept running `infinite`
+   and kept pulsing at the viewer for the rest of the scene. The same shape as
+   .ov-fact having no hidden state, one layer over: a rule enforced against a
+   selector that does not exist is a fix you can watch fail.
 
-/* Standing place names — what makes the ground legible */
-.story-place-wrap { background: none; border: 0; }
-.story-place {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-display);
-  font-size: 10.5px;
-  font-weight: 600;
-  font-variation-settings: 'opsz' 14, 'WONK' 1;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  white-space: nowrap;
-  text-shadow: 0 1px 0 rgba(255, 250, 238, .85), 0 0 7px rgba(255, 250, 238, .95);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--t-enter) var(--ease-out);
-}
-:root[data-theme="dark"] .story-place {
-  text-shadow: 0 1px 0 rgba(10, 12, 16, .9), 0 0 8px rgba(10, 12, 16, .95);
-}
-.story-z-mid  .story-place { opacity: .55; }
-.story-z-near .story-place { opacity: .8; }
-.story-place.is-hidden { opacity: 0 !important; }
-
-/* Routes */
-.story-route { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-/* .story-route--* / .story-converge--* were the pre-map-module SVG classes.
-   Superseded by the .atlas-* set in css/atlas.css. */
-.story-route--naval   { stroke-dasharray: 1 8; }
-
-/* Lines coming in from outside — the towns that turned out */
-.story-converge {
-  fill: none;
-  stroke-linecap: round;
-  stroke-width: 2;
-  opacity: .5;
-}
-
-
-/* Attention ring — pointing at the map while you talk */
-.story-ring-wrap { background: none; border: 0; pointer-events: none; }
-.story-ring {
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 24px; height: 24px;
-  margin: -12px 0 0 -12px;
-  border-radius: 50%;
-  border: 2.5px solid var(--gold);
-  /* Three times, not for ever: 3 x 2.8s = 8.4s, which is one sentence,
-     which is how long the highlight is about anything. After the second
-     cycle a pulse is not saying "look here", it is the map twitching. */
-  animation: ring-pulse 2.8s var(--ease-out) 3;
-}
-.story-ring--red  { border-color: var(--red); }
-.story-ring--blue { border-color: var(--blue); }
-.story-ring.is-instant { animation-delay: -1.4s; }
-@keyframes ring-pulse {
-  0%   { transform: scale(.45); opacity: 0; }
-  16%  { opacity: .85; }
-  100% { transform: scale(3.2); opacity: 0; }
-}
-
-/* Story pins */
-.story-mk-wrap { background: none; border: 0; pointer-events: none; }
-.story-mk {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%; height: 100%;
-  animation: mk-pop var(--t-enter) var(--ease-out) backwards;
-}
-.story-mk.is-instant { animation: none; }
-@keyframes mk-pop { from { opacity: 0; } }
-
-.story-mk__dot {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--ink);
-  border: 2px solid var(--paper-raised);
-  box-shadow: var(--shadow-marker);
-}
-.story-mk--clash  .story-mk__dot { background: var(--red); }
-.story-mk--target .story-mk__dot { background: var(--gold); }
-
-.story-mk__label {
-  position: absolute;
-  top: calc(50% + 11px);
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 1px 7px;
-  border-radius: var(--r-sm);
-  background: var(--paper-veil);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  font-size: var(--fs-2xs);
-  font-weight: 700;
-  white-space: nowrap;
-  color: var(--ink);
-}
-
+   tools/check-all.py now fails on a class in css/ that no module writes. */
 /* ---------- Overlay decks ----------------------------------
    Three bands, so cards can never land on each other. The lower deck clears
    the transport by reading the height the transport publishes.
@@ -209,13 +108,33 @@
 
 .ov-deck { position: absolute; left: 0; right: 0; padding: 0 var(--s3); }
 .ov-deck--top {
-  top: calc(var(--s3) + 42px);
+  /* Under the way-out button, derived from what it is clearing rather than
+     from a 42px somebody measured once: .wayout in css/shell.css is
+     safe-t + --s2, and --tap tall. It is the one control that survives
+     .is-immersive, so it is always there, and it moves down by the notch
+     while this deck did not. */
+  top: calc(var(--safe-t) + var(--s2) + var(--tap) + var(--s2));
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: var(--s3);
 }
-.ov-deck--mid { top: 32%; display: grid; justify-items: center; gap: var(--s3); }
+/* The mid deck is a BAND, not a line.
+   `top: 32%` and nothing else meant the quote card grew downwards out of a
+   fixed point and could run straight into the caption — measured across 646
+   frames at 390x844, both languages, all four packs: .ov-quote__card landed on
+   .captions 31 times and on the transport 6. Exactly the defect the note on
+   .ov-deck--lower describes, one deck up, and it was never anchored to
+   --caption-h at all. Bounded top and bottom by the two decks it sits between,
+   with its content centred in what is left, a card cannot reach either. */
+.ov-deck--mid {
+  top: calc(var(--safe-t) + var(--s2) + var(--tap) + var(--s2));
+  bottom: var(--deck-floor);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--s3);
+}
 /* The fact box is the left half of the lower deck, the stats the right. It
    must not stretch: a one-line definition spanning the screen reads as a
    banner. */
@@ -227,7 +146,7 @@
      --caption-h is published by engine/captions.js, the same way the
      transport publishes its own height, and falls back to zero so the deck is
      never left floating if that ever stops arriving. */
-  bottom: calc(var(--transport-h) + var(--caption-h, 0px) + var(--s3) * 2);
+  bottom: var(--deck-floor);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -304,14 +223,6 @@
   object-position: 50% 16%;
   filter: sepia(.24) saturate(.9) contrast(1.03);
 }
-.ov-portrait__none {
-  display: grid;
-  place-items: center;
-  width: 100%; height: 100%;
-  color: var(--ink-faint);
-}
-.ov-portrait__none svg { width: 42%; height: 42%; opacity: .5; }
-
 .ov-portrait__card figcaption { padding: 7px 2px 0; line-height: 1.22; }
 .ov-portrait__card b {
   display: block;
@@ -326,7 +237,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-top: 3px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   line-height: 1.3;
   color: var(--ink-soft);
 }
@@ -334,7 +245,9 @@
   display: block;
   margin-top: 2px;
   font-style: normal;
-  font-size: 9.5px;
+  /* Dates are a made-mark, not a sentence, so they get the provenance step —
+     the smallest the scale has, and the smallest anything is allowed to be. */
+  font-size: var(--fs-3xs);
   color: var(--ink-faint);
   font-variant-numeric: lining-nums tabular-nums;
 }
@@ -351,7 +264,7 @@
   margin-top: 6px;
   padding-top: 6px;
   border-top: 1px solid var(--rule);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   line-height: 1.38;
   color: var(--ink);
   quotes: none;
@@ -389,7 +302,9 @@
 .ov-image__card figcaption {
   margin-top: 4px;
   max-width: min(52vw, 260px);
-  font-size: 9px;
+  /* A credit is provenance. It was 9px, which the direction calls "a credit
+     line nobody can read" — and a credit nobody can read is not a credit. */
+  font-size: var(--fs-3xs);
   line-height: 1.35;
   color: var(--ink-faint);
   text-align: right;
@@ -478,7 +393,7 @@
 .stat-chip b {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
   line-height: 1;
   font-variant-numeric: lining-nums tabular-nums;
@@ -486,9 +401,21 @@
 .stat-chip span {
   display: block;
   margin-top: 2px;
-  max-width: 12ch;
-  font-size: 9.5px;
-  letter-spacing: .05em;
+  /* max-width alone does not hold a chip together: an unbreakable word wider
+     than the cap simply overflows it, and the chip is content-sized, so
+     "REPRESENTANTER" ran clean off the right edge of a 390 px phone with the
+     card still looking correctly narrow. Measured on the shot, not read off
+     the rule. Wrapping inside a word is ugly; a label leaving the frame is
+     worse, and the wrap only happens to a word that would not have fitted. */
+  max-width: 13ch;
+  overflow-wrap: anywhere;
+  /* A 9.5px label under a 23px number is the whole "the stats look mediocre"
+     complaint in one line: it was the smallest type in the app, under the
+     largest, and the pair read as a number with a smudge under it. It is a
+     kicker, so it takes the kicker step and the kicker's tracking floor
+     (0.06em; below that uppercase stops reading as a kicker at all). */
+  font-size: var(--fs-2xs);
+  letter-spacing: .07em;
   text-transform: uppercase;
   line-height: 1.25;
   color: var(--ink-soft);
@@ -515,22 +442,47 @@
   position: absolute;
   z-index: 40;
   left: 0; right: 0;
-  bottom: calc(var(--transport-h) + var(--s3));
+  bottom: calc(var(--floor) + var(--s3));
   display: flex;
   justify-content: center;
-  padding: 0 var(--s4);
+  /* Narrower gutter than the decks, and deliberately: every pixel here is a
+     line the caption does not have to wrap onto, and a line is 28 px of map. */
+  padding: 0 var(--s3);
   pointer-events: none;
   transition: bottom var(--t-tap) var(--ease-out);
 }
+/* A SUBTITLE, not a card.
+
+   It was a card: 14 px of blur, a hairline border, --r-md corners, a shadow
+   and --s3 of padding, at 1.5 line-height. Measured over all 1142 beats the
+   four packs ship, at 390x844 with the new type scale, that box was 152 px at
+   the median and 279 px at the worst — and tools/check-legible.py finds it the
+   single biggest coverer of place names in the app. Everything a card carries
+   beyond a legible ground is height, and height here is map.
+
+   So: no border, no shadow, corners quiet rather than absent, --s2 of padding
+   and --lh-snug — and --s3 gutters rather than --s4 in the slot, because a
+   wider measure is a line the caption does not have to wrap onto and a line is
+   28 px of map. Nothing else on the stage moved. Re-measured over the same
+   1142 beats:
+     median         152.4 -> 127.2 px
+     worst          278.8 -> 210.6 px
+     8-line beats       2 -> 0
+     6 lines or more  109 -> 67
+   The blur and the veil STAY, and that is not timidity. A plate covers the
+   whole stage and .plate__fig::after darkens its bottom 52% by 42% black —
+   exactly the band this sits in — while light-theme caption ink is #241f18.
+   Type with a shadow and no box is correct over film that is always dark; over
+   a picture that is dark under type that is dark, it is unreadable, and the
+   caption is the one surface rule 3 says has to carry the words when the audio
+   does not. A ground that can be measured beats a ground that looks braver. */
 .captions {
-  max-width: min(92vw, 540px);
-  padding: var(--s3) var(--s4);
-  border-radius: var(--r-md);
+  max-width: min(96vw, 560px);
+  padding: var(--s2) var(--s3);
+  border-radius: var(--r-sm);
   background: var(--paper-veil);
   backdrop-filter: blur(14px) saturate(1.5);
   -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  border: 1px solid var(--rule);
-  box-shadow: var(--shadow-sm);
   transition: opacity var(--t-tap) var(--ease-out);
 }
 .captions.is-off { opacity: 0; }
@@ -550,7 +502,10 @@
      any instant, because most of a sentence has not been spoken yet. The
      karaoke progression still reads: soft, then full ink, then bold. */
   font-size: var(--fs-md);
-  line-height: 1.5;
+  /* Subtitle leading, not body leading. 1.5 is right for a paragraph you read
+     close; a subtitle is two or three lines read at arm's length with the eye
+     mostly on the picture, and 1.5 spent 7 px a line saying so. */
+  line-height: var(--lh-snug);
   text-align: center;
   color: var(--ink-soft);
 }
@@ -590,7 +545,7 @@
    hairline to open the rest; it folds itself away again while playing.
    ------------------------------------------------------------ */
 
-.story__chrome { position: absolute; z-index: 50; left: 0; right: 0; bottom: 0; }
+.story__chrome { position: absolute; z-index: 50; left: 0; right: 0; bottom: var(--safe-b); }
 
 .transport {
   position: relative;
@@ -633,7 +588,7 @@
 }
 .transport__clock {
   flex: none;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -743,7 +698,14 @@
   border-radius: 50%;
   border: 2px solid var(--ink-faint);
   border-top-color: var(--gold);
-  animation: tp-spin .8s linear infinite;
+  /* The last loose duration in this file: .8s, chosen alone. --t-enter is the
+     app's arrival gesture and a 900 ms turn reads as deliberate rather than
+     impatient, which is the right register for a busy ring here.
+     `infinite` stays and is not the stage rule: that rule is about a pulse
+     that means "look here" and stops meaning it, while this means "still
+     working" and is true for exactly as long as it runs. It is chrome, it has
+     a reduced-motion guard below, and the solid ring is the fallback. */
+  animation: tp-spin var(--t-enter) linear infinite;
 }
 @keyframes tp-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
@@ -764,8 +726,8 @@
   height: 32px;
   padding: 0 10px;
   border-radius: var(--r-pill);
-  font: var(--fs-2xs) / 1 var(--font-body);
-  letter-spacing: .08em;
+  font: 700 var(--fs-2xs) / 1 var(--font-body);
+  letter-spacing: .06em;
   color: var(--ink-faint);
 }
 .tp-btn--lang b { color: var(--ink); font-weight: 600; }
@@ -796,9 +758,9 @@
 
 .transport__time {
   flex: none;
-  min-width: 30px;
+  min-width: 34px;
   text-align: right;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--ink-faint);
   font-variant-numeric: lining-nums tabular-nums;
 }
@@ -884,7 +846,7 @@
   transition: transform var(--t-tap) var(--ease-out);
 }
 .cover__go:active { transform: scale(.96); }
-.cover__go-ico { font-size: 14px; }
+.cover__go-ico { font-size: var(--fs-xs); }
 .cover__go i { font-style: normal; font-size: var(--fs-xs); font-weight: 600; opacity: .6; }
 .cover__note { margin-top: var(--s4); font-size: var(--fs-xs); color: var(--ink-faint); }
 .cover__warn { margin-top: var(--s4); font-size: var(--fs-xs); color: var(--red); }
@@ -1035,7 +997,7 @@
   margin-top: 4px;
   text-decoration: none;
   font-style: italic;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--ink-faint);
 }
 
@@ -1119,15 +1081,12 @@
    The topbar's NO/EN is folded away by .app.is-immersive while a chapter
    plays, so during the story — which is when you actually discover the voice
    is not the one you wanted — there was no way to reach it. This is the same
-   control, in the place you are looking. */
-.tp-btn--lang {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  min-width: 34px;
-  padding-inline: 8px;
-}
+   control, in the place you are looking.
+
+   Its second rule block lived here and set font-size: 11px, font-weight: 700,
+   letter-spacing and min-width over the block 350 lines up — a decision made
+   twice that could only be read once, which is the same shape as the dead
+   .stage-map__* copies at the top of this file. Merged upward. */
 
 /* ---------- Scene transition -------------------------------
    The join between two scenes, as a device rather than a seam. See the
@@ -1168,7 +1127,11 @@
   margin: 0 0 var(--s2);
   font-size: var(--fs-2xs);
   font-weight: 700;
-  letter-spacing: .16em;
+  /* Section 2 bounds a kicker's tracking at 0.06-0.14em. This was .16em in
+     both places it appears — the scene card's clock and the ending card's
+     date, which are the same kicker at two scales, so they were wrong
+     together. */
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -1246,7 +1209,11 @@
   margin: 0;
   font-size: var(--fs-2xs);
   font-weight: 700;
-  letter-spacing: .16em;
+  /* Section 2 bounds a kicker's tracking at 0.06-0.14em. This was .16em in
+     both places it appears — the scene card's clock and the ending card's
+     date, which are the same kicker at two scales, so they were wrong
+     together. */
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -1452,11 +1419,54 @@
      is. It sat at bottom: 8px and was drawn behind the controls, which is the
      same defect the numbers had — invisible rather than missing, and it takes
      a screenshot to notice. */
-  bottom: calc(var(--transport-h) + var(--caption-h, 0px) + var(--s3));
-  font-size: var(--fs-2xs);
+  bottom: calc(var(--floor) + var(--caption-h, 0px) + var(--s3));
+  /* Provenance, so the provenance step — the same one .ov-image__card's credit
+     takes. Size was never the fault here. */
+  font-size: var(--fs-3xs);
   line-height: 1.3;
-  color: rgba(255,255,255,.72);
+  color: rgba(255,255,255,.9);
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  pointer-events: none;
+  isolation: isolate;
+}
+/* A CREDIT THAT CANNOT BE READ IS NOT A CREDIT.
+
+   tools/fetch-media.py captures artist, date, source and licence per image so
+   the app can credit them in place, and CLAUDE.md says images are "credited in
+   place". This line was rgba(255,255,255,.72) over the picture with no ground
+   of its own — and a PARTLY TRANSPARENT glyph takes the colour of what is
+   under it, so over Revere's 1768 Boston, all pale sky and pale water, the
+   credit composited to almost exactly the sky.
+
+   Measured over all 84 plate credits the four packs raise, both themes, at
+   dim 0 (a cue can only darken the ground, so dim 0 is the worst case by
+   construction), scoring the WORST pixel in the credit's own rectangle:
+
+       worst 1.25:1    median 2.14    at or above AA 4.5:  2 of 84
+
+   That is the same defect as a rule applied to a selector nobody paints — the
+   obligation is discharged in the markup and not on the screen.
+
+   A scrim, not a card, following the precedent .story-end__card::before set:
+   type gets ground while the picture stays visible around it. Vertical rather
+   than radial because this is a wide short line — a closest-side ellipse over
+   a 366 px box fades out at the ends and eats "Public domain" — and full-bleed
+   past the cap's own gutters so no character is ever in the falloff. The fade
+   is --s2 at each end, which lands inside the padding whatever the credit
+   wraps to, so the type sits entirely on the flat part at one line or three. */
+.plate__cap::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: calc(var(--s3) * -1);
+  right: calc(var(--s3) * -1);
+  top: calc(var(--s2) * -1);
+  bottom: calc(var(--s2) * -1);
+  background: linear-gradient(to bottom,
+              transparent 0,
+              rgba(13,11,8,.66) var(--s2),
+              rgba(13,11,8,.66) calc(100% - var(--s2)),
+              transparent 100%);
   pointer-events: none;
 }
 
@@ -1475,7 +1485,7 @@
    carries its own. Small, but a mark nobody can read is not a disclosure. */
 .plate__badge {
   position: absolute;
-  top: var(--s3);
+  top: calc(var(--safe-t) + var(--s3));
   /* Top-RIGHT. It was top-left, and the way-out button now lives there and
      never folds away -- two things anchored to one corner fight and the later
      one wins, which is the same defect the stats deck had against the caption
@@ -1487,7 +1497,7 @@
   background: rgba(13,11,8,.62);
   color: rgba(255,255,255,.9);
   font-size: var(--fs-2xs);
-  letter-spacing: .04em;
+  letter-spacing: .06em;   /* the kicker floor; below it uppercase reads as a jam */
   text-transform: uppercase;
   backdrop-filter: blur(2px);
   pointer-events: none;
@@ -1546,17 +1556,38 @@
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+/* Capped, both of them.
+
+   Section 5 of the direction says a fact box is "one line, bottom-left" and
+   may interrupt "the picture's edge, and nothing else". Measured across all
+   380 entries the four packs ship in both languages, at 390x844, the card ran
+   to 178 px — a fifth of the frame, which is neither one line nor an edge, and
+   it is what DECK_RESERVE_PX in engine/scenes/map.js has to reserve from the
+   camera whether or not a card ever arrives.
+
+   A clamp, not a shorter hook: the hooks are written and every one of them is
+   right in the library. The card is the six-second version. The ellipsis the
+   clamp leaves, the gold chevron and the "tap to read more" coach mark all say
+   the same thing, which is that there is more of this behind it. */
 .ov-fact__name {
   margin: 0;
   font-weight: 600;
   font-size: var(--fs-sm);
   line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .ov-fact__hook {
   margin: .15em 0 0;
   font-size: var(--fs-xs);
   line-height: 1.35;
   color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ============================================================
@@ -1592,7 +1623,7 @@
   top: var(--s2);
   right: var(--s2);
   z-index: 1;
-  font-size: 1.05rem;
+  font-size: var(--fs-base);
   line-height: 1;
   color: var(--gold);
   opacity: .85;

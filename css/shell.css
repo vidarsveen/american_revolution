@@ -16,7 +16,14 @@
   z-index: 600;
   flex: none;
   height: calc(var(--topbar-h) + var(--safe-t));
-  padding: var(--safe-t) var(--s4) 0;
+  /* The inline insets are for LANDSCAPE on a notched phone, where the
+     cutout is on the left or the right rather than the top. The
+     manifest declares orientation "any", so this is a real case, and
+     nothing in the app had an inline-axis inset until now — the
+     wordmark ran straight under the cutout. Whichever side is not
+     notched resolves to 0px and costs nothing. */
+  padding: var(--safe-t) calc(var(--s4) + var(--safe-r)) 0
+                         calc(var(--s4) + var(--safe-l));
   display: flex;
   align-items: center;
   gap: var(--s3);
@@ -41,34 +48,14 @@
   text-overflow: ellipsis;
   font-variation-settings: 'opsz' 14, 'WONK' 0;
 }
-.wordmark span { color: var(--ink-faint); }
-
-/* On a narrow phone the years are the first thing to go, then the letter
-   spacing — the title itself should never be clipped to an ellipsis.
-   
-   That was the intent; the rule did the opposite. `overflow: visible` with the
-   years on their own line gave "Den amerikanske revolusjonen 1763–1783" three
-   lines and 73 px of height inside a 52 px bar that centres its children — so
-   it hung 11 px ABOVE the top of the screen and the first line was cut off,
-   on the first thing a phone user ever sees. Measured at 390 px.
-
-   So: drop the years, which the comment always said should go first, and hold
-   the title to two lines. The bar keeps its fixed height, which matters
-   because the immersive fold slides it away by exactly --topbar-h. */
-@media (max-width: 460px) {
-  .wordmark {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    white-space: normal;
-    overflow: hidden;
-    letter-spacing: .08em;
-    line-height: 1.12;
-    font-size: 10.5px;
-  }
-  .wordmark span { display: none; }
-}
+/* The years, and ONLY the years. This used to be `.wordmark span`, which also
+   caught the back arrow — a span too — and, at 0,1,1, outranked
+   `.wordmark__back`'s own colour at 0,1,0. So the arrow was grey rather than
+   gold on a wide screen and, once the narrow rule below hid every span, gone
+   altogether on every phone. The arrow exists because "a title being a button
+   is not something anyone guesses"; on the only device that matters it was
+   not there to guess at. */
+.wordmark span:not(.wordmark__back) { color: var(--ink-faint); }
 
 /* Small round chrome buttons (language, theme) */
 .chip-btn {
@@ -141,9 +128,11 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: opacity var(--t-enter) var(--ease-out),
-              transform var(--t-enter) var(--ease-out),
-              visibility 0s linear var(--t-enter);
+  /* This rule only ever runs in one direction: it is the state a view
+     transitions TO when it stops being active, so it is a leave. --t-exit. */
+  transition: opacity var(--t-exit) var(--ease-out),
+              transform var(--t-exit) var(--ease-out),
+              visibility 0s linear var(--t-exit);
 }
 .view.is-active {
   opacity: 1;
@@ -166,6 +155,9 @@
   grid-auto-columns: 1fr;
   height: calc(var(--tabbar-h) + var(--safe-b));
   padding-bottom: var(--safe-b);
+  /* Landscape: see the topbar. A tab label under the cutout is unreadable and
+     its 44px target is unreachable. */
+  padding-inline: var(--safe-l) var(--safe-r);
   background: var(--paper-veil);
   backdrop-filter: saturate(1.5) blur(14px);
   -webkit-backdrop-filter: saturate(1.5) blur(14px);
@@ -218,7 +210,8 @@
   gap: var(--s4);
   justify-items: center;
   background: var(--paper);
-  transition: opacity var(--t-enter) var(--ease-out);
+  /* The splash only ever leaves. --t-exit, and js/main.js waits it out. */
+  transition: opacity var(--t-exit) var(--ease-out);
 }
 .boot.is-done { opacity: 0; pointer-events: none; }
 .boot__mark {
@@ -242,7 +235,15 @@
   width: 40%; height: 100%;
   border-radius: 2px;
   background: var(--gold);
-  animation: bootslide 1.1s var(--ease-in-out) infinite;
+  /* `infinite` is legitimate here and nowhere else: this is a loading
+     indicator, not the stage, and it says "still working" for exactly as long
+     as that is true. It stops because js/main.js removes .boot from the DOM,
+     not because the animation runs out — so there is no cycle count that
+     would be correct.
+
+     1.1s was a loose number. The bar crosses the whole width of its track,
+     which is the --t-dissolve case at chrome scale, and 1.2s reads the same. */
+  animation: bootslide var(--t-dissolve) var(--ease-in-out) infinite;
 }
 @keyframes bootslide {
   0%   { transform: translateX(-100%); }
@@ -284,7 +285,7 @@
   background: color-mix(in srgb, var(--paper) 82%, transparent);
   backdrop-filter: blur(4px);
   color: var(--ink);
-  font-size: 1.1rem;
+  font-size: var(--fs-base);
   line-height: 1;
   cursor: pointer;
 }
@@ -339,3 +340,66 @@
 }
 .wordmark--linked { cursor: pointer; }
 .wordmark--linked:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+
+/* ============================================================
+   THE NARROW PHONE — 30rem (480 px) and below.
+
+   THE ONE BREAKPOINT. Everything in the app that has to change shape for a
+   phone changes it here, or in the matching block in css/chooser.css, and
+   nowhere else. Before this the app claimed to be mobile first and had a
+   single width query in the whole of css/ — 460 px, on the wordmark, and it
+   did not even work (see chooser.css). "Mobile first" that is not written
+   down as a rule is a hope.
+
+   WHY 30rem. Every phone this ships to is 360-440 CSS px in portrait: 360 is
+   the narrowest worth supporting (Galaxy S-series, iPhone SE at 375), 390-393
+   is the modern middle, 430 is a Pro Max. 480 clears all of them with room and
+   sits far below the 46rem the chooser uses to go two-up and the 720 px
+   queries in the frozen Explore stylesheets, so nothing overlaps.
+
+   In REM, not px, on purpose: a media query's rem is the browser's default
+   font size, not :root's. A reader who has set 20 px text gets the compact
+   chrome at 600 device px — which is when their type actually needs it.
+
+   WHAT THE CHROME ACTUALLY NEEDS AT 360. Measured, before this block: the
+   topbar spent 176 of 360 px on padding, gaps and two chips, leaving 184 px
+   for a 28-character title. The bar is 52 px tall and holds the wordmark's
+   two lines; the tab bar's four labels and its 44 px targets already fit and
+   are left alone. So the rule is: give the title back the room, and take it
+   from the things either side of it, which are icons and lose nothing by
+   being tighter.
+   ============================================================ */
+@media (max-width: 30rem) {
+  /* Hold the title to two lines and drop the years, which the wordmark's
+     comment always said should go first. The bar keeps its fixed height,
+     which matters because the immersive fold slides it away by exactly
+     --topbar-h.
+
+     No font-size override. It used to force 10.5px so that three lines would
+     fit; two lines of --fs-2xs at 1.12 is 26.9 px inside 52, so the title can
+     stay at the scale's own step — which is the direction the scale has just
+     moved in, and the opposite of answering "the text is too small" with a
+     literal nobody derived. */
+  .wordmark {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    overflow: hidden;
+    letter-spacing: .08em;
+    line-height: 1.12;
+  }
+  .wordmark span:not(.wordmark__back) { display: none; }
+
+  /* The 32 px of inline padding and the 24 px of gaps are the cheapest 40 px
+     on the screen: they surround two icons, and the title is a sentence. */
+  .topbar { padding-left: var(--s3); padding-right: var(--s3); gap: var(--s2); }
+  .chip-btn { padding: 0 var(--s2); }
+  /* The chip shrinks; the FINGER TARGET must not. It is a 44 px pseudo-element
+     centred on the chip (--tap), so it is unaffected by the padding above —
+     stated here because that is exactly the kind of thing a later tidy-up
+     removes. The narrowest chip is 35 px wide, its target overhangs by 4.5 px
+     each side, and the gap between chips is 8 px, so the two never overlap. */
+}

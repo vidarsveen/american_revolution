@@ -64,7 +64,7 @@ There is no third case. If a chrome rule needs a duration that is neither, the r
 
 Two derived numbers, stated in terms of the scale rather than added to it:
 
-- **The ground's colour** (`map.mood`, `css/story.css:26`) changes over **2 × `--t-turn`** =
+- **The ground's colour** (`map.mood`, `css/atlas.css:288-294`) changes over **2 × `--t-turn`** =
   2400 ms. The ground is not an object arriving; it is the light changing, and it must stay
   below noticing.
 - **A camera flight** is a distance, not a duration. Keep `autoOver()` (`map/index.js:806-813`)
@@ -121,7 +121,7 @@ Forbidden, with the reason:
   a UI mannerism; a card that fades in is film.
 - **Nothing overshoots.** `--ease-spring` is deleted from `css/tokens.css:128`. A pin that pops
   past its size and settles back is a notification, not a place on a map.
-- **No infinite animation.** `ring-pulse` (`css/story.css:128`) runs forever, and a pulse that
+- **No infinite animation.** `atlas-ping` (`css/atlas.css:391-421`) runs forever, and a pulse that
   never stops stops meaning "look here" after the second cycle — after that it is just the map
   twitching for the rest of the scene. It runs **three times and stops**: 3 × 2.8 s = 8.4 s,
   which is one sentence, which is how long the highlight is about anything.
@@ -163,14 +163,18 @@ caption, the transcript, a hook, a library entry — is body.
 
 Every size comes from the scale, and each step has one job:
 
-| step | px | job |
+**Read the STEP, not the pixel.** The px column below is what the step resolves to at 390 wide
+today; the whole scale moved up a notch once, and every number written down anywhere else went
+stale in an afternoon. A rule in this document names `--fs-sm`; it does not name 15.
+
+| step | px @390 | job |
 |---|---|---|
-| `--fs-3xs` | 10 | **new.** Provenance only: a credit, a licence, a made-mark. Never a sentence. |
-| `--fs-2xs` | 11 | a kicker: the small word above a thing saying what kind of thing it is — a scene clock, "Ord", "Drue". |
-| `--fs-xs` | 12 | a secondary line inside a card: a role, a fact box's hook. |
-| `--fs-sm` | 13 | a card's name line. Map place labels. |
-| `--fs-base` | 15 | body text: library, transcript. |
-| `--fs-md` | 17 | the caption, and only the caption. It is the one reading surface while the film runs. |
+| `--fs-3xs` | 11 | Provenance only: a credit, a licence, a made-mark. **Never a sentence.** |
+| `--fs-2xs` | 12 | a kicker: the small word above a thing saying what kind of thing it is — a scene clock, "Ord", "Drue". Also a **town** name on the map. |
+| `--fs-xs` | 13 | a secondary line inside a card: a role, a fact box's hook. |
+| `--fs-sm` | 15 | a card's name line. A **city** name on the map, and a pinned place. |
+| `--fs-base` | 17 | body text: library, transcript. And an **area** name on the map — which is not body text, but is the step above a city, which is what an area name has to be. |
+| `--fs-md` | 19–24 | the caption, and only the caption. **Viewport-relative**, because it is a subtitle: broadcast practice sizes a subtitle as a share of screen height, and at a flat 17 it was 2.01 % of an 844 px phone against a 2.5–3 % norm. That is why "the text is too small" kept coming back. |
 | `--fs-lg` | clamp | a quotation. A stat chip's number. |
 | `--fs-xl` | clamp | a scene title, on the card and nowhere else. |
 | `--fs-2xl` | clamp | the chapter title. Once, on the cover. |
@@ -178,10 +182,14 @@ Every size comes from the scale, and each step has one job:
 `--fs-3xs` must be **defined** — `css/story.css:1393` already reads `var(--fs-3xs, var(--fs-2xs))`
 against a token that exists nowhere.
 
-**A literal font size in a stylesheet is a defect.** There are currently **34** across `css/`,
-thirteen of them in `css/story.css`: 9px, 9.5px ×2, 10px ×2, 10.5px, 11px ×3, 14px, 1.05rem,
-1.45rem. The rest are in `atlas.css`, `map.css`, `sheet.css`, `dossier.css` and `chooser.css`,
-and the map's own three are dealt with by name below. 9px is a credit line nobody can read.
+**A literal font size in a stylesheet is a defect.** There were **34** across `css/`; there are
+now **11**, and every one of those is in a file frozen with Explore
+(`timeline.css`, `sheet.css`, `map.css`, `dossier.css`). The nine-and-a-half-pixel stat label
+under a 1.45rem number was the worst of them and was the whole of "the stats look mediocre".
+
+Note the count in this paragraph used to say "thirteen of them in `css/story.css`" and it was
+twelve — the thirteenth, `10.5px`, is in `css/atlas.css`. A number in a document nobody
+recomputes is the same defect the document is about.
 
 ### A label is not a watermark
 
@@ -219,21 +227,26 @@ distinction: it has **no dot**, and it may be **slightly** tracked to suggest ex
 three steps become:
 
 ```css
-.atlas-place          { font: 650 13px/1 var(--font-display); letter-spacing: .01em;
-                        color: var(--atlas-ink); }        /* + dot, + halo — unchanged */
-.atlas-place--town    { font-weight: 550; font-size: 11px; letter-spacing: .01em;
-                        color: var(--atlas-ink-quiet); }  /* was 11.5px */
-.atlas-place--region  { font-weight: 550; font-size: 15px; letter-spacing: .05em;
+.atlas-place          { font: 650 var(--fs-sm)/1 var(--font-display); letter-spacing: .01em;
+                        color: var(--atlas-ink); }        /* + dot, + halo */
+.atlas-place--town    { font-weight: 550; font-size: var(--fs-2xs); letter-spacing: .01em;
+                        color: var(--atlas-ink-quiet); }
+.atlas-place--region  { font-weight: 550; font-size: var(--fs-base); letter-spacing: .05em;
                         font-style: normal; text-transform: none;
                         color: var(--atlas-ink-quiet); }  /* no dot, halo inherited */
 ```
 
 Three steps, and each differs from the next in **more than one property**, which is what makes
-them tell apart at a glance: 15/550/spread/quiet/no dot for ground, 13/650/tight/full ink/dot
-for a city, 11/550/tight/quiet/dot for a town. The region is the largest and the palest at the
-same time — bigger than the city it contains, and never competing with it.
+them tell apart at a glance: `--fs-base`/550/spread/quiet/no dot for ground, `--fs-sm`/650/tight/
+full ink/dot for a city, `--fs-2xs`/550/tight/quiet/dot for a town. The region is the largest and
+the palest at the same time — bigger than the city it contains, and never competing with it.
 
-0.05em at 15px is 0.75px between letters: spread enough to read as extent, not enough to break
+This block used to be written as `13px` / `11px` / `15px`, and that is why it is worth a note.
+Those WERE the steps — `--fs-sm`, `--fs-2xs`, `--fs-base` under the old scale — but written as
+numbers they looked like three chosen pixel values, and when the scale moved they became three
+wrong ones. The relationship is the rule; the pixels are what it happens to compute to.
+
+0.05em at 17px is 0.85px between letters: spread enough to read as extent, not enough to break
 word shape. "Massachusetts" and "Piemonte" render as they are written. Colour stays
 `--atlas-ink-quiet`, the token already tuned to clear 4.5:1 over water (`css/tokens.css:95-97`),
 so `check-contrast.py` keeps holding the floor.
@@ -329,7 +342,7 @@ sound, and puts the cover back
 
 ```
 last word           2.0 s of silence. Nothing moves. The last picture holds.
-+2.0 s              a veil at .62 closes over --t-turn. The stage stays underneath
++2.0 s              a veil at .52 closes over --t-turn. The stage stays underneath
                     and is still legible — the arc of redoubts, the two villages.
                     The bed comes UP from its ducked level to 0 dB over --t-turn.
                     The card fades in with the veil:
@@ -399,6 +412,30 @@ beats.**
 
 ---
 
+## 5b. Where a rule points, and why it matters
+
+Three of the file:line references in this document named `css/story.css` when the
+live rule was in `css/atlas.css`, and one of them — `ring-pulse` — was *acted on*
+there. The rule was written, the fix was made, the check would have passed, and the
+ring on the map went on pulsing for the rest of every scene, because `.story-ring`
+has not been painted since the map module landed.
+
+That is the same shape as `.ov-fact` having no hidden state, and it is the third
+time it has cost something. So:
+
+> **A rule in this document points at the selector that is PAINTED.** Before citing
+> a file and line, check that a module writes that class:
+> `grep -rn "the-class" --include=*.js .`
+> `tools/check-dead-css.py` now fails the build on a class in `css/` that nothing
+> writes, which makes the citation checkable rather than trusted.
+
+The dead copies had also drifted from the live ones — night at .30 against .34, the
+muzzle flash at 700 ms against 620 ms, the clock at `--fs-xs` against a literal 14px.
+A number maintained in two places and visible in one is worse than a number nobody
+wrote down.
+
+---
+
 ## 6. How each rule is checked
 
 Mechanical, by grep over `css/`:
@@ -449,13 +486,13 @@ land: watch it once, with the sound on.
 | `scale(.97)` on `.ov-portrait` `.ov-quote` | `css/story.css:262, 397` | deleted |
 | `mk-pop 460ms` spring, `scale(.4)` | `css/story.css:146-149` | `--t-enter`, opacity only |
 | `chip-in 520ms` spring, translate+scale | `css/story.css:460-463` | `--t-enter`, opacity only |
-| `ring-pulse … infinite` | `css/story.css:128` | three iterations |
+| `atlas-ping … infinite` | `css/atlas.css:385` | three iterations, thrown by a `::after` so the ring itself stands |
 | `cap-in 320ms` + `translateY(4px)` | `css/story.css:544-545` | deleted; the caption cuts |
 | word colour `120ms linear` | `css/story.css:546` | kept, speech-locked |
 | plate `.9s` in and out | `css/story.css:1251-1256` | `--t-dissolve` |
 | `cue.into ?? 1.1` | `engine/scenes/plate.js:256` | `?? 1.2` |
 | `plate.hide over` default `0.9` | `engine/verbs.json` | `1.2` |
-| `map.mood 2.4s` | `css/story.css:26` | kept, as 2 × `--t-turn` |
+| `map.mood 2.4s` | `css/atlas.css:293` | kept, as 2 × `--t-turn` |
 | fly clamp `0.9 … 7` | `map/index.js:812` | `1.4 … 6` |
 | `.atlas-place--region` italic/uppercase/.18em/14px | `css/atlas.css:176-186` | upright, mixed case, 15px, 550, .05em, quiet ink, no dot |
 | `.atlas-place--town 11.5px` | `css/atlas.css:187` | `11px` |

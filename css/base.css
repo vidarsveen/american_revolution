@@ -53,12 +53,16 @@ img { max-width: 100%; display: block; }
 
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
-/* Visible only to screen readers */
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-}
+/* There is no .sr-only here, and that is a decision rather than an omission.
+   The app names every control it cannot label visibly with `aria-label` —
+   twenty-nine of them, and no exceptions — and a visually-hidden-text helper
+   is the same job done a second way. Nothing had ever used it: it sat in
+   check-dead-css.py's baseline, which is to say it was a rule the stylesheet
+   asserted and nobody followed. Two mechanisms for one job means the next
+   person picks whichever they remember, and half the app ends up labelled
+   each way. If a text alternative ever needs to be READ IN THE FLOW rather
+   than attached to a control — a skip link, a heading for a landmark — bring
+   it back then, with the thing that uses it in the same commit. */
 
 /* Keyboard focus only — never a ring on touch */
 :focus { outline: none; }

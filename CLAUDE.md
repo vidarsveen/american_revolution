@@ -114,9 +114,14 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `dev/engine-lab.html` | Does `rebuildTo(t)` produce the same picture as playing forward to `t`? |
 | `dev/map-lab.html` | Does `instant` reproduce the animated picture exactly? Is any frame blank? |
 | `dev/map-lab.html` | Can two regions that share a border be told apart, measured on the pixels? |
+| `dev/map-lab.html` | Is every label that is drawn entirely inside the frame? |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
+| `dev/sound-lab.html` | Does every loop join itself at the seam, measured on the samples? |
 | `tools/check-turn.py` | At the instant the stage is rebuilt, is the veil actually opaque? |
+| `dev/turn-lab.html` | Between two chapters, is there a frame with nothing on it? |
 | `tools/check-plate.py` | When one picture replaces another, were both on screen at once? |
+| `tools/check-legible.py` | When the narration names a place, is that name on screen and not under anything? |
+| `tools/check-dead-css.py` | Does any module actually paint this class? |
 
 `dev/engine-lab.html` is the bench for rule 1, which until now was enforced by discipline
 alone. It compares a **stage signature** — every layer, every artifact, every declared
@@ -157,8 +162,11 @@ python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
 python tools/check-turn.py         # is the scene change behind the veil? — needs a server
+python tools/check-turn-chapter.py # and the chapter change — needs a server
 python tools/check-plate.py        # does a picture ever cut instead of dissolve?
-python tools/check-contrast.py     # samples real pixels; fails on an unreadable map
+python tools/check-dead-css.py     # is every class in css/ one that something paints?
+python tools/check-legible.py      # can you see the place the sentence names? — a report, not a gate
+python tools/check-contrast.py --pack <pack>   # samples real pixels; fails on an unreadable map
 python tools/check-sound.py        # 24 assertions on ducking and the silent fallback
 ```
 
@@ -195,6 +203,28 @@ thing being said?** A tool cannot read the sentence. What it can do is *list* ev
 that sits over a `region.show` or a `marker.show`, and it does — those are fine when the
 plate is pre-staging the map behind itself, and wrong when the line is pointing at it.
 Read that list.
+
+**Half of that question is mechanical, and `tools/check-legible.py` now asks it.** Not
+"does this picture show the thing being said" — no tool reads a sentence — but the spatial
+half: *when the narration names a place, is that place's name on screen at all?* It seeks
+to every cue that names a place, measures the drawn label, and sorts the answer into
+CLIPPED (crosses the edge of the map host), COVERED (a DOM overlay paints over it),
+MISSING (no label was drawn, or declutter dropped it) and PLATED (a full-frame picture is
+over the map, which is usually right and only a human can say). It prints the beat's own
+sentence beside every finding, for the same reason `check-script.py` does.
+
+Its first run says 396 of 908 named places are legible. Read that before adding anything.
+Two things it taught, both worth knowing before writing a probe of your own: **clipping is
+against the MAP HOST, not the window** — the host is 390x734 inside a 390x844 phone and
+`onScreen()` lets a pin sit 120 px outside it, so a name can be well inside the window and
+cut in half by the map. And **a label's position is not a safe key for finding it**,
+because a label that flips to the other side of its anchor is no longer at its anchor;
+match on the text the map says it drew.
+
+It reports and never fails — `--strict` exits 1 when the content is ready to be gated.
+It is NOT in `check-all.py`: twelve minutes for sixteen chapter/language pairs would
+roughly double a run, and CLAUDE.md's own argument against the old five-command list was
+that it is a list people run four fifths of. It is a report you run, like the rhythm below.
 
 The rhythm is a property of the whole chapter, not of a beat. Print it — one line per
 scene, which pictures and for how long — before deciding anything is missing.
@@ -253,6 +283,26 @@ happened in front of it at 0.008 opacity. Both are now measured on **effective o
 `display`, `visibility` and every ancestor folded in — by `dev/engine-lab.js` and
 `tools/check-turn.py`, and both benches were confirmed by reintroducing the bug and watching
 them fail.
+
+**A stylesheet outlives the renderer it was written for, and the rule gets applied to
+the dead copy.** `css/story.css` styled `.story-mk`, `.story-place`, `.story-ring` and
+`.stage-map__mood/__flash/__time` for as long as the map module has been drawing
+`.atlas-pin`, `.atlas-place`, `.atlas-ring` and `.atlas__mood/__flash/__time`. Nothing
+rendered the first set. So when the design direction said "no infinite animation", the
+fix landed on `.story-ring` — three iterations, correct, invisible — and the live
+`.atlas-ring` went on pulsing at the viewer for the rest of every scene. The rule was
+written, the fix was made, and the defect was still on screen.
+
+The two copies had also *drifted*: night at .30 against .34, the muzzle flash at 700 ms
+against 620 ms, the clock at `--fs-xs` against a literal 14px. A number maintained in
+two places and visible in one is worse than a number nobody wrote down.
+
+Same shape as `.ov-fact` having no hidden state, one layer out: **a probe or a rule
+aimed at a selector nothing paints reports success for ever.** `tools/check-dead-css.py`
+fails the build on a class in `css/` that no module writes, as a ratchet — a documented
+baseline of what is still dead, and nothing new allowed. It excludes `tools/`
+deliberately, because `tools/check-turn.py` queried three of those dead selectors and
+would otherwise have vouched for the very names it was failing to find.
 
 **Two overlays anchored to the same edge will fight, and the later one wins.** The stats deck
 and the caption box were both `bottom: calc(var(--transport-h) + ...)`, and the caption sits on
