@@ -28,18 +28,151 @@ Exits non-zero if anything is broken. Notes are advisory.
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 
 from scriptlib import (
     REF_TYPES, VERB_SPEC, VERBS,
     anchor_for, auto_over, chapter_langs, check_sound_manifest, cue_time,
-    ease_flight, fit_bounds, flight_constants, load_chapter, load_timings,
-    map_conf, norm, pack_era, resolve_pools, sound_years, timing_beat, tokens,
+    ease_flight, fit_bounds, flight_constants, load_chapter, load_json,
+    load_timings, map_conf, norm, pack_dir, pack_era, resolve_pools,
+    sound_years, timing_beat, tokens,
 )
 
 problems: list[str] = []
 notes: list[str] = []
+
+
+# ------------------------------------------------------------------
+# surfaces
+# ------------------------------------------------------------------
+#
+# engine/verbs.json names the surface that answers each verb, and a pack
+# declares which surfaces it wants. Before that existed, a chapter written
+# against a pack with no map validated perfectly and then drew nothing: the
+# verb was real, the handler was real, and the surface was simply not there.
+# That is the `kind`-on-marker.show failure one level up — the manifest is the
+# contract, and anything not in it is decoration.
+#
+# Absent means the four that always existed, so no pack file had to change.
+DEFAULT_SURFACES = ("map", "plate", "overlays", "sound")
+
+# Where core/entries.js's built-in kinds get their pool. Kept in step with
+# BUILT_IN there; a kind a pack declares itself names its own pool with `from`.
+BUILTIN_POOL = {"person": "people", "term": "terms", "topic": "topics",
+                "place": "placeNotes"}
+
+
+def pack_info(pack: str) -> dict:
+    return load_json(os.path.join(pack_dir(pack), "pack.json")) or {}
+
+
+def pack_surfaces(pack: str) -> list[str]:
+    want = pack_info(pack).get("surfaces")
+    return [str(s) for s in want] if isinstance(want, list) else list(DEFAULT_SURFACES)
+
+
+def entry_pools(pack: str) -> dict[str, dict]:
+    """{kind: {id: entry}} for every entry kind the pack declares.
+
+    core/entries.js builds this in the browser; chart.show and fact.show
+    resolve against it. It is rebuilt here rather than routed through
+    resolve_pools() because that returns the manifest's REFERENCE types —
+    place, route, person — and an entry KIND is a pack's own invention:
+    `wine` and `grape` exist in one subject and nowhere else.
+    """
+    pd = pack_dir(pack)
+    info = pack_info(pack)
+    pools_decl = info.get("pools") or {}
+    declared = info.get("entries") or {}
+    kinds = list(declared) or list(BUILTIN_POOL)
+    out: dict[str, dict] = {}
+    for kind in kinds:
+        spec = declared.get(kind) or {}
+        key = spec.get("from") or BUILTIN_POOL.get(kind, kind)
+        rel = pools_decl.get(key) or f"{key}.json"
+        data = load_json(os.path.join(pd, rel))
+        if data is None:
+            continue
+        if isinstance(data, list):
+            out[kind] = {p["id"]: p for p in data if isinstance(p, dict) and p.get("id")}
+        else:
+            out[kind] = {k: v for k, v in data.items() if not str(k).startswith("//")}
+    return out
+
+
+def declared_axes(pack: str, kind: str) -> list[str]:
+    """The axis ids the pack declares for a kind, in order, or []."""
+    spec = ((pack_info(pack).get("entries") or {}).get(kind) or {})
+    axes = ((spec.get("profile") or {}).get("axes")) or []
+    return [a.get("id") for a in axes if isinstance(a, dict) and a.get("id")]
+
+
+def check_chart_refs(pack, bid, cue, epools):
+    """chart.show points at entries, and the entries have to carry numbers.
+
+    The manifest's per-argument reference types cannot express `<kind>:<id>`,
+    the same way they cannot express term.mark's kind-plus-id — so it is
+    written out, and for the same reason: a chart whose ref resolves to
+    nothing draws nothing at all, silently, with the cue reading correct.
+    """
+    found = []
+    resolved = []
+    for arg in ("ref", "against"):
+        ref = cue.get(arg)
+        if not ref:
+            continue
+        kind, sep, eid = str(ref).partition(":")
+        if not sep or not eid:
+            found.append(f"{bid}: chart.show {arg} '{ref}' is not '<kind>:<id>'")
+            continue
+        if kind not in epools:
+            found.append(f"{bid}: chart.show {arg} names kind '{kind}', which "
+                         f"{pack}/pack.json does not declare "
+                         f"(has: {', '.join(sorted(epools)) or 'none'})")
+            continue
+        entry = epools[kind].get(eid)
+        if entry is None:
+            found.append(f"{bid}: chart.show -> unknown {kind} '{eid}'")
+            continue
+        profile = entry.get("profile")
+        if not isinstance(profile, dict) or not profile:
+            found.append(f"{bid}: chart.show -> {kind} '{eid}' carries no `profile`, "
+                         f"so the chart would draw nothing")
+            continue
+        bad = [k for k, v in profile.items()
+               if not isinstance(v, (int, float)) or not 0.0 <= float(v) <= 1.0]
+        if bad:
+            found.append(f"{bid}: {kind} '{eid}' profile axes {', '.join(sorted(bad))} "
+                         f"are not numbers in 0..1 — the track IS the scale")
+        resolved.append((kind, eid, profile))
+
+    if not resolved:
+        return found
+
+    # Two profiles over each other is the case this verb exists for, and it
+    # only means anything if both are measured on the same axes in the same
+    # order. Comparing two things across two different rulers is a picture
+    # that looks like an argument and is not one.
+    if len(resolved) == 2:
+        a_axes = declared_axes(pack, resolved[0][0]) or list(resolved[0][2])
+        b_axes = declared_axes(pack, resolved[1][0]) or list(resolved[1][2])
+        if set(a_axes) != set(b_axes):
+            found.append(
+                f"{bid}: chart.show lays {resolved[0][0]}:{resolved[0][1]} over "
+                f"{resolved[1][0]}:{resolved[1][1]}, but they are measured on "
+                f"different axes ({', '.join(a_axes)} against {', '.join(b_axes)})")
+
+    kind, eid, profile = resolved[0]
+    axes = declared_axes(pack, kind)
+    if cue.get("axes"):
+        known = set(axes) | set(profile)
+        for axis in cue["axes"]:
+            if axis not in known:
+                found.append(f"{bid}: chart.show names axis '{axis}', which neither "
+                             f"pack.json nor {kind} '{eid}' has")
+    return found
 
 
 # Verbs that draw themselves in over time, and the layer a clear wipes. A
@@ -162,6 +295,44 @@ def camera_target(cue, chapter, conf, cam):
     return None
 
 
+# The camera keys a pack may tune, with the range engine/style.js clamps them
+# to. Kept short deliberately: this is not a second implementation of that
+# module, it is the three numbers autoOver() actually uses.
+_CAMERA_SPEC = {"flyOver": (0.2, 12.0), "clamp": (0.2, 20.0)}
+
+
+def camera_style(pack: str) -> dict:
+    """`camera` from the pack's style.json, merged over the documented defaults.
+
+    flight_constants() reads map/index.js, and map/index.js only carries the
+    FALLBACKS — the ones a bench gets when nothing applied a style. In the app
+    engine/surfaces/map.js hands createMap() the pack's values, so a pack that
+    slows its camera down would have had every flight here simulated at 2.8 s
+    while the browser flew at 4.5, and the check would have called an overrun
+    scene fine. Same shape as the DECK_RESERVE_PX story: a number derived from
+    what ships has to be re-derived where it is read.
+
+    Anything malformed is dropped and the default stands, which is the same
+    answer engine/style.js gives — a tuning file may not break a check either.
+    """
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base = (load_json(os.path.join(root, "engine", "defaults", "style.json"))
+            or {}).get("camera") or {}
+    own = (load_json(os.path.join(pack_dir(pack), "style.json")) or {}).get("camera") or {}
+    out = {}
+    for key, (lo, hi) in _CAMERA_SPEC.items():
+        v = own.get(key, base.get(key))
+        if key == "clamp":
+            if (isinstance(v, list) and len(v) == 2
+                    and all(isinstance(n, (int, float)) for n in v)):
+                a, b = (min(hi, max(lo, float(n))) for n in v)
+                if a <= b:
+                    out[key] = [a, b]
+        elif isinstance(v, (int, float)):
+            out[key] = min(hi, max(lo, float(v)))
+    return out
+
+
 def check_camera_lands(pack, chapter, timings, langs):
     """A flight the scene ends in the middle of.
 
@@ -186,6 +357,12 @@ def check_camera_lands(pack, chapter, timings, langs):
     k, problems = flight_constants()
     if problems:
         return problems, []
+    # …and then this pack's own pacing over the module's fallbacks. See above.
+    cam_style = camera_style(pack)
+    if "flyOver" in cam_style:
+        k["speed"] = cam_style["flyOver"]
+    if "clamp" in cam_style:
+        k["lo"], k["hi"] = cam_style["clamp"]
 
     missing = [v for v in CAMERA_VERBS if v not in VERBS]
     if missing:
@@ -275,6 +452,12 @@ READABLE = {
     # A plate takes the whole screen and drifts. Under about four seconds it
     # reads as a flicker rather than a shot, and the drift never gets going.
     "plate":    ("plate.show",    "plate.hide",    4.0),
+    # A chart is five labelled rows and up to two series, and the reader has
+    # to read the axis name before the bar means anything. That is strictly
+    # more work than a three-line fact box, so it gets a longer floor. The
+    # bars themselves take --t-enter (0.9 s) to arrive, so anything under
+    # about four seconds is a chart the viewer watches grow and then loses.
+    "chart":    ("chart.show",    "chart.hide",    4.0),
 }
 
 
@@ -330,6 +513,77 @@ STAT_STACK = 3
 # scene wipe, and that is how one ended up on screen for seventy-two seconds
 # under three later ones.
 STAT_CEILING = 45.0
+
+
+def check_ending_lands(chapter):
+    """Nothing ARRIVES in the last beat of a chapter.
+
+    docs/design-direction.md section 4 states it as a rule and section 6 lists
+    it as a check. The rule was written; the check never was. So the wine
+    chapter's final sentence — "next time we go south, to Tuscany" — raised a
+    region wash AND a caption pill while it was still being spoken, and then
+    the scene wiped both 2 s later on its way to the end card. That is the
+    "the end of the chapter is not working, and it is so abrupt" complaint, and
+    it had been reported repeatedly against an app whose own standard forbids
+    exactly this.
+
+    "A chapter whose final sentence is competing with something appearing has
+    no ending to give."
+
+    What is allowed in the last beat: a hide, a clear, a camera move (the
+    camera is where the picture is going to REST, which is the opposite of an
+    arrival), and sound, which is not on the stage. Everything else is an
+    arrival and belongs earlier, or belongs on the end card — which is what
+    `chapter.ending` is for.
+    """
+    scenes = chapter.get("scenes") or []
+    if not scenes:
+        return []
+    beats = scenes[-1].get("beats") or []
+    if not beats:
+        return []
+    last = beats[-1]
+
+    def arrives(name):
+        # A verb arrives if it is not a hide/clear, not a camera move, not
+        # sound, and not something the compiler resolves off the stage.
+        if name.split(".")[-1] in ("hide", "clear"):
+            return False
+        if name.startswith(("map.", "sound.")):
+            return False
+        if name in ("term.mark", "pause"):
+            return False
+        return True
+
+    # FURNITURE fails. A pill, a pin or a number arriving under the closing
+    # sentence is decoration competing with it, and there is never a reason.
+    #
+    # THE FINAL PICTURE is reported, not failed. `plate.show` and `region.show`
+    # in a last beat are usually the image the chapter means to rest on — and
+    # the ending sits on the unreset stage, so it needs one. But arriving in
+    # the last beat is still wrong: a 16 s Ken Burns drift started six seconds
+    # before the end is still moving when the prescription says "2.0 s of
+    # silence, nothing moves, the last picture holds". The fix is to establish
+    # it a beat earlier, and that is a re-cut of the chapter's closing rhythm
+    # rather than a deletion — an editorial call, on somebody's writing.
+    FURNITURE = ("caption.note", "marker.show", "stat.show", "compare.show",
+                 "fact.show", "quote.show", "portrait.show", "image.show")
+    bad, note = [], []
+    for cue in last.get("cues", []):
+        name = cue.get("do", "")
+        if not arrives(name):
+            continue
+        where = (f"{last['id']}: `{name}` arrives in the chapter's last beat. "
+                 f"The final sentence has to be the last thing asking for "
+                 f"attention. See docs/design-direction.md section 4.")
+        if name in FURNITURE:
+            bad.append(where + " Furniture never has a reason to be here — "
+                               "put it on the end card, or cut it.")
+        else:
+            note.append(where + " If this is the picture the chapter rests on, "
+                                "establish it a beat earlier so it has settled "
+                                "before the silence.")
+    return bad, note
 
 
 def check_numbers_clear(chapter, timings, langs):
@@ -785,6 +1039,10 @@ def main():
     pools, pool_problems = resolve_pools(pack, chapter)
     problems.extend(pool_problems)
 
+    # What this pack's stage is made of, and what a reader can look up in it.
+    surfaces = pack_surfaces(pack)
+    epools = entry_pools(pack)
+
     # A pack may ship recorded sound effects instead of using the synthesised
     # ones in sound/library.js. Same shape as media.json, same rule: a file
     # with no licence and no credit does not go in a build.
@@ -826,6 +1084,20 @@ def main():
                 # exists. Adding a verb with a `place` argument gets this check
                 # for free, which is the point of the manifest.
                 spec = VERB_SPEC.get(verb) or {}
+
+                # THE SURFACE HAS TO BE THERE.
+                #
+                # A verb whose surface the pack does not declare is a chapter
+                # written against the wrong subject: the handler exists, the
+                # manifest is correct, and nothing is mounted to answer it. It
+                # fails silently in the browser with one console warning, and
+                # before this it validated clean.
+                needs = spec.get("surface")
+                if needs and needs not in surfaces:
+                    problems.append(
+                        f"{bid}: {verb} is answered by the '{needs}' surface, which "
+                        f"content/{pack}/pack.json does not declare "
+                        f"(surfaces: {', '.join(surfaces)})")
 
                 # An argument the manifest does not declare is read by nobody.
                 # `kind` on marker.show and `tone` on place.highlight sat in
@@ -885,6 +1157,12 @@ def main():
                             f"{bid}: term.mark -> unknown {kind} '{ref}' "
                             f"(nothing to open when a reader taps it)")
 
+                # chart.show resolves '<kind>:<id>' against the pack's entry
+                # pools, which the manifest's reference types cannot express
+                # for the same reason term.mark's kind-plus-id cannot.
+                if verb == 'chart.show':
+                    problems.extend(check_chart_refs(pack, bid, cue, epools))
+
                 # the important one: does the anchor word actually get spoken?
                 for lang in langs:
                     spec = anchor_for(cue, lang)
@@ -926,6 +1204,9 @@ def main():
     problems.extend(check_plate_rhythm(chapter) or [])
     problems.extend(check_places_have_ground(chapter) or [])
     problems.extend(check_numbers_clear(chapter, timings, langs) or [])
+    end_bad, end_note = check_ending_lands(chapter)
+    problems.extend(end_bad)
+    notes.extend(end_note)
     plate_bad, plate_note = check_plates_over_map(chapter)
     problems.extend(plate_bad)
     notes.extend(plate_note)

@@ -39,6 +39,25 @@ export function portraitUrl(pack, file, dir = 'portraits/') {
   return file ? packUrl(pack, `${dir}${file}`) : null;
 }
 
+/**
+ * A pack's tuning file, and the documented default set it is merged over.
+ *
+ * Both are OPTIONAL by construction — engine/style.js falls back to a built-in
+ * copy of the defaults if either fetch fails, because a tuning file is not
+ * allowed to be able to break a chapter.
+ *
+ * The defaults path is document-relative like every other path here, not
+ * module-relative: in the app the document IS the root, and the benches under
+ * dev/ put it back there with <base href="../">.
+ */
+export function styleUrl(pack) {
+  return packUrl(pack, 'style.json');
+}
+
+export function defaultStyleUrl() {
+  return './engine/defaults/style.json';
+}
+
 /** A chapter script, and the timing file that goes with it. */
 export function chapterUrl(pack, chapterId) {
   return packUrl(pack, `${chapterId}.json`);

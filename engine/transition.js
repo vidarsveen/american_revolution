@@ -37,6 +37,8 @@
    stacked on the screen.
    ============================================================ */
 
+import { styleValue } from './style.js';
+
 /* All four numbers come from docs/design-direction.md, and they are one
    number: --t-turn, 1200 ms, the whole frame becoming something else.
 
@@ -64,11 +66,22 @@
 /* `--t-turn` itself, named once. Both ramps of the scene turn are this
    number, and so are both ramps of the CHAPTER turn in engine/ending.js —
    which is the same event at the next scale up and must not invent a second
-   answer to "how long does the frame take to become something else". */
-export const TURN_MS = 1200;
-export const IN_MS = TURN_MS;
+   answer to "how long does the frame take to become something else".
+
+   THESE ARE `let`, AND THAT IS THE WHOLE POINT. They used to be `const`,
+   evaluated once at import — so `motion.turn` in a pack's style.json was
+   published to CSS, the veil obeyed it, and every timer in this file went on
+   counting 1200. A subject with a slower turn would have had the stage
+   rebuilt before the veil was opaque, which is the one thing this device
+   exists to prevent.
+   An exported `let` is a live binding: engine/ending.js and dev/turn-lab.js
+   import the NAME and read the current value at the moment they use it, so
+   neither had to change. syncTurn() is what moves it, and engine/story.js
+   calls it beside applyStyle() — before the player is told coverMs. */
+export let TURN_MS = styleValue('motion.turn', 1200);
+export let IN_MS = TURN_MS;
 const HOLD_MS = 1600;
-const OUT_MS = TURN_MS;
+let OUT_MS = TURN_MS;
 
 /* Silence before the next scene speaks, so the card gets clear air.
    Without it the title appeared at the same instant the new sentence began,
@@ -77,7 +90,7 @@ const OUT_MS = TURN_MS;
    Measured from t = 0, the top of the table above -- so it is IN_MS + HOLD_MS
    by construction, and this line is the third place that number is written.
    If they ever disagree, the table is right. */
-export const LEAD_IN_MS = IN_MS + HOLD_MS;   // 2800
+export let LEAD_IN_MS = IN_MS + HOLD_MS;   // 2800
 
 /* And this is the number the PLAYER needs, which is not the same number.
 
@@ -91,7 +104,25 @@ export const LEAD_IN_MS = IN_MS + HOLD_MS;   // 2800
 
    It comes out as HOLD_MS, which is the check that the reading is right -- the
    card holds, and when it stops holding the voice is there. */
-export const SPEAK_AFTER_MS = LEAD_IN_MS - IN_MS;   // 1600, i.e. HOLD_MS
+export let SPEAK_AFTER_MS = LEAD_IN_MS - IN_MS;   // 1600, i.e. HOLD_MS
+
+/**
+ * Re-derive all four from the pack's tuning. Idempotent, and safe to call at
+ * any time — nothing here is a running timer.
+ *
+ * The subtraction below is load-bearing and is written out rather than
+ * shortened to HOLD_MS on purpose: the narrator came in 1.2 s late for months
+ * because LEAD_IN_MS and IN_MS were ADDED by mistake. Keeping the arithmetic
+ * visible is what makes the next reader check it against the table above.
+ */
+export function syncTurn() {
+  TURN_MS = styleValue('motion.turn', 1200);
+  IN_MS = TURN_MS;
+  OUT_MS = TURN_MS;
+  LEAD_IN_MS = IN_MS + HOLD_MS;
+  SPEAK_AFTER_MS = LEAD_IN_MS - IN_MS;
+  return TURN_MS;
+}
 
 let host = null;
 let cardEl = null;

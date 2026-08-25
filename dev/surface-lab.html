@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="no" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flatelab — does a pack pay for a surface it did not ask for?</title>
+
+<!-- The engine fetches its content with document-relative paths, because in
+     the app the document IS the root. Same <base> trick as engine-lab. -->
+<base href="../">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/atlas.css">
+<link rel="stylesheet" href="css/story.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid; grid-template-columns: 420px 1fr;
+    font-family: var(--font-body); color: var(--ink); background: var(--paper);
+  }
+  .stagewrap { position: relative; overflow: hidden; border-right: 1px solid var(--rule); }
+  #stage { position: absolute; inset: 0; }
+  .side { overflow-y: auto; padding: 14px 16px; background: var(--paper-raised); }
+  h1 { margin: 0 0 2px; font-family: var(--font-display); font-size: 17px; }
+  p.sub { margin: 0 0 12px; font-size: 11.5px; color: var(--ink-soft); }
+  .q { margin: 0 0 14px; padding: 9px 11px; border-left: 3px solid var(--gold);
+       background: var(--paper-sunken); font-size: 12px; line-height: 1.45; }
+  h3 { margin: 16px 0 5px; font-size: 10px; font-weight: 700; letter-spacing: .12em;
+       text-transform: uppercase; color: var(--ink-faint); }
+  p { margin: 0 0 6px; font-size: 12px; line-height: 1.45; }
+  pre { margin: 5px 0 0; padding: 7px 8px; overflow-x: auto; background: var(--paper-sunken);
+        border-radius: var(--r-sm); font-size: 10.5px; line-height: 1.4; }
+  .good { color: #2c6b3f; } .bad { color: var(--red); }
+  .fail, .note { margin: 0 0 8px; padding: 8px 10px; border-radius: var(--r-sm);
+                 font-size: 11.5px; line-height: 1.45; }
+  .fail { background: color-mix(in srgb, var(--red) 12%, transparent);
+          border-left: 3px solid var(--red); }
+  .note { background: var(--paper-sunken); border-left: 3px solid var(--rule-strong); }
+  a { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="stagewrap story"><div id="stage" class="story__stage"></div></div>
+
+<div class="side">
+  <h1>Flatelab</h1>
+  <p class="sub">surfaces — what a pack actually pays for</p>
+
+  <p class="q">
+    <b>Does a pack that does not declare the <code>map</code> surface load
+    <code>map/</code> at all?</b><br>
+    This is the one measurable payoff of the surface refactor, and it is easy
+    to claim and easy to lose: a single convenience <code>import</code> of
+    <code>engine/surfaces/map.js</code> anywhere on the path from
+    <code>index.html</code> puts the whole map module back in the graph of
+    every pack, silently, with everything still working. So it is measured on
+    <code>performance.getEntriesByType('resource')</code> — what the browser
+    actually fetched — and never inferred from reading the source.
+  </p>
+
+  <p class="q">
+    <b>And the falsification:</b> the same page with the surface put back
+    (<a href="dev/surface-lab.html?drop=">?drop=</a>) must report a
+    non-zero count. A bench that says zero in both runs is measuring nothing.
+  </p>
+
+  <p class="q">
+    <b>And: a cue that arrives before the surfaces do — is it held, or lost?</b><br>
+    <code>import()</code> is asynchronous and <code>mountStage()</code> is
+    called synchronously, so on the FIRST mount of a page there is a window in
+    which no surface is up. Dropping cues there would make the picture depend
+    on how fast the network was, which is a history of events by another name.
+    They are queued in order and released on mount, and
+    <code>resetStage()</code> throws the queue away. This page is the only
+    place that window exists, because every mount after the first is served
+    from the module cache and is entirely synchronous.
+  </p>
+
+  <div id="out"><p class="note">measuring…</p></div>
+</div>
+
+<script type="module">
+import { loadChapter } from '../engine/script.js';
+import { mountStage, stageReady, stageSurfaces, applyCue, resetStage } from '../engine/stage.js';
+import { useRegistry, allChapters } from '../engine/pack.js';
+
+const params = new URLSearchParams(location.search);
+// Default: drop the map. `?drop=` puts it back, which is the bug-back run.
+const drop = (params.has('drop') ? params.get('drop') : 'map')
+  .split(',').map((s) => s.trim()).filter(Boolean);
+
+const out = document.getElementById('out');
+const esc = (s) => String(s).replace(/[&<>]/g, (c) => (
+  { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+function since(t0) {
+  return performance.getEntriesByType('resource')
+    .filter((e) => e.startTime >= t0).map((e) => e.name);
+}
+
+useRegistry('./content/packs.dev.json');
+const chapters = await allChapters();
+// Any narrated chapter will do; the question is about the module graph, not
+// about the subject. The first one that declares a map is the honest test.
+const spec = chapters[0];
+const chapter = await loadChapter(spec.pack, spec.id, 'no');
+const declared = stageSurfaces(chapter);
+chapter.packInfo = { ...chapter.packInfo, surfaces: declared.filter((s) => !drop.includes(s)) };
+
+const t0 = performance.now();
+mountStage(document.getElementById('stage'), chapter, chapter.people || [], 'no');
+
+// Deliberately BEFORE stageReady(): this is the one window in the app's life
+// where no surface is mounted yet. `stat.show` because every pack declares
+// the overlays surface, so the same assertion holds in both runs.
+applyCue({ do: 'stat.show', value: '77', label: { no: 'holdt', en: 'held' },
+           beat: 'lab' }, true);
+await stageReady();
+// The map fetches its geometry from inside createMap and from the first
+// draw, neither of which is awaited — rule 3's shape. Give them room, or
+// this reports "no geometry" for a map that simply had not asked yet.
+await new Promise((r) => setTimeout(r, 2500));
+
+const urls = since(t0);
+const mapJs = urls.filter((u) => /\/map\/[a-z]+\.js/.test(u));
+const geo = urls.filter((u) => /\/(assets\/geo|geo)\/|\.geojson$/.test(u));
+const surfaces = urls.filter((u) => u.includes('/engine/surfaces/'))
+  .map((u) => u.split('/').pop());
+
+// Did the held cue land? The chip is stage state, so it is on the screen if
+// and only if the queue released it.
+const held = Boolean(document.querySelector('.stat-chip'));
+// ...and resetStage() must not release one afterwards. A queue that survives
+// a rebuild is the "an await outliving its epoch" bug with a queue instead of
+// a promise.
+resetStage();
+const heldAfterReset = Boolean(document.querySelector('.stat-chip'));
+
+const wantZero = drop.includes('map');
+const bad = wantZero ? Boolean(mapJs.length || geo.length) : !(mapJs.length && geo.length);
+
+out.innerHTML = `
+  <h3>${wantZero ? 'map dropped' : 'map declared — the bug-back run'}</h3>
+  <p>${esc(spec.pack)} / ${esc(spec.id)} · surfaces
+     <code>${esc(chapter.packInfo.surfaces.join(', ') || 'none')}</code></p>
+  <p class="${bad ? 'bad' : 'good'}"><b>${bad ? 'WRONG' : 'as it should be'}</b> —
+     ${mapJs.length} module(s) from <code>map/</code>,
+     ${geo.length} geometry file(s), ${urls.length} responses in total.</p>
+  <h3>a cue that arrived before the surfaces</h3>
+  <p class="${held && !heldAfterReset ? 'good' : 'bad'}">
+    ${held ? 'held and released' : '<b>LOST</b> — the queue dropped it'}${
+      heldAfterReset ? ', <b>and it survived resetStage(), which it must not</b>' : ''}.</p>
+  <h3>surface modules loaded</h3>
+  <pre>${esc(surfaces.sort().join('\n') || '(none)')}</pre>
+  <h3>map/ and geometry</h3>
+  <pre>${esc([...mapJs, ...geo].map((u) => u.split('/').slice(-2).join('/')).join('\n')
+            || '(nothing — the boundary holds)')}</pre>
+  ${wantZero ? `<p class="note">Now run it with the surface put back:
+     <a href="dev/surface-lab.html?drop=">?drop=</a>. If that also reads zero,
+     this page is measuring nothing.</p>` : ''}`;
+
+window.__surfaceLab = { drop, surfaces: chapter.packInfo.surfaces, mapJs: mapJs.length,
+                        geo: geo.length, total: urls.length, bad, held, heldAfterReset };
+</script>
+</body>
+</html>

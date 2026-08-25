@@ -113,6 +113,24 @@ def report(r, name) -> bool:
             bad = True
             print(f"    FAIL {p}")
 
+    # The chart is driven synthetically by the lab: no chapter carries a
+    # chart.show yet, and a surface that is only measured once some content
+    # happens to use it is a surface nothing measures. `.stage-chart` is in
+    # the lab's signature() as well, so the sweep above picks it up for free
+    # the day a chapter does carry one.
+    ch = r.get("chart") or {}
+    if ch.get("skipped"):
+        print(f"  chart             : {ch['skipped']}")
+    elif ch:
+        print(f"  chart             : {ch.get('what', '?')}, "
+              f"{ch.get('rows', 0)} axes x {ch.get('series', 0)} series, "
+              f"{ch.get('zeros', 0)} zero axis/axes at "
+              f"{ch.get('narrowest', 0):.1f} px, "
+              f"{len(ch.get('problems', []))} problem(s)")
+        for p in ch.get("problems", []):
+            bad = True
+            print(f"    FAIL {p}")
+
     if r["anchors"]:
         print(f"  word anchors      : {len(r['anchors'])} fell back to the "
               f"start of the beat")

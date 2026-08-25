@@ -275,9 +275,17 @@ _FLIGHT_SHAPE = (
 
 _FLIGHT_RETURN = re.compile(
     r"return clamp\(speed \* \(([\d.]+) \+ ([\d.]+) \* Math\.min\(screens, ([\d.]+)\)"
-    r" \+ ([\d.]+) \* dz\), ([\d.]+), ([\d.]+)\);")
+    r" \+ ([\d.]+) \* dz\), flyLo, flyHi\);")
 
 _FLY_OVER = re.compile(r"^\s*flyOver = ([\d.]+),", re.M)
+
+# The clamp moved out of the return and into a createMap option, because a
+# pack's style.json sets it (`camera.clamp`) and a literal buried in autoOver()
+# is not reachable from a pack. The bounds are still READ FROM THE MODULE, and
+# still by regex, for the reason the header gives: a retune moves this check
+# with it and a rewrite of the shape fails out loud instead of quietly
+# computing durations from the wrong formula.
+_FLY_CLAMP = re.compile(r"^\s*flyClamp = \[([\d.]+), ([\d.]+)\]", re.M)
 
 
 def flight_constants() -> tuple[dict, list[str]]:
@@ -305,21 +313,26 @@ def flight_constants() -> tuple[dict, list[str]]:
                 f"updated with it")
     ret = _FLIGHT_RETURN.search(src)
     speed = _FLY_OVER.search(src)
+    bounds = _FLY_CLAMP.search(src)
     if not ret:
         problems.append(
             "map/index.js autoOver()'s return no longer matches "
-            "`clamp(speed * (a + b * Math.min(screens, c) + d * dz), lo, hi)` — "
+            "`clamp(speed * (a + b * Math.min(screens, c) + d * dz), flyLo, flyHi)` — "
             "update AUTO_OVER in tools/scriptlib.py to match")
     if not speed:
         problems.append("map/index.js no longer declares `flyOver = <seconds>`")
+    if not bounds:
+        problems.append("map/index.js no longer declares `flyClamp = [lo, hi]` — "
+                        "the camera check needs autoOver()'s bounds")
     if problems:
         return {}, problems
 
-    base, per_screen, screen_cap, per_zoom, lo, hi = (float(g) for g in ret.groups())
+    base, per_screen, screen_cap, per_zoom = (float(g) for g in ret.groups())
     return {
         "speed": float(speed.group(1)),
         "base": base, "per_screen": per_screen, "screen_cap": screen_cap,
-        "per_zoom": per_zoom, "lo": lo, "hi": hi,
+        "per_zoom": per_zoom,
+        "lo": float(bounds.group(1)), "hi": float(bounds.group(2)),
     }, []
 
 

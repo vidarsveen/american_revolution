@@ -24,6 +24,7 @@ import { chooseSubject, backToSubjects, hasSubjectChoice } from './chooser.js';
 import { mountWayOut } from './wayout.js';
 import { setEra } from '../core/era.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
+import { useStyle, reportStyleDrift } from '../engine/style.js';
 import { isDark as domIsDark } from '../core/theme.js';
 
 const VIEWS = [
@@ -71,6 +72,15 @@ async function boot() {
   setEra(data.manifest?.era);
   set({ date: era.jdStart }, { silent: true });
   publishPalette();
+  /* And the pack's tuning, on the same terms as the palette: published on
+     :root before anything reads --t-enter or --fs-md, and before the map is
+     created with camera.flyOver. engine/story.js does this again per chapter,
+     because a chapter may come from a different pack than the one that
+     booted. Awaited — it is one small JSON and every module below draws with
+     it — and it cannot fail: a missing or broken file resolves to the
+     documented defaults. */
+  await useStyle(data.pack);
+  reportStyleDrift().catch(() => {});
   const faces = packUrl(data.pack, data.manifest?.pools?.portraits || 'portraits/');
   setLibraryPortraits(faces);
   setSheetPortraits(faces);

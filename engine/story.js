@@ -6,7 +6,9 @@ import { loadChapter } from './script.js';
 import { allChapters, chaptersOf } from './pack.js';
 import { mountDepth, unmountDepth, coach } from './depth.js';
 import { mapScene, getStoryMap } from './scenes/map.js';
-import { mountTransition, unmountTransition, SPEAK_AFTER_MS, IN_MS, TURN_MS } from './transition.js';
+import { mountTransition, unmountTransition, syncTurn,
+         SPEAK_AFTER_MS, IN_MS, TURN_MS } from './transition.js';
+import { applyStyle, reportStyleDrift } from './style.js';
 import { mountEnding, unmountEnding, closeVeil, liftVeil } from './ending.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark } from '../core/theme.js';
@@ -160,6 +162,21 @@ async function openChapter(index, { under = null } = {}) {
     ...derivePalette(chapter.packInfo?.factions, { el, dark: isDark(el) }),
     ...toneFactions(el),
   });
+
+  /* And this pack's tuning, for the same reason and in the same place.
+     --t-enter and the rest are published on :root exactly the way --f-<side>
+     is, and every module that reads a number in JS reads it through
+     styleValue(). It is already loaded: loadChapter() awaited it in the
+     chapter's own wave, so nothing a cue touches arrives late.
+     Before mountStage(), because the first scene's cues run against it. */
+  applyStyle(chapter.style, el, chapter.pack);
+  // The scene turn is a module-level number read by engine/ending.js and by
+  // the player below, so it has to be re-derived before either reads it.
+  syncTurn();
+  // Localhost only, and it never changes what the app does — including when
+  // it fails, which is what the catch is for: a drift report is not allowed
+  // to be the thing that takes a chapter down.
+  reportStyleDrift(el).catch(() => {});
 
   const stage = view.querySelector('.story__stage');
   // The chapter's OWN people, not whichever pack booted first.

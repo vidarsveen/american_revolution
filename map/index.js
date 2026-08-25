@@ -26,6 +26,12 @@ const DEFAULT_FACTIONS = {
   neutral: { label: 'Neutral', fill: '#55704c', flag: '' },
 };
 
+/** A [a, b] option, or the fallback if it is anything else. */
+function pairOr(v, fallback) {
+  return Array.isArray(v) && v.length === 2 && v.every(Number.isFinite)
+    ? [Number(v[0]), Number(v[1])] : fallback;
+}
+
 export function createMap(host, opts = {}) {
   const {
     center = [40, -74],
@@ -41,8 +47,22 @@ export function createMap(host, opts = {}) {
     // is courtesy; a pack's own data may not be, and creditFor() adds it.
     credit = 'Natural Earth',
     flyOver = 2.8,
+    /* What autoOver() is allowed to come out as, in seconds. Below 1.4 s a
+       fly is a cut and the eye loses the ground it was holding; above 6 s it
+       is two thirds of a spoken sentence spent travelling.
+       docs/design-direction.md §1. An option rather than a literal in
+       autoOver() because a pack's style.json (`camera.clamp`) sets it — a
+       subject fought across one valley and one fought across an ocean do not
+       have the same idea of a long move. */
+    flyClamp = [1.4, 6],
     detail = null,
     lang = 'no',
+    /* How much air a placed label demands around it before declutter() calls
+       it a collision, [x, y] in CSS pixels. Small and asymmetric on purpose:
+       names sit on their own line, so a horizontal neighbour is the one that
+       reads as crowding. A pack sets it through `map.labelGap` — a map with
+       four names wants less than one with forty. */
+    labelGap = [4, 2],
     /* How coarsely the zoom a bake is taken AT is rounded, in zoom levels.
        Not a literal buried in paintGround, because a later phase reads it
        from a pack's style.json (`camera.quantise`) along with the rest of
@@ -50,6 +70,10 @@ export function createMap(host, opts = {}) {
     bakeQuantise = 0.5,
   } = opts;
   let quantise = Math.max(0, Number(bakeQuantise) || 0);
+  // Both are pairs off a JSON file, so neither is trusted to be one. A tuning
+  // file is not allowed to be able to break a map.
+  const [flyLo, flyHi] = pairOr(flyClamp, [1.4, 6]);
+  const [gapX, gapY] = pairOr(labelGap, [4, 2]);
 
   /* ---------------- DOM ---------------- */
   host.classList.add('atlas');
@@ -1391,6 +1415,24 @@ export function createMap(host, opts = {}) {
   document.fonts?.ready?.then(() => { metricsGen += 1; schedule(); });
 
   /**
+   * Throw every cached label measurement away and draw again.
+   *
+   * The font is not the only thing that changes a label's width. `type.scale`
+   * multiplies every step of the type scale, and until this existed the only
+   * thing that ever bumped `metricsGen` was `document.fonts.ready` — so a
+   * live scale change restyled every name and left declutter() colliding
+   * yesterday's boxes. Names overlapped and names that would now fit stayed
+   * dropped, and dev/style-lab.html's section C measured the type scale as
+   * FREE because it was comparing two pictures that had both been laid out
+   * for 1.0. Cheap: it invalidates a cache, it does not measure anything —
+   * the next draw pays for what it actually uses.
+   */
+  function remeasureLabels() {
+    metricsGen += 1;
+    schedule();
+  }
+
+  /**
    * Where a region's name goes — and, first, which name.
    *
    * The rule that matters: a label must never leave the region it names.
@@ -1475,8 +1517,8 @@ export function createMap(host, opts = {}) {
   function declutter(labels) {
     const placed = [];
     const clear = (box) => !placed.some((p) =>
-      box.x < p.x + p.w + 4 && box.x + box.w + 4 > p.x &&
-      box.y < p.y + p.h + 2 && box.y + box.h + 2 > p.y);
+      box.x < p.x + p.w + gapX && box.x + box.w + gapX > p.x &&
+      box.y < p.y + p.h + gapY && box.y + box.h + gapY > p.y);
 
     for (const l of labels.sort((a, b) => b.rank - a.rank)) {
       if (l.n.style.visibility === 'hidden') continue;
@@ -1538,10 +1580,8 @@ export function createMap(host, opts = {}) {
     const screens = (Math.hypot(bx - ax, by - ay) * s) / Math.max(size.w, size.h, 1);
     const dz = Math.abs(to.zoom - from.zoom);
     // A camera flight is a distance, not a duration -- but it is bounded.
-    // Below 1.4 s a fly is a cut and the eye loses the ground it was holding;
-    // above 6 s it is two thirds of a spoken sentence spent travelling.
-    // docs/design-direction.md.
-    return clamp(speed * (0.5 + 0.5 * Math.min(screens, 3) + 0.15 * dz), 1.4, 6);
+    // The bounds are `flyClamp` above, where the reason for them is written.
+    return clamp(speed * (0.5 + 0.5 * Math.min(screens, 3) + 0.15 * dz), flyLo, flyHi);
   }
 
   /**
@@ -1910,6 +1950,11 @@ export function createMap(host, opts = {}) {
     setFactions(next) { Object.assign(factions, next); schedule(); },
     setLang(next) { lang = next; schedule(); },
     invalidate: resize,
+    /* The type scale moved. Every cached label width is now a lie — see
+       remeasureLabels(). Not folded into invalidate(): that one is about the
+       CONTAINER changing size and re-bakes the ground, which is the expensive
+       half and has nothing to do with type. */
+    remeasureLabels,
     redraw: schedule,
 
     /* ---- the bench hook ----

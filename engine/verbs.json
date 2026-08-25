@@ -1,6 +1,7 @@
 {
  "version": 1,
  "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
+ "//surfaces": "Every verb names the SURFACE that answers it (engine/surfaces/<id>.js). A pack declares which surfaces it wants in pack.json -> `surfaces`; absent means the four that always existed (map, plate, overlays, sound). Two checks fall out of that and they are why the field exists: tools/check-script.py refuses a chapter using a verb whose surface the pack does not declare -- before this, a chapter written against a pack with no map validated clean and drew nothing -- and engine/stage.js reports at boot when a verb's declared surface is not the surface that implements it. The two verbs with `handledBy` carry no surface: `pause` is resolved by the player and `term.mark` by the compiler, both before a cue list exists.",
  "refTypes": {
   "place": "chapter.places",
   "route": "chapter.routes",
@@ -18,6 +19,7 @@
     "no": "Fly kameraet til et sted",
     "en": "Fly the camera to a place"
    },
+   "surface": "map",
    "args": {
     "to": {
      "type": "place",
@@ -38,6 +40,7 @@
     "no": "Ramme inn en hel rute",
     "en": "Frame a whole route"
    },
+   "surface": "map",
    "args": {
     "id": {
      "type": "route",
@@ -53,6 +56,7 @@
     "no": "Ramme inn flere steder",
     "en": "Frame several places"
    },
+   "surface": "map",
    "args": {
     "places": {
      "type": "place[]",
@@ -74,6 +78,7 @@
     "no": "Sett klokkeslettet på kartet",
     "en": "Set the clock on the map"
    },
+   "surface": "map",
    "note": "value: null clears the clock — the epilogue steps outside the day.",
    "args": {
     "value": {
@@ -86,6 +91,7 @@
     "no": "Tid på døgnet",
     "en": "Time of day"
    },
+   "surface": "map",
    "args": {
     "value": {
      "type": "enum",
@@ -105,6 +111,7 @@
     "no": "Et skudd går av",
     "en": "A shot goes off"
    },
+   "surface": "map",
    "args": {}
   },
   "region.show": {
@@ -112,6 +119,7 @@
     "no": "Vis et navngitt område",
     "en": "Show a named region"
    },
+   "surface": "map",
    "note": "Names resolve against the file the chapter declares in `regions`.",
    "args": {
     "names": {
@@ -144,6 +152,7 @@
     "no": "Fjern områdene",
     "en": "Clear the regions"
    },
+   "surface": "map",
    "args": {}
   },
   "border.set": {
@@ -151,6 +160,7 @@
     "no": "Slå grenser av og på",
     "en": "Turn boundaries on and off"
    },
+   "surface": "map",
    "note": "0 country, 1 state/province. A pack decides what those mean.",
    "args": {
     "country": {
@@ -166,6 +176,7 @@
     "no": "En marsj tegner seg selv",
     "en": "A march draws itself"
    },
+   "surface": "map",
    "args": {
     "id": {
      "type": "route",
@@ -190,6 +201,7 @@
     "no": "Fjern alle ruter",
     "en": "Clear every route"
    },
+   "surface": "map",
    "args": {}
   },
   "front.show": {
@@ -197,6 +209,7 @@
     "no": "En linje som står og venter",
     "en": "A line of men, holding"
    },
+   "surface": "map",
    "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
    "args": {
     "id": {
@@ -240,6 +253,7 @@
     "no": "Fjern én linje",
     "en": "Remove one front"
    },
+   "surface": "map",
    "args": {
     "id": {
      "type": "route",
@@ -252,6 +266,7 @@
     "no": "Fjern alle linjer",
     "en": "Clear every front"
    },
+   "surface": "map",
    "args": {}
   },
   "marker.show": {
@@ -259,6 +274,7 @@
     "no": "En navngitt nål",
     "en": "A named pin"
    },
+   "surface": "map",
    "args": {
     "at": {
      "type": "place",
@@ -299,6 +315,7 @@
     "no": "Fjern én nål",
     "en": "Remove one pin"
    },
+   "surface": "map",
    "args": {
     "at": {
      "type": "place",
@@ -311,6 +328,7 @@
     "no": "Fjern alle nåler",
     "en": "Clear every pin"
    },
+   "surface": "map",
    "args": {}
   },
   "place.highlight": {
@@ -318,6 +336,7 @@
     "no": "Peke på kartet mens du snakker",
     "en": "Point at the map while you talk"
    },
+   "surface": "map",
    "args": {
     "at": {
      "type": "place",
@@ -347,6 +366,7 @@
     "no": "Fjern ringene",
     "en": "Clear the rings"
    },
+   "surface": "map",
    "args": {}
   },
   "converge": {
@@ -354,6 +374,7 @@
     "no": "Styrker som kommer inn og møtes",
     "en": "Forces coming in and joining"
    },
+   "surface": "map",
    "args": {
     "from": {
      "type": "place[]",
@@ -383,6 +404,7 @@
     "no": "Personen det snakkes om",
     "en": "The person being spoken about"
    },
+   "surface": "overlays",
    "args": {
     "id": {
      "type": "person",
@@ -395,6 +417,7 @@
     "no": "Skjul portrettet",
     "en": "Hide the portrait"
    },
+   "surface": "overlays",
    "args": {}
   },
   "image.show": {
@@ -402,6 +425,7 @@
     "no": "Et bilde i full bredde",
     "en": "A full-bleed image"
    },
+   "surface": "overlays",
    "args": {
     "id": {
      "type": "media",
@@ -422,6 +446,7 @@
     "no": "Skjul bildet",
     "en": "Hide the image"
    },
+   "surface": "overlays",
    "args": {}
   },
   "quote.show": {
@@ -429,6 +454,7 @@
     "no": "Et sitat fra en kilde",
     "en": "A quote from a source"
    },
+   "surface": "overlays",
    "args": {
     "id": {
      "type": "quote",
@@ -441,6 +467,7 @@
     "no": "Skjul sitatet",
     "en": "Hide the quote"
    },
+   "surface": "overlays",
    "args": {}
   },
   "stat.show": {
@@ -448,6 +475,7 @@
     "no": "Et tall som teller",
     "en": "A number that matters"
    },
+   "surface": "overlays",
    "args": {
     "value": {
      "type": "string",
@@ -466,6 +494,7 @@
     "no": "Fjern tallene",
     "en": "Clear the numbers"
    },
+   "surface": "overlays",
    "args": {}
   },
   "caption.note": {
@@ -473,6 +502,7 @@
     "no": "En kort merknad under teksten",
     "en": "A short note under the caption"
    },
+   "surface": "overlays",
    "args": {
     "value": {
      "type": "i18n",
@@ -493,6 +523,7 @@
     "no": "Spill en lyd én gang",
     "en": "Play a sound once"
    },
+   "surface": "sound",
    "note": "A single event, and it must name a thing the narration JUST named — not atmosphere by association. One per beat, three per scene, none within 20 s of another; check-script.py holds all three, and prints every effect next to its sentence so a human can read whether it answers it. The effect must also belong to the pack's era: sound/library.js carries a year span per entry and 44 BC fired three cannon before it did. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
    "args": {
     "id": {
@@ -524,6 +555,7 @@
     "no": "Legg en lydkulisse under",
     "en": "Lay a bed of place under it"
    },
+   "surface": "sound",
    "note": "Continuous: wind, sea, a crowd. A place lasts a scene, so ONE per scene, and a second only when the narration says the place changed. Crossfades. Omit `id` to stop it. Never ducks — a room does not get quieter when someone speaks.",
    "args": {
     "id": {
@@ -541,6 +573,7 @@
     "no": "Musikk under fortellingen",
     "en": "Music under the narration"
    },
+   "surface": "sound",
    "note": "One per scene, in its first beat. Ducks under the voice on its own, from the script word timings. Omit `id` to stop it — but a scene change stops it anyway, so an explicit stop mid-scene is a second bed cue and check-script.py refuses it.",
    "args": {
     "id": {
@@ -558,6 +591,7 @@
     "no": "Legg ned en vei",
     "en": "Lay a road down"
    },
+   "surface": "map",
    "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
    "args": {
     "id": {
@@ -608,6 +642,7 @@
     "no": "To eller tre tall som ett bilde",
     "en": "Two or three numbers as one picture"
    },
+   "surface": "overlays",
    "note": "Seventy-seven against seven hundred lands as an argument when it is one picture and as trivia when it is two unrelated chips. Same for 230 ships against 400, and for three shares of the Roman world. `n` sizes the bar; `value` is what is printed. They are separate because the pack writes numbers the way they are SPOKEN in the prose and the way they are READ on screen, and a bar needs neither — it needs a number to measure. A part with no `n` falls back to parsing `value`.",
    "args": {
     "parts": {
@@ -641,6 +676,7 @@
     "no": "Fjern sammenlikningen",
     "en": "Remove the comparison"
    },
+   "surface": "overlays",
    "args": {}
   },
   "plate.show": {
@@ -648,6 +684,7 @@
     "no": "Fyll skjermen med et bilde, og la kameraet gli",
     "en": "Fill the screen with a picture, and let the camera drift"
    },
+   "surface": "plate",
    "note": "The map is not the only stage. A chapter has moments that are not on a map at all — the Ides of March happens in a room, the will is read in a senate, the Forum is a place you should SEE rather than see a dot for — and until now the only answer was a small inset card over a map that was still the subject of the screen. A plate takes the whole frame, and drifts: the slow push that is the visual grammar of every history documentary ever made, and the reason a still photograph holds attention for twelve seconds instead of two. The map keeps running underneath and is never unmounted — it costs nothing while covered, because paintGround only re-bakes when the camera moves, and a camera under a plate does not move. Under `instant` the drift does not animate: the plate appears already at its end framing, the same discipline as a march that draws itself whole when you seek.",
    "args": {
     "id": {
@@ -707,6 +744,7 @@
     "no": "Tilbake til kartet",
     "en": "Back to the map"
    },
+   "surface": "plate",
    "args": {
     "over": {
      "type": "seconds",
@@ -720,6 +758,7 @@
     "no": "En eskadre på vei",
     "en": "A squadron under way"
    },
+   "surface": "map",
    "note": "Ships, not an arrow. route.draw sizes its arrow by `strength`, which means men per metre of front -- a true statement about an army and a meaningless one about a squadron, where ten destroyers are ten objects in a line. A fleet draws the hulls in line ahead along the travelled part of the track, with wakes trailing, so `over` moves the formation up the fjord and a seek lands it wherever it had got to. The track itself must be water: declare the route `\"medium\": \"sea\"` and tools/check-sealanes.py will hold you to it.",
    "args": {
     "id": {
@@ -763,6 +802,7 @@
     "no": "Ta eskadren av kartet",
     "en": "Take the squadron off the map"
    },
+   "surface": "map",
    "args": {
     "id": {
      "type": "route"
@@ -774,6 +814,7 @@
     "no": "Vis en kort forklaring",
     "en": "Show a short definition"
    },
+   "surface": "overlays",
    "note": "A one-line definition on screen while the word is being said. term.mark makes a word tappable, and almost nobody taps while a voice is running -- so the definition existed and was never seen. This is stage state, shown and hidden by cues, so seeking into the middle of a definition shows the definition. It carries the entry's HOOK, never its body: a fact box is a glance you can read without stopping listening, and the card itself opens the full entry.",
    "args": {
     "kind": {
@@ -804,8 +845,61 @@
     "no": "Skjul forklaringen",
     "en": "Hide the definition"
    },
+   "surface": "overlays",
    "args": {},
    "note": "Rarely authored. fact.show derives its own hide from `until`; write this only to take a box down EARLY."
+  },
+  "chart.show": {
+   "summary": {
+    "no": "Tegn en profil fra pakkens egne tall",
+    "en": "Draw a profile from the pack's own numbers"
+   },
+   "surface": "chart",
+   "note": "A measured shape, resolved against the pack's own entry pools the way fact.show is -- not numbers written into the cue. An entry may carry a `profile`: an ordered set of named axes with values 0..1. The AXES are declared once per kind, in pack.json -> entries.<kind>.profile.axes, because two entries are only comparable if they carry the same axes in the same order and a per-entry list cannot promise that. The framework learns nothing about what an axis MEANS: it draws a list of ids and labels it has never heard of, so a finance course declaring {risk, liquidity, horizon} gets the same picture from the same code.\n\nTwo profiles over each other is the primary case, not an extra: \"Barolo and Barbaresco are the same grape and different wines\" is a shape alone and an argument in pairs. Drawn as bars per axis rather than as a radar, for two reasons the content supplies -- a zero axis (every dry wine's sweetness) collapses to the centre of a web and reads as a rendering fault, and two NEARLY IDENTICAL polygons at 390 px are mush while two bars in one track differ visibly at 0.05.\n\nThere is deliberately no `over`. The bars grow over --t-enter from the stylesheet, so there is no authored duration that can drift off the motion scale, and `instant` draws them finished.",
+   "args": {
+    "kind": {
+     "type": "enum",
+     "values": [
+      "profile",
+      "bar"
+     ],
+     "default": "profile",
+     "note": "`profile` measures against a fixed ceiling of 1, so the track IS the scale and 0.85 means the same thing in every chart the pack draws. `bar` measures against the largest value on screen, which is the only honest scale for a magnitude with no natural ceiling. There is no `line`: a line needs a series over time, no pack has one, and declaring an enum value with no handler behind it is exactly the `kind`-on-marker.show defect this file exists to prevent."
+    },
+    "ref": {
+     "type": "string",
+     "required": true,
+     "note": "'<kind>:<id>' into the pack's entry index -- 'wine:barolo'. Checked against the pool the kind names, and the entry must carry a `profile`."
+    },
+    "against": {
+     "type": "string",
+     "note": "A second entry, drawn over the first on the same axes. The case this verb exists for."
+    },
+    "axes": {
+     "type": "string[]",
+     "note": "Which axes, in which order. Default: every axis the pack declares for the kind. Naming a subset is an argument about those axes and is read in the order written, not in pack order."
+    },
+    "side": {
+     "type": "faction",
+     "note": "Override the first series' colour. Normally do not: two things being CONTRASTED must not take the same faction colour, and Barolo and Barbaresco are both `red`. A series colour says which one, not what it is, so the default is the palette's look-here role and its neighbour."
+    },
+    "againstSide": {
+     "type": "faction",
+     "note": "The same, for the second series."
+    },
+    "note": {
+     "type": "i18n",
+     "note": "One line under the chart, where the comparison needs a caveat."
+    }
+   }
+  },
+  "chart.hide": {
+   "summary": {
+    "no": "Ta profilen ned",
+    "en": "Take the chart down"
+   },
+   "surface": "chart",
+   "args": {}
   }
  }
 }

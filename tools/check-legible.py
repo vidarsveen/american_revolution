@@ -135,7 +135,7 @@ Synthetic `node.click()` does not hit-test, so the two never meet.
 
 ONE ENGINE QUIRK THE TOOL CORRECTS FOR
 
-`place.highlight` centres the camera on the place -- but engine/scenes/map.js
+`place.highlight` centres the camera on the place -- but engine/surfaces/map.js
 skips that under `instant`, so a SEEK to a highlight lands on a different
 camera than PLAYING to it does. The camera is deliberately outside the stage
 signature dev/engine-lab.html compares (CLAUDE.md says so, and map-lab measures
@@ -469,7 +469,7 @@ async (a) => {
   // the end state is identical -- only the pixels in between differ.
   p.rebuildTo(a.t);
 
-  // place.highlight centres the camera, and engine/scenes/map.js skips that
+  // place.highlight centres the camera, and engine/surfaces/map.js skips that
   // under `instant` -- so a seek lands on a camera a forward play never
   // shows. Put it back, or the label is judged against a frame nobody sees.
   let fixed = false;
@@ -547,6 +547,15 @@ async (lang) => {
 PLAN = r"""
 async () => {
   const S = window.__leg.api;
+  /* The HANDLE, not the surface, and that is deliberate.
+
+     The module moved to engine/surfaces/map.js, and importing THAT from here
+     would put map/index.js, map/basemap.js and their Path2D machinery into
+     the graph of a pack that has no map at all -- silently, with everything
+     still working, which is the one measurable payoff of the surface
+     refactor gone. engine/scenes/map.js goes through the surface registry
+     and answers null when this pack asked for no map, which is the correct
+     answer rather than an error. See that file's own header. */
   const M = await import('./engine/scenes/map.js');
   window.__leg.map = M.getStoryMap();
   const ch = S.getChapter();
@@ -1065,7 +1074,7 @@ def main() -> int:
                           sorted(seen_overlays.items(), key=lambda kv: -kv[1])))
     if a.camera_fix and totals["fixed"]:
         print(f"  {totals['fixed']} probe(s) needed the place.highlight camera put back "
-              "(engine/scenes/map.js skips centring under `instant`)")
+              "(engine/surfaces/map.js skips centring under `instant`)")
 
     if a.json:
         Path(a.json).write_text(json.dumps(all_findings, ensure_ascii=False, indent=1),

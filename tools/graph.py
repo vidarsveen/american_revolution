@@ -10,8 +10,9 @@ the same walk and used to be one tool.
     build-sw.py          writes the service worker's PRECACHE from it
 
 The walk is deliberately literal. It follows `<link href="./…css">`,
-`<script src="./…js">`, static `import`/`export … from './…js'`, and
-`fetch('./…')` with a literal path — and nothing computed. A path built at
+`<script src="./…js">`, static `import`/`export … from './…js'`, dynamic
+`import('./…js')` with a literal path, and `fetch('./…')` with a literal path
+— and nothing computed. A path built at
 runtime out of a variable cannot be found by reading the source, so anything
 fetched that way has to be declared by the pack manifest instead. That is not a
 limitation to work around; it is why pack.json lists its own files.
@@ -37,6 +38,20 @@ IMPORT_FROM = re.compile(
     r"""(?:^|\n)\s*(?:import|export)\b[^'";]*?from\s*['"](\.[^'"]+\.js)['"]""")
 # `import './x.js'` for side effects only — no clause, no `from`.
 IMPORT_BARE = re.compile(r"""(?:^|\n)\s*import\s*['"](\.[^'"]+\.js)['"]""")
+# `import('./x.js')` — a dynamic import with a LITERAL path.
+#
+# Added for engine/surfaces/registry.js, which reaches every surface this way
+# on purpose: a static import of engine/surfaces/map.js anywhere on the path
+# from index.html would pull map/index.js and map/basemap.js into the graph of
+# a pack that has no map, which is the whole cost the surface refactor exists
+# to remove. Without this pattern the five surface modules dropped out of the
+# walk entirely — so they would work online and 404 offline, silently, because
+# the service worker installs with Promise.allSettled.
+#
+# Still literal only, and that is still the contract: `import(`./${id}.js`)`
+# cannot be found by reading the source, which is why registry.js writes its
+# loaders out one per line and says so.
+IMPORT_DYNAMIC = re.compile(r"""\bimport\s*\(\s*['"](\.[^'"]+\.js)['"]\s*\)""")
 # Runtime data the app fetches by literal path.
 FETCH = re.compile(r"""fetch\(\s*['"`](\.[^'"`]+)['"`]""")
 
@@ -77,7 +92,8 @@ def collect_graph(root: Path = ROOT) -> set[Path]:
             src = cur.read_text(encoding="utf-8")
         except OSError:
             continue
-        for rel in IMPORT_FROM.findall(src) + IMPORT_BARE.findall(src):
+        for rel in (IMPORT_FROM.findall(src) + IMPORT_BARE.findall(src)
+                    + IMPORT_DYNAMIC.findall(src)):
             p = resolve_rel(cur, rel)
             if p and p.exists() and p not in seen:
                 seen.add(p)

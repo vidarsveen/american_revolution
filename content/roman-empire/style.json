@@ -1,0 +1,4 @@
+{
+  "$doc": "This pack's tuning. Merged OVER engine/defaults/style.json key by key, and a cue argument still wins over both. Empty means: this subject is paced exactly as docs/design-direction.md prescribes, which is the right answer until something has been measured and disagrees.",
+  "$keys": "motion.tap|enter|exit|dissolve|turn|drift (ms) · camera.flyOver|clamp|quantise · plate.motion|push|focus|fit · type.scale · map.deckReserve|labelGap. Anything else is reported at boot as declared-but-unread."
+}

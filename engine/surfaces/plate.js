@@ -39,6 +39,15 @@
    ============================================================ */
 
 import { mediaUrl } from '../../core/paths.js';
+import { styleValue } from '../style.js';
+
+/* The two durations this file uses are the motion scale's, in seconds.
+   --t-drift is "the slow push on a still" and --t-dissolve is "one thing
+   replacing another across the whole frame" — a plate over a plate is the
+   same event as a plate over the map, so it cannot have its own answer.
+   A cue still wins over both; these are only where the default comes from. */
+const driftSecs = () => styleValue('motion.drift', 14000) / 1000;
+const dissolveSecs = () => styleValue('motion.dissolve', 1200) / 1000;
 
 let root = null;
 let figEl = null;
@@ -99,13 +108,19 @@ export function resetPlate({ soft = false } = {}) {
   showing = null;
   if (!root) return;
   if (soft && root.classList.contains('is-on')) {
-    root.style.setProperty('--plate-out', '0.9s');
+    // motion.exit, not a literal 0.9 s. This is a thing leaving the stage,
+    // which is the one job --t-exit has, and it was the last duration in this
+    // module still deciding for itself. The timer below has to follow it: two
+    // numbers, 0.9 and 950, that were only ever correct together and had
+    // nothing saying so.
+    const out = styleValue('motion.exit', 600);
+    root.style.setProperty('--plate-out', `${out / 1000}s`);
     root.classList.remove('is-on');
     // Hold the picture until the fade has run, THEN clear. The token guards
     // against a second reset landing mid-fade and a stale timer wiping the
     // picture the newer scene has already put up.
     const token = (softToken += 1);
-    setTimeout(() => { if (token === softToken) hardClear(); }, 950);
+    setTimeout(() => { if (token === softToken) hardClear(); }, out + 50);
     return;
   }
   hardClear();
@@ -204,6 +219,16 @@ function dissolveFrom(prevSrc, prevTransform, over, origin) {
   ghostEl.style.opacity = '0';
 }
 
+/* The MOTION table's own span, and NOT the default push.
+
+   They are the same number today and they are two different things: 0.16 is
+   how far `in` travels in this table, so `push` is expressed as a multiple of
+   it and every cue that names one keeps drawing exactly as it did. Normalising
+   against the PACK's plate.push instead would change the table's proportions
+   the moment a pack tuned it — a pack asking for a stronger push would move
+   `left` and `right` sideways by less, which is not what it asked for. */
+const MOTION_SPAN = 0.16;
+
 const MOTION = {
   in:    { from: 1.0,  to: 1.16, dx: 0,   dy: 0 },
   out:   { from: 1.16, to: 1.0,  dx: 0,   dy: 0 },
@@ -226,20 +251,24 @@ export function showPlate(cue, instant) {
 
      A document is something you READ. Holding it still is not a compromise
      here, it is the correct shot. */
-  const fit = cue.fit || m.fit || 'cover';
-  const base = fit === 'contain' ? MOTION.still : (MOTION[cue.motion] || MOTION.in);
-  // `push` scales how far the camera travels. The default 0.16 is the number
-  // that was hard-coded; a wide establishing shot wants more, a face wants
-  // almost none. Scaling the SPAN rather than replacing it keeps every
-  // existing cue drawing exactly as before.
-  const k = Number.isFinite(cue.push) ? cue.push / 0.16 : 1;
+  const fit = cue.fit || m.fit || styleValue('plate.fit', 'cover');
+  const base = fit === 'contain' ? MOTION.still
+    : (MOTION[cue.motion] || MOTION[styleValue('plate.motion', 'in')] || MOTION.in);
+  // `push` scales how far the camera travels. A wide establishing shot wants
+  // more, a face wants almost none, and a whole SUBJECT may want more than
+  // this one does — a wine chapter is landscape and a battle chapter is
+  // faces. Scaling the span rather than replacing it keeps every existing cue
+  // drawing exactly as before.
+  const k = (Number.isFinite(cue.push)
+    ? cue.push : styleValue('plate.push', 0.16)) / MOTION_SPAN;
   const spec = k === 1 ? base : {
     from: 1 + (base.from - 1) * k,
     to: 1 + (base.to - 1) * k,
     dx: base.dx * k, dy: base.dy * k,
   };
-  const [fx, fy] = Array.isArray(cue.focus) ? cue.focus : [0.5, 0.42];
-  const over = cue.over ?? 14;
+  const [fx, fy] = Array.isArray(cue.focus)
+    ? cue.focus : styleValue('plate.focus', [0.5, 0.42]);
+  const over = cue.over ?? driftSecs();
 
   // Re-showing the same plate must not restart the drift — a beat that keeps
   // the picture up while adding a quote would otherwise snap back to the
@@ -299,7 +328,7 @@ export function showPlate(cue, instant) {
     // --t-dissolve. One thing replacing another across the whole frame is
     // one event at one duration, whether it is a plate over a plate or a
     // plate over the map. 1.1 was close and arbitrary; 1.2 is the scale's.
-    const over = cue.into ?? 1.2;
+    const over = cue.into ?? dissolveSecs();
 
     /* IS THE OLD PICTURE STILL ON THE SCREEN -- not "does it still have the
        class that usually means it is".
@@ -349,7 +378,7 @@ export function showPlate(cue, instant) {
 export function hidePlate(cue) {
   if (!root) return;
   showing = null;
-  const over = cue?.over ?? 1.2;   // --t-dissolve, as above
+  const over = cue?.over ?? dissolveSecs();   // --t-dissolve, as above
   root.style.setProperty('--plate-out', `${over}s`);
   root.classList.remove('is-on');
   // Clear the badge too. Leaving it set is invisible — the whole plate is at
@@ -418,3 +447,29 @@ function esc(s) {
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
 }
+
+/* ------------------------------------------------------------
+   The surface
+   ------------------------------------------------------------ */
+
+export function unmountPlate() {
+  root?.remove();
+  root = null;
+  figEl = imgEl = capEl = badgeEl = ghostEl = null;
+  showing = null;
+  drift = { rate: 0, dx: 0, dy: 0 };
+}
+
+export default {
+  id: 'plate',
+  // Between the map and the overlay cards: a plate covers the ground and is
+  // covered by the captions, quotes and numbers drawn over it. z-index 20.
+  layer: 20,
+  verbs: {
+    'plate.show': (c, i) => showPlate(c, i),
+    'plate.hide': (c)    => hidePlate(c),
+  },
+  mount(container, ch, ctx = {}) { mountPlate(container, ch, ctx.lang); return null; },
+  reset({ soft } = {}) { resetPlate({ soft }); },
+  unmount() { unmountPlate(); },
+};

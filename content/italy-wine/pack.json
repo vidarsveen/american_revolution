@@ -213,6 +213,15 @@
       "expect": ["marker/ground"]
     }
   },
+  "//surfaces": [
+    "Hva scenen er laget av. Uten denne linja får en pakke de fire som alltid",
+    "har vært der -- map, plate, overlays, sound -- så ingen annen pakke måtte",
+    "endres. Denne pakken vil i tillegg ha `chart`, og det er hele grunnen til",
+    "at feltet finnes: chart.show svarer bare hvis flaten er montert, og",
+    "tools/check-script.py nekter et kapittel som bruker et verb hvis flate",
+    "pakken ikke har erklært."
+  ],
+  "surfaces": ["map", "plate", "overlays", "sound", "chart"],
   "//entries": "What a reader can look up in this pack, and what to call it. The tab is built from this rather than compiled into js/main.js, which is why a subject with no people in it can still have a library.",
   "entries": {
     "grape": {
@@ -221,7 +230,30 @@
         "en": "Grapes"
       },
       "from": "grapes",
-      "browse": true
+      "browse": true,
+      "//profile": [
+        "Smaksaksene, deklarert EN gang og delt av begge pooler.",
+        "",
+        "Rammeverket vet ikke hva tannin er, og skal ikke vite det:",
+        "engine/surfaces/chart.js tegner en liste med id-er og etiketter den",
+        "aldri har hørt om. Grunnen til at aksene står her og ikke i hver",
+        "oppføring, er at to viner bare er sammenliknbare hvis de er målt på",
+        "de samme aksene i samme rekkefølge — og tolv oppføringer er tolv",
+        "sjanser til at `sodme` blir `sodmen` i én av dem.",
+        "",
+        "Druer og viner deler settet med vilje. `sodme` på en drue er",
+        "strengt tatt en egenskap ved det som lages av den, men et felles",
+        "sett er det som gjør at Nebbiolo kan legges oppå Barolo."
+      ],
+      "profile": {
+        "axes": [
+          { "id": "syre",   "label": { "no": "Syre",   "en": "Acidity" } },
+          { "id": "tannin", "label": { "no": "Tannin", "en": "Tannin" } },
+          { "id": "fylde",  "label": { "no": "Fylde",  "en": "Body" } },
+          { "id": "frukt",  "label": { "no": "Frukt",  "en": "Fruit" } },
+          { "id": "sodme",  "label": { "no": "Sødme",  "en": "Sweetness" } }
+        ]
+      }
     },
     "wine": {
       "label": {
@@ -229,7 +261,16 @@
         "en": "Wines"
       },
       "from": "wines",
-      "browse": true
+      "browse": true,
+      "profile": {
+        "axes": [
+          { "id": "syre",   "label": { "no": "Syre",   "en": "Acidity" } },
+          { "id": "tannin", "label": { "no": "Tannin", "en": "Tannin" } },
+          { "id": "fylde",  "label": { "no": "Fylde",  "en": "Body" } },
+          { "id": "frukt",  "label": { "no": "Frukt",  "en": "Fruit" } },
+          { "id": "sodme",  "label": { "no": "Sødme",  "en": "Sweetness" } }
+        ]
+      }
     },
     "term": {
       "label": {

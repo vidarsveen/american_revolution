@@ -1,0 +1,35 @@
+{
+  "$doc": "docs/design-direction.md, sections 1 (motion) and 2 (type). This file is that document in machine-readable form. A value here that disagrees with it is a defect in this file, not a local decision.",
+  "$note": "Every value matches what the app does today, so introducing the file changes nothing on screen. content/<pack>/style.json is merged OVER this, key by key, and a cue argument still wins over both.",
+
+  "motion": {
+    "tap": 160,
+    "enter": 900,
+    "exit": 600,
+    "dissolve": 1200,
+    "turn": 1200,
+    "drift": 14000
+  },
+
+  "camera": {
+    "flyOver": 2.8,
+    "clamp": [1.4, 6],
+    "quantise": 0.5
+  },
+
+  "plate": {
+    "motion": "in",
+    "push": 0.16,
+    "focus": [0.5, 0.42],
+    "fit": "cover"
+  },
+
+  "type": {
+    "scale": 1
+  },
+
+  "map": {
+    "deckReserve": 126,
+    "labelGap": [4, 2]
+  }
+}

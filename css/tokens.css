@@ -130,27 +130,62 @@
      390 wide, and the map loses 49px of frame. Bigger type means less map. That
      is an argument about how much the map should be carrying, not a reason to
      keep the type small. */
-  --fs-3xs:  0.6875rem;              /* 11 — provenance only: a credit, a
-                                        licence, a made-mark. Never a sentence.
-                                        story.css read var(--fs-3xs) for months
-                                        against a token that existed nowhere. */
-  --fs-2xs:  0.75rem;                /* 12 — a kicker, and a TOWN on the map */
-  --fs-xs:   0.8125rem;              /* 13 — a secondary line inside a card */
-  --fs-sm:   0.9375rem;              /* 15 — a card's name line, a CITY on the
-                                        map, and a pinned place */
-  --fs-base: 1.0625rem;              /* 17 — body: library, transcript. And an
-                                        AREA name on the map, which is not body
-                                        text but has to be the step above a
-                                        city: an area name is larger AND quieter
-                                        than the city inside it. See section 2. */
-  --fs-md:   clamp(1.1875rem, 5.4vw, 1.5rem);   /* 19-21-24 — THE CAPTION, and
-                                        only the caption. 5.4vw puts it at 2.5%
-                                        of an 844px screen, the floor of
-                                        subtitle practice; the clamp keeps it
-                                        sane on a watch and on a desktop. */
-  --fs-lg:   clamp(1.35rem, 5.6vw, 1.7rem);     /* a quotation, a stat number */
-  --fs-xl:   clamp(1.9rem, 8.5vw, 2.6rem);      /* a scene title, on the card */
-  --fs-2xl:  clamp(2.3rem, 11vw, 3.3rem);       /* the chapter title, once */
+
+  /* ONE MULTIPLIER OVER THE WHOLE SCALE, and it is a property of the SUBJECT.
+     A dense subject wants to go smaller and a children's subject wants to go
+     larger, and neither is a reason for a second scale — that is how you get
+     four answers to one question again. `type.scale` in
+     content/<pack>/style.json; engine/style.js publishes it here.
+
+     It multiplies the STEPS, not the root font size. Three reasons, all
+     measured rather than argued:
+
+       --fs-md is clamp(1.1875rem, 5.4vw, 1.5rem) and at 390 wide the ACTIVE
+       term is the 5.4vw one. Scaling the root would move the two rem ends and
+       leave the caption — the one step the whole scale moved for — exactly
+       where it was.
+
+       --s1…--s8 are px, so a root scale would grow the type inside furniture
+       that did not grow with it.
+
+       css/chooser.css breaks at max-width: 30rem, deliberately in rem so a
+       reader who sets 20px text gets the compact chrome at 600 device px.
+       A root scale would flip a desktop into phone chrome for a pack that
+       only wanted slightly larger names.
+
+     CLAUDE.md's hazard applies and is the reason this is set on :root and
+     nowhere else: a var() inside a custom property resolves where the property
+     is DECLARED, so --fs-md freezes --type-scale at :root and a subtree cannot
+     re-derive it. Scale the document. */
+  --type-scale: 1;
+
+  --fs-3xs:  calc(0.6875rem * var(--type-scale));   /* 11 — provenance only: a
+                                        credit, a licence, a made-mark. Never a
+                                        sentence. story.css read var(--fs-3xs)
+                                        for months against a token that existed
+                                        nowhere. */
+  --fs-2xs:  calc(0.75rem * var(--type-scale));     /* 12 — a kicker, and a TOWN */
+  --fs-xs:   calc(0.8125rem * var(--type-scale));   /* 13 — a secondary line
+                                        inside a card */
+  --fs-sm:   calc(0.9375rem * var(--type-scale));   /* 15 — a card's name line, a
+                                        CITY on the map, and a pinned place */
+  --fs-base: calc(1.0625rem * var(--type-scale));   /* 17 — body: library,
+                                        transcript. And an AREA name on the map,
+                                        which is not body text but has to be the
+                                        step above a city: an area name is larger
+                                        AND quieter than the city inside it. */
+  --fs-md:   calc(clamp(1.1875rem, 5.4vw, 1.5rem) * var(--type-scale));
+                                     /* 19-21-24 — THE CAPTION, and only the
+                                        caption. 5.4vw puts it at 2.5% of an
+                                        844px screen, the floor of subtitle
+                                        practice; the clamp keeps it sane on a
+                                        watch and on a desktop. */
+  --fs-lg:   calc(clamp(1.35rem, 5.6vw, 1.7rem) * var(--type-scale));  /* a
+                                        quotation, a stat number */
+  --fs-xl:   calc(clamp(1.9rem, 8.5vw, 2.6rem) * var(--type-scale));   /* a scene
+                                        title, on the card */
+  --fs-2xl:  calc(clamp(2.3rem, 11vw, 3.3rem) * var(--type-scale));    /* the
+                                        chapter title, once, on the cover */
 
   --lh-tight: 1.14;
   --lh-snug:  1.32;
@@ -175,7 +210,20 @@
 
      900 ms is the anchor: it is the plate fade, the one arrival nobody ever
      complained about, and about a tenth of a beat -- so a picture is complete
-     before the clause that named it is finished. */
+     before the clause that named it is finished.
+
+     THE SIX VALUES BELOW ARE ALSO IN engine/defaults/style.json, ON PURPOSE.
+     That file is the machine-readable form of the same section, a pack may
+     override any of it in content/<pack>/style.json, and engine/style.js
+     publishes the merged result here as inline properties on :root.
+
+     So these are the PRE-BOOT values: the chooser, the splash and every bench
+     under dev/ paint before a pack has been chosen, and they must not paint
+     with no motion scale at all. A number in two places is exactly what
+     style.json exists to stop, so the duplication is checked rather than
+     trusted -- checkStyleTokens() compares stylesheet, JSON and the built-in
+     fallback, and reports drift at boot on localhost. Change one, change all
+     three; the check will tell you which you forgot. */
   --ease-out:    cubic-bezier(.22, 1, .36, 1);
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
   /* --ease-spring is deleted, not renamed. A pin that pops past its size and
@@ -187,6 +235,21 @@
   --t-dissolve: 1200ms;  /* one thing replacing another across the whole frame */
   --t-turn:     1200ms;  /* the scene turning over: the veil closing, lifting */
   --t-drift:    14s;     /* the slow push on a still */
+
+  /* --- Numbers derived from what a pack SHIPS -------------
+     Not a taste and not a scale step: measured off the content. The lower
+     deck reserves this much of the frame whenever a scene raises a fact card,
+     so the camera does not park the place the sentence names underneath it.
+
+     126 is measured, not chosen -- all 78 fact cards the four packs ship,
+     both languages, rendered at 360 px wide, capped at two lines of name and
+     three of hook. It has been wrong twice: 163 was measured before the type
+     scale moved and was stale the day it was committed; the same cards then
+     measured 178. A number derived from what a pack ships belongs to the
+     pack, which is why it is `map.deckReserve` in
+     content/<pack>/style.json now. engine/scenes/map.js still holds its own
+     copy as DECK_RESERVE_PX -- dev/style-lab.html fails if the two disagree. */
+  --deck-reserve: 126px;
 
   /* --- Chrome -------------------------------------------- */
   --topbar-h: 52px;

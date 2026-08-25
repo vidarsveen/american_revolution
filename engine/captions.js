@@ -15,6 +15,12 @@ let slot = null;
 export function mountCaptions(container) {
   root = document.createElement('div');
   root.className = 'captions';
+  /* spellcheck off. The browser was underlining the narration in yellow --
+     Norwegian prose in a document declared lang="nb", with proper nouns, period
+     spellings and place names it has never heard of. It is not an editable
+     field and nobody can act on the squiggle; it is just the OS disagreeing
+     with the script in front of the reader. */
+  root.spellcheck = false;
   root.innerHTML = `<p class="captions__line"></p>`;
   container.appendChild(root);
   lineEl = root.querySelector('.captions__line');
@@ -140,7 +146,7 @@ export function clearCaption() {
 
 export function transcriptHtml(chapter) {
   return chapter.scenes.map((scene) => `
-    <section class="transcript__scene" data-scene="${esc(scene.id)}">
+    <section class="transcript__scene" spellcheck="false" data-scene="${esc(scene.id)}">
       <h3>${esc(scene.title)}</h3>
       ${scene.clock ? `<p class="transcript__clock">${esc(scene.clock)}</p>` : ''}
       ${scene.beats.map((b) => `

@@ -31,7 +31,7 @@
    ============================================================ */
 
 import { loadChapter } from '../engine/script.js';
-import { mountStage, resetStage, applyCue } from '../engine/stage.js';
+import { mountStage, resetStage, applyCue, stageReady } from '../engine/stage.js';
 import { getStoryMap } from '../engine/scenes/map.js';
 import { getSoundscape } from '../engine/scenes/sound.js';
 import { Player } from '../engine/player.js';
@@ -137,8 +137,12 @@ function signature() {
   // have. `.ov-compare` and `.ov-fact` were simply never added, so a compare
   // deck or a definition left standing after a seek would have passed here
   // without a word.
+  // `.stage-chart` is a SURFACE of its own, not a card in a deck — it is in
+  // this list so that the moment a chapter carries a chart.show, the sweep
+  // above covers it with no further edit here. checkChart() below drives it
+  // synthetically until one does.
   for (const sel of ['.ov-deck--top', '.ov-deck--lower', '.ov-portrait',
-    '.ov-image', '.ov-quote', '.ov-compare', '.ov-fact']) {
+    '.ov-image', '.ov-quote', '.ov-compare', '.ov-fact', '.stage-chart']) {
     for (const node of document.querySelectorAll(sel)) {
       lines.push(`dom/${sel}  ${stateClasses(node)}  ${normaliseHtml(node.innerHTML)}`);
     }
@@ -448,6 +452,7 @@ async function checkEpochGuard(rounds = 10) {
     // measuring nothing, which is worse than failing.
     el.stage.innerHTML = '';
     mountStage(el.stage, chapter, people, chapter.narrationLang || 'no');
+    await stageReady();
 
     // The settled truth: land on the end and wait for the picture to stop
     // moving, however long the cold fetch and the parse actually take.
@@ -489,6 +494,7 @@ async function checkEpochGuard(rounds = 10) {
     // Leave a clean, warm stage behind for whatever runs next.
     el.stage.innerHTML = '';
     mountStage(el.stage, chapter, people, chapter.narrationLang || 'no');
+    await stageReady();
     await settleSlow(300);
   }
   return { skipped: false, problems, diff };
@@ -715,6 +721,155 @@ async function checkOverlaysActuallyHide() {
 }
 
 /* ------------------------------------------------------------
+   The chart
+   ------------------------------------------------------------ */
+
+/**
+ * Does a chart drawn by seeking match one drawn by playing, axis for axis —
+ * and does a zero axis still draw?
+ *
+ * The chart is the first artifact whose whole content comes out of the pack's
+ * ENTRY POOLS rather than out of the cue, so "the picture is a function of
+ * time" is a claim about the resolution as well as about the drawing: a
+ * lookup that resolved differently on the two passes would show up nowhere
+ * else. `.stage-chart` is in signature() so the main sweep covers a chapter
+ * that carries chart cues; no chapter does yet, so the cue pair is built here
+ * from whatever the pack actually ships.
+ *
+ * Three assertions, and the last two are why this is not just another line in
+ * the sweep:
+ *
+ *   1. seeking and playing agree.
+ *   2. every bar is drawn at its DATA's width, measured on the element, not
+ *      on the markup. A signature made of innerHTML would agree with itself
+ *      perfectly while the stylesheet drew all five rows the same length.
+ *   3. an axis whose value is 0.00 still draws. Every dry wine's sweetness is
+ *      zero, and a bar of width zero and a bar that was never drawn are the
+ *      same picture — so the floor is measured, and if it is ever removed
+ *      this reads 0.0 px and fails.
+ */
+async function checkChart() {
+  const problems = [];
+  const withProfile = (chapter.entries?.all() || []).filter(
+    (e) => e.profile && typeof e.profile === 'object' && Object.keys(e.profile).length);
+  if (!withProfile.length) {
+    return { skipped: 'no entry in this pack carries a `profile`', problems: [] };
+  }
+
+  const byKind = new Map();
+  for (const e of withProfile) {
+    if (!byKind.has(e.kind)) byKind.set(e.kind, []);
+    byKind.get(e.kind).push(e);
+  }
+  // Prefer a kind with two, so the case the verb exists for — two profiles
+  // laid over each other — is the one that gets measured.
+  const [kind, list] = [...byKind].sort((a, b) => b[1].length - a[1].length)[0];
+  const on = {
+    do: 'chart.show', beat: 'lab', ref: `${kind}:${list[0].id}`,
+    ...(list[1] ? { against: `${kind}:${list[1].id}` } : {}),
+  };
+  const off = { do: 'chart.hide', beat: 'lab' };
+  const series = list.slice(0, 2);
+
+  resetStage();
+  await settleSlow(60);
+  applyCue(on, true);
+  await settle();
+  if (!document.querySelector('.stage-chart .chart')) {
+    return { skipped: `this pack does not declare the chart surface`, problems: [] };
+  }
+
+  // 1. Seeking against playing.
+  const sought = signature();
+  resetStage();
+  await settleSlow(60);
+  applyCue(on, false);
+  await settle();
+  const played = signature();
+  if (played !== sought) {
+    problems.push('chart.show drew a different picture seeking than playing:\n'
+      + firstDifference(played, sought));
+  }
+
+  // 2. Every bar at its data's width, measured on the element. Under
+  //    `instant` there is no transition, so the bars are already final —
+  //    which is the same reason a seek must land on the finished picture.
+  resetStage();
+  await settleSlow(60);
+  applyCue(on, true);
+  await settleSlow(60);
+
+  // The axis ids, in the order the PACK declares them — so what is measured
+  // is the entry's own number against the pixels, not the module's markup
+  // against itself. A signature made of innerHTML would agree with itself
+  // perfectly while the stylesheet drew every row the same length.
+  const axisIds = (chapter.packInfo?.entries?.[kind]?.profile?.axes || [])
+    .map((a) => a.id);
+  const rows = [...document.querySelectorAll('.stage-chart .chart__row')];
+  let narrowest = Infinity;
+  let zeros = 0;
+  let measured = 0;
+  for (let r = 0; r < rows.length; r += 1) {
+    const row = rows[r];
+    const name = row.querySelector('.chart__axis')?.textContent.trim();
+    const track = row.querySelector('.chart__track');
+    const bars = [...row.querySelectorAll('.chart__bar')];
+    const inner = track.clientWidth - 6;    // the track's own 3px padding
+    const axisId = axisIds[r];
+    bars.forEach((bar, i) => {
+      if (bar.classList.contains('chart__bar--none')) return;
+      const value = axisId !== undefined
+        ? series[i]?.profile?.[axisId]
+        : Number(bar.dataset.w) / 100;
+      if (typeof value !== 'number') return;
+      const w = bar.getBoundingClientRect().width;
+      measured += 1;
+      narrowest = Math.min(narrowest, w);
+      if (value === 0) zeros += 1;
+      // The floor makes a very small value wider than its number; above it
+      // the bar has to BE the number.
+      if (value >= 0.1) {
+        const got = w / inner;
+        if (Math.abs(got - value) > 0.03) {
+          problems.push(`${name}: bar ${i + 1} is ${(got * 100).toFixed(1)}% of the `
+            + `track, ${series[i].id} says ${(value * 100).toFixed(1)}%`);
+        }
+      }
+    });
+  }
+  if (!measured) {
+    problems.push('no bar was drawn at all, so nothing above this line proves anything');
+  }
+  if (zeros && narrowest < 3) {
+    problems.push(`a 0.00 axis draws ${narrowest.toFixed(1)} px wide — indistinguishable `
+      + 'from an axis that was never drawn. The floor is gone.');
+  }
+
+  // 3. And the hide has to be visible, not a class change.
+  resetStage();
+  await settleSlow(60);
+  applyCue(on, false);
+  if (!await until(() => seen('.stage-chart') > 0.5, 5000, 60)) {
+    problems.push(`chart.show left .stage-chart at opacity ${seen('.stage-chart').toFixed(2)} `
+      + '— it never came up');
+  } else {
+    applyCue(off, false);
+    if (!await until(() => seen('.stage-chart') < 0.01, 5000, 60)) {
+      problems.push(`chart.hide left .stage-chart on screen at opacity `
+        + `${seen('.stage-chart').toFixed(2)} — the hide has no visible effect`);
+    }
+  }
+
+  resetStage();
+  await settleSlow(60);
+  return {
+    skipped: null, problems, rows: rows.length, series: series.length,
+    zeros, narrowest: Number.isFinite(narrowest) ? narrowest : 0,
+    what: `${kind}:${series.map((e) => e.id).join(' + ')}`,
+  };
+}
+
+/* ------------------------------------------------------------
    Reporting
    ------------------------------------------------------------ */
 
@@ -768,6 +923,10 @@ async function load(which) {
 
   chapter = await loadChapter(spec.pack, spec.id, 'no');
   mountStage(el.stage, chapter, people, chapter.narrationLang || 'no');
+  // The surface modules are fetched on the first mount of a page. Nothing
+  // may be measured until they are up, or the bench reports an empty stage
+  // as a stage that drew nothing.
+  await stageReady();
   player = new Player(chapter, {});
 
   // The depth layer is mounted for real, so the assertion that a card does not
@@ -807,10 +966,11 @@ async function runAll() {
   const depth = await checkDepthIsNotStageState();
   const idle = await checkBeatsEarnTheirPlace();
   const visible = await checkOverlaysActuallyHide();
+  const chart = await checkChart();
 
   const fails = sweep.failures.length + oneShots.problems.length
     + epoch.problems.length + dates.problems.length + depth.problems.length
-    + visible.problems.length;
+    + visible.problems.length + chart.problems.length;
 
   report(`<h2 class="${fails ? 'bad' : 'good'}">
     ${fails ? `${fails} rule-1 violation(s)` : 'Rule 1 holds'}
@@ -866,6 +1026,16 @@ async function runAll() {
          effective opacity, not on class names: ${esc(visible.checked.join(', '))}.</p>`
       : `<p class="note">This chapter shows no hideable overlay — nothing to measure.</p>`));
 
+  report(`<h3>Does a chart seek to the same picture it plays to?</h3>`);
+  report(chart.skipped
+    ? `<p class="note">${esc(chart.skipped)} — nothing to measure.</p>`
+    : (chart.problems.length
+      ? chart.problems.map((p) => `<div class="fail"><pre>${esc(p)}</pre></div>`).join('')
+      : `<p class="good">Yes — ${esc(chart.what)}, ${chart.rows} axes x
+         ${chart.series} series, every bar within 3% of the number the entry
+         carries. ${chart.zeros} zero axis/axes drew at
+         ${chart.narrowest.toFixed(1)} px rather than vanishing.</p>`));
+
   report(`<h3>Did every word anchor resolve?</h3>`);
   report(anchors.length
     ? `<div class="warn">${anchors.length} fell back to the start of the beat:
@@ -881,7 +1051,8 @@ async function runAll() {
 
   status(fails ? `${fails} violation(s)` : 'clean');
   // The screenshot harness reads this.
-  window.__engineLab = { fails, sweep, oneShots, epoch, dates, depth, anchors, idle, visible };
+  window.__engineLab = { fails, sweep, oneShots, epoch, dates, depth, anchors,
+                         idle, visible, chart };
 }
 
 async function boot() {

@@ -8,120 +8,100 @@
 
    Every handler takes (cue, instant). `instant` means "we are rebuilding the
    picture after a seek — get to the end state without animating".
+
+   WHAT CHANGED, AND WHY
+
+   That table used to be written out here: forty-three entries, and four
+   modules imported and mounted unconditionally at the top of the file. So
+   "artifact" meant "map" — a pack about wine, or literature, or a finance
+   course with a graph still built a map and still fetched up to five
+   megabytes of geometry — and adding a surface meant an import, a mount call
+   and a hand-merged block of verbs, which is the engine/verbs.json mistake in
+   a larger shape.
+
+   The table is now the union of what the MOUNTED surfaces declare
+   (engine/surfaces/registry.js), and which surfaces are mounted is a property
+   of the pack. Nothing here imports a surface: `import()` inside the registry
+   is what makes "a pack with no map never fetches map/" a fact rather than an
+   intention.
+
+   Two verbs are not surface verbs and never were: `pause` is handled by the
+   player and `term.mark` by the compiler in engine/script.js, both before a
+   cue list exists. They sit in HOST_VERBS so checkVerbManifest() does not
+   report drift against engine/verbs.json.
    ============================================================ */
 
-import * as M from './scenes/map.js';
-import * as O from './scenes/overlays.js';
-import * as P from './scenes/plate.js';
-import * as S from './scenes/sound.js';
+import { mountAll, resetAll, unmountAll, verbTable, declaredVerbs,
+         holdIfNotReady, surfacesFor } from './surfaces/registry.js';
 
-let lang = 'no';
-
-export function mountStage(container, chapter, people, language) {
-  lang = language;
-  const map = M.mountMap(container, chapter, language);
-  // Between the map and the overlay cards: a plate covers the ground and is
-  // covered by the captions, quotes and numbers drawn over it.
-  P.mountPlate(container, chapter, language);
-  O.mountOverlays(container, chapter, people, language);
-  // fact.show resolves against every declared kind, not four fixed pools.
-  O.useEntries(chapter.entries || null);
-  S.mountSound(chapter);
-  return map;
-}
-
-/** Back to a blank slate, before cues are re-applied. */
-export function resetStage({ soft = false } = {}) {
-  M.resetMap();
-  P.resetPlate({ soft });
-  O.resetOverlays();
-  S.resetSound();
-}
-
-const VERBS = {
-  'map.flyTo':        (c, i) => M.flyTo(c, i),
-  'map.fitRoute':     (c, i) => M.fitRoute(c, i),
-  'map.fitPlaces':    (c, i) => M.fitPlaces(c, i),
-  'map.time':         (c)    => M.setTime(pick(c.value)),
-  'map.mood':         (c, i) => M.setMood(c.value, i),
-  'map.flash':        (c, i) => M.flash(i),
-
-  // The political shape of the ground: who holds what, and where the lines
-  // are. Subject-neutral — a pack decides whether level 1 means a colony,
-  // a German state or a Norwegian kommune.
-  'region.show':      (c, i) => M.showRegions(c, i),
-  'region.clear':     ()     => M.clearRegions(),
-  'border.set':       (c)    => M.setBorders(c),
-
-  // Sound. The soundscape enforces the one-shot rule itself, so these hand
-  // `instant` straight through rather than guarding it a second time.
-  'sound.play':       (c, i) => S.playSound(c, i),
-  'sound.ambience':   (c, i) => S.setAmbience(c, i),
-  'sound.music':      (c, i) => S.playMusicCue(c, i),
-
-  'road.draw':        (c)    => M.drawRoad(c),
-
-  // A squadron under way. A march arrow says men per metre of front, which
-  // is a true thing about an army and a false one about ten destroyers.
-  'fleet.draw':       (c, i) => M.drawFleetCue(c, i),
-  'fleet.clear':      (c)    => M.clearFleet(c),
-  'route.draw':       (c, i) => M.drawRoute(c, i),
-  'route.clear':      ()     => M.clearRoutes(),
-
-  // People standing still, facing something. An arrow is the wrong shape for
-  // seventy-seven men who did not go anywhere.
-  'front.show':       (c, i) => M.showFront(c, i),
-  'front.hide':       (c)    => M.hideFront(c),
-  'front.clear':      ()     => M.clearFronts(),
-
-  'marker.show':      (c, i) => M.showMarker(c, i),
-  'marker.hide':      (c)    => M.hideMarker(c),
-  'marker.clear':     ()     => M.clearMarkers(),
-
-  // "point at the map while you talk"
-  'place.highlight':  (c, i) => M.highlight(c, i),
-  'place.clear':      ()     => M.clearHighlights(),
-
-  // generic: these named places moved on that one
-  'converge':         (c, i) => M.converge(c, i),
-
-  'portrait.show':    (c, i) => O.showPortrait(c, i),
-  'portrait.hide':    ()     => O.hidePortrait(),
-
-  'image.show':       (c, i) => O.showImage(c, i),
-
-  // The picture as the whole stage, with the slow documentary push.
-  'plate.show':       (c, i) => P.showPlate(c, i),
-  'plate.hide':       (c)    => P.hidePlate(c),
-  'image.hide':       ()     => O.hideImage(),
-
-  'quote.show':       (c, i) => O.showQuote(c, i),
-  'quote.hide':       ()     => O.hideQuote(),
-
-  'stat.show':        (c, i) => O.showStat(c, i),
-  'stat.clear':       ()     => O.clearStats(),
-
-  // Two or three numbers as one picture, rather than as unrelated chips.
-  'compare.show':     (c, i) => O.showCompare(c, i),
-  'compare.clear':    ()     => O.clearCompare(),
-  'fact.show':        (c, i) => O.showFact(c, i),
-  'fact.hide':        ()     => O.hideFact(),
-
-  'caption.note':     (c, i) => O.showNote(c, i),
-
-
-  // Pacing verbs are handled by the player, not the stage.
-  // Both of these are handled before a cue list exists: `pause` by the
-  // player, `term.mark` by the compiler in script.js. They sit here so
-  // checkVerbManifest() does not report drift against engine/verbs.json.
+/* Verbs the HOST answers, not a surface. Both are resolved before a cue ever
+   reaches applyCue(); they are listed so the manifest cross-check has
+   something to match, and they must stay out of any surface's table. */
+const HOST_VERBS = {
   pause: () => {},
   'term.mark': () => {},
 };
 
+/**
+ * Build the stage for a chapter.
+ *
+ * Returns the stage api — `invalidate`, `refreshTheme`, whatever the mounted
+ * surfaces offer — synchronously, even on the first mount of a page where the
+ * surface modules are still being fetched. See the registry's STAGE_API.
+ *
+ * `stageReady()` is the promise for anyone who needs the surfaces to actually
+ * be up, which in practice is a bench and not the app: the app is showing a
+ * cover while this resolves.
+ */
+let ready = Promise.resolve();
+
+export function mountStage(container, chapter, people, language) {
+  const { api, ready: done } = mountAll(container, chapter, {
+    lang: language,
+    people: people || [],
+    // fact.show and chart.show resolve against every declared kind, not four
+    // fixed pools. Handed in rather than fetched: an await inside a cue
+    // handler is how Massachusetts ended up washed blue over the whole map.
+    entries: chapter?.entries || null,
+  });
+  ready = done;
+  return api;
+}
+
+/** Resolves when every surface this chapter declared is mounted. */
+export function stageReady() { return ready; }
+
+/** Which surfaces this chapter's pack asked for. */
+export function stageSurfaces(chapter) { return surfacesFor(chapter?.packInfo); }
+
+/** Back to a blank slate, before cues are re-applied. */
+export function resetStage({ soft = false } = {}) {
+  resetAll({ soft });
+}
+
+/** Take every surface down. */
+export function unmountStage() { unmountAll(); }
+
 export function applyCue(cue, instant = false) {
-  const fn = VERBS[cue.do];
+  if (HOST_VERBS[cue.do]) return;
+  // The very first mount of a page is still fetching its surface modules. A
+  // cue that arrives now is HELD in order and released when they land, and
+  // resetStage() throws the queue away — so the picture stays a function of
+  // time rather than of how fast the network was. See the registry header.
+  if (holdIfNotReady(cue, instant)) return;
+
+  const table = verbTable();
+  const fn = table[cue.do];
   if (!fn) {
-    console.warn(`[stage] unknown cue verb "${cue.do}" (${cue.beat})`);
+    // Two different faults with one message each. A verb no surface declares
+    // is a typo; a verb whose surface this pack did not ask for is a chapter
+    // written against the wrong pack, and tools/check-script.py fails on it
+    // before it can get here.
+    const known = declaredVerbs().has(cue.do);
+    console.warn(known
+      ? `[stage] cue verb "${cue.do}" belongs to a surface this pack does not `
+        + `declare (${cue.beat})`
+      : `[stage] unknown cue verb "${cue.do}" (${cue.beat})`);
     return;
   }
   try {
@@ -132,32 +112,62 @@ export function applyCue(cue, instant = false) {
   }
 }
 
-export function knownVerbs() { return Object.keys(VERBS); }
+/** Every verb that is answerable right now — the mounted surfaces plus the host. */
+export function knownVerbs() {
+  return [...Object.keys(verbTable()), ...Object.keys(HOST_VERBS)];
+}
 
 /**
- * Cross-check the handler table against engine/verbs.json.
+ * Cross-check the surfaces against engine/verbs.json.
  *
- * The vocabulary used to live in two hand-maintained lists — this table and
+ * The vocabulary used to live in two hand-maintained lists — a table here and
  * VERBS in tools/check-script.py. Adding a verb to one and forgetting the
  * other meant a chapter validated clean and then silently did nothing in the
  * browser, which is the worst possible failure mode: no error, no picture,
  * and a cue that reads correct on the page.
  *
- * The manifest is now the source of truth for BOTH. This reports a drift in
- * either direction, and deliberately only warns: a mismatched manifest must
- * never be the reason a reader cannot hear a chapter.
+ * The manifest is now the source of truth for BOTH, and it carries a
+ * `surface` per verb as well as a name. So there are three drifts to report,
+ * not one:
+ *
+ *   · a verb the manifest declares that no surface implements
+ *   · a verb a surface implements that the manifest does not declare
+ *   · a verb whose manifest `surface` is not the surface that implements it,
+ *     which would make check-script.py accept a chapter the engine cannot
+ *     draw, or refuse one it can
+ *
+ * It deliberately only warns: a mismatched manifest must never be the reason
+ * a reader cannot hear a chapter. It loads every surface the manifest names
+ * rather than only the mounted ones — the question is about the vocabulary,
+ * not about this pack.
  */
 export async function checkVerbManifest(base = './engine/verbs.json') {
   try {
     const res = await fetch(base);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const manifest = await res.json();
+    const spec = manifest.verbs || {};
 
-    const declared = new Set(Object.keys(manifest.verbs || {}));
-    const implemented = new Set(Object.keys(VERBS));
+    const declared = new Set(Object.keys(spec));
+    // Every surface the manifest mentions, loaded for the check only.
+    const surfaces = new Set(Object.values(spec).map((v) => v.surface).filter(Boolean));
+    const owners = new Map();
+    for (const id of surfaces) {
+      try {
+        const mod = await import(`./surfaces/${id}.js`);
+        for (const verb of Object.keys(mod.default?.verbs || {})) owners.set(verb, id);
+      } catch (err) {
+        console.warn(`[stage] verbs.json names a surface "${id}" that will not load:`,
+          err && err.message);
+      }
+    }
+    const implemented = new Set([...owners.keys(), ...Object.keys(HOST_VERBS)]);
 
     const missing = [...declared].filter((v) => !implemented.has(v));
     const extra = [...implemented].filter((v) => !declared.has(v));
+    const misfiled = [...owners].filter(([verb, id]) => spec[verb] && spec[verb].surface !== id)
+      .map(([verb, id]) => `${verb} is ${id}'s, verbs.json says ${spec[verb].surface}`);
+    const unowned = [...declared].filter((v) => !HOST_VERBS[v] && !spec[v].surface);
 
     if (missing.length) {
       console.warn('[stage] verbs.json declares verbs with no handler:', missing.join(', '));
@@ -166,15 +176,17 @@ export async function checkVerbManifest(base = './engine/verbs.json') {
       console.warn('[stage] handlers missing from verbs.json (check-script.py will '
                  + 'reject chapters that use them):', extra.join(', '));
     }
-    return { manifest, missing, extra, ok: !missing.length && !extra.length };
+    if (misfiled.length) {
+      console.warn('[stage] verbs.json points a verb at the wrong surface:',
+        misfiled.join('; '));
+    }
+    if (unowned.length) {
+      console.warn('[stage] verbs.json declares no `surface` for:', unowned.join(', '));
+    }
+    const ok = !missing.length && !extra.length && !misfiled.length && !unowned.length;
+    return { manifest, missing, extra, misfiled, unowned, ok };
   } catch (err) {
     console.warn('[stage] could not read the verb manifest:', err.message);
-    return { manifest: null, missing: [], extra: [], ok: false };
+    return { manifest: null, missing: [], extra: [], misfiled: [], unowned: [], ok: false };
   }
-}
-
-function pick(field) {
-  if (field == null) return null;
-  if (typeof field === 'string') return field;
-  return field[lang] ?? field.no ?? field.en ?? null;
 }

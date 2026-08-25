@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="no" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stillab — style.json bench</title>
+
+<!-- The engine fetches its content with document-relative paths ('./content/…',
+     './engine/defaults/style.json'), because in the app the document IS the
+     root. From dev/ that would resolve to dev/content/. One <base> puts every
+     one of them back on the repo root; module imports are unaffected because
+     they resolve against the module's own URL, not this. -->
+<base href="../">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/atlas.css">
+<link rel="stylesheet" href="css/story.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid;
+    /* 390 exactly. Every measurement in BACKLOG.md — the 127 px median
+       caption, the 126 px fact card, the 71 clipped labels — was taken on a
+       390x844 phone, and a number measured at a different width is not
+       comparable to the number it is meant to replace. */
+    grid-template-columns: 390px 1fr;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  .stagewrap { position: relative; overflow: hidden; border-right: 1px solid var(--rule); }
+  #stage { position: absolute; inset: 0; }
+  .story__caption-slot { position: absolute; left: 0; right: 0; bottom: 0; }
+
+  .side { overflow-y: auto; padding: 14px 16px; background: var(--paper-raised); }
+  h1 { margin: 0 0 2px; font-family: var(--font-display); font-size: 17px; }
+  p.sub { margin: 0 0 12px; font-size: 11.5px; color: var(--ink-soft); }
+  .q {
+    margin: 0 0 14px; padding: 9px 11px;
+    border-left: 3px solid var(--gold);
+    background: var(--paper-sunken);
+    font-size: 12px; line-height: 1.45;
+  }
+  .bar { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  button, select {
+    font: inherit; font-size: 12px; padding: 6px 10px;
+    border: 1px solid var(--rule-strong); border-radius: var(--r-sm);
+    background: var(--paper); color: var(--ink); cursor: pointer;
+  }
+  button:hover { background: var(--paper-sunken); }
+  #status { font-size: 11.5px; color: var(--ink-soft); }
+  #chapter { font-size: 11px; color: var(--ink-faint); margin-bottom: 10px; }
+
+  h2 { margin: 16px 0 8px; font-size: 14px; font-family: var(--font-display); }
+  h3 { margin: 16px 0 5px; font-size: 10px; font-weight: 700;
+       letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+  p { margin: 0 0 6px; font-size: 12px; line-height: 1.45; }
+  pre {
+    margin: 5px 0 0; padding: 7px 8px; overflow-x: auto;
+    background: var(--paper-sunken); border-radius: var(--r-sm);
+    font-size: 10.5px; line-height: 1.4; white-space: pre;
+  }
+  table { border-collapse: collapse; width: 100%; font-size: 11px; margin: 4px 0 8px; }
+  th, td { text-align: left; padding: 3px 6px 3px 0; vertical-align: top;
+           border-bottom: 1px solid var(--rule); }
+  th { color: var(--ink-faint); font-weight: 700; font-size: 10px;
+       letter-spacing: .08em; text-transform: uppercase; }
+  td code { font-size: 10.5px; }
+  .good { color: #2c6b3f; font-weight: 700; }
+  .bad  { color: var(--red); font-weight: 700; }
+  .meh  { color: #8a6a20; font-weight: 700; }
+  .fail, .warn, .note {
+    margin: 0 0 8px; padding: 8px 10px; border-radius: var(--r-sm);
+    font-size: 11.5px; line-height: 1.45;
+  }
+  .fail { background: color-mix(in srgb, var(--red) 12%, transparent); border-left: 3px solid var(--red); }
+  .warn { background: color-mix(in srgb, var(--gold) 16%, transparent); border-left: 3px solid var(--gold); }
+  .note { background: var(--paper-sunken); border-left: 3px solid var(--rule-strong); }
+
+  /* Sliders. Deliberately plain: this page is a measuring instrument, and a
+     control that looks like product invites reading the picture instead of
+     the numbers. */
+  .knobs { margin: 0 0 6px; }
+  .knob { display: grid; grid-template-columns: 108px 1fr 58px; gap: 8px;
+          align-items: center; font-size: 11px; padding: 2px 0; }
+  .knob label { color: var(--ink-soft); }
+  .knob output { text-align: right; font-variant-numeric: tabular-nums; }
+  .knob input[type=range] { width: 100%; }
+  .knob select { padding: 2px 6px; font-size: 11px; }
+  .knob.is-off output { color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<!-- .story because engine/captions.js publishes --caption-h on the story root
+     and engine/depth.js keys off it. The lab runs the real thing, not a stub. -->
+<div class="stagewrap story">
+  <div id="stage" class="story__stage"></div>
+  <div class="story__caption-slot"></div>
+</div>
+
+<div class="side">
+  <h1>Stillab</h1>
+  <p class="sub">style.json bench — per-pack tuning</p>
+
+  <p class="q">
+    <b>Does every number the app draws with come from this file, and does
+    changing one change the app and nothing else?</b><br>
+    Everything on this page is one half of that or the other. Sliders alone
+    would be a gallery; the audit below is the part that is still true in six
+    months.
+  </p>
+
+  <div class="bar">
+    <select id="pick" aria-label="Chapter"></select>
+    <button id="run">Kjør revisjonen</button>
+    <button id="copy">Kopier style.json</button>
+    <span id="status">…</span>
+  </div>
+  <div id="chapter"></div>
+
+  <h3>Skru på tallene</h3>
+  <div class="knobs" id="knobs"></div>
+  <button id="reset" style="font-size:11px;padding:4px 8px">Tilbake til pakkens verdier</button>
+
+  <div id="out"></div>
+</div>
+
+<script type="module" src="dev/style-lab.js"></script>
+</body>
+</html>
