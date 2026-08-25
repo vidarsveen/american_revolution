@@ -205,10 +205,12 @@
     }
   ],
   "checks": {
+    "//contrast": "s2.b6 showed Toscana, Veneto and Campania -- three regions that do not touch, so there was no adjacent pair to compare, and no pins. Three of the four measurements had nothing to sample, and the check said so and passed anyway. s5.b2 is the Langhe with Barolo and Barbaresco pinned and no plate over the ground: it is the frame the readability complaint is actually about, so it is the frame to hold a number on.",
     "contrast": {
       "chapter": "chapter-1-piemonte",
-      "beat": "s2.b6",
-      "at": 6.0
+      "beat": "s5.b2",
+      "at": 6.0,
+      "expect": ["marker/ground"]
     }
   },
   "//entries": "What a reader can look up in this pack, and what to call it. The tab is built from this rather than compiled into js/main.js, which is why a subject with no people in it can still have a library.",

@@ -18,7 +18,6 @@ a failure reads the same here as it does on its own.
 from __future__ import annotations
 
 import argparse
-import functools
 import http.server
 import os
 import socket
@@ -39,22 +38,42 @@ except (AttributeError, OSError):
     pass
 
 
-class Handler(http.server.SimpleHTTPRequestHandler):
-    """Same no-store rule as tools/serve.py, for the same reason: a browser
-    that heuristically caches serves you the file you edited two minutes ago
-    and you debug code that is not running."""
+# The checks run against tools/serve.py's OWN handler, imported, not against a
+# second one written to look like it.
+#
+# There used to be a copy here that did the no-store part and nothing else. It
+# looked equivalent and was not: serve.py answers Range requests and
+# http.server does not, so under this server every <audio> element streamed
+# whole, reported `seekable` as an empty range and silently refused to move.
+# That is the exact defect serve.py exists to prevent and CLAUDE.md warns about
+# — and the check suite was reproducing it on itself. dev/turn-lab.html could
+# not seek to the end of a scene, timed out, and reported "timed out waiting"
+# on all four packs while passing every time against serve.py.
+#
+# check-plate.py's docstring records having been bitten by the same thing from
+# the other side and working around it with a fresh page per beat. The
+# workaround was for a server we wrote.
+#
+# So: one server, one behaviour, one place. If serve.py grows a header the app
+# needs, the checks get it too, and there is no second implementation to notice
+# it in.
+from importlib import util as _importlib_util
 
-    def end_headers(self):
-        self.send_header("Cache-Control", "no-store, must-revalidate")
-        super().end_headers()
+_spec = _importlib_util.spec_from_file_location(
+    "fortell_serve", Path(__file__).with_name("serve.py"))
+_serve = _importlib_util.module_from_spec(_spec)
+_spec.loader.exec_module(_serve)
+
+
+class Handler(_serve.Handler):
+    """serve.py's handler, quiet. Its __init__ already pins the directory."""
 
     def log_message(self, *a):
         pass
 
 
 def serve() -> str:
-    handler = functools.partial(Handler, directory=str(ROOT))
-    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return f"http://127.0.0.1:{httpd.server_address[1]}"
 
@@ -92,7 +111,8 @@ def main() -> int:
     ap.add_argument("packs", nargs="*", help="default: every pack in content/")
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
-                    help="any of: script era data effects shell sw engine turn plate sound contrast")
+                    help="any of: script era data effects shell sw css engine "
+                         "turn plate sound contrast")
     args = ap.parse_args()
 
     packs = args.packs or packs_on_disk()
@@ -131,6 +151,13 @@ def main() -> int:
     if "sw" not in skip:
         ok &= run("build-sw --check", ["tools/build-sw.py", "--check"])
 
+    # Cheap, no browser: a class in css/ that nothing ever writes. It belongs
+    # before the slow ones because it costs a tenth of a second, and it is in
+    # this list at all because "no infinite animation" was enforced against
+    # .story-ring while the ring on screen (.atlas-ring) went on pulsing.
+    if "css" not in skip:
+        ok &= run("check-dead-css", ["tools/check-dead-css.py"])
+
     # The three that drive a browser. Slowest last, so a cheap failure is
     # reported before you have waited two minutes for a screenshot.
     if "engine" not in skip:
@@ -138,6 +165,15 @@ def main() -> int:
 
     if "turn" not in skip:
         ok &= run("check-turn", ["tools/check-turn.py"], env)
+        # And the turn one scale up. check-turn.py drives the player directly,
+        # which is right for "is the veil opaque at the rebuild" and cannot see
+        # a chapter turn at all: that one is a property of story.js's teardown
+        # AND of the stylesheet's stacking order, so it only exists when the
+        # whole app is running. Per pack; a one-chapter pack passes with
+        # "no door to turn through".
+        for pack in packs:
+            ok &= run(f"check-turn-chapter {pack}",
+                      ["tools/check-turn-chapter.py", "--pack", pack], env)
 
     if "plate" not in skip:
         for pack, chapter in [("italy-wine", "chapter-1-piemonte"),
@@ -148,8 +184,17 @@ def main() -> int:
     if "sound" not in skip:
         ok &= run("check-sound", ["tools/check-sound.py"], env)
 
+    # Once per pack, with --pack. It used to be one bare call, and
+    # check-contrast.py falls back to packs[0] — which became "roman-empire"
+    # when content/packs.json was reordered. So the tool that exists BECAUSE
+    # the map was unreadable was measuring one assertion on one scaffold pack
+    # and printing "no samples" three times, at exit 0. Same shape as
+    # BACKLOG.md's "it sampled whichever chapter the cover loaded": --pack was
+    # added to fix that and this list was never taught to pass it.
     if "contrast" not in skip:
-        ok &= run("check-contrast", ["tools/check-contrast.py"], env)
+        for pack in packs:
+            ok &= run(f"check-contrast {pack}",
+                      ["tools/check-contrast.py", "--pack", pack], env)
 
     print("\n" + ("\033[1mAll checks passed.\033[0m" if ok
                   else "\033[31m\033[1mSomething failed — see above.\033[0m"))

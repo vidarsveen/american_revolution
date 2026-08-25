@@ -10,9 +10,18 @@ visual just fires early, which is easy to miss by ear. This catches that, plus
 unknown cue verbs and references to places, routes, people or images that do
 not exist.
 
-Reading a chapter — the anchor grammar, the reference pools, where a pack lives
-— is tools/scriptlib.py, shared with the other tools that have to agree with
-the engine about when a cue fires.
+It also multiplies out the things whose duration nobody wrote down: a march
+that cannot reach its destination before the scene wipes it, and a camera
+flight that cannot land before the scene ends. The second is the harder one,
+because `over` is optional on a camera cue and the map works the duration out
+from how far it has to travel — so the flight is simulated, cue by cue, from
+wherever the previous one left the camera. Every flight is printed with its
+margin, worst first, because that arithmetic is a copy of the map's and a list
+is how you find out whether it is lying.
+
+Reading a chapter — the anchor grammar, the reference pools, the camera model,
+where a pack lives — is tools/scriptlib.py, shared with the other tools that
+have to agree with the engine about when a cue fires.
 
 Exits non-zero if anything is broken. Notes are advisory.
 """
@@ -24,8 +33,9 @@ import sys
 
 from scriptlib import (
     REF_TYPES, VERB_SPEC, VERBS,
-    anchor_for, chapter_langs, check_sound_manifest, cue_time,
-    load_chapter, load_timings, norm, resolve_pools, timing_beat, tokens,
+    anchor_for, auto_over, chapter_langs, check_sound_manifest, cue_time,
+    ease_flight, fit_bounds, flight_constants, load_chapter, load_timings,
+    map_conf, norm, pack_era, resolve_pools, sound_years, timing_beat, tokens,
 )
 
 problems: list[str] = []
@@ -93,6 +103,154 @@ def check_animations_finish(chapter, timings, langs):
                         f"but is wiped after {room:.1f}s — it would stop "
                         f"{100 * max(0.0, room) / over:.0f}% of the way there")
     return found
+
+
+# ------------------------------------------------------------------
+# the camera
+# ------------------------------------------------------------------
+#
+# The three cues that move the camera. Not a vocabulary — engine/verbs.json is
+# still the only place that says which verbs exist — but each of these three
+# works out WHERE the camera is going in a different way, and that geometry is
+# what the check needs. Named here so that renaming one in the manifest fails
+# loudly below rather than silently switching the check off.
+CAMERA_VERBS = ("map.flyTo", "map.fitRoute", "map.fitPlaces")
+
+# The default zoom engine/scenes/map.js:299 uses for a flyTo whose place
+# declares none. Two copies of one number, so it is named in both places.
+FLYTO_ZOOM = 12
+
+
+def camera_target(cue, chapter, conf, cam):
+    """Where a camera cue is sending the camera, as (lat, lon, zoom).
+
+    None when the cue names something the chapter does not have — that is
+    already a reference failure, and reporting it twice helps nobody.
+    """
+    zmin, zmax = conf["zoom"]["min"], conf["zoom"]["max"]
+    places = chapter.get("places") or {}
+
+    def fly(place, z):
+        return (place["coords"][0], place["coords"][1],
+                min(max(z, zmin), zmax))
+
+    if cue["do"] == "map.flyTo":
+        place = places.get(cue.get("to"))
+        if not place or not place.get("coords"):
+            return None
+        return fly(place, cue.get("zoom") or place.get("zoom") or FLYTO_ZOOM)
+
+    if cue["do"] == "map.fitRoute":
+        route = (chapter.get("routes") or {}).get(cue.get("id"))
+        coords = (route or {}).get("coords")
+        if not coords:
+            return None
+        return fit_bounds(coords, zmin, conf["zoom"]["maxFit"])
+
+    if cue["do"] == "map.fitPlaces":
+        ids = [i for i in (cue.get("places") or []) if places.get(i, {}).get("coords")]
+        if not ids:
+            return None
+        # Fitting ONE place is flying to it — engine/scenes/map.js:326, and
+        # the zoom it uses there is the pack default, not flyTo's 12.
+        if len(ids) == 1:
+            only = places[ids[0]]
+            return fly(only, cue.get("zoom") or only.get("zoom")
+                       or conf["zoom"]["default"])
+        return fit_bounds([places[i]["coords"] for i in ids],
+                          zmin, conf["zoom"]["maxFit"])
+    return None
+
+
+def check_camera_lands(pack, chapter, timings, langs):
+    """A flight the scene ends in the middle of.
+
+    The loudest complaint about the app in the language of the person who
+    watched it: "while zooming into a map it certainly stops and we jump to
+    the next chapter." That is check_animations_finish's hazard one artifact
+    type further out — a scene change wipes the stage and replays, so a camera
+    move still in the air when the scene ends is not paused, it is cut, and
+    the next scene's establishing shot snaps the ground somewhere else.
+
+    What makes it invisible to reading is that the duration is usually not in
+    the chapter at all: `over` is optional and the map works it out from how
+    far the camera has to travel (map/index.js autoOver). So the numbers are
+    worked out here, from the camera's real position — which means tracking
+    that position cue by cue, scene by scene, because map.reset() does not
+    touch the camera and scene five opens wherever scene four left it.
+
+    Returns (problems, rows) — rows is every flight, for the human-readable
+    margin table, because getting this wrong in the LENIENT direction is much
+    worse than in the strict one and a list can be read.
+    """
+    k, problems = flight_constants()
+    if problems:
+        return problems, []
+
+    missing = [v for v in CAMERA_VERBS if v not in VERBS]
+    if missing:
+        return [f"engine/verbs.json no longer declares {', '.join(missing)} — "
+                f"the camera check in tools/check-script.py names them"], []
+
+    conf = map_conf(pack)
+    places = chapter.get("places") or {}
+    home = places.get(chapter.get("home")) or next(iter(places.values()), None)
+    start = ((home["coords"][0], home["coords"][1], conf["zoom"]["default"])
+             if home and home.get("coords")
+             else (0.0, 0.0, conf["zoom"]["default"]))
+
+    found, rows = [], []
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        cam = start
+        for scene in chapter["scenes"]:
+            st = tm["scenes"].get(scene["id"])
+            if not st:
+                continue
+            end = st.get("dur") or 0.0
+
+            events = []
+            for beat in scene["beats"]:
+                tb = timing_beat(tm, scene["id"], beat["id"])
+                for cue in beat.get("cues", []):
+                    if cue["do"] not in CAMERA_VERBS:
+                        continue
+                    at = cue_time(cue, tb, lang)
+                    if at is not None:
+                        events.append((at, cue, beat["id"]))
+            events.sort(key=lambda e: e[0])
+
+            flight = None       # (from, to, t0, secs)
+            for at, cue, bid in events:
+                if flight:
+                    f, t, t0, secs = flight
+                    cam = ease_flight(f, t, (at - t0) / secs if secs else 1.0)
+                target = camera_target(cue, chapter, conf, cam)
+                if target is None:
+                    continue
+                over = cue.get("over")
+                over = float(over) if over is not None else auto_over(cam, target, k)
+                room = end - at
+                what = cue.get("to") or cue.get("id") or ",".join(cue.get("places") or [])
+                rows.append((room - over, lang, bid, cue["do"], what, over, room))
+                if room < over - 0.05:
+                    found.append(
+                        f"{bid}: '{lang}' {cue['do']} '{what}' flies for {over:.1f}s "
+                        f"but the scene ends after {room:.1f}s — the camera is cut "
+                        f"{100 * max(0.0, room) / over:.0f}% of the way there and the "
+                        f"next scene snaps the ground somewhere else."
+                        + ("" if cue.get("over") is not None else
+                           " No `over` is authored; the map computes this one from "
+                           "the distance."))
+                flight = (cam, target, at, max(over, 1e-6))
+            # Whatever the flight got to by the wipe is where the next scene
+            # opens: map.reset() clears the artifacts, not the camera.
+            if flight:
+                f, t, t0, secs = flight
+                cam = ease_flight(f, t, (end - t0) / secs if secs else 1.0)
+    return found, rows
 
 
 # An overlay that appears and disappears before anyone can read it.
@@ -216,6 +374,143 @@ def check_numbers_clear(chapter, timings, langs):
                         f"wipe, over {STAT_CEILING:.0f}s. Clear it when the narration "
                         f"moves on.")
     return found
+
+
+# The sound grammar from docs/design-direction.md §3, in numbers.
+#
+# The score tells you where you are, an effect tells you what was just
+# named, and silence is a decision. None of that is checkable. What is:
+#
+#   · one bed per scene, in its first beat, with no gainDb of its own —
+#     19 April changed bed twelve times across eight scenes, which is
+#     scoring the beat rather than the scene, and a bed that changes
+#     mid-scene is a bed you can hear working;
+#   · effects sparse enough to stay events — three cannon and a volley
+#     inside twenty seconds is ordnance, not a chapter;
+#   · one ambience per scene, because a place lasts a scene;
+#   · and the level rule, so re-balancing the app is one number and not
+#     a hundred and sixty-three.
+EFFECT_GAP = 20.0          # seconds between two sound.play cues
+EFFECTS_PER_SCENE = 3
+AMBIENCE_DB = (-18.0, -12.0)     # -15 ± 3
+EFFECT_DB = (-12.0, -4.0)        # -8 ± 4
+
+
+def check_sound_grammar(pack, chapter, timings, langs):
+    """Density, placement and level — and whether the era had the thing."""
+    found, seen = [], []
+    years = sound_years(pack)
+    era = pack_era(pack)
+
+    for scene in chapter["scenes"]:
+        beats = scene["beats"]
+        music = [(b, c) for b in beats for c in b.get("cues", []) if c["do"] == "sound.music"]
+        amb = [(b, c) for b in beats for c in b.get("cues", []) if c["do"] == "sound.ambience"]
+        plays = [(b, c) for b in beats for c in b.get("cues", []) if c["do"] == "sound.play"]
+
+        # --- the bed -------------------------------------------------
+        if len(music) > 1:
+            where = ", ".join(b["id"] for b, _ in music[1:])
+            found.append(
+                f"{scene['id']}: {len(music)} sound.music cues in one scene ({where}) — "
+                f"one bed per scene, set in its first beat. A bed that changes "
+                f"mid-scene is a bed you can hear working.")
+        for b, c in music:
+            if b["id"] != beats[0]["id"]:
+                found.append(
+                    f"{b['id']}: sound.music is not in the scene's first beat — "
+                    f"the bed is under the whole scene or it is under none of it.")
+            if c.get("gainDb") is not None:
+                found.append(
+                    f"{b['id']}: sound.music carries gainDb={c['gainDb']}. The bed's "
+                    f"level is bedDb in sound/soundscape.js, once, for the whole app.")
+
+        # --- ambience ------------------------------------------------
+        named = [(b, c) for b, c in amb if c.get("id")]
+        if len(named) > 1:
+            where = ", ".join(b["id"] for b, _ in named[1:])
+            found.append(
+                f"{scene['id']}: {len(named)} sound.ambience cues in one scene ({where}) "
+                f"— ambience is a place, and a place lasts a scene.")
+        for b, c in named:
+            db = c.get("gainDb")
+            if db is None or not (AMBIENCE_DB[0] <= db <= AMBIENCE_DB[1]):
+                found.append(
+                    f"{b['id']}: sound.ambience '{c['id']}' at gainDb={db}, outside "
+                    f"{AMBIENCE_DB[0]:.0f}…{AMBIENCE_DB[1]:.0f}. A level further out "
+                    f"than that is the recording being wrong, not the cue.")
+
+        # --- effects -------------------------------------------------
+        if len(plays) > EFFECTS_PER_SCENE:
+            found.append(
+                f"{scene['id']}: {len(plays)} sound.play cues in one scene, over "
+                f"{EFFECTS_PER_SCENE} — an effect stops being an event when there "
+                f"is another one along in a moment.")
+        per_beat = {}
+        for b, c in plays:
+            per_beat.setdefault(b["id"], []).append(c)
+            db = c.get("gainDb")
+            if db is None or not (EFFECT_DB[0] <= db <= EFFECT_DB[1]):
+                found.append(
+                    f"{b['id']}: sound.play '{c.get('id')}' at gainDb={db}, outside "
+                    f"{EFFECT_DB[0]:.0f}…{EFFECT_DB[1]:.0f}.")
+        for bid, cues in per_beat.items():
+            if len(cues) > 1:
+                names = ", ".join(str(c.get("id")) for c in cues)
+                found.append(
+                    f"{bid}: {len(cues)} sound.play cues on one sentence ({names}) — "
+                    f"at most one. Several reports of one gun are ONE cue with "
+                    f"`times` and `spread`.")
+
+    # --- how far apart, in seconds a listener actually hears ---------
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            fired = []
+            for beat in scene["beats"]:
+                tb = timing_beat(tm, scene["id"], beat["id"])
+                for cue in beat.get("cues", []):
+                    if cue["do"] != "sound.play":
+                        continue
+                    at = cue_time(cue, tb, lang)
+                    if at is not None:
+                        fired.append((at, cue, beat["id"]))
+            fired.sort(key=lambda e: e[0])
+            for (t0, c0, _), (t1, c1, b1) in zip(fired, fired[1:]):
+                gap = t1 - (t0 + float(c0.get("spread") or 0))
+                if gap < EFFECT_GAP:
+                    found.append(
+                        f"{b1}: '{lang}' sound.play '{c1.get('id')}' fires {gap:.1f}s "
+                        f"after '{c0.get('id')}', under {EFFECT_GAP:.0f}s.")
+
+    # --- did the thing exist yet -------------------------------------
+    if era:
+        for scene in chapter["scenes"]:
+            for beat in scene["beats"]:
+                for cue in beat.get("cues", []):
+                    if not str(cue.get("do", "")).startswith("sound."):
+                        continue
+                    span = years.get(cue.get("id"))
+                    if not span:
+                        continue
+                    if era[1] < span[0] or era[0] > span[1]:
+                        found.append(
+                            f"{beat['id']}: {cue['do']} '{cue['id']}' belongs to "
+                            f"{span[0]}…{span[1]} and this pack's era is "
+                            f"{era[0]}…{era[1]} — it did not exist yet, or not any more.")
+
+    # --- silence, which cannot be failed but can be counted ----------
+    scored = sum(1 for s in chapter["scenes"]
+                 if any(c["do"] == "sound.music" and c.get("id")
+                        for b in s["beats"] for c in b.get("cues", [])))
+    total = len(chapter["scenes"])
+    if total and scored == total:
+        seen.append(
+            f"every one of the {total} scenes carries a bed. Music everywhere is "
+            f"music nowhere — at least one scene should be unscored.")
+    return found, seen
 
 
 def check_places_have_ground(chapter):
@@ -624,6 +919,8 @@ def main():
                         problems.append(f"{bid}: unrecognised '{lang}' anchor '{spec}'")
 
     problems.extend(check_animations_finish(chapter, timings, langs))
+    camera_bad, camera_rows = check_camera_lands(pack, chapter, timings, langs)
+    problems.extend(camera_bad)
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
     problems.extend(check_plate_rhythm(chapter) or [])
@@ -632,6 +929,20 @@ def main():
     plate_bad, plate_note = check_plates_over_map(chapter)
     problems.extend(plate_bad)
     notes.extend(plate_note)
+    sound_bad, sound_note = check_sound_grammar(pack, chapter, timings, langs)
+    problems.extend(sound_bad)
+    notes.extend(sound_note)
+
+    # A tool cannot hear whether an effect names the thing the sentence
+    # names, so it prints the pairs and a human reads them — the same
+    # answer as the list of plates over a region.show.
+    for scene in chapter["scenes"]:
+        for beat in scene["beats"]:
+            for cue in beat.get("cues", []):
+                if cue["do"] != "sound.play":
+                    continue
+                say = (beat.get("say") or {}).get(langs[0], "")
+                notes.append(f"{beat['id']}: hears '{cue.get('id')}' under — {say}")
 
     # totals
     print(f"{len(chapter['scenes'])} scenes, {n_beats} beats, {n_cues} cues "
@@ -645,6 +956,20 @@ def main():
               + (f", MISSING {len(missing)} beats" if missing else ""))
         for b in missing:
             problems.append(f"{b}: no timing for '{lang}' — re-run tools/narrate.py")
+
+    # Every flight, worst margin first. Printed rather than summarised because
+    # the whole formula is a reimplementation of one in map/index.js, and the
+    # way to find out whether it is lying is to read the numbers next to a
+    # chapter you have watched. `-1.4s` is a cut; `+0.2s` is one word of
+    # narration away from being one.
+    if camera_rows:
+        camera_rows.sort(key=lambda r: r[0])
+        tight = sum(1 for r in camera_rows if r[0] < 1.0)
+        print(f"\ncamera ({len(camera_rows)} flights, {tight} with under a second "
+              f"to spare, worst {camera_rows[0][0]:+.1f}s):")
+        for margin, lang, bid, verb, what, over, room in camera_rows:
+            print(f"  {margin:+6.1f}s  {bid:<12} {lang}  {verb:<14} "
+                  f"'{what}' flies {over:.1f}s, scene has {room:.1f}s")
 
     if notes:
         print(f"\nnotes ({len(notes)}):")

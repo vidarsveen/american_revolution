@@ -233,15 +233,43 @@ export function coach(instant = false) {
   // decided — which was on top of the sentence it was pointing at, because
   // the caption line is not a positioned ancestor.
   document.body.appendChild(pill);
+  /* Anchored to the CAPTION, not to the word inside it.
+     The pill sits at translate(-50%, -140%) of whatever it is measured
+     against. Measured against the word, a term on any line but the first put
+     the pill on the line ABOVE it — on top of the sentence it exists to point
+     at. Measured across every placement the two narrated packs make: 9 of 13
+     and 5 of 8 landed on caption words. It got worse rather than better when
+     the caption grew from three lines to four, which is how it surfaced.
+     The word still decides the horizontal; only the vertical is the caption's.
+
+     And clamped to the frame: a term near either edge hung 13-16 px off it. */
   const place = () => {
     const r = word.getBoundingClientRect();
     if (!r.width) return;
-    pill.style.left = `${r.left + r.width / 2}px`;
-    pill.style.top = `${r.top}px`;
+    const box = (word.closest('.captions') || word).getBoundingClientRect();
+    const half = pill.getBoundingClientRect().width / 2 || 0;
+    const x = r.left + r.width / 2;
+    pill.style.left = `${Math.max(half + 8, Math.min(x, innerWidth - half - 8))}px`;
+    pill.style.top = `${box.top}px`;
   };
   place();
   requestAnimationFrame(() => { place(); pill.classList.add('is-on'); });
+
+  /* And re-placed while it is up, because the thing under it moves.
+     The caption box is anchored to its BOTTOM edge, so a beat that wraps to
+     one more line grows UPWARD — into the pill, which had been positioned
+     once against the old top. Measured over every term the two narrated packs
+     mark: placing against the caption instead of the word fixed 9 of 13, and
+     the remaining ones were all this. A ResizeObserver rather than a frame
+     loop: rule 2 says frames make things smooth and are not a contract, and a
+     backgrounded tab that comes back must not find the pill somewhere else. */
+  const watch = typeof ResizeObserver === 'function'
+    ? new ResizeObserver(() => place()) : null;
+  const cap = word.closest('.captions');
+  if (watch && cap) watch.observe(cap);
+
   setTimeout(() => {
+    watch?.disconnect();
     pill.classList.remove('is-on');
     setTimeout(() => pill.remove(), 400);
   }, 4200);

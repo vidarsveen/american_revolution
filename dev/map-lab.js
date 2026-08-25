@@ -48,6 +48,33 @@ async function packAreas() {
   return areasUrl;
 }
 
+/**
+ * The bounds of whatever geometry we just loaded.
+ *
+ * Both region demos used to fly to [[30.2,-86.2],[47.6,-66.6]] — the eastern
+ * seaboard, hardcoded — while packAreas() takes packs[0], which stopped being
+ * american-revolution the day content/packs.json was reordered. So the lab
+ * loaded Roman provinces and pointed the camera at Georgia, drew nothing, and
+ * reported "Ingen naboer maalt": a bench measuring an empty screen and calling
+ * it a result. The same trap, in check-contrast.py, had three of its four
+ * measurements silently unrun.
+ *
+ * A bench must not know what the subject is either.
+ */
+function boundsOf(geo) {
+  let s = 90, w = 180, n = -90, e = -180;
+  for (const f of geo.features || []) {
+    const g = f.geometry || {};
+    const groups = g.type === 'MultiPolygon' ? g.coordinates
+                 : g.type === 'Polygon' ? [g.coordinates] : [];
+    for (const grp of groups) for (const ring of grp) for (const [lon, lat] of ring) {
+      if (lat < s) s = lat; if (lat > n) n = lat;
+      if (lon < w) w = lon; if (lon > e) e = lon;
+    }
+  }
+  return n >= s ? [[s, w], [n, e]] : null;
+}
+
 const DEMOS = {
   places() {
     map.places.clear();
@@ -150,13 +177,15 @@ const DEMOS = {
 
   async regionsColonies() {
     const res = await fetch(await packAreas());
-    await map.useRegions(await res.json());
+    const geo = await res.json();
+    await map.useRegions(geo);
     map.regions.clear();
     map.setBorders({ state: false });
     for (const name of map.regionNames()) {
       map.regions.add({ id: `c-${name}`, name, label: true, instant: true });
     }
-    map.fitBounds([[30.5, -82.5], [47.5, -66.5]]);
+    const bb = boundsOf(geo);
+    if (bb) map.fitBounds(bb, { padding: 24 });
   },
 
   /* Regions are subject-neutral, so "which side is this" is just a faction. */
@@ -284,7 +313,9 @@ async function paletteTest() {
     map.regions.add({ id: `p-${name}`, name, faction: 'patriot',
                       label: false, instant: true });
   }
-  await map.fitBounds([[30.2, -86.2], [47.6, -66.6]], { instant: true, padding: 24 });
+  const bb = boundsOf(geo);
+  if (!bb) { out.textContent = 'FEIL - omraadefila har ingen geometri'; return; }
+  await map.fitBounds(bb, { instant: true, padding: 24 });
   await wait(500);
 
   const verts = new Map();
@@ -435,6 +466,224 @@ async function seekTest() {
        Noe akkumulerer i stedet for å være en funksjon av tiden.`;
 }
 
+/* ------------------------------------------------------------
+   Is every label that is drawn entirely inside the viewport?
+
+   The defect, measured: at 390x844, italy-wine s5 t=14 s, Barbaresco's anchor
+   sat 27 px from the right edge. Both things that can carry a name run
+   rightward from the anchor under `white-space: nowrap` — the `.atlas-place`
+   name and the `.atlas-pin` chip — so the 80 px chip ran 374 -> 455 and lost
+   65 px of itself off the frame. It was reported as SHOWN, because the only
+   test it faced was onScreen(), which asks about the ANCHOR with 60-140 px of
+   slack on both sides: a visibility test standing in for a placement one. Both
+   forms are cased below.
+
+   So this asks the question on the pixels: for every label the map draws, is
+   its getBoundingClientRect() inside the map's? Places near every edge and
+   every corner, pins with chips too wide for either side, a name wider than
+   the phone, an anchor off the frame entirely — and the Barbaresco geometry
+   itself, at the exact anchor it failed at.
+
+   It runs TWICE, in both themes, and the second run puts the bug back through
+   map.bench.setLabelSides(false): every label hard right of its dot, drawn
+   whenever the anchor is near the frame. A bench nobody has watched fail is a
+   bench nobody knows works, so the failing number is printed beside the
+   passing one every time this is run.
+   ------------------------------------------------------------ */
+
+/* One long name, so "wider than the phone" is a case and not a hope. */
+const TOO_WIDE = 'Storhertugdømmet Toscana og Piemonte med omland, øyer og fjellbygder';
+
+function labelCases(w, h) {
+  return {
+    places: [
+      // The measured defect: 27 px of room to the right of the anchor.
+      ['Barbaresco', w - 27, Math.round(h * 0.42), 'town'],
+      ['Barolo', 32, Math.round(h * 0.63), 'town'],
+      ['Alba', Math.round(w / 2), Math.round(h / 2), 'city'],
+      ['Nordvest', 10, 10, 'town'],
+      ['Nordøst', w - 10, 10, 'town'],
+      ['Sørvest', 10, h - 10, 'town'],
+      ['Sørøst', w - 10, h - 10, 'town'],
+      ['Topp', Math.round(w / 2), 7, 'city'],
+      ['Bunn', Math.round(w / 2), h - 7, 'city'],
+      ['Venstrekanten', 7, Math.round(h * 0.30), 'city'],
+      ['Høyrekanten', w - 7, Math.round(h * 0.72), 'city'],
+      /* A region name is dotless and the LARGEST type on the map — one step
+         above a city name, two above a town, whatever the scale's numbers
+         happen to be (--fs-base / --fs-sm / --fs-2xs in css/atlas.css). It
+         said "15px" here until the scale moved and the number went stale
+         inside a week; the relationship is what this case is testing. */
+      ['Piemonte', w - 34, Math.round(h * 0.18), 'region'],
+      [TOO_WIDE, Math.round(w / 2), Math.round(h * 0.86), 'town'],
+      ['Utenfor', w + 40, Math.round(h / 2), 'town'],
+    ],
+    markers: [
+      ['Barbaresco', w - 27, Math.round(h * 0.30)],
+      ['Barolo', 22, Math.round(h * 0.70)],
+      // Wider than either side of a 390 px phone, so it has to go above.
+      ['Slaget ved Bunker Hill og Charlestown', Math.round(w / 2), Math.round(h * 0.12)],
+      ['', w - 9, Math.round(h * 0.90)],
+    ],
+  };
+}
+
+async function labelScene() {
+  const c = map.camera();
+  map.setView(c.lat, c.lon, c.zoom);          // land any flight first
+  map.reset();
+  /* The frame's own size, read NOW. `.frame` transitions its width and
+     height over 250 ms, so a size read straight after map.invalidate() is a
+     size the map is on its way out of — and every case built from it lands
+     nearer the edge than intended. That put eight of this bench's twelve edge
+     cases outside the frame and had them dropped as correct behaviour. */
+  const { w, h } = c.size;
+  const cases = labelCases(w, h);
+  for (const [name, px, py, kind] of cases.places) {
+    map.places.add({ id: `lbl:${name}`, name, kind, coords: map.toLatLng(px, py) });
+  }
+  for (const [label, px, py] of cases.markers) {
+    map.markers.add({ id: `pin:${label || 'bar'}`, label,
+                      at: map.toLatLng(px, py), faction: 'patriot' });
+  }
+  map.redraw();
+  // Long enough for --t-enter on the pin, or its opacity reads as hidden.
+  await wait(1000);
+  return { w, h };
+}
+
+/** Everything the map is actually showing, measured against the map's rect. */
+function labelAudit() {
+  const host = map.el();
+  const frame = host.getBoundingClientRect();
+  const shown = (el) => {
+    for (let n = el; n && n !== document.body; n = n.parentElement) {
+      const cs = getComputedStyle(n);
+      if (cs.visibility === 'hidden' || cs.display === 'none'
+          || Number(cs.opacity) < 0.05) return false;
+    }
+    return true;
+  };
+
+  const crossings = [];
+  const sides = [];
+  const dropped = [];
+  let drawn = 0;
+  for (const el of host.querySelectorAll('.atlas-place, .atlas-pin, .atlas-pin i')) {
+    if (!shown(el)) {
+      if (el.matches('.atlas-place')) dropped.push((el.textContent || '').trim());
+      continue;
+    }
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    if (!el.matches('.atlas-pin i')) drawn += 1;
+    const over = Math.max(frame.left - r.left, frame.top - r.top,
+                          r.right - frame.right, r.bottom - frame.bottom);
+    const text = (el.textContent || '').trim() || 'prikk';
+    const side = /--(left|above|below)/.exec(el.className)?.[1] || 'right';
+    if (el.matches('.atlas-place')) sides.push(`${text} ${side}`);
+    if (over > 0.5) {
+      crossings.push(`${text}: ${over.toFixed(0)} px utenfor (${side})`);
+    }
+  }
+
+  // The dot is the truth. Wherever the words went, did it stay on its
+  // coordinate? Measured on the pin, whose dot is a real element.
+  const want = new Map(map.markers.all().map((s) => [s.label || '', s.at]));
+  let dotErr = 0;
+  for (const pin of host.querySelectorAll('.atlas-pin')) {
+    if (!shown(pin)) continue;
+    const at = want.get(pin.querySelector('b').textContent);
+    if (!at) continue;
+    const [ex, ey] = map.toScreen(at[0], at[1]);
+    const r = pin.querySelector('i').getBoundingClientRect();
+    dotErr = Math.max(dotErr,
+      Math.hypot(r.left + r.width / 2 - frame.left - ex,
+                 r.top + r.height / 2 - frame.top - ey));
+  }
+  return { crossings, sides, dropped, drawn, dotErr };
+}
+
+/** What a frame costs with these labels up, so the cache can be held to it. */
+async function frameCost(frames = 60) {
+  const c = map.camera();
+  map.bench.profile(true);
+  for (let i = 0; i < frames; i++) {
+    map.setView(c.lat + Math.sin(i / 7) * 0.01, c.lon + i * 0.002, c.zoom);
+    await new Promise(requestAnimationFrame);
+  }
+  const p = map.bench.profile();
+  map.bench.profile(false);
+  map.setView(c.lat, c.lon, c.zoom);
+  return { n: p.frames, avg: p.drawMs / Math.max(1, p.frames), max: p.maxDrawMs };
+}
+
+async function labelTest() {
+  const out = $('#testOut');
+  out.textContent = 'Kjører…';
+
+  // A phone, exactly: the defect was measured at 390x844 and the numbers only
+  // mean anything at a stated size.
+  const frame = $('#frame');
+  const hadStyle = frame.getAttribute('style') || '';
+  const hadClass = frame.className;
+  const hadTheme = document.documentElement.getAttribute('data-theme');
+  frame.className = 'frame';
+  frame.style.cssText = 'width:390px;height:844px;max-width:none;max-height:none;'
+                      + 'aspect-ratio:auto;border-radius:22px';
+  map.invalidate();
+  await wait(500);            // past the .frame width/height transition
+  let w = 0, h = 0;
+
+  const rows = [];
+  let bad = 0, bugBad = 0, worstDot = 0, sidesTaken = [], dropList = [];
+  let cost = null;
+
+  for (const theme of ['light', 'dark']) {
+    document.documentElement.setAttribute('data-theme', theme);
+    map.refreshTheme();
+    for (const fixed of [true, false]) {
+      map.bench.setLabelSides(fixed);
+      ({ w, h } = await labelScene());
+      const a = labelAudit();
+      if (fixed) {
+        bad += a.crossings.length;
+        worstDot = Math.max(worstDot, a.dotErr);
+        if (theme === 'light') { sidesTaken = a.sides; dropList = a.dropped; cost = await frameCost(); }
+      } else {
+        bugBad += a.crossings.length;
+      }
+      rows.push(`${theme}, ${fixed ? 'med plassering' : 'med feilen tilbake'}: `
+        + `${a.drawn} etiketter, ${a.crossings.length} utenfor rammen`
+        + (a.crossings.length ? `<br><small>${a.crossings.slice(0, 4).join('<br>')}</small>` : ''));
+    }
+  }
+
+  map.bench.setLabelSides(true);
+  document.documentElement.setAttribute('data-theme', hadTheme || 'light');
+  map.refreshTheme();
+  frame.className = hadClass;
+  frame.setAttribute('style', hadStyle);
+  map.invalidate();
+
+  const verdict = bad === 0 && bugBad > 0
+    ? `<b style="color:#55704c">Ingen etikett utenfor rammen</b> ved ${w}×${h}`
+      + ` — og med feilen tilbake: <b>${bugBad}</b>, så testen kan faktisk feile.`
+    : bad === 0
+      ? '<b style="color:#a8322d">Testen beviser ingenting</b>'
+        + ' — feilen tilbake ga også null utenfor rammen.'
+      : `<b style="color:#a8322d">${bad} etiketter utenfor rammen</b> ved ${w}×${h}.`;
+
+  out.innerHTML = `${verdict}<br>${rows.join('<br>')}`
+    + `<br>Prikken står stille: største avvik <b>${worstDot.toFixed(2)} px</b>.`
+    + (cost ? `<br>Ramme: <b>${cost.avg.toFixed(2)} ms</b> snitt, `
+            + `${cost.max.toFixed(1)} ms verst, over ${cost.n} bilder.` : '')
+    + `<br><small>${sidesTaken.join(' · ')}`
+    + (dropList.length ? `<br>droppet: ${dropList.join(', ')}` : '')
+    + '</small>';
+  console.table(sidesTaken);
+}
+
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /** Resolve once the camera has stopped moving. */
@@ -483,6 +732,7 @@ document.addEventListener('click', (ev) => {
   if (b.dataset.do === 'panTest') return void panTest();
   if (b.dataset.do === 'seekTest') return void seekTest();
   if (b.dataset.do === 'paletteTest') return void paletteTest();
+  if (b.dataset.do === 'labelTest') return void labelTest();
   if (b.dataset.do && DEMOS[b.dataset.do]) DEMOS[b.dataset.do]();
 });
 

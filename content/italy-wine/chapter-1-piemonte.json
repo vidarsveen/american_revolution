@@ -211,8 +211,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedOpen",
-       "gainDb": -9
+       "id": "bedWarm"
       },
       {
        "on": "start",
@@ -381,8 +380,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedStill",
-       "gainDb": -10
+       "id": "bedPatient"
       },
       {
        "on": "start",
@@ -562,9 +560,9 @@
      "cues": [
       {
        "on": "start",
-       "do": "sound.music",
-       "id": "bedStill",
-       "gainDb": -11
+       "do": "sound.ambience",
+       "id": "vineyard",
+       "gainDb": -15
       },
       {
        "on": "start",
@@ -794,8 +792,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedSolemn",
-       "gainDb": -10
+       "id": "bedMist"
       },
       {
        "on": "start",
@@ -916,8 +913,8 @@
       },
       {
        "on": {
-        "no": "word:Langhe",
-        "en": "word:Langhe"
+        "no": "word:bakkene",
+        "en": "word:hills"
        },
        "do": "map.fitPlaces",
        "places": [
@@ -925,7 +922,7 @@
         "barolo",
         "barbaresco"
        ],
-       "over": 4.2
+       "over": 3.0
       },
       {
        "on": {
@@ -958,8 +955,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedStill",
-       "gainDb": -10
+       "id": "bedPatient"
       },
       {
        "on": "start",
@@ -1051,6 +1047,15 @@
         "en": "years it will keep"
        },
        "side": "red"
+      },
+      {
+       "on": {
+        "no": "word:flaska",
+        "en": "word:bottle"
+       },
+       "do": "sound.play",
+       "id": "corkDraw",
+       "gainDb": -8
       }
      ],
      "gapAfter": 1.35
@@ -1139,8 +1144,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedSolemn",
-       "gainDb": -10
+       "id": "bedHollow"
       },
       {
        "on": "start",
@@ -1226,6 +1230,12 @@
       "en": "Barolo must be held at least thirty-eight months before sale. At least eighteen of them in wood."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "sound.ambience",
+       "id": "cellar",
+       "gainDb": -15
+      },
       {
        "on": {
         "no": "word:trettiåtte",
@@ -1372,8 +1382,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedOpen",
-       "gainDb": -9
+       "id": "bedLilt"
       },
       {
        "on": "start",
@@ -1427,6 +1436,15 @@
        "do": "fact.show",
        "kind": "grape",
        "id": "barbera"
+      },
+      {
+       "on": {
+        "no": "word:Barbera",
+        "en": "word:Barbera"
+       },
+       "do": "sound.play",
+       "id": "pour",
+       "gainDb": -8
       }
      ],
      "gapAfter": 0.9
@@ -1554,6 +1572,15 @@
         "no": "Typisk alkoholstyrke.",
         "en": "Typical alcoholic strength."
        }
+      },
+      {
+       "on": {
+        "no": "word:perlende",
+        "en": "word:fizzing"
+       },
+       "do": "sound.play",
+       "id": "fizz",
+       "gainDb": -8
       }
      ],
      "gapAfter": 0.9

@@ -19,6 +19,7 @@ of strings and let the caller decide whether it fails a build.
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import unicodedata
@@ -32,6 +33,7 @@ CONTENT = os.path.join(ROOT, "content")
 # nothing in the browser.
 MANIFEST_PATH = os.path.join(ROOT, "engine", "verbs.json")
 SOUND_LIB = os.path.join(ROOT, "sound", "library.js")
+MAP_INDEX = os.path.join(ROOT, "map", "index.js")
 
 try:
     with open(MANIFEST_PATH, encoding="utf-8") as fh:
@@ -190,6 +192,221 @@ def cue_time(cue: dict, tb, lang: str):
 
 
 # ------------------------------------------------------------------
+# the camera — must agree with map/index.js and engine/scenes/map.js
+# ------------------------------------------------------------------
+#
+# THIS IS A SECOND IMPLEMENTATION OF A JAVASCRIPT FORMULA, and that is the
+# same burden the anchor grammar above already carries: two implementations,
+# one of them quietly wrong, and a chapter that validates clean and then does
+# the wrong thing in the browser. It is here for a reason the anchor grammar
+# does not have — a camera flight's duration is usually NOT AUTHORED. `over`
+# is optional on map.flyTo, map.fitRoute and map.fitPlaces, and when it is
+# absent the map works the duration out from how far the camera has to
+# travel. So there is no number in the chapter to multiply out, and the
+# defect the user actually sees — "zooming into a map it stops dead and we
+# jump to the next chapter" — is invisible to reading.
+#
+# It is kept in step MECHANICALLY, not by discipline: flight_constants()
+# below reads the numbers out of map/index.js and fails loudly if the
+# expressions there no longer have the shape this file reimplements. Change
+# autoOver() and this check tells you to come here, the way builtin_effects()
+# reads the catalogue rather than copying it.
+#
+# What is NOT modelled, and why each is safe to leave out:
+#   · `offset` on flyTo — no cue passes one; engine/scenes/map.js:295 does not
+#     forward it.
+#   · prefers-reduced-motion — a flight becomes a cut, so it always fits.
+#   · the exact stage size (below).
+
+WORLD = 256                     # world pixels at zoom 0, as map/geo.js
+MAX_LAT = 85.0511287798
+
+# The phone, because the app is mobile first and a phone is the worst case:
+# the smaller the viewport, the more screens wide a given move is, and
+# `screens` is what autoOver() charges for. Measured, not guessed — the
+# number is engine/scenes/map.js's own ("the map is 393x742 while the part
+# you can actually see is more like 393x540"), which is a 393x852 viewport
+# less the topbar and the transport.
+#
+# Precision here matters much less than it looks: the stage size enters
+# autoOver() twice, as max(w, h) in `screens` and through the fit zoom in
+# `dz`, and a 40 px error in either moves a computed `over` by under 0.06 s
+# against margins measured in seconds.
+STAGE_W, STAGE_H = 393.0, 742.0
+
+# What the furniture covers at the bottom of that stage — the caption slot
+# and the transport, the two framePadding() measures off the real elements.
+# 742 - 540, from the same comment.
+FURNITURE_BOTTOM = 202.0
+
+
+def clampf(v, lo, hi):
+    return lo if v < lo else hi if v > hi else v
+
+
+def project(lon, lat):
+    """[lon, lat] -> world pixels at zoom 0. map/geo.js project()."""
+    x = (lon + 180.0) / 360.0 * WORLD
+    phi = clampf(lat, -MAX_LAT, MAX_LAT) * math.pi / 180.0
+    y = (1 - math.log(math.tan(phi) + 1 / math.cos(phi)) / math.pi) / 2 * WORLD
+    return x, y
+
+
+def unproject(x, y):
+    lon = x / WORLD * 360.0 - 180.0
+    n = math.pi - 2 * math.pi * y / WORLD
+    lat = 180.0 / math.pi * math.atan(0.5 * (math.exp(n) - math.exp(-n)))
+    return lon, lat
+
+
+def scale_for(zoom):
+    return 2.0 ** zoom
+
+
+_FLIGHT_SHAPE = (
+    # const s = scaleFor(Math.min(from.zoom, to.zoom));
+    r"const s = scaleFor\(Math\.min\(from\.zoom, to\.zoom\)\);",
+    # const screens = (Math.hypot(bx - ax, by - ay) * s) / Math.max(size.w, size.h, 1);
+    r"const screens = \(Math\.hypot\(bx - ax, by - ay\) \* s\)"
+    r" / Math\.max\(size\.w, size\.h, 1\);",
+    # const dz = Math.abs(to.zoom - from.zoom);
+    r"const dz = Math\.abs\(to\.zoom - from\.zoom\);",
+)
+
+_FLIGHT_RETURN = re.compile(
+    r"return clamp\(speed \* \(([\d.]+) \+ ([\d.]+) \* Math\.min\(screens, ([\d.]+)\)"
+    r" \+ ([\d.]+) \* dz\), ([\d.]+), ([\d.]+)\);")
+
+_FLY_OVER = re.compile(r"^\s*flyOver = ([\d.]+),", re.M)
+
+
+def flight_constants() -> tuple[dict, list[str]]:
+    """autoOver()'s numbers, read out of map/index.js.
+
+    Returns ({speed, base, per_screen, screen_cap, per_zoom, lo, hi}, problems).
+    A problem here is not a broken chapter — it is this file having gone stale
+    against the module it copies, which is exactly the failure that made
+    engine/verbs.json the single source of truth for the cue vocabulary. It is
+    reported as a problem anyway, because a camera check computing durations
+    from the wrong formula is worse than no camera check.
+    """
+    try:
+        with open(MAP_INDEX, encoding="utf-8") as fh:
+            src = fh.read()
+    except OSError:
+        return {}, [f"cannot read {MAP_INDEX} — the camera check needs autoOver()"]
+
+    problems = []
+    for pattern in _FLIGHT_SHAPE:
+        if not re.search(pattern, src):
+            problems.append(
+                f"map/index.js autoOver() no longer contains `{pattern}` — the camera "
+                f"check in tools/scriptlib.py reimplements that formula and must be "
+                f"updated with it")
+    ret = _FLIGHT_RETURN.search(src)
+    speed = _FLY_OVER.search(src)
+    if not ret:
+        problems.append(
+            "map/index.js autoOver()'s return no longer matches "
+            "`clamp(speed * (a + b * Math.min(screens, c) + d * dz), lo, hi)` — "
+            "update AUTO_OVER in tools/scriptlib.py to match")
+    if not speed:
+        problems.append("map/index.js no longer declares `flyOver = <seconds>`")
+    if problems:
+        return {}, problems
+
+    base, per_screen, screen_cap, per_zoom, lo, hi = (float(g) for g in ret.groups())
+    return {
+        "speed": float(speed.group(1)),
+        "base": base, "per_screen": per_screen, "screen_cap": screen_cap,
+        "per_zoom": per_zoom, "lo": lo, "hi": hi,
+    }, []
+
+
+def auto_over(frm, to, k, size=(STAGE_W, STAGE_H)) -> float:
+    """How long the map will take to fly `frm` -> `to`, in seconds.
+
+    `frm` and `to` are (lat, lon, zoom). `k` is flight_constants().
+    map/index.js:814 autoOver().
+    """
+    s = scale_for(min(frm[2], to[2]))
+    ax, ay = project(frm[1], frm[0])
+    bx, by = project(to[1], to[0])
+    screens = math.hypot(bx - ax, by - ay) * s / max(size[0], size[1], 1.0)
+    dz = abs(to[2] - frm[2])
+    return clampf(
+        k["speed"] * (k["base"] + k["per_screen"] * min(screens, k["screen_cap"])
+                      + k["per_zoom"] * dz),
+        k["lo"], k["hi"])
+
+
+def ease_flight(frm, to, t: float):
+    """Where the camera is `t` of the way through a flight. stepFlight()."""
+    t = clampf(t, 0.0, 1.0)
+    e = 4 * t * t * t if t < 0.5 else 1 - pow(-2 * t + 2, 3) / 2
+    return (frm[0] + (to[0] - frm[0]) * e,
+            frm[1] + (to[1] - frm[1]) * e,
+            frm[2] + (to[2] - frm[2]) * e)
+
+
+def frame_padding(size=(STAGE_W, STAGE_H)) -> dict:
+    """engine/scenes/map.js framePadding(), for a phone with nothing over the map.
+
+    The real one measures the caption, the transport and any portrait or plate
+    off the DOM. A plate over a camera move is already a failure by another
+    check (check_plates_over_map), so the case worth modelling is the plain
+    one: an even edge, plus the furniture along the bottom.
+    """
+    w, h = size
+    edge = max(20.0, min(w * 0.07, h * 0.07))
+    return {
+        "top": min(edge, h * 0.34),
+        "right": min(edge, w * 0.42),
+        "bottom": min(max(edge, FURNITURE_BOTTOM), h * 0.42),
+        "left": min(edge, w * 0.42),
+    }
+
+
+def fit_bounds(coords, zoom_min, max_z, size=(STAGE_W, STAGE_H)):
+    """Where fitCoords() puts the camera. map/index.js:873 fitBounds().
+
+    Returns (lat, lon, zoom). `coords` is a list of [lat, lon].
+    """
+    w, h = size
+    s = min(c[0] for c in coords)
+    n = max(c[0] for c in coords)
+    west = min(c[1] for c in coords)
+    east = max(c[1] for c in coords)
+
+    x0, y1 = project(west, s)
+    x1, y0 = project(east, n)
+    p = frame_padding(size)
+    avail_w = max(1.0, w - p["left"] - p["right"])
+    avail_h = max(1.0, h - p["top"] - p["bottom"])
+
+    # A single point has no extent, so log2(avail / 0) is infinite; the real
+    # code gets +Infinity and clamps it to max_z, which is the behaviour
+    # fitPlaces() went out of its way to avoid for one place. Match it.
+    zx = math.log2(avail_w / abs(x1 - x0)) if abs(x1 - x0) > 1e-12 else math.inf
+    zy = math.log2(avail_h / abs(y1 - y0)) if abs(y1 - y0) > 1e-12 else math.inf
+    z = clampf(min(zx, zy), zoom_min, max_z)
+
+    sc = scale_for(z)
+    cx = (x0 + x1) / 2 + (w / 2 - (p["left"] + avail_w / 2)) / sc
+    cy = (y0 + y1) / 2 + (h / 2 - (p["top"] + avail_h / 2)) / sc
+    lon, lat = unproject(cx, cy)
+    return (lat, lon, z)
+
+
+def map_conf(pack: str) -> dict:
+    """pack.json's map block with the defaults engine/scenes/map.js fills in."""
+    m = (load_json(os.path.join(pack_dir(pack), "pack.json")) or {}).get("map") or {}
+    zoom = {"min": 2, "max": 15, "default": 10.5, "maxFit": 13.5, **(m.get("zoom") or {})}
+    return {"home": m.get("home"), "zoom": zoom,
+            "detail": m.get("detail"), "basemap": m.get("basemap")}
+
+
+# ------------------------------------------------------------------
 # reference pools
 # ------------------------------------------------------------------
 
@@ -214,6 +431,65 @@ def builtin_effects() -> set[str]:
     end = src.find("export const EFFECTS", start)
     block = src[start:end if end > 0 else len(src)]
     return set(re.findall(r"^\s{2}(\w+):\s*\{\s*kind:", block, re.M))
+
+
+def effect_years() -> dict[str, tuple[int, int]]:
+    """
+    The span in which each synthesised effect's subject existed.
+
+    Read out of sound/library.js for the same reason the names are: two
+    copies of the catalogue is the engine/verbs.json mistake waiting to
+    happen. An entry with no `years` is timeless — wind, a crowd, the sea —
+    and is simply absent from this map.
+
+    This is what `content/roman-empire/chapter-44bc-octavian.json` needed
+    and did not have: three cannon, a musket, two volleys and a church bell
+    in 44 BC, and every one of them validating clean because nothing ever
+    asked when gunpowder was invented.
+    """
+    try:
+        with open(SOUND_LIB, encoding="utf-8") as fh:
+            src = fh.read()
+    except OSError:
+        return {}
+    start = src.find("const CATALOGUE = {")
+    if start < 0:
+        return {}
+    end = src.find("export const EFFECTS", start)
+    block = src[start:end if end > 0 else len(src)]
+    out = {}
+    for name, lo, hi in re.findall(
+            r"^\s{2}(\w+):\s*\{[^\n]*?years:\s*\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]", block, re.M):
+        out[name] = (int(lo), int(hi))
+    return out
+
+
+def _year(value) -> int | None:
+    """The year out of an era date. '-0044-01-01' is 44 BC, not minus one."""
+    m = re.match(r"\s*(-?)(\d{1,4})", str(value or ""))
+    if not m:
+        return None
+    y = int(m.group(2))
+    return -y if m.group(1) else y
+
+
+def pack_era(pack: str) -> tuple[int, int] | None:
+    """(first year, last year) from the pack's declared era, or None."""
+    era = (load_json(os.path.join(pack_dir(pack), "pack.json")) or {}).get("era") or {}
+    lo, hi = _year(era.get("start")), _year(era.get("end"))
+    if lo is None or hi is None:
+        return None
+    return (min(lo, hi), max(lo, hi))
+
+
+def sound_years(pack: str) -> dict[str, tuple[int, int]]:
+    """Catalogue year spans, with the pack's own recordings layered on top."""
+    years = effect_years()
+    for name, entry in (load_json(os.path.join(pack_dir(pack), "sound.json")) or {}).items():
+        span = (entry or {}).get("years")
+        if isinstance(span, list) and len(span) == 2:
+            years[name] = (int(span[0]), int(span[1]))
+    return years
 
 
 def region_names(pack: str, chapter: dict) -> tuple[set[str], list[str]]:

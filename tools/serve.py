@@ -115,6 +115,22 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if status.startswith(("4", "5")):
             print(f"  {status}  {args[0]}")
 
+    def handle_error(self, request, client_address):
+        """A browser hanging up mid-response is not an error here.
+
+        It is what a media element DOES: it asks for a range, decides it has
+        enough, and drops the socket. Python's default prints a full traceback
+        per abort, so playing one chapter buries the console — and a check run
+        buries the failure it was supposed to be reporting under forty
+        ConnectionAbortedErrors from the server thread. Anything else still
+        raises, loudly, because a real server fault must not hide in here."""
+        import sys
+        exc = sys.exc_info()[1]
+        if isinstance(exc, (ConnectionAbortedError, ConnectionResetError,
+                            BrokenPipeError)):
+            return
+        super().handle_error(request, client_address)
+
 
 def lan_address() -> str | None:
     try:

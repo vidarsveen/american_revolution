@@ -46,9 +46,8 @@ SW_EXTRA: list[tuple[str, str]] = [
     ("./manifest.webmanifest", "linked from index.html by rel=manifest, not by a script or style tag"),
     ("./engine/verbs.json", "fetched by checkVerbManifest() through a default argument"),
     ("./assets/geo/world-110m.json",
-     "the coarse world level only — first paint needs it. The 50m, 10m and pack-detail\n"
-     "  // levels are megabytes and are fetched when the camera asks for them; networkFirst\n"
-     "  // caches each one the first time it is used."),
+     "the coarse world level. Every pack's level ladder starts here, and it is the\n"
+     "  // fallback when a pack declares none at all (DEFAULT_LEVELS in map/basemap.js)."),
     ("./assets/fonts/fraunces-latin.woff2", "referenced from css/fonts.css by url(), which is not walked"),
 ]
 
@@ -61,13 +60,68 @@ PACK_ROOT_GLOBS = ("chapter-*.json", "timing.*.json")
 #   audio/**          ~7.6 MB across two languages. Scene files are cached by
 #                     the fetch handler the first time they are played, so
 #                     anything you have listened to works offline afterwards.
-#   geo/detail.json   megabytes of close-in coastline, fetched above zoom 9.5.
+#   geo/detail.json   see THE GROUND, below — the one entry here that is a
+#                     judgement rather than an obvious no.
 #   sound/*.wav       recorded effects, fetched on demand; the synthesised
 #                     catalogue in sound/library.js needs no files at all.
 #   *-sources.json    build inputs for fetch-media.py and gen-sound.py, never
 #                     read by the app.
 PACK_SKIP_DIRS = {"audio", "sound"}
 PACK_SKIP_FILES = {"detail.json"}
+
+
+# ---------------------------------------------------------------- THE GROUND
+#
+# A pack's basemap LEVELS are precached; its detail.json is not. That split is
+# a decision, so here is the reasoning, because the alternative reads as an
+# oversight either way round.
+#
+# What was wrong before: PRECACHE held world-110m and nothing else, and
+# world-110m is the level NO pack ever opens on. levelFor() picks by zoom, and
+# the four packs' default zooms are 10.5, 8.4, 5.6 and 5.0 — which resolve to
+# atlantic-10m, world-50m, mediterranean-10m and world-50m. drawBasemap()
+# fills the buffer with water and returns early while the level it wants is
+# still loading, so on a cold cache the first frame of every chapter in the
+# app is an empty sea. That is not "the close-in detail arrives late"; that is
+# the ground missing from the establishing shot.
+#
+#   world-50m           894 KB   every pack (all four declare it)
+#   atlantic-10m      1 322 KB   american-revolution
+#   mediterranean-10m   973 KB   roman-empire AND italy-wine
+#                     ---------
+#                     3 189 KB   for all four packs, because two share one
+#
+# The pack DETAIL files are a different trade and the answer is no:
+#
+#   content/american-revolution/geo/detail.json   2 066 KB
+#   content/italy-wine/geo/detail.json            1 551 KB
+#   content/norway-1940/geo/detail.json           2 840 KB
+#                                                ---------
+#                                                 6 457 KB
+#
+#   · It is per-pack and never shared. Precaching all three means downloading
+#     two packs' close-in coastline that this reader will never open, and the
+#     one they do open is the cheapest third of it.
+#   · It is only reached above zoom 9.2–9.5, i.e. after the story has flown
+#     in, not at first paint. A level is needed for the frame to be drawn at
+#     all; detail is needed for it to be drawn well.
+#   · It does not fix the defect it looks like it fixes. The stall is
+#     map/index.js starting the fetch from inside draw() and re-baking the
+#     whole ground when it lands — the parse and the bake happen whether the
+#     bytes came off the network or out of the cache. The fix is to prefetch
+#     it at chapter load, beside the other one-wave fetches, so the bake is
+#     done before the camera moves. That is a per-chapter fetch that knows
+#     which pack you opened; a blanket precache is the same job done worse,
+#     for every pack, on a first visit.
+#   · Nothing is lost offline: the fetch handler caches each detail file the
+#     first time it is used, so a chapter you have watched still works.
+#
+# Worth knowing while reading the totals above: PRECACHE is already ~29 MB,
+# and ~24 MB of that is every pack's media/ pictures. Against that the 3.2 MB
+# of geometry is 11% for the ground being on screen at all, and the 6.5 MB of
+# detail would be 22% for three packs' worth of coastline you will not look
+# at. The 24 MB of pictures is its own question and not this tool's to answer
+# today — BACKLOG.md.
 
 # Not shipped: packs.dev.json lists what EXISTS for the benches under
 # dev/, which is a different question from what this build is about.
@@ -85,6 +139,30 @@ def packs() -> list[str]:
         return list(json.loads(listed.read_text(encoding="utf-8")))
     return sorted(p.name for p in content.iterdir()
                   if p.is_dir() and not p.name.startswith("_"))
+
+
+def pack_levels(pack: str) -> list[str]:
+    """The basemap levels this pack's pack.json declares, as './assets/geo/…'.
+
+    map/basemap.js fetches `${base}/${name}.json`, and engine/scenes/map.js
+    hands it pack.json's map.basemap.levels. Read from there rather than
+    listing assets/geo, so a level nobody declares is not shipped and a pack
+    that starts declaring one gets it without anybody remembering to.
+    """
+    import json
+    conf = json.loads(
+        (Path(ROOT) / "content" / pack / "pack.json").read_text(encoding="utf-8")
+    ) if (Path(ROOT) / "content" / pack / "pack.json").exists() else {}
+    levels = ((conf.get("map") or {}).get("basemap") or {}).get("levels") or []
+    out = []
+    for lv in levels:
+        name = (lv or {}).get("name")
+        if not name:
+            continue
+        p = Path(ROOT) / "assets" / "geo" / f"{name}.json"
+        if p.exists():
+            out.append("./" + rel_posix(p))
+    return out
 
 
 def pack_files(pack: str) -> list[str]:
@@ -119,6 +197,7 @@ def precache() -> list[str]:
         seen.add(url)
     for pack in packs():
         seen.update(pack_files(pack))
+        seen.update(pack_levels(pack))
     # sw.js must not cache itself: the browser fetches it fresh, and a cached
     # copy is how a service worker becomes impossible to update.
     seen.discard("./sw.js")
@@ -236,9 +315,18 @@ def main() -> int:
     out = splice(src, block)
 
     n_pack = sum(1 for u in urls if u.startswith("./content/"))
+    # Bytes, not just a count. A first visit downloads this over whatever
+    # connection the reader is on, and a number nobody prints is a number
+    # nobody weighs — which is how the pictures got to 24 MB unnoticed.
+    total = 0
+    for u in urls:
+        try:
+            total += (Path(ROOT) / u[2:]).stat().st_size
+        except OSError:
+            pass
     summary = (f"{len(urls)} files precached "
                f"({len(urls) - n_pack} app, {n_pack} pack), "
-               f"VERSION {version_for(urls)}")
+               f"{total / 1e6:.1f} MB, VERSION {version_for(urls)}")
 
     if args.check:
         if out.replace("\r\n", "\n") == src.replace("\r\n", "\n"):

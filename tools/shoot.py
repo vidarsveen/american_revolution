@@ -60,6 +60,48 @@ def chapter_map():
 
 CHAPTERS = chapter_map()
 
+
+# Which chapter each set of moments in MOMENTS below is actually about.
+#
+# The keys of MOMENTS are nicknames a person chose, and two things were being
+# inferred from them that are not in them. The pack was inferred as "the only
+# one" — true when this was written, false since content/packs.json grew to
+# four, and the reason the tool STOPPED WORKING ENTIRELY: it opened the server
+# root with no `?emne=`, the app answered with the subject chooser, `#story-map`
+# never appeared, and every invocation died on a twenty-second timeout. And the
+# chapter was inferred from the ORDER of this table, matched against the order
+# of rows on the cover, which is two lists nobody keeps in step.
+#
+# Both are declared now. A nickname is a nickname; it should not be load-bearing.
+MOMENT_CHAPTER = {
+    "lexington":  "chapter-1775-04-19",
+    "bunkerhill": "chapter-1775-06-17",
+}
+
+
+def pack_for(moments_key: str) -> str | None:
+    """The subject a set of moments belongs to, via the chapter it names."""
+    cid = MOMENT_CHAPTER.get(moments_key, moments_key)
+    ref = CHAPTERS.get(cid)
+    return ref.split("/", 1)[0] if ref else None
+
+
+def cover_row_for(moments_key: str) -> int:
+    """Which row of the cover's chapter list opens it.
+
+    Read off the pack's own chapter order rather than off the order of MOMENTS,
+    which is what it used to use. The cover lists what pack.json declares; this
+    table lists what somebody happened to write moments for.
+    """
+    cid = MOMENT_CHAPTER.get(moments_key, moments_key)
+    pack = pack_for(moments_key)
+    if not pack:
+        return 0
+    mf = os.path.join(ROOT, "content", pack, "pack.json")
+    with open(mf, encoding="utf-8") as fh:
+        ids = [c["id"] for c in json.load(fh).get("chapters", [])]
+    return ids.index(cid) if cid in ids else 0
+
 # Each moment is (key, beat id, seconds into that beat, caption). Chosen to
 # cover every kind of thing the stage can put on screen.
 #
@@ -294,7 +336,14 @@ def main():
     made = []
     t0 = time.time()
     with sync_playwright() as pw:
-        browser, page, errors = open_page(pw, url, args.lang, args.theme,
+        pack = pack_for(args.chapter)
+        if not pack:
+            print(f"cannot tell which subject '{args.chapter}' belongs to — "
+                  f"known: {', '.join(sorted(CHAPTERS))}", file=sys.stderr)
+            return 1
+        # `?emne=` or the chooser answers instead of the chapter. See pack_for().
+        browser, page, errors = open_page(pw, f"{url}/?emne={pack}",
+                                          args.lang, args.theme,
                                           not args.browser_chrome)
         vp = page.evaluate('[innerWidth, innerHeight, devicePixelRatio]')
         print(f'viewport {vp[0]}x{vp[1]} @{vp[2]}x')
@@ -328,7 +377,7 @@ def shoot_moments(page, chapter, only, outdir):
                   if m[0] in only or any(m[0].startswith(o + '-') or m[0] == o for o in only)]
     # The cover lists the chapters in the order engine/story.js declares them,
     # which is the order of this table.
-    pick = list(MOMENTS).index(chapter)
+    pick = cover_row_for(chapter)
     if pick:
         page.evaluate(OPEN_CHAPTER, pick)
         page.wait_for_timeout(2500)

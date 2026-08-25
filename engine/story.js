@@ -6,8 +6,8 @@ import { loadChapter } from './script.js';
 import { allChapters, chaptersOf } from './pack.js';
 import { mountDepth, unmountDepth, coach } from './depth.js';
 import { mapScene, getStoryMap } from './scenes/map.js';
-import { mountTransition, unmountTransition, LEAD_IN_MS, IN_MS } from './transition.js';
-import { mountEnding, unmountEnding } from './ending.js';
+import { mountTransition, unmountTransition, SPEAK_AFTER_MS, IN_MS, TURN_MS } from './transition.js';
+import { mountEnding, unmountEnding, closeVeil, liftVeil } from './ending.js';
 import { derivePalette, toneFactions, applyPaletteVars } from '../core/palette.js';
 import { isDark } from '../core/theme.js';
 import { checkVerbManifest, mountStage } from './stage.js';
@@ -130,9 +130,15 @@ export async function initStory(container, allPeople, language, pack) {
  * the two panels the transport puts on the story root — so teardown empties
  * the hosts explicitly. A half-cleaned switch shows up as two transports and
  * a map drawing under a map, which is not subtle but is easy to ship.
+ *
+ * `under` is the element the whole rebuild is happening BEHIND — the end
+ * card's veil, during a chapter turn. It is the one thing on the story root
+ * that must survive teardown, and it is lifted back to the top of the stack
+ * afterwards so the new chapter's own card cannot get in front of it. See
+ * turnToChapter().
  */
-async function openChapter(index) {
-  teardown();
+async function openChapter(index, { under = null } = {}) {
+  teardown({ under });
   current = index;
 
   const cover = view.querySelector('.story__cover');
@@ -170,9 +176,11 @@ async function openChapter(index) {
   // ON the last picture, so resetStage() must not be able to reach it.
   ending = mountEnding(view.querySelector('.story'), (what) => {
     if (what === 'next' && current + 1 < CHAPTERS.length) {
-      ending.cancel();
-      fadeOutSound();
-      openChapter(current + 1);
+      // Not ending.cancel(): the card is not being dismissed, it is becoming
+      // the device that covers the change. Only this door gets the turn —
+      // replay and the overview are going somewhere the viewer can already
+      // see, and neither is a chapter arriving.
+      turnToChapter(current + 1);
       return;
     }
     ending.cancel();
@@ -279,7 +287,9 @@ async function openChapter(index) {
   // over the outgoing picture. Both are properties of the device in
   // engine/transition.js; the player is told them and knows nothing else
   // about it.
-  player.leadInMs = LEAD_IN_MS;
+  // Silence measured from the rebuild, not from the top of the turn -- the
+  // player awaits coverMs first. See SPEAK_AFTER_MS in transition.js.
+  player.leadInMs = SPEAK_AFTER_MS;
   player.coverMs = IN_MS;
 
   chrome = mountChrome(
@@ -298,6 +308,12 @@ async function openChapter(index) {
 
   TITLES[chapter.id] = chapter.title;
   showCover('start');
+  // Back on top of the stack. The new chapter has just appended its own scene
+  // card and end card to this same root, and `.story-end` and the outgoing
+  // veil are the same class at the same z-index — so among equals it is DOM
+  // order that decides, and a veil left behind them is one the new chapter
+  // can draw in front of.
+  if (under?.parentNode) under.parentNode.appendChild(under);
   return { player, chapter };
 }
 
@@ -318,13 +334,53 @@ function titleOf(c) {
   return TITLES[c.id] || pickLang(c.title) || c.id;
 }
 
+/**
+ * Chapter -> chapter, as a device instead of a gap.
+ *
+ *   t = 0      the end card's veil closes to opaque        --t-turn (1200 ms)
+ *   t = 1200   the next chapter is built behind it: the old one torn down,
+ *              the stage emptied, the map remounted, the cover put up
+ *   t = ...    the veil lifts onto that cover              --t-turn (1200 ms)
+ *
+ * The same two ramps as the scene turn, because it is the same event — the
+ * whole frame becoming something else — one scale up. What used to happen
+ * here was openChapter() straight off the tap: teardown() empties
+ * .story__stage while the end card is removed in the same breath, so the
+ * screen passed through a blank on its way to the next cover.
+ *
+ * It lands ON the cover and not through it, because a browser will not start
+ * audio without a gesture. The cover is where that gesture is, so it is the
+ * destination, not something to be got past.
+ *
+ * The middle is awaited rather than timed: loading a chapter is a fetch, and
+ * a veil that lifts before the thing behind it exists is the original bug
+ * with an extra step. A slow load simply holds the frame, which is what a
+ * frame is for.
+ */
+async function turnToChapter(index) {
+  const veil = closeVeil();
+  // The bed belongs to the chapter that is ending. It fades from here; the
+  // teardown behind the veil stops it outright a moment later.
+  fadeOutSound();
+  if (!veil) { await openChapter(index); return; }
+  await new Promise((r) => setTimeout(r, TURN_MS));
+  await openChapter(index, { under: veil });
+  liftVeil(veil);
+}
+
 function pickLang(field) {
   if (!field) return '';
   return typeof field === 'string' ? field : (field[lang] ?? field.no ?? field.en ?? '');
 }
 
-/** Undo everything openChapter() built, in the reverse order it built it. */
-function teardown() {
+/**
+ * Undo everything openChapter() built, in the reverse order it built it.
+ *
+ * `under` is exempt: it is the veil this teardown is happening behind, and
+ * it belongs to nothing here any more — closeVeil() detached it from
+ * engine/ending.js precisely so unmountEnding() below cannot reach it.
+ */
+function teardown({ under = null } = {}) {
   if (!player) return;
   unmountDepth();
   depth = null;
@@ -349,7 +405,9 @@ function teardown() {
     view.querySelector(sel).replaceChildren();
   }
   // The episode list carries .transcript too — it is the same sheet.
-  for (const el of story.querySelectorAll(':scope > .transcript')) el.remove();
+  for (const el of story.querySelectorAll(':scope > .transcript')) {
+    if (el !== under) el.remove();
+  }
 }
 
 /* ------------------------------------------------------------

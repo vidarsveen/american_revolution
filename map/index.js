@@ -13,8 +13,8 @@
    ============================================================ */
 
 import { project, unproject, scaleFor, clamp, metresPerPixel, WORLD } from './geo.js';
-import { loadLevel, levelFor, levelReady, preload, drawBasemap, registerDetail,
-         loadDetail, detailWanted, creditFor } from './basemap.js';
+import { loadLevel, levelFor, levelReady, preload, bakeSteps, registerDetail,
+         loadDetail, detailWanted, creditFor, setCulling } from './basemap.js';
 import { loadRegions, fromGeoJSON } from './regions.js';
 import { tintFor } from './tint.js';
 import {
@@ -43,7 +43,13 @@ export function createMap(host, opts = {}) {
     flyOver = 2.8,
     detail = null,
     lang = 'no',
+    /* How coarsely the zoom a bake is taken AT is rounded, in zoom levels.
+       Not a literal buried in paintGround, because a later phase reads it
+       from a pack's style.json (`camera.quantise`) along with the rest of
+       the numbers. 0 turns it off. See bakeZoom(). */
+    bakeQuantise = 0.5,
   } = opts;
+  let quantise = Math.max(0, Number(bakeQuantise) || 0);
 
   /* ---------------- DOM ---------------- */
   host.classList.add('atlas');
@@ -124,19 +130,87 @@ export function createMap(host, opts = {}) {
      viewport. Panning inside the margin is then a blit, not a walk over
      seventy thousand coastline points — which measured 20 ms a frame. The
      buffer is re-rendered only when the view leaves it, or the zoom or the
-     level changes. Same idea as a tile margin, without the tiles. */
-  const buf = document.createElement('canvas');
-  const bctx = buf.getContext('2d');
+     level changes. Same idea as a tile margin, without the tiles.
+
+     TWO buffers, not one. A bake that is merely late is invisible — the old
+     buffer keeps drawing, scaled, and softness for a beat reads as motion.
+     A bake that happens IN the frame is a hole in the movement, and measured
+     at 81 ms during a six-level flight before this. So a bake that is only
+     wanted, rather than needed, goes into the spare sheet on a timer and the
+     two are swapped when it lands.
+
+     The spare is allocated the first time one is deferred, because it is not
+     free: at a phone's 390x844 and the 0.3 margin it is about 21 MB, and iOS
+     will drop a canvas context rather than exceed its total. destroy() gives
+     both back. */
+  const sheets = [makeSheet()];
+  let sheetIx = 0;
   let bufState = null;
   const MARGIN = 0.3;
   /* How far the live zoom may drift from the zoom the ground was baked at
      before it has to be baked again. Within this the buffer is simply scaled,
      which is what every tile map does during a pinch: slightly soft while the
      camera is moving, sharp the moment it stops. Above it the softness starts
-     to read as blur rather than as motion. */
+     to read as blur rather than as motion.
+
+     It is the fallback now: while the zoom is CHANGING the bake zoom is
+     quantised instead (see bakeZoom), which bounds the drift to one step and
+     puts the re-bakes at predictable zooms rather than wherever a flight
+     happened to cross a threshold. It still applies when quantising is turned
+     off. */
   const ZOOM_SLACK = 0.55;
+
+  function makeSheet() {
+    const c = document.createElement('canvas');
+    return { c, x: c.getContext('2d') };
+  }
+
+  /* Making a slice of the bake actually happen before yielding.
+
+     Canvas commands are queued, so a slice that yields without forcing the
+     work through has moved nothing: the queue simply grows and empties all at
+     once in the blit. Reading a pixel back is the way to force it — but
+     reading back from the SHEET turns the sheet into a software canvas.
+     Chromium says so in the console, and it showed up as the bakes getting
+     half again as slow the moment slicing was turned on.
+
+     So the readback happens somewhere else. One pixel of the sheet is drawn
+     into a one-by-one scratch canvas and that is what is read: the scratch
+     cannot be rendered until the sheet is, so the sheet is forced through,
+     and the only canvas that gets demoted to software is one pixel wide. */
+  const probe = document.createElement('canvas');
+  probe.width = 1;
+  probe.height = 1;
+  const probeCtx = probe.getContext('2d', { willReadFrequently: true });
+
+  function flushSheet(sheet) {
+    probeCtx.drawImage(sheet.c, 0, 0, 1, 1, 0, 0, 1, 1);
+    probeCtx.getImageData(0, 0, 1, 1);
+  }
+
+  /* "Is the camera moving" is a question about the last few hundred
+     milliseconds, not about this frame.
+
+     It used to be `now() - camMovedAt < 140`, set inside the same draw() —
+     which is true whenever the camera changed on THIS frame and false
+     otherwise, with no memory of a flight and no memory of anything else. The
+     failure was not the obvious one: a bake that blocks for 81 ms leaves the
+     NEXT frame more than 140 ms after the last recorded move, so mid-flight
+     the map declared itself settled and took a second full sharp bake, one
+     frame after the first. A stall that causes the next stall.
+
+     Zoom is tracked apart from position because only the zoom makes the
+     buffer stale. Quantising during a pan would leave a still map soft for
+     no reason at all. */
+  const MOVE_MS = 400;
   let camMovedAt = -1e9;
+  let zoomMovedAt = -1e9;
   let settleTimer = 0;
+  let bakeTimer = 0;
+  /* Bumped when the ground gains geometry it did not have — the pack's
+     detail file arriving mid-flight. The buffer is then out of date but not
+     WRONG, which is the difference between a deferred bake and a stall. */
+  let groundStamp = 0;
 
   /* ---------------- camera ---------------- */
   const cam = { lon: center[1], lat: center[0], zoom };
@@ -175,6 +249,35 @@ export function createMap(host, opts = {}) {
   };
 
   const now = () => performance.now();
+
+  /* ---------------- the bench hook ----------------
+
+     dev/perf-lab.html asks one question — during a six-level flight, what is
+     the longest single frame and how many times was the ground re-baked — and
+     it has to ask it of THIS module rather than of a copy, because a copy
+     answers about itself. So the counters live here.
+
+     They are inert until a bench turns them on: `perfOn` is false in the app
+     and every read of performance.now() below is behind it, so production
+     pays one boolean test per frame and nothing else. Nothing in the module
+     reads these values back; they are write-only. */
+  let perfOn = false;
+  const perf = blankPerf();
+
+  function blankPerf() {
+    return {
+      frames: 0, drawMs: 0, maxDrawMs: 0, over32: 0,
+      bakes: 0, bakesSync: 0, bakeMs: 0, maxBakeMs: 0,
+      // The number that decides whether the map feels continuous: the longest
+      // the thread was held by ONE task of baking, sliced or not.
+      maxSliceMs: 0, slices: 0,
+      // Why a bake had to happen inside the frame. Named, because "three sync
+      // bakes" is not actionable and "two of them were the buffer no longer
+      // covering the viewport" is.
+      syncCover: 0, syncReady: 0, syncOther: 0, syncAt: [],
+      points: 0, features: 0, culled: 0,
+    };
+  }
 
   function progressOf(spec) {
     if (spec.instant || !spec.over) return 1;
@@ -288,6 +391,35 @@ export function createMap(host, opts = {}) {
   let levelWanted = null;
   let detailPending = false;
 
+  /**
+   * Pull the pack's close-in geometry in and bake it, once.
+   *
+   * Public, because the honest moment to start a 1.5-2.8 MB fetch is when the
+   * chapter loads and we already know which pack it is — not from inside
+   * draw(), on the first frame a flight crosses detail.minZoom, which is the
+   * one moment the main thread is busiest. engine/scenes/map.js calls this at
+   * mount; draw() still calls it as a fallback.
+   *
+   * Deliberately NOT awaited by the caller and deliberately not throwing: rule
+   * 3's shape one layer over. A harbour that fails to arrive is a coarser map,
+   * not a broken chapter.
+   *
+   * On arrival it bumps groundStamp rather than nulling bufState. Throwing the
+   * buffer away would mean the very next frame has nothing to draw and must
+   * bake synchronously — the arrival of a download turning into a stall. The
+   * buffer is merely out of date: still the right ground at the right zoom,
+   * just without the harbour in it. So it keeps drawing and the re-bake is
+   * deferred like any other drift.
+   */
+  function warmDetail() {
+    if (detailPending) return;
+    detailPending = true;
+    loadDetail()
+      .then(() => { groundStamp += 1; schedule(); })
+      .catch(() => {})
+      .finally(() => { detailPending = false; });
+  }
+
   function schedule() {
     if (pending) return;
     pending = true;
@@ -302,8 +434,21 @@ export function createMap(host, opts = {}) {
   }
 
   let lastCam = '';
+  let lastZoom = NaN;
 
   function draw() {
+    if (!perfOn) return drawFrame();
+    const t0 = now();
+    drawFrame();
+    const ms = now() - t0;
+    perf.frames += 1;
+    perf.drawMs += ms;
+    if (ms > perf.maxDrawMs) perf.maxDrawMs = ms;
+    if (ms > 32) perf.over32 += 1;
+    return undefined;
+  }
+
+  function drawFrame() {
     if (flight) stepFlight();
 
     // Tell the caller when the view actually moved. Fired from the draw
@@ -311,6 +456,7 @@ export function createMap(host, opts = {}) {
     // report the same way and nothing has to poll.
     const camKey = `${cam.lat.toFixed(5)},${cam.lon.toFixed(5)},${cam.zoom.toFixed(3)}`;
     if (camKey !== lastCam) {
+      if (cam.zoom !== lastZoom) { lastZoom = cam.zoom; zoomMovedAt = now(); }
       lastCam = camKey;
       camMovedAt = now();
       onCamera({ lat: cam.lat, lon: cam.lon, zoom: cam.zoom });
@@ -324,15 +470,13 @@ export function createMap(host, opts = {}) {
       levelWanted = want;
       loadLevel(want, geoBase).then(schedule).catch(() => {});
     }
-    // 1.6 MB of harbour is worth loading when you are standing in the harbour
-    // and not one moment before, so this waits for the camera to ask.
-    if (!detailPending && detailWanted(cam.zoom, cam.lon, cam.lat)) {
-      detailPending = true;
-      loadDetail()
-        .then(() => { bufState = null; schedule(); })
-        .catch(() => {})
-        .finally(() => { detailPending = false; });
-    }
+    // The camera has arrived somewhere the close-in geometry covers and we do
+    // not have it. This is the LATE path and it is a fallback: warmDetail()
+    // below is meant to have started it at chapter load, long before anyone
+    // flew anywhere. It stays because a pack that never calls warmDetail, or
+    // a camera that reaches the box by a route nobody expected, must still get
+    // its harbour.
+    if (detailWanted(cam.zoom, cam.lon, cam.lat)) warmDetail();
 
     const tl = topLeft();
     paintGround(tl, want);
@@ -407,73 +551,390 @@ export function createMap(host, opts = {}) {
     if (anyAnimating()) schedule();
   }
 
+  /**
+   * Is the ZOOM changing — not "did it change on this frame". See MOVE_MS.
+   *
+   * Only the zoom, because only the zoom can make the buffer soft: quantising
+   * during a PAN would leave a still map blurred for no reason at all. A
+   * flight counts even before its first frame has run, which is what lets the
+   * ground for a flight be asked for the moment the flight is declared.
+   */
+  const zooming = () =>
+    (!!flight && Math.abs(flight.to.zoom - flight.from.zoom) > 1e-6)
+    || now() - zoomMovedAt < MOVE_MS;
+
+  /**
+   * Which zoom to take a bake at.
+   *
+   * While the zoom is changing, the `quantise` step at or below it. The
+   * buffer is being scaled anyway, so the exact zoom buys nothing; what the
+   * step buys is that the drift is never more than one of them — the ground
+   * can no longer soften and snap by an arbitrary amount depending on where a
+   * flight's easing happened to cross a threshold — and that the same flight
+   * re-bakes at the same zooms every time, which is what makes the bench
+   * repeatable.
+   *
+   * The moment it settles the bake goes back to the live zoom, so a still map
+   * is pixel for pixel what it always was. A quantised bake left standing
+   * would be permanently, pointlessly soft.
+   *
+   * DOWN to the step, not to the nearest. A buffer taken at a lower zoom than
+   * the camera's covers MORE ground, and a buffer that stops covering the
+   * viewport is the one case that has to be re-baked inside the frame — it
+   * would otherwise leave the edges of the picture empty. Rounding to the
+   * nearest step put the bake above the camera half the time and cost eight
+   * such bakes in a six-level flight; flooring costs none, and the ground is
+   * never blurrier than it already was (the slack it replaces was wider).
+   */
+  function bakeZoom() {
+    if (!quantise || !zooming()) return cam.zoom;
+    return clamp(Math.floor(cam.zoom / quantise) * quantise, minZoom, maxZoom);
+  }
+
+  /* How far ahead a bake looks when the camera is flying. Long enough to
+     outlast the bake itself and the next few frames, short enough that the
+     buffer is not mostly ground the camera has already left. */
+  const LEAD_MS = 600;
+
+  /**
+   * The world-pixel centre of the viewport, LEAD_MS from now.
+   *
+   * Uses the flight's own easing, so it is where the camera will really be
+   * and not where a straight line says it should be. With no flight running
+   * it is simply where the camera is: a pan cannot be predicted and a still
+   * camera has nowhere to go.
+   */
+  function camAhead(ms) {
+    const s = scale();
+    if (!flight) {
+      const tl = topLeft();
+      return { x: tl.x + (size.w / s) / 2, y: tl.y + (size.h / s) / 2, zoom: cam.zoom };
+    }
+    const t = clamp((now() + ms - flight.t0) / flight.ms, 0, 1);
+    const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const f = flight.from, g = flight.to;
+    const [x, y] = project(f.lon + (g.lon - f.lon) * e,
+                           f.lat + (g.lat - f.lat) * e);
+    return { x, y, zoom: f.zoom + (g.zoom - f.zoom) * e };
+  }
+
+  /** Will the buffer still cover the frame `ms` from now? */
+  function willCover(ms) {
+    if (!bufState) return false;
+    const a = camAhead(ms);
+    const sa = scaleFor(a.zoom);
+    const sb = scaleFor(bufState.zoom);
+    const ax = a.x - (size.w / 2) / sa;
+    const ay = a.y - (size.h / 2) / sa;
+    return ax >= bufState.x && ay >= bufState.y
+      && ax + size.w / sa <= bufState.x + bufState.w / sb
+      && ay + size.h / sa <= bufState.y + bufState.h / sb;
+  }
+
+  /**
+   * Everything a bake needs, without doing any of it.
+   *
+   * `spare` prepares the OTHER sheet, so the sheet being blitted is never the
+   * sheet being painted into; the swap happens only once the last step has
+   * run. A bake that is half done is a sheet with sea where the land goes,
+   * and the whole point of two of them is that such a sheet is never on
+   * screen.
+   */
+  function planBake(spare) {
+    const tl = topLeft();
+    const s = scale();
+    const want = levelFor(cam.zoom, cam.lon, cam.lat);
+    const zb = bakeZoom();
+    const sb = scaleFor(zb);
+    const bw = Math.ceil(size.w * (1 + MARGIN * 2));
+    const bh = Math.ceil(size.h * (1 + MARGIN * 2));
+
+    /* Where to centre it.
+
+       Not on the viewport, if the camera is going somewhere. A flight is a
+       zoom AND a translation, and a buffer centred on where the camera IS
+       falls off the back of it within a fraction of a second — the camera
+       leaves the margin, coverage is lost, and coverage lost is the one case
+       that has to be re-baked inside the frame. Measured: five such bakes in
+       a 2.8 s flight, and they were the last frames over 32 ms left.
+
+       So the bake looks ahead: it is centred on the middle of where the
+       camera is now and where it will be in LEAD_MS, and it is then pulled
+       back until the CURRENT viewport is certainly inside it. Nothing about
+       the picture changes — the buffer is bigger than the frame either way —
+       it just stops being stale a moment after it is made. */
+    const then = camAhead(LEAD_MS);
+    const midX = (tl.x + (size.w / s) / 2 + then.x) / 2;
+    const midY = (tl.y + (size.h / s) / 2 + then.y) / 2;
+
+    // Centre in the world units the BAKE zoom uses, not the live one — a
+    // buffer taken at a different zoom covers a different amount of ground,
+    // and measuring it with the wrong scale is how it reports itself as
+    // covering ground it does not.
+    const worldW = bw / sb, worldH = bh / sb;
+    const bx = clamp(midX - worldW / 2,
+                     Math.min(tl.x, tl.x + size.w / s - worldW), tl.x);
+    const by = clamp(midY - worldH / 2,
+                     Math.min(tl.y, tl.y + size.h / s - worldH), tl.y);
+
+    if (spare && !sheets[1]) sheets[1] = makeSheet();
+    const sheet = spare ? sheets[sheetIx ? 0 : 1] : sheets[sheetIx];
+    if (sheet.c.width !== Math.round(bw * dpr)
+        || sheet.c.height !== Math.round(bh * dpr)) {
+      sheet.c.width = Math.round(bw * dpr);
+      sheet.c.height = Math.round(bh * dpr);
+    }
+    /* A bake abandoned half way leaves its save() calls outstanding, and the
+       next one would then nest inside them until the stack ran away. restore()
+       on an empty stack is defined to do nothing, so unwinding further than
+       any bake can nest is both safe and enough. */
+    for (let i = 0; i < 4; i += 1) sheet.x.restore();
+    sheet.x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    sheet.x.clearRect(0, 0, bw, bh);
+
+    const { steps, stats } = bakeSteps(sheet.x, { x: bx, y: by, zoom: zb },
+                                       { w: bw, h: bh }, palette, want, borders);
+    return {
+      steps, stats, i: 0, spare, sheet,
+      ix: spare ? (sheetIx ? 0 : 1) : sheetIx,
+      state: { zoom: zb, level: want, palette, borders: borderKey(),
+               x: bx, y: by, w: bw, h: bh,
+               // Was the geometry actually there when this buffer was
+               // painted? If the level was still in flight, the bake filled
+               // it with water and stopped — and every check would then call
+               // that buffer fresh, so it got blitted for good and the land
+               // never appeared. The story map hid this because its camera
+               // never stops moving, which invalidates the buffer anyway;
+               // Explore fits once at boot and then holds still, so it kept
+               // the empty one.
+               ready: levelReady(want), stamp: groundStamp },
+    };
+  }
+
+  /** Charge a finished bake to the bench, and put it on screen. */
+  function finishBake(plan, ms) {
+    if (perfOn) {
+      /* Canvas commands are QUEUED, so this timer is honest about how long it
+         took to DESCRIBE the ground and says little about rasterising it. The
+         rasterising surfaces in the frame clock instead, which is where a
+         viewer meets it anyway.
+
+         A flush was tried here and thrown out: it made the bench charge a
+         readback of its own to every bake, on top of the one the slicer
+         already does. What one bake really costs is asked separately, at
+         rest, by bench.bakeCost(). */
+      perf.bakes += 1;
+      if (!plan.spare) perf.bakesSync += 1;
+      perf.bakeMs += ms;
+      if (ms > perf.maxBakeMs) perf.maxBakeMs = ms;
+      perf.points += plan.stats.points;
+      perf.features += plan.stats.features;
+      perf.culled += plan.stats.culled;
+    }
+    sheetIx = plan.ix;
+    bufState = plan.state;
+  }
+
+  /** Re-render the ground now, in one go, because the picture needs it now. */
+  function bakeGround(spare) {
+    stopSplit();
+    const t0 = perfOn ? now() : 0;
+    const plan = planBake(spare);
+    for (const step of plan.steps) step.run();
+    if (perfOn) flushSheet(plan.sheet);
+    const ms = perfOn ? now() - t0 : 0;
+    if (perfOn) {
+      perf.slices += 1;
+      if (ms > perf.maxSliceMs) perf.maxSliceMs = ms;
+    }
+    finishBake(plan, ms);
+  }
+
+  /* A bake that is wanted but not needed, run a slice at a time.
+
+     Deferring the whole thing keeps the picture correct but still holds the
+     thread for as long as the bake takes, and 90 ms is 90 ms whichever task
+     it happens in. So the steps are run against a budget and what does not
+     fit goes to the next task.
+
+     Two things about that budget, both learned by getting them wrong:
+
+     The budget is WORK, not time. Canvas commands are queued, so a step
+     returns in a tenth of a millisecond however much it submitted; a
+     wall-clock budget therefore ran every step in the first task and the bill
+     arrived, undivided, in the blit. Each step declares what it costs
+     instead — points submitted times passes over them — and 50,000 of those
+     units measured about 16 ms on the machine this was tuned on.
+
+     And each slice has to be MADE to rasterise before yielding, or the same
+     thing happens one level up: the queue simply grows across the slices and
+     empties all at once. Reading a single pixel back forces the flush. It is
+     the one deliberate readback in the module and it costs about a
+     millisecond, against turning one 90 ms hole into five 18 ms ones.
+
+     Timers throughout, never animation frames: a backgrounded tab stops
+     delivering frames and would leave a half-painted spare sheet standing for
+     ever, which is rule 2 exactly. */
+  const SLICE_COST = 25000;
+  let split = null;
+  /* dev/perf-lab.html sets this false to put the old behaviour back — every
+     bake inside the frame, whole — and check that the frame clock notices.
+     A bench nobody has seen fail is a bench nobody knows works. */
+  let deferBakes = true;
+
+  function stopSplit() {
+    if (split?.timer) clearTimeout(split.timer);
+    split = null;
+    clearTimeout(bakeTimer);
+    bakeTimer = 0;
+  }
+
+  /* One deferred bake at a time, and not back to back. Without the interval,
+     a prediction the next bake cannot satisfy — the camera crossing more
+     ground than a buffer holds — asks for another one the moment the last
+     finishes, and the map bakes for ever instead of drawing. */
+  const BAKE_GAP_MS = 120;
+  let lastBakeAt = -1e9;
+
+  function wantBake() {
+    if (bakeTimer || split) return;
+    const wait = Math.max(0, BAKE_GAP_MS - (now() - lastBakeAt));
+    bakeTimer = setTimeout(() => {
+      bakeTimer = 0;
+      split = planBake(true);
+      split.ms = 0;
+      runSlice();
+    }, wait);
+  }
+
+  function runSlice() {
+    const plan = split;
+    if (!plan) return;
+    const t0 = now();
+    let cost = 0;
+    // Test the budget BEFORE taking a step, not after. Testing afterwards let
+    // a slice that was already at the limit take one more 16 ms layer, which
+    // is how a 25,000-unit budget produced a 46,000-unit slice and the
+    // longest hold of the whole gesture. A slice is now one step, or as many
+    // as fit — never one too many.
+    while (plan.i < plan.steps.length) {
+      const step = plan.steps[plan.i];
+      if (cost && cost + step.cost > SLICE_COST) break;
+      plan.i += 1;
+      cost += step.cost;
+      step.run();
+    }
+
+    // Make this slice pay for itself now rather than letting the queue grow.
+    // The LAST one too: whatever is still queued when the sheets are swapped
+    // is paid for inside the blit, which is a frame, which is the one place
+    // this is all trying to keep the work out of.
+    flushSheet(plan.sheet);
+    const done = plan.i >= plan.steps.length;
+    const ms = now() - t0;
+    plan.ms += ms;
+    if (perfOn) {
+      perf.slices += 1;
+      if (ms > perf.maxSliceMs) perf.maxSliceMs = ms;
+    }
+
+    if (!done) { plan.timer = setTimeout(runSlice, 0); return; }
+    split = null;
+    lastBakeAt = now();
+    finishBake(plan, plan.ms);
+    schedule();
+  }
+
   function paintGround(tl, want) {
     const s = scale();
-    const mx = size.w * MARGIN, my = size.h * MARGIN;
-
-    // Was the geometry actually there when this buffer was painted? If the
-    // level was still in flight, drawBasemap filled the buffer with water and
-    // returned — and every check below would then call that buffer fresh, so
-    // it got blitted for good and the land never appeared. The story map hid
-    // this because its camera never stops moving, which invalidates the
-    // buffer anyway; Explore fits once at boot and then holds still, so it
-    // kept the empty one. Land or sea is not something to leave to whether a
-    // fetch beat the first frame.
-    const groundReady = levelReady(want);
 
     /* Re-baking the ground on every frame of a zoom is what made a fly-over
        crawl: a 2.6 s flight changed the zoom ~150 times and re-walked every
-       coastline, pond and wood each time. Measured at 118 ms a frame — eight
-       frames a second. So while the camera is moving the existing bake is
-       SCALED instead, and re-baked once it settles.
+       coastline, pond and wood each time. Measured at 81 ms a frame on this
+       machine, twelve frames a second. So while the camera is moving the
+       existing bake is SCALED instead.
 
-       The coverage test below also has to use the zoom the buffer was baked
-       at rather than the live one, or a scaled buffer is measured against the
-       wrong world size and reports itself as covering ground it does not. */
+       The coverage test has to use the zoom the buffer was baked at rather
+       than the live one, or a scaled buffer is measured against the wrong
+       world size and reports itself as covering ground it does not. */
     const sBuf = bufState ? scaleFor(bufState.zoom) : s;
-    const zoomOff = bufState ? Math.abs(cam.zoom - bufState.zoom) : 0;
-    const moving = now() - camMovedAt < 140;
+    const covers = !!bufState
+      && tl.x >= bufState.x && tl.y >= bufState.y
+      && tl.x + size.w / s <= bufState.x + bufState.w / sBuf
+      && tl.y + size.h / s <= bufState.y + bufState.h / sBuf;
 
-    const stale = !bufState
+    // A buffer that is the wrong picture cannot be shown for even one frame:
+    // the wrong level, the wrong palette, no ground in it at all, or none of
+    // it under the viewport, which would leave the edges of the frame empty.
+    const wrong = !bufState
       || !bufState.ready
-      || (moving ? zoomOff > ZOOM_SLACK : zoomOff > 1e-6)
-      || bufState.level !== want
       || bufState.palette !== palette
       || bufState.borders !== borderKey()
-      || tl.x < bufState.x || tl.y < bufState.y
-      || tl.x + size.w / s > bufState.x + bufState.w / sBuf
-      || tl.y + size.h / s > bufState.y + bufState.h / sBuf;
+      || !covers;
 
-    if (stale) {
-      const bw = Math.ceil(size.w + mx * 2);
-      const bh = Math.ceil(size.h + my * 2);
-      if (buf.width !== Math.round(bw * dpr) || buf.height !== Math.round(bh * dpr)) {
-        buf.width = Math.round(bw * dpr);
-        buf.height = Math.round(bh * dpr);
+    /* A buffer that is merely out of date. Soft for a beat is invisible.
+
+       With quantising on, the test is against the STEP: the bake is stale the
+       moment the live zoom falls past a different one, which is a fixed
+       thirteen times across a 6.4-level flight rather than "whenever the
+       easing crosses 0.55, wherever that lands". With it off the old slack
+       applies, which is what dev/perf-lab.html turns back on to check that it
+       can still see the difference. */
+    const zb = bakeZoom();
+    const zoomStale = (zooming() && !quantise)
+      ? Math.abs(cam.zoom - (bufState?.zoom ?? 0)) > ZOOM_SLACK
+      : Math.abs((bufState?.zoom ?? 0) - zb) > 1e-6;
+    /* Two more things count as drift rather than as wrongness.
+
+       A LEVEL change. Crossing from world-50m to the regional extract
+       mid-flight used to force a bake inside the frame and did not have to:
+       the coarse coastline and the fine one are the same shore to within a
+       kilometre, and holding the coarse one for another hundred milliseconds
+       is not something anyone can see. A palette change is not like this —
+       that one really is the wrong picture, and it stays above.
+
+       And coverage about to be LOST, which is worth predicting precisely
+       because losing it is the one thing that cannot be deferred: a buffer
+       that no longer reaches the edge of the frame leaves the edge undrawn.
+       Those were the last frames over 32 ms in a flight. A lead of warning is
+       enough to bake beside the frame instead, and the prediction only has to
+       be roughly right — being wrong just means the old behaviour, one bake
+       in one frame. */
+    const drifted = !!bufState
+      && (zoomStale || bufState.level !== want || bufState.stamp !== groundStamp
+          || !willCover(LEAD_MS));
+
+    /* Only a WRONG buffer is worth a frame. Drift never is — not even the
+       sharpening bake after the camera stops, which used to be synchronous
+       and was the single longest task in a wheel gesture at 52 ms, arriving
+       160 ms after the fingers had left. Nobody is waiting for it; the ground
+       is a fifth of a zoom level soft until it lands. */
+    if (wrong) {
+      if (perfOn) {
+        if (bufState && !covers) { perf.syncCover += 1; perf.syncAt.push(+cam.zoom.toFixed(2)); }
+        else if (!bufState || !bufState.ready) perf.syncReady += 1;
+        else perf.syncOther += 1;
       }
-      const bx = tl.x - mx / s;
-      const by = tl.y - my / s;
-      bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      bctx.clearRect(0, 0, bw, bh);
-      drawBasemap(bctx, { x: bx, y: by, zoom: cam.zoom }, { w: bw, h: bh },
-                  palette, want, borders);
-      bufState = { zoom: cam.zoom, level: want, palette, borders: borderKey(),
-                   x: bx, y: by, w: bw, h: bh, ready: groundReady };
-    }
+      bakeGround(false);
+    } else if (drifted) { if (deferBakes) wantBake(); else bakeGround(false); }
 
+    const b = sheets[sheetIx].c;
     const ox = (bufState.x - tl.x) * s;
     const oy = (bufState.y - tl.y) * s;
     // k is 1 whenever the bake is at the live zoom, so a still map is pixel
     // for pixel what it always was.
     const k = s / scaleFor(bufState.zoom);
-    ctx.drawImage(buf, ox, oy, bufState.w * k, bufState.h * k);
+    ctx.drawImage(b, ox, oy, bufState.w * k, bufState.h * k);
 
-    // A scaled bake has to be redeemed. Nothing else will schedule a frame
-    // once the camera stops, so ask for one — otherwise the ground stays soft
-    // for as long as you leave it alone, which is exactly the wrong way round.
-    if (k !== 1) {
+    /* A scaled bake has to be redeemed. Nothing else will schedule a frame
+       once the camera stops — a flight keeps them coming, a wheel notch does
+       not — so ask for one just after the move window closes, or the ground
+       stays soft for as long as you leave it alone, which is exactly the
+       wrong way round. */
+    if (k !== 1 && !flight) {
       clearTimeout(settleTimer);
-      settleTimer = setTimeout(schedule, 160);
+      settleTimer = setTimeout(schedule,
+        Math.max(30, MOVE_MS - (now() - zoomMovedAt) + 30));
     }
   }
 
@@ -503,11 +964,19 @@ export function createMap(host, opts = {}) {
         el.className = `atlas-place atlas-place--${s.kind || 'city'}`;
         return el;
       });
-      n.textContent = s.name;
+      // Only on change. Assigning textContent replaces the child nodes and
+      // dirties layout, so writing the same string every frame turned the very
+      // next measurement into a forced reflow, once per label per frame.
+      if (n.textContent !== s.name) n.textContent = s.name;
+      const m = pointMetrics(n, s.name);
       const [x, y] = toScreen(s.coords[0], s.coords[1]);
-      n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      n.style.visibility = onScreen(x, y) ? '' : 'hidden';
-      labels.push({ n, x, y, rank: s.kind === 'city' ? 3 : s.kind === 'region' ? 2 : 1 });
+      const put = placePoint(x, y, m);
+      setSide(n, 'place', put && put.side);
+      if (!put) { n.style.visibility = 'hidden'; continue; }
+      n.style.transform = `translate3d(${put.tx}px, ${put.ty}px, 0)`;
+      n.style.visibility = '';
+      labels.push({ n, x, y, box: put.box,
+                    rank: s.kind === 'city' ? 3 : s.kind === 'region' ? 2 : 1 });
     }
 
     // Counters are wide and armies gather in the same place, so plain
@@ -529,23 +998,25 @@ export function createMap(host, opts = {}) {
       // which is correct, because an invisible target is a bug.
       setTap(n, s.tap, s.name);
 
-      const [x0, y] = toScreen(s.centre[0], s.centre[1]);
+      const [x0, y0] = toScreen(s.centre[0], s.centre[1]);
       // How much room the region itself offers, in pixels, right now.
       const [left, right] = s.bounds
         ? [toScreen(s.bounds[0][0], s.bounds[0][1])[0],
            toScreen(s.bounds[1][0], s.bounds[1][1])[0]]
         : [-Infinity, Infinity];
+      const [, top] = toScreen(s.bounds ? s.bounds[1][0] : 0, 0);
+      const [, bottom] = toScreen(s.bounds ? s.bounds[0][0] : 0, 0);
 
       measureLabel(n, pickLabel(s.label) || s.name, pickLabel(s.short));
-      const placed = placeLabel(n, x0, left, right);
+      const placed = placeLabel(n, x0, y0, left, right, top, bottom);
+      if (!placed) { n.style.visibility = 'hidden'; continue; }
+      const y = placed.y;
       n.style.transform = `translate3d(${placed.x}px, ${y}px, 0) translateX(-50%)`;
-      n.style.visibility = onScreen(x0, y) ? '' : 'hidden';
+      n.style.visibility = '';
       // Rank by how much of the screen the region covers, so a collision is
       // lost by the colony there is least room for. Without a tiebreak the
       // sort fell back to the order the regions happen to sit in the file,
       // and which name survived was decided by luck.
-      const [, top] = toScreen(s.bounds ? s.bounds[1][0] : 0, 0);
-      const [, bottom] = toScreen(s.bounds ? s.bounds[0][0] : 0, 0);
       const area = Math.abs(right - left) * Math.abs(bottom - top);
       /* A SHOWN REGION OUTRANKS A STANDING CITY.
          It used to be 2 + area, against 3 for every city, so a region could
@@ -557,7 +1028,7 @@ export function createMap(host, opts = {}) {
          says it exists to prevent, still guaranteed by the sort order. */
       // `shrink` is the smaller form declutter tries before dropping the name.
       labels.push({ n, x: placed.x, y, rank: 4 + Math.min(0.9, area / 4e5),
-                    centred: true, w: placed.w, shrink: placed.shrink });
+                    box: placed.box, shrink: placed.shrink });
     }
 
     // A pin names one spot the narration is talking about right now.
@@ -570,19 +1041,26 @@ export function createMap(host, opts = {}) {
         return el;
       });
       n.style.setProperty('--faction', colourOf(s.faction).fill);
-      n.querySelector('b').textContent = s.label || '';
+      const chip = n.querySelector('b');
+      const text = s.label || '';
+      if (chip.textContent !== text) chip.textContent = text;
       n.classList.toggle('atlas-pin--bare', !s.label);
       setTap(n, s.tap, s.label);
       const [x, y] = toScreen(s.at[0], s.at[1]);
-      n.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      n.style.visibility = onScreen(x, y, 120) ? '' : 'hidden';
+      // A bare pin is a dot, and a dot cannot run off anything its own
+      // coordinate does not. Only the chip has to be placed.
+      const put = s.label ? placePin(n, x, y) : barePin(n, x, y);
+      setSide(n, 'pin', put && put.side);
+      if (!put) { n.style.visibility = 'hidden'; continue; }
+      n.style.transform = `translate3d(${put.tx}px, ${put.ty}px, 0)`;
+      n.style.visibility = '';
       // A pin is the one thing the narration is pointing at right now, so it
       // enters the collision pass at a rank nothing can outbid — and the place
       // names underneath it get out of the way. Leaving pins out of the pass
       // was why "Boston" landed squarely on top of "Boston Common", which at
       // harbour zoom is six pixels away, and why the Concord pin sat on
       // "North Bridge".
-      if (s.label) labels.push({ n, x, y, rank: 20 });
+      if (s.label) labels.push({ n, x, y, box: put.box, rank: 20 });
     }
 
     // A ring is the equivalent of pointing at the map while you talk.
@@ -666,6 +1144,207 @@ export function createMap(host, opts = {}) {
   const pickLabel = (field) =>
     (field && (field[lang] ?? field.no ?? field.en)) || null;
 
+  /* ---------------- where a point label goes ----------------
+
+     THE ORDER IS RIGHT, LEFT, ABOVE, BELOW, AND THE FIRST FIT WINS.
+
+     A point label is attached to a dot. An area name may slide along its own
+     ground because the ground is what it names; a point name may not, because
+     move it and it is naming the next village along. So it moves to the other
+     SIDE of its anchor instead, which is what every printed atlas does.
+
+     Right first: in a left-to-right script the eye finds the dot and reads on,
+     and that is where every name on the map already is, so a flip is the
+     exception and reads as one. Left is its mirror and costs the reader
+     nothing but a glance. Above and below break the reading line, so they are
+     last -- but they are the only thing left when the words are wider than the
+     room on either side of the dot, which on a 390 px phone is common.
+
+     Measured: Barbaresco's anchor sits 27 px from the right edge, so an 80 px
+     name ran 374 -> 455 and lost 65 px of itself off the frame. Flipped left
+     it spans 283 -> 358, comfortably inside.
+
+     A pure function of (anchor, metrics, viewport) and nothing else. There is
+     deliberately NO memory of the side chosen last frame: "keep the old side
+     unless it stops fitting" is hysteresis, which is the accumulation rule 1
+     forbids -- seek to the same second twice and the two pictures would
+     disagree, and dev/engine-lab.html exists to catch exactly that. */
+  const SIDES = ['right', 'left', 'above', 'below'];
+
+  /* Right is the default and carries no class, so a map with nothing near an
+     edge writes the same DOM it always did.
+
+     The names are written out rather than composed. A class this module only
+     ever builds as `${base}--${side}` appears nowhere in the source, so
+     tools/check-dead-css.py reads the stylesheet rule as dead — and it is
+     right to: a name nothing writes literally is a name nobody can grep for
+     either. */
+  const SIDE_CLASS = {
+    place: ['atlas-place--left', 'atlas-place--above', 'atlas-place--below'],
+    pin: ['atlas-pin--left', 'atlas-pin--above', 'atlas-pin--below'],
+  };
+
+  function setSide(n, kind, side) {
+    const [l, a, b] = SIDE_CLASS[kind];
+    n.classList.toggle(l, side === 'left');
+    n.classList.toggle(a, side === 'above');
+    n.classList.toggle(b, side === 'below');
+  }
+
+  /* Room to leave around the frame. EDGE keeps the halo off the very last
+     pixel; ANCHOR_INSET is half the dot plus its halo ring, so a label is
+     drawn only where its own dot is wholly on screen. A dot hanging over the
+     edge points at ground the viewer cannot see. */
+  const EDGE = 2;
+  const ANCHOR_INSET = 6;
+
+  const inFrame = (x, y) =>
+    x >= ANCHOR_INSET && y >= ANCHOR_INSET
+    && x <= size.w - ANCHOR_INSET && y <= size.h - ANCHOR_INSET;
+
+  const fitsFrame = (b) =>
+    b.x >= EDGE && b.y >= EDGE
+    && b.x + b.w <= size.w - EDGE && b.y + b.h <= size.h - EDGE;
+
+  /**
+   * The node's own type metrics, cached on it.
+   *
+   * `ox`/`oy` are what the STYLESHEET says about the offset from the anchor to
+   * the words: `ox` is the `--dot-gap` margin resolved to pixels, `oy` the
+   * `--dot-rise`. Read off the node rather than restated here, so both numbers
+   * live in css/atlas.css and nowhere else; `ox` doubles as the gap to leave
+   * above and below, and is 0 for an area name, which has no dot.
+   *
+   * Measuring forces layout. Doing it per label per frame is what declutter()
+   * used to do and what measureLabel() was written to stop, so this measures
+   * on change only: the text, or the font generation.
+   */
+  function pointMetrics(n, text) {
+    if (n._ptIn !== text || n._ptGen !== metricsGen) {
+      n._ptIn = text;
+      n._ptGen = metricsGen;
+      n._pt = boxOf(n);
+    }
+    return n._pt;
+  }
+
+  /**
+   * A node's untransformed box, in the overlay's own coordinates.
+   *
+   * Rects, not offsetLeft/offsetWidth, because those are rounded to whole
+   * pixels — and a label placed against a box a third of a pixel out of
+   * position lands on the wrong side of an edge test. Measured: a town name
+   * at (10, 10) has its box top at 2.3 and offsetTop reported 2.0, so the two
+   * corner labels of a 390 px frame were dropped as "does not fit" by 0.0 px.
+   * The same rounding put a pin's dot up to half a pixel off its coordinate.
+   *
+   * The transform is cleared for the read, so what comes back is where the
+   * stylesheet puts the node and not where the last frame did. Both writes
+   * happen inside one measurement, which is rare — see pointMetrics.
+   */
+  function boxOf(n) {
+    const had = n.style.transform;
+    n.style.transform = 'none';
+    const r = n.getBoundingClientRect();
+    const o = overlay.getBoundingClientRect();
+    n.style.transform = had;
+    return { w: r.width, h: r.height, ox: r.left - o.left, oy: r.top - o.top };
+  }
+
+  /** Where the words land, in viewport pixels, for one side. */
+  function pointBox(side, x, y, m) {
+    if (side === 'left')  return { x: x - m.ox - m.w, y: y + m.oy, w: m.w, h: m.h };
+    if (side === 'above') return { x: x - m.w / 2, y: y - m.ox - m.h, w: m.w, h: m.h };
+    if (side === 'below') return { x: x - m.w / 2, y: y + m.ox, w: m.w, h: m.h };
+    return { x: x + m.ox, y: y + m.oy, w: m.w, h: m.h };
+  }
+
+  /* dev/map-lab.html sets this false to put the defect back — every label hard
+     right of its anchor, drawn whenever the anchor is anywhere near the frame,
+     which is a visibility test and not a placement one. The bench then reports
+     the labels that cross an edge, and a bench nobody has watched fail is a
+     bench nobody knows works. Same reason as setCulling and setQuantise. */
+  let labelSides = true;
+
+  function placePoint(x, y, m) {
+    if (!labelSides) {
+      const box = pointBox('right', x, y, m);
+      return onScreen(x, y)
+        ? { side: 'right', tx: box.x - m.ox, ty: box.y - m.oy, box } : null;
+    }
+    if (!inFrame(x, y)) return null;
+    for (const side of SIDES) {
+      const box = pointBox(side, x, y, m);
+      if (!fitsFrame(box)) continue;
+      // The node is drawn at translate + its own margins, so back the margins
+      // out of the box we want.
+      return { side, tx: box.x - m.ox, ty: box.y - m.oy, box };
+    }
+    // Nothing fits. A dropped label is honest; a misplaced one is not.
+    return null;
+  }
+
+  /**
+   * The same four placements for a pin, which is a flex row of [dot, chip].
+   *
+   * Where the dot ends up INSIDE the node is a question for the browser, not
+   * arithmetic: row-reverse moves it to the far end, a column puts it under
+   * the chip, and each carries its own negative margin. So ask — set the
+   * class, read the dot's own box, cache it. That is why the dot lands exactly
+   * on its coordinate in all four, and why it keeps doing so if the chip's
+   * padding ever changes. It also fixed a standing error: with `align-items:
+   * center` a labelled pin's dot sat 5.75 px BELOW its coordinate while a bare
+   * one sat on it.
+   */
+  function pinMetrics(n, side) {
+    const text = n.textContent;
+    let cache = n._pinM;
+    if (!cache || cache.text !== text || cache.gen !== metricsGen) {
+      cache = n._pinM = { text, gen: metricsGen };
+    }
+    if (cache[side]) return cache[side];
+    const dot = n.querySelector('i');
+    const hadClass = n.className;
+    const hadT = n.style.transform;
+    setSide(n, 'pin', side);
+    n.style.transform = 'none';
+    const r = n.getBoundingClientRect();
+    const d = dot.getBoundingClientRect();
+    n.style.transform = hadT;
+    n.className = hadClass;
+    // `.atlas-pin` has no margins, so its border box IS the translate origin —
+    // and the dot's offset from it is what has to be cancelled to land the dot
+    // on its coordinate. Sub-pixel, for the reason boxOf() gives.
+    const m = { w: r.width, h: r.height,
+                dx: d.left + d.width / 2 - r.left,
+                dy: d.top + d.height / 2 - r.top };
+    cache[side] = m;
+    return m;
+  }
+
+  const pinAt = (m, x, y) => ({ x: x - m.dx, y: y - m.dy, w: m.w, h: m.h });
+
+  function placePin(n, x, y) {
+    if (!labelSides) {
+      const box = pinAt(pinMetrics(n, 'right'), x, y);
+      return onScreen(x, y, 120) ? { side: 'right', tx: box.x, ty: box.y, box } : null;
+    }
+    if (!inFrame(x, y)) return null;
+    for (const side of SIDES) {
+      const box = pinAt(pinMetrics(n, side), x, y);
+      if (!fitsFrame(box)) continue;
+      return { side, tx: box.x, ty: box.y, box };
+    }
+    return null;
+  }
+
+  /** A pin with no chip: nothing to place, but the dot still has to land. */
+  function barePin(n, x, y) {
+    if (!inFrame(x, y)) return null;
+    const box = pinAt(pinMetrics(n, 'right'), x, y);
+    return { side: null, tx: box.x, ty: box.y, box };
+  }
+
   /**
    * Measure both forms of a region name once, and cache them on the node.
    *
@@ -680,22 +1359,36 @@ export function createMap(host, opts = {}) {
     // short form — `short` is null, `_short` fell back to the full name — so
     // every such region re-measured itself on every frame, which is the
     // forced reflow this cache exists to avoid.
-    if (n._fullIn === full && n._shortIn === short) return;
+    if (n._fullIn === full && n._shortIn === short && n._gen === metricsGen) return;
+    n._gen = metricsGen;
     n._fullIn = full;
     n._shortIn = short;
     n._full = full;
     n._short = short || full;
     n.textContent = full;
-    n._wFull = n.offsetWidth;
+    const b = boxOf(n);
+    n._wFull = b.w;
+    n._h = b.h;
+    n._ox = b.ox;
+    n._oy = b.oy;
     if (n._short !== full) {
       n.textContent = n._short;
-      n._wShort = n.offsetWidth;
+      n._wShort = boxOf(n).w;
     } else {
       n._wShort = n._wFull;
     }
     n.textContent = full;
     n._showing = full;
   }
+
+  /* Type metrics are a function of the text AND of the font, and the display
+     face arrives after first paint. Every width measured before Fraunces lands
+     is the fallback's, and a cache with no generation counter keeps those for
+     ever — which is a label placed against a width it no longer has, and the
+     one way this pass could put a name off the edge again. One promise, one
+     bump, one redraw. */
+  let metricsGen = 0;
+  document.fonts?.ready?.then(() => { metricsGen += 1; schedule(); });
 
   /**
    * Where a region's name goes — and, first, which name.
@@ -712,13 +1405,27 @@ export function createMap(host, opts = {}) {
    * fit, it stays centred and takes its chances with declutter() rather than
    * wandering off onto a neighbour.
    */
-  function placeLabel(n, x0, left, right) {
+  function placeLabel(n, x0, y0, left, right, top, bottom) {
     const want = (w) => {
       const half = w / 2;
-      const lo = Math.max(left + half + 2, half + 6);
-      const hi = Math.min(right - half - 2, size.w - half - 6);
+      const lo = Math.max(left + half + 2, half + EDGE);
+      const hi = Math.min(right - half - 2, size.w - half - EDGE);
       return lo <= hi ? clamp(x0, lo, hi) : null;
     };
+    /* Vertically too, and for the same reason. The horizontal clamp has been
+       here since "MASSACHUSETTS" was shoved onto Connecticut, but nothing ever
+       held a name to the TOP of the frame — a region whose centre lands three
+       pixels down drew its name half above the map. Same rule: inside its own
+       ground first, inside the frame second, and if the two cannot both be
+       had, no name. */
+    const wantY = () => {
+      const lo = Math.max(top - n._oy, EDGE - n._oy);
+      const hi = Math.min(bottom - n._h - n._oy, size.h - EDGE - n._h - n._oy);
+      return lo <= hi ? clamp(y0, lo, hi) : null;
+    };
+
+    const y = labelSides ? wantY() : y0;
+    if (y == null) return null;
 
     let x = n._wFull ? want(n._wFull) : x0;
     let text = n._full;
@@ -730,19 +1437,31 @@ export function createMap(host, opts = {}) {
       text = n._short;
       w = n._wShort;
     }
+    // The node is drawn at translate3d(x, y) translateX(-50%), plus its own
+    // margins — which for an area name are zero across and `--dot-rise` up.
+    const boxAt = (cx, width) =>
+      ({ x: cx + n._ox - width / 2, y: y + n._oy, w: width, h: n._h });
+
     if (x == null) {
-      // Nothing fits. Centre it on the region and let the collision pass
-      // decide — a dropped label is honest, a misplaced one is not.
+      // Nothing fits. Centre it on the region — never on a neighbour — and
+      // drop it if that leaves it hanging over the edge of the frame. Both
+      // halves of that are the same rule: a dropped label is honest, a
+      // misplaced one is not, and a name half off the screen is misplaced.
       x = x0;
       text = canShrink ? n._short : n._full;
       w = canShrink ? n._wShort : n._wFull;
+      if (labelSides && !fitsFrame(boxAt(x, w))) return null;
     }
     if (n._showing !== text) { n.textContent = text; n._showing = text; }
-    // Offer declutter the smaller form, if there is one still unused.
-    const shrink = text === n._full && canShrink
-      ? { text: n._short, w: n._wShort, x: want(n._wShort) ?? x0 }
+    // Offer declutter the smaller form, if there is one still unused — and
+    // only where the smaller form is itself inside the frame, or the collision
+    // pass would dodge one problem into the other one.
+    const sx = canShrink ? (want(n._wShort) ?? x0) : 0;
+    const sbox = canShrink ? boxAt(sx, n._wShort) : null;
+    const shrink = text === n._full && canShrink && fitsFrame(sbox)
+      ? { text: n._short, w: n._wShort, x: sx, box: sbox }
       : null;
-    return { x, w, shrink };
+    return { x, y, w, box: boxAt(x, w), shrink };
   }
 
   /**
@@ -761,32 +1480,33 @@ export function createMap(host, opts = {}) {
 
     for (const l of labels.sort((a, b) => b.rank - a.rank)) {
       if (l.n.style.visibility === 'hidden') continue;
-      const h = l.n.offsetHeight;
-      const w = l.w || l.n.offsetWidth;
-      if (!w) continue;
-      // The node is anchored at (x, y) but drawn offset by its own margins.
-      const boxAt = (x, width) => ({
-        x: x + l.n.offsetLeft - (l.centred ? width / 2 : 0),
-        y: l.y + l.n.offsetTop, w: width, h,
-      });
+      /* The box comes from the placement pass, which already knows it — where
+         a label sits is a decision, not something to re-derive here. Only the
+         pins the CALLER draws itself (Explore's event markers) have no box,
+         because their markup and their margins are not this module's; those
+         still pay for a layout read. */
+      const box = l.box || {
+        x: l.x + l.n.offsetLeft, y: l.y + l.n.offsetTop,
+        w: l.n.offsetWidth, h: l.n.offsetHeight,
+      };
+      if (!box.w) continue;
 
-      let box = boxAt(l.x, w);
-      if (!clear(box) && l.shrink) {
+      let used = box;
+      if (!clear(used) && l.shrink) {
         // Before dropping a name, try the short form. "New York" is 99 px on
         // a phone and collides with Massachusetts; "N.Y." is 40 and does not.
         // Dropping first is how a colony the narration just named ends up as
         // an unlabelled patch of colour.
-        const small = boxAt(l.shrink.x, l.shrink.w);
-        if (clear(small)) {
+        if (clear(l.shrink.box)) {
           l.n.textContent = l.shrink.text;
           l.n._showing = l.shrink.text;
           l.n.style.transform =
             `translate3d(${l.shrink.x}px, ${l.y}px, 0) translateX(-50%)`;
-          box = small;
+          used = l.shrink.box;
         }
       }
-      if (!clear(box)) l.n.style.visibility = 'hidden';
-      else placed.push(box);
+      if (!clear(used)) l.n.style.visibility = 'hidden';
+      else placed.push(used);
     }
   }
 
@@ -846,6 +1566,13 @@ export function createMap(host, opts = {}) {
         from, to: target,
         t0: now(), ms: (over ?? autoOver(from, target)) * 1000, resolve,
       };
+      /* Ask for the ground the flight is about to need, now, while the camera
+         has not moved yet and the buffer it is standing on still covers.
+         Without this the first warning comes from the flight itself, by which
+         point the bake has to happen inside a frame — the one stall left in a
+         six-level flight, and the most visible, because it is at the moment
+         the movement starts. */
+      wantBake();
       schedule();
     });
   }
@@ -944,11 +1671,28 @@ export function createMap(host, opts = {}) {
     host.addEventListener('pointerup', end);
     host.addEventListener('pointercancel', end);
 
+    /* A wheel notch is not a number of pixels.
+       `deltaY` used to be read raw, and `deltaMode` — which says what the
+       number is COUNTED IN — was ignored. Measured on the bench: Chrome
+       reports 100 pixels a notch and zoomed 0.385 levels; Firefox reports 3
+       LINES for the same flick of the same wheel and zoomed 0.0115. The same
+       gesture, thirty-three times apart. The line and page factors are
+       Leaflet's, for no better reason than that they are the ones every map
+       on the web has been tuned against. */
+    const WHEEL_LINE = 20;
     host.addEventListener('wheel', (ev) => {
       ev.preventDefault();
       const r = host.getBoundingClientRect();
-      zoomAround(ev.clientX - r.left, ev.clientY - r.top,
-                 cam.zoom - ev.deltaY / 260);
+      const unit = ev.deltaMode === 1 ? WHEEL_LINE
+        : ev.deltaMode === 2 ? Math.max(size.h, 1)
+        : 1;
+      // Trackpads send a stream of small deltas and a mouse sends one large
+      // one; the cap keeps a single event from throwing the camera.
+      const dz = -clamp(ev.deltaY * unit, -160, 160) / 260;
+      // From where the camera is GOING, not where it is, or a second notch
+      // arriving mid-move undoes most of the first.
+      const from = flight ? flight.to.zoom : cam.zoom;
+      zoomAround(ev.clientX - r.left, ev.clientY - r.top, from + dz, WHEEL_OVER);
     }, { passive: false });
   }
 
@@ -970,15 +1714,48 @@ export function createMap(host, opts = {}) {
     schedule();
   }
 
-  /** Keep the point under the cursor fixed while the zoom changes. */
-  function zoomAround(px, py, z) {
+  /**
+   * Where the camera has to be at zoom `z` for the world point under the
+   * screen point (px, py) to still be under it.
+   *
+   * Solved in world pixels rather than by moving the camera and correcting
+   * the latitude afterwards, which is what this did before: Mercator's
+   * latitude is not linear in y, so the correction was a good approximation
+   * near the middle of the screen and drifted towards the edges.
+   */
+  function anchoredCentre(px, py, z, base) {
+    const sB = scaleFor(base.zoom);
+    const [bx, by] = project(base.lon, base.lat);
+    const wx = bx - (size.w / 2) / sB + px / sB;
+    const wy = by - (size.h / 2) / sB + py / sB;
+    const sT = scaleFor(z);
+    return unproject(wx + (size.w / 2 - px) / sT,
+                     clamp(wy + (size.h / 2 - py) / sT, 0, WORLD));
+  }
+
+  /* How long a wheel notch takes. §1 of docs/design-direction.md: `tap`, the
+     shortest thing in the motion scale, because a notch has to feel like a
+     direct response and not like a journey. Its only job is to stop a notch
+     being a CUT — a cut re-bakes the ground the instant it lands, so twelve
+     notches were twelve stalls, each one delayed behind the gesture. */
+  const WHEEL_OVER = 0.16;
+
+  /**
+   * Keep the point under the cursor fixed while the zoom changes.
+   *
+   * `over` of 0 is a pinch: it is already continuous, the fingers are doing
+   * the easing, and anything else would fight them. Anything else is a
+   * discrete step — a wheel notch, a zoom button — and goes through the same
+   * flight animator the narration uses, so it inherits the easing, the
+   * reduced-motion cut, and being cancelled by a pointerdown.
+   */
+  function zoomAround(px, py, z, over = 0) {
+    const base = (over && flight) ? flight.to : cam;
     const target = clamp(z, minZoom, maxZoom);
-    if (target === cam.zoom) return;
-    const before = toLatLng(px, py);
-    cam.zoom = target;
-    const after = toLatLng(px, py);
-    cam.lat += before[0] - after[0];
-    cam.lon += before[1] - after[1];
+    if (Math.abs(target - base.zoom) < 1e-9) return;
+    const [lon, lat] = anchoredCentre(px, py, target, base);
+    if (over) { flyTo({ to: [lat, lon], zoom: target, over }); return; }
+    cam.lat = lat; cam.lon = lon; cam.zoom = target;
     schedule();
   }
 
@@ -997,6 +1774,7 @@ export function createMap(host, opts = {}) {
     canvas,
     camera: () => ({ ...cam, size: { ...size } }),
     setView, flyTo, fitBounds, fitCoords,
+    warmDetail,
 
     /**
      * Resolves when the camera has stopped moving.
@@ -1024,7 +1802,8 @@ export function createMap(host, opts = {}) {
     /** Seconds for a middling camera move. A pack or a script sets this once. */
     setFlightSpeed(seconds) { speed = clamp(seconds, 0.2, 12); },
     flightSpeed: () => speed,
-    zoomBy: (d) => zoomAround(size.w / 2, size.h / 2, cam.zoom + d),
+    zoomBy: (d) => zoomAround(size.w / 2, size.h / 2,
+                              (flight ? flight.to.zoom : cam.zoom) + d, WHEEL_OVER),
     toScreen, toLatLng,
     /** Half-width in px an arrow spec would draw at right now — for benches. */
     arrowWidthPx: (spec) =>
@@ -1132,11 +1911,85 @@ export function createMap(host, opts = {}) {
     setLang(next) { lang = next; schedule(); },
     invalidate: resize,
     redraw: schedule,
+
+    /* ---- the bench hook ----
+       Read by dev/perf-lab.html and by nothing in the app. `setCulling` and
+       `setQuantise` exist so the bench can put each bug back and watch itself
+       fail, which is the only evidence that it measures what it claims. */
+    bench: {
+      profile(on) {
+        if (on === undefined) return { ...perf };
+        perfOn = !!on;
+        if (on) Object.assign(perf, blankPerf());
+        return { ...perf };
+      },
+      setCulling(on, inset) { setCulling(on, inset); bufState = null; schedule(); },
+      /**
+       * What one bake costs, rasterising included.
+       *
+       * Measured at rest and with the pixels actually read back, because the
+       * cost of a bake is not the cost of queueing it. Not on the hot path
+       * and never called by the app.
+       */
+      /**
+       * What each step of a bake costs, rasterising included.
+       *
+       * The slicer budgets by declared cost — points times passes — and that
+       * is a model, not a measurement. This is the measurement, and it is how
+       * you find out that the model is wrong about a particular layer.
+       */
+      stepProfile() {
+        stopSplit();
+        const plan = planBake(false);
+        const out = plan.steps.map((step) => {
+          const t0 = now();
+          step.run();
+          flushSheet(plan.sheet);
+          return { cost: step.cost, ms: now() - t0 };
+        });
+        finishBake(plan, 0);
+        return out;
+      },
+      bakeCost() {
+        bufState = null;
+        const t0 = now();
+        bakeGround(false);
+        flushSheet(sheets[sheetIx]);
+        const ms = now() - t0;
+        const b = sheets[sheetIx].c;
+        return { ms, w: b.width, h: b.height, zoom: bufState.zoom,
+                 level: bufState.level };
+      },
+      /** Put the label defect back: every name hard right of its dot. */
+      setLabelSides(on) { labelSides = on !== false; schedule(); },
+      setQuantise(v) { quantise = Math.max(0, Number(v) || 0); bufState = null; schedule(); },
+      setDefer(on) { deferBakes = on !== false; bufState = null; schedule(); },
+      quantise: () => quantise,
+      state: () => (bufState ? { ...bufState, palette: undefined } : null),
+      /**
+       * Is the ground finished — baked at the live zoom, with nothing owed?
+       *
+       * A bench that grabs the pixels on a timer grabs whichever bake the
+       * timer landed on, and during the 400 ms after a move that is the
+       * quantised one, which is a slightly blurrier picture of the same
+       * ground. Two runs then differ by a third of a percent of the pixels
+       * and it looks exactly like a culling defect. It is not; it is asking
+       * the question before the answer is finished.
+       */
+      groundSettled: () => !split && !bakeTimer && !!bufState
+        && Math.abs(bufState.zoom - cam.zoom) < 1e-9
+        && bufState.stamp === groundStamp,
+    },
     /** True once the ground for the current view is drawn, not merely fetched. */
     ready: () => levelReady(levelFor(cam.zoom, cam.lon, cam.lat)),
     destroy() {
       if (ro) ro.disconnect();
       removeEventListener('resize', resize);
+      stopSplit();
+      clearTimeout(settleTimer);
+      // Two full-viewport sheets is tens of megabytes, and a chapter switch
+      // builds a new map before the old one is collected. Give them back.
+      for (const s of sheets) if (s) { s.c.width = 0; s.c.height = 0; }
       host.replaceChildren();
     },
   };

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="no" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Overgangslab — the two turns</title>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .panel {
+    overflow-y: auto;
+    padding: 14px;
+    background: var(--paper-raised);
+    border-right: 1px solid var(--rule);
+  }
+  .panel h1 { margin: 0 0 2px; font-family: var(--font-display); font-size: 17px; }
+  .panel p.sub { margin: 0 0 12px; font-size: 11.5px; color: var(--ink-soft); line-height: 1.45; }
+  .grp { margin-bottom: 14px; }
+  .grp > h2 {
+    margin: 0 0 6px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 5px; }
+  button {
+    font: inherit; font-size: 12px; padding: 6px 9px;
+    border: 1px solid var(--rule-strong); border-radius: 7px;
+    background: var(--paper); color: var(--ink); cursor: pointer;
+  }
+  button:hover { background: var(--paper-sunken); }
+  button.hero {
+    flex: 1 1 100%; padding: 9px; font-weight: 700;
+    background: var(--gold); border-color: var(--gold); color: #fff;
+  }
+  label.chk { display: flex; gap: 6px; align-items: center; font-size: 11.5px; margin: 4px 0; }
+  #out { font-size: 12px; line-height: 1.5; }
+  #out h3 { margin: 14px 0 4px; font-size: 12px; font-family: var(--font-display); }
+  #out .good { color: #1c7a3e; }
+  #out .bad { color: #b3261e; font-weight: 700; }
+  #out table { border-collapse: collapse; width: 100%; font-size: 11px; margin-top: 4px; }
+  #out td { padding: 1px 4px 1px 0; vertical-align: top; }
+  #out td:first-child { color: var(--ink-soft); white-space: nowrap; }
+  #status { font-size: 11.5px; color: var(--ink-soft); margin-top: 8px; min-height: 1.4em; }
+  .stagewrap { position: relative; background: var(--paper-sunken); display: grid; place-items: center; }
+  iframe { width: 393px; height: 852px; border: 1px solid var(--rule-strong); border-radius: 10px; background: var(--paper); }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Overgangslab</h1>
+    <p class="sub">
+      Two joins, two questions. <b>Scene&nbsp;→&nbsp;scene:</b> is the stage rebuilt at the
+      instant the audio stops — with the veil already opaque — rather than
+      <code>--t-turn</code> after it? <b>Chapter&nbsp;→&nbsp;chapter:</b> is there any frame
+      between the tap and the next cover showing neither veil, nor stage, nor cover?
+    </p>
+
+    <div class="grp">
+      <h2>Pack</h2>
+      <div class="row"><select id="pack"></select></div>
+    </div>
+
+    <div class="grp">
+      <h2>Put the bug back</h2>
+      <label class="chk"><input type="checkbox" id="bug-tail"> scene turn: <code>tailFor() → 0</code></label>
+      <label class="chk"><input type="checkbox" id="bug-chapter"> chapter turn: throw the card away on tap</label>
+    </div>
+
+    <div class="grp">
+      <h2>Run</h2>
+      <div class="row">
+        <button class="hero" id="run-all">Both turns</button>
+        <button id="run-scene">Scene turn</button>
+        <button id="run-chapter">Chapter turn</button>
+      </div>
+    </div>
+
+    <div id="status"></div>
+    <div id="out"></div>
+  </div>
+
+  <div class="stagewrap">
+    <iframe id="app" src="../index.html" title="the app"></iframe>
+  </div>
+
+  <script type="module" src="./turn-lab.js"></script>
+</body>
+</html>

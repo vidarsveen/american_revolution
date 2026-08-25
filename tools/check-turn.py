@@ -62,8 +62,11 @@ PROBE = """
     o = (getComputedStyle(wipe).visibility === 'hidden') ? 0 : a * b;
   }
   const stage = document.querySelector('.story__stage');
-  const marks = document.querySelectorAll(
-    '.story-mk, .story-ring, .atlas-place, .story-place').length;
+  // The classes the map module actually writes. This used to also count
+  // .story-mk, .story-ring and .story-place -- three selectors nothing has
+  // painted since the map module landed, so the probe was partly counting
+  // nothing. The same shape as the .ov-fact bug, in the bench this time.
+  const marks = document.querySelectorAll('.atlas-place, .atlas-pin').length;
   const title = document.querySelector('.scene-wipe__title')?.textContent || '';
   return { o, marks, title, html: (stage?.innerHTML || '').length };
 }

@@ -58,6 +58,17 @@ function mapConf() {
 
 export function mountMap(container, ch, language) {
   chapter = ch;
+  /* Module-level state in engine/scenes/* lives longer than a chapter, and the
+     cover can switch chapters -- CLAUDE.md records `regionsReady` costing an
+     afternoon for exactly this. `sceneAt` is one of those: it is set by
+     mapScene() and was never reset, so mounting chapter two while chapter one
+     had reached scene five left drawStandingLabels() below running at scene
+     five's rules on the new chapter's places. A place declared `"label": "s3"`
+     would appear in scene 0. Nobody had noticed because it needs a mid-chapter
+     switch to show. A new chapter starts at its beginning. */
+  sceneAt = 0;
+  deckScenes = findDeckScenes(ch);
+  sceneRaisesDeck = deckScenes.has(sceneAt);
   lang = language || ch.narrationLang || 'no';
   // Both of these are memoised against the map instance below, so they have to
   // go when it does. `regionsReady` in particular resolves by calling
@@ -106,6 +117,13 @@ export function mountMap(container, ch, language) {
   drawStandingLabels();
   // Warm the region file now rather than mid-sentence.
   ensureRegions();
+  // And the pack's close-in geometry, for the same reason and more of it: it
+  // is 1.5-2.8 MB, and the map used to start that fetch from inside draw() on
+  // the first frame a flight crossed detail.minZoom — a download, a JSON parse
+  // and a Path2D bake of up to 158k points, all beginning at the moment the
+  // camera was busiest. Neither call is awaited: rule 3's shape one layer over,
+  // where a coarser map is a degraded chapter and a stalled one is a broken it.
+  map.warmDetail?.();
 
   // A map created while its container is hidden or still being laid out
   // measures as zero and renders nothing — the "map didn't load" case.
@@ -171,7 +189,43 @@ const pick = (field) => {
    before the rebuild, so it stays a pure function of time. */
 let sceneAt = 0;
 
-export function mapScene(i) { sceneAt = Number(i) || 0; }
+export function mapScene(i) {
+  sceneAt = Number(i) || 0;
+  sceneRaisesDeck = deckScenes.has(sceneAt);
+}
+
+/* WHICH SCENES PUT A CARD IN THE LOWER DECK.
+   Computed once per chapter, read by framePadding().
+
+   The camera fits at the top of a scene; a fact box arrives four sentences
+   later. So measuring what is on screen AT FIT TIME -- which is all
+   framePadding() used to do -- cannot see the thing that is about to cover the
+   picture. Measured at wine s5.b2: the fit put Barolo at x 39-94, y 528-555,
+   and .ov-fact__card then landed at 12-189, y 514-597 and contained it whole.
+   The sentence says "Barolo ligger sørvest for Alba" and Barolo was underneath
+   the card explaining Barolo.
+
+   BACKLOG.md records this shape once already ("the overlay explaining the
+   subject was covering the subject"), fixed then by moving the box out of the
+   middle of the map and into the lower deck. Moving the box was never the fix:
+   the fault is that the camera composed into a band that was about to be
+   furniture.
+
+   Scene granularity, not beat, because a scene is the unit the stage is wiped
+   at -- and because a reserve that switched on and off between beats would
+   move the camera for a reason the viewer cannot see. */
+let deckScenes = new Set();
+let sceneRaisesDeck = false;
+
+const DECK_VERBS = new Set(['fact.show', 'stat.show', 'compare.show']);
+
+function findDeckScenes(ch) {
+  const out = new Set();
+  (ch?.scenes || []).forEach((scene, i) => {
+    if ((scene.cues || []).some((c) => DECK_VERBS.has(c.do))) out.add(i);
+  });
+  return out;
+}
 
 function sceneIndexOf(id) {
   const scenes = chapter?.scenes || [];
@@ -237,6 +291,18 @@ export function resetMap() {
  * Measured off the real elements rather than guessed, so a caption that grows
  * to three lines on a narrow screen is still cleared.
  */
+/* The tallest fact card that ships, measured: see the reserve in
+   framePadding(). A number chosen by eye here would be the fifth
+   undocumented duration this project has had to go back and derive.
+
+   163 -> 126. And 163 was stale before it was ever committed: at the new type
+   scale the same cards measured 178.1 before the fact card was capped to two
+   lines of name and three of hook. Measured across all 380 pool entries in
+   both languages. A number derived from what ships has to be RE-derived when
+   what ships changes, which is the argument for it living in a per-pack
+   style.json rather than here. */
+const DECK_RESERVE_PX = 126;
+
 function framePadding() {
   const host = hostEl?.querySelector('#story-map') || hostEl;
   const box = host?.getBoundingClientRect();
@@ -266,22 +332,49 @@ function framePadding() {
      whichever costs less picture — for a 46vw portrait in the top right that
      is almost always the right edge, and pushing everything down below it
      would have thrown away half the frame. */
-  for (const el of document.querySelectorAll('.ov-portrait__card, .ov-image__card, .ov-quote')) {
-    const r = el.getBoundingClientRect();
-    if (!r.width || !r.height) continue;
-    if (getComputedStyle(el).opacity === '0') continue;
-    if (r.right < box.left || r.left > box.right) continue;
-    if (r.bottom < box.top || r.top > box.bottom) continue;
-
+  const clearOf = (r) => {
+    if (!r || !r.width || !r.height) return;
+    if (r.right < box.left || r.left > box.right) return;
+    if (r.bottom < box.top || r.top > box.bottom) return;
     const options = [
       ['top', r.bottom - box.top + 8],
       ['bottom', box.bottom - r.top + 8],
       ['left', r.right - box.left + 8],
       ['right', box.right - r.left + 8],
     ].filter(([, v]) => v > 0);
-    if (!options.length) continue;
+    if (!options.length) return;
     const [side, amount] = options.reduce((a, b) => (b[1] < a[1] ? b : a));
     pad[side] = Math.max(pad[side], amount);
+  };
+
+  for (const el of document.querySelectorAll(
+      '.ov-portrait__card, .ov-image__card, .ov-quote, .ov-fact__card, .ov-compare')) {
+    if (getComputedStyle(el).opacity === '0') continue;
+    clearOf(el.getBoundingClientRect());
+  }
+
+  /* And the space a card is GOING to take, in a scene that raises one.
+     See findDeckScenes(): the camera fits at the top of a scene and the card
+     arrives later, so what is on screen right now is not what will be. The
+     reserve is a corner rather than a band -- the fact box is the left of the
+     lower deck and the stats are the right -- so clearOf() picks whichever way
+     out costs less picture, exactly as it does for a portrait.
+
+     DECK_RESERVE_PX is measured, not chosen: 78 fact cards rendered at 360 px
+     wide across all four packs in both languages, tallest 163 px
+     (american-revolution `black-soldiers`). It is a big number for a phone, and
+     that is a true fact about the furniture rather than a fault in the padding
+     -- see the note in BACKLOG.md about what is left of a 390x844 frame once
+     the caption, the transport and a fact box have had their share. */
+  if (sceneRaisesDeck) {
+    const deck = document.querySelector('.ov-deck--lower');
+    const d = deck?.getBoundingClientRect();
+    if (d && d.width) {
+      const base = d.bottom || box.bottom;
+      clearOf({ left: d.left, right: d.left + d.width * 0.62,
+                top: base - DECK_RESERVE_PX, bottom: base,
+                width: d.width * 0.62, height: DECK_RESERVE_PX });
+    }
   }
 
   // Never squeeze the map to nothing, whatever is piled on top of it.
@@ -647,8 +740,20 @@ export function highlight(cue, instant) {
     faction: factionOf(cue, 'tone:gold'),
     instant,
   });
-  if (cue.centre !== false && !instant) {
-    map.flyTo({ to: place.coords, over: 1.1 });
+  /* The camera moves under `instant` too, it just does not fly.
+     It used to be skipped entirely: `!instant` meant that playing forward
+     centred the map on the place being pointed at, and seeking to the same
+     second left the camera wherever the rebuild's earlier cues had put it.
+     One moment, two pictures, which is rule 1 -- and nothing caught it,
+     because CLAUDE.md puts the camera OUTSIDE dev/engine-lab.html's stage
+     signature deliberately (it is measured in map-lab instead), so the one
+     bench that replays every cue both ways is blind to exactly this.
+
+     `over` differing between the two passes is fine and expected -- that is
+     the animation phase, and the lab excludes it for that reason. Arriving
+     somewhere different is not the same kind of difference. */
+  if (cue.centre !== false) {
+    map.flyTo({ to: place.coords, over: 1.1, instant });
   }
 }
 

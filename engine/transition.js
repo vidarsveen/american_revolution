@@ -53,15 +53,45 @@
    The card is fully legible for 1.6 s and readable through both ramps —
    about 2.6 s, the same floor check-script.py puts on a portrait's name.
    Total 4.0 s against 3.62 before: the silence triples, the length barely
-   moves. */
-export const IN_MS = 1200;
+   moves.
+
+   WHERE t = 0 IS. It used to be the instant the scene's audio ran out, so
+   the whole first ramp happened after the last word — a second and a fifth
+   of picture still moving over a dead soundtrack, and only then the cut.
+   Player.tailFor() now starts the turn IN_MS EARLY, inside the trailing
+   silence the mp3 already has (shortest measured: 1.250 s), so t = 1200 —
+   veil opaque, stage rebuilt — lands exactly where the sound stops. */
+/* `--t-turn` itself, named once. Both ramps of the scene turn are this
+   number, and so are both ramps of the CHAPTER turn in engine/ending.js —
+   which is the same event at the next scale up and must not invent a second
+   answer to "how long does the frame take to become something else". */
+export const TURN_MS = 1200;
+export const IN_MS = TURN_MS;
 const HOLD_MS = 1600;
-const OUT_MS = 1200;
+const OUT_MS = TURN_MS;
 
 /* Silence before the next scene speaks, so the card gets clear air.
    Without it the title appeared at the same instant the new sentence began,
-   which is two things asking for attention at once. */
-export const LEAD_IN_MS = 2800;
+   which is two things asking for attention at once.
+
+   Measured from t = 0, the top of the table above -- so it is IN_MS + HOLD_MS
+   by construction, and this line is the third place that number is written.
+   If they ever disagree, the table is right. */
+export const LEAD_IN_MS = IN_MS + HOLD_MS;   // 2800
+
+/* And this is the number the PLAYER needs, which is not the same number.
+
+   player.leadInMs is silence measured from the REBUILD, and the rebuild is
+   already IN_MS late -- goToScene awaits coverMs first, then this. Handing it
+   LEAD_IN_MS stacked the two: the narrator came in at t = 4000 instead of
+   t = 2800, so the veil lifted over a silent stage and the voice arrived 1.2 s
+   after the picture. The table says the lift and the voice are the same event,
+   and they should be: a scene that opens in silence and then starts talking is
+   two beginnings.
+
+   It comes out as HOLD_MS, which is the check that the reading is right -- the
+   card holds, and when it stops holding the voice is there. */
+export const SPEAK_AFTER_MS = LEAD_IN_MS - IN_MS;   // 1600, i.e. HOLD_MS
 
 let host = null;
 let cardEl = null;

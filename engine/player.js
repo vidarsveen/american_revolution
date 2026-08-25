@@ -59,6 +59,21 @@ export class Player {
      * lands out of order and undoes a later, correct picture.
      */
     this._rebuildToken = 0;
+    /**
+     * True from the moment a scene turn is announced until the picture behind
+     * the veil has actually been rebuilt.
+     *
+     * While it is set, the clock is lying: sceneIndex is already the NEW
+     * scene but setNow() has not run yet, so now() still reports where the
+     * OLD one had got to. Measured against the new scene's duration that is
+     * a number past its end — on 19 April, 171 s read against a 146 s scene —
+     * and tick() would have called next() again, and again, straight to the
+     * end of the chapter. It does not happen today only because warmNext()
+     * gets the next file's metadata in before the following frame, which is
+     * luck, not a mechanism. The tail below widens that window, so it gets
+     * one.
+     */
+    this._turning = false;
 
     this.audio.addEventListener('ended', () => this.next());
     this.audio.addEventListener('seeked', () => { this._seeking = false; });
@@ -137,7 +152,9 @@ export class Player {
       // of it, and the change it was hiding was the first thing you saw.
       if (covered && this.coverMs > 0) {
         const token = this._rebuildToken;
+        this._turning = true;
         await new Promise((r) => setTimeout(r, this.coverMs));
+        this._turning = false;
         // Scrubbed, or sent somewhere else, while the veil was closing.
         if (token !== this._rebuildToken || this.sceneIndex !== i) return;
       }
@@ -190,6 +207,57 @@ export class Player {
       a.src = next.audio;
       this._warm = a;                 // hold a reference or it may be collected
     } catch { /* a browser that will not preload still plays fine */ }
+  }
+
+  /**
+   * THE TAIL — how long before the audio runs out the turn begins.
+   *
+   * The scene used to end the instant its audio did, so the whole 1200 ms of
+   * the veil closing happened after the last word: for that second and a
+   * fifth the picture was still moving over a silent soundtrack, and then it
+   * was replaced. A map.flyTo cued late in a scene is the case you can see —
+   * the camera travels on with nothing being said, and the next scene is
+   * there. Beginning the turn IN_MS early puts the veil at its most opaque
+   * exactly where the sound stops, so the cut and the silence are one edge
+   * instead of two 1.2 s apart. It also makes "a flight must be finished by
+   * scene.dur" the contract, which is a thing check-script.py can measure.
+   *
+   * WHAT THE JOIN DOES TO A FLIGHT STILL IN THE AIR: nothing, deliberately.
+   * `map.reset()` clears the layers and the nodes and does NOT touch `flight`
+   * or `cam` — read it before believing otherwise, as this comment once had
+   * to — so a flight that outlives its scene carries on and is killed only by
+   * the next scene's establishing camera cue, which rebuildTo() applies with
+   * `instant: true`. That is the right answer and it is why nothing here cuts
+   * it. Cutting would freeze the framing exactly where the flight had got to
+   * and then reveal it when the veil lifts, which is the "stopped 83 % of the
+   * way to Barolo" picture kept rather than avoided; letting it land gives
+   * the framing the author actually asked for. Both are bounded and hidden:
+   * check-script.py fails a flight that is not finished by scene.dur, so at
+   * the wipe there is at most IN_MS left to run, and the veil is opaque from
+   * scene.dur to scene.dur + HOLD_MS. And where the next scene establishes at
+   * `start` — which CLAUDE.md requires of every scene — the choice is
+   * invisible, because the flight is killed at the rebuild either way.
+   *
+   * The tail may only ever eat SILENCE. Measured over all 124 scenes of the
+   * eight chapters in both languages, scene.dur minus the end of the last
+   * beat is: shortest 1.250 s, median 1.625 s, longest 3.950 s. So 1200 ms
+   * always fits, with 50 ms to spare in the worst case — and a scene recorded
+   * tighter later loses its tail rather than its last word. No cue in any
+   * chapter lands in that window either (0 of 2934), so nothing goes unfired.
+   *
+   * Zero when there would be no veil to cut behind:
+   *   - the last scene of a chapter hands over to engine/ending.js, which is
+   *     a held card and not a turn, and it has its own two seconds of silence;
+   *   - a scene transition.js would decline to announce has no card and
+   *     therefore no cover, so cutting early there would just be cutting.
+   */
+  tailFor(scene) {
+    if (!this.coverMs || !scene) return 0;
+    const next = this.chapter.scenes[this.sceneIndex + 1];
+    if (!next || !(next.title || next.clock)) return 0;
+    const last = scene.beats?.[scene.beats.length - 1];
+    const spoken = last ? last.start + last.dur : scene.dur;
+    return Math.max(0, Math.min(this.coverMs / 1000, scene.dur - spoken));
   }
 
   next() {
@@ -326,6 +394,9 @@ export class Player {
     if (!scene) return;
     // Any rebuild, from anywhere, retires a deferred one. See _rebuildToken.
     this._rebuildToken += 1;
+    // …and ends the turn, whoever it was that got here first. The clock is
+    // honest again the moment there is a picture to go with it.
+    this._turning = false;
     // `soft` reaches resetPlate: a SCENE CHANGE fades the outgoing picture,
     // a SCRUB cuts it. Same end state either way, so rule 1 does not care --
     // only the pixels in between differ. Cutting on a scene change is the
@@ -366,9 +437,13 @@ export class Player {
   tick() {
     const scene = this.scene;
     if (!scene) return;
+    // A turn is in flight: sceneIndex has already moved but the clock has
+    // not, so every number here is about the scene we just left. Do nothing
+    // until the rebuild lands — see _turning.
+    if (this._turning) return;
     const t = this.now();
 
-    if (t >= scene.dur - 0.02) { this.next(); return; }
+    if (t >= scene.dur - Math.max(0.02, this.tailFor(scene))) { this.next(); return; }
 
     // Fire everything the playhead has passed, in order.
     while (this.cursor < scene.cues.length && scene.cues[this.cursor].t <= t) {

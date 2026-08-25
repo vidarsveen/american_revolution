@@ -193,12 +193,17 @@
       <button class="wide" data-do="panTest">Panoreringstest (blanke ruter?)</button>
       <button class="wide" data-do="seekTest">Seek-test (instant = samme bilde?)</button>
       <button class="wide" data-do="paletteTest">Fargetest (kan naboer skilles?)</button>
+      <button class="wide" data-do="labelTest">Etikettest (står alt innenfor rammen?)</button>
     </div>
     <div class="note" id="testOut">
       Panoreringstesten drar kartet raskt og teller bilder uten grunn under seg.
       Seek-testen tegner alt animert, så alt med <code>instant</code>, og sammenligner.
       Fargetesten måler ΔE mellom koloniene som deler grense — på pikslene, ikke på
       fargekodene, fordi en vask over bakken er en annen farge enn den den ble bedt om.
+      Etikettesten setter rammen til 390×844, legger navn og nåler langs hver kant og
+      hvert hjørne, og måler <code>getBoundingClientRect()</code> mot kartets egen
+      ramme. Den kjører i begge temaer, og én gang til med feilen lagt tilbake — en
+      test ingen har sett feile, er en test ingen vet virker.
     </div>
   </div>
 </div>

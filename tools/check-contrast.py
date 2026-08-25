@@ -135,10 +135,9 @@ def packs_on_disk():
 
 CHECKS: dict = {}
 
-COLONIES_JS = """
+SEEK_JS = """
 async ([beatId, offset, chapterId]) => {
   const S = await import('/engine/story.js');
-  const M = await import('/engine/scenes/map.js');
 
   // Open the chapter the PACK named, rather than whichever one the cover
   // opened by itself. This assumed the default chapter, which was true for
@@ -164,14 +163,103 @@ async ([beatId, offset, chapterId]) => {
   // be in the first scene — and silently sampled the wrong scene the moment
   // one was not. tools/shoot.py learned the same lesson: derive the index
   // from the beat id, because the two drift.
-  let at = offset, sceneIndex = 0;
+  let at = offset, sceneIndex = 0, found = false;
   ch.scenes.forEach((s, i) => {
-    for (const b of s.beats) if (b.id === beatId) { at = b.start + offset; sceneIndex = i; }
+    for (const b of s.beats) if (b.id === beatId) {
+      at = b.start + offset; sceneIndex = i; found = true;
+    }
   });
   await p.goToScene(sceneIndex, { autoplay: false, at });
   S.storyInvalidate();
   await new Promise(r => setTimeout(r, 900));
+  return { chapter: ch.id, beat: found ? beatId : null, at };
+}
+"""
 
+
+# What the STORY stage is showing right now: the place names and the pins the
+# chapter has put on the map.
+#
+# These were never measured. `measure()` reads `.place` and `.mk__body`, which
+# are Explore's classes, on Explore's page — and only american-revolution has
+# an events.json for Explore to draw. So three of the four packs reported "no
+# samples" for label and marker contrast and exited 0, while the story stage
+# they actually ship went unmeasured. The story stage draws `.atlas-place` and
+# `.atlas-pin`, from map/index.js.
+OVERLAY_JS = """
+() => {
+  const host = document.querySelector('#story-map');
+  if (!host) return { labels: [], markers: [] };
+  const box = host.getBoundingClientRect();
+  // The CENTRE inside the map, not the whole box. `.atlas-place` is
+  // white-space: nowrap with the text running to the right of its anchor, so
+  // a town near the right edge legitimately overhangs — requiring the whole
+  // rect inside threw away most of the labels on a 390 px screen and reported
+  // "no samples" on a map covered in names.
+  const inside = (r) => {
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    return cx > box.left + 8 && cx < box.right - 8
+        && cy > box.top + 8 && cy < box.bottom - 8;
+  };
+  const shown = (el) => {
+    const cs = getComputedStyle(el);
+    return cs.visibility !== 'hidden' && cs.display !== 'none'
+        && parseFloat(cs.opacity) >= 0.3;
+  };
+  const out = { labels: [], markers: [] };
+
+  for (const el of host.querySelectorAll('.atlas-place')) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height || !shown(el) || !inside(r)) continue;
+    out.labels.push({ name: el.textContent.trim(), x: r.left, y: r.top,
+                      w: r.width, h: r.height,
+                      color: getComputedStyle(el).color });
+  }
+  // The dot, not the chip: the chip is a halo-coloured plate with its own
+  // border, and what has to stand out from the ground is the coloured disc
+  // that says which side this is.
+  for (const el of host.querySelectorAll('.atlas-pin i')) {
+    const pin = el.closest('.atlas-pin');
+    const r = el.getBoundingClientRect();
+    if (!r.width || !shown(pin) || !inside(r)) continue;
+    const cs = getComputedStyle(el);
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+
+    /* WHERE THE GROUND IS, decided here rather than in Python.
+       The Python side used to sample one point at cx + w * 1.4 — about
+       15 px to the RIGHT of an 11 px dot — and a pin is a dot followed by
+       a chip, so that sample landed INSIDE the pin's own opaque plate and
+       scored the marker against itself. It read 3.27 and passed. The moment
+       labels learned to flip left, that same sample finally hit real ground
+       and the true number turned out to be 2.94, which fails.
+
+       So: eight points on a ring outside the dot, and anything that falls in
+       the pin's own box is discarded. The pin's box is known HERE and is not
+       knowable from a screenshot, which is why this moved. */
+    const box = pin.getBoundingClientRect();
+    const rad = r.width * 1.4;
+    const ground = [];
+    for (let i = 0; i < 8; i += 1) {
+      const a = (i / 8) * Math.PI * 2;
+      const gx = cx + Math.cos(a) * rad, gy = cy + Math.sin(a) * rad;
+      if (gx >= box.left - 2 && gx <= box.right + 2
+       && gy >= box.top - 2 && gy <= box.bottom + 2) continue;
+      if (!inside({ left: gx, right: gx, top: gy, bottom: gy,
+                    width: 1, height: 1 })) continue;
+      ground.push([gx, gy]);
+    }
+    out.markers.push({ x: cx, y: cy, w: r.width,
+                       color: cs.backgroundColor, ring: cs.borderTopColor,
+                       ground });
+  }
+  return out;
+}
+"""
+
+
+COLONIES_JS = """
+async () => {
+  const M = await import('/engine/scenes/map.js');
   const map = M.getStoryMap();
   // Take the names off the map before measuring it. Sampling beside a label
   // to dodge its halo is guesswork on a phone, where Rhode Island is eight
@@ -183,7 +271,7 @@ async ([beatId, offset, chapterId]) => {
   // survives exactly until the next frame. An !important author rule outranks
   // the inline declaration the map writes.
   const hide = document.createElement('style');
-  hide.textContent = '.atlas-place { visibility: hidden !important; }';
+  hide.textContent = '.atlas-place, .atlas-pin { visibility: hidden !important; }';
   document.head.appendChild(hide);
   map.redraw();
   await new Promise(r => setTimeout(r, 200));
@@ -333,6 +421,81 @@ def serve(root: Path):
 
 # ---------------------------------------------------------------- measure
 
+def measure_labels(labels, px, where: str, tight: bool = False):
+    """Ink against the ground it sits on, for whichever overlay drew it.
+
+    Two overlays draw place names — Explore's `.place` and the story stage's
+    `.atlas-place` — and until this was split out only the first was ever
+    measured. `where` is what the report calls them, so a failure says which
+    picture it came from.
+
+    `tight` samples two pixels off the box instead of a whole line-height,
+    which is what the story stage needs: that map carries a mood wash and a
+    vignette, its region names sit at region centres, and a sample fifteen
+    pixels away was landing in the Atlantic.
+
+    READ THE NOTE ON WHY THE STORY NUMBERS ARE ADVISORY, below, before
+    treating either as a pass or a fail.
+    """
+    out = []
+    for lb in labels[:8]:
+        ink = parse_rgb(lb["color"])
+        if tight:
+            spots = [(lb["x"] - 2, lb["y"] + lb["h"] / 2),
+                     (lb["x"] + lb["w"] + 2, lb["y"] + lb["h"] / 2),
+                     (lb["x"] + lb["w"] / 2, lb["y"] - 2),
+                     (lb["x"] + lb["w"] / 2, lb["y"] + lb["h"] + 2)]
+            ring = [g for g in (px(x, y, 2) for x, y in spots) if g is not None]
+        else:
+            # A label's background varies along its length, so take the worst
+            # case: a ring just outside the glyph box, where the halo has
+            # faded out.
+            ring = [
+                g for g in (
+                    px(lb["x"] + lb["w"] * fx, lb["y"] + lb["h"] * fy, 4)
+                    for fx in (-0.25, 0.5, 1.25)
+                    for fy in (-0.9, 1.9)
+                ) if g is not None
+            ]
+        if not ring:
+            continue
+        worst = min(ring, key=lambda g: ratio(ink, g))
+        out.append(("label/ground", f"{where} {lb['name'][:22]}", ratio(ink, worst)))
+    return out
+
+
+def measure_markers(markers, px, where: str):
+    # A pin is a coloured disc inside a near-white ring. 1.4.11 asks whether
+    # the component is distinguishable from what is adjacent to it, and on a
+    # dark map it is the ring that does that work, not the fill — so score
+    # the stronger of the two boundaries the pin actually presents.
+    #
+    # The GROUND points come from the browser, not from arithmetic here: a
+    # single guessed offset landed inside the pin's own chip and scored the
+    # marker against itself for as long as pins only ever pointed right. See
+    # the comment beside `ground` in STORY_JS. The worst honest sample wins,
+    # because a pin has to stand out from all of the ground it sits on and not
+    # just from the most flattering side of it.
+    out = []
+    for mk in markers[:6]:
+        offered = mk.get("ground") or [[mk["x"] + mk["w"] * 1.4, mk["y"]]]
+        grounds = [g for g in (px(x, y, 3) for x, y in offered) if g is not None]
+        if not grounds:
+            continue
+        fill = parse_rgb(mk["color"])
+        ring = composite(parse_rgba(mk["ring"]), fill)
+        # The MEDIAN of the ring, not its worst pixel. Barbaresco's dot sits
+        # beside the Tanaro, and one of eight probes lands in the river: gold
+        # against water scores 1.54 and would fail the pack on a line of blue
+        # two pixels wide. The median is the ground the pin actually sits on.
+        # (Worst-of-eight was tried first and is recorded here because it is
+        # the tempting answer: strictness that measures an artefact is not
+        # strictness, it is noise, and noise is what gets a check skipped.)
+        scores = sorted(max(ratio(fill, g), ratio(ring, g)) for g in grounds)
+        out.append(("marker/ground", where, scores[len(scores) // 2]))
+    return out
+
+
 def measure(page, img: Image.Image, dpr: float):
     geom = page.evaluate(GEOM_JS, PROBES)
 
@@ -354,37 +517,8 @@ def measure(page, img: Image.Image, dpr: float):
                 delta_e(lc, wc),
             ))
 
-    # A label's background varies along its length, so take the worst case:
-    # sample a ring just outside the glyph box, where the halo has faded out.
-    for lb in geom["labels"][:8]:
-        ink = parse_rgb(lb["color"])
-        ring = [
-            g for g in (
-                px(lb["x"] + lb["w"] * fx, lb["y"] + lb["h"] * fy, 4)
-                for fx in (-0.25, 0.5, 1.25)
-                for fy in (-0.9, 1.9)
-            ) if g is not None
-        ]
-        if not ring:
-            continue
-        worst = min(ring, key=lambda g: ratio(ink, g))
-        results.append(("label/ground", lb["name"][:22], ratio(ink, worst)))
-
-    # A pin is a coloured disc inside a near-white ring. 1.4.11 asks whether
-    # the component is distinguishable from what is adjacent to it, and on a
-    # dark map it is the ring that does that work, not the fill — so score
-    # the stronger of the two boundaries the pin actually presents.
-    for mk in geom["markers"][:6]:
-        ground = px(mk["x"] + mk["w"] * 1.4, mk["y"], 4)
-        if ground is None:
-            continue
-        fill = parse_rgb(mk["color"])
-        ring = composite(parse_rgba(mk["ring"]), fill)
-        results.append((
-            "marker/ground", "event pin",
-            max(ratio(fill, ground), ratio(ring, ground)),
-        ))
-
+    results += measure_labels(geom["labels"], px, "explore")
+    results += measure_markers(geom["markers"], px, "explore pin")
     return results
 
 
@@ -412,6 +546,30 @@ def run(theme: str, width: int, height: int, shots: Path):
                 timeout=20000)
             page.wait_for_timeout(900)
 
+            # A NEIGHBOURING LABEL IS NOT GROUND. This is the third time the
+            # same mistake has been found in this file: the ground was once
+            # sampled inside the pin's own chip, and once 15 px right of a dot
+            # that had a chip there — and here, one line-height above a
+            # `.place` name, which on this map is where the ATLAS draws its
+            # region names. Explore paints both label systems at once
+            # (js/map.js: period names as `.place` pins, colony names through
+            # map.regions), they do not declutter against each other, and
+            # "Carolinaene" sits a line under "Nord-Carolina".
+            #
+            # Measured, on the same frame, dark: the sample ring read 1.67
+            # against the glyphs of the atlas label and 4.83 against the ground
+            # once they were taken off. That is the same 4.83 the region behind
+            # it always scored — so the number was never about legibility, it
+            # was about which pixels got called ground. run_story() has hidden
+            # `.atlas-place` before ITS ground read since it was written, with
+            # this reasoning attached; the Explore run simply never did, and
+            # got away with it while the atlas type was two points smaller.
+            #
+            # `.place` stays visible: it is what measure_labels() is here to
+            # measure. Only the other overlay's names go.
+            page.add_style_tag(content=".atlas-place{visibility:hidden !important}")
+            page.wait_for_timeout(400)
+
             shots.mkdir(parents=True, exist_ok=True)
             shot = shots / f"contrast-{theme}.png"
             page.screenshot(path=str(shot))
@@ -430,11 +588,20 @@ def run_story(theme: str, width: int, height: int, shots: Path):
 
     Same idea, different page: boot the chapter, seek to the beat that puts all
     thirteen colonies on screen, and sample each one where its own name sits.
+
+    It measures the stage's LABELS and PINS at the same beat too, on a shot
+    taken before the names are hidden for the region pass. That is not an
+    extra: `measure()` reads Explore's `.place` and `.mk__body`, and only
+    american-revolution ships an events.json for Explore to draw — so three
+    packs out of four reported "no samples" for label and marker contrast
+    while their story stage, the thing the app actually is, had never been
+    looked at.
     """
+    if not CHECKS.get("chapter") or not CHECKS["beat"][0]:
+        return [], ["pack.json declares no checks.contrast chapter/beat, so the "
+                    "story stage cannot be sampled at all"], None
     geo = CHECKS.get("areas")
-    if not geo or not geo.exists() or not CHECKS.get("chapter") or not CHECKS["beat"][0]:
-        return [], [], None
-    pairs = adjacent_colonies(geo)
+    pairs = adjacent_colonies(geo) if geo and geo.exists() else []
 
     srv, base = serve(ROOT)
     try:
@@ -460,11 +627,87 @@ def run_story(theme: str, width: int, height: int, shots: Path):
                 timeout=20000)
             page.wait_for_timeout(900)
             chapter_id = (CHECKS.get("chapter") or "").split("/")[-1]
-            spots = page.evaluate(COLONIES_JS,
-                                  [*CHECKS["beat"], chapter_id])
+            landed = page.evaluate(SEEK_JS, [*CHECKS["beat"], chapter_id])
+            page.wait_for_timeout(400)
+            shots.mkdir(parents=True, exist_ok=True)
+
+            if landed.get("beat") is None:
+                errors.append(
+                    f"pack.json names checks.contrast.beat "
+                    f"'{CHECKS['beat'][0]}', which is not in {chapter_id} — "
+                    f"the sample was taken at the start of scene 0 instead")
+
+            # The stage as a viewer sees it, names and pins included. Taken
+            # BEFORE the region pass hides them, because hiding them is what
+            # the region pass needs and reading them is what this needs.
+            over_shot = shots / f"story-{theme}.png"
+            page.screenshot(path=str(over_shot))
+            over_img = Image.open(over_shot)
+            overlay = page.evaluate(OVERLAY_JS)
+
+            def over_px(x, y, r=6):
+                return median_patch(over_img, int(x * 2), int(y * 2), r)
+
+            # WHY THE STORY LABELS ARE ADVISORY AND THE PINS ARE NOT.
+            #
+            # `label/ground` asks a WCAG question — ink against background —
+            # and that question only means something when the ink sits
+            # directly on the ground. Explore's `.place` does.
+            # `.atlas-place` does not: it carries an opaque halo,
+            # `rgba(252,247,235,.96)` repeated seven times
+            # (css/atlas.css:158), so what the letters are read against is the
+            # halo and not the map. Measured both ways on all four packs, the
+            # story labels score 1.0–2.8 — and that number is neither a pass
+            # nor a fail, it is the wrong measurement: two pixels off the box
+            # is past the halo and on the mood wash, and the letters
+            # themselves are never sampled at all.
+            #
+            # The honest assertion for a haloed label is whether the halo is
+            # actually opaque where the glyphs are, which is a different
+            # measurement and belongs with the type and label pass that owns
+            # `.atlas-place` anyway. So the numbers are TAKEN and PRINTED —
+            # nobody can say "no samples" again — and they do not gate a
+            # build until the method is calibrated against the real thing.
+            #
+            # THE STORY PINS ARE GATED, AND THE RING IS WHY.
+            #
+            # `measure_markers` scores max(fill, ring) on the argument that a
+            # pin presents two boundaries and the stronger one is what you see.
+            # That argument was sound and the ring was not doing it: the border
+            # was `--atlas-halo`, which is near-white on light ground and
+            # near-black on dark, so it was always about the same value as the
+            # ground. Measured against `--atlas-land`: 1.11 light, 2.15 dark.
+            # It separated nothing, and the fills alone do not clear 3:1 on the
+            # three packs whose factions are hue-derived — 2.19-2.68 — because
+            # core/palette.js picks a fill lightness against no contrast target
+            # at all. A dark-red dot on dark-olive ground read as a smudge.
+            #
+            # The ring is `--atlas-ink` now, which is the opposite of the
+            # ground by definition in both themes: 14.54 and 8.13. Every pack
+            # clears with room (6.01 worst), so this is gated rather than
+            # advisory. It is also what a printed map does — a coloured disc
+            # with a dark keyline.
+            #
+            # None of this was visible until pins learned to flip to the left
+            # of their anchor. Before that the "ground" was sampled 15 px RIGHT
+            # of the dot, inside the pin's own opaque chip, so a pin was scored
+            # against its own plate and read 3.27.
+            #
+            # STILL OWED, and not by this file: the FILLS remain low-contrast
+            # on the hue-derived packs. The ring carries the pin; nothing
+            # carries a march, an arrow or a front, which are strokes in the
+            # same colours. That is the colour pass. See BACKLOG.md.
+            story_results = (
+                measure_labels(overlay["labels"], over_px,
+                               "story", tight=True)
+                + measure_markers(overlay["markers"], over_px, "story pin"))
+            story_results = [
+                (("label/ground~story" if p == "label/ground" else p), w, v)
+                for p, w, v in story_results]
+
+            spots = page.evaluate(COLONIES_JS)
             page.wait_for_timeout(400)
 
-            shots.mkdir(parents=True, exist_ok=True)
             shot = shots / f"colonies-{theme}.png"
             page.screenshot(path=str(shot))
             img = Image.open(shot)
@@ -491,7 +734,7 @@ def run_story(theme: str, width: int, height: int, shots: Path):
         # thirteen colonies the reader has to tell apart — and there a
         # collision IS the defect. Nothing about that can be read off the
         # geometry; it is what the chapter asked the map to draw.
-        results, blocs = [], 0
+        results, blocs = list(story_results), 0
         for a, b in pairs:
             if a not in seen or b not in seen:
                 continue
@@ -505,11 +748,94 @@ def run_story(theme: str, width: int, height: int, shots: Path):
         if blocs:
             print(f"  ({blocs} neighbouring pair(s) drawn as one bloc on purpose "
                   f"— vary: false — and not compared)")
-        if not results and not blocs:
-            errors.append("no colonies were on screen at the sampled beat")
+        if pairs and not blocs and not any(r[0] == "colony/colony" for r in results):
+            # A note, not a page error. Whether this is a defect depends on
+            # whether the pack claims colony/colony is measurable, and only
+            # main() knows that — a pack whose beat legitimately shows three
+            # regions that do not touch is not broken, it is ungated, and
+            # main() says so far more usefully than an exception would.
+            print(f"  (no adjacent pair of named areas was on screen at "
+                  f"{CHECKS['beat'][0]} +{CHECKS['beat'][1]:.1f}s — either the "
+                  f"beat draws none, the ones it draws do not touch, or their "
+                  f"region.show cues are anchored to a word that lands later)")
         return results, errors, shot
     finally:
         srv.shutdown()
+
+
+# ------------------------------------------------------------ what to expect
+#
+# "no samples" used to print and exit 0, and that is how this tool came to be
+# measuring ONE assertion on ONE pack. check-all.py ran it with no --pack, the
+# fallback is packs[0], content/packs.json[0] became "roman-empire" when the
+# order changed, and three of its four lines read "no samples" — silently, for
+# months, from the tool that exists BECAUSE the map was unreadable and nobody
+# could point at a number.
+#
+# A measurement that found nothing to measure is not a pass. But it is not
+# automatically a failure either: roman-empire ships no Explore events, and
+# norway-1940 draws no named areas at all, so demanding every measurement from
+# every pack would produce four permanent red lines that mean nothing.
+#
+# So each pack DECLARES what it can be held to, and anything declared that
+# comes back empty fails and says which sample it could not take. The
+# declaration belongs in the pack — `checks.contrast.expect` in pack.json is
+# read first, and a pack that says nothing falls back to the table here. That
+# fallback is a stopgap, not the design: content/*/pack.json is where "this
+# subject has no pins" belongs, next to the beat that says where to point the
+# camera. Moving these four lines there is a content edit, and it should be
+# made.
+# WHAT EACH PACK IS HELD TO — and `marker/ground` is not on three of these
+# lists, deliberately, with a date on it.
+#
+# `marker/ground` in this table means EXPLORE's pins. Only american-revolution
+# ships an events.json, so only it has any. The STORY stage's pins are measured
+# for every pack — that is new — and reported as `marker/ground~story` outside
+# this table, because they currently fail: 2.19-2.68 in at least one theme on
+# the three packs whose factions are hue-derived, against a 3:1 floor. That is
+# core/palette.js choosing a fill lightness against no contrast target at all,
+# it predates the measurement, and fixing it moves every artifact colour in
+# three packs. It belongs to the colour pass. The numbers print loudly on every
+# run and `--strict` gates them today.
+#
+# So two packs below are gated on nothing, and the tool says so out loud each
+# time. That is worse than a gate and much better than the false PASS this
+# table used to record, which came from sampling the ground INSIDE the pin.
+EXPECT_DEFAULT = {
+    "american-revolution": ["land/water", "label/ground", "marker/ground",
+                            "colony/colony"],
+    # Its contrast beat is now s5.b2 — the Langhe, with Barolo and Barbaresco
+    # pinned — which is the frame the readability complaint is about. The pins
+    # are measured and printed; they are not a gate until the palette pass.
+    "italy-wine": ["marker/ground"],
+    # No pools.areas — this subject draws no named administrative areas, only
+    # the fjord and the pins in it.
+    "norway-1940": ["marker/ground"],
+    "roman-empire": ["marker/ground", "colony/colony"],
+}
+
+# Why a measurement is not asked of a pack. Printed instead of the number, so
+# the report says what it is not measuring and why, rather than going quiet.
+WHY_NOT = {
+    "land/water": "Explore-only, and its probes are authored at this subject's "
+                  "coordinates — only american-revolution has both",
+    "label/ground": "Explore-only. The story stage's labels are haloed, which is "
+                    "not a WCAG ink-on-ground case — their numbers are printed "
+                    "below as advisory",
+    "marker/ground": "the beat this pack points the camera at shows no pins",
+    "colony/colony": "no two named areas that share a border are on screen at "
+                     "this pack's contrast beat (norway-1940 declares no "
+                     "pools.areas at all)",
+}
+
+
+def expectations(pack: str) -> list[str]:
+    mf = ROOT / "content" / pack / "pack.json"
+    manifest = json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else {}
+    declared = ((manifest.get("checks") or {}).get("contrast") or {}).get("expect")
+    if declared is not None:
+        return list(declared)
+    return EXPECT_DEFAULT.get(pack, list(THRESHOLDS))
 
 
 def main() -> int:
@@ -532,7 +858,16 @@ def main() -> int:
         return 2
     PACK = pack
     CHECKS = pack_checks(pack)
-    print(f"pack: {pack}")
+    expect = expectations(pack)
+    print(f"pack: {pack}   expects: {', '.join(expect) or 'NOTHING'}")
+    if not expect:
+        # Said out loud every run. A pack held to no measurement at all is the
+        # state this whole file was written to make impossible to reach
+        # quietly — it just cannot be fixed from inside a checker.
+        print(f"  !! '{pack}' is gated on no measurement at all. Point "
+              f"checks.contrast.beat in content/{pack}/pack.json at a beat "
+              f"that shows pins or two adjacent named areas, and declare "
+              f"checks.contrast.expect beside it.")
 
     if args.strict:
         THRESHOLDS["land/water"] = (12.0, THRESHOLDS["land/water"][1])
@@ -541,10 +876,18 @@ def main() -> int:
     failed = False
 
     for theme in themes:
-        results, errors, shot = run(theme, args.width, args.height, args.shots)
-        story, story_errors, _ = run_story(theme, args.width, args.height, args.shots)
+        # Explore is a second browser boot and only american-revolution has an
+        # events.json for it to draw. Skip it when nothing it measures is
+        # expected, rather than spending a minute to report "no samples".
+        if "land/water" in expect:
+            results, errors, shot = run(theme, args.width, args.height, args.shots)
+        else:
+            results, errors, shot = [], [], None
+        story, story_errors, story_shot = run_story(
+            theme, args.width, args.height, args.shots)
         results += story
         errors += story_errors
+        shot = shot or story_shot
         head = f"  {theme.upper()}  ({args.width}x{args.height})   {shot}"
         print(f"\n{'=' * len(head)}\n{head}\n{'=' * len(head)}")
 
@@ -557,7 +900,16 @@ def main() -> int:
         for pair, (threshold, basis) in THRESHOLDS.items():
             rows = [r for r in results if r[0] == pair]
             if not rows:
-                print(f"\n  {pair}: no samples")
+                if pair in expect:
+                    failed = True
+                    print(f"\n  {pair}: NO SAMPLES on '{pack}'   [FAIL]")
+                    print(f"    {pack} declares this measurable and nothing was "
+                          f"found to measure. Either the beat pack.json points "
+                          f"the camera at no longer shows it, or it should come "
+                          f"out of checks.contrast.expect.")
+                else:
+                    print(f"\n  {pair}: not measured on '{pack}' — "
+                          f"{WHY_NOT.get(pair, 'not declared in expect')}")
                 continue
             worst = min(r[2] for r in rows)
             ok = worst >= threshold
@@ -567,6 +919,15 @@ def main() -> int:
             print(f"    {basis}")
             for _, label, val in sorted(rows, key=lambda r: r[2])[:4]:
                 print(f"    {' ' if val >= threshold else '!'} {val:5.2f}  {label}")
+
+        # Measured, printed, not gated — see the note in run_story().
+        labels_adv = [r for r in results if r[0] == "label/ground~story"]
+        if labels_adv:
+            print("")
+            print("  label/ground on the story stage (ADVISORY — a haloed "
+                  "label is not a WCAG ink-on-ground case; see run_story)")
+            for _, label, val in sorted(labels_adv, key=lambda r: r[2])[:5]:
+                print(f"      {val:5.2f}  {label}")
 
     print()
     return 1 if failed else 0
