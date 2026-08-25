@@ -13,6 +13,13 @@
    "no": "Sen, kresen og nesten umulig å flytte. Nebbiolo trenger kalkrik leire, sørvendt helling og en lang høst, og modnes så seint at den plukkes i oktober når tåka ligger i dalene.\n\nVinen er merkelig blek — nesten oransje i kanten etter noen år — og samtidig blant de mest tanninrike i verden. Den lukter av roser, tjære og kirsebær.\n\nLager Barolo og Barbaresco. Nesten all Nebbiolo i verden vokser innenfor noen få mil i det nordvestlige Italia.",
    "en": "Late, fussy and nearly impossible to move. Nebbiolo wants chalky clay, a south-facing slope and a long autumn, and ripens so late that it is picked in October when the fog is lying in the valleys.\n\nThe wine is oddly pale — almost orange at the rim after a few years — and at the same time among the most tannic in the world. It smells of roses, tar and sour cherry.\n\nMakes Barolo and Barbaresco. Almost all the Nebbiolo on earth grows within a few dozen kilometres of north-west Italy."
   },
+  "profile": {
+   "syre": 0.85,
+   "tannin": 0.95,
+   "fylde": 0.7,
+   "frukt": 0.45,
+   "sodme": 0.0
+  },
   "colour": "red",
   "region": {
    "no": "Piemonte",
@@ -31,6 +38,13 @@
   "body": {
    "no": "Nesten det motsatte av Nebbiolo: modnes tidligere, tåler dårligere jord og er lett å like fra første slurk.\n\nDen fikk historisk de markene Nebbiolo ikke ville ha, og ble regnet som bondevin i lang tid. Det endret seg på nittenåttitallet, da noen produsenter begynte å lagre den på nye eikefat.\n\nDet er den flaska folk i Piemonte faktisk åpner til middag.",
    "en": "Nearly the opposite of Nebbiolo: ripens earlier, tolerates poorer soil, and is easy to like from the first mouthful.\n\nIt historically got the sites Nebbiolo would not take, and was thought of as peasant wine for a long time. That changed in the 1980s, when some producers began ageing it in new oak.\n\nIt is the bottle people in Piedmont actually open with dinner."
+  },
+  "profile": {
+   "syre": 0.9,
+   "tannin": 0.2,
+   "fylde": 0.5,
+   "frukt": 0.7,
+   "sodme": 0.0
   },
   "colour": "red",
   "region": {
@@ -51,6 +65,13 @@
    "no": "Dolcetto betyr «den lille søte», og vinen er ikke søt i det hele tatt. Navnet kommer trolig av at druen selv smaker søtt når den plukkes.\n\nDen modnes tidligst av de tre store i Piemonte, så den plantes der Nebbiolo ikke ville modnet i tide. Lite syre, myke tanniner, mørk farge — en vin å drikke ung og uten anledning.",
    "en": "Dolcetto means 'the little sweet one', and the wine is not sweet at all. The name probably comes from the grape itself tasting sweet when picked.\n\nIt ripens earliest of Piedmont's three, so it is planted where Nebbiolo would never ripen in time. Low acid, soft tannin, dark colour — a wine to drink young and without an occasion."
   },
+  "profile": {
+   "syre": 0.4,
+   "tannin": 0.5,
+   "fylde": 0.55,
+   "frukt": 0.65,
+   "sodme": 0.0
+  },
   "colour": "red",
   "region": {
    "no": "Piemonte",
@@ -69,6 +90,13 @@
   "body": {
    "no": "Moscato lukter påfallende likt selve druen, noe de fleste vindruer ikke gjør. Det er en av svært få druer du kan kjenne igjen med lukten alene.\n\nI Asti stanses gjæringen midtveis ved å kjøle vinen ned. Halve sukkeret blir igjen og boblene som alt er dannet blir sittende: søtt, lett perlende, rundt fem prosent alkohol.",
    "en": "Moscato smells strikingly like the grape itself, which most wine grapes do not. It is one of very few you could identify by smell alone.\n\nAt Asti the fermentation is stopped halfway by chilling. Half the sugar stays and the bubbles already formed stay with it: sweet, lightly fizzing, around five per cent alcohol."
+  },
+  "profile": {
+   "syre": 0.5,
+   "tannin": 0.05,
+   "fylde": 0.3,
+   "frukt": 0.95,
+   "sodme": 0.8
   },
   "colour": "white",
   "region": {
@@ -89,6 +117,13 @@
    "no": "Navnet betyr trolig «Jupiters blod». Sangiovese er høy i både syre og tannin, med smak av surkirsebær, tomatblad og te.\n\nDen er svært variabel: det finnes over hundre registrerte kloner, og forskjellen mellom dem er stor nok til å merkes i glasset.\n\nLager Chianti, Brunello di Montalcino og Vino Nobile di Montepulciano — tre viner som er samme drue på tre steder.",
    "en": "The name probably means 'the blood of Jupiter'. Sangiovese is high in both acid and tannin, tasting of sour cherry, tomato leaf and tea.\n\nIt is highly variable: over a hundred clones are registered, and the difference between them is large enough to taste.\n\nMakes Chianti, Brunello di Montalcino and Vino Nobile di Montepulciano — three wines that are one grape in three places."
   },
+  "profile": {
+   "syre": 0.85,
+   "tannin": 0.75,
+   "fylde": 0.6,
+   "frukt": 0.6,
+   "sodme": 0.0
+  },
   "colour": "red",
   "region": {
    "no": "Toscana",
@@ -108,6 +143,13 @@
    "no": "Corvina er lett i fargen og høy i syre, og gir alene en ganske slank vin. Det den kan, er å tørkes.\n\nKlasene legges på matter i tre til fire måneder til de har mistet en tredjedel av vekten. Sukkeret konsentreres, og resultatet er Amarone: femten til seksten prosent alkohol og smak av tørket kirsebær.",
    "en": "Corvina is light in colour and high in acid, and on its own gives a fairly slender wine. What it can do is dry.\n\nThe bunches are laid on mats for three or four months until they have lost a third of their weight. The sugar concentrates, and the result is Amarone: fifteen or sixteen per cent alcohol and the taste of dried cherry."
   },
+  "profile": {
+   "syre": 0.8,
+   "tannin": 0.4,
+   "fylde": 0.4,
+   "frukt": 0.6,
+   "sodme": 0.0
+  },
   "colour": "red",
   "region": {
    "no": "Veneto",
@@ -126,6 +168,13 @@
   "body": {
    "no": "Aglianico dyrkes i Campania og Basilicata, mye av det på vulkansk jord i høyden. Den er sen, tanninrik og lagringsdyktig — Nord-Italias Nebbiolo flyttet sørover, omtrent.\n\nNavnet er lenge antatt å komme av «hellenico», altså gresk, fordi grekerne tok med seg vinranker til Sør-Italia. Språkforskere er ikke enige om det.",
    "en": "Aglianico grows in Campania and Basilicata, much of it on volcanic soil at altitude. It is late, tannic and long-lived — roughly the north's Nebbiolo moved south.\n\nThe name was long assumed to come from 'hellenico', meaning Greek, because the Greeks brought vines to southern Italy. Linguists do not agree."
+  },
+  "profile": {
+   "syre": 0.8,
+   "tannin": 0.9,
+   "fylde": 0.8,
+   "frukt": 0.5,
+   "sodme": 0.0
   },
   "colour": "red",
   "region": {

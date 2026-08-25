@@ -3813,14 +3813,6 @@
                 "no": "10. mai 1940",
                 "en": "10 May 1940"
               }
-            },
-            {
-              "on": "end",
-              "do": "caption.note",
-              "value": {
-                "no": "Fortsettelsen: Byen de tok tilbake",
-                "en": "Continued in: The town they took back"
-              }
             }
           ],
           "gapAfter": 2.0

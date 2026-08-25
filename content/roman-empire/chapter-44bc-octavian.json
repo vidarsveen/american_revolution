@@ -3156,14 +3156,6 @@
           },
           "cues": [
             {
-              "on": "end",
-              "do": "caption.note",
-              "value": {
-                "no": "44 f.Kr. – 27 f.Kr.",
-                "en": "44 BC – 27 BC"
-              }
-            },
-            {
               "on": "start",
               "do": "plate.show",
               "id": "colosseum",
@@ -3172,7 +3164,7 @@
                 0.5,
                 0.5
               ],
-              "over": 26,
+              "over": 10,
               "dim": 0.2
             }
           ],

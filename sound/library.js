@@ -1081,46 +1081,72 @@ function sCorkDraw(ac, out, rnd, { at = 0 } = {}) {
    so each one is a very short sine gliding upward; scattered evenly they
    sound like a machine, so they come in clumps, the same reason the crowd
    above does. */
-function sPour(ac, out, rnd, { at = 0, dur = 3.2 } = {}) {
+function sPour(ac, out, rnd, { at = 0, dur = 2.10 } = {}) {
+  /* WINE INTO A GLASS, NOT WATER OVER A ROCK.
+
+     This was 2.75 s of continuous bandpassed noise sweeping 760 -> 1500 Hz,
+     with bubbles over it. That is a description of a STREAM, and a stream of
+     that length at that brightness is a waterfall — which is what it was
+     reported as. Two things make a bottle sound like a bottle and neither was
+     here:
+
+     1. It GLUGS. Wine only leaves through a neck that air has to get back
+        into, so it comes in pulses about a quarter of a second apart, and the
+        pulse is the identifying feature. A steady stream is a tap.
+     2. The pitch that rises is the GLASS, not the liquid. The air column
+        above the wine shortens as it fills, so the resonance climbs — a
+        Helmholtz cavity, a few hundred hertz, not a noise band at fifteen.
+
+     So: a low resonant body that climbs a fifth over the pour, pulsed; a thin
+     stream under it at a fraction of the old level; and the neck's own knock
+     on each glug. */
   const ch = out.channelCount || 2;
-  const body = dur - 0.45;
+  const glugs = 5 + Math.floor(rnd() * 2);
+  const step = (dur - 0.30) / glugs;
+
+  // The glass, filling. Each glug is the cavity speaking, and the cavity is
+  // shorter every time.
+  for (let k = 0; k < glugs; k++) {
+    const u = k / Math.max(1, glugs - 1);
+    const t = at + 0.04 + k * step * (0.92 + rnd() * 0.16);
+    const f0 = 210 + u * 170;                 // climbs about a fifth as it fills
+    tone(ac, out, {
+      at: t, dur: 0.14 + rnd() * 0.05, freq: f0, glideTo: f0 * 1.06,
+      peak: 0.30 + rnd() * 0.10, attack: 0.004,
+    });
+    // The neck knocking as air goes back up the bottle.
+    hit(ac, out, {
+      at: t, dur: 0.05 + rnd() * 0.03, peak: 0.10 + rnd() * 0.06,
+      attack: 0.001, type: 'bandpass', freq: 620 + rnd() * 420, q: 2.2, rnd,
+    });
+  }
+
+  // The liquid itself, well under the glugs. Quiet, and dark: it is the sound
+  // between the pulses, not the sound of the pour.
+  const body = dur - 0.20;
   const src = ac.createBufferSource();
   src.buffer = noise(ac, body, rnd, ch, 0.25);
   const f = ac.createBiquadFilter();
-  f.type = 'bandpass'; f.Q.value = 0.85;
-  f.frequency.setValueAtTime(760, at);
-  f.frequency.exponentialRampToValueAtTime(1500, at + body);
+  f.type = 'bandpass'; f.Q.value = 1.1;
+  f.frequency.setValueAtTime(430, at);
+  f.frequency.exponentialRampToValueAtTime(900, at + body);
   const g = ac.createGain();
-  curveOn(g.gain, { at, dur: body, mid: 0.30, depth: 0.10, min: 0.05,
-                    shape: wobble(rnd, [1, 2, 3, 5]) });
-  // A separate window, because curveOn keeps a floor and a stream that
-  // starts at its floor starts with a click.
+  curveOn(g.gain, { at, dur: body, mid: 0.085, depth: 0.05, min: 0.02,
+                    shape: wobble(rnd, [2, 3, 5]) });
   const env = ac.createGain();
-  const steps = 160;
+  const steps = 120;
   const arr = new Float32Array(steps + 1);
   for (let i = 0; i <= steps; i++) {
     const u = i / steps;
-    arr[i] = Math.min(1, u / 0.05) * Math.min(1, (1 - u) / 0.16);
+    arr[i] = Math.min(1, u / 0.06) * Math.min(1, (1 - u) / 0.22);
   }
   try { env.gain.setValueCurveAtTime(arr, Math.max(0, at), body); } catch { /* busy */ }
   src.connect(f).connect(g).connect(env).connect(out);
   src.start(at); src.stop(at + body);
 
-  let t = at + 0.10;
-  while (t < at + body) {
-    const clump = 1 + Math.floor(rnd() * 3);
-    for (let i = 0; i < clump; i++) {
-      const f0 = 480 + rnd() * 900;
-      tone(ac, out, {
-        at: t + i * (0.02 + rnd() * 0.03), dur: 0.03 + rnd() * 0.03,
-        freq: f0, peak: 0.09 + rnd() * 0.13, glideTo: f0 * (1.4 + rnd() * 0.8),
-        attack: 0.001,
-      });
-    }
-    t += 0.05 + rnd() * rnd() * 0.28;
-  }
   // The last glug, when the bottle comes back up.
-  tone(ac, out, { at: at + body + 0.05, dur: 0.15, freq: 190, peak: 0.42, glideTo: 118, attack: 0.002 });
+  tone(ac, out, { at: at + body + 0.03, dur: 0.16, freq: 205, peak: 0.40,
+                  glideTo: 126, attack: 0.002 });
 }
 
 /* Perlage: the bead in a glass of something lightly sparkling. Each
@@ -1340,7 +1366,7 @@ const CATALOGUE = {
   warHorn:    { kind: 'oneshot', dur: 3.30, years: [-1500, 1600], synth: sWarHorn,   label: { no: 'Krigshorn', en: 'War horn' } },
   swords:     { kind: 'oneshot', dur: 2.60, years: [-2000, 1900], synth: sSwords,    label: { no: 'Sverdkamp', en: 'Blades' } },
   corkDraw:   { kind: 'oneshot', dur: 1.40, years: [1650, 2100], synth: sCorkDraw,   label: { no: 'Kork som trekkes', en: 'A cork drawn' } },
-  pour:       { kind: 'oneshot', dur: 3.20, synth: sPour,        label: { no: 'Vin i glass', en: 'Wine poured' } },
+  pour:       { kind: 'oneshot', dur: 2.10, synth: sPour,        label: { no: 'Vin i glass', en: 'Wine poured' } },
   fizz:       { kind: 'oneshot', dur: 4.00, years: [1650, 2100], synth: sFizz,       label: { no: 'Perling', en: 'Bead' } },
 
   drums:      { kind: 'loop', dur: 60 / 112 * 8, years: [1300, 2100], synth: sDrums, label: { no: 'Tromme', en: 'Drums' } },

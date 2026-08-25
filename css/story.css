@@ -151,7 +151,18 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--s3);
-  transition: bottom var(--t-tap) var(--ease-out);
+  /* NOT ANIMATED. These are anchored to the transport, and the transport only
+     moves when a finger asks it to — but --caption-h is republished whenever a
+     beat wraps to a different number of lines, and with a transition on
+     `bottom` the whole reading surface then GLIDES to its new place under the
+     reader. Measured within a single beat: 13 px of travel.
+
+     docs/design-direction.md section 1 allows opacity, the camera, the drift,
+     a line drawing itself and a bar growing. A caption sliding is none of
+     them, and it is stage motion at a chrome duration besides. When the
+     transport does expand, the surfaces above it move at once, which is what
+     a control answering a finger should look like. */
+  /* no transition on `bottom` — see above */
 }
 
 /* The hidden state EVERY overlay needs.
@@ -449,7 +460,18 @@
      line the caption does not have to wrap onto, and a line is 28 px of map. */
   padding: 0 var(--s3);
   pointer-events: none;
-  transition: bottom var(--t-tap) var(--ease-out);
+  /* NOT ANIMATED. These are anchored to the transport, and the transport only
+     moves when a finger asks it to — but --caption-h is republished whenever a
+     beat wraps to a different number of lines, and with a transition on
+     `bottom` the whole reading surface then GLIDES to its new place under the
+     reader. Measured within a single beat: 13 px of travel.
+
+     docs/design-direction.md section 1 allows opacity, the camera, the drift,
+     a line drawing itself and a bar growing. A caption sliding is none of
+     them, and it is stage motion at a chrome duration besides. When the
+     transport does expand, the surfaces above it move at once, which is what
+     a control answering a finger should look like. */
+  /* no transition on `bottom` — see above */
 }
 /* A SUBTITLE, not a card.
 
@@ -538,7 +560,21 @@
   .captions__line .w-term:hover { text-decoration-color: var(--gold); }
 }
 .captions__line span.is-said { color: var(--ink); }
-.captions__line span.is-now  { color: var(--ink); font-weight: 600; }
+/* NO WEIGHT CHANGE ON THE SPOKEN WORD.
+
+   This was `font-weight: 600`, and a bolder face is a WIDER face: every word
+   from the highlighted one to the end of the line shifted, and any word near a
+   wrap point hopped to the next line and back again. On a four-line subtitle
+   that is the whole block twitching, once per word, for the length of the
+   chapter. "The caption jumps as the different words are bold, some words
+   change lines."
+
+   docs/design-direction.md section 1 prescribes exactly one thing here — "the
+   per-word colour change stays at 120 ms linear" — and colour costs no metrics.
+   The weight was never in the standard. Said and speaking are one state now:
+   the leading edge of the darkened run is where the voice is, which is what a
+   karaoke line has always actually been read by. */
+.captions__line span.is-now  { color: var(--ink); }
 
 /* ---------- Transport --------------------------------------
    Collapsed by default: a play button and a hairline of progress. Tap the
@@ -1349,6 +1385,117 @@
 /* Shares of one whole read as one bar cut into pieces, not as three bars. */
 .ov-cmp--ratio .ov-cmp__track { background: none; }
 
+/* ---------- The chart ---------------------------------------
+   A surface of its own (engine/surfaces/chart.js), not a card in a deck.
+
+   It is a BAND with the same bounds as .ov-deck--mid rather than a box
+   anchored to the bottom, and that is deliberate: two surfaces anchored to
+   one edge fight, the later one wins, and this file already records the stats
+   deck losing to the caption for months. Bounded top and bottom by the
+   furniture it sits between, a chart cannot reach either.
+
+   z-index 25: over a plate (20), so a taster profile reads against a picture
+   of the vineyard; under the overlay decks (30), so the caption still carries
+   the words. ------------------------------------------------------------ */
+.stage-chart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--safe-t) + var(--s2) + var(--tap) + var(--s2));
+  bottom: var(--deck-floor);
+  z-index: 25;
+  padding: 0 var(--s3);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  pointer-events: none;
+  opacity: 0;
+  /* The base rule carries the DEPARTURE, .is-on the ARRIVAL — the same
+     two-duration shape every other overlay on this stage uses. */
+  transition: opacity var(--t-exit) var(--ease-out);
+}
+.stage-chart.is-on { opacity: 1; transition: opacity var(--t-enter) var(--ease-out); }
+.stage-chart.is-instant, .stage-chart.is-instant .chart__bar { transition: none; }
+
+.chart {
+  width: min(420px, 92vw);
+  margin: 0;
+  padding: var(--s3) var(--s4);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--paper-raised) 92%, transparent);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(2px);
+}
+/* Which shape is which. Two wines in the same faction colour would say
+   nothing, so a series takes a palette ROLE — see SERIES_TONES. */
+.chart__keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  justify-content: center;
+  margin: 0 0 var(--s2);
+}
+.chart__key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: var(--fs-xs);
+  color: var(--ink);
+}
+.chart__key::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: var(--side, var(--ink-faint));
+}
+.chart__row {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  align-items: center;
+  gap: var(--s2) var(--s3);
+  padding: 3px 0;
+}
+.chart__axis {
+  font-size: var(--fs-2xs);
+  color: var(--ink-soft);
+  text-align: right;
+  line-height: 1.25;
+}
+.chart__track {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-radius: var(--r-pill);
+  background: var(--paper-sunken);
+  padding: 3px;
+}
+.chart__bar {
+  display: block;
+  height: 8px;
+  width: 0;
+  /* A ZERO IS A FACT, NOT A MISSING BAR.
+     `sodme` is 0.00 for every dry wine in the pack. A bar of width zero and a
+     bar that was never drawn look identical, so the floor is one step wide
+     and pill-shaped: a dot sitting on the origin, which reads as "measured,
+     and none". A radar cannot do this at all — a zero spike collapses into
+     the middle of the web and reads as a rendering fault. */
+  min-width: var(--s1);
+  border-radius: var(--r-pill);
+  background: var(--side, var(--ink-faint));
+  transition: width var(--t-enter) var(--ease-out);
+}
+/* An axis this entry does not carry is UNMEASURED, which is a different
+   statement from zero — so it gets no floor dot and no colour, only the space
+   it would have occupied. */
+.chart__bar--none { min-width: 0; background: none; }
+.chart__note {
+  margin: var(--s2) 0 0;
+  font-size: var(--fs-2xs);
+  color: var(--ink-faint);
+  text-align: center;
+}
+
 /* ---------- The plate ---------------------------------------
    A picture as the whole stage, drifting slowly. See the header of
    engine/scenes/plate.js: the map is not unmounted underneath, it is simply
@@ -1413,8 +1560,16 @@
 }
 .plate__cap {
   position: absolute;
-  left: var(--s3);
+  /* It takes the width of what it SAYS, not the width of the frame.
+     Full-bleed left-to-right, it read as a black bar laid across the bottom of
+     the picture — a piece of chrome the eye has to get past on every plate,
+     for a line that is provenance and nothing more. Right-aligned to the same
+     gutter the made-mark uses in the opposite corner, so the two pieces of
+     provenance sit on one axis instead of one being furniture. */
   right: var(--s3);
+  max-width: calc(100% - var(--s3) * 2);
+  width: max-content;
+  text-align: right;
   /* Clear of the transport and the caption box, the same way the stats deck
      is. It sat at bottom: 8px and was drawn behind the controls, which is the
      same defect the numbers had — invisible rather than missing, and it takes
@@ -1458,15 +1613,17 @@
   content: '';
   position: absolute;
   z-index: -1;
-  left: calc(var(--s3) * -1);
-  right: calc(var(--s3) * -1);
-  top: calc(var(--s2) * -1);
-  bottom: calc(var(--s2) * -1);
-  background: linear-gradient(to bottom,
-              transparent 0,
-              rgba(13,11,8,.66) var(--s2),
-              rgba(13,11,8,.66) calc(100% - var(--s2)),
-              transparent 100%);
+  /* Sized to the type, feathered on every side. The first version of this was
+     a full-bleed horizontal band, and it fixed the measurement (1.25:1 -> 6.87)
+     by putting a black bar across the picture — which trades an unreadable
+     credit for a piece of furniture, and the picture is the thing the chapter
+     is showing you. A soft pad that ends where the words end reads as part of
+     the photograph rather than as a rule drawn under it. */
+  inset: calc(var(--s1) * -1) calc(var(--s2) * -1);
+  border-radius: var(--r-sm);
+  background: rgba(13, 11, 8, .55);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
   pointer-events: none;
 }
 

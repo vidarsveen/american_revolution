@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v3bfe0003ab';
+const VERSION = 'v503ac10e16';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -67,6 +67,7 @@ const PRECACHE = [
   './content/american-revolution/media/washington-cambridge.jpg',
   './content/american-revolution/people.json',
   './content/american-revolution/sound.json',
+  './content/american-revolution/style.json',
   './content/american-revolution/timing.chapter-1775-04-19.en.json',
   './content/american-revolution/timing.chapter-1775-04-19.no.json',
   './content/american-revolution/timing.chapter-1775-06-17.en.json',
@@ -86,6 +87,7 @@ const PRECACHE = [
   './content/italy-wine/media/kjeller-fat.jpg',
   './content/italy-wine/media/langhe-take.jpg',
   './content/italy-wine/media/vinmark-helling.jpg',
+  './content/italy-wine/style.json',
   './content/italy-wine/timing.chapter-1-piemonte.en.json',
   './content/italy-wine/timing.chapter-1-piemonte.no.json',
   './content/norway-1940/chapter-1940-04-09.json',
@@ -106,6 +108,7 @@ const PRECACHE = [
   './content/norway-1940/media/vrak-narvik.jpg',
   './content/norway-1940/media/warspite.jpg',
   './content/norway-1940/people.json',
+  './content/norway-1940/style.json',
   './content/norway-1940/timing.chapter-1940-04-09.en.json',
   './content/norway-1940/timing.chapter-1940-04-09.no.json',
   './content/norway-1940/timing.chapter-1940-05-28.en.json',
@@ -139,6 +142,7 @@ const PRECACHE = [
   './content/roman-empire/media/teutoburg.jpg',
   './content/roman-empire/media/triumph.jpg',
   './content/roman-empire/people.json',
+  './content/roman-empire/style.json',
   './content/roman-empire/timing.chapter-14ad-tiberius.en.json',
   './content/roman-empire/timing.chapter-14ad-tiberius.no.json',
   './content/roman-empire/timing.chapter-27bc-augustus.en.json',
@@ -172,11 +176,17 @@ const PRECACHE = [
   './engine/player.js',
   './engine/scenes/map.js',
   './engine/scenes/overlays.js',
-  './engine/scenes/plate.js',
   './engine/scenes/sound.js',
   './engine/script.js',
   './engine/stage.js',
   './engine/story.js',
+  './engine/style.js',
+  './engine/surfaces/chart.js',
+  './engine/surfaces/map.js',
+  './engine/surfaces/overlays.js',
+  './engine/surfaces/plate.js',
+  './engine/surfaces/registry.js',
+  './engine/surfaces/sound.js',
   './engine/transition.js',
   // fetched by checkVerbManifest() through a default argument
   './engine/verbs.json',

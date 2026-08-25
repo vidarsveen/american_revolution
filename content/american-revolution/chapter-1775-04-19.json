@@ -3505,12 +3505,6 @@
             },
             {
               "on": "start",
-              "do": "marker.show",
-              "at": "lexington-green",
-              "kind": "clash"
-            },
-            {
-              "on": "start",
               "do": "plate.show",
               "id": "doolittle-1",
               "motion": "in",
@@ -3518,7 +3512,7 @@
                 0.5,
                 0.5
               ],
-              "over": 16,
+              "over": 12,
               "dim": 0.12
             }
           ],

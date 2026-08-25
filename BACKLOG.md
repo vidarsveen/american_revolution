@@ -1,9 +1,209 @@
 # Backlog
 
 Things worth doing, with enough context that picking one up does not mean
-re-deriving why. Newest concerns first within each section.
+re-deriving why.
 
 ---
+
+# Open, in the order I would do it
+
+Everything below is open. Everything under the horizontal rule further down is
+history — what was done and why, newest first. This section exists because the
+open items were scattered through six "still open" lists and nobody could see
+them at once.
+
+Two tracks: **the wine pack**, which is what is being watched, and **the
+framework**, which is what makes the next subject cheaper than this one.
+
+---
+
+## The wine pack
+
+Ordered by how badly it hurts the chapter.
+
+**1. The white wines are promised and never arrive.** The last scene says
+"tre helt forskjellige viner, og vi har ikke nevnt de hvite ennå" — and then the
+chapter ends. Naming a gap in the last thirty seconds and not filling it reads
+as an oversight rather than a hook. Either give them a scene, or stop the
+sentence promising them. Gavi, Arneis and Moscato are all Piemonte and all
+already in the pack's own `wines` pool.
+
+**2. A taster profile per wine — and it is not a card.**
+Acid, tannin, body, fruit, sweetness, as a shape you can compare across wines.
+It is the single most useful thing the subject could carry: it makes Barolo and
+Barbaresco *comparable* rather than two names in the same valley, and it is what
+turns the library from a glossary into something worth browsing — sort by
+tannin, find everything like this one.
+
+**This wants the chart surface, not another overlay** (framework item 2 below).
+A radar or a set of bars is an artifact with a shape, a scale and an animation,
+which is exactly what `compare.show` already half-is. Building it as a
+wine-specific card would be the fourth thing in this app that has to be rebuilt
+when a second subject wants it.
+
+**3. Barbaresco has no fact box and Barolo does.** Same sentence, same beat, one
+gets an explanation and the other does not. `wines` has an entry for both.
+
+**4. `barbera` sounds like a waterfall.** The `pour` effect — a noise band
+climbing 760→1500 Hz with bubbles — reads as running water rather than wine
+going into a glass. It is synthesised in `sound/library.js`, so it is tunable:
+shorter, lower, and it wants the glug of a bottle neck rather than a continuous
+stream.
+
+**5. The scissors are wrong in `hender-host`.** A generated picture, and the
+kind of fault `tools/gen-image.py`'s own header predicts: "the model draws far
+better than it reasons". Needs the reviewer (framework item 5).
+
+**6. "Barolo" is written three times on one screen** — the pin, the fact card
+and the caption, all at once, at s5.b2. The fact box is repeating what the map
+already says. Either the pin loses its label while a fact box names the same
+place, or the fact box is for the thing the sentence does NOT already show.
+
+**7. Piemonte arrives small.** At s2.b7 the wash is drawn while the camera is
+still on the whole country, so the region the sentence is about is a smudge in
+the corner. The camera goes there in the NEXT scene. Either the wash waits for
+the camera or the camera comes early.
+
+**8. Three final pictures are still moving when their chapter ends.**
+Not wine — 19 April, 27 BC and 44 BC. The push is set longer than the chapter
+has left, so the picture is still creeping under the end card, which the
+direction says should be still.
+
+    19 April    zooms 16s, 13s remain   -> moving by  3s
+    27 BC       zooms 14s, 13s remain   -> moving by  1s
+    44 BC       zooms 26s, 11s remain   -> moving by 15s
+
+Three numbers. `check-script.py` reports it and does not fail, because
+shortening the push and moving the picture a sentence earlier look different on
+screen and it is somebody's writing.
+
+---
+
+## The framework
+
+**1. `style.json`, and a lab to tune it in.** Decided and not built. Per-pack
+motion durations, the Ken Burns push and drift, camera speed, map weight, a type
+multiplier, `detail.minZoom`. Merged over a documented default set, published as
+CSS custom properties the way `--f-*` already is, with `dev/style-lab.html`
+putting sliders on a running chapter and copying the result out.
+
+The argument for it got stronger twice this week: `DECK_RESERVE_PX` was derived
+from the tallest fact card, went stale the moment the type scale moved, and had
+to be re-derived by hand. Numbers that describe what a pack SHIPS do not belong
+in a module.
+
+**2. Surfaces, and a chart that is a first-class artifact.**
+`engine/stage.js` mounts map, plate, overlays and sound unconditionally, and
+"artifact" therefore means "map". A surface should declare its own verbs and
+lifecycle, and a pack should declare which surfaces it wants — a pack with no
+map should not fetch 5 MB of geometry.
+
+The proof is `chart.show`: bars, a line, a stack, a radar. It is what the wine
+taster profile needs, what a finance course needs, and what `compare.show`
+already gestures at.
+
+**3. The map earns its place.** `ground` per scene — `map`, `plate` or `none` —
+and `map.inset` / `map.take` so the map arrives when the sentence is spatial and
+leaves when it is not. Plus a map-share number in `check-pictures.py` beside the
+`cover` percentage it already prints.
+
+Three independent measurements point here: the lower deck reserves 126 px
+whenever a card is raised, the caption box is 127 px median, and the transport
+is 78. On a 390x844 phone roughly 40 % of the frame is spoken for before the map
+draws anything — and bigger type made that worse, as it had to.
+
+**4. Music.** Beds are Karplus-Strong drones and plucks; they are measurably
+decent and they are not a score. `tools/gen-music.py` in `.venv-audio`, shaped
+like `gen-sound.py`, writing into `content/<pack>/sound.json` — which already
+takes file-based overrides with a mandatory licence and credit, so nothing in
+`soundscape.js` changes.
+
+**Step one is a licence survey and it may fail.** MusicGen's weights are
+CC-BY-NC, which is the AudioGen trap recorded further down this file, and
+several "open" music models restrict deployment rather than output. The bar is a
+real LICENSE file, read. If nothing clears it, licensed library beds committed
+per pack with the same provenance record.
+
+**5. The picture reviewer.** `gen-image.py` and `check-pictures.py` exist; the
+review does not. Every defect in the first nine generated images was SEMANTIC —
+a pit instead of a redoubt, two bottles instead of one, a steamboat behind an
+18th-century hillside, and of two candidates the prettier one had the steamboat.
+`tools/review-pictures.py` pairs each picture with the sentence it sits under
+and its `claims`/`omits` record; an agent reads both and proposes a corrected
+prompt.
+
+**6. The colour pass.** Two measured failures waiting on it:
+
+- **Faction FILLS do not clear 3:1** on the three hue-derived packs — 2.19 to
+  2.68 against a dark or light ground. `core/palette.js` picks a fill lightness
+  (L=42 light, L=56 dark) against no contrast target at all. The one pack that
+  passes is the one whose factions are hand-tuned `token:` references. A ring
+  saves a pin; nothing saves a march, an arrow or a front, which are strokes in
+  those same colours.
+- **The caption's unsaid ink is 3.91 against AA 4.5** over the brightest plate,
+  light theme. `--ink-soft` on `--paper-veil`, pre-existing, and a token
+  decision — the box got 25 px shorter this week without moving the number.
+
+**7. The menu, and the decision about Explore.** The cover, `js/chooser.js`, and
+whether Explore is retired, kept, or folded into the dossier that already exists.
+The one capability that would justify keeping it — tap a place, read about it —
+is a small addition to Fortell's depth layer, not a reason for a second mode
+with its own Revolution-shaped content schema.
+
+---
+
+## A measurement I have been quoting is not stable
+
+`--caption-h` is published by a ResizeObserver, and read straight after a render
+it wanders by a **whole line** between runs. The same fifty italy-wine beats
+measured 127 / 155 / 238 px median on three consecutive passes of the same
+harness. Measuring `.captions` directly instead gives 169 / 294.
+
+So "the caption box is 127 px median, 211 worst" — which is in this file, in a
+commit message, and was said to the user more than once — is one sample of a
+noisy quantity presented as a fact. The DIRECTION of the change (the box got
+shorter when the fact card was capped) is not in doubt; the numbers are.
+
+What to trust instead: a PAIRED measurement in one page — same beats, same
+render, one thing toggled — which is how the style.json wiring was proved to
+change nothing (0 of 50 beats differ). An absolute reading of a
+ResizeObserver-published custom property is not evidence.
+
+This is the same family as `check-turn.py`'s occasional flake and the
+`check-engine` epoch-guard flake: three separate places where a number is read
+too close to the thing that produces it. Worth one pass over every probe that
+reads a published custom property.
+
+---
+
+## Smaller, and each with a measurement behind it
+
+- **The remaining map stall is data.** One 52–85 ms frame per flight, and it is
+  `detail.json`: 109k points in 3,060 features inside a box that fits entirely
+  on screen at its own `minZoom`, so there is nothing to cull. Raise
+  `detail.minZoom`, or simplify and tile it in `fetch-detail.py`. Both are
+  visible trade-offs.
+- **`.ov-portrait__card` reaches out of the top deck** into the mid and lower
+  decks in 30 of 646 measured frames.
+- **`.ov-portrait__card figcaption u` is italic** ("no surviving likeness"),
+  which section 2 permits only for a quotation.
+- **`atlas-flash 620ms` and `atlas-ping 2.8s` are off the motion scale.** 620
+  wants `--t-exit`. 2.8 s has no token, and its "3 x 2.8 s = one sentence"
+  derivation is argued in the file — a scale decision, not a find-and-replace.
+- **Explore draws "Virginia" twice, overlapping.** Its two label systems never
+  declutter against each other: `js/map.js drawPlaces()` adds period names with
+  no `rank`, and the collision pass skips those. Frozen with Explore.
+- **`tools/check-legible.py` is not in `check-all.py`** — twelve minutes for
+  sixteen chapter/language pairs would roughly double a run. It is a report you
+  run, and it should stay one until the content it reports on is cleaned up.
+- **`tools/shoot.py` has no moments for any pack but the Revolution.** It runs
+  again now, but `MOMENTS` only describes two chapters.
+- **A flight that lands in the last 1.2 s is never seen** — it arrives behind a
+  closing veil. `check-script.py` fails only on flights that cannot land at all;
+  the visible deadline is 1.2 s earlier and nothing reports it.
+
+---
+
 
 ## Phase 2 — type, furniture and the phone
 

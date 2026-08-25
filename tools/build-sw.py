@@ -53,7 +53,12 @@ SW_EXTRA: list[tuple[str, str]] = [
 
 # Runtime data inside a pack. Deliberately narrow: everything here is small,
 # needed on a first offline launch, and fetched by a path built at runtime.
-PACK_ROOT_JSON = {"events.json", "people.json", "chapters.json", "media.json", "sound.json"}
+# style.json is here for the same reason as the rest: it is fetched by a
+# runtime-built path, it is tiny, and a pack that boots offline without it
+# falls back to engine/defaults/style.json — which is correct behaviour and
+# also the wrong pacing, silently. A pack should look like itself offline.
+PACK_ROOT_JSON = {"events.json", "people.json", "chapters.json", "media.json",
+                  "sound.json", "style.json"}
 PACK_ROOT_GLOBS = ("chapter-*.json", "timing.*.json")
 
 # Not precached, on purpose:

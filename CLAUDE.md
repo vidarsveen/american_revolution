@@ -60,7 +60,7 @@ true. Scrubbing back through Lexington must not fire forty muskets.
 *Corollary:* **an async cue handler breaks this rule unless it is guarded.** Replaying cues
 after a seek runs them in order, but an awaited fetch lands out of order — a `clear` in a later
 beat runs instantly while an earlier `show` resolves after it and undoes the clear. Capture an
-epoch counter before the await and drop the result if it has moved. `engine/scenes/map.js`
+epoch counter before the await and drop the result if it has moved. `engine/surfaces/map.js`
 does this for regions, and it cost an afternoon to find: seeking to the end of the intro left
 Massachusetts washed blue over the whole map.
 
@@ -90,8 +90,16 @@ core/         shared primitives, no DOM ownership
   theme.js      isDark(el), watchTheme, reducedMotion
   palette.js    a pack's factions -> what the map and the DOM draw
   paths.js      where a pack's files are — the only place that knows
-engine/       narration: script -> player -> stage -> scenes/overlays
+engine/       narration: script -> player -> stage -> surfaces
   pack.js       content/packs.json + each pack.json; the only registry
+  style.js      a pack's own numbers, merged over engine/defaults/style.json
+  surfaces/     THE ARTIFACT LAYER. Each module declares its own verbs and its
+    registry.js   own lifecycle; the registry merges them into one cue table.
+    map.js        A pack declares which it wants in pack.json -> surfaces, and
+    plate.js      one that does not name `map` never imports map/ at all —
+    overlays.js   measured at 0 modules and 0 geometry files, 3.85 MB it does
+    chart.js      not pay. Adding an artifact is a module and a manifest entry.
+    sound.js
 js/           the Explore mode
 content/
   packs.json       the list of subjects. Data, not code.
@@ -122,6 +130,9 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `tools/check-plate.py` | When one picture replaces another, were both on screen at once? |
 | `tools/check-legible.py` | When the narration names a place, is that name on screen and not under anything? |
 | `tools/check-dead-css.py` | Does any module actually paint this class? |
+| `dev/engine-lab.html` | Does a chart drawn by seeking match one drawn by playing, axis for axis? |
+| `dev/surface-lab.html` | Does a pack that does not declare the `map` surface load `map/` at all? |
+| `dev/style-lab.html` | Does every number the app draws with come from `style.json`? |
 
 `dev/engine-lab.html` is the bench for rule 1, which until now was enforced by discipline
 alone. It compares a **stage signature** — every layer, every artifact, every declared
@@ -130,16 +141,17 @@ grid. `tools/check-engine.py` drives it headless and fails a build. Three things
 deliberately outside the signature, and getting this wrong is how the bench reports correct
 behaviour as a defect (it did, on its first run):
 
-- **`t0`, `instant`, `over`** — the animation phase. `engine/scenes/map.js:507` sets
+- **`t0`, `instant`, `over`** — the animation phase. `engine/surfaces/map.js` sets
   `over: instant ? 0 : 0.7`, so `over` is a statement about drawing time, not identity.
-- **`is-instant`** — `show()` in `engine/scenes/overlays.js` removes it on the next animation
+- **`is-instant`** — `show()` in `engine/surfaces/overlays.js` removes it on the next animation
   frame, so its presence records whether a frame fired, not what is on screen.
 - **the one-shot surfaces** (`.ov-note`, `.atlas__flash`) and **the camera** — the first are
   *supposed* to differ between the two passes, and the second is measured in `map-lab`.
 
-Add a verb and you must touch three things, not two: `engine/verbs.json`, the `VERBS` table in
-`engine/stage.js`, and — if it takes a reference type — the pool `tools/check-script.py`
-resolves that type against. A `sound` reference validated only against the pack's `sound.json`
+Add a verb and you touch two things: `engine/verbs.json` (with its `surface`), and a handler in
+that surface's own `verbs` map. The registry merges them; there is no central table to forget.
+If it takes a reference type, the pool `tools/check-script.py` resolves that type against is the
+third — and it is the one that has actually been forgotten before. A `sound` reference validated only against the pack's `sound.json`
 rejects every effect the shipped library synthesises, which is all of them.
 
 Build the module against its lab **before** wiring it into the app. Both defects that mattered
@@ -232,7 +244,7 @@ scene, which pictures and for how long — before deciding anything is missing.
 **For ten minutes after a push, a browser can run half of one version against half of
 another.** GitHub Pages serves JavaScript with `Cache-Control: max-age=600`, and a returning
 visitor's HTTP cache does not expire every file at the same instant. So a fresh
-`engine/scenes/map.js` gets imported against a ten-minute-old `map/basemap.js`, and the module
+`engine/surfaces/map.js` gets imported against a ten-minute-old `map/basemap.js`, and the module
 graph does not degrade — it throws *does not provide an export named `registerLevels`* and
 nothing loads at all. `check-published.py` reports the site perfect throughout, because the
 server really is correct; it is the visitor who is holding two versions.
@@ -395,7 +407,7 @@ chapter opened its dawn scene on a fleet shelling nothing and sent its first ass
 grass before this was spotted by looking at the pixels. Every scene re-establishes what it
 inherits, at `start`. `check-script.py` cannot catch this: both halves are individually valid.
 
-**Module-level state in `engine/scenes/*` lives longer than a chapter.** It was written when
+**Module-level state in `engine/surfaces/*` lives longer than a chapter.** It was written when
 Fortell loaded one chapter per page load, and the cover can now switch. `regionsReady`
 memoised a fetch whose `.then` called `useRegions()` on the map instance that was current when
 it started, so after a switch the second map never got the geometry and `region.show` drew

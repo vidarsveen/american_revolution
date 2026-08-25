@@ -3189,14 +3189,6 @@
               "do": "term.mark",
               "kind": "topic",
               "id": "hvordan-vet-vi-det"
-            },
-            {
-              "on": "end",
-              "do": "caption.note",
-              "value": {
-                "no": "Narvik, 1940",
-                "en": "Narvik, 1940"
-              }
             }
           ],
           "gapAfter": 2.0

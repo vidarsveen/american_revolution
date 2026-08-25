@@ -14,6 +14,13 @@
    "en": "At least thirty-eight months of ageing before sale, of which eighteen in wood. That is over three years before the producer sees anything.\n\nThe zone is small: under two thousand hectares against Bordeaux's hundred and ten thousand. Inside it are nearly two hundred named single vineyards, and the best — Cannubi, Brunate, Cerequio — have had their reputation for two hundred years.\n\nYoung Barolo is severe and nearly unpleasant. The same bottle at twenty years is a different thing entirely."
   },
   "grape": "nebbiolo",
+  "profile": {
+   "syre": 0.85,
+   "tannin": 0.95,
+   "fylde": 0.75,
+   "frukt": 0.5,
+   "sodme": 0.0
+  },
   "colour": "red"
  },
  "barbaresco": {
@@ -30,6 +37,13 @@
    "en": "Barbaresco sits lower and closer to the river Tanaro than Barolo. That gives slightly warmer nights, and the grapes ripen a few days earlier.\n\nA few days sounds like nothing. In practice it is the difference between a wine you can drink at five years and one you should wait ten for. The minimum is twenty-six months against Barolo's thirty-eight.\n\nThe zone is smaller still: around seven hundred hectares."
   },
   "grape": "nebbiolo",
+  "profile": {
+   "syre": 0.8,
+   "tannin": 0.85,
+   "fylde": 0.7,
+   "frukt": 0.55,
+   "sodme": 0.0
+  },
   "colour": "red"
  },
  "barbera-dasti": {
@@ -46,6 +60,13 @@
    "en": "Here both the grape and the place are on the bottle, which is unusual for Italy. First half the grape, second half the place.\n\nDark colour, high acid, almost no tannin. It suits food with fat in it — and that is not coincidence, because acid cuts through fat. It is why this is the everyday wine exactly there."
   },
   "grape": "barbera",
+  "profile": {
+   "syre": 0.9,
+   "tannin": 0.2,
+   "fylde": 0.5,
+   "frukt": 0.7,
+   "sodme": 0.0
+  },
   "colour": "red"
  },
  "moscato-dasti": {
@@ -62,6 +83,13 @@
    "en": "The fermentation is stopped with cold while half the sugar is still there, and the carbon dioxide already formed stays in the wine.\n\nThat gives one of very few wines on earth you can have a glass of at breakfast without concern. It should be drunk young — within a year or two."
   },
   "grape": "moscato",
+  "profile": {
+   "syre": 0.5,
+   "tannin": 0.05,
+   "fylde": 0.3,
+   "frukt": 0.9,
+   "sodme": 0.85
+  },
   "colour": "sweet"
  },
  "chianti": {
@@ -78,6 +106,13 @@
    "en": "Chianti is an area between Florence and Siena, not a grape. The grape is Sangiovese, and it rarely appears on the bottle, because anyone buying Chianti is assumed to know.\n\nChianti Classico is the historic core, marked with a black rooster. Plain Chianti is a much larger area around it."
   },
   "grape": "sangiovese",
+  "profile": {
+   "syre": 0.85,
+   "tannin": 0.7,
+   "fylde": 0.6,
+   "frukt": 0.6,
+   "sodme": 0.0
+  },
   "colour": "red"
  }
 }

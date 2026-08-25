@@ -804,7 +804,7 @@
        "do": "map.flyTo",
        "to": "torino",
        "zoom": 7.6,
-       "over": 4.0
+       "over": 1.6
       },
       {
        "on": {
@@ -1195,12 +1195,17 @@
       },
       {
        "on": {
-        "no": "word:Barolo",
-        "en": "word:Barolo"
+        "no": "word:forskjellige",
+        "en": "word:different"
        },
-       "do": "fact.show",
-       "kind": "wine",
-       "id": "barolo"
+       "do": "chart.show",
+       "kind": "profile",
+       "ref": "wine:barolo",
+       "against": "wine:barbaresco",
+       "note": {
+        "no": "Samme drue, atten kilometer fra hverandre.",
+        "en": "The same grape, eighteen kilometres apart."
+       }
       }
      ],
      "gapAfter": 0.9
@@ -1220,7 +1225,17 @@
       "no": "Noen få dager høres ingenting ut. I praksis er det forskjellen på en vin du kan drikke etter fem år og en du bør vente ti på.",
       "en": "A few days sounds like nothing. In practice it is the difference between a wine you can drink at five years and one you should wait ten for."
      },
-     "cues": [],
+     "cues": [
+      {
+       "on": {
+        "no": "word:forskjellen",
+        "en": "word:difference"
+       },
+       "do": "fact.show",
+       "kind": "wine",
+       "id": "barbaresco"
+      }
+     ],
      "gapAfter": 1.35
     },
     {
@@ -1230,6 +1245,10 @@
       "en": "Barolo must be held at least thirty-eight months before sale. At least eighteen of them in wood."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "chart.hide"
+      },
       {
        "on": "start",
        "do": "sound.ambience",
@@ -1625,27 +1644,6 @@
       "en": "Next time we go south, to Tuscany, and to the grape that makes Chianti."
      },
      "cues": [
-      {
-       "on": {
-        "no": "word:Toscana",
-        "en": "word:Tuscany"
-       },
-       "do": "region.show",
-       "names": [
-        "Toscana"
-       ],
-       "side": "red",
-       "label": true,
-       "over": 1.8
-      },
-      {
-       "on": "end",
-       "do": "caption.note",
-       "value": {
-        "no": "Neste: Toscana og Sangiovese",
-        "en": "Next: Tuscany and Sangiovese"
-       }
-      }
      ],
      "gapAfter": 2.0
     }
