@@ -908,8 +908,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -10
+              "id": "bedStill"
             },
             {
               "on": "start",
@@ -1190,8 +1189,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch",
-              "gainDb": -11
+              "id": "bedMarch"
             },
             {
               "on": "start",
@@ -1583,12 +1581,6 @@
             },
             {
               "on": "start",
-              "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -11
-            },
-            {
-              "on": "start",
               "do": "sound.ambience",
               "id": "sea",
               "gainDb": -16
@@ -1934,8 +1926,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedUrgent",
-              "gainDb": -11
+              "id": "bedUrgent"
             },
             {
               "on": "start",
@@ -2022,17 +2013,6 @@
               "on": "start",
               "do": "map.mood",
               "value": "dawn"
-            },
-            {
-              "on": {
-                "no": "word:stridsvogner",
-                "en": "word:tanks"
-              },
-              "do": "sound.play",
-              "id": "volley",
-              "times": 4,
-              "spread": 4.0,
-              "gainDb": -10
             },
             {
               "on": {
@@ -2190,8 +2170,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -11
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -2280,7 +2259,7 @@
               "do": "sound.play",
               "id": "cannon",
               "times": 6,
-              "spread": 6.0,
+              "spread": 2.6,
               "gainDb": -6
             }
           ],
@@ -2614,8 +2593,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -10
+              "id": "bedSolemn"
             },
             {
               "on": {
@@ -2965,8 +2943,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -10
+              "id": "bedSolemn"
             },
             {
               "on": "start",

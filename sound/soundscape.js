@@ -45,11 +45,33 @@ export function scheduleFromBeats(beats = []) {
     .map((b) => ({ start: b.start, end: b.start + b.dur }));
 }
 
+/**
+ * The bed at rest.
+ *
+ * −24 and not −14, and the difference is a measurement rather than a
+ * taste. Every `sound.music` cue in the app carried a `gainDb` of its own
+ * on top of this number, so the bed that actually shipped was never the
+ * one this module documented. Counted across the four packs on the day
+ * this changed: 69 music cues, 61 of them carrying a gain, median −10,
+ * range −6…−12. −14 + (−10) = **−24 dB is what a listener has been
+ * hearing**, and that is taken as correct.
+ *
+ * So the level moves here and the cue gains go. Doing it the other way
+ * round — deleting the cue gains first, on the grounds that the module
+ * says −14 — would have made every chapter's music about three times
+ * louder on the same day, which is how a "tidy-up" becomes a complaint.
+ *
+ * The eight cues that carried no gain at all (all in 19 April, the oldest
+ * chapter) were the outlier: they shipped at −14, ten decibels over
+ * everything else. They now match.
+ */
+const BED_DB = -24;
+
 export function createSoundscape({
   mixer,
   library,
   schedule = [],
-  bedDb = -14,
+  bedDb = BED_DB,
   duckDb = -12,
   lookAheadMs = 250,
   attackTau = 0.08,
@@ -134,7 +156,11 @@ export function createSoundscape({
 
   /* ---------- music ---------------------------------------- */
 
-  async function playMusic(name = 'bedSolemn', { instant = false, fadeMs = 900, gainDb = 0 } = {}) {
+  // 1200 in and 4000 out, from docs/design-direction.md §3: a bed arrives
+  // over --t-dissolve and leaves over four seconds, and it never cuts. The
+  // asymmetry is the point — you should notice a bed starting about as much
+  // as you notice a room getting lighter, and never notice one stopping.
+  async function playMusic(name = 'bedSolemn', { instant = false, fadeMs = 1200, gainDb = 0 } = {}) {
     if (silent) return false;
     const ctx = mixer.context();
     if (!ctx || !mixer.ready()) return false;
@@ -155,7 +181,7 @@ export function createSoundscape({
     return true;
   }
 
-  function stopMusic({ instant = false, fadeMs = 600 } = {}) {
+  function stopMusic({ instant = false, fadeMs = 4000 } = {}) {
     music = fadeOut(music, instant, fadeMs);
   }
 

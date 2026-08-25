@@ -656,8 +656,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -7
+              "id": "bedSolemn"
             },
             {
               "on": "start",
@@ -973,12 +972,6 @@
           "cues": [
             {
               "on": "start",
-              "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -8
-            },
-            {
-              "on": "start",
               "do": "place.clear"
             },
             {
@@ -1019,7 +1012,7 @@
               },
               "do": "sound.play",
               "id": "cannon",
-              "gainDb": -14
+              "gainDb": -12
             }
           ],
           "gapAfter": 1.15
@@ -1238,8 +1231,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch",
-              "gainDb": -9
+              "id": "bedMarch"
             },
             {
               "on": "start",
@@ -1467,12 +1459,6 @@
             },
             {
               "on": "start",
-              "do": "sound.ambience",
-              "id": "wind",
-              "gainDb": -13
-            },
-            {
-              "on": "start",
               "do": "plate.hide",
               "over": 0.9
             }
@@ -1577,8 +1563,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -8
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -1616,15 +1601,6 @@
             "en": "He raises the alarm. The ship swings round, and opens fire."
           },
           "cues": [
-            {
-              "on": {
-                "no": "word:ild",
-                "en": "word:fire"
-              },
-              "do": "sound.play",
-              "id": "cannon",
-              "gainDb": -5
-            },
             {
               "on": {
                 "no": "word:ild",
@@ -1712,15 +1688,6 @@
               "to": "boston",
               "zoom": 12.8,
               "over": 3.0
-            },
-            {
-              "on": {
-                "no": "word:takene",
-                "en": "word:rooftops"
-              },
-              "do": "sound.ambience",
-              "id": "crowd",
-              "gainDb": -14
             },
             {
               "on": {
@@ -1815,8 +1782,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedUrgent",
-              "gainDb": -9
+              "id": "bedUrgent"
             },
             {
               "on": "start",
@@ -1930,7 +1896,7 @@
               },
               "do": "sound.ambience",
               "id": "oars",
-              "gainDb": -11
+              "gainDb": -12
             }
           ],
           "gapAfter": 1.15
@@ -2142,15 +2108,6 @@
               "gainDb": -9
             },
             {
-              "on": {
-                "no": "word:fyr",
-                "en": "word:catches"
-              },
-              "do": "sound.ambience",
-              "id": "fire",
-              "gainDb": -10
-            },
-            {
               "on": "start",
               "do": "plate.show",
               "id": "bunker-hill-attack",
@@ -2247,8 +2204,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedUrgent",
-              "gainDb": -7
+              "id": "bedUrgent"
             },
             {
               "on": "start",
@@ -2445,14 +2401,6 @@
               "do": "sound.play",
               "id": "volley",
               "gainDb": -6
-            },
-            {
-              "on": "start",
-              "do": "sound.play",
-              "id": "musket",
-              "times": 6,
-              "spread": 1.6,
-              "gainDb": -11
             }
           ],
           "gapAfter": 1.45
@@ -2518,15 +2466,6 @@
                 "en": "word:off"
               },
               "do": "map.flash"
-            },
-            {
-              "on": {
-                "no": "word:fyr",
-                "en": "word:off"
-              },
-              "do": "sound.play",
-              "id": "volley",
-              "gainDb": -5
             }
           ],
           "gapAfter": 1.25
@@ -2666,17 +2605,6 @@
               "id": "american-retreat",
               "over": 4.5,
               "fit": false
-            },
-            {
-              "on": {
-                "no": "word:kanonene",
-                "en": "word:guns"
-              },
-              "do": "sound.play",
-              "id": "cannon",
-              "times": 3,
-              "spread": 2.4,
-              "gainDb": -11
             }
           ],
           "gapAfter": 1.75
@@ -2713,8 +2641,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -7
+              "id": "bedSolemn"
             },
             {
               "on": "start",
@@ -2914,8 +2841,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -8
+              "id": "bedStill"
             },
             {
               "on": "start",
@@ -3249,12 +3175,7 @@
             "no": "De tapte bakken. Men de hadde funnet ut hvordan denne krigen kunne vinnes. Ikke ved å slå britene, men ved å gjøre hver eneste seier for dyr.",
             "en": "They lost the hill. But they had worked out how this war could be won. Not by beating the British, but by making every single victory cost too much."
           },
-          "cues": [
-            {
-              "on": "end",
-              "do": "sound.music"
-            }
-          ],
+          "cues": [],
           "gapAfter": 2.0
         }
       ]

@@ -1155,8 +1155,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedOpen",
-              "gainDb": -9
+              "id": "bedOpen"
             },
             {
               "on": "word:Narvik",
@@ -1519,8 +1518,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -11
+              "id": "bedTension"
             },
             {
               "on": {
@@ -1764,12 +1762,6 @@
                 "vestfjorden"
               ],
               "over": 3.2
-            },
-            {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedUrgent",
-              "gainDb": -11
             }
           ],
           "gapAfter": 1.2
@@ -1908,8 +1900,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedUrgent",
-              "gainDb": -12
+              "id": "bedUrgent"
             },
             {
               "on": "start",
@@ -2088,7 +2079,7 @@
               },
               "do": "sound.play",
               "id": "cannon",
-              "gainDb": -3
+              "gainDb": -4
             },
             {
               "on": "end",
@@ -2396,12 +2387,6 @@
             },
             {
               "on": "start",
-              "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -11
-            },
-            {
-              "on": "start",
               "do": "sound.ambience",
               "id": "sea",
               "gainDb": -17
@@ -2662,12 +2647,6 @@
               "do": "portrait.hide"
             },
             {
-              "on": "start",
-              "do": "sound.ambience",
-              "id": "wind",
-              "gainDb": -13
-            },
-            {
               "on": {
                 "no": "word:britiske",
                 "en": "word:British"
@@ -2741,8 +2720,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -11
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -2883,12 +2861,6 @@
               "over": 3.4
             },
             {
-              "on": "start",
-              "do": "sound.music",
-              "id": "bedUrgent",
-              "gainDb": -10
-            },
-            {
               "on": {
                 "no": "word:inn",
                 "en": "word:in"
@@ -2940,7 +2912,9 @@
               },
               "do": "sound.play",
               "id": "cannon",
-              "gainDb": -2
+              "gainDb": -4,
+              "times": 4,
+              "spread": 5.0
             },
             {
               "on": "word:Bonte",
@@ -2963,14 +2937,6 @@
             "en": "Anton Schmitt went down just after. Diether von Roeder was shot to pieces at the quay. In under an hour five British destroyers sank two German destroyers and eleven merchant ships. Only six of them were German."
           },
           "cues": [
-            {
-              "on": "start",
-              "do": "sound.play",
-              "id": "cannon",
-              "times": 5,
-              "spread": 6.0,
-              "gainDb": -8
-            },
             {
               "on": {
                 "no": "word:elleve",
@@ -3209,8 +3175,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch",
-              "gainDb": -11
+              "id": "bedMarch"
             },
             {
               "on": "start",
@@ -3334,15 +3299,6 @@
                 "en": "word:bombs"
               },
               "do": "map.flash"
-            },
-            {
-              "on": {
-                "no": "word:bomber",
-                "en": "word:bombs"
-              },
-              "do": "sound.play",
-              "id": "cannon",
-              "gainDb": -5
             }
           ],
           "gapAfter": 1.35
@@ -3559,8 +3515,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -10
+              "id": "bedSolemn"
             },
             {
               "on": "start",

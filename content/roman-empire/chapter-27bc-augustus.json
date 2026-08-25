@@ -333,8 +333,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -9
+              "id": "bedSolemn"
             },
             {
               "on": {
@@ -602,8 +601,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedOpen",
-              "gainDb": -11
+              "id": "bedOpen"
             },
             {
               "on": "start",
@@ -732,17 +730,7 @@
             "no": "Roma fikk også noe kjedeligere og langt viktigere: en brannvakt. Sju kohorter, tusen mann i hver.",
             "en": "Rome also got something duller and far more important: a fire brigade. Seven cohorts, a thousand men in each."
           },
-          "cues": [
-            {
-              "on": {
-                "no": "word:brannvakt",
-                "en": "word:brigade"
-              },
-              "do": "sound.play",
-              "id": "alarmBell",
-              "gainDb": -17
-            }
-          ],
+          "cues": [],
           "gapAfter": 1.1
         },
         {
@@ -831,8 +819,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -12
+              "id": "bedStill"
             },
             {
               "on": {
@@ -1010,7 +997,7 @@
               },
               "do": "sound.play",
               "id": "hooves",
-              "gainDb": -18
+              "gainDb": -12
             }
           ],
           "gapAfter": 1.2
@@ -1069,8 +1056,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch",
-              "gainDb": -12
+              "id": "bedMarch"
             },
             {
               "on": "start",
@@ -1139,7 +1125,7 @@
               },
               "do": "sound.play",
               "id": "boots",
-              "gainDb": -19
+              "gainDb": -12
             }
           ],
           "gapAfter": 1.1
@@ -1310,8 +1296,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -12
+              "id": "bedStill"
             },
             {
               "on": "start",
@@ -1529,8 +1514,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -11
+              "id": "bedSolemn"
             },
             {
               "on": "start",
@@ -1839,14 +1823,13 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -10
+              "id": "bedTension"
             },
             {
               "on": "start",
               "do": "sound.ambience",
               "id": "rain",
-              "gainDb": -19
+              "gainDb": -18
             },
             {
               "on": "start",
@@ -1993,8 +1976,8 @@
                 "en": "word:rain"
               },
               "do": "sound.play",
-              "id": "drums",
-              "gainDb": -16
+              "id": "swords",
+              "gainDb": -12
             }
           ],
           "gapAfter": 1.3
@@ -2148,8 +2131,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -10
+              "id": "bedSolemn"
             },
             {
               "on": "start",

@@ -135,8 +135,14 @@ function resolveWanted() {
   // has trailing silence baked into its mp3, so the music was the only thing
   // still sounding, and it vanished on a frame. stopMusic already knew how to
   // fade; this was asking it not to.
-  if (!wantMusic) scape.stopMusic({ fadeMs: 900 });
-  if (!wantAmbience) scape.setAmbience(null, { fadeMs: 900 });
+  // Four seconds, not 900 ms. A scene that carries no bed is a decision —
+  // "at least one scene per chapter is unscored", and the wine chapter's
+  // second scene is about people who never met each other — and a bed that
+  // is gone within a sentence of the scene turning reads as the sound
+  // breaking rather than as silence arriving. docs/design-direction.md §3:
+  // a bed leaves over four seconds and never cuts.
+  if (!wantMusic) scape.stopMusic({ fadeMs: 4000 });
+  if (!wantAmbience) scape.setAmbience(null, { fadeMs: 2400 });
 }
 
 export function setSilentSound(on) {

@@ -337,8 +337,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -9
+              "id": "bedSolemn"
             },
             {
               "on": {
@@ -524,8 +523,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -10
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -707,8 +705,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedMarch",
-              "gainDb": -12
+              "id": "bedMarch"
             },
             {
               "on": "start",
@@ -957,8 +954,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -12
+              "id": "bedStill"
             },
             {
               "on": "start",
@@ -1141,8 +1137,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -11
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -1292,8 +1287,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedStill",
-              "gainDb": -12
+              "id": "bedStill"
             },
             {
               "on": "start",
@@ -1499,8 +1493,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedTension",
-              "gainDb": -9
+              "id": "bedTension"
             },
             {
               "on": "start",
@@ -1668,8 +1661,7 @@
             {
               "on": "start",
               "do": "sound.music",
-              "id": "bedSolemn",
-              "gainDb": -10
+              "id": "bedSolemn"
             },
             {
               "on": "start",

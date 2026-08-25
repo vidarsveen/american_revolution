@@ -493,7 +493,7 @@
     "no": "Spill en lyd én gang",
     "en": "Play a sound once"
    },
-   "note": "A single event: a shot, a bell, a fife. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
+   "note": "A single event, and it must name a thing the narration JUST named — not atmosphere by association. One per beat, three per scene, none within 20 s of another; check-script.py holds all three, and prints every effect next to its sentence so a human can read whether it answers it. The effect must also belong to the pack's era: sound/library.js carries a year span per entry and 44 BC fired three cannon before it did. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
    "args": {
     "id": {
      "type": "sound",
@@ -502,7 +502,7 @@
     "times": {
      "type": "number",
      "default": 1,
-     "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering."
+     "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering. Three reports of one gun are ONE cue with `times`, never three cues."
     },
     "spread": {
      "type": "seconds",
@@ -510,7 +510,8 @@
     },
     "gainDb": {
      "type": "number",
-     "default": 0
+     "default": 0,
+     "note": "-8, and ±4 only to separate a near thing from a far one inside one scene. check-script.py holds -12…-4."
     },
     "rate": {
      "type": "number",
@@ -523,14 +524,15 @@
     "no": "Legg en lydkulisse under",
     "en": "Lay a bed of place under it"
    },
-   "note": "Continuous: wind, sea, a crowd. Crossfades. Omit `id` to stop it.",
+   "note": "Continuous: wind, sea, a crowd. A place lasts a scene, so ONE per scene, and a second only when the narration says the place changed. Crossfades. Omit `id` to stop it. Never ducks — a room does not get quieter when someone speaks.",
    "args": {
     "id": {
      "type": "sound"
     },
     "gainDb": {
      "type": "number",
-     "default": 0
+     "default": 0,
+     "note": "-15, and ±3 only to separate a near thing from a far one inside one scene. check-script.py holds -18…-12. Further out than that is the recording being wrong, and the fix is `levelled` in content/<pack>/sound.json."
     }
    }
   },
@@ -539,14 +541,15 @@
     "no": "Musikk under fortellingen",
     "en": "Music under the narration"
    },
-   "note": "Ducks under the voice on its own, from the script word timings. Omit `id` to stop it.",
+   "note": "One per scene, in its first beat. Ducks under the voice on its own, from the script word timings. Omit `id` to stop it — but a scene change stops it anyway, so an explicit stop mid-scene is a second bed cue and check-script.py refuses it.",
    "args": {
     "id": {
      "type": "sound"
     },
     "gainDb": {
      "type": "number",
-     "default": 0
+     "default": 0,
+     "note": "The engine reads it, and no chapter may set it: the bed's level is `bedDb` in sound/soundscape.js, once, for the whole app. Every cue used to carry -6…-12 on top of the bus's own -14, so the bed that shipped was 9-12 dB below the level the module documented and re-balancing meant editing sixty-one numbers. check-script.py fails a chapter that sets it."
     }
    }
   },

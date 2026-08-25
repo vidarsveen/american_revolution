@@ -740,28 +740,619 @@ function sBedMarch(ac, out, rnd, { at = 0, dur = 16.4 } = {}) {
 }
 
 /* ------------------------------------------------------------
+   Plucked strings — the second family of beds.
+
+   Everything above this line is a drone, and every drone is in D on the
+   same D–A–D–A–E–A stack. That was written for a war and it is one colour:
+   six beds that differ only in which interval is missing. A pack about a
+   wine valley reaching for `bedSolemn` gets a requiem under a sentence
+   about fog, which is the sound equivalent of Join, or Die over the line
+   about thirteen colonies.
+
+   So: a second family, built on a plucked string rather than a held pitch.
+   It is a different instrument, a different key family (A rather than D)
+   and a different way of occupying time — a note, then air, then a note —
+   which is what "a documentary score that carries a scene" sounds like
+   when the scene is not a battle. Nothing here is a tune you could hum,
+   for the same reason the drones are not: a bed with a melody competes
+   with the sentence it is under.
+   ------------------------------------------------------------ */
+
+/**
+ * One string, by Karplus–Strong.
+ *
+ * A short burst of noise into a delay line the length of one period, with
+ * a two-sample average folded back in on every pass. The average is what
+ * makes it a string: it delays by exactly one period and loses a little of
+ * the top end each time round, so the note starts bright and goes warm as
+ * it dies — which is the whole character of a plucked instrument and the
+ * one thing an oscillator with an envelope cannot fake.
+ *
+ * Rendered straight into an AudioBuffer rather than wired as a feedback
+ * graph, because a delay line shorter than a render quantum cannot be
+ * built out of DelayNodes at all: 220 Hz is 218 samples and the minimum
+ * is 128, with no guarantee below that.
+ *
+ * `colour` is the plectrum: 1 is raw noise and reads as a hard pick, 0.25
+ * is the same burst smoothed and reads as a fingertip. `decay` is applied
+ * once per period, so a low note rings longer than a high one from the
+ * same number — which is what real strings do and what a per-second decay
+ * would have got backwards.
+ */
+function stringBuffer(ac, rnd, { freq = 220, dur = 2.4, decay = 0.9965, colour = 0.6 }) {
+  const sr = ac.sampleRate;
+  const n = Math.max(2, Math.round(sr / Math.max(20, freq)));
+  const len = Math.max(n + 2, Math.ceil(dur * sr));
+  const buf = ac.createBuffer(1, len, sr);
+  const d = buf.getChannelData(0);
+  let last = 0;
+  for (let i = 0; i < n; i++) {
+    const w = rnd() * 2 - 1;
+    last += colour * (w - last);
+    d[i] = last;
+  }
+  for (let i = n; i < len; i++) d[i] = decay * 0.5 * (d[i - n] + d[i - n + 1]);
+  return buf;
+}
+
+/** One note on that string, with a body filter, a tail and a place to sit. */
+function pluck(ac, out, rnd, {
+  at = 0, freq = 220, dur = 2.6, peak = 0.5,
+  decay = 0.9965, colour = 0.6, tone: bright = 2400, pan = 0, send = null,
+}) {
+  at = Math.max(0, at);
+  const src = ac.createBufferSource();
+  src.buffer = stringBuffer(ac, rnd, { freq, dur, decay, colour });
+  const f = ac.createBiquadFilter();
+  f.type = 'lowpass'; f.frequency.value = bright; f.Q.value = 0.4;
+  const g = ac.createGain();
+  g.gain.setValueAtTime(0.0001, at);
+  g.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), at + 0.005);
+  // The string is already dying on its own; this only stops the buffer
+  // ending on a non-zero sample, which is a click.
+  g.gain.setValueAtTime(Math.max(0.0002, peak), at + Math.max(0.02, dur - 0.4));
+  g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+  src.connect(f).connect(g);
+
+  let node = g;
+  if (pan && typeof ac.createStereoPanner === 'function') {
+    try {
+      const p = ac.createStereoPanner();
+      p.pan.value = pan;
+      g.connect(p);
+      node = p;
+    } catch { /* centre is not a failure */ }
+  }
+  node.connect(out);
+  if (send) node.connect(send);
+  src.start(at);
+  src.stop(at + dur + 0.02);
+  return g;
+}
+
+/**
+ * A room to put the strings in.
+ *
+ * A short filtered feedback delay, not a reverb: the point is air around a
+ * note, and `ctx.filter`-style expense is not available to us anyway. Keep
+ * the tail well under SEAM so the loop still joins — a delay still ringing
+ * at the fold is a tail crossfaded against a tail, which is fine, but only
+ * because the pattern above it repeats at exactly the loop length.
+ */
+function room(ac, out, { time = 0.23, feedback = 0.30, level = 0.25, tone: damp = 2000 } = {}) {
+  const send = ac.createGain();
+  send.gain.value = 1;
+  const d = ac.createDelay(2);
+  d.delayTime.value = time;
+  const fb = ac.createGain();
+  fb.gain.value = feedback;
+  const lp = ac.createBiquadFilter();
+  lp.type = 'lowpass'; lp.frequency.value = damp; lp.Q.value = 0.3;
+  const wet = ac.createGain();
+  wet.gain.value = level;
+  send.connect(d);
+  d.connect(lp);
+  lp.connect(fb);
+  fb.connect(d);
+  lp.connect(wet).connect(out);
+  return send;
+}
+
+/**
+ * The warmth under the strings.
+ *
+ * Triangles only and a low cutoff, so it reads as the room being warm
+ * rather than as a synth pad holding a chord. Level rides one wobble()
+ * curve, which means it breathes and still joins itself at the seam.
+ */
+function air(ac, out, rnd, {
+  at = 0, dur = 16, freqs = [110, 164.81, 220], level = 1, cutoff = 700,
+} = {}) {
+  const f = ac.createBiquadFilter();
+  f.type = 'lowpass'; f.frequency.value = cutoff; f.Q.value = 0.4;
+  const g = ac.createGain();
+  g.gain.value = 0;
+  curveOn(g.gain, {
+    at, dur, mid: 0.055 * level, depth: 0.030 * level, min: 0.004,
+    shape: wobble(rnd, [1, 2, 3, 5]),
+  });
+  f.connect(g).connect(out);
+  freqs.forEach((freq, i) => {
+    const o = ac.createOscillator();
+    o.type = 'triangle';
+    o.frequency.value = freq;
+    o.detune.value = (rnd() - 0.5) * 8;
+    const og = ac.createGain();
+    og.gain.value = 0.7 / (i + 1.6);
+    o.connect(og).connect(f);
+    o.start(at); o.stop(at + dur);
+  });
+}
+
+/**
+ * Lay a chord pattern down, bar by bar, until `dur` is full.
+ *
+ * `bars` is a list of [bass, [upper…]] and the phrase length must divide
+ * the catalogue duration exactly, or the loop joins one bar onto a
+ * different one and you hear the seam every sixteen seconds.
+ */
+function figure(ac, out, rnd, {
+  at, dur, bars, bar = 3.0, steps = [0, 0.25, 0.5, 0.75],
+  send = null, bassPeak = 0.55, peak = 0.34, decay = 0.9965,
+  colour = 0.6, tone: bright = 2800, bassTone = 1500, note = 2.6, sway = 0.018,
+}) {
+  for (let b = 0; b * bar < dur; b++) {
+    const [bass, upper] = bars[b % bars.length];
+    const t0 = at + b * bar;
+    pluck(ac, out, rnd, {
+      at: t0, freq: bass, dur: Math.min(note * 1.6, bar * 2.2), peak: bassPeak,
+      decay: decay + (1 - decay) * 0.35, colour: colour * 0.6, tone: bassTone, send,
+    });
+    for (let i = 1; i < steps.length; i++) {
+      const t = t0 + steps[i] * bar + (rnd() - 0.5) * sway;
+      pluck(ac, out, rnd, {
+        at: t, freq: upper[(i - 1) % upper.length], dur: note,
+        peak: peak * (0.82 + rnd() * 0.3), decay, colour, tone: bright,
+        // A guitarist's hand is one object; the strings are not in one
+        // place. A little width is the difference between an instrument
+        // in a room and a sample in the middle of your head.
+        pan: (i % 2 ? 1 : -1) * 0.3,
+        send,
+      });
+    }
+  }
+}
+
+/* Sunlit and open. A major, a plagal rocking between the tonic and the
+   fourth, and no minor anywhere: this is the bed for a scene that is
+   explaining something good. Six bars of three seconds, so the phrase
+   divides the loop. */
+function sBedWarm(ac, out, rnd, { at = 0, dur = 18.0 } = {}) {
+  const send = room(ac, out, { time: 0.21, feedback: 0.28, level: 0.24, tone: 2300 });
+  const A = [110.00, [164.81, 220.00, 277.18]];       // A2 · E3 A3 C#4
+  const D = [146.83, [220.00, 293.66, 369.99]];       // D3 · A3 D4 F#4
+  const E = [82.41, [164.81, 207.65, 246.94]];        // E2 · E3 G#3 B3
+  figure(ac, out, rnd, {
+    at, dur, bar: 3.0, bars: [A, D, A, E, A, D], send,
+    decay: 0.9962, colour: 0.55, tone: 3000, bassTone: 1500, note: 2.7,
+  });
+  air(ac, out, rnd, { at, dur, freqs: [110.00, 164.81, 220.00], level: 1.0, cutoff: 640 });
+}
+
+/* Weight without grief. A minor, an octave lower, twice as slow, and the
+   strings damped — the bed for ground that has been there a long time and
+   an argument that is going to take a while. */
+function sBedPatient(ac, out, rnd, { at = 0, dur = 17.6 } = {}) {
+  const send = room(ac, out, { time: 0.26, feedback: 0.32, level: 0.26, tone: 1500 });
+  const Am = [110.00, [164.81, 220.00, 261.63]];      // A2 · E3 A3 C4
+  const F = [87.31, [174.61, 220.00, 261.63]];        // F2 · F3 A3 C4
+  const G = [98.00, [146.83, 196.00, 246.94]];        // G2 · D3 G3 B3
+  figure(ac, out, rnd, {
+    at, dur, bar: 4.4, steps: [0, 0.25, 0.5, 0.75], bars: [Am, F, Am, G], send,
+    bassPeak: 0.5, peak: 0.28, decay: 0.9975, colour: 0.35, tone: 1500, bassTone: 900,
+    note: 3.6,
+  });
+  air(ac, out, rnd, { at, dur, freqs: [110.00, 164.81, 220.00], level: 1.1, cutoff: 460 });
+}
+
+/* Almost nothing, and damp. One note every two and a half seconds, no
+   third so it never decides how it feels, and a long room. For a scene
+   where the picture is doing the work and the score's only job is to say
+   the air is heavy. */
+function sBedMist(ac, out, rnd, { at = 0, dur = 20.8 } = {}) {
+  const send = room(ac, out, { time: 0.31, feedback: 0.36, level: 0.34, tone: 1200 });
+  const notes = [110.00, 164.81, 220.00, 246.94, 164.81, 220.00, 110.00, 329.63];
+  const step = 2.6;
+  for (let i = 0; i * step < dur; i++) {
+    const n = notes[i % notes.length];
+    pluck(ac, out, rnd, {
+      at: at + i * step + (rnd() - 0.5) * 0.05,
+      freq: n, dur: 3.2, peak: 0.36 + rnd() * 0.1,
+      decay: 0.998, colour: 0.22, tone: 900,
+      pan: (i % 2 ? 1 : -1) * 0.25, send,
+    });
+  }
+  air(ac, out, rnd, { at, dur, freqs: [55.00, 82.41, 110.00], level: 1.4, cutoff: 300 });
+}
+
+/* Under the ground. Low single notes with the room turned up, which is
+   the one honest way to say "this is indoors and it is made of stone".
+   Eight notes over sixteen seconds and nothing else. */
+function sBedHollow(ac, out, rnd, { at = 0, dur = 16.0 } = {}) {
+  const send = room(ac, out, { time: 0.37, feedback: 0.40, level: 0.26, tone: 900 });
+  const notes = [55.00, 82.41, 110.00, 130.81, 55.00, 98.00, 110.00, 82.41];
+  const step = 2.0;
+  for (let i = 0; i * step < dur; i++) {
+    pluck(ac, out, rnd, {
+      at: at + i * step + (rnd() - 0.5) * 0.04,
+      // Shorter than it looks it should be, and that is the whole fix.
+      // The first version rang for 2.8 s on a 2.0 s step with a decay of
+      // 0.9985, so every note was still at half strength when the next
+      // one landed: measured in the band a phone can radiate, it had NO
+      // detectable note attacks at all — eight plucks that arrived as one
+      // continuous swell. A note now ends 0.2 s before the next begins
+      // and the ROOM fills the gap, which is what a cellar actually does
+      // and reads as nine attacks instead of none.
+      freq: notes[i % notes.length], dur: 1.8, peak: 0.5,
+      decay: 0.9955, colour: 0.32, tone: 820, send,
+    });
+  }
+  air(ac, out, rnd, { at, dur, freqs: [55.00, 82.41], level: 1.2, cutoff: 240 });
+}
+
+/* The one with a pulse you could tap. A rocking six-eight on double stops
+   a third apart, each note played as a COURSE — two strings a few cents
+   apart, a few milliseconds apart — which is the whole sound of a
+   mandolin and costs one extra call. Warm, evening, and still not a tune:
+   two chords, no melody note held long enough to sing. */
+function sBedLilt(ac, out, rnd, { at = 0, dur = 16.8 } = {}) {
+  const send = room(ac, out, { time: 0.19, feedback: 0.26, level: 0.22, tone: 2600 });
+  const A = [110.00, [277.18, 329.63]];               // A2 · C#4 E4
+  const D = [146.83, [293.66, 369.99]];               // D3 · D4 F#4
+  const E = [82.41, [246.94, 329.63]];                // E2 · B3 E4
+  const bars = [A, D, A, E, A, D, A, A];
+  const bar = 2.1;
+  const course = (t, freq, peak, pan) => {
+    for (const [c, k] of [[-4, 0], [4, 0.006]]) {
+      pluck(ac, out, rnd, {
+        at: t + k, freq: freq * 2 ** (c / 1200), dur: 1.5, peak: peak * 0.62,
+        decay: 0.9945, colour: 0.85, tone: 4200, pan, send,
+      });
+    }
+  };
+  for (let b = 0; b * bar < dur; b++) {
+    const [bass, pair] = bars[b % bars.length];
+    const t0 = at + b * bar;
+    for (const q of [0, 0.5]) {
+      pluck(ac, out, rnd, {
+        at: t0 + q * bar, freq: bass, dur: 1.6, peak: 0.42,
+        decay: 0.997, colour: 0.4, tone: 1300, send,
+      });
+    }
+    // Two, three | two, three: the second and third of each group are the
+    // rock, and they are quieter than the one they hang off.
+    const off = [1 / 6, 2 / 6, 4 / 6, 5 / 6];
+    off.forEach((u, i) => {
+      const t = t0 + u * bar + (rnd() - 0.5) * 0.012;
+      course(t, pair[i % pair.length], (i % 2 ? 0.20 : 0.26) + rnd() * 0.04,
+             (i % 2 ? 1 : -1) * 0.28);
+    });
+  }
+  air(ac, out, rnd, { at, dur, freqs: [110.00, 164.81, 220.00], level: 0.8, cutoff: 700 });
+}
+
+/* ------------------------------------------------------------
+   Things that happen in a kitchen rather than on a battlefield
+   ------------------------------------------------------------ */
+
+/* A cork drawn from a bottle. Two events, and the first one is the one
+   everybody forgets: cork against wet glass squeals as it comes up the
+   neck, in tiny jerks, rising in pitch as less of it is left inside.
+
+   The pop itself is not the cork at all — it is the air column in the
+   neck, which is why it has a pitch and why a big bottle pops lower than
+   a small one. Around 230 Hz, falling fast, with a bright click on top. */
+function sCorkDraw(ac, out, rnd, { at = 0 } = {}) {
+  let t = at;
+  const n = 7;
+  for (let i = 0; i < n; i++) {
+    const u = i / (n - 1);
+    hit(ac, out, {
+      at: t, dur: 0.05 + rnd() * 0.05, peak: 0.14 + u * 0.22, attack: 0.006,
+      type: 'bandpass', freq: 420 + u * 700 + rnd() * 90, q: 12, rnd,
+    });
+    t += 0.035 + rnd() * 0.045;
+  }
+  const pop = t + 0.05;
+  tone(ac, out, { at: pop, dur: 0.16, freq: 232, peak: 0.90, glideTo: 150, attack: 0.0012 });
+  tone(ac, out, { at: pop, dur: 0.09, freq: 464, peak: 0.26, glideTo: 320, attack: 0.001 });
+  hit(ac, out, { at: pop, dur: 0.03, peak: 0.50, attack: 0.0006, type: 'bandpass', freq: 2600, q: 0.8, rnd });
+  hit(ac, out, { at: pop + 0.01, dur: 0.28, peak: 0.10, attack: 0.012, type: 'lowpass', freq: 900, q: 0.6, brown: 0.4, rnd });
+}
+
+/* Wine going into a glass.
+
+   The stream is a band of noise, and the band CLIMBS: as the glass fills,
+   the air column above the wine gets shorter and the note it makes goes
+   up. That rise is the entire difference between a glass being filled and
+   a tap running, and it is free — one exponential ramp on a filter.
+
+   The bubbles are the other half. A bubble's pitch RISES as it collapses,
+   so each one is a very short sine gliding upward; scattered evenly they
+   sound like a machine, so they come in clumps, the same reason the crowd
+   above does. */
+function sPour(ac, out, rnd, { at = 0, dur = 3.2 } = {}) {
+  const ch = out.channelCount || 2;
+  const body = dur - 0.45;
+  const src = ac.createBufferSource();
+  src.buffer = noise(ac, body, rnd, ch, 0.25);
+  const f = ac.createBiquadFilter();
+  f.type = 'bandpass'; f.Q.value = 0.85;
+  f.frequency.setValueAtTime(760, at);
+  f.frequency.exponentialRampToValueAtTime(1500, at + body);
+  const g = ac.createGain();
+  curveOn(g.gain, { at, dur: body, mid: 0.30, depth: 0.10, min: 0.05,
+                    shape: wobble(rnd, [1, 2, 3, 5]) });
+  // A separate window, because curveOn keeps a floor and a stream that
+  // starts at its floor starts with a click.
+  const env = ac.createGain();
+  const steps = 160;
+  const arr = new Float32Array(steps + 1);
+  for (let i = 0; i <= steps; i++) {
+    const u = i / steps;
+    arr[i] = Math.min(1, u / 0.05) * Math.min(1, (1 - u) / 0.16);
+  }
+  try { env.gain.setValueCurveAtTime(arr, Math.max(0, at), body); } catch { /* busy */ }
+  src.connect(f).connect(g).connect(env).connect(out);
+  src.start(at); src.stop(at + body);
+
+  let t = at + 0.10;
+  while (t < at + body) {
+    const clump = 1 + Math.floor(rnd() * 3);
+    for (let i = 0; i < clump; i++) {
+      const f0 = 480 + rnd() * 900;
+      tone(ac, out, {
+        at: t + i * (0.02 + rnd() * 0.03), dur: 0.03 + rnd() * 0.03,
+        freq: f0, peak: 0.09 + rnd() * 0.13, glideTo: f0 * (1.4 + rnd() * 0.8),
+        attack: 0.001,
+      });
+    }
+    t += 0.05 + rnd() * rnd() * 0.28;
+  }
+  // The last glug, when the bottle comes back up.
+  tone(ac, out, { at: at + body + 0.05, dur: 0.15, freq: 190, peak: 0.42, glideTo: 118, attack: 0.002 });
+}
+
+/* Perlage: the bead in a glass of something lightly sparkling. Each
+   bubble is a pinhead and far too short to have a pitch, so this is a few
+   hundred clicks whose density decays — a glass calms down, it does not
+   fizz at a constant rate — over a thin sheet of high noise. */
+function sFizz(ac, out, rnd, { at = 0, dur = 4.0 } = {}) {
+  for (let i = 0; i < 520; i++) {
+    // Exponentially weighted towards the front: most of the bead happens
+    // in the first second, which is what pouring one actually sounds like.
+    const u = Math.min(1, -Math.log(1 - rnd() * 0.985) / 3.2);
+    hit(ac, out, {
+      at: at + u * dur, dur: 0.004 + rnd() * 0.009, peak: 0.05 + rnd() * 0.12,
+      attack: 0.0006, type: 'bandpass', freq: 2400 + rnd() * 5200, q: 3 + rnd() * 4, rnd,
+    });
+  }
+  const src = ac.createBufferSource();
+  src.buffer = noise(ac, dur, rnd, out.channelCount || 2, 0);
+  const f = ac.createBiquadFilter();
+  f.type = 'highpass'; f.frequency.value = 3200; f.Q.value = 0.5;
+  const g = ac.createGain();
+  g.gain.setValueAtTime(0.0001, at);
+  g.gain.exponentialRampToValueAtTime(0.09, at + 0.15);
+  g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+  src.connect(f).connect(g).connect(out);
+  src.start(at); src.stop(at + dur);
+}
+
+/* Open country in late summer, heard from inside it.
+
+   Three layers and none of them loud. A vineyard in September is quiet,
+   and the tell that a room was faked is always that the room is too loud.
+
+   The cicadas are the interesting one: the buzz is not a pitch, it is a
+   narrow band of noise CHOPPED at about forty a second. The chop is the
+   insect and the band is how far away it is. */
+function sVineyard(ac, out, rnd, { at = 0, dur = 12.0 } = {}) {
+  const ch = out.channelCount || 2;
+  const breeze = wobble(rnd, [1, 2, 3, 5]);
+
+  const src = ac.createBufferSource();
+  src.buffer = noise(ac, dur, rnd, ch, 0.85);
+  const f = ac.createBiquadFilter();
+  f.type = 'lowpass'; f.Q.value = 0.5;
+  curveOn(f.frequency, { at, dur, mid: 340, depth: 180, shape: breeze, min: 90 });
+  const g = ac.createGain();
+  curveOn(g.gain, { at, dur, mid: 0.16, depth: 0.10, shape: breeze, min: 0.012 });
+  src.connect(f).connect(g).connect(out);
+  src.start(at); src.stop(at + dur);
+
+  const ci = ac.createBufferSource();
+  ci.buffer = noise(ac, dur, rnd, ch, 0);
+  const cf = ac.createBiquadFilter();
+  cf.type = 'bandpass'; cf.frequency.value = 4600; cf.Q.value = 3.2;
+  const cg = ac.createGain();
+  cg.gain.value = 0.030;
+  lfo(ac, cg.gain, { freq: 41, amount: 0.026, type: 'triangle', phaseAt: at });
+  const swell = ac.createGain();
+  swell.gain.value = 0;
+  curveOn(swell.gain, { at, dur, mid: 0.6, depth: 0.4, min: 0.05,
+                        shape: wobble(rnd, [1, 2, 5]) });
+  ci.connect(cf).connect(cg).connect(swell).connect(out);
+  ci.start(at); ci.stop(at + dur);
+
+  // Two or three birds, a long way off. Short glides, in twos and threes,
+  // with several seconds of nothing between: a bird you can hear clearly
+  // is a bird in the microphone, not a bird in a field.
+  let t = at + rnd() * 2.4;
+  while (t < at + dur) {
+    const calls = 2 + Math.floor(rnd() * 3);
+    const f0 = 2600 + rnd() * 1500;
+    for (let i = 0; i < calls; i++) {
+      tone(ac, out, {
+        at: t + i * (0.09 + rnd() * 0.07), dur: 0.05 + rnd() * 0.04,
+        freq: f0 * (0.9 + rnd() * 0.25), peak: 0.05 + rnd() * 0.05,
+        glideTo: f0 * (1.15 + rnd() * 0.3), attack: 0.008,
+      });
+    }
+    t += 2.8 + rnd() * 3.4;
+  }
+}
+
+/* A cellar cut into rock: no air movement, a lot of low end, a drip every
+   few seconds and a barrel hoop taking up a load now and then. The drip
+   rises in pitch, for the same reason the bubbles in the pour do. */
+function sCellar(ac, out, rnd, { at = 0, dur = 12.0 } = {}) {
+  const ch = out.channelCount || 2;
+  const src = ac.createBufferSource();
+  src.buffer = noise(ac, dur, rnd, ch, 0.95);
+  const f = ac.createBiquadFilter();
+  f.type = 'lowpass'; f.frequency.value = 120; f.Q.value = 0.5;
+  const g = ac.createGain();
+  curveOn(g.gain, { at, dur, mid: 0.34, depth: 0.10, min: 0.05,
+                    shape: wobble(rnd, [1, 2, 3]) });
+  src.connect(f).connect(g).connect(out);
+  src.start(at); src.stop(at + dur);
+
+  let t = at + 0.7 + rnd() * 2.0;
+  while (t < at + dur) {
+    const f0 = 900 + rnd() * 700;
+    hit(ac, out, { at: t, dur: 0.012, peak: 0.20 + rnd() * 0.10, attack: 0.0008,
+                   type: 'bandpass', freq: f0 * 2.4, q: 2.4, rnd });
+    tone(ac, out, { at: t, dur: 0.08 + rnd() * 0.05, freq: f0, peak: 0.22,
+                    glideTo: f0 * 1.9, attack: 0.001 });
+    t += 2.4 + rnd() * 3.0;
+  }
+
+  let c = at + 1.6 + rnd() * 4.0;
+  while (c < at + dur) {
+    hit(ac, out, { at: c, dur: 0.45 + rnd() * 0.4, peak: 0.10 + rnd() * 0.07, attack: 0.07,
+                   type: 'bandpass', freq: 210 + rnd() * 190, q: 8,
+                   sweepTo: 130 + rnd() * 60, rnd });
+    c += 5.0 + rnd() * 4.0;
+  }
+}
+
+/* ------------------------------------------------------------
+   Things that happen before gunpowder
+   ------------------------------------------------------------ */
+
+/** One note on a valveless brass horn. */
+function brassNote(ac, out, rnd, { at, dur, freq, peak = 0.5 }) {
+  at = Math.max(0, at);
+  const o = ac.createOscillator();
+  o.type = 'sawtooth';
+  o.frequency.setValueAtTime(freq * 0.985, at);
+  o.frequency.exponentialRampToValueAtTime(freq, at + 0.09);
+  lfo(ac, o.detune, { freq: 4.6, amount: 9, phaseAt: at });
+  const f = ac.createBiquadFilter();
+  f.type = 'lowpass'; f.Q.value = 1.4;
+  // Brass is the family whose brightness rides its loudness: it opens up
+  // as it is pushed and closes as it is let go. A horn that gets louder
+  // without opening up is an organ, which is what the first attempt was.
+  f.frequency.setValueAtTime(freq * 2, at);
+  f.frequency.linearRampToValueAtTime(freq * 9, at + 0.22);
+  f.frequency.linearRampToValueAtTime(freq * 4, at + dur);
+  const g = ac.createGain();
+  g.gain.setValueAtTime(0.0001, at);
+  g.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), at + 0.13);
+  g.gain.setValueAtTime(Math.max(0.0002, peak), at + Math.max(0.15, dur - 0.30));
+  g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+  o.connect(f).connect(g).connect(out);
+  o.start(at); o.stop(at + dur + 0.02);
+  hit(ac, out, { at, dur: 0.10, peak: peak * 0.18, attack: 0.02,
+                 type: 'bandpass', freq: freq * 6, q: 0.8, rnd });
+}
+
+/* The cornu. A Roman army had no drums and no bells: it was moved by
+   horn, and this is the sound that has to do the work `drums`, `volley`
+   and `cannon` were wrongly doing in 44 BC.
+
+   A short low note and then a longer one a fifth up, each doubled a fifth
+   above itself. Parallel fifths are what an instrument with no valves can
+   actually play, and they are most of why this reads as ancient rather
+   than as a hunting horn. */
+function sWarHorn(ac, out, rnd, { at = 0 } = {}) {
+  brassNote(ac, out, rnd, { at, dur: 0.95, freq: 98.00, peak: 0.55 });
+  brassNote(ac, out, rnd, { at: at + 0.02, dur: 0.92, freq: 146.83, peak: 0.28 });
+  brassNote(ac, out, rnd, { at: at + 1.02, dur: 1.90, freq: 146.83, peak: 0.60 });
+  brassNote(ac, out, rnd, { at: at + 1.05, dur: 1.85, freq: 220.00, peak: 0.30 });
+}
+
+/* Two edges meeting. A blade is not tuned, so the partials are not a
+   chord — the ratios below are deliberately irrational-looking. */
+function clash(ac, out, rnd, { at, peak = 1 }) {
+  const f0 = 1500 + rnd() * 1400;
+  for (const [r, a, life] of [[1, 1, 0.28], [1.63, 0.6, 0.20], [2.41, 0.4, 0.14], [3.77, 0.22, 0.09]]) {
+    tone(ac, out, { at, dur: life * (0.7 + rnd() * 0.6), freq: f0 * r,
+                    peak: 0.16 * a * peak, attack: 0.0008 });
+  }
+  hit(ac, out, { at, dur: 0.035, peak: 0.55 * peak, attack: 0.0006,
+                 type: 'bandpass', freq: 3400, q: 0.7, rnd });
+  hit(ac, out, { at, dur: 0.10, peak: 0.16 * peak, attack: 0.002,
+                 type: 'lowpass', freq: 700, q: 0.8, brown: 0.4, rnd });
+}
+
+/* Hand-to-hand: nine impacts over two seconds, a third of them a shield
+   taking the blow rather than a blade. Ragged, because a line of men
+   fighting is not a rhythm — the same reason `volley` is ragged. */
+function sSwords(ac, out, rnd, { at = 0 } = {}) {
+  let t = at + 0.02;
+  for (let i = 0; i < 9; i++) {
+    if (rnd() < 0.32) {
+      tone(ac, out, { at: t, dur: 0.18, freq: 128, peak: 0.50, glideTo: 74, attack: 0.002 });
+      hit(ac, out, { at: t, dur: 0.09, peak: 0.32, attack: 0.001,
+                     type: 'lowpass', freq: 620, q: 1.2, brown: 0.5, rnd });
+    } else {
+      clash(ac, out, rnd, { at: t, peak: 0.6 + rnd() * 0.4 });
+    }
+    t += 0.09 + rnd() ** 2 * 0.34;
+  }
+}
+
+/* ------------------------------------------------------------
    The catalogue
 
    `kind` decides three things at once: whether the buffer is looped, how
    loudly it is normalised, and whether it gets a seamless join.
+
+   `years` is the span in which the thing existed, and it is the reason
+   `content/roman-empire/chapter-44bc-octavian.json` could fire three
+   cannon, a musket, two volleys and a church bell in 44 BC and validate
+   clean: nothing checked. tools/check-script.py now refuses an effect
+   whose years do not overlap the pack's era. Leave it off when the sound
+   is timeless — wind, a crowd, the sea — because a range nobody can
+   defend is worse than none. Music never carries one: a score is not
+   diegetic and nobody thinks the mandolin is in the room.
    ------------------------------------------------------------ */
 
 const CATALOGUE = {
-  musket:     { kind: 'oneshot', dur: 1.10, synth: sMusket,     label: { no: 'Muskettskudd', en: 'Musket shot' } },
-  volley:     { kind: 'oneshot', dur: 2.60, synth: sVolley,     label: { no: 'Salve', en: 'Volley' } },
-  cannon:     { kind: 'oneshot', dur: 3.40, synth: sCannon,     label: { no: 'Kanon', en: 'Cannon' } },
-  churchBell: { kind: 'oneshot', dur: 13.00, synth: sChurchBell, label: { no: 'Kirkeklokke', en: 'Church bell' } },
-  alarmBell:  { kind: 'oneshot', dur: 8.20, synth: sAlarmBell,  label: { no: 'Alarmklokke', en: 'Alarm bell' } },
-  fife:       { kind: 'oneshot', dur: 2.90, synth: sFife,       label: { no: 'Tverrfløyte', en: 'Fife' } },
+  musket:     { kind: 'oneshot', dur: 1.10, years: [1400, 1900], synth: sMusket,     label: { no: 'Muskettskudd', en: 'Musket shot' } },
+  volley:     { kind: 'oneshot', dur: 2.60, years: [1400, 1960], synth: sVolley,     label: { no: 'Salve', en: 'Volley' } },
+  cannon:     { kind: 'oneshot', dur: 3.40, years: [1350, 2100], synth: sCannon,     label: { no: 'Kanon', en: 'Cannon' } },
+  churchBell: { kind: 'oneshot', dur: 13.00, years: [500, 2100], synth: sChurchBell, label: { no: 'Kirkeklokke', en: 'Church bell' } },
+  alarmBell:  { kind: 'oneshot', dur: 8.20, years: [500, 2100], synth: sAlarmBell,  label: { no: 'Alarmklokke', en: 'Alarm bell' } },
+  fife:       { kind: 'oneshot', dur: 2.90, years: [1400, 2100], synth: sFife,       label: { no: 'Tverrfløyte', en: 'Fife' } },
+  warHorn:    { kind: 'oneshot', dur: 3.30, years: [-1500, 1600], synth: sWarHorn,   label: { no: 'Krigshorn', en: 'War horn' } },
+  swords:     { kind: 'oneshot', dur: 2.60, years: [-2000, 1900], synth: sSwords,    label: { no: 'Sverdkamp', en: 'Blades' } },
+  corkDraw:   { kind: 'oneshot', dur: 1.40, years: [1650, 2100], synth: sCorkDraw,   label: { no: 'Kork som trekkes', en: 'A cork drawn' } },
+  pour:       { kind: 'oneshot', dur: 3.20, synth: sPour,        label: { no: 'Vin i glass', en: 'Wine poured' } },
+  fizz:       { kind: 'oneshot', dur: 4.00, years: [1650, 2100], synth: sFizz,       label: { no: 'Perling', en: 'Bead' } },
 
-  drums:      { kind: 'loop', dur: 60 / 112 * 8, synth: sDrums,  label: { no: 'Tromme', en: 'Drums' } },
+  drums:      { kind: 'loop', dur: 60 / 112 * 8, years: [1300, 2100], synth: sDrums, label: { no: 'Tromme', en: 'Drums' } },
   hooves:     { kind: 'loop', dur: 3.28,  synth: sHooves,        label: { no: 'Hovslag', en: 'Hooves' } },
   boots:      { kind: 'loop', dur: 4.00,  synth: sBoots,         label: { no: 'Marsjstøvler', en: 'Marching boots' } },
   crowd:      { kind: 'loop', dur: 8.00,  synth: sCrowd,         label: { no: 'Folkemengde', en: 'Crowd' } },
   wind:       { kind: 'loop', dur: 9.00,  synth: sWind,          label: { no: 'Vind', en: 'Wind' } },
   rain:       { kind: 'loop', dur: 6.00,  synth: sRain,          label: { no: 'Regn', en: 'Rain' } },
   sea:        { kind: 'loop', dur: 12.00, synth: sSea,           label: { no: 'Sjø', en: 'Sea' } },
-  rigging:    { kind: 'loop', dur: 10.00, synth: sRigging,       label: { no: 'Rigg', en: 'Rigging' } },
+  rigging:    { kind: 'loop', dur: 10.00, years: [-1000, 1950], synth: sRigging,     label: { no: 'Rigg', en: 'Rigging' } },
+  vineyard:   { kind: 'loop', dur: 12.00, synth: sVineyard,      label: { no: 'Åpent lende', en: 'Open country' } },
+  cellar:     { kind: 'loop', dur: 12.00, synth: sCellar,        label: { no: 'Kjeller', en: 'Cellar' } },
 
   bedSolemn:  { kind: 'music', dur: 16.00, synth: sBedSolemn,    label: { no: 'Underlag: alvor', en: 'Bed: solemn' } },
   bedMarch:   { kind: 'music', dur: 16.00, synth: sBedMarch,     label: { no: 'Underlag: marsj', en: 'Bed: march' } },
@@ -769,6 +1360,13 @@ const CATALOGUE = {
   bedTension: { kind: 'music', dur: 16.00, synth: sBedTension,   label: { no: 'Underlag: spenning', en: 'Bed: tension' } },
   bedUrgent:  { kind: 'music', dur: 16.00, synth: sBedUrgent,    label: { no: 'Underlag: hastverk', en: 'Bed: urgent' } },
   bedStill:   { kind: 'music', dur: 16.00, synth: sBedStill,     label: { no: 'Underlag: stillhet', en: 'Bed: stillness' } },
+
+  // The plucked family. Same grammar, no vocabulary in common.
+  bedWarm:    { kind: 'music', dur: 18.00, synth: sBedWarm,      label: { no: 'Underlag: varmt', en: 'Bed: warm' } },
+  bedPatient: { kind: 'music', dur: 17.60, synth: sBedPatient,   label: { no: 'Underlag: tålmodig', en: 'Bed: patient' } },
+  bedMist:    { kind: 'music', dur: 20.80, synth: sBedMist,      label: { no: 'Underlag: dis', en: 'Bed: mist' } },
+  bedHollow:  { kind: 'music', dur: 16.00, synth: sBedHollow,    label: { no: 'Underlag: hulrom', en: 'Bed: hollow' } },
+  bedLilt:    { kind: 'music', dur: 16.80, synth: sBedLilt,      label: { no: 'Underlag: vugging', en: 'Bed: lilt' } },
 };
 
 /**
@@ -926,6 +1524,10 @@ export function createLibrary({ manifest = null, base = '' } = {}) {
       kind: c?.kind ?? 'oneshot',
       dur: c?.dur ?? 0,
       label: f?.title ?? c?.label ?? { no: name, en: name },
+      // The span in which the thing existed, or null for a timeless one.
+      // A pack's own entry may override it — a recorded bell for a
+      // medieval pack is not the same bell as a synthesised one.
+      years: f?.years ?? c?.years ?? null,
       source: f ? 'file' : 'synth',
       licence: f?.licence ?? 'Synthesised in this repository',
       // A synthesised effect has no author to credit. Naming a subject here

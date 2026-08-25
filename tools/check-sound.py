@@ -6,7 +6,7 @@ claims about itself.
     python -m http.server 8000
     python tools/check-sound.py
 
-Four claims, none of which can be judged by reading the code:
+Six claims, none of which can be judged by reading the code:
 
   · with no AudioContext the mixer reports not-ready and every call is a
     safe no-op — that is the README rule, "audio failing is not the app
@@ -15,7 +15,11 @@ Four claims, none of which can be judged by reading the code:
     against the level read off the live GainNode;
   · the duck is fast down and slow up, measured 120 ms after each edge;
   · a one-shot fired with `instant` is not played, so scrubbing back
-    through Lexington does not fire forty muskets.
+    through Lexington does not fire forty muskets;
+  · every effect renders with signal in it, and
+  · every loop JOINS — the step across the wrap is measured against the
+    step either side of it, because a bed is heard for minutes and a bad
+    seam is a tick every sixteen seconds for a whole scene.
 
 Screenshots land in shots/. Exits non-zero if anything is broken.
 """
@@ -35,6 +39,12 @@ except ImportError:                                   # pragma: no cover
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOTS = os.path.join(ROOT, "shots")
 BASE = os.environ.get("LAB_BASE", "http://localhost:8000")
+
+# Must match BED_DB in sound/soundscape.js, and the bench's own slider.
+# Two copies of one number is the verbs.json mistake in miniature, so it is
+# named in both places and drift shows up as a failed check rather than as a
+# mix nobody can explain.
+BED = -24
 
 results: list[tuple[bool, str, str]] = []
 
@@ -101,7 +111,11 @@ def main() -> int:
         check(stub["bus"] is None, "bus() is null")
         check(stub["music"] is False and stub["amb"] is False and stub["sfx"] is False,
               "music, ambience and sfx all decline")
-        check(stub["speech"] == -26 and stub["gap"] == -14,
+        # BED is what the module defaults to and OPEN/DUCKED are derived,
+        # so moving the bed does not mean editing eight numbers here. It is
+        # -24 rather than -14 since the measured level was moved out of the
+        # per-cue gains and into bedDb — see soundscape.js, BED_DB.
+        check(stub["gap"] == BED and stub["speech"] == BED - 12,
               "the duck curve is still computable",
               f'speech {stub["speech"]} dB, gap {stub["gap"]} dB')
 
@@ -112,14 +126,16 @@ def main() -> int:
             return { before: s.targetAt(0.2), lookAhead: s.targetAt(0.6),
                      during: s.targetAt(2.0), shortGap: s.targetAt(4.6),
                      longGap: s.targetAt(13.9), after: s.targetAt(27.6),
-                     merged: s.schedule().length };
+                     merged: s.schedule().length, bed: s.state().bedDb };
         }""")
-        check(c["before"] == -14, "open before the first beat")
-        check(c["lookAhead"] == -26, "already down 250 ms before the first syllable")
-        check(c["during"] == -26, "down through the beat")
-        check(c["shortGap"] == -26, "a 500 ms gap does not pump")
-        check(c["longGap"] == -14, "a 1.5 s pause opens back up")
-        check(c["after"] == -14, "open after the last beat")
+        open_target, ducked = c["bed"], c["bed"] - 12
+        check(c["bed"] == BED, "the bench opens at the shipped bed level", f'{c["bed"]} dB')
+        check(c["before"] == open_target, "open before the first beat")
+        check(c["lookAhead"] == ducked, "already down 250 ms before the first syllable")
+        check(c["during"] == ducked, "down through the beat")
+        check(c["shortGap"] == ducked, "a 500 ms gap does not pump")
+        check(c["longGap"] == open_target, "a 1.5 s pause opens back up")
+        check(c["after"] == open_target, "open after the last beat")
         check(c["merged"] == 3, "six beats merge to three real pauses", str(c["merged"]))
 
         # ---- the same thing, measured on the GainNode -----------------
@@ -156,7 +172,8 @@ def main() -> int:
         down = (v_open - v_attack) / max(1e-9, v_open - v_duck)
         up = (v_release - v_duck) / max(1e-9, v_back - v_duck)
 
-        check(open_db > -16.0, "open in a pause", f"{open_db:.2f} dB, asked for -14")
+        check(abs(open_db - BED) < 2.0, "open in a pause",
+              f"{open_db:.2f} dB, asked for {BED}")
         check(duck_db < open_db - 8, "down under speech",
               f"{duck_db:.2f} dB, a drop of {open_db - duck_db:.1f} dB")
         check(back_db > duck_db + 8, "back up in the next pause", f"{back_db:.2f} dB")
@@ -191,6 +208,25 @@ def main() -> int:
         page.click("#silent")
 
         # ---- every effect actually makes a sound ----------------------
+        #
+        # And, for anything that loops, that it JOINS. A bed is heard for
+        # minutes at a time, so a discontinuity at the wrap is not a
+        # blemish — it is a tick once every sixteen seconds, for the whole
+        # scene, and it is the one defect in a synthesised loop that
+        # listening finds instantly and reading never does.
+        #
+        # `seam` is the sample-to-sample step across the wrap divided by
+        # the typical step either side of it. A smooth join is around one;
+        # a hard cut of a tonal bed is tens.
+        #
+        # `edge` — the head's level against the tail's — is PRINTED and not
+        # asserted, and the first version of this check had it the other
+        # way round. It fails `drums` at +64 dB, `hooves` at +140 and
+        # `bedMarch` at +11, and all three are correct: a rhythmic loop
+        # starts on a downbeat and ends in the gap before the next one, so
+        # head-against-tail measures the rhythm, not a fade. A threshold
+        # tuned until those three passed would have measured nothing at
+        # all. The click is the real defect and `seam` is what sees it.
         print("\nthe library")
         rendered = page.evaluate("""async () => {
             const { EFFECTS } = await import('../sound/library.js');
@@ -199,6 +235,7 @@ def main() -> int:
             for (const n of EFFECTS) {
               const b = await window.lab.library.get(n, ctx);
               if (!b) { out[n] = null; continue; }
+              const meta = window.lab.library.meta(n);
               let peak = 0, sum = 0, n2 = 0;
               for (let c = 0; c < b.numberOfChannels; c++) {
                 const d = b.getChannelData(c);
@@ -208,17 +245,51 @@ def main() -> int:
                   sum += d[i] * d[i]; n2++;
                 }
               }
-              out[n] = { dur: +b.duration.toFixed(2), ch: b.numberOfChannels,
-                         peak: +peak.toFixed(3), rms: +Math.sqrt(sum / n2).toFixed(4) };
+              const row = { dur: +b.duration.toFixed(2), ch: b.numberOfChannels,
+                            kind: meta.kind,
+                            peak: +peak.toFixed(3), rms: +Math.sqrt(sum / n2).toFixed(4) };
+              if (meta.kind !== 'oneshot') {
+                const win = Math.min(1024, Math.floor(b.length / 8));
+                let jump = 0, step = 0, head = 0, tail = 0;
+                for (let c = 0; c < b.numberOfChannels; c++) {
+                  const d = b.getChannelData(c);
+                  const L = d.length;
+                  jump += (d[0] - d[L - 1]) ** 2;
+                  for (let i = 0; i < win; i++) {
+                    step += (d[i + 1] - d[i]) ** 2 + (d[L - 1 - i] - d[L - 2 - i]) ** 2;
+                    head += d[i] * d[i];
+                    tail += d[L - 1 - i] * d[L - 1 - i];
+                  }
+                }
+                jump = Math.sqrt(jump / b.numberOfChannels);
+                step = Math.sqrt(step / (2 * win * b.numberOfChannels));
+                head = Math.sqrt(head / (win * b.numberOfChannels));
+                tail = Math.sqrt(tail / (win * b.numberOfChannels));
+                row.seam = +(jump / Math.max(1e-9, step)).toFixed(2);
+                row.edge = +(20 * Math.log10(Math.max(1e-9, head)
+                                             / Math.max(1e-9, tail))).toFixed(1);
+              }
+              out[n] = row;
             }
             return out;
         }""")
         empty = [n for n, v in rendered.items() if not v or v["peak"] < 0.05 or v["rms"] < 0.001]
         check(not empty, f"all {len(rendered)} effects render with signal", f"silent: {empty}")
+
+        loops = {n: v for n, v in rendered.items() if v and v.get("seam") is not None}
+        clicky = {n: v["seam"] for n, v in loops.items() if v["seam"] > 8}
+        check(not clicky, f"all {len(loops)} loops join themselves at the seam",
+              json.dumps(clicky))
+        beds = [n for n, v in rendered.items() if v and v["kind"] == "music"]
+        check(len(beds) >= 11, "both bed families are in the catalogue",
+              f"{len(beds)} beds: {', '.join(beds)}")
+
         for name, v in rendered.items():
             if v:
+                seam = (f"  seam {v['seam']:5.2f}  edge {v['edge']:+5.1f} dB"
+                        if v.get("seam") is not None else "")
                 print(f"        {name:11s} {v['dur']:6.2f} s  {v['ch']}ch  "
-                      f"peak {v['peak']:.2f}  rms {v['rms']:.4f}")
+                      f"peak {v['peak']:.2f}  rms {v['rms']:.4f}{seam}")
 
         # ---- pictures --------------------------------------------------
         seek(0)
