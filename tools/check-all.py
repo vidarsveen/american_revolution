@@ -112,7 +112,7 @@ def main() -> int:
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
                     help="any of: script era data effects shell sw css engine "
-                         "turn plate sound contrast")
+                         "turn plate sound contrast author")
     args = ap.parse_args()
 
     packs = args.packs or packs_on_disk()
@@ -157,6 +157,13 @@ def main() -> int:
     # .story-ring while the ring on screen (.atlas-ring) went on pulsing.
     if "css" not in skip:
         ok &= run("check-dead-css", ["tools/check-dead-css.py"])
+
+    # Every chapter still decompiles to its script and back to itself. The
+    # authoring format is only worth having if it can express what already
+    # ships -- the day it cannot, the source and the JSON have quietly become
+    # two different truths and whichever one you edit is the wrong one.
+    if "author" not in skip:
+        ok &= run("author --lab", ["tools/author.py", "--lab"])
 
     # The three that drive a browser. Slowest last, so a cheap failure is
     # reported before you have waited two minutes for a screenshot.
