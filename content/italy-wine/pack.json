@@ -183,6 +183,12 @@
       "badge": true
     }
   },
+  "//chapters": [
+    "Compiled from outline.md, which is where a person writes the course: what",
+    "it teaches, in what order, and what each chapter is FOR. Edit it there —",
+    "`python tools/outline.py italy-wine --write` brings this array into line,",
+    "and check-all fails if the two have drifted apart."
+  ],
   "chapters": [
     {
       "id": "chapter-1-piemonte",

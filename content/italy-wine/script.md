@@ -35,7 +35,7 @@ alba  44.7009, 8.0353  zoom=11.4  kind=town  Alba
 barolo  44.61, 7.943  zoom=12.4  kind=town  Barolo
 barbaresco  44.725, 8.084  zoom=12.4  kind=town  Barbaresco
 asti  44.9009, 8.2064  zoom=10.6  kind=town  Asti
-langhe  44.645, 8.01  zoom=11.0  kind=region  Langhe | The Langhe
+langhe  44.645, 8.01  zoom=11.0  kind=region  Langhe | Langhe
 etna  37.751, 14.9934  zoom=10.0  kind=hill  Etna
 tunis  36.8065, 10.1815  zoom=8.0  kind=city  Tunis
 capo-passero  36.685, 15.135  zoom=10.0  kind=town  Capo Passero
@@ -86,11 +86,11 @@ Ingen av dem byttet stiklinger, fordi det var to dagsreiser med muldyr imellom. 
 > Neither of them swapped cuttings, because it was two days by mule between them. So both kept their own.
 {plate.hide 1.1} Gjenta det i tusen år, i et land med fjell overalt, og du sitter igjen med fem {stat 500+ label=druesorter | grape varieties side=red} hundre druer.
 > Repeat that for a thousand years, in a country with mountains everywhere, and you end up with five {^} hundred grapes.
-{stat.clear} Nesten hver region har minst én drue som er dens egen. Toscana {region Toscana side=red label=true over=1.4} har Sangiovese.
+{stat.clear} Nesten hver region har minst én drue som er dens egen. Toscana {region Toscana side=red label=false over=1.4} har Sangiovese.
 > Almost every region has at least one grape that is its own. Tuscany {^} has Sangiovese.
-Veneto {region Veneto side=red label=true over=1.4} har Corvina, og lager Amarone av den. Campania {region Campania side=red label=true over=1.4} har Aglianico, som romerne allerede drakk.
+Veneto {region Veneto side=red label=false over=1.4} har Corvina, og lager Amarone av den. Campania {region Campania side=red label=false over=1.4} har Aglianico, som romerne allerede drakk.
 > Veneto {^} has Corvina, and makes Amarone from it. Campania {^} has Aglianico, which the Romans were already drinking.
-Og Piemonte, {region Piemonte side=red label=true over=1.6} helt nordvest, har Nebbiolo. {mark term:nebbiolo} {fact grape:nebbiolo} Det er den vi skal se på i dag.
+Og Piemonte, {region Piemonte side=red label=false over=1.6} helt nordvest, har Nebbiolo. {mark term:nebbiolo} {fact grape:nebbiolo} Det er den vi skal se på i dag.
 > And Piedmont, {^1} in the far north-west, has Nebbiolo. {^2} {^3} That is the one we are looking at today.
 {region.clear} En ting til, før vi drar. Navnet på en italiensk flaske {mark topic:lese-etiketten span=1} er nesten alltid et sted, ikke en drue.
 > One more thing before we go. The name on an Italian bottle {^} is nearly always a place, not a grape.
@@ -99,7 +99,7 @@ Barolo er et sted. Chianti er et sted. Druen står det sjelden noe om, fordi all
 
 ## Tåka | The fog
 
-{music bedMist} {mood dawn} {flyTo torino zoom=7.6 over=1.6} Piemonte {region Piemonte side=red label=true over=1.6} betyr ved foten av fjellet. Alpene ligger rundt det på tre kanter, som en skål.
+{music bedMist} {mood dawn} {flyTo torino zoom=7.6 over=1.6} Piemonte {region Piemonte side=red label=false over=1.6} betyr ved foten av fjellet. Alpene ligger rundt det på tre kanter, som en skål.
 > Piemonte {^} means at the foot of the mountain. The Alps stand around it on three sides, like a bowl.
 
 {plate langhe-take motion=in over=22 dim=0.1 push=0.18 into=1.4} Om høsten fylles den skåla med tåke. Den ligger i dalbunnen om morgenen og brenner av utover dagen.
@@ -129,7 +129,7 @@ Det er også derfor vinen tåler å ligge. En ung Barolo er nesten ubehagelig. D
 > And then it is hopelessly fussy. Nebbiolo demands chalky clay, a south-facing slope and a long autumn.
 Folk har prøvd å dyrke den i California, i Australia og i Argentina i over hundre år. Det blir aldri riktig.
 > People have tried to grow it in California, Australia and Argentina for over a hundred years. It never comes out right.
-{plate.hide 1.1 @end} Nesten all Nebbiolo i verden vokser innenfor noen få mil her. Det er den beste illustrasjonen jeg kjenner på hva terroir {mark term:terroir} betyr. {note Langhe, sør for Alba | The Langhe, south of Alba @end}
+{plate.hide 1.1 @end} Nesten all Nebbiolo i verden vokser innenfor noen få mil her. Det er den beste illustrasjonen jeg kjenner på hva terroir {mark term:terroir} betyr. {note Langhe, sør for Alba | Langhe, south of Alba @end}
 > Almost all the Nebbiolo in the world grows within a few dozen kilometres of here. It is the best illustration I know of what terroir {^} means.
 
 ## To landsbyer | Two villages
@@ -171,7 +171,7 @@ Derfor ble den regnet som bondevin i lang tid. Det endret seg på nittenåttital
 > The fermentation is stopped halfway by chilling the wine. Half the sugar stays, and the bubbles already formed stay with it.
 Resultatet er søtt, lett perlende og bare rundt fem {compare part=145 "14,5 %" red Barolo part=50 "5 %" sweet Moscato d’Asti mode=bar note=Typisk alkoholstyrke. | Typical alcoholic strength.} prosent alkohol. En tredel av en Barolo. {play fizz gainDb=-8 @word:perlende}
 > The result is sweet, lightly fizzing {^2} and only about five {^1} per cent alcohol. A third of a Barolo.
-{plate.hide 1.1} {compare.clear} {marker.clear} Én region. Én av tjue. {flyTo roma zoom=4.8 over=4.4} Tre helt forskjellige viner, og vi har ikke nevnt de hvite ennå.
-> One region. One of twenty. {^} Three completely different wines, and we have not mentioned the whites yet.
+{plate.hide 1.1} {compare.clear} {marker.clear} Én region. Én av tjue. {flyTo roma zoom=4.8 over=4.4} Tre helt forskjellige viner, og nitten regioner igjen.
+> One region. One of twenty. {^} Three completely different wines, and nineteen regions to go.
 Neste gang drar vi sørover, til Toscana, og til druen som lager Chianti.
 > Next time we go south, to Tuscany, and to the grape that makes Chianti.

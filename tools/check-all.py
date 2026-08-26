@@ -112,7 +112,7 @@ def main() -> int:
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
                     help="any of: script era data effects shell sw css engine "
-                         "turn plate sound contrast author")
+                         "turn plate sound contrast author outline")
     args = ap.parse_args()
 
     packs = args.packs or packs_on_disk()
@@ -164,6 +164,27 @@ def main() -> int:
     # two different truths and whichever one you edit is the wrong one.
     if "author" not in skip:
         ok &= run("author --lab", ["tools/author.py", "--lab"])
+
+        # And the other direction, which --lab cannot see: a chapter written
+        # as prose must still compile to the chapter that SHIPS. --lab
+        # round-trips the JSON through itself and passes while the
+        # hand-written source says something else — which is exactly what had
+        # happened. Six edits (five map labels off, one place name) were made
+        # straight to the wine chapter and never to its script.md, so the next
+        # compile would have put the labels back on the map, silently.
+        for pack in packs:
+            src = ROOT / "content" / pack / "script.md"
+            if src.exists():
+                ok &= run(f"author --check {pack}",
+                          ["tools/author.py", str(src), "--check"])
+
+    # The level above a chapter: does the course still say what it teaches,
+    # and does pack.json still agree with it? A pack with no outline.md is
+    # skipped rather than failed — three of the four here are frozen.
+    if "outline" not in skip:
+        for pack in packs:
+            if (ROOT / "content" / pack / "outline.md").exists():
+                ok &= run(f"outline {pack}", ["tools/outline.py", pack])
 
     # The three that drive a browser. Slowest last, so a cheap failure is
     # reported before you have waited two minutes for a screenshot.

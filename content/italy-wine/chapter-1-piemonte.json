@@ -265,9 +265,9 @@
        "do": "plate.show",
        "id": "druer-kasse",
        "motion": "in",
-       "push": 0.1,
        "over": 20,
        "dim": 0.16,
+       "push": 0.1,
        "into": 1.4
       },
       {
@@ -323,9 +323,9 @@
        "do": "plate.show",
        "id": "dal-avstengt",
        "motion": "in",
-       "push": 0.2,
        "over": 20,
        "dim": 0.14,
+       "push": 0.2,
        "into": 1.4
       }
      ],
@@ -410,12 +410,12 @@
        },
        "do": "marker.show",
        "at": "capo-passero",
-       "kind": "point",
-       "tone": "gold",
        "label": {
         "no": "Sicilias sørspiss",
         "en": "The southern tip of Sicily"
-       }
+       },
+       "kind": "point",
+       "tone": "gold"
       },
       {
        "on": {
@@ -453,9 +453,9 @@
        "do": "plate.show",
        "id": "alpene-over",
        "motion": "out",
-       "push": 0.22,
        "over": 22,
        "dim": 0.12,
+       "push": 0.22,
        "into": 1.4
       }
      ],
@@ -591,9 +591,9 @@
        "do": "plate.show",
        "id": "gammel-stokk",
        "motion": "in",
-       "push": 0.08,
        "over": 18,
        "dim": 0.16,
+       "push": 0.08,
        "into": 1.4
       }
      ],
@@ -834,9 +834,9 @@
        "do": "plate.show",
        "id": "langhe-take",
        "motion": "in",
-       "push": 0.18,
        "over": 22,
        "dim": 0.1,
+       "push": 0.18,
        "into": 1.4
       }
      ],
@@ -852,7 +852,7 @@
       {
        "on": {
         "no": "word:nebbia",
-        "en": "word:nebbia"
+        "en": "word:Nebbia"
        },
        "do": "term.mark",
        "kind": "term",
@@ -878,9 +878,9 @@
        "do": "plate.show",
        "id": "hender-host",
        "motion": "in",
-       "push": 0.1,
        "over": 18,
        "dim": 0.14,
+       "push": 0.1,
        "into": 1.4
       }
      ],
@@ -977,9 +977,9 @@
        "do": "plate.show",
        "id": "glass-blek-rod",
        "motion": "in",
-       "push": 0.07,
        "over": 18,
        "dim": 0.14,
+       "push": 0.07,
        "into": 1.4
       }
      ],
@@ -1076,9 +1076,9 @@
        "do": "plate.show",
        "id": "vinmark-helling",
        "motion": "left",
-       "push": 0.18,
        "over": 22,
        "dim": 0.12,
+       "push": 0.18,
        "into": 1.4
       }
      ],
@@ -1261,27 +1261,27 @@
         "en": "word:thirty-eight"
        },
        "do": "compare.show",
-       "mode": "bar",
        "parts": [
         {
          "n": 38,
          "value": "38 mnd",
+         "side": "red",
          "label": {
           "no": "Barolo",
           "en": "Barolo"
-         },
-         "side": "red"
+         }
         },
         {
          "n": 26,
          "value": "26 mnd",
+         "side": "sweet",
          "label": {
           "no": "Barbaresco",
           "en": "Barbaresco"
-         },
-         "side": "sweet"
+         }
         }
        ],
+       "mode": "bar",
        "note": {
         "no": "Minste lagringstid før salg.",
         "en": "Minimum ageing before sale."
@@ -1302,9 +1302,9 @@
        "do": "plate.show",
        "id": "kjeller-fat",
        "motion": "in",
-       "push": 0.14,
        "over": 18,
        "dim": 0.18,
+       "push": 0.14,
        "into": 1.4
       }
      ],
@@ -1340,9 +1340,9 @@
        "do": "plate.show",
        "id": "flasker-liggende",
        "motion": "in",
-       "push": 0.1,
        "over": 16,
        "dim": 0.16,
+       "push": 0.1,
        "into": 1.4
       }
      ],
@@ -1442,9 +1442,9 @@
        "do": "plate.show",
        "id": "bord-middag",
        "motion": "in",
-       "push": 0.09,
        "over": 20,
        "dim": 0.16,
+       "push": 0.09,
        "into": 1.4
       },
       {
@@ -1545,9 +1545,9 @@
        "do": "plate.show",
        "id": "glass-perler",
        "motion": "in",
-       "push": 0.07,
        "over": 18,
        "dim": 0.14,
+       "push": 0.07,
        "into": 1.4
       }
      ],
@@ -1566,27 +1566,27 @@
         "en": "word:five"
        },
        "do": "compare.show",
-       "mode": "bar",
        "parts": [
         {
          "n": 145,
          "value": "14,5 %",
+         "side": "red",
          "label": {
           "no": "Barolo",
           "en": "Barolo"
-         },
-         "side": "red"
+         }
         },
         {
          "n": 50,
          "value": "5 %",
+         "side": "sweet",
          "label": {
           "no": "Moscato d’Asti",
           "en": "Moscato d’Asti"
-         },
-         "side": "sweet"
+         }
         }
        ],
+       "mode": "bar",
        "note": {
         "no": "Typisk alkoholstyrke.",
         "en": "Typical alcoholic strength."
@@ -1607,8 +1607,8 @@
     {
      "id": "s6.b8",
      "say": {
-      "no": "Én region. Én av tjue. Tre helt forskjellige viner, og vi har ikke nevnt de hvite ennå.",
-      "en": "One region. One of twenty. Three completely different wines, and we have not mentioned the whites yet."
+      "no": "Én region. Én av tjue. Tre helt forskjellige viner, og nitten regioner igjen.",
+      "en": "One region. One of twenty. Three completely different wines, and nineteen regions to go."
      },
      "cues": [
       {
@@ -1643,8 +1643,7 @@
       "no": "Neste gang drar vi sørover, til Toscana, og til druen som lager Chianti.",
       "en": "Next time we go south, to Tuscany, and to the grape that makes Chianti."
      },
-     "cues": [
-     ],
+     "cues": [],
      "gapAfter": 2.0
     }
    ]

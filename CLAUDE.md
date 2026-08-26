@@ -104,6 +104,9 @@ js/           the Explore mode
 content/
   packs.json       the list of subjects. Data, not code.
   <pack>/
+    outline.md     the course above the chapter: what it teaches, in what
+                   order, what each chapter is FOR, and what it leaves out.
+                   pack.json's chapter list is compiled from it.
     pack.json      factions, map framing, era, voices, chapters, pools
     chapter-*.json + timing.<chapter>.<lang>.json
     portraits/ media/ sound/ geo/   the pack's own assets
@@ -170,6 +173,8 @@ individual tools still work on their own, and a failure reads the same either wa
 
 ```bash
 python tools/check-script.py american-revolution/chapter-1775-04-19
+python tools/outline.py italy-wine          # does the course still say what it teaches?
+python tools/author.py content/italy-wine/script.md --check   # prose vs the JSON that ships
 python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
@@ -254,6 +259,16 @@ it: an export error naming a module you did not touch, right after a deploy, is 
 your code. Do not go looking for the bug. And it is why the answer to "is it live?" is
 `check-published.py` *plus* a reload in a browser that has been there before — the two
 questions have different answers for ten minutes.
+
+**A compiled file edited by hand is a fork, and the compiler wins the next time
+somebody runs it.** `script.md` is the source and `chapter-*.json` is what it compiles to —
+but six edits had been made straight to the wine chapter (five region labels turned off, one
+place name) and never to the prose, so the next `--write` would have put the labels back on
+the map, silently. Nothing reported it: `author.py --lab` round-trips the JSON through
+itself, which passes happily while the hand-written source says something else entirely.
+`--check` now EXITS 1 on any difference and `check-all.py` runs it per pack. The same shape
+applies one level up, which is why `pack.json`'s chapter list is compiled from `outline.md`
+and checked the same way.
 
 **`sw.js`'s `PRECACHE` list and `VERSION` are generated — run `tools/build-sw.py`.** They used
 to be maintained by hand, so adding a file and forgetting the list meant it worked online and

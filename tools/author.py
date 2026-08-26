@@ -1617,6 +1617,15 @@ def main() -> int:
         ap.print_help()
         return 2
 
+    # An outline is prose too, and it compiles to pack.json the way a script
+    # compiles to a chapter. It is a big enough job to live in its own file,
+    # but the person who types this one should not have to know that.
+    if os.path.basename(args.source) == "outline.md":
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import outline as outline_tool
+        pack = os.path.basename(os.path.dirname(os.path.abspath(args.source)))
+        return outline_tool.main([pack] + (["--write"] if args.write else []))
+
     if not os.path.exists(args.source):
         print(f"error: no script at {args.source}", file=sys.stderr)
         return 2
@@ -1641,9 +1650,11 @@ def main() -> int:
     target = args.out or os.path.join(CONTENT, chapter["pack"],
                                       chapter["id"] + ".json")
     existing = load_json(target)
+    drifted = False
     if existing is not None:
         diffs = same(existing, chapter, "chapter")
         if diffs:
+            drifted = True
             print(f"\n{len(diffs)} difference(s) against {os.path.relpath(target, ROOT)}:")
             for d in diffs[:40]:
                 print(f"  {d}")
@@ -1667,6 +1678,16 @@ def main() -> int:
               f"{chapter['pack']}/{chapter['id']}")
     else:
         print("\nnothing written — pass --write to update the chapter JSON.")
+
+    # --check FAILS on a difference, and that is the whole point of it. The
+    # prose is the source; the chapter JSON is what it compiles to. Six edits
+    # had already been made straight to the JSON — five `label: false` on
+    # region.show and one place name — and none of them was in script.md, so
+    # the next --write would silently have put the map labels back. Nothing
+    # reported it: --lab round-trips the JSON through itself, which passes
+    # happily while the hand-written source says something else entirely.
+    if args.check and not args.write and drifted:
+        return 1
     return 0
 
 

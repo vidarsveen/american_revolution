@@ -31,9 +31,35 @@ The same word times drive the captions, so a course works with the sound off.
 
 ## Making a course
 
-Six steps, and the first three are the only ones that decide whether it is any good.
+Seven steps, and the first three are the only ones that decide whether it is any good.
 
-### 1. Declare the subject — `content/<id>/pack.json`
+### 1. Plan the course — `content/<id>/outline.md`
+
+What the course teaches, in what order, and what each chapter is **for** — written
+before any of it, in prose. Also what the course deliberately leaves out, which is the
+half that gets forgotten:
+
+```markdown
+# about
+Kurset handler om rødvin.
+> The course is about red wine.
+
+# not here
+hvitvin, hvite | white wine, whites
+
+## chapter-1-piemonte
+title: Tåka og tørsten | The fog and the thirst
+for: Å vise at navnet på en flaske er et sted. | To show that the name on a bottle is a place.
+teaches: terroir, nebbiolo, barolo, barbaresco
+```
+
+`pack.json`'s chapter list is compiled from it, and `tools/outline.py` asks the two
+questions no other tool is at the right level to ask: does chapter two repeat chapter
+one, and does a chapter promise something the course said it would not do? The wine
+course closed on "and we have not mentioned the whites yet" four beats after covering
+one, because nothing above the chapter had ever been written down.
+
+### 2. Declare the subject — `content/<id>/pack.json`
 
 What it is called, what colours it uses, where its map opens, which voices read it, and
 **which artifacts it needs**:
@@ -49,7 +75,7 @@ A course that does not list `map` never loads the map module or a byte of geomet
 
 Add the id to `content/packs.json` and it appears on the front door.
 
-### 2. Write the chapter — `content/<id>/script.md`
+### 3. Write the chapter — `content/<id>/script.md`
 
 Prose, one sentence per line. A sentence is a **beat**, which is the unit the whole app is
 built on. Norwegian plain, English underneath after a `>`. A blank line is a paragraph break
@@ -64,7 +90,7 @@ does not exist, a picture or a place or a term that is not in the course. **Read
 `docs/authoring.md`**: it writes a whole chapter as a worked example, and everything in it
 compiles.
 
-### 3. Record it
+### 4. Record it
 
 ```bash
 python tools/narrate.py --chapter italy-wine/chapter-2-toscana --lang no
@@ -73,7 +99,7 @@ python tools/narrate.py --chapter italy-wine/chapter-2-toscana --lang no
 Only changed beats re-synthesise. **Watch it now** — the engine runs a chapter with no audio
 and no pictures at all, so the writing gets judged before anything decorates it.
 
-### 4. Get the pictures
+### 5. Get the pictures
 
 ```bash
 python tools/fetch-media.py italy-wine            # from Wikimedia, with licence captured
@@ -83,7 +109,7 @@ python tools/gen-image.py italy-wine --list       # or generate them
 Every picture carries its artist, licence and source, and a generated one carries what it
 `claims` and what it `omits`.
 
-### 5. Tune it — `content/<id>/style.json`
+### 6. Tune it — `content/<id>/style.json`
 
 Pacing, camera speed, the slow push on a still, text size. Merged over
 `engine/defaults/style.json`, so a course only writes what it wants to differ.
@@ -95,7 +121,7 @@ Pacing, camera speed, the slow push on a still, text size. Merged over
 `dev/style-lab.html` puts sliders on a running chapter and audits that every number the app
 draws with comes from this file.
 
-### 6. Check it
+### 7. Check it
 
 ```bash
 python tools/check-all.py
@@ -107,6 +133,7 @@ python tools/check-all.py
 
 ```
 content/<id>/
+  outline.md       the course: what it teaches, in what order, what each chapter is for
   pack.json        the subject: colours, map framing, era, voices, chapters, artifacts
   style.json       its own pacing and sizing
   script.md        the chapter, as prose

@@ -20,6 +20,27 @@ reference is `python tools/author.py --verbs`, which prints the vocabulary out o
 
 ---
 
+## Before the chapter: the outline
+
+A chapter is written into a course, not into empty space. `content/<pack>/outline.md` is
+where the course says what it teaches, in what order, and what each chapter is **for** —
+and what it deliberately leaves out.
+
+```bash
+python tools/outline.py italy-wine            # compile, diff and ask
+python tools/outline.py italy-wine --write    # update pack.json's chapter list
+python tools/outline.py --new <pack>          # a first outline from pack.json
+```
+
+Write the new chapter's entry there first — a `for:` line and a `teaches:` list, with
+`planned: true` until the chapter exists. It costs two minutes and it is the only place two
+questions have an answer at all: whether this chapter repeats the last one, and whether it
+promises something the course said it would not do. Chapter one of the wine course closed on
+*"and we have not mentioned the whites yet"* four beats after spending a scene on Moscato,
+which is a white grape. No chapter-level tool can see that. The outline can.
+
+---
+
 ## The worked example: chapter two, Tuscany
 
 The wine course ends chapter one with *"next time we go south, to Tuscany, and to the grape

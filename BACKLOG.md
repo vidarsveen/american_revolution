@@ -21,66 +21,35 @@ framework**, which is what makes the next subject cheaper than this one.
 
 Ordered by how badly it hurts the chapter.
 
-**1. The chapter contradicts itself about the white wines — and the fix is to
-cut the line, not to add a scene.**
+**Five of the eight items this list opened with are done**, and four of them were
+already done when the list was written — it was assembled from a review pass and
+never pruned against the same commit's own fixes. Every wine has a taster
+profile drawn by `chart.show`, Barbaresco has the explanation Barolo had,
+`pour` is a bottle glugging rather than a waterfall, and "Barolo" is no longer
+written three times on one screen. The eighth is the closing line, below.
 
-Scene 6 spends four beats on Moscato d'Asti: "søtt, lett perlende og bare rundt
-fem prosent alkohol". Moscato is a white grape. Two beats later the closing
-sentence says:
+**Done: the chapter no longer contradicts itself about the whites.** It closed on
+"og vi har ikke nevnt de hvite ennå" four beats after a scene on Moscato, which
+is a white grape. The clause is cut — the course is about red wine on purpose —
+and the line is now "Tre helt forskjellige viner, og nitten regioner igjen",
+re-recorded in both languages. The level that would have caught it before it was
+written now exists: `content/italy-wine/outline.md`, and `tools/outline.py`
+prints the sentence when a chapter speaks a subject the course put under
+`# not here`.
 
-    s6.b8   "Én region. Én av tjue. Tre helt forskjellige viner,
-             og vi har ikke nevnt de hvite ennå."
-
-It has just mentioned one. That is the defect — not a missing scene.
-
-**The course is about red wine, deliberately.** Do not add Gavi or Arneis, and
-do not give the whites a scene. Cut or rewrite the trailing clause so the
-chapter stops promising something it is not going to do.
-
-It is one sentence, so it is one beat of narration to re-record —
-`tools/narrate.py --only s6` re-synthesises only what changed. It is the
-author's sentence to rewrite, not the framework's.
-
-**2. A taster profile per wine — and it is not a card.**
-Acid, tannin, body, fruit, sweetness, as a shape you can compare across wines.
-It is the single most useful thing the subject could carry: it makes Barolo and
-Barbaresco *comparable* rather than two names in the same valley, and it is what
-turns the library from a glossary into something worth browsing — sort by
-tannin, find everything like this one.
-
-**This wants the chart surface, not another overlay** (framework item 2 below).
-A radar or a set of bars is an artifact with a shape, a scale and an animation,
-which is exactly what `compare.show` already half-is. Building it as a
-wine-specific card would be the fourth thing in this app that has to be rebuilt
-when a second subject wants it.
-
-**3. Barbaresco has no fact box and Barolo does.** Same sentence, same beat, one
-gets an explanation and the other does not. `wines` has an entry for both.
-
-**4. `barbera` sounds like a waterfall.** The `pour` effect — a noise band
-climbing 760→1500 Hz with bubbles — reads as running water rather than wine
-going into a glass. It is synthesised in `sound/library.js`, so it is tunable:
-shorter, lower, and it wants the glug of a bottle neck rather than a continuous
-stream.
-
-**5. The scissors are wrong in `hender-host`.** A generated picture, and the
+**1. The scissors are wrong in `hender-host`.** A generated picture, and the
 kind of fault `tools/gen-image.py`'s own header predicts: "the model draws far
 better than it reasons". Needs the reviewer (framework item 5).
 
-**6. "Barolo" is written three times on one screen** — the pin, the fact card
-and the caption, all at once, at s5.b2. The fact box is repeating what the map
-already says. Either the pin loses its label while a fact box names the same
-place, or the fact box is for the thing the sentence does NOT already show.
-
-**7. Piemonte arrives small.** At s2.b7 the wash is drawn while the camera is
+**2. Piemonte arrives small.** At s2.b7 the wash is drawn while the camera is
 still on the whole country, so the region the sentence is about is a smudge in
 the corner. The camera goes there in the NEXT scene. Either the wash waits for
 the camera or the camera comes early.
 
-**8. Three final pictures are still moving when their chapter ends.**
-Not wine — 19 April, 27 BC and 44 BC. The push is set longer than the chapter
-has left, so the picture is still creeping under the end card, which the
-direction says should be still.
+**3. Three final pictures are still moving when their chapter ends.**
+Not wine — 19 April, 27 BC and 44 BC, all three frozen. The push is set longer
+than the chapter has left, so the picture is still creeping under the end card,
+which the direction says should be still.
 
     19 April    zooms 16s, 13s remain   -> moving by  3s
     27 BC       zooms 14s, 13s remain   -> moving by  1s
@@ -105,27 +74,35 @@ from the tallest fact card, went stale the moment the type scale moved, and had
 to be re-derived by hand. Numbers that describe what a pack SHIPS do not belong
 in a module.
 
-**1b. A level above the chapter: the course outline.**
+**1b. DONE — the course outline.** `content/<pack>/outline.md`, prose in the same
+notation as a chapter, compiled to `pack.json`'s chapter list by
+`tools/outline.py` (and by `author.py`, which routes an `outline.md` source to
+it). It carries what the course teaches, in what order, what each chapter is
+FOR, and — the half that gets forgotten — what the course deliberately leaves
+out, in the words those subjects are spoken with.
 
-`pack.json` lists chapters as ids and titles — a table of contents written after
-the fact. What is missing is the thing you write BEFORE any of it: what the
-course teaches, in what order, and what each chapter is FOR. The wine course
-would have said "this is a course about red wine" in one line, and the
-contradiction above could not have been written.
+Four questions, two of them gates: every chapter on disk is in the outline and
+every outline chapter exists; `pack.json` says what the outline says; two
+chapters teaching the same subject; and a chapter speaking a subject the course
+put under `# not here`, with the sentence printed. The last two are notes rather
+than failures, because both are judgement and a tool that fails on judgement
+gets skipped. All four were confirmed by reintroducing the defect and watching
+them fire — the whites line back in the chapter, a title edited into pack.json
+behind the outline's back, a chapter file the outline never mentions, and
+chapter two claiming to teach Barolo.
 
-It is also the level the tools cannot currently reach. `check-pictures.py` can
-say whether a chapter is a map story or a picture story; nothing can say whether
-a chapter delivers what the course said it would, or whether chapter two repeats
-chapter one. An outline is the only place that question has an answer.
+`chapter-2-toscana` is in there as `planned: true` with its purpose written, so
+the next chapter is written into a course rather than into empty space.
 
-Shape it as prose the way a chapter is prose — `content/<id>/outline.md`, read
-by `tools/author.py`, with each chapter's purpose in a sentence. The cover
-already builds itself from `pack.json`'s chapter list, so this replaces a hand-
-maintained list rather than adding one.
-
-Raised after the wine course promised white wines it had already covered and
-was never going to return to: a contradiction that exists because nothing above
-the chapter was ever written down.
+**1c. The prose was not the source, and nothing said so.** Six edits had been
+made straight to `chapter-1-piemonte.json` and never to `script.md` — five
+region labels turned off and one place name — so the next compile would have put
+the labels back on the map, silently. `author.py --lab` could not see it: it
+round-trips the JSON through itself and passes while the hand-written source
+says something else. `--check` now exits 1 on any difference, `check-all.py`
+runs it for every pack with a `script.md`, and the same guard is what
+`outline.py` does for `pack.json`. Confirmed by putting one label back and
+watching it fail.
 
 **2. Surfaces, and a chart that is a first-class artifact.**
 `engine/stage.js` mounts map, plate, overlays and sound unconditionally, and
