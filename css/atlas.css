@@ -620,9 +620,19 @@
      that edge already exist: `--floor` (css/story.css: transport-h + safe-b)
      and `--caption-h` (published by engine/captions.js, the way the transport
      publishes its own height). Both are undefined outside a chapter, so this
-     resolves to --credit-clear alone in Explore. */
+     resolves to --credit-clear alone in Explore.
+
+     AND --floor + --caption-h IS NOT THE WHOLE STRIP. The caption SLOT sits a
+     little above the floor, so the sum of those two lands 8 px inside the
+     caption box — measured on all 50 beats of the wine chapter, every one of
+     them overlapping, by tools/check-overlap.py on its first run.
+     engine/captions.js publishes --caption-reach, measured off the elements
+     rather than added up, and that is the term that is right. The sum stays in
+     the max() as the fallback for anything that publishes a height but no
+     reach. */
   bottom: max(var(--credit-clear, 0px),
-              calc(var(--floor, 0px) + var(--caption-h, 0px) + var(--s1)));
+              calc(var(--floor, 0px) + var(--caption-h, 0px) + var(--s1)),
+              calc(var(--caption-reach, 0px) + var(--s1)));
   z-index: 6;
   /* Was 66%, which at 9px cut nothing and at the readable size cut ", ODbL"
      -- the four characters that are the actual obligation. The box is

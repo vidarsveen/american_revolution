@@ -54,6 +54,21 @@ function publishHeight() {
   if (!story) return;
   const h = on ? Math.round(root.getBoundingClientRect().height) : 0;
   story.style.setProperty('--caption-h', `${h}px`);
+
+  /* AND HOW FAR UP IT REACHES, which is not the same number.
+     `--caption-h` is the box; anything clearing this edge from the bottom also
+     needs the slot's own offset above the floor, and reconstructing that from
+     `--floor + --caption-h` misses it. Measured: the map's licence credit sat
+     8 px inside the caption in EVERY frame of every chapter — emitted, not
+     legible, which is not what ODbL asks for and is the same "two overlays
+     anchored to the same edge" hazard the note above this function is about.
+     Measured off the elements rather than added up from tokens, for the reason
+     framePadding() gives: a sum of parts is wrong the moment a part moves. */
+  const box = story.getBoundingClientRect();
+  const slotTop = Math.min(slot.getBoundingClientRect().top,
+                           root.getBoundingClientRect().top);
+  const reach = on ? Math.max(0, Math.round(box.bottom - slotTop)) : 0;
+  story.style.setProperty('--caption-reach', `${reach}px`);
 }
 
 export function setCaptionsOn(value) {

@@ -133,6 +133,7 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `tools/check-plate.py` | When one picture replaces another, were both on screen at once? |
 | `tools/check-legible.py` | When the narration names a place, is that name on screen and not under anything? |
 | `tools/check-dead-css.py` | Does any module actually paint this class? |
+| `tools/check-overlap.py` | Do two things the reader is meant to read land on each other? |
 | `dev/engine-lab.html` | Does a chart drawn by seeking match one drawn by playing, axis for axis? |
 | `dev/surface-lab.html` | Does a pack that does not declare the `map` surface load `map/` at all? |
 | `dev/style-lab.html` | Does every number the app draws with come from `style.json`? |
@@ -365,6 +366,21 @@ and the caption box were both `bottom: calc(var(--transport-h) + ...)`, and the 
 a higher layer — so every number the chapter shows was drawn behind it. Invisible, not missing,
 which is why it survived so long. `engine/captions.js` publishes `--caption-h` the way the
 transport publishes its own height; anything sharing that edge must clear it.
+
+**And a SUM of those numbers is not the same as the thing.** The map's licence credit cleared
+`--floor + --caption-h + --s1` and still sat 8 px inside the caption in every frame of every
+chapter — because the caption SLOT is a little above the floor and the sum did not know.
+`--caption-reach` is measured off the elements instead, which is the same argument
+`framePadding()` makes: a sum of parts is wrong the moment a part moves. Found by
+`tools/check-overlap.py` on its first run, 50 of 50 frames of the wine chapter, and it matters
+more than it looks — ODbL asks for the credit to be legible, not merely emitted.
+
+`tools/check-overlap.py` is that harness, and it is committed because the one that found the
+first round of these was not: "the remaining 30 are portrait cards reaching down out of the top
+deck" sat in `BACKLOG.md` for weeks with nothing able to re-measure it. A measurement nobody
+can re-run is a story, not a number. It is a RATCHET — the known overlaps are listed with the
+count each was measured at, anything new fails, and anything that improves asks you to lower
+the number.
 
 **CSS `<link>` order in `index.html` is load-bearing.** `tokens.css` must precede everything
 that reads its variables, and later files rely on later-wins cascade. When splitting a

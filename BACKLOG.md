@@ -281,8 +281,25 @@ reads a published custom property.
   on screen at its own `minZoom`, so there is nothing to cull. Raise
   `detail.minZoom`, or simplify and tile it in `fetch-detail.py`. Both are
   visible trade-offs.
-- **`.ov-portrait__card` reaches out of the top deck** into the mid and lower
-  decks in 30 of 646 measured frames.
+- **The overlap harness is committed, and it found the licence credit.**
+  `tools/check-overlap.py` is the 646-frame pairwise harness that found the
+  first round of these and was then thrown away — which is why "the remaining
+  30 are portrait cards" sat here for weeks with nothing able to re-measure it.
+  On its first run it found the map's ODbL credit overlapping the CAPTION in
+  all 50 frames of the wine chapter: the credit cleared
+  `--floor + --caption-h + --s1`, and the caption SLOT sits a little above the
+  floor, so the sum landed 8 px inside the box. `engine/captions.js` publishes
+  `--caption-reach`, measured off the elements, and it is clear in all 571.
+  Now a ratchet in `check-all.py` (2m42 on the sampled walk, which found the
+  same five pairs as the exhaustive one).
+- **What is left: a portrait card hangs into a centred quote** — 2 frames of
+  571, worst 47 882 px², plus a compare card in 1. A fix was tried and MEASURED
+  WORSE: publishing the top deck's reach and starting the mid band below it
+  shrinks a band that is bounded at both ends and centres its content, so a tall
+  quote then overflowed it in both directions (5 pairs became 7, the quote
+  landing on the caption in 6 frames and the transport in 3). What is left is
+  capping how far a face may hang, which is a decision about how big a face is
+  allowed to be.
 - **DONE: the faceless note is no longer italic.** Section 2 keeps italic for a
   quotation, and "ingen kjent avbildning" is the app describing the record, not
   somebody's words.

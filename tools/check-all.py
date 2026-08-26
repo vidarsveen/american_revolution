@@ -112,7 +112,7 @@ def main() -> int:
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
                     help="any of: script era data effects shell sw css engine "
-                         "turn plate sound contrast author outline")
+                         "turn plate sound contrast author outline overlap")
     args = ap.parse_args()
 
     packs = args.packs or packs_on_disk()
@@ -208,6 +208,12 @@ def main() -> int:
                               ("american-revolution", "chapter-1775-04-19")]:
             ok &= run(f"check-plate {pack}", ["tools/check-plate.py",
                                               "--pack", pack, "--chapter", chapter], env)
+
+    # Two things the reader is meant to read, on top of each other. A ratchet
+    # rather than a gate: the known ones are listed in the tool with the count
+    # they were measured at, and anything new fails.
+    if "overlap" not in skip:
+        ok &= run("check-overlap", ["tools/check-overlap.py", *packs], env)
 
     if "sound" not in skip:
         ok &= run("check-sound", ["tools/check-sound.py"], env)
