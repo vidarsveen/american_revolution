@@ -63,7 +63,41 @@ THRESHOLDS = {
     # at the alpha the wash used, which is "the same colour" to anyone not
     # holding them side by side. Only the rendered pixel settles it.
     "colony/colony": (10.0, "project rule, CIE76 dE between neighbours sharing a border"),
+    # The pin has a keyline and survives a weak fill; nothing carries a march,
+    # an arrow or a front, which are strokes in this colour and nothing else.
+    "fill/ground":   (3.0,  "WCAG 2.2 1.4.11 — the colour every stroke is drawn in"),
 }
+
+# THE COLOUR EVERY STROKE IS DRAWN IN, read off the page rather than off a
+# screenshot. A march, an arrow and a front are one-pixel-ish strokes with
+# antialiasing on both edges, so a sampled pixel is a blend of the colour and
+# the ground and cannot answer this. The palette publishes what it decided on
+# :root as --f-<side>, which IS the colour, so ask that.
+FILLS_JS = """
+() => {
+  const root = document.documentElement;
+  const cs = getComputedStyle(root);
+  const probe = document.createElement('span');
+  probe.style.display = 'none';
+  root.appendChild(probe);
+  const resolve = (value) => {
+    probe.style.color = 'rgb(1, 2, 3)';
+    probe.style.color = value;
+    return getComputedStyle(probe).color;
+  };
+  const out = {
+    ground: resolve(cs.getPropertyValue('--atlas-land').trim() || '#f4ecd8'),
+    fills: [],
+  };
+  for (const name of root.style) {
+    if (!name.startsWith('--f-') || name.endsWith('-wash')) continue;
+    const value = root.style.getPropertyValue(name).trim();
+    if (value) out.fills.push({ id: name.slice(4), colour: resolve(value) });
+  }
+  probe.remove();
+  return out;
+}
+"""
 
 GEOM_JS = """
 async (probes) => {
@@ -705,6 +739,24 @@ def run_story(theme: str, width: int, height: int, shots: Path):
                 (("label/ground~story" if p == "label/ground" else p), w, v)
                 for p, w, v in story_results]
 
+            # The palette itself, which no screenshot can answer: see FILLS_JS.
+            # Read while the chapter's own pack is published on :root — a
+            # second pack has different sides, and engine/story.js republishes
+            # them per chapter.
+            palette = page.evaluate(FILLS_JS)
+            ground = parse_rgb(palette["ground"])
+            for f in palette["fills"]:
+                rgb = parse_rgb(f["colour"])
+                if ground is None or rgb is None:
+                    continue
+                # `tone:` is a palette ROLE — gold is the look-here colour
+                # whatever the subject is — and those four are hand-tuned
+                # tokens shared with the DOM. Measured and printed, not gated:
+                # moving them moves every red in the app, which is a design
+                # decision and not a checker's.
+                pair = "fill/ground~tone" if f["id"].startswith("tone-")                     else "fill/ground"
+                story_results.append((pair, f["id"], ratio(rgb, ground)))
+
             spots = page.evaluate(COLONIES_JS)
             page.wait_for_timeout(400)
 
@@ -803,15 +855,15 @@ def run_story(theme: str, width: int, height: int, shots: Path):
 # table used to record, which came from sampling the ground INSIDE the pin.
 EXPECT_DEFAULT = {
     "american-revolution": ["land/water", "label/ground", "marker/ground",
-                            "colony/colony"],
+                            "colony/colony", "fill/ground"],
     # Its contrast beat is now s5.b2 — the Langhe, with Barolo and Barbaresco
     # pinned — which is the frame the readability complaint is about. The pins
     # are measured and printed; they are not a gate until the palette pass.
-    "italy-wine": ["marker/ground"],
+    "italy-wine": ["marker/ground", "fill/ground"],
     # No pools.areas — this subject draws no named administrative areas, only
     # the fjord and the pins in it.
-    "norway-1940": ["marker/ground"],
-    "roman-empire": ["marker/ground", "colony/colony"],
+    "norway-1940": ["marker/ground", "fill/ground"],
+    "roman-empire": ["marker/ground", "colony/colony", "fill/ground"],
 }
 
 # Why a measurement is not asked of a pack. Printed instead of the number, so
@@ -823,6 +875,8 @@ WHY_NOT = {
                     "not a WCAG ink-on-ground case — their numbers are printed "
                     "below as advisory",
     "marker/ground": "the beat this pack points the camera at shows no pins",
+    "fill/ground": "the palette publishes no --f-* on this pack, which means no "
+                   "faction was ever resolved",
     "colony/colony": "no two named areas that share a border are on screen at "
                      "this pack's contrast beat (norway-1940 declares no "
                      "pools.areas at all)",
@@ -919,6 +973,14 @@ def main() -> int:
             print(f"    {basis}")
             for _, label, val in sorted(rows, key=lambda r: r[2])[:4]:
                 print(f"    {' ' if val >= threshold else '!'} {val:5.2f}  {label}")
+
+        tone_adv = [r for r in results if r[0] == "fill/ground~tone"]
+        if tone_adv:
+            print("")
+            print("  the four palette ROLES against the ground (ADVISORY — "
+                  "hand-tuned tokens shared with the DOM; see run_story)")
+            for _, label, val in sorted(tone_adv, key=lambda r: r[2])[:4]:
+                print(f"    {' ' if val >= 3.0 else '!'} {val:5.2f}  {label}")
 
         # Measured, printed, not gated — see the note in run_story().
         labels_adv = [r for r in results if r[0] == "label/ground~story"]

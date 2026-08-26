@@ -40,6 +40,79 @@ import { toHSL, fromHSL } from '../map/tint.js';
 const LIGHT = { fill: { s: 57, l: 42 }, wash: { s: 46, l: 57 } };
 const DARK = { fill: { s: 50, l: 56 }, wash: { s: 34, l: 46 } };
 
+/* A fill's lightness is a RESULT, not a constant.
+
+   Those two numbers used to be taken as written, whatever hue they were
+   applied to, and a fixed lightness is a statement about no colour in
+   particular. Measured against the ground the map actually draws, on the three
+   packs whose factions are derived rather than hand-tuned: a red pin in the
+   dark theme came out at 2.21, an Antonian one at 1.96, a Pompeian one at 2.46
+   in the light theme — against WCAG's 3.0 floor for a mark that is not text.
+   Warm hues are too dark for a dark ground at L=56 and cool ones too light for
+   parchment at L=42, which is exactly what one number for every hue buys you.
+
+   The pin itself survived that, because its keyline is `--atlas-ink` and a
+   keyline is the strongest edge on the map. Nothing carries a march, an arrow
+   or a front: those are strokes in this colour and nothing else.
+
+   So: start at the band, and walk the lightness AWAY from the ground until the
+   mark clears 3:1. Hue and saturation never move, so a faction is still the
+   colour the pack asked for and eight factions still read as one family. The
+   worst move measured across the three packs is eleven points of lightness on
+   a dark-theme red; most factions do not move at all, and every faction in
+   every theme clears (3.01 worst). It reads the ground live from
+   `--atlas-land`, so a pack that retints its parchment gets colours fitted to
+   the parchment it actually has. */
+const AA_NONTEXT = 3.0;
+const GROUND_FALLBACK = { light: '#f4ecd8', dark: '#4c4838' };
+
+function rgbOf(colour) {
+  const c = String(colour || '').trim();
+  if (c.startsWith('#')) {
+    const h = c.slice(1);
+    if (h.length === 3) return [...h].map((d) => parseInt(d + d, 16));
+    if (h.length >= 6) return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+    return null;
+  }
+  const m = c.match(/-?[\d.]+/g);
+  return m && m.length >= 3 ? m.slice(0, 3).map(Number) : null;
+}
+
+/** WCAG 2.2 relative luminance. Text is not the point here — 1.4.11 is. */
+function relLum(colour) {
+  const rgb = rgbOf(colour);
+  if (!rgb) return null;
+  const [r, g, b] = rgb.map((v) => {
+    const c = v / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+function contrast(a, b) {
+  const la = relLum(a), lb = relLum(b);
+  if (la == null || lb == null) return AA_NONTEXT;   // unreadable input: do not move it
+  const [hi, lo] = la > lb ? [la, lb] : [lb, la];
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+function fitFill(hue, sat, band, ground) {
+  const groundLum = relLum(ground);
+  if (groundLum == null) return fromHSL(hue, sat, band.l);
+  // Away from the ground: darker on parchment, lighter on a dark map.
+  const step = groundLum > 0.18 ? -1 : 1;
+  const limit = step < 0 ? 14 : 88;
+  let l = band.l;
+  let colour = fromHSL(hue, sat, l);
+  while (contrast(colour, ground) < AA_NONTEXT) {
+    const next = l + step;
+    if (step < 0 ? next < limit : next > limit) break;
+    l = next;
+    colour = fromHSL(hue, sat, l);
+  }
+  return colour;
+}
+
 /**
  * Resolve every faction a pack declares.
  *
@@ -82,7 +155,12 @@ function resolve(id, spec, read, dark) {
   if (typeof spec.hue === 'number') {
     const band = dark ? DARK : LIGHT;
     const sat = spec.sat ?? 1;
-    const fill = fromHSL(spec.hue, band.fill.s * sat, band.fill.l);
+    const ground = read('--atlas-land',
+                        GROUND_FALLBACK[dark ? 'dark' : 'light']);
+    // The fill is a mark on the ground and is fitted to it; the wash goes
+    // UNDER the ink and is scored on how far apart two neighbours are, which
+    // is a different question with its own measurement in check-contrast.py.
+    const fill = fitFill(spec.hue, band.fill.s * sat, band.fill, ground);
     const wash = fromHSL(spec.hue, band.wash.s * sat, band.wash.l);
     return { label, flag, fill, line: fill, wash };
   }

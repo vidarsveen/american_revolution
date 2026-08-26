@@ -429,6 +429,15 @@ it started, so after a switch the second map never got the geometry and `region.
 nothing — with a 200 in the network panel. `mountMap` clears it. Anything else cached against
 `map` must go the same way.
 
+**A strong keyline can hide a weak fill, and the bench will vouch for it.**
+`check-contrast.py` scored a map pin as max(fill, ring), which is a sound argument — a pin
+presents two boundaries and the stronger one is what you see. The ring is `--atlas-ink`, the
+opposite of the ground by definition, so it scored 13.64 while the fill underneath it scored
+2.21. And a march, an arrow and a front are strokes in that same fill with no ring at all. The
+fill is measured on its own now, read off the `--f-*` the palette publishes rather than
+sampled from a screenshot: a one-pixel antialiased stroke samples as a blend of the colour and
+the ground, so a screenshot cannot answer the question it is being asked.
+
 **Modern boundaries are wrong for history.** The framework ships modern admin boundaries
 because that is the honest general default. Massachusetts in 1775 included Maine, Vermont was
 disputed, and West Virginia did not exist. A historical pack overrides with its own
@@ -593,9 +602,11 @@ of the surrounding file.
   than an hour, the framework is not ready to produce with, and where it sticks
   is the next job. Everything else is behind that.
 - Open work is the top section of `BACKLOG.md`, in order, split into the course
-  and the framework. The largest still-open item is the colour pass: faction
-  fills do not clear 3:1 on the three courses whose colours are derived rather
-  than hand-tuned.
+  and the framework. The colour pass is done for marks: every faction fill on
+  every course clears 3:1 against the ground in both themes, derived lightness
+  is fitted to that floor rather than fixed, and `check-contrast.py` gates it.
+  What is left of it is the caption's unsaid ink, where the number this repo has
+  been quoting does not reproduce — see `BACKLOG.md`.
 - Explore has moved off Leaflet, so both modes draw the same ground from the
   same module and `vendor/` is gone; the sound module is driven from a 100 ms
   interval, as the note here always said it would have to be.

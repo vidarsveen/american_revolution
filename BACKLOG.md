@@ -144,17 +144,49 @@ a pit instead of a redoubt, two bottles instead of one, a steamboat behind an
 and its `claims`/`omits` record; an agent reads both and proposes a corrected
 prompt.
 
-**6. The colour pass.** Two measured failures waiting on it:
+**6. The colour pass — the fills are done; the caption ink is not.**
 
-- **Faction FILLS do not clear 3:1** on the three hue-derived packs — 2.19 to
-  2.68 against a dark or light ground. `core/palette.js` picks a fill lightness
-  (L=42 light, L=56 dark) against no contrast target at all. The one pack that
-  passes is the one whose factions are hand-tuned `token:` references. A ring
-  saves a pin; nothing saves a march, an arrow or a front, which are strokes in
-  those same colours.
-- **The caption's unsaid ink is 3.91 against AA 4.5** over the brightest plate,
-  light theme. `--ink-soft` on `--paper-veil`, pre-existing, and a token
-  decision — the box got 25 px shorter this week without moving the number.
+**DONE: a mark on the map clears 3:1 against the ground.** `core/palette.js` used
+to take a fill lightness of 42 in light and 56 in dark whatever hue it was
+applied to, which is a statement about no colour in particular: measured against
+`--atlas-land`, a dark-theme red came out at 2.21, an Antonian purple at 1.96
+and a light-theme Pompeian teal at 2.46, against WCAG's 3.0 floor for a mark
+that is not text. The lightness is a RESULT now — start at the band, walk away
+from the ground until it clears — with hue and saturation untouched, so a family
+still reads as one family. Worst move: eleven points of lightness on a
+dark-theme red. Worst score after: 3.01, on every faction of every pack in both
+themes.
+
+**And the hand-tuned pack was not exempt after all.** This list said "the one
+pack that passes is the one whose factions are hand-tuned `token:` references".
+It did not pass: `--red` in the dark theme is the same colour a march is stroked
+in and measured 2.68 against the map ground. Four points of lightness (#e0645c
+-> #e3746d) clears it at 3.05, and red ink on dark paper improves from 5.31 to
+6.04 at the same time.
+
+**The bench that could not see any of this.** `marker/ground` scores
+max(fill, ring) and the ring is `--atlas-ink`, which is the opposite of the
+ground by definition — so a pin read 13.64 while its fill read 2.21, and the
+fills went on failing behind a passing number. `check-contrast.py` measures
+`fill/ground` directly now, read off the `--f-*` the palette publishes rather
+than off a screenshot, because a one-pixel antialiased stroke samples as a blend
+of the colour and the ground and cannot answer the question. Gated on all four
+packs. Confirmed by putting the fixed lightness back and watching it fail at
+2.21, which is the number this file recorded.
+
+The four palette ROLES (`tone:red` and the rest) are measured and printed but
+not gated: they are hand-tuned tokens shared with the DOM, and moving them moves
+every red in the app.
+
+**STILL OPEN: the caption's unsaid ink.** This file has said 3.91 against AA 4.5
+for `--ink-soft` on `--paper-veil`, and it does not reproduce from the tokens:
+computed, the veil over the brightest possible plate gives 5.58, and over a
+mid-grey one 4.52. That is not the same measurement — the real background is the
+veil over `.plate__fig::after`, which darkens the plate's bottom 52% by 42%
+black, and neither number above accounts for it. So the question is open and the
+number that was quoted is not evidence either way. It needs a probe that samples
+the rendered caption band on a real beat, the way `check-contrast.py` samples
+the map. That probe does not exist.
 
 **7. The menu, and the decision about Explore.** The cover, `js/chooser.js`, and
 whether Explore is retired, kept, or folded into the dossier that already exists.

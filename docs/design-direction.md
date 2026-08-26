@@ -268,6 +268,32 @@ The general form, so this is checkable beyond one class:
 
 ---
 
+## 2b. Colour: what a mark must clear
+
+Type has a scale and motion has one; colour had a palette and no target, which is how a
+faction ended up with a lightness chosen against nothing in particular.
+
+- **A mark on the map clears 3:1 against the ground it is drawn on** — WCAG 2.2 1.4.11, the
+  floor for something that is not text. A mark means a pin, a march, an arrow, a front, a
+  crossing: anything drawn in a faction's `fill`.
+- **A pin's keyline does not excuse its fill.** The keyline is `--atlas-ink`, the opposite of
+  the ground by definition, and it scores 8–15 on its own. A march has no keyline. Measure the
+  fill.
+- **A hue-derived faction takes its lightness from that floor, not from a constant.** A single
+  number for every hue is a statement about no colour in particular: at the old fixed values a
+  dark-theme red measured 2.21 and a light-theme Pompeian teal 2.46. `core/palette.js` starts
+  at the band and walks the lightness away from the ground until the mark clears; hue and
+  saturation never move, so a family still reads as one family.
+- **A hand-tuned token is not exempt.** `--red` in the dark theme was 2.68 against
+  `--atlas-land` and had to move four points of lightness.
+- **A wash is a different question.** It goes under the ink over a large area, and what
+  matters is whether two neighbours can be told apart: CIE76 ΔE ≥ 10, because a luminance
+  ratio cannot see a hue difference at all.
+
+`tools/check-contrast.py` gates all of it, in both themes, on every pack.
+
+---
+
 ## 3. Sound
 
 **The score tells you where you are. An effect tells you what was just named. Ambience is the
@@ -458,7 +484,8 @@ Mechanical, in `tools/check-script.py` (new checks):
 - `chapter.ending` exists and has one sentence and one number
 
 Mechanical, already: `dev/engine-lab.html` for every `instant` form, `check-contrast.py` for
-label ink in both themes, `check-sound.py` for the ducker.
+label ink, faction fills and neighbouring washes in both themes, `check-sound.py` for the
+ducker.
 
 **Not mechanical, and a human has to look.** Does the picture show the thing being said — no
 tool reads a sentence, so read `check-script.py`'s list of plates over a `region.show` or

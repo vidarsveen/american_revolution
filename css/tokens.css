@@ -283,7 +283,14 @@
     --rule:         rgba(236, 227, 209, .13);
     --rule-strong:  rgba(236, 227, 209, .26);
 
-    --red:          #e0645c;
+    /* #e0645c until the map was measured against it: a red march on the dark
+       ground (--atlas-land, #4c4838) came out at 2.68 against WCAG's 3.0
+       floor for a mark that is not text, and a march has no keyline to carry
+       it the way a pin does. Four points of lightness, same hue and
+       saturation, and it clears at 3.05 — while red ink on dark paper goes
+       from 5.31 to 6.04, so the DOM side only gains. Gated now by
+       tools/check-contrast.py. */
+    --red:          #e3746d;
     --red-soft:     rgba(224, 100, 92, .16);
     --blue:         #7ba6d8;
     --blue-soft:    rgba(123, 166, 216, .16);
@@ -341,7 +348,13 @@
   --rule:         rgba(236, 227, 209, .13);
   --rule-strong:  rgba(236, 227, 209, .26);
 
-  --red:          #e0645c;
+  /* #e0645c until the map was measured against it: a red march on the dark
+     ground (--atlas-land, #4c4838) came out at 2.68 against WCAG's 3.0 floor
+     for a mark that is not text, and a march has no keyline to carry it the
+     way a pin does. Four points of lightness, same hue and saturation, and it
+     clears at 3.05 — while red ink on dark paper goes from 5.31 to 6.04, so
+     the DOM side only gains. tools/check-contrast.py gates it now. */
+  --red:          #e3746d;
   --red-soft:     rgba(224, 100, 92, .16);
   --blue:         #7ba6d8;
   --blue-soft:    rgba(123, 166, 216, .16);
