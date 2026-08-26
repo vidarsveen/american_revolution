@@ -274,11 +274,14 @@ reads a published custom property.
   visible trade-offs.
 - **`.ov-portrait__card` reaches out of the top deck** into the mid and lower
   decks in 30 of 646 measured frames.
-- **`.ov-portrait__card figcaption u` is italic** ("no surviving likeness"),
-  which section 2 permits only for a quotation.
-- **`atlas-flash 620ms` and `atlas-ping 2.8s` are off the motion scale.** 620
-  wants `--t-exit`. 2.8 s has no token, and its "3 x 2.8 s = one sentence"
-  derivation is argued in the file — a scale decision, not a find-and-replace.
+- **DONE: the faceless note is no longer italic.** Section 2 keeps italic for a
+  quotation, and "ingen kjent avbildning" is the app describing the record, not
+  somebody's words.
+- **DONE: `atlas-flash` and `atlas-ping` are on the scale.** The muzzle flash
+  takes `--t-exit` (620 -> 600 ms). The ping keeps 2.8 s and stops being a loose
+  number: it is `--t-ping` in `css/tokens.css` with its derivation beside it,
+  and section 6 of the design direction names it the seventh token next to the
+  2400 ms mood. A pack can move it like anything else.
 - **Explore draws "Virginia" twice, overlapping.** Its two label systems never
   declutter against each other: `js/map.js drawPlaces()` adds period names with
   no `rank`, and the collision pass skips those. Frozen with Explore.
@@ -287,9 +290,13 @@ reads a published custom property.
   run, and it should stay one until the content it reports on is cleaned up.
 - **`tools/shoot.py` has no moments for any pack but the Revolution.** It runs
   again now, but `MOMENTS` only describes two chapters.
-- **A flight that lands in the last 1.2 s is never seen** — it arrives behind a
-  closing veil. `check-script.py` fails only on flights that cannot land at all;
-  the visible deadline is 1.2 s earlier and nothing reports it.
+- **DONE: a flight that lands behind the closing veil is reported.** The visible
+  deadline is `motion.turn` before the scene ends, read from the pack's own
+  style.json rather than hardcoded at 1200 ms. A note and not a failure, because
+  whether the arrival was the point is the author's call. Nothing in the eight
+  chapters that ship trips it — the tightest flight has 3.1 s to spare — so it
+  was confirmed by stretching one wine flight to 5.5 s over a 6.1 s scene and
+  watching it fire in both languages.
 
 ---
 
