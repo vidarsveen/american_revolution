@@ -468,7 +468,9 @@ Mechanical, by grep over `css/`:
 
 - no `font-size:` with a literal number — every size is a `--fs-*` token
 - no `--ease-spring`, no `cubic-bezier` outside `css/tokens.css`
-- no duration outside the six `--t-*` tokens, the 120 ms word colour, and 2400 ms for the mood
+- no duration outside the seven `--t-*` tokens, the 120 ms word colour, and 2400 ms for the
+  mood. `--t-ping` (2.8 s) is the seventh and its derivation is one sentence long: a
+  highlight pings three times, and 3 x 2.8 s is about how long a sentence takes to say
 - no `transform: translate…` or `scale(…)` inside an entry keyframe or an `is-on` rule
 - no `animation-iteration-count: infinite`
 - no rule carrying both `text-transform: uppercase` and `font-style: italic`

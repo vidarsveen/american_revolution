@@ -1032,7 +1032,10 @@
   display: block;
   margin-top: 4px;
   text-decoration: none;
-  font-style: italic;
+  /* NOT italic. Section 2 keeps italic for a quotation, and "ingen kjent
+     avbildning" is the app telling you something about the record, not
+     somebody's words. It is already smaller and quieter than the name above
+     it, which is the whole job. */
   font-size: var(--fs-xs);
   color: var(--ink-faint);
 }

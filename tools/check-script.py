@@ -333,6 +333,24 @@ def camera_style(pack: str) -> dict:
     return out
 
 
+def turn_seconds(pack: str) -> float:
+    """`motion.turn` from the pack's style.json — how long the veil is closed.
+
+    A scene turn dims the stage, rebuilds behind it, and lifts. Player.tailFor()
+    starts it IN_MS EARLY, inside the trailing gap, so the LAST `motion.turn` of
+    a scene is behind a closing veil. Read from the pack rather than hardcoded
+    at 1200: a subject with a slower turn hides more of its own ending, and this
+    file has been bitten once already by a number that lived in a module while
+    the app read it from a style file.
+    """
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base = (load_json(os.path.join(root, "engine", "defaults", "style.json"))
+            or {}).get("motion") or {}
+    own = (load_json(os.path.join(pack_dir(pack), "style.json")) or {}).get("motion") or {}
+    v = own.get("turn", base.get("turn", 1200))
+    return (float(v) if isinstance(v, (int, float)) else 1200.0) / 1000.0
+
+
 def check_camera_lands(pack, chapter, timings, langs):
     """A flight the scene ends in the middle of.
 
@@ -356,7 +374,9 @@ def check_camera_lands(pack, chapter, timings, langs):
     """
     k, problems = flight_constants()
     if problems:
-        return problems, []
+        return problems, [], []
+    veil = turn_seconds(pack)
+    veiled: list[str] = []
     # …and then this pack's own pacing over the module's fallbacks. See above.
     cam_style = camera_style(pack)
     if "flyOver" in cam_style:
@@ -412,6 +432,19 @@ def check_camera_lands(pack, chapter, timings, langs):
                 room = end - at
                 what = cue.get("to") or cue.get("id") or ",".join(cue.get("places") or [])
                 rows.append((room - over, lang, bid, cue["do"], what, over, room))
+                # LANDING IS NOT THE SAME AS BEING SEEN. The veil closes
+                # `turn` seconds before the scene ends, so a flight that
+                # arrives inside that window arrives behind it: on screen the
+                # camera is still moving when the picture dims. It is a note
+                # and not a failure — a move whose LAST second is covered is a
+                # judgement about the writing, and only the author knows
+                # whether the arrival was the point.
+                if over - 0.05 <= room < over + veil:
+                    veiled.append(
+                        f"{bid}: '{lang}' {cue['do']} '{what}' lands "
+                        f"{room - over:.1f}s before the scene ends, and the "
+                        f"last {veil:.1f}s is behind the closing veil — the "
+                        f"camera is still moving when the picture dims.")
                 if room < over - 0.05:
                     found.append(
                         f"{bid}: '{lang}' {cue['do']} '{what}' flies for {over:.1f}s "
@@ -427,7 +460,7 @@ def check_camera_lands(pack, chapter, timings, langs):
             if flight:
                 f, t, t0, secs = flight
                 cam = ease_flight(f, t, (end - t0) / secs if secs else 1.0)
-    return found, rows
+    return found, rows, veiled
 
 
 # An overlay that appears and disappears before anyone can read it.
@@ -1197,8 +1230,10 @@ def main():
                         problems.append(f"{bid}: unrecognised '{lang}' anchor '{spec}'")
 
     problems.extend(check_animations_finish(chapter, timings, langs))
-    camera_bad, camera_rows = check_camera_lands(pack, chapter, timings, langs)
+    camera_bad, camera_rows, camera_veiled = check_camera_lands(
+        pack, chapter, timings, langs)
     problems.extend(camera_bad)
+    notes.extend(camera_veiled)
     problems.extend(check_overlays_readable(chapter, timings, langs) or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
     problems.extend(check_plate_rhythm(chapter) or [])

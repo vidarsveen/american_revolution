@@ -236,6 +236,14 @@
   --t-turn:     1200ms;  /* the scene turning over: the veil closing, lifting */
   --t-drift:    14s;     /* the slow push on a still */
 
+  /* One sentence, in three beats of a pulse. Not a step on the scale above and
+     not a taste: a highlight is about something for about as long as the
+     sentence naming it, 3 x 2.8s = 8.4s, and the number was written out by
+     hand in css/atlas.css with that derivation beside it and no way for a pack
+     to move it. Section 6 of docs/design-direction.md lists it beside the
+     2400 ms mood as a named exception rather than a loose number. */
+  --t-ping:     2.8s;
+
   /* --- Numbers derived from what a pack SHIPS -------------
      Not a taste and not a scale step: measured off the content. The lower
      deck reserves this much of the frame whenever a scene raises a fact card,

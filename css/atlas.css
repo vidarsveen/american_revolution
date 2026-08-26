@@ -405,7 +405,10 @@
   opacity: 0;
   background: radial-gradient(38% 26% at 50% 52%, rgba(255, 246, 214, .92), transparent 70%);
 }
-.atlas__flash.is-on { animation: atlas-flash 620ms ease-out; }
+/* 620ms was a number chosen alone, and docs/design-direction.md section 1 has
+   exactly one for a thing leaving. 20 ms shorter, and now it moves when the
+   scale moves. */
+.atlas__flash.is-on { animation: atlas-flash var(--t-exit) ease-out; }
 @keyframes atlas-flash {
   0%   { opacity: 0; }
   8%   { opacity: 1; }
@@ -576,7 +579,7 @@
   border: 2.5px solid var(--faction, var(--gold));
   /* var(--ease-out) IS cubic-bezier(.22, 1, .36, 1) -- the curve is unchanged,
      it just stops being written out by hand outside css/tokens.css. */
-  animation: atlas-ping 2.8s var(--ease-out) 3 both;
+  animation: atlas-ping var(--t-ping) var(--ease-out) 3 both;
 }
 /* On a seek we rebuild the picture, and a ping mid-flight would be a different
    picture every time you scrubbed to the same moment. The ring underneath is
