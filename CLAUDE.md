@@ -634,8 +634,10 @@ of the surrounding file.
   and the framework. The colour pass is done for marks: every faction fill on
   every course clears 3:1 against the ground in both themes, derived lightness
   is fitted to that floor rather than fixed, and `check-contrast.py` gates it.
-  What is left of it is the caption's unsaid ink, where the number this repo has
-  been quoting does not reproduce — see `BACKLOG.md`.
+  The caption's unsaid ink is done too, and the number this repo had been
+  quoting for it was wrong: measured on rendered pixels it is 4.19 over a
+  picture, not 3.91, and `--ink-soft` moved to clear AA on the worst plate in
+  all four courses.
 - Explore has moved off Leaflet, so both modes draw the same ground from the
   same module and `vendor/` is gone; the sound module is driven from a 100 ms
   interval, as the note here always said it would have to be.

@@ -13,7 +13,20 @@
   --paper-veil:     rgba(248, 243, 231, .82);  /* blurred bars */
 
   --ink:            #241f18;
-  --ink-soft:       #6b6152;
+  /* #6b6152 until the caption was measured on real pixels rather than computed
+     from the tokens. The caption is a reading surface — rule 3 says it carries
+     the words when the audio does not — and the unsaid half of every line is
+     this colour, read through --paper-veil over whatever is behind it. Over the
+     MAP that was 5.30 and fine; over a full-frame picture it was 4.19 against
+     AA's 4.5, and a picture is exactly when a caption is doing the most work.
+     Six points of lightness, same hue and saturation. Three cleared the wine
+     chapter and left the Revolution at 4.25 and Rome at 4.23 — brighter
+     pictures — which is why the number is taken from the worst plate in the
+     four packs and not from the first one measured.
+     BACKLOG.md carried "3.91" for weeks; that number was never measured on the
+     rendered thing and neither was the 5.58 the tokens alone give.
+     tools/check-contrast.py samples it at a beat with a plate up now. */
+  --ink-soft:       #595144;
   --ink-faint:      #9c917f;
   --rule:           rgba(36, 31, 24, .13);
   --rule-strong:    rgba(36, 31, 24, .26);

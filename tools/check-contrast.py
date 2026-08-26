@@ -66,6 +66,10 @@ THRESHOLDS = {
     # The pin has a keyline and survives a weak fill; nothing carries a march,
     # an arrow or a front, which are strokes in this colour and nothing else.
     "fill/ground":   (3.0,  "WCAG 2.2 1.4.11 — the colour every stroke is drawn in"),
+    # The caption carries the words when the audio does not (rule 3), so it is
+    # body text and takes the body-text number. Measured on the UNSAID ink,
+    # which is most of every line at any instant.
+    "caption/veil":  (4.5,  "WCAG 2.2 AA — the caption is a reading surface"),
 }
 
 # THE COLOUR EVERY STROKE IS DRAWN IN, read off the page rather than off a
@@ -160,6 +164,37 @@ def pack_checks(pack):
     }
 
 
+def plate_beat(pack, chapter_ref):
+    """A beat with a picture up, for the caption's hard case.
+
+    The caption is --paper-veil with a backdrop blur, so what its ink is read
+    against is whatever is BEHIND it — and the worst case is a full-frame
+    picture, not the map. Measuring only the pack's contrast beat measures the
+    easy one. Picks the second beat of the first plate span that lasts more than
+    one beat: the second, because the first is the beat the plate fades in on
+    and the veil would be sampled mid-dissolve.
+    """
+    if not chapter_ref:
+        return None
+    pack_id, _, cid = chapter_ref.partition("/")
+    path = ROOT / "content" / pack_id / f"{cid}.json"
+    if not path.exists():
+        return None
+    chapter = json.loads(path.read_text(encoding="utf-8"))
+    for scene in chapter.get("scenes", []):
+        beats = scene.get("beats", [])
+        open_at = None
+        for i, b in enumerate(beats):
+            for cue in b.get("cues", []):
+                if cue["do"] == "plate.show":
+                    open_at = i
+                elif cue["do"] == "plate.hide":
+                    open_at = None
+            if open_at is not None and i > open_at and (b.get("say") or {}):
+                return b["id"]
+    return None
+
+
 def packs_on_disk():
     listed = ROOT / "content" / "packs.json"
     if listed.exists():
@@ -168,6 +203,48 @@ def packs_on_disk():
                   if d.is_dir() and not d.name.startswith("_"))
 
 CHECKS: dict = {}
+
+# THE CAPTION IS A READING SURFACE, and rule 3 says it carries the words when
+# the audio does not — so it has to pass as one. The ink is --ink-soft until a
+# word is spoken and --ink after, and the box is --paper-veil with a backdrop
+# blur, which means its background is the PICTURE behind it and changes beat by
+# beat. That is why this is measured on pixels and not computed from tokens:
+# BACKLOG.md has carried "3.91 against AA 4.5" for weeks, and the tokens alone
+# give 5.58 over the brightest plate. Neither number was measured on the thing.
+#
+# Sampling: in the gap BETWEEN two words on the same line, which is background
+# with ink either side of it, and failing that the box's own side padding. Not
+# a ring around the glyph like a map label — the lines are snug enough that
+# above and below is the next line of text.
+CAPTION_JS = """
+() => {
+  const box = document.querySelector('.captions');
+  if (!box) return null;
+  const r = box.getBoundingClientRect();
+  if (!r.width || parseFloat(getComputedStyle(box).opacity) < 0.5) return null;
+  const spans = [...box.querySelectorAll('.captions__line span')]
+    .map((el) => ({
+      el,
+      said: el.classList.contains('is-said') || el.classList.contains('is-now'),
+      color: getComputedStyle(el).color,
+      r: el.getBoundingClientRect(),
+    }))
+    .filter((s) => s.r.width > 2 && s.r.height > 2);
+  const out = { box: { x: r.left, y: r.top, w: r.width, h: r.height }, words: [] };
+  for (let i = 0; i < spans.length; i += 1) {
+    const s = spans[i], n = spans[i + 1];
+    const spots = [];
+    if (n && Math.abs(n.r.top - s.r.top) < 2 && n.r.left - s.r.right > 5) {
+      spots.push([(s.r.right + n.r.left) / 2, s.r.top + s.r.height / 2]);
+    }
+    spots.push([r.left + 6, s.r.top + s.r.height / 2]);
+    spots.push([r.right - 6, s.r.top + s.r.height / 2]);
+    out.words.push({ text: s.el.textContent.trim().slice(0, 18),
+                     said: s.said, color: s.color, spots });
+  }
+  return out;
+}
+"""
 
 SEEK_JS = """
 async ([beatId, offset, chapterId]) => {
@@ -498,6 +575,28 @@ def measure_labels(labels, px, where: str, tight: bool = False):
     return out
 
 
+def measure_caption(cap, px, where: str):
+    """The caption's ink against the box it is written in.
+
+    Only the UNSAID words. They are the ones at --ink-soft, and they are most
+    of every line at any instant — a sentence is mostly not spoken yet, which
+    is the whole reason the caption was moved off --ink-faint once already.
+    """
+    if not cap:
+        return []
+    out = []
+    for w in cap["words"]:
+        if w["said"]:
+            continue
+        ink = parse_rgb(w["color"])
+        grounds = [g for g in (px(x, y, 2) for x, y in w["spots"]) if g is not None]
+        if not grounds:
+            continue
+        worst = min(grounds, key=lambda g: ratio(ink, g))
+        out.append(("caption/veil", f"{where} '{w['text']}'", ratio(ink, worst)))
+    return out
+
+
 def measure_markers(markers, px, where: str):
     # A pin is a coloured disc inside a near-white ring. 1.4.11 asks whether
     # the component is distinguishable from what is adjacent to it, and on a
@@ -731,10 +830,12 @@ def run_story(theme: str, width: int, height: int, shots: Path):
             # on the hue-derived packs. The ring carries the pin; nothing
             # carries a march, an arrow or a front, which are strokes in the
             # same colours. That is the colour pass. See BACKLOG.md.
+            caption = page.evaluate(CAPTION_JS)
             story_results = (
                 measure_labels(overlay["labels"], over_px,
                                "story", tight=True)
-                + measure_markers(overlay["markers"], over_px, "story pin"))
+                + measure_markers(overlay["markers"], over_px, "story pin")
+                + measure_caption(caption, over_px, "caption"))
             story_results = [
                 (("label/ground~story" if p == "label/ground" else p), w, v)
                 for p, w, v in story_results]
@@ -756,6 +857,27 @@ def run_story(theme: str, width: int, height: int, shots: Path):
                 # decision and not a checker's.
                 pair = "fill/ground~tone" if f["id"].startswith("tone-")                     else "fill/ground"
                 story_results.append((pair, f["id"], ratio(rgb, ground)))
+
+            # THE CAPTION'S HARD CASE, which the contrast beat is not: a
+            # full-frame picture behind the blur instead of the map. Seek a
+            # second time, sample only the caption, and keep whichever of the
+            # two frames scored worse. Costs one seek and one screenshot.
+            plate_at = plate_beat(PACK, CHECKS.get("chapter"))
+            if plate_at:
+                page.evaluate(SEEK_JS, [plate_at, 2.5, chapter_id])
+                page.wait_for_timeout(700)
+                plate_shot = shots / f"caption-{theme}.png"
+                page.screenshot(path=str(plate_shot))
+                plate_img = Image.open(plate_shot)
+                cap2 = page.evaluate(CAPTION_JS)
+                story_results += measure_caption(
+                    cap2,
+                    lambda x, y, r=2: median_patch(plate_img, int(x * 2),
+                                                   int(y * 2), r),
+                    "caption over a picture")
+                # …and back, because everything below samples the first frame.
+                page.evaluate(SEEK_JS, [*CHECKS["beat"], chapter_id])
+                page.wait_for_timeout(500)
 
             spots = page.evaluate(COLONIES_JS)
             page.wait_for_timeout(400)
@@ -855,15 +977,16 @@ def run_story(theme: str, width: int, height: int, shots: Path):
 # table used to record, which came from sampling the ground INSIDE the pin.
 EXPECT_DEFAULT = {
     "american-revolution": ["land/water", "label/ground", "marker/ground",
-                            "colony/colony", "fill/ground"],
+                            "colony/colony", "fill/ground", "caption/veil"],
     # Its contrast beat is now s5.b2 — the Langhe, with Barolo and Barbaresco
     # pinned — which is the frame the readability complaint is about. The pins
     # are measured and printed; they are not a gate until the palette pass.
-    "italy-wine": ["marker/ground", "fill/ground"],
+    "italy-wine": ["marker/ground", "fill/ground", "caption/veil"],
     # No pools.areas — this subject draws no named administrative areas, only
     # the fjord and the pins in it.
-    "norway-1940": ["marker/ground", "fill/ground"],
-    "roman-empire": ["marker/ground", "colony/colony", "fill/ground"],
+    "norway-1940": ["marker/ground", "fill/ground", "caption/veil"],
+    "roman-empire": ["marker/ground", "colony/colony", "fill/ground",
+                     "caption/veil"],
 }
 
 # Why a measurement is not asked of a pack. Printed instead of the number, so
@@ -877,6 +1000,8 @@ WHY_NOT = {
     "marker/ground": "the beat this pack points the camera at shows no pins",
     "fill/ground": "the palette publishes no --f-* on this pack, which means no "
                    "faction was ever resolved",
+    "caption/veil": "no caption was on screen at this pack's contrast beat, or "
+                    "every word of it had already been spoken",
     "colony/colony": "no two named areas that share a border are on screen at "
                      "this pack's contrast beat (norway-1940 declares no "
                      "pools.areas at all)",

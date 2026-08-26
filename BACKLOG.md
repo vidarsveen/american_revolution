@@ -189,7 +189,7 @@ writes `_run.json` now; `--accept` numbers that run, says how many older
 candidates it is ignoring, and refuses outright when the prompt has changed
 since. Both confirmed by reproducing them.
 
-**6. The colour pass — the fills are done; the caption ink is not.**
+**6. DONE — the colour pass.**
 
 **DONE: a mark on the map clears 3:1 against the ground.** `core/palette.js` used
 to take a fill lightness of 42 in light and 56 in dark whatever hue it was
@@ -223,15 +223,24 @@ The four palette ROLES (`tone:red` and the rest) are measured and printed but
 not gated: they are hand-tuned tokens shared with the DOM, and moving them moves
 every red in the app.
 
-**STILL OPEN: the caption's unsaid ink.** This file has said 3.91 against AA 4.5
-for `--ink-soft` on `--paper-veil`, and it does not reproduce from the tokens:
-computed, the veil over the brightest possible plate gives 5.58, and over a
-mid-grey one 4.52. That is not the same measurement — the real background is the
-veil over `.plate__fig::after`, which darkens the plate's bottom 52% by 42%
-black, and neither number above accounts for it. So the question is open and the
-number that was quoted is not evidence either way. It needs a probe that samples
-the rendered caption band on a real beat, the way `check-contrast.py` samples
-the map. That probe does not exist.
+**DONE, and the number that was quoted was wrong in both directions.** This file
+said 3.91 against AA 4.5 for `--ink-soft` on `--paper-veil`, and the tokens
+alone give 5.58 over the brightest possible plate; neither had been measured on
+the rendered thing. `check-contrast.py` samples it now — the unsaid words, which
+are most of every line at any instant, against the pixels beside them — and it
+samples TWICE: at the pack's contrast beat, and again at a beat with a picture
+up, because the caption is `--paper-veil` with a backdrop blur and what its ink
+is read against is whatever is behind it.
+
+Measured, light theme: 5.30 over the map and **4.19 over a picture**, which is
+where a caption is doing the most work. Dark theme passed throughout. Six points
+of lightness on `--ink-soft` (#6b6152 -> #595144), same hue and saturation, and
+the worst of the four packs is 4.81. The number is taken from the worst plate in
+all four and not the first one measured: three points cleared the wine chapter
+and left the Revolution at 4.25 and Rome at 4.23. Gated on every pack in both
+themes.
+
+That closes the colour pass.
 
 **7. The menu, and the decision about Explore.** The cover, `js/chooser.js`, and
 whether Explore is retired, kept, or folded into the dossier that already exists.
