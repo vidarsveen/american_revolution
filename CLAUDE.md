@@ -470,15 +470,87 @@ Each of these cost real time. They are documented at the call site too.
 
 ## Answering back
 
-**Summaries: ten lines, hard limit.** What was done, what to do next, one
-question if there is one. Nothing else. No tables of what was verified, no
-recap of reasoning, no restating the problem. Detail belongs in the code
-comment, `BACKLOG.md` or the commit message, where it can be read once and
-found again — not re-read in every reply. Ten minutes to extract a status is
-a broken status.
+**Plain English, in bullets. No jargon.** This is the rule that gets broken
+most, and it was asked for twice in one day:
 
-State the full path whenever files are produced, and keep produced files
-inside the project rather than a temp directory.
+> "make a non jargon summary as bullet points of what you have done, stop with
+>  detail jargon that makes it really hard to understand what has been done"
+
+So: **say what a person would notice**, not what changed in the code.
+
+    NO   `.is-now` carried font-weight: 600, so advance widths changed and
+         the line reflowed on every word boundary
+    YES  Captions stop jumping. Words were shifting lines as they highlighted,
+         because bold letters are wider.
+
+    NO   `.ov-deck--mid` was `top: 32%` and never anchored to --caption-h
+    YES  Cards were landing on top of the subtitles. 121 frames, now 30.
+
+Never a selector, a file path, a token name or a function name in a summary,
+unless the reader has to type it. Numbers are welcome — they are not jargon,
+they are evidence — but a number needs a unit a person recognises: "95 ms
+frozen" and "82 of 84 pictures", not "worst 1.25:1 at dim 0".
+
+**Ten lines, hard limit.** What was done, what to do next, one question if
+there is one. No tables of what was verified, no recap of reasoning, no
+restating the problem. Detail belongs in the code comment, `BACKLOG.md` or the
+commit message, where it is read once and found again — not re-read in every
+reply. Ten minutes to extract a status is a broken status.
+
+State the full path whenever files are produced, and keep produced files inside
+the project rather than a temp directory.
+
+## How to work here
+
+Five things learned expensively. They are about judgement, not about code.
+
+**Fix what was asked, not what the tools point at.** A whole day went into
+Roman cannon, Narvik markers and Revolution plates because the checks flagged
+them — content the person had never mentioned and did not care about. The
+checks cover four courses; the work is usually about one. **Ask which course
+matters, then freeze the others.**
+
+**"It is ugly" means remove it, until told otherwise.** A region label was
+called ugly, and it was answered four separate times by changing its size —
+14px, 11px, 15px, 17px — with two of those attempts written into
+`docs/design-direction.md` as reasoning. It was never a size. When someone
+reports the same thing three times, the reading is wrong, not the value:
+**stop tuning and offer to delete.**
+
+**A bench that has never failed has not been shown to measure anything.** Four
+checks in this repo were passing while measuring nothing at all — one had never
+looked at the main screen, one scored a map pin against its own label, one flew
+to the wrong continent, one ran a weaker copy of the dev server than the app
+uses. That is why several defects survived being reported repeatedly and
+"fixed". **Reintroduce the bug and watch the bench fail, every time**, and say
+in the report how you did it.
+
+**Measure before diagnosing, and measure the right thing.** Three separate
+times a probe here read a value too soon after the thing that produced it and
+reported a working fix as broken: a stale `.coach` element, a scene card
+mid-fade, a `--caption-h` that wanders a whole line between reads. A **paired**
+measurement — same page, same beats, one thing toggled — is evidence. A single
+absolute reading of a published custom property is not.
+
+**Say when a number you gave was wrong.** "The caption box is 127 px median"
+was quoted in a summary, a commit and this repo's backlog, and it does not
+reproduce. Correcting it costs one sentence; leaving it costs the next person's
+trust in every other number.
+
+## Scope, when starting fresh
+
+Ask before doing any of this:
+
+- **Which course are we working on?** Freeze the rest. They stay in the repo as
+  proof the framework is not about one subject; they are not the work.
+- **Framework or content?** Content fixes in a course nobody is watching are
+  the most expensive kind of nothing.
+- **Is this the thing that was asked for, or the thing next to it?**
+
+And know what the framework already does before proposing to build it: a
+chapter is prose (`tools/author.py`, 177 lines against 1652 of JSON), artifacts
+are pluggable surfaces, a course's numbers live in its own `style.json`, and a
+course that wants no map loads none of it. `README.md` is the map of all of it.
 
 ## Writing style
 
@@ -497,9 +569,21 @@ of the surrounding file.
 
 ## In flight
 
-- Nothing. Explore has moved off Leaflet, so both modes draw the same ground from the same
-  module and `vendor/` is gone; the sound module is wired into `engine/story.js` and driven
-  from a 100 ms interval, as the note here always said it would have to be.
+- **The course being worked on is `italy-wine`, and only that one.** Rome, the
+  Revolution and Narvik are frozen: they stay as proof the framework is not
+  about one subject, and their content is not the work. Do not fix them because
+  a check reported them.
+- **The next real test is somebody writing chapter two of the wine course in
+  `content/italy-wine/script.md`'s format**, without help. If that takes more
+  than an hour, the framework is not ready to produce with, and where it sticks
+  is the next job. Everything else is behind that.
+- Open work is the top section of `BACKLOG.md`, in order, split into the course
+  and the framework. The largest still-open item is the colour pass: faction
+  fills do not clear 3:1 on the three courses whose colours are derived rather
+  than hand-tuned.
+- Explore has moved off Leaflet, so both modes draw the same ground from the
+  same module and `vendor/` is gone; the sound module is driven from a 100 ms
+  interval, as the note here always said it would have to be.
 - **Generated sound effects are Apache 2.0** (MOSS-SoundEffect v2.0), so the build is
   commercially usable. Check a LICENSE file rather than a blog before trusting any model's
   terms: Meta's AudioGen is widely described as Apache 2.0 and its weights are CC-BY-NC 4.0.

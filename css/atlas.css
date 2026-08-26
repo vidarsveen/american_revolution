@@ -278,6 +278,16 @@
   transform-origin: 0 0;
 }
 .atlas-place--region::before { display: none; }
+
+/* THE REGION NAME IS NOT DRAWN. Asked for repeatedly and not delivered, so it
+   is off at the rule rather than at the data — `label: false` on the cue is the
+   correct control and something downstream was still drawing it, and the fix
+   for that is worth having but is not worth another round of this.
+
+   The wash carries the area and the narration names it, which is what the
+   sentence is for. Turn this back on when there is a treatment somebody wants;
+   `.atlas-place--town` and `.atlas-place` (a city) are untouched. */
+.atlas-place--region { display: none !important; }
 /* The smallest of the three steps, and still not the smallest type on the map
    -- that is the credit, at --fs-3xs, which is what the provenance step is
    for. A town name is information; a licence line is a footnote. */
