@@ -21,12 +21,25 @@ framework**, which is what makes the next subject cheaper than this one.
 
 Ordered by how badly it hurts the chapter.
 
-**1. The white wines are promised and never arrive.** The last scene says
-"tre helt forskjellige viner, og vi har ikke nevnt de hvite ennå" — and then the
-chapter ends. Naming a gap in the last thirty seconds and not filling it reads
-as an oversight rather than a hook. Either give them a scene, or stop the
-sentence promising them. Gavi, Arneis and Moscato are all Piemonte and all
-already in the pack's own `wines` pool.
+**1. The chapter contradicts itself about the white wines — and the fix is to
+cut the line, not to add a scene.**
+
+Scene 6 spends four beats on Moscato d'Asti: "søtt, lett perlende og bare rundt
+fem prosent alkohol". Moscato is a white grape. Two beats later the closing
+sentence says:
+
+    s6.b8   "Én region. Én av tjue. Tre helt forskjellige viner,
+             og vi har ikke nevnt de hvite ennå."
+
+It has just mentioned one. That is the defect — not a missing scene.
+
+**The course is about red wine, deliberately.** Do not add Gavi or Arneis, and
+do not give the whites a scene. Cut or rewrite the trailing clause so the
+chapter stops promising something it is not going to do.
+
+It is one sentence, so it is one beat of narration to re-record —
+`tools/narrate.py --only s6` re-synthesises only what changed. It is the
+author's sentence to rewrite, not the framework's.
 
 **2. A taster profile per wine — and it is not a card.**
 Acid, tannin, body, fruit, sweetness, as a shape you can compare across wines.
@@ -91,6 +104,28 @@ The argument for it got stronger twice this week: `DECK_RESERVE_PX` was derived
 from the tallest fact card, went stale the moment the type scale moved, and had
 to be re-derived by hand. Numbers that describe what a pack SHIPS do not belong
 in a module.
+
+**1b. A level above the chapter: the course outline.**
+
+`pack.json` lists chapters as ids and titles — a table of contents written after
+the fact. What is missing is the thing you write BEFORE any of it: what the
+course teaches, in what order, and what each chapter is FOR. The wine course
+would have said "this is a course about red wine" in one line, and the
+contradiction above could not have been written.
+
+It is also the level the tools cannot currently reach. `check-pictures.py` can
+say whether a chapter is a map story or a picture story; nothing can say whether
+a chapter delivers what the course said it would, or whether chapter two repeats
+chapter one. An outline is the only place that question has an answer.
+
+Shape it as prose the way a chapter is prose — `content/<id>/outline.md`, read
+by `tools/author.py`, with each chapter's purpose in a sentence. The cover
+already builds itself from `pack.json`'s chapter list, so this replaces a hand-
+maintained list rather than adding one.
+
+Raised after the wine course promised white wines it had already covered and
+was never going to return to: a contradiction that exists because nothing above
+the chapter was ever written down.
 
 **2. Surfaces, and a chart that is a first-class artifact.**
 `engine/stage.js` mounts map, plate, overlays and sound unconditionally, and
