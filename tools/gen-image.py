@@ -332,6 +332,19 @@ def generate(pack, pid, spec, n, backend, seed0):
         secs = re.search(r"generate_image completed in ([\d.]+)s", log)
         print(f"{secs.group(1)}s" if secs else "ok")
         made.append(dest)
+
+    # WHAT THIS RUN MADE, and from what prompt. Without it --accept indexes a
+    # DIRECTORY, and a directory accumulates: candidates are named 01..0N per
+    # run, so a second render put 01-seed800 fourth in sorted order and
+    # `--accept id=4` handed back a picture from the previous prompt — with the
+    # new claims and omits written beside it. A record that says one thing over
+    # a file that shows another is the exact defect claims/omits exist to stop.
+    with open(os.path.join(outdir, "_run.json"), "w", encoding="utf-8") as fh:
+        json.dump({"prompt": prompt,
+                   "aspect": spec.get("aspect", "square"),
+                   "backend": backend,
+                   "files": [os.path.basename(f) for f in made]},
+                  fh, ensure_ascii=False, indent=1)
     return outdir, made
 
 
@@ -347,8 +360,38 @@ def accept(pack, pid, index, backend):
                 f"a claim nobody checked")
 
     outdir = os.path.join(ROOT, "image-candidates", pack, pid)
-    files = sorted(f for f in os.listdir(outdir) if f.endswith(".png")) \
-        if os.path.isdir(outdir) else []
+    run_path = os.path.join(outdir, "_run.json")
+    run = {}
+    if os.path.exists(run_path):
+        with open(run_path, encoding="utf-8") as fh:
+            run = json.load(fh)
+
+    style = spec.get("style") or ""
+    wanted = spec["prompt"] + (", " + style if style else "")
+
+    if run:
+        # This run's numbers, in this run's order. Anything else in the folder
+        # belongs to an earlier prompt and is deliberately not offered.
+        files = [f for f in run.get("files", [])
+                 if os.path.exists(os.path.join(outdir, f))]
+        stale = sorted(f for f in os.listdir(outdir)
+                       if f.endswith(".png") and f not in files)
+        if stale:
+            print(f"  ({len(stale)} candidate(s) from an earlier render are in "
+                  f"the folder and are not numbered here)")
+        if run.get("prompt") != wanted:
+            die(f"the candidates in {os.path.relpath(outdir, ROOT)} were made "
+                f"from a different prompt than image-prompts.json carries now."
+                f"\n  candidates: {run.get('prompt', '')[:100]}..."
+                f"\n  prompt now: {wanted[:100]}..."
+                f"\nRe-render before accepting: the picture and the claims "
+                f"written beside it have to be about the same thing.")
+    else:
+        files = sorted(f for f in os.listdir(outdir)
+                       if f.endswith(".png")) if os.path.isdir(outdir) else []
+        if files:
+            print("  (no _run.json: these candidates predate the manifest, so "
+                  "the numbering is the folder's and may span several renders)")
     if not files:
         die(f"no candidates in {outdir}")
     if not 1 <= index <= len(files):

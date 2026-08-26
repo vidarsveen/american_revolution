@@ -221,6 +221,14 @@ that sits over a `region.show` or a `marker.show`, and it does — those are fin
 plate is pre-staging the map behind itself, and wrong when the line is pointing at it.
 Read that list.
 
+`tools/review-pictures.py <pack>` assembles the rest of that judgement: every picture beside
+every sentence it is on screen for, in both languages, with the prompt that made it and its
+`claims`/`omits`. It also counts how many of the words a picture ASSERTS are actually spoken
+while it is up — as information, not a verdict, and the file says why at length: as a flag
+that number fired on all twelve wine pictures including the good ones, and as a sort order it
+put three correct pictures at the top while the one that was wrong sat in the middle. The
+report comes out in the order a viewer meets them. `--set` writes a corrected prompt back.
+
 **Half of that question is mechanical, and `tools/check-legible.py` now asks it.** Not
 "does this picture show the thing being said" — no tool reads a sentence — but the spatial
 half: *when the narration names a place, is that place's name on screen at all?* It seeks
@@ -299,6 +307,16 @@ the argument did not, so every pin drew British-red, every "red" ring drew gold,
 glyph ever appeared — and `check-script.py` passed it clean, because it only ever checked verb
 *names*. It now rejects undeclared arguments and validates enum values. The lesson generalises:
 the manifest is the contract, and anything not in it is decoration.
+
+**A generated candidate outlives the prompt that made it, and `--accept` counted the
+folder.** Candidates are named `01-seed100.png` and every render starts at `01`, so a second
+render of the same picture left ten files in one directory and sorted order interleaved them:
+`--accept hender-host=4` handed back a picture from the PREVIOUS prompt and wrote the new
+`claims` and `omits` beside it — a record saying "grey bloom, fog in the rows" over a
+photograph of a pair of pliers, which is precisely what those two fields exist to prevent.
+A render now writes `_run.json` with its own file list and the exact prompt it used;
+`--accept` numbers that list, says how many older candidates it is ignoring, and REFUSES
+when the prompt on disk has changed since. Both paths were confirmed by reproducing them.
 
 **A probe that reads a class name is not a visibility check.** `.ov-fact` had no hidden
 state in the stylesheet at all, so removing `is-on` changed nothing a viewer could see — and

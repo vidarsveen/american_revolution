@@ -37,16 +37,23 @@ written now exists: `content/italy-wine/outline.md`, and `tools/outline.py`
 prints the sentence when a chapter speaks a subject the course put under
 `# not here`.
 
-**1. The scissors are wrong in `hender-host`.** A generated picture, and the
-kind of fault `tools/gen-image.py`'s own header predicts: "the model draws far
-better than it reasons". Needs the reviewer (framework item 5).
+**Done: the scissors are gone, and they were the smaller half of that
+defect.** The tool the model drew was a pair of long-nose pliers with three
+handles, floating unattached to anything. But the sentence the picture sits
+under is about why Nebbiolo is called Nebbiolo — that it hangs into October
+when the valley fills with fog, and that the skin carries a grey bloom. It
+never mentions picking at all. So the correction was not a better pair of
+shears: it was to take the tool out and photograph the thing being said. The
+picture is a bunch hanging late with the bloom clearly on the skins and the fog
+going down the row, and the words it asserts that are actually spoken went from
+1 of 9 to 7 of 13.
 
-**2. Piemonte arrives small.** At s2.b7 the wash is drawn while the camera is
+**1. Piemonte arrives small.** At s2.b7 the wash is drawn while the camera is
 still on the whole country, so the region the sentence is about is a smudge in
 the corner. The camera goes there in the NEXT scene. Either the wash waits for
 the camera or the camera comes early.
 
-**3. Three final pictures are still moving when their chapter ends.**
+**2. Three final pictures are still moving when their chapter ends.**
 Not wine — 19 April, 27 BC and 44 BC, all three frozen. The push is set longer
 than the chapter has left, so the picture is still creeping under the end card,
 which the direction says should be still.
@@ -63,16 +70,13 @@ screen and it is somebody's writing.
 
 ## The framework
 
-**1. `style.json`, and a lab to tune it in.** Decided and not built. Per-pack
-motion durations, the Ken Burns push and drift, camera speed, map weight, a type
-multiplier, `detail.minZoom`. Merged over a documented default set, published as
-CSS custom properties the way `--f-*` already is, with `dev/style-lab.html`
-putting sliders on a running chapter and copying the result out.
-
-The argument for it got stronger twice this week: `DECK_RESERVE_PX` was derived
-from the tallest fact card, went stale the moment the type scale moved, and had
-to be re-derived by hand. Numbers that describe what a pack SHIPS do not belong
-in a module.
+**1. DONE — `style.json` and its lab.** Per-pack motion durations, the Ken Burns
+push and drift, camera speed, map weight, a type multiplier, `detail.minZoom`,
+merged over `engine/defaults/style.json` and published as CSS custom properties
+the way `--f-*` is, with `dev/style-lab.html` putting sliders on a running
+chapter. This list still described it as "decided and not built" a fortnight
+after it shipped, which is what a backlog assembled from a review pass and never
+pruned looks like.
 
 **1b. DONE — the course outline.** `content/<pack>/outline.md`, prose in the same
 notation as a chapter, compiled to `pack.json`'s chapter list by
@@ -104,15 +108,16 @@ runs it for every pack with a `script.md`, and the same guard is what
 `outline.py` does for `pack.json`. Confirmed by putting one label back and
 watching it fail.
 
-**2. Surfaces, and a chart that is a first-class artifact.**
-`engine/stage.js` mounts map, plate, overlays and sound unconditionally, and
-"artifact" therefore means "map". A surface should declare its own verbs and
-lifecycle, and a pack should declare which surfaces it wants — a pack with no
-map should not fetch 5 MB of geometry.
-
-The proof is `chart.show`: bars, a line, a stack, a radar. It is what the wine
-taster profile needs, what a finance course needs, and what `compare.show`
-already gestures at.
+**2. DONE — surfaces, and a chart that is a first-class artifact.** Each surface
+under `engine/surfaces/` declares its own verbs and lifecycle and the registry
+merges them; a pack names what it wants in `pack.json` -> `surfaces`, and one
+that does not name `map` imports no map module and no geometry — measured at 0
+modules and 3.85 MB it does not pay. `chart.show` is the proof and the wine
+course uses it: a `profile` chart against a fixed ceiling, a `bar` chart against
+the largest value on screen, and no `line`, because no pack has a series over
+time and declaring an enum value with no handler behind it is the `kind`-on-
+marker.show defect again. Also still listed here as open a fortnight after it
+shipped.
 
 **3. The map earns its place.** `ground` per scene — `map`, `plate` or `none` —
 and `map.inset` / `map.take` so the map arrives when the sentence is spatial and
@@ -136,13 +141,29 @@ several "open" music models restrict deployment rather than output. The bar is a
 real LICENSE file, read. If nothing clears it, licensed library beds committed
 per pack with the same provenance record.
 
-**5. The picture reviewer.** `gen-image.py` and `check-pictures.py` exist; the
-review does not. Every defect in the first nine generated images was SEMANTIC —
-a pit instead of a redoubt, two bottles instead of one, a steamboat behind an
-18th-century hillside, and of two candidates the prettier one had the steamboat.
-`tools/review-pictures.py` pairs each picture with the sentence it sits under
-and its `claims`/`omits` record; an agent reads both and proposes a corrected
-prompt.
+**5. DONE — the picture reviewer.** `tools/review-pictures.py <pack>` puts every
+picture beside every sentence it is actually on screen for, in both languages,
+with the prompt that made it, its `claims` and `omits`, and how long it holds.
+`--set` writes a corrected prompt back and prints the render command; nothing
+regenerates by itself, because a person has to look at the result anyway.
+
+**What it taught, and both halves are in the file.** The one thing it can count
+mechanically — how many of the words a picture ASSERTS are spoken while it is up
+— is neither a flag nor an order. As a flag it fired on all twelve wine pictures
+including the good ones, because `claims` describes a picture and narration is
+prose about a subject and they are supposed to share few words. As a sort order
+it put three correct pictures at the top on 0 of 9 words ("Italy is full of
+mountains" over a narrow valley with one road matches nothing and is exactly
+right) while the picture that WAS wrong sat in the middle. So it prints the
+number and orders the report the way a viewer meets the pictures.
+
+**And it found a defect in `gen-image.py` on its first real use.** Candidates
+are named `01..0N` per render and accumulate in one folder, so `--accept id=4`
+indexed sorted filenames across renders and installed a picture made from the
+PREVIOUS prompt — with the new `claims` and `omits` written beside it. A render
+writes `_run.json` now; `--accept` numbers that run, says how many older
+candidates it is ignoring, and refuses outright when the prompt has changed
+since. Both confirmed by reproducing them.
 
 **6. The colour pass — the fills are done; the caption ink is not.**
 

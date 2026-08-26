@@ -59,6 +59,14 @@ import os
 import re
 import sys
 
+# The Windows console is cp1252 and raises on an em-dash, which is a silly way
+# for a report to die. Same three lines as check-all.py.
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, OSError):
+    pass
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, "content")
 DEFAULT_LANGS = ["no", "en"]

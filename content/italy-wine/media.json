@@ -149,15 +149,15 @@
   "fit": "cover",
   "method": "flux2-klein-4b-Q8_0",
   "title": {
-   "no": "Klar til å plukkes",
-   "en": "Ready to pick"
+   "no": "Grått belegg, seint på året",
+   "en": "Grey bloom, late in the year"
   },
-  "claims": "A bunch of dark grapes on the vine with shears at the stem, the moment before picking.",
-  "omits": "No hands and no person in frame. NOT a variety -- the model cannot tell one dark grape from another and nothing here identifies which this is.",
+  "claims": "A bunch of dark grapes still hanging late in the season, the skins carrying a pale grey bloom, fog in the rows behind.",
+  "omits": "No hands, no person and no tool in frame. NOT a variety -- the model cannot tell one dark grape from another and nothing here identifies which this is. The fog stands for the valley fog the name is argued from; it is not a photograph of Piemonte.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a bunch of dark blue grapes hanging on the vine with a small pair of steel pruning shears resting open against the stem just above it, no hands and no people in frame, vine leaves behind, dew on the skins, soft morning light"
+  "prompt": "a single bunch of dark blue-black grapes still hanging on the vine in late October, the skins dusted with a pale grey bloom, thin fog in the rows behind, a few yellowing vine leaves, no hands and no people and no tools in frame, flat cool morning light"
  },
  "flasker-liggende": {
   "kind": "made",

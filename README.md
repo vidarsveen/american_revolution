@@ -104,10 +104,17 @@ and no pictures at all, so the writing gets judged before anything decorates it.
 ```bash
 python tools/fetch-media.py italy-wine            # from Wikimedia, with licence captured
 python tools/gen-image.py italy-wine --list       # or generate them
+python tools/review-pictures.py italy-wine        # each one beside the sentence it sits under
 ```
 
 Every picture carries its artist, licence and source, and a generated one carries what it
 `claims` and what it `omits`.
+
+The review is not optional and it is not about looking. Every defect in the first nine
+generated pictures was semantic — a pit instead of a redoubt, two bottles instead of one, a
+steamboat behind an 18th-century hillside — and of two candidates for one prompt, the prettier
+painting was the one with the steamboat. So the reviewer puts the picture beside the sentences
+it is actually on screen for, and `--set` writes the corrected prompt back.
 
 ### 6. Tune it — `content/<id>/style.json`
 

@@ -121,15 +121,16 @@
   "omits": "NOT a variety, and not an age. The model cannot distinguish one vine species from another and nothing here should be read as identifying the grape."
  },
  "hender-host": {
-  "prompt": "a bunch of dark blue grapes hanging on the vine with a small pair of steel pruning shears resting open against the stem just above it, no hands and no people in frame, vine leaves behind, dew on the skins, soft morning light",
+  "prompt": "a single bunch of dark blue-black grapes still hanging on the vine in late October, the skins dusted with a pale grey bloom, thin fog in the rows behind, a few yellowing vine leaves, no hands and no people and no tools in frame, flat cool morning light",
   "style": "natural light photograph, muted colour, shallow depth of field",
   "aspect": "square",
   "title": {
-   "no": "Klar til å plukkes",
-   "en": "Ready to pick"
+   "no": "Grått belegg, seint på året",
+   "en": "Grey bloom, late in the year"
   },
-  "claims": "A bunch of dark grapes on the vine with shears at the stem, the moment before picking.",
-  "omits": "No hands and no person in frame. NOT a variety -- the model cannot tell one dark grape from another and nothing here identifies which this is."
+  "claims": "A bunch of dark grapes still hanging late in the season, the skins carrying a pale grey bloom, fog in the rows behind.",
+  "omits": "No hands, no person and no tool in frame. NOT a variety -- the model cannot tell one dark grape from another and nothing here identifies which this is. The fog stands for the valley fog the name is argued from; it is not a photograph of Piemonte.",
+  "//prompt-was": "The shears were the defect twice over: the model drew a pair of pliers, and the sentence this sits under is about the fog it hangs into and the grey bloom on the skin — it never mentions picking. Old prompt: a bunch of dark blue grapes hanging on the vine with a small pair of steel pruning shears resting open against the stem just above it, no hands and no people in frame, vine leaves behind, dew on the skins, soft morning light"
  },
  "flasker-liggende": {
   "prompt": "rows of dusty dark green wine bottles lying on their sides in a stone cellar rack, seen end on so only the bases face the camera, thick dust, dim light, no paper on the glass",
