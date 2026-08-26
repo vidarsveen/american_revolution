@@ -119,15 +119,39 @@ time and declaring an enum value with no handler behind it is the `kind`-on-
 marker.show defect again. Also still listed here as open a fortnight after it
 shipped.
 
-**3. The map earns its place.** `ground` per scene — `map`, `plate` or `none` —
-and `map.inset` / `map.take` so the map arrives when the sentence is spatial and
-leaves when it is not. Plus a map-share number in `check-pictures.py` beside the
-`cover` percentage it already prints.
+**3. The map earns its place — the camera now composes; the rest is open.**
 
-Three independent measurements point here: the lower deck reserves 126 px
-whenever a card is raised, the caption box is 127 px median, and the transport
-is 78. On a 390x844 phone roughly 40 % of the frame is spoken for before the map
-draws anything — and bigger type made that worse, as it had to.
+**DONE: a flyTo aims at the middle of the picture, not the middle of the
+element.** `framePadding()` has known where the furniture is for as long as it
+has existed, and only `fitCoords()` ever asked. A `flyTo` handed the map a point
+and the map centred it in the HOST — whose bottom sixth is caption and
+transport, and whose bottom third is caption, transport and a fact card in any
+scene that raises one. So the place a sentence names arrived low and the frame
+above it went to whatever lies north.
+
+Measured at 390x844 on the wine chapter's "og Piemonte, helt nordvest": before,
+the top half of the phone was Switzerland and Rome, Naples, Palermo and Sicily
+were behind the subtitles; after, the whole boot is in the clear band and
+Piemonte sits in the upper left of the PICTURE. Firenze moved 105 px up the
+frame. `map/index.js`'s `flyTo` has taken an `offset` since Explore needed to
+clear its sheet — nothing had ever passed one. `place.highlight` and the
+one-place case of `fitPlaces` compose too, since both are a flyTo underneath.
+
+**It broke a bench, and the bench was believed.** `check-legible.py` re-centres
+the camera itself when a cue is a `place.highlight`, because a seek leaves the
+camera where the rebuild put it — and it did that with `setView(coords)`, which
+is exactly the framing the app had just stopped drawing. It would have gone on
+judging every label against a frame no viewer is shown. The offset is exported
+through `engine/scenes/map.js` (the handle, not the surface, so a mapless pack
+still imports no geometry) and the probe uses the same one implementation.
+
+STILL OPEN, and this is the larger half: `ground` per scene — `map`, `plate` or
+`none` — and `map.inset` / `map.take`, so the map arrives when the sentence is
+spatial and leaves when it is not. Plus a map-share number in
+`check-pictures.py` beside the `cover` percentage it already prints. On a
+390x844 phone roughly 40 % of the frame is spoken for before the map draws
+anything, and composing into what is left does not change that; it only stops
+the camera pretending otherwise.
 
 **4. Music.** Beds are Karplus-Strong drones and plucks; they are measurably
 decent and they are not a score. `tools/gen-music.py` in `.venv-audio`, shaped

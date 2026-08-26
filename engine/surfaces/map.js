@@ -402,6 +402,29 @@ function framePadding() {
   return pad;
 }
 
+/**
+ * The middle of the picture is not the middle of the map element.
+ *
+ * `framePadding()` has known this for as long as it has existed, and only
+ * fitCoords() ever asked: a fit composes into the part you can see. A flyTo
+ * did not. It handed the map a point, the map centred it in the HOST, and the
+ * host's bottom sixth is caption and transport — so the place a sentence names
+ * arrives low, half the frame goes to whatever is north of it, and on the wine
+ * chapter's "and Piedmont, in the far north-west" the top half of a phone was
+ * Switzerland while Italy was squeezed against the subtitles.
+ *
+ * Measured at 390x844: the map host is 390x734, the caption slot and transport
+ * cover 119 px of it and the title bar 27, so the visible band is centred 46 px
+ * ABOVE the host centre and every flyTo in every course was aiming 46 px too
+ * low. As pixels, at the zoom the camera is arriving at — map/index.js's flyTo
+ * has taken an `offset` for exactly this since Explore needed to clear its
+ * sheet; nothing had ever passed one.
+ */
+export function composeOffset() {
+  const pad = framePadding();
+  return [(pad.left - pad.right) / 2, (pad.top - pad.bottom) / 2];
+}
+
 export function flyTo(cue, instant) {
   const place = chapter.places?.[cue.to];
   if (!place || !map) return;
@@ -409,6 +432,7 @@ export function flyTo(cue, instant) {
     to: place.coords,
     zoom: cue.zoom ?? place.zoom ?? 12,
     over: cue.over,
+    offset: composeOffset(),
     instant,
   });
 }
@@ -439,6 +463,7 @@ export function fitPlaces(cue, instant) {
       to: only.coords,
       zoom: cue.zoom ?? only.zoom ?? mapConf().zoom.default,
       over: cue.over,
+      offset: composeOffset(),   // fitting one place is a flyTo, and composes
       instant,
     });
     return;
@@ -770,7 +795,7 @@ export function highlight(cue, instant) {
      the animation phase, and the lab excludes it for that reason. Arriving
      somewhere different is not the same kind of difference. */
   if (cue.centre !== false) {
-    map.flyTo({ to: place.coords, over: 1.1, instant });
+    map.flyTo({ to: place.coords, over: 1.1, offset: composeOffset(), instant });
   }
 }
 

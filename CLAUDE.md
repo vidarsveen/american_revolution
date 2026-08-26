@@ -349,6 +349,17 @@ baseline of what is still dead, and nothing new allowed. It excludes `tools/`
 deliberately, because `tools/check-turn.py` queried three of those dead selectors and
 would otherwise have vouched for the very names it was failing to find.
 
+**The middle of the map element is not the middle of the picture, and a probe that
+re-centres the camera has to know that.** The caption, the transport and a fact card sit ON
+the map, so a `flyTo` that centres its target in the host puts it low and spends the top of
+the frame on whatever is north — measured on the wine chapter, half a phone of Switzerland
+while Italy was pressed against the subtitles. Every camera verb composes into the visible
+band now, using the same `framePadding()` the fits have always used. It is exported through
+`engine/scenes/map.js` — the HANDLE, never the surface, or a pack with no map pulls in
+map/index.js and the surface refactor's one measurable payoff is gone. `check-legible.py`
+re-centred with `setView(coords)` and would otherwise have gone on judging every label
+against a frame the app no longer draws.
+
 **Two overlays anchored to the same edge will fight, and the later one wins.** The stats deck
 and the caption box were both `bottom: calc(var(--transport-h) + ...)`, and the caption sits on
 a higher layer — so every number the chapter shows was drawn behind it. Invisible, not missing,

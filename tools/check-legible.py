@@ -475,7 +475,18 @@ async (a) => {
   let fixed = false;
   if (a.centreOn) {
     const pl = L.places[a.centreOn];
-    if (pl && pl.coords) { map.setView(pl.coords[0], pl.coords[1]); fixed = true; }
+    if (pl && pl.coords) {
+      // COMPOSED, not centred. The camera does not put a point in the middle
+      // of the map element -- the bottom sixth of that element is caption and
+      // transport -- so re-centring with setView() reproduced a frame the app
+      // stopped drawing the day flyTo started composing, and every label was
+      // then judged 100 px from where it really is. The offset comes from the
+      // surface itself through the handle, so there is one implementation.
+      map.flyTo({ to: pl.coords, zoom: map.camera().zoom,
+                  offset: L.composeOffset ? L.composeOffset() : [0, 0],
+                  instant: true });
+      fixed = true;
+    }
   }
 
   await map.settled();
@@ -558,6 +569,7 @@ async () => {
      answer rather than an error. See that file's own header. */
   const M = await import('./engine/scenes/map.js');
   window.__leg.map = M.getStoryMap();
+  window.__leg.composeOffset = M.composeOffset;
   const ch = S.getChapter();
   if (!ch) return null;
   const places = {};

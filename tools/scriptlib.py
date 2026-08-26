@@ -213,8 +213,14 @@ def cue_time(cue: dict, tb, lang: str):
 # reads the catalogue rather than copying it.
 #
 # What is NOT modelled, and why each is safe to leave out:
-#   · `offset` on flyTo — no cue passes one; engine/scenes/map.js:295 does not
-#     forward it.
+#   · `offset` on flyTo — no CUE passes one, but the surface now does: every
+#     flyTo composes into the part of the map that is not caption, transport
+#     or card, so the camera centre lands (pad.top - pad.bottom) / 2 px above
+#     the target. Left out on purpose. Both ends of a flight are composed by
+#     the same rule, so the offset cancels out of the distance except for the
+#     part that scales with zoom — under a tenth of a second of `over` on the
+#     flights that ship, against margins measured in seconds. If a flight ever
+#     fails here by a hair, this is the first thing to model.
 #   · prefers-reduced-motion — a flight becomes a cut, so it always fits.
 #   · the exact stage size (below).
 

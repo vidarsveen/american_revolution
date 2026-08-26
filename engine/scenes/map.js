@@ -31,3 +31,10 @@ export function getStoryMap() { return M()?.getStoryMap() ?? null; }
 
 /** Which scene we are in, so a place can arrive when the story reaches it. */
 export function mapScene(i) { M()?.mapScene(i); }
+
+/* Where the camera puts a point so it lands in the part of the map you can
+   actually SEE — the host less the caption, the transport and any card. A
+   probe that re-centres the camera has to use the same offset or it measures a
+   frame no viewer is shown; tools/check-legible.py does exactly that. Returns
+   [0, 0] when this pack has no map, which is the honest answer. */
+export function composeOffset() { return M()?.composeOffset() ?? [0, 0]; }
