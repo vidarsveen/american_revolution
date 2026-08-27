@@ -54,7 +54,7 @@ figure.label: druesorter i Italia | grape varieties in Italy
 
 {plate.hide 1.1} Grunnen er verken klima eller flaks. Grunnen er at Italia ble ett land veldig seint, og at det er fullt av fjell. {mark topic:hvorfor-italia span=1} {plate dal-avstengt motion=in over=20 dim=0.14 push=0.2 into=1.4 @start}
 > The reason is neither climate nor luck. The reason is that Italy became one country very late, and that it is full of mountains. {^}
-{plate.hide 1.1 @end} {flyTo torino zoom=6.4 over=4.0} Dette er første del av en reise nedover støvelen. Vi begynner helt nordvest, i tåka.
+Dette er første del av en reise nedover støvelen. Vi begynner helt nordvest, i tåka.
 > This is the first part of a journey down the boot. We start in the far north-west, in the fog.
 
 ## Et land som står på høykant | A country stood on its edge
