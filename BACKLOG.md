@@ -198,6 +198,27 @@ built on the old one. What a scene declaring `ground: none` would still buy is
 the paint and the geometry a subject that is not about places never needs — that
 is a real argument, and it is a different one.
 
+**4a. The music can be turned off, and that is the honest state of it.** The
+bed ducks 12 dB whenever anyone speaks, which is the grammar working exactly as
+docs/design-direction.md prescribes and reads as a hand on the volume knob for
+the length of a chapter. Reported that way, along with "the actual music is not
+very interesting". So there is a switch in the transport now — a note that
+becomes a note with the wire cut — remembered across sessions, and it silences
+the BED only: an effect is a thing the narration just named and a room is a
+room. A pack that declares no `sound` surface does not get the button.
+
+Two things it does not fix and that come next, in this order:
+
+- **The effects.** Three in the wine chapter, at 4:32, 6:42 and 7:30, and they
+  were reported as not working at all. That is the next thing to measure — the
+  bed's level was wrong by 35 dB and nobody had metered it, so assume nothing
+  about the effect levels either.
+- **The beds themselves.** Karplus-Strong drones are what a synthesiser gives
+  you for free and they are not a score. The survey below says which models the
+  licence allows; whether the pumping is still objectionable at a good level
+  with real music is a question that cannot be answered until there is real
+  music.
+
 **4. Music — the licence survey is done, and it did not fail.**
 
 This list expected it to: MusicGen's weights are CC-BY-NC, which is the AudioGen

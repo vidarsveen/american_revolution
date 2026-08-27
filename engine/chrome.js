@@ -9,12 +9,19 @@
    ============================================================ */
 
 import { transcriptHtml, setCaptionsOn, captionsOn } from './captions.js';
+import { setMusicOn, musicIsOn } from './scenes/sound.js';
+import { surfacesFor } from './surfaces/registry.js';
 
 const ICON = {
   play:  '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l11-6.8c.6-.4.6-1.4 0-1.8l-11-6.8c-.7-.4-1.6.1-1.6.9Z"/></svg>',
   pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1.4"/><rect x="14" y="4.5" width="4" height="15" rx="1.4"/></svg>',
   back:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 6 5 12l6 6"/><path d="M19 6l-6 6 6 6"/></svg>',
   fwd:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 6l6 6-6 6"/><path d="M5 6l6 6-6 6"/></svg>',
+  // A note, and a note with the wire cut. Not a speaker with waves: this
+  // switches the MUSIC BED only — the effects and the room are untouched, and
+  // a speaker icon promises to mute everything.
+  music: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>',
+  musicOff: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path d="M4 4l16 16"/></svg>',
   cc:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M10 10.5a2.4 2.4 0 1 0 0 3"/><path d="M16.5 10.5a2.4 2.4 0 1 0 0 3"/></svg>',
   book:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H5.5A1.5 1.5 0 0 1 4 15.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h4.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>',
   text:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M5 6.5h14M5 11h14M5 15.5h9"/></svg>',
@@ -68,6 +75,8 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
       <span class="transport__time">0:00</span>
       <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
               aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
+      <button class="tp-btn tp-btn--icon tp-btn--music" data-act="music"
+              aria-label="${strings.music}" aria-pressed="true">${ICON.music}</button>
       <button class="tp-btn tp-btn--lang" data-act="lang"
               aria-label="${strings.language}">${strings.langMark}</button>
       <button class="tp-btn tp-btn--icon" data-act="library"
@@ -77,6 +86,23 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
     </div>
   `;
   host.appendChild(el);
+
+  // The stored choice, on the control, before anyone looks at it. The markup
+  // above cannot carry it: this module is built once per chapter and the
+  // preference outlives the chapter.
+  for (const b of el.querySelectorAll('[data-act=music]')) {
+    /* Ask the PACK, not the registry. Surfaces load behind dynamic imports, so
+       at the moment the transport is built the sound module has usually not
+       landed yet — asking whether it is mounted answered "no sound here" on a
+       chapter whose bed was two seconds away, and the button removed itself.
+       What the pack DECLARES is known synchronously and is the real question:
+       a course with no sound surface has no music to turn off, and a control
+       that does nothing is worse than no control. */
+    if (!surfacesFor(chapter?.packInfo).includes('sound')) { b.remove(); continue; }
+    const on = musicIsOn();
+    b.setAttribute('aria-pressed', String(on));
+    b.innerHTML = on ? ICON.music : ICON.musicOff;
+  }
 
   const rail = el.querySelector('.transport__rail');
   chapter.scenes.forEach((scene, i) => {
@@ -207,6 +233,16 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
       // story. This is the same control, where you are.
       onLang?.();
       return;
+    }
+    if (act === 'music') {
+      const next = !musicIsOn();
+      setMusicOn(next);
+      for (const b of el.querySelectorAll('[data-act=music]')) {
+        b.setAttribute('aria-pressed', String(next));
+        b.innerHTML = next ? ICON.music : ICON.musicOff;
+      }
+      try { localStorage.setItem('fortell:music', next ? '1' : '0'); } catch { /* private mode */ }
+      return;   // same as captions: turning the music off is not "done fiddling"
     }
     if (act === 'cc') {
       const next = !captionsOn();

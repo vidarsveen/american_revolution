@@ -29,3 +29,20 @@ export function resumeSound() { S()?.resumeSound(); }
 export function stopSound() { S()?.stopSound(); }
 export function fadeOutSound(ms) { S()?.fadeOutSound(ms); }
 export function getSoundscape() { return S()?.getSoundscape() ?? null; }
+
+/* The reader's own switch for the music bed.
+
+   The fallback is the STORED choice, not `false`: the transport is built
+   before the surfaces are mounted, so a bare `?? false` painted the control
+   "off" on a chapter whose music was about to start — the control lying about
+   the thing it controls, which is the `.ov-fact` defect in a smaller shape.
+   `hasSound()` is how the transport knows whether to offer the switch at all;
+   a pack that declares no sound surface has no music to turn off. */
+export function setMusicOn(on) { S()?.setMusicOn(on); }
+
+export function musicIsOn() {
+  const m = S();
+  if (m) return m.musicIsOn();
+  try { return localStorage.getItem('fortell:music') !== '0'; }
+  catch { return true; }
+}

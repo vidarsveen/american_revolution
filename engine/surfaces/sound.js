@@ -150,7 +150,7 @@ function resolveWanted() {
   // is gone within a sentence of the scene turning reads as the sound
   // breaking rather than as silence arriving. docs/design-direction.md §3:
   // a bed leaves over four seconds and never cuts.
-  if (!wantMusic) scape.stopMusic({ fadeMs: 4000 });
+  if (!wantMusic || !musicOn) scape.stopMusic({ fadeMs: 4000 });
   if (!wantAmbience) scape.setAmbience(null, { fadeMs: 2400 });
 }
 
@@ -266,10 +266,41 @@ export function setAmbience(cue, instant) {
 }
 
 /** The music bed. It ducks under the voice on its own. */
+/* MUSIC OFF IS A READER'S DECISION, and it is not the same as sound off.
+   The bed ducks 12 dB whenever anyone speaks, which is the grammar working as
+   designed and reads to some ears as a hand on the volume knob all chapter.
+   Reported exactly that way. So: a switch in the transport, remembered, and
+   the effects and the ambience are untouched by it — an effect is a thing the
+   narration just named, and a room is a room.
+
+   `wantMusic` still records what the CUES asked for, so turning music back on
+   in the middle of a scene starts the bed that scene declared rather than
+   waiting for the next one. */
+let musicOn = storedMusicOn();
+
+/** Whatever you chose last time. Music defaults to on. */
+function storedMusicOn() {
+  try { return localStorage.getItem('fortell:music') !== '0'; }
+  catch { return true; }
+}
+
+export function musicIsOn() { return musicOn; }
+
+export function setMusicOn(on) {
+  musicOn = Boolean(on);
+  if (!scape) return;
+  if (!musicOn) { scape.stopMusic({ fadeMs: 1200 }); return; }
+  if (wantMusic) scape.playMusic(wantMusic, { gainDb: wantMusicGain });
+}
+
+let wantMusicGain = 0;
+
 export function playMusicCue(cue, instant) {
   if (!scape) return;
   wantMusic = cue.id || null;
+  wantMusicGain = cue.gainDb ?? 0;
   if (!cue.id) { scape.stopMusic({ instant }); return; }
+  if (!musicOn) return;
   // Idempotent for the same bed, so replaying this cue after a seek does not
   // restart it — which is the whole point of the settle above.
   scape.playMusic(cue.id, { instant, gainDb: cue.gainDb ?? 0 });
