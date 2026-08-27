@@ -48,10 +48,22 @@ picture is a bunch hanging late with the bloom clearly on the skins and the fog
 going down the row, and the words it asserts that are actually spoken went from
 1 of 9 to 7 of 13.
 
-**1. Piemonte arrives small.** At s2.b7 the wash is drawn while the camera is
-still on the whole country, so the region the sentence is about is a smudge in
-the corner. The camera goes there in the NEXT scene. Either the wash waits for
-the camera or the camera comes early.
+**1. Piemonte arrives small — mostly answered, and by the camera rather than by
+the cue.** The frame was measured at s2.b7 before and after the composition fix
+(the camera now aims at the middle of the picture rather than the middle of the
+map element). Before: the top half of the phone was Switzerland, the boot ran
+into the subtitles, and Piemonte was a smudge in the corner of a frame that was
+mostly not Italy. After: the whole country is in the clear band, Firenze sits
+105 px higher, and Piemonte is the largest of the four washes on screen with
+Torino pinned beside it.
+
+What is left is a judgement, not a defect. The sentence is "og Piemonte, helt
+nordvest" — "far north-west" needs the whole country in frame to mean anything,
+so bringing the camera in early would cost the line its sense, and the two beats
+after it (`En ting til, før vi drar` and the one about names being places) are
+country-level talk that a zoomed-in map would not serve either. If it still
+reads small to the author, the move is to give it its own beat, not to move the
+camera.
 
 **2. Three final pictures are still moving when their chapter ends.**
 Not wine — 19 April, 27 BC and 44 BC, all three frozen. The push is set longer
