@@ -33,7 +33,7 @@ The outline is `content/<pack>/outline.md`, in the same notation as a chapter:
     teaches: terroir, nebbiolo, barolo, barbaresco, barbera, moscato
 
 `pack.json`'s `chapters` array is COMPILED from it, the way the chapter JSON is
-compiled from `script.md` — one place a person writes, one place the engine
+compiled from `script.<chapter>.md` — one place a person writes, one the engine
 reads, and `--check` is the only thing keeping them in step. `for`, `teaches`
 and the two sections stay here: the engine has no use for them, and the tools
 have nothing else to ask their questions of.

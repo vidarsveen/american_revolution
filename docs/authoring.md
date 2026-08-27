@@ -5,10 +5,16 @@ A chapter used to mean hand-editing sixteen hundred lines of JSON and guessing w
 file per chapter, prose first, cues attached to the words they belong to.
 
 ```bash
-python tools/author.py content/italy-wine/script.md --check   # compile and complain
-python tools/author.py content/italy-wine/script.md --write   # write the chapter JSON
+python tools/author.py --new italy-wine/chapter-2-toscana     # start one
+python tools/author.py content/italy-wine/script.chapter-2-toscana.md --check
+python tools/author.py content/italy-wine/script.chapter-2-toscana.md --write
 python tools/author.py --verbs                                # every cue and what it takes
 ```
+
+One prose file per chapter, named `script.<chapter-id>.md` the way the timing
+files are named. `--new` fills in the front matter from `outline.md` and puts
+what the outline says the chapter is FOR at the top of the file, where the
+person writing it will see it every time they open it.
 
 The compiler writes the same `content/<pack>/<chapter>.json` the engine has always loaded.
 Nothing at runtime changes, the JSON stays committed and readable, and

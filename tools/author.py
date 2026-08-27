@@ -1574,6 +1574,115 @@ def dump(chapter: dict) -> str:
     return json.dumps(chapter, ensure_ascii=False, indent=1) + "\n"
 
 
+def scaffold(ref: str) -> int:
+    """A first script.<chapter>.md, from what the course has already decided.
+
+    CLAUDE.md says the next real test of this framework is somebody writing
+    chapter two of the wine course in this format WITHOUT HELP, and that where
+    it sticks is the next job. The first place it sticks is the blank file: the
+    front matter, the section names and the two-language grammar are all in
+    docs/authoring.md, and copying them out of a document is not writing.
+
+    So this fills in what is already known — the id, the pack, the title and
+    subtitle from outline.md, the regions file the pack declares — and, at the
+    top where the writer will see it every time they open the file, what the
+    OUTLINE says this chapter is FOR. That line is the whole reason the outline
+    exists, and it is worth nothing in a file nobody has open.
+    """
+    pack, _, cid = ref.partition("/")
+    if not pack or not cid:
+        print("usage: author.py --new <pack>/<chapter-id>", file=sys.stderr)
+        return 2
+    dest = os.path.join(CONTENT, pack, f"script.{cid}.md")
+    if os.path.exists(dest):
+        print(f"{os.path.relpath(dest, ROOT)} already exists", file=sys.stderr)
+        return 2
+
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    entry, langs, purpose = {}, list(DEFAULT_LANGS), None
+    try:
+        import outline as outline_tool
+        plan = outline_tool.parse_outline(os.path.join(CONTENT, pack, "outline.md"))
+        langs = plan["langs"]
+        for ch in plan["chapters"]:
+            if ch["id"] == cid:
+                entry = ch
+        purpose = (entry.get("for") or {}).get(langs[0])
+    except (FileNotFoundError, outline_tool.SourceError):
+        pass
+
+    manifest = load_json(os.path.join(CONTENT, pack, "pack.json")) or {}
+    regions = ((manifest.get("map") or {}).get("regions")
+               or (manifest.get("pools") or {}).get("areas") or "")
+    pair = lambda field: " | ".join(
+        (entry.get(field) or {}).get(l, "TODO") for l in langs)
+
+    # Forward slashes in the commands whatever the platform: they are meant to
+    # be typed, and a Windows path in a doc line is a paper cut.
+    shown = os.path.relpath(dest, ROOT).replace(os.sep, "/")
+    out = [f"// {cid}, written as prose. The chapter JSON is compiled from this",
+           "// file and is what the engine loads; --check tells you whether the",
+           "// two still say the same thing.",
+           "//",
+           f"//     python tools/author.py {shown} --check",
+           f"//     python tools/author.py {shown} --write",
+           f"//     python tools/narrate.py --chapter {pack}/{cid} --lang {langs[0]}",
+           "//",
+           "// docs/authoring.md writes one from nothing, start to finish, and",
+           "// `python tools/author.py --verbs` lists every cue and what it takes."]
+    if purpose:
+        out += ["//",
+                "// WHAT THIS CHAPTER IS FOR, from outline.md — if what you are",
+                "// writing stops answering this, the outline is the thing to",
+                "// change, not this comment:",
+                "//"]
+        out += [f"//   {line}" for line in wrap_for_comment(purpose)]
+    out += ["", "---",
+            f"id: {cid}",
+            f"pack: {pack}",
+            f"title: {pair('title')}",
+            f"subtitle: {pair('subtitle')}"]
+    if regions:
+        out.append(f"regions: {regions}")
+    out += ["---", "",
+            "# places",
+            "// id  lat, lon  [zoom=  kind=]  Navn | Name — the camera needs",
+            "// these; a place a cue never names does not have to be here.",
+            "",
+            "# ending",
+            "say: TODO | TODO",
+            "figure.value: 0",
+            "figure.label: TODO | TODO",
+            "",
+            "## Scenetittel | Scene title",
+            "",
+            "Første setning. En setning er ett beat.",
+            "> First sentence. One sentence is one beat.",
+            "Neste setning, og et blankt linjeskift under er en lengre pause.",
+            "> Next sentence, and a blank line below is a longer pause.",
+            ""]
+    with open(dest, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("\n".join(out))
+    print(f"wrote {shown}")
+    if not entry:
+        print(f"  ({cid} is not in content/{pack}/outline.md — add it there "
+              f"first and the title, subtitle and purpose come with it)")
+    return 0
+
+
+def wrap_for_comment(text: str, width: int = 68):
+    words, line, out = text.split(), "", []
+    for w in words:
+        if len(line) + len(w) + 1 > width:
+            out.append(line)
+            line = w
+        else:
+            line = f"{line} {w}".strip()
+    if line:
+        out.append(line)
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -1588,10 +1697,14 @@ def main() -> int:
                     help="the other direction: an existing chapter as prose")
     ap.add_argument("--lab", action="store_true",
                     help="round-trip every chapter in content/ and report")
+    ap.add_argument("--new", metavar="PACK/CHAPTER",
+                    help="a first script.<chapter>.md, filled in from outline.md")
     ap.add_argument("--verbs", action="store_true",
                     help="the cue vocabulary, as engine/verbs.json declares it")
     args = ap.parse_args()
 
+    if args.new:
+        return scaffold(args.new)
     if args.verbs:
         print(verbs_report())
         return 0

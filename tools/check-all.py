@@ -172,10 +172,13 @@ def main() -> int:
         # happened. Six edits (five map labels off, one place name) were made
         # straight to the wine chapter and never to its script.md, so the next
         # compile would have put the labels back on the map, silently.
+        # `script.<chapter>.md`, the way timing files are keyed, plus the bare
+        # `script.md` a pack with one chapter may still use. A pack with two
+        # chapters and one checked source is how the prose quietly stops being
+        # the source for the other one.
         for pack in packs:
-            src = ROOT / "content" / pack / "script.md"
-            if src.exists():
-                ok &= run(f"author --check {pack}",
+            for src in sorted((ROOT / "content" / pack).glob("script*.md")):
+                ok &= run(f"author --check {pack}/{src.name}",
                           ["tools/author.py", str(src), "--check"])
 
     # The level above a chapter: does the course still say what it teaches,

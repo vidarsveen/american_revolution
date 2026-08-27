@@ -110,6 +110,21 @@ chapter two claiming to teach Barolo.
 `chapter-2-toscana` is in there as `planned: true` with its purpose written, so
 the next chapter is written into a course rather than into empty space.
 
+**1d. A pack could only hold one prose file, which is a poor answer to "write
+chapter two".** `content/<pack>/script.md` compiled to whichever chapter its
+front matter named, and a second one had nowhere to live — and `check-all` only
+globbed the one name, so a second source would have gone unchecked and quietly
+stopped being the source. It is `script.<chapter-id>.md` now, keyed the way
+`timing.<chapter>.<lang>.json` is, and the check globs `script*.md`.
+
+`python tools/author.py --new italy-wine/chapter-2-toscana` writes the first
+draft: the front matter filled in from `outline.md`, the sections in place, the
+two-language grammar shown once — and at the top, where the writer sees it every
+time they open the file, **what the outline says the chapter is FOR**. That line
+is the whole reason the outline exists and it was worth nothing in a file nobody
+had open. CLAUDE.md says the next real test of this framework is somebody
+writing that chapter without help; the blank file was the first place it stuck.
+
 **1c. The prose was not the source, and nothing said so.** Six edits had been
 made straight to `chapter-1-piemonte.json` and never to `script.md` — five
 region labels turned off and one place name — so the next compile would have put

@@ -104,6 +104,9 @@ js/           the Explore mode
 content/
   packs.json       the list of subjects. Data, not code.
   <pack>/
+    script.*.md    one chapter each, as prose — script.<chapter-id>.md, keyed
+                   the way timing.<chapter>.<lang>.json is. `author.py --new
+                   <pack>/<chapter>` starts one from the outline.
     outline.md     the course above the chapter: what it teaches, in what
                    order, what each chapter is FOR, and what it leaves out.
                    pack.json's chapter list is compiled from it.
@@ -175,7 +178,7 @@ individual tools still work on their own, and a failure reads the same either wa
 ```bash
 python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/outline.py italy-wine          # does the course still say what it teaches?
-python tools/author.py content/italy-wine/script.md --check   # prose vs the JSON that ships
+python tools/author.py content/italy-wine/script.chapter-1-piemonte.md --check   # prose vs the JSON that ships
 python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
@@ -270,7 +273,8 @@ your code. Do not go looking for the bug. And it is why the answer to "is it liv
 questions have different answers for ten minutes.
 
 **A compiled file edited by hand is a fork, and the compiler wins the next time
-somebody runs it.** `script.md` is the source and `chapter-*.json` is what it compiles to —
+somebody runs it.** `script.<chapter>.md` is the source and `chapter-*.json` is what it
+compiles to —
 but six edits had been made straight to the wine chapter (five region labels turned off, one
 place name) and never to the prose, so the next `--write` would have put the labels back on
 the map, silently. Nothing reported it: `author.py --lab` round-trips the JSON through
@@ -651,7 +655,8 @@ of the surrounding file.
   about one subject, and their content is not the work. Do not fix them because
   a check reported them.
 - **The next real test is somebody writing chapter two of the wine course in
-  `content/italy-wine/script.md`'s format**, without help. If that takes more
+  the `script.<chapter>.md` format**, without help — `python tools/author.py
+  --new italy-wine/chapter-2-toscana` starts the file. If that takes more
   than an hour, the framework is not ready to produce with, and where it sticks
   is the next job. Everything else is behind that.
 - Open work is the top section of `BACKLOG.md`, in order, split into the course
