@@ -98,11 +98,11 @@ PACK_SKIP_FILES = {"detail.json"}
 #
 # The pack DETAIL files are a different trade and the answer is no:
 #
-#   content/american-revolution/geo/detail.json   2 066 KB
-#   content/italy-wine/geo/detail.json            1 551 KB
-#   content/norway-1940/geo/detail.json           2 840 KB
-#                                                ---------
-#                                                 6 457 KB
+#   content/american-revolution/geo/detail.json   2 017 KB
+#   content/italy-wine/geo/detail.json            1 153 KB
+#   content/norway-1940/geo/detail.json           2 773 KB
+#                                                 ---------
+#                                                  5 943 KB
 #
 #   · It is per-pack and never shared. Precaching all three means downloading
 #     two packs' close-in coastline that this reader will never open, and the
