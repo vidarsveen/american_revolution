@@ -50,15 +50,14 @@ for: Å vise at navnet på en italiensk flaske nesten alltid er et sted, og at
 teaches: drue, terroir, etikett, nebbiolo, barolo, barbaresco, barbera, langhe
 
 ## chapter-2-toscana
-title: TODO | TODO
-subtitle: TODO | TODO
-blurb: TODO | TODO
+title: Én drue, fire adresser | One grape, four addresses
+subtitle: Toscana, fra Firenze til havet | Tuscany, from Florence to the sea
+blurb: Chianti, Brunello, Nobile, Morellino. Fire navn på fire steder, og den samme druen i alle fire. | Chianti, Brunello, Nobile, Morellino. Four names for four places, and the same grape in all four.
 langs: no, en
-planned: true
 for: Å ta det samme spørsmålet sørover, der druen er én og stedene er mange:
      Sangiovese under fire navn. Kapittel én forklarte hvorfor stedet står på
      flaska; dette forklarer hvorfor det samme stedsnavnet kan bety fire ting.
      | To take the same question south, where the grape is one and the places
      are many: Sangiovese under four names. Chapter one explained why the place
      is on the label; this explains why one place name can mean four things.
-teaches: sangiovese, chianti, brunello, appellasjon
+teaches: sangiovese, klon, chianti, classico, brunello, vino-nobile, morellino

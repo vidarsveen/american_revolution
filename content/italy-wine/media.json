@@ -190,5 +190,85 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a small tulip glass of very pale straw-coloured wine with fine bubbles rising, condensation on the outside, plain pale background, a bowl of peaches out of focus behind"
+ },
+ "sangiovese-klase": {
+  "kind": "made",
+  "file": "sangiovese-klase.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "En klase, sein sommer",
+   "en": "One bunch, late summer"
+  },
+  "claims": "A bunch of dark red grapes on the vine in warm dry light.",
+  "omits": "NOT a variety. The model cannot tell one dark grape from another and nothing in the picture identifies which this is; the narration names Sangiovese, the picture does not.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a single bunch of dark red-black grapes on the vine in late summer, medium-sized round berries not tightly packed, green leaves behind, dry warm light, no hands and no people and no tools in frame"
+ },
+ "toscana-bakker": {
+  "kind": "made",
+  "file": "toscana-bakker.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Bakkene, sein sommer",
+   "en": "The hills, late summer"
+  },
+  "claims": "Hill country planted with vines on the contours, dry in late summer, farmhouse and cypresses.",
+  "omits": "Not a named place and not a named estate. It stands for the shape of the country between Florence and Siena, not for a spot on the map.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "rolling hills in late summer seen from a ridge, rows of vines following the contours, a line of dark cypress trees along a gravel track, a stone farmhouse on a far ridge, dry golden grass between the rows, warm hazy light, no people"
+ },
+ "galestro-jord": {
+  "kind": "made",
+  "file": "galestro-jord.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Galestro",
+   "en": "Galestro"
+  },
+  "claims": "Dry flaky clay soil breaking into thin plates between vine rows.",
+  "omits": "Not a soil sample from any named vineyard, and not a geological identification: it stands for what the narration describes.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a close view of dry grey-brown clay soil breaking into thin flat plates on the ground between vine rows, small pale stones, a few dry roots, hard summer light, no hands and no people in frame"
+ },
+ "montalcino-hoyde": {
+  "kind": "made",
+  "file": "montalcino-hoyde.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Byen på høyden",
+   "en": "The town on the hill"
+  },
+  "claims": "A walled town on top of a single steep hill, vineyards below, dry and hot.",
+  "omits": "Not Montalcino itself. It is a hill town of the right kind in the right light; nothing in frame identifies which.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a small walled hill town on the summit of one steep isolated hill, seen from a distance across dry stubble fields, vineyards on the lower slopes, heat haze, late afternoon light, no people"
+ },
+ "maremma-kyst": {
+  "kind": "made",
+  "file": "maremma-kyst.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Ned mot havet",
+   "en": "Down towards the sea"
+  },
+  "claims": "A flat coastal plain with young vineyards and the sea on the horizon.",
+  "omits": "Not a named place. The vines are shown young because the narration says the vineyards here are young, not because any particular planting was measured.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a wide flat coastal plain with young vineyards in straight rows, umbrella pines and low scrub at the edges, the sea a pale line on the horizon, strong summer light, no people"
  }
 }

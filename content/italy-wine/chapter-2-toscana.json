@@ -1,0 +1,1077 @@
+{
+ "id": "chapter-2-toscana",
+ "pack": "italy-wine",
+ "title": {
+  "no": "Én drue, fire adresser",
+  "en": "One grape, four addresses"
+ },
+ "subtitle": {
+  "no": "Toscana, fra Firenze til havet",
+  "en": "Tuscany, from Florence to the sea"
+ },
+ "regions": "geo/regions.geojson",
+ "places": {
+  "roma": {
+   "coords": [
+    41.9028,
+    12.4964
+   ],
+   "zoom": 9.0,
+   "name": {
+    "no": "Roma",
+    "en": "Rome"
+   },
+   "kind": "city"
+  },
+  "firenze": {
+   "coords": [
+    43.7696,
+    11.2558
+   ],
+   "zoom": 9.4,
+   "name": {
+    "no": "Firenze",
+    "en": "Florence"
+   },
+   "kind": "city"
+  },
+  "siena": {
+   "coords": [
+    43.3188,
+    11.3308
+   ],
+   "zoom": 10.2,
+   "name": {
+    "no": "Siena",
+    "en": "Siena"
+   },
+   "kind": "city"
+  },
+  "chianti": {
+   "coords": [
+    43.52,
+    11.32
+   ],
+   "zoom": 10.6,
+   "name": {
+    "no": "Chianti",
+    "en": "Chianti"
+   },
+   "kind": "region"
+  },
+  "greve": {
+   "coords": [
+    43.5856,
+    11.3163
+   ],
+   "zoom": 11.6,
+   "name": {
+    "no": "Greve",
+    "en": "Greve"
+   },
+   "kind": "town"
+  },
+  "montalcino": {
+   "coords": [
+    43.0567,
+    11.4894
+   ],
+   "zoom": 11.8,
+   "name": {
+    "no": "Montalcino",
+    "en": "Montalcino"
+   },
+   "kind": "town"
+  },
+  "montepulciano": {
+   "coords": [
+    43.0989,
+    11.7828
+   ],
+   "zoom": 11.8,
+   "name": {
+    "no": "Montepulciano",
+    "en": "Montepulciano"
+   },
+   "kind": "town"
+  },
+  "scansano": {
+   "coords": [
+    42.6889,
+    11.3339
+   ],
+   "zoom": 11.4,
+   "name": {
+    "no": "Scansano",
+    "en": "Scansano"
+   },
+   "kind": "town"
+  },
+  "grosseto": {
+   "coords": [
+    42.7635,
+    11.1128
+   ],
+   "zoom": 10.6,
+   "name": {
+    "no": "Grosseto",
+    "en": "Grosseto"
+   },
+   "kind": "city"
+  },
+  "abruzzo": {
+   "coords": [
+    42.2,
+    13.8
+   ],
+   "zoom": 8.6,
+   "name": {
+    "no": "Abruzzo",
+    "en": "Abruzzo"
+   },
+   "kind": "region"
+  },
+  "apenninene": {
+   "coords": [
+    43.9,
+    11.6
+   ],
+   "zoom": 8.2,
+   "name": {
+    "no": "Apenninene",
+    "en": "The Apennines"
+   },
+   "kind": "hill"
+  }
+ },
+ "ending": {
+  "say": {
+   "no": "Fire navn, ett sted om gangen, og den samme druen i alle fire. Adressen er opplysningen.",
+   "en": "Four names, one place at a time, and the same grape in all four. The address is the information."
+  },
+  "figure": {
+   "value": "1716",
+   "label": {
+    "no": "året Chianti fikk en grense",
+    "en": "the year Chianti got a boundary"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Tre navn, én drue",
+    "en": "Three names, one grape"
+   },
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Toscana lager tre store rødviner. De heter Chianti, Brunello di Montalcino og Vino Nobile di Montepulciano.",
+      "en": "Tuscany makes three great red wines. They are called Chianti, Brunello di Montalcino and Vino Nobile di Montepulciano."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedWarm"
+      },
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "day"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "firenze",
+       "zoom": 7.6,
+       "over": 3.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Tre navn på tre steder som ligger under to timer fra hverandre.",
+      "en": "Three names, for three places less than two hours apart."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "sangiovese-klase",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.16,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Og det er den samme druen i alle tre.",
+      "en": "And it is the same grape in all three."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:druen",
+        "en": "word:grape"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "drue"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Den heter Sangiovese, og den er den mest plantede druen i Italia.",
+      "en": "It is called Sangiovese, and it is the most planted grape in Italy."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:Sangiovese",
+        "en": "word:Sangiovese"
+       },
+       "do": "fact.show",
+       "kind": "grape",
+       "id": "sangiovese"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Ingen av de tre navnene er druens navn. Alle tre er steder.",
+      "en": "Not one of those three names is the grape's. All three are places."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Forrige gang lærte vi at navnet på flaska er et sted. Nå skal vi se hva stedet faktisk gjør.",
+      "en": "Last time we learned that the name on the bottle is a place. Now we look at what the place actually does."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Surkirsebær og tomatblad",
+    "en": "Sour cherry and tomato leaf"
+   },
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Sangiovese smaker surkirsebær, tomatblad og te.",
+      "en": "Sangiovese tastes of sour cherry, tomato leaf and tea."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "glass-blek-rod",
+       "motion": "in",
+       "over": 18,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Den har mye syre og mye tannin, men gir lite farge. Vinen er ofte lysere i glasset enn du venter.",
+      "en": "It has high acid and high tannin, but gives little colour. The wine is often paler in the glass than you expect."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Til sammenligning: Nebbiolo fra forrige kapittel er enda hardere, og enda blekere.",
+      "en": "For comparison: the Nebbiolo from last time is harder still, and paler still."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": {
+        "no": "word:blekere",
+        "en": "word:still#2"
+       },
+       "do": "chart.show",
+       "kind": "profile",
+       "ref": "grape:sangiovese",
+       "against": "grape:nebbiolo",
+       "note": {
+        "no": "Samme skala som sist.",
+        "en": "The same scale as last time."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Men Sangiovese er lunefull på en annen måte. Det finnes over hundre registrerte kloner av den.",
+      "en": "But Sangiovese is fickle in another way. There are over a hundred registered clones of it."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:kloner",
+        "en": "word:clones"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "klon"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "En klon er én utvalgt plante, dyrket videre fordi noen likte det den gjorde.",
+      "en": "A clone is one chosen vine, propagated onwards because somebody liked what it did."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "chart.hide"
+      },
+      {
+       "on": {
+        "no": "word:klon",
+        "en": "word:clone"
+       },
+       "do": "fact.show",
+       "kind": "term",
+       "id": "klon"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Forskjellen mellom klonene er stor nok til å kjennes i glasset. Husk det til vi kommer til Montalcino.",
+      "en": "The difference between the clones is large enough to taste. Remember that until we get to Montalcino."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Bakkene mellom to byer",
+    "en": "The hills between two cities"
+   },
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Toscana ligger midt på støvelen, mellom Apenninene og havet.",
+      "en": "Tuscany lies halfway down the boot, between the Apennines and the sea."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedMist"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "firenze",
+       "zoom": 8.2,
+       "over": 3.0
+      },
+      {
+       "on": "start",
+       "do": "region.show",
+       "names": [
+        "Toscana"
+       ],
+       "side": "red",
+       "over": 1.6,
+       "vary": false
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Det meste av vinlandet ligger i bakker mellom to og seks hundre meter over havet.",
+      "en": "Most of the wine country lies in hills between two and six hundred metres above sea level."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "toscana-bakker",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.12,
+       "push": 0.14,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Høyden gir kalde netter, akkurat som i Piemonte. Men her er sommeren tørrere.",
+      "en": "The height gives cold nights, exactly as in Piedmont. But here the summer is drier."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Jorda har et eget navn: galestro. En skifrig leire som smuldrer mellom fingrene.",
+      "en": "The soil has its own name: galestro. A flaky clay that crumbles between your fingers."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "galestro-jord",
+       "motion": "in",
+       "over": 18,
+       "dim": 0.16,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Den holder dårlig på vann, og det er meningen. En plante som må lete etter vann, lager færre og bedre druer.",
+      "en": "It holds water badly, and that is the point. A vine that has to search for water makes fewer and better grapes."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Og mellom Firenze og Siena ligger området der alt dette begynte.",
+      "en": "And between Florence and Siena lies the area where all of this began."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "map.fitPlaces",
+       "places": [
+        "firenze",
+        "siena"
+       ],
+       "over": 3.4
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Hanen og grensen",
+    "en": "The rooster and the boundary"
+   },
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Chianti er et sted. Det har det alltid vært.",
+      "en": "Chianti is a place. It always has been."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedHollow"
+      },
+      {
+       "on": "start",
+       "do": "sound.ambience",
+       "id": "vineyard",
+       "gainDb": -15
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "chianti",
+       "zoom": 8.4,
+       "over": 3.0
+      },
+      {
+       "on": "start",
+       "do": "region.show",
+       "names": [
+        "Toscana"
+       ],
+       "side": "red",
+       "over": 1.6,
+       "strength": 0.55,
+       "vary": false
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "I syttenhundreogseksten trakk storhertugen av Toscana en grense rundt det.",
+      "en": "In seventeen sixteen the Grand Duke of Tuscany drew a boundary around it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "greve",
+       "label": {
+        "no": "Greve",
+        "en": "Greve"
+       },
+       "kind": "point",
+       "tone": "gold"
+      },
+      {
+       "on": {
+        "no": "word:det",
+        "en": "word:it"
+       },
+       "do": "fact.show",
+       "kind": "wine",
+       "id": "chianti"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Han bestemte hvor vin med det navnet kunne komme fra. Det er en av de eldste vinlovene i verden.",
+      "en": "He decided where wine with that name could come from. It is one of the oldest wine laws in the world."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Så ble navnet populært. Og et populært navn blir som regel også større.",
+      "en": "Then the name became popular. And a popular name usually becomes bigger, too."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "I nittentrettito ble Chianti utvidet til å dekke sju underområder rundt kjernen.",
+      "en": "In nineteen thirty-two Chianti was enlarged to cover seven sub-areas around the core."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "marker.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Det gamle kjerneområdet trengte da et ord for seg selv. De la til classico, og satte en svart hane på flaska.",
+      "en": "The old core then needed a word of its own. They added classico, and put a black rooster on the bottle."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:classico",
+        "en": "word:classico"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "classico"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Chianti Classico er altså den opprinnelige Chianti. Chianti er alt som kom til etterpå.",
+      "en": "So Chianti Classico is the original Chianti. Chianti is everything that was added afterwards."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "classico"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Det er ikke et kvalitetsstempel. Det er en opplysning om sted, og stedet er det eneste flaska egentlig lover.",
+      "en": "It is not a stamp of quality. It is a statement about place, and the place is the only thing the bottle really promises."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Én høyde, fem år",
+    "en": "One hill, five years"
+   },
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Sør for Siena ligger en enkelt høyde med en by på toppen. Montalcino.",
+      "en": "South of Siena there is a single hill with a town on top. Montalcino."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "montalcino-hoyde",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.12,
+       "into": 1.4
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "montalcino",
+       "zoom": 9.6,
+       "over": 3.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Her er det varmere og tørrere enn i Chianti, og druene henger lenger.",
+      "en": "It is warmer and drier here than in Chianti, and the grapes hang longer."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "På attenhundretallet valgte en familie her ut én plante som ga mørkere og mer holdbar vin enn naboene.",
+      "en": "In the nineteenth century a family here singled out one vine that gave a darker, longer-lived wine than its neighbours."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": {
+        "no": "word:plante",
+        "en": "word:vine"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "klon"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "De kalte den Brunello, den lille brune. Det er Sangiovese, men en bestemt klon av den.",
+      "en": "They called it Brunello, the little brown one. It is Sangiovese, but one particular clone of it."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:Brunello",
+        "en": "word:Brunello"
+       },
+       "do": "fact.show",
+       "kind": "wine",
+       "id": "brunello-di-montalcino"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Brunello di Montalcino må ligge i fem år før den selges. Minst to av dem på trefat.",
+      "en": "Brunello di Montalcino must lie for five years before it is sold. At least two of them in wood."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kjeller-fat",
+       "motion": "in",
+       "over": 18,
+       "dim": 0.16,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Det er blant de lengste lagringskravene i Italia, og det er den samme regningen som i Barolo: tre år der vinen bare koster penger.",
+      "en": "That is among the longest ageing requirements in Italy, and it is the same bill as in Barolo: three years in which the wine only costs money."
+     },
+     "cues": [
+      {
+       "on": "end",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Fella i navnet",
+    "en": "The trap in the name"
+   },
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "En time østover ligger Montepulciano, på en åsrygg med utsikt begge veier.",
+      "en": "An hour east lies Montepulciano, on a ridge with a view both ways."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "montepulciano",
+       "zoom": 9.6,
+       "over": 3.2
+      },
+      {
+       "on": "start",
+       "do": "region.show",
+       "names": [
+        "Toscana"
+       ],
+       "side": "red",
+       "over": 1.6,
+       "strength": 0.55,
+       "vary": false
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Vinen derfra heter Vino Nobile di Montepulciano. Den er også Sangiovese.",
+      "en": "The wine from there is called Vino Nobile di Montepulciano. It is also Sangiovese."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:Sangiovese",
+        "en": "word:Sangiovese"
+       },
+       "do": "fact.show",
+       "kind": "wine",
+       "id": "vino-nobile"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Her heter klonen Prugnolo Gentile, og vinen må ligge to år før salg.",
+      "en": "Here the clone is called Prugnolo Gentile, and the wine must age two years before sale."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Og her er fella. Montepulciano er også navnet på en helt annen drue.",
+      "en": "And here is the trap. Montepulciano is also the name of an entirely different grape."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "abruzzo",
+       "zoom": 8.0,
+       "over": 3.6
+      },
+      {
+       "on": "start",
+       "do": "region.show",
+       "names": [
+        "Abruzzo"
+       ],
+       "side": "neutral",
+       "over": 1.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Den vokser i Abruzzo, på den andre siden av Apenninene, og har ingenting med byen å gjøre.",
+      "en": "It grows in Abruzzo, on the other side of the Apennines, and has nothing to do with the town."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Montepulciano d'Abruzzo er altså en drue fra et sted. Vino Nobile di Montepulciano er et sted, og en annen drue.",
+      "en": "So Montepulciano d'Abruzzo is a grape from a place. Vino Nobile di Montepulciano is a place, and a different grape."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "region.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Regelen holder likevel. Det som står med størst skrift er stedet. Men et navn kan være begge deler, og da må du vite hvilket.",
+      "en": "The rule still holds. What is written largest is the place. But a name can be both, and then you have to know which."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Ned til havet",
+    "en": "Down to the sea"
+   },
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Til slutt kjører vi ned mot kysten, til Maremma.",
+      "en": "Finally we drive down towards the coast, to the Maremma."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedWarm"
+      },
+      {
+       "on": "start",
+       "do": "sound.ambience",
+       "id": "vineyard",
+       "gainDb": -15
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "scansano",
+       "zoom": 9.0,
+       "over": 3.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Dette var malariamyr og nesten folketomt til det ble tørrlagt på nittenhundretallet.",
+      "en": "This was malarial marsh and nearly empty of people until it was drained in the twentieth century."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "maremma-kyst",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Her er det varmere og lavere, og vinen blir rundere og mykere i tanninene.",
+      "en": "It is warmer and lower here, and the wine comes out rounder and softer in the tannins."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:tanninene",
+        "en": "word:tannins"
+       },
+       "do": "fact.show",
+       "kind": "wine",
+       "id": "morellino"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Den heter Morellino di Scansano. Fjerde navn på den samme druen.",
+      "en": "It is called Morellino di Scansano. A fourth name for the same grape."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Fra en høyde inne i landet til en slette ved havet: samme plante, to helt forskjellige viner.",
+      "en": "From a hill inland to a plain by the sea: the same vine, two completely different wines."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "chart.show",
+       "kind": "profile",
+       "ref": "wine:brunello-di-montalcino",
+       "against": "wine:morellino",
+       "note": {
+        "no": "Samme drue, hundre kilometer fra hverandre.",
+        "en": "The same grape, a hundred kilometres apart."
+       }
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Chianti, Brunello, Nobile, Morellino. To regioner av tjue, og vi har fortsatt bare stilt ett spørsmål.",
+      "en": "Chianti, Brunello, Nobile, Morellino. Two regions of twenty, and we have still only asked one question."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "chart.hide"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "roma",
+       "zoom": 5.0,
+       "over": 4.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Hvor er den fra? Alt annet på flaska følger av svaret.",
+      "en": "Where is it from? Everything else on the bottle follows from the answer."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

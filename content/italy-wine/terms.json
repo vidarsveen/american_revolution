@@ -194,5 +194,33 @@
    "no": "En vinranke kan bære mye eller lite. Bærer den mye, fordeles den samme mengden vann og næring på flere druer, og saften blir tynnere.\n\nDe beste produsentene klipper bort klaser midt i sesongen for å konsentrere resten. Det betyr færre flasker fra samme mark, og de flaskene må bære hele kostnaden.\n\nLoven setter et tak. De som bryr seg ligger langt under det.",
    "en": "A vine can carry a lot or a little. Carrying a lot spreads the same water and nutrients across more grapes, and the juice comes out thinner.\n\nThe best producers cut bunches off mid-season to concentrate what is left. That means fewer bottles from the same plot, and those bottles carry the whole cost.\n\nThe law sets a ceiling. Those who care sit far below it."
   }
+ },
+ "klon": {
+  "term": {
+   "no": "Klon",
+   "en": "Clone"
+  },
+  "short": {
+   "no": "Én utvalgt plante, dyrket videre.",
+   "en": "One chosen vine, propagated onwards."
+  },
+  "body": {
+   "no": "En vinplante formeres ikke med frø. Man klipper en kvist av en plante man liker og setter den til å slå rot, og den nye planten er genetisk den samme.\n\nGjør man det i noen hundre år, med utvalg hver gang, får man kloner: varianter av samme drue som oppfører seg litt ulikt. Sangiovese har over hundre registrerte.\n\nForskjellen er stor nok til å merkes. Brunello og Prugnolo Gentile er begge Sangiovese, og begge er navn på kloner noen valgte ut.",
+   "en": "A vine is not propagated from seed. You cut a shoot from a vine you like and root it, and the new plant is genetically the same one.\n\nDo that for a few hundred years, choosing each time, and you get clones: versions of one grape that behave slightly differently. Sangiovese has over a hundred registered.\n\nThe difference is large enough to taste. Brunello and Prugnolo Gentile are both Sangiovese, and both are names for clones somebody singled out."
+  }
+ },
+ "classico": {
+  "term": {
+   "no": "Classico",
+   "en": "Classico"
+  },
+  "short": {
+   "no": "Det opprinnelige området, etter at navnet ble utvidet.",
+   "en": "The original area, after the name was enlarged."
+  },
+  "body": {
+   "no": "Når et vinnavn blir populært, blir det som regel også større. Grensen flyttes utover, og vin fra et mye videre område får lov til å hete det samme.\n\nDa trenger det gamle kjerneområdet et ord for seg selv. Det ordet er classico.\n\nChianti Classico er den opprinnelige Chianti mellom Firenze og Siena, med svart hane på flaska. Vanlig Chianti er området som kom til etterpå. Det er en opplysning om sted, ikke et kvalitetsstempel.",
+   "en": "When a wine name becomes popular, it usually also becomes bigger. The boundary is pushed outwards, and wine from a much wider area is allowed to carry the same name.\n\nThe old core then needs a word of its own. That word is classico.\n\nChianti Classico is the original Chianti between Florence and Siena, with a black rooster on the bottle. Plain Chianti is the area that was added afterwards. It is a statement about place, not a stamp of quality."
+  }
  }
 }

@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vb07d80e95c';
+const VERSION = 'vd52318f157';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -73,6 +73,7 @@ const PRECACHE = [
   './content/american-revolution/timing.chapter-1775-06-17.en.json',
   './content/american-revolution/timing.chapter-1775-06-17.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
+  './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/regions.geojson',
   './content/italy-wine/media.json',
   './content/italy-wine/media/alpene-over.jpg',
@@ -80,16 +81,23 @@ const PRECACHE = [
   './content/italy-wine/media/dal-avstengt.jpg',
   './content/italy-wine/media/druer-kasse.jpg',
   './content/italy-wine/media/flasker-liggende.jpg',
+  './content/italy-wine/media/galestro-jord.jpg',
   './content/italy-wine/media/gammel-stokk.jpg',
   './content/italy-wine/media/glass-blek-rod.jpg',
   './content/italy-wine/media/glass-perler.jpg',
   './content/italy-wine/media/hender-host.jpg',
   './content/italy-wine/media/kjeller-fat.jpg',
   './content/italy-wine/media/langhe-take.jpg',
+  './content/italy-wine/media/maremma-kyst.jpg',
+  './content/italy-wine/media/montalcino-hoyde.jpg',
+  './content/italy-wine/media/sangiovese-klase.jpg',
+  './content/italy-wine/media/toscana-bakker.jpg',
   './content/italy-wine/media/vinmark-helling.jpg',
   './content/italy-wine/style.json',
   './content/italy-wine/timing.chapter-1-piemonte.en.json',
   './content/italy-wine/timing.chapter-1-piemonte.no.json',
+  './content/italy-wine/timing.chapter-2-toscana.en.json',
+  './content/italy-wine/timing.chapter-2-toscana.no.json',
   './content/norway-1940/chapter-1940-04-09.json',
   './content/norway-1940/chapter-1940-05-28.json',
   './content/norway-1940/media.json',

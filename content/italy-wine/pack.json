@@ -208,6 +208,25 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-2-toscana",
+      "title": {
+        "no": "Én drue, fire adresser",
+        "en": "One grape, four addresses"
+      },
+      "subtitle": {
+        "no": "Toscana, fra Firenze til havet",
+        "en": "Tuscany, from Florence to the sea"
+      },
+      "blurb": {
+        "no": "Chianti, Brunello, Nobile, Morellino. Fire navn på fire steder, og den samme druen i alle fire.",
+        "en": "Chianti, Brunello, Nobile, Morellino. Four names for four places, and the same grape in all four."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "checks": {

@@ -114,5 +114,74 @@
    "sodme": 0.0
   },
   "colour": "red"
+ },
+ "brunello-di-montalcino": {
+  "name": {
+   "no": "Brunello di Montalcino",
+   "en": "Brunello di Montalcino"
+  },
+  "hook": {
+   "no": "Én høyde sør for Siena. Sangiovese, fem år før salg.",
+   "en": "One hill south of Siena. Sangiovese, five years before sale."
+  },
+  "body": {
+   "no": "Brunello er ikke en egen drue. Det er et lokalt navn på en klon av Sangiovese, valgt ut på attenhundretallet fordi den ga mørkere og mer holdbar vin enn naboplantene.\n\nMontalcino er varmere og tørrere enn Chianti, og ligger lavere mot havet. Druen modner seinere og lenger.\n\nVinen må ligge minst fem år før den selges, minst to av dem på trefat. Riserva må ligge seks.",
+   "en": "Brunello is not its own grape. It is a local name for a clone of Sangiovese, singled out in the nineteenth century because it gave a darker, longer-lived wine than the vines around it.\n\nMontalcino is warmer and drier than Chianti, and lies lower towards the sea. The grape ripens later and for longer.\n\nThe wine must age at least five years before sale, at least two of them in wood. Riserva must age six."
+  },
+  "grape": "sangiovese",
+  "profile": {
+   "syre": 0.8,
+   "tannin": 0.85,
+   "fylde": 0.8,
+   "frukt": 0.55,
+   "sodme": 0.0
+  },
+  "colour": "red"
+ },
+ "vino-nobile": {
+  "name": {
+   "no": "Vino Nobile di Montepulciano",
+   "en": "Vino Nobile di Montepulciano"
+  },
+  "hook": {
+   "no": "Byen Montepulciano. Ikke druen som heter det samme.",
+   "en": "The town of Montepulciano. Not the grape with the same name."
+  },
+  "body": {
+   "no": "Sangiovese igjen, her kalt Prugnolo Gentile. Vinen må være minst sytti prosent av den, og ligge to år før salg.\n\nNavnet er en felle. Montepulciano er også en helt annen drue, dyrket i Abruzzo på den andre siden av Apenninene. Montepulciano d'Abruzzo er den druen fra det stedet; Vino Nobile di Montepulciano er dette stedet, og Sangiovese.\n\nToscana kaller vinen nobile — edel — fordi den historisk ble drukket av byens adel.",
+   "en": "Sangiovese again, here called Prugnolo Gentile. The wine must be at least seventy per cent of it, and must age two years before sale.\n\nThe name is a trap. Montepulciano is also an entirely different grape, grown in Abruzzo on the other side of the Apennines. Montepulciano d'Abruzzo is that grape from that place; Vino Nobile di Montepulciano is this place, and Sangiovese.\n\nTuscany calls the wine nobile — noble — because it was historically drunk by the town's nobility."
+  },
+  "grape": "sangiovese",
+  "profile": {
+   "syre": 0.8,
+   "tannin": 0.75,
+   "fylde": 0.7,
+   "frukt": 0.6,
+   "sodme": 0.0
+  },
+  "colour": "red"
+ },
+ "morellino": {
+  "name": {
+   "no": "Morellino di Scansano",
+   "en": "Morellino di Scansano"
+  },
+  "hook": {
+   "no": "Maremma, ned mot havet. Den mykeste av de fire.",
+   "en": "The Maremma, down towards the sea. The softest of the four."
+  },
+  "body": {
+   "no": "Fjerde navn på samme drue. Morellino er det lokale navnet på Sangiovese i Maremma, kystlandskapet sørvest i Toscana.\n\nHer er det varmere og lavere enn inne i landet. Vinen blir rundere, mykere i tanninene og mer moden i frukten, og den skal drikkes ung.\n\nMaremma var malariamyr og nesten folketom til den ble tørrlagt på nittenhundretallet. Vinmarkene her er derfor unge sammenlignet med Chianti.",
+   "en": "A fourth name for the same grape. Morellino is the local name for Sangiovese in the Maremma, the coastal country of south-western Tuscany.\n\nIt is warmer here, and lower, than inland. The wine comes out rounder, softer in the tannins and riper in the fruit, and it is meant to be drunk young.\n\nThe Maremma was malarial marsh and nearly empty of people until it was drained in the twentieth century. The vineyards here are young next to Chianti's."
+  },
+  "grape": "sangiovese",
+  "profile": {
+   "syre": 0.7,
+   "tannin": 0.55,
+   "fylde": 0.6,
+   "frukt": 0.75,
+   "sodme": 0.0
+  },
+  "colour": "red"
  }
 }
