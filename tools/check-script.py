@@ -967,8 +967,15 @@ def check_plates_hold(chapter, timings, langs):
     return found
 
 
+# Four words in a pill. The portrait floor next door is 1.1 s called "a flash,
+# not a portrait"; a line of text you have to read, on a map you are also
+# looking at, wants longer than that.
+NOTE_FLOOR = 3.0
+
+
 def check_overlays_readable(chapter, timings, langs):
     found = []
+    notes = []
     for lang in langs:
         tm = timings.get(lang)
         if not tm:
@@ -1022,6 +1029,49 @@ def check_overlays_readable(chapter, timings, langs):
                             f"and reads as never going away. Show it earlier, or "
                             f"give it a shorter `until`.")
 
+    # A NOTE THAT DIES AS IT ARRIVES.
+    #
+    # `caption.note` is a pill under the caption saying where or when we are,
+    # and it is taken down by the scene wipe like everything else. Anchored
+    # `@end` in the LAST beat of a scene it therefore has no life at all: it
+    # appears in the trailing gap and the turn takes it away. Measured across
+    # the four packs that ship, sixteen of nineteen notes had exactly 0.0 s —
+    # including both in the wine chapter, where it was reported as "on screen
+    # for one or two seconds and then it jumps somewhere else and disappears",
+    # about ten times, while every fix went looking at the region label instead.
+    #
+    # A note, not a failure, and deliberately: fourteen of the sixteen are in
+    # packs CLAUDE.md freezes, and moving somebody's cue a beat earlier is a
+    # re-cut of their chapter. The two in the live course were removed.
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for scene in chapter["scenes"]:
+            beats = scene["beats"]
+            last = timing_beat(tm, scene["id"], beats[-1]["id"]) if beats else None
+            if not last:
+                continue
+            scene_end = last.get("start", 0.0) + last.get("dur", 0.0)
+            for beat in beats:
+                tb = timing_beat(tm, scene["id"], beat["id"])
+                if not tb:
+                    continue
+                for cue in beat.get("cues", []):
+                    if cue["do"] != "caption.note":
+                        continue
+                    at = cue_time(cue, tb, lang)
+                    if at is None:
+                        continue
+                    life = scene_end - at
+                    if life < NOTE_FLOOR:
+                        text = (cue.get("value") or {}).get(lang, "")
+                        notes.append(
+                            f"{beat['id']}: '{lang}' caption.note '{text[:38]}' has "
+                            f"{life:.1f}s before the scene wipes it — under "
+                            f"{NOTE_FLOOR:.0f}s nobody reads it. Move it earlier or "
+                            f"take it out.")
+
     # The hide is derived at compile time from `until`, so there is nothing
     # in the file to measure a span between. Check the declared lifetime.
     for scene in chapter["scenes"]:
@@ -1056,7 +1106,7 @@ def check_overlays_readable(chapter, timings, langs):
                                 f"for {span:.1f}s, under {floor:.1f}s — too brief to read. "
                                 f"Anchor the show to a word rather than to the beat end.")
                         open_at = None
-    return found
+    return found, notes
 
 
 def main():
@@ -1234,7 +1284,9 @@ def main():
         pack, chapter, timings, langs)
     problems.extend(camera_bad)
     notes.extend(camera_veiled)
-    problems.extend(check_overlays_readable(chapter, timings, langs) or [])
+    overlay_bad, overlay_notes = check_overlays_readable(chapter, timings, langs)
+    problems.extend(overlay_bad or [])
+    notes.extend(overlay_notes or [])
     problems.extend(check_plates_hold(chapter, timings, langs) or [])
     problems.extend(check_plate_rhythm(chapter) or [])
     problems.extend(check_places_have_ground(chapter) or [])

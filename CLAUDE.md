@@ -609,6 +609,16 @@ when a fix is a rule that hides something, say so out loud — and when a report
 keeps coming back after a fix, **check the thing on screen before trusting the
 note that says it was fixed.**
 
+**And it was still not the thing being complained about.** The label on screen
+was `caption.note` — a pill under the caption saying "Piemonte, nordvest i
+Italia" — anchored `@end` in the LAST beat of its scene, so the scene wipe took
+it away as it arrived: 1.7 s of life, twice, in two different places. Every
+probe in this repo seeks with `rebuildTo()`, and a seek does not sit in the
+trailing gap where that cue lives, so none of them ever saw it. **Watch it play
+forward before believing a probe** — `tools/check-script.py` measures the
+lifetime of every `caption.note` now, and sixteen of the nineteen that ship had
+exactly 0.0 s.
+
 **A bench that has never failed has not been shown to measure anything.** Four
 checks in this repo were passing while measuring nothing at all — one had never
 looked at the main screen, one scored a map pin against its own label, one flew

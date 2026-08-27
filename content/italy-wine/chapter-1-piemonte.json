@@ -349,14 +349,6 @@
        "to": "torino",
        "zoom": 6.4,
        "over": 4.0
-      },
-      {
-       "on": "end",
-       "do": "caption.note",
-       "value": {
-        "no": "Piemonte, nordvest i Italia",
-        "en": "Piedmont, north-west Italy"
-       }
       }
      ],
      "gapAfter": 2.0
@@ -1108,14 +1100,6 @@
        "do": "term.mark",
        "kind": "term",
        "id": "terroir"
-      },
-      {
-       "on": "end",
-       "do": "caption.note",
-       "value": {
-        "no": "Langhe, sør for Alba",
-        "en": "Langhe, south of Alba"
-       }
       }
      ],
      "gapAfter": 2.0

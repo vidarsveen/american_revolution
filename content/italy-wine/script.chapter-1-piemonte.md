@@ -54,7 +54,7 @@ figure.label: druesorter i Italia | grape varieties in Italy
 
 {plate.hide 1.1} Grunnen er verken klima eller flaks. Grunnen er at Italia ble ett land veldig seint, og at det er fullt av fjell. {mark topic:hvorfor-italia span=1} {plate dal-avstengt motion=in over=20 dim=0.14 push=0.2 into=1.4 @start}
 > The reason is neither climate nor luck. The reason is that Italy became one country very late, and that it is full of mountains. {^}
-{plate.hide 1.1 @end} {flyTo torino zoom=6.4 over=4.0} {note Piemonte, nordvest i Italia | Piedmont, north-west Italy @end} Dette er første del av en reise nedover støvelen. Vi begynner helt nordvest, i tåka.
+{plate.hide 1.1 @end} {flyTo torino zoom=6.4 over=4.0} Dette er første del av en reise nedover støvelen. Vi begynner helt nordvest, i tåka.
 > This is the first part of a journey down the boot. We start in the far north-west, in the fog.
 
 ## Et land som står på høykant | A country stood on its edge
@@ -129,7 +129,7 @@ Det er også derfor vinen tåler å ligge. En ung Barolo er nesten ubehagelig. D
 > And then it is hopelessly fussy. Nebbiolo demands chalky clay, a south-facing slope and a long autumn.
 Folk har prøvd å dyrke den i California, i Australia og i Argentina i over hundre år. Det blir aldri riktig.
 > People have tried to grow it in California, Australia and Argentina for over a hundred years. It never comes out right.
-{plate.hide 1.1 @end} Nesten all Nebbiolo i verden vokser innenfor noen få mil her. Det er den beste illustrasjonen jeg kjenner på hva terroir {mark term:terroir} betyr. {note Langhe, sør for Alba | Langhe, south of Alba @end}
+{plate.hide 1.1 @end} Nesten all Nebbiolo i verden vokser innenfor noen få mil her. Det er den beste illustrasjonen jeg kjenner på hva terroir {mark term:terroir} betyr.
 > Almost all the Nebbiolo in the world grows within a few dozen kilometres of here. It is the best illustration I know of what terroir {^} means.
 
 ## To landsbyer | Two villages
