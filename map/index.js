@@ -1006,54 +1006,22 @@ export function createMap(host, opts = {}) {
     // Counters are wide and armies gather in the same place, so plain
     // positioning stacks them illegibly. Push each one clear of the last.
     const taken = [];
-    for (const s of layers.regions.values()) {
-      if (!s.label || !s.centre) continue;
-      if (s.minZoom != null && cam.zoom < s.minZoom) { dropNode(`r:${s.id}`); continue; }
-      live.add(`r:${s.id}`);
-      const n = nodeFor(`r:${s.id}`, () => {
-        const el = document.createElement('div');
-        el.className = 'atlas-place atlas-place--region';
-        return el;
-      });
-      // You tap the NAME, not the polygon. That is honest — the canvas has no
-      // hit-testing and adding it would mean either a second render per frame
-      // or point-in-polygon on every pointerdown — and it composes with the
-      // declutter pass for free: a label that got dropped is not a target,
-      // which is correct, because an invisible target is a bug.
-      setTap(n, s.tap, s.name);
+    /* THE REGION NAME IS NOT DRAWN, and this is where it used to be.
 
-      const [x0, y0] = toScreen(s.centre[0], s.centre[1]);
-      // How much room the region itself offers, in pixels, right now.
-      const [left, right] = s.bounds
-        ? [toScreen(s.bounds[0][0], s.bounds[0][1])[0],
-           toScreen(s.bounds[1][0], s.bounds[1][1])[0]]
-        : [-Infinity, Infinity];
-      const [, top] = toScreen(s.bounds ? s.bounds[1][0] : 0, 0);
-      const [, bottom] = toScreen(s.bounds ? s.bounds[0][0] : 0, 0);
+       It was asked to go a dozen times and was answered four times with a
+       different font size, then with one line of CSS —
+       `.atlas-place--region { display: none !important }` — while this loop
+       went on building the node, measuring it, placing it, ranking it above
+       every city name and handing it a tap target. Hidden is not removed: on
+       a phone holding an older stylesheet the name was back, and it behaved
+       exactly as reported — arriving near the end of one scene, jumping to a
+       different place on screen when the next scene re-showed the region from
+       a new camera, then vanishing at the clear.
 
-      measureLabel(n, pickLabel(s.label) || s.name, pickLabel(s.short));
-      const placed = placeLabel(n, x0, y0, left, right, top, bottom);
-      if (!placed) { n.style.visibility = 'hidden'; continue; }
-      const y = placed.y;
-      n.style.transform = `translate3d(${placed.x}px, ${y}px, 0) translateX(-50%)`;
-      n.style.visibility = '';
-      // Rank by how much of the screen the region covers, so a collision is
-      // lost by the colony there is least room for. Without a tiebreak the
-      // sort fell back to the order the regions happen to sit in the file,
-      // and which name survived was decided by luck.
-      const area = Math.abs(right - left) * Math.abs(bottom - top);
-      /* A SHOWN REGION OUTRANKS A STANDING CITY.
-         It used to be 2 + area, against 3 for every city, so a region could
-         never win a collision -- and a region is only in this layer because
-         `region.show` put it there, which means the script is talking about
-         it. Measured: "Og Piemonte, helt nordvest, har Nebbiolo" drew Piemonte
-         as an unlabelled patch of colour, because Torino sits inside it and
-         Torino was rank 3. That is the exact failure the shrink pass above
-         says it exists to prevent, still guaranteed by the sort order. */
-      // `shrink` is the smaller form declutter tries before dropping the name.
-      labels.push({ n, x: placed.x, y, rank: 4 + Math.min(0.9, area / 4e5),
-                    box: placed.box, shrink: placed.shrink });
-    }
+       The wash carries the area and the narration names it. `region.show` no
+       longer takes a `label`, so a chapter cannot ask for one either.
+       A city and a town are untouched: they are drawn above, from
+       layers.places. */
 
     // A pin names one spot the narration is talking about right now.
     for (const s of layers.markers.values()) {

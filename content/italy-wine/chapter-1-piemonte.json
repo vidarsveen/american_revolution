@@ -657,7 +657,6 @@
         "Toscana"
        ],
        "side": "red",
-       "label": false,
        "over": 1.4
       }
      ],
@@ -680,7 +679,6 @@
         "Veneto"
        ],
        "side": "red",
-       "label": false,
        "over": 1.4
       },
       {
@@ -693,7 +691,6 @@
         "Campania"
        ],
        "side": "red",
-       "label": false,
        "over": 1.4
       }
      ],
@@ -716,7 +713,6 @@
         "Piemonte"
        ],
        "side": "red",
-       "label": false,
        "over": 1.6
       },
       {
@@ -816,7 +812,6 @@
         "Piemonte"
        ],
        "side": "red",
-       "label": false,
        "over": 1.6
       }
      ],

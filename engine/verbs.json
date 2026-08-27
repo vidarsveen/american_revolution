@@ -120,7 +120,7 @@
     "en": "Show a named region"
    },
    "surface": "map",
-   "note": "Names resolve against the file the chapter declares in `regions`.",
+   "note": "Names resolve against the file the chapter declares in `regions`. A region is never labelled: the wash carries the area and the narration names it. Asked for repeatedly, hidden in CSS for a while, and removed at the source instead.",
    "args": {
     "names": {
      "type": "region[]",
@@ -128,10 +128,6 @@
     },
     "side": {
      "type": "faction"
-    },
-    "label": {
-     "type": "boolean",
-     "default": true
     },
     "over": {
      "type": "seconds"

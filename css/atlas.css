@@ -238,56 +238,13 @@
   left: 50%; top: calc(-1 * var(--dot-gap));
   margin: -2.5px 0 0 -2.5px;
 }
-/* AN AREA NAME, not a watermark and not a shrunken town.
-
-   It was italic, uppercase, tracked .18em at 14px. At that size .18em is
-   2.5px between letters, which destroys word shape, so it read slower than a
-   town name a third of its size -- shouting and mumbling at once, which is
-   what "looks very weird" meant.
-
-   The first fix took it to 11px on the argument that a region is the least
-   important thing on screen, and that was simply wrong: it made this the
-   SMALLEST type on the map and brought the complaint straight back as "tiny,
-   and not professional". In this app a named region is usually the subject of
-   the sentence -- "Og Piemonte, helt nordvest, har Nebbiolo" -- not
-   background.
-
-   The honest distinction is of KIND, not rank. A point label names somewhere
-   you could stand: small, dark, tightly set, with a dot. An area label names
-   ground you would be inside: larger, lighter, slightly spread, quieter, no
-   dot. Larger AND quieter at once is what stops it reading as another pin,
-   and it is how every atlas sets a region bigger than the towns within it
-   without the region ever shouting. docs/design-direction.md, "A label is not
-   a watermark".
-
-   ON THE SCALE: 15px was --fs-base under the old scale and is 17px under the
-   new one. The step, not the pixel, is what the direction fixed -- one notch
-   above the city name, two above the town, which is the ratio that made the
-   three tell apart. Keeping 15 while the city moved to 15 would have collapsed
-   two of the three steps into one, which is the watermark bug from the other
-   side. The token's job line says "body text", and that is a naming mismatch
-   worth fixing in the scale, not here: nothing on the map is body text. */
-.atlas-place--region {
-  font-size: var(--fs-base);
-  font-weight: 550;
-  letter-spacing: .05em;
-  color: var(--atlas-ink-quiet);
-  /* No dot, so no gap to leave for one -- and the placement pass reads that
-     straight off the margin this collapses to. */
-  --dot-gap: 0px;
-  transform-origin: 0 0;
-}
-.atlas-place--region::before { display: none; }
-
-/* THE REGION NAME IS NOT DRAWN. Asked for repeatedly and not delivered, so it
-   is off at the rule rather than at the data — `label: false` on the cue is the
-   correct control and something downstream was still drawing it, and the fix
-   for that is worth having but is not worth another round of this.
-
-   The wash carries the area and the narration names it, which is what the
-   sentence is for. Turn this back on when there is a treatment somebody wants;
-   `.atlas-place--town` and `.atlas-place` (a city) are untouched. */
-.atlas-place--region { display: none !important; }
+/* A REGION NAME IS NOT DRAWN AT ALL, so there is nothing to style. The rules
+   that were here — a size, a weight, a letter-spacing, and then
+   `display: none !important` on top of all of them — hid a node that
+   map/index.js went on building, measuring and ranking above every city
+   name. Hidden is not removed, and on a phone holding an older stylesheet
+   the name came back. It is gone at the source now; see the note in
+   map/index.js. */
 /* The smallest of the three steps, and still not the smallest type on the map
    -- that is the credit, at --fs-3xs, which is what the provenance step is
    for. A town name is information; a licence line is a footnote. */

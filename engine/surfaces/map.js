@@ -248,6 +248,11 @@ function sceneIndexOf(id) {
 function drawStandingLabels() {
   for (const [id, place] of Object.entries(chapter.places || {})) {
     if (place.label === false) continue;
+    // A REGION NAME IS NOT DRAWN — see map/index.js, where the other half of
+    // this used to live. `kind: region` still says what the camera should do
+    // with the place and what a term points at; it just does not put a name
+    // across the map.
+    if (place.kind === 'region') continue;
     if (typeof place.label === 'string' && sceneIndexOf(place.label) > sceneAt) continue;
     map.places.add({
       id: `place:${id}`,
@@ -850,7 +855,6 @@ export function showRegions(cue, instant) {
         name,
         faction: cue.side,
         strength: cue.strength,
-        label: cue.label !== false,
         // Each region its own colour within the side, unless the shot is
         // about the side rather than the areas.
         vary: cue.vary !== false,

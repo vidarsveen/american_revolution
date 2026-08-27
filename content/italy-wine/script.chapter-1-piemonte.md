@@ -86,11 +86,11 @@ Ingen av dem byttet stiklinger, fordi det var to dagsreiser med muldyr imellom. 
 > Neither of them swapped cuttings, because it was two days by mule between them. So both kept their own.
 {plate.hide 1.1} Gjenta det i tusen år, i et land med fjell overalt, og du sitter igjen med fem {stat 500+ label=druesorter | grape varieties side=red} hundre druer.
 > Repeat that for a thousand years, in a country with mountains everywhere, and you end up with five {^} hundred grapes.
-{stat.clear} Nesten hver region har minst én drue som er dens egen. Toscana {region Toscana side=red label=false over=1.4} har Sangiovese.
+{stat.clear} Nesten hver region har minst én drue som er dens egen. Toscana {region Toscana side=red over=1.4} har Sangiovese.
 > Almost every region has at least one grape that is its own. Tuscany {^} has Sangiovese.
-Veneto {region Veneto side=red label=false over=1.4} har Corvina, og lager Amarone av den. Campania {region Campania side=red label=false over=1.4} har Aglianico, som romerne allerede drakk.
+Veneto {region Veneto side=red over=1.4} har Corvina, og lager Amarone av den. Campania {region Campania side=red over=1.4} har Aglianico, som romerne allerede drakk.
 > Veneto {^} has Corvina, and makes Amarone from it. Campania {^} has Aglianico, which the Romans were already drinking.
-Og Piemonte, {region Piemonte side=red label=false over=1.6} helt nordvest, har Nebbiolo. {mark term:nebbiolo} {fact grape:nebbiolo} Det er den vi skal se på i dag.
+Og Piemonte, {region Piemonte side=red over=1.6} helt nordvest, har Nebbiolo. {mark term:nebbiolo} {fact grape:nebbiolo} Det er den vi skal se på i dag.
 > And Piedmont, {^1} in the far north-west, has Nebbiolo. {^2} {^3} That is the one we are looking at today.
 {region.clear} En ting til, før vi drar. Navnet på en italiensk flaske {mark topic:lese-etiketten span=1} er nesten alltid et sted, ikke en drue.
 > One more thing before we go. The name on an Italian bottle {^} is nearly always a place, not a grape.
@@ -99,7 +99,7 @@ Barolo er et sted. Chianti er et sted. Druen står det sjelden noe om, fordi all
 
 ## Tåka | The fog
 
-{music bedMist} {mood dawn} {flyTo torino zoom=7.6 over=1.6} Piemonte {region Piemonte side=red label=false over=1.6} betyr ved foten av fjellet. Alpene ligger rundt det på tre kanter, som en skål.
+{music bedMist} {mood dawn} {flyTo torino zoom=7.6 over=1.6} Piemonte {region Piemonte side=red over=1.6} betyr ved foten av fjellet. Alpene ligger rundt det på tre kanter, som en skål.
 > Piemonte {^} means at the foot of the mountain. The Alps stand around it on three sides, like a bowl.
 
 {plate langhe-take motion=in over=22 dim=0.1 push=0.18 into=1.4} Om høsten fylles den skåla med tåke. Den ligger i dalbunnen om morgenen og brenner av utover dagen.

@@ -598,6 +598,17 @@ called ugly, and it was answered four separate times by changing its size —
 reports the same thing three times, the reading is wrong, not the value:
 **stop tuning and offer to delete.**
 
+The fifth answer was `display: none !important` in `css/atlas.css`, and it took
+a twelfth complaint to find out that was not a deletion either: `map/index.js`
+went on building the node, measuring it, placing it and ranking it above every
+city name, and one line of CSS hid it. **Hidden is not removed.** A phone
+holding an older stylesheet had the name back, behaving exactly as reported.
+It is gone at the source now, and `region.show` no longer takes a `label`, so
+nothing can ask for one. Two lessons, and the second is the expensive one:
+when a fix is a rule that hides something, say so out loud — and when a report
+keeps coming back after a fix, **check the thing on screen before trusting the
+note that says it was fixed.**
+
 **A bench that has never failed has not been shown to measure anything.** Four
 checks in this repo were passing while measuring nothing at all — one had never
 looked at the main screen, one scored a map pin against its own label, one flew
