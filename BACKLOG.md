@@ -346,11 +346,28 @@ reads a published custom property.
 
 ## Smaller, and each with a measurement behind it
 
-- **The remaining map stall is data.** One 52–85 ms frame per flight, and it is
-  `detail.json`: 109k points in 3,060 features inside a box that fits entirely
-  on screen at its own `minZoom`, so there is nothing to cull. Raise
-  `detail.minZoom`, or simplify and tile it in `fetch-detail.py`. Both are
-  visible trade-offs.
+- **The map stall does not reproduce, and the geometry was over-fine for one
+  pack only.** Measured on this machine with a rAF probe around a scene-start
+  flight, cold and warm, both packs: the worst frame is **20-40 ms**, not the
+  52-85 ms this list has carried. Either the ground-buffer work recorded below
+  fixed it or it needs a different flight to provoke; either way the number
+  should not be repeated until somebody can reproduce it.
+
+  What WAS wrong is the tolerance. `fetch-detail.py` simplified every subject's
+  geometry at a flat 0.0001 degrees, described as "finer than a pixel at zoom
+  14" — and measured against what the packs actually do that is 0.38 px for the
+  wine course (deepest zoom 12.6) and 2.03 px for the Revolution (14.8, a beach
+  a chapter stands on). One number that knew about neither. It is derived from
+  the pack's own deepest zoom now, and `--resimplify` thins an existing file
+  without re-querying Overpass.
+
+  Wine: 92 155 -> 70 129 points, 1.5 MB -> 1.15 MB, and 0.64 % of pixels differ
+  by more than 8/255 at its deepest beat. Its worst frame went 31 -> 29 ms,
+  which is honest and small. The Revolution cannot be thinned at all without
+  visible loss, so the lever there is `detail.minZoom` or tiling, as before.
+  **Narvik was thinned by 11 % and put straight back**: `check-sealanes.py`
+  found `hardy-ut` leg 4->5 crossing land, because thinning a coastline moves
+  the shore under a route that ran close to it.
 - **The overlap harness is committed, and it found the licence credit.**
   `tools/check-overlap.py` is the 646-frame pairwise harness that found the
   first round of these and was then thrown away — which is why "the remaining

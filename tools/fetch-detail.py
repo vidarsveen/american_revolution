@@ -297,11 +297,102 @@ def rings_of_geom(geom):
     return out
 
 
+def deepest_zoom(pack: str) -> float:
+    """The closest a chapter of this pack ever gets, from its own data.
+
+    A tolerance is a statement about pixels, and pixels depend on the zoom the
+    geometry is actually drawn at — which is a property of the SUBJECT. This
+    file used a flat 0.0001 for every pack, described as "finer than a pixel at
+    zoom 14", and measured against what the packs really do it is 0.38 px for
+    the wine course (deepest zoom 12.4) and 2.03 px for the Revolution (14.8, a
+    beach a chapter stands on). One number for every subject is the same defect
+    as one fill lightness for every hue.
+    """
+    zmax = 0.0
+    for path in sorted((ROOT / "content" / pack).glob("chapter-*.json")):
+        ch = json.loads(path.read_text(encoding="utf-8"))
+        for place in (ch.get("places") or {}).values():
+            zmax = max(zmax, float(place.get("zoom") or 0))
+        for scene in ch.get("scenes", []):
+            for beat in scene.get("beats", []):
+                for cue in beat.get("cues", []):
+                    z = cue.get("zoom")
+                    if isinstance(z, (int, float)):
+                        zmax = max(zmax, float(z))
+    conf = (json.loads((ROOT / "content" / pack / "pack.json")
+                       .read_text(encoding="utf-8")).get("map") or {}).get("zoom") or {}
+    zmax = max(zmax, float(conf.get("maxFit") or 0))
+    return zmax or 14.0
+
+
+def tolerance_for(pack: str, share: float = 0.7) -> float:
+    """Degrees per `share` of a pixel at the deepest zoom this pack reaches."""
+    return share * 360.0 / (256.0 * 2 ** deepest_zoom(pack))
+
+
+def resimplify(pack: str) -> int:
+    """Thin an existing detail.json to this pack's own tolerance.
+
+    Separate from the fetch on purpose: Overpass is a shared public service and
+    re-querying it to change a rounding is rude. It NEVER refines — a file
+    already coarser than the pack's tolerance is left alone, because the detail
+    it dropped is not in the file to put back.
+
+    RUN tools/check-sealanes.py AFTERWARDS, and this is not a formality: thinning
+    a coastline MOVES THE SHORE, and a ship's track that ran a hundred metres off
+    a headland can end up crossing it. Narvik was thinned by 11 % and
+    `hardy-ut` leg 4->5 came out over land; the 11 % was not worth a chapter's
+    route, and that pack was put back. The check is in check-all, so the system
+    caught it — but it caught it after the fact, and this is the note that says
+    to expect it.
+    """
+    dest = ROOT / "content" / pack / "geo" / "detail.json"
+    if not dest.exists():
+        print(f"  {pack}: no geo/detail.json")
+        return 0
+    data = json.loads(dest.read_text(encoding="utf-8"))
+    tol = tolerance_for(pack)
+    z = deepest_zoom(pack)
+    before = sum(len(r) // 2 for lay in data["layers"].values()
+                 for shape_ in lay for r in shape_)
+    out = {}
+    for name, layer in data["layers"].items():
+        kept = []
+        for shape_ in layer:
+            rings = []
+            for ring in shape_:
+                pts = [(ring[i], ring[i + 1]) for i in range(0, len(ring), 2)]
+                if len(pts) < 3:
+                    rings.append(ring)
+                    continue
+                thin = LineString(pts).simplify(tol, preserve_topology=False)
+                rings.append(flatten(list(thin.coords)))
+            if rings:
+                kept.append(rings)
+        out[name] = kept
+    after = sum(len(r) // 2 for lay in out.values()
+                for shape_ in lay for r in shape_)
+    # Under 2% is not a thinning, it is a rewrite of a two-megabyte file for
+    # nothing — and on a frozen pack it is a diff somebody has to read.
+    if after >= before * 0.98:
+        print(f"  {pack}: already at or under {tol:.6f}deg "
+              f"(0.7 px at zoom {z}) — nothing worth thinning")
+        return 0
+    data["layers"] = out
+    dest.write_text(json.dumps(data, separators=(",", ":")), encoding="utf-8")
+    print(f"  {pack}: deepest zoom {z}, tolerance {tol:.6f}deg (0.7 px there)")
+    print(f"    {before} -> {after} points ({100 * after / before:.0f}%), "
+          f"{dest.stat().st_size / 1024:.0f} KB")
+    return 0
+
+
 def main() -> int:
     pack = sys.argv[1] if len(sys.argv) > 1 else None
     if not pack:
-        print("usage: fetch-detail.py <pack>", file=sys.stderr)
+        print("usage: fetch-detail.py <pack> [--resimplify]", file=sys.stderr)
         return 2
+    if "--resimplify" in sys.argv:
+        return resimplify(pack)
     box = theatre(pack)
     if box is None:
         print(f"no theatre bbox declared for {pack}")
@@ -323,9 +414,12 @@ def main() -> int:
     els = data.get("elements", [])
     print(f"  {len(els)} elements")
 
-    # Tolerance ~11 m: finer than a pixel at zoom 14, and the whole point is
-    # that this level is only ever drawn when you are standing in it.
-    TOL = 0.0001
+    # 0.7 px at the deepest zoom this pack's own chapters reach — see
+    # tolerance_for(). It was a flat 0.0001 for every subject, which is 0.38 px
+    # for the wine course and 2.03 px for the Revolution: too fine for one and
+    # already coarse for the other, from one number that knew about neither.
+    TOL = tolerance_for(pack)
+    print(f"  tolerance {TOL:.6f}deg (0.7 px at zoom {deepest_zoom(pack)})")
     # Roughly 440 m. Eastern Massachusetts has three thousand ponds inside
     # this box and half of them are under 360 m — a dozen pixels at the zooms
     # this level is drawn at. They are not water you can see, they are
