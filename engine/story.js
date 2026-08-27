@@ -120,7 +120,40 @@ export async function initStory(container, allPeople, language, pack) {
 
   wireCover(view.querySelector('.story__cover'));
   wireKeys();
+  armAudio();
   return openChapter(0);
+}
+
+/**
+ * Unlock the audio context on the FIRST user gesture, wherever it lands.
+ *
+ * It used to be unlocked in one place only: the tap on the cover's start
+ * button. Every other way into a chapter — pressing play in the transport,
+ * dismissing the cover, arriving with the transport already open — left the
+ * mixer with no context at all, and the mixer builds one lazily, so there was
+ * no music and no effect for the rest of the session. Silently: sound is an
+ * enhancement and fails quietly by design, which is right, and which is
+ * exactly why nothing said a word. Measured on a real click: cover button,
+ * three sources started; transport play button, zero.
+ *
+ * `pointerdown` rather than `click`, because a drag on the scrubber is a
+ * gesture that never becomes a click. Capture phase and passive, so it cannot
+ * change what any control does. It removes itself the moment the context is
+ * actually running — unlock() answers that honestly — and gives up after a few
+ * tries rather than listening for ever.
+ */
+function armAudio() {
+  let tries = 0;
+  const arm = async () => {
+    tries += 1;
+    const ok = await unlockSound();
+    if (ok || tries >= 5) {
+      document.removeEventListener('pointerdown', arm, true);
+      document.removeEventListener('keydown', arm, true);
+    }
+  };
+  document.addEventListener('pointerdown', arm, { capture: true, passive: true });
+  document.addEventListener('keydown', arm, { capture: true, passive: true });
 }
 
 /**

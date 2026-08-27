@@ -65,7 +65,27 @@ export function scheduleFromBeats(beats = []) {
  * chapter) were the outlier: they shipped at −14, ten decibels over
  * everything else. They now match.
  */
-const BED_DB = -24;
+/* MEASURED, at last, and −24 was 35 dB under the voice.
+ *
+ * The reasoning above is sound and its conclusion was not: −24 was derived
+ * from what the cue gains added up to, and nobody ever put a meter on the
+ * output. Metered — an analyser spliced in front of the destination, 30 s of
+ * chapter one playing, against the narration mp3 decoded offline:
+ *
+ *     master out (bed + ambience)   median −56.5 dBFS
+ *     the voice, same chapter        RMS −21.3 dBFS, peak −2.4
+ *
+ * Thirty-five decibels below the voice is not a background, it is silence
+ * with extra steps, and it is why the music was reported as "not working".
+ * The bus level and the synthesised source's own amplitude were both being
+ * counted as the level, and they stack.
+ *
+ * −8 puts the bed about 19 dB under the voice while it ducks and about 7 dB
+ * under between sentences, which is where a documentary bed sits. It is a
+ * per-pack number now (`sound.bedDb` in style.json) because how loud a
+ * subject's music should be is a property of the subject.
+ */
+const BED_DB = -8;
 
 export function createSoundscape({
   mixer,

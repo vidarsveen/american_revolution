@@ -346,7 +346,24 @@ is the recording being wrong, and the fix is the `levelled` gain in `content/<pa
 not the cue. Those two defaults are the medians of what already ships across the four packs, so
 this tidies the mix rather than moving it.
 
-**One measurement is owed before this is applied.** Every `sound.music` cue currently carries
+**THE MEASUREMENT IS TAKEN, and the bed was 35 dB under the voice.** An analyser
+spliced in front of the destination, 30 s of the wine chapter playing, against the same
+chapter's narration mp3 decoded offline:
+
+| | before | after |
+|---|---|---|
+| master out (bed + ambience), median | **−56.5 dBFS** | **−40.5 dBFS** |
+| the voice, RMS / peak | −21.3 / −2.4 dBFS | unchanged |
+| bed under the voice | **35 dB** | **19 dB** |
+
+Thirty-five decibels under is not a background, it is silence with extra steps, and it is
+why the music was reported as not working. `bedDb` is −8 now and is a per-pack number
+(`sound.bedDb` in `style.json`) — how loud a subject's music sits is a property of the
+subject. The relative table above is unchanged: the ducker still takes 12 dB off while
+anyone is speaking.
+
+**The note this replaces, kept because it was right about the method and wrong about the
+number:** Every `sound.music` cue currently carries
 −6 to −12 dB *on top of* the bus's own −14 (`sound/soundscape.js:52`), so the bed that ships is
 9–12 dB below the level the module documents. Take what ships as correct: move it into `bedDb`
 and then delete the cue gains. Deleting them first makes every chapter's music three times

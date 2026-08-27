@@ -29,6 +29,7 @@
 import { createMixer } from '../../sound/mixer.js';
 import { createLibrary } from '../../sound/library.js';
 import { createSoundscape, scheduleFromBeats } from '../../sound/soundscape.js';
+import { styleValue } from '../style.js';
 
 let mixer = null;
 let scape = null;
@@ -41,7 +42,15 @@ export function mountSound(chapter) {
   try {
     mixer = createMixer({ enabled: true });
     library = createLibrary();
-    scape = createSoundscape({ mixer, library });
+    // A pack's own mix, over the module's defaults. The bed level is the one
+    // number here a subject really does own: a wine course wants a different
+    // weight of music from a battle, and it was a constant in a module.
+    scape = createSoundscape({
+      mixer,
+      library,
+      bedDb: styleValue('sound.bedDb', undefined),
+      duckDb: styleValue('sound.duckDb', undefined),
+    });
   } catch (err) {
     // Sound is an enhancement. Losing it must not take the chapter with it.
     console.warn('[sound] unavailable:', err && err.message);

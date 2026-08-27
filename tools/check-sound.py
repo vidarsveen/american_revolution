@@ -44,7 +44,7 @@ BASE = os.environ.get("LAB_BASE", "http://localhost:8000")
 # Two copies of one number is the verbs.json mistake in miniature, so it is
 # named in both places and drift shows up as a failed check rather than as a
 # mix nobody can explain.
-BED = -24
+BED = -8
 
 results: list[tuple[bool, str, str]] = []
 
@@ -113,8 +113,9 @@ def main() -> int:
               "music, ambience and sfx all decline")
         # BED is what the module defaults to and OPEN/DUCKED are derived,
         # so moving the bed does not mean editing eight numbers here. It is
-        # -24 rather than -14 since the measured level was moved out of the
-        # per-cue gains and into bedDb — see soundscape.js, BED_DB.
+        # -8 rather than -24 since the level was finally METERED rather than
+        # derived: at -24 the bed came out 35 dB under the voice, which is
+        # why the music was reported as not working. See soundscape.js.
         check(stub["gap"] == BED and stub["speech"] == BED - 12,
               "the duck curve is still computable",
               f'speech {stub["speech"]} dB, gap {stub["gap"]} dB')
