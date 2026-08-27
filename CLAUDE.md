@@ -670,3 +670,8 @@ of the surrounding file.
   terms: Meta's AudioGen is widely described as Apache 2.0 and its weights are CC-BY-NC 4.0.
   The synthesised catalogue in `sound/library.js` stays as the zero-dependency fallback and
   must not be deleted — a pack entry only overrides it.
+- **Music has a survey and no tool yet.** ACE-Step v1-3.5B is Apache 2.0 on the weights
+  themselves (LICENSE read, standard text, no added clauses) and Magenta RealTime is
+  Apache code with CC-BY-4.0 weights; Stable Audio Open and MusicGen both fail the bar.
+  `BACKLOG.md` has the table and what building on it costs — a 7-8 GB download and the
+  loop-seam problem, which is the part the licence has nothing to do with.

@@ -183,17 +183,35 @@ built on the old one. What a scene declaring `ground: none` would still buy is
 the paint and the geometry a subject that is not about places never needs — that
 is a real argument, and it is a different one.
 
-**4. Music.** Beds are Karplus-Strong drones and plucks; they are measurably
-decent and they are not a score. `tools/gen-music.py` in `.venv-audio`, shaped
-like `gen-sound.py`, writing into `content/<pack>/sound.json` — which already
-takes file-based overrides with a mandatory licence and credit, so nothing in
-`soundscape.js` changes.
+**4. Music — the licence survey is done, and it did not fail.**
 
-**Step one is a licence survey and it may fail.** MusicGen's weights are
-CC-BY-NC, which is the AudioGen trap recorded further down this file, and
-several "open" music models restrict deployment rather than output. The bar is a
-real LICENSE file, read. If nothing clears it, licensed library beds committed
-per pack with the same provenance record.
+This list expected it to: MusicGen's weights are CC-BY-NC, which is the AudioGen
+trap recorded further down, and several "open" music models restrict deployment
+rather than output. Three clear the bar. Read on 27 August 2026, from the model
+card and the LICENSE file rather than from a summary of either:
+
+| model | code | weights | verdict |
+|---|---|---|---|
+| **ACE-Step v1-3.5B** | Apache 2.0 | Apache 2.0 | **clears.** The LICENSE file is the standard Apache text with a copyright line and no added clauses. Instrumental or sung, ~4 min, runs on a consumer GPU. |
+| **Magenta RealTime** (Google) | Apache 2.0 | CC-BY-4.0 | **clears, with attribution.** Google claims no rights in the output. Built for a continuous stream, which is the shape a bed actually is. |
+| **YuE** (m-a-p) | Apache 2.0 | Apache 2.0 | clears, and the card explicitly encourages monetising the output — but it is a 7B song model with vocals, which is the wrong shape for a bed. |
+| Stable Audio Open 1.0 | — | Stability AI Community Licence | **fails.** Commercial use needs a separate agreement. |
+| MusicGen / AudioCraft | MIT | CC-BY-NC | fails, and it is the trap this file already records. |
+
+So the recommendation is **ACE-Step for beds**, on the same argument that chose
+MOSS-SoundEffect and FLUX.2-klein-4B: Apache 2.0 on the weights themselves, with
+Magenta RealTime as the alternative if a seamless continuous stream turns out to
+matter more than prompt control. CC-BY costs a credit line, and
+`content/<pack>/sound.json` already requires one.
+
+WHAT STEP TWO COSTS, because it is not small and it is somebody's machine: a
+7-8 GB weights download, an install into `.venv-audio` (which is Python 3.12 on
+torch 2.6+cu124 with a hand-satisfied import chain — read this file's note on
+what that cost the first time), and GPU minutes per bed. Then the real work,
+which the licence has nothing to do with: **a bed has to loop at the seam**, and
+`dev/sound-lab.html` already measures that on the samples. A four-minute song is
+not a bed; what is wanted is 20-40 s that joins itself, generated long and cut
+at a zero crossing the autocorrelation agrees with.
 
 **5. DONE — the picture reviewer.** `tools/review-pictures.py <pack>` puts every
 picture beside every sentence it is actually on screen for, in both languages,
