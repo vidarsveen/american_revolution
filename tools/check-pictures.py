@@ -38,6 +38,14 @@ says the thing the sentence is about.
 Getting that backwards is a real defect in both directions -- a wine chapter
 carried by a map is dull, and a battle carried by plates hides the ground the
 battle was fought on.
+
+THE OTHER HALF OF THE QUESTION is not here, and cannot be: `cover` is how much
+of the chapter has a picture up, and the natural companion -- how much of the
+FRAME the map is left with once the caption, the transport and a card have had
+their share -- needs rectangles from a browser. tools/check-overlap.py measures
+it and prints it per chapter. Measured there: the map keeps 68-77% of its host
+at rest, which is rather more than the "roughly 40% is spoken for" this repo had
+been repeating from three part-measurements added together.
 """
 
 from __future__ import annotations

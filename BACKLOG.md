@@ -145,13 +145,31 @@ judging every label against a frame no viewer is shown. The offset is exported
 through `engine/scenes/map.js` (the handle, not the surface, so a mapless pack
 still imports no geometry) and the probe uses the same one implementation.
 
-STILL OPEN, and this is the larger half: `ground` per scene — `map`, `plate` or
-`none` — and `map.inset` / `map.take`, so the map arrives when the sentence is
-spatial and leaves when it is not. Plus a map-share number in
-`check-pictures.py` beside the `cover` percentage it already prints. On a
-390x844 phone roughly 40 % of the frame is spoken for before the map draws
-anything, and composing into what is left does not change that; it only stops
-the camera pretending otherwise.
+**The map-share number exists now, and it does not say what this list assumed.**
+`tools/check-overlap.py` rasterises the map host against every overlay on it and
+prints, per chapter, how much of it no overlay is sitting on:
+
+    american-revolution/chapter-1775-04-19   68 % median, worst 28 % at s1.b4
+    american-revolution/chapter-1775-06-17   71 % median, worst 35 %
+    italy-wine/chapter-1-piemonte            77 % median, worst 59 %
+    norway-1940/chapter-1940-04-09           68 % median, worst 30 %
+    roman-empire/chapter-27bc-augustus       73 % median, worst 37 %
+
+**"Roughly 40 % of the frame is spoken for" is wrong**, and it is wrong in a way
+worth knowing: it was three separate measurements of PARTS added together — a
+126 px deck reserve, a 127 px caption, a 78 px transport, against 734 — and the
+parts overlap each other. The deck sits above the caption only when both are up,
+the caption is empty between beats, and a fact card and the stats share a band.
+Measured as one thing on a grid, the map keeps between two thirds and three
+quarters of its frame at rest. The worst frames — 28 to 35 % — are a card over a
+map, which is the deck reserve doing its job, and whether the place being named
+is still visible there is what `check-legible.py` asks.
+
+So the case for `ground` per scene and `map.inset` / `map.take` is weaker than
+this list assumed, and it should be re-argued from the numbers above rather than
+built on the old one. What a scene declaring `ground: none` would still buy is
+the paint and the geometry a subject that is not about places never needs — that
+is a real argument, and it is a different one.
 
 **4. Music.** Beds are Karplus-Strong drones and plucks; they are measurably
 decent and they are not a score. `tools/gen-music.py` in `.venv-audio`, shaped
@@ -247,6 +265,28 @@ whether Explore is retired, kept, or folded into the dossier that already exists
 The one capability that would justify keeping it — tap a place, read about it —
 is a small addition to Fortell's depth layer, not a reason for a second mode
 with its own Revolution-shaped content schema.
+
+---
+
+## Two more numbers that were not measured on the thing
+
+`--caption-h` (below) was the first. Two more turned up the same way, and both
+are now measured rather than derived:
+
+- **"Roughly 40 % of the frame is spoken for before the map draws anything."**
+  Three separate measurements of PARTS added together — a 126 px deck reserve, a
+  127 px caption, a 78 px transport, against 734 — and the parts overlap each
+  other. Rasterised as one thing, the map keeps 68-77 % of its host at rest and
+  drops to 28-35 % only when a card is up. `tools/check-overlap.py` prints it
+  per chapter.
+- **"The caption's unsaid ink is 3.91 against AA 4.5."** Computed from the
+  tokens it is 5.58; measured on rendered pixels over a picture it was 4.19.
+  Fixed, and now sampled at a beat with a plate up rather than at whichever beat
+  was convenient.
+
+The shape is the same every time: a number that describes what is on screen has
+to be measured on what is on screen. A sum of parts is not it, and neither are
+the tokens the parts are written in.
 
 ---
 

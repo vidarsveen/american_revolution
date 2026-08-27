@@ -35,9 +35,9 @@ stylesheet at all, so four separate "fixes" that removed a class changed nothing
 a viewer could see and every probe that asked the DOM about classes reported
 success.
 
-The sampled walk (the default) and the exhaustive one found the same five pairs
-with the same counts on the four packs that ship — 395 frames against 571, two
-and three quarter minutes against five and a half.
+The sampled walk (the default) and the exhaustive one found the same pairs with
+the same counts on the four packs that ship — 395 frames against 571, and three
+minutes against six.
 
 IT IS A RATCHET, NOT A GATE
 
@@ -103,37 +103,59 @@ CARD_VERBS = {
     "plate.show", "plate.hide",
 }
 
-# WHAT IS KNOWN TO OVERLAP, and how many beat-frames it was measured at.
-# Raise nothing here without a reason written beside it; lower it when a fix
-# lands. `python tools/check-overlap.py --baseline` prints the block to paste.
-# Measured across 571 beat-frames, four packs, Norwegian, at the middle of every
-# beat. Two families, and they are different problems:
+# WHAT IS KNOWN TO OVERLAP, per pack, and how many beat-frames each was
+# measured at. Raise nothing here without a reason beside it; lower it when a
+# fix lands. `--baseline` prints the block to paste.
 #
-#   THE CREDIT against a card (11 frames). The map's licence chip is bottom
-#   right and a card in the lower deck can cross it. It used to overlap the
-#   CAPTION in all 50 frames of the wine chapter instead, which was worse and
-#   is fixed — engine/captions.js publishes --caption-reach now. What is left
-#   is brief: the chip is clear in 560 of 571 frames.
+# MEASURED AFTER THE PROBE LEARNED TO WAIT. The first numbers in this table were
+# 6, 4, 1, 1 and 2 and they did not reproduce — two runs of the same command
+# disagreed on two pairs — because a seek REPLAYS the cues and every card
+# entering the beat fades in again over --t-enter. Measured 140 ms later, a card
+# is mid-fade and its opacity crosses the threshold in one run and not the next.
+# The probe now waits until nothing is moving; two consecutive runs agree
+# exactly, and the numbers below are from that.
 #
-#   TWO CARDS on each other (3 frames). The top deck starts at the same line as
+# Two families, and they are different problems:
+#
+#   THE CREDIT against a card (11 frames of 395). The map's licence chip is
+#   bottom right and a card in the lower deck can cross it. It used to overlap
+#   the CAPTION in all 50 frames of the wine chapter instead, which was worse
+#   and is fixed — engine/captions.js publishes --caption-reach now.
+#
+#   TWO CARDS on each other (4 frames). The top deck starts at the same line as
 #   the mid deck's band and grows downwards with no bound, so a portrait can
 #   hang into a centred quote. BACKLOG.md recorded this as "30 of 646" from a
 #   harness that no longer existed.
 #
 # A FIX FOR THE SECOND WAS TRIED AND MEASURED WORSE, which is why it is written
 # down here rather than attempted again from scratch: publishing the top deck's
-# reach and starting the mid band below it shrinks that band, and a tall quote
-# card then overflows it in BOTH directions — 5 pairs became 7, with the quote
-# landing on the caption in 6 frames and the transport in 3. The band is
-# bounded top and bottom and centres its content; making it shorter is not the
-# move. What is left is capping how far a portrait may hang, and that is a
+# reach and starting the mid band below it shrinks a band that is bounded at
+# both ends and centres its content, so a tall quote card then overflowed it in
+# BOTH directions — the quote landed on the caption in 6 frames and the
+# transport in 3. What is left is capping how far a face may hang, and that is a
 # decision about how big a face is allowed to be.
+#
+# KEYED BY PACK, because the tool takes a pack argument. Keyed by pair alone,
+# `check-overlap.py italy-wine` compared the wine chapter against every pack's
+# numbers and cheerfully announced that the Revolution's portrait overlap had
+# been fixed. A ratchet that reports a win for something it did not measure is
+# worse than no ratchet.
 BASELINE = {
-    ".atlas__credit|.ov-fact__card": 6,
-    ".atlas__credit|.ov-portrait__card": 4,
-    ".atlas__credit|.ov-quote__card": 1,
-    ".ov-compare|.ov-portrait__card": 1,
-    ".ov-portrait__card|.ov-quote__card": 2,
+    "american-revolution": {
+        ".atlas__credit|.ov-fact__card": 2,
+        ".atlas__credit|.ov-portrait__card": 2,
+        ".ov-compare|.ov-portrait__card": 1,
+        ".ov-portrait__card|.ov-quote__card": 1,
+    },
+    "italy-wine": {
+        ".atlas__credit|.ov-fact__card": 1,
+    },
+    "norway-1940": {
+        ".atlas__credit|.ov-fact__card": 3,
+        ".atlas__credit|.ov-portrait__card": 2,
+        ".atlas__credit|.ov-quote__card": 1,
+        ".ov-portrait__card|.ov-quote__card": 1,
+    },
 }
 
 
@@ -224,20 +246,79 @@ async (a) => {
     return o;
   };
 
-  const out = [];
-  for (const sel of a.watch) {
-    for (const el of document.querySelectorAll(sel)) {
-      const o = eff(el);
-      if (o < 0.15) continue;              // a fade-out nobody is reading
-      const r = el.getBoundingClientRect();
-      if (r.width < 4 || r.height < 4) continue;
-      out.push({ sel, o: Math.round(o * 100) / 100,
-                 x: r.left, y: r.top, w: r.width, h: r.height });
+  /* AND WHAT IS LEFT OF THE MAP. The stage is a map with furniture over it,
+     and the furniture is not small: a caption, a transport, a deck and
+     sometimes a card. "Roughly 40% of the frame is spoken for before the map
+     draws anything" has been asserted in BACKLOG.md three times from three
+     different measurements of PARTS. This measures the whole. */
+  const host = document.querySelector('#story-map');
+  const hr = host ? host.getBoundingClientRect() : null;
+  const plate = [...document.querySelectorAll('.plate, .stage-plate, .plate__fig')]
+    .find((el) => eff(el) > 0.5 && el.getBoundingClientRect().height > 40);
+
+  /* WAIT UNTIL NOTHING IS MOVING, and this is not optional. A seek REPLAYS the
+     cues, so every card entering this beat animates in again from the moment
+     of the seek, over --t-enter (900 ms). Measured 140 ms later, a card is
+     mid-fade: its opacity is under the threshold in one run and over it in the
+     next, and its box has not settled either. Two consecutive runs of this
+     tool disagreed by two frames on two different pairs before this loop
+     existed, which is the "read too close to the thing that produced it"
+     failure CLAUDE.md records three times over. */
+  const snapshot = () => {
+    const rows = [];
+    for (const sel of a.watch) {
+      for (const el of document.querySelectorAll(sel)) {
+        const o = eff(el);
+        if (o < 0.15) continue;            // a fade-out nobody is reading
+        const r = el.getBoundingClientRect();
+        if (r.width < 4 || r.height < 4) continue;
+        rows.push({ sel, o: Math.round(o * 100) / 100,
+                    x: Math.round(r.left), y: Math.round(r.top),
+                    w: Math.round(r.width), h: Math.round(r.height) });
+      }
     }
+    return rows;
+  };
+  const sig = (rows) => rows.map((r) => `${r.sel}${r.o}${r.x},${r.y},${r.w},${r.h}`)
+    .sort().join('|');
+
+  let out = snapshot();
+  let was = sig(out), still = 0;
+  for (let i = 0; i < 20 && still < 2; i += 1) {
+    await new Promise(r => setTimeout(r, 90));
+    out = snapshot();
+    const now = sig(out);
+    still = now === was ? still + 1 : 0;
+    was = now;
   }
-  return out;
+  return { boxes: out, plate: !!plate,
+           host: hr ? { x: hr.left, y: hr.top, w: hr.width, h: hr.height } : null };
 }
 """
+
+
+def map_share(host, boxes, cell=10):
+    """The share of the map host no overlay is sitting on.
+
+    Rasterised on a 10 px grid rather than added up: the boxes overlap each
+    other, and a sum of areas would charge the same pixel twice — which is how
+    "40% is spoken for" came to be asserted from three separate measurements of
+    parts. A grid cell is counted once however many things are on it.
+    """
+    if not host or host["w"] < 10 or host["h"] < 10:
+        return None
+    cols = max(1, int(host["w"] // cell))
+    rows = max(1, int(host["h"] // cell))
+    taken = set()
+    for b in boxes:
+        x0 = max(0, int((b["x"] - host["x"]) // cell))
+        x1 = min(cols, int((b["x"] + b["w"] - host["x"]) // cell) + 1)
+        y0 = max(0, int((b["y"] - host["y"]) // cell))
+        y1 = min(rows, int((b["y"] + b["h"] - host["y"]) // cell) + 1)
+        for gy in range(y0, y1):
+            for gx in range(x0, x1):
+                taken.add((gx, gy))
+    return 1.0 - len(taken) / float(cols * rows)
 
 
 def overlaps(boxes, min_area):
@@ -255,7 +336,7 @@ def overlaps(boxes, min_area):
     return out
 
 
-def run(base, pack, chapter_id, lang, settle, found, seen, every=False):
+def run(base, pack, chapter_id, lang, settle, found, seen, shares, every=False):
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
         ctx = browser.new_context(viewport={"width": VIEWPORT[0],
@@ -280,10 +361,16 @@ def run(base, pack, chapter_id, lang, settle, found, seen, every=False):
                 # The middle of the beat: the entry animations have landed and
                 # nothing has begun to leave.
                 t = (beat.get("start") or 0) + (beat.get("dur") or 0) / 2
-                boxes = page.evaluate(PROBE, {"scene": si, "t": t,
-                                              "settle": settle, "watch": WATCH})
+                got = page.evaluate(PROBE, {"scene": si, "t": t,
+                                            "settle": settle, "watch": WATCH})
+                boxes = got["boxes"]
                 frames += 1
-                for key, area in overlaps(boxes, MIN_AREA):
+                share = map_share(got.get("host"), boxes)
+                if share is not None:
+                    shares.setdefault(f"{pack}/{chapter_id}", []).append(
+                        (share, bool(got.get("plate")), beat["id"]))
+                for pair, area in overlaps(boxes, MIN_AREA):
+                    key = (pack, pair)
                     found[key] = found.get(key, 0) + 1
                     worst = seen.get(key)
                     if not worst or area > worst[0]:
@@ -309,38 +396,70 @@ def main() -> int:
     langs = [l.strip() for l in args.lang.split(",") if l.strip()]
     found: dict[str, int] = {}
     seen: dict[str, tuple] = {}
+    shares: dict[str, list] = {}
     frames = 0
     for pack in packs:
         for cid in chapters_of(pack):
             for lang in langs:
                 frames += run(args.url, pack, cid, lang, args.settle, found,
-                              seen, args.all_beats)
+                              seen, shares, args.all_beats)
                 print(f"  {pack}/{cid} {lang}: {frames} frames so far")
 
+    # WHAT THE MAP IS LEFT WITH. check-pictures.py prints `cover` — the share of
+    # a chapter with a picture up — and this is the other half of that question:
+    # of the frame the map is drawn in, how much can you still see? Printed and
+    # never gated, because how much map a subject needs is a property of the
+    # subject: the wine course wanting less of it than the Revolution is the
+    # right answer, not a defect.
+    if shares:
+        print("\nwhat is left of the map, per chapter "
+              "(share of the map host no overlay is sitting on):")
+        for ref in sorted(shares):
+            rows = shares[ref]
+            clear = sorted(s for s, plated, _ in rows if not plated)
+            plated = [s for s, p, _ in rows if p]
+            med = clear[len(clear) // 2] if clear else None
+            worst = min(rows, key=lambda r: r[0])
+            head = "—" if med is None else f"{100 * med:3.0f}%"
+            tail = (f", {len(plated)} of {len(rows)} frames behind a picture"
+                    if plated else "")
+            print(f"  {ref:<38} {head} median with no picture up, "
+                  f"worst {100 * worst[0]:3.0f}% at {worst[2]}{tail}")
+
     print(f"\n{frames} beat-frames measured, {len(found)} overlapping pair(s)")
-    for key in sorted(found):
-        area, where = seen[key]
-        print(f"  {found[key]:>4}x  {key}   worst {area} px² at {where}")
+    for pack, pair in sorted(found):
+        area, where = seen[(pack, pair)]
+        print(f"  {found[(pack, pair)]:>4}x  {pair}   worst {area} px² at {where}")
 
     if args.baseline:
         print("\nBASELINE = {")
-        for key in sorted(found):
-            print(f'    "{key}": {found[key]},')
+        for pack in packs:
+            rows = {pair: n for (p, pair), n in found.items() if p == pack}
+            if not rows:
+                continue
+            print(f'    "{pack}": {{')
+            for pair in sorted(rows):
+                print(f'        "{pair}": {rows[pair]},')
+            print("    },")
         print("}")
         return 0
 
     bad = False
-    for key, n in sorted(found.items()):
-        allowed = BASELINE.get(key, 0)
+    for (pack, pair), n in sorted(found.items()):
+        allowed = BASELINE.get(pack, {}).get(pair, 0)
         if n > allowed:
             bad = True
-            print(f"\n  FAIL: {key} overlaps in {n} frames, baseline {allowed}")
-            print(f"        worst {seen[key][0]} px² at {seen[key][1]}")
-    for key, allowed in sorted(BASELINE.items()):
-        n = found.get(key, 0)
-        if n < allowed:
-            print(f"\n  BETTER: {key} is down to {n} from {allowed} — lower the "
-                  f"baseline in {os.path.basename(__file__)}")
+            print(f"\n  FAIL: {pack} {pair} overlaps in {n} frames, "
+                  f"baseline {allowed}")
+            print(f"        worst {seen[(pack, pair)][0]} px² at "
+                  f"{seen[(pack, pair)][1]}")
+    # Only for the packs actually measured — see the note on BASELINE.
+    for pack in packs:
+        for pair, allowed in sorted(BASELINE.get(pack, {}).items()):
+            n = found.get((pack, pair), 0)
+            if n < allowed:
+                print(f"\n  BETTER: {pack} {pair} is down to {n} from {allowed}"
+                      f" — lower the baseline in {os.path.basename(__file__)}")
     if bad:
         return 1
     print("\nAll good.")

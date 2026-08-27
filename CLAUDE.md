@@ -375,6 +375,14 @@ chapter — because the caption SLOT is a little above the floor and the sum did
 `tools/check-overlap.py` on its first run, 50 of 50 frames of the wine chapter, and it matters
 more than it looks — ODbL asks for the credit to be legible, not merely emitted.
 
+**A seek replays the cues, so everything on the stage animates in again — measure after it
+has stopped.** `check-overlap.py`'s first numbers did not reproduce: two runs of the same
+command disagreed on two pairs, because a card fades in over `--t-enter` from the moment of
+the seek and a probe reading 140 ms later catches it mid-fade, with its opacity on one side of
+the threshold or the other. It waits for the boxes to stop changing now, and two consecutive
+runs agree exactly. Same family as the `--caption-h` flake and `check-turn`'s: a number read
+too close to the thing that produced it.
+
 `tools/check-overlap.py` is that harness, and it is committed because the one that found the
 first round of these was not: "the remaining 30 are portrait cards reaching down out of the top
 deck" sat in `BACKLOG.md` for weeks with nothing able to re-measure it. A measurement nobody
