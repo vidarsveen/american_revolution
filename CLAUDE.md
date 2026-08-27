@@ -68,6 +68,14 @@ Massachusetts washed blue over the whole map.
 frames to a backgrounded tab. Animation frames make things smooth; timers are the contract.
 Every draw path must be callable synchronously.
 
+**A level derived from other numbers is not a level anybody has heard.** The music bed sat at
+−24 dB because that is what the old per-cue gains added up to, and a long comment in
+`sound/soundscape.js` reasoned it out. Metered — an analyser in front of the destination,
+against the narration mp3 decoded offline — it came out **35 dB under the voice**, which is
+inaudible, and it was reported as "the music does not work". It is −8 now, metered at 19 dB
+under. Same lesson as the caption ink and the map share, in a third costume: **a number that
+describes what a listener or a viewer experiences has to be measured on what they get.**
+
 **3. Audio failing is not the app failing.** If playback is blocked before a user gesture, or a
 file is missing, the chapter still runs on a timer and the captions carry the words. **Never
 route the narration `<audio>` element through a Web Audio graph** — that would put the voice
