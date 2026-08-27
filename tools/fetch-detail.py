@@ -19,6 +19,7 @@ assets/geo/*.json so the map module needs no new code path.
 from __future__ import annotations
 
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
@@ -49,9 +50,22 @@ def theatre(pack):
     if not path.exists():
         return None
     manifest = json.loads(path.read_text(encoding="utf-8"))
-    bbox = ((manifest.get("map") or {}).get("detail") or {}).get("bbox")
+    # One box or several. A course goes where its chapters go, so `detail` may
+    # be a list; `--box <n>` picks one, and the default is the first.
+    spec = (manifest.get("map") or {}).get("detail")
+    levels = spec if isinstance(spec, list) else ([spec] if spec else [])
+    if not levels:
+        return None
+    which = 0
+    for i, arg in enumerate(sys.argv):
+        if arg == "--box" and i + 1 < len(sys.argv):
+            which = int(sys.argv[i + 1])
+    if which >= len(levels):
+        return None
+    bbox = (levels[which] or {}).get("bbox")
     if not bbox or len(bbox) != 4:
         return None
+    globals()["LEVEL"] = levels[which]
     w, s_, e, n = bbox
     return (s_, w, n, e)
 
@@ -346,9 +360,26 @@ def resimplify(pack: str) -> int:
     caught it — but it caught it after the fact, and this is the note that says
     to expect it.
     """
-    dest = ROOT / "content" / pack / "geo" / "detail.json"
+    done = 0
+    for level in levels_of(pack):
+        done |= resimplify_one(pack, level)
+    return done
+
+
+def levels_of(pack):
+    """Every close-in box this pack declares, as a list."""
+    path = ROOT / "content" / pack / "pack.json"
+    if not path.exists():
+        return []
+    spec = ((json.loads(path.read_text(encoding="utf-8")).get("map") or {})
+            .get("detail"))
+    return spec if isinstance(spec, list) else ([spec] if spec else [])
+
+
+def resimplify_one(pack, level):
+    dest = ROOT / "content" / pack / (level.get("url") or "geo/detail.json")
     if not dest.exists():
-        print(f"  {pack}: no geo/detail.json")
+        print(f"  {pack}: no {level.get('url', 'geo/detail.json')}")
         return 0
     data = json.loads(dest.read_text(encoding="utf-8"))
     tol = tolerance_for(pack)
@@ -402,7 +433,12 @@ def main() -> int:
 
     # Cache the raw response. Overpass is a shared public service and this
     # query is expensive; re-running the trim should not cost them anything.
-    raw = ROOT / "assets" / "geo" / "_src" / f"osm-{pack}.json"
+    # Per level: two boxes for one pack are two different queries, and the
+    # cache keyed by pack alone silently handed the second one the first
+    # one's elements.
+    level = globals().get("LEVEL") or {}
+    stem = os.path.splitext(os.path.basename(level.get("url", "detail.json")))[0]
+    raw = ROOT / "assets" / "geo" / "_src" / f"osm-{pack}-{stem}.json"
     if raw.exists() and "--refresh" not in sys.argv:
         print(f"  using cached {raw.name} (pass --refresh to re-query)")
         data = json.loads(raw.read_text(encoding="utf-8"))
@@ -426,12 +462,17 @@ def main() -> int:
     # speckle, and every one of them is re-walked whenever the ground is
     # baked. Keeping only the ones big enough to be a place cuts the lake
     # geometry by 60% and loses nothing anyone could point at.
-    MIN_WATER = 0.004
+    # …and how big a pond or a wood has to be to be worth drawing is a fact
+    # about the SUBJECT's country, not about this tool. Eastern Massachusetts
+    # has three thousand ponds; Tuscany has four thousand copses, and at the
+    # default the box came to 4.4 MB against the Langhe's 1.1. `minWater` and
+    # `minWood` on the level in pack.json override these.
+    MIN_WATER = float(level.get("minWater", 0.004))
     # Woods are kept only when they are big enough to read as ground rather
     # than as speckle. Modern OSM maps every copse behind a supermarket; at
     # the zooms this level is drawn, anything under about half a kilometre is
     # noise that costs bytes and says nothing.
-    MIN_WOOD = 0.007
+    MIN_WOOD = float(level.get("minWood", 0.007))
     water, coast, rivers, woods = [], [], [], []
     for el in els:
         tags = el.get("tags") or {}
@@ -480,7 +521,7 @@ def main() -> int:
         "layers": {"land": land, "woods": woods, "lakes": water, "rivers": rivers},
         "credit": "© OpenStreetMap contributors, ODbL",
     }
-    dest = ROOT / "content" / pack / "geo" / "detail.json"
+    dest = ROOT / "content" / pack / (level.get("url") or "geo/detail.json")
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, separators=(",", ":")), encoding="utf-8")
 

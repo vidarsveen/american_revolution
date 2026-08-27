@@ -80,6 +80,9 @@ export const BUILT_IN = Object.freeze({
   plate: { motion: 'in', push: 0.16, focus: [0.5, 0.42], fit: 'cover' },
   type: { scale: 1 },
   map: { deckReserve: 126, labelGap: [4, 2] },
+  /* The bed, metered against the voice rather than derived from the cue gains
+     it used to be summed from. See sound/soundscape.js. */
+  sound: { bedDb: -8, duckDb: -12 },
 });
 
 /* ------------------------------------------------------------
@@ -107,6 +110,13 @@ const SPEC = {
   'type.scale': { kind: 'num', min: 0.7, max: 1.6 },
   'map.deckReserve': { kind: 'num', min: 0, max: 400 },
   'map.labelGap': { kind: 'pair', min: 0, max: 40 },
+  /* How loud this subject's music sits, and how far it gets out of the way
+     when someone speaks. Metered rather than chosen: at the old -24 the bed
+     came out 35 dB under the voice, which is inaudible. The floor is -40
+     because below that it is silence with extra steps, and the ceiling is -2
+     because a bed level with the narration is not a bed. */
+  'sound.bedDb': { kind: 'num', min: -40, max: -2 },
+  'sound.duckDb': { kind: 'num', min: -24, max: 0 },
 };
 
 /* ------------------------------------------------------------
@@ -382,6 +392,9 @@ function merge(base, raw, where) {
     if (section.startsWith('$')) continue;
     if (!block || typeof block !== 'object') continue;
     for (const key of Object.keys(block)) {
+      // `//` is this repo's comment key everywhere else; it is not decoration
+      // pretending to be configuration.
+      if (key.startsWith('//')) continue;
       if (!SPEC[`${section}.${key}`]) {
         warnOnce(`${where}:${section}.${key}`,
           `${where} declares "${section}.${key}", which nothing reads`);

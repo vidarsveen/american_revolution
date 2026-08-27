@@ -23,7 +23,7 @@ id: chapter-2-toscana
 pack: italy-wine
 title: Én drue, fire adresser | One grape, four addresses
 subtitle: Toscana, fra Firenze til havet | Tuscany, from Florence to the sea
-regions: geo/regions.geojson
+regions: geo/zones.geojson
 ---
 
 # places
@@ -46,18 +46,21 @@ figure.label: året Chianti fikk en grense | the year Chianti got a boundary
 
 ## Tre navn, én drue | Three names, one grape
 
-{music bedWarm} {mood day} {flyTo firenze zoom=7.6 over=3.6} Toscana lager tre store rødviner. De heter Chianti, Brunello di Montalcino og Vino Nobile di Montepulciano.
-> Tuscany makes three great red wines. They are called Chianti, Brunello di Montalcino and Vino Nobile di Montepulciano.
-{plate sangiovese-klase motion=in over=22 dim=0.16 push=0.09 into=1.4} Tre navn på tre steder som ligger under to timer fra hverandre.
-> Three names, for three places less than two hours apart.
+{music bedWarm} {mood day} {plate tre-flasker motion=in over=18 dim=0.14 push=0.07 into=1.4} Toscana lager tre store rødviner.
+> Tuscany makes three great red wines.
+Tre navn, tre steder, og under to timer mellom dem.
+> Three names, three places, and less than two hours between them.
 
-Og det er den samme druen {mark term:drue} i alle tre.
+{plate.hide 1.1} {flyTo firenze zoom=7.6 over=3.6} De heter Chianti {marker greve label=Chianti kind=point tone=gold}, Brunello di Montalcino {marker montalcino label=Brunello kind=point tone=gold} og Vino Nobile di Montepulciano {marker montepulciano label=Vino Nobile kind=point tone=gold}.
+> They are called Chianti {^1}, Brunello di Montalcino {^2} and Vino Nobile di Montepulciano {^3}.
+
+{plate sangiovese-klase motion=in over=22 dim=0.16 push=0.09 into=1.4} Og det er den samme druen {mark term:drue} i alle tre.
 > And it is the same grape {^} in all three.
 Den heter Sangiovese {fact grape:sangiovese}, og den er den mest plantede druen i Italia.
 > It is called Sangiovese {^}, and it is the most planted grape in Italy.
 
-Ingen av de tre navnene er druens navn. Alle tre er steder.
-> Not one of those three names is the grape's. All three are places.
+Ingen av de tre navnene er druens navn. Alle tre er steder på kartet.
+> Not one of those three names is the grape's. All three are places on the map.
 {plate.hide 1.1} Forrige gang lærte vi at navnet på flaska er et sted. Nå skal vi se hva stedet faktisk gjør.
 > Last time we learned that the name on the bottle is a place. Now we look at what the place actually does.
 
@@ -97,8 +100,8 @@ Den holder dårlig på vann, og det er meningen. En plante som må lete etter va
 
 ## Hanen og grensen | The rooster and the boundary
 
-{music bedHollow} {ambience vineyard gainDb=-15} {flyTo chianti zoom=8.4 over=3.0} {region Toscana side=red vary=false strength=0.55 over=1.6} Chianti er et sted. Det har det alltid vært.
-> Chianti is a place. It always has been.
+{music bedHollow} {ambience vineyard gainDb=-15} {flyTo chianti zoom=8.6 over=3.0} {region Toscana side=neutral vary=false strength=0.35 over=1.6} Chianti er et sted. Det har det alltid vært. {region Chianti Classico side=red vary=false over=1.6}
+> Chianti is a place. It always has been. {^}
 {marker greve label=Greve kind=point tone=gold} I syttenhundreogseksten trakk storhertugen av Toscana en grense rundt det. {fact wine:chianti}
 > In seventeen sixteen the Grand Duke of Tuscany drew a boundary around it. {^}
 
@@ -107,8 +110,8 @@ Han bestemte hvor vin med det navnet kunne komme fra. Det er en av de eldste vin
 Så ble navnet populært. Og et populært navn blir som regel også større.
 > Then the name became popular. And a popular name usually becomes bigger, too.
 
-{marker.clear} I nittentrettito ble Chianti utvidet til å dekke sju underområder rundt kjernen.
-> In nineteen thirty-two Chianti was enlarged to cover seven sub-areas around the core.
+{marker.clear} I nittentrettito ble Chianti utvidet til å dekke sju underområder rundt kjernen. {region Chianti side=red vary=false strength=0.45 over=2.2}
+> In nineteen thirty-two Chianti was enlarged to cover seven sub-areas around the core. {^}
 Det gamle kjerneområdet trengte da et ord for seg selv. De la til classico {mark term:classico}, og satte en svart hane på flaska.
 > The old core then needed a word of its own. They added classico {^}, and put a black rooster on the bottle.
 
@@ -119,7 +122,7 @@ Det er ikke et kvalitetsstempel. Det er en opplysning om sted, og stedet er det 
 
 ## Én høyde, fem år | One hill, five years
 
-{music bedPatient} {plate montalcino-hoyde motion=in over=22 dim=0.14 push=0.12 into=1.4} {flyTo montalcino zoom=9.6 over=3.4} Sør for Siena ligger en enkelt høyde med en by på toppen. Montalcino.
+{music bedPatient} {region.clear} {flyTo montalcino zoom=9.6 over=3.4} {region Montalcino side=red vary=false over=1.6} Sør for Siena ligger en enkelt høyde med en by på toppen. Montalcino. {plate montalcino-hoyde motion=in over=22 dim=0.14 push=0.12 into=1.4 @end}
 > South of Siena there is a single hill with a town on top. Montalcino.
 Her er det varmere og tørrere enn i Chianti, og druene henger lenger.
 > It is warmer and drier here than in Chianti, and the grapes hang longer.
@@ -136,7 +139,7 @@ Det er blant de lengste lagringskravene i Italia, og det er den samme regningen 
 
 ## Fella i navnet | The trap in the name
 
-{flyTo montepulciano zoom=9.6 over=3.2} {region Toscana side=red vary=false strength=0.55 over=1.6} En time østover ligger Montepulciano, på en åsrygg med utsikt begge veier.
+{region.clear} {flyTo montepulciano zoom=9.6 over=3.2} {region Montepulciano side=red vary=false over=1.6} En time østover ligger Montepulciano, på en åsrygg med utsikt begge veier.
 > An hour east lies Montepulciano, on a ridge with a view both ways.
 Vinen derfra heter Vino Nobile di Montepulciano. Den er også Sangiovese. {fact wine:vino-nobile}
 > The wine from there is called Vino Nobile di Montepulciano. It is also Sangiovese. {^}
@@ -155,8 +158,8 @@ Regelen holder likevel. Det som står med størst skrift er stedet. Men et navn 
 
 ## Ned til havet | Down to the sea
 
-{music bedWarm} {ambience vineyard gainDb=-15} {flyTo scansano zoom=9.0 over=3.6} Til slutt kjører vi ned mot kysten, til Maremma.
-> Finally we drive down towards the coast, to the Maremma.
+{music bedWarm} {ambience vineyard gainDb=-15} {region.clear} {flyTo scansano zoom=9.0 over=3.6} Til slutt kjører vi ned mot kysten, til Maremma. {region Maremma side=red vary=false over=1.6}
+> Finally we drive down towards the coast, to the Maremma. {^}
 {plate maremma-kyst motion=in over=24 dim=0.14 push=0.1 into=1.4} Dette var malariamyr og nesten folketomt til det ble tørrlagt på nittenhundretallet.
 > This was malarial marsh and nearly empty of people until it was drained in the twentieth century.
 

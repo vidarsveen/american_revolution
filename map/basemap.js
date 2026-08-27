@@ -68,10 +68,32 @@ export function setCulling(on, inset = 0) {
    still comes from Natural Earth; the detail carves the harbours, rivers and
    ponds back out of it, which is exactly the part NE is too coarse to get
    right at the zooms a chapter actually plays at. */
-let detail = null;
+/* A LIST, not one box. A course goes where its chapters go: the wine course
+   has the Langhe and, from chapter two, the hills between Florence and the
+   sea. One box meant the second chapter zoomed into blank parchment — no
+   coast, no river, nothing to draw — because Natural Earth at 1:10M has
+   nothing to say at zoom nine and the pack's own geometry was six hundred
+   kilometres away.
+
+   Each entry keeps its own url, bbox, minZoom and lazily-loaded data, and
+   only the one the camera is standing in is fetched or drawn. A pack that
+   declares a single object still works: it becomes a list of one. */
+let details = [];
 
 export function registerDetail(spec) {
-  detail = spec ? { minZoom: 9.5, ...spec, data: null } : null;
+  const list = Array.isArray(spec) ? spec : (spec ? [spec] : []);
+  details = list.map((d) => ({ minZoom: 9.5, ...d, data: null }));
+}
+
+/** The level whose box the camera is inside, or null. */
+function detailAt(zoom, lon, lat) {
+  for (const d of details) {
+    if (zoom < d.minZoom) continue;
+    const bb = d.bbox || d.data?.bbox;
+    if (bb && (lon < bb[0] || lon > bb[2] || lat < bb[1] || lat > bb[3])) continue;
+    return d;
+  }
+  return null;
 }
 
 /**
@@ -138,9 +160,19 @@ function bakeLayer(shapes, closed) {
   return groups.length ? { whole, groups, points } : null;
 }
 
-export async function loadDetail() {
-  if (!detail || detail.data) return detail?.data || null;
-  const res = await fetch(detail.url);
+/**
+ * Fetch and bake the level the camera is standing in.
+ *
+ * Only that one: a course may declare several boxes and they are megabytes
+ * each, so a chapter in Tuscany must not pull the Langhe down with it. Called
+ * from the draw path when detailWanted() says the camera has arrived somewhere
+ * a level covers.
+ */
+export async function loadDetail(zoom, lon, lat) {
+  const d = zoom === undefined ? details.find((x) => !x.data)
+                               : detailAt(zoom, lon, lat);
+  if (!d || d.data) return d?.data || null;
+  const res = await fetch(d.url);
   if (!res.ok) throw new Error(`detail: HTTP ${res.status}`);
   const data = await res.json();
 
@@ -149,15 +181,8 @@ export async function loadDetail() {
     const baked = bakeLayer(shapes, layer === 'land' || layer === 'lakes');
     if (baked) paths[layer] = baked;
   }
-  detail.data = { paths, bbox: data.bbox, credit: data.credit };
-  return detail.data;
-}
-
-function detailShowing(zoom, lon, lat) {
-  if (!detail || zoom < detail.minZoom) return false;
-  const bb = detail.bbox || detail.data?.bbox;
-  if (bb && (lon < bb[0] || lon > bb[2] || lat < bb[1] || lat > bb[3])) return false;
-  return true;
+  d.data = { paths, bbox: data.bbox, credit: data.credit };
+  return d.data;
 }
 
 /**
@@ -172,12 +197,13 @@ function detailShowing(zoom, lon, lat) {
  * screen with nothing crediting it.
  */
 export function creditFor(zoom, lon, lat) {
-  if (!detailShowing(zoom, lon, lat)) return '';
-  return detail.data?.credit || detail.credit || '';
+  const d = detailAt(zoom, lon, lat);
+  return d ? (d.data?.credit || d.credit || '') : '';
 }
 
 export function detailWanted(zoom, lon, lat) {
-  return detailShowing(zoom, lon, lat) && !detail.data;
+  const d = detailAt(zoom, lon, lat);
+  return Boolean(d && !d.data);
 }
 
 /** Fetch and bake one level. Idempotent. */
@@ -442,10 +468,10 @@ export function bakeSteps(ctx, cam, size, palette, levelName, borders = {}) {
      kilometre apart were both visible around Boston: the coarse Natural
      Earth polygon edge, and the fine OSM line stroked on top of it. Clip to
      the box, repaint it from the detail, and there is one coast again. */
-  const bb = detailShowing(cam.zoom, ...centreOf(cam, size)) && detail.data
-    ? (detail.data.bbox || detail.bbox) : null;
+  const close = detailAt(cam.zoom, ...centreOf(cam, size));
+  const bb = close && close.data ? (close.data.bbox || close.bbox) : null;
   if (bb) {
-    const d = detail.data;
+    const d = close.data;
     const [x0, y0] = project(bb[0], bb[3]);
     const [x1, y1] = project(bb[2], bb[1]);
 

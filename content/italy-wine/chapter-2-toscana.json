@@ -9,7 +9,7 @@
   "no": "Toscana, fra Firenze til havet",
   "en": "Tuscany, from Florence to the sea"
  },
- "regions": "geo/regions.geojson",
+ "regions": "geo/zones.geojson",
  "places": {
   "roma": {
    "coords": [
@@ -168,8 +168,8 @@
     {
      "id": "s0.b1",
      "say": {
-      "no": "Toscana lager tre store rødviner. De heter Chianti, Brunello di Montalcino og Vino Nobile di Montepulciano.",
-      "en": "Tuscany makes three great red wines. They are called Chianti, Brunello di Montalcino and Vino Nobile di Montepulciano."
+      "no": "Toscana lager tre store rødviner.",
+      "en": "Tuscany makes three great red wines."
      },
      "cues": [
       {
@@ -184,10 +184,13 @@
       },
       {
        "on": "start",
-       "do": "map.flyTo",
-       "to": "firenze",
-       "zoom": 7.6,
-       "over": 3.6
+       "do": "plate.show",
+       "id": "tre-flasker",
+       "motion": "in",
+       "over": 18,
+       "dim": 0.14,
+       "push": 0.07,
+       "into": 1.4
       }
      ],
      "gapAfter": 0.9
@@ -195,8 +198,81 @@
     {
      "id": "s0.b2",
      "say": {
-      "no": "Tre navn på tre steder som ligger under to timer fra hverandre.",
-      "en": "Three names, for three places less than two hours apart."
+      "no": "Tre navn, tre steder, og under to timer mellom dem.",
+      "en": "Three names, three places, and less than two hours between them."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "De heter Chianti, Brunello di Montalcino og Vino Nobile di Montepulciano.",
+      "en": "They are called Chianti, Brunello di Montalcino and Vino Nobile di Montepulciano."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "firenze",
+       "zoom": 7.6,
+       "over": 3.6
+      },
+      {
+       "on": {
+        "no": "word:Chianti",
+        "en": "word:Chianti"
+       },
+       "do": "marker.show",
+       "at": "greve",
+       "label": {
+        "no": "Chianti",
+        "en": "Chianti"
+       },
+       "kind": "point",
+       "tone": "gold"
+      },
+      {
+       "on": {
+        "no": "word:Montalcino",
+        "en": "word:Montalcino"
+       },
+       "do": "marker.show",
+       "at": "montalcino",
+       "label": {
+        "no": "Brunello",
+        "en": "Brunello"
+       },
+       "kind": "point",
+       "tone": "gold"
+      },
+      {
+       "on": {
+        "no": "word:Montepulciano",
+        "en": "word:Montepulciano"
+       },
+       "do": "marker.show",
+       "at": "montepulciano",
+       "label": {
+        "no": "Vino Nobile",
+        "en": "Vino Nobile"
+       },
+       "kind": "point",
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Og det er den samme druen i alle tre.",
+      "en": "And it is the same grape in all three."
      },
      "cues": [
       {
@@ -208,17 +284,7 @@
        "dim": 0.16,
        "push": 0.09,
        "into": 1.4
-      }
-     ],
-     "gapAfter": 1.35
-    },
-    {
-     "id": "s0.b3",
-     "say": {
-      "no": "Og det er den samme druen i alle tre.",
-      "en": "And it is the same grape in all three."
-     },
-     "cues": [
+      },
       {
        "on": {
         "no": "word:druen",
@@ -232,7 +298,7 @@
      "gapAfter": 0.9
     },
     {
-     "id": "s0.b4",
+     "id": "s0.b5",
      "say": {
       "no": "Den heter Sangiovese, og den er den mest plantede druen i Italia.",
       "en": "It is called Sangiovese, and it is the most planted grape in Italy."
@@ -251,16 +317,16 @@
      "gapAfter": 1.35
     },
     {
-     "id": "s0.b5",
+     "id": "s0.b6",
      "say": {
-      "no": "Ingen av de tre navnene er druens navn. Alle tre er steder.",
-      "en": "Not one of those three names is the grape's. All three are places."
+      "no": "Ingen av de tre navnene er druens navn. Alle tre er steder på kartet.",
+      "en": "Not one of those three names is the grape's. All three are places on the map."
      },
      "cues": [],
      "gapAfter": 0.9
     },
     {
-     "id": "s0.b6",
+     "id": "s0.b7",
      "say": {
       "no": "Forrige gang lærte vi at navnet på flaska er et sted. Nå skal vi se hva stedet faktisk gjør.",
       "en": "Last time we learned that the name on the bottle is a place. Now we look at what the place actually does."
@@ -556,7 +622,7 @@
        "on": "start",
        "do": "map.flyTo",
        "to": "chianti",
-       "zoom": 8.4,
+       "zoom": 8.6,
        "over": 3.0
       },
       {
@@ -565,9 +631,22 @@
        "names": [
         "Toscana"
        ],
+       "side": "neutral",
+       "over": 1.6,
+       "strength": 0.35,
+       "vary": false
+      },
+      {
+       "on": {
+        "no": "word:vært",
+        "en": "word:been"
+       },
+       "do": "region.show",
+       "names": [
+        "Chianti Classico"
+       ],
        "side": "red",
        "over": 1.6,
-       "strength": 0.55,
        "vary": false
       }
      ],
@@ -631,6 +710,20 @@
       {
        "on": "start",
        "do": "marker.clear"
+      },
+      {
+       "on": {
+        "no": "word:kjernen",
+        "en": "word:core"
+       },
+       "do": "region.show",
+       "names": [
+        "Chianti"
+       ],
+       "side": "red",
+       "over": 2.2,
+       "strength": 0.45,
+       "vary": false
       }
      ],
      "gapAfter": 0.9
@@ -702,13 +795,7 @@
       },
       {
        "on": "start",
-       "do": "plate.show",
-       "id": "montalcino-hoyde",
-       "motion": "in",
-       "over": 22,
-       "dim": 0.14,
-       "push": 0.12,
-       "into": 1.4
+       "do": "region.clear"
       },
       {
        "on": "start",
@@ -716,6 +803,26 @@
        "to": "montalcino",
        "zoom": 9.6,
        "over": 3.4
+      },
+      {
+       "on": "start",
+       "do": "region.show",
+       "names": [
+        "Montalcino"
+       ],
+       "side": "red",
+       "over": 1.6,
+       "vary": false
+      },
+      {
+       "on": "end",
+       "do": "plate.show",
+       "id": "montalcino-hoyde",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.12,
+       "into": 1.4
       }
      ],
      "gapAfter": 0.9
@@ -825,6 +932,10 @@
      "cues": [
       {
        "on": "start",
+       "do": "region.clear"
+      },
+      {
+       "on": "start",
        "do": "map.flyTo",
        "to": "montepulciano",
        "zoom": 9.6,
@@ -834,11 +945,10 @@
        "on": "start",
        "do": "region.show",
        "names": [
-        "Toscana"
+        "Montepulciano"
        ],
        "side": "red",
        "over": 1.6,
-       "strength": 0.55,
        "vary": false
       }
      ],
@@ -959,10 +1069,27 @@
       },
       {
        "on": "start",
+       "do": "region.clear"
+      },
+      {
+       "on": "start",
        "do": "map.flyTo",
        "to": "scansano",
        "zoom": 9.0,
        "over": 3.6
+      },
+      {
+       "on": {
+        "no": "word:Maremma",
+        "en": "word:Maremma"
+       },
+       "do": "region.show",
+       "names": [
+        "Maremma"
+       ],
+       "side": "red",
+       "over": 1.6,
+       "vary": false
       }
      ],
      "gapAfter": 0.9

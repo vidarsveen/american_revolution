@@ -226,7 +226,20 @@ def check_refusals(pack: str, pid: str, spec: dict) -> list:
     bad = []
     prompt = f"{spec.get('prompt', '')} {spec.get('style', '')}"
 
-    hit = TEXT_WORDS.search(prompt)
+    # A NEGATED MENTION IS THE CAREFUL CASE, not the dangerous one. "no labels
+    # at all", "nothing written anywhere in frame" — that is a prompt trying to
+    # keep text OUT, and refusing it taught the writer to stop saying so, which
+    # is the opposite of what this guard is for. Found on the first prompt that
+    # was deliberately careful about it. Only a mention with no negation in
+    # front of it counts.
+    NEG = r"(?:no|not|without|nothing|never|free of|absent|un)\s*"
+    hit = None
+    for m in TEXT_WORDS.finditer(prompt):
+        before = prompt[max(0, m.start() - 40):m.start()].lower()
+        if re.search(NEG + r"[\w\s,]{0,24}$", before):
+            continue
+        hit = m
+        break
     if hit:
         bad.append(
             f"prompt asks for legible text ({hit.group(0)!r}). An invented "

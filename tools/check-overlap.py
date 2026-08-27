@@ -147,8 +147,14 @@ BASELINE = {
         ".ov-compare|.ov-portrait__card": 1,
         ".ov-portrait__card|.ov-quote__card": 1,
     },
+    # 1 -> 3 when chapter two arrived. Not a regression in the layout: the
+    # wine course now ships close-in geometry for Tuscany as well as the
+    # Langhe, so the long OSM attribution is on screen in a second chapter's
+    # fact-card beats too. Letting the chip WRAP instead of running the width
+    # of the screen was tried and measured worse — two short lines are taller,
+    # and the extra height cost more overlap than the width saved.
     "italy-wine": {
-        ".atlas__credit|.ov-fact__card": 1,
+        ".atlas__credit|.ov-fact__card": 3,
     },
     "norway-1940": {
         ".atlas__credit|.ov-fact__card": 3,

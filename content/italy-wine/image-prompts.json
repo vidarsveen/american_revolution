@@ -208,5 +208,16 @@
   },
   "claims": "A flat coastal plain with young vineyards and the sea on the horizon.",
   "omits": "Not a named place. The vines are shown young because the narration says the vineyards here are young, not because any particular planting was measured."
+ },
+ "tre-flasker": {
+  "prompt": "three dark green wine bottles with no labels at all standing in a row on a worn stone ledge, warm low evening light from the side, a plain plastered wall behind, deep shadows, nothing written anywhere in frame",
+  "style": "natural light photograph, muted colour, shallow depth of field",
+  "aspect": "square",
+  "title": {
+   "no": "Tre flasker",
+   "en": "Three bottles"
+  },
+  "claims": "Three unlabelled wine bottles side by side in evening light.",
+  "omits": "No labels, because a label is a name and the naming is what the chapter is about — the three names arrive on the map, from the app, not from the picture. Not three particular wines."
  }
 }

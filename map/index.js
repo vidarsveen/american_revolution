@@ -438,7 +438,8 @@ export function createMap(host, opts = {}) {
   function warmDetail() {
     if (detailPending) return;
     detailPending = true;
-    loadDetail()
+    // Which box: a course may declare several and they are megabytes each.
+    loadDetail(cam.zoom, cam.lon, cam.lat)
       .then(() => { groundStamp += 1; schedule(); })
       .catch(() => {})
       .finally(() => { detailPending = false; });

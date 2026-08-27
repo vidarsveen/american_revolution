@@ -211,6 +211,25 @@ python tools/check-published.py    # hashes every file index.html reaches
 
 ## Hazards that have bitten before
 
+**When the narration names an area, that area goes ON THE MAP.** Not the county it is
+in — the area itself. "Chianti Classico" is a shape between Florence and Siena and the
+viewer should see it; a wash over the whole of Tuscany while the sentence says Chianti is
+the map answering a different question. A course therefore ships the zones its chapters
+name (`content/italy-wine/geo/zones.geojson`) alongside the administrative regions, and
+each zone carries a `source` line saying the outline is approximate and why. A teaching
+map that says "about here" is honest; one that looks traced from a legal boundary it did
+not come from is not.
+
+**A course goes where its chapters go, and so does its close-in geometry.** `map.detail`
+is a LIST of boxes — the wine course has the Langhe and the hills between Florence and the
+sea — each with its own `minZoom`, `bbox` and file, and only the box the camera is standing
+in is ever fetched. With one box, chapter two zoomed into blank parchment: Natural Earth at
+1:10M has nothing to draw at zoom nine and the pack's own geometry was six hundred
+kilometres away. `python tools/fetch-detail.py <pack> --box 1` fetches the second.
+`minWood` and `minWater` are per box too, because how big a copse has to be to be worth
+drawing is a fact about that country: at the shared default Tuscany came to 4.4 MB against
+the Langhe's 1.1.
+
 **A picture must show what the sentence is talking about, or it is worse than no
 picture.** This produced the single worst regression of the project, and every part of it
 was avoidable. Pictures were added beat by beat to raise the count, and the result was:

@@ -107,9 +107,13 @@ export function mountMap(container, ch, language) {
     geoBase: './assets/geo',
     // The pack's own close-in geometry, where it has any. Without it the
     // harbour is a blob and the Charles does not exist.
-    detail: conf.detail
-      ? { ...conf.detail, url: packUrl(ch.pack, conf.detail.url) }
-      : null,
+    // One box or several: a course goes where its chapters go, and the wine
+    // course has the Langhe and the hills south of Florence. Each entry keeps
+    // its own url, bbox and minZoom, and only the one the camera stands in is
+    // ever fetched.
+    detail: (Array.isArray(conf.detail) ? conf.detail
+             : conf.detail ? [conf.detail] : [])
+      .map((d) => ({ ...d, url: packUrl(ch.pack, d.url) })),
     credit: conf.credit,
     factions: paletteFor(document.documentElement),
     /* The camera's pacing, from the pack. All four already existed as

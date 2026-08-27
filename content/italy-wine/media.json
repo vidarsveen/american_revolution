@@ -270,5 +270,21 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a wide flat coastal plain with young vineyards in straight rows, umbrella pines and low scrub at the edges, the sea a pale line on the horizon, strong summer light, no people"
+ },
+ "tre-flasker": {
+  "kind": "made",
+  "file": "tre-flasker.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tre flasker",
+   "en": "Three bottles"
+  },
+  "claims": "Three unlabelled wine bottles side by side in evening light.",
+  "omits": "No labels, because a label is a name and the naming is what the chapter is about — the three names arrive on the map, from the app, not from the picture. Not three particular wines.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "three dark green wine bottles with no labels at all standing in a row on a worn stone ledge, warm low evening light from the side, a plain plastered wall behind, deep shadows, nothing written anywhere in frame"
  }
 }

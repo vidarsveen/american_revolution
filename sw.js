@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vf50f0e3a2c';
+const VERSION = 'v364082cfe1';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -74,7 +74,9 @@ const PRECACHE = [
   './content/american-revolution/timing.chapter-1775-06-17.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
+  './content/italy-wine/geo/detail-toscana.json',
   './content/italy-wine/geo/regions.geojson',
+  './content/italy-wine/geo/zones.geojson',
   './content/italy-wine/media.json',
   './content/italy-wine/media/alpene-over.jpg',
   './content/italy-wine/media/bord-middag.jpg',
@@ -92,6 +94,7 @@ const PRECACHE = [
   './content/italy-wine/media/montalcino-hoyde.jpg',
   './content/italy-wine/media/sangiovese-klase.jpg',
   './content/italy-wine/media/toscana-bakker.jpg',
+  './content/italy-wine/media/tre-flasker.jpg',
   './content/italy-wine/media/vinmark-helling.jpg',
   './content/italy-wine/style.json',
   './content/italy-wine/timing.chapter-1-piemonte.en.json',
