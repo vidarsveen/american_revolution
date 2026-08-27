@@ -453,6 +453,22 @@ believes it snaps back on every frame of the drag. `player.now()` runs on the ti
 seek is in flight — and only trusts the element when it has a timeline at all, because a file
 that failed to load reports 0 for ever.
 
+**A foreign name is read with the reading voice's letter values, and the only control is the
+spelling.** A Norwegian voice says "Vino Nobile di Montepulciano" the way those letters work in
+Norwegian, which is not the name. `content/<pack>/say.json` maps a written word to how it
+should be SPELLED for the voice, per language; the screen, the captions and the transcript keep
+the real spelling, and `narrate.py` maps every reported word back before it writes the timing
+file, so cue anchors still resolve. One word for one word — a substitution that changes the
+word count would slide every anchor in the sentence, and the tool refuses it.
+
+A respelling cannot be checked by reading it, because the letters are wrong on purpose:
+
+```bash
+python tools/narrate.py --pack italy-wine --say "Vino Nobile di Montepulciano"
+```
+
+writes the phrase twice into `shots/say/`, as written and as respelled, to listen to.
+
 **SSML does not work with `edge-tts`, and fails out loud.** Tags are escaped into the text,
 so `<emphasis level="strong">four</emphasis>` is spoken as *"emphasis level equals strong four
 emphasis"* — and the tag words land in the word list, so the captions show them too. The only

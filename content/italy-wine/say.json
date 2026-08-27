@@ -1,0 +1,58 @@
+{
+ "//": "HOW A WORD IS SAID, when that is not how it is spelled. The screen keeps the real spelling; only the voice sees these. One word for one word — cues are anchored to words, and narrate.py refuses a substitution that changes the count. Hear one before you trust it: python tools/narrate.py --pack italy-wine --say \"Vino Nobile di Montepulciano\"",
+ "Chianti": {
+  "no": "Kjanti",
+  "en": "Kee-anti"
+ },
+ "Sangiovese": {
+  "no": "Sandsjovese",
+  "en": "Sanjoveze"
+ },
+ "Montepulciano": {
+  "no": "Montepultsjano",
+  "en": "Montepulchano"
+ },
+ "Montalcino": {
+  "no": "Montaltsjino",
+  "en": "Montalcheeno"
+ },
+ "Firenze": {
+  "no": "Firentse"
+ },
+ "Langhe": {
+  "no": "Lange",
+  "en": "Lang-eh"
+ },
+ "Prugnolo": {
+  "no": "Prunjolo",
+  "en": "Proonyolo"
+ },
+ "Gentile": {
+  "no": "Dsjentile",
+  "en": "Jenteelay"
+ },
+ "Scansano": {
+  "no": "Skansano"
+ },
+ "galestro": {
+  "no": "galestro"
+ },
+ "Morellino": {
+  "no": "Morellino"
+ },
+ "Nebbiolo": {
+  "no": "Nebbiolo"
+ },
+ "Barbaresco": {
+  "no": "Barbaresko",
+  "en": "Barbaresko"
+ },
+ "Moscato": {
+  "no": "Moskato",
+  "en": "Moskato"
+ },
+ "Bianco": {
+  "no": "Bjanko",
+  "en": "Bee-anko"
+ }
+}

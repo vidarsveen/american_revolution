@@ -34,6 +34,7 @@ import asyncio
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -81,6 +82,79 @@ def text_of(field, lang: str) -> str:
 
 def beat_hash(text: str, voice: str, rate: str) -> str:
     return hashlib.sha256(f"{voice}|{rate}|{text}".encode("utf-8")).hexdigest()[:16]
+
+
+# ----------------------------------------------------------------------------
+# How a word is SAID, when that is not how it is spelled
+# ----------------------------------------------------------------------------
+#
+# A Norwegian voice reading "Vino Nobile di Montepulciano" reads it with
+# Norwegian letter values, and the result is not the name. SSML would be the
+# obvious answer and does not work here at all — edge-tts escapes the tags into
+# the text and the voice says them out loud, which is recorded further up this
+# file. The only controls are the voice, the rate, and THE SPELLING.
+#
+# So: content/<pack>/say.json maps a written word to how it should be spelled
+# FOR THE READER, per language. The screen keeps the real spelling; only the
+# synthesiser sees the respelling.
+#
+#     { "Montepulciano": { "no": "Montepultsjano", "en": "Montepulchano" } }
+#
+# ONE WORD FOR ONE WORD, and it is checked. Cues are anchored to words and the
+# timing file is keyed by them, so a substitution that changed the word count
+# would slide every anchor in the sentence. After synthesis each reported word
+# is mapped back to its written form, so the timing file says "Montepulciano"
+# and the caption, the anchor and the transcript all still agree.
+SAY_CACHE: dict = {}
+
+
+def say_map(pack: str, lang: str) -> dict:
+    """{written word (lower): spoken spelling} for this pack and language."""
+    key = (pack, lang)
+    if key in SAY_CACHE:
+        return SAY_CACHE[key]
+    path = os.path.join(ROOT, "content", pack, "say.json")
+    out = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            raw = json.load(fh)
+        for written, how in raw.items():
+            if written.startswith("//"):
+                continue
+            spoken = how.get(lang) if isinstance(how, dict) else how
+            if not spoken:
+                continue
+            if len(spoken.split()) != len(written.split()):
+                die(f"say.json: '{written}' -> '{spoken}' changes the word "
+                    f"count. Cues are anchored to words; a substitution has to "
+                    f"be one word for one word.")
+            out[written.lower()] = spoken
+    SAY_CACHE[key] = out
+    return out
+
+
+def spoken_text(text: str, says: dict) -> str:
+    """The sentence as the voice should read it."""
+    if not says:
+        return text
+    def swap(m):
+        return says.get(m.group(0).lower(), m.group(0))
+    return re.sub(r"[^\W\d_]+(?:['’-][^\W\d_]+)*", swap, text, flags=re.UNICODE)
+
+
+def written_words(words, says):
+    """Map each reported word back to the spelling on screen."""
+    if not words or not says:
+        return words
+    back = {v.lower(): k for k, v in
+            ((w, s) for w, s in says.items() if len(s.split()) == 1)}
+    # say.json is keyed by the written word, so recover its written case from
+    # the key rather than lower-casing the caption's word.
+    for row in words:
+        hit = back.get(str(row.get("w", "")).lower())
+        if hit:
+            row["w"] = hit
+    return words
 
 
 # ----------------------------------------------------------------------------
@@ -189,17 +263,24 @@ async def synth_beats(chapter, lang, voice, rate, backend, only, force):
             if not text:
                 die(f"{beat['id']} has no text for language '{lang}'")
             jobs.append((beat, text))
+    says = say_map(chapter.get("pack", ""), lang)
+    if says:
+        print(f"  say.json: {len(says)} word(s) respelled for the '{lang}' voice")
 
     made = {}
     fresh = 0
     for i, (beat, text) in enumerate(jobs, 1):
-        h = beat_hash(text, voice, rate)
+        # The cache is keyed by what is SPOKEN: change a respelling and the
+        # beat is re-synthesised, leave it alone and nothing moves.
+        speak = spoken_text(text, says)
+        h = beat_hash(speak, voice, rate)
         mp3 = os.path.join(cache_dir, f"{beat['id']}.{h}.mp3")
         meta = os.path.join(cache_dir, f"{beat['id']}.{h}.json")
         wav = os.path.join(cache_dir, f"{beat['id']}.{h}.wav")
 
         if force or not (os.path.exists(mp3) and os.path.exists(meta)):
-            audio, words = await backend.synth(text, voice, rate)
+            audio, words = await backend.synth(speak, voice, rate)
+            words = written_words(words, says)
             with open(mp3, "wb") as fh:
                 fh.write(audio)
             with open(meta, "w", encoding="utf-8") as fh:
@@ -261,11 +342,55 @@ def build_scene(scene, made, out_mp3, default_gap):
     return beats, round(cursor, 3)
 
 
+async def say_sample(args):
+    """Two files: the phrase as written, and the phrase as say.json respells it.
+
+    A respelling cannot be checked by reading it — the whole point is that the
+    letters are wrong on purpose — so the tool that changes it has to be able to
+    play it. Written into shots/ beside everything else a person is meant to
+    look at.
+    """
+    pack = args.pack or ""
+    lang = args.lang
+    says = say_map(pack, lang)
+    manifest = {}
+    mf = os.path.join(ROOT, "content", pack, "pack.json")
+    if os.path.exists(mf):
+        with open(mf, encoding="utf-8") as fh:
+            manifest = json.load(fh)
+    voices = manifest.get("voices") or {}
+    voice = args.voice or voices.get(lang) or "nb-NO-FinnNeural"
+    rate = args.rate or voices.get("rate") or "+0%"
+    backend = BACKENDS[args.engine]()
+    out = os.path.join(ROOT, "shots", "say")
+    os.makedirs(out, exist_ok=True)
+    stem = re.sub(r"[^a-zA-Z0-9]+", "-", args.say.strip())[:40].strip("-").lower()
+    speak = spoken_text(args.say, says)
+    pairs = [("written", args.say)]
+    if speak != args.say:
+        pairs.append(("respelled", speak))
+    for name, text in pairs:
+        audio, _ = await backend.synth(text, voice, rate)
+        path = os.path.join(out, f"{stem}.{lang}.{name}.mp3")
+        with open(path, "wb") as fh:
+            fh.write(audio)
+        print(f"  {name:<10} {text}")
+        print(f"             {os.path.relpath(path, ROOT)}")
+    if len(pairs) == 1:
+        print(f"  (say.json for '{pack}' respells nothing in that phrase)")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--chapter", required=True,
+    ap.add_argument("--chapter", required=False,
                     help="e.g. american-revolution/chapter-1775-04-19")
+    ap.add_argument("--say", metavar="TEXT",
+                    help="synthesise one phrase twice — as written and as "
+                         "say.json respells it — so you can hear the difference. "
+                         "Needs --pack.")
+    ap.add_argument("--pack", help="which pack's say.json to use with --say")
     ap.add_argument("--lang", default="no")
     ap.add_argument("--voice", help="overrides the chapter's voice for this language")
     ap.add_argument("--rate", help="e.g. -10%% for a calmer read")
@@ -276,6 +401,11 @@ def main():
                     help="default silence after a beat, seconds (default 0.6)")
     ap.add_argument("--force", action="store_true", help="ignore the cache")
     args = ap.parse_args()
+
+    if args.say:
+        return asyncio.run(say_sample(args))
+    if not args.chapter:
+        ap.error("--chapter is required (or use --say with --pack)")
 
     need("ffmpeg")
 
