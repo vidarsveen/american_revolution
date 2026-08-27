@@ -290,11 +290,47 @@ themes.
 
 That closes the colour pass.
 
-**7. The menu, and the decision about Explore.** The cover, `js/chooser.js`, and
-whether Explore is retired, kept, or folded into the dossier that already exists.
-The one capability that would justify keeping it — tap a place, read about it —
-is a small addition to Fortell's depth layer, not a reason for a second mode
-with its own Revolution-shaped content schema.
+**7. The menu, and the decision about Explore. The evidence is gathered; the
+decision is one sentence and it is not a tool's to make.**
+
+WHAT IT COSTS. `js/` is 2 382 lines and 87 KB of JavaScript, plus about 39 KB of
+CSS in `timeline.css`, `map.css` and `sheet.css`. `js/main.js` is `index.html`'s
+only entry point and it imports all of it statically, then initialises the whole
+of Explore — map, routes, scrubber, tour, timeline, sheet — BEFORE it starts
+Fortell. So a reader who opens a chapter and never touches another tab still
+pays for every byte of it. For scale: `engine/` is 281 KB, `map/` 162 KB,
+`core/` 58 KB.
+
+It also carries most of what is left on the design-direction list: 11 of the 12
+remaining literal font sizes in `css/` are in those three files, and "Explore
+draws Virginia twice" is below.
+
+WHAT IT UNIQUELY GIVES — and this is the part that has changed. The one
+capability this list said would justify keeping it, *tap a place and read about
+it*, IS ALREADY IN FORTELL: `engine/depth.js` opens a place note on `atlas:tap`,
+and `engine/surfaces/map.js` makes a pin tappable only when the pack has prose
+for it, so the affordance appears as a course is written. The library and the
+dossier are `core/entries.js`, shared by both modes already. What is genuinely
+Explore-only is the free-roam map with events on it, the timeline scrubber and
+the guided tour — and **only american-revolution has the content schema those
+need** (`events.json`, `geo/routes.json`, `geo/places.json`). The other three
+have at most a `people.json`, which Fortell reads too. That one pack is frozen.
+
+SO THE READING IS: one course of four has the content, its distinguishing
+capability is already in the narrated mode, and it is 126 KB that every visitor
+loads. Retiring it is the answer the evidence points at. It is not a change a
+tool should make on its own, and it is worth saying what each answer costs next:
+
+  RETIRED   delete `js/` bar the chooser and the way-out, delete three
+            stylesheets, and `check-contrast.py` loses its `land/water` probe,
+            which is Explore-only and the one measurement only that pack can
+            answer. It would have to move onto the story stage or go.
+  KEPT      then it should at least be LAZY: split `js/main.js` into a shell
+            and load the Explore modules when a reader first leaves the story
+            tab. Worth doing only under this answer, which is why it is not
+            done.
+  FOLDED    the free-roam map becomes a depth-layer view inside Fortell,
+            reading the same pools rather than a Revolution-shaped schema.
 
 ---
 
