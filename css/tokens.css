@@ -50,6 +50,29 @@
      check-contrast sampled the "ground" 15 px to the RIGHT of the dot, which
      was inside the pin's own chip, and scored gold against its own plate. */
   --gold:           #a07436;
+
+  /* A WORD YOU CAN OPEN. Its own token, and not --gold, because the two are
+     read against different things: --gold is a mark on the map ground, and
+     this is TEXT on the caption's paper, which WCAG holds to 4.5.
+
+     THE NUMBER THAT MATTERS IS NOT THE ONE AGAINST THE TOKEN. This started at
+     #7d5824 on the strength of 5.14-5.76 measured against --paper and the
+     caption veil, and it broke a pack that had passed for months: the caption
+     is a translucent veil WITH A BACKDROP BLUR, so what its ink is read
+     against is whatever picture is behind it, and over a bright plate in the
+     Roman chapter the same colour came out 3.96. CLAUDE.md records exactly
+     this trap one paragraph over, about --ink-soft, and it was walked into
+     again from the other side.
+
+     So this is solved against the rendered background instead: the plate that
+     put --ink-soft at 4.81 implies a background luminance of 0.596, and this
+     is the MOST SATURATED gold at hue 40 that still clears 5.0 there. It reads
+     6.7-7.5 on plain paper, which is headroom rather than waste -- the next
+     pack's brightest picture is not this one.
+
+     The dark theme needs no second colour -- --gold on dark paper is already
+     7.8-8.7 -- and says so below rather than repeating a hex. */
+  --term:           #6b4700;
   --gold-soft:      rgba(176, 128, 60, .15);
   --sage:           #55704c;
   --sage-soft:      rgba(85, 112, 76, .13);
@@ -317,6 +340,8 @@
     --blue-soft:    rgba(123, 166, 216, .16);
     --gold:         #dfab5e;
     --gold-soft:    rgba(223, 171, 94, .17);
+    /* 7.77 on the caption veil, 8.73 on paper. Nothing to move. */
+    --term:         var(--gold);
     --sage:         #8fb083;
     --sage-soft:    rgba(143, 176, 131, .16);
 

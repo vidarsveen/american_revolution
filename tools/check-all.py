@@ -112,7 +112,8 @@ def main() -> int:
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
                     help="any of: script era data effects shell sw css engine "
-                         "turn plate sound contrast author outline overlap")
+                         "turn plate sceneplate sound contrast author outline "
+                         "overlap")
     args = ap.parse_args()
 
     packs = args.packs or packs_on_disk()
@@ -205,6 +206,12 @@ def main() -> int:
         for pack in packs:
             ok &= run(f"check-turn-chapter {pack}",
                       ["tools/check-turn-chapter.py", "--pack", pack], env)
+
+    # Plays forward across a scene turn, which no other check does. It is the
+    # only one that can see a picture arrive and then be taken away by the
+    # outgoing scene's fade timer.
+    if "sceneplate" not in skip:
+        ok &= run("check-scene-plate", ["tools/check-scene-plate.py", *packs], env)
 
     if "plate" not in skip:
         for pack, chapter in [("italy-wine", "chapter-1-piemonte"),

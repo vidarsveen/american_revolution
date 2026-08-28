@@ -116,9 +116,10 @@ export function resetPlate({ soft = false } = {}) {
     const out = styleValue('motion.exit', 600);
     root.style.setProperty('--plate-out', `${out / 1000}s`);
     root.classList.remove('is-on');
-    // Hold the picture until the fade has run, THEN clear. The token guards
-    // against a second reset landing mid-fade and a stale timer wiping the
-    // picture the newer scene has already put up.
+    // Hold the picture until the fade has run, THEN clear. The token retires
+    // the timer if anything else touches the plate first -- a second reset,
+    // OR a show, and the second half of that was missing and is the whole bug
+    // below.
     const token = (softToken += 1);
     setTimeout(() => { if (token === softToken) hardClear(); }, out + 50);
     return;
@@ -275,6 +276,32 @@ export function showPlate(cue, instant) {
   // opening framing mid-sentence.
   const same = showing === cue.id;
   showing = cue.id;
+
+  /* RETIRE ANY PENDING SOFT CLEAR. This line is the whole of a bug that only a
+     picture-led course could show.
+
+     A scene change calls resetPlate({soft:true}), which fades the outgoing
+     picture and schedules hardClear() 650 ms later so the fade has something
+     to fade. rebuildTo() then applies the new scene's cues immediately -- so a
+     chapter whose scene OPENS on a plate puts the new picture up about 600 ms
+     before that timer fires, and the timer then wipes it: src removed, `is-on`
+     gone, and the map underneath for the rest of the sentence.
+
+     Reported as "pour a glass — why is the map showing???", and it was the
+     right question. Measured playing forward: the glass appears at 5.0 s and
+     is gone at 5.6 s, for the remaining four seconds of the sentence.
+
+     The token guarded against a SECOND RESET landing mid-fade and said so in
+     its comment. It never guarded against a SHOW, because until this course
+     no chapter opened a scene on a picture while the previous scene still had
+     one up -- the wine chapter hides its plates before a scene ends, and the
+     first scene of a chapter has nothing to fade. Two conditions, both
+     unusual, and neither wrong on its own.
+
+     No probe here could have caught it either: every check in this repo seeks,
+     and a seek resets with `soft:false`, which clears synchronously and
+     schedules nothing. It only exists while playing forward. */
+  softToken += 1;
 
   const prevSrc = imgEl.getAttribute('src');
   // The LIVE transform, not the declared one: mid-drift the inline style still

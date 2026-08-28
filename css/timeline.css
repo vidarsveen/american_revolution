@@ -541,6 +541,30 @@
   border-color: var(--ink);
   color: var(--paper);
 }
+/* Which way the glossary is stacked. Quieter than the kind chips above it,
+   because it is a preference and not a place: it decides the order of a list
+   the reader is already looking at, and it must not compete with the thing
+   that decides WHICH list. */
+.library__sort {
+  display: flex;
+  gap: var(--s1);
+  margin: calc(var(--s3) * -1) 0 var(--s3);
+}
+.library__order {
+  padding: .2em .6em;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-faint);
+  font: inherit;
+  font-size: var(--fs-xs);
+  cursor: pointer;
+}
+.library__order.is-on {
+  color: var(--ink-soft);
+  border-bottom-color: var(--ink-soft);
+}
+
 .library__search {
   width: 100%;
   padding: .55em .8em;

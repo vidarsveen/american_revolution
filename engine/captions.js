@@ -166,8 +166,36 @@ export function transcriptHtml(chapter) {
       ${scene.clock ? `<p class="transcript__clock">${esc(scene.clock)}</p>` : ''}
       ${scene.beats.map((b) => `
         <p class="transcript__beat" data-beat="${esc(b.id)}"
-           data-scene="${esc(scene.id)}" data-at="${b.start}">${esc(b.text)}</p>`).join('')}
+           data-scene="${esc(scene.id)}" data-at="${b.start}">${beatHtml(b)}</p>`).join('')}
     </section>`).join('');
+}
+
+/**
+ * One transcript sentence, with its terms marked.
+ *
+ * The transcript used to be `esc(b.text)` and nothing else, so every marked
+ * word in the chapter existed for the length of one spoken sentence and then
+ * was gone — a glossary you could only reach by catching a word as it went
+ * past. Here it stands still, which is the only place a reader can go looking
+ * for a definition rather than being offered one.
+ *
+ * Term indices are the WRITTEN tokens, the same split renderCaption() uses.
+ * When the two lists disagree in length the caption falls back to plain text
+ * rather than mismark, and so does this: an underline under the wrong word is
+ * worse than no underline, because it points at a definition that is not
+ * about that word.
+ */
+function beatHtml(beat) {
+  const term = termIndex(beat);
+  if (!term.size) return esc(beat.text);
+  const written = beat.text.split(/\s+/).filter(Boolean);
+  if (beat.words?.length && written.length !== beat.words.length) return esc(beat.text);
+  return written.map((w, i) => {
+    const t = term.get(i);
+    if (!t) return esc(w);
+    return `<span class="w-term" role="button" tabindex="0"`
+      + ` data-tap="${esc(t.kind)}:${esc(t.id)}">${esc(w)}</span>`;
+  }).join(' ');
 }
 
 function esc(s) {

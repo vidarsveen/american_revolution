@@ -1,0 +1,1444 @@
+{
+ "id": "chapter-1-fire-ting",
+ "pack": "beer",
+ "title": {
+  "no": "Fire ting i et glass",
+  "en": "Four things in a glass"
+ },
+ "subtitle": {
+  "no": "Vann, korn, humle og gjær",
+  "en": "Water, grain, hops and yeast"
+ },
+ "places": {
+  "nordvest-europa": {
+   "coords": [
+    53.5,
+    6.0
+   ],
+   "zoom": 4.4
+  }
+ },
+ "ending": {
+  "say": {
+   "no": "Fire ting, fire trinn, og én av dem er i live. Alt som kommer nå, handler om den.",
+   "en": "Four things, four steps, and one of them is alive. Everything from here is about that one."
+  },
+  "figure": {
+   "value": "4",
+   "label": {
+    "no": "ingredienser i nesten all øl",
+    "en": "ingredients in nearly all beer"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Fire ting",
+    "en": "Four things"
+   },
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Øl er fire ting. Vann, korn, humle og gjær.",
+      "en": "Beer is four things. Water, grain, hops and yeast."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.mood",
+       "value": "day"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fire-raavarer",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.1,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:ting",
+        "en": "word:things"
+       },
+       "do": "stat.show",
+       "value": "4",
+       "label": {
+        "no": "ingredienser",
+        "en": "ingredients"
+       },
+       "side": "neutral"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Tre av dem kan du veie opp på en kjøkkenvekt. Den fjerde er i live.",
+      "en": "Three of them you could weigh out on a kitchen scale. The fourth one is alive."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Det er hele kurset i én setning. Nesten alt som kommer, handler om å styre noe levende som ingen kunne se.",
+      "en": "That is the whole course in one sentence. Nearly everything that follows is about controlling something alive that nobody could see."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Men det gir ingen mening før vi vet hva de fire faktisk gjør. Så vi begynner der.",
+      "en": "But none of it makes sense until we know what the four of them actually do. So we start there."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "bryggeri-rom",
+       "motion": "right",
+       "over": 24,
+       "dim": 0.13,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "I dag er det ikke ett stedsnavn i dette kapitlet. Ingen byer, ingen land, ingen årstall.",
+      "en": "Today there is not one place name in this chapter. No cities, no countries, no dates."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Bare et bryggeri. Det kan stå hvor som helst, og det gjør akkurat det samme.",
+      "en": "Just a brewery. It could be standing anywhere, and it does exactly the same thing."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Nesten bare vann",
+    "en": "Almost entirely water"
+   },
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Hell opp et glass. Rundt nittifem prosent av det du ser på er vann.",
+      "en": "Pour a glass. About ninety-five per cent of what you are looking at is water."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "glass-mot-vindu",
+       "motion": "in",
+       "over": 18,
+       "dim": 0.12,
+       "push": 0.08,
+       "into": 1.4
+      },
+      {
+       "on": "word:glass",
+       "do": "sound.play",
+       "id": "pour",
+       "gainDb": -7
+      },
+      {
+       "on": {
+        "no": "word:nittifem",
+        "en": "word:cent"
+       },
+       "do": "stat.show",
+       "value": "95%",
+       "label": {
+        "no": "av et glass øl er vann",
+        "en": "of a glass of beer is water"
+       },
+       "side": "vann"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Det høres ut som en fotnote. Det er tvert imot den ingrediensen som bestemte mest, lengst.",
+      "en": "That sounds like a footnote. It is in fact the ingredient that decided the most, for the longest."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "For vann er aldri bare vann. Det som er løst i det følger med inn i ølet.",
+      "en": "Because water is never just water. Whatever is dissolved in it comes into the beer with it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Kalk, gips og salt fra bakken under brønnen. Du smaker det ikke direkte, men det endrer alt annet.",
+      "en": "Chalk, gypsum and salt from the ground under the well. You do not taste it directly, but it changes everything else."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kalk-vann",
+       "motion": "left",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.16,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Hardt vann gjør bitterheten skarp og tydelig. Bløtt vann gjør den rund og myk.",
+      "en": "Hard water makes bitterness sharp and pointed. Soft water makes it round and soft."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Og i flere hundre år kunne ingen gjøre noe med det. Man brygget med vannet man hadde.",
+      "en": "And for several hundred years nobody could do anything about it. You brewed with the water you had."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "En by fikk det ølet brønnen under den ga. Ikke fordi noen valgte det, men fordi det var det eneste vannet som fantes.",
+      "en": "A town got the beer its own well gave it. Not because anybody chose it, but because that was the only water there was."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "bybronn",
+       "motion": "in",
+       "over": 18,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b8",
+     "say": {
+      "no": "Hold på den tanken. Den kommer tilbake i neste kapittel, og da er den halve svaret.",
+      "en": "Hold on to that. It comes back in the next chapter, and there it is half the answer."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Kornet som blir lurt",
+    "en": "The grain that gets tricked"
+   },
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Den andre ingrediensen er korn, og nesten alltid bygg.",
+      "en": "The second ingredient is grain, and nearly always barley."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "bygg-aker",
+       "motion": "left",
+       "over": 22,
+       "dim": 0.13,
+       "push": 0.14,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:bygg",
+        "en": "word:barley"
+       },
+       "do": "term.mark",
+       "kind": "topic",
+       "id": "hvorfor-bygg",
+       "span": 1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Et byggkorn er en pakke stivelse med en plante sovende inni.",
+      "en": "A grain of barley is a package of starch with a plant asleep inside it."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Og stivelse kan ikke gjæres. Gjær spiser sukker, ikke stivelse.",
+      "en": "And starch cannot be fermented. Yeast eats sugar, not starch."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Så bryggeren lurer kornet. Det legges i vann i to døgn, og tror det er blitt vår.",
+      "en": "So the brewer tricks the grain. It is soaked for two days, and thinks spring has arrived."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Kornet begynner å spire. Og mens det spirer, bygger det verktøyet det trenger for å gjøre sin egen stivelse om til sukker.",
+      "en": "The grain starts to sprout. And while it sprouts, it builds the tools it needs to turn its own starch into sugar."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "spirende-korn",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.16,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Akkurat da blir det tørket. Planten dør. Verktøyet overlever, og stivelsen ligger urørt igjen.",
+      "en": "At exactly that moment it is dried. The plant dies. The tools survive, and the starch is left untouched."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Det ferdige kornet heter malt.",
+      "en": "The finished grain is called malt."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:malt",
+        "en": "word:malt"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "malt"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b8",
+     "say": {
+      "no": "Hvor varmt malten tørkes til slutt bestemmer fargen, og det er en spak med stort utslag.",
+      "en": "How hot the malt is dried at the end decides the colour, and it is a lever with a long throw."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b9",
+     "say": {
+      "no": "Tørkes den forsiktig, blir den lys og smaker brød og kjeks.",
+      "en": "Dried gently, it stays pale and tastes of bread and biscuit."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "malt-fargeskala",
+       "motion": "right",
+       "over": 24,
+       "dim": 0.12,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b10",
+     "say": {
+      "no": "Tørkes den varmere, blir den til karamell. Brennes den, blir den nesten svart og smaker kaffe og mørk sjokolade.",
+      "en": "Dried hotter, it turns to caramel. Roasted, it goes nearly black and tastes of coffee and dark chocolate."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b11",
+     "say": {
+      "no": "Det betyr noe som overrasker de fleste. Et mørkt øl er ikke sterkere enn et lyst.",
+      "en": "Which means something that surprises most people. A dark beer is not stronger than a pale one."
+     },
+     "cues": [
+      {
+       "on": "end",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b12",
+     "say": {
+      "no": "Fargen sier bare hvor hardt kornet er brent. Ikke noe mer.",
+      "en": "The colour only says how hard the grain was roasted. Nothing more."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Mesken og kokekaret",
+    "en": "The mash and the kettle"
+   },
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Nå skal sukkeret ut av malten, og det skjer i varmt vann.",
+      "en": "Now the sugar has to come out of the malt, and that happens in hot water."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.ambience",
+       "id": "cellar",
+       "gainDb": -16
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "mesk-damp",
+       "motion": "in",
+       "over": 30,
+       "dim": 0.16,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Malten knuses grovt og røres ut i vann på rundt sekstiseks grader.",
+      "en": "The malt is crushed coarsely and stirred into water at about sixty-six degrees."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:sekstiseks",
+        "en": "word:degrees"
+       },
+       "do": "stat.show",
+       "value": "66°C",
+       "label": {
+        "no": "mesketemperatur",
+        "en": "mash temperature"
+       },
+       "side": "korn"
+      },
+      {
+       "on": {
+        "no": "word:grader",
+        "en": "word:degrees"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "mesking"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Ikke kokende, og det er viktig. Verktøyet fra maltingen dør over rundt sytti grader.",
+      "en": "Not boiling, and that matters. The tools from the malting die above about seventy degrees."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Verktøyet har et navn: enzymer. Det er molekyler som klipper stivelse i biter små nok til at gjær kan spise dem.",
+      "en": "The tools have a name: enzymes. They are molecules that cut starch into pieces small enough for yeast to eat."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Etter en times tid er væska søt. Den heter vørter, og den smaker omtrent som lunken kornsuppe.",
+      "en": "After an hour or so the liquid is sweet. It is called wort, and it tastes rather like lukewarm cereal."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "vorter-glass",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.07,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:vørter",
+        "en": "word:wort"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "vorter"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Temperaturen i mesken er en spak til. To grader kaldere gir gjæren mer å spise, og ølet blir tørrere og sterkere.",
+      "en": "The mash temperature is another lever. Two degrees cooler gives the yeast more to eat, and the beer comes out drier and stronger."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "To grader varmere lar mer bli igjen, og ølet blir fyldigere og søtere.",
+      "en": "Two degrees warmer leaves more behind, and the beer comes out fuller and sweeter."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Samme malt, samme oppskrift, to grader. Slike forskjeller er hele dette faget.",
+      "en": "Same malt, same recipe, two degrees. Differences like that are the whole subject."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b9",
+     "say": {
+      "no": "Så kokes vørteren hardt i omtrent en time.",
+      "en": "Then the wort is boiled hard for about an hour."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kok-fosskok",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.18,
+       "push": 0.08,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:time",
+        "en": "word:hour"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "kok"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b10",
+     "say": {
+      "no": "Alt levende i den dør, så gjæren bryggeren selv har valgt får hele karet for seg selv.",
+      "en": "Everything alive in it dies, so the yeast the brewer has chosen gets the whole vessel to itself."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b11",
+     "say": {
+      "no": "Protein klumper seg sammen og faller ut. Det er derfor øl i det hele tatt kan bli klart.",
+      "en": "Protein clumps together and falls out. That is why beer can be clear at all."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b12",
+     "say": {
+      "no": "Og det er nå humla går oppi.",
+      "en": "And this is when the hops go in."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Konglen som reddet ølet",
+    "en": "The cone that saved beer"
+   },
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Humle er en slyngplante i hampefamilien.",
+      "en": "The hop is a climbing plant in the hemp family."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.ambience"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "humlehage",
+       "motion": "out",
+       "over": 20,
+       "dim": 0.12,
+       "push": 0.16,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:hampefamilien",
+        "en": "word:family"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "humle"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Den klatrer sju meter opp en snor i løpet av én sommer.",
+      "en": "It goes seven metres up a string in a single summer."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:sju",
+        "en": "word:metres"
+       },
+       "do": "stat.show",
+       "value": "7 m",
+       "label": {
+        "no": "på én sommer",
+        "en": "in a single summer"
+       },
+       "side": "humle"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Det er hunnplantens kongler bryggeren vil ha. Inni dem sitter gule korn som heter lupulin.",
+      "en": "It is the female plant's cones the brewer wants. Inside them sit yellow grains called lupulin."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "De kornene gjør to ting, og bare den ene handler om smak.",
+      "en": "Those grains do two things, and only one of them is about taste."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Det ene er bitterhet. Malten har fylt vørteren med sukker, og uten en motvekt smaker øl som sirup.",
+      "en": "The first is bitterness. The malt has filled the wort with sugar, and without a counterweight beer tastes like syrup."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "humlekongle-snitt",
+       "motion": "in",
+       "over": 27,
+       "dim": 0.14,
+       "push": 0.07,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:bitterhet",
+        "en": "word:bitterness"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "bitterhet"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Det andre er at humle dreper bakterier. Øl med humle i holdt seg. Øl uten ble surt.",
+      "en": "The second is that hops kill bacteria. Hopped beer kept. Unhopped beer went sour."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Før det fantes kjøling var det hele forskjellen mellom et øl som overlevde vinteren og et som ikke gjorde det.",
+      "en": "Before refrigeration, that was the entire difference between a beer that survived the winter and one that did not."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b8",
+     "say": {
+      "no": "Det er derfor humle vant. Ikke fordi den smakte best, men fordi den holdt lengst.",
+      "en": "That is why hops won. Not because they tasted best, but because they kept longest."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b9",
+     "say": {
+      "no": "Bitterhet måles i noe som heter IBU.",
+      "en": "Bitterness is measured in something called IBU."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "bitterhet"
+      },
+      {
+       "on": {
+        "no": "word:IBU",
+        "en": "word:IBU"
+       },
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 15,
+         "value": "15",
+         "side": "korn",
+         "label": {
+          "no": "Lys lager",
+          "en": "Pale lager"
+         }
+        },
+        {
+         "n": 35,
+         "value": "35",
+         "side": "humle",
+         "label": {
+          "no": "Pils",
+          "en": "Pilsner"
+         }
+        },
+        {
+         "n": 65,
+         "value": "65",
+         "side": "gjaer",
+         "label": {
+          "no": "Moderne IPA",
+          "en": "Modern IPA"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Bitterhet i IBU. Tallet betyr ingenting uten sukkeret det leses mot.",
+        "en": "Bitterness in IBU. The number means nothing without the sugar it is read against."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b10",
+     "say": {
+      "no": "En lys lager ligger rundt femten. En pils rundt trettifem. En moderne IPA kan ligge over seksti.",
+      "en": "A pale lager sits around fifteen. A pilsner around thirty-five. A modern IPA can be over sixty."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b11",
+     "say": {
+      "no": "Men tallet alene sier ikke hvor bittert noe smaker, for bitterhet leses alltid mot sukkeret som er igjen.",
+      "en": "But the number alone does not say how bitter a thing tastes, because bitterness is always read against the sugar left behind."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b12",
+     "say": {
+      "no": "Og så er det timingen, som er det virkelig pene med humle.",
+      "en": "And then there is the timing, which is the genuinely elegant part."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b13",
+     "say": {
+      "no": "Bitterstoffet må koke lenge for å løse seg i væska i det hele tatt. Så humle som skal gjøre ølet bittert, går oppi tidlig.",
+      "en": "The bitter resin has to boil for a long time to dissolve at all. So hops meant to make the beer bitter go in early."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "humle-i-kok",
+       "motion": "in",
+       "over": 31,
+       "dim": 0.16,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b14",
+     "say": {
+      "no": "Oljene som lukter av sitrus, gress og furu koker rett av. Så humle som skal gi lukt, går oppi helt til slutt.",
+      "en": "The oils that smell of citrus, grass and pine boil straight off. So hops meant to give smell go in at the very end."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b15",
+     "say": {
+      "no": "Samme plante, samme gryte, to helt forskjellige jobber. Det eneste som skiller dem er når den går oppi.",
+      "en": "Same plant, same kettle, two completely different jobs. The only thing separating them is when it goes in."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Den fjerde er i live",
+    "en": "The fourth one is alive"
+   },
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "De tre første kan veies opp og skrives på en liste. Nå kommer den som ikke kan det.",
+      "en": "The first three can be weighed out and written on a list. Now comes the one that cannot."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaer-torr",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Gjær er en sopp på én eneste celle.",
+      "en": "Yeast is a fungus one single cell across."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:celle",
+        "en": "word:across"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "gjaer"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Det er omtrent tjue milliarder av dem i ett eneste gram tørrgjær.",
+      "en": "There are about twenty billion of them in a single gram of dried yeast."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:milliarder",
+        "en": "word:billion"
+       },
+       "do": "stat.show",
+       "value": "20 mrd",
+       "label": {
+        "no": "gjærceller i ett gram",
+        "en": "yeast cells in one gram"
+       },
+       "side": "gjaer"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Jobben er enkel å beskrive. Gjæren spiser sukker og gir fra seg alkohol og kullsyre.",
+      "en": "The job is simple to describe. The yeast eats sugar and gives off alcohol and carbon dioxide."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaering-skum",
+       "motion": "in",
+       "over": 27,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:kullsyre",
+        "en": "word:dioxide"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "gjaering"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Alkoholen er avfall. Den lages ikke for vår skyld, men for å holde alt annet levende unna sukkeret.",
+      "en": "The alcohol is a waste product. It is not made for our sake, but to keep everything else alive away from the sugar."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "En vanlig ale er ferdig på tre til fem døgn. Det bobler kraftig, og det lukter bakeri.",
+      "en": "An ordinary ale is done in three to five days. It bubbles hard, and it smells of a bakery."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:bakeri",
+        "en": "word:bakery"
+       },
+       "do": "sound.play",
+       "id": "fizz",
+       "gainDb": -9
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Og her er det merkelige: i fem tusen år visste ingen at gjær fantes.",
+      "en": "And here is the strange part: for five thousand years nobody knew yeast existed."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkake-krukke",
+       "motion": "left",
+       "over": 29,
+       "dim": 0.16,
+       "push": 0.11,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:fantes",
+        "en": "word:existed"
+       },
+       "do": "term.mark",
+       "kind": "topic",
+       "id": "ol-for-vi-visste",
+       "span": 1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b8",
+     "say": {
+      "no": "Bryggeren tok vare på skummet fra forrige brygg og hadde det oppi det neste.",
+      "en": "The brewer saved the foam from the last batch and put it into the next."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b9",
+     "say": {
+      "no": "Det ble arvet, lånt bort og gitt i bryllupsgave. Ingen visste at det de flyttet på var milliarder av levende celler.",
+      "en": "It was inherited, lent out and given as a wedding present. Nobody knew that what they were moving was billions of living cells."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b10",
+     "say": {
+      "no": "Louis Pasteur viste først i attenfemtisju at gjæring er noe levende som spiser.",
+      "en": "Louis Pasteur only showed in 1857 that fermentation is something living, feeding."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b11",
+     "say": {
+      "no": "Og gjæren gjør mye mer enn alkohol. Den lager smaker ingen har hatt oppi.",
+      "en": "And the yeast does far more than alcohol. It makes flavours nobody put in."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "estere-frukt",
+       "motion": "left",
+       "over": 26,
+       "dim": 0.12,
+       "push": 0.14,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:oppi",
+        "en": "word:in"
+       },
+       "do": "term.mark",
+       "kind": "topic",
+       "id": "hva-er-en-ester",
+       "span": 1
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b12",
+     "say": {
+      "no": "Banan, nellik, eple, pære, roser. Stoffene heter estere, og nesa vår kjenner noen få milliondeler av dem.",
+      "en": "Banana, clove, apple, pear, roses. The compounds are called esters, and our noses pick up a few parts per million."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b13",
+     "say": {
+      "no": "Hvor mye gjæren lager av dem, styres nesten bare av én ting: hvor varmt den får stå.",
+      "en": "How much of them the yeast makes is governed by almost one thing alone: how warm it is allowed to stand."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b14",
+     "say": {
+      "no": "Varmt gir frukt og krydder. Kaldt gir nesten ingenting.",
+      "en": "Warm gives fruit and spice. Cold gives almost none."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 20,
+         "value": "20 °C",
+         "side": "ale",
+         "label": {
+          "no": "Varm gjæring",
+          "en": "Warm fermentation"
+         }
+        },
+        {
+         "n": 9,
+         "value": "9 °C",
+         "side": "lager",
+         "label": {
+          "no": "Kald gjæring",
+          "en": "Cold fermentation"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Samme malt, samme humle, samme gjærslekt. Elleve grader.",
+        "en": "The same malt, the same hops, the same family of yeast. Eleven degrees."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b15",
+     "say": {
+      "no": "Og et øl der gjæren ikke sier noe, er et øl der malt og humle står helt alene.",
+      "en": "And a beer in which the yeast says nothing is a beer where malt and hops stand completely alone."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b16",
+     "say": {
+      "no": "De to søylene der er hele resten av dette kurset. Det er en temperaturbryter, og den deler ølet i to.",
+      "en": "Those two bars are the entire rest of this course. It is a temperature switch, and it splits beer in two."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Herfra betyr stedet noe",
+    "en": "From here, the place matters"
+   },
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Det var de fire. Vann, malt, humle og gjær.",
+      "en": "Those were the four. Water, malt, hops and yeast."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fire-glass-rekke",
+       "motion": "right",
+       "over": 21,
+       "dim": 0.12,
+       "push": 0.13,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Og fire trinn: mesk, kok, gjæring og lagring.",
+      "en": "And four steps: mash, boil, ferment and condition."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:lagring",
+        "en": "word:condition"
+       },
+       "do": "stat.show",
+       "value": "4",
+       "label": {
+        "no": "trinn fra korn til glass",
+        "en": "steps from grain to glass"
+       },
+       "side": "neutral"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Alt dette skjer likt, i et hvilket som helst bryggeri, hvor som helst i verden.",
+      "en": "All of that happens the same way, in any brewery, anywhere in the world."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Men én av de fire kan ikke veies, og det er den som bestemmer mest.",
+      "en": "But one of the four cannot be weighed, and it is the one that decides the most."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kjeller-kald",
+       "motion": "in",
+       "over": 31,
+       "dim": 0.16,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Og fram til attenhundretallet kunne ingen se den, velge den eller kjøpe den. Man arvet den som allerede var i huset.",
+      "en": "And until the nineteenth century nobody could see it, choose it or buy it. You inherited whatever was already in the building."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Da blir spørsmålet: hva gjør folk som ikke kan styre sin viktigste ingrediens?",
+      "en": "Which leaves a question: what do people do when they cannot control their most important ingredient?"
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "De styrer alt annet. Temperaturen i kjelleren, årstiden de brygger i, og vannet som ligger under byen.",
+      "en": "They control everything else. The temperature of the cellar, the season they brew in, and the water lying under the town."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Og i samme øyeblikk begynner det å bety noe hvor i verden du står.",
+      "en": "And in that same moment it starts to matter where in the world you are standing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": {
+        "no": "word:står",
+        "en": "word:standing"
+       },
+       "do": "map.flyTo",
+       "to": "nordvest-europa",
+       "zoom": 4.4,
+       "over": 5.0
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b9",
+     "say": {
+      "no": "Neste gang: gjæren som flyter opp, og en engelsk by der vannet gjorde halve jobben.",
+      "en": "Next time: the yeast that floats to the top, and an English town where the water did half the work."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

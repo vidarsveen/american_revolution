@@ -284,6 +284,12 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
 
   sheet.addEventListener('click', (e) => {
     if (e.target.closest('[data-act=close-text]')) { sheet.classList.remove('is-open'); return; }
+    // A marked word opens its definition; it does not jump the chapter to that
+    // sentence. This listener sits on the sheet and therefore runs BEFORE the
+    // delegated [data-tap] handler on the story root, so without this guard a
+    // tap on a term would seek and close the transcript on the way to opening
+    // the card — which reads as the transcript refusing to be read.
+    if (e.target.closest('[data-tap]')) return;
     const beat = e.target.closest('.transcript__beat');
     if (beat) {
       const idx = chapter.scenes.findIndex((s) => s.id === beat.dataset.scene);

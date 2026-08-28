@@ -1304,13 +1304,36 @@ def main():
     # A tool cannot hear whether an effect names the thing the sentence
     # names, so it prints the pairs and a human reads them — the same
     # answer as the list of plates over a region.show.
+    #
+    # It CAN say what is on screen while the effect plays, and that half is
+    # worth having: "why is the map showing when you can hear a glass being
+    # poured" is the report that produced this. The fermentation fizz was
+    # firing one beat after its own picture came down, so the one sound in the
+    # chapter that had a picture of itself was heard over empty ground. Both
+    # halves were individually valid — the plate was under its 34-second
+    # ceiling, the sound was on the right word — and nothing was in a position
+    # to notice, because no check had ever looked at the two together.
+    #
+    # A note and not a failure: an effect over a bare map is sometimes exactly
+    # right. A musket you do not see is more frightening than one you do.
     for scene in chapter["scenes"]:
+        plate = None
         for beat in scene["beats"]:
+            heard = []
             for cue in beat.get("cues", []):
-                if cue["do"] != "sound.play":
-                    continue
-                say = (beat.get("say") or {}).get(langs[0], "")
-                notes.append(f"{beat['id']}: hears '{cue.get('id')}' under — {say}")
+                # Walk the beat in cue order: a plate that goes up in the same
+                # beat as the sound counts as being on screen for it, and one
+                # that comes down before the cue does not.
+                if cue["do"] == "plate.show":
+                    plate = cue.get("id")
+                elif cue["do"] == "plate.hide":
+                    plate = None
+                elif cue["do"] == "sound.play":
+                    heard.append((cue.get("id"), plate))
+            say = (beat.get("say") or {}).get(langs[0], "")
+            for sound_id, seen in heard:
+                where = f"over '{seen}'" if seen else "over the BARE MAP"
+                notes.append(f"{beat['id']}: hears '{sound_id}' {where} — {say}")
 
     # totals
     print(f"{len(chapter['scenes'])} scenes, {n_beats} beats, {n_cues} cues "

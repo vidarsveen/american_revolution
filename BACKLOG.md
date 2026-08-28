@@ -12,8 +12,169 @@ history — what was done and why, newest first. This section exists because the
 open items were scattered through six "still open" lists and nobody could see
 them at once.
 
-Two tracks: **the wine pack**, which is what is being watched, and **the
-framework**, which is what makes the next subject cheaper than this one.
+Two tracks: **the beer pack**, which is the course being built, and **the
+framework**, which is what makes the next subject cheaper than this one. The
+wine pack below is the reference course and is not the work.
+
+---
+
+## The beer pack
+
+**0. DONE — chapter one ships: `Fire ting i et glass`.** Ten minutes in both
+languages, seventy-eight beats, thirteen full-frame pictures and two bar charts.
+It is the picture-led chapter the course was started to prove: four ingredients,
+four steps, and not one place name until the second-to-last beat, where the map
+appears empty under the line that says the place is about to start mattering.
+One camera move in the whole chapter and nothing pinned on it.
+
+What it needed that the wine course did not:
+
+- **Four more faction colours.** A pack's factions are named colours, and this
+  subject divides two ways at two levels: `ale/lager/wild/farmhouse` is the
+  fermentation, which is chapters two to six, and `vann/korn/humle/gjaer` is the
+  ingredients, which is chapter one. A number about hops is green every time it
+  appears. `korn` and `lager` are both yellow and that is not an oversight —
+  malt and pale beer are that colour, and the two families never share a frame.
+- **Two prompt corrections found by looking.** The model drew hop cones as
+  catkins — long spiky things that are not hops — in every candidate of two
+  different pictures, because the prompt said "cones" and assumed the model knew
+  the shape. Describing the cone (overlapping papery scales, like a small soft
+  pine cone) fixed both. It also drew lupulin as yellow beads instead of powder,
+  and gave three glasses for "four glasses" on three candidates running, so the
+  count had to be spelled out and each glass given its own colour. All four are
+  in `image-prompts.json` as `//prompt` notes beside the prompt they corrected.
+- **A picture reviewed and swapped after acceptance.** The first glass of beer
+  had faint etched marks on it that read as quasi-text. Not a brand and not
+  legible, but the pack's own rule is that a generated marking on a glass is the
+  one thing a picture may not invent, so it was replaced with a plain one.
+
+**Two notes the tools still print, both correct.** Chapter one asks for a
+`process` artifact the framework does not have — that is the framework item
+below, not a content defect. And `check-contrast.py` will say the beer pack is
+gated on no measurement at all, which is true and unavoidable: nothing is drawn
+on the map in chapter one, so there is no pin and no pair of adjacent areas to
+sample. Chapter two, with Burton pinned, is where that beat gets declared.
+
+**0b. Three notes from watching chapter one, two fixed and one for the
+framework list.**
+
+**FIXED — a term is a coloured word now, not a card that arrives.** The ask was
+"I would really like a lot of definitions in this course, but not showing up on
+screen". `term.mark` already made a word tappable, but the mark was a dotted
+rule in `currentColor` — docs/design-direction.md had described it as "a dotted
+gold underline" for as long as the stylesheet had not been doing that, so the
+document and the screen had drifted and the screen was the quiet one. A mark
+nobody notices is a definition nobody opens, and the thing the script reached
+for instead was `fact.show`, which takes the frame.
+
+So the word is coloured, in the caption AND in the transcript — which had no
+marks at all, meaning every marked word in the chapter lived for one spoken
+sentence and was then unreachable. The colour is its own token, `--term`, and
+not `--gold`: this is TEXT on the caption's paper and WCAG holds text to 4.5,
+where a mark on the map ground answers to 3.0. Measured on the caption veil,
+`--gold` is 3.44 and fails; `--term` is 5.76 and passes. The dark theme needed
+no second colour — gold on dark paper is already 7.8. Confirmed by reading the
+computed colour off the rendered word in both themes and looking at the frame,
+not by asking the DOM what class it had.
+
+Every `fact.show` is out of chapter one as a result. Eleven marked words remain
+and each opens its entry from the transcript, where a reader can go looking
+rather than being offered.
+
+**FIXED — a sound effect was playing over an empty map, and no check had ever
+looked at the two together.** Reported as "why do you show the map when you are
+telling about pouring a glass and having a sound effect of pouring a glass".
+The pour turned out to be fine — the picture is up, confirmed by playing the
+scene forward and looking at the frame at the millisecond the word is spoken,
+not by seeking, because a seek re-applies cues with `instant` and that is
+exactly the state in which a dissolve does not happen. The FIZZ was the real
+one: the fermentation foam came down one beat before the sentence that says it
+bubbles, so the one sound in the chapter that has a picture of itself was heard
+over bare ground.
+
+Both halves were individually valid, which is why nothing caught it: the plate
+was under its 34-second ceiling and the sound was on the right word. The scene
+gets a picture it was missing at the top — a gram of dried yeast under the line
+about twenty billion cells — and the foam now starts later and lives through
+the sound it belongs to.
+
+`tools/check-script.py` prints what is on screen at every `sound.play` now. A
+note and not a gate, and the other four courses show why: the Revolution hears
+a musket, a volley and a cannon over bare map, and Narvik hears torpedoes over
+an empty fjord, and all of those are right — a shot you do not see is more
+frightening than one you do. It is the beer course that is different, because
+its sounds are of things you can photograph.
+
+**FIXED — the library stacks two ways.** "In order" (the order the pool file
+lists them, which is the order the course teaches them) and "A–Z", remembered
+per viewer. It only appears where it changes something: a face grid is browsed
+by looking, and two chips over it would be furniture.
+
+**OPEN, and it is a framework item — the map is what you get when there is no
+picture, and that is the wrong default.** Reported as: the map as the fallback
+is not working, the map is a little bit boring, and if a course is going to
+show a map it needs to be a better one.
+
+The immediate half is content and is done: chapter one had six stretches of
+twenty to fifty seconds with nothing but empty ground under them, and five more
+pictures now cover the longest. Frames with a picture up went from 24 of 39 to
+27 of 38, and the cue mix went from `overlays 30, plate 26` to `plate 34,
+overlays 17`.
+
+The other half is not content, and item 3 below argues the wrong thing about
+it. That item measured how much of the map is LEFT — two thirds to three
+quarters, in every chapter — and concluded the case for `ground: none` was
+weaker than assumed. The number was right and the question was wrong. Nobody
+was ever asking how much map is visible; they are asking whether what is
+visible is worth looking at, and at zoom 4.6 over northwest Europe the honest
+answer is a coastline and some dashed borders. Two separable pieces of work:
+
+  - **a scene can declare its ground.** `ground: none` — paper, or the pack's
+    own colour — for a scene that is not about places. Cheapest, and it is the
+    one the beer course actually needs: chapters one, four and five are not
+    standing anywhere.
+  - **a better map when there IS one.** More to draw at low zoom than
+    Natural Earth 1:10M gives: relief, rivers that survive simplification, a
+    ground that reads as a drawn map rather than as a fill. This is the
+    expensive one and it should be argued from a picture, not from here.
+
+Do not build these off item 3's numbers. Re-argue from what a viewer sees.
+
+**1. The plan is written and five chapters of it are still a plan.**
+`content/beer/outline.md`, started with `python tools/outline.py --new-pack
+beer`. One question — *why does beer taste of a thousand things when it is made
+of four?* — and the answer is that the fourth ingredient is alive, which is what
+lets history, method and place be one course instead of three.
+
+Six chapters, all `planned: true`, ordered by mechanism and then by chronology:
+
+    1  fire-ting     what beer IS. Four ingredients, four steps, and not one
+                     place name in it, because "why does beer from here taste
+                     like that" is not a question you can hear yet.
+    2  overgjaer     ale, England, and the gypsum in the water under Burton —
+                     the first proof that a place makes a style, and it is
+                     chemistry rather than tradition.
+    3  undergjaer    lager, Bavarian ice cellars, and Plzeň going golden in 1842.
+    4  renkultur     Copenhagen 1883, the single yeast cell, and the bill:
+                     beer that tastes the same everywhere.
+    5  belgia        the counter-argument, and it is strongest right after four.
+    6  kveik         a Norwegian farm loft had one the whole time.
+
+What the read has to settle, because a tool cannot: whether six is the right
+number, whether chapter one earns a whole chapter before any story starts, and
+whether chapter four or chapter six is the ending. The first of those three is
+now answerable by watching rather than by imagining it.
+
+**2. Nothing else is decided, and three things are TODO in the manifest.** The
+basemap has no 10m level north of 50 degrees — `mediterranean-10m` stops south
+of Brussels, Burton and all of Norway, so chapters two to six zoom into blank
+paper as it stands. That is the wine course's detail-box lesson one level up,
+and it is written at the field in `content/beer/pack.json`. The other two are
+the two pools the course will need (`styles.json` with taster axes, and
+`ingredients.json`) and a `say.json` for Plzeň, Reinheitsgebot, lambik and
+Brettanomyces.
+
+**3. Registered in `content/packs.json`,** because a chapter does ship now.
 
 ---
 
@@ -81,6 +242,78 @@ screen and it is somebody's writing.
 ---
 
 ## The framework
+
+**1e. DONE — the outline grew the three things it was missing, and each one
+is a gate.** The outline level existed but only asked what a chapter taught. It
+now also asks:
+
+- **`# question`** — the one question the whole course answers. The wine course
+  had an excellent one and it was buried in the middle of `# about`, where
+  nothing above the chapter could point at it. It is a section now, and a
+  course without one fails.
+- **`assumes:`** — the other half of `teaches:`. Every word a chapter leans on
+  must have been taught by an EARLIER chapter, and that is the commonest way a
+  course quietly stops working: from inside chapter four it looks fine, because
+  the person writing it knows what the word means.
+- **`shows:`** — what carries the frame, from `map`, `pictures`, `charts`,
+  `cards`, `process`. Asked at outline time because that is the last cheap
+  moment: it decides `pack.json`'s `surfaces`, and a course that does not name
+  `map` loads no map module and no geometry. `process` is in the vocabulary
+  with nothing behind it on purpose — the beer course's first chapter asks for
+  it, and the tool names the missing artifact on every run.
+
+Once a chapter ships, `shows:` gets printed beside what the chapter actually
+arrived with — every cue counted against the surface that answers it. It PRINTS
+and does not judge, and the first real run is why. Beer chapter one is thirteen
+full-frame pictures over ten minutes and almost nothing else, exactly what it
+promised; counted as cues it came out `overlays 30, plate 26` and the tool
+called it a mismatch, because every card is a show and a hide and a fact box the
+size of a stamp counts the same as a picture covering the whole phone.
+
+Screen seconds would answer it and would be worth building — but not naively:
+the map is under everything for the whole chapter, so "on screen longest" is the
+map in every chapter ever written, and the number that actually matters, how
+much of the map an overlay is sitting on, is already measured per frame by
+`tools/check-overlap.py`. Same conclusion `review-pictures.py` reached about its
+own word count: as a flag it fired on the good chapters too.
+
+Also `python tools/outline.py --new-pack <id>`, which starts a course from
+nothing — outline first, `pack.json` compiled from it. `--new` built an outline
+FROM a pack.json, which assumed somebody had already decided what the chapters
+were, and that is the decision the outline exists to make. There was no way to
+begin at the beginning.
+
+All six were confirmed by reintroducing the defect and watching the tool fire:
+a chapter assuming a word only a later chapter teaches, a `shows:` value the
+framework has never heard of, no `# question` at all, a question that is not a
+question, a shipped chapter promising charts and shipping 35 map cues, and a
+chapter carried by a surface its pack does not declare.
+
+`docs/planning.md` is the half a tool cannot check — seven questions asked as an
+interview, three tests before a word is written, both courses worked through.
+
+**And starting a course from nothing immediately found three things the
+framework had never been asked to survive.** A pack with no chapters is a
+legitimate state — it is what a course being planned IS — and none of the three
+had been reached before:
+`--new-pack` wrote its empty pools as `[]` when every pool in this framework is
+keyed by id, which got as far as check-data's `media.items()`; and
+`check-contrast.py` opened the course with `?emne=`, loaded nothing because
+there was nothing to load, and read `toScreen` off a null map. That is the same
+crash the note at the top of that file already records for the chooser,
+arriving by a different road. It says "no chapters yet — nothing on screen to
+sample" and stops now.
+
+The third: `check-turn-chapter.py` asked the lab to select a pack whose chapter
+list was empty and sat for thirty seconds waiting for an option that could not
+appear, then reported a Playwright timeout where a reader goes looking for a
+missing veil. It already passed a ONE-chapter pack with "no door to turn
+through"; none is one door fewer, and it says so now.
+
+All three are the same shape and worth knowing before the next course is
+started: **every browser-driven check assumes a pack has a picture.** A course
+that has been planned and not written does not, and the honest answer is a
+skip that says why, not a crash.
 
 **1. DONE — `style.json` and its lab.** Per-pack motion durations, the Ken Burns
 push and drift, camera speed, map weight, a type multiplier, `detail.minZoom`,
@@ -197,6 +430,34 @@ this list assumed, and it should be re-argued from the numbers above rather than
 built on the old one. What a scene declaring `ground: none` would still buy is
 the paint and the geometry a subject that is not about places never needs — that
 is a real argument, and it is a different one.
+
+**4c. The beds are OUT of the beer course, and the reason generalises.**
+Reported this week as "the background music is terrible, and it goes up and
+down in volume — we basically need to make a completely different background
+music". Both halves are true and they are different problems.
+
+The pumping is not a bug. The bed sits at −8 dB and ducks 12 dB whenever anyone
+speaks, exactly as docs/design-direction.md §3 prescribes. What the wine course
+did not expose is what happens when a chapter is TEN MINUTES of nearly
+continuous narration: every sentence ducks, every gap releases, and the result
+is a hand on the volume knob for the length of the chapter. The wine chapter is
+eight minutes with more air in it and it was reported the same way, more
+quietly.
+
+So there are two fixes and only one of them is "better music":
+
+  - **a bed does not belong under continuous speech.** It belongs at a scene
+    opening, under a picture with no voice on it, and at an ending. Under a
+    paragraph it is something to duck, and ducking is the thing being
+    complained about. This is a change to the design direction, not to a
+    synthesiser, and it costs nothing to try: put a bed on the first and last
+    scene of a chapter and nowhere else.
+  - **and then the music itself.** ACE-Step, item 4 below. Karplus-Strong
+    drones are what a synthesiser gives you for free and they are not a score.
+
+Chapter one of the beer course ships with no bed at all — a room tone under the
+mash, the effects, and otherwise the voice. That is not the final answer; it is
+the honest one until there is music worth ducking.
 
 **4a. The music can be turned off, and that is the honest state of it.** The
 bed ducks 12 dB whenever anyone speaks, which is the grammar working exactly as

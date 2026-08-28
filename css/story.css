@@ -535,29 +535,49 @@
    sentence that fades in arrives after itself. */
 .captions__line span { transition: color 120ms linear; }
 
-/* A word you can open. Same dotted rule as a tappable map label, so the
-   grammar is one idea. Deliberately quiet: the caption is the sentence, and a
-   line of underlined links would read as a form rather than as narration.
+/* A WORD YOU CAN OPEN, in the caption and in the transcript, and it is one
+   rule for both on purpose: the reader should learn the signal once.
+
+   It used to be a dotted rule in `currentColor` and nothing else, which
+   docs/design-direction.md described as "a dotted gold underline" — the
+   document and the stylesheet had drifted, and the version on screen was the
+   quiet one. Quiet was the wrong call for a course that wants to teach a lot
+   of words: a mark nobody notices is a definition nobody opens, and the
+   alternative the script reached for instead was a fact box, which takes the
+   frame.
+
+   So the word is now COLOURED, and the colour is `--term` rather than
+   `--gold`, because this is text on paper and WCAG holds text to 4.5 where a
+   mark on the ground answers to 3.0. Measured on the caption veil: --gold is
+   3.44 and fails, --term is 5.76 and passes. See css/tokens.css.
+
    A multi-word term marks every word it covers, so the rule runs under the
    whole phrase and a tap anywhere in it opens the same card. */
-.captions__line .w-term {
+.captions__line .w-term,
+.transcript__beat .w-term {
   /* The caption slot is pointer-events: none — it is a display surface, and a
      tap on ordinary caption text has to fall through to "tap to continue".
      A marked word is the one exception, and re-enables only itself. */
   pointer-events: auto;
   cursor: pointer;
-  text-decoration: underline dotted currentColor;
+  color: var(--term);
+  text-decoration: underline dotted var(--term);
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
-  opacity: .92;
 }
+/* The spoken word still lights up, and a term still has to obey that: without
+   this the karaoke highlight would skip every marked word, because `.is-said`
+   sets a colour and the rule above is more specific. */
+.captions__line .w-term.is-said { color: var(--term); }
+.transcript__beat .w-term:focus-visible,
 .captions__line .w-term:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
   border-radius: 3px;
 }
 @media (hover: hover) {
-  .captions__line .w-term:hover { text-decoration-color: var(--gold); }
+  .captions__line .w-term:hover,
+  .transcript__beat .w-term:hover { text-decoration-style: solid; }
 }
 .captions__line span.is-said { color: var(--ink); }
 /* NO WEIGHT CHANGE ON THE SPOKEN WORD.

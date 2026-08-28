@@ -75,6 +75,8 @@ const STRINGS = {
     peopleIntro: 'Menneskene bak historien — på begge sider. Trykk på et portrett.',
     libraryIntro: 'Alt dette emnet kan forklare. Trykk på et kort for å lese mer.',
     librarySearch: 'Søk',
+    libraryByCourse: 'Rekkefølge',
+    libraryByName: 'A–Å',
     librarySearchEmpty: 'Ingen treff.',
     timelineIntro: 'Alt som skjedde, i rekkefølge. Kapitlene følger episodene i serien.',
 
@@ -154,6 +156,8 @@ const STRINGS = {
     peopleIntro: 'The people behind the story — on both sides. Tap a portrait.',
     libraryIntro: 'Everything this subject can explain. Tap a card to read more.',
     librarySearch: 'Search',
+    libraryByCourse: 'In order',
+    libraryByName: 'A–Z',
     librarySearchEmpty: 'Nothing found.',
     timelineIntro: 'Everything that happened, in order. Chapters follow the series.',
 

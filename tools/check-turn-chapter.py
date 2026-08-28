@@ -68,6 +68,14 @@ def packs_on_disk() -> list[str]:
             for p in (listed.get("packs", listed) if isinstance(listed, dict) else listed)]
 
 
+def chapters_on_disk(pack: str) -> list[str]:
+    folder = os.path.join(ROOT, "content", pack)
+    if not os.path.isdir(folder):
+        return []
+    return [f for f in os.listdir(folder)
+            if f.startswith("chapter-") and f.endswith(".json")]
+
+
 def run_pack(page, pack: str, timeout: int):
     page.select_option("#pack", pack)
     # Clear the previous result first. wait_for_function would otherwise return
@@ -120,6 +128,17 @@ def main() -> int:
         page.wait_for_function("() => !!window.turnLab", timeout=30_000)
 
         for pack in packs:
+            # A course being PLANNED has an outline, a pack.json and no
+            # chapters, which is a legitimate state — it is what the beer
+            # course was for a week. The lab's chapter list is then empty and
+            # `select_option` waits thirty seconds for an option that will
+            # never exist, then reports a timeout where a reader looks for a
+            # missing veil. One chapter already passes with "no door to turn
+            # through"; none is one door fewer.
+            if not chapters_on_disk(pack):
+                print(f"\npack: {pack}\n      no chapters yet — "
+                      f"there is no chapter change to measure")
+                continue
             try:
                 bad |= report(pack, run_pack(page, pack, args.timeout))
             except Exception as err:                       # noqa: BLE001

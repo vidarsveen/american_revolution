@@ -1,0 +1,63 @@
+{
+  "_note": "Lyder til ølkurset, for tools/gen-sound.py. Backend er MOSS-SoundEffect v2.0 (Apache 2.0, 48 kHz), så en godkjent lyd binder ikke bygget. `kind` må stemme med sound/library.js, slik at løkkeskjøten behandles likt. Vinkurset har INGEN sound.json — dets `pour` og `fizz` er de syntetiserte fra library.js, og det er hele grunnen til at de ble rapportert som at de ikke virker. Her er de ekte opptak-lignende. Navn som ikke finnes i library.js (boil, ferment, grain, mash) finnes bare som pakkefiler: slett oppføringa i sound.json og de cuene blir stille, de faller ikke tilbake på noe syntetisk.",
+
+  "pour": {
+    "description": "Øl helt fra flaske i et tomt glass: tykk klukkende stråle, stigende tone mens glasset fylles, og et tett skum som freser oppå. Dette er kursets viktigste lyd.",
+    "tags": ["pour", "beer", "glass", "bottle", "foam", "liquid", "indoor", "close"],
+    "reuse": "generic",
+    "prompt": "beer poured from a bottle into an empty glass, thick gurgling stream of liquid, the pitch rising as the glass fills, dense foam hissing and crackling as the head forms on top, close microphone, quiet room, no music, no voices",
+    "duration": 6.0,
+    "kind": "oneshot",
+    "title": { "no": "Øl i glass", "en": "Beer poured" }
+  },
+
+  "fizz": {
+    "description": "Skummet som legger seg. Tett, fin knitring av små bobler som brister, uten væskestrøm.",
+    "tags": ["foam", "bubbles", "fizz", "settle", "beer", "close", "quiet"],
+    "reuse": "generic",
+    "prompt": "the dense fine crackle of beer foam settling in a glass, thousands of tiny bubbles bursting, close microphone, quiet room, no liquid pouring, no music, no voices",
+    "duration": 6.0,
+    "kind": "oneshot",
+    "title": { "no": "Skum som legger seg", "en": "Foam settling" }
+  },
+
+  "ferment": {
+    "description": "Et gjæringskar i arbeid: langsomme, dype bobler gjennom væske og en tett, våt knitring fra skummet over. Rolig, ikke kokende.",
+    "tags": ["fermentation", "bubbles", "airlock", "cellar", "slow", "wet", "loop"],
+    "reuse": "subject",
+    "prompt": "slow deep bubbles rising through thick liquid in a large fermenting vessel, wet crackling foam on the surface, steady and unhurried, cool cellar room tone, no music, no voices",
+    "duration": 9.0,
+    "kind": "loop",
+    "title": { "no": "Gjæring", "en": "Fermentation" }
+  },
+
+  "boil": {
+    "description": "Fosskok i et stort kar. Tungt, bredt og vått, med damp — ikke en kasserolle.",
+    "tags": ["boil", "kettle", "steam", "water", "hot", "industrial", "loop"],
+    "reuse": "generic",
+    "prompt": "a heavy rolling boil in a very large metal kettle, deep wide churning water, steam hissing off the surface, close in a hard-walled room, no music, no voices",
+    "duration": 9.0,
+    "kind": "loop",
+    "title": { "no": "Fosskok", "en": "Rolling boil" }
+  },
+
+  "grain": {
+    "description": "Tørt korn som renner ut av en sekk og treffer et gulv eller et kar. Hardt, tett, mange små anslag.",
+    "tags": ["grain", "barley", "dry", "pour", "rattle", "sack", "close"],
+    "reuse": "generic",
+    "prompt": "dry barley grain pouring out of a sack in a steady stream onto a wooden floor, thousands of small hard grains rattling and settling, close microphone, quiet barn, no music, no voices",
+    "duration": 5.0,
+    "kind": "oneshot",
+    "title": { "no": "Korn som renner", "en": "Grain pouring" }
+  },
+
+  "mash": {
+    "description": "En åre som røres langsomt gjennom tykk, varm mesk. Trått, vått og tungt.",
+    "tags": ["stirring", "mash", "thick", "wet", "paddle", "slow", "loop"],
+    "reuse": "subject",
+    "prompt": "a long wooden paddle stirring slowly through a thick hot porridge of grain and water in a large vessel, heavy wet dragging sound, occasional soft slop against the metal side, no music, no voices",
+    "duration": 9.0,
+    "kind": "loop",
+    "title": { "no": "Mesking", "en": "Stirring the mash" }
+  }
+}

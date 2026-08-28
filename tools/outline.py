@@ -19,6 +19,10 @@ The outline is `content/<pack>/outline.md`, in the same notation as a chapter:
     pack: italy-wine
     ---
 
+    # question
+    Hvorfor står det et sted og ikke en drue på en italiensk flaske?
+    > Why does an Italian bottle name a place and not a grape?
+
     # about
     Kurset handler om rødvin.
     > The course is about red wine.
@@ -31,6 +35,25 @@ The outline is `content/<pack>/outline.md`, in the same notation as a chapter:
     for: Å vise at et navn på en flaske er et sted. | To show that a name
          on a bottle is a place.
     teaches: terroir, nebbiolo, barolo, barbaresco, barbera, moscato
+    assumes:
+    shows: map, pictures
+
+`# question` is the one question the whole course answers, and every chapter is
+part of the answer. It is its own section because it is the difference between
+a course and a list of chapters — and in the one outline that existed before
+this, an excellent one sat in the middle of `# about` where nothing above the
+chapter could point at it.
+
+`assumes:` is the other half of `teaches:` — what a chapter expects the viewer
+already has. It must have been taught by an EARLIER chapter, and that is a gate:
+a chapter reaching for a word nothing has explained is the commonest way a
+course stops working, and it is invisible while you are writing that chapter.
+
+`shows:` is what carries the frame — `map`, `pictures`, `charts`, `cards`,
+`process` — most important first. It is asked at outline time because that is
+the only moment the answer is still cheap: it decides which surfaces the pack
+declares, and it is where a subject that the framework cannot draw yet shows up
+as a missing artifact rather than as a disappointing chapter.
 
 `pack.json`'s `chapters` array is COMPILED from it, the way the chapter JSON is
 compiled from `script.<chapter>.md` — one place a person writes, one the engine
@@ -38,15 +61,19 @@ reads, and `--check` is the only thing keeping them in step. `for`, `teaches`
 and the two sections stay here: the engine has no use for them, and the tools
 have nothing else to ask their questions of.
 
-Four questions, and only the first two are gates, because the other two are
-judgement and a tool that fails on judgement gets skipped:
+Seven questions, and the gates are the ones with a right answer, because the
+rest are judgement and a tool that fails on judgement gets skipped:
 
-    every chapter on disk is in the outline, and every outline chapter exists
-    pack.json says what the outline says
-    two chapters teaching the same subject          (chapter two repeats one)
-    a subject the course says is NOT here, spoken   (the whites, mechanically)
+    GATE  the course says what question it answers
+    GATE  every chapter on disk is in the outline, and every outline chapter exists
+    GATE  pack.json says what the outline says
+    GATE  a chapter assumes something no earlier chapter teaches
+    GATE  a chapter is carried by something the pack has no surface for
+    note  two chapters teaching the same subject      (chapter two repeats one)
+    note  a subject the course says is NOT here, spoken   (the whites)
+    note  what a shipped chapter promised, beside the cues it arrived with
 
-The last one matches the words you wrote in `# not here` and nothing cleverer.
+The `not here` note matches the words you wrote there and nothing cleverer.
 "hvitvin" does not match "hvite" by itself; list both, in the language they are
 spoken in, and the tool will find them in the narration and print the sentence.
 """
@@ -72,8 +99,29 @@ CONTENT = os.path.join(ROOT, "content")
 DEFAULT_LANGS = ["no", "en"]
 
 I18N_KEYS = {"title", "subtitle", "blurb", "for"}
-LIST_KEYS = {"langs", "teaches"}
+LIST_KEYS = {"langs", "teaches", "assumes", "shows"}
 CHAPTER_KEYS = I18N_KEYS | LIST_KEYS | {"planned"}
+
+SECTIONS = ("question", "about", "not here")
+
+# What can carry a frame, and the surface that draws it. The outline is asked
+# this BEFORE a chapter exists, because that is the only moment the answer is
+# still cheap: it decides pack.json's `surfaces`, and a course that does not
+# name `map` loads no map module and no geometry at all.
+#
+# `process` is in the table on purpose with nothing behind it. A course about
+# brewing is a process before it is a place -- malt, mash, boil, hops, yeast --
+# and no surface in engine/surfaces/ draws a sequence of steps. An outline is
+# allowed to say that, and the tool then names the artifact the framework is
+# missing instead of rejecting the plan. That is the point of asking at this
+# level: the answer arrives while it is still a build decision.
+SHOWS = {
+    "map": "map",
+    "pictures": "plate",
+    "charts": "chart",
+    "cards": "overlays",
+    "process": None,
+}
 
 # What of an outline chapter the engine is allowed to see. `for` and `teaches`
 # are deliberately NOT here: writing them into pack.json would make the engine
@@ -132,6 +180,7 @@ def parse_outline(path: str) -> dict:
     out = {
         "pack": front.get("pack", ""),
         "langs": langs,
+        "question": {lang: [] for lang in langs},
         "about": {lang: [] for lang in langs},
         "notHere": [],
         "chapters": [],
@@ -153,23 +202,25 @@ def parse_outline(path: str) -> dict:
             continue
         if stripped.startswith("# "):
             name = stripped[2:].strip().lower()
-            if name not in ("about", "not here"):
-                raise fail(lineno, f"no section called '{name}'. There are two: "
-                                   f"`# about` and `# not here`")
+            if name not in SECTIONS:
+                raise fail(lineno, f"no section called '{name}'. There are "
+                                   f"three: " + ", ".join(
+                                       f"`# {sec}`" for sec in SECTIONS))
             section, chapter, key = name, None, None
             continue
         if not stripped or stripped.startswith("//"):
             key = None
             continue
 
-        if section == "about":
+        if section in ("about", "question"):
+            bucket = out[section]
             if stripped.startswith(">"):
-                if not out["about"][langs[0]]:
+                if not bucket[langs[0]]:
                     raise fail(lineno, "a `>` line translates the sentence above "
                                        "it, and there is no sentence above it")
-                out["about"][langs[-1]].append(stripped[1:].strip())
+                bucket[langs[-1]].append(stripped[1:].strip())
             else:
-                out["about"][langs[0]].append(stripped)
+                bucket[langs[0]].append(stripped)
             continue
 
         if section == "not here":
@@ -186,7 +237,14 @@ def parse_outline(path: str) -> dict:
             raise fail(lineno, f"text outside any chapter: {stripped[:50]!r}. A "
                                f"chapter starts with `## <chapter-id>`")
 
-        if re.match(r"^[a-z][a-z0-9_]*:", stripped):
+        # A key line is never indented and a continuation always is. Matching
+        # on `word:` alone was wrong the first time a sentence wrapped onto a
+        # line beginning "kontrollen: langsomt, rent" — which is prose, and was
+        # rejected as an unknown field. Indentation is the only rule that can
+        # tell the two apart without guessing, and every outline already
+        # follows it.
+        if re.match(r"^[a-z][a-z0-9_]*:", stripped) and not (
+                key and text[:1].isspace()):
             key, _, value = stripped.partition(":")
             key = key.strip()
             if key not in CHAPTER_KEYS:
@@ -211,8 +269,13 @@ def parse_outline(path: str) -> dict:
                 ch[k] = ch[k].strip().lower() in ("true", "yes", "ja")
         if "title" not in ch:
             raise fail(line, f"{ch['id']} has no `title:`")
+        for value in ch.get("shows", []):
+            if value not in SHOWS:
+                raise fail(line, f"{ch['id']} is shown by '{value}'. The list is "
+                                 f"{', '.join(sorted(SHOWS))}, most important first")
     for lang in langs:
         out["about"][lang] = "\n\n".join(out["about"][lang])
+        out["question"][lang] = " ".join(out["question"][lang]).strip()
     return out
 
 
@@ -300,6 +363,49 @@ def sentences(pack: str, cid: str, langs: list[str]):
                     yield beat.get("id", "?"), lang, say[lang]
 
 
+def cue_mix(pack: str, cid: str) -> dict[str, int]:
+    """How many cues each surface answers in a chapter that ships.
+
+    This is the second half of `shows:`. The first half is a promise made
+    before anything exists; this is what the chapter turned out to be. Verbs
+    name their own surface in engine/verbs.json, so nothing here knows what a
+    verb does.
+
+    IT IS PRINTED AND NOT JUDGED, and the first real run is why. The beer
+    course's chapter one is thirteen full-frame pictures over ten minutes and
+    almost nothing else, which is exactly what its `shows: pictures` promised.
+    Counted as cues it came out `overlays 30, plate 26` and the tool called it
+    a mismatch -- because every card is a show and a hide, every picture is a
+    show and a hide, and a fact box the size of a stamp counts the same as a
+    picture covering the whole phone. The count cannot answer the question it
+    was being asked.
+
+    Screen SECONDS would answer it, and that is a real measurement worth
+    building. It is not this: the map is under everything for the whole
+    chapter, so "which surface is on screen longest" is the map in every
+    chapter ever written, and the number that actually matters -- how much of
+    the map an overlay is sitting on -- is already measured, per frame, by
+    tools/check-overlap.py.
+
+    So this prints the arrivals and lets a person read them, the same
+    conclusion tools/review-pictures.py reached about its own word count: as a
+    flag it fired on the good chapters too, and a tool that cries wolf gets
+    skipped.
+    """
+    with open(os.path.join(ROOT, "engine", "verbs.json"), encoding="utf-8") as fh:
+        verbs = json.load(fh)["verbs"]
+    with open(os.path.join(CONTENT, pack, cid + ".json"), encoding="utf-8") as fh:
+        chapter = json.load(fh)
+    mix: dict[str, int] = {}
+    for scene in chapter.get("scenes", []):
+        for beat in scene.get("beats", []):
+            for cue in beat.get("cues", []):
+                surface = (verbs.get(cue.get("do"), {}) or {}).get("surface")
+                if surface:
+                    mix[surface] = mix.get(surface, 0) + 1
+    return mix
+
+
 def ask(outline: dict, pack: str) -> tuple[list[str], list[str]]:
     """(failures, notes) — the gates first, the judgement after."""
     fails, notes = [], []
@@ -318,6 +424,72 @@ def ask(outline: dict, pack: str) -> tuple[list[str], list[str]]:
                          f"{cid}.json — mark it `planned: true` until there is")
     if len(set(listed)) != len(listed):
         fails.append("the same chapter is listed twice")
+
+    # The course has to say what question it answers. A course without one is
+    # a list of chapters, and the wine outline had a very good one buried in
+    # prose where nothing above the chapter could point at it.
+    for lang in langs:
+        if not outline["question"].get(lang):
+            fails.append(f"`# question` says nothing in {lang} — one sentence, "
+                         f"the question the whole course answers")
+    first = outline["question"].get(langs[0], "")
+    if first and not first.rstrip().endswith("?"):
+        notes.append("`# question` is not a question. That is allowed, and it "
+                     "is usually a sign the spine is a topic and not a spine")
+
+    # What a chapter assumes must have been TAUGHT, and taught earlier. This is
+    # the commonest way a course quietly stops working, and it is invisible
+    # from inside the chapter doing the assuming.
+    taught_by_now: set[str] = set()
+    for ch in outline["chapters"]:
+        for subject in ch.get("assumes", []):
+            key = subject.lower()
+            if key in {t.lower() for t in ch.get("teaches", [])}:
+                notes.append(f"{ch['id']} both assumes and teaches '{subject}'")
+            elif key not in taught_by_now:
+                fails.append(f"{ch['id']} assumes '{subject}' and no earlier "
+                             f"chapter teaches it")
+        taught_by_now |= {t.lower() for t in ch.get("teaches", [])}
+
+    # What carries the frame, against what the pack can actually draw. Asked
+    # here because a course that does not declare `map` loads no map module and
+    # no geometry, and that is a decision worth making before the writing.
+    with open(os.path.join(CONTENT, pack, "pack.json"), encoding="utf-8") as fh:
+        surfaces = set(json.load(fh).get(
+            "surfaces", ["map", "plate", "overlays", "sound"]))
+    for ch in outline["chapters"]:
+        for value in ch.get("shows", []):
+            surface = SHOWS[value]
+            if surface is None:
+                notes.append(
+                    f"{ch['id']} is carried by '{value}' and no surface in "
+                    f"engine/surfaces/ draws it — that is a framework item, "
+                    f"not a content one")
+            elif surface not in surfaces:
+                soon = ch.get("planned")
+                where = ("cannot be written until the pack declares it"
+                         if soon else "will draw nothing")
+                line = (f"{ch['id']} is carried by '{value}' and pack.json does "
+                        f"not declare the `{surface}` surface — it {where}")
+                (notes if soon else fails).append(line)
+        if not ch.get("shows"):
+            notes.append(f"{ch['id']} does not say what carries its frame "
+                         f"(`shows:`)")
+
+    # And what it turned out to be, printed beside what it promised. Read the
+    # two together; the docstring on cue_mix says why this is not a verdict.
+    for ch in outline["chapters"]:
+        wants = ch.get("shows", [])
+        if not wants or ch["id"] not in on_disk:
+            continue
+        mix = cue_mix(pack, ch["id"])
+        if not mix:
+            continue
+        spread = ", ".join(f"{k} {v}" for k, v in
+                           sorted(mix.items(), key=lambda kv: -kv[1]))
+        notes.append(f"{ch['id']} promised '{', '.join(wants)}' and arrives as "
+                     f"{spread} — cues, not seconds, and a fact card counts "
+                     f"the same as a full-frame picture")
 
     # Chapter two repeating chapter one. A subject may legitimately come back
     # as context, so this is a note: the question is whether it comes back as
@@ -387,6 +559,137 @@ def scaffold(pack: str) -> str:
     return "\n".join(out) + "\n"
 
 
+# ---------------------------------------------------------------------------
+# A course from nothing
+# ---------------------------------------------------------------------------
+
+SKELETON = """// Kursplan for {pack}. Dette er nivaaet over et kapittel: hva kurset
+// laerer bort, i hvilken rekkefolge, og hva hvert kapittel er TIL FOR.
+// pack.json sin `chapters`-liste er kompilert herfra.
+//
+//     python tools/outline.py {pack}
+//     python tools/outline.py {pack} --write
+//
+// Den vanlige linja er norsk, skrevet forst; `>`-linja under er engelsk.
+// Les docs/planning.md for hva hvert felt er til for.
+
+---
+pack: {pack}
+---
+
+# question
+// Ett sporsmaal. Hele kurset er svaret, og hvert kapittel er en del av det.
+TODO: sporsmaalet kurset svarer paa.
+> TODO: the question the course answers.
+
+# about
+TODO: hva kurset handler om, og hva det med vilje ikke handler om.
+> TODO: what the course is about, and what it deliberately is not about.
+
+# not here
+// Ett emne per linje, og ordene det sies med, slik at verktoyet finner dem
+// i manuset og viser setningen:
+//     hvitvin, hvite | white wine, whites
+
+## chapter-1-TODO
+title: TODO | TODO
+subtitle: TODO | TODO
+blurb: TODO | TODO
+langs: no, en
+planned: true
+for: TODO — hva kapitlet er TIL FOR, ikke hva det inneholder.
+     | TODO — what the chapter is FOR, not what is in it.
+teaches: 
+assumes: 
+shows: pictures
+"""
+
+
+def new_pack(pack: str) -> int:
+    """Start a course: an outline first, and a pack.json compiled from it.
+
+    The order matters and it used to be the wrong way round — `--new` builds an
+    outline FROM a pack.json, which assumes somebody already decided what the
+    chapters are. That is exactly the decision the outline exists to make, so
+    there was no way to begin at the beginning. This is that way.
+    """
+    folder = os.path.join(CONTENT, pack)
+    if os.path.exists(folder):
+        print(f"content/{pack}/ already exists", file=sys.stderr)
+        return 1
+    os.makedirs(folder)
+
+    with open(os.path.join(folder, "outline.md"), "w",
+              encoding="utf-8", newline="\n") as fh:
+        fh.write(SKELETON.format(pack=pack))
+
+    manifest = {
+        "id": pack,
+        "version": 1,
+        "//": [
+            "A new course. Everything marked TODO has to be decided before a",
+            "chapter is written, and README.md's step 2 says what each field",
+            "is. The two that cost the most to change later:",
+            "",
+            "`surfaces` — what the scene is made of. A course that does not",
+            "name `map` loads no map module and not a byte of geometry, which",
+            "is 3.85 MB it does not pay for. outline.md's `shows:` is where",
+            "that decision is argued; this array is where it is declared.",
+            "",
+            "`factions` — not sides in a war. Named colours the map and the",
+            "DOM can both reach, and for a subject with no combatants the",
+            "honest use is whatever the subject actually divides into.",
+        ],
+        "work": {"no": "TODO", "en": "TODO"},
+        "years": {"no": "TODO", "en": "TODO"},
+        "description": {"no": "TODO", "en": "TODO"},
+        "factions": {
+            "neutral": {"label": {"no": "Ovrige", "en": "Elsewhere"},
+                        "hue": 96, "sat": 0.28}
+        },
+        "map": {
+            "home": [0, 0],
+            "zoom": {"min": 3.0, "max": 13, "default": 5.0, "maxFit": 12.0},
+            "basemap": {"levels": [{"name": "world-110m", "maxZoom": 4.0},
+                                   {"name": "world-50m", "maxZoom": None}]},
+            "borders": {"country": True, "state": False},
+            "credit": "Natural Earth",
+        },
+        "era": {"start": "1900-01-01", "end": "2026-12-31", "tickStep": "year"},
+        "voices": {"no": "nb-NO-FinnNeural", "en": "en-GB-RyanNeural",
+                   "rate": "-8%"},
+        "narration": {"wps": [1.9, 3.4], "minContentWordMs": 100},
+        "pools": {"terms": "terms.json", "topics": "topics.json",
+                  "media": "media.json"},
+        "chapters": [],
+        "surfaces": ["plate", "overlays", "sound"],
+        "entries": {
+            "term": {"label": {"no": "Ordbok", "en": "Glossary"},
+                     "browse": True},
+            "topic": {"label": {"no": "Tema", "en": "Topics"}, "browse": True},
+        },
+    }
+    with open(os.path.join(folder, "pack.json"), "w",
+              encoding="utf-8", newline="\n") as fh:
+        json.dump(manifest, fh, ensure_ascii=False, indent=2)
+        fh.write("\n")
+    for sub in ("media", "portraits", "geo", "sound"):
+        os.makedirs(os.path.join(folder, sub), exist_ok=True)
+    # An OBJECT and not an array. Every pool in this framework is keyed by id
+    # -- terms, topics, media, grapes -- and an empty `[]` gets as far as
+    # check-data.py's `media.items()` before saying so.
+    for name in ("terms.json", "topics.json", "media.json"):
+        with open(os.path.join(folder, name), "w",
+                  encoding="utf-8", newline="\n") as fh:
+            fh.write("{}\n")
+
+    print(f"content/{pack}/ — outline.md, pack.json and empty pools.\n"
+          f"  1. write outline.md: the question, the course, the chapters\n"
+          f"  2. python tools/outline.py {pack} --write\n"
+          f"  3. python tools/author.py --new {pack}/<chapter-id>")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -397,8 +700,13 @@ def main(argv: list[str] | None = None) -> int:
                     help="the default: compile, diff, and ask the questions")
     ap.add_argument("--new", metavar="PACK",
                     help="print a first outline built from that pack's pack.json")
+    ap.add_argument("--new-pack", metavar="PACK", dest="new_pack",
+                    help="start a course from nothing: the outline first, and "
+                         "a pack.json compiled from it")
     args = ap.parse_args(argv)
 
+    if args.new_pack:
+        return new_pack(args.new_pack)
     if args.new:
         sys.stdout.write(scaffold(args.new))
         return 0

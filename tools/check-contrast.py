@@ -1036,6 +1036,17 @@ def main() -> int:
         print("no packs in content/ — nothing to check", file=sys.stderr)
         return 2
     PACK = pack
+
+    # A course being PLANNED has an outline and a pack.json and no chapters at
+    # all, which is a legitimate state and not an empty measurement. `?emne=`
+    # opens it, nothing loads because there is nothing to load, and the probe
+    # then reads `toScreen` off a null map — the same crash the note above
+    # records for the chooser, arriving by a different road. Say so and stop;
+    # there is no picture yet to have a contrast.
+    if not sorted((ROOT / "content" / pack).glob("chapter-*.json")):
+        print(f"pack: {pack}   no chapters yet — nothing on screen to sample")
+        return 0
+
     CHECKS = pack_checks(pack)
     expect = expectations(pack)
     print(f"pack: {pack}   expects: {', '.join(expect) or 'NOTHING'}")

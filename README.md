@@ -6,8 +6,11 @@ the **word** it belongs to. Norwegian and English, mobile first, no build step.
 
 Live: **https://vidarsveen.github.io/american_revolution/**
 
-Four courses run on it today: **Vin fra Italia**, **Den amerikanske revolusjonen**,
-**Kampen om Narvik** and **Romerriket**.
+Five courses run on it today: **Øl**, **Vin fra Italia**, **Den amerikanske
+revolusjonen**, **Kampen om Narvik** and **Romerriket**. The beer course is the one
+built almost entirely out of pictures — thirteen full-frame stills in ten minutes, and
+a map that stays empty until the last minute of the chapter, because until then there
+is no place worth pointing at.
 
 ---
 
@@ -35,29 +38,51 @@ Seven steps, and the first three are the only ones that decide whether it is any
 
 ### 1. Plan the course — `content/<id>/outline.md`
 
-What the course teaches, in what order, and what each chapter is **for** — written
-before any of it, in prose. Also what the course deliberately leaves out, which is the
-half that gets forgotten:
-
-```markdown
-# about
-Kurset handler om rødvin.
-> The course is about red wine.
-
-# not here
-hvitvin, hvite | white wine, whites
-
-## chapter-1-piemonte
-title: Tåka og tørsten | The fog and the thirst
-for: Å vise at navnet på en flaske er et sted. | To show that the name on a bottle is a place.
-teaches: terroir, nebbiolo, barolo, barbaresco
+```bash
+python tools/outline.py --new-pack beer     # a course from nothing
+python tools/outline.py beer                # the seven questions, asked
 ```
 
-`pack.json`'s chapter list is compiled from it, and `tools/outline.py` asks the two
-questions no other tool is at the right level to ask: does chapter two repeat chapter
-one, and does a chapter promise something the course said it would not do? The wine
-course closed on "and we have not mentioned the whites yet" four beats after covering
-one, because nothing above the chapter had ever been written down.
+The one question the course answers, what each chapter is **for**, what it hands the next
+chapter and what it takes from the last — written before any of it, in prose. Also what
+the course deliberately leaves out, which is the half that gets forgotten:
+
+```markdown
+# question
+Hvorfor smaker øl av tusen ting, når det bare er laget av fire?
+> Why does beer taste of a thousand things when it is made of four?
+
+# about
+Kurset handler om hvordan øl blir til.
+> The course is about how beer is made.
+
+# not here
+hjemmebrygging, oppskrift | homebrewing, recipe
+
+## chapter-1-fire-ting
+title: Fire ting i et glass | Four things in a glass
+for: Å gi ordene resten av kurset hviler på. | To give the words the rest of the course leans on.
+teaches: malt, mesking, vørter, kok, humle, bitterhet, gjær, gjæring
+assumes:
+shows: process, pictures, charts
+```
+
+`pack.json`'s chapter list is compiled from it, and `tools/outline.py` asks the questions
+no other tool is at the right level to ask. Three of them are gates: does the course say
+what question it answers, does a chapter lean on a word no earlier chapter taught, and is
+a chapter carried by a surface the pack has not declared. Two are notes, because they are
+judgement: does chapter two repeat chapter one, and does a chapter promise something the
+course said it would not do. The wine course closed on "and we have not mentioned the
+whites yet" four beats after covering one, because nothing above the chapter had ever been
+written down.
+
+`shows:` is asked here because this is the last cheap moment to answer it. It decides step
+2's `surfaces`, and it is where a subject the framework cannot draw yet shows up as a
+missing artifact rather than as a disappointing chapter: the beer course's first chapter
+is carried by `process`, and nothing under `engine/surfaces/` draws a sequence of steps.
+
+**`docs/planning.md`** is this step written out — the seven questions as an interview, the
+three tests to run before a word is written, and both courses as worked examples.
 
 ### 2. Declare the subject — `content/<id>/pack.json`
 

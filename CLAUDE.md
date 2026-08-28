@@ -115,9 +115,12 @@ content/
     script.*.md    one chapter each, as prose — script.<chapter-id>.md, keyed
                    the way timing.<chapter>.<lang>.json is. `author.py --new
                    <pack>/<chapter>` starts one from the outline.
-    outline.md     the course above the chapter: what it teaches, in what
-                   order, what each chapter is FOR, and what it leaves out.
-                   pack.json's chapter list is compiled from it.
+    outline.md     the course above the chapter: the one question it answers,
+                   what each chapter is FOR, what it hands the next one
+                   (`teaches`) and takes from the last (`assumes`), what
+                   carries the frame (`shows`), and what it leaves out.
+                   pack.json's chapter list is compiled from it, and
+                   docs/planning.md is how to write one.
     pack.json      factions, map framing, era, voices, chapters, pools
     chapter-*.json + timing.<chapter>.<lang>.json
     portraits/ media/ sound/ geo/   the pack's own assets
@@ -140,6 +143,7 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
 | `dev/sound-lab.html` | Does every loop join itself at the seam, measured on the samples? |
 | `tools/check-turn.py` | At the instant the stage is rebuilt, is the veil actually opaque? |
+| `tools/check-scene-plate.py` | Does a picture that OPENS a scene survive the scene change? |
 | `dev/turn-lab.html` | Between two chapters, is there a frame with nothing on it? |
 | `tools/check-plate.py` | When one picture replaces another, were both on screen at once? |
 | `tools/check-legible.py` | When the narration names a place, is that name on screen and not under anything? |
@@ -191,6 +195,7 @@ python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
 python tools/check-turn.py         # is the scene change behind the veil? — needs a server
+python tools/check-scene-plate.py  # does a scene's opening picture survive the turn? — needs a server
 python tools/check-turn-chapter.py # and the chapter change — needs a server
 python tools/check-plate.py        # does a picture ever cut instead of dissolve?
 python tools/check-dead-css.py     # is every class in css/ one that something paints?
@@ -349,6 +354,28 @@ photograph of a pair of pliers, which is precisely what those two fields exist t
 A render now writes `_run.json` with its own file list and the exact prompt it used;
 `--accept` numbers that list, says how many older candidates it is ignoring, and REFUSES
 when the prompt on disk has changed since. Both paths were confirmed by reproducing them.
+
+**Every check in this repo SEEKS, and some defects only exist while playing
+forward.** A scene change fades the outgoing picture and schedules the clear
+650 ms later so the fade has something to fade; `rebuildTo()` then applies the
+new scene's cues at once. So a chapter whose scene OPENS on a plate put the new
+picture up and had it wiped by the previous scene's timer — the picture
+appeared, and the map came back for the rest of the sentence. Reported as
+*"pour a glass — why is the map showing???"*, and the answer was yes, it is.
+
+It needed two conditions at once, which is why four courses never showed it:
+the scene before has to END with a picture up (the wine chapter hides its
+plates first), and the next scene has to OPEN with one on `start`. A
+picture-led course does both on nearly every scene.
+
+**And nothing here could have caught it,** because a seek resets the plate with
+`soft: false`, which clears synchronously and schedules no timer at all. The
+first probe written for it called `goToScene()` and screenshotted — a seek —
+and reported the picture perfectly present. `tools/check-scene-plate.py` plays,
+and it waits for the picture to ARRIVE before asking whether it is still there:
+waiting on the scene index looks while the veil is still closing, and waiting
+on the caption text cannot match, because `renderCaption()` rejoins the
+sentence on single spaces. Both of those were false failures on the way.
 
 **A probe that reads a class name is not a visibility check.** `.ov-fact` had no hidden
 state in the stylesheet at all, so removing `is-on` changed nothing a viewer could see — and
@@ -714,26 +741,49 @@ of the surrounding file.
 
 ## In flight
 
-- **The next course is BEER, and it is a new pack from nothing.** Everything the
-  framework needs to make one is in `README.md`'s seven steps, in order, and the
-  wine course is the worked example of every one of them. Start with
-  `content/<id>/outline.md` — what the course teaches, in what order, what each
-  chapter is FOR, and what it deliberately leaves out — because that is the
-  level at which "chapter two repeats chapter one" and "the chapter promises
-  something the course will not cover" have an answer at all.
+- **BEER is the course being built, and chapter one ships.** The outline has
+  six chapters and the first is written, recorded in both languages and on the
+  front door: *Fire ting i et glass*, ten minutes, thirteen pictures, and the
+  four ingredients with no place name in any of it. Five chapters remain,
+  `planned: true`. The spine is one question — *why does beer taste of a
+  thousand things when it is made of four?* — and the answer is that the fourth
+  ingredient is alive.
+
+  **It is the picture-led course, and that was the point.** Chapter one's
+  screen is stills and cards; the map is empty until the second-to-last beat,
+  where the ground appears at the moment the sentence says the place starts to
+  matter. Nothing is pinned on it. Chapter two is where the map begins to work.
+
+  Three things are still TODO in `content/beer/pack.json`, each written at the
+  field: no 10m basemap north of 50 degrees (so chapters two to six would zoom
+  into blank paper), two pools the course will need, and a `say.json` for Plzeň,
+  Reinheitsgebot, lambik and Brettanomyces.
+
+- **Planning a course is now a step with a method, not a habit.**
+  `docs/planning.md` is the level above `docs/authoring.md`: seven questions
+  asked as an interview, three tests to run before a word is written, and the
+  two courses as worked examples. `tools/outline.py` gates the half that has a
+  right answer — the course must say what question it answers, a chapter may not
+  lean on a word no earlier chapter taught, and a chapter may not be carried by
+  a surface the pack has not declared.
 - **`italy-wine` has two chapters and is the reference course.** Rome, the
   Revolution and Narvik are frozen: they stay as proof the framework is not
   about one subject, and their content is not the work. Do not fix them because
   a check reported them.
-- **What a beer course will need that the wine one did not, and it is worth
-  deciding before writing prose:** beer is a process before it is a place —
-  malt, mash, boil, hops, yeast, fermentation — so the map earns less of the
-  frame and a *process* artifact may be missing from the framework. Read
-  `BACKLOG.md`'s framework list before inventing one; `chart.show` already does
-  profiles and bars, and the taster profile in `wines.json` generalises to any
-  subject with axes. A beer course also has no `regions` in the wine sense but
-  does have places (Plzeň, München, Burton upon Trent, Dublin), so the map is a
-  map of *where a style was invented*, which is a different map.
+- **The process artifact is a measured gap, and writing chapter one did not
+  close it.** `shows:` says what carries a chapter's frame and chapter one says
+  `process` — a sequence of steps, which nothing under `engine/surfaces/` draws.
+  It was written with pictures and a bar chart instead, and `tools/outline.py`
+  goes on naming the missing artifact on every run. Read `BACKLOG.md`'s
+  framework list before inventing one: `chart.show` already does profiles and
+  bars, and the taster profile in `wines.json` generalises to any subject with
+  axes.
+
+- **`fact.show` enumerates `grape|wine` in `engine/verbs.json`.** Two
+  subject-specific values in the shared vocabulary, which is the same leak as a
+  stylesheet selecting on a faction name. Chapter one dodges it by using only
+  `term` and `topic`; a beer style or an ingredient as a lookup cannot be
+  written without editing the manifest.
 - **The wine course is the shape to copy, including its files:** an outline, one
   `script.<chapter>.md` per chapter, pools (`grapes`, `wines`, `terms`,
   `topics`, `place-notes`), `say.json` for how the voice should read foreign

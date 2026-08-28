@@ -13,18 +13,20 @@
 pack: italy-wine
 ---
 
+# question
+Hvorfor står det et sted og ikke en drue på en italiensk flaske?
+> Why does an Italian bottle name a place and not a grape?
+
 # about
-Kurset handler om rødvin. Det begynner med et enkelt spørsmål: hvorfor står det
-et sted og ikke en drue på en italiensk flaske? Svaret er hele kurset — én
+Kurset handler om rødvin, og om spørsmålet over. Svaret er hele kurset — én
 region om gangen, nordfra og sørover, med druen, jorda og været som forklaring.
 
 Hvite, musserende og søte viner kommer innom der historien går forbi dem, og de
 får ikke egne kapitler. Det er et valg, ikke en forglemmelse: rødvin er nok til
 tjue regioner, og et kurs som lover alt sier ingenting.
-> The course is about red wine. It starts from a simple question: why does an
-> Italian bottle name a place and not a grape? The answer is the whole course —
-> one region at a time, working south, with the grape, the ground and the
-> weather as the explanation.
+> The course is about red wine, and the question above it. The answer is the
+> whole course — one region at a time, working south, with the grape, the
+> ground and the weather as the explanation.
 >
 > White, sparkling and sweet wines turn up where the story passes them, and
 > none of them gets a chapter. That is a choice and not an oversight: red wine
@@ -48,6 +50,8 @@ for: Å vise at navnet på en italiensk flaske nesten alltid er et sted, og at
      that the place is the explanation. Piedmont is the proof: the same grape,
      eighteen kilometres apart, two different wines.
 teaches: drue, terroir, etikett, nebbiolo, barolo, barbaresco, barbera, langhe
+assumes: 
+shows: map, pictures, charts
 
 ## chapter-2-toscana
 title: Én drue, fire adresser | One grape, four addresses
@@ -61,3 +65,5 @@ for: Å ta det samme spørsmålet sørover, der druen er én og stedene er mange
      are many: Sangiovese under four names. Chapter one explained why the place
      is on the label; this explains why one place name can mean four things.
 teaches: sangiovese, klon, chianti, classico, brunello, vino-nobile, morellino
+assumes: drue, terroir, etikett
+shows: map, pictures, charts

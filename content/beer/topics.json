@@ -1,0 +1,39 @@
+{
+  "//": "Bakgrunn en leser kan trykke seg inn på, så manuset slipper å ta omveier. Et tema er ikke et ord i ordboka — det er et spørsmål noen kommer til å stille midt i en setning. Pekes på fra manuset med {mark topic:id span=N}.",
+
+  "hvorfor-bygg": {
+    "title": { "no": "Hvorfor bygg og ikke hvete", "en": "Why barley and not wheat" },
+    "hook": {
+      "no": "Fordi byggkornet har et skall, og skallet er et filter.",
+      "en": "Because the barley grain has a husk, and the husk is a filter."
+    },
+    "body": {
+      "no": "Nesten alt korn kan gjæres. Ris blir sake, mais blir chicha, hirse blir øl i store deler av Afrika. Bygg vant i Europa av tre grunner, og bare én av dem handler om smak.\n\nDen første er skallet. Byggkornet sitter i et hardt skall som ikke løsner under tresking. I mesken legger de skallene seg som et lag med grus i bunnen av karet, og den søte væska kan renne av gjennom dem. Hvete har ikke noe slikt skall, og en mesk av bare hvete blir til en grøt som ikke slipper noe igjennom.\n\nDen andre er enzymene. Bygg lager langt mer av dem under spiringen enn det trenger til seg selv, og overskuddet kan brukes på annet korn i samme kar.\n\nDen tredje er landbruk. Bygg tåler kort sommer, dårlig jord og kulde, og har vært brødkornet i Nord-Europa lenge før det ble drikkekornet. Hvete var dyrere og gikk til brød.",
+      "en": "Almost any grain will ferment. Rice becomes sake, maize becomes chicha, millet becomes beer across much of Africa. Barley won in Europe for three reasons, and only one of them is about taste.\n\nThe first is the husk. A barley grain sits inside a hard husk that does not come off in threshing. In the mash those husks settle like a bed of gravel in the bottom of the vessel, and the sweet liquid can drain away through them. Wheat has no such husk, and a mash of wheat alone turns into a porridge that lets nothing through.\n\nThe second is enzymes. Barley makes far more of them during sprouting than it needs for itself, and the surplus can be spent converting other grains in the same vessel.\n\nThe third is farming. Barley tolerates a short summer, poor soil and cold, and was the bread grain of northern Europe long before it was the drinking grain. Wheat cost more and went to bread."
+    }
+  },
+
+  "ol-for-vi-visste": {
+    "title": { "no": "Øl før noen visste om gjær", "en": "Beer before anybody knew about yeast" },
+    "hook": {
+      "no": "I fem tusen år brygget folk med noe de ikke visste fantes.",
+      "en": "For five thousand years people brewed with something they did not know was there."
+    },
+    "body": {
+      "no": "Gjæring ble ikke forstått før på syttenhundre- og attenhundretallet. Før det så folk bare at søt vørter begynte å boble av seg selv, og at det tok noen dager.\n\nDe hadde likevel gode svar på hva de skulle gjøre. I hele Nord-Europa tok bryggeren vare på skummet fra forrige brygg og hadde det i det neste. Det ble kalt gjærkake, barm eller kveik, og det ble arvet, lånt bort og gitt i bryllupsgave. Ingen visste at de flyttet på milliarder av levende celler. De visste at det virket, og at det ikke virket uten.\n\nDet fantes også en religiøs forklaring. På tysk ble det boblende ofte kalt gottesgnade — Guds nåde — og i noen brygghus ble det bedt over karet.\n\nLouis Pasteur viste i attenfemtisju at gjæring er levende organismer som spiser. Det er femten år etter at pilsneren ble funnet opp. Nesten alt øl du kjenner navnet på ble altså laget lenge før noen kunne forklare hvorfor det ble øl.",
+      "en": "Fermentation was not understood until the eighteenth and nineteenth centuries. Before that, people simply saw that sweet wort started bubbling on its own, and that it took a few days.\n\nThey still had good answers about what to do. All over northern Europe the brewer saved the foam from the last batch and put it into the next. It was called barm, godisgood or kveik, and it was inherited, lent out and given as a wedding present. Nobody knew they were moving billions of living cells. They knew it worked, and that nothing worked without it.\n\nThere was a religious explanation too. In German the bubbling was often called gottesgnade — God's grace — and in some brewhouses there was praying over the vessel.\n\nLouis Pasteur showed in 1857 that fermentation is living organisms feeding. That is fifteen years after the pilsner was invented. Nearly every beer you know the name of, then, was made long before anybody could explain why it became beer."
+    }
+  },
+
+  "hva-er-en-ester": {
+    "title": { "no": "Hvorfor smaker det banan", "en": "Why it tastes of banana" },
+    "hook": {
+      "no": "Ingen har hatt frukt i det. Det er gjæren som har det travelt.",
+      "en": "Nobody put fruit in it. It is the yeast being in a hurry."
+    },
+    "body": {
+      "no": "Et hveteøl fra Bayern smaker tydelig av banan og nellik. Det er ingen banan i det, og det har aldri vært det.\n\nStoffene heter estere, og gjæren lager dem som en bivirkning av å jobbe fort. En ester er en syre og en alkohol som har hektet seg sammen, og nesen vår er ekstremt god på dem: noen få milliondeler er nok til å kjenne det. Ett av dem lukter banan, ett lukter pære, ett lukter eple og ett lukter roser.\n\nHvor mye gjæren lager, avhenger nesten bare av temperatur. Varm gjæring gir mye. Kald gjæring gir nesten ingenting. Det er derfor et øl gjæret på tjueto grader smaker fruktig, og det samme ølet gjæret på ni grader smaker rent og nøytralt — med nøyaktig samme malt og samme humle.\n\nDet er hele skillet mellom ale og lager, og det er en temperaturbryter.",
+      "en": "A wheat beer from Bavaria tastes clearly of banana and clove. There is no banana in it, and there never was.\n\nThe compounds are called esters, and yeast makes them as a side effect of working fast. An ester is an acid and an alcohol that have hooked together, and our noses are extremely good at them: a few parts per million is enough to notice. One of them smells of banana, one of pear, one of apple and one of roses.\n\nHow much the yeast makes depends almost entirely on temperature. A warm fermentation gives plenty. A cold one gives almost none. Which is why a beer fermented at twenty-two degrees tastes fruity, and the same beer fermented at nine tastes clean and neutral — with exactly the same malt and the same hops.\n\nThat is the whole difference between ale and lager, and it is a temperature switch."
+    }
+  }
+}

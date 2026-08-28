@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v364082cfe1';
+const VERSION = 'vd80ac501c2';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -72,6 +72,31 @@ const PRECACHE = [
   './content/american-revolution/timing.chapter-1775-04-19.no.json',
   './content/american-revolution/timing.chapter-1775-06-17.en.json',
   './content/american-revolution/timing.chapter-1775-06-17.no.json',
+  './content/beer/chapter-1-fire-ting.json',
+  './content/beer/media.json',
+  './content/beer/media/bryggeri-rom.jpg',
+  './content/beer/media/bybronn.jpg',
+  './content/beer/media/bygg-aker.jpg',
+  './content/beer/media/estere-frukt.jpg',
+  './content/beer/media/fire-glass-rekke.jpg',
+  './content/beer/media/fire-raavarer.jpg',
+  './content/beer/media/gjaer-torr.jpg',
+  './content/beer/media/gjaering-skum.jpg',
+  './content/beer/media/gjaerkake-krukke.jpg',
+  './content/beer/media/glass-mot-vindu.jpg',
+  './content/beer/media/humle-i-kok.jpg',
+  './content/beer/media/humlehage.jpg',
+  './content/beer/media/humlekongle-snitt.jpg',
+  './content/beer/media/kalk-vann.jpg',
+  './content/beer/media/kjeller-kald.jpg',
+  './content/beer/media/kok-fosskok.jpg',
+  './content/beer/media/malt-fargeskala.jpg',
+  './content/beer/media/mesk-damp.jpg',
+  './content/beer/media/spirende-korn.jpg',
+  './content/beer/media/vorter-glass.jpg',
+  './content/beer/style.json',
+  './content/beer/timing.chapter-1-fire-ting.en.json',
+  './content/beer/timing.chapter-1-fire-ting.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',
