@@ -679,6 +679,19 @@
 }
 .transport.is-min .transport__full { max-height: 0; opacity: 0; }
 
+/* Gone, but still occupying its space — see AUTO_AWAY_MS in engine/chrome.js
+   for why the height must not change. --t-exit is the one duration for a
+   thing leaving the stage, which is what this is. */
+.transport.is-away {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(var(--s2));
+  transition: opacity var(--t-exit) var(--ease-out),
+              transform var(--t-exit) var(--ease-out);
+}
+.transport { transition: opacity var(--t-enter) var(--ease-out),
+                         transform var(--t-enter) var(--ease-out); }
+
 .transport__meta {
   display: flex;
   align-items: baseline;

@@ -98,13 +98,34 @@ export function register(surface) {
   return surface;
 }
 
-/** Which surfaces this chapter's pack asks for. */
-export function surfacesFor(packInfo) {
+/** Which surfaces this chapter's pack asks for, minus what the chapter drops.
+ *
+ * `surfaces` is a property of the SUBJECT and belongs to the pack: a course
+ * about wine wants a map for every chapter it will ever have. `ground` is a
+ * property of ONE CHAPTER, and the two are different questions.
+ *
+ * The beer course is why. Its chapters two to six are about places — Burton,
+ * Plzeň, Brussels, Voss — so the pack declares `map`. Chapter one is four
+ * ingredients and four steps and names no place at all, and it was showing an
+ * idle map of the North Sea for two minutes and six seconds of its ten
+ * minutes, in the gaps between pictures. Measured, and reported three times:
+ * "the map is showing, I don't see any reason that the map should show".
+ *
+ * `ground: "none"` in a chapter's front matter takes the map surface out for
+ * that chapter only. Not hidden — NOT MOUNTED, so no map module and no
+ * geometry are fetched either, and what shows between pictures is paper.
+ * CLAUDE.md's note applies: hidden is not removed.
+ *
+ * tools/check-script.py refuses a map verb in such a chapter, because an
+ * unmounted surface answers nothing and would do it silently.
+ */
+export function surfacesFor(packInfo, chapter) {
   const want = packInfo?.surfaces;
-  if (!Array.isArray(want)) return DEFAULT_SURFACES.slice();
-  // Order is z-order, and z-order is the surface's own business (`layer`).
-  // Deduplicated because a pack listing `map` twice must not mount two.
-  return [...new Set(want.map(String))];
+  const base = Array.isArray(want)
+    ? [...new Set(want.map(String))]   // order is z-order; dedup so `map` twice mounts one
+    : DEFAULT_SURFACES.slice();
+  if (chapter?.ground === 'none') return base.filter((id) => id !== 'map');
+  return base;
 }
 
 /**

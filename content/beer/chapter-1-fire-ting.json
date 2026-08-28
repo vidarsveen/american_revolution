@@ -9,15 +9,7 @@
   "no": "Vann, korn, humle og gjær",
   "en": "Water, grain, hops and yeast"
  },
- "places": {
-  "nordvest-europa": {
-   "coords": [
-    53.5,
-    6.0
-   ],
-   "zoom": 4.4
-  }
- },
+ "ground": "none",
  "ending": {
   "say": {
    "no": "Fire ting, fire trinn, og én av dem er i live. Alt som kommer nå, handler om den.",
@@ -49,12 +41,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedWarm"
-      },
-      {
-       "on": "start",
-       "do": "map.mood",
-       "value": "day"
+       "id": "bedStill"
       },
       {
        "on": "start",
@@ -1427,14 +1414,14 @@
        "over": 1.1
       },
       {
-       "on": {
-        "no": "word:står",
-        "en": "word:standing"
-       },
-       "do": "map.flyTo",
-       "to": "nordvest-europa",
-       "zoom": 4.4,
-       "over": 5.0
+       "on": "start",
+       "do": "plate.show",
+       "id": "pub-lyst-og-morkt",
+       "motion": "in",
+       "over": 14,
+       "dim": 0.12,
+       "push": 0.09,
+       "into": 1.4
       }
      ],
      "gapAfter": 1.35

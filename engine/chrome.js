@@ -35,6 +35,25 @@ const ICON = {
 /** How long the opened controls stay up while the narration is running. */
 const AUTO_FOLD_MS = 3600;
 
+/* AND THEN THE WHOLE BAR GOES.
+ *
+ * `is-min` was as far as it went: the secondary row folded and the play
+ * button, the scrubber and five icons stayed on screen for the length of the
+ * chapter. On a phone that is the bottom fifth of a full-bleed picture,
+ * permanently. Asked for as "hide the play button and everything after three
+ * seconds or something, and if you touch the screen it shows up".
+ *
+ * It fades and KEEPS ITS SPACE. Collapsing the height would republish
+ * --transport-h, and the caption clears that number — so the subtitles would
+ * jump down every time the bar left and back up every time it returned, once
+ * every few seconds. Jumping captions are already a complaint this repo has
+ * fixed once. What the viewer gains is the picture showing through, which is
+ * the thing they were asking for.
+ *
+ * Only while PLAYING. A paused chapter is somebody deciding what to do next,
+ * and taking the controls away from them is not calm, it is a puzzle. */
+const AUTO_AWAY_MS = 3000;
+
 /**
  * @param {HTMLElement} host  where the bar lives (bottom of the stage)
  * @param {HTMLElement} root  the story root. The transcript mounts here rather
@@ -226,9 +245,22 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
   const scheduleFold = () => {
     clearTimeout(foldTimer);
     if (player.playing) foldTimer = setTimeout(fold, AUTO_FOLD_MS);
+    scheduleAway();
   };
   function expand() { el.classList.remove('is-min'); publishHeight(); scheduleFold(); }
   function fold() { el.classList.add('is-min'); clearTimeout(foldTimer); publishHeight(); }
+
+  /* The bar leaves, and comes back on a touch. */
+  let awayTimer = 0;
+  function scheduleAway() {
+    clearTimeout(awayTimer);
+    if (player.playing) awayTimer = setTimeout(() => el.classList.add('is-away'),
+                                               AUTO_AWAY_MS);
+  }
+  function wake() {
+    el.classList.remove('is-away');
+    scheduleAway();
+  }
 
   el.addEventListener('click', (e) => {
     const act = e.target.closest('[data-act]')?.dataset.act;
@@ -390,6 +422,13 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
   addEventListener('resize', publishHeight);
   publishHeight();
 
+  // A touch anywhere in the story brings it back. `capture`, because the
+  // stage swallows taps for "tap to continue" and a marked word stops
+  // propagation on its way to opening a card — neither of which should mean
+  // the controls stay hidden.
+  root.addEventListener('pointerdown', wake, { capture: true });
+  root.addEventListener('keydown', wake, { capture: true });
+
   return {
     el,
     sheet,
@@ -421,7 +460,11 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
       }
       // Pausing is usually the prelude to fiddling with something, so leave
       // the controls up until playback resumes.
-      if (state.playing) scheduleFold(); else clearTimeout(foldTimer);
+      // Paused: the bar stays. Playing: it folds, then leaves.
+      if (state.playing) { scheduleFold(); } else {
+        clearTimeout(foldTimer); clearTimeout(awayTimer);
+        el.classList.remove('is-away');
+      }
       publishHeight();
     },
     tick(t, scene, i) {

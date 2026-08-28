@@ -291,6 +291,12 @@ function compile(chapter, timing, lang, base, uiLang = lang) {
     // chapter with none still gets an end card, just a barer one. Resolved
     // here because everything the engine reads has to be in this whitelist;
     // leaving it out means the field silently does nothing.
+    // WHAT IS BEHIND THE PICTURES. `none` takes the map surface out for this
+    // chapter — not hidden, not mounted, so no map module and no geometry are
+    // fetched. See engine/surfaces/registry.js. In the whitelist for the same
+    // reason `ending` is: a field the engine reads and this list does not
+    // carry does nothing, silently.
+    ground: chapter.ground === 'none' ? 'none' : undefined,
     ending: chapter.ending ? {
       say: pick(chapter.ending.say, lang),
       figure: chapter.ending.figure ? {

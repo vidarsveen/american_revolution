@@ -125,11 +125,35 @@ JPEG_Q = 84
 # 16:9 plate under `cover` on a phone shows about a quarter of its width --
 # measured on the drawn torpedo boat, which arrived as a funnel and nothing
 # else. Square crops acceptably in both orientations.
+#
+# `wide` is still here because an archive picture can be any shape and a cue
+# may legitimately want one, but tools/check-plate-crop.py fails a generated
+# picture below 45% visible, and `wide` is 30%. In practice: portrait.
 ASPECTS = {
     "square":   (1024, 1024),
     "portrait": (896, 1152),
     "wide":     (1152, 640),
 }
+
+# THE BOTTOM FIFTH OF EVERY PICTURE IS FURNITURE.
+#
+# Measured on the running app at 390x844: the caption box starts at y=674 and
+# the transport at y=746, so the bottom 20% of the stage is covered — and the
+# plate is full-bleed behind both. A portrait picture shows its whole height,
+# so the bottom fifth of the FILE is the bottom fifth of the SCREEN.
+#
+# It was reported the only way it could be: "the yeast of all ingredients is
+# behind the caption". The four ingredients ran top to bottom down the frame
+# and the last one landed under the subtitles. Nothing was wrong with the
+# picture; it was composed for a frame that is not the one it is shown in.
+#
+# So every prompt carries this, appended the way `style` is, rather than left
+# to whoever writes the next one to remember. A prompt may opt out with
+# `"safeBottom": false` — a texture, a wall, a field of grain has no subject
+# to keep out of the way, and telling the model to leave a quarter of it empty
+# would just waste the frame.
+SAFE_BOTTOM = ("composition: the subject sits in the upper two thirds of the frame, "
+               "the lower quarter is plain empty surface with nothing important in it")
 
 # Asking for these is asking for refusal 2. Not a spell-check of the output --
 # the review pass catches text that appears uninvited -- but a prompt that
@@ -293,12 +317,24 @@ def sd_paths(backend: str):
     return out
 
 
+def full_prompt(spec: dict) -> str:
+    """What actually goes to the model — and what `--accept` compares against.
+
+    One function, because the two were assembled separately and drifted the
+    first time anything was appended to the prompt.
+    """
+    style = spec.get("style") or ""
+    prompt = spec["prompt"] + (", " + style if style else "")
+    if spec.get("safeBottom", True):
+        prompt += ", " + SAFE_BOTTOM
+    return prompt
+
+
 def generate(pack, pid, spec, n, backend, seed0):
     b = BACKEND[backend]
     paths = sd_paths(backend)
     w, h = ASPECTS.get(spec.get("aspect", "square"), ASPECTS["square"])
-    style = spec.get("style") or ""
-    prompt = spec["prompt"] + (", " + style if style else "")
+    prompt = full_prompt(spec)
 
     outdir = os.path.join(ROOT, "image-candidates", pack, pid)
     os.makedirs(outdir, exist_ok=True)
@@ -379,8 +415,11 @@ def accept(pack, pid, index, backend):
         with open(run_path, encoding="utf-8") as fh:
             run = json.load(fh)
 
-    style = spec.get("style") or ""
-    wanted = spec["prompt"] + (", " + style if style else "")
+    # The SAME assembly the render used. Comparing against `prompt + style`
+    # alone made every candidate look stale the moment SAFE_BOTTOM started
+    # being appended — the guard that exists to stop a picture being paired
+    # with somebody else's claims refused every picture instead.
+    wanted = full_prompt(spec)
 
     if run:
         # This run's numbers, in this run's order. Anything else in the folder

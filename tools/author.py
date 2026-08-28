@@ -100,8 +100,8 @@ I18N_KEYS = {"work", "title", "subtitle", "blurb", "clock", "say", "label",
 
 # Top-level chapter fields, in the order the shipping files use them.
 FIELD_ORDER = ["id", "pack", "work", "title", "subtitle", "blurb", "voice",
-               "rate", "home", "regions", "poster", "places", "routes",
-               "quotes", "ending", "scenes"]
+               "rate", "ground", "home", "regions", "poster", "places",
+               "routes", "quotes", "ending", "scenes"]
 
 SECTIONS = ("places", "routes", "quotes", "ending")
 
@@ -702,6 +702,12 @@ def compile_script(path: str):
                         f"{pack}` names a subject that is not there")
     factions = set(info.get("factions") or {})
     surfaces = info.get("surfaces") or ["map", "plate", "overlays", "sound"]
+    # `ground: none` takes the map surface out for THIS chapter, so a map verb
+    # in it would be answered by nobody — which is the silent-do-nothing the
+    # surface check exists to prevent. Refuse it here, at compile time, rather
+    # than let it reach a stage that has no map on it.
+    if chapter.get("ground") == "none" and "map" in surfaces:
+        surfaces = [s for s in surfaces if s != "map"]
 
     if "places" in sections:
         chapter["places"] = parse_places(sections["places"], langs)

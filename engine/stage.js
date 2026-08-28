@@ -72,7 +72,9 @@ export function mountStage(container, chapter, people, language) {
 export function stageReady() { return ready; }
 
 /** Which surfaces this chapter's pack asked for. */
-export function stageSurfaces(chapter) { return surfacesFor(chapter?.packInfo); }
+export function stageSurfaces(chapter) {
+  return surfacesFor(chapter?.packInfo, chapter);
+}
 
 /** Back to a blank slate, before cues are re-applied. */
 export function resetStage({ soft = false } = {}) {

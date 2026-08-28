@@ -34,7 +34,8 @@
     },
     "claims": "Water moving over limestone — the kind of ground that puts chalk and gypsum into a brewing well.",
     "omits": "Not any identified spring, town or water source, and not the water of any particular brewery.",
-    "//prompt": "Endret kalk-vann: stående utsnitt, sett nedover fallet i stedet for bortover bekken. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
+    "//prompt": "Endret kalk-vann: stående utsnitt, sett nedover fallet i stedet for bortover bekken. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %.",
+    "safeBottom": false
   },
   "bygg-aker": {
     "prompt": "a field of ripe barley in late summer seen from low down looking up along the standing stalks, heads heavy and bent over against a warm evening sky, long awns catching the light, the field falling away blurred behind",
@@ -46,7 +47,8 @@
     },
     "claims": "Ripe barley standing in the field, the grain nearly all beer is made from.",
     "omits": "Not a photograph of any identified farm, country or growing region.",
-    "//prompt": "Endret bygg-aker: stående utsnitt, sett oppover langs stråene i stedet for utover jordet. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
+    "//prompt": "Endret bygg-aker: stående utsnitt, sett oppover langs stråene i stedet for utover jordet. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %.",
+    "safeBottom": false
   },
   "spirende-korn": {
     "prompt": "a thick even layer of germinating barley grains spread across a worn stone floor, each grain showing a short pale white rootlet, a wooden rake resting on the surface, dim indoor light falling from high windows",
@@ -60,7 +62,7 @@
     "omits": "Not any identified maltings. The floor is a composite and not a record of a real building."
   },
   "malt-fargeskala": {
-    "prompt": "four small heaps of malted barley grains stacked in a vertical column on a dark slate surface, the top heap very pale straw, then amber, then deep brown, the bottom one almost black, even soft daylight, seen from directly above",
+    "prompt": "four small heaps of malted barley grains arranged two by two in a square on a dark slate surface, seen from directly above: the top left heap very pale straw, the top right amber, the bottom left deep brown, the bottom right almost black, each heap separate with bare slate between them, even soft daylight",
     "style": "natural light still life photograph, muted colour, shallow depth of field",
     "aspect": "portrait",
     "title": {
@@ -69,7 +71,7 @@
     },
     "claims": "Malt kilned to four different degrees, from pale at the top to roasted at the bottom — which is where a beer's colour comes from.",
     "omits": "Not measured samples of any commercial malt, and the four heaps are not a standard scale. Arranged for this picture.",
-    "//prompt": "Endret malt-fargeskala: rad ble kolonne. Fire hauger på tvers var det verst mulige for en telefon. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
+    "//prompt": "En kolonne kolliderte med SAFE_BOTTOM: bedt om fire hauger over hverandre OG om å holde seg i øvre to tredeler, presset modellen dem sammen til én stablet kloss med tre synlige bånd. To og to er formen som holder begge kravene — den er bred, ikke høy, og fire lar seg telle."
   },
   "mesk-damp": {
     "prompt": "steam rising off a thick porridge of hot crushed grain in a wide stainless steel vessel, a long wooden paddle leaning against the side, humid air, dim indoor light",
@@ -103,7 +105,8 @@
       "en": "The hop garden"
     },
     "claims": "Hops grown the way they are grown: a climbing plant trained up strings, reaching full height in one summer.",
-    "omits": "Not any identified hop farm, variety or growing region."
+    "omits": "Not any identified hop farm, variety or growing region.",
+    "safeBottom": false
   },
   "humlekongle-snitt": {
     "//prompt": "'opened by hand' fikk modellen til å rulle sammen et blad og legge gule kuler oppi. To feil: kongla er ikke et blad, og lupulin er finkornet støv, ikke perler. Begge deler må stå i prompten.",
@@ -126,7 +129,8 @@
       "en": "Fermentation under way"
     },
     "claims": "Beer in active fermentation, with the thick foam yeast throws up during the first days.",
-    "omits": "Not any identified brewery, vessel or batch."
+    "omits": "Not any identified brewery, vessel or batch.",
+    "safeBottom": false
   },
   "humle-i-kok": {
     "prompt": "a handful of whole green hop cones falling into a boiling kettle of amber liquid, steam rising around them, seen from above, hot reflected light on the metal rim",
@@ -206,7 +210,8 @@
     },
     "claims": "A cold stone cellar with barrels — the one thing a brewer could control before the yeast could be chosen.",
     "omits": "Not any identified cellar, brewery or period.",
-    "//prompt": "Endret kjeller-kald: stående utsnitt, sett nedover midtgangen. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
+    "//prompt": "Endret kjeller-kald: stående utsnitt, sett nedover midtgangen. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %.",
+    "safeBottom": false
   },
   "gjaer-torr": {
     "prompt": "a heaped teaspoon of fine pale beige dried yeast granules on a dark surface, a few loose granules scattered beside it, very close macro view, soft even daylight",

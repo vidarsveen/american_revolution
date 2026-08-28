@@ -23,23 +23,21 @@
 //   den levende. Kapitlet har ingen stedsnavn i seg før helt til slutt,
 //   der bakken kommer til syne og ingenting er satt på den.
 //
-// KARTET er med vilje nesten fraværende. Det er ett `flyTo` i hele
-// kapitlet, i nest siste beat, og det peker ikke på noe: poenget er at
-// grunnen dukker opp i samme øyeblikk som setningen sier at stedet
-// begynner å bety noe. Kapittel to er der kartet begynner å jobbe.
+// DETTE KAPITLET HAR INGEN GRUNN. `ground: none` i front matter tar
+// kartflaten ut for dette kapitlet alene — ikke skjult, men ikke montert,
+// så verken kartmodulen eller geometrien lastes. Mellom bildene er det
+// papir. Målt før: to minutter og seks sekunder av ti gikk med til et
+// stillestående kart over Nordsjøen, i mellomrommene. Pakken har
+// fortsatt `map` i surfaces, fordi kapittel to til seks handler om
+// steder; dette gjør ikke det.
 
 ---
 id: chapter-1-fire-ting
 pack: beer
 title: Fire ting i et glass | Four things in a glass
 subtitle: Vann, korn, humle og gjær | Water, grain, hops and yeast
+ground: none
 ---
-
-# places
-// Ett sted, uten navn, og det tegnes aldri et navn på det. Kameraet
-// trenger et punkt å trekke seg tilbake til i siste scene; nordsjøen
-// midt mellom England, Belgia, Bayern og Norge er det punktet.
-nordvest-europa  53.5, 6.0  zoom=4.4
 
 # ending
 say: Fire ting, fire trinn, og én av dem er i live. Alt som kommer nå, handler om den. | Four things, four steps, and one of them is alive. Everything from here is about that one.
@@ -48,7 +46,7 @@ figure.label: ingredienser i nesten all øl | ingredients in nearly all beer
 
 ## Fire ting | Four things
 
-{music bedWarm} {mood day} {plate fire-raavarer motion=in over=26 dim=0.14 push=0.1 into=1.4} Øl er fire ting. {stat 4 label=ingredienser | ingredients side=neutral} Vann, korn, humle og gjær.
+{music bedStill} {plate fire-raavarer motion=in over=26 dim=0.14 push=0.1 into=1.4} Øl er fire ting. {stat 4 label=ingredienser | ingredients side=neutral} Vann, korn, humle og gjær.
 > Beer is four things. {^} Water, grain, hops and yeast.
 Tre av dem kan du veie opp på en kjøkkenvekt. Den fjerde er i live.
 > Three of them you could weigh out on a kitchen scale. The fourth one is alive.
@@ -237,8 +235,8 @@ Da blir spørsmålet: hva gjør folk som ikke kan styre sin viktigste ingrediens
 
 De styrer alt annet. Temperaturen i kjelleren, årstiden de brygger i, og vannet som ligger under byen.
 > They control everything else. The temperature of the cellar, the season they brew in, and the water lying under the town.
-{plate.hide 1.1} Og i samme øyeblikk begynner det å bety noe hvor i verden du står. {flyTo nordvest-europa zoom=4.4 over=5.0}
-> And in that same moment it starts to matter where in the world you are standing. {^}
+{plate.hide 1.1} {plate pub-lyst-og-morkt motion=in over=14 dim=0.12 push=0.09 into=1.4} Og i samme øyeblikk begynner det å bety noe hvor i verden du står.
+> And in that same moment it starts to matter where in the world you are standing.
 
 Neste gang: gjæren som flyter opp, og en engelsk by der vannet gjorde halve jobben.
 > Next time: the yeast that floats to the top, and an English town where the water did half the work.

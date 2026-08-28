@@ -93,7 +93,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "four small heaps of malted barley grains stacked in a vertical column on a dark slate surface, the top heap very pale straw, then amber, then deep brown, the bottom one almost black, even soft daylight, seen from directly above"
+  "prompt": "four small heaps of malted barley grains arranged two by two in a square on a dark slate surface, seen from directly above: the top left heap very pale straw, the top right amber, the bottom left deep brown, the bottom right almost black, each heap separate with bare slate between them, even soft daylight"
  },
  "mesk-damp": {
   "kind": "made",
