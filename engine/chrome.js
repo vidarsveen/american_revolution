@@ -61,28 +61,47 @@ export function mountChrome(host, root, chapter, player, strings, onLang, onLibr
     </div></div>
 
     <div class="transport__min">
-      <button class="tp-btn tp-btn--main" data-act="toggle" aria-label="${strings.play}">
-        <span class="ico-play">${ICON.play}</span><span class="ico-pause">${ICON.pause}</span>
-      </button>
-      <span class="transport__seekwrap">
-        <button class="transport__seek" data-act="expand" aria-label="${strings.controls}">
-          <span class="transport__seek-track"></span>
-          <span class="transport__seek-fill"></span>
+      <!-- TWO ROWS, and the scrub bar owns the first one.
+
+           It used to share a single row with the play button, the clock and
+           five icons. On a 390 px phone that is about 300 px of controls in
+           330 px of bar, and the seek area was told to grow from a minimum of
+           zero -- so it collapsed to nothing. Not thin: NONE. "the progress
+           bar on the mobile is not visible", and it was not there at all.
+
+           (This comment lives inside a template literal. It said min-width in
+           backticks once, which closed the string and broke the whole app.) 
+
+           Splitting it is also the honest shape: the scrubber is the one
+           control that wants every pixel of width it can get, and the icons
+           are fixed-size targets that want none. -->
+      <div class="transport__scrub">
+        <span class="transport__seekwrap">
+          <button class="transport__seek" data-act="expand" aria-label="${strings.controls}">
+            <span class="transport__seek-track"></span>
+            <span class="transport__seek-fill"></span>
+          </button>
+          <input class="transport__range" type="range" min="0" max="1000" value="0" step="1"
+                 aria-label="${strings.seek}">
+        </span>
+        <span class="transport__time">0:00</span>
+      </div>
+      <div class="transport__keys">
+        <button class="tp-btn tp-btn--main" data-act="toggle" aria-label="${strings.play}">
+          <span class="ico-play">${ICON.play}</span><span class="ico-pause">${ICON.pause}</span>
         </button>
-        <input class="transport__range" type="range" min="0" max="1000" value="0" step="1"
-               aria-label="${strings.seek}">
-      </span>
-      <span class="transport__time">0:00</span>
-      <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
-              aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
-      <button class="tp-btn tp-btn--icon tp-btn--music" data-act="music"
-              aria-label="${strings.music}" aria-pressed="true">${ICON.music}</button>
-      <button class="tp-btn tp-btn--lang" data-act="lang"
-              aria-label="${strings.language}">${strings.langMark}</button>
-      <button class="tp-btn tp-btn--icon" data-act="library"
-              aria-label="${strings.library}">${ICON.book}</button>
-      <button class="tp-btn tp-btn--icon" data-act="episodes"
-              aria-label="${strings.episodes}">${ICON.list}</button>
+        <span class="transport__spacer"></span>
+        <button class="tp-btn tp-btn--icon tp-btn--cc" data-act="cc"
+                aria-label="${strings.captions}" aria-pressed="true">${ICON.cc}</button>
+        <button class="tp-btn tp-btn--icon tp-btn--music" data-act="music"
+                aria-label="${strings.music}" aria-pressed="true">${ICON.music}</button>
+        <button class="tp-btn tp-btn--lang" data-act="lang"
+                aria-label="${strings.language}">${strings.langMark}</button>
+        <button class="tp-btn tp-btn--icon" data-act="library"
+                aria-label="${strings.library}">${ICON.book}</button>
+        <button class="tp-btn tp-btn--icon" data-act="episodes"
+                aria-label="${strings.episodes}">${ICON.list}</button>
+      </div>
     </div>
   `;
   host.appendChild(el);

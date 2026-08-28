@@ -257,10 +257,16 @@ function drawStandingLabels() {
     // with the place and what a term points at; it just does not put a name
     // across the map.
     if (place.kind === 'region') continue;
+    // AN ID IS NOT A NAME. `pick(place.name) || id` wrote the key across the
+    // map when a place had no name -- "nordvest-europa" in 14 px serif over
+    // the North Sea, in a chapter whose whole point is that it names no
+    // places. A place with no name is a camera anchor and nothing else, which
+    // is a legitimate thing to declare; there is simply nothing to draw.
+    if (!pick(place.name)) continue;
     if (typeof place.label === 'string' && sceneIndexOf(place.label) > sceneAt) continue;
     map.places.add({
       id: `place:${id}`,
-      name: pick(place.name) || id,
+      name: pick(place.name),
       coords: place.coords,
       kind: place.kind || 'town',
     });
@@ -271,12 +277,13 @@ function drawStandingLabels() {
 function setStandingLabel(id, on) {
   const place = chapter.places?.[id];
   if (!place || place.label === false) return;
+  if (!pick(place.name)) return;          // see drawStandingLabels
   if (on) {
     if (!pinned.has(id)) return;
     pinned.delete(id);
     map.places.add({
       id: `place:${id}`,
-      name: pick(place.name) || id,
+      name: pick(place.name),
       coords: place.coords,
       kind: place.kind || 'town',
     });

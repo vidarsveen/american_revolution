@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vd80ac501c2';
+const VERSION = 'v35b508b181';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -78,7 +78,6 @@ const PRECACHE = [
   './content/beer/media/bybronn.jpg',
   './content/beer/media/bygg-aker.jpg',
   './content/beer/media/estere-frukt.jpg',
-  './content/beer/media/fire-glass-rekke.jpg',
   './content/beer/media/fire-raavarer.jpg',
   './content/beer/media/gjaer-torr.jpg',
   './content/beer/media/gjaering-skum.jpg',
@@ -92,6 +91,7 @@ const PRECACHE = [
   './content/beer/media/kok-fosskok.jpg',
   './content/beer/media/malt-fargeskala.jpg',
   './content/beer/media/mesk-damp.jpg',
+  './content/beer/media/pub-lyst-og-morkt.jpg',
   './content/beer/media/spirende-korn.jpg',
   './content/beer/media/vorter-glass.jpg',
   './content/beer/style.json',

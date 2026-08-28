@@ -140,25 +140,24 @@ CARD_VERBS = {
 # numbers and cheerfully announced that the Revolution's portrait overlap had
 # been fixed. A ratchet that reports a win for something it did not measure is
 # worse than no ratchet.
+# EIGHT OF THESE WENT TO ZERO IN ONE CHANGE, and the change was not aimed at
+# them. `--deck-floor` was `--floor + --caption-h + --s3*2` — a SUM OF PARTS,
+# which is the mistake this repo already records twice, and is why
+# `--caption-reach` exists at all. Rebuilding the deck floor on the measured
+# number instead cleared every `.atlas__credit` overlap in three courses; and
+# bounding `.ov-deck--top` at the bottom, which the mid deck's own comment
+# describes and nobody had applied one deck up, cleared the portrait ones.
+#
+# It surfaced because the transport grew a second row for the scrub bar and
+# pushed the caption up. A layout that adds its own numbers is fine until
+# something moves.
 BASELINE = {
     "american-revolution": {
-        ".atlas__credit|.ov-fact__card": 2,
-        ".atlas__credit|.ov-portrait__card": 2,
         ".ov-compare|.ov-portrait__card": 1,
         ".ov-portrait__card|.ov-quote__card": 1,
     },
-    # 1 -> 3 when chapter two arrived. Not a regression in the layout: the
-    # wine course now ships close-in geometry for Tuscany as well as the
-    # Langhe, so the long OSM attribution is on screen in a second chapter's
-    # fact-card beats too. Letting the chip WRAP instead of running the width
-    # of the screen was tried and measured worse — two short lines are taller,
-    # and the extra height cost more overlap than the width saved.
-    "italy-wine": {
-        ".atlas__credit|.ov-fact__card": 3,
-    },
+    "italy-wine": {},
     "norway-1940": {
-        ".atlas__credit|.ov-fact__card": 3,
-        ".atlas__credit|.ov-portrait__card": 2,
         ".atlas__credit|.ov-quote__card": 1,
         ".ov-portrait__card|.ov-quote__card": 1,
     },

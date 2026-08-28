@@ -48,7 +48,7 @@ figure.label: ingredienser i nesten all øl | ingredients in nearly all beer
 
 ## Fire ting | Four things
 
-{mood day} {plate fire-raavarer motion=in over=26 dim=0.14 push=0.1 into=1.4} Øl er fire ting. {stat 4 label=ingredienser | ingredients side=neutral} Vann, korn, humle og gjær.
+{music bedWarm} {mood day} {plate fire-raavarer motion=in over=26 dim=0.14 push=0.1 into=1.4} Øl er fire ting. {stat 4 label=ingredienser | ingredients side=neutral} Vann, korn, humle og gjær.
 > Beer is four things. {^} Water, grain, hops and yeast.
 Tre av dem kan du veie opp på en kjøkkenvekt. Den fjerde er i live.
 > Three of them you could weigh out on a kitchen scale. The fourth one is alive.
@@ -221,7 +221,7 @@ De to søylene der er hele resten av dette kurset. Det er en temperaturbryter, o
 
 ## Herfra betyr stedet noe | From here, the place matters
 
-{compare.clear} {plate fire-glass-rekke motion=right over=21 dim=0.12 push=0.13 into=1.4} Det var de fire. Vann, malt, humle og gjær.
+{compare.clear} {music bedOpen} {plate pub-lyst-og-morkt motion=right over=21 dim=0.12 push=0.13 into=1.4} Det var de fire. Vann, malt, humle og gjær.
 > Those were the four. Water, malt, hops and yeast.
 Og fire trinn: mesk, kok, gjæring og lagring. {stat 4 label=trinn fra korn til glass | steps from grain to glass side=neutral}
 > And four steps: mash, boil, ferment and condition. {^}

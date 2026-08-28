@@ -81,6 +81,73 @@ Every `fact.show` is out of chapter one as a result. Eleven marked words remain
 and each opens its entry from the transcript, where a reader can go looking
 rather than being offered.
 
+**FIXED — a phone was showing 30 % of every wide picture.** Reported as "when
+you show the four ingredients, I only see two of them on mobile", and the number
+is worse than it sounds. A plate fills the stage under `cover`, and the stage on
+a phone is 390x734. Measured: a `wide` picture shows 30 % of its width, a square
+53 %, a portrait 68 %. Eight of the beer course's pictures were authored `wide`,
+including every composition that was a ROW of things — four ingredients, four
+malts, four glasses — which is the worst possible shape for a tall crop.
+
+`tools/gen-image.py`'s own header already said square by default, NOT 16:9,
+because the stage is mobile-first and portrait. A note in a docstring did not
+survive contact with somebody choosing an aspect on a laptop.
+`tools/check-plate-crop.py` is the number that fails a build instead. It gates
+GENERATED pictures, which can be re-rendered for nine seconds of GPU, and only
+reports ARCHIVE ones, which are the shape they are.
+
+**And the archive number has a cause worth fixing separately.**
+`tools/fetch-media.py` already letterboxes anything far from the stage ratio —
+against `STAGE_AR = 16/9`, a LANDSCAPE frame. The phone stage is 0.53. So the
+fit every archive picture in three courses was given was decided against a shape
+the app has never drawn on a phone, and 38 of them sit under the floor. Not
+touched here: relabelling frozen courses is a separate decision, and `contain`
+is right for a plan of Boston and wrong for a battle scene. It is one line in
+fetch-media plus a judgement per picture.
+
+**FIXED — the model cannot count, and the fix was to stop asking it to.** Four
+ingredients came back as three bowls twice (grain and hops merged; then the
+water dropped, because clear water in a white bowl from above looks like an
+empty bowl) and needed the water promoted to a glass. Four glasses came back as
+two, three times running — so that picture is now two glasses, pale and black,
+which is the pair chapter two actually teaches, and it is a better closing image
+than the one originally ordered. Five fruits laid "in a vertical column" were
+STACKED into a tower, banana balanced on cloves on an apple; shot from directly
+above, the model cannot stack. All four notes are in `image-prompts.json` beside
+the prompt they corrected.
+
+**FIXED — the pub, not the kitchen table.** "Show it where people have fun."
+The glass of beer is on a bar by a window with warm lamps and blurred drinkers
+behind it, and the chapter ends on two glasses on a pub table in a full room.
+Nobody's face is in focus and no signage is in frame, which keeps them inside
+the pack's own rule about invented markings.
+
+**FIXED — the progress bar on a phone was not thin, it was absent.** The scrub
+bar shared one row with the play button, the clock and five icons: about 300 px
+of controls in a 330 px bar, and the seek area grows from a minimum of zero, so
+it collapsed. It has its own full-width row now — 88 % of the bar at 390 px, 6 px
+tall — with the controls beneath it, and a minimum width it cannot go under.
+
+**FIXED — the map was printing a place id as a name.** `nordvest-europa`, in
+serif, across the North Sea, in the chapter whose whole point is that it names
+no places. `pick(place.name) || id` wrote the key when a place had no name. A
+place with no name is a camera anchor and nothing else, which is a legitimate
+thing to declare; there is nothing to draw.
+
+**FIXED — the music is back, and it does not pump.** The cause was one number.
+`MIN_OPEN_MS` was 500, and the compiler writes 0.9 s between two sentences,
+1.35 s across a paragraph and 2.0 s at the end of a scene — so the bed rode up
+in ALL THREE, about seventy times in a ten-minute chapter. That is exactly what
+"it goes up and down in volume" is. At 1200 (and the ducker's 250 ms look-ahead)
+it holds one level through a whole scene and breathes at the scene join, which
+is the shape this list argued for from the other direction: a bed belongs at an
+opening and an ending, not under a paragraph. A per-pack number now
+(`sound.minOpenMs`), and the beer course ducks 9 dB rather than 12, because a
+bed that lies still can sit closer to the voice than one that dives. Beds on the
+first scene and the last, and nowhere else.
+
+Real music is still item 4 below, and still a 7-8 GB download.
+
 **FIXED — a sound effect was playing over an empty map, and no check had ever
 looked at the two together.** Reported as "why do you show the map when you are
 telling about pouring a glass and having a sound effect of pouring a glass".

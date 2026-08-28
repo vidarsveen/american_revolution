@@ -50,6 +50,7 @@ export function mountSound(chapter) {
       library,
       bedDb: styleValue('sound.bedDb', undefined),
       duckDb: styleValue('sound.duckDb', undefined),
+      minOpenMs: styleValue('sound.minOpenMs', undefined),
     });
   } catch (err) {
     // Sound is an enhancement. Losing it must not take the chapter with it.

@@ -1,8 +1,10 @@
 {
   "$doc": "Denne pakkens tuning. Slås SAMMEN OVER engine/defaults/style.json nøkkel for nøkkel, og et cue-argument slår fortsatt begge. Tom betyr: dette emnet går nøyaktig i takten docs/design-direction.md foreskriver, og det er riktig svar til noe er MÅLT og er uenig.",
   "$keys": "motion.tap|enter|exit|dissolve|turn|drift (ms) · camera.flyOver|clamp|quantise · plate.motion|push|focus|fit · type.scale · map.deckReserve|labelGap · sound.bedDb|duckDb. Alt annet rapporteres ved oppstart som erklært-men-ulest.",
-
   "$why": "Ingen tall er endret ennå, og filen finnes fordi den MÅ finnes: uten den ber motoren om content/beer/style.json, får 404, og tools/check-engine.py feller bygget på konsollfeilen. Den ble funnet nøyaktig sånn, første gang kurset ble sjekket.",
-
-  "$next": "Hvis noe skal endres her, er det plate.push. Dette er kurset som er bygget av bilder — tretten fullskjermsbilder på ti minutter mot vinkapitlets tolv på åtte — og et bilde som står lenge har mer tid til å drive. Men det er et tall som skal MÅLES på skjermen med dev/style-lab.html, ikke gjettes her."
+  "$next": "plate.push er fortsatt det som kan endres her, og det skal MÅLES på skjermen med dev/style-lab.html, ikke gjettes.",
+  "//sound": "duckDb er -9 og ikke -12. Teppet ligger nå på ett nivå gjennom en hel scene (se sound.minOpenMs i engine/defaults/style.json), og et teppe som ligger stille tåler å være nærmere stemmen enn et som stuper og reiser seg mellom hver setning. Dette kurset har dessuten bare teppe på første og siste scene.",
+  "sound": {
+    "duckDb": -9
+  }
 }

@@ -1,186 +1,234 @@
 {
   "//": "Bildene til kapittel én. Prompten ligger her og ikke i hodet på den som kjørte den, slik at 'hva ba vi om' overlever personen som ba. Kapittel én er et bildekapittel: det har ingen steder å vise, så det er disse tolv som bærer skjermen. Ingen av dem har tekst i seg, og ingen av dem later som de er et bestemt bryggeri — se `omits` på hver enkelt.\n\n  .venv/Scripts/python.exe tools/gen-image.py beer --list\n  .venv/Scripts/python.exe tools/gen-image.py beer bygg-aker --candidates 4\n  .venv/Scripts/python.exe tools/gen-image.py beer --accept bygg-aker=2",
-
   "fire-raavarer": {
-    "prompt": "four small piles arranged in a row on a plain wooden table seen from directly above: clear water in a shallow glass dish, pale golden barley grains, fresh green hop cones, and a spoonful of thick beige yeast paste, even daylight from a window, no hands in frame",
+    "prompt": "a tall clear glass of water at the top, and below it three small white bowls in a straight vertical line on a dark pub table, photographed from directly above, bare table between each one. The glass holds water and light passes through it. The first bowl holds only pale golden barley grains. The second bowl holds only fresh green hop cones. The third bowl holds only thick beige yeast paste. Warm low lamplight from one side.",
     "style": "natural light still life photograph, muted colour, shallow depth of field",
-    "aspect": "wide",
-    "title": { "no": "De fire råvarene", "en": "The four raw materials" },
-    "claims": "The four raw materials of nearly all beer, laid out side by side: water, malted barley, hop cones and yeast.",
-    "omits": "An arrangement made for this picture, not a photograph of any brewery's stock. The yeast is shown as a paste because a single cell cannot be photographed at this scale."
+    "aspect": "portrait",
+    "title": {
+      "no": "De fire råvarene",
+      "en": "The four raw materials"
+    },
+    "claims": "The four raw materials of nearly all beer, one above the other: water, malted barley, hop cones and yeast.",
+    "omits": "An arrangement made for this picture, not a photograph of any brewery's stock. The yeast is shown as a paste because a single cell cannot be photographed at this scale.",
+    "//prompt": "Fjerde forsøk, og de tre første er verdt å huske: modellen leverte TRE beholdere hver gang. Første gang slo den korn og humle sammen; etter at hver skål ble talt opp for seg, droppet den vannet i stedet. Grunnen er sannsynligvis at klart vann i en hvit skål sett ovenfra ser ut som en tom skål — så vannet må være et GLASS med lys gjennom, ikke en skål. Fire ting i ett bilde er det modellen er dårligst på, og setningen sier fire."
   },
-
   "glass-mot-vindu": {
-    "prompt": "a plain drinking glass of pale golden beer standing on a windowsill with soft daylight coming through it, fine bubbles rising, thin white foam on top, plain grey background, nothing else on the sill",
+    "prompt": "a plain glass of pale golden beer standing on a worn wooden pub bar beside a window, fine bubbles rising, thin white foam on top, warm lamplight and the blurred shapes of people and glasses deeper in the room behind it, nobody's face in focus",
     "style": "natural light photograph, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Et glass mot vinduet", "en": "A glass against the window" },
-    "claims": "A glass of pale beer in daylight — about ninety-five per cent of it water.",
-    "omits": "Not any identified beer, brewery or product. The glass carries no markings of any kind."
+    "title": {
+      "no": "Et glass mot vinduet",
+      "en": "A glass against the window"
+    },
+    "claims": "A glass of pale beer in a bar — about ninety-five per cent of it water.",
+    "omits": "Not any identified beer, brewery or premises. The glass carries no markings of any kind and no face is identifiable.",
+    "//prompt": "Endret glass-mot-vindu: kjøkkenvinduet ble en bardisk med folk bak. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
-
   "kalk-vann": {
-    "prompt": "clear spring water running over pale grey limestone in a shallow stream bed, the stone chalky and dry above the waterline, bright overcast daylight, close view, no sky",
+    "prompt": "clear spring water falling down a face of pale grey limestone into a shallow pool, the stone chalky and dry above the waterline, bright overcast daylight, close view looking down the fall",
     "style": "natural light photograph, muted colour, cool grey palette",
-    "aspect": "wide",
-    "title": { "no": "Vann over kalkstein", "en": "Water over limestone" },
+    "aspect": "portrait",
+    "title": {
+      "no": "Vann over kalkstein",
+      "en": "Water over limestone"
+    },
     "claims": "Water moving over limestone — the kind of ground that puts chalk and gypsum into a brewing well.",
-    "omits": "Not any identified spring, town or water source, and not the water of any particular brewery."
+    "omits": "Not any identified spring, town or water source, and not the water of any particular brewery.",
+    "//prompt": "Endret kalk-vann: stående utsnitt, sett nedover fallet i stedet for bortover bekken. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
-
   "bygg-aker": {
-    "prompt": "a field of ripe barley in late summer, heads heavy and bent over, long awns catching low sunlight, seen close at ear height with the field blurred behind, warm evening light",
+    "prompt": "a field of ripe barley in late summer seen from low down looking up along the standing stalks, heads heavy and bent over against a warm evening sky, long awns catching the light, the field falling away blurred behind",
     "style": "natural light photograph, muted colour, shallow depth of field",
-    "aspect": "wide",
-    "title": { "no": "Bygg, ferdig modnet", "en": "Barley, fully ripe" },
+    "aspect": "portrait",
+    "title": {
+      "no": "Bygg, ferdig modnet",
+      "en": "Barley, fully ripe"
+    },
     "claims": "Ripe barley standing in the field, the grain nearly all beer is made from.",
-    "omits": "Not a photograph of any identified farm, country or growing region."
+    "omits": "Not a photograph of any identified farm, country or growing region.",
+    "//prompt": "Endret bygg-aker: stående utsnitt, sett oppover langs stråene i stedet for utover jordet. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
-
   "spirende-korn": {
     "prompt": "a thick even layer of germinating barley grains spread across a worn stone floor, each grain showing a short pale white rootlet, a wooden rake resting on the surface, dim indoor light falling from high windows",
     "style": "natural light interior photograph, muted colour, soft shadow",
     "aspect": "square",
-    "title": { "no": "Kornet som spirer", "en": "The grain sprouting" },
+    "title": {
+      "no": "Kornet som spirer",
+      "en": "The grain sprouting"
+    },
     "claims": "Barley part-way through malting: soaked, sprouting, and not yet dried.",
     "omits": "Not any identified maltings. The floor is a composite and not a record of a real building."
   },
-
   "malt-fargeskala": {
-    "prompt": "four small heaps of malted barley grains in a row on a dark slate surface, running from very pale straw through amber and deep brown to almost black, even soft daylight, seen from slightly above",
+    "prompt": "four small heaps of malted barley grains stacked in a vertical column on a dark slate surface, the top heap very pale straw, then amber, then deep brown, the bottom one almost black, even soft daylight, seen from directly above",
     "style": "natural light still life photograph, muted colour, shallow depth of field",
-    "aspect": "wide",
-    "title": { "no": "Fire malter, fra lys til brent", "en": "Four malts, pale to roasted" },
-    "claims": "Malt kilned to four different degrees, from pale to roasted — which is where a beer's colour comes from.",
-    "omits": "Not measured samples of any commercial malt, and the four heaps are not a standard scale. Arranged for this picture."
+    "aspect": "portrait",
+    "title": {
+      "no": "Fire malter, fra lys til brent",
+      "en": "Four malts, pale to roasted"
+    },
+    "claims": "Malt kilned to four different degrees, from pale at the top to roasted at the bottom — which is where a beer's colour comes from.",
+    "omits": "Not measured samples of any commercial malt, and the four heaps are not a standard scale. Arranged for this picture.",
+    "//prompt": "Endret malt-fargeskala: rad ble kolonne. Fire hauger på tvers var det verst mulige for en telefon. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
-
   "mesk-damp": {
     "prompt": "steam rising off a thick porridge of hot crushed grain in a wide stainless steel vessel, a long wooden paddle leaning against the side, humid air, dim indoor light",
     "style": "natural light interior photograph, muted colour, warm shadow",
     "aspect": "square",
-    "title": { "no": "Mesken", "en": "The mash" },
+    "title": {
+      "no": "Mesken",
+      "en": "The mash"
+    },
     "claims": "A mash: crushed malt stirred into hot water so that its starch is cut into sugar.",
     "omits": "Not any identified brewery or vessel."
   },
-
   "kok-fosskok": {
     "prompt": "a rolling boil of amber liquid in a large copper kettle seen from above, thick steam, foam churning across the whole surface, hot orange reflected light",
     "style": "natural light interior photograph, warm colour, shallow depth of field",
     "aspect": "square",
-    "title": { "no": "Koket", "en": "The boil" },
+    "title": {
+      "no": "Koket",
+      "en": "The boil"
+    },
     "claims": "Wort at a rolling boil — the step where hops give up their bitterness and everything alive in the liquid dies.",
     "omits": "Not any identified kettle, brewhouse or company."
   },
-
   "humlehage": {
     "//prompt": "Første versjon sa bare 'pale green cones' og modellen tegnet rakler — lange, småpiggete aks som ikke er humle. Kongleformen må beskrives, ellers gjetter den. Samme feil som druene i vinkurset.",
     "prompt": "a corridor between two rows of hop bines trained up strings on a tall trellis, heavy clusters of pale green hop cones hanging down from the vines, each cone shaped like a small soft pine cone built of overlapping papery leaf scales, broad lobed green leaves, seen looking along the row and slightly upward, bright summer daylight",
     "style": "natural light photograph, green palette, deep perspective",
     "aspect": "portrait",
-    "title": { "no": "Humlehagen", "en": "The hop garden" },
+    "title": {
+      "no": "Humlehagen",
+      "en": "The hop garden"
+    },
     "claims": "Hops grown the way they are grown: a climbing plant trained up strings, reaching full height in one summer.",
     "omits": "Not any identified hop farm, variety or growing region."
   },
-
   "humlekongle-snitt": {
     "//prompt": "'opened by hand' fikk modellen til å rulle sammen et blad og legge gule kuler oppi. To feil: kongla er ikke et blad, og lupulin er finkornet støv, ikke perler. Begge deler må stå i prompten.",
     "prompt": "a very close macro view of two pale green hop cones lying on a light stone surface, each cone built like a small soft pine cone from many overlapping papery scales, one cone split open lengthwise so the fine bright yellow powdery resin dust at the base of the scales is visible, soft even daylight, no hands in frame",
     "style": "macro photograph, natural light, shallow depth of field",
     "aspect": "square",
-    "title": { "no": "Konglen, åpnet", "en": "The cone, opened" },
+    "title": {
+      "no": "Konglen, åpnet",
+      "en": "The cone, opened"
+    },
     "claims": "A hop cone opened to show the yellow lupulin inside, which carries both the bitterness and the aroma oils.",
     "omits": "Not any identified hop variety, and not a scientific specimen."
   },
-
   "gjaering-skum": {
     "prompt": "a deep head of thick cream-coloured foam covering the surface of a fermenting vessel, dense irregular bubbles with brown streaks across it, seen from directly above, dim cellar light",
     "style": "natural light interior photograph, muted colour, close view",
     "aspect": "square",
-    "title": { "no": "Gjæringen i gang", "en": "Fermentation under way" },
+    "title": {
+      "no": "Gjæringen i gang",
+      "en": "Fermentation under way"
+    },
     "claims": "Beer in active fermentation, with the thick foam yeast throws up during the first days.",
     "omits": "Not any identified brewery, vessel or batch."
   },
-
   "humle-i-kok": {
     "prompt": "a handful of whole green hop cones falling into a boiling kettle of amber liquid, steam rising around them, seen from above, hot reflected light on the metal rim",
     "style": "natural light interior photograph, warm colour, motion caught mid-fall",
     "aspect": "square",
-    "title": { "no": "Humle i kokende vørter", "en": "Hops going into the boil" },
+    "title": {
+      "no": "Humle i kokende vørter",
+      "en": "Hops going into the boil"
+    },
     "claims": "Whole hop cones being dropped into hot wort, which is the moment that decides how bitter the beer becomes.",
     "omits": "Not any identified brewery, kettle or hop variety. The liquid is not visibly at a rolling boil in the picture, and the narration is about the timing of the addition rather than the boil itself."
   },
-
   "gjaerkake-krukke": {
     "prompt": "a wide earthenware crock on a worn kitchen table holding thick pale beige yeast barm, a wooden spoon lifting some of it, dim daylight from one side, plain background",
     "style": "natural light still life photograph, muted colour, soft shadow",
     "aspect": "square",
-    "title": { "no": "Gjæren som ble tatt vare på", "en": "The yeast that was kept" },
+    "title": {
+      "no": "Gjæren som ble tatt vare på",
+      "en": "The yeast that was kept"
+    },
     "claims": "Yeast kept from one brew to the next as a thick barm in a crock, the way it was handled for centuries before anybody knew what it was.",
     "omits": "Not a photograph of any surviving historical object, and not any identified farm or household."
   },
-
   "bryggeri-rom": {
-    "prompt": "a small plain brewery room with two stainless steel vessels and a hose coiled on a wet tiled floor, daylight from a high window, nobody in the room, quiet and ordinary",
+    "prompt": "a tall stainless steel brewing vessel standing in a small plain room, a hose coiled at its foot on a wet tiled floor, daylight from a high window, nobody in the room, quiet and ordinary",
     "style": "natural light interior photograph, muted colour, wide view",
-    "aspect": "wide",
-    "title": { "no": "Et bryggeri, hvor som helst", "en": "A brewery, anywhere" },
-    "claims": "An ordinary small brewery room — the kind of building the first chapter is describing, which could stand anywhere.",
-    "omits": "Not any identified brewery, and deliberately without a sign of country or period."
+    "aspect": "portrait",
+    "title": {
+      "no": "Et bryggeri, hvor som helst",
+      "en": "A brewery, anywhere"
+    },
+    "claims": "An ordinary small brewery — the kind of building the first chapter is describing, which could stand anywhere.",
+    "omits": "Not any identified brewery, and deliberately without a sign of country or period.",
+    "//prompt": "Endret bryggeri-rom: stående utsnitt: ett høyt kar i stedet for to lave ved siden av hverandre. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
-
   "bybronn": {
     "prompt": "an old stone well head in a small town square, a worn iron hand pump beside it, wet cobbles, overcast daylight, no people",
     "style": "natural light photograph, muted colour, soft grey light",
     "aspect": "square",
-    "title": { "no": "Brønnen under byen", "en": "The well under the town" },
+    "title": {
+      "no": "Brønnen under byen",
+      "en": "The well under the town"
+    },
     "claims": "A town well of the kind a brewery would have drawn its water from before anyone could change what was in it.",
     "omits": "Not any identified town, well or period. A composite, not a record."
   },
-
   "vorter-glass": {
     "prompt": "a plain glass tumbler of cloudy warm golden-brown liquid held up against a window, thick and slightly opaque, faint steam off the surface, plain background",
     "style": "natural light photograph, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Vørter, før gjæren", "en": "Wort, before the yeast" },
+    "title": {
+      "no": "Vørter, før gjæren",
+      "en": "Wort, before the yeast"
+    },
     "claims": "Sweet wort drawn off the mash: cloudy, warm, and not yet beer.",
     "omits": "Not any identified brewery or batch. The glass carries no markings of any kind."
   },
-
   "estere-frukt": {
-    "prompt": "a still life on a pale table of one banana, a small pile of dried clove buds, a green apple, a pear and two pink roses arranged in a loose row, soft even daylight, plain background, nothing else",
+    "prompt": "a banana, a small pile of dried clove buds, a green apple, a pear and two pink roses laid out flat and separately in a straight vertical line on a pale table, photographed from directly above, none of them touching or stacked, soft even daylight, plain background, nothing else in frame",
     "style": "natural light still life photograph, muted colour, shallow depth of field",
-    "aspect": "wide",
-    "title": { "no": "Smaker ingen har tilsatt", "en": "Flavours nobody added" },
-    "claims": "The four smells yeast makes on its own — banana, clove, apple, pear and rose — shown as the fruits and flowers they are named after.",
-    "omits": "None of these is an ingredient in beer. The picture names the smells, not the recipe, and that is what the narration says."
+    "aspect": "portrait",
+    "title": {
+      "no": "Smaker ingen har tilsatt",
+      "en": "Flavours nobody added"
+    },
+    "claims": "The smells yeast makes on its own — banana, clove, apple, pear and rose — shown as the fruits and flowers they are named after.",
+    "omits": "None of these is an ingredient in beer. The picture names the smells, not the recipe, and that is what the narration says.",
+    "//prompt": "\"arranged in a vertical column\" fikk modellen til å STABLE frukten oppå hverandre — banan i balanse på nellik på eple på pære på roser, som et sirkusnummer. Sett ovenfra kan den ikke stable. Samme ord virket for maltskalaen fordi hauger på et bord ikke KAN stables; her måtte kameraet flyttes i stedet for ordene."
   },
-
   "kjeller-kald": {
-    "prompt": "a cold vaulted stone cellar with wooden barrels stacked along one wall, damp walls, a single dim light, cold air, nobody there",
+    "prompt": "a cold vaulted stone cellar seen looking down its length, wooden barrels stacked high on both sides of a narrow aisle, damp walls, a single dim light far ahead, cold air, nobody there",
     "style": "natural light interior photograph, cool palette, deep shadow",
-    "aspect": "wide",
-    "title": { "no": "Kjelleren, der kulden er", "en": "The cellar, where the cold is" },
+    "aspect": "portrait",
+    "title": {
+      "no": "Kjelleren, der kulden er",
+      "en": "The cellar, where the cold is"
+    },
     "claims": "A cold stone cellar with barrels — the one thing a brewer could control before the yeast could be chosen.",
-    "omits": "Not any identified cellar, brewery or period."
+    "omits": "Not any identified cellar, brewery or period.",
+    "//prompt": "Endret kjeller-kald: stående utsnitt, sett nedover midtgangen. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
-
   "gjaer-torr": {
     "prompt": "a heaped teaspoon of fine pale beige dried yeast granules on a dark surface, a few loose granules scattered beside it, very close macro view, soft even daylight",
     "style": "macro photograph, natural light, shallow depth of field",
     "aspect": "square",
-    "title": { "no": "Ett gram tørrgjær", "en": "One gram of dried yeast" },
+    "title": {
+      "no": "Ett gram tørrgjær",
+      "en": "One gram of dried yeast"
+    },
     "claims": "Dried brewing yeast as it is bought and weighed — a single gram of it holds roughly twenty billion cells.",
     "omits": "Not any identified strain or brand, and the individual cells are far too small to be visible at this scale."
   },
-
-  "fire-glass-rekke": {
-    "//prompt": "Modellen leverte tre glass på alle tre første kandidatene. Et bilde med tre glass under setningen \"det var de fire\" er en telle-felle, så antallet må stå eksplisitt og hvert glass må få sin egen farge i prompten.",
-    "prompt": "a row of exactly four plain glasses of beer standing side by side and evenly spaced on a dark wooden table, all four the same size and shape: the first very pale gold, the second amber, the third deep copper brown, the fourth opaque black, each with a white head, even soft daylight from the side, plain background",
-    "style": "natural light still life photograph, muted colour, shallow depth of field",
-    "aspect": "wide",
-    "title": { "no": "Fire farger, samme fire ting", "en": "Four colours, the same four things" },
-    "claims": "Four beers of very different colours, all four made from the same four ingredients.",
-    "omits": "Not any identified beers, styles or breweries. The glasses carry no markings of any kind."
+  "pub-lyst-og-morkt": {
+    "//prompt": "Het fire-glass-rekke og ba om fire glass. Modellen leverte tre, så to, så to igjen — den teller ikke. Men de to den lager er lyst og svart, altså de to ytterpunktene kapittel to faktisk lærte bort: samme fire ingredienser, brent ulikt lenge. Så bildet ber om TO nå, og heter det det er. Å slutte å slåss med modellen ga et bedre sluttbilde enn det som opprinnelig ble bestilt.",
+    "prompt": "two glasses of beer side by side on a worn wooden pub table, the left one pale gold and the right one opaque black, both with a thick white head, warm evening lamplight, a busy room of blurred people and warm lights behind them, nobody's face in focus, no signage in frame",
+    "style": "natural light photograph, warm colour, shallow depth of field",
+    "aspect": "portrait",
+    "title": {
+      "no": "To øl, samme fire ting",
+      "en": "Two beers, the same four things"
+    },
+    "claims": "Two beers about as far apart as beer gets — one pale, one black — made from the same four ingredients, on a table in a room full of people.",
+    "omits": "Not any identified beers, breweries or premises. The glasses carry no markings of any kind and no face is identifiable."
   }
 }

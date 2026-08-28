@@ -112,7 +112,7 @@ def main() -> int:
     ap.add_argument("--skip", nargs="*", default=[],
                     metavar="NAME",
                     help="any of: script era data effects shell sw css engine "
-                         "turn plate sceneplate sound contrast author outline "
+                         "turn plate sceneplate crop sound contrast author outline "
                          "overlap")
     args = ap.parse_args()
 
@@ -210,6 +210,10 @@ def main() -> int:
     # Plays forward across a scene turn, which no other check does. It is the
     # only one that can see a picture arrive and then be taken away by the
     # outgoing scene's fade timer.
+    # Cheap, no server: how much of each picture a phone actually shows.
+    if "crop" not in skip:
+        ok &= run("check-plate-crop", ["tools/check-plate-crop.py", *packs])
+
     if "sceneplate" not in skip:
         ok &= run("check-scene-plate", ["tools/check-scene-plate.py", *packs], env)
 

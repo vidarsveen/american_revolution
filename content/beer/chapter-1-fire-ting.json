@@ -48,6 +48,11 @@
      "cues": [
       {
        "on": "start",
+       "do": "sound.music",
+       "id": "bedWarm"
+      },
+      {
+       "on": "start",
        "do": "map.mood",
        "value": "day"
       },
@@ -1305,8 +1310,13 @@
       },
       {
        "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
        "do": "plate.show",
-       "id": "fire-glass-rekke",
+       "id": "pub-lyst-og-morkt",
        "motion": "right",
        "over": 21,
        "dim": 0.12,

@@ -39,6 +39,8 @@
  "sound": {
   "//": "How loud this subject's music sits. Metered, not guessed: at bedDb -24 the bed came out 35 dB under the voice, which is inaudible. -8 puts it about 19 dB under while it ducks and 7 dB under between sentences.",
   "bedDb": -8,
-  "duckDb": -12
+  "duckDb": -12,
+  "//minOpenMs": "Hvor lang en pause må være før teppet får komme opp igjen. Kompilatoren skriver 0,9 s mellom to setninger, 1,35 s over et avsnittsskille og 2,0 s på slutten av en scene. 500 slapp teppet opp i ALLE tre, altså rundt sytti ganger i et ti minutters kapittel, og det er nøyaktig det «den går opp og ned i volum» er. 1200 lar det ligge stille gjennom et avsnitt og puste ved avsnittsskillene.",
+  "minOpenMs": 1200
  }
 }

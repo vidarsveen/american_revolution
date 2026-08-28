@@ -137,7 +137,17 @@ def main() -> int:
         check(c["shortGap"] == ducked, "a 500 ms gap does not pump")
         check(c["longGap"] == open_target, "a 1.5 s pause opens back up")
         check(c["after"] == open_target, "open after the last beat")
-        check(c["merged"] == 3, "six beats merge to three real pauses", str(c["merged"]))
+        # THREE became TWO when minOpenMs went 500 -> 1200, and the number is
+        # the point rather than a fixture detail. The ducker looks 250 ms ahead
+        # of each interval, so a gap is about half a second shorter than the
+        # script wrote it: at 1200 the compiler's 0.9 s between sentences AND
+        # its 1.35 s across a paragraph both stay ducked, and the bed rides up
+        # only at a scene end (2.0 s). One steady level inside a scene, which
+        # is what "it goes up and down in volume" was asking for, and the same
+        # shape BACKLOG.md argues for from the other direction: a bed belongs
+        # at a scene opening and an ending, not under a paragraph.
+        check(c["merged"] == 2, "six beats merge to two real pauses at minOpenMs 1200",
+              str(c["merged"]))
 
         # ---- the same thing, measured on the GainNode -----------------
         print("\nthe duck as measured on the bus")

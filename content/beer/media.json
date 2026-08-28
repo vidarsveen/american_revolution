@@ -8,12 +8,12 @@
    "no": "De fire råvarene",
    "en": "The four raw materials"
   },
-  "claims": "The four raw materials of nearly all beer, laid out side by side: water, malted barley, hop cones and yeast.",
+  "claims": "The four raw materials of nearly all beer, one above the other: water, malted barley, hop cones and yeast.",
   "omits": "An arrangement made for this picture, not a photograph of any brewery's stock. The yeast is shown as a paste because a single cell cannot be photographed at this scale.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "four small piles arranged in a row on a plain wooden table seen from directly above: clear water in a shallow glass dish, pale golden barley grains, fresh green hop cones, and a spoonful of thick beige yeast paste, even daylight from a window, no hands in frame"
+  "prompt": "a tall clear glass of water at the top, and below it three small white bowls in a straight vertical line on a dark pub table, photographed from directly above, bare table between each one. The glass holds water and light passes through it. The first bowl holds only pale golden barley grains. The second bowl holds only fresh green hop cones. The third bowl holds only thick beige yeast paste. Warm low lamplight from one side."
  },
  "glass-mot-vindu": {
   "kind": "made",
@@ -24,12 +24,12 @@
    "no": "Et glass mot vinduet",
    "en": "A glass against the window"
   },
-  "claims": "A glass of pale beer in daylight — about ninety-five per cent of it water.",
-  "omits": "Not any identified beer, brewery or product. The glass carries no markings of any kind.",
+  "claims": "A glass of pale beer in a bar — about ninety-five per cent of it water.",
+  "omits": "Not any identified beer, brewery or premises. The glass carries no markings of any kind and no face is identifiable.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a plain drinking glass of pale golden beer standing on a windowsill with soft daylight coming through it, fine bubbles rising, thin white foam on top, plain grey background, nothing else on the sill"
+  "prompt": "a plain glass of pale golden beer standing on a worn wooden pub bar beside a window, fine bubbles rising, thin white foam on top, warm lamplight and the blurred shapes of people and glasses deeper in the room behind it, nobody's face in focus"
  },
  "kalk-vann": {
   "kind": "made",
@@ -45,7 +45,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "clear spring water running over pale grey limestone in a shallow stream bed, the stone chalky and dry above the waterline, bright overcast daylight, close view, no sky"
+  "prompt": "clear spring water falling down a face of pale grey limestone into a shallow pool, the stone chalky and dry above the waterline, bright overcast daylight, close view looking down the fall"
  },
  "bygg-aker": {
   "kind": "made",
@@ -61,7 +61,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a field of ripe barley in late summer, heads heavy and bent over, long awns catching low sunlight, seen close at ear height with the field blurred behind, warm evening light"
+  "prompt": "a field of ripe barley in late summer seen from low down looking up along the standing stalks, heads heavy and bent over against a warm evening sky, long awns catching the light, the field falling away blurred behind"
  },
  "spirende-korn": {
   "kind": "made",
@@ -88,12 +88,12 @@
    "no": "Fire malter, fra lys til brent",
    "en": "Four malts, pale to roasted"
   },
-  "claims": "Malt kilned to four different degrees, from pale to roasted — which is where a beer's colour comes from.",
+  "claims": "Malt kilned to four different degrees, from pale at the top to roasted at the bottom — which is where a beer's colour comes from.",
   "omits": "Not measured samples of any commercial malt, and the four heaps are not a standard scale. Arranged for this picture.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "four small heaps of malted barley grains in a row on a dark slate surface, running from very pale straw through amber and deep brown to almost black, even soft daylight, seen from slightly above"
+  "prompt": "four small heaps of malted barley grains stacked in a vertical column on a dark slate surface, the top heap very pale straw, then amber, then deep brown, the bottom one almost black, even soft daylight, seen from directly above"
  },
  "mesk-damp": {
   "kind": "made",
@@ -207,22 +207,6 @@
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a wide earthenware crock on a worn kitchen table holding thick pale beige yeast barm, a wooden spoon lifting some of it, dim daylight from one side, plain background"
  },
- "fire-glass-rekke": {
-  "kind": "made",
-  "file": "fire-glass-rekke.jpg",
-  "fit": "cover",
-  "method": "flux2-klein-4b-Q8_0",
-  "title": {
-   "no": "Fire farger, samme fire ting",
-   "en": "Four colours, the same four things"
-  },
-  "claims": "Four beers of very different colours, all four made from the same four ingredients.",
-  "omits": "Not any identified beers, styles or breweries. The glasses carry no markings of any kind.",
-  "licence": "Apache-2.0",
-  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
-  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a row of exactly four plain glasses of beer standing side by side and evenly spaced on a dark wooden table, all four the same size and shape: the first very pale gold, the second amber, the third deep copper brown, the fourth opaque black, each with a white head, even soft daylight from the side, plain background"
- },
  "bryggeri-rom": {
   "kind": "made",
   "file": "bryggeri-rom.jpg",
@@ -232,12 +216,12 @@
    "no": "Et bryggeri, hvor som helst",
    "en": "A brewery, anywhere"
   },
-  "claims": "An ordinary small brewery room — the kind of building the first chapter is describing, which could stand anywhere.",
+  "claims": "An ordinary small brewery — the kind of building the first chapter is describing, which could stand anywhere.",
   "omits": "Not any identified brewery, and deliberately without a sign of country or period.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a small plain brewery room with two stainless steel vessels and a hose coiled on a wet tiled floor, daylight from a high window, nobody in the room, quiet and ordinary"
+  "prompt": "a tall stainless steel brewing vessel standing in a small plain room, a hose coiled at its foot on a wet tiled floor, daylight from a high window, nobody in the room, quiet and ordinary"
  },
  "bybronn": {
   "kind": "made",
@@ -280,12 +264,12 @@
    "no": "Smaker ingen har tilsatt",
    "en": "Flavours nobody added"
   },
-  "claims": "The four smells yeast makes on its own — banana, clove, apple, pear and rose — shown as the fruits and flowers they are named after.",
+  "claims": "The smells yeast makes on its own — banana, clove, apple, pear and rose — shown as the fruits and flowers they are named after.",
   "omits": "None of these is an ingredient in beer. The picture names the smells, not the recipe, and that is what the narration says.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a still life on a pale table of one banana, a small pile of dried clove buds, a green apple, a pear and two pink roses arranged in a loose row, soft even daylight, plain background, nothing else"
+  "prompt": "a banana, a small pile of dried clove buds, a green apple, a pear and two pink roses laid out flat and separately in a straight vertical line on a pale table, photographed from directly above, none of them touching or stacked, soft even daylight, plain background, nothing else in frame"
  },
  "kjeller-kald": {
   "kind": "made",
@@ -301,7 +285,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a cold vaulted stone cellar with wooden barrels stacked along one wall, damp walls, a single dim light, cold air, nobody there"
+  "prompt": "a cold vaulted stone cellar seen looking down its length, wooden barrels stacked high on both sides of a narrow aisle, damp walls, a single dim light far ahead, cold air, nobody there"
  },
  "gjaer-torr": {
   "kind": "made",
@@ -318,5 +302,21 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a heaped teaspoon of fine pale beige dried yeast granules on a dark surface, a few loose granules scattered beside it, very close macro view, soft even daylight"
+ },
+ "pub-lyst-og-morkt": {
+  "kind": "made",
+  "file": "pub-lyst-og-morkt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "To øl, samme fire ting",
+   "en": "Two beers, the same four things"
+  },
+  "claims": "Two beers about as far apart as beer gets — one pale, one black — made from the same four ingredients, on a table in a room full of people.",
+  "omits": "Not any identified beers, breweries or premises. The glasses carry no markings of any kind and no face is identifiable.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "two glasses of beer side by side on a worn wooden pub table, the left one pale gold and the right one opaque black, both with a thick white head, warm evening lamplight, a busy room of blurred people and warm lights behind them, nobody's face in focus, no signage in frame"
  }
 }

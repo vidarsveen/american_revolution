@@ -21,8 +21,26 @@
   /* Where the overlay decks stop. Both of them, in one place, for the reason
      above: the lower deck, the mid deck, the caption slot and the plate's
      credit line are four things anchored to one edge, and the file already
-     records twice what that costs when they are each given their own answer. */
-  --deck-floor: calc(var(--floor) + var(--caption-h, 0px) + var(--s3) * 2);
+     records twice what that costs when they are each given their own answer.
+
+     BUILT ON --caption-reach, WHICH IS MEASURED, and not on
+     --floor + --caption-h, which is a SUM OF PARTS. That distinction is
+     already written down twice in this repo — it is why --caption-reach
+     exists at all, after the map's licence credit sat 8 px inside the caption
+     in every frame of every chapter while clearing --floor + --caption-h + --s1.
+     The decks were making the same addition, and it went wrong the same way:
+     the caption SLOT sits a little above the floor and the sum does not know.
+
+     It showed the moment the transport grew a row. A taller bar pushes the
+     caption up; the decks, adding their own number, did not follow it exactly,
+     and the portrait card landed on the subtitles in two courses and on the
+     map credit in three. --caption-reach is read off the elements, so it moves
+     when they move and there is nothing to keep in step by hand.
+
+     The fallback is the old sum, for the first paint before captions.js has
+     measured anything. */
+  --deck-floor: calc(var(--caption-reach, calc(var(--floor) + var(--caption-h, 0px)))
+                     + var(--s3) * 2);
 }
 
 /* A plate is on, so there is a CREDIT down there too.
@@ -39,7 +57,8 @@
    --s3 * 2 the decks already keep. It costs nothing, because when a plate is on
    the thing being pushed off is the picture the plate has already covered. */
 .story:has(.stage-plate.is-on) {
-  --deck-floor: calc(var(--floor) + var(--caption-h, 0px) + var(--s3) * 2 + var(--s7));
+  --deck-floor: calc(var(--caption-reach, calc(var(--floor) + var(--caption-h, 0px)))
+                     + var(--s3) * 2 + var(--s7));
 }
 
 /* ---------- Map surface ------------------------------------ */
@@ -114,11 +133,44 @@
      .is-immersive, so it is always there, and it moves down by the notch
      while this deck did not. */
   top: calc(var(--safe-t) + var(--s2) + var(--tap) + var(--s2));
+  /* AND A BOTTOM, for the reason written out on .ov-deck--mid below — which
+     records the same defect and was fixed without anyone checking whether the
+     deck ABOVE it had the same shape. It did: the top deck was anchored only
+     at the top, so a portrait card grew downwards out of a fixed point with
+     nothing to stop it, and landed on the subtitles. Measured after the
+     transport grew a row: .ov-portrait__card on .captions in two courses and
+     on the map credit in three.
+     A card is capped to the band rather than allowed to overflow it; a
+     portrait that has to be a little smaller is a better answer than one that
+     covers the sentence explaining it. */
+  bottom: var(--deck-floor);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: flex-start;
   gap: var(--s3);
+  min-height: 0;
 }
+/* A card that must fit the band has to be ABLE to fit it. `max-height` alone
+   does nothing here: the card's height comes from its width (52vw) through the
+   frame's 1/1.16 aspect-ratio, so capping the box just let the picture
+   overflow it. Inside this deck the frame becomes the flexible part instead —
+   it keeps object-fit: cover, so the face is still framed, it is simply a
+   shorter crop when there is less room. The caption under it never shrinks,
+   because a name you cannot read is not a saving. */
+.ov-deck--top > * { max-height: 100%; min-height: 0; display: flex; }
+.ov-deck--top .ov-portrait__card {
+  max-height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ov-deck--top .ov-portrait__frame {
+  aspect-ratio: auto;
+  flex: 1 1 auto;
+  min-height: 64px;
+}
+.ov-deck--top .ov-portrait__card figcaption { flex: none; }
 /* The mid deck is a BAND, not a line.
    `top: 32%` and nothing else meant the quote card grew downwards out of a
    fixed point and could run straight into the caption — measured across 646
@@ -285,7 +337,7 @@
 .ov-portrait__card::before {
   content: '';
   position: absolute;
-  left: 0; top: 14px;
+  left: 0; top: 7px;
   width: 3px; height: 32px;
   border-radius: 0 3px 3px 0;
 }
@@ -700,7 +752,19 @@
 }
 .transport__spacer { flex: 1 1 auto; }
 
-.transport__min { display: flex; align-items: center; gap: var(--s3); }
+/* Two rows: the scrubber, then the controls. See the comment on the markup
+   in engine/chrome.js for what one row cost. */
+.transport__min { display: flex; flex-direction: column; gap: var(--s1); }
+.transport__scrub {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+.transport__keys {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
 
 .tp-btn {
   position: relative;
@@ -796,8 +860,17 @@
 /* Progress hairline — tapping it opens the full controls */
 .transport__seek {
   position: relative;
+  /* A floor, so it can never be squeezed to nothing again by whatever else
+     ends up in the bar. Growing from a minimum of zero is what let it vanish. */
   flex: 1 1 auto;
-  height: 34px;
+  min-width: 120px;
+  /* 20 and not 30, and the difference is 18 px of transport height. The bar
+     publishes --transport-h and every overlay clears it, so a taller bar
+     pushes the lower deck up into the caption: at 30 the portrait card
+     overlapped the subtitles in two of the frozen courses and the map credit
+     in three, measured by tools/check-overlap.py. The GRAB area does not
+     shrink with it — see .transport__range. */
+  height: 20px;
   padding: 0;
   background: none;
   border: 0;
@@ -805,12 +878,14 @@
 .transport__seek-track,
 .transport__seek-fill {
   position: absolute;
-  left: 0; top: 15px;
-  height: 4px;
+  left: 0; top: 14px;
+  /* 4 px on a shared row was a hairline you had to look for. It has the whole
+     width now, so it can afford to be a bar you can see from arm's length. */
+  height: 6px;
   border-radius: var(--r-pill);
 }
 .transport__seek-track { right: 0; background: var(--paper-sunken); }
-.transport__seek-fill  { width: 0; background: var(--ink-soft); }
+.transport__seek-fill  { width: 0; background: var(--ink); }
 
 .transport__time {
   flex: none;
@@ -838,9 +913,12 @@
 .transport__seekwrap .transport__seek { flex: 1 1 auto; }
 .transport__range {
   position: absolute;
-  inset: 0;
+  /* Taller than the row it sits in, and deliberately: a 6 px bar is a fine
+     thing to look at and a terrible thing to hit with a thumb. Negative insets
+     grow the target without growing the layout, which is the same trick
+     .tp-btn::before uses for the icon buttons. 20 px of row, 44 px of target. */
+  inset: -12px 0;
   width: 100%;
-  height: 100%;
   margin: 0;
   opacity: 0;
   cursor: pointer;

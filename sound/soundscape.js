@@ -32,8 +32,19 @@
  * The bed only rides back up between two beats if it would stay up at least
  * this long. Anything shorter is pumping, and pumping draws far more
  * attention than the music ever did.
+ *
+ * 500 WAS TOO LOW, and it took a ten-minute chapter to show it. The compiler
+ * writes 0.9 s between two sentences, 1.35 s across a paragraph break and
+ * 2.0 s at the end of a scene (docs/authoring.md). At 500 ms the bed rides up
+ * in EVERY one of those — so on a chapter of nearly continuous narration it
+ * goes up and down about seventy times, which is what "it goes up and down in
+ * volume" is. At 1200 it sits still through a paragraph and breathes at the
+ * paragraph breaks and scene ends, which is where there is room for it.
+ *
+ * A per-pack number, because how much air a subject leaves between sentences
+ * is a fact about its writing: `sound.minOpenMs` in content/<pack>/style.json.
  */
-const MIN_OPEN_MS = 500;
+const MIN_OPEN_MS = 1200;
 
 /**
  * Speech intervals from a compiled scene's beats.
@@ -93,6 +104,7 @@ export function createSoundscape({
   schedule = [],
   bedDb = BED_DB,
   duckDb = -12,
+  minOpenMs = MIN_OPEN_MS,
   lookAheadMs = 250,
   attackTau = 0.08,
   releaseTau = 0.25,
@@ -127,7 +139,7 @@ export function createSoundscape({
       // Measured against a real read, a 500 ms gap leaves 250 ms of music —
       // which is a bump, not a breath. Merge those; keep the real pauses.
       const open = prev ? s.start - look - prev.end : Infinity;
-      if (prev && open < MIN_OPEN_MS / 1000) prev.end = Math.max(prev.end, s.end);
+      if (prev && open < minOpenMs / 1000) prev.end = Math.max(prev.end, s.end);
       else out.push(s);
     }
     return out;
