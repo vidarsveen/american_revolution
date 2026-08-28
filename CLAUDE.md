@@ -714,23 +714,42 @@ of the surrounding file.
 
 ## In flight
 
-- **The course being worked on is `italy-wine`, and only that one.** Rome, the
+- **The next course is BEER, and it is a new pack from nothing.** Everything the
+  framework needs to make one is in `README.md`'s seven steps, in order, and the
+  wine course is the worked example of every one of them. Start with
+  `content/<id>/outline.md` — what the course teaches, in what order, what each
+  chapter is FOR, and what it deliberately leaves out — because that is the
+  level at which "chapter two repeats chapter one" and "the chapter promises
+  something the course will not cover" have an answer at all.
+- **`italy-wine` has two chapters and is the reference course.** Rome, the
   Revolution and Narvik are frozen: they stay as proof the framework is not
   about one subject, and their content is not the work. Do not fix them because
   a check reported them.
-- **The next real test is somebody writing chapter two of the wine course in
-  the `script.<chapter>.md` format**, without help — `python tools/author.py
-  --new italy-wine/chapter-2-toscana` starts the file. If that takes more
-  than an hour, the framework is not ready to produce with, and where it sticks
-  is the next job. Everything else is behind that.
+- **What a beer course will need that the wine one did not, and it is worth
+  deciding before writing prose:** beer is a process before it is a place —
+  malt, mash, boil, hops, yeast, fermentation — so the map earns less of the
+  frame and a *process* artifact may be missing from the framework. Read
+  `BACKLOG.md`'s framework list before inventing one; `chart.show` already does
+  profiles and bars, and the taster profile in `wines.json` generalises to any
+  subject with axes. A beer course also has no `regions` in the wine sense but
+  does have places (Plzeň, München, Burton upon Trent, Dublin), so the map is a
+  map of *where a style was invented*, which is a different map.
+- **The wine course is the shape to copy, including its files:** an outline, one
+  `script.<chapter>.md` per chapter, pools (`grapes`, `wines`, `terms`,
+  `topics`, `place-notes`), `say.json` for how the voice should read foreign
+  words, `style.json` for its own numbers, `geo/zones.geojson` for the areas its
+  sentences name, and `map.detail` boxes wherever a chapter goes in close.
 - Open work is the top section of `BACKLOG.md`, in order, split into the course
-  and the framework. The colour pass is done for marks: every faction fill on
-  every course clears 3:1 against the ground in both themes, derived lightness
-  is fitted to that floor rather than fixed, and `check-contrast.py` gates it.
-  The caption's unsaid ink is done too, and the number this repo had been
-  quoting for it was wrong: measured on rendered pixels it is 4.19 over a
-  picture, not 3.91, and `--ink-soft` moved to clear AA on the worst plate in
-  all four courses.
+  and the framework. Done this week: the colour pass (marks clear 3:1, the
+  caption clears AA, both metered on pixels), the course outline, the picture
+  reviewer, the overlap harness, the camera composing into the visible frame,
+  per-chapter prose files, the music licence survey, a music switch in the
+  transport, and the bed level — which was 35 dB under the voice and is now 19.
+- **Still open and worth knowing before starting:** real music (a 7-8 GB
+  download and the loop-seam problem), the effects in the wine course (three,
+  all after 4:32, and reported as not working — the levels have never been
+  metered the way the bed finally was), and the Explore decision, which has its
+  numbers gathered in `BACKLOG.md` item 7 and needs a person to make it.
 - Explore has moved off Leaflet, so both modes draw the same ground from the
   same module and `vendor/` is gone; the sound module is driven from a 100 ms
   interval, as the note here always said it would have to be.
