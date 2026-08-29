@@ -63,7 +63,7 @@ Bare et bryggeri. Det kan stå hvor som helst, og det gjør akkurat det samme.
 
 ## Nesten bare vann | Almost entirely water
 
-{plate glass-mot-vindu motion=in over=18 dim=0.12 push=0.08 into=1.4} Hell opp et glass. Rundt nittifem {stat 95% label=av et glass øl er vann | of a glass of beer is water side=vann} prosent av det du ser på er vann.
+{music bedBrew} {plate glass-mot-vindu motion=in over=18 dim=0.12 push=0.08 into=1.4} Hell opp et glass. Rundt nittifem {stat 95% label=av et glass øl er vann | of a glass of beer is water side=vann} prosent av det du ser på er vann.
 > Pour a glass. About ninety-five per cent {^} of what you are looking at is water.
 Det høres ut som en fotnote. Det er tvert imot den ingrediensen som bestemte mest, lengst.
 > That sounds like a footnote. It is in fact the ingredient that decided the most, for the longest.
@@ -84,7 +84,7 @@ Hold på den tanken. Den kommer tilbake i neste kapittel, og da er den halve sva
 
 ## Kornet som blir lurt | The grain that gets tricked
 
-{plate bygg-aker motion=left over=22 dim=0.13 push=0.14 into=1.4} Den andre ingrediensen er korn, og nesten alltid bygg. {mark topic:hvorfor-bygg span=1}
+{music bedBrew} {plate bygg-aker motion=left over=22 dim=0.13 push=0.14 into=1.4} Den andre ingrediensen er korn, og nesten alltid bygg. {mark topic:hvorfor-bygg span=1}
 > The second ingredient is grain, and nearly always barley. {^}
 Et byggkorn er en pakke stivelse med en plante sovende inni.
 > A grain of barley is a package of starch with a plant asleep inside it.
@@ -114,7 +114,7 @@ Fargen sier bare hvor hardt kornet er brent. Ikke noe mer.
 
 ## Mesken og kokekaret | The mash and the kettle
 
-{plate mesk-damp motion=in over=30 dim=0.16 push=0.09 into=1.4} Nå skal sukkeret ut av malten, og det skjer i varmt vann.
+{music bedBrew} {plate mesk-damp motion=in over=30 dim=0.16 push=0.09 into=1.4} Nå skal sukkeret ut av malten, og det skjer i varmt vann.
 > Now the sugar has to come out of the malt, and that happens in hot water.
 Malten knuses grovt og røres ut i vann på rundt sekstiseks {stat 66°C label=mesketemperatur | mash temperature side=korn} grader. {mark term:mesking}
 > The malt is crushed coarsely and stirred into water at about sixty-six degrees. {^1} {^2}
@@ -144,7 +144,7 @@ Og det er nå humla går oppi.
 
 ## Konglen som reddet ølet | The cone that saved beer
 
-{plate humlehage motion=out over=20 dim=0.12 push=0.16 into=1.4} Humle er en slyngplante i hampefamilien. {mark term:humle}
+{music bedBrew} {plate humlehage motion=out over=20 dim=0.12 push=0.16 into=1.4} Humle er en slyngplante i hampefamilien. {mark term:humle}
 > The hop is a climbing plant in the hemp family. {^}
 Den klatrer sju {stat 7 m label=på én sommer | in a single summer side=humle} meter opp en snor i løpet av én sommer.
 > It goes seven metres {^} up a string in a single summer.

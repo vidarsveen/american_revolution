@@ -153,6 +153,11 @@
      "cues": [
       {
        "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
        "do": "plate.show",
        "id": "glass-mot-vindu",
        "motion": "in",
@@ -288,6 +293,11 @@
       "en": "The second ingredient is grain, and nearly always barley."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
       {
        "on": "start",
        "do": "plate.show",
@@ -458,6 +468,11 @@
       "en": "Now the sugar has to come out of the malt, and that happens in hot water."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
       {
        "on": "start",
        "do": "plate.show",
@@ -675,6 +690,11 @@
       "en": "The hop is a climbing plant in the hemp family."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
       {
        "on": "start",
        "do": "plate.show",
