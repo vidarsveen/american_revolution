@@ -1,0 +1,33 @@
+{
+ "bedBrew": {
+  "file": "sound/bedBrew.wav",
+  "title": {
+   "no": "Underlag: nylonstrenger",
+   "en": "Bed: nylon strings"
+  },
+  "description": "Svært langsom, sparsom soloakustisk gitar. Noen få toner og så stillhet. Kursets standardteppe.",
+  "tags": [
+   "bed",
+   "music",
+   "guitar",
+   "acoustic",
+   "slow",
+   "sparse",
+   "warm"
+  ],
+  "reuse": "generic",
+  "kind": "music",
+  "duration": 28.5,
+  "licence": "Apache-2.0",
+  "credit": "Generated with ACE-Step v1-3.5B (ACE Studio / StepFun). Apache 2.0.",
+  "source": "https://huggingface.co/ACE-Step/ACE-Step-v1-3.5B",
+  "prompt": "extremely slow and sparse solo acoustic guitar, 45 bpm, a few notes and then silence, nothing hurried, soft nylon strings, close and warm, plenty of space, instrumental, no vocals, no drums, no percussion, quiet, unhurried",
+  "sampleRate": 48000,
+  "loop": {
+   "seconds": 28.5,
+   "seam": 6.0,
+   "foldMatchDb": -16.7,
+   "from": "90s source, 03-seed102.wav"
+  }
+ }
+}

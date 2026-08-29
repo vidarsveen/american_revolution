@@ -102,6 +102,36 @@ def modulation_rate(env: torch.Tensor, step: float) -> tuple[float, float]:
     return float(freqs[keep][peak]), float(depth)
 
 
+def loop_seam(x: torch.Tensor, sr: int) -> tuple[float, float]:
+    """How badly a file clicks when it is played back to back with itself.
+
+    A bed is a LOOP, and the join is where a generated or downloaded track
+    gives itself away: the last sample and the first sample are neighbours the
+    moment it repeats, and if they are far apart you hear a click every time
+    round. sound/library.js already solves this for SYNTHESISED beds by
+    rendering past the end and folding the overhang back with an equal-power
+    crossfade — but a FILE has no overhang, so a track from a music library
+    has to either loop already or be cut until it does.
+
+    Two numbers, both in dB relative to the clip's own peak:
+
+      step   the jump from the last sample to the first, which is the click
+      match  how different the last 200 ms are from the first 200 ms, which
+             is whether the MUSIC arrives back where it started rather than
+             merely at the same sample value
+
+    Under about -40 dB on both is inaudible. A track that fails `match` is not
+    fixable by trimming a few samples; it is the wrong length.
+    """
+    peak = float(x.abs().max()) or 1e-9
+    step = abs(float(x[0]) - float(x[-1])) / peak
+    n = min(int(0.2 * sr), len(x) // 4)
+    head, tail = x[:n], x[-n:]
+    match = float((head - tail).pow(2).mean().sqrt()) / peak
+    to_db = lambda v: 20 * math.log10(max(v, 1e-9))
+    return to_db(step), to_db(match)
+
+
 def describe(path: str) -> None:
     x, sr = load(path)
     env, step = rms_envelope(x, sr)
@@ -122,6 +152,7 @@ def describe(path: str) -> None:
     low = band_energy(x, sr, 20, 1000)
     high = band_energy(x, sr, 6000, 20000)
     rate, depth = modulation_rate(env, step)
+    step_db, match_db = loop_seam(x, sr)
     tail_level = float(env[-int(0.15 / step):].mean() / max(env.max(), 1e-9))
     clipped = float((x.abs() > 0.995).sum()) / len(x)
 
@@ -142,6 +173,9 @@ def describe(path: str) -> None:
     if low < 0.20:
         flags.append("BRIGHT only %.0f%% of energy under 1 kHz — right for foam "
                      "or dry grain, wrong for anything with weight" % (100 * low))
+    if match_db > -20:
+        flags.append("DOES NOT LOOP  the last 200 ms are %.0f dB away from the "
+                     "first — this is the wrong length, not a bad cut" % match_db)
     if high > 0.55:
         flags.append("HISSY %.0f%% of energy over 6 kHz — same question"
                      % (100 * high))
@@ -156,6 +190,8 @@ def describe(path: str) -> None:
     print(f"  longest silent gap   {gap:5.2f} s")
     print(f"  over 6 kHz           {high*100:4.1f}%")
     print(f"  ends at              {tail_level*100:4.0f}% of peak")
+    print(f"  loop seam            step {step_db:5.0f} dB, match {match_db:5.0f} dB"
+          f"   (under -40 is inaudible)")
     for f in flags:
         print(f"  !! {f}")
     if not flags:

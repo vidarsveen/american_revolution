@@ -41,7 +41,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedStill"
+       "id": "bedBrew"
       },
       {
        "on": "start",
@@ -1298,7 +1298,7 @@
       {
        "on": "start",
        "do": "sound.music",
-       "id": "bedOpen"
+       "id": "bedBrew"
       },
       {
        "on": "start",

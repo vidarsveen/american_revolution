@@ -1,0 +1,26 @@
+{
+  "_note": "Underlagsmusikken til ølkurset, for tools/gen-music.py. Modellen er ACE-Step v1-3.5B, Apache 2.0 på selve vektene, så et godkjent teppe binder ikke bygget. Prompten står her og ikke i hodet på den som kjørte den.\n\nDet ble hørt gjennom åtte forsøk før dette. Lærdommen som er verdt å ta med: «for fort» på et teppe handler nesten aldri om tempo alene, men om hvor OFTE det skjer noe. Prompten må be om pauser mellom frasene og lange noteverdier, ikke bare et lavt bpm — 45 bpm med en tone hvert sekund låter fortsatt travelt.\n\nMerk også at et teppe genereres LENGER enn løkka det skal bli. tools/gen-music.py klipper og bretter overhenget tilbake over starten med en likeeffekt-krysstoning, slik sound/library.js allerede gjør for de syntetiserte. Uten det klikker et generert stykke hver gang det går rundt: målt på de første fire lå skjøten rundt -13 dB, der under -40 er uhørlig.",
+
+  "bedBrew": {
+    "prompt": "extremely slow and sparse solo acoustic guitar, 45 bpm, a few notes and then silence, nothing hurried, soft nylon strings, close and warm, plenty of space, instrumental, no vocals, no drums, no percussion, quiet, unhurried",
+    "source_seconds": 90,
+    "steps": 40,
+    "guidance": 7.5,
+    "title": { "no": "Underlag: nylonstrenger", "en": "Bed: nylon strings" },
+    "description": "Svært langsom, sparsom soloakustisk gitar. Noen få toner og så stillhet. Kursets standardteppe.",
+    "tags": ["bed", "music", "guitar", "acoustic", "slow", "sparse", "warm"],
+    "reuse": "generic"
+  },
+
+  "bedBrewStrings": {
+    "//": "Ikke i bruk ennå. Valgt side om side med bedBrew og beskrevet som «mer dramatisk», så den hører hjemme et sted kapittel én ikke går — kapittel fire, der gjæren blir fanget i et laboratorium, er den åpenbare kandidaten.",
+    "prompt": "extremely slow sustained strings, adagio, cello and viola holding long quiet notes, almost still, chords changing rarely, warm and close, instrumental, no vocals, no drums, no percussion, quiet, unhurried",
+    "source_seconds": 90,
+    "steps": 40,
+    "guidance": 7.5,
+    "title": { "no": "Underlag: strykere", "en": "Bed: strings" },
+    "description": "Svært langsomme, holdte strykere. Mer dramatisk enn bedBrew, og ment for et kapittel som trenger det.",
+    "tags": ["bed", "music", "strings", "cello", "slow", "sustained"],
+    "reuse": "generic"
+  }
+}

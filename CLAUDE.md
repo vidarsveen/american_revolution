@@ -36,6 +36,15 @@ prints the LAN address for testing on a phone.
 Python tooling lives in `.venv` (`.venv/Scripts/python.exe` on Windows) and needs
 `playwright` and `pillow`. `narrate.py` additionally needs `edge-tts`, `mutagen` and `ffmpeg`.
 
+`tools/gen-music.py` (ACE-Step, real music beds) runs from **`.venv-moss`**, the
+same environment as the sound tool. Its header records the four things that cost
+a morning: the pipeline keeps its own checkpoint cache and will download a second
+7.8 GB copy if you let it; Windows will not symlink, so `HF_HUB_DISABLE_SYMLINKS`
+or it dies on a 639-byte file after fetching all of it; `torch_compile` needs
+Triton and is Linux-only; and `torchaudio.save` now wants TorchCodec to write a
+WAV, which the stdlib has done since 1993. It runs at 6.8 GB peak on an 8 GB
+card — 60 s of audio in 18 s.
+
 `tools/gen-sound.py` is the exception and runs from **`.venv-audio`**, a second environment on
 Python 3.12. Two reasons it is separate, both learned the hard way: `audiocraft` wants
 `numpy<2` and would break the tooling above, and it hard-pins `torch==2.1.0`, `torchvision`,

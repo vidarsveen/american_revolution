@@ -498,6 +498,54 @@ built on the old one. What a scene declaring `ground: none` would still buy is
 the paint and the geometry a subject that is not about places never needs — that
 is a real argument, and it is a different one.
 
+**4d. DONE — there is real music, generated locally, and it loops.**
+ACE-Step v1-3.5B, Apache 2.0 on the weights, so the build stays commercially
+usable. `tools/gen-music.py` with prompts in `content/<pack>/music-prompts.json`,
+the same shape as the image and sound tools.
+
+**It cost far less than this list feared and rather more than it should have.**
+Measured on the RTX 4060 Laptop (8 GB): 60 s of audio in 18 s, 6.82 GB peak,
+cpu_offload on, torch_compile off. No dtype surgery — the MOSS trap did not
+repeat. What did cost time was the install: eight missing packages one at a
+time, and one genuinely misleading failure where torchvision resolved to a
+version that does not match this torch and surfaced as "Could not import module
+'CLIPTextModelWithProjection'". The pipeline also keeps its OWN checkpoint cache
+and ignores the huggingface one, so it downloaded a second 7.8 GB copy of the
+same bytes before dying on a 639-byte config.json that Windows would not let it
+symlink. All four are in the tool's header.
+
+**The free-library route was tried first and failed on its own terms**, which
+is worth recording so nobody repeats it: the CC0 game-loop packs (Abstraction /
+Tallbeard, 200+ seamless loops, licence verified from the file) are written with
+soft synths and were rejected as "very synthetic"; FreePD shut down in 2025;
+Chosic blocks automated access; and public-domain classical on archive.org is a
+licence minefield where most recordings state no licence at all and the rest are
+non-commercial. The measurement harness built along the way stayed useful —
+`tools/describe-sound.py` now reports the loop join, and it immediately found
+that the generated `ferment` effect is declared a loop and is 19 dB away from
+joining itself.
+
+**The loop is the half the licence has nothing to do with, and it is solved by
+construction.** Generate 90 s, search for the cut length at which the material
+after the cut most resembles the opening, then fold the overhang back over the
+head with an equal-power crossfade — the same trick sound/library.js already
+uses for synthesised loops, applied to a file. The crossfade is SIX seconds and
+not two: at two the sample-level click was gone (-33..-40 dB) and the phrase
+change was still an event. At six it measures -43 dB and reads as two quiet
+passages overlapping, which is what a fade is for.
+
+**What is shipped:** `bedBrew`, 28.5 s, mono, 2.7 MB — an extremely slow sparse
+nylon-string guitar, a few notes and then silence. Chosen by ear from three,
+heard as three passes round so the join could actually be judged.
+`bedBrewStrings` is written into music-prompts.json unused: it was picked out as
+"more dramatic", and chapter four — the yeast caught in a laboratory — is where
+that belongs.
+
+**What is still open:** whether "too fast" is fully answered. Four takes were
+rejected as too busy before this one, and the lesson is in the prompts file —
+tempo is not the lever, how OFTEN something happens is. There is room below
+45 bpm if it still reads as busy under narration.
+
 **4c. The beds are OUT of the beer course, and the reason generalises.**
 Reported this week as "the background music is terrible, and it goes up and
 down in volume — we basically need to make a completely different background
