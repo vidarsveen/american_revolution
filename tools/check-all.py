@@ -134,6 +134,14 @@ def main() -> int:
     if "pack" not in skip:
         ok &= run("check-pack", ["tools/check-pack.py"])
 
+    # The pixels of what actually shipped. check-plate-crop.py asks whether a
+    # picture is the right SHAPE and SAFE_BOTTOM asks the model to keep the
+    # subject high; neither ever looked at the result, so a picture whose
+    # lower half was white studio paper passed every tool and was reported as
+    # "a pale one ..... then blank screen".
+    if "picture" not in skip:
+        ok &= run("check-picture", ["tools/check-picture.py"])
+
     if "script" not in skip:
         for ref in chapters(packs):
             ok &= run(f"check-script {ref}", ["tools/check-script.py", ref])

@@ -110,8 +110,8 @@
   },
   "humlekongle-snitt": {
     "//prompt": "'opened by hand' fikk modellen til å rulle sammen et blad og legge gule kuler oppi. To feil: kongla er ikke et blad, og lupulin er finkornet støv, ikke perler. Begge deler må stå i prompten.",
-    "prompt": "a very close macro view of two pale green hop cones lying on a light stone surface, each cone built like a small soft pine cone from many overlapping papery scales, one cone split open lengthwise so the fine bright yellow powdery resin dust at the base of the scales is visible, soft even daylight, no hands in frame",
-    "style": "macro photograph, natural light, shallow depth of field",
+    "prompt": "a single green hop cone, papery overlapping leaf-like bracts arranged in a small soft cone like a tiny green pinecone, cut in half lengthways to show the bright yellow lupulin powder at the base of the bracts, more whole green hop cones and vine leaves scattered on dark weathered oak filling the lower frame, macro, warm low side light, dark background",
+    "style": "natural light macro photograph, warm colour, dark ground",
     "aspect": "square",
     "title": {
       "no": "Konglen, åpnet",
@@ -167,8 +167,8 @@
     "//prompt": "Endret bryggeri-rom: stående utsnitt: ett høyt kar i stedet for to lave ved siden av hverandre. Målt på 390x734 viser et wide-bilde 30 % av bredden sin, et kvadratisk 53 % og et stående 68 %."
   },
   "bybronn": {
-    "prompt": "an old stone well head in a small town square, a worn iron hand pump beside it, wet cobbles, overcast daylight, no people",
-    "style": "natural light photograph, muted colour, soft grey light",
+    "prompt": "an old stone well head in a small town square, wet cobblestones filling the foreground and lower frame, worn stone rim, a wooden bucket on its edge, overcast light, dark buildings behind, no people",
+    "style": "natural light photograph, muted colour, wet stone in the foreground",
     "aspect": "square",
     "title": {
       "no": "Brønnen under byen",
@@ -189,8 +189,8 @@
     "omits": "Not any identified brewery or batch. The glass carries no markings of any kind."
   },
   "estere-frukt": {
-    "prompt": "a banana, a small pile of dried clove buds, a green apple, a pear and two pink roses laid out flat and separately in a straight vertical line on a pale table, photographed from directly above, none of them touching or stacked, soft even daylight, plain background, nothing else in frame",
-    "style": "natural light still life photograph, muted colour, shallow depth of field",
+    "prompt": "banana, green apple, pear, whole cloves and a pink rose arranged close together on dark weathered oak, shot from straight above, the objects filling the whole frame edge to edge with the wood grain between them, warm low side light, deep shadows",
+    "style": "natural light still life photograph, warm colour, dark wooden ground",
     "aspect": "portrait",
     "title": {
       "no": "Smaker ingen har tilsatt",

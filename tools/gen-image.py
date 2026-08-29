@@ -397,6 +397,37 @@ def generate(pack, pid, spec, n, backend, seed0):
     return outdir, made
 
 
+def _warn_if_blank(path):
+    """Say so if the picture just accepted reads as a blank screen.
+
+    IMPORTS the check rather than copying its numbers. A threshold maintained
+    in two places and visible in one is worse than a threshold nobody wrote
+    down -- the same argument as engine/verbs.json, and as the stylesheet that
+    outlived its renderer. tools/check-picture.py owns BRIGHT and FLAT.
+    """
+    import importlib.util
+    from PIL import Image
+    src = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       "check-picture.py")
+    try:
+        spec = importlib.util.spec_from_file_location("check_picture", src)
+        cp = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cp)
+        im = cp.visible_crop(Image.open(path).convert("L"))
+        bands = [cp.band_stats(im, i) for i in range(cp.BANDS)]
+        bad = [i for i, (m, s) in enumerate(bands)
+               if i >= cp.BANDS // 2 and m > cp.BRIGHT and s < cp.FLAT]
+        if bad:
+            m, s = bands[max(bad, key=lambda i: bands[i][0])]
+            print(f"  WARNING: the lower part of this picture is blank paper "
+                  f"— brightness {m:.0f}, detail {s:.0f}. On a phone, under "
+                  f"the caption, that reads as the screen having stopped. "
+                  f"Re-render with something in the bottom of the frame, or "
+                  f"accept it knowingly.")
+    except Exception:
+        pass          # never let a warning break an accept
+
+
 def accept(pack, pid, index, backend):
     from PIL import Image
 
@@ -476,6 +507,18 @@ def accept(pack, pid, index, backend):
     }
     media[pid] = entry
     jdump(mp, media)
+
+    # AT THE DOOR, not in a report somebody runs later. SAFE_BOTTOM asks the
+    # model to keep the subject in the upper two thirds, and for a year nobody
+    # measured whether it did -- so a picture went in whose lower half was
+    # plain white studio paper, and under a caption on a phone that is not
+    # composition, it is a blank screen. It was reported as one.
+    #
+    # A warning and not a refusal: the number describes how a picture READS,
+    # and a person accepting one can see it and disagree. What must not happen
+    # again is nobody being told.
+    _warn_if_blank(dest)
+
     kb = os.path.getsize(dest) // 1024
     print(f"accepted {files[index - 1]}  ->  {dest}  ({im.size[0]}x{im.size[1]}, {kb} KB)")
     print(f"  claims: {entry['claims']}")

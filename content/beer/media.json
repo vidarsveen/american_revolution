@@ -173,7 +173,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a very close macro view of two pale green hop cones lying on a light stone surface, each cone built like a small soft pine cone from many overlapping papery scales, one cone split open lengthwise so the fine bright yellow powdery resin dust at the base of the scales is visible, soft even daylight, no hands in frame"
+  "prompt": "a single green hop cone, papery overlapping leaf-like bracts arranged in a small soft cone like a tiny green pinecone, cut in half lengthways to show the bright yellow lupulin powder at the base of the bracts, more whole green hop cones and vine leaves scattered on dark weathered oak filling the lower frame, macro, warm low side light, dark background"
  },
  "humle-i-kok": {
   "kind": "made",
@@ -237,7 +237,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "an old stone well head in a small town square, a worn iron hand pump beside it, wet cobbles, overcast daylight, no people"
+  "prompt": "an old stone well head in a small town square, wet cobblestones filling the foreground and lower frame, worn stone rim, a wooden bucket on its edge, overcast light, dark buildings behind, no people"
  },
  "vorter-glass": {
   "kind": "made",
@@ -269,7 +269,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a banana, a small pile of dried clove buds, a green apple, a pear and two pink roses laid out flat and separately in a straight vertical line on a pale table, photographed from directly above, none of them touching or stacked, soft even daylight, plain background, nothing else in frame"
+  "prompt": "banana, green apple, pear, whole cloves and a pink rose arranged close together on dark weathered oak, shot from straight above, the objects filling the whole frame edge to edge with the wood grain between them, warm low side light, deep shadows"
  },
  "kjeller-kald": {
   "kind": "made",
