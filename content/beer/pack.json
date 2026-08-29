@@ -252,7 +252,21 @@
   "Tekstregelen gjelder fortsatt, og den er strengere her enn noe annet",
   "sted: en generert ølflaske med etikett er en forfalskning av et",
   "varemerke, ikke en illustrasjon. Flasker fotograferes uten etikett,",
-  "bakfra eller beskåret."
+  "bakfra eller beskåret.",
+  "",
+  "NAVNGI GLASSET. Modellen vet ikke hvilket glass som hører til hvilken",
+  "drikk. «a glass of ale» ga et stettglass — et vinglass, i et kurs om",
+  "øl — og det gikk gjennom fordi bildet ble godkjent på et måltall uten",
+  "at noen så på det. Skriv formen ut, og skriv ut hva den ikke er:",
+  "«a straight-sided English pint glass, no stem and no foot, not a wine",
+  "glass». Samme regel som med fargen: brent korn ble lyst gyllent til",
+  "prompten sa svart som kaffebønner tre ganger.",
+  "",
+  "Og se på bildene. tools/check-picture.py måler én feiltype — blankt",
+  "papir nederst — og den måler den godt. Den kan ikke se et vinglass,",
+  "og den kan ikke se et bilde som er kuttet på midten. Begge deler ble",
+  "rapportert av et menneske. tools/contact-sheet.py legger hele",
+  "kapitlet på ett ark, beskåret slik en telefon viser det."
  ],
  "media": {
   "generated": {
@@ -292,44 +306,44 @@
   "    python tools/outline.py beer --write"
  ],
  "chapters": [
-   {
-     "id": "chapter-1-fire-ting",
-     "title": {
-       "no": "Fire ting i et glass",
-       "en": "Four things in a glass"
-     },
-     "subtitle": {
-       "no": "Vann, korn, humle og gjær",
-       "en": "Water, grain, hops and yeast"
-     },
-     "blurb": {
-       "no": "Nesten all øl i verden er laget av fire ting. Vi følger dem gjennom bryggeriet, fra åkeren til glasset, og finner ut hvor smaken kommer fra.",
-       "en": "Almost every beer in the world is made of four things. We follow them through the brewery, from the field to the glass, and find out where the taste comes from."
-     },
-     "langs": [
-       "no",
-       "en"
-     ]
+  {
+   "id": "chapter-1-fire-ting",
+   "title": {
+    "no": "Fire ting i et glass",
+    "en": "Four things in a glass"
    },
-   {
-     "id": "chapter-2-overgjaer",
-     "title": {
-       "no": "Den som gjærer på toppen",
-       "en": "The one that ferments on top"
-     },
-     "subtitle": {
-       "no": "Ale, England, og vannet under Burton",
-       "en": "Ale, England, and the water under Burton"
-     },
-     "blurb": {
-       "no": "Varm gjæring, ferdig på tre dager, og en smak av frukt som ingen har tilsatt. Så en by som oppdaget at vannet under den var halve hemmeligheten.",
-       "en": "Warm fermentation, done in three days, and a taste of fruit nobody added. Then a town that found the water under it was half the secret."
-     },
-     "langs": [
-       "no",
-       "en"
-     ]
-   }
+   "subtitle": {
+    "no": "Vann, korn, humle og gjær",
+    "en": "Water, grain, hops and yeast"
+   },
+   "blurb": {
+    "no": "Nesten all øl i verden er laget av fire ting. Vi følger dem gjennom bryggeriet, fra åkeren til glasset, og finner ut hvor smaken kommer fra.",
+    "en": "Almost every beer in the world is made of four things. We follow them through the brewery, from the field to the glass, and find out where the taste comes from."
+   },
+   "langs": [
+    "no",
+    "en"
+   ]
+  },
+  {
+   "id": "chapter-2-overgjaer",
+   "title": {
+    "no": "Den som gjærer på toppen",
+    "en": "The one that ferments on top"
+   },
+   "subtitle": {
+    "no": "Ale, England, og vannet under Burton",
+    "en": "Ale, England, and the water under Burton"
+   },
+   "blurb": {
+    "no": "Varm gjæring, ferdig på tre dager, og en smak av frukt som ingen har tilsatt. Så en by som oppdaget at vannet under den var halve hemmeligheten.",
+    "en": "Warm fermentation, done in three days, and a taste of fruit nobody added. Then a town that found the water under it was half the secret."
+   },
+   "langs": [
+    "no",
+    "en"
+   ]
+  }
  ],
  "//surfaces": [
   "Hva scenen er laget av, argumentert i outline.md sin `shows:`. Fem av",

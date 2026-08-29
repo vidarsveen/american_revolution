@@ -424,6 +424,32 @@ glyph ever appeared — and `check-script.py` passed it clean, because it only e
 *names*. It now rejects undeclared arguments and validates enum values. The lesson generalises:
 the manifest is the contract, and anything not in it is decoration.
 
+**A metric that measures one failure mode will be trusted for all of them,
+and a picture nobody looked at is a picture nobody checked.** Fourteen
+pictures were accepted on the strength of `check-picture.py` alone; four were
+never opened, and two of those were wrong — a beer served in a stemmed wine
+glass, and an image cut off halfway down and filled with black. Both were
+reported by a person, twice, after the checks said the course was clean.
+
+Two metrics were tried for the cut and neither works, which is worth knowing
+before trying them again: **the sharpest full-width step** does not separate a
+stitched seam from a table edge (a good picture scored 72, the bad one 17),
+and **a flat dark band at the bottom** does not separate a cut-off image from
+a dark room (the cut-off one scored HIGHER than seven good pictures). Some
+things about a picture are only visible to somebody looking at it.
+
+So the fix is not another check. `tools/contact-sheet.py` puts every picture
+of a chapter on one sheet, in the order a viewer meets them, cropped to the
+slice a phone shows, with a line where the caption starts. Looking at all
+fifteen is one action, and it immediately found a third fault the checks
+cannot see: roasted barley that the script calls black coming out pale gold.
+
+**And name the thing in the prompt, including what it is not.** The model has
+no idea which glassware belongs to which drink: "a glass of ale" gives a
+stemmed tulip. "A straight-sided English pint glass, no stem and no foot, not
+a wine glass" gives a pint. Same for colour — "roasted, almost black" gave
+gold until the prompt said black three different ways.
+
 **A generated candidate outlives the prompt that made it, and `--accept` counted the
 folder.** Candidates are named `01-seed100.png` and every render starts at `01`, so a second
 render of the same picture left ten files in one directory and sorted order interleaved them:

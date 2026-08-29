@@ -281,7 +281,7 @@
     "omits": "No brewery, no year and no face. The gesture is what is shown, not a particular person or place."
   },
   "ale-glass-lys": {
-    "prompt": "a glass of deep amber ale held up against a bright window in a dark pub, the glass in the upper half of the frame glowing gold, thick cream head, dark wooden panelling and warm lamps filling the lower frame, no label, no text",
+    "prompt": "a straight-sided English pint glass with a slight bulge below the rim, standing flat on its own base, no stem and no foot, definitely not a wine glass and not a goblet, filled with deep amber ale under a thick cream head, standing on a dark wooden pub table and lit from behind by a bright window so the beer glows, dark panelling and warm lamps filling the lower frame, no label, no text",
     "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
     "aspect": "portrait",
     "title": {
@@ -314,7 +314,7 @@
     "omits": "Not any identified brewery and not the vat that burst in 1814. No maker's name or date appears on it."
   },
   "stout-glass": {
-    "prompt": "a glass of black beer with a dense cream-coloured head, held in a dark pub, the glass filling the upper two thirds and lit from behind so the edges glow deep ruby, dark wood bar and warm lamps below, no label, no text, no logo",
+    "prompt": "a straight-sided English pint glass with a slight bulge below the rim, standing flat on its own base, no stem and no foot, definitely not a wine glass and not a goblet, filled with black beer under a dense cream-coloured head, standing on a dark pub bar, lit from behind so the edges of the beer glow deep ruby, blurred bottles and warm lamps behind, no label, no text, no logo",
     "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
     "aspect": "portrait",
     "title": {
@@ -325,7 +325,7 @@
     "omits": "No brand, no label, no logo and no pump clip. This is a stout, not any particular brewery's stout."
   },
   "brent-korn": {
-    "prompt": "a close view of roasted barley grains poured in a heap on dark weathered oak, almost black and glossy, a few paler grains among them, the heap filling the upper frame and grains scattered across the wood below, warm low side light, macro",
+    "prompt": "a heap of coffee-black roasted barley grains on dark weathered oak, the grains almost charcoal coloured with a hard glossy shine, every grain dark brown to black like roasted coffee beans, no pale or golden grains anywhere, the heap filling the upper frame with loose black grains scattered on the wood below, warm low side light, macro",
     "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
     "aspect": "portrait",
     "title": {
