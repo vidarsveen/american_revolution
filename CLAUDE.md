@@ -201,6 +201,8 @@ python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/outline.py italy-wine          # does the course still say what it teaches?
 python tools/author.py content/italy-wine/script.chapter-1-piemonte.md --check   # prose vs the JSON that ships
 python tools/watch-stretch.py beer/chapter-1-fire-ting s3   # PLAY a scene and watch it
+python tools/check-cover.py        # is the screen EVER empty? and does every scene say what it carries?
+python tools/check-cover.py --sheet   # the scene sheet: every picture, its seconds, the bed
 python tools/check-picture.py      # does any picture READ as a blank screen?
 python tools/check-pack.py         # does the app FIND everything a course declares?
 python tools/check-pack-selftest.py   # and does that check still catch anything?
@@ -316,6 +318,44 @@ it: an export error naming a module you did not touch, right after a deploy, is 
 your code. Do not go looking for the bug. And it is why the answer to "is it live?" is
 `check-published.py` *plus* a reload in a browser that has been there before — the two
 questions have different answers for ten minutes.
+
+**There was no single answer to "what is on the screen at time T", so every
+tool that needed one made its own — and one of them was wrong.** The same
+span-walk was written FOUR times: `check-script.py`'s plate check (correct),
+`check-pictures.py` and `review-pictures.py` (correct but beat-granular, so
+every picture was placed at its beat's start rather than at its cue), and
+`check-blank.py`, which named three verbs that do not exist — `chart.clear`,
+`fact.clear`, `quote.clear`, where the real ones are `.hide` — and whose prefix
+test then read four real hide-verbs as SHOWS, `compare.clear` among them. Its
+"0% blank" was quoted in a summary and was not evidence of anything.
+
+Each copy decided show-from-hide by reading the verb's NAME, because the
+manifest never said. `engine/verbs.json` now carries `occupies` on every one of
+the 45 verbs: the `channel` it fills, the `effect` (fill, add, free, free-one),
+its `weight` — `frame` can carry the screen, `trim` cannot, so a stretch showing
+only a fact box and some stat chips is still an empty screen — and `expires` for
+the two lifetimes that are not cues at all. A verb cannot be added without
+saying what it puts on screen.
+
+`scriptlib.occupancy()` is the one walk that reads it, and all four callers use
+it. `tools/check-cover.py` is the gate: any second of any scene with nothing on
+it fails, and `--sheet` prints the chapter as a scene sheet before anything
+runs. **This replaces playing a chapter and watching it.** On its first run
+against a chapter that three tools called clean it found 7.1 s in two holes,
+both of them handovers where a picture was taken down at the start of a beat
+while the chart replacing it was anchored to a word two seconds later.
+
+It also carries the bed, because that was the same bug one channel over: a bed
+is dropped at every scene change unless the new scene asks again, chapter one
+asked in its first scene and its last, and eight of ten minutes played in
+silence. The only rule in the repo fired when EVERY scene was scored and had no
+opinion about five of seven being silent. A scene now carries a bed or says
+`bed: none` — a scene-level key in the prose, compiled and decompiled, so
+silence is a decision somebody wrote down.
+
+Scope is `CHECKED = {"beer"}` in the tool. The frozen courses are skipped BY
+NAME and the skip is printed, because a course silently outside a checker's
+coverage is the same defect one level up.
 
 **The checks find a course's files by convention; the APP finds them through
 `pack.json`. When those two disagree, everything passes and the browser gets

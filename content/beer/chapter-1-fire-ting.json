@@ -849,7 +849,10 @@
        "id": "bitterhet"
       },
       {
-       "on": "start",
+       "on": {
+        "no": "word:IBU",
+        "en": "word:IBU"
+       },
        "do": "plate.hide",
        "over": 1.1
       },
@@ -921,12 +924,7 @@
       "no": "Og så er det timingen, som er det virkelig pene med humle.",
       "en": "And then there is the timing, which is the genuinely elegant part."
      },
-     "cues": [
-      {
-       "on": "start",
-       "do": "compare.clear"
-      }
-     ],
+     "cues": [],
      "gapAfter": 0.9
     },
     {
@@ -936,6 +934,10 @@
       "en": "The bitter resin has to boil for a long time to dissolve at all. So hops meant to make the beer bitter go in early."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
       {
        "on": "start",
        "do": "plate.show",
@@ -975,6 +977,7 @@
     "no": "Den fjerde er i live",
     "en": "The fourth one is alive"
    },
+   "bed": "none",
    "beats": [
     {
      "id": "s5.b1",

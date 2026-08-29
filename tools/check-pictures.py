@@ -55,6 +55,9 @@ import json
 import os
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from scriptlib import occupancy   # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -91,42 +94,34 @@ def report(pack, chapter_id, lang="no"):
         return
 
     media = load(os.path.join(ROOT, "content", pack, "media.json")) or {}
+    timing = load(os.path.join(ROOT, "content", pack,
+                               f"timing.{chapter_id}.{lang}.json")) or {}
+    occ = occupancy(ch, timing, lang)
     total = 0.0
     shown = 0.0
     lines = []
 
     for scene in ch["scenes"]:
         beats = scene["beats"]
-        s_start = times.get(beats[0]["id"], (0, 0))[0]
-        s_end = sum(times.get(beats[-1]["id"], (0, 0)))
-        total += max(0.0, s_end - s_start)
-
-        open_at = open_id = None
-        shots = []
-        for b in beats:
-            at, dur = times.get(b["id"], (0.0, 0.0))
-            for cue in b.get("cues", []):
-                if cue["do"] == "plate.show":
-                    if open_id and open_id != cue.get("id"):
-                        shots.append((open_id, at - open_at))
-                        shown += at - open_at
-                    if open_id != cue.get("id"):
-                        open_id, open_at = cue.get("id"), at
-                elif cue["do"] == "plate.hide" and open_id:
-                    end = at + (dur if cue.get("on") == "end" else 0.0)
-                    shots.append((open_id, end - open_at))
-                    shown += end - open_at
-                    open_id = open_at = None
-        if open_id:                       # a scene wipe takes it down
-            shots.append((open_id, s_end - open_at))
-            shown += s_end - open_at
+        so = occ.get(scene["id"])
+        if not so:
+            continue
+        total += so["dur"]
+        # The walk is scriptlib.occupancy(), shared with check-script.py,
+        # check-cover.py and review-pictures.py. Four copies of it existed and
+        # each decided show-from-hide by reading the verb's NAME; one of them
+        # read four real hide-verbs as shows. This one also gains real cue
+        # times rather than placing every picture at its beat's start.
+        shots = [(sp["id"], sp["end"] - sp["start"]) for sp in so["spans"]
+                 if sp["channel"] == "plate"]
+        shown += sum(d for _i, d in shots)
 
         kinds = {s[0]: (media.get(s[0], {}) or {}).get("kind", "?") for s in shots}
         desc = ", ".join(
             f"{mid}{'*' if kinds.get(mid) == 'made' else ''} {secs:.0f}s"
             for mid, secs in shots) or "—"
         lines.append(f"    {scene['id']:<4} {len(beats):>2} beats  "
-                     f"{s_end - s_start:>5.0f}s   {desc}")
+                     f"{so['dur']:>5.0f}s   {desc}")
 
     pct = 100.0 * shown / total if total else 0.0
     shape = ("picture story" if pct >= 45 else

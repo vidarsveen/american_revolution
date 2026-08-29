@@ -142,6 +142,14 @@ def main() -> int:
     if "picture" not in skip:
         ok &= run("check-picture", ["tools/check-picture.py"])
 
+    # Is the screen ever empty, and does every scene say what it carries?
+    # Static, from the script and the timing file. It replaces the ten-minute
+    # habit of playing a chapter and watching it, and it replaces
+    # check-blank.py, which kept its own copy of the cue vocabulary and read
+    # four real hide-verbs as shows.
+    if "cover" not in skip:
+        ok &= run("check-cover", ["tools/check-cover.py"])
+
     if "script" not in skip:
         for ref in chapters(packs):
             ok &= run(f"check-script {ref}", ["tools/check-script.py", ref])

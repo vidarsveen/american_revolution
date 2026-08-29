@@ -13,7 +13,8 @@ import sys
 from playwright.sync_api import sync_playwright
 
 BASE = os.environ.get("LAB_BASE", "http://localhost:8000")
-ref, scene = sys.argv[1], sys.argv[2]
+ref = sys.argv[1]
+scene = sys.argv[2] if len(sys.argv) > 2 else "all"
 pack, chapter = ref.split("/")
 out = os.path.join("shots", "stretch")
 os.makedirs(out, exist_ok=True)
@@ -40,7 +41,17 @@ READ = """
     return Number(o.toFixed(2));
   };
   return {
-    plate: op('.stage-plate') * (document.querySelector('.plate__img')?.currentSrc ? 1 : 0),
+    // BOTH images. A cross-dissolve fades the outgoing picture out on the
+    // ghost <img> while the incoming one fades in on the main <img>, so at
+    // the middle of the dissolve each is at about half and NEITHER is above
+    // a naive threshold -- which made this probe report one empty second in
+    // the middle of a perfectly good handover, and disagree with the static
+    // model for no reason. Measured at 100 ms through that dissolve: img
+    // 0.4 on the new picture, ghost 0.6 on the old, and a full frame the
+    // whole way through.
+    plate: op('.stage-plate') * Math.max(
+      document.querySelector('.plate__img')?.currentSrc ? op('.plate__img') : 0,
+      document.querySelector('.plate__ghost')?.currentSrc ? op('.plate__ghost') : 0),
     deck:  op('.ov-deck .ov-stat, .ov-stat'),
     chart: op('.ov-compare, .ov-chart'),
     card:  op('.ov-fact, .ov-quote'),
@@ -64,28 +75,33 @@ with sync_playwright() as pw:
     page.evaluate("""async (sid) => {
         const S = await import('/engine/story.js');
         const p = S.getPlayer(), ch = S.getChapter();
-        const i = ch.scenes.findIndex((s) => s.id === sid);
+        const i = sid === 'all' ? 0 : ch.scenes.findIndex((s) => s.id === sid);
         await p.goToScene(i, { autoplay: true });
     }""", scene)
     page.wait_for_timeout(1200)
     blanks = 0
-    for t in range(0, 100):
+    for t in range(0, 40 if scene != "all" else 700):
         st = page.evaluate(READ)
         empty = max(st["plate"], st["deck"], st["chart"], st["card"]) < 0.1
         blanks += empty
-        flag = "  <-- NOTHING ON THE STAGE" if empty else ""
-        print(f"  {t:3}s  plate {st['plate']:.2f}  deck {st['deck']:.2f}  "
-              f"chart {st['chart']:.2f}  card {st['card']:.2f}  "
-              f"{st['cap'][:38]}{flag}")
+        if empty:
+            print(f"  {t // 60}:{t % 60:02d}  NOTHING ON THE STAGE  "
+                  f"{st['cap'][:42]}")
         if empty:
             page.screenshot(path=os.path.join(out, f"blank-{t:03d}.png"))
         page.wait_for_timeout(1000)
         here = page.evaluate("""async () => {
             const S = await import('/engine/story.js');
             const p = S.getPlayer(), ch = S.getChapter();
-            return ch.scenes[p.sceneIndex]?.id;
+            return { id: ch.scenes[p.sceneIndex]?.id,
+                     done: p.sceneIndex >= ch.scenes.length - 1
+                           && p.now() >= (S.getChapter().scenes.length ? 0 : 0)
+                           && !!document.querySelector('.ending, .end-card') };
         }""")
-        if here != scene:
+        if scene != "all" and here["id"] != scene:
             break
+        if scene == "all" and here["done"]:
+            break
+        cur = here["id"]
     print(f"\n{blanks} second(s) with nothing on the stage")
     ctx.close(); br.close()

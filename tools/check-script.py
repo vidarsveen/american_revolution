@@ -36,7 +36,8 @@ from scriptlib import (
     REF_TYPES, VERB_SPEC, VERBS,
     anchor_for, auto_over, chapter_langs, check_sound_manifest, cue_time,
     ease_flight, fit_bounds, flight_constants, load_chapter, load_json,
-    load_timings, map_conf, norm, pack_dir, pack_era, resolve_pools,
+    load_timings, map_conf, norm, occupancy, pack_dir, pack_era,
+    resolve_pools,
     sound_years, timing_beat, tokens,
 )
 
@@ -474,6 +475,25 @@ def check_camera_lands(pack, chapter, timings, langs):
 # Floors are what it takes to READ the thing, not what looks tidy: a name and
 # a role is about two and a half seconds, a quote is a sentence you have to
 # get through, a number is quick.
+# A RATCHET, and it exists because the check below had never actually run.
+# Its loop was mis-indented and only ever examined the last scene of the last
+# language, so twenty findings were invisible: fact boxes and portraits on
+# screen for one or two seconds, in courses that are frozen and are not the
+# work. Fixing them is content work on Rome, Narvik, the Revolution and the
+# wine course, which CLAUDE.md says not to do because a check reported it.
+#
+# So the count each chapter has TODAY is written down and nothing new is
+# allowed. Lower a number when one is fixed. A measurement nobody can re-run
+# is a story; a baseline nobody may exceed is a ratchet.
+KNOWN_BRIEF = {
+    "chapter-1775-06-17": 6,
+    "chapter-1-piemonte": 3,
+    "chapter-2-toscana": 6,
+    "chapter-14ad-tiberius": 2,
+    "chapter-44bc-octavian": 3,
+}
+
+
 READABLE = {
     "portrait": ("portrait.show", "portrait.hide", 2.5),
     "image":    ("image.show",    "image.hide",    2.0),
@@ -903,67 +923,38 @@ def check_plates_hold(chapter, timings, langs):
     check_overlays_readable only measures show->hide pairs. A plate can also
     end by being REPLACED by another plate, or by its scene ending, and those
     are exactly the cases that produced the two-minute stills.
+
+    The walk itself is scriptlib.occupancy(), which reads what each verb does
+    to the screen from engine/verbs.json rather than deciding from the verb's
+    name. It used to be written out here, and the same walk was written out
+    three more times elsewhere -- once wrongly. The thresholds below are this
+    check's own and stay here.
     """
     found = []
     for lang in langs:
         tm = timings.get(lang)
         if not tm:
             continue
-        for scene in chapter["scenes"]:
-            st = tm["scenes"].get(scene["id"])
-            if not st:
-                continue
-            # The scene's own duration. Beats carry `start` and `dur`, not an
-            # `end` -- reading a key that is not there returned None, fell back
-            # to the last beat's START, and reported every closing plate as
-            # shown after the scene finished. The first run of this check was
-            # wrong before any chapter was.
-            scene_end = st.get("dur") or 0
-
-            events = []
-            for beat in scene["beats"]:
-                tb = timing_beat(tm, scene["id"], beat["id"])
-                for cue in beat.get("cues", []):
-                    if cue["do"] not in ("plate.show", "plate.hide"):
-                        continue
-                    at = cue_time(cue, tb, lang)
-                    if at is not None:
-                        events.append((at, cue, beat["id"]))
-            events.sort(key=lambda e: e[0])
-
-            open_at = open_id = open_beat = None
-
-            def close(end):
-                if open_at is None:
-                    return
-                span = end - open_at
+        for sid, so in occupancy(chapter, tm, lang).items():
+            for sp in so["spans"]:
+                if sp["channel"] != "plate":
+                    continue
+                span = sp["end"] - sp["start"]
                 if 0.5 < span < PLATE_FLOOR:
                     found.append(
-                        f"{open_beat}: '{lang}' plate '{open_id}' is on screen for "
+                        f"{sp['beat']}: '{lang}' plate '{sp['id']}' is on screen for "
                         f"{span:.1f}s, under {PLATE_FLOOR:.0f}s — a blink, not a shot. "
                         f"Show it earlier in the beat, or hide it later.")
                 elif span <= 0.5:
                     found.append(
-                        f"{open_beat}: '{lang}' plate '{open_id}' is shown "
+                        f"{sp['beat']}: '{lang}' plate '{sp['id']}' is shown "
                         f"{-span:.1f}s after its scene ends — the wipe takes it "
                         f"away and nobody ever sees it.")
                 elif span > PLATE_CEILING:
                     found.append(
-                        f"{open_beat}: '{lang}' plate '{open_id}' holds the whole "
+                        f"{sp['beat']}: '{lang}' plate '{sp['id']}' holds the whole "
                         f"screen for {span:.0f}s, over {PLATE_CEILING:.0f}s — the map "
                         f"is blocked that long. Add a plate.hide, or a second picture.")
-
-            for at, cue, bid in events:
-                if cue["do"] == "plate.show":
-                    if open_id is not None and open_id != cue.get("id"):
-                        close(at)
-                        open_at = open_id = open_beat = None
-                    if open_id != cue.get("id"):
-                        open_at, open_id, open_beat = at, cue.get("id"), bid
-                else:
-                    close(at)
-                    open_at = open_id = open_beat = None
-            close(scene_end)
     return found
 
 
@@ -1091,21 +1082,46 @@ def check_overlays_readable(chapter, timings, langs):
                         f"until={secs}s — under three seconds is a flicker, not "
                         f"something read.")
 
-    for what, (show, hide, floor) in READABLE.items():
-                open_at = None
-                open_id = None
-                open_beat = None
-                for at, cue, bid in events:
-                    if cue["do"] == show:
-                        open_at, open_id, open_beat = at, cue.get("id", what), bid
-                    elif cue["do"] == hide and open_at is not None:
-                        span = at - open_at
-                        if span < floor:
-                            found.append(
-                                f"{open_beat}: '{lang}' {what} '{open_id}' is on screen "
-                                f"for {span:.1f}s, under {floor:.1f}s — too brief to read. "
-                                f"Anchor the show to a word rather than to the beat end.")
-                        open_at = None
+    # A LOOP THAT ONLY EVER RAN ONCE. This block used to sit at function
+    # level with its body indented as though it were inside the `for lang` and
+    # `for scene` loops above -- so it ran a single time, against whatever
+    # `events`, `lang` and `scene` happened to be left over from the last
+    # iteration, and has therefore only ever examined the final scene of the
+    # final language. It measured nothing for every chapter but the tail of
+    # one. It walks the shared occupancy now, which covers every language and
+    # every scene, and closes a span on replacement and on the scene wipe as
+    # well as on an explicit hide.
+    brief = []
+    floors = {what: floor for what, (_s, _h, floor) in READABLE.items()}
+    for lang in langs:
+        tm = timings.get(lang)
+        if not tm:
+            continue
+        for sid, so in occupancy(chapter, tm, lang).items():
+            for sp in so["spans"]:
+                floor = floors.get(sp["channel"])
+                if floor is None or sp["channel"] == "plate":
+                    continue          # plates have their own, longer floor
+                span = sp["end"] - sp["start"]
+                if span < floor:
+                    brief.append(
+                        f"{sp['beat']}: '{lang}' {sp['channel']} "
+                        f"'{sp['id'] or sp['channel']}' is on screen for "
+                        f"{span:.1f}s, under {floor:.1f}s — too brief to read. "
+                        f"Anchor the show to a word rather than to the beat end.")
+
+    allowed = KNOWN_BRIEF.get(chapter.get("id"), 0)
+    if len(brief) > allowed:
+        found.extend(brief)
+        if allowed:
+            found.append(
+                f"{len(brief)} overlays are too brief to read; {allowed} are "
+                f"recorded in KNOWN_BRIEF as this chapter's baseline, so the "
+                f"rest are new.")
+    elif brief:
+        notes.append(
+            f"{len(brief)} overlay(s) too brief to read, all within this "
+            f"chapter's recorded baseline. Lower KNOWN_BRIEF if you fix one.")
     return found, notes
 
 

@@ -45,6 +45,20 @@ VERB_SPEC = MANIFEST["verbs"]
 VERBS = set(VERB_SPEC)
 REF_TYPES = MANIFEST.get("refTypes", {})
 
+# EVERY verb must say what it does to the screen. This is checked at import,
+# so it is checked by every tool that reads a chapter, and adding a verb
+# without a decision fails immediately rather than being silently absent from
+# the occupancy model -- which is how tools/check-blank.py came to read four
+# real hide-verbs as shows while inventing three verb names that do not exist.
+# `null` is a legitimate decision: a camera move, a one-shot flash, a sound.
+_undeclared = sorted(v for v, d in VERB_SPEC.items() if "occupies" not in d)
+if _undeclared:
+    raise SystemExit(
+        "engine/verbs.json: no `occupies` decision for "
+        + ", ".join(_undeclared)
+        + " — say which channel it fills and how, or `null` if it draws "
+          "nothing. See the //occupies note in that file.")
+
 
 # ------------------------------------------------------------------
 # text
@@ -617,3 +631,159 @@ def check_sound_manifest(pack: str) -> tuple[list[str], int]:
         if not os.path.exists(os.path.join(pd, entry["file"])):
             problems.append(f"sound.json {name}: '{entry['file']}' is not on disk")
     return problems, len(manifest)
+
+
+# ------------------------------------------------------------------
+# what is on the screen — the ONE implementation
+# ------------------------------------------------------------------
+
+# fact.show's default life, and it must match FACT_SECONDS in
+# engine/script.js, which derives a hide cue at compile time.
+FACT_SECONDS = 6.5
+
+
+def _cue_key(cue, occ):
+    """The id this cue's span is filed under, for targeted clears.
+
+    A `key` in the manifest names the ARGUMENT that identifies the artifact --
+    `marker.hide at=lexington` frees one marker, not every marker. Without a
+    key the channel holds a single thing and the id is only for reporting.
+    """
+    field = occ.get("key")
+    val = cue.get(field) if field else cue.get("id")
+    if isinstance(val, list):
+        return tuple(val)
+    return val
+
+
+def occupancy(chapter, timing, lang, verbs=None):
+    """Every span in which a channel is occupied, per scene.
+
+    THE single answer to "what is on the screen at time t", and the reason it
+    is here rather than in a checker: the same walk was written four times --
+    check-script.py's check_plates_hold, check-pictures.py, review-pictures.py
+    and check-blank.py -- three of them plate-only and the fourth simply
+    wrong, because each re-derived show-versus-hide from the verb's NAME.
+    engine/verbs.json states it now, and this reads it.
+
+    Returns {scene_id: {"dur": float, "spans": [span]}} where a span is
+    {channel, weight, id, start, end, beat, verb}. Times are scene-relative,
+    which is what the timing file uses.
+
+    Everything open is closed at the scene's end, because a scene change wipes
+    the stage: engine/player.js rebuildTo() replays only the current scene's
+    cues, so nothing standing survives the boundary.
+    """
+    spec = verbs if verbs is not None else VERB_SPEC
+    out = {}
+    for si, scene in enumerate(chapter.get("scenes", [])):
+        sid = scene["id"]
+        st = (timing.get("scenes") or {}).get(sid) or {}
+        dur = st.get("dur")
+        if dur is None:
+            continue                      # not narrated yet; nothing to time
+        beats = scene.get("beats", [])
+
+        events = []
+        for bi, beat in enumerate(beats):
+            tb = timing_beat(timing, sid, beat["id"])
+            if tb is None:
+                continue
+            b_end = tb.get("start", 0.0) + tb.get("dur", 0.0)
+            for ci, cue in enumerate(beat.get("cues", [])):
+                occ = (spec.get(cue["do"]) or {}).get("occupies")
+                if not occ:
+                    continue
+                at = cue_time(cue, tb, lang)
+                if at is None:
+                    continue
+                events.append((at, bi, ci, cue, occ, beat["id"], b_end))
+        # (time, then authored order) — the same stable sort engine/script.js
+        # applies, and the tie-break matters when a beat clears something and
+        # sets it again in the same instant.
+        events.sort(key=lambda e: (e[0], e[1], e[2]))
+
+        open_spans = {}                   # (channel, key) -> span dict
+        spans = []
+
+        def close(span, at):
+            span["end"] = max(span["start"], at)
+            spans.append(span)
+
+        for at, _bi, _ci, cue, occ, bid, b_end in events:
+            ch, effect = occ["channel"], occ["effect"]
+            key = _cue_key(cue, occ)
+
+            # A show with no id is a stop: `sound.music` and `sound.ambience`
+            # both stop by being called with the id left off.
+            if effect in ("fill", "add") and cue.get("id", "?") is None:
+                effect = "free"
+
+            if effect == "free":
+                # With a `key` whose argument is present this is targeted;
+                # otherwise it empties the whole channel.
+                for k in [k for k in open_spans if k[0] == ch
+                          and (key is None or occ.get("key") is None or k[1] == key)]:
+                    close(open_spans.pop(k), at)
+                continue
+            if effect == "free-one":
+                k = (ch, key)
+                if k in open_spans:
+                    close(open_spans.pop(k), at)
+                continue
+
+            if effect == "fill":
+                # Re-showing what is already up is a no-op in the engine
+                # (plate.js returns early when showing === cue.id), so it must
+                # not close and reopen the span here either.
+                same = [k for k in open_spans if k[0] == ch and k[1] == key]
+                if same:
+                    continue
+                for k in [k for k in open_spans if k[0] == ch]:
+                    close(open_spans.pop(k), at)
+            elif effect == "add" and (ch, key) in open_spans:
+                continue
+
+            span = {"channel": ch, "weight": occ.get("weight", "frame"),
+                    "id": key, "start": at, "end": None,
+                    "beat": bid, "verb": cue["do"]}
+            open_spans[(ch, key)] = span
+
+            # Two lifetimes that are not cues at all.
+            expires = occ.get("expires")
+            if expires == "beat":
+                # A definition dies with its own sentence: the beat end is a
+                # hard ceiling and `until` can only shorten it.
+                until = cue.get("until", FACT_SECONDS)
+                close(open_spans.pop((ch, key)), min(at + until, b_end))
+            elif isinstance(expires, (int, float)):
+                close(open_spans.pop((ch, key)), at + expires)
+
+        for span in open_spans.values():
+            close(span, dur)
+
+        spans.sort(key=lambda s: (s["start"], s["channel"]))
+        out[sid] = {"dur": dur, "spans": spans, "index": si}
+    return out
+
+
+def holes(scene_occ, weight="frame", channels=None):
+    """The spans of a scene with nothing on the screen.
+
+    Only `frame` weight counts by default. A fact box, a caption note and a
+    row of stat chips are really on screen and really cannot carry it --
+    docs/design-direction.md calls a fact box "the picture's edge, and nothing
+    else" -- so a stretch showing only those is still an empty screen.
+    """
+    live = [s for s in scene_occ["spans"]
+            if s["weight"] == weight
+            and (channels is None or s["channel"] in channels)]
+    live.sort(key=lambda s: s["start"])
+    gaps, at = [], 0.0
+    for s in live:
+        if s["start"] > at:
+            gaps.append((at, s["start"]))
+        at = max(at, s["end"])
+    if at < scene_occ["dur"]:
+        gaps.append((at, scene_occ["dur"]))
+    return [(a, b) for a, b in gaps if b - a > 1e-6]

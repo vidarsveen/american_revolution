@@ -162,16 +162,16 @@ Før det fantes kjøling var det hele forskjellen mellom et øl som overlevde vi
 {plate.hide 1.1} {plate humle-torking motion=in over=20 dim=0.13 push=0.08 into=1.4} Det er derfor humle vant. Ikke fordi den smakte best, men fordi den holdt lengst.
 > That is why hops won. Not because they tasted best, but because they kept longest.
 
-{fact term:bitterhet} {plate.hide 1.1} Bitterhet måles i noe som heter IBU. {compare part=15 "15" korn Lys lager | Pale lager part=35 "35" humle Pils | Pilsner part=65 "65" gjaer Moderne IPA | Modern IPA mode=bar note=Bitterhet i IBU. Tallet betyr ingenting uten sukkeret det leses mot. | Bitterness in IBU. The number means nothing without the sugar it is read against.}
-> Bitterness is measured in something called IBU. {^}
+{fact term:bitterhet} Bitterhet måles i noe som heter IBU. {plate.hide 1.1} {compare part=15 "15" korn Lys lager | Pale lager part=35 "35" humle Pils | Pilsner part=65 "65" gjaer Moderne IPA | Modern IPA mode=bar note=Bitterhet i IBU. Tallet betyr ingenting uten sukkeret det leses mot. | Bitterness in IBU. The number means nothing without the sugar it is read against.}
+> Bitterness is measured in something called IBU. {^} {^}
 En lys lager ligger rundt femten. En pils rundt trettifem. En moderne IPA kan ligge over seksti.
 > A pale lager sits around fifteen. A pilsner around thirty-five. A modern IPA can be over sixty.
 Men tallet alene sier ikke hvor bittert noe smaker, for bitterhet leses alltid mot sukkeret som er igjen.
 > But the number alone does not say how bitter a thing tastes, because bitterness is always read against the sugar left behind.
 
-{compare.clear} Og så er det timingen, som er det virkelig pene med humle.
+Og så er det timingen, som er det virkelig pene med humle.
 > And then there is the timing, which is the genuinely elegant part.
-{plate humle-i-kok motion=in over=31 dim=0.16 push=0.1 into=1.4} Bitterstoffet må koke lenge for å løse seg i væska i det hele tatt. Så humle som skal gjøre ølet bittert, går oppi tidlig.
+{compare.clear} {plate humle-i-kok motion=in over=31 dim=0.16 push=0.1 into=1.4} Bitterstoffet må koke lenge for å løse seg i væska i det hele tatt. Så humle som skal gjøre ølet bittert, går oppi tidlig.
 > The bitter resin has to boil for a long time to dissolve at all. So hops meant to make the beer bitter go in early.
 Oljene som lukter av sitrus, gress og furu koker rett av. Så humle som skal gi lukt, går oppi helt til slutt.
 > The oils that smell of citrus, grass and pine boil straight off. So hops meant to give smell go in at the very end.
@@ -179,6 +179,10 @@ Samme plante, samme gryte, to helt forskjellige jobber. Det eneste som skiller d
 > Same plant, same kettle, two completely different jobs. The only thing separating them is when it goes in.
 
 ## Den fjerde er i live | The fourth one is alive
+// Ingen musikk her, og det er et valg: docs/design-direction.md ber om
+// minst én scene per kapittel uten teppe, og scenen der den fjerde
+// ingrediensen viser seg å være i live er den som fortjener stillheten.
+bed: none
 
 {plate gjaer-torr motion=in over=20 dim=0.14 push=0.08 into=1.4} De tre første kan veies opp og skrives på en liste. Nå kommer den som ikke kan det.
 > The first three can be weighed out and written on a list. Now comes the one that cannot.

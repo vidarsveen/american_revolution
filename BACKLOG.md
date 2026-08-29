@@ -332,6 +332,30 @@ screen and it is somebody's writing.
 
 ## The framework
 
+**Twenty overlays across four courses are too brief to read, and nobody knew.**
+`check_overlays_readable` in `tools/check-script.py` had its loop mis-indented
+at function level, outside the `for lang` and `for scene` loops that build its
+events — so it ran exactly once per chapter, against whatever was left over
+from the last iteration, and has only ever examined the final scene of the
+final language. It is fixed and now walks `scriptlib.occupancy()`.
+
+What it found, all invisible until now, all in frozen courses:
+
+| chapter | count | worst |
+|---|---|---|
+| `chapter-1775-06-17` | 6 | portrait `howe`, 0.9 s against a 2.5 s floor |
+| `chapter-2-toscana` | 6 | fact `chianti`, 1.1 s against 3.0 s |
+| `chapter-1-piemonte` | 3 | fact `moscato`, 2.0 s |
+| `chapter-44bc-octavian` | 3 | fact `triumvirate`, 2.6 s |
+| `chapter-14ad-tiberius` | 2 | fact `princeps`, 2.4 s |
+
+They are recorded in `KNOWN_BRIEF` as a ratchet — nothing new is allowed, and
+lowering a number is how one gets fixed. Not fixed here because Rome, Narvik,
+the Revolution and the wine course are frozen and CLAUDE.md is explicit that
+fixing content because a check reported it is how a day was lost. Each one is
+a cue anchored to the end of a beat that should be anchored to a word.
+
+
 **1e. DONE — the outline grew the three things it was missing, and each one
 is a gate.** The outline level existed but only asked what a chapter taught. It
 now also asks:

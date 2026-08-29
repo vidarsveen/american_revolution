@@ -2,6 +2,7 @@
  "version": 1,
  "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
  "//surfaces": "Every verb names the SURFACE that answers it (engine/surfaces/<id>.js). A pack declares which surfaces it wants in pack.json -> `surfaces`; absent means the four that always existed (map, plate, overlays, sound). Two checks fall out of that and they are why the field exists: tools/check-script.py refuses a chapter using a verb whose surface the pack does not declare -- before this, a chapter written against a pack with no map validated clean and drew nothing -- and engine/stage.js reports at boot when a verb's declared surface is not the surface that implements it. The two verbs with `handledBy` carry no surface: `pause` is resolved by the player and `term.mark` by the compiler, both before a cue list exists.",
+ "//occupies": "What each verb does to the SCREEN, which used to be nowhere and was therefore re-derived from the verb's name by every tool that needed it -- wrongly, in the case of tools/check-blank.py, which read four real hide-verbs as shows and invented three verb names that do not exist. `channel` is the slot; the map's channels are map/index.js's own layer names. `effect` is fill (replace) | add (accumulate) | free (empty, or empty one id when `key`'s argument is present) | free-one (always targeted). `weight` is frame (can carry the screen alone) or trim (real on screen, and a screen showing only this is still an empty screen -- docs/design-direction.md calls a fact box 'the picture's edge, and nothing else'). `expires` is 'beat' for a card that dies with its own sentence, or seconds for a self-erasing timer. `null` means the verb draws nothing: a camera move, a one-shot flash, a sound. Every verb must carry a decision, so a new verb cannot be added without saying what it puts on screen.",
  "refTypes": {
   "place": "chapter.places",
   "route": "chapter.routes",
@@ -20,6 +21,7 @@
     "en": "Fly the camera to a place"
    },
    "surface": "map",
+   "occupies": null,
    "args": {
     "to": {
      "type": "place",
@@ -41,6 +43,7 @@
     "en": "Frame a whole route"
    },
    "surface": "map",
+   "occupies": null,
    "args": {
     "id": {
      "type": "route",
@@ -57,6 +60,7 @@
     "en": "Frame several places"
    },
    "surface": "map",
+   "occupies": null,
    "args": {
     "places": {
      "type": "place[]",
@@ -79,6 +83,11 @@
     "en": "Set the clock on the map"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "clock",
+    "effect": "fill",
+    "weight": "trim"
+   },
    "note": "value: null clears the clock — the epilogue steps outside the day.",
    "args": {
     "value": {
@@ -92,6 +101,7 @@
     "en": "Time of day"
    },
    "surface": "map",
+   "occupies": null,
    "args": {
     "value": {
      "type": "enum",
@@ -112,6 +122,7 @@
     "en": "A shot goes off"
    },
    "surface": "map",
+   "occupies": null,
    "args": {}
   },
   "region.show": {
@@ -120,6 +131,12 @@
     "en": "Show a named region"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "regions",
+    "effect": "add",
+    "weight": "frame",
+    "key": "names"
+   },
    "note": "Names resolve against the file the chapter declares in `regions`. A region is never labelled: the wash carries the area and the narration names it. Asked for repeatedly, hidden in CSS for a while, and removed at the source instead.",
    "args": {
     "names": {
@@ -149,6 +166,11 @@
     "en": "Clear the regions"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "regions",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "border.set": {
@@ -157,6 +179,7 @@
     "en": "Turn boundaries on and off"
    },
    "surface": "map",
+   "occupies": null,
    "note": "0 country, 1 state/province. A pack decides what those mean.",
    "args": {
     "country": {
@@ -173,6 +196,12 @@
     "en": "A march draws itself"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "routes",
+    "effect": "add",
+    "weight": "frame",
+    "key": "id"
+   },
    "args": {
     "id": {
      "type": "route",
@@ -198,6 +227,11 @@
     "en": "Clear every route"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "routes",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "front.show": {
@@ -206,6 +240,12 @@
     "en": "A line of men, holding"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "fronts",
+    "effect": "add",
+    "weight": "frame",
+    "key": "id"
+   },
    "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
    "args": {
     "id": {
@@ -250,6 +290,12 @@
     "en": "Remove one front"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "fronts",
+    "effect": "free-one",
+    "weight": "frame",
+    "key": "id"
+   },
    "args": {
     "id": {
      "type": "route",
@@ -263,6 +309,11 @@
     "en": "Clear every front"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "fronts",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "marker.show": {
@@ -271,6 +322,12 @@
     "en": "A named pin"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "markers",
+    "effect": "add",
+    "weight": "frame",
+    "key": "at"
+   },
    "args": {
     "at": {
      "type": "place",
@@ -312,6 +369,12 @@
     "en": "Remove one pin"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "markers",
+    "effect": "free-one",
+    "weight": "frame",
+    "key": "at"
+   },
    "args": {
     "at": {
      "type": "place",
@@ -325,6 +388,11 @@
     "en": "Clear every pin"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "markers",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "place.highlight": {
@@ -333,6 +401,12 @@
     "en": "Point at the map while you talk"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "highlights",
+    "effect": "add",
+    "weight": "frame",
+    "key": "at"
+   },
    "args": {
     "at": {
      "type": "place",
@@ -363,6 +437,11 @@
     "en": "Clear the rings"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "highlights",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "converge": {
@@ -371,6 +450,12 @@
     "en": "Forces coming in and joining"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "routes",
+    "effect": "add",
+    "weight": "frame",
+    "key": "to"
+   },
    "args": {
     "from": {
      "type": "place[]",
@@ -401,6 +486,12 @@
     "en": "The person being spoken about"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "portrait",
+    "effect": "fill",
+    "weight": "frame",
+    "key": "id"
+   },
    "args": {
     "id": {
      "type": "person",
@@ -414,6 +505,11 @@
     "en": "Hide the portrait"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "portrait",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "image.show": {
@@ -422,6 +518,12 @@
     "en": "A full-bleed image"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "image",
+    "effect": "fill",
+    "weight": "frame",
+    "key": "id"
+   },
    "args": {
     "id": {
      "type": "media",
@@ -443,6 +545,11 @@
     "en": "Hide the image"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "image",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "quote.show": {
@@ -451,6 +558,12 @@
     "en": "A quote from a source"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "quote",
+    "effect": "fill",
+    "weight": "frame",
+    "key": "id"
+   },
    "args": {
     "id": {
      "type": "quote",
@@ -464,6 +577,11 @@
     "en": "Hide the quote"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "quote",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "stat.show": {
@@ -472,6 +590,11 @@
     "en": "A number that matters"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "deck",
+    "effect": "add",
+    "weight": "trim"
+   },
    "args": {
     "value": {
      "type": "string",
@@ -491,6 +614,11 @@
     "en": "Clear the numbers"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "deck",
+    "effect": "free",
+    "weight": "trim"
+   },
    "args": {}
   },
   "caption.note": {
@@ -499,6 +627,12 @@
     "en": "A short note under the caption"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "note",
+    "effect": "fill",
+    "weight": "trim",
+    "expires": 4.2
+   },
    "args": {
     "value": {
      "type": "i18n",
@@ -512,7 +646,8 @@
     "en": "Wait for a tap"
    },
    "args": {},
-   "handledBy": "player"
+   "handledBy": "player",
+   "occupies": null
   },
   "sound.play": {
    "summary": {
@@ -520,6 +655,7 @@
     "en": "Play a sound once"
    },
    "surface": "sound",
+   "occupies": null,
    "note": "A single event, and it must name a thing the narration JUST named — not atmosphere by association. One per beat, three per scene, none within 20 s of another; check-script.py holds all three, and prints every effect next to its sentence so a human can read whether it answers it. The effect must also belong to the pack's era: sound/library.js carries a year span per entry and 44 BC fired three cannon before it did. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
    "args": {
     "id": {
@@ -552,6 +688,11 @@
     "en": "Lay a bed of place under it"
    },
    "surface": "sound",
+   "occupies": {
+    "channel": "ambience",
+    "effect": "fill",
+    "weight": "trim"
+   },
    "note": "Continuous: wind, sea, a crowd. A place lasts a scene, so ONE per scene, and a second only when the narration says the place changed. Crossfades. Omit `id` to stop it. Never ducks — a room does not get quieter when someone speaks.",
    "args": {
     "id": {
@@ -570,6 +711,11 @@
     "en": "Music under the narration"
    },
    "surface": "sound",
+   "occupies": {
+    "channel": "bed",
+    "effect": "fill",
+    "weight": "trim"
+   },
    "note": "One per scene, in its first beat. Ducks under the voice on its own, from the script word timings. Omit `id` to stop it — but a scene change stops it anyway, so an explicit stop mid-scene is a second bed cue and check-script.py refuses it.",
    "args": {
     "id": {
@@ -588,6 +734,12 @@
     "en": "Lay a road down"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "roads",
+    "effect": "add",
+    "weight": "frame",
+    "key": "id"
+   },
    "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
    "args": {
     "id": {
@@ -631,7 +783,8 @@
      "max": 6,
      "note": "How many words the term covers. 'Second Continental Congress' is a span of three."
     }
-   }
+   },
+   "occupies": null
   },
   "compare.show": {
    "summary": {
@@ -639,6 +792,11 @@
     "en": "Two or three numbers as one picture"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "compare",
+    "effect": "fill",
+    "weight": "frame"
+   },
    "note": "Seventy-seven against seven hundred lands as an argument when it is one picture and as trivia when it is two unrelated chips. Same for 230 ships against 400, and for three shares of the Roman world. `n` sizes the bar; `value` is what is printed. They are separate because the pack writes numbers the way they are SPOKEN in the prose and the way they are READ on screen, and a bar needs neither — it needs a number to measure. A part with no `n` falls back to parsing `value`.",
    "args": {
     "parts": {
@@ -673,6 +831,11 @@
     "en": "Remove the comparison"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "compare",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   },
   "plate.show": {
@@ -681,6 +844,12 @@
     "en": "Fill the screen with a picture, and let the camera drift"
    },
    "surface": "plate",
+   "occupies": {
+    "channel": "plate",
+    "effect": "fill",
+    "weight": "frame",
+    "key": "id"
+   },
    "note": "The map is not the only stage. A chapter has moments that are not on a map at all — the Ides of March happens in a room, the will is read in a senate, the Forum is a place you should SEE rather than see a dot for — and until now the only answer was a small inset card over a map that was still the subject of the screen. A plate takes the whole frame, and drifts: the slow push that is the visual grammar of every history documentary ever made, and the reason a still photograph holds attention for twelve seconds instead of two. The map keeps running underneath and is never unmounted — it costs nothing while covered, because paintGround only re-bakes when the camera moves, and a camera under a plate does not move. Under `instant` the drift does not animate: the plate appears already at its end framing, the same discipline as a march that draws itself whole when you seek.",
    "args": {
     "id": {
@@ -741,6 +910,11 @@
     "en": "Back to the map"
    },
    "surface": "plate",
+   "occupies": {
+    "channel": "plate",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {
     "over": {
      "type": "seconds",
@@ -755,6 +929,12 @@
     "en": "A squadron under way"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "fleets",
+    "effect": "add",
+    "weight": "frame",
+    "key": "id"
+   },
    "note": "Ships, not an arrow. route.draw sizes its arrow by `strength`, which means men per metre of front -- a true statement about an army and a meaningless one about a squadron, where ten destroyers are ten objects in a line. A fleet draws the hulls in line ahead along the travelled part of the track, with wakes trailing, so `over` moves the formation up the fjord and a seek lands it wherever it had got to. The track itself must be water: declare the route `\"medium\": \"sea\"` and tools/check-sealanes.py will hold you to it.",
    "args": {
     "id": {
@@ -799,6 +979,12 @@
     "en": "Take the squadron off the map"
    },
    "surface": "map",
+   "occupies": {
+    "channel": "fleets",
+    "effect": "free",
+    "weight": "frame",
+    "key": "id"
+   },
    "args": {
     "id": {
      "type": "route"
@@ -811,6 +997,12 @@
     "en": "Show a short definition"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "fact",
+    "effect": "fill",
+    "weight": "trim",
+    "expires": "beat"
+   },
    "note": "A one-line definition on screen while the word is being said. term.mark makes a word tappable, and almost nobody taps while a voice is running -- so the definition existed and was never seen. This is stage state, shown and hidden by cues, so seeking into the middle of a definition shows the definition. It carries the entry's HOOK, never its body: a fact box is a glance you can read without stopping listening, and the card itself opens the full entry.",
    "args": {
     "kind": {
@@ -842,6 +1034,11 @@
     "en": "Hide the definition"
    },
    "surface": "overlays",
+   "occupies": {
+    "channel": "fact",
+    "effect": "free",
+    "weight": "trim"
+   },
    "args": {},
    "note": "Rarely authored. fact.show derives its own hide from `until`; write this only to take a box down EARLY."
   },
@@ -851,6 +1048,11 @@
     "en": "Draw a profile from the pack's own numbers"
    },
    "surface": "chart",
+   "occupies": {
+    "channel": "chart",
+    "effect": "fill",
+    "weight": "frame"
+   },
    "note": "A measured shape, resolved against the pack's own entry pools the way fact.show is -- not numbers written into the cue. An entry may carry a `profile`: an ordered set of named axes with values 0..1. The AXES are declared once per kind, in pack.json -> entries.<kind>.profile.axes, because two entries are only comparable if they carry the same axes in the same order and a per-entry list cannot promise that. The framework learns nothing about what an axis MEANS: it draws a list of ids and labels it has never heard of, so a finance course declaring {risk, liquidity, horizon} gets the same picture from the same code.\n\nTwo profiles over each other is the primary case, not an extra: \"Barolo and Barbaresco are the same grape and different wines\" is a shape alone and an argument in pairs. Drawn as bars per axis rather than as a radar, for two reasons the content supplies -- a zero axis (every dry wine's sweetness) collapses to the centre of a web and reads as a rendering fault, and two NEARLY IDENTICAL polygons at 390 px are mush while two bars in one track differ visibly at 0.05.\n\nThere is deliberately no `over`. The bars grow over --t-enter from the stylesheet, so there is no authored duration that can drift off the motion scale, and `instant` draws them finished.",
    "args": {
     "kind": {
@@ -895,6 +1097,11 @@
     "en": "Take the chart down"
    },
    "surface": "chart",
+   "occupies": {
+    "channel": "chart",
+    "effect": "free",
+    "weight": "frame"
+   },
    "args": {}
   }
  }

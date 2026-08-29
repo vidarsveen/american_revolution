@@ -572,6 +572,7 @@ class Scene:
         self.line = line
         self.title = title
         self.clock = None
+        self.bed = None
         self.beats: list[Beat] = []
 
 
@@ -659,7 +660,16 @@ def parse_document(path: str):
             if k.strip() == "clock":
                 scene.clock = (lineno, v.strip())
                 continue
-            raise fail(lineno, f"a scene takes `clock:`, not '{k.strip()}'")
+            if k.strip() == "bed":
+                # A bed is state, not an event: engine/surfaces/sound.js drops
+                # it at every scene change unless the new scene asks again.
+                # Chapter one asked in its first scene and its last, so eight
+                # of ten minutes played in silence and nothing noticed. So a
+                # scene says which it is -- a sound id, or `none` out loud.
+                scene.bed = (lineno, v.strip())
+                continue
+            raise fail(lineno,
+                       f"a scene takes `clock:` or `bed:`, not '{k.strip()}'")
 
         scene.beats.append(Beat(lineno, stripped))
     return front, sections, raw_json, scenes
@@ -733,6 +743,12 @@ def compile_script(path: str):
             raise fail(scene.line, str(err))
         if scene.clock:
             node["clock"] = i18n(scene.clock[1], langs)
+        if scene.bed:
+            # `bed: none` is carried on the scene as a declaration of silence.
+            # A named bed becomes the sound.music cue in the first beat below,
+            # which makes "one bed per scene, in its first beat" a property of
+            # the format rather than a rule to be checked.
+            node["bed"] = scene.bed[1]
         beats = []
         if not scene.beats:
             problems.append(f"{path_line(path, scene.line)}: scene '{sid}' has "
@@ -1236,6 +1252,8 @@ def decompile(chapter: dict, langs: list[str] | None = None) -> str:
         out += ["", "## " + pair_text(scene.get("title") or {}, langs)]
         if scene.get("clock"):
             out.append("clock: " + pair_text(scene["clock"], langs))
+        if scene.get("bed"):
+            out.append("bed: " + str(scene["bed"]))
         out.append("")
         n = len(scene["beats"])
         for i, beat in enumerate(scene["beats"]):

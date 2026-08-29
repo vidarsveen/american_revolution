@@ -62,6 +62,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from scriptlib import load_json, occupancy, pack_dir   # noqa: E402
+
 # The Windows console is cp1252 and raises on an em-dash, which is a silly way
 # for a report to die. Same three lines as check-all.py.
 try:
@@ -115,43 +118,39 @@ def beat_times(pack: str, chapter_id: str, lang: str) -> dict:
     return out
 
 
-def spans(chapter: dict, times: dict) -> list[dict]:
+def spans(chapter: dict, timing: dict, lang: str = "no") -> list[dict]:
     """Every stretch a plate is on screen, and the beats it covers.
 
     A plate goes down three ways — hidden, replaced, or wiped by the scene
     change — and the third is the one a reader of the script never sees. The
     Bunker Hill bug was this shape one layer over: what is on screen at the end
     of a scene is not in the script anywhere.
+
+    The walk is scriptlib.occupancy(), shared with check-script.py and
+    check-cover.py. It used to be written out here, and in two other files,
+    and each copy decided show-from-hide by reading the verb's NAME. This one
+    also gains real cue times: it used to place every span at its BEAT's start,
+    so a picture anchored to a word late in a sentence was reported seconds
+    early.
     """
     out = []
-    for scene in chapter["scenes"]:
-        beats = scene["beats"]
-        s_end = sum(times.get(beats[-1]["id"], (0.0, 0.0)))
-        open_at = open_id = None
-        covered: list[dict] = []
-
-        def close(end):
-            nonlocal open_id, open_at, covered
-            if open_id:
-                out.append({"id": open_id, "scene": scene["id"],
-                            "start": open_at, "end": end,
-                            "beats": covered})
-            open_id = open_at = None
+    for sid, so in occupancy(chapter, timing, lang).items():
+        scene = next(sc for sc in chapter["scenes"] if sc["id"] == sid)
+        st = timing["scenes"][sid]
+        for sp in so["spans"]:
+            if sp["channel"] != "plate":
+                continue
             covered = []
-
-        for b in beats:
-            at, dur = times.get(b["id"], (0.0, 0.0))
-            if open_id:
-                covered.append(b)
-            for cue in b.get("cues", []):
-                if cue["do"] == "plate.show":
-                    if open_id != cue.get("id"):
-                        close(at)
-                        open_id, open_at = cue.get("id"), at
-                        covered = [b]
-                elif cue["do"] == "plate.hide" and open_id:
-                    close(at + (dur if cue.get("on") == "end" else 0.0))
-        close(s_end)                      # the scene wipe takes it down
+            for b in scene["beats"]:
+                tb = next((x for x in st["beats"] if x["id"] == b["id"]), None)
+                if not tb:
+                    continue
+                b0 = tb["start"]
+                b1 = b0 + tb.get("dur", 0.0)
+                if b0 < sp["end"] and b1 > sp["start"]:
+                    covered.append(b)
+            out.append({"id": sp["id"], "scene": sid, "start": sp["start"],
+                        "end": sp["end"], "beats": covered})
     return out
 
 
@@ -206,11 +205,12 @@ def review(pack: str, only: list[str], as_json: bool) -> int:
         if not chapter:
             continue
         langs = chapter.get("langs") or ["no", "en"]
-        times = beat_times(pack, cid, langs[0])
-        if not times:
+        timing = load_json(os.path.join(pack_dir(pack),
+                                        f'timing.{cid}.{langs[0]}.json')) or {}
+        if not timing.get("scenes"):
             print(f"  no timing for {cid} — run tools/narrate.py", file=sys.stderr)
             continue
-        for span in spans(chapter, times):
+        for span in spans(chapter, timing, langs[0]):
             span["chapter"] = cid
             span["langs"] = langs
             used.setdefault(span["id"], []).append(span)
