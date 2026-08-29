@@ -763,6 +763,23 @@ def compile_script(path: str):
                 # One broken sentence must not hide the next four. An author
                 # fixing a script wants every complaint in one pass.
                 problems.append(f"{path_line(path, err.line)}: {err.msg}")
+        # A NAMED BED BECOMES THE CUE. Declaring it on the scene and emitting
+        # it here is what makes "one bed per scene, in its first beat"
+        # (docs/design-direction.md) a property of the format instead of a
+        # rule that has to be checked — there is nowhere else to put it and no
+        # way to write two. `bed: none` emits nothing and is the way a scene
+        # says its silence is a decision.
+        #
+        # It goes FIRST in the beat: a bed arrives before the first word.
+        if scene.bed and scene.bed[1] != "none" and beats:
+            if any(c["do"] == "sound.music" for c in beats[0].get("cues", [])):
+                problems.append(
+                    f"{path_line(path, scene.bed[0])}: scene '{sid}' declares "
+                    f"`bed: {scene.bed[1]}` and its first sentence also carries "
+                    f"a {{music …}} cue. Use one or the other.")
+            else:
+                beats[0].setdefault("cues", []).insert(
+                    0, {"on": "start", "do": "sound.music", "id": scene.bed[1]})
         node["beats"] = beats
         out_scenes.append(node)
     chapter["scenes"] = out_scenes
@@ -1001,6 +1018,7 @@ def validate(chapter, pack, surfaces, langs, path) -> list[str]:
     passes here cannot fail there for a different reason.
     """
     found = []
+
     pools, pool_problems = resolve_pools(pack, chapter)
     found += pool_problems
     entries = entry_pools(pack)
@@ -1255,8 +1273,18 @@ def decompile(chapter: dict, langs: list[str] | None = None) -> str:
         if scene.get("bed"):
             out.append("bed: " + str(scene["bed"]))
         out.append("")
-        n = len(scene["beats"])
-        for i, beat in enumerate(scene["beats"]):
+        beats = scene["beats"]
+        if scene.get("bed") and scene["bed"] != "none" and beats:
+            # The cue in the first beat was GENERATED from `bed:` at compile
+            # time, so writing it back out as `{music …}` too would say the
+            # same thing twice and fail the round-trip on the next --check.
+            first = dict(beats[0])
+            first["cues"] = [c for c in first.get("cues", [])
+                             if not (c["do"] == "sound.music"
+                                     and c.get("id") == scene["bed"])]
+            beats = [first] + list(beats[1:])
+        n = len(beats)
+        for i, beat in enumerate(beats):
             out += decompile_beat(beat, langs, last=i == n - 1)
             gap = beat.get("gapAfter")
             if gap == BREATH and i < n - 1:

@@ -350,5 +350,229 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "dried whole hop cones heaped high in a coarse hessian sack with its mouth rolled open, the heap filling the upper part of the frame, a dim wooden store room behind, shafts of dusty daylight from high above, no people"
+ },
+ "gjaerkrone-kar": {
+  "kind": "made",
+  "file": "gjaerkrone-kar.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Krona på karet",
+   "en": "The crown on the vat"
+  },
+  "claims": "Ale yeast at the height of fermentation, risen to the top and formed into the thick rocky crust brewers skim off and reuse.",
+  "omits": "Not any identified brewery or strain. Nothing in the picture dates it: this surface has looked the same for centuries.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "the surface of a fermenting vessel seen from above, covered in a thick rocky crown of tan and brown yeast foam with deep craters in it, the foam filling the whole frame, dark stainless rim at the edges, warm low light from one side, no people"
+ },
+ "skumming-spade": {
+  "kind": "made",
+  "file": "skumming-spade.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Skummet av",
+   "en": "Skimmed off"
+  },
+  "claims": "Yeast being skimmed from the top of an open fermenter — the way a brewery kept its yeast alive from brew to brew before anyone knew what yeast was.",
+  "omits": "No brewery, no year and no face. The gesture is what is shown, not a particular person or place.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a wooden paddle lifting a thick load of brown yeast foam off the surface of an open fermenting vessel, the paddle and the foam high in the frame, dark wet vessel wall below, steam, dim brewery light, one pair of hands only, no faces"
+ },
+ "ale-glass-lys": {
+  "kind": "made",
+  "file": "ale-glass-lys.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "En ale mot lyset",
+   "en": "An ale against the light"
+  },
+  "claims": "An ale in the glass: amber, clear, with the standing head a warm fermentation gives it.",
+  "omits": "No brand, no label and no pump clip. Nothing identifies a brewery or a particular beer.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a glass of deep amber ale held up against a bright window in a dark pub, the glass in the upper half of the frame glowing gold, thick cream head, dark wooden panelling and warm lamps filling the lower frame, no label, no text"
+ },
+ "london-elv": {
+  "kind": "made",
+  "file": "london-elv.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Byen ved elva",
+   "en": "The city on the river"
+  },
+  "claims": "A large river city of brick warehouses and chimneys — the kind of place industrial brewing grew in.",
+  "omits": "Not a portrait of London or of any identifiable building. No landmark is shown and nothing dates it to a particular decade.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a wide river running through a dense old brick city at dusk, warehouse wharves and chimneys along both banks, low grey cloud, gas-lit windows, wet cobbled quay filling the foreground, no modern buildings, no vehicles, no people"
+ },
+ "porter-kar": {
+  "kind": "made",
+  "file": "porter-kar.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Karet",
+   "en": "The vat"
+  },
+  "claims": "A brewery vat of the size porter was stored in — a single vessel holding more than a house.",
+  "omits": "Not any identified brewery and not the vat that burst in 1814. No maker's name or date appears on it.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an enormous wooden vat inside a dim brick hall, iron hoops around it, the curved wall of the vat towering and filling the upper frame, a wooden ladder against it for scale, dusty light from high windows, worn brick floor below, no people, no text"
+ },
+ "stout-glass": {
+  "kind": "made",
+  "file": "stout-glass.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Det svarte glasset",
+   "en": "The black glass"
+  },
+  "claims": "A stout: black to look at, ruby at the edge where light gets through, under the tight pale head roasted grain gives it.",
+  "omits": "No brand, no label, no logo and no pump clip. This is a stout, not any particular brewery's stout.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a glass of black beer with a dense cream-coloured head, held in a dark pub, the glass filling the upper two thirds and lit from behind so the edges glow deep ruby, dark wood bar and warm lamps below, no label, no text, no logo"
+ },
+ "brent-korn": {
+  "kind": "made",
+  "file": "brent-korn.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kornet som er brent svart",
+   "en": "Grain roasted black"
+  },
+  "claims": "Barley roasted almost to charcoal — where a stout gets its colour and its taste of coffee, with no coffee involved.",
+  "omits": "No maltster, no origin and no variety is identified.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a close view of roasted barley grains poured in a heap on dark weathered oak, almost black and glossy, a few paler grains among them, the heap filling the upper frame and grains scattered across the wood below, warm low side light, macro"
+ },
+ "burton-bronn": {
+  "kind": "made",
+  "file": "burton-bronn.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Brønnen",
+   "en": "The well"
+  },
+  "claims": "A brewery well: the point where the water under a town becomes the water in its beer.",
+  "omits": "Not the well at Burton and not any identified brewery. It stands for the practice, not for a particular hole in the ground.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an old brick well head in a yard behind a brewery, iron pump handle, wet stone and moss, low winter sun, bare trees and a brick chimney behind it, muddy gravel filling the foreground, no people, no signs"
+ },
+ "gips-krystall": {
+  "kind": "made",
+  "file": "gips-krystall.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Gips",
+   "en": "Gypsum"
+  },
+  "claims": "Gypsum: the calcium sulfate mineral that rain dissolves out of rock and carries into the groundwater under a town.",
+  "omits": "Not a specimen from any named locality, and no scale is given.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a cluster of translucent gypsum crystals resting on dark wet rock, pale blades of mineral catching light from one side, the cluster filling the upper half, dark stone and shadow below, macro, museum specimen lighting"
+ },
+ "bitter-glass": {
+  "kind": "made",
+  "file": "bitter-glass.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Blankt og tørt",
+   "en": "Bright and dry"
+  },
+  "claims": "An English bitter: copper, brilliantly clear, the look that gypsum in the water and a settling yeast give a beer.",
+  "omits": "No brand, no label and no pump clip.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a clear glass of bright copper-coloured bitter on a dark wooden bar, seen slightly from below against warm lamps, the beer brilliantly clear so the lamps show through it, thin white head, dark pub interior filling the lower frame, no label, no text"
+ },
+ "fat-rekke": {
+  "kind": "made",
+  "file": "fat-rekke.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fatene",
+   "en": "The casks"
+  },
+  "claims": "Wooden casks racked in a cellar — the only container beer had before the twentieth century, and half the reason a long voyage improved it.",
+  "omits": "No brewery marks, no names and no dates are burned into the wood.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a row of wooden casks lying on their sides on timber racks in a dim cellar, iron hoops, the casks receding into the dark, the nearest one filling the upper left, worn stone floor and straw below, one shaft of daylight, no people, no markings on the wood"
+ },
+ "skip-kai": {
+  "kind": "made",
+  "file": "skip-kai.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Lastet for et halvt år",
+   "en": "Loaded for half a year"
+  },
+  "claims": "Casks on a quay beside a sailing ship — how beer left for a voyage that took months.",
+  "omits": "No named vessel, port or year. The hull carries no name and no flag is flown.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a tall wooden sailing ship moored at a stone quay in grey weather, masts and rigging filling the upper frame, wooden casks stacked on the wet quay in the foreground, rope and puddles, low cloud, no people, no flags, no names on the hull"
+ },
+ "ipa-glass": {
+  "kind": "made",
+  "file": "ipa-glass.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Pale ale",
+   "en": "Pale ale"
+  },
+  "claims": "A pale ale with hops beside it: pale, clear and heavily hopped, the shape of the beer that was sent to India.",
+  "omits": "No brand and no label. Nothing dates the glass or the bar.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a tall glass of pale golden beer on a dark bar, brilliantly clear, fine bubbles rising, dried hop cones scattered on the wood beside the base, the glass filling the upper two thirds, warm lamps and dark panelling behind, no label, no text"
+ },
+ "salt-vekt": {
+  "kind": "made",
+  "file": "salt-vekt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Målt opp",
+   "en": "Weighed out"
+  },
+  "claims": "Mineral salts being weighed for brewing water — the moment a place's advantage became something anybody could buy.",
+  "omits": "No brand, no chemical name and no readable writing anywhere. The powder is not identified as any particular compound.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a small brass balance scale on a dark laboratory bench with a heap of white mineral powder in one pan, a glass beaker of water beside it, the scale filling the upper half, dark wood and shadow below, warm lamp from one side, no labels, no writing"
  }
 }

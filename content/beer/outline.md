@@ -94,7 +94,6 @@ title: Den som gjærer på toppen | The one that ferments on top
 subtitle: Ale, England, og vannet under Burton | Ale, England, and the water under Burton
 blurb: Varm gjæring, ferdig på tre dager, og en smak av frukt som ingen har tilsatt. Så en by som oppdaget at vannet under den var halve hemmeligheten. | Warm fermentation, done in three days, and a taste of fruit nobody added. Then a town that found the water under it was half the secret.
 langs: no, en
-planned: true
 for: Den første av de to gjærtypene, og det første beviset på at et sted kan
      lage en stil. Gipsen i vannet under Burton er grunnen til at en engelsk
      bitter smaker som den gjør, og det er kjemi man kan peke på — bedre enn
@@ -103,7 +102,7 @@ for: Den første av de to gjærtypene, og det første beviset på at et sted kan
      a style. The gypsum in the water under Burton is why an English bitter
      tastes the way it does, and that is chemistry you can point at — better
      than "tradition", which explains nothing.
-teaches: ale, overgjæring, ester, porter, stout, ipa, burtonisering, fat
+teaches: ale, overgjæring, ester, porter, stout, gips, ipa, burtonisering, fat
 assumes: gjær, gjæring, malt, humle
 shows: pictures, map, cards
 

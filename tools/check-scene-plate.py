@@ -140,6 +140,16 @@ READ = """
 """
 
 
+def chapter_index(pack: str, chapter_id: str) -> int:
+    """Where this chapter sits in the pack's own list — the cover's order."""
+    mf = ROOT / "content" / pack / "pack.json"
+    chapters = json.loads(mf.read_text(encoding="utf-8")).get("chapters") or []
+    for i, ch in enumerate(chapters):
+        if ch.get("id") == chapter_id:
+            return i
+    return 0
+
+
 def check_pack(page, pack: str) -> list[str]:
     bad = []
     for path in sorted((ROOT / "content" / pack).glob("chapter-*.json")):
@@ -156,6 +166,29 @@ def check_pack(page, pack: str) -> list[str]:
             "() => !!document.querySelector('.story__stage') "
             "&& !document.querySelector('.boot')",
             timeout=20000)
+        # OPEN THE CHAPTER BEING CHECKED. Loading the pack opens its FIRST
+        # chapter, and this loop then read the second chapter's expectations
+        # while the app was still playing the first one — so every plate id
+        # it waited for was one this chapter never shows, and it reported
+        # "never appeared at all" three times for pictures that were on
+        # screen at full opacity one second after the turn. The other packs
+        # hid it: their later chapters are map-led and qualify no turns at
+        # all, so the loop skipped them before it could be wrong.
+        #
+        # There is no URL for a chapter — it is picked by tapping it on the
+        # cover — so this taps it, the way a reader does.
+        index_in_pack = chapter_index(pack, path.stem)
+        if index_in_pack > 0:
+            page.click(f'[data-chapter="{index_in_pack}"]')
+            page.wait_for_function(
+                "(want) => window.__ch === want || true", arg=path.stem)
+            page.wait_for_timeout(1500)
+        got_id = page.evaluate(
+            "async () => (await import('/engine/story.js')).getChapter()?.id")
+        if got_id != path.stem:
+            bad.append(f"{pack}/{path.stem}: could not open it — the app is "
+                       f"showing '{got_id}'")
+            continue
         page.evaluate("() => document.querySelector('.story__cover')?.classList.remove('is-on')")
         page.wait_for_timeout(500)
         for index, opens, behind in turns:

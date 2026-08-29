@@ -1,99 +1,241 @@
 {
-  "//": "Ordboka for ølkurset. Åtte ord, og det er de åtte kapittel én lærer bort — outline.md sin `teaches`-linje er den samme lista. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
-
-  "malt": {
-    "term": { "no": "Malt", "en": "Malt" },
-    "short": {
-      "no": "Korn som har fått spire, og så blitt stanset med varme.",
-      "en": "Grain made to sprout, then stopped with heat."
-    },
-    "body": {
-      "no": "Et byggkorn er en pakke stivelse med en plante sovende inni. Stivelse kan ikke gjæres. Så bryggeren lurer kornet: det legges i vann i to døgn, og tror det er vår.\n\nKornet begynner å spire, og lager samtidig enzymene det trenger for å bryte sin egen stivelse ned til sukker. Akkurat da blir det tørket. Planten dør, enzymene overlever, og stivelsen ligger igjen urørt.\n\nDet siste steget bestemmer fargen. Tørkes malten forsiktig, blir den lys og smaker brød. Tørkes den varmere, blir den karamell. Brennes den, blir den nesten svart og smaker kaffe. Nesten all fargen i et glass øl kommer herfra, og ikke fra noe som er tilsatt etterpå.",
-      "en": "A grain of barley is a package of starch with a plant asleep inside it. Starch cannot be fermented. So the brewer tricks the grain: it is soaked for two days, and thinks spring has come.\n\nThe grain starts to sprout, and in doing so makes the enzymes it needs to break its own starch down into sugar. At exactly that moment it is dried. The plant dies, the enzymes survive, and the starch is left untouched.\n\nThe last step decides the colour. Dried gently, the malt stays pale and tastes of bread. Dried hotter, it turns to caramel. Roasted, it goes nearly black and tastes of coffee. Almost all the colour in a glass of beer comes from here, and not from anything added later."
-    }
+ "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord og kapittel to ni til — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
+ "malt": {
+  "term": {
+   "no": "Malt",
+   "en": "Malt"
   },
-
-  "mesking": {
-    "term": { "no": "Mesking", "en": "Mashing" },
-    "short": {
-      "no": "Varmt vann og knust malt. Her blir stivelse til sukker.",
-      "en": "Hot water and crushed malt. Where starch becomes sugar."
-    },
-    "body": {
-      "no": "Malten knuses grovt og røres ut i vann på rundt sekstiseks grader. Ikke kokende — enzymene fra maltingen dør over rundt sytti, og det er dem hele steget handler om.\n\nI løpet av en times tid klipper enzymene stivelsen i biter små nok til at gjær kan spise dem. Væska blir søt. Den smaker omtrent som lunken kornsuppe, og er overraskende god.\n\nTemperaturen er en spak bryggeren kan dra i. Litt kaldere mesk gir mer sukker gjæren klarer å ta, og dermed tørrere og sterkere øl. Litt varmere lar mer bli igjen usmeltet, og ølet blir fyldigere og søtere. Samme malt, samme oppskrift, to grader — og to forskjellige øl.",
-      "en": "The malt is crushed coarsely and stirred into water at around sixty-six degrees. Not boiling — the enzymes from malting die above about seventy, and they are what this whole step is about.\n\nOver an hour or so the enzymes cut the starch into pieces small enough for yeast to eat. The liquid turns sweet. It tastes rather like lukewarm cereal, and is surprisingly good.\n\nTemperature is a lever the brewer can pull. A slightly cooler mash gives more sugar the yeast can take, and so a drier, stronger beer. A slightly warmer one leaves more behind uncut, and the beer comes out fuller and sweeter. Same malt, same recipe, two degrees — and two different beers."
-    }
+  "short": {
+   "no": "Korn som har fått spire, og så blitt stanset med varme.",
+   "en": "Grain made to sprout, then stopped with heat."
   },
-
-  "vorter": {
-    "term": { "no": "Vørter", "en": "Wort" },
-    "short": {
-      "no": "Den søte væska, før gjæren får tak i den.",
-      "en": "The sweet liquid, before the yeast gets at it."
-    },
-    "body": {
-      "no": "Vørter er det som renner av mesken: sukkervann med farge, protein og smak fra malten. Det er øl uten alkohol, uten bitterhet og uten kullsyre — altså ikke øl ennå, men alt et øl er bygget av.\n\nOrdet er gammelt i norsk, og lever videre i vørterøl, som er nettopp dette: vørter som aldri fikk gjære.\n\nHvor mye sukker som er i vørteren avgjør hvor sterkt ølet kan bli. Gjæren kan ikke lage mer alkohol enn det er sukker til. Bryggeren måler det som tetthet før gjæringen og igjen etterpå, og forskjellen mellom de to tallene er alkoholen.",
-      "en": "Wort is what runs off the mash: sugar water carrying colour, protein and flavour from the malt. It is beer without the alcohol, the bitterness or the gas — not beer yet, but everything a beer is built from.\n\nThe Norwegian word is old and survives in vørterøl, a malt drink that is exactly this: wort that was never allowed to ferment.\n\nHow much sugar is in the wort decides how strong the beer can get. Yeast cannot make more alcohol than there is sugar for. The brewer measures it as density before fermentation and again afterwards, and the difference between the two numbers is the alcohol."
-    }
-  },
-
-  "kok": {
-    "term": { "no": "Koket", "en": "The boil" },
-    "short": {
-      "no": "En time i fosskok. Det er her humla gjør jobben sin.",
-      "en": "An hour at a rolling boil. Where the hops do their work."
-    },
-    "body": {
-      "no": "Vørteren kokes hardt i omtrent en time, og fire ting skjer på én gang.\n\nAlt levende dør, så gjæren bryggeren selv har valgt får være alene. Protein klumper seg og faller ut, som gjør ølet klart. Litt vann fordamper, så vørteren blir sterkere. Og bitterstoffet i humla, som ikke er løselig i kaldt vann i det hele tatt, bygges om av varmen til noe som er det.\n\nDet siste er grunnen til at humle som skal gi bitterhet må i tidlig. Det tar tid. Humle som skal gi lukt må i helt til slutt, for oljene som lukter godt koker rett av. Samme plante, samme gryte, to helt forskjellige jobber — og det eneste som skiller dem er når den går oppi.",
-      "en": "The wort is boiled hard for about an hour, and four things happen at once.\n\nEverything alive dies, so the yeast the brewer has chosen gets the vessel to itself. Protein clumps together and drops out, which is what makes beer clear. A little water evaporates, so the wort gets stronger. And the bitter resin in hops, which will not dissolve in cold water at all, is rebuilt by the heat into something that will.\n\nThat last one is why hops meant for bitterness have to go in early. It takes time. Hops meant for smell go in at the very end, because the oils that smell good boil straight off. Same plant, same kettle, two completely different jobs — and the only thing separating them is when it goes in."
-    }
-  },
-
-  "humle": {
-    "term": { "no": "Humle", "en": "Hops" },
-    "short": {
-      "no": "En klatreplante. Kongler fulle av bitterstoff og olje.",
-      "en": "A climbing plant. Cones full of bitter resin and oil."
-    },
-    "body": {
-      "no": "Humle er en slyngplante i hampefamilien som klatrer sju meter opp en snor på én sommer. Det er hunnplantens kongler bryggeren vil ha, og inni dem sitter gule korn som heter lupulin.\n\nDe kornene gjør to ting. De er bitre, og de er antibakterielle. Bitterheten er motvekten til all sukkeret fra malten — uten den smaker øl som sirup. Det antibakterielle er grunnen til at humle vant: øl med humle i holdt seg der øl uten ble surt, og det var hele forskjellen før det fantes kjøling.\n\nOljene i konglen er en helt annen sak. De lukter av gress, sitrus, furu eller tropisk frukt, alt etter sort, og de tåler ikke koking. Derfor er det de siste minuttene som avgjør hvordan et øl lukter.",
-      "en": "The hop is a climbing plant in the hemp family that goes seven metres up a string in a single summer. It is the female plant's cones the brewer wants, and inside them sit yellow grains called lupulin.\n\nThose grains do two things. They are bitter, and they kill bacteria. The bitterness is the counterweight to all that malt sugar — without it beer tastes like syrup. The antibacterial part is why hops won: hopped beer kept where unhopped beer went sour, and before refrigeration that was the whole difference.\n\nThe oils in the cone are another matter entirely. They smell of grass, citrus, pine or tropical fruit depending on the variety, and they cannot survive boiling. Which is why the last few minutes decide how a beer smells."
-    }
-  },
-
-  "bitterhet": {
-    "term": { "no": "Bitterhet", "en": "Bitterness" },
-    "short": {
-      "no": "Motvekten til sukkeret. Måles i IBU.",
-      "en": "The counterweight to the sugar. Measured in IBU."
-    },
-    "body": {
-      "no": "Bitterhet i øl måles i IBU, som står for internasjonale bitterhetsenheter. Tallet sier hvor mye omdannet humlestoff det er i væska, målt i milligram per liter.\n\nEn lys lager ligger gjerne rundt ti til tjue. En pils rundt tretti til førti. En moderne IPA kan ligge over seksti. Over hundre merker de fleste ikke forskjell lenger — tunga gir opp.\n\nMen tallet alene sier ikke hvor bittert noe smakes. Bitterhet leses alltid mot sukkeret som er igjen. Et sterkt, søtt øl på førti IBU kan smake mildt, mens et tynt, tørt øl på de samme førti smaker skarpt. Det er balansen som er poenget, ikke tallet.",
-      "en": "Bitterness in beer is measured in IBU, international bitterness units. The number says how much converted hop resin is in the liquid, in milligrams per litre.\n\nA pale lager usually sits around ten to twenty. A pilsner around thirty to forty. A modern IPA can be over sixty. Above a hundred most people stop noticing a difference — the tongue gives up.\n\nBut the number on its own does not say how bitter something tastes. Bitterness is always read against the sugar left behind. A strong, sweet beer at forty IBU can taste mild, while a thin, dry beer at the same forty tastes sharp. The balance is the point, not the number."
-    }
-  },
-
-  "gjaer": {
-    "term": { "no": "Gjær", "en": "Yeast" },
-    "short": {
-      "no": "En encellet sopp. Den fjerde ingrediensen, og den eneste som lever.",
-      "en": "A single-celled fungus. The fourth ingredient, and the only living one."
-    },
-    "body": {
-      "no": "Gjær er en sopp på én celle. Den er så liten at det er omkring tjue milliarder av dem i ett gram tørrgjær, og ingen kunne se en før mikroskopet.\n\nDe tre andre ingrediensene kan veies opp. Gjær kan ikke bare veies — den må holdes i live, mates, holdes på riktig temperatur og hentes ut igjen etterpå. Den er mer et husdyr enn en ingrediens.\n\nOg den bestemmer mer av smaken enn folk tror. Malten gir farge og sødme, humla gir bitterhet og lukt, men banan, nellik, eple og sitrus i et øl der ingenting sånt er tilsatt kommer fra gjæren. Hvilken stamme bryggeriet bruker, og hvor varmt den får jobbe, er den største enkeltspaken i hele bryggeriet.",
-      "en": "Yeast is a fungus one cell across. It is so small that a single gram of dried yeast holds around twenty billion of them, and nobody could see one before the microscope.\n\nThe other three ingredients can be weighed out. Yeast cannot merely be weighed — it has to be kept alive, fed, held at the right temperature and recovered afterwards. It is closer to livestock than to an ingredient.\n\nAnd it decides more of the flavour than people think. Malt gives colour and sweetness, hops give bitterness and smell, but banana, clove, apple and citrus in a beer with no such thing added to it come from the yeast. Which strain a brewery uses, and how warm it is allowed to work, is the single biggest lever in the building."
-    }
-  },
-
-  "gjaering": {
-    "term": { "no": "Gjæring", "en": "Fermentation" },
-    "short": {
-      "no": "Sukker inn. Alkohol, kullsyre og smak ut.",
-      "en": "Sugar in. Alcohol, gas and flavour out."
-    },
-    "body": {
-      "no": "Gjæring er det gjæren gjør når den ikke får oksygen. Den spiser sukker og gir fra seg alkohol og kullsyre, og den gjør det for sin egen skyld — alkoholen er et avfallsstoff som tilfeldigvis holder konkurrentene unna.\n\nEn vanlig ale er ferdig på tre til fem døgn. Det bobler kraftig, det lukter bakeri, og temperaturen stiger av seg selv fordi prosessen gir varme.\n\nUnderveis lager gjæren også hundrevis av andre stoffer i bittesmå mengder, og det er de som gir øl karakter. Hvor mye av dem den lager, styres nesten helt av hvor varmt den står. Varmt gir frukt og krydder. Kaldt gir nesten ingenting, og et øl der malt og humle står helt alene. Hele resten av dette kurset handler om den forskjellen.",
-      "en": "Fermentation is what yeast does when it cannot get oxygen. It eats sugar and gives off alcohol and carbon dioxide, and it does this for its own sake — the alcohol is a waste product that happens to keep competitors away.\n\nAn ordinary ale is done in three to five days. It bubbles hard, it smells of a bakery, and the temperature climbs by itself because the process gives off heat.\n\nAlong the way the yeast also makes hundreds of other compounds in tiny quantities, and those are what give beer its character. How much of them it makes is governed almost entirely by how warm it is standing. Warm gives fruit and spice. Cold gives almost none, and a beer where malt and hops stand completely alone. The whole rest of this course is about that difference."
-    }
+  "body": {
+   "no": "Et byggkorn er en pakke stivelse med en plante sovende inni. Stivelse kan ikke gjæres. Så bryggeren lurer kornet: det legges i vann i to døgn, og tror det er vår.\n\nKornet begynner å spire, og lager samtidig enzymene det trenger for å bryte sin egen stivelse ned til sukker. Akkurat da blir det tørket. Planten dør, enzymene overlever, og stivelsen ligger igjen urørt.\n\nDet siste steget bestemmer fargen. Tørkes malten forsiktig, blir den lys og smaker brød. Tørkes den varmere, blir den karamell. Brennes den, blir den nesten svart og smaker kaffe. Nesten all fargen i et glass øl kommer herfra, og ikke fra noe som er tilsatt etterpå.",
+   "en": "A grain of barley is a package of starch with a plant asleep inside it. Starch cannot be fermented. So the brewer tricks the grain: it is soaked for two days, and thinks spring has come.\n\nThe grain starts to sprout, and in doing so makes the enzymes it needs to break its own starch down into sugar. At exactly that moment it is dried. The plant dies, the enzymes survive, and the starch is left untouched.\n\nThe last step decides the colour. Dried gently, the malt stays pale and tastes of bread. Dried hotter, it turns to caramel. Roasted, it goes nearly black and tastes of coffee. Almost all the colour in a glass of beer comes from here, and not from anything added later."
   }
+ },
+ "mesking": {
+  "term": {
+   "no": "Mesking",
+   "en": "Mashing"
+  },
+  "short": {
+   "no": "Varmt vann og knust malt. Her blir stivelse til sukker.",
+   "en": "Hot water and crushed malt. Where starch becomes sugar."
+  },
+  "body": {
+   "no": "Malten knuses grovt og røres ut i vann på rundt sekstiseks grader. Ikke kokende — enzymene fra maltingen dør over rundt sytti, og det er dem hele steget handler om.\n\nI løpet av en times tid klipper enzymene stivelsen i biter små nok til at gjær kan spise dem. Væska blir søt. Den smaker omtrent som lunken kornsuppe, og er overraskende god.\n\nTemperaturen er en spak bryggeren kan dra i. Litt kaldere mesk gir mer sukker gjæren klarer å ta, og dermed tørrere og sterkere øl. Litt varmere lar mer bli igjen usmeltet, og ølet blir fyldigere og søtere. Samme malt, samme oppskrift, to grader — og to forskjellige øl.",
+   "en": "The malt is crushed coarsely and stirred into water at around sixty-six degrees. Not boiling — the enzymes from malting die above about seventy, and they are what this whole step is about.\n\nOver an hour or so the enzymes cut the starch into pieces small enough for yeast to eat. The liquid turns sweet. It tastes rather like lukewarm cereal, and is surprisingly good.\n\nTemperature is a lever the brewer can pull. A slightly cooler mash gives more sugar the yeast can take, and so a drier, stronger beer. A slightly warmer one leaves more behind uncut, and the beer comes out fuller and sweeter. Same malt, same recipe, two degrees — and two different beers."
+  }
+ },
+ "vorter": {
+  "term": {
+   "no": "Vørter",
+   "en": "Wort"
+  },
+  "short": {
+   "no": "Den søte væska, før gjæren får tak i den.",
+   "en": "The sweet liquid, before the yeast gets at it."
+  },
+  "body": {
+   "no": "Vørter er det som renner av mesken: sukkervann med farge, protein og smak fra malten. Det er øl uten alkohol, uten bitterhet og uten kullsyre — altså ikke øl ennå, men alt et øl er bygget av.\n\nOrdet er gammelt i norsk, og lever videre i vørterøl, som er nettopp dette: vørter som aldri fikk gjære.\n\nHvor mye sukker som er i vørteren avgjør hvor sterkt ølet kan bli. Gjæren kan ikke lage mer alkohol enn det er sukker til. Bryggeren måler det som tetthet før gjæringen og igjen etterpå, og forskjellen mellom de to tallene er alkoholen.",
+   "en": "Wort is what runs off the mash: sugar water carrying colour, protein and flavour from the malt. It is beer without the alcohol, the bitterness or the gas — not beer yet, but everything a beer is built from.\n\nThe Norwegian word is old and survives in vørterøl, a malt drink that is exactly this: wort that was never allowed to ferment.\n\nHow much sugar is in the wort decides how strong the beer can get. Yeast cannot make more alcohol than there is sugar for. The brewer measures it as density before fermentation and again afterwards, and the difference between the two numbers is the alcohol."
+  }
+ },
+ "kok": {
+  "term": {
+   "no": "Koket",
+   "en": "The boil"
+  },
+  "short": {
+   "no": "En time i fosskok. Det er her humla gjør jobben sin.",
+   "en": "An hour at a rolling boil. Where the hops do their work."
+  },
+  "body": {
+   "no": "Vørteren kokes hardt i omtrent en time, og fire ting skjer på én gang.\n\nAlt levende dør, så gjæren bryggeren selv har valgt får være alene. Protein klumper seg og faller ut, som gjør ølet klart. Litt vann fordamper, så vørteren blir sterkere. Og bitterstoffet i humla, som ikke er løselig i kaldt vann i det hele tatt, bygges om av varmen til noe som er det.\n\nDet siste er grunnen til at humle som skal gi bitterhet må i tidlig. Det tar tid. Humle som skal gi lukt må i helt til slutt, for oljene som lukter godt koker rett av. Samme plante, samme gryte, to helt forskjellige jobber — og det eneste som skiller dem er når den går oppi.",
+   "en": "The wort is boiled hard for about an hour, and four things happen at once.\n\nEverything alive dies, so the yeast the brewer has chosen gets the vessel to itself. Protein clumps together and drops out, which is what makes beer clear. A little water evaporates, so the wort gets stronger. And the bitter resin in hops, which will not dissolve in cold water at all, is rebuilt by the heat into something that will.\n\nThat last one is why hops meant for bitterness have to go in early. It takes time. Hops meant for smell go in at the very end, because the oils that smell good boil straight off. Same plant, same kettle, two completely different jobs — and the only thing separating them is when it goes in."
+  }
+ },
+ "humle": {
+  "term": {
+   "no": "Humle",
+   "en": "Hops"
+  },
+  "short": {
+   "no": "En klatreplante. Kongler fulle av bitterstoff og olje.",
+   "en": "A climbing plant. Cones full of bitter resin and oil."
+  },
+  "body": {
+   "no": "Humle er en slyngplante i hampefamilien som klatrer sju meter opp en snor på én sommer. Det er hunnplantens kongler bryggeren vil ha, og inni dem sitter gule korn som heter lupulin.\n\nDe kornene gjør to ting. De er bitre, og de er antibakterielle. Bitterheten er motvekten til all sukkeret fra malten — uten den smaker øl som sirup. Det antibakterielle er grunnen til at humle vant: øl med humle i holdt seg der øl uten ble surt, og det var hele forskjellen før det fantes kjøling.\n\nOljene i konglen er en helt annen sak. De lukter av gress, sitrus, furu eller tropisk frukt, alt etter sort, og de tåler ikke koking. Derfor er det de siste minuttene som avgjør hvordan et øl lukter.",
+   "en": "The hop is a climbing plant in the hemp family that goes seven metres up a string in a single summer. It is the female plant's cones the brewer wants, and inside them sit yellow grains called lupulin.\n\nThose grains do two things. They are bitter, and they kill bacteria. The bitterness is the counterweight to all that malt sugar — without it beer tastes like syrup. The antibacterial part is why hops won: hopped beer kept where unhopped beer went sour, and before refrigeration that was the whole difference.\n\nThe oils in the cone are another matter entirely. They smell of grass, citrus, pine or tropical fruit depending on the variety, and they cannot survive boiling. Which is why the last few minutes decide how a beer smells."
+  }
+ },
+ "bitterhet": {
+  "term": {
+   "no": "Bitterhet",
+   "en": "Bitterness"
+  },
+  "short": {
+   "no": "Motvekten til sukkeret. Måles i IBU.",
+   "en": "The counterweight to the sugar. Measured in IBU."
+  },
+  "body": {
+   "no": "Bitterhet i øl måles i IBU, som står for internasjonale bitterhetsenheter. Tallet sier hvor mye omdannet humlestoff det er i væska, målt i milligram per liter.\n\nEn lys lager ligger gjerne rundt ti til tjue. En pils rundt tretti til førti. En moderne IPA kan ligge over seksti. Over hundre merker de fleste ikke forskjell lenger — tunga gir opp.\n\nMen tallet alene sier ikke hvor bittert noe smakes. Bitterhet leses alltid mot sukkeret som er igjen. Et sterkt, søtt øl på førti IBU kan smake mildt, mens et tynt, tørt øl på de samme førti smaker skarpt. Det er balansen som er poenget, ikke tallet.",
+   "en": "Bitterness in beer is measured in IBU, international bitterness units. The number says how much converted hop resin is in the liquid, in milligrams per litre.\n\nA pale lager usually sits around ten to twenty. A pilsner around thirty to forty. A modern IPA can be over sixty. Above a hundred most people stop noticing a difference — the tongue gives up.\n\nBut the number on its own does not say how bitter something tastes. Bitterness is always read against the sugar left behind. A strong, sweet beer at forty IBU can taste mild, while a thin, dry beer at the same forty tastes sharp. The balance is the point, not the number."
+  }
+ },
+ "gjaer": {
+  "term": {
+   "no": "Gjær",
+   "en": "Yeast"
+  },
+  "short": {
+   "no": "En encellet sopp. Den fjerde ingrediensen, og den eneste som lever.",
+   "en": "A single-celled fungus. The fourth ingredient, and the only living one."
+  },
+  "body": {
+   "no": "Gjær er en sopp på én celle. Den er så liten at det er omkring tjue milliarder av dem i ett gram tørrgjær, og ingen kunne se en før mikroskopet.\n\nDe tre andre ingrediensene kan veies opp. Gjær kan ikke bare veies — den må holdes i live, mates, holdes på riktig temperatur og hentes ut igjen etterpå. Den er mer et husdyr enn en ingrediens.\n\nOg den bestemmer mer av smaken enn folk tror. Malten gir farge og sødme, humla gir bitterhet og lukt, men banan, nellik, eple og sitrus i et øl der ingenting sånt er tilsatt kommer fra gjæren. Hvilken stamme bryggeriet bruker, og hvor varmt den får jobbe, er den største enkeltspaken i hele bryggeriet.",
+   "en": "Yeast is a fungus one cell across. It is so small that a single gram of dried yeast holds around twenty billion of them, and nobody could see one before the microscope.\n\nThe other three ingredients can be weighed out. Yeast cannot merely be weighed — it has to be kept alive, fed, held at the right temperature and recovered afterwards. It is closer to livestock than to an ingredient.\n\nAnd it decides more of the flavour than people think. Malt gives colour and sweetness, hops give bitterness and smell, but banana, clove, apple and citrus in a beer with no such thing added to it come from the yeast. Which strain a brewery uses, and how warm it is allowed to work, is the single biggest lever in the building."
+  }
+ },
+ "gjaering": {
+  "term": {
+   "no": "Gjæring",
+   "en": "Fermentation"
+  },
+  "short": {
+   "no": "Sukker inn. Alkohol, kullsyre og smak ut.",
+   "en": "Sugar in. Alcohol, gas and flavour out."
+  },
+  "body": {
+   "no": "Gjæring er det gjæren gjør når den ikke får oksygen. Den spiser sukker og gir fra seg alkohol og kullsyre, og den gjør det for sin egen skyld — alkoholen er et avfallsstoff som tilfeldigvis holder konkurrentene unna.\n\nEn vanlig ale er ferdig på tre til fem døgn. Det bobler kraftig, det lukter bakeri, og temperaturen stiger av seg selv fordi prosessen gir varme.\n\nUnderveis lager gjæren også hundrevis av andre stoffer i bittesmå mengder, og det er de som gir øl karakter. Hvor mye av dem den lager, styres nesten helt av hvor varmt den står. Varmt gir frukt og krydder. Kaldt gir nesten ingenting, og et øl der malt og humle står helt alene. Hele resten av dette kurset handler om den forskjellen.",
+   "en": "Fermentation is what yeast does when it cannot get oxygen. It eats sugar and gives off alcohol and carbon dioxide, and it does this for its own sake — the alcohol is a waste product that happens to keep competitors away.\n\nAn ordinary ale is done in three to five days. It bubbles hard, it smells of a bakery, and the temperature climbs by itself because the process gives off heat.\n\nAlong the way the yeast also makes hundreds of other compounds in tiny quantities, and those are what give beer its character. How much of them it makes is governed almost entirely by how warm it is standing. Warm gives fruit and spice. Cold gives almost none, and a beer where malt and hops stand completely alone. The whole rest of this course is about that difference."
+  }
+ },
+ "ale": {
+  "term": {
+   "no": "Ale",
+   "en": "Ale"
+  },
+  "short": {
+   "no": "Øl gjæret varmt, av en gjær som flyter opp.",
+   "en": "Beer fermented warm, by a yeast that floats up."
+  },
+  "body": {
+   "no": "Ale er øl laget med en gjær som samler seg på toppen av karet når den er ferdig, og som vil ha det varmt — atten til tjueto grader.\n\nDen jobber fort. Tre døgn, og det meste er gjort. Fordi den har det både varmt og travelt, lager den mange små smaksstoffer ved siden av alkoholen, og det er derfor en ale nesten alltid smaker av noe frukt- eller kryddeaktig som ingen har tilsatt.\n\nI tusen år var dette det eneste ølet Nord-Europa hadde. Alt annet i dette kurset er noe som kom etterpå.",
+   "en": "Ale is beer made with a yeast that gathers on top of the vessel when it is finished, and that likes to be warm — eighteen to twenty-two degrees.\n\nIt works fast. Three days, and most of it is done. Because it is both warm and hurried, it makes a great many small flavour compounds alongside the alcohol, and that is why an ale nearly always tastes of something fruity or spicy that nobody added.\n\nFor a thousand years this was the only beer northern Europe had. Everything else in this course came afterwards."
+  }
+ },
+ "overgjaering": {
+  "term": {
+   "no": "Overgjæring",
+   "en": "Top fermentation"
+  },
+  "short": {
+   "no": "Gjæren flyter opp og legger seg som et lokk.",
+   "en": "The yeast floats up and lies there like a lid."
+  },
+  "body": {
+   "no": "Overgjæring er navnet på det ale-gjæren gjør: den fester seg til kullsyreboblene og blir båret opp, og legger seg som et tykt brunt teppe på overflaten.\n\nDet er praktisk. Bryggeren kan skumme av toppen med en spade og ha gjær nok til neste brygg. Før noen visste hva gjær var, var det slik den ble tatt vare på — man arvet den som lå i huset, og den ble med fra brygg til brygg i generasjoner.\n\nDen andre gjærtypen gjør det motsatte og synker. Det er neste kapittel.",
+   "en": "Top fermentation is the name for what ale yeast does: it clings to the bubbles of carbon dioxide and gets carried upwards, settling as a thick brown blanket on the surface.\n\nThat is convenient. The brewer can skim the top with a paddle and have enough yeast for the next brew. Before anybody knew what yeast was, this is how it was kept — you inherited whatever was in the house, and it carried on from brew to brew for generations.\n\nThe other kind of yeast does the opposite and sinks. That is the next chapter."
+  }
+ },
+ "ester": {
+  "term": {
+   "no": "Ester",
+   "en": "Ester"
+  },
+  "short": {
+   "no": "Et stoff gjæren lager når den har det varmt. Lukter frukt.",
+   "en": "A compound yeast makes when it is warm. Smells of fruit."
+  },
+  "body": {
+   "no": "En ester er et lite molekyl som blir til når en syre og en alkohol møtes. Gjæren lager dem som en bivirkning av å jobbe fort og varmt.\n\nMengdene er absurd små — noen få milliondeler — men nesen er bygd for akkurat dette og finner dem uansett. Isoamylacetat lukter banan. Etylacetat lukter pære. Etylhexanoat lukter eple.\n\nDet er derfor et tysk hveteøl smaker tydelig av banan uten at det har vært banan i nærheten av det. Vil du ha færre estere, kjøler du gjæren ned. Da får du en pils.",
+   "en": "An ester is a small molecule formed when an acid and an alcohol meet. Yeast makes them as a side effect of working fast and warm.\n\nThe quantities are absurdly small — a few parts per million — but the nose is built for exactly this and finds them anyway. Isoamyl acetate smells of banana. Ethyl acetate smells of pear. Ethyl hexanoate smells of apple.\n\nThat is why a German wheat beer tastes clearly of banana without any banana having been near it. If you want fewer esters, you cool the yeast down. Then you get a pilsner."
+  }
+ },
+ "porter": {
+  "term": {
+   "no": "Porter",
+   "en": "Porter"
+  },
+  "short": {
+   "no": "Mørk, billig London-ale. Det første industrielle ølet.",
+   "en": "Dark, cheap London ale. The first industrial beer."
+  },
+  "body": {
+   "no": "Porter kom i London tidlig på sytten hundre tallet: mørkt, kraftig og billig, brygget av malt som var tørket over åpen ild og derfor røykaktig.\n\nDet viktige er ikke smaken, men skalaen. Porter var det første ølet som ble laget i fabrikk. Det tålte å lagres lenge, så et bryggeri kunne brygge enormt og selge over hele året, og de bygde trekar som rommet en million liter.\n\nEtt av dem sprakk i atten hundre og fjorten. Bølgen tok med seg to hus og åtte mennesker.",
+   "en": "Porter appeared in London early in the seventeen hundreds: dark, strong and cheap, brewed from malt dried over an open fire and therefore smoky.\n\nWhat matters is not the taste but the scale. Porter was the first beer made in a factory. It kept well, so a brewery could brew enormously and sell all year round, and they built wooden vats holding a million litres.\n\nOne of them burst in eighteen fourteen. The wave took two houses and eight people with it."
+  }
+ },
+ "stout": {
+  "term": {
+   "no": "Stout",
+   "en": "Stout"
+  },
+  "short": {
+   "no": "Opprinnelig bare kraftig porter. Så ble ordet stående alene.",
+   "en": "Originally just stout porter. Then the word was left standing alone."
+  },
+  "body": {
+   "no": "Stout betyr kraftig, og det var i begynnelsen ikke en egen ølstil i det hele tatt — det var et adjektiv. Den sterkeste porteren i et bryggeri het stout porter, på samme måte som en kaffe kan hete sterk kaffe.\n\nSå forsvant porter fra navnet, og stout ble stående alene som et ord for et svart øl.\n\nDublin gjorde det til sitt ved å brenne en del av kornet helt svart, nesten som kaffebønner. Derfor smaker et stout av kaffe og mørk sjokolade uten at noen av delene er i det. Smaken kommer av behandlingen, ikke av en ingrediens.",
+   "en": "Stout means sturdy, and at the start it was not a style at all — it was an adjective. The strongest porter in a brewery was called stout porter, the way a coffee might be called strong coffee.\n\nThen porter dropped out of the name, and stout was left standing on its own as a word for a black beer.\n\nDublin made it theirs by roasting part of the grain completely black, almost like coffee beans. That is why a stout tastes of coffee and dark chocolate without either being in it. The flavour comes from the treatment, not from an ingredient."
+  }
+ },
+ "gips": {
+  "term": {
+   "no": "Gips",
+   "en": "Gypsum"
+  },
+  "short": {
+   "no": "Kalsium og sulfat. Det som gjør Burtons vann til Burtons vann.",
+   "en": "Calcium and sulfate. What makes Burton water Burton water."
+  },
+  "body": {
+   "no": "Gips er et mineral av kalsium og sulfat. Regn som siger ned gjennom fjellet løser opp begge deler og tar dem med i grunnvannet.\n\nUnder Burton upon Trent ligger det mye av det. Vannet der har rundt sju hundre milligram sulfat i literen; i London er tallet under seksti.\n\nSulfat skjerper humla — bitterheten blir tørr og tydelig i stedet for rund. Kalsium får gjæren til å synke pent når den er ferdig, så ølet blir klart. Til sammen gir det et blankt, tørt, bittert øl, og det er ikke en tradisjon. Det er kjemi.",
+   "en": "Gypsum is a mineral of calcium and sulfate. Rain seeping down through the rock dissolves both and carries them into the groundwater.\n\nThere is a great deal of it under Burton upon Trent. The water there has around seven hundred milligrams of sulfate per litre; in London the figure is under sixty.\n\nSulfate sharpens the hops — the bitterness turns dry and clean instead of round. Calcium makes the yeast settle neatly when it is finished, so the beer comes out clear. Together that gives a bright, dry, bitter beer, and it is not a tradition. It is chemistry."
+  }
+ },
+ "fat": {
+  "term": {
+   "no": "Fat",
+   "en": "Cask"
+  },
+  "short": {
+   "no": "Tretønna ølet lå i. Halvparten av grunnen til at IPA ble til.",
+   "en": "The wooden barrel the beer lay in. Half the reason IPA exists."
+  },
+  "body": {
+   "no": "Et fat er en tønne av tre, og fram til det tjuende århundret var det ikke et stilvalg — det var den eneste beholderen som fantes.\n\nDet gjør noe med ølet. Tre puster litt, så ørsmå mengder oksygen kommer inn, og humlebitterheten mykner over tid. Partikler faller ut og ølet klarner.\n\nDet er derfor et øl som lå et halvt år i fat på vei til India kom fram bedre enn det dro. Reisen var ikke noe ølet tålte. Reisen var en del av oppskriften.",
+   "en": "A cask is a wooden barrel, and until the twentieth century it was not a stylistic choice — it was the only container there was.\n\nIt does something to the beer. Wood breathes a little, so tiny amounts of oxygen get in, and hop bitterness softens over time. Particles drop out and the beer clears.\n\nThat is why a beer that spent half a year in a cask on its way to India arrived better than it left. The voyage was not something the beer survived. The voyage was part of the recipe."
+  }
+ },
+ "ipa": {
+  "term": {
+   "no": "India Pale Ale",
+   "en": "India Pale Ale"
+  },
+  "short": {
+   "no": "En blek ale med mye humle, oppkalt etter en reise den ikke lenger tar.",
+   "en": "A pale ale with a lot of hops, named after a voyage it no longer makes."
+  },
+  "body": {
+   "no": "India Pale Ale var opprinnelig helt praktisk. Ølet skulle til India, reisen tok et halvt år rundt Afrika, og humle dreper bakterier — så bryggerne fylte fatene med mye mer humle enn noen ville drukket frivillig.\n\nDet overlevde, og det ble bedre underveis. Da folk hjemme i England fikk smake det, ville de ha det samme, og ølet beholdt navnet sitt etter en reise det ikke lenger måtte ta.\n\nI dag er IPA verdens mest kopierte ølstil. Nesten ingen av dem har vært i nærheten av et skip, og de fleste er langt kraftigere humlet enn originalen var.",
+   "en": "India Pale Ale began as something entirely practical. The beer was going to India, the voyage took half a year around Africa, and hops kill bacteria — so the brewers filled the casks with far more hops than anybody would have drunk willingly.\n\nIt survived, and it improved on the way. When people back in England tasted it they wanted the same thing, and the beer kept its name from a voyage it no longer had to make.\n\nToday IPA is the world's most copied beer style. Almost none of them have been near a ship, and most are hopped far harder than the original was."
+  }
+ },
+ "burtonisering": {
+  "term": {
+   "no": "Burtonisering",
+   "en": "Burtonisation"
+  },
+  "short": {
+   "no": "Å tilsette gips i bryggevannet, så det ligner Burtons.",
+   "en": "Adding gypsum to your brewing water so it resembles Burton water."
+  },
+  "body": {
+   "no": "Da kjemikerne på atten hundre tallet fant ut hva som faktisk var i vannet under Burton, forsvant hemmeligheten samme dag. Hvis det er sulfat som gjør det, kan hvem som helst kjøpe sulfat.\n\nÅ tilsette det har hatt sitt eget ord siden syttiårene på atten hundre tallet: burtonisering. Et bryggeri hvor som helst i verden kan lage Burtons vann i et kar på en ettermiddag.\n\nByen ga fra seg det den hadde, og stilen dro. Men navnet ble igjen, og det er det eneste i denne historien som ikke lot seg kopiere.",
+   "en": "When chemists in the eighteen hundreds worked out what was actually in the water under Burton, the secret disappeared the same day. If it is sulfate that does it, anybody can buy sulfate.\n\nAdding it has had its own word since the eighteen seventies: Burtonisation. A brewery anywhere in the world can make Burton water in a tank in an afternoon.\n\nThe town gave away what it had, and the style left. But the name stayed behind, and it is the only thing in this story that could not be copied."
+  }
+ }
 }

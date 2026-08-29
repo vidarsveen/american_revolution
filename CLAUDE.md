@@ -820,6 +820,33 @@ of the surrounding file.
 
 ## In flight
 
+- **BEER: chapters one and two ship.** Chapter two, *Den som gjærer på
+  toppen*, is where the map starts working: ale and warm fermentation, then
+  London and porter, Dublin and stout, and the chapter's real argument —
+  the gypsum in the water under Burton upon Trent, which is why an English
+  bitter tastes the way it does. Seven scenes, seven and a half minutes,
+  fourteen new pictures, nine new words in the glossary.
+
+  **It needed a basemap that did not exist.** `mediterranean-10m` stops at
+  fifty degrees north, which is south of Burton, Brussels and all of Norway,
+  so every chapter after the first would have zoomed into blank paper.
+  `northwest-europe-10m` covers [-12, 47, 17, 62] — the whole journey the
+  course makes — and is built from `map.basemap.levels[].build` in the pack,
+  because which theatre a subject plays on is a fact about the subject.
+
+  **A scene declares its bed now.** `bed: bedBrew` or `bed: none` as a
+  scene-level key in the prose; the compiler emits the `sound.music` cue into
+  the first beat, so "one bed per scene, in its first beat" stopped being a
+  rule to check and became a property of the format. Dublin runs silent on
+  purpose.
+
+  Three things the checks caught that reading would not have: the map was
+  never actually seen, because every town's pin was staged behind a
+  full-frame picture that had already arrived; a picture held the screen for
+  fifty-five seconds; and the closing pull-out sat on an empty map for
+  forty-seven. All three are the kind of defect that used to be found on a
+  phone.
+
 - **BEER is the course being built, and chapter one ships.** The outline has
   six chapters and the first is written, recorded in both languages and on the
   front door: *Fire ting i et glass*, ten minutes, thirteen pictures, and the

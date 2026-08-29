@@ -1,0 +1,37 @@
+{
+ "//": "HOW A WORD IS SAID, when that is not how it is spelled. The screen keeps the real spelling; only the voice sees these. One word for one word — cues are anchored to words, and narrate.py refuses a substitution that changes the count. A respelling cannot be checked by reading it, because the letters are wrong on purpose — hear it: python tools/narrate.py --pack beer --say \"India Pale Ale\"",
+ "//no": "En norsk stemme leser engelske ord med norske bokstavverdier. «ale» blir to stavelser, «stout» blir «sto-ut», og «upon» blir «u-pon». Alle tre er feil ord. Engelsk trenger nesten ingenting her — det er de tsjekkiske og tyske ordene i kapittel tre til fem som kommer til å trenge det andre veien.",
+ "ale": {
+  "no": "eil"
+ },
+ "Ale": {
+  "no": "Eil"
+ },
+ "ale-gjæren": {
+  "no": "eil-gjæren"
+ },
+ "stout": {
+  "no": "staut"
+ },
+ "Stout": {
+  "no": "Staut"
+ },
+ "Pale": {
+  "no": "Peil"
+ },
+ "upon": {
+  "no": "åpånn"
+ },
+ "Burton": {
+  "no": "Børton"
+ },
+ "Burtons": {
+  "no": "Børtons"
+ },
+ "burtonisering": {
+  "no": "børtonisering"
+ },
+ "Burtonisation": {
+  "en": "Burton-ization"
+ }
+}

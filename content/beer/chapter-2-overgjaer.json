@@ -1,0 +1,1171 @@
+{
+ "id": "chapter-2-overgjaer",
+ "pack": "beer",
+ "title": {
+  "no": "Den som gjærer på toppen",
+  "en": "The one that ferments on top"
+ },
+ "subtitle": {
+  "no": "Ale, England, og vannet under Burton",
+  "en": "Ale, England, and the water under Burton"
+ },
+ "places": {
+  "london": {
+   "coords": [
+    51.5074,
+    -0.1278
+   ],
+   "zoom": 9.6,
+   "name": {
+    "no": "London",
+    "en": "London"
+   },
+   "kind": "city"
+  },
+  "dublin": {
+   "coords": [
+    53.3498,
+    -6.2603
+   ],
+   "zoom": 9.6,
+   "name": {
+    "no": "Dublin",
+    "en": "Dublin"
+   },
+   "kind": "city"
+  },
+  "burton": {
+   "coords": [
+    52.8019,
+    -1.636
+   ],
+   "zoom": 11.2,
+   "name": {
+    "no": "Burton upon Trent",
+    "en": "Burton upon Trent"
+   },
+   "kind": "town"
+  },
+  "nordsjoen": {
+   "coords": [
+    55.0,
+    3.0
+   ],
+   "zoom": 5.2,
+   "name": {
+    "no": "Nordsjøen",
+    "en": "The North Sea"
+   },
+   "kind": "region"
+  }
+ },
+ "ending": {
+  "say": {
+   "no": "Én gjær, én by, ett vann. Neste gang: den andre gjæren, og kulda som fant den.",
+   "en": "One yeast, one town, one water. Next time: the other yeast, and the cold that found it."
+  },
+  "figure": {
+   "value": "3",
+   "label": {
+    "no": "døgn, og en ale er ferdig",
+    "en": "days, and an ale is done"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Den som flyter opp",
+    "en": "The one that floats up"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Forrige gang endte vi med at stedet begynner å bety noe. Her er stedet.",
+      "en": "Last time we ended with the place starting to matter. Here is the place."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkrone-kar",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Men først må vi dele gjæren i to, for det finnes to slag, og de gjør to helt forskjellige øl.",
+      "en": "But first we have to split the yeast in two, because there are two kinds, and they make two completely different beers."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Det ene slaget flyter opp. Når det har spist seg mett, samler det seg i et tykt, brunt lag på toppen av karet.",
+      "en": "One kind floats up. When it has eaten its fill, it gathers in a thick brown layer on top of the vessel."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:opp",
+        "en": "word:up"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "ale"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Bryggeren kan skumme det av med en spade og bruke det om igjen neste uke.",
+      "en": "The brewer can skim it off with a paddle and use it again next week."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Det heter overgjæring, og ølet heter ale.",
+      "en": "That is called top fermentation, and the beer is called ale."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "skumming-spade",
+       "motion": "left",
+       "over": 22,
+       "dim": 0.13,
+       "push": 0.14,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:overgjæring",
+        "en": "word:fermentation"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "overgjaering"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Den vil ha det varmt. Atten til tjueto grader, som et rom du ikke fyrer i.",
+      "en": "It likes to be warm. Eighteen to twenty-two degrees, like a room you do not heat."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b7",
+     "say": {
+      "no": "Og den har hastverk. Tre døgn, og det meste er over.",
+      "en": "And it is in a hurry. Three days, and most of it is over."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b8",
+     "say": {
+      "no": "Det er verdt å stoppe ved. I tusen år var dette det eneste ølet som fantes i Nord-Europa.",
+      "en": "That is worth stopping at. For a thousand years this was the only beer there was in northern Europe."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Smaker ingen har tilsatt",
+    "en": "Flavours nobody added"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Når gjæren har det travelt og varmt, søler den.",
+      "en": "When yeast is hurried and warm, it spills."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "ale-glass-lys",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Ved siden av alkohol lager den noen hundre andre stoffer, i mengder du måler i milliondeler.",
+      "en": "Alongside alcohol it makes a few hundred other compounds, in amounts you measure in parts per million."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Noen av dem heter estere. Nesen vår er ubehagelig god til å finne dem.",
+      "en": "Some of them are called esters. Our noses are unpleasantly good at finding them."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:estere",
+        "en": "word:esters"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "ester"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Banan. Pære. Eple. Litt nellik.",
+      "en": "Banana. Pear. Apple. A little clove."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "estere-frukt",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.13,
+       "push": 0.09,
+       "into": 1.4
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "ester"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Ingen har hatt frukt i det. Det har aldri vært frukt i nærheten av det.",
+      "en": "Nobody put fruit in it. There has never been fruit anywhere near it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "100",
+       "label": {
+        "no": "ganger sterkere lukt enn smak",
+        "en": "times stronger to smell than to taste"
+       },
+       "side": "ale"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Det er bare en sopp som har hatt det for varmt og for travelt.",
+      "en": "It is just a fungus that has been too warm and in too much of a hurry."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Og det er her kurset svinger. For hvor varmt karet står, bestemmer bryggeren.",
+      "en": "And this is where the course turns. Because how warm the vessel stands is the brewer's decision."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b8",
+     "say": {
+      "no": "Men hvor varmt det er MULIG å ha det, bestemmer landet du står i.",
+      "en": "But how warm it is POSSIBLE to have it is decided by the country you are standing in."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "ale-glass-lys",
+       "motion": "out",
+       "over": 20,
+       "dim": 0.13,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "England, og et øl for arbeidsfolk",
+    "en": "England, and a beer for working people"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "England er mildt.",
+      "en": "England is mild."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "london",
+       "zoom": 5.4,
+       "over": 3.6
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "london",
+       "label": {
+        "no": "London",
+        "en": "London"
+       },
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Vintrene er grå og våte, og de går nesten aldri under null.",
+      "en": "The winters are grey and wet, and they almost never drop below freezing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "london-elv",
+       "motion": "out",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.16,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Et rom i England holder seg av seg selv på den temperaturen ale vil ha.",
+      "en": "A room in England sits by itself at the temperature ale wants."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Så England brygget ale, og gjorde det i mengder ingen hadde sett før.",
+      "en": "So England brewed ale, and did it in quantities nobody had seen before."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "På sytten hundre tallet lagde London et mørkt, billig øl som het porter.",
+      "en": "In the seventeen hundreds London made a dark, cheap beer called porter."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "porter-kar",
+       "motion": "in",
+       "over": 27,
+       "dim": 0.16,
+       "push": 0.09,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:porter",
+        "en": "word:porter"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "porter"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Det var det første ølet som ble laget industrielt. Ett bryggeri kunne sende ut hundre tusen tønner i året.",
+      "en": "It was the first beer made industrially. One brewery could send out a hundred thousand barrels a year."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Det ble lagret i trekar så store at folk holdt middagsselskap inni dem før de ble tatt i bruk.",
+      "en": "It was stored in wooden vats so big that people held dinner parties inside them before they were put to use."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b8",
+     "say": {
+      "no": "Ett av dem sprakk i atten hundre og fjorten, og over en million liter porter gikk ut i gata og drepte åtte mennesker.",
+      "en": "One of them burst in eighteen fourteen, and over a million litres of porter went out into the street and killed eight people."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Stout, og en by til",
+    "en": "Stout, and one more town"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Den sterkeste porteren fikk et eget navn.",
+      "en": "The strongest porter got a name of its own."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "dublin",
+       "zoom": 6.4,
+       "over": 3.8
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "dublin",
+       "label": {
+        "no": "Dublin",
+        "en": "Dublin"
+       },
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Stout betyr kraftig. Først var det bare et ord man satte foran: stout porter.",
+      "en": "Stout means sturdy. At first it was just a word you put in front: stout porter."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "stout-glass",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:kraftig",
+        "en": "word:sturdy"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "stout"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Så falt porter bort, og ordet ble stående alene.",
+      "en": "Then porter fell away, and the word was left standing on its own."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Dublin tok det og gjorde det til sitt. Der brant de en del av kornet svart, nesten som kaffebønner.",
+      "en": "Dublin took it and made it their own. There they roasted part of the grain black, almost like coffee beans."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Det er derfor et stout smaker av kaffe og mørk sjokolade uten at noen av delene er i det.",
+      "en": "That is why a stout tastes of coffee and dark chocolate without either one being in it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "brent-korn",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.15,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Samme triks som med frukten, ett trinn tidligere: smaken kommer av behandlingen, ikke av en ingrediens.",
+      "en": "The same trick as with the fruit, one step earlier: the flavour comes from the treatment, not from an ingredient."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Og legg merke til at ingenting av dette handler om stedet ennå. To byer, samme gjær, forskjellig oppskrift.",
+      "en": "And notice that none of this is about the place yet. Two towns, the same yeast, a different recipe."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Vannet under Burton",
+    "en": "The water under Burton"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Nå handler det om stedet.",
+      "en": "Now it is about the place."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "burton",
+       "zoom": 7.6,
+       "over": 4.2
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "burton",
+       "label": {
+        "no": "Burton",
+        "en": "Burton"
+       },
+       "kind": "point",
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Midt i England ligger en liten by ved elva Trent.",
+      "en": "In the middle of England there is a small town on the river Trent."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Den hadde ingenting spesielt. Ikke bedre korn, ikke bedre humle, ikke flinkere folk.",
+      "en": "It had nothing special. Not better grain, not better hops, not cleverer people."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "burton-bronn",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Den hadde vann som hadde ligget i gips.",
+      "en": "It had water that had been lying in gypsum."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:gips",
+        "en": "word:gypsum"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "gips"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Gips er kalsium og sulfat. Regnet siger ned gjennom fjellet og tar med seg begge deler.",
+      "en": "Gypsum is calcium and sulfate. Rain seeps down through the rock and takes both with it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gips-krystall",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.16,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "I Burton er det omtrent sju hundre milligram sulfat i hver liter. I London er det under seksti.",
+      "en": "In Burton there are about seven hundred milligrams of sulfate in every litre. In London it is under sixty."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "700",
+       "label": {
+        "no": "milligram sulfat i én liter",
+        "en": "milligrams of sulfate in a litre"
+       },
+       "side": "ale"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Og sulfat gjør noe helt bestemt med et øl. Det skjerper humla.",
+      "en": "And sulfate does something very specific to a beer. It sharpens the hops."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "bitter-glass",
+       "motion": "in",
+       "over": 27,
+       "dim": 0.13,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b8",
+     "say": {
+      "no": "Bitterheten blir tørr og tydelig i stedet for rund. Ølet virker lettere enn det er.",
+      "en": "The bitterness turns dry and clean instead of round. The beer seems lighter than it is."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b9",
+     "say": {
+      "no": "Kalsiumet gjør en annen jobb: det får gjæren til å synke pent til bunns når den er ferdig.",
+      "en": "The calcium does another job: it makes the yeast settle neatly when it is done."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b10",
+     "say": {
+      "no": "Så ølet ble klart. Blankt. Og akkurat da begynte folk å drikke av glass i stedet for av krus.",
+      "en": "So the beer came out clear. Bright. And just then people started drinking from glass instead of from tankards."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b11",
+     "say": {
+      "no": "Et øl du kan se gjennom, i en by der vannet gjorde det tørt og skarpt. Det er ikke en tradisjon. Det er kjemi du kan peke på.",
+      "en": "A beer you can see through, in a town where the water made it dry and sharp. That is not a tradition. It is chemistry you can point at."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "burton-bronn",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.15,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Ølet som tålte reisen",
+    "en": "The beer that survived the journey"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Og så gjorde Burton noe med det ølet som gjorde det verdensberømt. De sendte det bort.",
+      "en": "And then Burton did something with that beer that made it world famous. They sent it away."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fat-rekke",
+       "motion": "left",
+       "over": 25,
+       "dim": 0.14,
+       "push": 0.14,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Ølet skulle til India, og reisen tok et halvt år rundt Afrika.",
+      "en": "The beer was going to India, and the voyage took half a year around Africa."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Husk fra sist hva humle gjør. Den smaker bittert, og den dreper bakterier.",
+      "en": "Remember from last time what hops do. They taste bitter, and they kill bacteria."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Så bryggerne gjorde det åpenbare: de fylte fatene med mer humle enn noe menneske ville drukket frivillig.",
+      "en": "So the brewers did the obvious thing: they filled the casks with more hops than anybody would willingly have poured into a glass."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:fatene",
+        "en": "word:casks"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "fat"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Det overlevde. Og det viste seg at et halvt år i et fat på et gyngende skip gjorde ølet bedre, ikke verre.",
+      "en": "It survived. And it turned out that half a year in a cask on a rolling ship made the beer better, not worse."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "skip-kai",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.15,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Humla mykner. Ølet klarner. Det kom fram tørt, blankt og bittert.",
+      "en": "The hops soften. The beer clears. It arrived dry, bright and bitter."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Hjemme i England ville folk plutselig ha det samme. Ølet fikk navnet sitt etter en reise det ikke lenger måtte ta.",
+      "en": "Back home in England people suddenly wanted the same thing. The beer got its name from a voyage it no longer had to make."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b8",
+     "say": {
+      "no": "India Pale Ale. I dag er det verdens mest kopierte ølstil, og nesten ingen av dem har sett et skip.",
+      "en": "India Pale Ale. Today it is the world's most copied beer style, and almost none of them have seen a ship."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "ipa-glass",
+       "motion": "in",
+       "over": 21,
+       "dim": 0.13,
+       "push": 0.09,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:Ale",
+        "en": "word:Ale"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "ipa"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Stedet, og det som ble igjen",
+    "en": "The place, and what was left"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Så kom kjemien, og med den en litt trist oppdagelse.",
+      "en": "Then chemistry arrived, and with it a slightly sad discovery."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "salt-vekt",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Hvis det er gipsen som gjør det, kan hvem som helst kjøpe gips.",
+      "en": "If it is the gypsum that does it, then anybody can buy gypsum."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Å tilsette sulfat i bryggevannet har hatt et eget navn siden atten hundre og syttitallet. Det heter burtonisering, etter byen.",
+      "en": "Adding sulfate to your brewing water has had its own name since the eighteen seventies. It is called Burtonisation, after the town."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:syttitallet",
+        "en": "word:seventies"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "burtonisering"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Et bryggeri i Oslo eller i Tokyo kan lage Burtons vann i et kar på en ettermiddag.",
+      "en": "A brewery in Oslo or in Tokyo can make Burton's water in a tank in an afternoon."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Byen ga fra seg hemmeligheten sin, og stilen dro.",
+      "en": "The town gave up its secret, and the style left."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "nordsjoen",
+       "zoom": 4.8,
+       "over": 5.0
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "burton",
+       "label": {
+        "no": "Burton",
+        "en": "Burton"
+       },
+       "kind": "point",
+       "tone": "gold"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "london",
+       "label": {
+        "no": "London",
+        "en": "London"
+       },
+       "kind": "point"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "dublin",
+       "label": {
+        "no": "Dublin",
+        "en": "Dublin"
+       },
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Men den fikk noe igjen som ikke kan kopieres: den står i navnet. Vi kaller det fortsatt burtonisering.",
+      "en": "But it got something back that cannot be copied: it is in the name. We still call it Burtonisation."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Og det er mønsteret for resten av kurset. Et sted har noe det ikke har valgt — et vann, et fjell, en kjeller, et klima.",
+      "en": "And that is the pattern for the rest of the course. A place has something it did not choose — a water, a mountain, a cellar, a climate."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Det blir til en stil. Stilen får navn etter stedet. Og så reiser stilen fra stedet og blir alles.",
+      "en": "It becomes a style. The style is named after the place. And then the style leaves the place and becomes everyone's."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b9",
+     "say": {
+      "no": "Neste gang drar vi sørover, til et sted der det motsatte skjedde. Der var det ikke vannet som bestemte. Det var kulda.",
+      "en": "Next time we go south, to a place where the opposite happened. There it was not the water that decided. It was the cold."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

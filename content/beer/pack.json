@@ -1,328 +1,366 @@
 {
-  "id": "beer",
-  "version": 1,
-  "//": [
-    "Et nytt kurs. outline.md er kilden over dette nivået: hva kurset lærer",
-    "bort, i hvilken rekkefølge, og hva hvert kapittel er TIL FOR.",
-    "`chapters` er kompilert derfra og er tom med vilje — alle seks kapitlene",
-    "står som `planned: true` til noen er skrevet.",
-    "",
-    "Alt som fortsatt er en TODO står i en //-kommentar ved feltet det gjelder."
-  ],
-  "work": {
-    "no": "Øl",
-    "en": "Beer"
+ "id": "beer",
+ "version": 1,
+ "//": [
+  "Et nytt kurs. outline.md er kilden over dette nivået: hva kurset lærer",
+  "bort, i hvilken rekkefølge, og hva hvert kapittel er TIL FOR.",
+  "`chapters` er kompilert derfra og er tom med vilje — alle seks kapitlene",
+  "står som `planned: true` til noen er skrevet.",
+  "",
+  "Alt som fortsatt er en TODO står i en //-kommentar ved feltet det gjelder."
+ ],
+ "work": {
+  "no": "Øl",
+  "en": "Beer"
+ },
+ "years": {
+  "no": "1516 til i dag",
+  "en": "1516 to today"
+ },
+ "description": {
+  "no": "Fire ingredienser, to gjærtyper og en håndfull byer som fant opp ølet resten av verden drikker — hvordan det lages, og hvorfor ølet fra ett sted smaker som akkurat det stedet.",
+  "en": "Four ingredients, two yeasts and a handful of towns that invented the beer the rest of the world drinks — how it is made, and why the beer of one place tastes like that place."
+ },
+ "//factions": [
+  "Ikke sider i en krig. En pakkes factions er navngitte farger som både",
+  "kartet og DOM-en når, og for et emne uten stridende parter er den ærlige",
+  "bruken det emnet faktisk deler seg i.",
+  "",
+  "Dette emnet deler seg i TO ting, på to nivåer, og begge trengs:",
+  "",
+  "  ale, lager, wild, farmhouse   gjæringen. Kapittel to til seks. Et sted",
+  "                                lyser opp i fargen til gjæren det er",
+  "                                kjent for, og det er kursets spørsmål.",
+  "  vann, korn, humle, gjaer      ingrediensene. Kapittel én, som ikke",
+  "                                handler om steder i det hele tatt. Et",
+  "                                tall om humle er grønt hver gang det",
+  "                                dukker opp, i alle seks kapitlene.",
+  "",
+  "At `korn` og `lager` begge er gule er ikke en kollisjon som er oversett:",
+  "malt og lyst øl ER den fargen. De to familiene møtes aldri i samme bilde,",
+  "fordi kapittel én ikke har gjæringsfamilier i seg og resten knapt har",
+  "ingredienskort.",
+  "",
+  "`lager` ligger dessuten nær kartets `tone: gold` — se-her-fargen. Det er",
+  "øllets egen farge og derfor riktig, men et pin og en gullring i samme",
+  "bilde er verdt å se på når kapittel tre tegnes."
+ ],
+ "factions": {
+  "vann": {
+   "label": {
+    "no": "Vann",
+    "en": "Water"
+   },
+   "hue": 205,
+   "sat": 0.55
   },
-  "years": {
-    "no": "1516 til i dag",
-    "en": "1516 to today"
+  "korn": {
+   "label": {
+    "no": "Korn",
+    "en": "Grain"
+   },
+   "hue": 38,
+   "sat": 0.72
   },
-  "description": {
-    "no": "Fire ingredienser, to gjærtyper og en håndfull byer som fant opp ølet resten av verden drikker — hvordan det lages, og hvorfor ølet fra ett sted smaker som akkurat det stedet.",
-    "en": "Four ingredients, two yeasts and a handful of towns that invented the beer the rest of the world drinks — how it is made, and why the beer of one place tastes like that place."
+  "humle": {
+   "label": {
+    "no": "Humle",
+    "en": "Hops"
+   },
+   "hue": 95,
+   "sat": 0.62
   },
-  "//factions": [
-    "Ikke sider i en krig. En pakkes factions er navngitte farger som både",
-    "kartet og DOM-en når, og for et emne uten stridende parter er den ærlige",
-    "bruken det emnet faktisk deler seg i.",
-    "",
-    "Dette emnet deler seg i TO ting, på to nivåer, og begge trengs:",
-    "",
-    "  ale, lager, wild, farmhouse   gjæringen. Kapittel to til seks. Et sted",
-    "                                lyser opp i fargen til gjæren det er",
-    "                                kjent for, og det er kursets spørsmål.",
-    "  vann, korn, humle, gjaer      ingrediensene. Kapittel én, som ikke",
-    "                                handler om steder i det hele tatt. Et",
-    "                                tall om humle er grønt hver gang det",
-    "                                dukker opp, i alle seks kapitlene.",
-    "",
-    "At `korn` og `lager` begge er gule er ikke en kollisjon som er oversett:",
-    "malt og lyst øl ER den fargen. De to familiene møtes aldri i samme bilde,",
-    "fordi kapittel én ikke har gjæringsfamilier i seg og resten knapt har",
-    "ingredienskort.",
-    "",
-    "`lager` ligger dessuten nær kartets `tone: gold` — se-her-fargen. Det er",
-    "øllets egen farge og derfor riktig, men et pin og en gullring i samme",
-    "bilde er verdt å se på når kapittel tre tegnes."
-  ],
-  "factions": {
-    "vann": {
-      "label": {
-        "no": "Vann",
-        "en": "Water"
-      },
-      "hue": 205,
-      "sat": 0.55
-    },
-    "korn": {
-      "label": {
-        "no": "Korn",
-        "en": "Grain"
-      },
-      "hue": 38,
-      "sat": 0.72
-    },
-    "humle": {
-      "label": {
-        "no": "Humle",
-        "en": "Hops"
-      },
-      "hue": 95,
-      "sat": 0.62
-    },
-    "gjaer": {
-      "label": {
-        "no": "Gjær",
-        "en": "Yeast"
-      },
-      "hue": 288,
-      "sat": 0.45
-    },
-    "ale": {
-      "label": {
-        "no": "Overgjæret",
-        "en": "Top-fermented"
-      },
-      "hue": 24,
-      "sat": 0.78
-    },
-    "lager": {
-      "label": {
-        "no": "Undergjæret",
-        "en": "Bottom-fermented"
-      },
-      "hue": 46,
-      "sat": 0.8
-    },
-    "wild": {
-      "label": {
-        "no": "Villgjæret",
-        "en": "Wild-fermented"
-      },
-      "hue": 338,
-      "sat": 0.7
-    },
-    "farmhouse": {
-      "label": {
-        "no": "Gardsøl",
-        "en": "Farmhouse"
-      },
-      "hue": 128,
-      "sat": 0.55
-    },
-    "neutral": {
-      "label": {
-        "no": "Øvrige",
-        "en": "Elsewhere"
-      },
-      "hue": 210,
-      "sat": 0.16
-    }
+  "gjaer": {
+   "label": {
+    "no": "Gjær",
+    "en": "Yeast"
+   },
+   "hue": 288,
+   "sat": 0.45
   },
-  "map": {
-    "//": [
-      "Kurset går fra Burton upon Trent til Voss via Brussel, München, Plzeň",
-      "og København. Det er nordvest-Europa, og `home` står midt i det.",
-      "",
-      "`extent` er hvor emnet får lov å ha koordinater — ikke hvor kameraet",
-      "åpner. check-data.py bruker den til å fange en byttet lat/lon."
-    ],
-    "home": [
-      53.5,
-      4.0
-    ],
-    "zoom": {
-      "min": 3.0,
-      "max": 13,
-      "default": 4.6,
-      "maxFit": 12.0
-    },
-    "extent": [
-      [
-        44.0,
-        -13.0
-      ],
-      [
-        67.0,
-        24.0
-      ]
-    ],
-    "//basemap": [
-      "TODO før et kapittel går nærmere enn zoom 6: det finnes ingen 10m-fil",
-      "for nordvest-Europa. mediterranean-10m stopper på 50 grader nord, som",
-      "er sør for Brussel, Burton og hele Norge — så kapittel to til seks",
-      "zoomer inn i blankt papir slik dette står nå. Det er nøyaktig samme",
-      "felle som CLAUDE.md beskriver for vinkurset, ett nivå opp.",
-      "",
-      "    python tools/build-basemap.py --name northwest-europe-10m",
-      "",
-      "og `map.detail`-bokser per by der en scene faktisk står i gata."
-    ],
-    "basemap": {
-      "levels": [
-        {
-          "name": "world-110m",
-          "maxZoom": 4.0
-        },
-        {
-          "name": "world-50m",
-          "maxZoom": null
-        }
-      ]
-    },
-    "borders": {
-      "country": true,
-      "state": false
-    },
-    "credit": "Natural Earth"
+  "ale": {
+   "label": {
+    "no": "Overgjæret",
+    "en": "Top-fermented"
+   },
+   "hue": 24,
+   "sat": 0.78
   },
-  "//era": [
-    "1516 er renhetsloven i Bayern, som er den eldste datoen dette kurset har",
-    "noen grunn til å sette på en tidslinje. 1842 (Plzeň) og 1883 (renkultur)",
-    "er de to andre årstallene kurset faktisk står på."
-  ],
-  "era": {
-    "start": "1516-01-01",
-    "end": "2026-12-31",
-    "tickStep": "year"
+  "lager": {
+   "label": {
+    "no": "Undergjæret",
+    "en": "Bottom-fermented"
+   },
+   "hue": 46,
+   "sat": 0.8
   },
-  "voices": {
-    "no": "nb-NO-FinnNeural",
-    "en": "en-GB-RyanNeural",
-    "rate": "-8%"
+  "wild": {
+   "label": {
+    "no": "Villgjæret",
+    "en": "Wild-fermented"
+   },
+   "hue": 338,
+   "sat": 0.7
   },
-  "narration": {
-    "wps": [
-      1.9,
-      3.4
-    ],
-    "minContentWordMs": 100
+  "farmhouse": {
+   "label": {
+    "no": "Gardsøl",
+    "en": "Farmhouse"
+   },
+   "hue": 128,
+   "sat": 0.55
   },
-  "//pools": [
-    "Bare de tre som finnes. Kurset kommer til å trenge to til, og de har en",
-    "ferdig form å kopiere fra vinkurset:",
-    "",
-    "  styles.json      ølstilene, med samme profil-akser som wines.json —",
-    "                   bitterhet, sødme, fylde, syre, frukt — slik at",
-    "                   chart.show kan legge en pilsner oppå en porter.",
-    "  ingredients.json malt, humle og gjær som oppslag, slik grapes.json er.",
-    "  place-notes.json Burton, Plzeň, München, Brussel, Voss.",
-    "",
-    "say.json kommer også: Plzeň, Reinheitsgebot, lambik og Brettanomyces",
-    "leses med norske bokstavverdier hvis ingen sier noe annet."
-  ],
-  "//pools2": [
-    "`sound` MÅ stå her. engine/surfaces/sound.js henter bare sound.json hvis",
-    "pakken sier at den har en — ellers logger hver eneste pakke uten lyd en",
-    "404. Konsekvensen av å glemme den er verre enn en 404: et navn som bare",
-    "finnes i pakken, som bedBrew, har ingen syntetisert reserve å falle",
-    "tilbake på, så cuen spiller ingenting og sier ingenting. Rapportert som",
-    "«jeg har ikke hørt noe bakgrunnsmusikk», og det stemte."
-  ],
-  "pools": {
-    "terms": "terms.json",
-    "topics": "topics.json",
-    "media": "media.json",
-    "sound": "sound.json"
-  },
-  "//media": [
-    "allowPhoto er TRUE, av samme grunn som i vinkurset: en malt, et humlekon",
-    "og et gjæringskar er nåtidige ting som lar seg fotografere, så et",
-    "fotografisk bilde av et av dem påstår ingenting falskt.",
-    "",
-    "Tekstregelen gjelder fortsatt, og den er strengere her enn noe annet",
-    "sted: en generert ølflaske med etikett er en forfalskning av et",
-    "varemerke, ikke en illustrasjon. Flasker fotograferes uten etikett,",
-    "bakfra eller beskåret."
-  ],
-  "media": {
-    "generated": {
-      "allowPhoto": true,
-      "badge": true
-    }
-  },
-  "//checks": [
-    "`expect` er bare caption/veil, og det er ikke latskap: kapittel én tegner",
-    "ingenting på kartet. Ingen pins, ingen områder, ingen washes — så",
-    "marker/ground, fill/ground og colony/colony har bokstavelig talt ingenting",
-    "å måle på, og land/water er Explore-only med prober som er skrevet for et",
-    "annet emnes koordinater. Å be om dem ville gitt fem NO SAMPLES-feil som",
-    "ikke er defekter.",
-    "",
-    "Caption-målingen er derimot den viktigste i akkurat denne pakken. Dette er",
-    "et bildekapittel: teksten står over et fullskjermsbilde nesten hele veien,",
-    "og det er der undertekstene jobber hardest. check-contrast.py måler den",
-    "to ganger — på beaten under, og igjen på en beat med bilde oppe.",
-    "",
-    "s6.b8 er beaten der kartet endelig kommer fram og ingenting dekker det.",
-    "Når kapittel to har Burton på kartet, er DET beaten som skal stå her, og",
-    "da kommer marker/ground og fill/ground med."
-  ],
-  "checks": {
-    "contrast": {
-      "chapter": "chapter-1-fire-ting",
-      "beat": "s6.b8",
-      "at": 6.0,
-      "expect": [
-        "caption/veil"
-      ]
-    }
-  },
-  "//chapters": [
-    "Kompilert fra outline.md. Tom fordi alle seks står som `planned: true`.",
-    "    python tools/outline.py beer --write"
-  ],
-  "chapters": [
-    {
-      "id": "chapter-1-fire-ting",
-      "title": {
-        "no": "Fire ting i et glass",
-        "en": "Four things in a glass"
-      },
-      "subtitle": {
-        "no": "Vann, korn, humle og gjær",
-        "en": "Water, grain, hops and yeast"
-      },
-      "blurb": {
-        "no": "Nesten all øl i verden er laget av fire ting. Vi følger dem gjennom bryggeriet, fra åkeren til glasset, og finner ut hvor smaken kommer fra.",
-        "en": "Almost every beer in the world is made of four things. We follow them through the brewery, from the field to the glass, and find out where the taste comes from."
-      },
-      "langs": [
-        "no",
-        "en"
-      ]
-    }
-  ],
-  "//surfaces": [
-    "Hva scenen er laget av, argumentert i outline.md sin `shows:`. Fem av",
-    "seks kapitler ber om `pictures` først og `map` etterpå — dette er et",
-    "kurs med mer bilde og mindre kart enn de fire foran det.",
-    "",
-    "Kapittel én ber om `process`, og det finnes ingen flate som tegner en",
-    "rekkefølge av trinn. Det er en rammeverksoppgave, ikke en innholdsfeil,",
-    "og outline.py sier det hver gang den kjøres."
-  ],
-  "surfaces": [
-    "map",
-    "plate",
-    "overlays",
-    "sound",
-    "chart"
-  ],
-  "entries": {
-    "term": {
-      "label": {
-        "no": "Ordbok",
-        "en": "Glossary"
-      },
-      "browse": true
-    },
-    "topic": {
-      "label": {
-        "no": "Tema",
-        "en": "Topics"
-      },
-      "browse": true
-    }
+  "neutral": {
+   "label": {
+    "no": "Øvrige",
+    "en": "Elsewhere"
+   },
+   "hue": 210,
+   "sat": 0.16
   }
+ },
+ "map": {
+  "//": [
+   "Kurset går fra Burton upon Trent til Voss via Brussel, München, Plzeň",
+   "og København. Det er nordvest-Europa, og `home` står midt i det.",
+   "",
+   "`extent` er hvor emnet får lov å ha koordinater — ikke hvor kameraet",
+   "åpner. check-data.py bruker den til å fange en byttet lat/lon."
+  ],
+  "home": [
+   53.5,
+   4.0
+  ],
+  "zoom": {
+   "min": 3.0,
+   "max": 13,
+   "default": 4.6,
+   "maxFit": 12.0
+  },
+  "extent": [
+   [
+    44.0,
+    -13.0
+   ],
+   [
+    67.0,
+    24.0
+   ]
+  ],
+  "//basemap": [
+   "Natural Earth stopper ikke nord for femti grader av seg selv — det gjorde",
+   "de FILENE vi hadde bygd. mediterranean-10m er [-11, 27, 45, 50], altså sør",
+   "for Brussel, Burton og hele Norge, og world-50m er for grov til å zoome inn",
+   "i. Kapittel to til seks ville zoomet inn i blankt papir.",
+   "",
+   "northwest-europe-10m dekker [-12, 47, 17, 62]: Burton, London, Brussel,",
+   "München, Plzeň, København og Voss — hele reisen kurset gjør. Bygget med",
+   "",
+   "    python tools/build-basemap.py --pack beer",
+   "",
+   "`build` står her og ikke i verktøyet, fordi hvilket teater et emne spiller",
+   "på er en egenskap ved emnet."
+  ],
+  "basemap": {
+   "levels": [
+    {
+     "name": "world-110m",
+     "maxZoom": 4.0
+    },
+    {
+     "name": "world-50m",
+     "maxZoom": 5.4
+    },
+    {
+     "name": "northwest-europe-10m",
+     "maxZoom": null,
+     "regional": true,
+     "build": {
+      "scale": "10m",
+      "tol": 0.004,
+      "bbox": [
+       -12.0,
+       47.0,
+       17.0,
+       62.0
+      ]
+     }
+    }
+   ]
+  },
+  "borders": {
+   "country": true,
+   "state": false
+  },
+  "credit": "Natural Earth"
+ },
+ "//era": [
+  "1516 er renhetsloven i Bayern, som er den eldste datoen dette kurset har",
+  "noen grunn til å sette på en tidslinje. 1842 (Plzeň) og 1883 (renkultur)",
+  "er de to andre årstallene kurset faktisk står på."
+ ],
+ "era": {
+  "start": "1516-01-01",
+  "end": "2026-12-31",
+  "tickStep": "year"
+ },
+ "voices": {
+  "no": "nb-NO-FinnNeural",
+  "en": "en-GB-RyanNeural",
+  "rate": "-8%"
+ },
+ "narration": {
+  "wps": [
+   1.9,
+   3.4
+  ],
+  "minContentWordMs": 100
+ },
+ "//pools": [
+  "Bare de tre som finnes. Kurset kommer til å trenge to til, og de har en",
+  "ferdig form å kopiere fra vinkurset:",
+  "",
+  "  styles.json      ølstilene, med samme profil-akser som wines.json —",
+  "                   bitterhet, sødme, fylde, syre, frukt — slik at",
+  "                   chart.show kan legge en pilsner oppå en porter.",
+  "  ingredients.json malt, humle og gjær som oppslag, slik grapes.json er.",
+  "  place-notes.json Burton, Plzeň, München, Brussel, Voss.",
+  "",
+  "say.json kommer også: Plzeň, Reinheitsgebot, lambik og Brettanomyces",
+  "leses med norske bokstavverdier hvis ingen sier noe annet."
+ ],
+ "//pools2": [
+  "`sound` MÅ stå her. engine/surfaces/sound.js henter bare sound.json hvis",
+  "pakken sier at den har en — ellers logger hver eneste pakke uten lyd en",
+  "404. Konsekvensen av å glemme den er verre enn en 404: et navn som bare",
+  "finnes i pakken, som bedBrew, har ingen syntetisert reserve å falle",
+  "tilbake på, så cuen spiller ingenting og sier ingenting. Rapportert som",
+  "«jeg har ikke hørt noe bakgrunnsmusikk», og det stemte."
+ ],
+ "pools": {
+  "terms": "terms.json",
+  "topics": "topics.json",
+  "media": "media.json",
+  "sound": "sound.json",
+  "say": "say.json"
+ },
+ "//media": [
+  "allowPhoto er TRUE, av samme grunn som i vinkurset: en malt, et humlekon",
+  "og et gjæringskar er nåtidige ting som lar seg fotografere, så et",
+  "fotografisk bilde av et av dem påstår ingenting falskt.",
+  "",
+  "Tekstregelen gjelder fortsatt, og den er strengere her enn noe annet",
+  "sted: en generert ølflaske med etikett er en forfalskning av et",
+  "varemerke, ikke en illustrasjon. Flasker fotograferes uten etikett,",
+  "bakfra eller beskåret."
+ ],
+ "media": {
+  "generated": {
+   "allowPhoto": true,
+   "badge": true
+  }
+ },
+ "//checks": [
+  "`expect` er bare caption/veil, og det er ikke latskap: kapittel én tegner",
+  "ingenting på kartet. Ingen pins, ingen områder, ingen washes — så",
+  "marker/ground, fill/ground og colony/colony har bokstavelig talt ingenting",
+  "å måle på, og land/water er Explore-only med prober som er skrevet for et",
+  "annet emnes koordinater. Å be om dem ville gitt fem NO SAMPLES-feil som",
+  "ikke er defekter.",
+  "",
+  "Caption-målingen er derimot den viktigste i akkurat denne pakken. Dette er",
+  "et bildekapittel: teksten står over et fullskjermsbilde nesten hele veien,",
+  "og det er der undertekstene jobber hardest. check-contrast.py måler den",
+  "to ganger — på beaten under, og igjen på en beat med bilde oppe.",
+  "",
+  "s6.b8 er beaten der kartet endelig kommer fram og ingenting dekker det.",
+  "Når kapittel to har Burton på kartet, er DET beaten som skal stå her, og",
+  "da kommer marker/ground og fill/ground med."
+ ],
+ "checks": {
+  "contrast": {
+   "chapter": "chapter-1-fire-ting",
+   "beat": "s6.b8",
+   "at": 6.0,
+   "expect": [
+    "caption/veil"
+   ]
+  }
+ },
+ "//chapters": [
+  "Kompilert fra outline.md. Tom fordi alle seks står som `planned: true`.",
+  "    python tools/outline.py beer --write"
+ ],
+ "chapters": [
+   {
+     "id": "chapter-1-fire-ting",
+     "title": {
+       "no": "Fire ting i et glass",
+       "en": "Four things in a glass"
+     },
+     "subtitle": {
+       "no": "Vann, korn, humle og gjær",
+       "en": "Water, grain, hops and yeast"
+     },
+     "blurb": {
+       "no": "Nesten all øl i verden er laget av fire ting. Vi følger dem gjennom bryggeriet, fra åkeren til glasset, og finner ut hvor smaken kommer fra.",
+       "en": "Almost every beer in the world is made of four things. We follow them through the brewery, from the field to the glass, and find out where the taste comes from."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
+   },
+   {
+     "id": "chapter-2-overgjaer",
+     "title": {
+       "no": "Den som gjærer på toppen",
+       "en": "The one that ferments on top"
+     },
+     "subtitle": {
+       "no": "Ale, England, og vannet under Burton",
+       "en": "Ale, England, and the water under Burton"
+     },
+     "blurb": {
+       "no": "Varm gjæring, ferdig på tre dager, og en smak av frukt som ingen har tilsatt. Så en by som oppdaget at vannet under den var halve hemmeligheten.",
+       "en": "Warm fermentation, done in three days, and a taste of fruit nobody added. Then a town that found the water under it was half the secret."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
+   }
+ ],
+ "//surfaces": [
+  "Hva scenen er laget av, argumentert i outline.md sin `shows:`. Fem av",
+  "seks kapitler ber om `pictures` først og `map` etterpå — dette er et",
+  "kurs med mer bilde og mindre kart enn de fire foran det.",
+  "",
+  "Kapittel én ber om `process`, og det finnes ingen flate som tegner en",
+  "rekkefølge av trinn. Det er en rammeverksoppgave, ikke en innholdsfeil,",
+  "og outline.py sier det hver gang den kjøres."
+ ],
+ "surfaces": [
+  "map",
+  "plate",
+  "overlays",
+  "sound",
+  "chart"
+ ],
+ "entries": {
+  "term": {
+   "label": {
+    "no": "Ordbok",
+    "en": "Glossary"
+   },
+   "browse": true
+  },
+  "topic": {
+   "label": {
+    "no": "Tema",
+    "en": "Topics"
+   },
+   "browse": true
+  }
+ }
 }
