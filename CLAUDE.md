@@ -200,6 +200,7 @@ individual tools still work on their own, and a failure reads the same either wa
 python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/outline.py italy-wine          # does the course still say what it teaches?
 python tools/author.py content/italy-wine/script.chapter-1-piemonte.md --check   # prose vs the JSON that ships
+python tools/watch-stretch.py beer/chapter-1-fire-ting s3   # PLAY a scene and watch it
 python tools/check-pack.py         # does the app FIND everything a course declares?
 python tools/check-pack-selftest.py   # and does that check still catch anything?
 python tools/check-data.py

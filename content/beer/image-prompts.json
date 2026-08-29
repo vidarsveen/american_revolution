@@ -178,14 +178,14 @@
     "omits": "Not any identified town, well or period. A composite, not a record."
   },
   "vorter-glass": {
-    "prompt": "a plain glass tumbler of cloudy warm golden-brown liquid held up against a window, thick and slightly opaque, faint steam off the surface, plain background",
-    "style": "natural light photograph, muted colour, shallow depth of field",
+    "prompt": "a heavy glass of hot cloudy wort raised in a working brewery, the liquid opaque and hazy deep amber with no foam head at all and no bubbles, backlit so it glows, fine steam rising off the surface, the glass filling the upper half of the frame, dark copper vessels and warm lamps blurred behind, no people",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark surroundings",
     "aspect": "portrait",
     "title": {
       "no": "Vørter, før gjæren",
       "en": "Wort, before the yeast"
     },
-    "claims": "Sweet wort drawn off the mash: cloudy, warm, and not yet beer.",
+    "claims": "Sweet wort drawn off the mash: hot, opaque and hazy, and not yet beer -- no yeast has touched it.",
     "omits": "Not any identified brewery or batch. The glass carries no markings of any kind."
   },
   "estere-frukt": {
