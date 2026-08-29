@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v0ff2b2c73b';
+const VERSION = 'v9a453e9eee';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -84,6 +84,7 @@ const PRECACHE = [
   './content/beer/media/gjaerkake-krukke.jpg',
   './content/beer/media/glass-mot-vindu.jpg',
   './content/beer/media/humle-i-kok.jpg',
+  './content/beer/media/humle-torking.jpg',
   './content/beer/media/humlehage.jpg',
   './content/beer/media/humlekongle-snitt.jpg',
   './content/beer/media/kalk-vann.jpg',
@@ -91,6 +92,7 @@ const PRECACHE = [
   './content/beer/media/kok-fosskok.jpg',
   './content/beer/media/malt-fargeskala.jpg',
   './content/beer/media/mesk-damp.jpg',
+  './content/beer/media/mesk-termometer.jpg',
   './content/beer/media/pub-lyst-og-morkt.jpg',
   './content/beer/media/spirende-korn.jpg',
   './content/beer/media/vorter-glass.jpg',
@@ -290,6 +292,24 @@ self.addEventListener('activate', (e) => {
       ))
       .then(() => self.clients.claim())
   );
+});
+
+/* WHICH BUILD IS THIS PHONE ACTUALLY RUNNING?
+
+   "I pushed" and "the site is updated" are different claims, and so are "the
+   site is updated" and "the phone in my hand has it". tools/check-published.py
+   answers the middle one by hashing what the server sends; nothing answered
+   the last one, so testing a fix on a phone meant reloading and hoping.
+
+   VERSION is a hash of the precached files' contents, so it is not a label
+   somebody remembered to bump — it moves exactly when what a reader gets
+   moves. Asking the WORKER for it, rather than fetching a version file, is
+   the point: the worker replying is the one actually serving this page, so
+   the answer is what is running and not what is on the server. */
+self.addEventListener('message', (e) => {
+  if (e.data === 'version') {
+    e.source?.postMessage({ type: 'version', version: VERSION });
+  }
 });
 
 self.addEventListener('fetch', (e) => {

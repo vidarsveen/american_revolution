@@ -235,5 +235,27 @@
     },
     "claims": "Two beers about as far apart as beer gets — one pale, one black — made from the same four ingredients, on a table in a room full of people.",
     "omits": "Not any identified beers, breweries or premises. The glasses carry no markings of any kind and no face is identifiable."
+  },
+  "mesk-termometer": {
+    "prompt": "a round dial thermometer pushed into a thick steaming mash of wet crushed grain in a metal vessel, the needle clearly resting in the middle of the dial, close view from above, warm humid air, dim brewery light, no numbers legible",
+    "style": "natural light interior photograph, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "title": {
+      "no": "To grader",
+      "en": "Two degrees"
+    },
+    "claims": "A thermometer in the mash — the lever that decides whether the same malt and the same recipe give a drier beer or a fuller one.",
+    "omits": "Not any identified brewery, and no reading on the dial is legible: the sentence is about a difference of two degrees, not about a particular temperature."
+  },
+  "humle-torking": {
+    "prompt": "dried whole hop cones heaped high in a coarse hessian sack with its mouth rolled open, the heap filling the upper part of the frame, a dim wooden store room behind, shafts of dusty daylight from high above, no people",
+    "style": "natural light interior photograph, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "title": {
+      "no": "Humlen som holdt",
+      "en": "The hops that kept"
+    },
+    "claims": "Dried hops in store — the form in which they travelled and kept, which is why hops beat every other bittering herb.",
+    "omits": "No brewery, region or year is identified, and nothing in the picture dates it: drying and sacking hops looks much the same across several centuries."
   }
 }

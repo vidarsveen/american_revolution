@@ -214,6 +214,11 @@ async function openChapter(index, { under = null } = {}) {
   reportStyleDrift(el).catch(() => {});
 
   const stage = view.querySelector('.story__stage');
+  // A chapter that declares `ground: none` gets a painted backdrop instead of
+  // whatever the page happens to be behind it. Without this the gaps between
+  // pictures were the raw page colour — paper in the light theme, near black
+  // in the dark one, and the dark one reads as a screen that has failed.
+  view.classList.toggle('is-groundless', chapter?.ground === 'none');
   // The chapter's OWN people, not whichever pack booted first.
   const cast = chapter.people?.length ? chapter.people : people;
   stageApi = mountStage(stage, chapter, cast, chapter.narrationLang);

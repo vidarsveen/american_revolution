@@ -659,8 +659,15 @@ def new_pack(pack: str) -> int:
         "voices": {"no": "nb-NO-FinnNeural", "en": "en-GB-RyanNeural",
                    "rate": "-8%"},
         "narration": {"wps": [1.9, 3.4], "minContentWordMs": 100},
+        # `sound` is declared UP FRONT even though the file is empty, because
+        # the surface list below says this course will use sound, and the app
+        # only ever fetches what this dict names. The beer course was
+        # scaffolded without it, wrote a music bed, referenced it correctly
+        # from the chapter, passed every check -- and played silence for a
+        # week, because a sound nobody asked for produces no error.
+        # tools/check-pack.py catches it now; not shipping the hole is better.
         "pools": {"terms": "terms.json", "topics": "topics.json",
-                  "media": "media.json"},
+                  "media": "media.json", "sound": "sound.json"},
         "chapters": [],
         "surfaces": ["plate", "overlays", "sound"],
         "entries": {
@@ -678,12 +685,30 @@ def new_pack(pack: str) -> int:
     # An OBJECT and not an array. Every pool in this framework is keyed by id
     # -- terms, topics, media, grapes -- and an empty `[]` gets as far as
     # check-data.py's `media.items()` before saying so.
-    for name in ("terms.json", "topics.json", "media.json"):
+    for name in ("terms.json", "topics.json", "media.json", "sound.json"):
         with open(os.path.join(folder, name), "w",
                   encoding="utf-8", newline="\n") as fh:
             fh.write("{}\n")
 
+    # ON THE FRONT DOOR IMMEDIATELY. content/packs.json is what the app lists
+    # and what every check iterates, so a course that is not in it is invisible
+    # to both. The old scaffold left this to be remembered later, which means a
+    # course gets written, compiled and recorded while being validated by
+    # nothing at all -- and the tool's own next-step list never mentioned it.
+    reg = os.path.join(CONTENT, "packs.json")
+    try:
+        with open(reg, encoding="utf-8") as fh:
+            listed = json.load(fh)
+    except (FileNotFoundError, json.JSONDecodeError):
+        listed = []
+    if pack not in listed:
+        listed.append(pack)
+        with open(reg, "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(listed, fh, ensure_ascii=False, indent=1)
+            fh.write("\n")
+
     print(f"content/{pack}/ — outline.md, pack.json and empty pools.\n"
+          f"  listed in content/packs.json, so every check can see it\n"
           f"  1. write outline.md: the question, the course, the chapters\n"
           f"  2. python tools/outline.py {pack} --write\n"
           f"  3. python tools/author.py --new {pack}/<chapter-id>")

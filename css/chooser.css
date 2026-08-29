@@ -278,3 +278,11 @@
   .chooser, .subject, .chooser__cell { transition: none; animation: none; }
   .subject:hover { transform: none; }
 }
+
+/* The running build, appended to the footer line. Deliberately the faintest
+   thing on the page: it is for answering "did my push land on this phone",
+   and a reader who is not asking that should not notice it. */
+.chooser__build {
+  font-variant-numeric: tabular-nums;
+  opacity: .7;
+}

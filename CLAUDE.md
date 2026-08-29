@@ -200,6 +200,8 @@ individual tools still work on their own, and a failure reads the same either wa
 python tools/check-script.py american-revolution/chapter-1775-04-19
 python tools/outline.py italy-wine          # does the course still say what it teaches?
 python tools/author.py content/italy-wine/script.chapter-1-piemonte.md --check   # prose vs the JSON that ships
+python tools/check-pack.py         # does the app FIND everything a course declares?
+python tools/check-pack-selftest.py   # and does that check still catch anything?
 python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
@@ -312,6 +314,32 @@ it: an export error naming a module you did not touch, right after a deploy, is 
 your code. Do not go looking for the bug. And it is why the answer to "is it live?" is
 `check-published.py` *plus* a reload in a browser that has been there before — the two
 questions have different answers for ten minutes.
+
+**The checks find a course's files by convention; the APP finds them through
+`pack.json`. When those two disagree, everything passes and the browser gets
+nothing.** The beer bed was silent for a week: `sound.json` was on disk, the bed
+was in it, the chapter asked for it by name, and `check-script.py` passed —
+because it opens `sound.json` directly. `pack.json` never declared the pool, so
+the app never fetched the file, and a sound nobody asked for raises no error.
+
+This was measured, not argued. A brand-new course was scaffolded and eight
+authoring mistakes planted in it: seven were caught with a sentence naming the
+fix. Then the same course was given a pool on disk and no declaration, and it
+passed clean. The gap is not in the chapter layer — that layer is good — it is
+that nothing read a course the way the app reads one.
+
+`tools/check-pack.py` does, and reports both directions: declared and not there
+(the app fetches, fails, carries on empty), and there and not declared (the app
+never looks). It also asks the two questions nothing asked before — does a
+declared chapter have a recording, and does a declared picture have a file — and
+whether the course is in `content/packs.json` at all, because a course that is
+not is invisible to every check in this list. It runs FIRST in `check-all.py`.
+
+`tools/check-pack-selftest.py` reintroduces all six bugs one at a time and
+confirms each one fails, because four checks in this repo have passed while
+measuring nothing. **And the scaffold no longer ships the hole**: `--new-pack`
+declares `pools.sound` up front and registers the course in `packs.json`, since
+not creating the bug beats catching it.
 
 **A compiled file edited by hand is a fork, and the compiler wins the next time
 somebody runs it.** `script.<chapter>.md` is the source and `chapter-*.json` is what it

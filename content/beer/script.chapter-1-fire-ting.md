@@ -68,7 +68,7 @@ Bare et bryggeri. Det kan stå hvor som helst, og det gjør akkurat det samme.
 Det høres ut som en fotnote. Det er tvert imot den ingrediensen som bestemte mest, lengst.
 > That sounds like a footnote. It is in fact the ingredient that decided the most, for the longest.
 
-{stat.clear} {plate.hide 1.1} For vann er aldri bare vann. Det som er løst i det følger med inn i ølet.
+{stat.clear} For vann er aldri bare vann. Det som er løst i det følger med inn i ølet.
 > Because water is never just water. Whatever is dissolved in it comes into the beer with it.
 {plate kalk-vann motion=left over=26 dim=0.14 push=0.16 into=1.4} Kalk, gips og salt fra bakken under brønnen. Du smaker det ikke direkte, men det endrer alt annet.
 > Chalk, gypsum and salt from the ground under the well. You do not taste it directly, but it changes everything else.
@@ -91,7 +91,7 @@ Et byggkorn er en pakke stivelse med en plante sovende inni.
 Og stivelse kan ikke gjæres. Gjær spiser sukker, ikke stivelse.
 > And starch cannot be fermented. Yeast eats sugar, not starch.
 
-{plate.hide 1.1} Så bryggeren lurer kornet. Det legges i vann i to døgn, og tror det er blitt vår.
+Så bryggeren lurer kornet. Det legges i vann i to døgn, og tror det er blitt vår.
 > So the brewer tricks the grain. It is soaked for two days, and thinks spring has arrived.
 {plate spirende-korn motion=in over=26 dim=0.16 push=0.1 into=1.4} Kornet begynner å spire. Og mens det spirer, bygger det verktøyet det trenger for å gjøre sin egen stivelse om til sukker.
 > The grain starts to sprout. And while it sprouts, it builds the tools it needs to turn its own starch into sugar.
@@ -100,14 +100,14 @@ Akkurat da blir det tørket. Planten dør. Verktøyet overlever, og stivelsen li
 Det ferdige kornet heter malt. {mark term:malt}
 > The finished grain is called malt. {^}
 
-{plate.hide 1.1} Hvor varmt malten tørkes til slutt bestemmer fargen, og det er en spak med stort utslag.
+Hvor varmt malten tørkes til slutt bestemmer fargen, og det er en spak med stort utslag.
 > How hot the malt is dried at the end decides the colour, and it is a lever with a long throw.
 {plate malt-fargeskala motion=right over=24 dim=0.12 push=0.12 into=1.4} Tørkes den forsiktig, blir den lys og smaker brød og kjeks.
 > Dried gently, it stays pale and tastes of bread and biscuit.
 Tørkes den varmere, blir den til karamell. Brennes den, blir den nesten svart og smaker kaffe og mørk sjokolade.
 > Dried hotter, it turns to caramel. Roasted, it goes nearly black and tastes of coffee and dark chocolate.
 
-{plate.hide 1.1 @end} Det betyr noe som overrasker de fleste. Et mørkt øl er ikke sterkere enn et lyst.
+Det betyr noe som overrasker de fleste. Et mørkt øl er ikke sterkere enn et lyst.
 > Which means something that surprises most people. A dark beer is not stronger than a pale one.
 Fargen sier bare hvor hardt kornet er brent. Ikke noe mer.
 > The colour only says how hard the grain was roasted. Nothing more.
@@ -130,7 +130,7 @@ Temperaturen i mesken er en spak til. To grader kaldere gir gjæren mer å spise
 > The mash temperature is another lever. Two degrees cooler gives the yeast more to eat, and the beer comes out drier and stronger.
 To grader varmere lar mer bli igjen, og ølet blir fyldigere og søtere.
 > Two degrees warmer leaves more behind, and the beer comes out fuller and sweeter.
-{plate.hide 1.1} Samme malt, samme oppskrift, to grader. Slike forskjeller er hele dette faget.
+{plate.hide 1.1} {plate mesk-termometer motion=in over=22 dim=0.14 push=0.08 into=1.4} Samme malt, samme oppskrift, to grader. Slike forskjeller er hele dette faget.
 > Same malt, same recipe, two degrees. Differences like that are the whole subject.
 
 {plate kok-fosskok motion=in over=24 dim=0.18 push=0.08 into=1.4} Så kokes vørteren hardt i omtrent en time. {mark term:kok}
@@ -151,7 +151,7 @@ Den klatrer sju {stat 7 m label=på én sommer | in a single summer side=humle} 
 Det er hunnplantens kongler bryggeren vil ha. Inni dem sitter gule korn som heter lupulin.
 > It is the female plant's cones the brewer wants. Inside them sit yellow grains called lupulin.
 
-{stat.clear} {plate.hide 1.1} De kornene gjør to ting, og bare den ene handler om smak.
+{stat.clear} De kornene gjør to ting, og bare den ene handler om smak.
 > Those grains do two things, and only one of them is about taste.
 {plate humlekongle-snitt motion=in over=27 dim=0.14 push=0.07 into=1.4} Det ene er bitterhet. {mark term:bitterhet} Malten har fylt vørteren med sukker, og uten en motvekt smaker øl som sirup.
 > The first is bitterness. {^} The malt has filled the wort with sugar, and without a counterweight beer tastes like syrup.
@@ -159,10 +159,10 @@ Det andre er at humle dreper bakterier. Øl med humle i holdt seg. Øl uten ble 
 > The second is that hops kill bacteria. Hopped beer kept. Unhopped beer went sour.
 Før det fantes kjøling var det hele forskjellen mellom et øl som overlevde vinteren og et som ikke gjorde det.
 > Before refrigeration, that was the entire difference between a beer that survived the winter and one that did not.
-{plate.hide 1.1} Det er derfor humle vant. Ikke fordi den smakte best, men fordi den holdt lengst.
+{plate.hide 1.1} {plate humle-torking motion=in over=20 dim=0.13 push=0.08 into=1.4} Det er derfor humle vant. Ikke fordi den smakte best, men fordi den holdt lengst.
 > That is why hops won. Not because they tasted best, but because they kept longest.
 
-{fact term:bitterhet} Bitterhet måles i noe som heter IBU. {compare part=15 "15" korn Lys lager | Pale lager part=35 "35" humle Pils | Pilsner part=65 "65" gjaer Moderne IPA | Modern IPA mode=bar note=Bitterhet i IBU. Tallet betyr ingenting uten sukkeret det leses mot. | Bitterness in IBU. The number means nothing without the sugar it is read against.}
+{fact term:bitterhet} {plate.hide 1.1} Bitterhet måles i noe som heter IBU. {compare part=15 "15" korn Lys lager | Pale lager part=35 "35" humle Pils | Pilsner part=65 "65" gjaer Moderne IPA | Modern IPA mode=bar note=Bitterhet i IBU. Tallet betyr ingenting uten sukkeret det leses mot. | Bitterness in IBU. The number means nothing without the sugar it is read against.}
 > Bitterness is measured in something called IBU. {^}
 En lys lager ligger rundt femten. En pils rundt trettifem. En moderne IPA kan ligge over seksti.
 > A pale lager sits around fifteen. A pilsner around thirty-five. A modern IPA can be over sixty.

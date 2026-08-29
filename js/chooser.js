@@ -46,6 +46,46 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) =>
  * that already names one — so a single-subject build never sees this screen
  * and pays nothing for it.
  */
+/* The build actually running on THIS device, asked of the service worker.
+
+   Testing a fix on a phone used to mean reloading and hoping. GitHub Pages
+   builds asynchronously and serves JavaScript with a ten-minute cache, so
+   "I pushed" is three claims away from "the phone in my hand has it", and
+   the only honest way to close the gap was a hard reload and a guess.
+
+   The worker replying is the one serving this page, so its VERSION -- a hash
+   of what it precached, not a number anybody remembered to bump -- is what is
+   running here. Silent when there is no worker: on localhost that is normal,
+   and a line saying "dev" on every reader's screen would be noise. */
+function showBuild(el) {
+  if (!el || !('serviceWorker' in navigator)) return;
+  const sw = navigator.serviceWorker;
+  const show = (v) => {
+    el.textContent = ` · ${v}`;
+    el.hidden = false;
+  };
+  const onMsg = (e) => {
+    if (e.data?.type === 'version') {
+      show(e.data.version);
+      sw.removeEventListener('message', onMsg);
+    }
+  };
+  sw.addEventListener('message', onMsg);
+  // `ready` and not `controller`: on the very first visit the worker is
+  // installing and controls nothing yet, so asking the controller gets null
+  // and the line never appears — on exactly the visit most likely to be a
+  // test of something just pushed.
+  //
+  // On localhost index.html unregisters every worker on purpose, so `ready`
+  // NEVER settles there and this line never appears in dev. That is correct
+  // and it is also why this can only be verified on the deployed site: a
+  // probe that waits for it locally waits for ever.
+  const give_up = setTimeout(() => sw.removeEventListener('message', onMsg), 8000);
+  sw.ready
+    .then((reg) => (reg.active || sw.controller)?.postMessage('version'))
+    .catch(() => clearTimeout(give_up));
+}
+
 export async function chooseSubject(host, { lang = 'no', t = (k) => k } = {}) {
   const ids = await listPacks();
   if (ids.length <= 1) return ids[0] || null;
@@ -73,10 +113,12 @@ export async function chooseSubject(host, { lang = 'no', t = (k) => k } = {}) {
         <ul class="chooser__grid">
           ${subjects.map((s) => card(s, lang, t)).join('')}
         </ul>
-        <p class="chooser__foot">${esc(t('chooseSubjectFoot'))}</p>
+        <p class="chooser__foot">${esc(t('chooseSubjectFoot'))}
+          <span class="chooser__build" hidden></span></p>
       </div>`;
 
     host.appendChild(el);
+    showBuild(el.querySelector('.chooser__build'));
 
     const go = (id) => {
       // Remember the choice in the URL, so a reload lands back here rather

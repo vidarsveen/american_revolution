@@ -126,6 +126,14 @@ def main() -> int:
 
     ok = True
 
+    # FIRST, and deliberately. Every other check reads a course by opening the
+    # file it expects; this one reads it the way the app does, through
+    # pack.json. A course whose pool is on disk but undeclared passes
+    # everything below and plays silence in the browser -- which is exactly
+    # what happened -- so there is no point running the rest until this passes.
+    if "pack" not in skip:
+        ok &= run("check-pack", ["tools/check-pack.py"])
+
     if "script" not in skip:
         for ref in chapters(packs):
             ok &= run(f"check-script {ref}", ["tools/check-script.py", ref])

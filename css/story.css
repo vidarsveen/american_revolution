@@ -63,6 +63,43 @@
 
 /* ---------- Map surface ------------------------------------ */
 
+/* NO GROUND, BUT STILL A BACKDROP.
+
+   A chapter with `ground: none` mounts no map, and what showed through was the
+   page itself: paper in the light theme, and #14161b in the dark one, which is
+   near black and reads as a screen that has failed rather than as a chapter
+   that has no map.
+
+   So the stage paints its own. Two soft pools of warm light on a slightly
+   deeper ground — the same move a photographer makes with a backdrop, which is
+   to light it rather than leave it flat. It is deliberately almost featureless:
+   this is what sits BEHIND pictures and under a caption, and anything with a
+   pattern would compete with both.
+
+   Warm in both themes on purpose. The subject is beer, wood, malt and lamplight,
+   and a neutral grey backdrop under a picture of a pub reads as a different
+   room. */
+.view--story.is-groundless .story__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(120% 80% at 50% 18%, var(--ground-lit), transparent 70%),
+    radial-gradient(90% 60% at 50% 100%, var(--ground-warm), transparent 75%),
+    var(--ground-base);
+}
+:root {
+  --ground-base: #e6dcc6;
+  --ground-lit:  rgba(255, 252, 244, .9);
+  --ground-warm: rgba(198, 166, 116, .28);
+}
+:root:not([data-theme="light"]) {
+  --ground-base: #1a1712;
+  --ground-lit:  rgba(74, 62, 46, .55);
+  --ground-warm: rgba(122, 92, 52, .30);
+}
+
 .stage-map { position: absolute; inset: 0; }
 .stage-map__canvas { position: absolute; inset: 0; z-index: 1; background: var(--paper-sunken); }
 

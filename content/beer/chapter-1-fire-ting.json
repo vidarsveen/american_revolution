@@ -196,11 +196,6 @@
       {
        "on": "start",
        "do": "stat.clear"
-      },
-      {
-       "on": "start",
-       "do": "plate.hide",
-       "over": 1.1
       }
      ],
      "gapAfter": 0.9
@@ -340,13 +335,7 @@
       "no": "Så bryggeren lurer kornet. Det legges i vann i to døgn, og tror det er blitt vår.",
       "en": "So the brewer tricks the grain. It is soaked for two days, and thinks spring has arrived."
      },
-     "cues": [
-      {
-       "on": "start",
-       "do": "plate.hide",
-       "over": 1.1
-      }
-     ],
+     "cues": [],
      "gapAfter": 0.9
     },
     {
@@ -403,13 +392,7 @@
       "no": "Hvor varmt malten tørkes til slutt bestemmer fargen, og det er en spak med stort utslag.",
       "en": "How hot the malt is dried at the end decides the colour, and it is a lever with a long throw."
      },
-     "cues": [
-      {
-       "on": "start",
-       "do": "plate.hide",
-       "over": 1.1
-      }
-     ],
+     "cues": [],
      "gapAfter": 0.9
     },
     {
@@ -447,13 +430,7 @@
       "no": "Det betyr noe som overrasker de fleste. Et mørkt øl er ikke sterkere enn et lyst.",
       "en": "Which means something that surprises most people. A dark beer is not stronger than a pale one."
      },
-     "cues": [
-      {
-       "on": "end",
-       "do": "plate.hide",
-       "over": 1.1
-      }
-     ],
+     "cues": [],
      "gapAfter": 0.9
     },
     {
@@ -612,6 +589,16 @@
        "on": "start",
        "do": "plate.hide",
        "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "mesk-termometer",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
       }
      ],
      "gapAfter": 1.35
@@ -752,11 +739,6 @@
       {
        "on": "start",
        "do": "stat.clear"
-      },
-      {
-       "on": "start",
-       "do": "plate.hide",
-       "over": 1.1
       }
      ],
      "gapAfter": 0.9
@@ -819,6 +801,16 @@
        "on": "start",
        "do": "plate.hide",
        "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "humle-torking",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.13,
+       "push": 0.08,
+       "into": 1.4
       }
      ],
      "gapAfter": 1.35
@@ -835,6 +827,11 @@
        "do": "fact.show",
        "kind": "term",
        "id": "bitterhet"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
       },
       {
        "on": {

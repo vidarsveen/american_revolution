@@ -3,8 +3,9 @@
   "$keys": "motion.tap|enter|exit|dissolve|turn|drift (ms) · camera.flyOver|clamp|quantise · plate.motion|push|focus|fit · type.scale · map.deckReserve|labelGap · sound.bedDb|duckDb. Alt annet rapporteres ved oppstart som erklært-men-ulest.",
   "$why": "Ingen tall er endret ennå, og filen finnes fordi den MÅ finnes: uten den ber motoren om content/beer/style.json, får 404, og tools/check-engine.py feller bygget på konsollfeilen. Den ble funnet nøyaktig sånn, første gang kurset ble sjekket.",
   "$next": "plate.push er fortsatt det som kan endres her, og det skal MÅLES på skjermen med dev/style-lab.html, ikke gjettes.",
-  "//sound": "duckDb er -9 og ikke -12. Teppet ligger nå på ett nivå gjennom en hel scene (se sound.minOpenMs i engine/defaults/style.json), og et teppe som ligger stille tåler å være nærmere stemmen enn et som stuper og reiser seg mellom hver setning. Dette kurset har dessuten bare teppe på første og siste scene.",
+  "//sound": "Målt, ikke gjettet. Teppefila ligger på -21,4 dBFS RMS og fortellerstemmen på -19,1 over de delene som faktisk er tale. Med bedDb -8 og duckDb -9 lå teppet 19,3 dB under stemmen mens det duket — og siden sound.minOpenMs er 1200 duker det praktisk talt hele scenen, så 19,3 dB under er ALT en lytter får. Det er nøyaktig nivået vinkurset ble rapportert som «musikken virker ikke» på. -4/-6 gir 12 dB under stemmen jevnt og 6 dB under i åpningen, og det ligger fortsatt stille fordi minOpenMs står.",
   "sound": {
-    "duckDb": -9
+    "bedDb": -4,
+    "duckDb": -6
   }
 }

@@ -92,7 +92,38 @@ def load_json(path: str, default=None):
     if not os.path.exists(path):
         return default
     with open(path, encoding="utf-8") as fh:
-        return json.load(fh)
+        try:
+            return json.load(fh)
+        except json.JSONDecodeError as e:
+            # Name the file and the line. A course has a dozen JSON files and a
+            # bare JSONDecodeError says which line of WHICH is anybody's guess.
+            raise SystemExit(
+                f"{os.path.relpath(path, ROOT)} is not valid JSON: "
+                f"line {e.lineno} column {e.colno}, {e.msg}") from None
+
+
+def pool_ids(path: str) -> set:
+    """The ids in a pool file, whichever of the two shapes it is written in.
+
+    Pools are objects keyed by id -- `{"chardonnay": {...}}` -- and that is
+    what the app expects. But `people.json` is an array of objects with an
+    `id` field, and a hand-written pool comes out as an array often enough
+    that it is worth tolerating rather than crashing.
+
+    It used to crash. `set(some_list_of_dicts)` dies with `unhashable type:
+    'dict'`, which is a Python traceback ending in a line of scriptlib and
+    names neither the course nor the file the author actually got wrong.
+    """
+    data = load_json(path)
+    if data is None:
+        return set()
+    if isinstance(data, dict):
+        return set(data)
+    if isinstance(data, list):
+        return {x.get("id") for x in data if isinstance(x, dict) and x.get("id")} \
+            | {x for x in data if isinstance(x, str)}
+    raise SystemExit(f"{os.path.relpath(path, ROOT)} should be an object keyed "
+                     f"by id, and it is a {type(data).__name__}")
 
 
 def load_chapter(rel: str) -> tuple[str, str, dict]:
@@ -539,13 +570,13 @@ def resolve_pools(pack: str, chapter: dict) -> tuple[dict, list[str]]:
     the point of the manifest.
     """
     pd = pack_dir(pack)
-    people = {p["id"] for p in (load_json(os.path.join(pd, "people.json")) or [])}
-    media = set(load_json(os.path.join(pd, "media.json")) or {})
-    sounds = set(load_json(os.path.join(pd, "sound.json")) or {})
+    people = pool_ids(os.path.join(pd, "people.json"))
+    media = pool_ids(os.path.join(pd, "media.json"))
+    sounds = pool_ids(os.path.join(pd, "sound.json"))
     regions, problems = region_names(pack, chapter)
     pools_decl = (load_json(os.path.join(pd, "pack.json")) or {}).get("pools", {})
-    terms = set(load_json(os.path.join(pd, pools_decl.get("terms", "terms.json"))) or {})
-    topics = set(load_json(os.path.join(pd, pools_decl.get("topics", "topics.json"))) or {})
+    terms = pool_ids(os.path.join(pd, pools_decl.get("terms", "terms.json")))
+    topics = pool_ids(os.path.join(pd, pools_decl.get("topics", "topics.json")))
 
     pools = {
         "place":  (set(chapter.get("places", {})), "place"),
