@@ -178,7 +178,14 @@ async function loadSurface(id) {
  * cached and `ready` is already resolved.
  */
 export function mountAll(container, chapter, ctx = {}) {
-  const wanted = surfacesFor(chapter?.packInfo);
+  // THE CHAPTER, not just its pack. `ground: none` is a property of one
+  // chapter and it is read here — this line was `surfacesFor(chapter?.packInfo)`
+  // when the option was added, so a mapless chapter mounted the map anyway and
+  // drew a world map behind every gap between pictures. It was verified
+  // against stageSurfaces(), which is the REPORTING path and passes the
+  // chapter; the mounting path did not. A probe that asks a different function
+  // than the app uses will agree with you every time.
+  const wanted = surfacesFor(chapter?.packInfo, chapter);
   unmountAll();
 
   const pending = [];

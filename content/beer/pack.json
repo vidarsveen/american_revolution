@@ -211,10 +211,19 @@
     "say.json kommer også: Plzeň, Reinheitsgebot, lambik og Brettanomyces",
     "leses med norske bokstavverdier hvis ingen sier noe annet."
   ],
+  "//pools2": [
+    "`sound` MÅ stå her. engine/surfaces/sound.js henter bare sound.json hvis",
+    "pakken sier at den har en — ellers logger hver eneste pakke uten lyd en",
+    "404. Konsekvensen av å glemme den er verre enn en 404: et navn som bare",
+    "finnes i pakken, som bedBrew, har ingen syntetisert reserve å falle",
+    "tilbake på, så cuen spiller ingenting og sier ingenting. Rapportert som",
+    "«jeg har ikke hørt noe bakgrunnsmusikk», og det stemte."
+  ],
   "pools": {
     "terms": "terms.json",
     "topics": "topics.json",
-    "media": "media.json"
+    "media": "media.json",
+    "sound": "sound.json"
   },
   "//media": [
     "allowPhoto er TRUE, av samme grunn som i vinkurset: en malt, et humlekon",

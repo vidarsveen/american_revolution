@@ -372,6 +372,11 @@ COLONIES_JS = """
 async () => {
   const M = await import('/engine/scenes/map.js');
   const map = M.getStoryMap();
+  // A chapter with `ground: none` mounts no map surface, so there is no map
+  // instance either — and there are no regions to compare. Checked BEFORE
+  // touching it: the guard further down was on the host element, which is one
+  // line too late to stop map.redraw() throwing.
+  if (!map) return [];
   // Take the names off the map before measuring it. Sampling beside a label
   // to dodge its halo is guesswork on a phone, where Rhode Island is eight
   // pixels wide and "beside" is already Connecticut — the three of them came
@@ -751,7 +756,10 @@ def run_story(theme: str, width: int, height: int, shots: Path):
             page.on("pageerror", lambda e: errors.append(str(e)))
             page.goto(app_url(base), wait_until="networkidle")
             page.wait_for_function(
-                "() => !!document.querySelector('#story-map') && !document.querySelector('.boot')",
+                # See check-scene-plate.py: the map host is not a readiness
+                # signal once a chapter can declare it has no ground.
+                "() => !!document.querySelector('.story__stage') "
+                "&& !document.querySelector('.boot')",
                 timeout=20000)
             page.evaluate("() => document.querySelector('.story__cover')"
                           "?.classList.remove('is-on')")

@@ -100,7 +100,9 @@ async function boot(pack) {
   const doc = el.frame.contentDocument;
   const btn = await until(() => doc.querySelector(`.subject[data-pack="${pack}"]`));
   btn.click();
-  await until(() => doc.querySelector('#story-map') && !doc.querySelector('.boot'), 30000);
+  // The STAGE, not the map host: a chapter may declare `ground: none` and
+  // never build a map at all. See tools/check-scene-plate.py.
+  await until(() => doc.querySelector('.story__stage') && !doc.querySelector('.boot'), 30000);
   await sleep(1200);
   return doc;
 }

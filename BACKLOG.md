@@ -81,6 +81,28 @@ Every `fact.show` is out of chapter one as a result. Eleven marked words remain
 and each opens its entry from the transcript, where a reader can go looking
 rather than being offered.
 
+**FIXED — `ground: none` did not remove the map, and the verification was the
+problem.** Reported as "I see the map of Africa in between images". The option
+took the map SURFACE out of the cue table, and `mountAll()` — the function that
+actually decides what to build — was still calling `surfacesFor(chapter.packInfo)`
+without the chapter. So the map mounted anyway and drew a world map behind every
+gap between pictures.
+
+It was verified against `stageSurfaces()`, which is the REPORTING path and does
+take the chapter. It answered exactly what was wanted while the mounting path did
+something else. **A probe that asks a different function than the app uses will
+agree with you every time** — the same shape as verifying a dissolve with a seek,
+twice in one day. The re-check queried the DOM instead.
+
+Three checks broke on the fix, all for one reason: they used `#story-map` as
+their "the app is ready" signal, and a chapter with no ground never creates one,
+so they waited twenty seconds and reported a failure of something else. They wait
+on `.story__stage` now.
+
+**Still open: 19 % of the chapter is blank paper** — one minute fifty-three — where
+it used to be blank map. Calmer than a wrong map and still not good. Six more
+pictures would close it.
+
 **FIXED — a phone was showing 30 % of every wide picture.** Reported as "when
 you show the four ingredients, I only see two of them on mobile", and the number
 is worse than it sounds. A plate fills the stage under `cover`, and the stage on
@@ -497,6 +519,32 @@ this list assumed, and it should be re-argued from the numbers above rather than
 built on the old one. What a scene declaring `ground: none` would still buy is
 the paint and the geometry a subject that is not about places never needs — that
 is a real argument, and it is a different one.
+
+**4e. The bed shipped and nobody heard it, and the reason is the worst kind.**
+Reported as "I have not heard any background music" while the file was on disk,
+in the manifest, licensed, measured and live.
+
+`engine/surfaces/sound.js` only fetches a pack's sound.json if the pack DECLARES
+it — `pools.sound` — because otherwise every pack without audio logs a 404 on
+every load. The beer pack never declared it. So the manifest was never fetched,
+`bedBrew` was never a name the library knew, and the cue played nothing.
+
+**And it failed to SILENCE, with no error.** The synthesised catalogue is the
+designed fallback when a pack file is missing — but only for names the
+catalogue HAS. `bedBrew` is a pack-only name; there was nothing behind it. A
+missing file for `wind` degrades to a synthesised wind; a missing file for a new
+name degrades to nothing at all, quietly. Worth knowing before adding another.
+
+**The anti-pumping number was dead too**, and had been saying so out loud:
+`[style] engine/defaults/style.json declares "sound.minOpenMs", which nothing
+reads` on every page load. A style key has to be in the SPEC table and in the
+BUILT_IN defaults, and the two are cross-checked precisely so a number cannot
+live in one place and be ignored in the other. It was in neither.
+
+**Every sound effect is out of the course.** "The sound effects are basically so
+bad we need to remove them completely" — the two one-shots and the cellar room
+tone, which is the same synthesiser. The generated MOSS effects were never
+installed; `content/beer/sound.json` carries the music bed and nothing else.
 
 **4d. DONE — there is real music, generated locally, and it loops.**
 ACE-Step v1-3.5B, Apache 2.0 on the weights, so the build stays commercially

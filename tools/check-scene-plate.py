@@ -150,7 +150,11 @@ def check_pack(page, pack: str) -> list[str]:
             continue
         page.goto(f"{BASE}/index.html?emne={pack}", wait_until="networkidle")
         page.wait_for_function(
-            "() => !!document.querySelector('#story-map') && !document.querySelector('.boot')",
+            # .story__stage, not #story-map: a chapter with `ground: none`
+            # never creates a map host, and waiting on one is a 20 s timeout
+            # reported as a failure of something else entirely.
+            "() => !!document.querySelector('.story__stage') "
+            "&& !document.querySelector('.boot')",
             timeout=20000)
         page.evaluate("() => document.querySelector('.story__cover')?.classList.remove('is-on')")
         page.wait_for_timeout(500)

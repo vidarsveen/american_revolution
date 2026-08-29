@@ -162,12 +162,6 @@
        "into": 1.4
       },
       {
-       "on": "word:glass",
-       "do": "sound.play",
-       "id": "pour",
-       "gainDb": -7
-      },
-      {
        "on": {
         "no": "word:nittifem",
         "en": "word:cent"
@@ -489,12 +483,6 @@
      "cues": [
       {
        "on": "start",
-       "do": "sound.ambience",
-       "id": "cellar",
-       "gainDb": -16
-      },
-      {
-       "on": "start",
        "do": "plate.show",
        "id": "mesk-damp",
        "motion": "in",
@@ -700,10 +688,6 @@
       "en": "The hop is a climbing plant in the hemp family."
      },
      "cues": [
-      {
-       "on": "start",
-       "do": "sound.ambience"
-      },
       {
        "on": "start",
        "do": "plate.show",
@@ -1090,17 +1074,7 @@
       "no": "En vanlig ale er ferdig på tre til fem døgn. Det bobler kraftig, og det lukter bakeri.",
       "en": "An ordinary ale is done in three to five days. It bubbles hard, and it smells of a bakery."
      },
-     "cues": [
-      {
-       "on": {
-        "no": "word:bakeri",
-        "en": "word:bakery"
-       },
-       "do": "sound.play",
-       "id": "fizz",
-       "gainDb": -9
-      }
-     ],
+     "cues": [],
      "gapAfter": 1.35
     },
     {

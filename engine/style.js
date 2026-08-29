@@ -82,7 +82,7 @@ export const BUILT_IN = Object.freeze({
   map: { deckReserve: 126, labelGap: [4, 2] },
   /* The bed, metered against the voice rather than derived from the cue gains
      it used to be summed from. See sound/soundscape.js. */
-  sound: { bedDb: -8, duckDb: -12 },
+  sound: { bedDb: -8, duckDb: -12, minOpenMs: 1200 },
 });
 
 /* ------------------------------------------------------------
@@ -117,6 +117,11 @@ const SPEC = {
      because a bed level with the narration is not a bed. */
   'sound.bedDb': { kind: 'num', min: -40, max: -2 },
   'sound.duckDb': { kind: 'num', min: -24, max: 0 },
+  // How long a pause has to be before the bed rides back up. The compiler
+  // writes 0.9 s between sentences, 1.35 s across a paragraph and 2.0 s at a
+  // scene end, so anything under about 1000 lets the bed breathe on every
+  // sentence — which is what "it goes up and down in volume" was.
+  'sound.minOpenMs': { kind: 'num', min: 0, max: 4000 },
 };
 
 /* ------------------------------------------------------------
