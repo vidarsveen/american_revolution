@@ -978,13 +978,33 @@
 
 /* ---------- Cover ------------------------------------------- */
 
+/* THE COVER HAS TO SCROLL ONCE A COURSE IS LONG.
+
+   It was `place-items: center` in a box with no overflow handling, which is
+   fine for two or three chapters and silently broken at six: the card grows
+   past the box, a centred grid item overflows BOTH edges equally, and there
+   is nothing to scroll. Measured on the beer course at the heights a phone
+   actually hands a page — 844 is the device, a browser with an address bar
+   gives about 700 — chapter six sat at 746 px with the tab bar at 642 and no
+   way to reach it. Reported as "I am not able to see chapter 6 on my mobile,
+   is it hidden below the screen?" It was.
+
+   `safe center` is the whole fix for the centring half: centre while it
+   fits, fall back to top-aligned the moment it does not, so the START of the
+   list never disappears upwards either. The padding clears the tab bar,
+   which sits over this and would otherwise eat the last row. */
 .story__cover {
   position: absolute;
   inset: 0;
   z-index: 60;
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-content: safe center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: var(--s5);
+  padding-bottom: calc(var(--s5) + var(--tabbar-h) + var(--safe-b));
   background: color-mix(in srgb, var(--paper) 82%, transparent);
   backdrop-filter: blur(10px) saturate(1.3);
   -webkit-backdrop-filter: blur(10px) saturate(1.3);

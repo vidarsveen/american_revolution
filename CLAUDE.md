@@ -524,6 +524,30 @@ map/index.js and the surface refactor's one measurable payoff is gone. `check-le
 re-centred with `setView(coords)` and would otherwise have gone on judging every label
 against a frame the app no longer draws.
 
+**A panel that centres its content and never scrolls is fine until the
+content grows.** `.story__cover` was `place-items: center` in an
+`inset: 0` box with no overflow handling, which works for two or three
+chapters and silently breaks at six: a centred grid item overflows BOTH
+edges, so the end of the list runs under the tab bar and the start would run
+off the top, with nothing to scroll.
+
+It was invisible in development because a desktop window is 900 px tall and
+the device height is 844. **A phone browser hands the page about 700** — the
+address bar takes the rest — and at 700 the sixth chapter sat at 746 px with
+the tab bar at 642. Reported as "I am not able to see ch 6 on my mobile, is
+it hidden below the screen?" It was, and there was no gesture that would
+reach it.
+
+Two halves to the fix and both are needed: `overflow-y: auto` so there is
+something to scroll, and `align-content: safe center` so it centres while it
+fits and top-aligns the moment it does not — plain `center` would hide the
+TOP of a long list instead. The bottom padding clears the tab bar, which
+draws over this panel.
+
+Measured after: scrollable and tappable at 844, 760, 700, 640 and 600 px, and
+the two- and three-chapter courses still centre in the space above the tab
+bar. **Test a cover at 700 px, not at the device height.**
+
 **Two overlays anchored to the same edge will fight, and the later one wins.** The stats deck
 and the caption box were both `bottom: calc(var(--transport-h) + ...)`, and the caption sits on
 a higher layer — so every number the chapter shows was drawn behind it. Invisible, not missing,
