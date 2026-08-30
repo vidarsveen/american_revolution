@@ -128,7 +128,6 @@ title: Mannen som fanget gjæren | The man who caught the yeast
 subtitle: København, 1883 | Copenhagen, 1883
 blurb: En dansk botaniker dyrket fram én eneste gjærcelle og lot den bli til alle de andre. Etterpå kunne øl smake likt hver eneste gang, over hele verden. | A Danish botanist grew a single yeast cell and let it become all the others. After that, beer could taste the same every time, anywhere in the world.
 langs: no, en
-planned: true
 for: Vendepunktet i kurset. Det usynlige blir en ingrediens man kan bestille i
      posten, og all verdens øl beveger seg mot én smak. Kursets spørsmål får
      sitt egentlige svar her — og regningen kommer i samme kapittel, for det

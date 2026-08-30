@@ -362,6 +362,25 @@
        "no",
        "en"
      ]
+   },
+   {
+     "id": "chapter-4-renkultur",
+     "title": {
+       "no": "Mannen som fanget gjæren",
+       "en": "The man who caught the yeast"
+     },
+     "subtitle": {
+       "no": "København, 1883",
+       "en": "Copenhagen, 1883"
+     },
+     "blurb": {
+       "no": "En dansk botaniker dyrket fram én eneste gjærcelle og lot den bli til alle de andre. Etterpå kunne øl smake likt hver eneste gang, over hele verden.",
+       "en": "A Danish botanist grew a single yeast cell and let it become all the others. After that, beer could taste the same every time, anywhere in the world."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
    }
  ],
  "//surfaces": [

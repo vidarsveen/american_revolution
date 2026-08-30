@@ -1,0 +1,850 @@
+{
+ "id": "chapter-4-renkultur",
+ "pack": "beer",
+ "title": {
+  "no": "Mannen som fanget gjæren",
+  "en": "The man who caught the yeast"
+ },
+ "subtitle": {
+  "no": "København, 1883",
+  "en": "Copenhagen, 1883"
+ },
+ "ground": "none",
+ "ending": {
+  "say": {
+   "no": "Én celle, dyrket fram og gitt bort. Neste gang: landet som aldri gjorde det.",
+   "en": "One cell, grown and given away. Next time: the country that never did it."
+  },
+  "figure": {
+   "value": "1",
+   "label": {
+    "no": "celle, og all verdens øl forandret seg",
+    "en": "cell, and the beer of the world changed"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Noe surt i kjelleren",
+    "en": "Something sour in the cellar"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Tenk deg at du eier et bryggeri i attenhundreogsyttiårene.",
+      "en": "Imagine you own a brewery in the eighteen seventies."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "surt-kar",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Du har gjort alt likt i tjue år. Samme korn, samme vann, samme kjeller, samme kar.",
+      "en": "You have done everything the same way for twenty years. Same grain, same water, same cellar, same vessel."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Og så, en uke i mai, er ølet surt.",
+      "en": "And then, one week in May, the beer is sour."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Ikke litt surt. Uselgelig. Hele kjelleren, tusenvis av liter, ut i rennesteinen.",
+      "en": "Not slightly sour. Unsellable. The whole cellar, thousands of litres, into the gutter."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kjeller-kald",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.16,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Du vet ikke hvorfor. Du kan ikke vite hvorfor. Og du vet ikke om det skjer igjen neste uke.",
+      "en": "You do not know why. You cannot know why. And you do not know whether it happens again next week."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Den fjerde ingrediensen, fortsatt usynlig",
+    "en": "The fourth ingredient, still invisible"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Husk hvor vi står. Gjæren er der, den jobber, og ingen har sett den ordentlig.",
+      "en": "Remember where we are. The yeast is there, it works, and nobody has seen it properly."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkake-krukke",
+       "motion": "left",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.13,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Du arver den som ligger i huset. Du skummer den av toppen, eller du henter bunnfallet, og du bruker den om igjen.",
+      "en": "You inherit whatever is in the house. You skim it off the top, or you take the sediment, and you use it again."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "I attenhundreogsyttiseks skriver Louis Pasteur en bok om øl.",
+      "en": "In eighteen seventy-six Louis Pasteur writes a book about beer."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "mikroskop-bord",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Han har allerede vist at gjæring gjøres av levende vesener, og at det som ødelegger mat også er levende vesener.",
+      "en": "He has already shown that fermentation is done by living creatures, and that what spoils food is living creatures too."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Så ølet surner ikke av seg selv. Noe kommer inn og gjør det.",
+      "en": "So beer does not go sour by itself. Something gets in and does it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "surt-kar",
+       "motion": "in",
+       "over": 21,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Pasteur foreslår en løsning: varm det opp akkurat nok til å drepe det som lever i det.",
+      "en": "Pasteur proposes a solution: heat it just enough to kill what is living in it."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:det#3",
+        "en": "word:it#2"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "pasteurisering"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Det virker. Men det løser feil halvdel av problemet. Det redder ølet etterpå. Det gjør ingenting med gjæren du starter med.",
+      "en": "It works. But it solves the wrong half of the problem. It saves the beer afterwards. It does nothing about the yeast you start with."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Et laboratorium med en merkelig regel",
+    "en": "A laboratory with a strange rule"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "I København sitter en bryggerieier som heter Jacob Christian Jacobsen.",
+      "en": "In Copenhagen there is a brewery owner called Jacob Christian Jacobsen."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "lab-benk",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "I attenhundreogsyttifem bygger han et laboratorium ved siden av bryggeriet, og ansetter forskere.",
+      "en": "In eighteen seventy-five he builds a laboratory next to the brewery, and hires scientists."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Det er ikke det merkelige. Det merkelige er regelen han gir det.",
+      "en": "That is not the strange part. The strange part is the rule he gives it."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Alt laboratoriet finner ut, skal offentliggjøres. Gratis. Også til konkurrentene.",
+      "en": "Everything the laboratory works out is to be published. Free. To competitors as well."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Han skriver det inn i vedtektene, så ingen senere eier kan ombestemme seg.",
+      "en": "He writes it into the statutes, so that no later owner can change their mind."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "vedtekter-penn",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Én celle",
+    "en": "One cell"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "I laboratoriet jobber en botaniker som heter Emil Christian Hansen.",
+      "en": "Working in the laboratory is a botanist called Emil Christian Hansen."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "hansen-mikroskop",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Han ser på bryggerigjær i mikroskop, og legger merke til noe ingen hadde tenkt på.",
+      "en": "He looks at brewery yeast under a microscope, and notices something nobody had thought of."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Det er ikke én gjær. Det er en blanding.",
+      "en": "It is not one yeast. It is a mixture."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "I den samme grumsete klumpen ligger flere arter om hverandre, og noen av dem gjør ølet godt mens andre gjør det surt.",
+      "en": "In the same murky lump there are several species mixed together, and some of them make the beer good while others make it sour."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Så gjør han det som er hele kapitlet. Han fortynner gjæren igjen og igjen, til det er så få celler igjen i dråpen at han kan dyrke fram én.",
+      "en": "Then he does the thing this whole chapter is about. He dilutes the yeast again and again, until there are so few cells left in the drop that he can grow one on its own."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fortynning-rekke",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Én celle deler seg til to. To til fire. Etter noen døgn er det milliarder, og alle er kopier av den ene.",
+      "en": "One cell divides into two. Two into four. After a few days there are billions, and every one is a copy of that one."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "renkultur"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Det heter en renkultur.",
+      "en": "That is called a pure culture."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:renkultur",
+        "en": "word:culture"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "renkultur"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "I attenhundreogåttitre brygger bryggeriet med den. Det virker.",
+      "en": "In eighteen eighty-three the brewery brews with it. It works."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkrone-kar",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Og så ga de den bort",
+    "en": "And then they gave it away"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Her kunne historien tatt en annen vei.",
+      "en": "Here the story could have gone another way."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaer-flaske",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "De hadde en gjær som ikke sviktet, i en tid da konkurrentene mistet hele kjellere. Det er verdt en formue.",
+      "en": "They had a yeast that did not fail, at a time when competitors were losing whole cellars. That is worth a fortune."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "De ga den bort.",
+      "en": "They gave it away."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Metoden ble publisert, og gjæren ble sendt gratis til alle bryggerier som ba om den.",
+      "en": "The method was published, and the yeast was sent free to any brewery that asked."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Innen få år brygget halve Europa med etterkommere av den ene cellen fra det laboratoriet.",
+      "en": "Within a few years half of Europe was brewing with descendants of that one cell from that laboratory."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "1",
+       "label": {
+        "no": "celle, sendt til hele verden",
+        "en": "cell, sent to the whole world"
+       },
+       "side": "lager"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Gjær du kan bestille",
+    "en": "Yeast you can order"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Etter det ble gjær en ting man kan bestille.",
+      "en": "After that, yeast became something you order."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerbank-hyller",
+       "motion": "left",
+       "over": 25,
+       "dim": 0.15,
+       "push": 0.13,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Det finnes gjærbanker i dag med tusenvis av stammer, frosset ned, hver med et nummer.",
+      "en": "There are yeast banks today with thousands of strains, frozen, each with a number."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:gjærbanker",
+        "en": "word:banks"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "gjaerbank"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Du velger den som gir smaken du vil ha, og du får nøyaktig den samme neste gang.",
+      "en": "You choose the one that gives the flavour you want, and you get exactly the same one next time."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaer-flaske",
+       "motion": "in",
+       "over": 21,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Og der en brygger før mistet brygg han ikke kunne forklare, kan et bryggeri nå love at ølet smaker likt hver gang.",
+      "en": "And where a brewer used to lose brews he could not explain, a brewery can now promise the beer tastes the same every time."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 1,
+         "value": "1 av 20",
+         "side": "gjaer",
+         "label": {
+          "no": "Før renkulturen",
+          "en": "Before pure culture"
+         }
+        },
+        {
+         "n": 1,
+         "value": "sjelden",
+         "side": "lager",
+         "label": {
+          "no": "Etter",
+          "en": "After"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Hvor ofte et brygg ble ødelagt.",
+        "en": "How often a brew was ruined."
+       }
+      },
+      {
+       "on": {
+        "no": "word:gang",
+        "en": "word:time"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "kvalitetskontroll"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Det er ikke en liten ting. Det er grunnlaget for at øl i det hele tatt kan lages i fabrikk.",
+      "en": "That is not a small thing. It is the reason beer can be made in a factory at all."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": {
+        "no": "word:fabrikk",
+        "en": "word:all"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "industriol"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Regningen",
+    "en": "The bill"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Og nå kommer regningen, for den kommer i samme kapittel.",
+      "en": "And now the bill, because it arrives in the same chapter."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "pils-rekke",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Hvis du kan velge en gjær som aldri skuffer, hvorfor skulle du bruke den rare i huset?",
+      "en": "If you can choose a yeast that never disappoints, why would you use the odd one in the house?"
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Så det gjorde ingen. Og de lokale gjærene, som hadde levd i hvert sitt bryggeri i hundrevis av år, forsvant nesten helt.",
+      "en": "So nobody did. And the local yeasts, which had lived in one brewery each for hundreds of years, very nearly disappeared."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "De var ikke bedre. Mange av dem var upålitelige. Men de var forskjellige, og forskjellen var gratis.",
+      "en": "They were not better. Many of them were unreliable. But they were different, and the difference was free."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Nå har du svaret på spørsmålet kurset åpnet med.",
+      "en": "Now you have the answer to the question this course opened with."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkake-krukke",
+       "motion": "out",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Øl smaker av tusen ting fordi den fjerde ingrediensen lever, og alt levende er forskjellig.",
+      "en": "Beer tastes of a thousand things because the fourth ingredient is alive, and everything alive is different."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Og i hundre år etter attenhundreogåttitre brukte vi stort sett den samme.",
+      "en": "And for a hundred years after eighteen eighty-three we mostly used the same one."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Neste gang drar vi til det ene stedet i Europa som aldri gjorde dette. Der lar de fortsatt lufta gjøre jobben.",
+      "en": "Next time we go to the one place in Europe that never did this. There they still let the air do the work."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

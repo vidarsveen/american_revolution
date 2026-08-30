@@ -846,6 +846,20 @@ of the surrounding file.
 
 ## In flight
 
+- **BEER: chapters one to four ship.** Chapter four, *Mannen som fanget
+  gjæren*, is the hinge: Copenhagen 1883, where Emil Christian Hansen worked
+  out that brewery yeast is a MIXTURE of species, diluted it down until he
+  could grow one cell alone, and made the first pure culture — and Carlsberg
+  then published the method and posted the yeast free to anyone who asked.
+  The course's question gets its real answer here, and the bill arrives in the
+  same chapter: when you can order a yeast that never disappoints, nobody uses
+  the odd one in the house, and the odd ones nearly died out.
+
+  **It has no ground, and that is the argument.** Two and three were about a
+  place deciding the beer; this is the invention that made place irrelevant. A
+  pure culture goes in the post. An empty map under that sentence would
+  contradict it, so `ground: none` and the outline's `shows:` line agree.
+
 - **BEER: chapters one, two and three ship.** Chapter three, *Kulden i
   Bayern*, is the mirror of chapter two: there a town's water made the style,
   here the cold does. Bottom fermentation, ice cut out of mountain lakes and

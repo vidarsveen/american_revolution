@@ -584,12 +584,12 @@
    "no": "Den som synker",
    "en": "The one that sinks"
   },
-  "claims": "Lager yeast where it ends up: settled in a dense layer at the bottom of the vessel, with clear beer standing above it.",
-  "omits": "Not any identified brewery or strain, and no scale is given.",
+  "claims": "Lager yeast where it ends up: settled in a dense layer at the bottom of a sealed fermenting vessel, with comparatively clear beer standing above it.",
+  "omits": "Not any identified brewery, equipment or strain, and no scale is given. The vessel is a generic glass fermenter, not a particular brewery's kit.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a tall glass cylinder of beer photographed against a dark background, a thick pale sediment of yeast settled in a dense layer at the bottom and the liquid above it almost clear, the sediment and the lower body of the vessel filling the middle of the frame, cold blue-grey light from one side, condensation on the glass"
+  "prompt": "a tall cylindrical glass fermentation vessel sealed with a rubber bung and a curved glass airlock, standing far back on a dark steel bench in a cold brewery cellar, the base of the vessel about two thirds of the way down the frame and the near edge of the bench and its shadow filling the bottom third, the liquid inside split into two sharply separated bands: the bottom fifth of the vessel is an opaque pale beige bed of settled yeast sludge with a flat level top edge, and above that line the remaining four fifths is transparent clear amber beer you can see straight through, no foam and no froth and nothing pale floating on the surface, every trace of sediment lying on the floor of the vessel, blurred dark stainless tanks behind, cold blue-grey cellar light, no text, no writing, no logo anywhere"
  },
  "lagerkjeller-tanker": {
   "kind": "made",
@@ -680,12 +680,12 @@
    "no": "Gyllent",
    "en": "Golden"
   },
-  "claims": "A pale lager in a glass: clear, golden and lit through — the look nobody had seen in beer before eighteen forty-two.",
-  "omits": "No brand, no label and no logo. The glass carries no markings.",
+  "claims": "A pale lager in a pilsner glass with a window behind it: the glazing bars and the street show straight through the beer, which is what nobody had seen in a beer before eighteen forty-two.",
+  "omits": "No brand, no label and no logo, and nothing outside the window is a identifiable place. The glass carries no markings.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a tall straight-sided pilsner glass that is narrow at the base and wider at the rim, standing flat on its own base, no stem and no foot, definitely not a wine glass and not a goblet, filled with brilliantly clear pale golden beer under a white head, fine bubbles rising in straight columns, lit from behind so the beer glows like a lamp, dark bar and warm lights behind it filling the lower frame, no label, no text, no logo"
+  "prompt": "a tall straight-sided pilsner glass, narrow at the base and wider at the rim, standing flat on its own base with no stem and no foot, not a wine glass, filled with brilliantly clear pale golden beer under a thin white head, standing on a dark bar directly in front of a window with black glazing bars, and the straight glazing bars are clearly VISIBLE THROUGH the beer and bent sideways by it, so the beer is obviously transparent, dark pub interior all around, no label, no text"
  },
  "pils-rekke": {
   "kind": "made",
@@ -702,5 +702,133 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "five identical tall glasses of pale golden lager standing in a straight row on a dark bar, all the same height and the same colour, seen straight on from the front, the glasses filling the upper two thirds, dark polished wood with reflections below, warm lamps behind, no labels, no text"
+ },
+ "surt-kar": {
+  "kind": "made",
+  "file": "surt-kar.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Uken det gikk galt",
+   "en": "The week it went wrong"
+  },
+  "claims": "A fermentation that has gone wrong: a dull, broken surface instead of the thick clean crown a healthy one makes.",
+  "omits": "Not any identified brewery or incident, and nothing in the picture dates it.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "looking down into a large open wooden fermenting vessel that has gone wrong, the surface covered in a thin greyish slick and dull broken foam instead of a clean crown, dark stained wood staves around it, the surface filling the upper two thirds, dim cellar light from one side, no people"
+ },
+ "mikroskop-bord": {
+  "kind": "made",
+  "file": "mikroskop-bord.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Instrumentet",
+   "en": "The instrument"
+  },
+  "claims": "A nineteenth century brass microscope of the kind used to look at yeast for the first time.",
+  "omits": "Not any identified instrument, laboratory or person, and no maker's name is legible.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an antique brass monocular microscope standing on a dark wooden bench beside a small stack of glass slides and a stoppered bottle, the microscope filling the upper two thirds, warm lamplight from one side, dark panelled wall behind, worn wood grain below, no people, no writing, no labels"
+ },
+ "lab-benk": {
+  "kind": "made",
+  "file": "lab-benk.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Laboratoriet ved siden av bryggeriet",
+   "en": "The laboratory beside the brewery"
+  },
+  "claims": "A working laboratory bench of the period — the sort of room a brewery built when it decided to find out what was actually happening in its cellars.",
+  "omits": "Not the Carlsberg laboratory and not any identified room. No bottle carries a legible label.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a nineteenth century laboratory bench seen along its length, glass flasks and stoppered bottles standing in a row, a brass balance at the far end, tall windows behind throwing pale light across them, the glassware filling the upper two thirds, dark scarred wood below, no people, no writing on any bottle"
+ },
+ "hansen-mikroskop": {
+  "kind": "made",
+  "file": "hansen-mikroskop.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Å se etter",
+   "en": "Looking closer"
+  },
+  "claims": "The work itself: one person at a microscope, looking at a drop of yeast closely enough to notice it is not one thing.",
+  "omits": "Not a portrait of Emil Christian Hansen or of anybody else — no face is shown, and the picture is not presented as a photograph of a historical event.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a pair of hands adjusting the focus of a brass microscope in a dim laboratory, seen close from the side, the hands and the instrument filling the upper two thirds, a glass slide with a single drop on it beside them, warm lamplight, dark bench and shadow below, no face visible, no writing"
+ },
+ "gjaer-flaske": {
+  "kind": "made",
+  "file": "gjaer-flaske.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Sendt i posten",
+   "en": "Sent in the post"
+  },
+  "claims": "A flask of yeast ready to be wrapped and posted — how a pure culture reached breweries that asked for it.",
+  "omits": "No brewery, laboratory or recipient is named, and the flask carries no label of any kind.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a small corked glass flask holding a pale cream-coloured yeast slurry, standing alone on dark weathered wood beside a folded square of brown paper and a length of string, the flask filling the upper half, warm low side light, deep shadow behind, no writing, no label, no seal"
+ },
+ "gjaerbank-hyller": {
+  "kind": "made",
+  "file": "gjaerbank-hyller.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Arkivet",
+   "en": "The archive"
+  },
+  "claims": "A frozen strain collection: thousands of yeasts kept alive in cold storage, each one a pure culture a brewery can order.",
+  "omits": "Not any identified collection, and no vial carries a legible label or number.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "rows of small glass vials standing in metal racks inside a cold store, frost on the racks and pale vapour drifting between them, the racks receding into the dark and filling the upper two thirds, cold blue-white light, dark floor below, no writing on any vial, no people"
+ },
+ "fortynning-rekke": {
+  "kind": "made",
+  "file": "fortynning-rekke.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fortynnet til én",
+   "en": "Diluted down to one"
+  },
+  "claims": "A dilution series: the same drop thinned step by step until there are few enough cells left to grow a single one on its own.",
+  "omits": "No readable measurement, label or number anywhere. This illustrates the method and is not a record of any experiment.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "six glass test tubes standing side by side in a wooden rack, each one visibly clearer than the one to its left: the first is thick opaque milky white, the second cloudy, the third hazy, the fourth faintly milky, the fifth almost clear, the sixth completely clear like water, a smooth gradient from white to transparent across the row, lit strongly from behind so the difference is unmistakable, the rack filling the upper two thirds, dark bench below, no writing, no labels, no numbers"
+ },
+ "vedtekter-penn": {
+  "kind": "made",
+  "file": "vedtekter-penn.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Skrevet inn i vedtektene",
+   "en": "Written into the statutes"
+  },
+  "claims": "A rule being written down rather than merely agreed — which is what made the laboratory's promise to publish everything outlast the man who made it.",
+  "omits": "Not a photograph of any real document, and nothing on the page is legible. It is not presented as a historical record.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a hand holding a steel dip pen over a glass inkwell on a dark desk, the pen and the hand filling the upper two thirds, the nib catching the light, the edge and spine of a heavy closed leather-bound ledger beside them, warm lamplight from one side, deep shadow and dark wood below, no open page in frame, no face"
  }
 }

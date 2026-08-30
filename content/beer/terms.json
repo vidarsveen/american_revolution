@@ -1,5 +1,5 @@
 {
- "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord, kapittel to ni og kapittel tre seks — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
+ "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord, kapittel to ni, kapittel tre seks og kapittel fire fem — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
  "malt": {
   "term": {
    "no": "Malt",
@@ -320,6 +320,76 @@
   "body": {
    "no": "Pilsner er en blek lager, og den ble til i Plzeň i attenhundreogførtito. Fire ting måtte møtes: den kalde bayerske gjæren, byens usedvanlig bløte vann, malt tørket med varm luft på den nye engelske måten, og glass som var blitt billig nok til at folk drakk av det.\n\nResultatet var gyllent og klart, og ingen hadde sett øl se slik ut før.\n\nByen klarte aldri å beskytte navnet. Pilsner ble et vanlig ord for en type øl i stedet for et sted, og i dag er omtrent ni av ti øl i verden en etterligning av det.",
    "en": "Pilsner is a pale lager, and it was made in Plzeň in eighteen forty-two. Four things had to meet: the cold Bavarian yeast, the town's unusually soft water, malt dried with hot air in the new English way, and glass that had become cheap enough for people to drink from.\n\nThe result was golden and clear, and nobody had seen beer look like that before.\n\nThe town never managed to protect the name. Pilsner became an ordinary word for a kind of beer rather than a place, and today about nine out of ten beers in the world are an imitation of it."
+  }
+ },
+ "renkultur": {
+  "term": {
+   "no": "Renkultur",
+   "en": "Pure culture"
+  },
+  "short": {
+   "no": "Milliarder av gjærceller som alle er kopier av én.",
+   "en": "Billions of yeast cells that are all copies of one."
+  },
+  "body": {
+   "no": "En renkultur er gjær som stammer fra én eneste celle. Alle de andre er delinger av den, så de oppfører seg likt.\n\nEmil Christian Hansen fikk det til i København i attenhundreogåttitre. Han hadde oppdaget at bryggerigjær ikke er én gjær i det hele tatt, men en blanding av arter — noen som gjør ølet godt, og noen som gjør det surt. Så fortynnet han gjæren om og om igjen til han kunne dyrke fram én celle alene.\n\nFør det brygget alle med det som lå i huset og håpet. Etterpå kunne et bryggeri vite hva det brygget med, og få det samme igjen neste gang.",
+   "en": "A pure culture is yeast descended from a single cell. All the others are divisions of it, so they behave the same way.\n\nEmil Christian Hansen managed it in Copenhagen in eighteen eighty-three. He had discovered that brewery yeast is not one yeast at all but a mixture of species — some that make the beer good, and some that make it sour. So he diluted the yeast over and over until he could grow a single cell on its own.\n\nBefore that, everybody brewed with whatever was in the house and hoped. Afterwards a brewery could know what it was brewing with, and get the same thing again next time."
+  }
+ },
+ "pasteurisering": {
+  "term": {
+   "no": "Pasteurisering",
+   "en": "Pasteurisation"
+  },
+  "short": {
+   "no": "Varme ølet akkurat nok til å drepe det som lever i det.",
+   "en": "Heating the beer just enough to kill what is living in it."
+  },
+  "body": {
+   "no": "Louis Pasteur viste på attenhundretallet at gjæring gjøres av levende vesener, og at mat og drikke blir ødelagt av andre levende vesener.\n\nLøsningen hans var enkel: varm det opp litt — rundt seksti grader er nok — og hold det der en stund. Det dreper bakteriene uten å koke bort smaken.\n\nDet reddet ølet etter at det var laget, og det er grunnen til at en flaske øl kan stå i en butikk. Men det gjorde ingenting med problemet i den andre enden: hva slags gjær du startet med. Den delen tok en dansk botaniker seg av sju år senere.",
+   "en": "Louis Pasteur showed in the eighteen hundreds that fermentation is done by living creatures, and that food and drink are spoiled by other living creatures.\n\nHis solution was simple: heat it a little — around sixty degrees is enough — and hold it there a while. That kills the bacteria without boiling away the flavour.\n\nIt saved the beer after it was made, and it is why a bottle of beer can stand in a shop. But it did nothing about the problem at the other end: what yeast you started with. A Danish botanist dealt with that seven years later."
+  }
+ },
+ "gjaerbank": {
+  "term": {
+   "no": "Gjærbank",
+   "en": "Yeast bank"
+  },
+  "short": {
+   "no": "Et arkiv av gjærstammer, frosset ned, hver med sitt nummer.",
+   "en": "An archive of yeast strains, frozen, each with its own number."
+  },
+  "body": {
+   "no": "En gjærbank er akkurat det navnet sier: en samling renkulturer, oppbevart nedfrosset, som bryggerier kan bestille fra.\n\nDe største har tusenvis av stammer. Hver av dem har et nummer og en beskrivelse av hva den gjør — hvor mye frukt den lager, hvor godt den tåler alkohol, hvor raskt den synker når den er ferdig.\n\nDet betyr at gjær er blitt en ingrediens man velger, på linje med malt og humle. Det er et enormt framskritt, og det er også grunnen til at de fleste bryggerier bruker noen få velkjente stammer i stedet for sin egen.",
+   "en": "A yeast bank is exactly what the name says: a collection of pure cultures, kept frozen, that breweries can order from.\n\nThe largest hold thousands of strains. Each has a number and a description of what it does — how much fruit it makes, how well it tolerates alcohol, how readily it settles when it is finished.\n\nThat means yeast has become an ingredient you choose, like malt and hops. It is an enormous advance, and it is also why most breweries use a few well-known strains instead of one of their own."
+  }
+ },
+ "kvalitetskontroll": {
+  "term": {
+   "no": "Kvalitetskontroll",
+   "en": "Quality control"
+  },
+  "short": {
+   "no": "Å kunne love at det smaker likt neste gang også.",
+   "en": "Being able to promise it tastes the same next time as well."
+  },
+  "body": {
+   "no": "Kvalitetskontroll i et bryggeri er å måle det samme, hver gang, og gripe inn når et tall flytter seg: temperatur, sukkerinnhold, surhet, hvor mange celler som er i gjæren.\n\nDet er umulig uten en renkultur. Hvis du ikke vet hva gjæren din er, kan du ikke gjenta noe som helst — du kan bare håpe at det som fungerte sist ligger i karet fortsatt.\n\nDet er derfor renkulturen er vendepunktet i denne historien. Ikke fordi den gjorde ølet bedre, men fordi den gjorde det forutsigbart.",
+   "en": "Quality control in a brewery means measuring the same things every time, and stepping in when a number moves: temperature, sugar content, acidity, how many cells are in the yeast.\n\nIt is impossible without a pure culture. If you do not know what your yeast is, you cannot repeat anything — you can only hope that what worked last time is still in the vessel.\n\nThat is why the pure culture is the turning point in this story. Not because it made beer better, but because it made it predictable."
+  }
+ },
+ "industriol": {
+  "term": {
+   "no": "Industriøl",
+   "en": "Industrial beer"
+  },
+  "short": {
+   "no": "Øl laget i fabrikk, i millioner av liter, likt hver gang.",
+   "en": "Beer made in a factory, in millions of litres, the same every time."
+  },
+  "body": {
+   "no": "Industriøl er ikke et skjellsord her. Det er en beskrivelse av en produksjonsmåte, og den hviler på tre ting som alle kom på attenhundretallet: kunstig kjøling, pasteurisering og renkultur.\n\nTil sammen gjør de at et bryggeri kan lage det samme ølet i Oslo og i Singapore, hele året, i en mengde ingen kjeller kunne romme.\n\nPrisen er variasjonen. Når du kan velge en gjær som aldri skuffer, bruker du ikke den rare i huset — og de rare i huset forsvant nesten helt i løpet av hundre år.",
+   "en": "Industrial beer is not an insult here. It is a description of a way of producing, and it rests on three things that all arrived in the eighteen hundreds: artificial refrigeration, pasteurisation and the pure culture.\n\nTogether they let a brewery make the same beer in Oslo and in Singapore, all year round, in quantities no cellar could hold.\n\nThe price is the variety. When you can choose a yeast that never disappoints, you do not use the odd one in the house — and the odd ones in the house very nearly disappeared over the course of a hundred years."
   }
  }
 }
