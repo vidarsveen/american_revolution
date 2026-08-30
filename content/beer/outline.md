@@ -111,7 +111,6 @@ title: Kulden i Bayern | The cold in Bavaria
 subtitle: Lager, is, og en gyllen øl fra Plzeň | Lager, ice, and a golden beer from Plzeň
 blurb: En gjær som synker til bunns og jobber langsomt i kulde. Bayern lagret ølet i kjellere fylt med is — og i 1842 kom det ut gyllent i stedet for brunt. | A yeast that sinks to the bottom and works slowly in the cold. Bavaria stored its beer in cellars packed with ice — and in 1842 it came out golden instead of brown.
 langs: no, en
-planned: true
 for: Den andre gjærtypen, og ølet som tok over verden. Her er kulden
      kontrollen: langsomt, rent, ingen frukt. Så gjør Plzeň det gyllent — lys
      malt, bløtt vann og glass i stedet for tinnkrus — og resten av verden
@@ -120,7 +119,7 @@ for: Den andre gjærtypen, og ølet som tok over verden. Her er kulden
      is the control: slow, clean, no fruit. Then Plzeň makes it golden — pale
      malt, soft water, and glass instead of pewter — and the rest of the world
      spends a hundred and eighty years copying it.
-teaches: lager, undergjæring, lagring, reinheitsgebot, pilsner, dekoksjon, bløtt vann
+teaches: lager, undergjæring, lagring, reinheitsgebot, pilsner, bløtt vann
 assumes: gjær, gjæring, ester, malt
 shows: pictures, map, cards
 

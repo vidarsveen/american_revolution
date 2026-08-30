@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v6901215581';
+const VERSION = 'v264c154bf6';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -75,6 +75,7 @@ const PRECACHE = [
   './content/american-revolution/timing.chapter-1775-06-17.no.json',
   './content/beer/chapter-1-fire-ting.json',
   './content/beer/chapter-2-overgjaer.json',
+  './content/beer/chapter-3-undergjaer.json',
   './content/beer/media.json',
   './content/beer/media/ale-glass-lys.jpg',
   './content/beer/media/bitter-glass.jpg',
@@ -87,6 +88,7 @@ const PRECACHE = [
   './content/beer/media/fat-rekke.jpg',
   './content/beer/media/fire-raavarer.jpg',
   './content/beer/media/gips-krystall.jpg',
+  './content/beer/media/gjaer-bunnfall.jpg',
   './content/beer/media/gjaer-torr.jpg',
   './content/beer/media/gjaering-skum.jpg',
   './content/beer/media/gjaerkake-krukke.jpg',
@@ -97,13 +99,19 @@ const PRECACHE = [
   './content/beer/media/humlehage.jpg',
   './content/beer/media/humlekongle-snitt.jpg',
   './content/beer/media/ipa-glass.jpg',
+  './content/beer/media/is-hogging.jpg',
   './content/beer/media/kalk-vann.jpg',
   './content/beer/media/kjeller-kald.jpg',
   './content/beer/media/kok-fosskok.jpg',
+  './content/beer/media/lagerkjeller-tanker.jpg',
   './content/beer/media/london-elv.jpg',
+  './content/beer/media/lys-malt.jpg',
   './content/beer/media/malt-fargeskala.jpg',
   './content/beer/media/mesk-damp.jpg',
   './content/beer/media/mesk-termometer.jpg',
+  './content/beer/media/pils-rekke.jpg',
+  './content/beer/media/pilsner-glass.jpg',
+  './content/beer/media/plzen-bryggeri.jpg',
   './content/beer/media/porter-kar.jpg',
   './content/beer/media/pub-lyst-og-morkt.jpg',
   './content/beer/media/salt-vekt.jpg',
@@ -111,6 +119,7 @@ const PRECACHE = [
   './content/beer/media/skumming-spade.jpg',
   './content/beer/media/spirende-korn.jpg',
   './content/beer/media/stout-glass.jpg',
+  './content/beer/media/tre-ingredienser.jpg',
   './content/beer/media/vorter-glass.jpg',
   './content/beer/sound.json',
   './content/beer/style.json',
@@ -118,6 +127,8 @@ const PRECACHE = [
   './content/beer/timing.chapter-1-fire-ting.no.json',
   './content/beer/timing.chapter-2-overgjaer.en.json',
   './content/beer/timing.chapter-2-overgjaer.no.json',
+  './content/beer/timing.chapter-3-undergjaer.en.json',
+  './content/beer/timing.chapter-3-undergjaer.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',

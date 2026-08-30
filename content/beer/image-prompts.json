@@ -411,5 +411,93 @@
     },
     "claims": "Mineral salts being weighed for brewing water — the moment a place's advantage became something anybody could buy.",
     "omits": "No brand, no chemical name and no readable writing anywhere. The powder is not identified as any particular compound."
+  },
+  "gjaer-bunnfall": {
+    "prompt": "a tall glass cylinder of beer photographed against a dark background, a thick pale sediment of yeast settled in a dense layer at the bottom and the liquid above it almost clear, the sediment and the lower body of the vessel filling the middle of the frame, cold blue-grey light from one side, condensation on the glass",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
+    "aspect": "portrait",
+    "title": {
+      "no": "Den som synker",
+      "en": "The one that sinks"
+    },
+    "claims": "Lager yeast where it ends up: settled in a dense layer at the bottom of the vessel, with clear beer standing above it.",
+    "omits": "Not any identified brewery or strain, and no scale is given."
+  },
+  "lagerkjeller-tanker": {
+    "prompt": "a row of tall dark metal fermenting tanks receding into a cold dim cellar, heavy frost and condensation on their sides, the nearest tank filling the upper left of the frame, wet concrete floor with drains and reflections below, cold blue light, no people, no text",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
+    "aspect": "portrait",
+    "title": {
+      "no": "Kjelleren der det venter",
+      "en": "The cellar where it waits"
+    },
+    "claims": "Cold storage: the weeks a lager stands still after fermentation has finished, which is what the word lager actually names.",
+    "omits": "No brewery is identified, and nothing dates the tanks to a particular period."
+  },
+  "is-hogging": {
+    "prompt": "men in heavy winter coats cutting large blocks of ice out of a frozen mountain lake with long saws, the blocks stacked at the edge of the black water, snow-covered peaks behind, the work filling the upper two thirds, trodden snow and ice chips in the foreground, low winter sun, faces turned away",
+    "style": "natural light photograph, muted colour, overcast",
+    "aspect": "portrait",
+    "title": {
+      "no": "Isen ned i kjelleren",
+      "en": "Ice down to the cellar"
+    },
+    "claims": "Ice cut from frozen water in winter — how a brewery kept a cellar at four degrees through the summer before refrigeration.",
+    "omits": "Not any identified lake, year or company, and no face is legible."
+  },
+  "tre-ingredienser": {
+    "prompt": "three things laid out in a row on dark weathered oak, photographed from directly above: a shallow bowl of clear water, a heap of pale barley grains, and a heap of green hop cones, evenly spaced with bare dark wood between them, filling the frame edge to edge, warm low side light, no fourth item, no bowl left empty",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
+    "aspect": "portrait",
+    "title": {
+      "no": "De tre loven nevner",
+      "en": "The three the law names"
+    },
+    "claims": "Water, barley and hops: the three ingredients the Bavarian purity order of 1516 allowed. The fourth is missing because nobody knew it existed.",
+    "omits": "Not a photograph of any document, and nothing in the picture is presented as historical evidence."
+  },
+  "plzen-bryggeri": {
+    "prompt": "the tall brick gatehouse and chimneys of a nineteenth century brewery in a central European town, arched entrance, cobbled street in the foreground filling the lower frame, overcast winter light, bare trees, no people, no vehicles, no signs, no writing anywhere",
+    "style": "natural light photograph, muted colour, overcast",
+    "aspect": "portrait",
+    "title": {
+      "no": "Det nye bryggeriet",
+      "en": "The new brewery"
+    },
+    "claims": "A brick brewery of the kind built in central Europe in the eighteen hundreds — the sort of place a town built when it decided to start again.",
+    "omits": "Not a picture of the brewery at Plzeň or of any identified building. It carries no name, sign or date."
+  },
+  "lys-malt": {
+    "prompt": "two heaps of malted barley side by side on dark weathered oak seen from above, the left heap very pale straw-gold and the right heap deep chestnut brown, the difference between them obvious, the heaps filling the upper two thirds with loose grains on the wood below, warm low side light, macro",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
+    "aspect": "portrait",
+    "title": {
+      "no": "Blek og brun",
+      "en": "Pale and brown"
+    },
+    "claims": "Pale malt beside brown malt: the same grain, dried two ways, and the whole difference between a dark beer and a golden one.",
+    "omits": "No maltster, variety or origin is identified."
+  },
+  "pilsner-glass": {
+    "prompt": "a tall straight-sided pilsner glass that is narrow at the base and wider at the rim, standing flat on its own base, no stem and no foot, definitely not a wine glass and not a goblet, filled with brilliantly clear pale golden beer under a white head, fine bubbles rising in straight columns, lit from behind so the beer glows like a lamp, dark bar and warm lights behind it filling the lower frame, no label, no text, no logo",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
+    "aspect": "portrait",
+    "title": {
+      "no": "Gyllent",
+      "en": "Golden"
+    },
+    "claims": "A pale lager in a glass: clear, golden and lit through — the look nobody had seen in beer before eighteen forty-two.",
+    "omits": "No brand, no label and no logo. The glass carries no markings."
+  },
+  "pils-rekke": {
+    "prompt": "five identical tall glasses of pale golden lager standing in a straight row on a dark bar, all the same height and the same colour, seen straight on from the front, the glasses filling the upper two thirds, dark polished wood with reflections below, warm lamps behind, no labels, no text",
+    "style": "natural light interior photograph, warm colour, shallow depth of field, dark ground",
+    "aspect": "portrait",
+    "title": {
+      "no": "Ni av ti",
+      "en": "Nine out of ten"
+    },
+    "claims": "The same pale lager repeated: what most of the world's beer looks like today, a century and a half after one vessel in one town.",
+    "omits": "No brands and no labels. These are not any particular beers."
   }
 }

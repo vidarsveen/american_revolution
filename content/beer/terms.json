@@ -1,5 +1,5 @@
 {
- "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord og kapittel to ni til — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
+ "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord, kapittel to ni og kapittel tre seks — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
  "malt": {
   "term": {
    "no": "Malt",
@@ -236,6 +236,90 @@
   "body": {
    "no": "Da kjemikerne på atten hundre tallet fant ut hva som faktisk var i vannet under Burton, forsvant hemmeligheten samme dag. Hvis det er sulfat som gjør det, kan hvem som helst kjøpe sulfat.\n\nÅ tilsette det har hatt sitt eget ord siden syttiårene på atten hundre tallet: burtonisering. Et bryggeri hvor som helst i verden kan lage Burtons vann i et kar på en ettermiddag.\n\nByen ga fra seg det den hadde, og stilen dro. Men navnet ble igjen, og det er det eneste i denne historien som ikke lot seg kopiere.",
    "en": "When chemists in the eighteen hundreds worked out what was actually in the water under Burton, the secret disappeared the same day. If it is sulfate that does it, anybody can buy sulfate.\n\nAdding it has had its own word since the eighteen seventies: Burtonisation. A brewery anywhere in the world can make Burton water in a tank in an afternoon.\n\nThe town gave away what it had, and the style left. But the name stayed behind, and it is the only thing in this story that could not be copied."
+  }
+ },
+ "undergjaering": {
+  "term": {
+   "no": "Undergjæring",
+   "en": "Bottom fermentation"
+  },
+  "short": {
+   "no": "Gjæren synker til bunns og jobber sakte i kulde.",
+   "en": "The yeast sinks to the bottom and works slowly in the cold."
+  },
+  "body": {
+   "no": "Undergjæring er det den andre gjærtypen gjør: den klumper seg sammen og synker, i stedet for å bli båret opp av boblene.\n\nDen vil ha det kaldt — fire til ni grader — og den jobber deretter. Tre uker der en ale bruker tre døgn.\n\nDet høres ut som en ulempe, og var det også, helt til noen skjønte hva man får igjen: en gjær som har god tid lager nesten ingen estere. Ølet blir rent, og malten og humla står helt alene i det.",
+   "en": "Bottom fermentation is what the second kind of yeast does: it clumps together and sinks, instead of being carried up by the bubbles.\n\nIt wants to be cold — four to nine degrees — and it works accordingly. Three weeks where an ale takes three days.\n\nThat sounds like a disadvantage, and it was one, until somebody worked out what you get back: a yeast with plenty of time makes almost no esters. The beer comes out clean, and the malt and the hops stand entirely alone in it."
+  }
+ },
+ "lager": {
+  "term": {
+   "no": "Lager",
+   "en": "Lager"
+  },
+  "short": {
+   "no": "Øl gjæret kaldt, av gjæren som synker. Ordet betyr lagring.",
+   "en": "Beer fermented cold, by the yeast that sinks. The word means storage."
+  },
+  "body": {
+   "no": "Lager er øl laget med den kalde gjæren, og navnet er ikke poetisk: det tyske ordet betyr rett og slett lager, som i lagerrom.\n\nDet er beskrivelsen av metoden. Ølet gjærer kaldt i noen uker, og blir så stående kaldt i flere uker til før det drikkes. I den tiden faller gjæren ut, smaken glatter seg og ølet blir blankt.\n\nI dag er omtrent ni av ti øl i verden en lager, og de aller fleste av dem er blek pilsner. Det var ikke slik før attenhundreogførtito.",
+   "en": "Lager is beer made with the cold yeast, and the name is not poetic: the German word simply means store, as in storeroom.\n\nIt is a description of the method. The beer ferments cold for a few weeks, then stands cold for several weeks more before it is drunk. In that time the yeast drops out, the flavour smooths itself and the beer turns bright.\n\nToday about nine out of ten beers in the world are a lager, and the vast majority of those are pale pilsner. It was not like that before eighteen forty-two."
+  }
+ },
+ "lagring": {
+  "term": {
+   "no": "Lagring",
+   "en": "Lagering"
+  },
+  "short": {
+   "no": "Ukene ølet står kaldt etter at gjæringen er ferdig.",
+   "en": "The weeks a beer stands cold after fermentation has finished."
+  },
+  "body": {
+   "no": "Lagring er ventingen. Når gjæringen er over, blir ølet stående kaldt i uker — tradisjonelt i en kjeller med is i, i dag i en tank.\n\nTre ting skjer. Gjæren og andre partikler synker og ølet blir klart. Skarpe smaker fra gjæringen forsvinner. Og kullsyren løser seg jevnt i væska.\n\nDet er derfor en pils smaker glatt. Ikke fordi det er lite i den, men fordi den har fått stå i fred.",
+   "en": "Lagering is the waiting. When fermentation is over the beer stands cold for weeks — traditionally in a cellar packed with ice, today in a tank.\n\nThree things happen. Yeast and other particles sink and the beer turns clear. Harsh flavours from fermentation disappear. And the carbonation dissolves evenly through the liquid.\n\nThat is why a pilsner tastes smooth. Not because there is little in it, but because it has been left alone."
+  }
+ },
+ "reinheitsgebot": {
+  "term": {
+   "no": "Reinheitsgebot",
+   "en": "Reinheitsgebot"
+  },
+  "short": {
+   "no": "Bayersk lov fra 1516: øl er vann, bygg og humle. Og ikke noe mer.",
+   "en": "A Bavarian law of 1516: beer is water, barley and hops. And nothing else."
+  },
+  "body": {
+   "no": "Renhetspåbudet kom i Bayern i femtenhundreogseksten. Det sa at øl bare fikk lages av vann, bygg og humle, og det satte prisen også.\n\nMotivene var praktiske, ikke romantiske. Hvete og rug skulle gå til brød, ikke til øl. Og en del av det folk hadde i ølet før humla — urter, bark, sopp — var i beste fall ubehagelig og i verste fall farlig.\n\nDet påfallende er hva som ikke står i lista. Gjæren er ikke utelatt; den var ukjent. Loven om hva øl er nevnte ikke den viktigste ingrediensen i tre hundre år, fordi ingen visste at den fantes.",
+   "en": "The purity order arrived in Bavaria in fifteen sixteen. It said beer could only be made from water, barley and hops, and it set the price as well.\n\nThe motives were practical, not romantic. Wheat and rye were to go to bread, not to beer. And some of what people had been putting in beer before hops — herbs, bark, fungi — was unpleasant at best and dangerous at worst.\n\nWhat is striking is what the list leaves out. The yeast is not excluded; it was unknown. The law about what beer is did not mention its most important ingredient for three hundred years, because nobody knew it was there."
+  }
+ },
+ "blott-vann": {
+  "term": {
+   "no": "Bløtt vann",
+   "en": "Soft water"
+  },
+  "short": {
+   "no": "Vann med nesten ingen mineraler i. Motsatt av Burtons.",
+   "en": "Water with almost no minerals in it. The opposite of Burton water."
+  },
+  "body": {
+   "no": "Bløtt vann er vann som har rent gjennom stein som ikke løser seg opp, og som derfor tar nesten ingenting med seg.\n\nVannet under Plzeň er blant det mykeste i Europa. Der Burton har rundt sju hundre milligram sulfat i literen, har Plzeň noen få.\n\nDet gjør det motsatte av det gipsen gjør. Uten mineraler blir humla myk i stedet for skarp, og malten får stå fram. En pils er bygd på at vannet ikke gjør noe — og det er like mye en egenskap ved stedet som Burtons gips er.",
+   "en": "Soft water is water that has run through rock which does not dissolve, and therefore picks up almost nothing.\n\nThe water under Plzeň is among the softest in Europe. Where Burton has around seven hundred milligrams of sulfate per litre, Plzeň has a few.\n\nIt does the opposite of what gypsum does. With no minerals the hops turn soft instead of sharp, and the malt is allowed forward. A pilsner is built on the water doing nothing — and that is just as much a property of the place as Burton's gypsum is."
+  }
+ },
+ "pilsner": {
+  "term": {
+   "no": "Pilsner",
+   "en": "Pilsner"
+  },
+  "short": {
+   "no": "Den bleke, gylne lageren fra Plzeň. Verdens mest kopierte øl.",
+   "en": "The pale golden lager from Plzeň. The most copied beer in the world."
+  },
+  "body": {
+   "no": "Pilsner er en blek lager, og den ble til i Plzeň i attenhundreogførtito. Fire ting måtte møtes: den kalde bayerske gjæren, byens usedvanlig bløte vann, malt tørket med varm luft på den nye engelske måten, og glass som var blitt billig nok til at folk drakk av det.\n\nResultatet var gyllent og klart, og ingen hadde sett øl se slik ut før.\n\nByen klarte aldri å beskytte navnet. Pilsner ble et vanlig ord for en type øl i stedet for et sted, og i dag er omtrent ni av ti øl i verden en etterligning av det.",
+   "en": "Pilsner is a pale lager, and it was made in Plzeň in eighteen forty-two. Four things had to meet: the cold Bavarian yeast, the town's unusually soft water, malt dried with hot air in the new English way, and glass that had become cheap enough for people to drink from.\n\nThe result was golden and clear, and nobody had seen beer look like that before.\n\nThe town never managed to protect the name. Pilsner became an ordinary word for a kind of beer rather than a place, and today about nine out of ten beers in the world are an imitation of it."
   }
  }
 }

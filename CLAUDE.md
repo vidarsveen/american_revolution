@@ -846,6 +846,15 @@ of the surrounding file.
 
 ## In flight
 
+- **BEER: chapters one, two and three ship.** Chapter three, *Kulden i
+  Bayern*, is the mirror of chapter two: there a town's water made the style,
+  here the cold does. Bottom fermentation, ice cut out of mountain lakes and
+  carted into cellars, the 1516 purity law that names three ingredients
+  because nobody had seen the fourth — and then Plzeň in 1842, where the cold
+  yeast, the softest water in Europe, pale English-dried malt and cheap glass
+  arrived at once and the beer came out golden. Nine out of ten beers poured
+  in the world today are a copy of it.
+
 - **BEER: chapters one and two ship.** Chapter two, *Den som gjærer på
   toppen*, is where the map starts working: ale and warm fermentation, then
   London and porter, Dublin and stout, and the chapter's real argument —

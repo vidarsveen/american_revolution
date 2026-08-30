@@ -1,0 +1,964 @@
+{
+ "id": "chapter-3-undergjaer",
+ "pack": "beer",
+ "title": {
+  "no": "Kulden i Bayern",
+  "en": "The cold in Bavaria"
+ },
+ "subtitle": {
+  "no": "Lager, is, og en gyllen øl fra Plzeň",
+  "en": "Lager, ice, and a golden beer from Plzeň"
+ },
+ "places": {
+  "munchen": {
+   "coords": [
+    48.1374,
+    11.5755
+   ],
+   "zoom": 9.4,
+   "name": {
+    "no": "München",
+    "en": "Munich"
+   },
+   "kind": "city"
+  },
+  "plzen": {
+   "coords": [
+    49.7475,
+    13.3776
+   ],
+   "zoom": 10.2,
+   "name": {
+    "no": "Plzeň",
+    "en": "Pilsen"
+   },
+   "kind": "town"
+  },
+  "alpene": {
+   "coords": [
+    47.3,
+    11.4
+   ],
+   "zoom": 7.0,
+   "name": {
+    "no": "Alpene",
+    "en": "The Alps"
+   },
+   "kind": "hill"
+  },
+  "europa": {
+   "coords": [
+    50.5,
+    9.0
+   ],
+   "zoom": 4.6,
+   "name": {
+    "no": "Europa",
+    "en": "Europe"
+   },
+   "kind": "region"
+  }
+ },
+ "ending": {
+  "say": {
+   "no": "Kulda gjorde ølet rent, og Plzeň gjorde det gyllent. Neste gang: mannen som fanget gjæren.",
+   "en": "The cold made the beer clean, and Plzeň made it golden. Next time: the man who caught the yeast."
+  },
+  "figure": {
+   "value": "90",
+   "label": {
+    "no": "prosent av all øl i dag er en kopi av det",
+    "en": "per cent of all beer today is a copy of it"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Den som synker",
+    "en": "The one that sinks"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Sist gang fløt gjæren opp. Denne synker.",
+      "en": "Last time the yeast floated up. This one sinks."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaer-bunnfall",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Den samler seg i et tett lag på bunnen av karet i stedet for på toppen, og den vil ha det kaldt.",
+      "en": "It gathers in a dense layer at the bottom of the vessel instead of on top, and it wants to be cold."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Det heter undergjæring, og ølet heter lager.",
+      "en": "That is called bottom fermentation, and the beer is called lager."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:undergjæring",
+        "en": "word:fermentation"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "undergjaering"
+      },
+      {
+       "on": {
+        "no": "word:lager",
+        "en": "word:lager"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "lager"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Fire til ni grader. En kjeller om vinteren, ikke et rom du bor i.",
+      "en": "Four to nine degrees. A cellar in winter, not a room you live in."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Og der ale er ferdig på tre døgn, bruker denne tre uker.",
+      "en": "And where an ale is done in three days, this one takes three weeks."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Kulda er kontrollen",
+    "en": "The cold is the control"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Husk hva varmen gjorde. Gjæren fikk hastverk og sølte estere: banan, pære, eple.",
+      "en": "Remember what the heat did. The yeast got hurried and spilled esters: banana, pear, apple."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "lagerkjeller-tanker",
+       "motion": "left",
+       "over": 25,
+       "dim": 0.15,
+       "push": 0.14,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:eple",
+        "en": "word:apple"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "ester"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Kulde gjør det motsatte. Gjæren jobber sakte og ryddig, og lager nesten ingenting ved siden av.",
+      "en": "Cold does the opposite. The yeast works slowly and tidily, and makes almost nothing on the side."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Det gir et øl uten frukt i.",
+      "en": "That gives a beer with no fruit in it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 3,
+         "value": "3",
+         "side": "ale",
+         "label": {
+          "no": "Ale, døgn",
+          "en": "Ale, days"
+         }
+        },
+        {
+         "n": 21,
+         "value": "21",
+         "side": "lager",
+         "label": {
+          "no": "Lager, døgn",
+          "en": "Lager, days"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Så lenge tar gjæringen.",
+        "en": "This is how long fermentation takes."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Og et øl uten frukt i er et øl der du hører malten og humla helt alene. Det er ikke tommere. Det er renere.",
+      "en": "And a beer with no fruit in it is a beer where you hear the malt and the hops entirely on their own."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Ordet lager betyr rett og slett lagring. Ølet blir stående kaldt i uker etter at gjæringen er over.",
+      "en": "The word lager simply means storage. The beer stands cold for weeks after fermentation is finished."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kjeller-kald",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.16,
+       "push": 0.08,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:lagring",
+        "en": "word:storage"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "lagring"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Da faller gjæren ut, smaken glatter seg, og ølet blir blankt.",
+      "en": "The yeast drops out, the flavour smooths itself, and the beer turns bright."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Men det krever noe de fleste steder ikke hadde. Det krever kulde du kan stole på gjennom hele sommeren.",
+      "en": "But that needs something most places did not have. It needs cold you can rely on all summer."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Bayern, is og fjell",
+    "en": "Bavaria, ice and mountains"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Sør i Tyskland ligger Bayern, og over Bayern ligger Alpene.",
+      "en": "In southern Germany lies Bavaria, and above Bavaria lie the Alps."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "munchen",
+       "zoom": 5.6,
+       "over": 3.8
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "munchen",
+       "label": {
+        "no": "München",
+        "en": "München"
+       },
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Om vinteren hogde de is ut av fjellvann og kjørte den ned i kjellere gravd inn i fjellsiden.",
+      "en": "In winter they cut ice out of mountain water and carted it down into cellars dug into the hillside."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "is-hogging",
+       "motion": "out",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.15,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Isen lå der til langt ut på sommeren. Kjelleren holdt fire grader året rundt.",
+      "en": "The ice lay there well into the summer. The cellar held four degrees all year."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Og i den kjelleren trivdes en gjær som ikke trivdes noe annet sted.",
+      "en": "And in that cellar there thrived a yeast that thrived nowhere else."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kjeller-kald",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.16,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Ingen valgte den. Den var bare den som overlevde kulda, brygg etter brygg, i noen hundre år.",
+      "en": "Nobody chose it. It was simply the one that survived the cold, brew after brew, for a few hundred years."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Bayern gjorde det til lov også. Fra femtenhundretallet var det forbudt å brygge om sommeren.",
+      "en": "Bavaria made it law as well. From the fifteen hundreds it was forbidden to brew in summer."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Man brygget fra september til april, og lagret resten av året. Ølet måtte tåle å vente.",
+      "en": "You brewed from September to April, and stored the rest of the year. The beer had to be able to wait."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Loven som glemte den fjerde",
+    "en": "The law that forgot the fourth"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "I femtenhundreogseksten kom det en lov i Bayern som fortsatt er berømt.",
+      "en": "In fifteen sixteen a law arrived in Bavaria that is still famous."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "tre-ingredienser",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Den het reinheitsgebot, renhetspåbudet, og den sa hva øl fikk være laget av.",
+      "en": "It was called the Reinheitsgebot, the purity order, and it said what beer was allowed to be made of."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:reinheitsgebot",
+        "en": "word:Reinheitsgebot"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "reinheitsgebot"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Tre ting. Vann, bygg og humle.",
+      "en": "Three things. Water, barley and hops."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Legg merke til hva som ikke står der. Gjæren.",
+      "en": "Notice what is not on the list. The yeast."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkake-krukke",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Den var ikke utelatt. Den var ukjent. Ingen visste at den fantes, og loven kunne ikke nevne noe ingen hadde sett.",
+      "en": "It was not left out. It was unknown. Nobody knew it existed, and the law could not name something nobody had seen."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Så den viktigste ingrediensen i øl sto ikke i loven om hva øl er, i tre hundre år.",
+      "en": "So the most important ingredient in beer was not in the law about what beer is, for three hundred years."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Attenhundreogførtito",
+    "en": "Eighteen forty-two"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Fire mil øst for grensa ligger en by i Böhmen.",
+      "en": "Forty kilometres east of the border lies a town in Bohemia."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "plzen",
+       "zoom": 6.6,
+       "over": 4.0
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "plzen",
+       "label": {
+        "no": "Plzeň",
+        "en": "Plzeň"
+       },
+       "kind": "point",
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "I attenhundreogtrettiåtte var innbyggerne så misfornøyde med sitt eget øl at de rullet seksogtretti tønner ut på torget og tømte dem i rennesteinen.",
+      "en": "In eighteen thirty-eight the townspeople were so unhappy with their own beer that they rolled thirty-six barrels into the square and emptied them into the gutter."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "plzen-bryggeri",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.15,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Så bygde de et nytt bryggeri og hentet en brygger fra Bayern.",
+      "en": "Then they built a new brewery and brought in a brewer from Bavaria."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Han tok med seg den kalde gjæren. Men fire ting til møttes i den byen på én gang.",
+      "en": "He brought the cold yeast with him. But four more things met in that town at once."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "lys-malt",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Vannet under Plzeň er nesten uten mineraler. Det mykeste bryggevannet i Europa.",
+      "en": "The water under Plzeň is almost free of minerals. The softest brewing water in Europe."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:mineraler",
+        "en": "word:minerals"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "blott-vann"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Malten var tørket på den nye engelske måten, med varm luft i stedet for over ild, så den kom ut blek i stedet for brun.",
+      "en": "The malt was dried the new English way, with hot air instead of over a fire, so it came out pale instead of brown."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Og akkurat i de årene ble glass billig nok til at vanlige folk drakk av det, i stedet for av tinn eller stein.",
+      "en": "And in exactly those years glass became cheap enough for ordinary people to drink from, instead of pewter or stoneware."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "pilsner-glass",
+       "motion": "in",
+       "over": 27,
+       "dim": 0.13,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b8",
+     "say": {
+      "no": "Ølet kom ut av kjelleren gyllent. Klart, blekt og gyllent, i et glass du kunne se gjennom.",
+      "en": "The beer came out of the cellar golden. Clear, pale and golden, in a glass you could see through."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b9",
+     "say": {
+      "no": "Ingen hadde sett øl se sånn ut før.",
+      "en": "Nobody had seen beer look like that before."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:før",
+        "en": "word:before"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "pilsner"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Og så kopierte alle",
+    "en": "And then everybody copied it"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Det som skjedde etterpå er den største smittingen i ølets historie.",
+      "en": "What happened next is the biggest contagion in the history of beer."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "europa",
+       "zoom": 4.6,
+       "over": 4.6
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "plzen",
+       "label": {
+        "no": "Plzeň",
+        "en": "Plzeň"
+       },
+       "kind": "point",
+       "tone": "gold"
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "munchen",
+       "label": {
+        "no": "München",
+        "en": "München"
+       },
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Jernbanen kom samtidig. Ølet kunne reise kaldt, og det gjorde det.",
+      "en": "The railway arrived at the same time. The beer could travel cold, and it did."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "I dag er omtrent ni av ti øl som drikkes i verden en etterligning av det ene karet.",
+      "en": "Today about nine out of ten beers poured in the world are an imitation of that one vessel."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "90%",
+       "label": {
+        "no": "av all øl i dag er blek lager",
+        "en": "of all beer today is pale lager"
+       },
+       "side": "lager"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Og her er det bitre. Plzeň klarte ikke å beskytte navnet sitt.",
+      "en": "And here is the bitter part. Plzeň could not protect its name."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Pilsner ble et vanlig ord for en type øl, ikke for et sted. Burton beholdt i det minste navnet sitt i burtonisering.",
+      "en": "Pilsner became an ordinary word for a kind of beer, not for a place. Burton at least kept its name in Burtonisation."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Det som ble borte",
+    "en": "What went missing"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Tenk på hva det betyr. Ni av ti glass i verden smaker av det samme valget.",
+      "en": "Think about what that means. Nine out of ten glasses in the world taste of the same choice."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "pils-rekke",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Blek malt, lite humle, kald gjær, og ingenting som stikker seg fram.",
+      "en": "Pale malt, few hops, cold yeast, and nothing that sticks out."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Det er ikke dårlig øl. Det er vanskelig øl å lage, fordi det ikke er noe å gjemme seg bak.",
+      "en": "It is not bad beer. It is difficult beer to make, because there is nothing to hide behind."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Men det er ett svar på spørsmålet vårt, gjentatt ni ganger av ti.",
+      "en": "But it is one answer to our question, repeated nine times out of ten."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Og fortsatt, i attenhundreogsyttiårene, visste ingen brygger nøyaktig hva gjæren var.",
+      "en": "And still, in the eighteen seventies, no brewer knew exactly what the yeast was."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkake-krukke",
+       "motion": "out",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "De arvet den, de skummet den, de håpet. Noen ganger ble et helt bryggeri surt uten at noen skjønte hvorfor.",
+      "en": "They inherited it, they skimmed it, they hoped. Sometimes an entire brewery went sour and nobody understood why."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Neste gang drar vi til København, der en mann satte én eneste celle under et mikroskop og forandret alt sammen.",
+      "en": "Next time we go to Copenhagen, where one man put a single cell under a microscope and changed the whole thing."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

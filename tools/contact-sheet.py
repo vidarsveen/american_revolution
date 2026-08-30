@@ -91,7 +91,31 @@ def main(argv):
     ap.add_argument("pack")
     ap.add_argument("--chapter", default=None)
     ap.add_argument("--cols", type=int, default=COLS)
+    ap.add_argument("--candidates", nargs="*", default=None,
+                    metavar="ID",
+                    help="sheet the CANDIDATES for these ids instead of what "
+                         "has been accepted — looking before accepting is the "
+                         "whole point, and two wrong pictures shipped because "
+                         "fourteen were accepted on a number alone")
     args = ap.parse_args(argv)
+
+    if args.candidates is not None:
+        import glob
+        cells = []
+        ids = args.candidates or sorted(
+            os.path.basename(d) for d in glob.glob(
+                os.path.join(ROOT, "image-candidates", args.pack, "*"))
+            if os.path.isdir(d))
+        for mid in ids:
+            folder = os.path.join(ROOT, "image-candidates", args.pack, mid)
+            run = S.load_json(os.path.join(folder, "_run.json")) or {}
+            files = [f for f in (run.get("files") or [])
+                     if os.path.exists(os.path.join(folder, f))]
+            for i, f in enumerate(files, 1):
+                cells.append((f"{mid}", f"#{i}", os.path.join(folder, f)))
+        if not cells:
+            raise SystemExit("no candidates on disk for those ids")
+        return sheet(cells, args, suffix="-candidates")
 
     media = S.load_json(os.path.join(CONTENT, args.pack, "media.json")) or {}
     items = order_for(args.pack, args.chapter)
@@ -109,6 +133,10 @@ def main(argv):
     if not cells:
         raise SystemExit(f"no pictures found for {args.pack}")
 
+    return sheet(cells, args)
+
+
+def sheet(cells, args, suffix=""):
     cell_h = int(CELL_W * HOST_H / HOST_W)
     cols = max(1, args.cols)
     rows = (len(cells) + cols - 1) // cols
@@ -131,7 +159,7 @@ def main(argv):
 
     out = os.path.join(ROOT, "shots", "contact")
     os.makedirs(out, exist_ok=True)
-    name = f"{args.pack}{'-' + args.chapter if args.chapter else ''}.png"
+    name = f"{args.pack}{'-' + args.chapter if args.chapter else ''}{suffix}.png"
     dest = os.path.join(out, name)
     sheet.save(dest)
     print(f"{len(cells)} pictures, in the order a viewer meets them")

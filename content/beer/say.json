@@ -33,5 +33,19 @@
  },
  "Burtonisation": {
   "en": "Burton-ization"
+ },
+ "Plzeň": {
+  "no": "Pilsen",
+  "en": "Pilsen"
+ },
+ "Reinheitsgebot": {
+  "no": "Rainhaitsgebot",
+  "en": "Rine-hites-ge-bot"
+ },
+ "reinheitsgebot": {
+  "no": "rainhaitsgebot"
+ },
+ "Böhmen": {
+  "no": "Bømen"
  }
 }

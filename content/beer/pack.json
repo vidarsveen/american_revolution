@@ -306,44 +306,63 @@
   "    python tools/outline.py beer --write"
  ],
  "chapters": [
-  {
-   "id": "chapter-1-fire-ting",
-   "title": {
-    "no": "Fire ting i et glass",
-    "en": "Four things in a glass"
+   {
+     "id": "chapter-1-fire-ting",
+     "title": {
+       "no": "Fire ting i et glass",
+       "en": "Four things in a glass"
+     },
+     "subtitle": {
+       "no": "Vann, korn, humle og gjær",
+       "en": "Water, grain, hops and yeast"
+     },
+     "blurb": {
+       "no": "Nesten all øl i verden er laget av fire ting. Vi følger dem gjennom bryggeriet, fra åkeren til glasset, og finner ut hvor smaken kommer fra.",
+       "en": "Almost every beer in the world is made of four things. We follow them through the brewery, from the field to the glass, and find out where the taste comes from."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
    },
-   "subtitle": {
-    "no": "Vann, korn, humle og gjær",
-    "en": "Water, grain, hops and yeast"
+   {
+     "id": "chapter-2-overgjaer",
+     "title": {
+       "no": "Den som gjærer på toppen",
+       "en": "The one that ferments on top"
+     },
+     "subtitle": {
+       "no": "Ale, England, og vannet under Burton",
+       "en": "Ale, England, and the water under Burton"
+     },
+     "blurb": {
+       "no": "Varm gjæring, ferdig på tre dager, og en smak av frukt som ingen har tilsatt. Så en by som oppdaget at vannet under den var halve hemmeligheten.",
+       "en": "Warm fermentation, done in three days, and a taste of fruit nobody added. Then a town that found the water under it was half the secret."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
    },
-   "blurb": {
-    "no": "Nesten all øl i verden er laget av fire ting. Vi følger dem gjennom bryggeriet, fra åkeren til glasset, og finner ut hvor smaken kommer fra.",
-    "en": "Almost every beer in the world is made of four things. We follow them through the brewery, from the field to the glass, and find out where the taste comes from."
-   },
-   "langs": [
-    "no",
-    "en"
-   ]
-  },
-  {
-   "id": "chapter-2-overgjaer",
-   "title": {
-    "no": "Den som gjærer på toppen",
-    "en": "The one that ferments on top"
-   },
-   "subtitle": {
-    "no": "Ale, England, og vannet under Burton",
-    "en": "Ale, England, and the water under Burton"
-   },
-   "blurb": {
-    "no": "Varm gjæring, ferdig på tre dager, og en smak av frukt som ingen har tilsatt. Så en by som oppdaget at vannet under den var halve hemmeligheten.",
-    "en": "Warm fermentation, done in three days, and a taste of fruit nobody added. Then a town that found the water under it was half the secret."
-   },
-   "langs": [
-    "no",
-    "en"
-   ]
-  }
+   {
+     "id": "chapter-3-undergjaer",
+     "title": {
+       "no": "Kulden i Bayern",
+       "en": "The cold in Bavaria"
+     },
+     "subtitle": {
+       "no": "Lager, is, og en gyllen øl fra Plzeň",
+       "en": "Lager, ice, and a golden beer from Plzeň"
+     },
+     "blurb": {
+       "no": "En gjær som synker til bunns og jobber langsomt i kulde. Bayern lagret ølet i kjellere fylt med is — og i 1842 kom det ut gyllent i stedet for brunt.",
+       "en": "A yeast that sinks to the bottom and works slowly in the cold. Bavaria stored its beer in cellars packed with ice — and in 1842 it came out golden instead of brown."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
+   }
  ],
  "//surfaces": [
   "Hva scenen er laget av, argumentert i outline.md sin `shows:`. Fem av",
