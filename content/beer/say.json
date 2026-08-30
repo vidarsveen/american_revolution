@@ -47,5 +47,43 @@
  },
  "Böhmen": {
   "no": "Bømen"
+ },
+ "geuze": {
+  "no": "gøze",
+  "en": "gooze"
+ },
+ "Geuze": {
+  "no": "Gøze",
+  "en": "Gooze"
+ },
+ "gueuze": {
+  "en": "gooze"
+ },
+ "kriek": {
+  "no": "krik",
+  "en": "kreek"
+ },
+ "Kriek": {
+  "no": "Krik",
+  "en": "Kreek"
+ },
+ "saison": {
+  "no": "sesång",
+  "en": "say-zon"
+ },
+ "brettanomyces": {
+  "no": "brettanomysess",
+  "en": "bret-an-oh-my-sees"
+ },
+ "Brettanomyces": {
+  "no": "Brettanomysess",
+  "en": "Bret-an-oh-my-sees"
+ },
+ "lambik": {
+  "no": "lambikk"
+ },
+ "Pajottenland": {
+  "no": "Pajottenland",
+  "en": "Pie-otten-land"
  }
 }

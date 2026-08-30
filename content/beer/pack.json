@@ -381,6 +381,25 @@
        "no",
        "en"
      ]
+   },
+   {
+     "id": "chapter-5-belgia",
+     "title": {
+       "no": "De som lot vinduet stå åpent",
+       "en": "The ones who left the window open"
+     },
+     "subtitle": {
+       "no": "Belgia, og gjæren som kommer utenfra",
+       "en": "Belgium, and the yeast that comes in from outside"
+     },
+     "blurb": {
+       "no": "Mens resten av verden stengte de ville gjærsoppene ute, bygde et lite område utenfor Brussel takene sine slik at de skulle komme inn.",
+       "en": "While the rest of the world was shutting the wild yeasts out, a small area outside Brussels built its roofs so they could get in."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
    }
  ],
  "//surfaces": [

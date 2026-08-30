@@ -1,0 +1,906 @@
+{
+ "id": "chapter-5-belgia",
+ "pack": "beer",
+ "title": {
+  "no": "De som lot vinduet stå åpent",
+  "en": "The ones who left the window open"
+ },
+ "subtitle": {
+  "no": "Belgia, og gjæren som kommer utenfra",
+  "en": "Belgium, and the yeast that comes in from outside"
+ },
+ "places": {
+  "brussel": {
+   "coords": [
+    50.8503,
+    4.3517
+   ],
+   "zoom": 9.6,
+   "name": {
+    "no": "Brussel",
+    "en": "Brussels"
+   },
+   "kind": "city"
+  },
+  "pajottenland": {
+   "coords": [
+    50.78,
+    4.12
+   ],
+   "zoom": 10.8,
+   "name": {
+    "no": "Pajottenland",
+    "en": "Pajottenland"
+   },
+   "kind": "region"
+  },
+  "europa": {
+   "coords": [
+    50.5,
+    9.0
+   ],
+   "zoom": 4.6,
+   "name": {
+    "no": "Europa",
+    "en": "Europe"
+   },
+   "kind": "region"
+  }
+ },
+ "ending": {
+  "say": {
+   "no": "Samme sopp, samme lukt, motsatt dom. Neste gang: en trekrans i et stabbur på Voss.",
+   "en": "The same fungus, the same smell, the opposite verdict. Next time: a wooden ring in a loft at Voss."
+  },
+  "figure": {
+   "value": "3",
+   "label": {
+    "no": "år i fat, før noen smaker på det",
+    "en": "years in a barrel, before anybody tastes it"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "De som lot være",
+    "en": "The ones who did not"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Alt vi har sett til nå handler om å få kontroll.",
+      "en": "Everything we have seen so far is about getting control."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "loftsvindu",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Kald kjeller. Ren gjær. Pasteurisering. Fire hundre år med å stenge det ville ute.",
+      "en": "Cold cellar. Clean yeast. Pasteurisation. Four hundred years of shutting the wild out."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Så er det ett lite område i Europa som gjorde det motsatte, med vilje, og fortsatt gjør det.",
+      "en": "Then there is one small area in Europe that did the opposite, deliberately, and still does."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "De bygde takene sine slik at gjæren skulle komme INN.",
+      "en": "They built their roofs so the yeast could get IN."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Karet på loftet",
+    "en": "The vessel in the loft"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "På loftet i bryggeriet står et kar som ikke ligner på noe annet i dette kurset.",
+      "en": "In the loft of the brewery stands a vessel that looks like nothing else in this course."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kjoleskip",
+       "motion": "left",
+       "over": 26,
+       "dim": 0.15,
+       "push": 0.13,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Det er vidt og flatt og åpent. Som et svømmebasseng av kobber, tjue centimeter dypt.",
+      "en": "It is wide and flat and open. Like a swimming pool made of copper, twenty centimetres deep."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Det heter et kjøleskip. Den varme vørteren pumpes opp dit om kvelden og får ligge natta over.",
+      "en": "It is called a coolship. The hot wort is pumped up there in the evening and left to lie overnight."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:kjøleskip",
+        "en": "word:coolship"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "kjoleskip"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Det er flatt fordi det skal kjøle seg ned fort. Det er åpent fordi det skal få besøk.",
+      "en": "It is flat so it cools quickly. It is open so that it gets visitors."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Lukene i taket står åpne. Ingen har tilsatt gjær, og ingen kommer til å gjøre det.",
+      "en": "The louvres in the roof stand open. Nobody has added yeast, and nobody is going to."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "takluker",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Det som lever i lufta og i treverket faller ned i vørteren av seg selv.",
+      "en": "Whatever lives in the air and in the timber falls into the wort by itself."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Det heter spontangjæring, og det er den eldste måten å lage øl på. Det er også den eneste som er igjen.",
+      "en": "That is called spontaneous fermentation, and it is the oldest way to make beer. It is also the only one left."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:spontangjæring",
+        "en": "word:fermentation"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "spontangjaering"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Dalen der det virker",
+    "en": "The valley where it works"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Og det virker bare ett sted.",
+      "en": "And it only works in one place."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "brussel",
+       "zoom": 6.0,
+       "over": 4.0
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "brussel",
+       "label": {
+        "no": "Brussel",
+        "en": "Brussel"
+       },
+       "kind": "point"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Vest for Brussel ligger en dal langs elva Senne. Området heter Pajottenland, og det er lite. Tjue ganger tretti kilometer.",
+      "en": "West of Brussels lies a valley along the river Senne. The area is called Pajottenland, and it is small. Twenty kilometres by thirty."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "senne-dal",
+       "motion": "out",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.14,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Ølet som blir til der heter lambik.",
+      "en": "The beer that comes about there is called lambic."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:lambik",
+        "en": "word:lambic"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "lambik"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Prøver du det samme i Oslo, får du noe annet. Ofte noe udrikkelig.",
+      "en": "Try the same thing in Oslo and you get something else. Often something undrinkable."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Lufta over den dalen har en blanding av gjærsopper og bakterier som ingen har satt sammen og ingen kan flytte.",
+      "en": "The air over that valley has a mixture of yeasts and bacteria that nobody put together and nobody can move."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Soppen som fikk skylda",
+    "en": "The fungus that took the blame"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Én av dem er verdt et eget navn.",
+      "en": "One of them is worth a name of its own."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "brett-fat",
+       "motion": "in",
+       "over": 27,
+       "dim": 0.16,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Den heter brettanomyces, og navnet betyr «den britiske soppen».",
+      "en": "It is called Brettanomyces, and the name means \"the British fungus\"."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:brettanomyces",
+        "en": "word:Brettanomyces"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "brettanomyces"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Den fikk det navnet i nittenhundreogfire fordi en dansk forsker fant ut hva som ØDELA engelsk øl.",
+      "en": "It got that name in nineteen oh four because a Danish scientist worked out what was RUINING English beer."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Den lager lukter man i et bryggeri kaller feil: fjøs, hestedekken, lær, plaster.",
+      "en": "It makes smells that a brewery calls faults: barnyard, horse blanket, leather, sticking plaster."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "laer-stall",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Og i Pajottenland er akkurat det poenget.",
+      "en": "And in Pajottenland that is exactly the point."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "brettanomyces"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Samme sopp. Samme lukt. Motsatt dom.",
+      "en": "The same fungus. The same smell. The opposite verdict."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Det er ikke fordi belgierne har dårlig smak. Det er fordi en feil er en feil bare når du prøvde på noe annet.",
+      "en": "It is not because the Belgians have bad taste. It is because a fault is only a fault when you were trying to do something else."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Tre år, og så blandes det",
+    "en": "Three years, and then it is blended"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Lambik har det ikke travelt. Den ligger på gamle trefat i ett, to eller tre år.",
+      "en": "Lambic is in no hurry. It lies in old wooden barrels for one, two or three years."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fathall",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Underveis skifter den. Det første året er den frisk og syrlig. Det tredje er den tørr, dyp og litt merkelig.",
+      "en": "It changes on the way. The first year it is fresh and tart. By the third it is dry, deep and slightly strange."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Så gjør bryggeren det som egentlig er håndverket her. Han blander.",
+      "en": "Then the brewer does the thing that is really the craft here. He blends."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "blandekunst",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Ung lambik med sukker igjen i, gammel lambik med smaken, og resultatet fylles på flaske mens det fortsatt lever.",
+      "en": "Young lambic with sugar still in it, old lambic with the flavour, and the result goes into a bottle while it is still alive."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Det gjærer ferdig inne i flaska. Da lager det sin egen kullsyre, og korken må bindes fast.",
+      "en": "It finishes fermenting inside the bottle. That makes its own carbonation, and the cork has to be wired down."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:flaska",
+        "en": "word:bottle"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "flaskegjaering"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Blandingen heter geuze.",
+      "en": "The blend is called gueuze."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:geuze",
+        "en": "word:gueuze"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "geuze"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Og har du kirsebær, kaster du dem oppi et fat lambik og venter et halvt år til.",
+      "en": "And if you have cherries, you throw them into a barrel of lambic and wait another six months."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kriek-kirsebaer",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b8",
+     "say": {
+      "no": "Gjæren spiser sukkeret i frukta, så det blir ikke søtt. Det blir surt og rødt. Det heter kriek.",
+      "en": "The yeast eats the sugar in the fruit, so it does not turn sweet. It turns sour and red. That is called kriek."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:kriek",
+        "en": "word:kriek"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "kriek"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Klosteret og gården",
+    "en": "The monastery and the farm"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Belgia har to tradisjoner til, og de deler den samme trassen.",
+      "en": "Belgium has two more traditions, and they share the same stubbornness."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kloster-gang",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "I noen klostre brygger munkene fortsatt selv, og selger for å drive stedet. Det ølet kalles trappist.",
+      "en": "In some monasteries the monks still brew themselves, and sell it to keep the place going. That beer is called trappist."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:trappist",
+        "en": "word:trappist"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "trappist"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Det er sterkt, det gjærer varmt, og det gjærer om igjen i flaska.",
+      "en": "It is strong, it ferments warm, and it ferments again in the bottle."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Og på gårdene i sør brygget de om vinteren et øl til sommerens arbeidsfolk.",
+      "en": "And on the farms in the south they brewed a beer in winter for the summer's workers."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gard-belgia",
+       "motion": "out",
+       "over": 24,
+       "dim": 0.14,
+       "push": 0.13,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Tørt, krydret, ikke sterkt, laget for å drikkes av folk som skulle jobbe videre etterpå. Det heter saison.",
+      "en": "Dry, spicy, not strong, made for people who had to keep working afterwards. It is called saison."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:saison",
+        "en": "word:saison"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "saison"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Ingen av delene er ville på lambikens måte. Men ingen av dem er renset heller.",
+      "en": "Neither of them is wild in the way lambic is. But neither of them is cleaned up either."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Feil, eller stil",
+    "en": "A fault, or a style"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Se på det på kartet en siste gang.",
+      "en": "Look at it on the map one last time."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "europa",
+       "zoom": 4.6,
+       "over": 4.6
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "pajottenland",
+       "label": {
+        "no": "Pajottenland",
+        "en": "Pajottenland"
+       },
+       "kind": "point",
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Hele denne tradisjonen får plass i en firkant du knapt ser herfra.",
+      "en": "This entire tradition fits in a square you can barely see from here."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Resten av kartet gjorde det motsatte, og hadde gode grunner.",
+      "en": "The rest of the map did the opposite, and had good reasons."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "600",
+       "label": {
+        "no": "kvadratkilometer, og resten av verden",
+        "en": "square kilometres, and the rest of the world"
+       },
+       "side": "wild"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Men legg merke til hva dette kapitlet egentlig har vist.",
+      "en": "But notice what this chapter has really shown."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "lambik-glass",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.13,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Det samme stoffet, laget av den samme soppen, er en katastrofe i en pils og hele poenget i en geuze.",
+      "en": "The same compound, made by the same fungus, is a disaster in a pilsner and the entire point in a gueuze."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Forskjellen ligger ikke i ølet. Den ligger i hva bryggeren prøvde på.",
+      "en": "The difference is not in the beer. It is in what the brewer was trying to do."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Neste gang skal vi hjem. For mens gjæren ble låst inne i laboratorier, hang det en tørket krans av den på et stabbur på Voss.",
+      "en": "Next time we are going home. Because while yeast was being locked up in laboratories, a dried ring of it was hanging in a loft at Voss."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

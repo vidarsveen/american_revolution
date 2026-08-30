@@ -1,5 +1,5 @@
 {
- "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord, kapittel to ni, kapittel tre seks og kapittel fire fem — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
+ "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord, to ni, tre seks, fire fem og fem ni — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
  "malt": {
   "term": {
    "no": "Malt",
@@ -390,6 +390,132 @@
   "body": {
    "no": "Industriøl er ikke et skjellsord her. Det er en beskrivelse av en produksjonsmåte, og den hviler på tre ting som alle kom på attenhundretallet: kunstig kjøling, pasteurisering og renkultur.\n\nTil sammen gjør de at et bryggeri kan lage det samme ølet i Oslo og i Singapore, hele året, i en mengde ingen kjeller kunne romme.\n\nPrisen er variasjonen. Når du kan velge en gjær som aldri skuffer, bruker du ikke den rare i huset — og de rare i huset forsvant nesten helt i løpet av hundre år.",
    "en": "Industrial beer is not an insult here. It is a description of a way of producing, and it rests on three things that all arrived in the eighteen hundreds: artificial refrigeration, pasteurisation and the pure culture.\n\nTogether they let a brewery make the same beer in Oslo and in Singapore, all year round, in quantities no cellar could hold.\n\nThe price is the variety. When you can choose a yeast that never disappoints, you do not use the odd one in the house — and the odd ones in the house very nearly disappeared over the course of a hundred years."
+  }
+ },
+ "lambik": {
+  "term": {
+   "no": "Lambik",
+   "en": "Lambic"
+  },
+  "short": {
+   "no": "Øl gjæret av det som fantes i lufta, vest for Brussel.",
+   "en": "Beer fermented by whatever was in the air, west of Brussels."
+  },
+  "body": {
+   "no": "Lambik er øl som ingen har tilsatt gjær i. Den varme vørteren settes i et åpent kar på loftet med lukene oppe, og det som lever i lufta og i treverket faller ned i den over natta.\n\nDet virker bare i Pajottenland, et område på rundt tjue ganger tretti kilometer vest for Brussel. Lufta der har en blanding av gjærsopper og bakterier som ingen har satt sammen, og som ikke lar seg flytte.\n\nSå ligger den på trefat i ett til tre år. Resultatet er tørt, syrlig og uten kullsyre, og smaker ikke som noe annet øl.",
+   "en": "Lambic is beer nobody has added yeast to. The hot wort is put into an open vessel in the loft with the louvres up, and whatever lives in the air and in the timber falls into it overnight.\n\nIt only works in Pajottenland, an area of about twenty kilometres by thirty west of Brussels. The air there holds a mixture of yeasts and bacteria that nobody assembled and that cannot be moved.\n\nThen it lies in wooden barrels for one to three years. The result is dry, tart and still, and tastes like no other beer."
+  }
+ },
+ "kjoleskip": {
+  "term": {
+   "no": "Kjøleskip",
+   "en": "Coolship"
+  },
+  "short": {
+   "no": "Et vidt, flatt, åpent kar på loftet. Tjue centimeter dypt.",
+   "en": "A wide, flat, open vessel in the loft. Twenty centimetres deep."
+  },
+  "body": {
+   "no": "Et kjøleskip er et stort grunt kar, som regel av kobber, som står på loftet i bryggeriet under lemmer som kan åpnes.\n\nFormen har to grunner. Flatt og vidt betyr stor overflate, så den kokvarme vørteren kjøler seg ned i løpet av natta uten noe kjøleanlegg. Og åpent betyr at alt som svever i lufta lander i den.\n\nOveralt ellers ble kjøleskipet kastet ut da man fikk kjøling og skjønte at det slapp inn forurensning. I Pajottenland er det fortsatt selve poenget.",
+   "en": "A coolship is a large shallow vessel, usually copper, standing in the loft of the brewery beneath louvres that can be opened.\n\nThe shape has two reasons. Flat and wide means a large surface, so boiling wort cools overnight without any refrigeration. And open means everything floating in the air lands in it.\n\nEverywhere else the coolship was thrown out once refrigeration arrived and people understood it was letting contamination in. In Pajottenland it is still the whole point."
+  }
+ },
+ "spontangjaering": {
+  "term": {
+   "no": "Spontangjæring",
+   "en": "Spontaneous fermentation"
+  },
+  "short": {
+   "no": "Ingen tilsetter gjær. Lufta gjør jobben.",
+   "en": "Nobody adds yeast. The air does the work."
+  },
+  "body": {
+   "no": "Spontangjæring er å la være å tilsette gjær, og la det som allerede finnes gjøre jobben — i lufta, på fatene, i takbjelkene.\n\nDet er den eldste måten å lage øl på, fordi det er den eneste måten som fantes før noen visste at gjær var noe. I flere tusen år var alt øl spontangjæret.\n\nDet er også den mest uforutsigbare. Gjæringen kommer i gang etter noen døgn i stedet for noen timer, den tar måneder i stedet for dager, og hva som kommer ut avhenger av årstiden. Derfor brygges lambik bare fra oktober til april.",
+   "en": "Spontaneous fermentation means not adding yeast, and letting whatever is already there do the work — in the air, on the barrels, in the roof beams.\n\nIt is the oldest way to make beer, because it is the only way there was before anybody knew yeast existed. For several thousand years all beer was spontaneously fermented.\n\nIt is also the least predictable. Fermentation starts after some days rather than some hours, it takes months rather than days, and what comes out depends on the season. That is why lambic is only brewed from October to April."
+  }
+ },
+ "brettanomyces": {
+  "term": {
+   "no": "Brettanomyces",
+   "en": "Brettanomyces"
+  },
+  "short": {
+   "no": "«Den britiske soppen». Oppkalt etter ølet den ødela.",
+   "en": "“The British fungus”. Named after the beer it ruined."
+  },
+  "body": {
+   "no": "Brettanomyces er en gjærsopp, og navnet betyr bokstavelig «den britiske soppen». En dansk forsker ga den navnet i nittenhundreogfire, mens han fant ut hva som ødela engelsk øl.\n\nDen lager stoffer som lukter fjøs, hestedekken, lær og plaster. I et moderne bryggeri er det en katastrofe — finner du den i tankene dine, må alt vaskes ned.\n\nI Pajottenland er den halve smaken. Den jobber langsomt og spiser sukker vanlig bryggerigjær ikke klarer, og det er den som gjør en tre år gammel lambik tørr og dyp.\n\nSamme sopp, samme lukt, motsatt dom. Forskjellen ligger i hva bryggeren prøvde på.",
+   "en": "Brettanomyces is a yeast, and the name means literally “the British fungus”. A Danish scientist named it in nineteen oh four, while working out what was ruining English beer.\n\nIt makes compounds that smell of barnyard, horse blanket, leather and sticking plaster. In a modern brewery that is a disaster — find it in your tanks and everything has to be scrubbed down.\n\nIn Pajottenland it is half the flavour. It works slowly and eats sugars ordinary brewing yeast cannot, and it is what makes a three-year-old lambic dry and deep.\n\nThe same fungus, the same smell, the opposite verdict. The difference is in what the brewer was trying to do."
+  }
+ },
+ "geuze": {
+  "term": {
+   "no": "Geuze",
+   "en": "Gueuze"
+  },
+  "short": {
+   "no": "Ung og gammel lambik blandet, og gjæret ferdig i flaska.",
+   "en": "Young and old lambic blended, and finished in the bottle."
+  },
+  "body": {
+   "no": "Geuze er ikke en egen brygging. Det er en blanding.\n\nBryggeren tar ung lambik, som fortsatt har sukker igjen i seg, og gammel lambik, som har smaken men er ferdiggjæret, og setter dem sammen. Blandingen fylles på tykke flasker mens den lever.\n\nInne i flaska spiser gjæren det siste sukkeret og lager kullsyre som ikke kan slippe ut. Trykket blir høyt nok til at korken må bindes fast med ståltråd.\n\nHåndverket ligger i blandingen. En blender smaker seg gjennom hundrevis av fat og bestemmer hva som skal møte hva.",
+   "en": "Gueuze is not a separate brew. It is a blend.\n\nThe brewer takes young lambic, which still has sugar left in it, and old lambic, which has the flavour but has finished fermenting, and puts them together. The blend goes into thick bottles while it is alive.\n\nInside the bottle the yeast eats the last of the sugar and makes carbonation that cannot escape. The pressure gets high enough that the cork has to be wired down.\n\nThe craft is in the blending. A blender tastes through hundreds of barrels and decides what should meet what."
+  }
+ },
+ "kriek": {
+  "term": {
+   "no": "Kriek",
+   "en": "Kriek"
+  },
+  "short": {
+   "no": "Lambik med kirsebær i. Sur og rød, ikke søt.",
+   "en": "Lambic with cherries in it. Sour and red, not sweet."
+  },
+  "body": {
+   "no": "Kriek er lambik som har fått kirsebær kastet oppi et fat, og så fått stå et halvt år til.\n\nDet blir ikke søtt, og det er poenget. Gjæren spiser sukkeret i frukta akkurat som den spiste sukkeret i kornet, så det som blir igjen er farge, syre og smaken av kirsebær uten sødmen.\n\nSteinene er med, og de gir en svak mandelsmak. Samme framgangsmåte brukes med bringebær, og da heter det framboise.",
+   "en": "Kriek is lambic that has had cherries thrown into a barrel, and then been left for another six months.\n\nIt does not turn sweet, and that is the point. The yeast eats the sugar in the fruit exactly as it ate the sugar in the grain, so what is left is colour, acidity and the taste of cherry without the sweetness.\n\nThe stones go in too, and they give a faint almond note. The same is done with raspberries, and then it is called framboise."
+  }
+ },
+ "saison": {
+  "term": {
+   "no": "Saison",
+   "en": "Saison"
+  },
+  "short": {
+   "no": "Gardsøl fra det sørlige Belgia, brygget om vinteren for sommerens arbeid.",
+   "en": "Farmhouse ale from southern Belgium, brewed in winter for the summer's work."
+  },
+  "body": {
+   "no": "Saison betyr sesong, og det er en bruksanvisning. På gårdene i det fransktalende sør brygget de om vinteren, når det var kaldt nok, og lagret det til sesongarbeiderne kom om sommeren.\n\nØlet måtte tåle å vente noen måneder, og det måtte kunne drikkes av folk som skulle jobbe videre etterpå. Så det er tørt, det er krydret av en gjær som jobber varmt, og det er ikke spesielt sterkt.\n\nHver gård hadde sin egen. De fleste av dem er borte, og det som er igjen er en stil framfor en tradisjon.",
+   "en": "Saison means season, and it is a set of instructions. On the farms of the French-speaking south they brewed in winter, when it was cold enough, and stored it for the seasonal workers who came in summer.\n\nThe beer had to keep for months, and it had to be drinkable by people who then had to keep working. So it is dry, it is spicy from a yeast that works warm, and it is not especially strong.\n\nEvery farm had its own. Most of them are gone, and what is left is a style rather than a tradition."
+  }
+ },
+ "trappist": {
+  "term": {
+   "no": "Trappist",
+   "en": "Trappist"
+  },
+  "short": {
+   "no": "Øl brygget i et kloster, av munkene, for å drive stedet.",
+   "en": "Beer brewed inside a monastery, by the monks, to keep the place going."
+  },
+  "body": {
+   "no": "Trappist er ikke en smak. Det er en opprinnelse, og den er beskyttet.\n\nFor å kalles trappist må ølet brygges innenfor murene i et trappistkloster, under munkenes ansvar, og overskuddet skal gå til klosteret og til veldedighet framfor til eiere. Det finnes bare et titalls bryggerier i verden som oppfyller det.\n\nØlene er forskjellige, men de deler noen trekk: sterke, varmgjæret med en gjær som gir mye frukt og krydder, og gjæret om igjen i flaska.\n\nAt det er munker som brygger er ikke romantikk. Klostre trengte penger, og øl var trygt å drikke.",
+   "en": "Trappist is not a flavour. It is an origin, and it is protected.\n\nTo be called trappist the beer must be brewed within the walls of a Trappist monastery, under the monks' responsibility, and the proceeds must go to the monastery and to charity rather than to owners. Only about a dozen breweries in the world qualify.\n\nThe beers differ, but they share some traits: strong, warm-fermented with a yeast that gives plenty of fruit and spice, and fermented again in the bottle.\n\nThat monks brew it is not romance. Monasteries needed money, and beer was safe to drink."
+  }
+ },
+ "flaskegjaering": {
+  "term": {
+   "no": "Flaskegjæring",
+   "en": "Bottle conditioning"
+  },
+  "short": {
+   "no": "Ølet gjærer ferdig inne i flaska og lager sin egen kullsyre.",
+   "en": "The beer finishes fermenting inside the bottle and makes its own fizz."
+  },
+  "body": {
+   "no": "Flaskegjæring er å fylle ølet på flaske mens det fortsatt har levende gjær og litt sukker igjen.\n\nGjæren spiser det siste sukkeret, og kullsyren den lager kommer seg ikke ut. Trykket bygger seg opp inne i flaska, og det er derfor slike flasker er tykke og korken bindes fast med ståltråd.\n\nDet gir en finere og mer varig skum enn kullsyre som pumpes inn, og det gjør at ølet kan utvikle seg videre i årevis. Prisen er et lag gjær i bunnen — skjenker du raskt, får du det med.",
+   "en": "Bottle conditioning means filling the beer while it still has live yeast and a little sugar left in it.\n\nThe yeast eats the last of the sugar, and the carbon dioxide it makes cannot escape. Pressure builds inside the bottle, which is why such bottles are thick and the cork is wired down.\n\nIt gives a finer and longer-lasting foam than gas pumped in, and it lets the beer go on developing for years. The price is a layer of yeast in the bottom — pour it quickly and you get that too."
   }
  }
 }

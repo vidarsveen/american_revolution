@@ -830,5 +830,197 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a hand holding a steel dip pen over a glass inkwell on a dark desk, the pen and the hand filling the upper two thirds, the nib catching the light, the edge and spine of a heavy closed leather-bound ledger beside them, warm lamplight from one side, deep shadow and dark wood below, no open page in frame, no face"
+ },
+ "loftsvindu": {
+  "kind": "made",
+  "file": "loftsvindu.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Lukene står åpne",
+   "en": "The louvres stand open"
+  },
+  "claims": "An open louvre in a brewery loft: the deliberate way in for whatever is living in the outside air.",
+  "omits": "Not any identified brewery or building.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a wooden louvred shutter standing open in the gable of a dim old loft, cold daylight and drifting dust coming through the slats, the shutter filling the upper two thirds, heavy dark roof beams and worn plank floor below, no people"
+ },
+ "kjoleskip": {
+  "kind": "made",
+  "file": "kjoleskip.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kjøleskipet",
+   "en": "The coolship"
+  },
+  "claims": "A coolship: a shallow open copper vessel where hot wort is left overnight to cool and to be reached by the air.",
+  "omits": "Not any identified brewery, and no maker's mark is visible.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a very wide shallow open copper pan filling almost an entire loft floor, only a hand's depth of pale liquid in it, steam lying flat across the surface, dark roof beams above and dim daylight from the side, the pan filling the upper two thirds, dark plank floor below, no people, no text"
+ },
+ "takluker": {
+  "kind": "made",
+  "file": "takluker.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Taket som slipper inn",
+   "en": "The roof that lets it in"
+  },
+  "claims": "Roof vents left open on purpose — the opposite of every other brewery in this course, which spent centuries sealing itself.",
+  "omits": "Not any identified building.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "looking up at the underside of an old tiled roof from inside a loft, a row of narrow louvred vents open along the ridge with pale light and dust coming through them, heavy dark timber trusses crossing the frame, the roof filling the upper two thirds, deep shadow below, no people"
+ },
+ "senne-dal": {
+  "kind": "made",
+  "file": "senne-dal.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Dalen",
+   "en": "The valley"
+  },
+  "claims": "A small river valley in flat northern farmland — the kind of country where a local mixture of airborne yeasts can stay put.",
+  "omits": "Not a photograph of the Senne valley or of any identified place.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a shallow green river valley in flat farmland seen from a low hill, hedgerows and bare poplars along a small river, a church tower and a few brick farm buildings in the middle distance, low grey cloud, rough winter grass filling the foreground, no people, no vehicles"
+ },
+ "brett-fat": {
+  "kind": "made",
+  "file": "brett-fat.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fatene ingen vasker",
+   "en": "The barrels nobody scrubs"
+  },
+  "claims": "A lambic cellar: old barrels deliberately left uncleaned, because what lives in the wood is half the flavour.",
+  "omits": "No brewery is identified and no barrel carries a name or a date.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "old wooden barrels stacked three high in a dim vaulted cellar, thick grey cobwebs hanging between them and white mould blooming on the staves, dust in the air, the barrels filling the upper two thirds, damp stone floor below, one weak lamp, no people, no markings on the wood"
+ },
+ "fathall": {
+  "kind": "made",
+  "file": "fathall.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Ett, to eller tre år",
+   "en": "One, two or three years"
+  },
+  "claims": "Barrels racked for long ageing — where lambic spends the years that make it dry and deep.",
+  "omits": "No brewery, and no barrel carries a legible mark.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a long hall of wooden barrels lying on their sides on timber racks, receding into darkness, a shaft of dusty light from a high window falling across them, the nearest barrel heads filling the upper two thirds, worn brick floor below, no people, no writing"
+ },
+ "blandekunst": {
+  "kind": "made",
+  "file": "blandekunst.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Å blande",
+   "en": "Blending"
+  },
+  "claims": "Samples drawn from different barrels and set side by side — the actual craft of gueuze is deciding what should meet what.",
+  "omits": "No brand, no label, and nothing on the notebook is legible.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "three small glasses of beer standing in a row on a dark cellar table, the left one pale and cloudy, the middle amber, the right deep brown, a glass pipette and a notebook beside them, the glasses filling the upper two thirds, dark wood below, one warm lamp, no people, no writing visible"
+ },
+ "kriek-kirsebaer": {
+  "kind": "made",
+  "file": "kriek-kirsebaer.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kirsebær i fatet",
+   "en": "Cherries into the barrel"
+  },
+  "claims": "Whole cherries going into a barrel of lambic — the fruit is fermented, not added as sweetening.",
+  "omits": "Not any identified brewery or variety of cherry.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "dark red sour cherries heaped into the open bung hole of a wooden barrel, the fruit spilling across the barrel head, deep red juice staining the wood, the barrel head filling the upper two thirds, dim cellar light from one side, dark shadow below, no people"
+ },
+ "kloster-gang": {
+  "kind": "made",
+  "file": "kloster-gang.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Innenfor murene",
+   "en": "Inside the walls"
+  },
+  "claims": "A monastery cloister — trappist beer is defined by being brewed inside walls like these, under the monks' own responsibility.",
+  "omits": "Not any identified monastery or order, and no religious symbol or inscription is shown.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a long stone cloister corridor with arched windows down one side, cold light falling in stripes across the floor, plain vaulted ceiling, the arches filling the upper two thirds, worn flagstones in the foreground, no people, no religious imagery, no writing"
+ },
+ "gard-belgia": {
+  "kind": "made",
+  "file": "gard-belgia.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Gården som brygget",
+   "en": "The farm that brewed"
+  },
+  "claims": "A northern European farmstead of the kind that brewed its own beer in winter for the workers who came in summer.",
+  "omits": "Not any identified farm or region.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a low brick farmhouse with a tiled roof and a walled yard, bare winter trees behind it, a wooden cart against the wall, flat fields beyond, muddy cobbles and puddles filling the foreground, overcast light, no people, no vehicles, no signs"
+ },
+ "lambik-glass": {
+  "kind": "made",
+  "file": "lambik-glass.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Uten kullsyre",
+   "en": "Still"
+  },
+  "claims": "Lambic in the glass: hazy, pale and almost completely still, with barely any head on it — which is what surprises people most about it.",
+  "omits": "No brand, no label, no logo.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a small stemless tumbler of hazy pale golden beer with no foam at all standing on a dark cellar table, absolutely still and flat with no bubbles, lit from one side so the haze is obvious, an old barrel out of focus behind it, dark wood below, no label, no text"
+ },
+ "laer-stall": {
+  "kind": "made",
+  "file": "laer-stall.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fjøs, lær, hestedekken",
+   "en": "Barnyard, leather, horse blanket"
+  },
+  "claims": "The words brewers actually reach for when they describe what Brettanomyces smells of — which are the same words whether they mean it as a fault or as the point.",
+  "omits": "Not a picture of beer or of a brewery. It illustrates a set of smells, not a place or an event.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "worn leather horse tack hanging on iron hooks against dark weathered stable boards, a folded wool horse blanket beside it, straw and dust in the air, the leather filling the upper two thirds, dim light from one side, dark straw-covered floor below, no animals, no people, no writing"
  }
 }

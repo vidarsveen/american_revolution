@@ -145,7 +145,6 @@ title: De som lot vinduet stå åpent | The ones who left the window open
 subtitle: Belgia, og gjæren som kommer utenfra | Belgium, and the yeast that comes in from outside
 blurb: Mens resten av verden stengte de ville gjærsoppene ute, bygde et lite område utenfor Brussel takene sine slik at de skulle komme inn. | While the rest of the world was shutting the wild yeasts out, a small area outside Brussels built its roofs so they could get in.
 langs: no, en
-planned: true
 for: Motargumentet, og det står sterkest rett etter kapittel fire. Alle andre
      brukte fire hundre år på å stenge de ville organismene ute; ett lite
      område lot være med vilje, og lager de rareste ølene på jorda. Det er

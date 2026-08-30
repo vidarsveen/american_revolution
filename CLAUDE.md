@@ -846,6 +846,19 @@ of the surrounding file.
 
 ## In flight
 
+- **BEER: chapters one to five ship.** Chapter five, *De som lot vinduet stå
+  åpent*, is the counter-argument and sits deliberately right after the pure
+  culture: everyone else spent four hundred years shutting the wild organisms
+  out, and one valley west of Brussels built its roofs so they could get in.
+  The coolship, spontaneous fermentation, three years in cobwebbed barrels,
+  blending, cherries, the monastery and the farm.
+
+  Its real subject is that **"a fault" and "a style" are the same compound
+  seen from two sides.** Brettanomyces is named "the British fungus" because
+  a Danish scientist identified it as what was RUINING English beer; in
+  Pajottenland it is half the flavour. Same fungus, same smell, opposite
+  verdict — and the difference is only what the brewer was trying to do.
+
 - **BEER: chapters one to four ship.** Chapter four, *Mannen som fanget
   gjæren*, is the hinge: Copenhagen 1883, where Emil Christian Hansen worked
   out that brewery yeast is a MIXTURE of species, diluted it down until he
