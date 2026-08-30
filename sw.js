@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v2689d5014d';
+const VERSION = 'vb0d60b86a3';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -78,6 +78,7 @@ const PRECACHE = [
   './content/beer/chapter-3-undergjaer.json',
   './content/beer/chapter-4-renkultur.json',
   './content/beer/chapter-5-belgia.json',
+  './content/beer/chapter-6-kveik.json',
   './content/beer/media.json',
   './content/beer/media/ale-glass-lys.jpg',
   './content/beer/media/bitter-glass.jpg',
@@ -88,12 +89,14 @@ const PRECACHE = [
   './content/beer/media/burton-bronn.jpg',
   './content/beer/media/bybronn.jpg',
   './content/beer/media/bygg-aker.jpg',
+  './content/beer/media/einer-lag.jpg',
   './content/beer/media/estere-frukt.jpg',
   './content/beer/media/fat-rekke.jpg',
   './content/beer/media/fathall.jpg',
   './content/beer/media/fire-raavarer.jpg',
   './content/beer/media/fortynning-rekke.jpg',
   './content/beer/media/gard-belgia.jpg',
+  './content/beer/media/gardskjokken.jpg',
   './content/beer/media/gips-krystall.jpg',
   './content/beer/media/gjaer-bunnfall.jpg',
   './content/beer/media/gjaer-flaske.jpg',
@@ -101,8 +104,10 @@ const PRECACHE = [
   './content/beer/media/gjaerbank-hyller.jpg',
   './content/beer/media/gjaering-skum.jpg',
   './content/beer/media/gjaerkake-krukke.jpg',
+  './content/beer/media/gjaerkrans.jpg',
   './content/beer/media/gjaerkrone-kar.jpg',
   './content/beer/media/glass-mot-vindu.jpg',
+  './content/beer/media/handverksbryggeri.jpg',
   './content/beer/media/hansen-mikroskop.jpg',
   './content/beer/media/humle-i-kok.jpg',
   './content/beer/media/humle-torking.jpg',
@@ -137,10 +142,14 @@ const PRECACHE = [
   './content/beer/media/skip-kai.jpg',
   './content/beer/media/skumming-spade.jpg',
   './content/beer/media/spirende-korn.jpg',
+  './content/beer/media/stabbur-inne.jpg',
+  './content/beer/media/stabbur.jpg',
   './content/beer/media/stout-glass.jpg',
   './content/beer/media/surt-kar.jpg',
   './content/beer/media/takluker.jpg',
+  './content/beer/media/torrhumling.jpg',
   './content/beer/media/tre-ingredienser.jpg',
+  './content/beer/media/varm-gjaering.jpg',
   './content/beer/media/vedtekter-penn.jpg',
   './content/beer/media/vorter-glass.jpg',
   './content/beer/sound.json',
@@ -155,6 +164,8 @@ const PRECACHE = [
   './content/beer/timing.chapter-4-renkultur.no.json',
   './content/beer/timing.chapter-5-belgia.en.json',
   './content/beer/timing.chapter-5-belgia.no.json',
+  './content/beer/timing.chapter-6-kveik.en.json',
+  './content/beer/timing.chapter-6-kveik.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',

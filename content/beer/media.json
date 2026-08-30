@@ -1022,5 +1022,133 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "worn leather horse tack hanging on iron hooks against dark weathered stable boards, a folded wool horse blanket beside it, straw and dust in the air, the leather filling the upper two thirds, dim light from one side, dark straw-covered floor below, no animals, no people, no writing"
+ },
+ "stabbur": {
+  "kind": "made",
+  "file": "stabbur.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Stabburet",
+   "en": "The loft storehouse"
+  },
+  "claims": "A Norwegian stabbur: the raised timber storehouse where a farm kept what had to stay dry and cold, including its yeast.",
+  "omits": "Not any identified farm or valley.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an old Norwegian timber loft storehouse raised on short wooden pillars, dark tarred logs and a turf roof, standing in a farmyard with steep forested hillsides behind, the building filling the upper two thirds, wet grass and stone in the foreground, low overcast light, no people, no writing"
+ },
+ "gardskjokken": {
+  "kind": "made",
+  "file": "gardskjokken.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kjelen på garden",
+   "en": "The kettle on the farm"
+  },
+  "claims": "Farmhouse brewing equipment: one big kettle over a fire, which is all a farm needed and all most farms had.",
+  "omits": "Not any identified farm, and nothing dates the room to a particular century.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a very large blackened cauldron over an open hearth in a dim timber farmhouse room, steam rising from it, wooden buckets and a long stirring paddle leaning against the wall, the cauldron filling the upper two thirds, worn plank floor below, firelight from one side, no people"
+ },
+ "einer-lag": {
+  "kind": "made",
+  "file": "einer-lag.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Einerlåg",
+   "en": "Juniper infusion"
+  },
+  "claims": "Juniper boiled in the brewing water — a Norwegian farmhouse practice that used what grew outside the door.",
+  "omits": "Not any identified place, and no claim is made about which farms did this.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "fresh green juniper branches with berries submerged in steaming water in a wooden tub, the needles and the pale infusion filling the upper two thirds, more cut branches lying on dark wet timber below, dim daylight from one side, close view, no people"
+ },
+ "gjaerkrans": {
+  "kind": "made",
+  "file": "gjaerkrans.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kransen",
+   "en": "The ring"
+  },
+  "claims": "A yeast ring: the plaited wooden ring dipped in fermenting beer and hung up to dry, which is how a farm carried its yeast from one year to the next.",
+  "omits": "Not any identified ring, farm or strain, and it is not presented as a photograph of a museum object.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a plaited ring of pale wood about the size of a dinner plate, hanging from a nail on a dark log wall, its surface crusted with dried cream-coloured residue, the ring filling the upper two thirds, cold light from one side, dark timber and shadow below, no people, no writing"
+ },
+ "varm-gjaering": {
+  "kind": "made",
+  "file": "varm-gjaering.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fort og varmt",
+   "en": "Fast and warm"
+  },
+  "claims": "A fermentation running hot and hard — what kveik does at temperatures that would ruin ordinary ale yeast.",
+  "omits": "Not any identified brewery or strain, and no temperature is shown.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a violently active fermentation seen from directly above, thick pale foam heaving and cratering across the whole surface of a wooden vessel, wisps of warm vapour lifting off it, the surface filling the frame edge to edge, warm low light from one side, no people"
+ },
+ "stabbur-inne": {
+  "kind": "made",
+  "file": "stabbur-inne.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Inne i stabburet",
+   "en": "Inside the loft"
+  },
+  "claims": "The inside of a farm loft: cold, dry and dark, which is why something hung there could survive a year.",
+  "omits": "Not any identified building, and none of the objects is presented as a specific artefact.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "the dim interior of an old timber loft, dust in a shaft of light from a small opening, wooden tools and rings hanging from pegs along the log wall, the pegs and their shapes filling the upper two thirds, worn plank floor below, cold light, no people, no writing"
+ },
+ "handverksbryggeri": {
+  "kind": "made",
+  "file": "handverksbryggeri.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Det lille bryggeriet",
+   "en": "The small brewery"
+  },
+  "claims": "A small independent brewery: a handful of tanks in a plain room, the scale at which strange yeasts became interesting again.",
+  "omits": "Not any identified brewery, and no name or sign is visible anywhere.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a small modern brewery in a plain industrial room, four or five stainless steel tanks of moderate size with hoses coiled between them, a chalkboard turned away so nothing on it is visible, the tanks filling the upper two thirds, sealed concrete floor with drains below, cool daylight from high windows, no people, no signs, no writing"
+ },
+ "torrhumling": {
+  "kind": "made",
+  "file": "torrhumling.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Humle etterpå",
+   "en": "Hops afterwards"
+  },
+  "claims": "Hops going into a tank after the boil, for aroma only — which is what makes a modern IPA smell of fruit without extra bitterness.",
+  "omits": "No brewery, brand or variety is identified, and no sack carries a legible label.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a wide open hatch on top of a stainless steel tank with a great heap of bright green hop pellets and whole cones being tipped in from a sack, the hops and the hatch filling the upper two thirds, dark steel and shadow below, cool light from above, one pair of gloved hands only, no faces, no writing"
  }
 }

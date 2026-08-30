@@ -1,5 +1,5 @@
 {
- "//": "Ordboka for ølkurset. Kapittel én lærer bort åtte ord, to ni, tre seks, fire fem og fem ni — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
+ "//": "Ordboka for ølkurset, seks kapitler: åtte ord i ett, ni i to, seks i tre, fem i fire, ni i fem og seks i seks — outline.md sine `teaches`-linjer er de samme listene. Et ord her kan pekes på fra manuset med {mark term:id} og åpnes med {fact term:id}. Norsk skrives først; engelsk følger.",
  "malt": {
   "term": {
    "no": "Malt",
@@ -516,6 +516,90 @@
   "body": {
    "no": "Flaskegjæring er å fylle ølet på flaske mens det fortsatt har levende gjær og litt sukker igjen.\n\nGjæren spiser det siste sukkeret, og kullsyren den lager kommer seg ikke ut. Trykket bygger seg opp inne i flaska, og det er derfor slike flasker er tykke og korken bindes fast med ståltråd.\n\nDet gir en finere og mer varig skum enn kullsyre som pumpes inn, og det gjør at ølet kan utvikle seg videre i årevis. Prisen er et lag gjær i bunnen — skjenker du raskt, får du det med.",
    "en": "Bottle conditioning means filling the beer while it still has live yeast and a little sugar left in it.\n\nThe yeast eats the last of the sugar, and the carbon dioxide it makes cannot escape. Pressure builds inside the bottle, which is why such bottles are thick and the cork is wired down.\n\nIt gives a finer and longer-lasting foam than gas pumped in, and it lets the beer go on developing for years. The price is a layer of yeast in the bottom — pour it quickly and you get that too."
+  }
+ },
+ "kveik": {
+  "term": {
+   "no": "Kveik",
+   "en": "Kveik"
+  },
+  "short": {
+   "no": "Norsk gardsgjær, tørket på en trekrans og vekket igjen.",
+   "en": "Norwegian farmhouse yeast, dried on a wooden ring and woken again."
+  },
+  "body": {
+   "no": "Kveik er gjæren som ble brukt på norske garder, og ordet betyr noe man tenner med — det samme ordet som i å kveike et bål. Gjæren tenner gjæringen.\n\nDen ble tatt vare på ved å dyppe en trekrans eller en pinne i skummet og henge den til tørk. Der overlevde den i et år eller mer, og våknet når den ble lagt i ny vørter.\n\nDet spesielle er hva den tåler. Vanlig ale-gjær begynner å smake løsemiddel over tjuefem grader. Kveik gjærer på trettifem eller førti, uten å lage noe vondt, og er ferdig på to døgn.\n\nDen er ikke bedre enn annen gjær. Den er annerledes, og den overlevde fordi ingen fortalte gardene at den burde byttes ut.",
+   "en": "Kveik is the yeast used on Norwegian farms, and the word means something you light a fire with — the same word as kindling. The yeast kindles the fermentation.\n\nIt was kept by dipping a wooden ring or a stick into the foam and hanging it up to dry. There it survived for a year or more, and woke up when it was put into fresh wort.\n\nWhat is remarkable is what it tolerates. Ordinary ale yeast starts tasting of solvent above twenty-five degrees. Kveik ferments at thirty-five or forty without making anything unpleasant, and is finished in two days.\n\nIt is not better than other yeast. It is different, and it survived because nobody told the farms it ought to be replaced."
+  }
+ },
+ "gardsol": {
+  "term": {
+   "no": "Gardsøl",
+   "en": "Farmhouse ale"
+  },
+  "short": {
+   "no": "Ølet gardene brygget selv, til jul og til de store dagene.",
+   "en": "The beer farms brewed themselves, for Christmas and the big days."
+  },
+  "body": {
+   "no": "Gardsøl er øl brygget på garden, til eget bruk. I Norge var det ikke bare vanlig — det var påbudt. Gulatingsloven krevde at bøndene brygget til jul, og satte bøter for å la være.\n\nØlet hørte til merkedagene: jul, bryllup, barnedåp og gravøl. Det ble brygget i en stor kjele, ofte på einerlåg, og ofte med einer i stedet for eller ved siden av humle.\n\nTradisjonen holdt seg lengst på Vestlandet og i Trøndelag. Da noen endelig begynte å skrive den ned rundt tjuehundreogfjorten, var det rundt førti garder igjen som fortsatt brygget på gamlemåten.",
+   "en": "Farmhouse ale is beer brewed on the farm for its own use. In Norway it was not merely common — it was compulsory. The Gulating law required farmers to brew for Christmas, and set fines for failing to.\n\nThe beer belonged to the marked days: Christmas, weddings, christenings and funerals. It was brewed in a large kettle, often on juniper infusion, and often with juniper instead of or alongside hops.\n\nThe tradition lasted longest in western Norway and Trøndelag. When somebody finally began writing it down around twenty fourteen, there were about forty farms left still brewing the old way."
+  }
+ },
+ "gjaerkrans": {
+  "term": {
+   "no": "Gjærkrans",
+   "en": "Yeast ring"
+  },
+  "short": {
+   "no": "En trekrans dyppet i skummet og hengt til tørk. Gjærbanken før gjærbanker.",
+   "en": "A wooden ring dipped in the foam and hung up to dry. A yeast bank before yeast banks."
+  },
+  "body": {
+   "no": "Gjærkransen er hvordan en gard tok vare på gjæren sin fra brygg til brygg.\n\nMens ølet gjæret, dyppet man en flettet trekrans, en pinne eller en stokk med borede hull ned i skummet. Så hang den til tørk i stabburet. Gjæren tørket inn i treverket og lå i dvale.\n\nEt år senere, eller flere, ble kransen lagt i ny vørter, og gjæringen kom i gang igjen.\n\nDet er en gjærbank laget av tre og kald luft, og den virket i hundrevis av år før noen visste hva en gjærcelle var. Noen kveikstammer er sporet mer enn to hundre år tilbake på samme gard.",
+   "en": "The yeast ring is how a farm kept its yeast from brew to brew.\n\nWhile the beer was fermenting, a plaited wooden ring, a stick or a log with holes bored in it was dipped down into the foam. Then it was hung up to dry in the loft. The yeast dried into the timber and lay dormant.\n\nA year later, or several, the ring was put into fresh wort and fermentation started again.\n\nIt is a yeast bank made of wood and cold air, and it worked for hundreds of years before anybody knew what a yeast cell was. Some kveik strains have been traced back more than two hundred years on the same farm."
+  }
+ },
+ "hoy-gjaeringstemperatur": {
+  "term": {
+   "no": "Høy gjæringstemperatur",
+   "en": "High fermentation temperature"
+  },
+  "short": {
+   "no": "Trettifem eller førti grader, der annen gjær gir opp.",
+   "en": "Thirty-five or forty degrees, where other yeast gives up."
+  },
+  "body": {
+   "no": "Temperatur er den ene spaken som styrer mest i hele dette kurset. Kaldt gir rent og langsomt; varmt gir frukt og fart.\n\nMen det har en grense. Vanlig ale-gjær vil ha atten til tjueto grader, og over tjuefem begynner den å lage stoffer som smaker av løsemiddel og neglelakkfjerner.\n\nKveik har ikke den grensen. Den gjærer på trettifem, noen stammer over førti, og lager fortsatt bare frukt. Den er også ferdig på to døgn i stedet for fem.\n\nHvorfor den tåler det er ikke helt kartlagt. At den gjør det, er grunnen til at bryggerier over hele verden ville ha den.",
+   "en": "Temperature is the single biggest lever in this whole course. Cold gives clean and slow; warm gives fruit and speed.\n\nBut it has a limit. Ordinary ale yeast wants eighteen to twenty-two degrees, and above twenty-five it starts making compounds that taste of solvent and nail varnish remover.\n\nKveik does not have that limit. It ferments at thirty-five, some strains above forty, and still makes nothing but fruit. It is also finished in two days instead of five.\n\nWhy it tolerates this is not fully mapped. That it does is why breweries all over the world wanted it."
+  }
+ },
+ "handverksbryggeri": {
+  "term": {
+   "no": "Håndverksbryggeri",
+   "en": "Craft brewery"
+  },
+  "short": {
+   "no": "Et lite bryggeri som velger stil framfor mengde.",
+   "en": "A small brewery that chooses style over volume."
+  },
+  "body": {
+   "no": "Et håndverksbryggeri er lite, uavhengig, og brygger for smakens skyld framfor for skalaens.\n\nDet er en reaksjon på det kapittel fire endte med. Da nesten all øl i verden var blitt den samme bleke lageren, begynte små bryggerier å hente fram igjen det som var blitt standardisert bort: mørke malter, mye humle, rare gjærer.\n\nDet er derfor kveik ble interessant utenfor Norge. En gjær som er ferdig på to døgn uten kjøling, og som gir tropisk frukt, er nesten skreddersydd for et lite bryggeri som lager ipa.",
+   "en": "A craft brewery is small, independent, and brews for the sake of flavour rather than scale.\n\nIt is a reaction to what chapter four ended with. Once nearly all the world's beer had become the same pale lager, small breweries began bringing back what had been standardised away: dark malts, heavy hopping, strange yeasts.\n\nThat is why kveik became interesting outside Norway. A yeast that finishes in two days without refrigeration, and gives tropical fruit, is almost tailor-made for a small brewery making IPA."
+  }
+ },
+ "torrhumling": {
+  "term": {
+   "no": "Tørrhumling",
+   "en": "Dry hopping"
+  },
+  "short": {
+   "no": "Humle tilsatt etter kokingen, bare for lukten.",
+   "en": "Hops added after the boil, purely for the aroma."
+  },
+  "body": {
+   "no": "Husk fra kapittel én at humle gjør to ting, og at de to tingene skjer ved forskjellige temperaturer. Bitterstoffet må koke lenge for å løse seg. Oljene som lukter av sitrus og furu koker rett bort.\n\nTørrhumling er svaret på det. Du har i store mengder humle ETTER at kokingen er over, ofte mens ølet gjærer eller lagrer, og lar den ligge noen dager.\n\nDa får du all lukten og nesten ingen ekstra bitterhet. Det er grunnen til at en moderne ipa kan lukte voldsomt av frukt uten å være ubehagelig bitter.",
+   "en": "Remember from chapter one that hops do two things, and that the two happen at different temperatures. The bitter compound needs a long boil to dissolve. The oils that smell of citrus and pine boil straight off.\n\nDry hopping is the answer to that. You add large amounts of hops AFTER the boil is over, often while the beer is fermenting or conditioning, and leave them for some days.\n\nThat gives you all the aroma and almost no extra bitterness. It is why a modern IPA can smell enormously of fruit without being unpleasantly bitter."
   }
  }
 }

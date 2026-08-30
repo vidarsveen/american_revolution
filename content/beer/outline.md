@@ -163,7 +163,6 @@ title: Kveiken i stabburet | The kveik in the loft
 subtitle: Norsk gardsøl, og gjæren som overlevde | Norwegian farmhouse ale, and the yeast that survived
 blurb: Mens gjæren ble låst inne i laboratorier, hang det en tørket gjærkrans på et stabbur på Voss. Den tåler tretti grader mer enn den skal, og brukes i dag over hele verden. | While yeast was being locked up in laboratories, a dried ring of it was hanging in a loft in Voss. It survives thirty degrees hotter than it ought to, and today it is used all over the world.
 langs: no, en
-planned: true
 for: Å slutte der seeren står. Kurset åpnet med fire ingredienser og lukker
      sirkelen: det Hansen låste inne i et laboratorium hadde levd videre på
      norske gårder hele tiden, i en trekrans i et stabbur, uten at noen kalte

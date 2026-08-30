@@ -1,0 +1,913 @@
+{
+ "id": "chapter-6-kveik",
+ "pack": "beer",
+ "title": {
+  "no": "Kveiken i stabburet",
+  "en": "The kveik in the loft"
+ },
+ "subtitle": {
+  "no": "Norsk gardsøl, og gjæren som overlevde",
+  "en": "Norwegian farmhouse ale, and the yeast that survived"
+ },
+ "places": {
+  "voss": {
+   "coords": [
+    60.6297,
+    6.4136
+   ],
+   "zoom": 10.4,
+   "name": {
+    "no": "Voss",
+    "en": "Voss"
+   },
+   "kind": "town"
+  },
+  "bergen": {
+   "coords": [
+    60.3913,
+    5.3221
+   ],
+   "zoom": 9.6,
+   "name": {
+    "no": "Bergen",
+    "en": "Bergen"
+   },
+   "kind": "city"
+  },
+  "europa": {
+   "coords": [
+    55.0,
+    8.0
+   ],
+   "zoom": 4.2,
+   "name": {
+    "no": "Europa",
+    "en": "Europe"
+   },
+   "kind": "region"
+  }
+ },
+ "ending": {
+  "say": {
+   "no": "Fire ting, og den fjerde er i live. Det var hele kurset.",
+   "en": "Four things, and the fourth one is alive. That was the whole course."
+  },
+  "figure": {
+   "value": "4",
+   "label": {
+    "no": "ingredienser, og du vet nå hvorfor det holder",
+    "en": "ingredients, and now you know why that is enough"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Hjem",
+    "en": "Home"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Vi har vært i England, i Bayern, i Böhmen, i København og i Belgia.",
+      "en": "We have been to England, to Bavaria, to Bohemia, to Copenhagen and to Belgium."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "stabbur",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Nå skal vi hjem, og det er ikke av høflighet. Det er fordi noe ble liggende her.",
+      "en": "Now we are going home, and it is not out of politeness. It is because something was left lying here."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Mens gjæren ble låst inne i laboratorier og sendt ut igjen med nummer på, hang det en tørket krans av den på et stabbur på Vestlandet.",
+      "en": "While yeast was being locked into laboratories and sent out again with numbers on it, a dried ring of it was hanging in a loft in western Norway."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Ingen kalte det vitenskap. De kalte det kveik.",
+      "en": "Nobody called it science. They called it kveik."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:kveik",
+        "en": "word:kveik"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "kveik"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Hver gard sitt øl",
+    "en": "Every farm its own beer"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "I hundrevis av år brygget nesten hver eneste gard i Norge sitt eget øl.",
+      "en": "For hundreds of years almost every farm in Norway brewed its own beer."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gardskjokken",
+       "motion": "left",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.13,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:øl",
+        "en": "word:beer"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "gardsol"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Ikke som hobby. Det sto i loven. Gulatingsloven krevde at bøndene brygget til jul, og bøtene sto der svart på hvitt.",
+      "en": "Not as a hobby. It was in the law. The Gulating law required farmers to brew for Christmas, and the fines were written down in black and white."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Ølet hørte til de store dagene. Jul, bryllup, barnedåp, gravøl.",
+      "en": "The beer belonged to the big days. Christmas, weddings, christenings, funerals."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Og de brygget det med det som vokste utenfor døra.",
+      "en": "And they brewed it with what grew outside the door."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "einer-lag",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Einer i stedet for humle, eller ved siden av. Einerlåg — vann kokt på einerbar — i stedet for rent vann.",
+      "en": "Juniper instead of hops, or alongside them. Juniper infusion — water boiled on juniper branches — instead of plain water."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Det er ikke folklore. Det er den samme regelen som har gått gjennom hele kurset: du bruker det stedet har.",
+      "en": "That is not folklore. It is the same rule that has run through this whole course: you use what the place has."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Kransen på stabburet",
+    "en": "The ring in the loft"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Men det er den fjerde ingrediensen som gjør dette til noe annet.",
+      "en": "But it is the fourth ingredient that makes this something else."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "voss",
+       "zoom": 6.2,
+       "over": 4.0
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "voss",
+       "label": {
+        "no": "Voss",
+        "en": "Voss"
+       },
+       "kind": "point",
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Når ølet gjæret, dyppet de en trekrans ned i skummet.",
+      "en": "When the beer was fermenting, they dipped a wooden ring down into the foam."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkrans",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.15,
+       "push": 0.08,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:skummet",
+        "en": "word:foam"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "gjaerkrans"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "En flettet ring, eller en pinne, eller en stokk med hull i. Så hengte de den til tørk i stabburet.",
+      "en": "A plaited ring, or a stick, or a log with holes bored in it. Then they hung it up to dry in the loft."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Gjæren tørket inn i treverket og ble liggende der. I et år. Noen ganger i flere.",
+      "en": "The yeast dried into the timber and stayed there. For a year. Sometimes for several."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "stabbur-inne",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Neste gang det skulle brygges, la de kransen i vørteren, og den våknet.",
+      "en": "Next time there was brewing to do, they put the ring into the wort, and it woke up."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Det ordet, kveik, betyr rett og slett noe man tenner med. Det samme ordet som i å kveike et bål.",
+      "en": "That word, kveik, simply means something you light a fire with. The same word as in kindling."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Det den tåler",
+    "en": "What it survives"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Og så kommer det som gjorde at resten av verden til slutt måtte høre etter.",
+      "en": "And then comes the thing that made the rest of the world eventually have to listen."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "varm-gjaering",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Vanlig ale-gjær vil ha atten til tjueto grader. Over tjuefem begynner den å lage stoffer som smaker av løsemiddel.",
+      "en": "Ordinary ale yeast wants eighteen to twenty-two degrees. Above twenty-five it starts making compounds that taste of solvent."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Kveik gjærer på trettifem. Noen stammer på over førti.",
+      "en": "Kveik ferments at thirty-five. Some strains above forty."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 9,
+         "value": "9 °C",
+         "side": "lager",
+         "label": {
+          "no": "Lager",
+          "en": "Lager"
+         }
+        },
+        {
+         "n": 20,
+         "value": "20 °C",
+         "side": "ale",
+         "label": {
+          "no": "Ale",
+          "en": "Ale"
+         }
+        },
+        {
+         "n": 37,
+         "value": "37 °C",
+         "side": "wild",
+         "label": {
+          "no": "Kveik",
+          "en": "Kveik"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Hvor varmt gjæren vil ha det.",
+        "en": "How warm the yeast wants it."
+       }
+      },
+      {
+       "on": {
+        "no": "word:førti",
+        "en": "word:forty"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "hoy-gjaeringstemperatur"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Og den lager ikke løsemiddel. Den lager appelsin og tropisk frukt, og den er ferdig på to døgn.",
+      "en": "And it does not make solvent. It makes orange and tropical fruit, and it is finished in two days."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Bøndene visste ikke hvorfor. De visste bare at ølet ble ferdig fort, og at det ikke ble surt.",
+      "en": "The farmers did not know why. They only knew the beer was done quickly, and that it did not go sour."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gardskjokken",
+       "motion": "in",
+       "over": 21,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Uten at noen kalte det vitenskap",
+    "en": "Without anybody calling it science"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Tenk på hva en slik krans egentlig er.",
+      "en": "Think about what a ring like that actually is."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "stabbur-inne",
+       "motion": "in",
+       "over": 25,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Det er den samme gjæren, holdt i live og videreført på én gard, gjennom generasjoner. Noen av dem er sporet mer enn to hundre år tilbake.",
+      "en": "It is the same yeast, kept alive and carried on at one farm, through generations. Some of them have been traced back more than two hundred years."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "De har navn etter familien eller garden de kom fra. Ikke etter en art, og ikke etter et nummer.",
+      "en": "They are named after the family or the farm they came from. Not after a species, and not after a number."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Emil Christian Hansen brukte et laboratorium og et mikroskop for å få tak i noe som lignet.",
+      "en": "Emil Christian Hansen used a laboratory and a microscope to get hold of something similar."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkake-krukke",
+       "motion": "out",
+       "over": 22,
+       "dim": 0.14,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Her gjorde de omtrent det samme med en trepinne og et kaldt loft, i flere hundre år, uten å vite at det var det de gjorde.",
+      "en": "Here they did roughly the same thing with a piece of wood and a cold loft, for several hundred years, without knowing that was what they were doing."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Det er ikke fordi de var flinkere. Det er fordi ingen hadde fortalt dem at gjæren deres burde byttes ut.",
+      "en": "It is not because they were cleverer. It is because nobody had told them their yeast ought to be replaced."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Og så fant verden den",
+    "en": "And then the world found it"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Rundt tjuehundreogfjorten begynte en norsk ølhistoriker, Lars Marius Garshol, å reise rundt og skrive ned det som var igjen.",
+      "en": "Around twenty fourteen a Norwegian beer historian, Lars Marius Garshol, started travelling around and writing down what was left."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": "start",
+       "do": "map.flyTo",
+       "to": "europa",
+       "zoom": 4.2,
+       "over": 4.6
+      },
+      {
+       "on": "start",
+       "do": "marker.show",
+       "at": "voss",
+       "label": {
+        "no": "Voss",
+        "en": "Voss"
+       },
+       "kind": "point",
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Han fant førti gårder som fortsatt brygget, og han fikk kransene analysert.",
+      "en": "He found forty farms still brewing, and he had the rings analysed."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Det som kom ut av laboratoriet var oppsiktsvekkende. Kveik er ikke én gjær, men mange, og flere av dem er ulike alt som var beskrevet fra før.",
+      "en": "What came out of the laboratory was striking. Kveik is not one yeast but many, and several of them are unlike anything described before."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "handverksbryggeri",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.15,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Og for et håndverksbryggeri er den praktisk på en måte ingen hadde forutsett.",
+      "en": "And for a craft brewery it is useful in a way nobody had foreseen."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:håndverksbryggeri",
+        "en": "word:brewery"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "handverksbryggeri"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "En gjær som er ferdig på to døgn i romvarme sparer både tid og kjøling. Og frukta den lager passer perfekt til en moderne ipa.",
+      "en": "A yeast that finishes in two days at room temperature saves both time and refrigeration. And the fruit it makes suits a modern IPA perfectly."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Der man har i store mengder humle etter gjæringen, bare for lukten.",
+      "en": "Where you throw in large amounts of hops after fermentation, purely for the aroma."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "torrhumling",
+       "motion": "in",
+       "over": 23,
+       "dim": 0.14,
+       "push": 0.09,
+       "into": 1.4
+      },
+      {
+       "on": {
+        "no": "word:lukten",
+        "en": "word:aroma"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "torrhumling"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "I dag brygges det med kveik fra Voss i New Zealand, i Brasil og i USA. Gjæren fra stabburet har fått et kundenummer.",
+      "en": "Today there is brewing with kveik from Voss in New Zealand, in Brazil and in the United States. The yeast from the loft has been given a customer number."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Fire ting",
+    "en": "Four things"
+   },
+   "bed": "bedBrew",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Så er vi tilbake der vi begynte.",
+      "en": "So we are back where we started."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedBrew"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "marker.clear"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fire-raavarer",
+       "motion": "in",
+       "over": 26,
+       "dim": 0.14,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Vann, korn, humle og gjær. Tre du kan veie opp på en kjøkkenvekt, og én som lever.",
+      "en": "Water, grain, hops and yeast. Three you could weigh on a kitchen scale, and one that is alive."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Alt vi har sett siden har vært den samme historien fortalt seks ganger.",
+      "en": "Everything we have seen since has been the same story told six times."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Burton hadde gips i vannet. Bayern hadde is. Plzeň hadde ingenting i vannet i det hele tatt. København fanget den. Brussel slapp den inn. Voss hengte den til tørk.",
+      "en": "Burton had gypsum in the water. Bavaria had ice. Plzeň had nothing in the water at all. Copenhagen caught it. Brussels let it in. Voss hung it up to dry."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "gjaerkrans",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.15,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Og spørsmålet vi startet med er besvart.",
+      "en": "And the question we started with has been answered."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "pub-lyst-og-morkt",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.13,
+       "push": 0.09,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Øl smaker av tusen ting, selv om det er laget av fire, fordi den fjerde ikke er en ingrediens du måler opp.",
+      "en": "Beer tastes of a thousand things, even though it is made of four, because the fourth one is not an ingredient you measure out."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Den er i live, den er forskjellig fra sted til sted, og i tusen år bestemte den mer enn noen skjønte.",
+      "en": "It is alive, it is different from place to place, and for a thousand years it decided more than anybody understood."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Neste gang du får et glass i handa, er det verdt å tenke på at tre av tingene i det ble veid opp, og at den fjerde kom et sted fra.",
+      "en": "Next time you have a glass in your hand, it is worth thinking that three of the things in it were weighed out, and that the fourth one came from somewhere."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

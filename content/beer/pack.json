@@ -400,6 +400,25 @@
        "no",
        "en"
      ]
+   },
+   {
+     "id": "chapter-6-kveik",
+     "title": {
+       "no": "Kveiken i stabburet",
+       "en": "The kveik in the loft"
+     },
+     "subtitle": {
+       "no": "Norsk gardsøl, og gjæren som overlevde",
+       "en": "Norwegian farmhouse ale, and the yeast that survived"
+     },
+     "blurb": {
+       "no": "Mens gjæren ble låst inne i laboratorier, hang det en tørket gjærkrans på et stabbur på Voss. Den tåler tretti grader mer enn den skal, og brukes i dag over hele verden.",
+       "en": "While yeast was being locked up in laboratories, a dried ring of it was hanging in a loft in Voss. It survives thirty degrees hotter than it ought to, and today it is used all over the world."
+     },
+     "langs": [
+       "no",
+       "en"
+     ]
    }
  ],
  "//surfaces": [

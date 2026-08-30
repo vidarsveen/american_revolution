@@ -846,6 +846,23 @@ of the surrounding file.
 
 ## In flight
 
+- **BEER IS FINISHED. All six chapters ship.** Chapter six, *Kveiken i
+  stabburet*, ends where the viewer is standing and closes the circle the
+  course opened: while yeast was being locked into laboratories and posted
+  out with numbers on it, a dried ring of it was hanging in a loft in western
+  Norway. A plaited wooden ring dipped in the foam, hung up, and woken a year
+  later — a yeast bank made of wood and cold air, three hundred years before
+  anybody knew what a yeast cell was.
+
+  The trap it steers around is national self-congratulation. Kveik is not
+  better than other yeast; it is DIFFERENT, and it survived because nobody
+  told those farms it ought to be replaced. A lucky accident, not an
+  achievement.
+
+  Last scene answers the question the course asked: beer tastes of a thousand
+  things though it is made of four, because the fourth is not an ingredient
+  you measure out. It closes on chapter one's own opening picture.
+
 - **BEER: chapters one to five ship.** Chapter five, *De som lot vinduet stå
   åpent*, is the counter-argument and sits deliberately right after the pure
   culture: everyone else spent four hundred years shutting the wild organisms
