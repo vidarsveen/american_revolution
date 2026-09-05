@@ -102,7 +102,19 @@ I18N_KEYS = {"title", "subtitle", "blurb", "for"}
 LIST_KEYS = {"langs", "teaches", "assumes", "shows"}
 CHAPTER_KEYS = I18N_KEYS | LIST_KEYS | {"planned"}
 
-SECTIONS = ("question", "about", "not here")
+# `for whom` is the fourth because REGISTER IS A PROPERTY OF THE SUBJECT and
+# was a global constant, which is the same class of leak as an engine that knew
+# how many factions there were. CLAUDE.md said "upper-secondary level, never
+# university" — true of the beer and wine courses, and comprehensively wrong
+# for a course written for a sixty-year-old academic who wants a field opened
+# up fast. Written faithfully to the global rule, a football course came out
+# explaining that a pitch is large and eleven men cannot cover it, to a reader
+# whose response was "I have watched a football match before. I know there are
+# eleven players."
+#
+# So a course declares who it is for, and every chapter is written to that
+# line instead of to a house style.
+SECTIONS = ("question", "about", "for whom", "not here")
 
 # What can carry a frame, and the surface that draws it. The outline is asked
 # this BEFORE a chapter exists, because that is the only moment the answer is
@@ -115,11 +127,20 @@ SECTIONS = ("question", "about", "not here")
 # allowed to say that, and the tool then names the artifact the framework is
 # missing instead of rejecting the plan. That is the point of asking at this
 # level: the answer arrives while it is still a build decision.
+#
+# `pitch` was the second one and is no longer missing. It arrived the same
+# way: a course about football tactics is eleven dots in a shape that MORPHS
+# into another shape with a press closing round it, and the map draws
+# countries while the chart draws bars. It sat here as None for exactly as
+# long as it took to build engine/surfaces/pitch.js, which is what the row is
+# for — an outline may name an artifact the framework has not got, and the
+# tool then reports a build decision instead of rejecting the plan.
 SHOWS = {
     "map": "map",
     "pictures": "plate",
     "charts": "chart",
     "cards": "overlays",
+    "pitch": "pitch",
     "process": None,
 }
 
@@ -182,6 +203,7 @@ def parse_outline(path: str) -> dict:
         "langs": langs,
         "question": {lang: [] for lang in langs},
         "about": {lang: [] for lang in langs},
+        "for whom": {lang: [] for lang in langs},
         "notHere": [],
         "chapters": [],
     }
@@ -204,7 +226,7 @@ def parse_outline(path: str) -> dict:
             name = stripped[2:].strip().lower()
             if name not in SECTIONS:
                 raise fail(lineno, f"no section called '{name}'. There are "
-                                   f"three: " + ", ".join(
+                                   f"{len(SECTIONS)}: " + ", ".join(
                                        f"`# {sec}`" for sec in SECTIONS))
             section, chapter, key = name, None, None
             continue
@@ -212,7 +234,7 @@ def parse_outline(path: str) -> dict:
             key = None
             continue
 
-        if section in ("about", "question"):
+        if section in ("about", "question", "for whom"):
             bucket = out[section]
             if stripped.startswith(">"):
                 if not bucket[langs[0]]:
@@ -585,6 +607,42 @@ TODO: sporsmaalet kurset svarer paa.
 # about
 TODO: hva kurset handler om, og hva det med vilje ikke handler om.
 > TODO: what the course is about, and what it deliberately is not about.
+
+# for whom
+// Hvem kurset er for, og hva det derfor kan ta for gitt. Standarden staar
+// under og er riktig for de fleste kurs -- stryk eller skjerp den, men ikke
+// slett seksjonen. Skriv den som tillatelser og forbud, ikke som et adjektiv:
+// "for voksne" er ubrukelig. docs/planning.md sporsmaal 7b sier hvorfor.
+Noen med universitetsgrad, i noe annet. Leser bredt, folger med, og har ingen
+skolering i dette emnet.
+
+Kom til poenget med en gang. Ingen oppvarming, ingen oppbygging mot en
+avsloring. Forste minutt setter fram en paastand og begynner aa bevise den.
+
+Tilnaermingen er akademisk og analytisk: paastand, mekanisme, konsekvens -- saa
+videre. Si hva som er omstridt.
+
+Forklar emnets fagord, aldri leserens. Avveining, likevekt og insentiv trenger
+ingen forklaring. Emnets egne termer gjor det, i en bisetning inne i setningen
+som trenger dem, aldri som en oppforing.
+
+Forklar aldri emnets aapenbare overflate. TODO: skriv den ene setningen som
+sier hva dette kurset kan ta for gitt at leseren allerede vet.
+> Somebody with a university degree, in something else. Reads widely, follows
+> the world, and has no training in this subject.
+>
+> Get to the point immediately. No warm-up, no building towards a reveal. The
+> first minute makes a claim and starts proving it.
+>
+> The approach is academic and analytic: claim, mechanism, consequence -- then
+> on. Say what is contested.
+>
+> Explain the subject's vocabulary, never the reader's. Trade-off, equilibrium
+> and incentive need no gloss. The subject's own terms do, in a subordinate
+> clause inside the sentence that needs them, never as an entry.
+>
+> Never explain the obvious surface of the subject. TODO: write the one
+> sentence saying what this course may assume the reader already knows.
 
 # not here
 // Ett emne per linje, og ordene det sies med, slik at verktoyet finner dem

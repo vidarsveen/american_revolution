@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vbd1923b0c8';
+const VERSION = 'vdc65d284e1';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -166,6 +166,12 @@ const PRECACHE = [
   './content/beer/timing.chapter-5-belgia.no.json',
   './content/beer/timing.chapter-6-kveik.en.json',
   './content/beer/timing.chapter-6-kveik.no.json',
+  './content/football/chapter-1-baklengs.json',
+  './content/football/media.json',
+  './content/football/sound.json',
+  './content/football/style.json',
+  './content/football/timing.chapter-1-baklengs.en.json',
+  './content/football/timing.chapter-1-baklengs.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',
@@ -268,6 +274,7 @@ const PRECACHE = [
   './css/dossier.css',
   './css/fonts.css',
   './css/map.css',
+  './css/pitch.css',
   './css/sheet.css',
   './css/shell.css',
   './css/story.css',
@@ -289,6 +296,7 @@ const PRECACHE = [
   './engine/surfaces/chart.js',
   './engine/surfaces/map.js',
   './engine/surfaces/overlays.js',
+  './engine/surfaces/pitch.js',
   './engine/surfaces/plate.js',
   './engine/surfaces/registry.js',
   './engine/surfaces/sound.js',
@@ -316,6 +324,9 @@ const PRECACHE = [
   './map/index.js',
   './map/regions.js',
   './map/tint.js',
+  './pitch/formations.js',
+  './pitch/geometry.js',
+  './pitch/index.js',
   './sound/library.js',
   './sound/mixer.js',
   './sound/soundscape.js',

@@ -5,7 +5,7 @@ there is a course for it to be a chapter of.
 
 ```bash
 python tools/outline.py --new-pack beer     # start a course from nothing
-python tools/outline.py beer                # the seven questions, asked
+python tools/outline.py beer                # the eight questions, asked
 python tools/outline.py beer --write        # compile pack.json's chapter list
 ```
 
@@ -19,7 +19,7 @@ the claim is not written, the evidence cannot be wrong.
 
 ---
 
-## The seven questions
+## The eight questions
 
 Run these as an interview, out loud, with somebody who is not an expert in the subject.
 The first two are the course. The rest are how it is built.
@@ -124,6 +124,86 @@ Once the chapter ships, the tool measures what it actually turned out to be — 
 counted against the surface that answers it — and says so when the promise and the mix
 disagree.
 
+### 7b. Who is it for, and what may you assume?
+
+The question that was missing, and its absence cost a whole course two
+rewrites. `CLAUDE.md` said "upper-secondary level, never university" as a house
+rule, which is true of the beer and wine courses and comprehensively wrong for
+a course written for a sixty-year-old academic who wants a field opened up
+fast. Written faithfully to the house rule, a football course came out
+explaining that a pitch is large and that eleven men cannot cover it. The
+reader's answer was:
+
+> "too banal and too childish ... it's almost like you need to explain that
+>  there's a lot of square metres around the player ... I have watched a
+>  football match before. I know there are eleven players."
+
+**The default, and it is the right answer for most courses:** somebody with a
+university degree, in something else. They read widely, follow the world, and
+have no training in this subject. Get to the point immediately; take an
+academic, analytic approach — claim, mechanism, consequence; explain the
+subject's vocabulary and never the reader's; and never explain the obvious
+surface of the subject.
+
+**`# for whom` REFINES that default for one course, and then wins.** Register
+is a property of the subject and its audience, not of the house. Write it as
+permissions and prohibitions, not as an adjective — "for adults" is useless,
+and this is not:
+
+    Nothing about the game itself is explained. There are eleven a side.
+    Never write a sentence that assumes the reader does not know that.
+
+    No definition lines. A term is explained in a subordinate clause inside
+    the sentence that needs it, never as an entry.
+
+    Abstraction is expected: trade-off, equilibrium and dominant strategy
+    need no explanation. Playing out from the back does.
+
+**The list test.** The failure mode a register line has to prevent is the
+chapter that is an inventory with narration over it. It is checkable by hand
+and worth doing on every chapter: *if two paragraphs could swap places without
+loss, it is a list and it is wrong.* An argument does not survive shuffling.
+
+**And do the reading first.** A course plan written from memory produces the
+obvious syllabus, which is the one the reader could have guessed. Search before
+planning: what does the field argue about right now, what is contested, what
+changed in the last two years. The football plan only found positional play
+against relationism — the live dispute in the subject, and the chapter that
+makes it a course for an adult rather than a primer — because that search was
+run. `docs/planning.md` did not say to, and that is why this paragraph exists.
+
+### 8. What will it cost, and who said yes?
+
+Ask this **before** the writing, not when the pictures are ordered. It is the one question
+here that is about somebody's money rather than somebody's attention, and it is the easiest
+to answer badly by not asking it.
+
+The rule is in `CLAUDE.md`: the Claude Code subscription is the only standing cost, and
+every service that bills is a decision taken here, in writing. Not implied by a plan that
+mentions a model. Not assumed because the last course used one.
+
+Answer three things and write them in the outline's `# about` block:
+
+| | |
+|---|---|
+| **what it needs** | pictures, a voice, beds, hosting — and for each, free or paid |
+| **what it costs** | a measured number, per course, not a catalogue price |
+| **who agreed** | the person paying, in this conversation, before the work starts |
+
+**Measure it on one picture and one sentence, not on a price list.** The beer course was
+priced this way in twenty minutes for $2.09: the same real prompt through nine picture
+models, the same real Norwegian paragraph through eleven voices. It came out at **24 to 241
+kroner for a six-chapter course depending only on which picture model** — a tenfold spread
+that no amount of reading would have found, because two of the advertised prices were wrong
+by a factor of ten and video carries no published price at all.
+
+That measurement is also the answer to *is it worth it*: a course at 24 kroner against the
+300-kroner book on the same subject is an easy yes, and one at 241 is a conversation.
+
+`tools/try-openrouter.py` is the tool for this. `outline.py` does **not** check this
+question — like the refusal test below, it is a conversation with a person, and no tool can
+have it for you.
+
 ---
 
 ## Three tests before a word is written
@@ -150,6 +230,10 @@ Norwegian, written first, and the `>` line under it is English. `//` is a commen
 ---
 pack: beer
 ---
+
+# for whom
+Hvem kurset er skrevet for, og hva det derfor kan ta for gitt.
+> Who the course is written for, and what it may therefore assume.
 
 # question
 Hvorfor smaker øl av tusen ting, når det bare er laget av fire?
@@ -212,5 +296,5 @@ Whether the course is worth taking. Whether chapter four earns its place. Whethe
 proof in chapter two is a proof or an anecdote. Whether the question at the top is one
 anybody wants answered.
 
-That is the whole reason the seven questions are written as an interview and not as a
+That is the whole reason the eight questions are written as an interview and not as a
 schema.

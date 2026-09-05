@@ -1,0 +1,950 @@
+{
+ "id": "chapter-1-baklengs",
+ "pack": "football",
+ "title": {
+  "no": "Hvorfor de spiller baklengs",
+  "en": "Why they pass backwards"
+ },
+ "subtitle": {
+  "no": "En setning lovtekst fra 1992, og regnestykket den skapte",
+  "en": "One sentence of law from 1992, and the arithmetic it created"
+ },
+ "ending": {
+  "say": {
+   "no": "Én regel, tre trekk, og hvert svar lagde problemet som avlet det neste. Det er formen på resten av kurset.",
+   "en": "One law, three moves, and every answer made the problem that bred the next. That is the shape of the rest of the course."
+  },
+  "figure": {
+   "value": "1992",
+   "label": {
+    "no": "året keeperen ble en utespiller",
+    "en": "the year the goalkeeper became an outfield player"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Ingen dominant strategi",
+    "en": "No dominant strategy"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Dette er et kurs om moderne fotballtaktikk.",
+      "en": "This is a course about modern football tactics."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Det starter med en påstand som lar seg bevise: det finnes ingen dominant strategi i fotball.",
+      "en": "It starts from a claim that can be proved: there is no dominant strategy in football."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Det er derfor faget har en historie i det hele tatt.",
+      "en": "That is why the subject has a history at all."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 34,
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Hadde det fantes et beste oppsett, ville noen funnet det rundt nitten femti, og resten hadde kopiert det.",
+      "en": "If there were a best arrangement, somebody would have found it around 1950 and the rest would have copied it."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "I stedet beveger taktikk seg i sykluser, der hvert svar lager problemet som avler det neste.",
+      "en": "Instead tactics move in cycles, where every answer creates the problem that breeds the next one."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 30,
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Dette kapitlet tar det klareste eksempelet vi har på hvordan en slik syklus starter.",
+      "en": "This chapter takes the clearest example we have of how one of those cycles starts."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b7",
+     "say": {
+      "no": "Den startet ikke med en trener. Den startet med én setning lovtekst.",
+      "en": "It did not start with a coach. It started with one sentence of law."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "1992",
+    "en": "1992"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Sommeren nittentonittito bestemte IFAB at en keeper ikke lenger kunne ta ballen med hendene når en medspiller hadde spilt den til ham med foten.",
+      "en": "In the summer of 1992 the IFAB ruled that a goalkeeper could no longer handle the ball when a team-mate had passed it to him with his foot."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 13,
+       "depth": 20
+      },
+      {
+       "on": {
+        "no": "word:foten",
+        "en": "word:foot"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "tilbakespillsregelen"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Begrunnelsen var tidsspille. VM i Italia to år før hadde endt på to komma to mål per kamp, det laveste snittet i noe sluttspill.",
+      "en": "The stated reason was time-wasting. The World Cup in Italy two years earlier had finished on 2.2 goals a game, the lowest average of any tournament."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Effekten hadde ingenting med hensikten å gjøre.",
+      "en": "The effect had nothing to do with the intention."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.ball",
+       "at": "gk",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Keeperen måtte lære å spille med føttene, og i det han kunne det, var han en ellevte utespiller.",
+      "en": "Goalkeepers had to learn to play with their feet, and the moment they could, he was an eleventh outfield player."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Og det gjør regnestykket i egen tredjedel entydig.",
+      "en": "And that makes the arithmetic in your own third unambiguous."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 50,
+       "depth": 28,
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Motstanderen kan ikke presse med alle. Presser de med tre, og du bygger med to midtstoppere og keeperen, er det tre mot tre og ingen er fri.",
+      "en": "The opposition cannot press with everybody. If they press with three and you build with two centre-backs and the goalkeeper, it is three against three and nobody is free."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Trekker seksseren ned mellom stopperne, er dere fire mot tre.",
+      "en": "Drop the holding midfielder in between the centre-backs and it is four against three."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "six",
+       "to": [
+        34,
+        11
+       ],
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b8",
+     "say": {
+      "no": "Og den frie mannen er ikke fri et øyeblikk. Han er fri strukturelt, hele tiden, fordi tallet ikke går opp for dem.",
+      "en": "And the free man is not free for a moment. He is free structurally, continuously, because the number does not work for them."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "six",
+       "mark": true
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b9",
+     "say": {
+      "no": "Å spille seg ut bakfra er derfor ikke mot. Det er å telle.",
+      "en": "So playing out from the back is not courage. It is counting."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "six",
+       "mark": false
+      },
+      {
+       "on": {
+        "no": "word:telle",
+        "en": "word:counting"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "frispilling bakfra"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b10",
+     "say": {
+      "no": "Og det er en invitasjon: overtallet betyr ingenting før presset kommer, og hver spiller som løper framover legger igjen plassen han sto i.",
+      "en": "And it is an invitation: the overload means nothing until the press comes, and every player who runs forward leaves behind the space he was standing in."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "gk",
+       "to": "lcb",
+       "side": "team",
+       "over": 0.8
+      },
+      {
+       "on": {
+        "no": "word:i",
+        "en": "word:in"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "overtall"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Motsvaret",
+    "en": "The counter"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Et lag som presser høyt kan svare på det regnestykket på to måter, og bare den ene er billig.",
+      "en": "A team pressing high can answer that arithmetic in two ways, and only one of them is cheap."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 13,
+       "depth": 20
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 50,
+       "depth": 28
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Den dyre er å sende en mann til.",
+      "en": "The expensive one is to send another man."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "opponent",
+       "who": "lm",
+       "to": [
+        26,
+        24
+       ],
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Da er tallene like igjen, men noen bak er blitt fri, og risikoen ligger nå i ryggen på deg.",
+      "en": "Then the numbers are level again, but somebody behind is now free, and the risk sits behind you."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Den billige er å ta bort et valg uten å bruke en spiller på det.",
+      "en": "The cheap one is to remove an option without spending a player on it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 50,
+       "depth": 28,
+       "over": 1.0
+      },
+      {
+       "on": {
+        "no": "word:det",
+        "en": "word:it"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "styringspress"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Spissen løper ikke rett mot midtstopperen, men i bue, med kroppen mellom ballen og den andre midtstopperen.",
+      "en": "The striker does not run straight at the centre-back but on a curve, with his body between the ball and the other centre-back."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": [
+        34,
+        30
+       ],
+       "to": [
+        23,
+        16
+       ],
+       "side": "opponent",
+       "bend": 0.35,
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Da presser han to spillere med én kropp. Den ene kan ikke få ballen. Den andre må ta den.",
+      "en": "Now he is pressing two players with one body. One of them cannot receive it. The other has to."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Det avgjør hvor kampen skal foregå, og det er meningen.",
+      "en": "That decides where the match will be played, which is the point."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b8",
+     "say": {
+      "no": "Ballen styres ut mot sidelinja, og en spiller som mottar den der har mistet halvparten av vinklene sine før han har rørt den.",
+      "en": "The ball is steered out towards the touchline, and a player receiving it there has lost half his angles before he has touched it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.zone",
+       "area": "[0,0,14,40]",
+       "label": {
+        "no": "Sidelinja",
+        "en": "The touchline"
+       },
+       "tone": "gold",
+       "over": 0.9
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b9",
+     "say": {
+      "no": "Og der venter det andre trekket.",
+      "en": "And there the second move is waiting."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "lcb",
+       "to": "lb",
+       "side": "team",
+       "over": 0.7
+      },
+      {
+       "on": {
+        "no": "word:trekket",
+        "en": "word:waiting"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "pressfelle"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b10",
+     "say": {
+      "no": "Pasningen ut til backen sto åpen med vilje, og lukkes i det ballen er underveis.",
+      "en": "The pass out to the full-back was left open on purpose, and is shut while the ball is travelling."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": [
+        26,
+        24
+       ],
+       "to": [
+        11,
+        15
+       ],
+       "side": "opponent",
+       "over": 0.7
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": [
+        16,
+        32
+       ],
+       "to": [
+        9,
+        19
+       ],
+       "side": "opponent",
+       "over": 0.7
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b11",
+     "say": {
+      "no": "Tre som ankommer samtidig trenger ikke å vinne en duell. De trenger bare å fjerne utgangene.",
+      "en": "Three arriving at once do not need to win a duel. They only need to remove the exits."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b12",
+     "say": {
+      "no": "Derfor er en åpen pasning ikke nødvendigvis en gave.",
+      "en": "So an open pass is not necessarily a gift."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.zoneHide"
+      },
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b13",
+     "say": {
+      "no": "I et velorganisert press er den som regel den eneste pasningen motstanderen vil at du skal slå.",
+      "en": "In a well-organised press it is usually the only pass the opposition want you to play."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Prisen",
+    "en": "The price"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Alt dette har en pris, og den betales to steder.",
+      "en": "All of this has a price, and it is paid in two places."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 44,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 26,
+       "depth": 26
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Det første er at et lag som angriper allerede står oppstilt for at angrepet skal mislykkes.",
+      "en": "The first is that a team attacking is already arranged for the attack to fail."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "rb",
+       "to": [
+        56,
+        40
+       ],
+       "over": 0.9
+      },
+      {
+       "on": {
+        "no": "word:mislykkes",
+        "en": "word:fail"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "restforsvar"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Den ene backen går opp. Den andre blir stående. Seksseren holder seg mellom ballen og eget mål, ikke bak ballen.",
+      "en": "One full-back goes forward. The other stays. The holding midfielder keeps himself between the ball and his own goal, not behind the ball."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lb",
+       "to": [
+        10,
+        72
+       ],
+       "over": 0.9
+      },
+      {
+       "on": {
+        "no": "word:stående",
+        "en": "word:stays"
+       },
+       "do": "pitch.move",
+       "side": "team",
+       "who": "six",
+       "to": [
+        34,
+        44
+       ],
+       "over": 0.9
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Det er ikke pessimisme. Det er den delen av angrepsplanen som handler om det mest sannsynlige utfallet.",
+      "en": "That is not pessimism. It is the part of the attacking plan that deals with the most likely outcome."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Det andre er høyden på forsvarslinja.",
+      "en": "The second is the height of the defensive line."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 44,
+       "label": {
+        "no": "Forsvarslinja",
+        "en": "The defensive line"
+       },
+       "tone": "blue"
+      },
+      {
+       "on": {
+        "no": "word:forsvarslinja",
+        "en": "word:line"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "linje"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Skal overtallet bakfra bety noe, må laget skyve seg fram — og da ligger det tretti eller førti meter gress bak den siste forsvareren.",
+      "en": "If the overload at the back is to mean anything the team has to push up — and then there are thirty or forty metres of grass behind the last defender."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 58,
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Noen må dekke det gresset, og det er keeperen.",
+      "en": "Somebody has to cover that grass, and it is the goalkeeper."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "gk",
+       "to": [
+        34,
+        34
+       ],
+       "over": 1.2
+      },
+      {
+       "on": {
+        "no": "word:keeperen",
+        "en": "word:goalkeeper"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "sweeper-keeper"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Tretti år etter en regel som skulle stoppe tidsspille, er hans jobb blitt to jobber som trekker i hver sin retning: stå på streken og redde skudd, eller stå tretti meter ute og komme først til en ball i bakrommet.",
+      "en": "Thirty years after a law meant to stop time-wasting, his job has become two jobs that pull in opposite directions: stand on the line and save shots, or stand thirty metres out and get first to a ball played in behind."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b9",
+     "say": {
+      "no": "Et lag velger hvilken av dem det vil ha mest av, og betaler for den andre.",
+      "en": "A team chooses which of the two it wants more of, and pays for the other."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Syklusen",
+    "en": "The cycle"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Én regelendring, og tre trekk som følger av den.",
+      "en": "One change in the law, and three moves that follow from it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 40
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 30
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Overtallet bakfra, som gjør presset matematisk umulig.",
+      "en": "The overload at the back, which makes the press mathematically impossible."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "six",
+       "mark": true
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Buen i pressløpet, som gjør det mulig igjen uten å koste en mann.",
+      "en": "The curve in the pressing run, which makes it possible again without costing a man."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "six",
+       "mark": false
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "opponent",
+       "who": "st",
+       "mark": true
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Og fella ved sidelinja, som gjør invitasjonen til et bakhold.",
+      "en": "And the trap by the touchline, which turns the invitation into an ambush."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "opponent",
+       "who": "st",
+       "mark": false
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Ingen av de tre er en løsning. Hvert av dem er et svar som lager det neste problemet.",
+      "en": "None of the three is a solution. Each of them is an answer that makes the next problem."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Det er derfor det ikke finnes en beste plan, og det er derfor dette faget fortsatt beveger seg.",
+      "en": "That is why there is no best plan, and why the subject is still moving."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Neste kapittel tar det øyeblikket hvor hele dette byggverket er svakest.",
+      "en": "The next chapter takes the moment when the whole of this structure is at its weakest."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 52,
+       "depth": 28,
+       "compact": true,
+       "over": 1.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b8",
+     "say": {
+      "no": "Ikke når laget mister ballen. Når det vinner den.",
+      "en": "Not when the team loses the ball. When it wins it."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

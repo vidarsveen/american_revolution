@@ -66,3 +66,10 @@ image-candidates/
 # and lives in content/<pack>/sound/. Keep the zip if you want to browse it;
 # it is not part of the site.
 music-loop-bundle-*.zip
+
+# API keys. Never committed — tools/try-openrouter.py reads OPENROUTER_API_KEY
+# from here when the environment does not already have it.
+.env
+
+# Spend ledger written by the foundry tools. Local record, not part of the site.
+.foundry/

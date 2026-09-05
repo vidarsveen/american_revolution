@@ -16,6 +16,36 @@ from that document is a defect, whatever it looks like.
 
 ## Hard constraints
 
+**No paid service without a decision written down first.** The only standing cost is the
+Claude Code subscription. Anything that bills — an API key, a hosting plan, a voice, a
+picture model, a music model — is the person's money, and the decision is taken *at
+planning time*, in writing, with a measured number beside it. Never discovered in a bill,
+and never assumed because a plan mentioned it. A new course answers question 8 in
+`docs/planning.md` before a word of it is written.
+
+Three things make this less obvious than it sounds. All measured on 30 August 2026 through
+`tools/try-openrouter.py`, which exists to make the answer cost pennies instead of a month:
+
+- **An advertised price is not a price.** `qwen/qwen-image-3` lists $0.003 an image and
+  charged **$0.030** — ten times over. Read the charge the response reports, and verify it
+  against the account balance before and after. Both were measured; both agreed; the
+  catalogue did not.
+- **A zero in a price field is not free.** Every video model and both Lyria models list
+  `prompt: 0, completion: 0`, and a five-second Seedance clip cost $0.15. Video pricing is
+  not exposed by the API *at all* — the only way to know is to run one and watch the
+  balance. Only the `:free` suffix means free, and of the 18 models carrying it, every one
+  is text except two voices.
+- **Free still costs something, and that is the same defect.** `edge-tts` is Microsoft's
+  read-aloud endpoint used without a contract, and this build has narrated on it for a year
+  while every other asset class carries an explicit Apache-2.0 argument and a *check the
+  LICENSE file* warning. A service nobody chose is the same class of mistake as a bill
+  nobody agreed to: in both cases the decision was never made.
+
+So a tool that can spend money **keeps a ledger, prints the charge, and refuses at a
+ceiling.** `tools/try-openrouter.py` writes every call to `.foundry/ledger.jsonl` with the
+provider's own cost, and `check` reads the true balance rather than trusting the sum. That
+is the smallest version of the rule; anything bigger inherits it.
+
 **No build step. No npm. No bundler.** Native ES modules, relative paths, `.js` extensions
 included. If a change needs a compiler, it is the wrong change.
 
@@ -102,6 +132,14 @@ map/          the map module — no tiles, no Leaflet, we draw the ground (BOTH 
   artifacts.js  army arrows, marches, fronts, areas, crossings, battles
   regions.js    named administrative areas
   index.js      createMap(host, opts) -> an instance
+pitch/        the football pitch — a rectangle with players on it, drawn PORTRAIT
+  geometry.js   105x68 in metres, +y is the attacking direction (up the screen),
+                the five lanes set by the markings and not by fifths
+  formations.js a shape written the way it is spoken: "4-2-3-1", "wm", "2-3-5".
+                Positions are RELATIVE to a line and a depth a cue chooses, so
+                "high line" and "low block" are one shape at two numbers.
+  index.js      createPitch(host, opts) -> an instance. No one-shot effects at
+                all, by design: an arrow is a drawing of a pass, not the event.
 sound/        mixer, procedurally synthesised effect library, ducking
 core/         shared primitives, no DOM ownership
   theme.js      isDark(el), watchTheme, reducedMotion
@@ -149,6 +187,9 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `dev/map-lab.html` | Does `instant` reproduce the animated picture exactly? Is any frame blank? |
 | `dev/map-lab.html` | Can two regions that share a border be told apart, measured on the pixels? |
 | `dev/map-lab.html` | Is every label that is drawn entirely inside the frame? |
+| `dev/pitch-lab.html` | Does a shape reached by seeking match one reached by morphing, dot for dot? |
+| `dev/pitch-lab.html` | Does `view` actually CROP, or does it only reposition? Measured on pixels. |
+| `dev/pitch-lab.html` | Can two dots be told apart at 390x700 — the height a phone really gives? |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
 | `dev/sound-lab.html` | Does every loop join itself at the seam, measured on the samples? |
 | `tools/check-turn.py` | At the instant the stage is rebuilt, is the veil actually opaque? |
@@ -209,6 +250,7 @@ python tools/check-pack-selftest.py   # and does that check still catch anything
 python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
+python tools/check-pitch.py        # six questions about the pitch — needs a server
 python tools/check-turn.py         # is the scene change behind the veil? — needs a server
 python tools/check-scene-plate.py  # does a scene's opening picture survive the turn? — needs a server
 python tools/check-turn-chapter.py # and the chapter change — needs a server
@@ -855,11 +897,44 @@ course that wants no map loads none of it. `README.md` is the map of all of it.
 
 ## Writing style
 
-The part that decides whether any of this is worth using. Upper-secondary level, never
-university: hook first, short sentences (long ones read badly aloud), every term explained the
-first time, concrete over abstract, one good fact instead of three paragraphs of context.
-Numbers are written the way they should be **spoken** — `syttisju`, not `77` — with the digits
-kept separately for the screen.
+The part that decides whether any of this is worth using.
+
+**Who a course is for, by default: someone with a university degree, in something
+else.** They read widely, follow the world, and have no training in the subject at
+hand. That single sentence settles most of the arguments about how to write:
+
+- **Get to the point immediately.** No warm-up, no establishing that the subject is
+  interesting, no building towards a reveal. The first minute makes a claim and starts
+  proving it.
+- **The approach is academic and analytic.** A claim, the mechanism behind it, the
+  consequence — then on. Prefer a stated trade-off to an anecdote and a measured number
+  to an adjective. Say what is contested, and say what would falsify the claim.
+- **Explain the subject's vocabulary, never the reader's.** *Trade-off, equilibrium,
+  incentive, punctuated equilibrium, dominant strategy* need no gloss. *Playing out from
+  the back*, *terroir* and *mashing* do — in a subordinate clause inside the sentence
+  that needs them, never as a definition line.
+- **Never explain the obvious surface of the subject.** That a football pitch is large
+  and holds eleven a side, that wine is made from grapes. Assume it and move.
+
+**A chapter is an argument, not an inventory.** The test is mechanical: if two
+paragraphs could swap places without loss, it is a list and it is wrong. A glossary read
+aloud is still a glossary at any length, and the tappable glossary already exists for the
+reader who wants to look something up.
+
+**A course may refine this in its outline's `# for whom`, and that line then wins.**
+Register is a property of the subject and its audience, not of the house — the same leak
+as an engine that knew how many factions there were. `docs/planning.md` question 7b is
+how to write one. The NRK-companion courses (`american-revolution`, `norway-1940`,
+`roman-empire`) were written to an older upper-secondary register and are frozen; do not
+rewrite them, and do not copy their pitch.
+
+This was learned expensively. Two drafts of a football course were rejected for exactly
+this — *"too banal and too childish ... I have watched a football match before, I know
+there are eleven players"* — and both were faithful to a house rule that used to read
+"upper-secondary level, never university".
+
+What holds whatever the register: hook first, short sentences (long ones read badly
+aloud), one good fact instead of three paragraphs of context.
 
 **Norwegian is written natively; English follows it.** Not translated from English.
 
@@ -869,6 +944,41 @@ of the surrounding file.
 ---
 
 ## In flight
+
+- **FOOTBALL is the course being planned, and the `pitch` surface is built.**
+  `content/football/outline.md` has eight chapters, all `planned: true`. The
+  question is *hvorfor står elleve spillere akkurat der de står?* and the
+  answer the whole course unpacks is that football is a fight for space. One
+  history chapter, three on the phases of a match, one comparing England,
+  Spain and Italy in nothing but the vocabulary of the first five, and two on
+  the manager. Zero kroner: the figures are drawn in code, and anything that
+  needs a picture is made locally in LM Studio.
+
+  **The pitch is the app's sixth surface and its third drawing module.** It
+  draws PORTRAIT — the team attacks up the screen — because a landscape pitch
+  in a 390-wide stage is 253 px tall in a 734 px box, and because "the line
+  steps up" then means up. Fourteen verbs, all prefixed `pitch.`.
+
+  Six things it got wrong that only measurement or looking could find, all now
+  assertions in `dev/pitch-lab.html`:
+
+  - a second `pitch.move` while the first was still animating froze the first
+    player wherever he had got to and made that his destination — so a seek
+    and a play drew different pictures. Build from the TARGET, never from the
+    interpolated state.
+  - `view` did not crop. It moved the transform and then painted all 105 m of
+    markings out of the bottom of a final-third panel. Four assertions were
+    green and the screenshot was plainly wrong.
+  - the automatic facing gave two teams the same direction when the first cue
+    said `facing: 'down'` itself, and one whole team was drawn outside a
+    cropped band. Eleven dots where there should have been twenty-two.
+  - the numbers in the dots were drawing order, not shirt numbers, so the WM's
+    centre-half wore 3 when being the 5 is the entire point of him. `num` is
+    declared now, and only on the five shapes where the numbering is real.
+  - corner arcs were full circles sitting outside the touchline.
+  - a label could be covered by a dot drawn later; text is the top layer now.
+
+  Every one of the six was reintroduced and the bench watched to fail.
 
 - **BEER IS FINISHED. All six chapters ship.** Chapter six, *Kveiken i
   stabburet*, ends where the viewer is standing and closes the circle the
@@ -969,7 +1079,7 @@ of the surrounding file.
   Reinheitsgebot, lambik and Brettanomyces.
 
 - **Planning a course is now a step with a method, not a habit.**
-  `docs/planning.md` is the level above `docs/authoring.md`: seven questions
+  `docs/planning.md` is the level above `docs/authoring.md`: eight questions
   asked as an interview, three tests to run before a word is written, and the
   two courses as worked examples. `tools/outline.py` gates the half that has a
   right answer — the course must say what question it answers, a chapter may not

@@ -1103,6 +1103,549 @@
     "weight": "frame"
    },
    "args": {}
+  },
+  "pitch.show": {
+   "summary": {
+    "no": "Sett banen paa skjermen",
+    "en": "Put the pitch on screen"
+   },
+   "surface": "pitch",
+   "occupies": {
+    "channel": "pitch",
+    "effect": "fill",
+    "weight": "frame"
+   },
+   "args": {
+    "view": {
+     "type": "enum",
+     "values": [
+      "full",
+      "own-half",
+      "their-half",
+      "final-third",
+      "middle"
+     ],
+     "default": "full",
+     "note": "how much of the pitch this panel shows. Cropping is the phone's half of the answer: the final third alone draws four dots in the space a full pitch spends on eleven."
+    },
+    "panels": {
+     "type": "number",
+     "min": 1,
+     "max": 3,
+     "default": 1,
+     "note": "more than one pitch at a time - chapter six compares three leagues. Panels stack on a portrait host and sit side by side on a landscape one."
+    },
+    "views": {
+     "type": "string[]",
+     "note": "a view per panel, when they differ."
+    },
+    "numbers": {
+     "type": "boolean",
+     "default": false,
+     "note": "draw 1-11 inside the dots. Off by default: a shape reads better as plain dots, and the numbers are chapter two's subject rather than every chapter's furniture."
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "The pitch is drawn PORTRAIT, attacking up the screen - see pitch/geometry.js for why. It is the ground for this surface the way the map is for a map course, so every other pitch verb needs it to have been shown first: a shape drawn on a pitch nobody put up is an empty screen, and tools/check-cover.py fails on it."
+  },
+  "pitch.hide": {
+   "summary": {
+    "no": "Ta banen bort",
+    "en": "Take the pitch away"
+   },
+   "surface": "pitch",
+   "occupies": {
+    "channel": "pitch",
+    "effect": "free",
+    "weight": "frame"
+   },
+   "args": {}
+  },
+  "pitch.team": {
+   "summary": {
+    "no": "Sett opp et lag i en formasjon",
+    "en": "Set a team out in a shape"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing.",
+     "required": true
+    },
+    "shape": {
+     "type": "string",
+     "required": true,
+     "note": "any digit string adding up to ten outfield players - 4-4-2, 4-2-3-1, 3-4-3, 5-3-2, 2-3-5 - or a named one: wm, catenaccio, back-three, back-five, pyramid."
+    },
+    "line": {
+     "type": "number",
+     "min": 0,
+     "max": 90,
+     "default": 30,
+     "note": "where the deepest outfield line stands, in metres from that team's own goal. THIS is a high line or a low block: the same shape at a different number."
+    },
+    "depth": {
+     "type": "number",
+     "min": 6,
+     "max": 60,
+     "default": 34,
+     "note": "metres from the back line to the front one. Compactness, which is chapter four's whole argument."
+    },
+    "width": {
+     "type": "number",
+     "min": 0.2,
+     "max": 1,
+     "default": 0.88,
+     "note": "how much of the 68 m the block spreads across."
+    },
+    "facing": {
+     "type": "enum",
+     "values": [
+      "up",
+      "down"
+     ],
+     "note": "only needed when the automatic answer is wrong."
+    },
+    "compact": {
+     "type": "boolean",
+     "default": false,
+     "note": "draw the measured distance between the deepest and the highest outfield player, in metres, down the side."
+    },
+    "numbers": {
+     "type": "boolean"
+    },
+    "over": {
+     "type": "seconds",
+     "note": "a second call for the same side MORPHS from where it was. That is chapter two: 2-3-5 becoming a WM has to be one shape turning into another, not a cut between two pictures."
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   }
+  },
+  "pitch.teamClear": {
+   "summary": {
+    "no": "Ta et lag av banen",
+    "en": "Take a team off"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   }
+  },
+  "pitch.move": {
+   "summary": {
+    "no": "Flytt eller merk en spiller",
+    "en": "Move or mark one player"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing.",
+     "required": true
+    },
+    "who": {
+     "type": "string",
+     "note": "a shirt number 1-11 (1 is the keeper) or a role the shape declares: gk, lb, lcb, six, eight, ten, nine, lwb, libero, inside-left and so on.",
+     "required": true
+    },
+    "to": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both."
+    },
+    "label": {
+     "type": "i18n",
+     "note": "a name under the dot."
+    },
+    "mark": {
+     "type": "boolean",
+     "note": "a gold ring - this is the one the sentence is about."
+    },
+    "dim": {
+     "type": "boolean",
+     "note": "fade this dot back so the others read."
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "The false nine, the full-back stepping inside, the six dropping between the centre-backs: every one of those is one dot leaving the shape it was drawn in."
+  },
+  "pitch.pass": {
+   "summary": {
+    "no": "En pasning",
+    "en": "A pass"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "from": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "to": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+    },
+    "id": {
+     "type": "string",
+     "note": "give it one to replace it later; without one it stands until pitch.clear."
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    },
+    "bend": {
+     "type": "number",
+     "min": -0.6,
+     "max": 0.6
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "A straight solid arrow with a filled head - the ball moving."
+  },
+  "pitch.run": {
+   "summary": {
+    "no": "Et loep",
+    "en": "A run"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "from": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "to": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+    },
+    "id": {
+     "type": "string",
+     "note": "give it one to replace it later; without one it stands until pitch.clear."
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    },
+    "bend": {
+     "type": "number",
+     "min": -0.6,
+     "max": 0.6
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "A bent dashed arrow with an open head - a person moving. Drawn differently from a pass on purpose: a third-man run is a pass one way and a run the other at the same moment, and one mark for both makes the thing it exists to explain unreadable."
+  },
+  "pitch.cross": {
+   "summary": {
+    "no": "Et innlegg eller et sidebytte",
+    "en": "A cross or a switch"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "from": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "to": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+    },
+    "id": {
+     "type": "string",
+     "note": "give it one to replace it later; without one it stands until pitch.clear."
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    },
+    "bend": {
+     "type": "number",
+     "min": -0.6,
+     "max": 0.6
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "A long shallow curve. Chapter five's sidebytte and tilbakelegg are both this."
+  },
+  "pitch.zone": {
+   "summary": {
+    "no": "Skyggelegg et omraade",
+    "en": "Shade an area"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "area": {
+     "type": "string",
+     "note": "a named area - final-third, middle-third, defensive-third, their-half, own-half, box, own-box, wing-left, half-space-left, centre, half-space-right, wing-right - or four numbers [x0,y0,x1,y1] in metres, x across 0-68 and y along 0-105 from your own goal line.",
+     "required": true
+    },
+    "id": {
+     "type": "string"
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "A pressing trap, a half-space, the block, the third being defended."
+  },
+  "pitch.lanes": {
+   "summary": {
+    "no": "Tegn de fem kanalene",
+    "en": "Draw the five lanes"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "The five-lane pitch in one cue. The lanes are NOT fifths of the width - they are set by the markings already on the grass, which is why a half-space is a real place: a ball played into one arrives at the corner of the penalty area. See LANES in pitch/geometry.js."
+  },
+  "pitch.zoneHide": {
+   "summary": {
+    "no": "Fjern et skyggelagt omraade",
+    "en": "Take a shaded area away"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "id": {
+     "type": "string",
+     "note": "leave it out to clear every zone on the panel."
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   }
+  },
+  "pitch.line": {
+   "summary": {
+    "no": "En linje tvers over banen",
+    "en": "A line across the pitch"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "at": {
+     "type": "number",
+     "min": 0,
+     "max": 105,
+     "required": true,
+     "note": "metres from your own goal line."
+    },
+    "id": {
+     "type": "string"
+    },
+    "label": {
+     "type": "i18n"
+    },
+    "tone": {
+     "type": "enum",
+     "values": [
+      "red",
+      "blue",
+      "gold",
+      "sage"
+     ]
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "The defensive line, the offside line, the edge of the block. A line steps up by calling this again with the same id and an over."
+  },
+  "pitch.ball": {
+   "summary": {
+    "no": "Sett ballen",
+    "en": "Put the ball"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "at": {
+     "type": "point",
+     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+     "required": true
+    },
+    "side": {
+     "type": "faction",
+     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+    },
+    "over": {
+     "type": "seconds"
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   }
+  },
+  "pitch.clear": {
+   "summary": {
+    "no": "Toem banen for piler, soner og linjer",
+    "en": "Clear the arrows, zones and lines"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "note": "which panel, when pitch.show asked for more than one."
+    }
+   },
+   "note": "Leaves the teams standing. pitch.teamClear takes those off."
   }
  }
 }

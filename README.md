@@ -40,7 +40,7 @@ Seven steps, and the first three are the only ones that decide whether it is any
 
 ```bash
 python tools/outline.py --new-pack beer     # a course from nothing
-python tools/outline.py beer                # the seven questions, asked
+python tools/outline.py beer                # the eight questions, asked
 ```
 
 The one question the course answers, what each chapter is **for**, what it hands the next
@@ -81,7 +81,7 @@ written down.
 missing artifact rather than as a disappointing chapter: the beer course's first chapter
 is carried by `process`, and nothing under `engine/surfaces/` draws a sequence of steps.
 
-**`docs/planning.md`** is this step written out — the seven questions as an interview, the
+**`docs/planning.md`** is this step written out — the eight questions as an interview, the
 three tests to run before a word is written, and both courses as worked examples.
 
 ### 2. Declare the subject — `content/<id>/pack.json`

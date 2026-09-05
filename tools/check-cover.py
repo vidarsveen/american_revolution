@@ -46,7 +46,7 @@ CONTENT = S.CONTENT
 # work, and a day was already lost to fixing courses because a check reported
 # them. They are skipped BY NAME and the skip is printed, so it is a visible
 # decision rather than a silent hole in the coverage of the checker itself.
-CHECKED = {"beer"}
+CHECKED = {"beer", "football"}
 
 
 def sentence(chapter, sid, bid, lang):

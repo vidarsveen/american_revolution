@@ -61,10 +61,18 @@ CSS_DIR = ROOT / "css"
 # the probe has been measuring one class and reporting on four. Let tools/
 # into the corpus and that probe would vouch for the very selectors it is
 # failing to find, and so would this file's own docstring.
+#
+# A drawing module that is not in this list is invisible to the check, and the
+# check then reports its stylesheet as dead. `pitch/**/*.js` was missing on the
+# day pitch/ was written and `.stage-pitch__canvas` came back as a new failure
+# while pitch/index.js was setting it on line 130. Same defect one level up as
+# a course that is outside a checker's coverage: the answer looked like a
+# finding and was a hole in the corpus. Add a top-level module directory here
+# the moment it exists.
 SOURCE_GLOBS = (
     "*.html", "*.js",
     "js/**/*.js", "engine/**/*.js", "core/**/*.js", "map/**/*.js",
-    "sound/**/*.js", "dev/**/*.js", "dev/**/*.html",
+    "pitch/**/*.js", "sound/**/*.js", "dev/**/*.js", "dev/**/*.html",
 )
 
 # Selector text only — everything before a `{`. Declarations are never

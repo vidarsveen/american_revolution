@@ -1,0 +1,6 @@
+{
+  "$doc": "Denne pakkens tuning. Slås SAMMEN OVER engine/defaults/style.json nøkkel for nøkkel, og et cue-argument slår fortsatt begge. Tom betyr: dette emnet går nøyaktig i takten docs/design-direction.md foreskriver, og det er riktig svar til noe er MÅLT og er uenig.",
+  "$keys": "motion.tap|enter|exit|dissolve|turn|drift (ms) · camera.flyOver|clamp|quantise · plate.motion|push|focus|fit · type.scale · map.deckReserve|labelGap · sound.bedDb|duckDb. Alt annet rapporteres ved oppstart som erklært-men-ulest.",
+  "$why": "Ingen tall er endret. Filen finnes fordi den MÅ finnes: uten den ber motoren om content/football/style.json og får 404 på hver eneste sidelasting. Den ble funnet nøyaktig sånn — én linje i konsollen første gang kapittel én ble spilt i appen — og det er den samme grunnen ølkurset har sin.",
+  "$next": "Kurset har ingen musikk ennå, så sound.bedDb og duckDb står urørt. Når det kommer en seng, skal nivået MÅLES mot fortellerstemmen slik ølkurset gjorde det, ikke regnes ut fra hva de gamle cue-forsterkningene summerte til."
+}

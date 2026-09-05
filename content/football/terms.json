@@ -1,0 +1,159 @@
+{
+  "//": "Ordboka for fotballkurset — et oppslagsverk, ikke manus. Kapitlene forklarer et fagord i bisetningen som trenger det og går videre; den som vil ha mer, får det her. Kapittel én legger igjen de tretten under. Norsk skrives først. Registeret er outline.md sin `# for whom`: ingenting om selve spillet forklares, og abstraksjon forutsettes.",
+
+  "tilbakespillsregelen": {
+    "term": { "no": "Tilbakespillsregelen", "en": "The back-pass law" },
+    "short": {
+      "no": "Fra 1992: keeperen kan ikke ta ballen med hendene når en medspiller har spilt den til ham med foten.",
+      "en": "From 1992: a goalkeeper may not handle a ball a team-mate has passed him with the foot."
+    },
+    "body": {
+      "no": "IFAB vedtok endringen sommeren 1992, og begrunnelsen var tidsspille. VM i Italia to år før hadde endt på 2,21 mål per kamp, det laveste snittet i noe sluttspill, og et lag som ledet kunne spille ballen tilbake til keeperen som plukket den opp og holdt på den.\n\nEffekten ble en helt annen enn hensikten. Keeperen måtte lære å spille med føttene, og i det han kunne det var han en ellevte utespiller i eget oppspill. Hele den moderne oppbyggingen bakfra hviler på det.\n\nDet er også kursets reneste eksempel på at store skifter i faget oftere kommer fra regelverket enn fra trenerne. Det andre er offsideendringen i 1925.",
+      "en": "The IFAB adopted the change in the summer of 1992, and the stated reason was time-wasting. The World Cup in Italy two years earlier had finished on 2.21 goals a game, the lowest average of any tournament, and a team in front could roll the ball back to a goalkeeper who picked it up and kept it.\n\nThe effect had nothing to do with the intention. Goalkeepers had to learn to play with their feet, and the moment they could they were an eleventh outfield player in their own build-up. The whole of modern building from the back rests on it.\n\nIt is also the course's cleanest evidence that the large shifts in the subject come from the laws more often than from the coaches. The other is the offside change of 1925."
+    }
+  },
+
+  "frispilling bakfra": {
+    "term": { "no": "Frispilling bakfra", "en": "Playing out from the back" },
+    "short": {
+      "no": "Å starte angrepet med korte pasninger fra keeper og forsvar i stedet for å slå langt.",
+      "en": "Starting the attack with short passes from goalkeeper and defence instead of hitting it long."
+    },
+    "body": {
+      "no": "Det ser ut som risiko og er et regnestykke. Med keeperen som pasningsmottaker har laget med ballen alltid én spiller mer i egen tredjedel enn motstanderen kan presse med, og den frie spilleren er fri hele tiden — ikke i et øyeblikk, men strukturelt.\n\nPoenget er ikke å komme forbi presset med finesse. Poenget er at presset må komme, og at hver spiller som løper framover legger igjen plassen han sto i.\n\nPrisen er at feilen er dyr: et balltap tretti meter fra eget mål gir motstanderen en sjanse uten forsvar foran seg. Det er derfor restforsvaret finnes.",
+      "en": "It looks like risk and it is arithmetic. With the goalkeeper available as a passing option, the team in possession always has one player more in its own third than the opposition can press with, and the free man is free continuously — not for a moment, but structurally.\n\nThe point is not to beat the press with skill. The point is that the press has to come, and that every player who runs forward leaves behind the space he was standing in.\n\nThe price is that the error is expensive: losing the ball thirty metres from your own goal gives the opposition a chance with no defence in front of it. That is what rest defence is for."
+    }
+  },
+
+  "overtall": {
+    "term": { "no": "Overtall", "en": "Overload" },
+    "short": {
+      "no": "Flere av oss enn av dem — på ett sted, i noen sekunder.",
+      "en": "More of us than of them — in one place, for a few seconds."
+    },
+    "body": {
+      "no": "Det er alltid elleve mot elleve, så overtall er aldri en påstand om hele banen. Det er en påstand om et hjørne av den, og om noen sekunder.\n\nEn spiller i overtall er fri, og en fri spiller har tid til å snu med ballen. Tid er det eneste som gjør en vanskelig pasning lett.\n\nRegnestykket går alltid opp: overtall ett sted er undertall et annet, i samme sekund. Det er derfor en lang spillvending er farlig — den flytter ballen dit motstanderen nettopp har hentet folk fra.",
+      "en": "It is always eleven against eleven, so an overload is never a claim about the whole pitch. It is a claim about one corner of it, for a few seconds.\n\nA player in an overload is free, and a free player has time to turn with the ball. Time is the only thing that makes a hard pass easy.\n\nThe arithmetic always balances: an overload in one place is being outnumbered somewhere else, in the same second. That is why a long switch is dangerous — it moves the ball to where the opposition have just taken people from."
+    }
+  },
+
+  "press": {
+    "term": { "no": "Press", "en": "The press" },
+    "short": {
+      "no": "Å gå etter ballen der motstanderen har den, i stedet for å vente på ham.",
+      "en": "Going after the ball where the opposition have it, instead of waiting for them."
+    },
+    "body": {
+      "no": "Press er en investering med en pris i bein. Det koster mest av alt et lag gjør, og et lag som spiller to kamper i uka kan ikke gjøre det i nitti minutter.\n\nDerfor er spørsmålet aldri om man skal presse, men hvor. Høyt oppe vinner man ballen nær målet og risikerer alt bak seg; på midtbanen vinner man den sjeldnere og tryggere; dypt vinner man den nesten ikke, men gir bort nesten ingenting.\n\nDe tre valgene har hvert sitt navn — høyt press, midtblokk, lav blokk — og ingen av dem er riktig. De er veddemål på hvem man møter og på hvor mye laget har igjen.",
+      "en": "Pressing is an investment with a price in legs. It costs more than anything else a team does, and a side playing twice a week cannot do it for ninety minutes.\n\nSo the question is never whether to press but where. High up you win the ball near the goal and risk everything behind you; in midfield you win it less often and more safely; deep you barely win it at all, but you give away almost nothing.\n\nThe three choices have their own names — high press, mid block, low block — and none of them is correct. They are bets about who you are facing and about how much the team has left."
+    }
+  },
+
+  "høyt press": {
+    "term": { "no": "Høyt press", "en": "The high press" },
+    "short": {
+      "no": "Å presse helt oppe ved motstanderens straffefelt.",
+      "en": "Pressing right up at the opposition's penalty area."
+    },
+    "body": {
+      "no": "Den dyreste og mest lønnsomme varianten. En ball vunnet tretti meter fra motstanderens mål gir en sjanse uten forsvar foran seg, og det er den mest verdifulle ballen i fotball.\n\nProblemet er aritmetisk. Motstanderen har keeperen med i oppspillet, så et press med fire mot fire møter i praksis fem, og den frie mannen er alltid der. Presset må derfor vinne ballen med én gang, eller det er brutt — og et brutt høyt press etterlater førti meter tomt gress.\n\nSvaret på aritmetikken er ikke flere folk, men å ta bort valg: å presse med en bue slik at en pasning er stengt av kroppen, og å la en bestemt spiller få ballen med vilje.",
+      "en": "The most expensive variant and the most profitable. A ball won thirty metres from the opposition goal gives you a chance with no defence in front of it, and that is the most valuable ball in football.\n\nThe problem is arithmetic. The opposition have the goalkeeper in their build-up, so a press of four against four in practice meets five, and the free man is always there. The press therefore has to win the ball immediately, or it is broken — and a broken high press leaves forty metres of empty grass.\n\nThe answer to the arithmetic is not more people but removing options: pressing on a curve so that one pass is shut off by the body, and letting one particular player have the ball on purpose."
+    }
+  },
+
+  "styringspress": {
+    "term": { "no": "Styringspress", "en": "Curved pressing" },
+    "short": {
+      "no": "Å løpe i bue slik at kroppen stenger én pasning og tvinger ballen dit du vil ha den.",
+      "en": "Running on a curve so the body shuts one pass and forces the ball where you want it."
+    },
+    "body": {
+      "no": "En spiss som løper rett mot en midtstopper presser én spiller. Løper han i bue, med kroppen mellom ballen og den andre midtstopperen, presser han to med én kropp: den ene kan ikke få ballen, og den andre må ta den.\n\nDet er den billigste manøveren i moderne forsvarsspill, fordi den fjerner en pasning uten å bruke en spiller på den. Alt annet i et press koster en mann.\n\nOg den avgjør hvor kampen skal foregå. Et lag som styrer ballen ut mot sidelinja har flyttet spillet dit motstanderen har færrest valg, og der venter fella.",
+      "en": "A striker running straight at a centre-back presses one player. Running on a curve, with his body between the ball and the other centre-back, he presses two with one body: one of them cannot receive it, and the other has to.\n\nIt is the cheapest manoeuvre in modern defending, because it removes a pass without spending a player on it. Everything else in a press costs a man.\n\nAnd it decides where the match will be played. A team steering the ball towards the touchline has moved the game to where the opposition have fewest options, and that is where the trap is waiting."
+    }
+  },
+
+  "pressfelle": {
+    "term": { "no": "Pressfelle", "en": "Pressing trap" },
+    "short": {
+      "no": "Å la en bestemt spiller få ballen tilsynelatende fritt, og så komme med tre.",
+      "en": "Letting one particular player have the ball apparently free, then arriving with three."
+    },
+    "body": {
+      "no": "Fella er en invitasjon. Laget lar en pasning stå åpen — som regel til den svakeste ballbehandleren, eller til en back ute ved sidelinja — og lukker den i det ballen er underveis.\n\nSidelinja er poenget. En spiller som mottar ballen der har mistet halvparten av vinklene sine før han har rørt den, og han kan ikke snu unna. Tre spillere som ankommer samtidig trenger ikke å vinne en duell; de trenger bare å fjerne alle utganger.\n\nDet er også grunnen til at en åpen pasning ikke nødvendigvis er en gave. I et velorganisert press er den som regel den eneste pasningen motstanderen vil at du skal slå.",
+      "en": "The trap is an invitation. The team leaves one pass open — usually to the weakest of the opposition's ball-players, or to a full-back near the touchline — and shuts it while the ball is travelling.\n\nThe touchline is the point. A player receiving there has lost half his angles before he has touched it, and he cannot turn away. Three players arriving together do not need to win a duel; they only need to remove the exits.\n\nIt is also why an open pass is not necessarily a gift. In a well-organised press it is usually the only pass the opposition want you to play."
+    }
+  },
+
+  "restforsvar": {
+    "term": { "no": "Restforsvar", "en": "Rest defence" },
+    "short": {
+      "no": "Hvordan de som ikke er med i angrepet står, for det sekundet ballen mistes.",
+      "en": "How the players not involved in the attack are standing, for the second the ball is lost."
+    },
+    "body": {
+      "no": "Mens et lag angriper, er noen spillere allerede stilt opp for at angrepet skal mislykkes. Det er ikke pessimisme, det er den delen av angrepsplanen som handler om den mest sannsynlige utgangen.\n\nDerfor blir en back stående igjen mens den andre går opp, og derfor holder seksseren seg mellom ballen og eget mål og ikke bak ballen. Formen på restforsvaret bestemmer om et balltap blir en avbrutt angrepssekvens eller en kontring.\n\nDet er også svaret på hvorfor et lag kan spille dristig bakfra uten å være dumdristig: risikoen er priset inn på forhånd.",
+      "en": "While a team attacks, some of its players are already arranged for the attack to fail. That is not pessimism; it is the part of the attacking plan that deals with the most likely outcome.\n\nSo one full-back stays home while the other goes forward, and the holding midfielder keeps himself between the ball and his own goal rather than behind the ball. The shape of the rest defence decides whether losing possession is an interrupted attack or a counter-attack against you.\n\nIt is also the answer to how a team can build boldly from the back without being reckless: the risk is priced in beforehand."
+    }
+  },
+
+  "sweeper-keeper": {
+    "term": { "no": "Sweeper-keeper", "en": "Sweeper-keeper" },
+    "short": {
+      "no": "En keeper som står langt ute og rydder opp i rommet bak forsvarslinja.",
+      "en": "A goalkeeper who stands far out and clears up the space behind the defensive line."
+    },
+    "body": {
+      "no": "Konsekvensen, tretti år på etterskudd, av tilbakespillsregelen. Når keeperen først er en fotspiller, kan laget skyve forsvarslinja høyt opp — og da må noen dekke gresset bak den. Det er ham.\n\nDet gjør keeperens jobb til to jobber som trekker i hver sin retning: å stå på streken og redde skudd, og å stå tretti meter ute og komme først til en gjennombruddsball. Et lag velger hvilken av dem det vil ha mest av, og betaler for den andre.\n\nDet er også derfor pasningsstatistikk for keepere har blitt en ting som står i sendingsgrafikken. For tretti år siden ville tallet ikke betydd noe.",
+      "en": "The consequence, thirty years late, of the back-pass law. Once the goalkeeper is a footballer, the team can push its defensive line high — and then somebody has to cover the grass behind it. That is him.\n\nIt turns the goalkeeper's job into two jobs that pull in opposite directions: standing on the line and saving shots, and standing thirty metres out and getting first to a ball played in behind. A team chooses which of the two it wants more of, and pays for the other.\n\nIt is also why passing numbers for goalkeepers now appear in the broadcast graphics. Thirty years ago the figure would have meant nothing."
+    }
+  },
+
+  "rom": {
+    "term": { "no": "Rom", "en": "Space" },
+    "short": {
+      "no": "Gress ingen står nær nok til å rekke fram til.",
+      "en": "Grass nobody is standing close enough to reach."
+    },
+    "body": {
+      "no": "Rom er alltid et sted OG et tidspunkt. Ti meter foran en midtstopper er ubrukelig rom hvis ingen løper inn i det, og avgjørende rom i det sekundet noen gjør det.\n\nDet kan ikke fjernes, bare flyttes. Et lag som skyver forsvarslinja fram fjerner rommet foran den og lager like mye bak den; et lag som trekker seg tilbake gjør det motsatte. Hele kurset er varianter av det ene byttet.\n\nDerfor er «de forsvarer seg godt» sjelden en presis setning. Det presise spørsmålet er hvor de har bestemt seg for å la rommet ligge, og om motstanderen kan bruke det.",
+      "en": "Space is always a place AND a moment. Ten metres in front of a centre-back is useless space if nobody runs into it, and decisive space the second somebody does.\n\nIt cannot be removed, only moved. A team pushing its defensive line up removes the space in front of it and creates exactly as much behind; a team dropping off does the reverse. The whole course is variants of that one trade.\n\nSo \"they are defending well\" is rarely a precise sentence. The precise question is where they have decided to leave the space, and whether the opposition can use it."
+    }
+  },
+
+  "linje": {
+    "term": { "no": "Linje", "en": "Line" },
+    "short": {
+      "no": "En rad spillere som holder samme høyde og flytter seg samlet.",
+      "en": "A row of players holding the same height and moving together."
+    },
+    "body": {
+      "no": "Forsvarslinja er de fire eller fem bakerste, og den flytter seg som én ting. Det er ikke ryddighet: en spiller som blir stående igjen bak de andre holder motstanderen onside helt alene, og gjør offsidefella umulig for resten.\n\nHøyden på linja er den enkeltbeslutningen som forandrer mest ved et lag. Femti meter fra eget mål gir et kompakt lag med førti meter ubevoktet gress bak seg; tjue meter gir det motsatte.\n\nAvstanden mellom linjene er en egen størrelse, og den heter kompakthet.",
+      "en": "The defensive line is the deepest four or five, and it moves as a single thing. That is not tidiness: a player left behind the others keeps the opposition onside on his own, and makes the offside trap impossible for everybody else.\n\nThe height of the line is the single decision that changes a team most. Fifty metres from your own goal gives you a compact side with forty metres of unguarded grass behind it; twenty metres gives you the reverse.\n\nThe distance between the lines is a separate quantity, and it is called compactness."
+    }
+  },
+
+  "ledd": {
+    "term": { "no": "Ledd", "en": "Band" },
+    "short": {
+      "no": "De to eller tre linjene et lag forsvarer seg i, og rommene mellom dem.",
+      "en": "The two or three lines a team defends in, and the spaces between them."
+    },
+    "body": {
+      "no": "Et lag uten ball står nesten alltid i to eller tre ledd. Rommet mellom dem er det mest ettertraktede på banen, av en organisatorisk grunn og ikke en romlig: en spiller som står der er ingens ansvar.\n\nForsvarerne vil ikke gå fram og forlate linja si. Midtbanespillerne vil ikke snu og løpe bakover. Så han blir stående, og han får tid.\n\nÅ spille gjennom ledd — å få ballen forbi en hel rekke med én pasning — er derfor den mest verdifulle pasningen i fotball, og den vanskeligste.",
+      "en": "A team without the ball nearly always stands in two or three bands. The space between them is the most sought-after on the pitch, for an organisational reason rather than a spatial one: a player standing there is nobody's responsibility.\n\nThe defenders will not step up and leave their line. The midfielders will not turn and run backwards. So he is left standing, and he gets time.\n\nPlaying through the lines — getting the ball past a whole band with one pass — is therefore the most valuable pass in football, and the hardest."
+    }
+  },
+
+  "formasjon": {
+    "term": { "no": "Formasjon", "en": "Formation" },
+    "short": {
+      "no": "Utgangsstillingen, lest fra eget mål og framover. Keeperen telles ikke.",
+      "en": "The starting arrangement, read from your own goal forwards. The goalkeeper is not counted."
+    },
+    "body": {
+      "no": "4-4-2 er fire bakerst, fire på midten, to øverst. Ti, pluss keeper.\n\nTallet sier hvordan de elleve er fordelt og ingenting om hvor på banen de står, og det er nesten alltid den viktigere halvparten. Den samme 4-4-2-en som ligger tjue meter fra eget mål og den som presser femti meter oppe har ingenting til felles utenom grafikken før avspark.\n\nI tillegg beskriver den bare øyeblikket før ballen ruller. Et moderne lag står i én form med ballen og en annen uten, og forskjellen mellom dem er ofte to eller tre spillere som bytter oppgave fullstendig.",
+      "en": "A 4-4-2 is four at the back, four across the middle, two up top. Ten, plus the goalkeeper.\n\nThe number says how the eleven are distributed and nothing about where on the pitch they stand, and that is nearly always the more important half. The same 4-4-2 sitting twenty metres from its own goal and the one pressing fifty metres up the pitch have nothing in common but the graphic before kick-off.\n\nIt also describes only the instant before the ball rolls. A modern side stands in one shape with the ball and another without it, and the difference is often two or three players whose job changes completely."
+    }
+  }
+}

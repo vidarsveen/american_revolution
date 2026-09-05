@@ -1,0 +1,115 @@
+/* ============================================================
+   pitch.css — the football pitch surface.
+
+   Split out of story.css rather than added to it, and placed immediately
+   after it in index.html: this file reads tokens.css's variables and relies
+   on later-wins cascade for nothing, but the link ORDER in index.html is
+   load-bearing and "put the new file immediately after the one it came from"
+   is the rule that keeps it that way.
+
+   There are exactly two classes here and both are written by a module —
+   `.stage-pitch` by engine/surfaces/pitch.js and `.stage-pitch__canvas` by
+   pitch/index.js. tools/check-dead-css.py fails the build on a class in css/
+   that nothing paints, and this file is small enough that the temptation to
+   style a selector "for later" is the whole risk.
+
+   NOTHING IN HERE DECIDES WHAT THE PITCH LOOKS LIKE
+
+   The markings, the dots, the arrows and the labels are all drawn on the
+   canvas, and they read their colours from the design tokens at draw time so
+   they flip with the theme. The stylesheet's entire job is where the canvas
+   sits and how it arrives. A rule here that tried to colour a player would be
+   the .story-ring mistake: a selector nothing paints, reporting success for
+   ever.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   The turf.
+
+   The pitch was first drawn in the app's paper and ink, on the argument that
+   every other surface is and that a green rectangle would be a different film.
+   That argument was wrong in practice and was rejected on sight: "why not make
+   the pitch green? that is simple. it would be more realistic anyway and more
+   interesting. not brown as it is now." A football pitch is green, everybody
+   who has ever seen one knows exactly what it looks like, and drawing it in
+   parchment made it look like a diagram of a car park.
+
+   So: turf, mown into stripes, with white lines. Declared here rather than in
+   pitch/index.js because a colour that flips with the theme belongs in the
+   stylesheet, and pitch/index.js reads these four at draw time — the same
+   reason the map reads --atlas-ink instead of holding a hex.
+
+   Dark mode is a night match: the same green under floodlights, further down.
+   ------------------------------------------------------------ */
+:root {
+  --pitch-turf:     #4a7c3c;
+  --pitch-turf-alt: #52863f;
+  --pitch-line:     rgba(255, 255, 255, .78);
+  --pitch-line-soft: rgba(255, 255, 255, .34);
+}
+:root:not([data-theme="light"]) {
+  --pitch-turf:     #1f3a1d;
+  --pitch-turf-alt: #24421f;
+  --pitch-line:     rgba(255, 255, 255, .58);
+  --pitch-line-soft: rgba(255, 255, 255, .24);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --pitch-turf:     #4a7c3c;
+    --pitch-turf-alt: #52863f;
+    --pitch-line:     rgba(255, 255, 255, .78);
+    --pitch-line-soft: rgba(255, 255, 255, .34);
+  }
+}
+:root[data-theme="dark"] {
+  --pitch-turf:     #1f3a1d;
+  --pitch-turf-alt: #24421f;
+  --pitch-line:     rgba(255, 255, 255, .58);
+  --pitch-line-soft: rgba(255, 255, 255, .24);
+}
+
+/* The ground — but NOT full-bleed like .stage-map, and that is the one
+   interesting rule in this file.
+
+   A map has a camera, so it fills the stage and `framePadding()` composes the
+   subject into the part you can actually see. A pitch has no camera: it is
+   fitted once into whatever box it is given. Given the whole stage, it fits
+   105 metres into 700 pixels and puts the goalkeeper — and the whole bottom
+   penalty area — underneath the caption. Measured on chapter one at 390x700:
+   the number 1 was invisible in every scene, in a chapter whose subject is
+   eleven players.
+
+   So the host stops above the caption, and the ResizeObserver in
+   pitch/index.js re-fits when it moves. `--deck-floor` is the same clearance
+   .stage-chart uses, and it is built on the MEASURED --caption-reach rather
+   than on --floor + --caption-h, because a sum of parts is wrong the moment a
+   part moves — this repo has paid for that twice already. */
+.stage-pitch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: var(--deck-floor);
+  /* The base rule carries the DEPARTURE and .is-on the ARRIVAL, the same
+     two-duration shape every other surface on this stage uses. */
+  opacity: 0;
+  transition: opacity var(--t-exit) var(--ease-out);
+}
+
+.stage-pitch.is-on {
+  opacity: 1;
+  transition: opacity var(--t-enter) var(--ease-out);
+}
+
+/* A seek must land on the finished picture, not on the start of a fade.
+   engine/surfaces/pitch.js adds this for one frame and takes it off again. */
+.stage-pitch.is-instant { transition: none; }
+
+.stage-pitch__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Same well the map's canvas sits in, so the gap around a cropped pitch is
+     the app's paper and not a hole. */
+  background: var(--paper-sunken);
+}

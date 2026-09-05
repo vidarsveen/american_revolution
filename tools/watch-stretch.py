@@ -52,6 +52,11 @@ READ = """
     plate: op('.stage-plate') * Math.max(
       document.querySelector('.plate__img')?.currentSrc ? op('.plate__img') : 0,
       document.querySelector('.plate__ghost')?.currentSrc ? op('.plate__ghost') : 0),
+    // The pitch is the GROUND for a tactics course, the way the map is for a
+    // place course, and a probe that does not know about it reports a
+    // perfectly full screen as blank. That is the same defect this file's own
+    // comment above describes, one surface later.
+    pitch: op('.stage-pitch'),
     deck:  op('.ov-deck .ov-stat, .ov-stat'),
     chart: op('.ov-compare, .ov-chart'),
     card:  op('.ov-fact, .ov-quote'),
@@ -82,7 +87,8 @@ with sync_playwright() as pw:
     blanks = 0
     for t in range(0, 40 if scene != "all" else 700):
         st = page.evaluate(READ)
-        empty = max(st["plate"], st["deck"], st["chart"], st["card"]) < 0.1
+        empty = max(st["plate"], st.get("pitch", 0), st["deck"],
+                st["chart"], st["card"]) < 0.1
         blanks += empty
         if empty:
             print(f"  {t // 60}:{t % 60:02d}  NOTHING ON THE STAGE  "

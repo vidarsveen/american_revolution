@@ -1,0 +1,130 @@
+{
+  "id": "football",
+  "version": 1,
+  "//": [
+    "Fotballtaktikk. Kurset har INGEN kart: ingenting i det handler om hvor pa",
+    "jorda noe skjer, og `surfaces` under navner derfor ikke `map` - det er 3,85",
+    "MB geometri kurset ikke betaler for.",
+    "",
+    "`pitch` er grunnen her, slik `map` er det i et stedkurs. Flata tegner en",
+    "bane i PORTRETT - laget angriper oppover skjermen - med spillere, piler,",
+    "soner og linjer. Se pitch/geometry.js for hvorfor den star pa hoykant, og",
+    "engine/verbs.json for de fjorten verbene.",
+    "",
+    "`pitch.numbers` og `pitch.view` under er kursets standardverdier; en cue",
+    "overstyrer alltid.",
+    "",
+    "`factions` er ikke sider i en krig, men navngitte farger flatene og DOM-en",
+    "begge nar. Her er de to lagene og ballen."
+  ],
+  "work": {
+    "no": "Moderne fotballtaktikk",
+    "en": "Modern football tactics"
+  },
+  "years": {
+    "no": "1863-i dag",
+    "en": "1863-today"
+  },
+  "description": {
+    "no": "Hvorfor star elleve spillere akkurat der de star? Et kurs om plass, formasjoner, press og hva treneren faktisk gjor.",
+    "en": "Why do eleven players stand exactly where they stand? A course about space, formations, pressing and what the manager is actually doing."
+  },
+  "factions": {
+    "team": {
+      "label": {
+        "no": "Laget",
+        "en": "The team"
+      },
+      "hue": 214,
+      "sat": 0.62
+    },
+    "opponent": {
+      "label": {
+        "no": "Motstanderen",
+        "en": "The opposition"
+      },
+      "hue": 12,
+      "sat": 0.58
+    },
+    "ball": {
+      "label": {
+        "no": "Ballen",
+        "en": "The ball"
+      },
+      "hue": 44,
+      "sat": 0.7
+    }
+  },
+  "era": {
+    "start": "1863-01-01",
+    "end": "2026-12-31",
+    "tickStep": "decade"
+  },
+  "voices": {
+    "no": "nb-NO-FinnNeural",
+    "en": "en-GB-RyanNeural",
+    "rate": "-6%"
+  },
+  "narration": {
+    "wps": [
+      1.9,
+      3.4
+    ],
+    "minContentWordMs": 100
+  },
+  "pools": {
+    "terms": "terms.json",
+    "topics": "topics.json",
+    "media": "media.json",
+    "sound": "sound.json"
+  },
+  "chapters": [
+    {
+      "id": "chapter-1-baklengs",
+      "title": {
+        "no": "Hvorfor de spiller baklengs",
+        "en": "Why they pass backwards"
+      },
+      "subtitle": {
+        "no": "En setning lovtekst fra 1992, og regnestykket den skapte",
+        "en": "One sentence of law from 1992, and the arithmetic it created"
+      },
+      "blurb": {
+        "no": "Fram til 1992 kunne en keeper ta opp en tilbakespilt ball med hendene. Da det ble forbudt, ble han en ellevte utespiller — og et lag med ballen har siden hatt én mann mer enn motstanderen kan presse med. Alt som ser ut som dumdristighet bakfra er det regnestykket.",
+        "en": "Until 1992 a goalkeeper could pick up a back-pass. When that was banned he became an eleventh outfield player, and a team in possession has since had one more man than the opposition can press with. Everything that looks like recklessness at the back is that sum."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    }
+  ],
+  "surfaces": [
+    "pitch",
+    "plate",
+    "overlays",
+    "sound",
+    "chart"
+  ],
+  "entries": {
+    "term": {
+      "label": {
+        "no": "Ordbok",
+        "en": "Glossary"
+      },
+      "browse": true
+    },
+    "topic": {
+      "label": {
+        "no": "Tema",
+        "en": "Topics"
+      },
+      "browse": true
+    }
+  },
+  "pitch": {
+    "view": "full",
+    "panels": 1,
+    "numbers": false
+  }
+}

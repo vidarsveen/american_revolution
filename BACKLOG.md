@@ -18,6 +18,164 @@ wine pack below is the reference course and is not the work.
 
 ---
 
+## The football pack — planned, not written
+
+**0. The outline ships and nothing else does.**
+`content/football/outline.md`: eight chapters, all `planned: true`. The question
+is *hvorfor står elleve spillere akkurat der de står?* and the answer the whole
+course unpacks is that football is a fight for space. `tools/outline.py
+football` is green on every gate, including the prerequisite chain across all
+eight.
+
+The shape, after one revision:
+
+    1  Kampen om plassen        space, and the words. No club name, no date.
+    2  Tallene                  a hundred years, ONE chapter — it is there to
+                                hand over 4-4-2, the back three, the six/eight/ten
+    3  Å ha ballen              build-up, the 1992 backpass law
+    4  De fem sekundene etter   pressing, blocks, transition, counter-press
+    5  Muren                    breaking a low block, the cutback, xG
+    6  Tre ligaer, tre svar     England / Spain / Italy, described ONLY in the
+                                vocabulary of 1-5. The test of whether it landed.
+    7  Uka før kampen           the backroom: game model, set-piece coach,
+                                analyst, sporting director, the training week
+    8  Nitti minutter           game state, the five substitutions, the shape
+                                change, and the eleven dots from chapter one
+
+The first draft had six chapters and was wrong twice over: history was a
+subject rather than a delivery mechanism, and the manager — the thing the
+course was asked for — was one chapter at the end. History is now one chapter
+that exists to hand over the shape names and the position numbers, and the
+manager is two. Chapter six was added because a style comparison is the only
+honest test of the vocabulary: if England-versus-Italy cannot be said in blocks,
+lines, transition and rest defence, it was a cliché and not a style. It carries
+the graphics numbers (field tilt, progressive passes, heat maps) because
+comparison is what those are for, and its stated trap is national character —
+the leagues have converged and England's possession sides are mostly coached by
+Spaniards.
+
+**Register, written into `# about` and binding on every chapter:** adults who
+are curious about football without knowing it. Not easy — clear. Every term
+explained once, precisely, at the sentence where it is first needed, then used
+without apology the way a commentator uses it. `teaches:`/`assumes:` is the
+contract on what must NOT be said twice. No simplification that has to be taken
+back later, and no analogies to something the viewer is assumed to like better
+than football.
+
+Question 8 is answered in `# about`: **zero kroner.** Figures drawn in code on
+the pitch surface, the voice the other courses already use, and anything that
+needs a picture or an effect generated locally in LM Studio on this machine. No
+API key, no paid model. Real football photography is copyrighted, and a
+generated picture of a real player is not something to make.
+
+**1. DONE — the `pitch` surface is built.** `pitch/geometry.js`,
+`pitch/formations.js`, `pitch/index.js`, `engine/surfaces/pitch.js`,
+`css/pitch.css`, fourteen verbs in `engine/verbs.json`, a line in the
+registry's `SHIPPED`, and `"pitch"` in the football pack's `surfaces`.
+`SHOWS["pitch"]` in `tools/outline.py` is no longer `None`.
+
+It draws PORTRAIT and that is the load-bearing decision: a landscape pitch in
+a 390-wide stage is 253 px tall in a 734 px box, two thirds of the screen
+spent on paper. Upright it is 374 x 577, "the line steps up" means up the
+screen, the half-spaces are vertical lanes, and the final third is the top of
+the phone. `view` crops to a band (`own-half`, `final-third`, `middle`) and
+`panels` puts up to three pitches on screen at once, stacked on a portrait
+host — which is how chapter six compares three leagues.
+
+What it can draw: eleven dots per side placed by shape name and never by
+coordinates; one shape morphing into another; a player leaving his shape; a
+pass (straight, solid, filled head) and a run (bent, dashed, open head), which
+are different marks on purpose; a cross or a switch; shaded zones including
+the five lanes; a line across the pitch that steps; the measured distance
+between a team's deepest and highest player, in metres; and the ball.
+
+**There are no one-shot effects at all**, by design. An arrow is a drawing of
+a pass, not the event of one, so it persists and should still be there when
+you scrub back — which means this surface has no `if (instant) return early`
+guard to get wrong.
+
+`dev/pitch-lab.html` and `tools/check-pitch.py` ask six questions with right
+answers. Six defects were found building it, four of them by the bench and two
+only by looking at a screenshot:
+
+| found by | what was wrong |
+|---|---|
+| bench | a second `move` mid-animation froze the first player and made that his destination — seek and play drew different pictures |
+| looking | `view` did not crop. It moved the transform and painted all 105 m of markings out of the bottom of a final-third panel, with four assertions green |
+| looking | two teams got the same facing when the first cue said `facing: 'down'`; one whole team was drawn outside a cropped band. Eleven dots instead of twenty-two |
+| looking | the numbers in the dots were drawing order, so the WM's centre-half wore 3 when being the 5 is the whole point of him. `num` is declared now, on the five shapes where the numbering is real |
+| looking | corner arcs were full circles sitting outside the touchline |
+| looking | a label could be covered by a dot drawn later |
+
+Every one was reintroduced and the bench watched to fail
+(`assertion 5` went from 0 lit pixels outside the panels to 33,872).
+
+It also found a hole in another check: `tools/check-dead-css.py` did not scan
+`pitch/**/*.js`, so it reported `.stage-pitch__canvas` as dead while
+`pitch/index.js` was setting it. A module directory missing from that corpus
+is the same defect as a course outside a checker's coverage.
+
+**Still open on the surface**, none of it blocking a chapter:
+
+- a cropped band leaves paper above and below it, because a 39 m band is
+  landscape and the phone is not. In the app the caption and any card live in
+  that space; if it turns out to read as emptiness, the band should compose
+  into the visible frame the way `framePadding()` does for the map.
+- `numbers: true` on a shape with no declared numbering draws nothing. That is
+  deliberate — a made-up shirt number is worse than none — but a chapter that
+  wants numbers on a back three has to label the dots it cares about.
+- nothing measures whether a pass and a run are actually TELLABLE APART at
+  phone size. They are different by construction; that is not the same as
+  measured.
+
+**2. DONE — chapter one ships.** *Kampen om plassen*, 4 scenes, 4:44 in
+Norwegian and 4:46 in English. It is the vocabulary chapter: it says what the
+course is, states the one mechanism everything rests on in two sentences, and
+spends the rest on twelve technical words. No club names, no dates. It closes
+by morphing the modern shape into a 2-3-5, which is where chapter two starts.
+
+**It was rewritten from scratch after the first draft, and the reason is the
+most useful thing on this page.** That draft ran 9:23 across eight scenes and
+spent a whole scene establishing that a pitch is large and a ball is fast, with
+a rhetorical build to each. It was read exactly as it deserved: *"too banal and
+too childish ... it's almost like you need to explain that there's a lot of
+square metres around the player ... get to the point"*.
+
+The reader of this course is an adult who watches football and lacks the
+VOCABULARY, not the football. Every device that made the beer course work —
+build to the surprise, hold the fact back, let the number land — is
+condescension here, because nothing in chapter one is a surprise to the
+audience. State it once, use it, move on. Halving the runtime was the fix.
+
+**And the pitch is green.** It was first drawn in the app's paper and ink on
+the argument that every other surface is, and that was rejected on sight: *"why
+not make the pitch green? that is simple. it would be more realistic anyway and
+more interesting. not brown as it is now."* Turf, mown into six stripes, white
+lines, and a white outline on every dot so a faction colour of any hue reads
+against it. The four colours are tokens in `css/pitch.css` and flip with the
+theme; dark mode is the same green under floodlights.
+
+Two things the app found that the bench could not:
+
+- **The pitch was fitted to the whole stage, so the goalkeeper was under the
+  caption** — in every scene, in a chapter about eleven players. `.stage-pitch`
+  now stops at `--deck-floor`, the measured clearance `.stage-chart` uses, and
+  the ResizeObserver re-fits. A map has a camera and `framePadding()`; a pitch
+  is fitted once and has to be given the right box.
+- **`tools/watch-stretch.py` did not know `.stage-pitch` existed**, so it would
+  have called a full screen blank — the same defect its own header describes,
+  one surface later. `tools/check-cover.py` now covers `football` too.
+
+Also: `content/football/style.json` exists and is empty of numbers. It has to
+exist, or the engine 404s on every page load — exactly how the beer course got
+its one.
+
+**3. Nothing else is written.** Chapter one first — `python tools/author.py --new
+football/chapter-1-plassen` — and it is the chapter with no story in it, which
+`docs/planning.md` warns is the one people get wrong.
+
+---
+
 ## The beer pack
 
 **0. DONE — chapter one ships: `Fire ting i et glass`.** Ten minutes in both
@@ -402,7 +560,7 @@ framework has never heard of, no `# question` at all, a question that is not a
 question, a shipped chapter promising charts and shipping 35 map cues, and a
 chapter carried by a surface its pack does not declare.
 
-`docs/planning.md` is the half a tool cannot check — seven questions asked as an
+`docs/planning.md` is the half a tool cannot check — eight questions asked as an
 interview, three tests before a word is written, both courses worked through.
 
 **And starting a course from nothing immediately found three things the

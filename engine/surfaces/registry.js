@@ -136,8 +136,8 @@ export function surfacesFor(packInfo, chapter) {
  * anyway, and the reason is tools/graph.py: it derives the service worker's
  * precache list by reading the source, deliberately follows only literal
  * paths, and "a path built at runtime cannot be found by reading the source"
- * is its stated contract. A computed specifier here would take all five
- * surface modules out of PRECACHE — so they would work online and 404
+ * is its stated contract. A computed specifier here would take every
+ * surface module out of PRECACHE — so they would work online and 404
  * offline, silently, because the install uses Promise.allSettled. That is the
  * exact failure sw.js is generated to prevent.
  *
@@ -152,6 +152,11 @@ const SHIPPED = {
   overlays: () => import('./overlays.js'),
   sound:    () => import('./sound.js'),
   chart:    () => import('./chart.js'),
+  // A football pitch with players on it. The map draws countries and the
+  // chart draws bars; a shape morphing into another shape with a press
+  // closing round it is neither, and a course that is not about football
+  // never fetches a byte of it.
+  pitch:    () => import('./pitch.js'),
 };
 
 /** Which surfaces exist at all — for a bench, and for the manifest check. */
