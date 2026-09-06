@@ -45,7 +45,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a worn pair of goalkeeper gloves lying on wet grass beside a white painted line, close up, the latex scuffed and the stitching frayed, morning light, no hands in them, no brand name visible"
+  "prompt": "a pair of modern professional goalkeeper gloves lying palm down on lush freshly mown natural grass, close up, clean white and dark latex, no hands in them, no logos or brand marks, soft morning light, shallow depth of field, very high detail, entirely on grass with no tarmac or asphalt anywhere"
  },
  "kritt-sidelinje": {
   "kind": "made",
@@ -141,6 +141,6 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "close up of a black football boot resting on top of a round white and black panelled association football, a soccer ball, perfectly spherical, on the goal line, wet grass, white painted line, the goal net blurred behind, only the lower leg in a long sock visible, no face, no branding"
+  "prompt": "close up of a modern professional football boot resting on a clean modern match ball, the ball perfectly spherical with smooth thermally bonded panels in white with a few crisp coloured graphic lines, no hand stitching and no old fashioned black hexagons, lying on lush freshly mown natural grass with mowing stripes, a crisp white painted line, soft overcast daylight, only the lower leg in a plain sock visible, no face, no logos, sharp focus on the ball, very high detail"
  }
 }

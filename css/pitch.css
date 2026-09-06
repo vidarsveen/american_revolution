@@ -68,28 +68,26 @@
   --pitch-line-soft: rgba(255, 255, 255, .24);
 }
 
-/* The ground — but NOT full-bleed like .stage-map, and that is the one
-   interesting rule in this file.
+/* The ground, full-bleed like .stage-map — and it must NOT be inset to clear
+   the caption, which is what it was.
 
-   A map has a camera, so it fills the stage and `framePadding()` composes the
-   subject into the part you can actually see. A pitch has no camera: it is
-   fitted once into whatever box it is given. Given the whole stage, it fits
-   105 metres into 700 pixels and puts the goalkeeper — and the whole bottom
-   penalty area — underneath the caption. Measured on chapter one at 390x700:
-   the number 1 was invisible in every scene, in a chapter whose subject is
-   eleven players.
+   `bottom: var(--deck-floor)` looked right and was measurably wrong. That value
+   is built on the live caption height, the caption is one to three lines, and
+   so the host changed height by 55 px every time the line count changed —
+   measured at 479 px and 534 px inside one scene. Two faults came out of it:
+   the whole diagram jumped half a centimetre mid-sentence, and every jump
+   resized the canvas, which CLEARS it, with the redraw deferred to the next
+   animation frame. Reported as "the pitch graphics are flickering".
 
-   So the host stops above the caption, and the ResizeObserver in
-   pitch/index.js re-fits when it moves. `--deck-floor` is the same clearance
-   .stage-chart uses, and it is built on the MEASURED --caption-reach rather
-   than on --floor + --caption-h, because a sum of parts is wrong the moment a
-   part moves — this repo has paid for that twice already. */
+   The clearance still has to happen — the goalkeeper was under the caption
+   before it — but it belongs to the FIT and not to the element. pitch/index.js
+   measures the caption's own top edge and keeps the high-water mark, so the
+   pitch settles once and then never moves. Measuring off the element rather
+   than summing --floor and --caption-h is the same lesson --caption-reach
+   already taught this repo. */
 .stage-pitch {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: var(--deck-floor);
+  inset: 0;
   /* The base rule carries the DEPARTURE and .is-on the ARRIVAL, the same
      two-duration shape every other surface on this stage uses. */
   opacity: 0;

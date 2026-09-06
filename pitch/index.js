@@ -190,7 +190,34 @@ export function createPitch(host, opts = {}) {
     canvas.height = Math.round(size.h * dpr);
     canvas.style.width = `${size.w}px`;
     canvas.style.height = `${size.h}px`;
-    schedule();
+    // SYNCHRONOUSLY, not scheduled. Assigning canvas.width clears the canvas,
+    // so deferring the redraw to the next animation frame leaves one blank
+    // frame on screen — which is exactly what a flicker is. Rule 2 says a draw
+    // must be callable synchronously; this is the call that needs it.
+    draw();
+  }
+
+  /* How much of the bottom the caption needs, as a HIGH-WATER MARK.
+     
+     Measured off the caption element rather than summed from --floor and
+     --caption-h, for the reason --caption-reach exists: a sum of parts is wrong
+     the moment a part moves. And kept as a maximum rather than read live,
+     because the caption is one to three lines and a pitch that re-fits itself
+     every time the line count changes is a pitch that jumps mid-sentence.
+     It settles on the first three-line caption and then never moves again. */
+  let floorMark = 0;
+  function floorReserve() {
+    const cap = document.querySelector('.captions');
+    if (cap) {
+      const c = cap.getBoundingClientRect();
+      const h = host.getBoundingClientRect();
+      if (c.height > 0 && c.top > h.top) {
+        floorMark = Math.max(floorMark, Math.round(h.bottom - c.top) + 8);
+      }
+    }
+    // Never eat more than half the stage: a caption that tall is a different
+    // problem and hiding the pitch behind it does not help anybody.
+    return Math.min(floorMark, size.h * 0.5);
   }
 
   /**
@@ -201,15 +228,16 @@ export function createPitch(host, opts = {}) {
    */
   function boxes() {
     const gap = panels.length > 1 ? 10 : 0;
-    const stack = size.h >= size.w;
+    const usable = Math.max(80, size.h - floorReserve());
+    const stack = usable >= size.w;
     const out = [];
     for (let i = 0; i < panels.length; i += 1) {
       if (stack) {
-        const h = (size.h - gap * (panels.length - 1)) / panels.length;
+        const h = (usable - gap * (panels.length - 1)) / panels.length;
         out.push({ x: 0, y: i * (h + gap), w: size.w, h });
       } else {
         const w = (size.w - gap * (panels.length - 1)) / panels.length;
-        out.push({ x: i * (w + gap), y: 0, w, h: size.h });
+        out.push({ x: i * (w + gap), y: 0, w, h: usable });
       }
     }
     return out;
@@ -638,6 +666,20 @@ export function createPitch(host, opts = {}) {
       // A ring in the ground colour lifts a dot off a zone wash it is standing
       // in. Without it, a marker inside a shaded pressing trap loses its edge
       // and the two read as one blob.
+      /* A halo on whatever the sentence is about.
+         
+         Dimming the other twenty-one was not enough on its own: it made the
+         subject relatively brighter, which is a weaker signal than making it
+         absolutely louder, and it was reported as the indications not being
+         clear enough. A ring outside the dot in the line colour reads at phone
+         size against turf whatever the faction colour is. */
+      if (panel.focus && lit(panel, side, p)) {
+        ctx.beginPath();
+        ctx.arc(x, y, r + 4.5, 0, Math.PI * 2);
+        ctx.strokeStyle = token('--pitch-line', 'rgba(255,255,255,.78)');
+        ctx.lineWidth = 2.4;
+        ctx.stroke();
+      }
       ctx.beginPath();
       ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fillStyle = p.dim ? mixHex(colour, token('--pitch-turf', '#4a7c3c'), 0.55) : colour;
@@ -993,7 +1035,7 @@ export function createPitch(host, opts = {}) {
   }
 
   /** How far back an unlit thing goes. Not zero: it is still the picture. */
-  const FOCUS_DIM = 0.3;
+  const FOCUS_DIM = 0.22;
 
   /** Is this player the one being talked about? */
   function lit(panel, side, player) {

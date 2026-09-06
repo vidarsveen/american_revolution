@@ -15,7 +15,9 @@
   },
 
   "keeperhansker": {
-    "prompt": "a worn pair of goalkeeper gloves lying on wet grass beside a white painted line, close up, the latex scuffed and the stitching frayed, morning light, no hands in them, no brand name visible",
+    "prompt": "a pair of modern professional goalkeeper gloves lying palm down on lush freshly mown natural grass, close up, clean white and dark latex, no hands in them, no logos or brand marks, soft morning light, shallow depth of field, very high detail, entirely on grass with no tarmac or asphalt anywhere",
+    "steps": 10,
+    "//prompt": "Foerste forsoek la hanskene paa ASFALT med en malt strek over - det leste som en parkeringsplass, ikke en bane, og lateksen var skitten nok til aa se billig ut. Prompten sier naa gress uttrykkelig OG at asfalt ikke skal vaere der, og hanskene er rene og moderne.",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
     "title": { "no": "Hanskene", "en": "The gloves" },
@@ -33,8 +35,9 @@
   },
 
   "keeperfot-ball": {
-    "prompt": "close up of a black football boot resting on top of a round white and black panelled association football, a soccer ball, perfectly spherical, on the goal line, wet grass, white painted line, the goal net blurred behind, only the lower leg in a long sock visible, no face, no branding",
-    "//prompt": "Foerste forsoek ga en RUGBYBALL i alle tre kandidatene: brun, oval, sydd. Modellen vet ikke hvilken ball som hoerer til hvilken sport naar prompten bare sier football. Samme feil som oelkurset sitt oel i vinglass, og samme kur: si det tre ganger - rund, hvit og svart, association football.",
+    "prompt": "close up of a modern professional football boot resting on a clean modern match ball, the ball perfectly spherical with smooth thermally bonded panels in white with a few crisp coloured graphic lines, no hand stitching and no old fashioned black hexagons, lying on lush freshly mown natural grass with mowing stripes, a crisp white painted line, soft overcast daylight, only the lower leg in a plain sock visible, no face, no logos, sharp focus on the ball, very high detail",
+    "steps": 10,
+    "//prompt": "To korreksjoner. Foerste forsoek ga en RUGBYBALL i alle tre kandidatene - modellen vet ikke hvilken ball som hoerer til hvilken sport naar prompten bare sier football, som er samme feil som oelkurset sitt oel i vinglass. Andre forsoek ga en RIKTIG ball, men en gammeldags svart-hvit sekskantball paa skitten kunstgress: bildet ble lest som daarlig kvalitet og gammelt. Kuren er den samme begge ganger - si hva tingen IKKE er. Moderne sveiste paneler, ikke sydde sekskanter; ekte klippet gress, ikke kunstgress. steps hevet fra 4 til 10 for detaljen.",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
     "title": { "no": "Foten på ballen", "en": "A boot on the ball" },
