@@ -749,7 +749,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "three large television screens filling the frame, mounted close together in a row on a dark wall, photographed square on from a short distance so they occupy most of the picture, each showing green grass from a high camera position, no logos, no graphics, no text on any screen, nobody present"
+  "prompt": "three large television screens filling the frame, mounted close together in a row on a dark wall, photographed square on, each showing the same wide overhead view of a whole football pitch with bright white line markings — the centre circle, the halfway line and both penalty areas clearly visible — and tiny distant figures on the grass, no logos, no scoreboard, no text on any screen, nobody in the room"
  },
  "dommer-floyte": {
   "kind": "made",

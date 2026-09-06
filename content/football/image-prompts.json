@@ -610,7 +610,7 @@
     "omits": "Drawn and photographed for this course. Nothing on it spells anything and it records no real session."
   },
   "tre-skjermer": {
-    "prompt": "three large television screens filling the frame, mounted close together in a row on a dark wall, photographed square on from a short distance so they occupy most of the picture, each showing green grass from a high camera position, no logos, no graphics, no text on any screen, nobody present",
+    "prompt": "three large television screens filling the frame, mounted close together in a row on a dark wall, photographed square on, each showing the same wide overhead view of a whole football pitch with bright white line markings — the centre circle, the halfway line and both penalty areas clearly visible — and tiny distant figures on the grass, no logos, no scoreboard, no text on any screen, nobody in the room",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
     "steps": 10,
