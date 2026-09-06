@@ -42,7 +42,7 @@ bed: bedUrgent
 Det høres bakvendt ut. Mekanismen er helt konkret.
 > That sounds backwards. The mechanism is entirely concrete.
 
-{pitch.show full} {pitch.team team shape=4-3-3 line=58 depth=34} {pitch.team opponent shape=4-4-2 line=28 depth=26} I det ballen skifter eier, står begge lagene feil, og de står feil på hver sin måte.
+{plate.hide 1.1} {pitch.show full} {pitch.team team shape=4-3-3 line=58 depth=34} {pitch.team opponent shape=4-4-2 line=28 depth=26} I det ballen skifter eier, står begge lagene feil, og de står feil på hver sin måte.
 > The instant the ball changes hands both teams are wrong, and they are wrong in different ways.
 {pitch.focus who=lb,rb,eight,eight2 side=team} Det som nettopp mistet den er strukket ut i angrepsstilling. Backene er høyt oppe, og det finnes ingen linje å falle inn i.
 > The one that has just lost it is stretched out in an attacking shape. The full-backs are high, and there is no line to drop into.
@@ -152,6 +152,8 @@ bed: bedPatient
 
 {plate analyserom motion=right over=20 dim=0.2 push=0.12 into=1.4} Det er målbart, og det er analytikerne som har målt det.
 > It is measurable, and it is the analysts who have measured it.
+De teller hvor mange sekunder det går fra en pasning til den neste, og hvor fort ballen flytter seg framover mens den går.
+> They count how many seconds pass between one pass and the next, and how fast the ball moves forward while it travels.
 
 {plate.hide 1.1} {pitch.show own-half} {pitch.team team shape=4-3-3 line=13 depth=20} {pitch.team opponent shape=4-4-2 line=47 depth=25} {pitch.ball lcb side=team} Et lag med ballen kan lage seg en omstilling uten å miste den.
 > A team in possession can manufacture a transition without losing the ball.
@@ -177,9 +179,10 @@ bed: bedOpen
 {plate.hide 1.1} {plate midtsirkel motion=left over=20 dim=0.2 push=0.1 into=1.4} Ingen vet på forhånd hvilket sekund det blir.
 > Nobody knows in advance which second it will be.
 
-{plate.hide 1.1} {pitch.show full} {pitch.team team shape=4-3-3 line=46 depth=32} {pitch.team opponent shape=4-4-2 line=30 depth=26} Et lag kan trene på å reagere fort. Det tar en sesong, og det virker.
+Et lag kan trene på å reagere fort. Det tar en sesong, og det virker.
 > A team can train to react quickly. It takes a season, and it works.
-{pitch.focus who=six,lcb,rcb,rb side=team} Men det finnes en billigere løsning, og den var der før ballen gikk tapt.
+
+{plate.hide 1.1} {pitch.show full} {pitch.team team shape=4-3-3 line=46 depth=32} {pitch.team opponent shape=4-4-2 line=30 depth=26} {pitch.focus who=six,lcb,rcb,rb side=team} Men det finnes en billigere løsning, og den var der før ballen gikk tapt.
 > But there is a cheaper answer, and it was there before the ball was lost.
 Hvis laget allerede står slik at tre mann er innenfor fem meter av ballen, uansett hvor ballen er, trenger ingen å reagere i det hele tatt.
 > If the team is already standing so that three men are within five metres of the ball, wherever the ball is, then nobody has to react at all.

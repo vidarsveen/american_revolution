@@ -74,6 +74,11 @@
      "cues": [
       {
        "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
        "do": "pitch.show",
        "views": [
         "full"
@@ -982,10 +987,19 @@
        "into": 1.4
       }
      ],
-     "gapAfter": 1.35
+     "gapAfter": 0.9
     },
     {
      "id": "s5.b3",
+     "say": {
+      "no": "De teller hvor mange sekunder det går fra en pasning til den neste, og hvor fort ballen flytter seg framover mens den går.",
+      "en": "They count how many seconds pass between one pass and the next, and how fast the ball moves forward while it travels."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
      "say": {
       "no": "Et lag med ballen kan lage seg en omstilling uten å miste den.",
       "en": "A team in possession can manufacture a transition without losing the ball."
@@ -1029,7 +1043,7 @@
      "gapAfter": 0.9
     },
     {
-     "id": "s5.b4",
+     "id": "s5.b5",
      "say": {
       "no": "Det gjør det ved å invitere: stå på ballen, se rolig ut, og vente til motstanderen kommer.",
       "en": "It does that by inviting: stand on the ball, look calm, and wait until the opposition come."
@@ -1045,7 +1059,7 @@
      "gapAfter": 1.35
     },
     {
-     "id": "s5.b5",
+     "id": "s5.b6",
      "say": {
       "no": "De som kommer, forlater plassen de sto i.",
       "en": "The ones who come leave the space they were standing in."
@@ -1077,7 +1091,7 @@
      "gapAfter": 0.9
     },
     {
-     "id": "s5.b6",
+     "id": "s5.b7",
      "say": {
       "no": "Og en pasning forbi dem er da nøyaktig det samme som en vunnet ball: de står feil, og det er tretti meter tomt bak dem.",
       "en": "And a pass past them is then exactly the same thing as a won ball: they are out of shape, and there are thirty empty metres behind them."
@@ -1123,7 +1137,7 @@
      "gapAfter": 1.35
     },
     {
-     "id": "s5.b7",
+     "id": "s5.b8",
      "say": {
       "no": "Det er derfor et lag kan se ut som det spiller langsomt og likevel score på kontringer.",
       "en": "That is why a side can look as though it plays slowly and still score on the counter."
@@ -1141,7 +1155,7 @@
      "gapAfter": 0.9
     },
     {
-     "id": "s5.b8",
+     "id": "s5.b9",
      "say": {
       "no": "Tempoet er ikke i pasningene. Det er i de tre sekundene etter at motstanderen tok agnet.",
       "en": "The tempo is not in the passing. It is in the three seconds after the opposition took the bait."
@@ -1215,6 +1229,15 @@
       "no": "Et lag kan trene på å reagere fort. Det tar en sesong, og det virker.",
       "en": "A team can train to react quickly. It takes a season, and it works."
      },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Men det finnes en billigere løsning, og den var der før ballen gikk tapt.",
+      "en": "But there is a cheaper answer, and it was there before the ball was lost."
+     },
      "cues": [
       {
        "on": "start",
@@ -1243,17 +1266,7 @@
        "shape": "4-4-2",
        "line": 30,
        "depth": 26
-      }
-     ],
-     "gapAfter": 0.9
-    },
-    {
-     "id": "s6.b4",
-     "say": {
-      "no": "Men det finnes en billigere løsning, og den var der før ballen gikk tapt.",
-      "en": "But there is a cheaper answer, and it was there before the ball was lost."
-     },
-     "cues": [
+      },
       {
        "on": "start",
        "do": "pitch.focus",
