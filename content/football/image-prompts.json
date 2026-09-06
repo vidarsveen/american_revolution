@@ -401,5 +401,175 @@
     "claims": "A small public park pitch at dusk, empty.",
     "omits": "Not a particular place or country; nobody is present and no signage appears."
   },
-  "//kap4": "Kapittel fire bruker to-tavler, smaabane-natt, naere-sko, rondo-firkant, ball-mellom-fotter, slitt-hjorne og kveld-park. Ingen ansikter, ingen klubbmerker. Bildene til klyngen er rammet inn under knehoeyde nettopp derfor."
+  "//kap4": "Kapittel fire bruker to-tavler, smaabane-natt, naere-sko, rondo-firkant, ball-mellom-fotter, slitt-hjorne og kveld-park. Ingen ansikter, ingen klubbmerker. Bildene til klyngen er rammet inn under knehoeyde nettopp derfor.",
+  "mur-natt": {
+    "prompt": "a long blank concrete wall running beside a floodlit football pitch at night, the wall filling most of the frame and the green pitch just visible beyond it, nobody present, no signage or graffiti",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Muren",
+      "en": "The wall"
+    },
+    "claims": "A blank concrete wall beside a floodlit pitch at night.",
+    "omits": "Not a particular ground; no signage and nobody present."
+  },
+  "trang-korridor": {
+    "prompt": "a narrow concrete service corridor under a stadium stand, lit by a single fluorescent tube, plain walls closing in on both sides, wet floor, nobody in it, no signs on the walls",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Trangt",
+      "en": "Tight"
+    },
+    "claims": "A narrow empty corridor under a stand.",
+    "omits": "No signage and nobody present; not a particular building."
+  },
+  "hjornflagg-regn": {
+    "prompt": "a corner flag bent in heavy rain at night under floodlights, the wet grass and the quarter circle marking around it in sharp focus, the rest of the pitch dark, plain unmarked flag, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Hjørneflagget",
+      "en": "The corner flag"
+    },
+    "claims": "A corner flag in rain at night, with the corner arc marked around it.",
+    "omits": "A plain flag with no badge or sponsor; not a particular ground."
+  },
+  "sekstenmeter-linje": {
+    "prompt": "the straight front edge of a penalty area photographed low and along the line at night under floodlights, the white paint running away into shallow focus across wet grass, the goal a blur behind, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Sekstenmeteren",
+      "en": "The edge of the box"
+    },
+    "claims": "The front edge of a penalty area at night, seen along the line.",
+    "omits": "An ordinary pitch marking; nobody is in the frame."
+  },
+  "benk-mange": {
+    "prompt": "a long row of empty moulded seats in a dugout seen from one end so they recede in a line, deep shadow, a few folded towels left on them, floodlit pitch out of focus beyond, nobody sitting there, no badges",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Hele benken",
+      "en": "The whole bench"
+    },
+    "claims": "A long row of empty dugout seats beside a floodlit pitch.",
+    "omits": "No badge or sponsor, and nobody in the seats; not a particular ground."
+  },
+  "offsideflagg": {
+    "prompt": "a folded assistant referee flag lying on grass beside a touchline at dusk, the fabric plain and unmarked, dew on the blades around it, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Flagget",
+      "en": "The flag"
+    },
+    "claims": "A folded assistant referee's flag lying on grass by a touchline.",
+    "omits": "A plain flag with no markings; nobody is present."
+  },
+  "tett-gjerde": {
+    "prompt": "a close up of dense green windbreak netting stretched tight across a fence beside a training pitch, the weave filling the whole frame so almost nothing can be seen through it, a sliver of grass visible at the bottom edge",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tett vev",
+      "en": "Tight weave"
+    },
+    "claims": "Wire mesh fencing beside a training pitch, seen close up.",
+    "omits": "An ordinary fence; nothing identifiable is behind it."
+  },
+  "fullt-felt": {
+    "prompt": "a floodlit penalty area photographed from high in a stand at night, the box and the six yard box and the arc all crisp and completely empty of people, the rest of the pitch dark, hoardings blank",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Feltet",
+      "en": "The box"
+    },
+    "claims": "A floodlit pitch seen from high in a stand at night, empty.",
+    "omits": "Not a particular ground; nobody is on the pitch and no signage appears."
+  },
+  "//kap5": "Kapittel fem bruker mur-natt, trang-korridor, hjornflagg-regn, sekstenmeter-linje, benk-mange, offsideflagg, tett-gjerde og fullt-felt.",
+  "arkiv-hylle": {
+    "prompt": "a shelf of identical old bound volumes in a quiet archive, dark cloth spines with no readable lettering, warm lamp light from one side, dust visible in the air, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Arkivet",
+      "en": "The archive"
+    },
+    "claims": "A shelf of old bound volumes in an archive, photographed today.",
+    "omits": "No title is legible and these are not the laws of the game; they stand for a record being kept. Nothing here is a document from the period the chapter describes."
+  },
+  "gammel-ball": {
+    "prompt": "an old brown leather football with a laced seam lying on a plain wooden table, scuffed and darkened with age, soft daylight from a window, plain background, photographed today as an object",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Den gamle ballen",
+      "en": "The old ball"
+    },
+    "claims": "An old leather football with a laced seam, photographed as an object on a table.",
+    "omits": "A picture of an object made for this course, not a photograph from the period and not a record of any particular ball or match."
+  },
+  "gamle-fotballsko": {
+    "prompt": "a pair of old brown leather football boots with high ankles and nailed leather studs, standing on a worn wooden bench, laces hanging loose, soft daylight, plain background, photographed today as an object",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "De gamle støvlene",
+      "en": "The old boots"
+    },
+    "claims": "A pair of old leather football boots with nailed studs, photographed as an object.",
+    "omits": "Made for this course as a picture of a kind of object. Not a photograph from the period and not anybody's boots."
+  },
+  "krittavle-bokstaver": {
+    "prompt": "a green chalkboard with two arrangements of chalk circles drawn on it, the upper group of five circles forming a wide shallow letter W shape and the lower group of five forming an M shape, thin connecting lines between them, no words or letters written anywhere, dim room, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tavla",
+      "en": "The board"
+    },
+    "claims": "Chalk circles on a board arranged in two rows, one shallow and wide, one deeper.",
+    "omits": "A diagram drawn for this course. It is not a historical document and spells nothing."
+  },
+  "taake-bane": {
+    "prompt": "a football pitch in thick fog, the goalposts at the far end barely visible as pale shapes, the grass wet and grey, no floodlights, no people, no signage",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tåka",
+      "en": "The fog"
+    },
+    "claims": "A pitch in thick fog with the far goal barely visible.",
+    "omits": "An ordinary pitch photographed today; not a named ground and not a record of any match."
+  },
+  "museumsmonter": {
+    "prompt": "a glass museum case lit from above containing one old leather football and a folded shirt, plain card labels turned away so nothing is readable, dark room beyond the glass, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Monteret",
+      "en": "The case"
+    },
+    "claims": "A lit glass case containing an old ball and a folded shirt.",
+    "omits": "An arrangement made for this course. Nothing in the case is a real exhibit, no label is legible, and the shirt carries no badge."
+  },
+  "//kap6": "Kapittel seks er historiekapitlet, og det har en ekstra regel: INGEN genererte historiske fotografier. Et laget bilde som ser ut som et opptak fra 1925 ER et opptak for den som ser det. Bildene her er ting som finnes NAA og er tydelig fotografert naa - en arkivhylle, en gammel ball paa et bord, en monter - og hver `omits` sier det. Kapitlet gjenbruker ogsaa lovbok-lampe og taktikktavle fra kapittel en."
 }

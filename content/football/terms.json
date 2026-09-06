@@ -461,5 +461,89 @@
       "no": "Veggspill, tredjemannsløp og førsteberøringspasninger, slått på så kort avstand at forsvaret ikke rekker å flytte seg mellom dem.\n\nDet er relasjonsspillets viktigste verktøy og posisjonsspillets minst brukte: det ene laget vil ha folk nær hverandre for å kunne gjøre nettopp dette, det andre vil ha dem fordelt for å slippe å måtte.\n\nDet er også den delen av spillet som lar seg trene minst. Timingen mellom to spillere som har spilt sammen i fem år kan ikke skrives ned.",
       "en": "Wall passes, third-man runs and first-time lay-offs, played at distances short enough that the defence cannot move between them.\n\nIt is relationism's most important tool and positional play's least used: one side wants people close together in order to do exactly this, the other wants them spread out so it does not have to.\n\nIt is also the part of the game that is least trainable. The timing between two players who have played together for five years cannot be written down."
     }
+  },
+  "lavblokk": {
+    "term": {
+      "no": "Lav blokk",
+      "en": "Low block"
+    },
+    "short": {
+      "no": "Ti mann på tretti meter foran eget mål. Kalt å parkere bussen, og ofte det riktige valget.",
+      "en": "Ten men in thirty metres in front of your own goal. Called parking the bus, and often the right choice."
+    },
+    "body": {
+      "no": "Laget gir fra seg nesten hele banen og beholder det eneste stykket som avgjør kamper. Motstanderen får spille så mye den vil foran blokka, og ingenting inne i den.\n\nDet er ikke frykt, det er en fordeling. Mot et godt lag som får spille fritt taper du kanskje ni av ti; fra en lav blokk taper du kanskje sju, og vinner én du ellers ikke ville vunnet. Regnestykket blir bedre jo dårligere du er, som er grunnen til at det alltid er det svakeste laget som gjør det.\n\nPrisen er at du nesten aldri vinner ballen høyt nok til å gjøre noe med den, så sjansene dine må komme fra kontringer og dødball.",
+      "en": "The team gives up nearly the whole pitch and keeps the only piece of it that decides matches. The opposition may play as much as they like in front of the block, and nothing at all inside it.\n\nIt is not fear, it is a distribution. Against a good side allowed to play freely you might lose nine times out of ten; from a low block you might lose seven, and win one you would not otherwise have won. The arithmetic improves the worse you are, which is why it is always the weaker team that does it.\n\nThe price is that you almost never win the ball high enough to do anything with it, so your chances have to come from counter-attacks and set pieces."
+    }
+  },
+  "soneforsvar": {
+    "term": {
+      "no": "Soneforsvar",
+      "en": "Zonal defending"
+    },
+    "short": {
+      "no": "Hver spiller eier et stykke gress. Den som kommer inn i det er din.",
+      "en": "Each player owns a piece of grass. Whoever comes into it is yours."
+    },
+    "body": {
+      "no": "Spørsmålet er ikke hvem jeg passer på, men hvilket område som er mitt. Kommer en motstander inn i sonen, er han din; går han ut, er han naboens.\n\nFordelen er at laget beholder formen sin uansett hvor motstanderen løper. Ingen blir dratt tretti meter ut av posisjon av en spiller som løper i sirkler, og blokka forblir en blokk.\n\nSvakheten ligger i overleveringene: det korte øyeblikket der en spiller går fra én sone til den neste og begge tror den andre har ham. Det er der et godt angrep leter, og det er de sekundene lag trener på.",
+      "en": "The question is not who am I marking but which area is mine. An opponent who comes into the zone is yours; one who leaves it is your neighbour's.\n\nThe advantage is that the team keeps its shape wherever the opposition run. Nobody is dragged thirty metres out of position by a player running in circles, and the block stays a block.\n\nThe weakness is the handovers: the brief moment when a player passes from one zone to the next and both think the other has him. That is where a good attack looks, and those are the seconds teams train."
+    }
+  },
+  "mannsmarkering": {
+    "term": {
+      "no": "Mannsmarkering",
+      "en": "Man-marking"
+    },
+    "short": {
+      "no": "Du følger din mann dit han enn går. Tydelig, og brutalt mot én spiller som er bedre enn resten.",
+      "en": "You follow your man wherever he goes. Clear, and brutal against one player better than the rest."
+    },
+    "body": {
+      "no": "Den eldste av de to svarene, og den som er lettest å forklare til en spiller. Du har ett ansvar, og det følger deg rundt banen.\n\nDen er fortsatt i bruk, men sjelden for hele laget. Vanligst er én mann som får i oppgave å følge motstanderens beste spiller, mens resten forsvarer sone rundt dem.\n\nSvakheten er at den kan rives fra hverandre uten at noen rører ballen. Møter du et lag som bytter posisjoner med vilje, følger markørene sine menn ut av laget, og formen forsvinner.",
+      "en": "The older of the two answers, and the easier to explain to a player. You have one responsibility, and it follows you around the pitch.\n\nIt is still in use, but rarely for a whole team. The commonest form is one man given the job of following the opposition's best player while the rest defend zonally around them.\n\nThe weakness is that it can be pulled apart without anybody touching the ball. Against a side that swaps positions on purpose the markers follow their men out of the team, and the shape goes with them."
+    }
+  },
+  "sideforskyvning": {
+    "term": {
+      "no": "Sideforskyvning",
+      "en": "Shifting across"
+    },
+    "short": {
+      "no": "Hele blokka flytter seg samlet mot den siden ballen er på.",
+      "en": "The whole block moves across together towards the side the ball is on."
+    },
+    "body": {
+      "no": "Elleve spillere kan ikke dekke sekstiåtte meters bredde og stå tett samtidig. Så blokka står tett der ballen er, og lar den motsatte kanten stå åpen.\n\nDet er ikke en glipp. Blokka har regnet ut at et innlegg fra feil side, slått av en spiller som har måttet vente fire sekunder på ballen, er en billig sjanse å gi bort.\n\nDerfor er den lange spillvendingen det eneste virkelige våpenet mot en blokk, og derfor trener blokka på å komme tilbake fortere enn ballen kan flyttes.",
+      "en": "Eleven players cannot cover sixty-eight metres of width and stay compact at the same time. So the block is tight where the ball is, and leaves the far flank open.\n\nThat is not an oversight. The block has worked out that a cross from the wrong side, played by a man who has had to wait four seconds for the ball, is a cheap chance to concede.\n\nWhich is why the long switch is the only real weapon against a block, and why the block trains to get back faster than the ball can be moved."
+    }
+  },
+  "offsidefelle": {
+    "term": {
+      "no": "Offsidefelle",
+      "en": "The offside trap"
+    },
+    "short": {
+      "no": "Forsvarslinja tar et skritt fram samlet i det pasningen slås, og angriperen står igjen i offside.",
+      "en": "The defensive line steps forward together as the pass is played, leaving the attacker offside."
+    },
+    "body": {
+      "no": "Verktøyet som fjerner bakrommet helt. Det koster ingenting å ha, og det gir laget lov til å stå høyt uten å gi bort førti meter gress bak seg.\n\nPrisen er den bratteste i kapitlet: det holder at én av fire er et halvt sekund sen. Da holder han hele angrepet onside, og bak ham er det ingen igjen. Ett mål, i det sekundet.\n\nDerfor brukes den sjeldnere som fast metode enn folk tror, og oftere som noe en linje kan gjøre når den er sikker. Den krever fire spillere som har gjort det sammen tusen ganger.",
+      "en": "The tool that removes the space in behind completely. It costs nothing to have, and it lets the team stand high without giving away forty metres of grass behind it.\n\nThe price is the steepest in the chapter: it takes one of the four being half a second late. Then he keeps the whole attack onside, and behind him there is nobody. One goal, in that second.\n\nSo it is used as a standing method less often than people think, and more often as something a line can do when it is sure. It needs four players who have done it together a thousand times."
+    }
+  },
+  "etablert angrep": {
+    "term": {
+      "no": "Etablert angrep",
+      "en": "Settled attack"
+    },
+    "short": {
+      "no": "Når du har ballen og motstanderen har rukket å stille seg opp.",
+      "en": "When you have the ball and the opposition have had time to arrange themselves."
+    },
+    "body": {
+      "no": "Det motsatte av en omstilling, og langt mindre lønnsomt. Her er det ingen ubalanse å utnytte: alle elleve står der de skal, og hver pasningslinje inn i blokka har en kropp i nærheten.\n\nEt etablert angrep kan koste tretti pasninger og gi mindre enn en kontring som kostet tre. Det er derfor lag med ballen bruker så mye arbeid på å framprovosere en ubalanse som egentlig ikke finnes.\n\nVerktøyene er få og kjente: komme til dødlinja og trekke ballen tilbake, bytte side fortere enn de rekker å forskyve seg, eller vinne en dødball.",
+      "en": "The opposite of a transition, and far less profitable. There is no imbalance to exploit: all eleven are where they should be, and every passing lane into the block has a body near it.\n\nA settled attack can cost thirty passes and yield less than a counter that cost three. Which is why sides in possession spend so much work manufacturing an imbalance that does not really exist.\n\nThe tools are few and well known: reach the byline and pull it back, switch sides faster than they can shift across, or win a set piece."
+    }
   }
 }

@@ -154,6 +154,25 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-5-blokka",
+      "title": {
+        "no": "Å nekte dem alt",
+        "en": "Denying them everything"
+      },
+      "subtitle": {
+        "no": "Den lave blokka er et veddemål, ikke feighet",
+        "en": "The low block is a bet, not cowardice"
+      },
+      "blurb": {
+        "no": "Mot begge teoriene finnes ett svar som virker: ta bort rommet de opererer i. Ti mann på tretti meter er nesten ubrytelig, og et lag som velger det har ikke gitt opp — det har regnet ut at motstanderens beste sjanse koster mer enn dets egen dårligste.",
+        "en": "There is one answer to both theories that works: take away the space they operate in. Ten men in thirty metres is close to unbreakable, and a team that chooses it has not given up — it has worked out that the opposition's best chance costs more than its own worst one."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "surfaces": [

@@ -283,7 +283,6 @@ title: Å nekte dem alt | Denying them everything
 subtitle: Den lave blokka er et veddemål, ikke feighet | The low block is a bet, not cowardice
 blurb: Mot begge teoriene finnes ett svar som virker: ta bort rommet de opererer i. Ti mann på tretti meter er nesten ubrytelig, og et lag som velger det har ikke gitt opp — det har regnet ut at motstanderens beste sjanse koster mer enn dets egen dårligste. | There is one answer to both theories that works: take away the space they operate in. Ten men in thirty metres is close to unbreakable, and a team that chooses it has not given up — it has worked out that the opposition's best chance costs more than its own worst one.
 langs: no, en
-planned: true
 for: Motargumentet mot både tre og fire, og halve grunnen til at kurset kan
      påstå at ingen plan dominerer. Beviset er kompakthet som tall: en blokk på
      tretti meter mellom fremste og bakerste mann inneholder et tellbart antall
@@ -300,9 +299,9 @@ for: Motargumentet mot både tre og fire, og halve grunnen til at kurset kan
      same budget, and each has a price the chapter must say out loud — zonal
      loses at the handovers, man-marking is torn apart by players who swap, the
      offside trap costs a goal every time it fails.
-teaches: lavblokk, soneforsvar, mannsmarkering, sideforskyvning, offsidefelle, etablert angrep, pasningslinje
+teaches: lavblokk, soneforsvar, mannsmarkering, sideforskyvning, offsidefelle, etablert angrep
 assumes: press, høyt press, midtblokk, kompakthet, rom, linje, ledd, halvrom, mellomrom, formasjon, posisjonsspill, relasjonsspill, overtall
-shows: pitch
+shows: pitch, pictures
 
 ## chapter-6-tre-revolusjoner
 title: Tre revolusjoner | Three revolutions

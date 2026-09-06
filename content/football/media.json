@@ -510,5 +510,133 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a clean modern white match ball with smooth bonded panels lying on grass, surrounded very closely by six modern football boots with plastic studs and football socks pulled up, photographed at ground level so only the boots and the ball are in frame, definitely not leather dress shoes or trainers and not an old stitched ball, no faces, no legs above the knee, no branding, wet grass"
+ },
+ "mur-natt": {
+  "kind": "made",
+  "file": "mur-natt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Muren",
+   "en": "The wall"
+  },
+  "claims": "A blank concrete wall beside a floodlit pitch at night.",
+  "omits": "Not a particular ground; no signage and nobody present.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a long blank concrete wall running beside a floodlit football pitch at night, the wall filling most of the frame and the green pitch just visible beyond it, nobody present, no signage or graffiti"
+ },
+ "trang-korridor": {
+  "kind": "made",
+  "file": "trang-korridor.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Trangt",
+   "en": "Tight"
+  },
+  "claims": "A narrow empty corridor under a stand.",
+  "omits": "No signage and nobody present; not a particular building.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a narrow concrete service corridor under a stadium stand, lit by a single fluorescent tube, plain walls closing in on both sides, wet floor, nobody in it, no signs on the walls"
+ },
+ "hjornflagg-regn": {
+  "kind": "made",
+  "file": "hjornflagg-regn.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Hjørneflagget",
+   "en": "The corner flag"
+  },
+  "claims": "A corner flag in rain at night, with the corner arc marked around it.",
+  "omits": "A plain flag with no badge or sponsor; not a particular ground.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a corner flag bent in heavy rain at night under floodlights, the wet grass and the quarter circle marking around it in sharp focus, the rest of the pitch dark, plain unmarked flag, nobody present"
+ },
+ "sekstenmeter-linje": {
+  "kind": "made",
+  "file": "sekstenmeter-linje.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Sekstenmeteren",
+   "en": "The edge of the box"
+  },
+  "claims": "The front edge of a penalty area at night, seen along the line.",
+  "omits": "An ordinary pitch marking; nobody is in the frame.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "the straight front edge of a penalty area photographed low and along the line at night under floodlights, the white paint running away into shallow focus across wet grass, the goal a blur behind, nobody present"
+ },
+ "benk-mange": {
+  "kind": "made",
+  "file": "benk-mange.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Hele benken",
+   "en": "The whole bench"
+  },
+  "claims": "A long row of empty dugout seats beside a floodlit pitch.",
+  "omits": "No badge or sponsor, and nobody in the seats; not a particular ground.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a long row of empty moulded seats in a dugout seen from one end so they recede in a line, deep shadow, a few folded towels left on them, floodlit pitch out of focus beyond, nobody sitting there, no badges"
+ },
+ "offsideflagg": {
+  "kind": "made",
+  "file": "offsideflagg.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Flagget",
+   "en": "The flag"
+  },
+  "claims": "A folded assistant referee's flag lying on grass by a touchline.",
+  "omits": "A plain flag with no markings; nobody is present.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a folded assistant referee flag lying on grass beside a touchline at dusk, the fabric plain and unmarked, dew on the blades around it, nobody present"
+ },
+ "tett-gjerde": {
+  "kind": "made",
+  "file": "tett-gjerde.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tett vev",
+   "en": "Tight weave"
+  },
+  "claims": "Wire mesh fencing beside a training pitch, seen close up.",
+  "omits": "An ordinary fence; nothing identifiable is behind it.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a close up of dense green windbreak netting stretched tight across a fence beside a training pitch, the weave filling the whole frame so almost nothing can be seen through it, a sliver of grass visible at the bottom edge"
+ },
+ "fullt-felt": {
+  "kind": "made",
+  "file": "fullt-felt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Feltet",
+   "en": "The box"
+  },
+  "claims": "A floodlit pitch seen from high in a stand at night, empty.",
+  "omits": "Not a particular ground; nobody is on the pitch and no signage appears.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a floodlit penalty area photographed from high in a stand at night, the box and the six yard box and the arc all crisp and completely empty of people, the rest of the pitch dark, hoardings blank"
  }
 }

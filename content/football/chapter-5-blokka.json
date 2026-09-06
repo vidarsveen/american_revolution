@@ -1,0 +1,1188 @@
+{
+ "id": "chapter-5-blokka",
+ "pack": "football",
+ "title": {
+  "no": "Å nekte dem alt",
+  "en": "Denying them everything"
+ },
+ "subtitle": {
+  "no": "Den lave blokka er et veddemål, ikke feighet",
+  "en": "The low block is a bet, not cowardice"
+ },
+ "ending": {
+  "say": {
+   "no": "En lav blokk er ikke mangel på mot. Det er noen som har regnet ut at din beste sjanse koster mer enn deres dårligste.",
+   "en": "A low block is not a lack of courage. It is somebody working out that your best chance costs more than their worst one."
+  },
+  "figure": {
+   "value": "30",
+   "label": {
+    "no": "meter er alt de gir deg",
+    "en": "metres is all they give you"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Muren",
+    "en": "The wall"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "De to skolene i forrige kapittel er uenige om nesten alt.",
+      "en": "The two schools in the last chapter disagree about nearly everything."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "mur-natt",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.22,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "De har ett felles problem, og det er hele dette kapitlet.",
+      "en": "They have one problem in common, and it is this whole chapter."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Begge trenger rom å arbeide i. Rutenettet trenger ruter som ikke er fylt, klyngen trenger fem meter mellom folk.",
+      "en": "Both need space to work in. The grid needs squares that are not filled, the cluster needs five metres between people."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Så det finnes ett svar som virker mot begge, og det er ikke pent.",
+      "en": "So there is one answer that works against both, and it is not pretty."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Ti mann på tretti meter.",
+      "en": "Ten men in thirty metres."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 56,
+       "depth": 32
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 12,
+       "depth": 18,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "30 m",
+       "label": {
+        "no": "er alt de gir deg",
+        "en": "is all they give you"
+       },
+       "side": "team"
+      },
+      {
+       "on": {
+        "no": "word:meter",
+        "en": "word:metres"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "lavblokk"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Det kalles å parkere bussen, og det er ment som en fornærmelse.",
+      "en": "It is called parking the bus, and it is meant as an insult."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "lavblokk",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b7",
+     "say": {
+      "no": "Det er også, ganske ofte, den riktige avgjørelsen.",
+      "en": "It is also, quite often, the correct decision."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Regnestykket bak",
+    "en": "The sum behind it"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Et lag som legger seg lavt har ikke gitt opp å vinne.",
+      "en": "A side that sits deep has not given up on winning."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "sekstenmeter-linje",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Det har byttet én fordeling av sjanser mot en annen, og det kan regne på begge.",
+      "en": "It has traded one distribution of chances for another, and it can do the arithmetic on both."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Mot et godt lag som får spille fritt taper du kanskje ni av ti.",
+      "en": "Against a good side allowed to play freely you might lose nine times out of ten."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 58,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 12,
+       "depth": 18,
+       "compact": true
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Mot det samme laget fra en lav blokk taper du kanskje sju, og du vinner én du ellers ikke ville vunnet.",
+      "en": "Against the same side from a low block you might lose seven, and win one you would not otherwise have won."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,0,68,34]"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Det er hele argumentet. Ikke frykt, men en fordeling som er litt mindre dårlig.",
+      "en": "That is the entire argument. Not fear, but a distribution that is slightly less bad."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Og den blir bedre jo dårligere du er, som er grunnen til at det alltid er det svakeste laget som gjør det.",
+      "en": "And it gets better the worse you are, which is why it is always the weaker side that does it."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Det tellbare tallet",
+    "en": "The countable number"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "En blokk er ikke en holdning. Den er en avstand, og avstanden kan telles.",
+      "en": "A block is not an attitude. It is a distance, and the distance can be counted."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 10,
+       "depth": 18,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 62,
+       "depth": 28
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Atten meter fra bakerste til fremste mann.",
+      "en": "Eighteen metres from the deepest man to the highest."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "18 m",
+       "label": {
+        "no": "fra bakerste til fremste mann",
+        "en": "from the deepest man to the highest"
+       },
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Inne i den avstanden finnes det et bestemt antall steder en pasning kan gå inn, og hver av dem har en kropp i nærheten.",
+      "en": "Inside that distance there is a fixed number of places a pass can go, and every one of them has a body near it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "middle"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,4,68,30]"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Strekk den til trettifem, og antallet dobler seg.",
+      "en": "Stretch it to thirty-five and the number doubles."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 10,
+       "depth": 34,
+       "compact": true,
+       "over": 1.5
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Hele jobben til et lag i lav blokk er å holde det tallet lavt i nitti minutter.",
+      "en": "The whole job of a side in a low block is to keep that number low for ninety minutes."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 10,
+       "depth": 18,
+       "compact": true,
+       "over": 1.5
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Og det er derfor det er slitsomt på en annen måte enn å presse.",
+      "en": "And that is why it is tiring in a different way from pressing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Det er ikke sprint. Det er å flytte seg fem meter, fire hundre ganger, uten å bli utålmodig én eneste gang.",
+      "en": "It is not sprinting. It is moving five metres, four hundred times, without getting impatient once."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Sone eller mann",
+    "en": "Zone or man"
+   },
+   "bed": "bedPatient",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Inne i blokka er det ett spørsmål igjen, og lag har svart forskjellig på det i hundre år.",
+      "en": "Inside the block there is one question left, and sides have answered it differently for a hundred years."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "tett-gjerde",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.18,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Passer du på et område, eller på en person?",
+      "en": "Do you look after an area, or a person?"
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Soneforsvar: hver spiller eier et stykke gress.",
+      "en": "Zonal defending: each player owns a piece of grass."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 12,
+       "depth": 18,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 60,
+       "depth": 26
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,6,34,28]"
+      },
+      {
+       "on": {
+        "no": "word:gress",
+        "en": "word:grass"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "soneforsvar"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Kommer noen inn i det, er han din. Går han ut, er han naboens.",
+      "en": "Somebody who comes into it is yours. Somebody who leaves it is your neighbour's."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Laget beholder formen sin, uansett hvor motstanderen løper.",
+      "en": "The team keeps its shape, wherever the opposition run."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Mannsmarkering: du følger din mann, dit han enn går.",
+      "en": "Man-marking: you follow your man, wherever he goes."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "middle"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lcb",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lcb",
+       "to": "[30,30]",
+       "over": 1.0
+      },
+      {
+       "on": {
+        "no": "word:går",
+        "en": "word:goes"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "mannsmarkering"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Det er tydelig, og det er brutalt effektivt mot én spiller som er bedre enn resten.",
+      "en": "It is clear, and it is brutally effective against one player who is better than the rest."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lcb",
+       "to": "[46,34]",
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Prisen står i hver sin ende. Sonen taper i overleveringene, i det korte øyeblikket en spiller går fra én rute til en annen.",
+      "en": "The price sits at either end. The zone loses at the handovers, in the brief moment a player passes from one square to the next."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lcb",
+       "to": "[24,12]",
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b9",
+     "say": {
+      "no": "Mannsmarkeringen taper mot folk som bytter plass med vilje, for da river de laget fra hverandre uten å røre ballen.",
+      "en": "Man-marking loses against people who swap positions on purpose, because then they pull the team apart without touching the ball."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Å flytte seg samlet",
+    "en": "Shifting together"
+   },
+   "bed": "bedPatient",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Uansett hvilket svar laget velger, er det én bevegelse som må sitte.",
+      "en": "Whichever answer the side chooses, there is one movement that has to be right."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "trang-korridor",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Ballen er ute på den ene siden.",
+      "en": "The ball is out on one flank."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 26,
+       "depth": 22,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 50,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "pitch.ball",
+       "at": "[58,58]",
+       "side": "opponent"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Hele blokka forskyver seg dit, samlet, som om de var bundet sammen.",
+      "en": "The whole block shifts across, together, as if they were tied to each other."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 26,
+       "depth": 22,
+       "width": 0.55,
+       "compact": true,
+       "over": 1.2
+      },
+      {
+       "on": {
+        "no": "word:sammen",
+        "en": "word:other"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "sideforskyvning"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Og da står den motsatte kanten helt åpen, og det er meningen.",
+      "en": "And now the far flank is completely open, and that is deliberate."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,14,20,40]"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Blokka har regnet ut at et innlegg fra feil side, slått av en spiller som har måttet vente på ballen i fire sekunder, er en billig sjanse å gi bort.",
+      "en": "The block has worked out that a cross from the wrong flank, played by a man who has had to wait four seconds for the ball, is a cheap chance to concede."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Sidebyttet er derfor det eneste angripende laget har, og blokka vet det.",
+      "en": "The switch is therefore the only thing the attacking side has, and the block knows it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.cross",
+       "from": "[58,58]",
+       "to": "[10,58]",
+       "side": "opponent",
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Derfor er den øvd på å komme tilbake fortere enn ballen kan flyttes.",
+      "en": "Which is why it has trained to get back faster than the ball can be moved."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Fella i linja",
+    "en": "The trap in the line"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Det finnes ett verktøy til, og det er det eneste i kapitlet som kan koste et mål i det sekundet det svikter.",
+      "en": "There is one more tool, and it is the only one in this chapter that can cost a goal in the second it fails."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "offsideflagg",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.18,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Forsvarslinja tar et skritt fram, alle fire samtidig, i det pasningen slås.",
+      "en": "The defensive line takes a step forward, all four at once, as the pass is played."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 26,
+       "depth": 22
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 62,
+       "depth": 24
+      },
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 26,
+       "label": {
+        "no": "Forsvarslinja",
+        "en": "The defensive line"
+       },
+       "tone": "blue"
+      },
+      {
+       "on": {
+        "no": "word:slås",
+        "en": "word:played"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "offsidefelle"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Angriperen som løp i bakrommet står plutselig alene på feil side av dem.",
+      "en": "The attacker running in behind is suddenly alone on the wrong side of them."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 32,
+       "over": 0.8
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 32,
+       "depth": 22,
+       "over": 0.8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Men det holder at én av de fire er et halvt sekund sen.",
+      "en": "But it is enough for one of the four to be half a second late."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lb",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lb",
+       "to": "[10,26]",
+       "over": 0.9
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Da holder han hele angrepet onside, og bak ham er det ingen igjen.",
+      "en": "Then he keeps the whole attack onside, and behind him there is nobody left."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Det er den reneste avveiningen i kapitlet. Verktøyet fjerner bakrommet fullstendig, og prisen for å bruke det feil er et mål.",
+      "en": "It is the cleanest trade in the chapter. The tool removes the space in behind entirely, and the price of using it wrongly is a goal."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Hva som bryter den",
+    "en": "What breaks it"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Til slutt: hvordan kommer man gjennom?",
+      "en": "Finally: how do you get through?"
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fullt-felt",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Svaret er kort, og det er ikke det folk tror.",
+      "en": "The answer is short, and it is not what people think."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Ikke ved å spille pent gjennom midten. Det finnes ikke plass der, og det er hele poenget med blokka.",
+      "en": "Not by playing prettily through the middle. There is no space there, and that is the entire point of the block."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "final-third"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "5-3-2",
+       "line": 8,
+       "depth": 16,
+       "facing": "down",
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 66,
+       "depth": 32
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Ved å komme til dødlinja og trekke ballen tilbake, fordi et skudd derfra møter et forsvar som løper feil vei.",
+      "en": "By getting to the byline and pulling it back, because a shot from there meets a defence running the wrong way."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "rw",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.cross",
+       "from": "[58,100]",
+       "to": "[34,94]",
+       "side": "team",
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Ved et sidebytte som kommer fortere enn de rekker å forskyve seg.",
+      "en": "By a switch that arrives faster than they can shift across."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Eller ved en dødball, som er den eneste situasjonen i fotball der blokka ikke får bestemme hvor folk står.",
+      "en": "Or by a set piece, which is the only situation in football where the block does not get to decide where people stand."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Legg merke til hva vi nettopp har brukt et helt kapittel på.",
+      "en": "Notice what we have just spent a whole chapter on."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "En forsvarslinje som flytter seg samlet. En felle som gjøres med et skritt fram. Et bakrom som må voktes.",
+      "en": "A defensive line that moves as one. A trap sprung with a step forward. A space in behind that has to be guarded."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b9",
+     "say": {
+      "no": "Ingen av de tre tingene fantes for hundre år siden, og de kom ikke fra en trener.",
+      "en": "None of those three things existed a hundred years ago, and they did not come from a coach."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b10",
+     "say": {
+      "no": "De kom av at noen byttet ett ord i en lovtekst, og hele England måtte flytte en mann bakover.",
+      "en": "They came from somebody changing one word in a law, and the whole of England having to move a man backwards."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}
