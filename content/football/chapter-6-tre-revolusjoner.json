@@ -1,0 +1,1146 @@
+{
+ "id": "chapter-6-tre-revolusjoner",
+ "pack": "football",
+ "title": {
+  "no": "Tre revolusjoner",
+  "en": "Three revolutions"
+ },
+ "subtitle": {
+  "no": "1925, 1953, 1974",
+  "en": "1925, 1953, 1974"
+ },
+ "ending": {
+  "say": {
+   "no": "Taktikk beveger seg ikke jevnt. Den står stille i tiår og hopper så, og to av de tre største hoppene ble utløst av jurister.",
+   "en": "Tactics do not move smoothly. They sit still for decades and then jump, and two of the three biggest jumps were triggered by lawyers."
+  },
+  "figure": {
+   "value": "3",
+   "label": {
+    "no": "omveltninger som forklarer resten",
+    "en": "upheavals that explain the rest"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Punktert likevekt",
+    "en": "Punctuated equilibrium"
+   },
+   "bed": "bedSolemn",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Faget beveger seg ikke jevnt.",
+      "en": "The subject does not move smoothly."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedSolemn"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "arkiv-hylle",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.22,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Det står nesten stille i tiår, og hopper så på to sesonger.",
+      "en": "It sits almost still for decades, then jumps in two seasons."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Tre hopp forklarer det meste av resten, og det er verdt å merke seg hvor de kom fra.",
+      "en": "Three jumps explain most of the rest, and it is worth noticing where they came from."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "To av de tre ble utløst av folk som aldri trente et lag.",
+      "en": "Two of the three were triggered by people who never coached a side."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Utgangspunktet er dette, og det sto slik i førti år.",
+      "en": "The starting point is this, and it stood this way for forty years."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "2-3-5",
+       "line": 24,
+       "depth": 44,
+       "numbers": true
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "To bakerst, tre på midten, fem øverst.",
+      "en": "Two at the back, three in the middle, five up top."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "2-3-5",
+       "label": {
+        "no": "pyramiden",
+        "en": "the pyramid"
+       },
+       "side": "team"
+      },
+      {
+       "on": {
+        "no": "word:øverst",
+        "en": "word:top"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "pyramiden"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b7",
+     "say": {
+      "no": "Det er der draktnumrene kommer fra, og det er derfor en tier fortsatt heter en tier.",
+      "en": "That is where the shirt numbers come from, and it is why a ten is still called a ten."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "1925",
+    "en": "1925"
+   },
+   "bed": "bedSolemn",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "I juni nittentjuefem endret man ett ord i offsideloven.",
+      "en": "In June 1925 one word was changed in the offside law."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedSolemn"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "lovbok-lampe",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Kravet hadde vært tre motspillere mellom angriperen og mållinja. Det ble to.",
+      "en": "The requirement had been three opponents between the attacker and the goal line. It became two."
+     },
+     "cues": [
+      {
+       "on": {
+        "no": "word:to",
+        "en": "word:two"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "offsideregelen"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Med tre var fella lett å sette: to backer og keeperen holdt alle onside.",
+      "en": "With three the trap was easy to set: two full-backs and the goalkeeper kept everybody onside."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "their-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "2-3-5",
+       "line": 10,
+       "depth": 20,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "2-3-5",
+       "line": 58,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 84,
+       "label": {
+        "no": "Offsidelinja",
+        "en": "The offside line"
+       },
+       "tone": "red"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Med to måtte backene stå dypere, og hele banen ble lengre.",
+      "en": "With two the full-backs had to stand deeper, and the whole pitch got longer."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 92,
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Målsnittet i England steg med rundt førti prosent på én sesong.",
+      "en": "Goals per game in England rose by around forty per cent in one season."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "1925",
+       "label": {
+        "no": "målsnittet opp med 40 prosent",
+        "en": "goals per game up by 40 per cent"
+       },
+       "side": "ball"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Det var akkurat det lovgiverne ville. Det de ikke hadde tenkt på, kom to år senere.",
+      "en": "That was exactly what the lawmakers wanted. What they had not thought about arrived two years later."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Mannen som gikk bakover",
+    "en": "The man who dropped back"
+   },
+   "bed": "bedSolemn",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Herbert Chapman i Arsenal gjorde det ingen andre gjorde, og han gjorde det med én spiller.",
+      "en": "Herbert Chapman at Arsenal did what nobody else did, and he did it with one player."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedSolemn"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "krittavle-bokstaver",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Han tok den midterste av de tre på midtbanen og satte ham mellom de to backene.",
+      "en": "He took the middle one of the three half-backs and put him between the two full-backs."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Det er den mannen der, og han fikk aldri lov til å gå fram igjen.",
+      "en": "That is the man there, and he was never allowed forward again."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "2-3-5",
+       "line": 24,
+       "depth": 44
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "ch",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Resten fulgte av seg selv, og formen fikk et navn etter bokstavene den tegnet.",
+      "en": "The rest followed of its own accord, and the shape got a name from the letters it drew."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "wm",
+       "line": 20,
+       "depth": 42,
+       "over": 2.0
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "wm-formasjonen"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Tre bakerst i stedet for to. Og noe som ikke hadde eksistert før: en spiller uten en fast motstander å følge.",
+      "en": "Three at the back instead of two. And something that had not existed before: a player with no fixed opponent to follow."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "wm",
+       "line": 20,
+       "depth": 42,
+       "numbers": true,
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Han passet på et område, ikke på en person, og det er den første forsvarslinja i fotballens historie.",
+      "en": "He looked after an area rather than a person, and that is the first defensive line in the history of the game."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "stopper",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "stopper",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Alt i forrige kapittel — blokka, sonen, sideforskyvningen, fella — stammer fra den ene flyttingen.",
+      "en": "Everything in the last chapter — the block, the zone, the shifting, the trap — descends from that one move."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "1953",
+    "en": "1953"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "I tjuefem år var WM-en svaret, og England hadde aldri tapt hjemme mot et lag fra kontinentet.",
+      "en": "For twenty-five years the WM was the answer, and England had never lost at home to a side from the continent."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "taake-bane",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.22,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "I november nittenfemtitre kom Ungarn til Wembley.",
+      "en": "In November 1953 Hungary came to Wembley."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Ungarn stilte med et nummer ni som ikke sto der et nummer ni skulle stå.",
+      "en": "Hungary played with a number nine who did not stand where a number nine stands."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "wm",
+       "line": 22,
+       "depth": 40
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-2-4",
+       "line": 26,
+       "depth": 38
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Nándor Hidegkuti falt ned i rommet mellom leddene, tjue meter bak de andre angriperne.",
+      "en": "Nándor Hidegkuti dropped into the space between the bands, twenty metres behind the other forwards."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "9",
+       "side": "opponent"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "opponent",
+       "who": "9",
+       "to": "[34,58]",
+       "over": 1.2
+      },
+      {
+       "on": {
+        "no": "word:angriperne",
+        "en": "word:forwards"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "falsk nier"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Og da hadde Englands stopper — mannen Chapman fant opp — ingen å passe på.",
+      "en": "And then England's stopper — the man Chapman invented — had nobody to look after."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "stopper",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Fulgte han med, åpnet han hullet han sto der for å tette. Ble han stående, fikk Hidegkuti spille i fred.",
+      "en": "If he followed, he opened the hole he was standing there to plug. If he stayed, Hidegkuti played in peace."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Det endte seks-tre. Returkampen i Budapest endte sju-én.",
+      "en": "It finished six-three. The return in Budapest finished seven-one."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 6,
+         "value": "6-3",
+         "side": "opponent",
+         "label": {
+          "no": "Wembley, november 1953",
+          "en": "Wembley, November 1953"
+         }
+        },
+        {
+         "n": 7,
+         "value": "7-1",
+         "side": "ball",
+         "label": {
+          "no": "Budapest, mai 1954",
+          "en": "Budapest, May 1954"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Ungarns mål i de to kampene. England fikk tre og så én.",
+        "en": "Hungary's goals in the two matches. England got three and then one."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Det er kursets tydeligste eksempel på at en oppstilling ikke slås av bedre spillere, men av et spørsmål den ikke kan svare på.",
+      "en": "It is the course's clearest example of an arrangement being beaten not by better players, but by a question it cannot answer."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Svaret fra Italia",
+    "en": "The answer from Italy"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Det finnes to måter å svare på en angriper som ikke står der han skal.",
+      "en": "There are two ways to answer an attacker who does not stand where he should."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "dorlas",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Italia valgte den ene, og den ble en nasjonal karakteristikk laget aldri ble kvitt.",
+      "en": "Italy chose one of them, and it became a national characterisation the country never shed."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Hvis problemet er at en markør kan lokkes ut av linja, sett inn en mann til som ikke markerer noen.",
+      "en": "If the problem is that a marker can be drawn out of the line, add one more man who marks nobody."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "catenaccio",
+       "line": 14,
+       "depth": 26,
+       "compact": true
+      },
+      {
+       "on": {
+        "no": "word:noen",
+        "en": "word:nobody"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "libero"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Han står bak de andre, fri, og rydder opp i alt som slipper gjennom.",
+      "en": "He stands behind the others, free, and clears up whatever gets through."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "libero",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "libero",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Det italienske navnet betyr dørlås, og systemet vant Europacupen to år på rad.",
+      "en": "The Italian name means door-bolt, and the system won the European Cup two years running."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "catenaccio"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Kritikken mot det var ikke at det ikke virket. Den var at det virket for godt.",
+      "en": "The criticism of it was not that it did not work. It was that it worked too well."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "1974",
+    "en": "1974"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Det tredje hoppet kom ikke fra en lov og ikke fra et forsvar.",
+      "en": "The third jump came neither from a law nor from a defence."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "smale-hus",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Det kom fra et lite land som ikke hadde nok spillere til å ha én til hver oppgave.",
+      "en": "It came from a small country that did not have enough players to have one for every job."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Nederland i syttifire gjorde noe som til da hadde vært utenkelig.",
+      "en": "The Netherlands in 1974 did something that had been unthinkable until then."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "middle"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 44,
+       "depth": 34
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "En back gikk fram og ble angriper.",
+      "en": "A full-back went forward and became a forward."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lb",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lb",
+       "to": "[16,72]",
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "En midtbanespiller falt ned og tok plassen hans.",
+      "en": "A midfielder dropped in and took his place."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "eight",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "eight",
+       "to": "[20,40]",
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Posisjonen var ikke lenger en egenskap ved en spiller. Den var en oppgave noen hadde akkurat nå.",
+      "en": "A position was no longer a property of a player. It was a job somebody held at that moment."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "totalfotball"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Og for at det skulle gå opp, måtte laget stå ekstremt kompakt og presse høyt, for ellers var det bare kaos.",
+      "en": "And for it to work at all, the team had to stand extremely compact and press high, or it was simply chaos."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 52,
+       "depth": 26,
+       "compact": true,
+       "over": 1.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b8",
+     "say": {
+      "no": "Der er begge de to tingene kurset begynte med, oppfunnet i samme lag, i samme sommer.",
+      "en": "There are both of the things this course began with, invented in the same side, in the same summer."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Hva de tre har til felles",
+    "en": "What the three have in common"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Se på de tre hoppene igjen.",
+      "en": "Look at the three jumps again."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "tavle-visket",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Ett kom fra en lovendring, ett fra et lag som stilte et spørsmål ingen hadde stilt, og ett fra mangel på spillere.",
+      "en": "One came from a change in the law, one from a side asking a question nobody had asked, and one from a shortage of players."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Ingen av dem kom av at noen fant en bedre plan ved skrivebordet.",
+      "en": "None of them came from somebody finding a better plan at a desk."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "2-3-5",
+       "line": 26,
+       "depth": 42
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "3",
+       "label": {
+        "no": "omveltninger på femti år",
+        "en": "upheavals in fifty years"
+       },
+       "side": "ball"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "De kom av at noe utenfor spillet endret seg, og at ett lag reagerte to år før alle andre.",
+      "en": "They came from something outside the game changing, and one side reacting two years before everybody else."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "wm",
+       "line": 22,
+       "depth": 40,
+       "over": 1.8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Det er også grunnen til at faget ser ut som det står stille akkurat nå.",
+      "en": "It is also why the subject looks as though it is standing still right now."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 34,
+       "over": 1.8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Det gjør det ikke. Det venter på neste ord som byttes, eller neste lag som stiller et spørsmål ingen har svar på.",
+      "en": "It is not. It is waiting for the next word to be changed, or the next side to ask a question nobody has an answer to."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "I mellomtida kan man se hvor forskjellig tre land svarte på de samme problemene.",
+      "en": "In the meantime you can see how differently three countries answered the same problems."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "For det gjør de fortsatt, og det er det man faktisk ser på en lørdag.",
+      "en": "Because they still do, and that is what you are actually watching on a Saturday."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

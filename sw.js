@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vc970eb19fa';
+const VERSION = 'vd8587147cf';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -171,11 +171,14 @@ const PRECACHE = [
   './content/football/chapter-3-rutenettet.json',
   './content/football/chapter-4-relasjon.json',
   './content/football/chapter-5-blokka.json',
+  './content/football/chapter-6-tre-revolusjoner.json',
   './content/football/media.json',
   './content/football/media/analyserom.jpg',
+  './content/football/media/arkiv-hylle.jpg',
   './content/football/media/ball-mellom-fotter.jpg',
   './content/football/media/benk-mange.jpg',
   './content/football/media/benk-regn.jpg',
+  './content/football/media/dorlas.jpg',
   './content/football/media/flasker-bibs.jpg',
   './content/football/media/fullt-felt.jpg',
   './content/football/media/gps-vest.jpg',
@@ -185,6 +188,7 @@ const PRECACHE = [
   './content/football/media/keeperfot-ball.jpg',
   './content/football/media/keeperhansker.jpg',
   './content/football/media/kritt-sidelinje.jpg',
+  './content/football/media/krittavle-bokstaver.jpg',
   './content/football/media/kveld-park.jpg',
   './content/football/media/linjer-krysser.jpg',
   './content/football/media/los-ball.jpg',
@@ -202,8 +206,11 @@ const PRECACHE = [
   './content/football/media/skygger-lange.jpg',
   './content/football/media/slitt-hjorne.jpg',
   './content/football/media/smaabane-natt.jpg',
+  './content/football/media/smale-hus.jpg',
   './content/football/media/sprint-gress.jpg',
+  './content/football/media/taake-bane.jpg',
   './content/football/media/taktikktavle.jpg',
+  './content/football/media/tavle-visket.jpg',
   './content/football/media/tett-gjerde.jpg',
   './content/football/media/to-tavler.jpg',
   './content/football/media/tom-stadion-natt.jpg',
@@ -224,6 +231,8 @@ const PRECACHE = [
   './content/football/timing.chapter-4-relasjon.no.json',
   './content/football/timing.chapter-5-blokka.en.json',
   './content/football/timing.chapter-5-blokka.no.json',
+  './content/football/timing.chapter-6-tre-revolusjoner.en.json',
+  './content/football/timing.chapter-6-tre-revolusjoner.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',

@@ -99,15 +99,16 @@
     "omits": "An ordinary line on an ordinary pitch, not a named ground."
   },
   "analyserom": {
-    "prompt": "a dark video analysis room, three monitors on a desk showing a football pitch filmed from high above, the shapes on the screens too small and blurred to make out, an empty office chair, notes and a coffee cup on the desk, nobody in the room",
+    "prompt": "a dark room with several computer monitors on one desk, each showing a paused frame of green grass from a high camera position, keyboard and notebook in front, no faces, no logos, no readable text on any screen, nobody present",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
+    "steps": 10,
     "title": {
       "no": "Analyserommet",
       "en": "The analysis room"
     },
-    "claims": "An empty video analysis room with overhead footage of a pitch on the monitors.",
-    "omits": "The footage is indistinct on purpose and shows no identifiable match, team or player."
+    "claims": "A dark room of monitors showing paused frames of a pitch from above.",
+    "omits": "No match, club or broadcaster is identifiable and nothing on the screens is real footage."
   },
   "tomt-mal-natt": {
     "prompt": "an empty goal at night photographed from behind the net, the mesh sharp and lit by floodlights, the pitch beyond dark and empty, the six yard box faintly visible, nobody in frame",
@@ -571,5 +572,161 @@
     "claims": "A lit glass case containing an old ball and a folded shirt.",
     "omits": "An arrangement made for this course. Nothing in the case is a real exhibit, no label is legible, and the shirt carries no badge."
   },
-  "//kap6": "Kapittel seks er historiekapitlet, og det har en ekstra regel: INGEN genererte historiske fotografier. Et laget bilde som ser ut som et opptak fra 1925 ER et opptak for den som ser det. Bildene her er ting som finnes NAA og er tydelig fotografert naa - en arkivhylle, en gammel ball paa et bord, en monter - og hver `omits` sier det. Kapitlet gjenbruker ogsaa lovbok-lampe og taktikktavle fra kapittel en."
+  "//kap6": "Kapittel seks er historiekapitlet, og det har en ekstra regel: INGEN genererte historiske fotografier. Et laget bilde som ser ut som et opptak fra 1925 ER et opptak for den som ser det. Bildene her er ting som finnes NAA og er tydelig fotografert naa - en arkivhylle, en gammel ball paa et bord, en monter - og hver `omits` sier det. Kapitlet gjenbruker ogsaa lovbok-lampe og taktikktavle fra kapittel en.",
+  "dorlas": {
+    "prompt": "a heavy old wooden door in a stone wall with a thick iron bar bolted across it, black iron fittings, worn paint, narrow street light falling from one side, nobody present, no signage",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Dørlåsen",
+      "en": "The door-bolt"
+    },
+    "claims": "A heavy old door barred with an iron bolt.",
+    "omits": "An ordinary door photographed today. It stands for the word catenaccio and is not connected to any club or place."
+  },
+  "smale-hus": {
+    "prompt": "a row of tall narrow brick houses pressed shoulder to shoulder along a canal, five storeys, large windows, no gaps between them, flat grey daylight, no people, no readable signs",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Ingen ledig plass",
+      "en": "No spare room"
+    },
+    "claims": "A row of tall narrow houses packed tightly together along a canal.",
+    "omits": "An ordinary street photographed today; not a named place and not a record of anything."
+  },
+  "tavle-visket": {
+    "prompt": "a green chalkboard wiped half clean, broad smeared arcs of chalk dust across it, faint ghosts of circles and lines from earlier drawings still showing through, a worn cloth on the ledge, dim room, nobody present, no words or letters",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tavla, halvveis visket",
+      "en": "The board, half wiped"
+    },
+    "claims": "A chalkboard partly wiped, with the ghosts of earlier drawings still visible.",
+    "omits": "Drawn and photographed for this course. Nothing on it spells anything and it records no real session."
+  },
+  "tre-skjermer": {
+    "prompt": "three large television screens filling the frame, mounted close together in a row on a dark wall, photographed square on from a short distance so they occupy most of the picture, each showing green grass from a high camera position, no logos, no graphics, no text on any screen, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tre skjermer",
+      "en": "Three screens"
+    },
+    "claims": "Three screens side by side showing pitches from above.",
+    "omits": "No broadcaster, competition or club is identifiable, and nothing on the screens is a real match."
+  },
+  "dommer-floyte": {
+    "prompt": "a close photograph of a metal referee's whistle on a black lanyard held in a wet hand, rain on the skin, dark blurred grass behind, nobody's face visible, no badge, no crest",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Fløyta",
+      "en": "The whistle"
+    },
+    "claims": "A referee's whistle held in a wet hand.",
+    "omits": "No official, competition or badge is identifiable."
+  },
+  "sol-tribune": {
+    "prompt": "empty terracing under a harsh Mediterranean midday sun, bleached ochre and white concrete, deep black hard-edged shadows cast across the steps, a strip of cloudless deep blue sky above, heat haze, nobody present, no signage, no banners",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Sola på betongen",
+      "en": "Sun on the concrete"
+    },
+    "claims": "Empty terracing in hard sunlight.",
+    "omits": "An ordinary stand photographed today; not a named ground and carries no club marks."
+  },
+  "benk-natt-to": {
+    "prompt": "a row of empty plastic dugout seats under a low roof at night, floodlight glare beyond, a folded dark jacket left on one seat, wet concrete underfoot, nobody present, no crests or lettering",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Benken",
+      "en": "The bench"
+    },
+    "claims": "Empty dugout seats at night with one jacket left behind.",
+    "omits": "No club, competition or person is identifiable."
+  },
+  "koffert-gate": {
+    "prompt": "a plain hard suitcase standing on a wet city pavement at dawn, one long shadow, closed shopfronts behind, no readable signs, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Kofferten",
+      "en": "The suitcase"
+    },
+    "claims": "A suitcase standing on a pavement at dawn.",
+    "omits": "An ordinary street photographed today. It stands for people moving between countries and names nobody."
+  },
+  "treningsfelt-morgen": {
+    "prompt": "an empty grass training pitch at first light, low mist over the turf, rows of small plastic marker cones set out in a grid, portable goals at the far end, long shadows, nobody present, no signage",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tirsdag morgen",
+      "en": "Tuesday morning"
+    },
+    "claims": "An empty training pitch at dawn with cones set out.",
+    "omits": "An ordinary field photographed today; no club, ground or person is identifiable."
+  },
+  "permen": {
+    "prompt": "photographed from directly above, a thick ring binder lying open and filling the whole frame edge to edge, dense typed pages and small hand-drawn pitch diagrams, no readable words, a pen resting across the page, warm lamp light from one side, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Permen",
+      "en": "The binder"
+    },
+    "claims": "An open ring binder of typed pages and small diagrams on a desk.",
+    "omits": "Made for this course. Nothing on the pages is legible and it is not any club's document."
+  },
+  "buss-natt": {
+    "prompt": "a large plain coach parked on wet tarmac at night, interior reading lights on behind tinted windows, no passengers visible, motorway lights beyond, no livery, no lettering, nobody outside",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Bussen",
+      "en": "The coach"
+    },
+    "claims": "A coach parked on wet tarmac at night with its interior lights on.",
+    "omits": "An unmarked vehicle photographed today. No club, sponsor or person is identifiable."
+  },
+  "fjerdedommer": {
+    "prompt": "photographed from behind and slightly above, a black electronic substitution board held up in two raised hands, the back of a shoulder in dark clothing at the bottom edge, bright numerals glowing on the board, blurred floodlights and dark stands beyond, no face in frame, no crests, no advertising",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tavla",
+      "en": "The board"
+    },
+    "claims": "An electronic substitution board held up under floodlights.",
+    "omits": "No official, club, competition or player is identifiable, and no face is in the picture."
+  },
+  "stue-natt": {
+    "prompt": "a dim living room at night lit only by a large television showing a green pitch from high above, an armchair and a low table in silhouette, curtains drawn, nobody present, no graphics or logos on the screen",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Stua",
+      "en": "The front room"
+    },
+    "claims": "A dark living room lit by a television showing a pitch from above.",
+    "omits": "No broadcaster, club or match is identifiable, and nothing on the screen is real footage."
+  }
 }

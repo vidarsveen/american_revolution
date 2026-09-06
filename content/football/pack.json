@@ -173,6 +173,44 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-6-tre-revolusjoner",
+      "title": {
+        "no": "Tre revolusjoner",
+        "en": "Three revolutions"
+      },
+      "subtitle": {
+        "no": "1925, 1953, 1974",
+        "en": "1925, 1953, 1974"
+      },
+      "blurb": {
+        "no": "Taktikk beveger seg ikke jevnt. Den står stille i tiår og hopper så, og tre hopp forklarer resten: ett ord byttet i offsideloven i 1925, et ungarsk lag som stilte uten spiss i 1953, og et nederlandsk som byttet posisjoner med vilje i 1974. To av de tre ble utløst av jurister.",
+        "en": "Tactics do not move smoothly. They sit still for decades and then jump, and three jumps explain the rest: one word changed in the offside law in 1925, a Hungarian side that played without a centre-forward in 1953, and a Dutch one that swapped positions on purpose in 1974. Two of the three were triggered by lawyers."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
+    },
+    {
+      "id": "chapter-7-tre-ligaer",
+      "title": {
+        "no": "Tre ligaer, tre svar",
+        "en": "Three leagues, three answers"
+      },
+      "subtitle": {
+        "no": "England, Spania og Italia på samme bane",
+        "en": "England, Spain and Italy on the same pitch"
+      },
+      "blurb": {
+        "no": "De tre ligaene får samme problem og løser det ulikt: England godtar en åpen kamp for å vinne ballen høyt, Spania nekter å gi den fra seg, Italia gir den bort med vilje og gjør det til en fordel. Forskjellen er målbar, og den handler om hva hver liga belønner — ikke om hva slags folk som bor der.",
+        "en": "The three leagues get the same problem and solve it differently: England accepts an open match in order to win the ball high, Spain refuses to give it away, Italy gives it away on purpose and makes that an advantage. The difference is measurable, and it is about what each league rewards — not about what sort of people live there."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "surfaces": [
@@ -225,6 +263,16 @@
     "generated": {
       "allowPhoto": true,
       "badge": true
+    }
+  },
+  "checks": {
+    "contrast": {
+      "chapter": "chapter-1-baklengs",
+      "beat": "s0.b2",
+      "at": 6.0,
+      "expect": [
+        "caption/veil"
+      ]
     }
   }
 }

@@ -8,12 +8,12 @@
    "no": "Analyserommet",
    "en": "The analysis room"
   },
-  "claims": "An empty video analysis room with overhead footage of a pitch on the monitors.",
-  "omits": "The footage is indistinct on purpose and shows no identifiable match, team or player.",
+  "claims": "A dark room of monitors showing paused frames of a pitch from above.",
+  "omits": "No match, club or broadcaster is identifiable and nothing on the screens is real footage.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a dark video analysis room, three monitors on a desk showing a football pitch filmed from high above, the shapes on the screens too small and blurred to make out, an empty office chair, notes and a coffee cup on the desk, nobody in the room"
+  "prompt": "a dark room with several computer monitors on one desk, each showing a paused frame of green grass from a high camera position, keyboard and notebook in front, no faces, no logos, no readable text on any screen, nobody present"
  },
  "benk-regn": {
   "kind": "made",
@@ -638,5 +638,245 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a floodlit penalty area photographed from high in a stand at night, the box and the six yard box and the arc all crisp and completely empty of people, the rest of the pitch dark, hoardings blank"
+ },
+ "arkiv-hylle": {
+  "kind": "made",
+  "file": "arkiv-hylle.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Arkivet",
+   "en": "The archive"
+  },
+  "claims": "A shelf of old bound volumes in an archive, photographed today.",
+  "omits": "No title is legible and these are not the laws of the game; they stand for a record being kept. Nothing here is a document from the period the chapter describes.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a shelf of identical old bound volumes in a quiet archive, dark cloth spines with no readable lettering, warm lamp light from one side, dust visible in the air, nobody present"
+ },
+ "krittavle-bokstaver": {
+  "kind": "made",
+  "file": "krittavle-bokstaver.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tavla",
+   "en": "The board"
+  },
+  "claims": "Chalk circles on a board arranged in two rows, one shallow and wide, one deeper.",
+  "omits": "A diagram drawn for this course. It is not a historical document and spells nothing.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a green chalkboard with two arrangements of chalk circles drawn on it, the upper group of five circles forming a wide shallow letter W shape and the lower group of five forming an M shape, thin connecting lines between them, no words or letters written anywhere, dim room, nobody present"
+ },
+ "taake-bane": {
+  "kind": "made",
+  "file": "taake-bane.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tåka",
+   "en": "The fog"
+  },
+  "claims": "A pitch in thick fog with the far goal barely visible.",
+  "omits": "An ordinary pitch photographed today; not a named ground and not a record of any match.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a football pitch in thick fog, the goalposts at the far end barely visible as pale shapes, the grass wet and grey, no floodlights, no people, no signage"
+ },
+ "dorlas": {
+  "kind": "made",
+  "file": "dorlas.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Dørlåsen",
+   "en": "The door-bolt"
+  },
+  "claims": "A heavy old door barred with an iron bolt.",
+  "omits": "An ordinary door photographed today. It stands for the word catenaccio and is not connected to any club or place.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a heavy old wooden door in a stone wall with a thick iron bar bolted across it, black iron fittings, worn paint, narrow street light falling from one side, nobody present, no signage"
+ },
+ "smale-hus": {
+  "kind": "made",
+  "file": "smale-hus.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Ingen ledig plass",
+   "en": "No spare room"
+  },
+  "claims": "A row of tall narrow houses packed tightly together along a canal.",
+  "omits": "An ordinary street photographed today; not a named place and not a record of anything.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a row of tall narrow brick houses pressed shoulder to shoulder along a canal, five storeys, large windows, no gaps between them, flat grey daylight, no people, no readable signs"
+ },
+ "tavle-visket": {
+  "kind": "made",
+  "file": "tavle-visket.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tavla, halvveis visket",
+   "en": "The board, half wiped"
+  },
+  "claims": "A chalkboard partly wiped, with the ghosts of earlier drawings still visible.",
+  "omits": "Drawn and photographed for this course. Nothing on it spells anything and it records no real session.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a green chalkboard wiped half clean, broad smeared arcs of chalk dust across it, faint ghosts of circles and lines from earlier drawings still showing through, a worn cloth on the ledge, dim room, nobody present, no words or letters"
+ },
+ "tre-skjermer": {
+  "kind": "made",
+  "file": "tre-skjermer.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tre skjermer",
+   "en": "Three screens"
+  },
+  "claims": "Three screens side by side showing pitches from above.",
+  "omits": "No broadcaster, competition or club is identifiable, and nothing on the screens is a real match.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "three television screens side by side on a dark wall, each showing a green football pitch from high above, the rest of the room black, no logos, no graphics, no text on any screen, nobody present"
+ },
+ "dommer-floyte": {
+  "kind": "made",
+  "file": "dommer-floyte.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Fløyta",
+   "en": "The whistle"
+  },
+  "claims": "A referee's whistle held in a wet hand.",
+  "omits": "No official, competition or badge is identifiable.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a close photograph of a metal referee's whistle on a black lanyard held in a wet hand, rain on the skin, dark blurred grass behind, nobody's face visible, no badge, no crest"
+ },
+ "benk-natt-to": {
+  "kind": "made",
+  "file": "benk-natt-to.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Benken",
+   "en": "The bench"
+  },
+  "claims": "Empty dugout seats at night with one jacket left behind.",
+  "omits": "No club, competition or person is identifiable.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a row of empty plastic dugout seats under a low roof at night, floodlight glare beyond, a folded dark jacket left on one seat, wet concrete underfoot, nobody present, no crests or lettering"
+ },
+ "koffert-gate": {
+  "kind": "made",
+  "file": "koffert-gate.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kofferten",
+   "en": "The suitcase"
+  },
+  "claims": "A suitcase standing on a pavement at dawn.",
+  "omits": "An ordinary street photographed today. It stands for people moving between countries and names nobody.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a plain hard suitcase standing on a wet city pavement at dawn, one long shadow, closed shopfronts behind, no readable signs, nobody present"
+ },
+ "sol-tribune": {
+  "kind": "made",
+  "file": "sol-tribune.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Sola på betongen",
+   "en": "Sun on the concrete"
+  },
+  "claims": "Empty terracing in hard sunlight.",
+  "omits": "An ordinary stand photographed today; not a named ground and carries no club marks.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "empty terracing under a harsh Mediterranean midday sun, bleached ochre and white concrete, deep black hard-edged shadows cast across the steps, a strip of cloudless deep blue sky above, heat haze, nobody present, no signage, no banners"
+ },
+ "treningsfelt-morgen": {
+  "kind": "made",
+  "file": "treningsfelt-morgen.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tirsdag morgen",
+   "en": "Tuesday morning"
+  },
+  "claims": "An empty training pitch at dawn with cones set out.",
+  "omits": "An ordinary field photographed today; no club, ground or person is identifiable.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an empty grass training pitch at first light, low mist over the turf, rows of small plastic marker cones set out in a grid, portable goals at the far end, long shadows, nobody present, no signage"
+ },
+ "permen": {
+  "kind": "made",
+  "file": "permen.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Permen",
+   "en": "The binder"
+  },
+  "claims": "An open ring binder of typed pages and small diagrams on a desk.",
+  "omits": "Made for this course. Nothing on the pages is legible and it is not any club's document.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a thick black ring binder lying open on a plain desk, dense typed pages and small hand-drawn pitch diagrams, no readable words, a pen across the page, one desk lamp, nobody present"
+ },
+ "buss-natt": {
+  "kind": "made",
+  "file": "buss-natt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Bussen",
+   "en": "The coach"
+  },
+  "claims": "A coach parked on wet tarmac at night with its interior lights on.",
+  "omits": "An unmarked vehicle photographed today. No club, sponsor or person is identifiable.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a large plain coach parked on wet tarmac at night, interior reading lights on behind tinted windows, no passengers visible, motorway lights beyond, no livery, no lettering, nobody outside"
+ },
+ "stue-natt": {
+  "kind": "made",
+  "file": "stue-natt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Stua",
+   "en": "The front room"
+  },
+  "claims": "A dark living room lit by a television showing a pitch from above.",
+  "omits": "No broadcaster, club or match is identifiable, and nothing on the screen is real footage.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a dim living room at night lit only by a large television showing a green pitch from high above, an armchair and a low table in silhouette, curtains drawn, nobody present, no graphics or logos on the screen"
  }
 }

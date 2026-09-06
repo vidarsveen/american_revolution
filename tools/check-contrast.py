@@ -1022,7 +1022,19 @@ def expectations(pack: str) -> list[str]:
     declared = ((manifest.get("checks") or {}).get("contrast") or {}).get("expect")
     if declared is not None:
         return list(declared)
-    return EXPECT_DEFAULT.get(pack, list(THRESHOLDS))
+    if pack in EXPECT_DEFAULT:
+        return list(EXPECT_DEFAULT[pack])
+    # A course the table has never heard of used to fall back to ALL SIX, which
+    # are every one of them measurements taken off a map -- so the football
+    # course, which declares no map surface at all and draws a pitch instead,
+    # failed six times on "declared measurable, nothing found to measure". The
+    # course had declared nothing; the tool had. Five of the six are only
+    # answerable by a pack that draws ground, so a pack that does not name the
+    # `map` surface is held to the one that is not about ground.
+    surfaces = manifest.get("surfaces") or []
+    if "map" not in surfaces:
+        return ["caption/veil"]
+    return list(THRESHOLDS)
 
 
 def main() -> int:

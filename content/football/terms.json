@@ -545,5 +545,173 @@
       "no": "Det motsatte av en omstilling, og langt mindre lønnsomt. Her er det ingen ubalanse å utnytte: alle elleve står der de skal, og hver pasningslinje inn i blokka har en kropp i nærheten.\n\nEt etablert angrep kan koste tretti pasninger og gi mindre enn en kontring som kostet tre. Det er derfor lag med ballen bruker så mye arbeid på å framprovosere en ubalanse som egentlig ikke finnes.\n\nVerktøyene er få og kjente: komme til dødlinja og trekke ballen tilbake, bytte side fortere enn de rekker å forskyve seg, eller vinne en dødball.",
       "en": "The opposite of a transition, and far less profitable. There is no imbalance to exploit: all eleven are where they should be, and every passing lane into the block has a body near it.\n\nA settled attack can cost thirty passes and yield less than a counter that cost three. Which is why sides in possession spend so much work manufacturing an imbalance that does not really exist.\n\nThe tools are few and well known: reach the byline and pull it back, switch sides faster than they can shift across, or win a set piece."
     }
+  },
+  "pyramiden": {
+    "term": {
+      "no": "Pyramiden",
+      "en": "The pyramid"
+    },
+    "short": {
+      "no": "2-3-5. Oppstillingen som sto i førti år, og som draktnumrene kommer fra.",
+      "en": "2-3-5. The arrangement that stood for forty years, and where the shirt numbers come from."
+    },
+    "body": {
+      "no": "To backer, tre på midtbanen, fem angripere. Den var standard i England fra 1880-årene til midten av tjuetallet, og den var så selvsagt at den knapt hadde et navn.\n\nNumrene ble delt ut etter den: keeper én, backene to og tre, halfbackene fire, fem og seks, og de fem foran sju til elleve. Det er derfor en tier fortsatt heter en tier, hundre år etter at oppstillingen forsvant.\n\nDen døde av offsideendringen i 1925. Med bare to motspillere krevd mellom angriperen og mållinja måtte backene stå dypere, og en oppstilling med fem angripere ble uholdbar.",
+      "en": "Two full-backs, three half-backs, five forwards. It was standard in England from the 1880s to the mid-twenties, and so obvious that it barely had a name.\n\nThe numbers were handed out along it: goalkeeper one, full-backs two and three, half-backs four, five and six, and the front five seven to eleven. That is why a ten is still called a ten, a century after the shape disappeared.\n\nIt died of the 1925 offside change. With only two opponents required between the attacker and the goal line the full-backs had to stand deeper, and a shape with five forwards became untenable."
+    }
+  },
+  "offsideregelen": {
+    "term": {
+      "no": "Offsideregelen",
+      "en": "The offside law"
+    },
+    "short": {
+      "no": "Endret i 1925 fra tre motspillere til to. Den enkeltendringen som har forandret spillet mest.",
+      "en": "Changed in 1925 from three opponents to two. The single change that has altered the game most."
+    },
+    "body": {
+      "no": "Fram til 1925 måtte det stå tre motspillere mellom angriperen og mållinja. To backer og keeperen var nok til å holde alle onside, og en offsidefelle var nesten gratis å sette.\n\nMed to ble den fella umulig å sette like billig. Backene måtte stå dypere, banen ble lengre, og målsnittet i England steg med rundt førti prosent på én sesong.\n\nDet var det lovgiverne ville. Det de ikke hadde tenkt på var at hele England ville flytte en mann bakover innen to sesonger, og at forsvarslinja — som ingen hadde hatt før — ville bli oppfunnet som svar.",
+      "en": "Until 1925 there had to be three opponents between the attacker and the goal line. Two full-backs and the goalkeeper were enough to keep everybody onside, and an offside trap was nearly free to set.\n\nWith two, that trap could no longer be set so cheaply. The full-backs had to stand deeper, the pitch got longer, and goals per game in England rose by around forty per cent in one season.\n\nThat was what the lawmakers wanted. What they had not thought about was that the whole of England would move a man backwards within two seasons, and that the defensive line — which nobody had had before — would be invented in response."
+    }
+  },
+  "wm-formasjonen": {
+    "term": {
+      "no": "WM-formasjonen",
+      "en": "The WM"
+    },
+    "short": {
+      "no": "Chapmans svar på 1925: den midterste halfbacken settes mellom backene, og formen tegner en W over en M.",
+      "en": "Chapman's answer to 1925: the middle half-back drops between the full-backs, and the shape draws a W above an M."
+    },
+    "body": {
+      "no": "Herbert Chapman i Arsenal tok den midterste av de tre halfbackene og satte ham mellom de to backene. Én spiller flyttet, og resten fulgte av seg selv: tre bakerst, to halfbacker, to indreløpere og tre foran.\n\nDet var ikke bare en ny fordeling. Det skapte noe som ikke hadde eksistert: en spiller uten en fast motstander å følge, som passet på et område i stedet for en person. Det er den første forsvarslinja i fotballens historie, og alt i blokka, sonen og fella stammer fra den.\n\nDen var svaret i tjuefem år, og den falt på ett spørsmål den ikke kunne svare på: hva gjør stopperen når nieren ikke står der?",
+      "en": "Herbert Chapman at Arsenal took the middle of the three half-backs and put him between the two full-backs. One player moved, and the rest followed of its own accord: three at the back, two half-backs, two inside forwards and three in front.\n\nIt was not just a new distribution. It created something that had not existed: a player with no fixed opponent to follow, who looked after an area rather than a person. That is the first defensive line in the history of the game, and everything in the block, the zone and the trap descends from it.\n\nIt was the answer for twenty-five years, and it fell on one question it could not answer: what does the stopper do when the nine is not standing there?"
+    }
+  },
+  "stopper": {
+    "term": {
+      "no": "Stopper",
+      "en": "The stopper"
+    },
+    "short": {
+      "no": "Den midterste forsvareren i WM-en. Den første spilleren som passet på et område og ikke en person.",
+      "en": "The middle defender in the WM. The first player who looked after an area rather than a person."
+    },
+    "body": {
+      "no": "Han ble til ved at Chapman flyttet en midtbanespiller bakover i 1925, og han er stamfaren til hver eneste midtstopper som har spilt siden.\n\nDet nye ved ham var ikke hvor han sto, men hva jobben var. Alle andre på banen fulgte en bestemt motstander; han holdt et stykke gress foran eget mål.\n\nDet er også hans svakhet, og Ungarn fant den i 1953: en spiller som er der for å passe på det farligste området, står maktesløs hvis det ikke er noen i det. Fulgte han med, åpnet han hullet han sto der for å tette.",
+      "en": "He came into being when Chapman moved a midfielder backwards in 1925, and he is the ancestor of every centre-back who has played since.\n\nWhat was new about him was not where he stood but what the job was. Everybody else on the pitch followed a particular opponent; he held a piece of grass in front of his own goal.\n\nThat is also his weakness, and Hungary found it in 1953: a player who is there to look after the most dangerous area is helpless if nobody is in it. If he followed, he opened the hole he was standing there to plug."
+    }
+  },
+  "falsk nier": {
+    "term": {
+      "no": "Falsk nier",
+      "en": "False nine"
+    },
+    "short": {
+      "no": "En spiss som faller ned i mellomrommet i stedet for å stå på siste forsvarer.",
+      "en": "A striker who drops into the space between the lines instead of playing off the last defender."
+    },
+    "body": {
+      "no": "Nándor Hidegkuti gjorde det på Wembley i november 1953, og England tapte seks-tre. Returkampen i Budapest endte sju-én.\n\nMekanismen er en tvangssituasjon, ikke et triks. Stopperen står der for å markere nieren. Faller nieren tjue meter ned i mellomrommet, må stopperen velge: følge med og forlate linja han er selve grunnen til, eller bli stående og la mannen spille i fred.\n\nDet er kursets tydeligste eksempel på at en oppstilling ikke slås av bedre spillere, men av et spørsmål den ikke kan svare på. Rollen kom tilbake femti år senere hos Guardiola, av nøyaktig samme grunn.",
+      "en": "Nándor Hidegkuti did it at Wembley in November 1953, and England lost six-three. The return in Budapest finished seven-one.\n\nThe mechanism is a forced choice rather than a trick. The stopper is there to mark the nine. If the nine drops twenty metres into the space between the lines, the stopper has to choose: follow, and leave the line he is the whole reason for, or hold, and let the man play in peace.\n\nIt is the course's clearest example of an arrangement being beaten not by better players but by a question it cannot answer. The role came back fifty years later under Guardiola, for exactly the same reason."
+    }
+  },
+  "libero": {
+    "term": {
+      "no": "Libero",
+      "en": "Libero"
+    },
+    "short": {
+      "no": "En ekstra forsvarer bak linja som ikke markerer noen, og rydder opp i det som slipper gjennom.",
+      "en": "An extra defender behind the line who marks nobody, and sweeps up whatever gets through."
+    },
+    "body": {
+      "no": "Italiensk for den frie. Svaret på at en markør kan lokkes ut av linja: sett inn en mann til som ikke har noen å lokkes bort fra.\n\nHan står bak de andre og har ingen fast motstander. Det gjør laget nesten umulig å spille gjennom sentralt, og det koster en angriper — man bruker elleve spillere til å forsvare med ti.\n\nRollen forsvant nesten helt da soneforsvaret tok over på åttitallet, fordi en sone med fire spillere som forskyver seg gjør det samme arbeidet uten å ofre en mann.",
+      "en": "Italian for the free one. The answer to a marker who can be drawn out of the line: add one more man who has nobody to be drawn away from.\n\nHe stands behind the others with no fixed opponent. It makes a side nearly impossible to play through centrally, and it costs an attacker — you are using eleven players to defend with ten.\n\nThe role nearly disappeared when zonal defending took over in the eighties, because a zone of four who shift across does the same job without sacrificing a man."
+    }
+  },
+  "catenaccio": {
+    "term": {
+      "no": "Catenaccio",
+      "en": "Catenaccio"
+    },
+    "short": {
+      "no": "Italiensk for dørlås. Mannsmarkering i hele banen, med en libero bak.",
+      "en": "Italian for door-bolt. Man-marking across the pitch, with a libero behind it."
+    },
+    "body": {
+      "no": "Systemet vant Europacupen to år på rad på sekstitallet, og kritikken mot det var aldri at det ikke virket. Den var at det virket for godt.\n\nOppskriften er enkel og nesten uangripelig: hver forsvarer følger sin mann, liberoen rydder opp bak, og laget scorer på én kontring. Mot et lag som må vinne, er det å nekte hele kampen en fullt gyldig plan.\n\nDet er også grunnen til at ordet fortsatt brukes som et skjellsord om italiensk fotball, seksti år etter, av folk som ikke vet at nesten ingen italienske lag har spilt sånn på tretti år.",
+      "en": "The system won the European Cup two years running in the sixties, and the criticism of it was never that it did not work. It was that it worked too well.\n\nThe recipe is simple and nearly unanswerable: every defender follows his man, the libero clears up behind, and the side scores on one counter-attack. Against a team that has to win, refusing the entire match is a perfectly valid plan.\n\nIt is also why the word is still used as an insult about Italian football sixty years later, by people who do not know that almost no Italian side has played that way for thirty years."
+    }
+  },
+  "totalfotball": {
+    "term": {
+      "no": "Totalfotball",
+      "en": "Total Football"
+    },
+    "short": {
+      "no": "Nederland i 1974: posisjonen er ikke en egenskap ved en spiller, men en oppgave noen har akkurat nå.",
+      "en": "The Netherlands in 1974: a position is not a property of a player but a job somebody holds at that moment."
+    },
+    "body": {
+      "no": "En back går fram og blir angriper; en midtbanespiller faller ned og tar plassen hans. Ingen av dem bytter rolle permanent — rollen ble aldri deres til å begynne med.\n\nDet fungerte bare fordi laget sto ekstremt kompakt og presset høyt. Uten det er utstrakt posisjonsbytte bare kaos, for da er det ingen som dekker det stedet noen nettopp forlot.\n\nDer er begge tingene dette kurset begynte med — pressets logikk og posisjonsspillets — oppfunnet i samme lag, i samme sommer. Cruyff tok det med til Barcelona som spiller og igjen som trener, og det er derfra kapittel tre kommer.",
+      "en": "A full-back goes forward and becomes a forward; a midfielder drops in and takes his place. Neither of them swaps role permanently — the role was never theirs to begin with.\n\nIt only worked because the side stood extremely compact and pressed high. Without that, wholesale position-swapping is simply chaos, because nobody covers the place somebody has just left.\n\nThere are both of the things this course began with — the logic of the press and the logic of positional play — invented in the same side, in the same summer. Cruyff took it to Barcelona as a player and again as a coach, and that is where chapter three comes from."
+    }
+  },
+  "spillestil": {
+    "term": {
+      "no": "Spillestil",
+      "en": "Playing style"
+    },
+    "short": {
+      "no": "Summen av valgene et lag tar om og om igjen. Målbar, og ikke en folkekarakter.",
+      "en": "The sum of the choices a side makes over and over. Measurable, and not a national character."
+    },
+    "body": {
+      "no": "En stil som ikke kan beskrives med fagordene var aldri en stil, bare en klisjé. Fem spørsmål holder: hvor høyt står linja, hvor lang tid tar det å bli samlet etter et balltap, hvor mange pasninger er det i angrepene, følger forsvaret mannen eller gresset, og hvem bryter spillet.\n\nDet viktige er hvor stilen kommer fra. En liga belønner noe — gjennom hva dommeren lar gå, hvor tett kampene ligger, hvordan banene er — og stilen er svaret på belønningen.\n\nDerfor endrer den seg når belønningen endres, ofte innen to sesonger, og derfor flytter den med trenerne. De mest ballbesittende lagene i Premier League trenes stort sett av spanjoler.",
+      "en": "A style that cannot be described in the technical vocabulary was never a style, only a cliché. Five questions will do it: how high is the line, how long does it take to get organised after losing the ball, how many passes are there in the attacks, does the defence follow the man or the grass, and who breaks the game up.\n\nWhat matters is where the style comes from. A league rewards something — through what the referee lets go, how tightly the fixtures sit, what the pitches are like — and the style is the answer to the reward.\n\nSo it changes when the reward changes, often within two seasons, and so it travels with the coaches. The most possession-based sides in the Premier League are mostly coached by Spaniards."
+    }
+  },
+  "taktisk frispark": {
+    "term": {
+      "no": "Taktisk frispark",
+      "en": "Tactical foul"
+    },
+    "short": {
+      "no": "Et frispark du gir bort med vilje for å stoppe en kontring før den blir en kontring.",
+      "en": "A free kick you give away on purpose, to stop a counter before it becomes one."
+    },
+    "body": {
+      "no": "Regnestykket er kaldt og helt åpent. En kontring som får løpe er kanskje en sjanse; et frispark på midtbanen er nesten aldri det. Så du bytter det ene mot det andre, og betaler med et gult kort nå og da.\n\nDet er derfor lag som holder mye på ballen begår flere små frispark enn lag som ikke gjør det: de mister den sjelden, og når de gjør det, står de i ubalanse.\n\nHvor lønnsomt det er, avhenger av dommeren. I en liga der spillet får flyte, er det billigere å løpe tilbake; i en liga der det blåses lett, er frisparket det billigste verktøyet på banen.",
+      "en": "The arithmetic is cold and completely open. A counter allowed to run is perhaps a chance; a free kick in midfield is almost never one. So you trade one for the other, and pay with the odd yellow card.\n\nIt is why sides who keep the ball commit more small fouls than sides who do not: they lose it rarely, and when they do they are out of balance.\n\nHow profitable it is depends on the referee. In a league where the game is allowed to run it is cheaper to sprint back; in a league where the whistle goes easily the foul is the cheapest tool on the pitch."
+    }
+  },
+  "direkte spill": {
+    "term": {
+      "no": "Direkte spill",
+      "en": "Direct play"
+    },
+    "short": {
+      "no": "Å flytte ballen framover i få pasninger, med vilje, og godta rotet som følger.",
+      "en": "Moving the ball forward in few passes, on purpose, and accepting the mess that follows."
+    },
+    "body": {
+      "no": "Ikke det samme som å slå langt og håpe. Direkte spill er en verdivurdering: fire sekunder med rot i motstanderens tredel er verdt mer enn tretti sekunder med kontroll i din egen.\n\nDet virker best mot et lag som nettopp har forpliktet folk framover, som er nøyaktig det et lag som presser høyt gjør. Derfor er direkte spill og høyt press hverandres naturlige motstandere, ikke hverandres motsetninger i kvalitet.\n\nPrisen er at du gir fra deg ballen oftere, og at kampen din blir mindre pen å se på. Det er en pris lag betaler helt bevisst.",
+      "en": "Not the same as hitting it long and hoping. Direct play is a judgement about value: four seconds of mess in the opposition third is worth more than thirty seconds of control in your own.\n\nIt works best against a side that has just committed people forward, which is exactly what a high-pressing side does. So direct play and the high press are each other's natural opponents, not opposite ends of a quality scale.\n\nThe price is that you give the ball away more often, and that your match is less pleasant to watch. It is a price sides pay entirely deliberately."
+    }
+  },
+  "banetilt": {
+    "term": {
+      "no": "Banetilt",
+      "en": "Field tilt"
+    },
+    "short": {
+      "no": "Hvor stor andel av berøringene i siste tredel som er dine.",
+      "en": "What share of the touches in the final third are yours."
+    },
+    "body": {
+      "no": "Ballbesittelse teller berøringer over hele banen og skiller ikke mellom en pasning mellom to midtstoppere og en pasning inne i sekstenmeteren. Banetilt teller bare der det gjør vondt.\n\nDerfor kan et lag ha sekstifem prosent av ballen og en banetilt under femti, og det betyr noe helt bestemt: de holder på den, men ikke på riktig sted. Da er besittelsen bare arbeid.\n\nDet er også det tallet som skiller de to måtene å dominere på. Et lag som presser høyt og et lag som spiller seg tålmodig framover kan ende med samme banetilt fra helt ulike kamper.",
+      "en": "Possession counts touches across the whole pitch and does not distinguish a pass between two centre-backs from a pass inside the penalty area. Field tilt counts only where it hurts.\n\nSo a side can have sixty-five per cent of the ball and a field tilt under fifty, and that means something quite specific: they are keeping it, but not in the right place. Then possession is simply work.\n\nIt is also the number that separates the two ways of dominating. A side that presses high and a side that patiently plays its way forward can end with the same field tilt from completely different matches."
+    }
   }
 }

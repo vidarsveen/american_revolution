@@ -308,7 +308,6 @@ title: Tre revolusjoner | Three revolutions
 subtitle: 1925, 1953, 1974 | 1925, 1953, 1974
 blurb: Taktikk beveger seg ikke jevnt. Den står stille i tiår og hopper så, og tre hopp forklarer resten: ett ord byttet i offsideloven i 1925, et ungarsk lag som stilte uten spiss i 1953, og et nederlandsk som byttet posisjoner med vilje i 1974. To av de tre ble utløst av jurister. | Tactics do not move smoothly. They sit still for decades and then jump, and three jumps explain the rest: one word changed in the offside law in 1925, a Hungarian side that played without a centre-forward in 1953, and a Dutch one that swapped positions on purpose in 1974. Two of the three were triggered by lawyers.
 langs: no, en
-planned: true
 for: Historien, plassert seks og ikke én med vilje: «hele England flyttet en
      mann bakover» er en tom setning for noen som ikke vet hva en linje er, og
      en god en for noen som gjør det. Argumentet er punktert likevekt, og at
@@ -325,7 +324,7 @@ for: Historien, plassert seks og ikke én med vilje: «hele England flyttet en
      it was invented as an answer to an English stopper with nobody to mark. The
      chapter has to resist becoming a timeline: three events, each with a
      mechanism, and nothing in between.
-teaches: offsideregelen, pyramiden, wm-formasjonen, falsk nier, totalfotball, catenaccio, libero, 4-4-2, treerrekke, femmerrekke
+teaches: offsideregelen, pyramiden, wm-formasjonen, stopper, falsk nier, catenaccio, libero, totalfotball
 assumes: formasjon, linje, ledd, offsidefelle, soneforsvar, mannsmarkering, press, posisjonsspill, relasjonsspill, rom, mellomrom
 shows: pitch
 
@@ -334,7 +333,6 @@ title: Tre ligaer, tre svar | Three leagues, three answers
 subtitle: England, Spania og Italia på samme bane | England, Spain and Italy on the same pitch
 blurb: De tre ligaene får samme problem og løser det ulikt: England godtar en åpen kamp for å vinne ballen høyt, Spania nekter å gi den fra seg, Italia gir den bort med vilje og gjør det til en fordel. Forskjellen er målbar, og den handler om hva hver liga belønner — ikke om hva slags folk som bor der. | The three leagues get the same problem and solve it differently: England accepts an open match in order to win the ball high, Spain refuses to give it away, Italy gives it away on purpose and makes that an advantage. The difference is measurable, and it is about what each league rewards — not about what sort of people live there.
 langs: no, en
-planned: true
 for: Prøven på kapittel én til seks, skrevet som en prøve: en stil som ikke lar
      seg beskrive med fagordene var aldri en stil, bare en klisjé. Så: hvor høyt
      står linja, hvor mange sekunder fra balltap til skudd, hvor lange er
@@ -352,7 +350,7 @@ for: Prøven på kapittel én til seks, skrevet som en prøve: en stil som ikke 
      national character, and it should be said outright: the leagues have
      converged sharply, and England's most possession-based sides are mostly
      coached by Spaniards.
-teaches: spillestil, direkte spill, banetilt, taktisk frispark, tempo, xg, sjansekvalitet
+teaches: spillestil, direkte spill, banetilt, taktisk frispark
 assumes: press, høyt press, midtblokk, lavblokk, gjenpress, omstilling, kontring, frispilling bakfra, posisjonsspill, relasjonsspill, halvrom, kompakthet, soneforsvar, mannsmarkering, ppda, linje, restforsvar
 shows: pitch
 
@@ -378,6 +376,6 @@ for: Å slutte der seeren sitter, og å svare ærlig på hva som faktisk styres.
      work. Game state binds them: the same shape means something different at
      0-0 in the thirtieth minute and at 1-0 in the eightieth, and a substitution
      is always fresh legs, a new shape, or one particular duel.
-teaches: kampbilde, innbytte, formasjonsbytte, troppsrotasjon, spilleidé, treningsuka, analytiker, dødballtrener, motstanderrapport, belastningsstyring, sportsdirektør
-assumes: formasjon, press, høyt press, midtblokk, lavblokk, omstilling, gjenpress, frispilling bakfra, posisjonsspill, relasjonsspill, spillestil, direkte spill, xg, ppda, rom, invertert back, falsk nier
+teaches: spilleidé, motstanderrapport, dødballtrener, belastningsstyring, innbytte, kampbilde
+assumes: formasjon, press, høyt press, midtblokk, lavblokk, omstilling, gjenpress, frispilling bakfra, posisjonsspill, relasjonsspill, spillestil, direkte spill, banetilt, ppda, rom, invertert back, falsk nier
 shows: pitch
