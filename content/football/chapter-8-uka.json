@@ -1,0 +1,1136 @@
+{
+ "id": "chapter-8-uka",
+ "pack": "football",
+ "title": {
+  "no": "De fem dagene ingen ser",
+  "en": "The five days nobody watches"
+ },
+ "subtitle": {
+  "no": "Apparatet, og de nitti minuttene det ikke styrer",
+  "en": "The staff, and the ninety minutes they do not control"
+ },
+ "ending": {
+  "say": {
+   "no": "Nesten alt du ser på lørdag ble bestemt tidligere i uka. De fem byttene er likevel ekte avgjørelser — og nå vet du hva de er svar på.",
+   "en": "Almost everything you see on Saturday was settled earlier in the week. The five substitutions are still real decisions — and now you know what they are answers to."
+  },
+  "figure": {
+   "value": "5",
+   "label": {
+    "no": "dager du aldri ser",
+    "en": "days you never see"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Tirsdag",
+    "en": "Tuesday"
+   },
+   "bed": "bedStill",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Kampen du så på lørdag ble i stor grad avgjort på tirsdag.",
+      "en": "The match you watched on Saturday was largely settled on Tuesday."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedStill"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "treningsfelt-morgen",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.22,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Det er ikke en talemåte. Det er en beskrivelse av hvor arbeidstimene ligger.",
+      "en": "That is not a figure of speech. It is a description of where the working hours are."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "En hovedtrener leder mellom tjue og femti mennesker, og de fleste av dem har stillingstitler du aldri hører nevnt.",
+      "en": "A head coach leads between twenty and fifty people, and most of them have job titles you never hear mentioned."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Mens kampen pågår har han omtrent et kvarter der noen faktisk hører etter, og fem bytter.",
+      "en": "While the match is on he has about a quarter of an hour when anybody is actually listening, and five substitutions."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Fem bytter, og de må tas over høyst tre spillestopp.",
+      "en": "Five substitutions, and they have to be taken across at most three stoppages."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 46,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 14,
+       "depth": 26,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "5",
+       "label": {
+        "no": "bytter, over tre spillestopp",
+        "en": "substitutions, across three stoppages"
+       },
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Dette kapitlet handler om hvem som bestemte resten.",
+      "en": "This chapter is about who decided the rest."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Permen",
+    "en": "The binder"
+   },
+   "bed": "bedPatient",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Det første som finnes er ikke en plan for en kamp. Det er en plan for alle kampene.",
+      "en": "The first thing that exists is not a plan for a match. It is a plan for all the matches."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "permen",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Klubben har skrevet ned hva laget gjør i de situasjonene som kommer igjen og igjen.",
+      "en": "The club has written down what the side does in the situations that come round again and again."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Hvem henter ballen fra keeperen. Hvor backen står når ytteren har ballen. Hvem løper i bakrommet når nieren møter.",
+      "en": "Who collects the ball from the goalkeeper. Where the full-back stands when the winger has the ball. Who runs in behind when the nine comes short."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 40,
+       "depth": 36
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "spilleidé"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Det heter spilleidé, og den er verdt mer enn en enkelt trener.",
+      "en": "It is called the game model, and it is worth more than any single coach."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "spilleidé",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Derfor kan en klubb sparke treneren i november og spille nesten likt i desember.",
+      "en": "Which is why a club can sack the coach in November and play almost the same way in December."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-2-3-1",
+       "line": 44,
+       "depth": 34,
+       "over": 1.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Og derfor kjøper klubber spillere som passer permen, ikke spillere som passer mannen som står der akkurat nå.",
+      "en": "And why clubs buy players who fit the binder, not players who fit the man standing there right now."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "six",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Rapporten",
+    "en": "The report"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Onsdag kommer det andre dokumentet, og det handler bare om de neste nitti minuttene.",
+      "en": "On Wednesday the second document arrives, and it is only about the next ninety minutes."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "analyserom",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "En analytiker har sett fire til seks av motstanderens kamper og skal levere noe som får plass i hodet på en spiller.",
+      "en": "An analyst has watched four to six of the opposition's matches and has to deliver something that fits inside a player's head."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Ikke tjue observasjoner. Tre.",
+      "en": "Not twenty observations. Three."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-2-3-1",
+       "line": 16,
+       "depth": 30,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "motstanderrapport"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Én ting de alltid gjør, én ting de aldri gjør, og ett øyeblikk der de er sårbare.",
+      "en": "One thing they always do, one thing they never do, and one moment when they are vulnerable."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "motstanderrapport",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Alltid: venstre midtstopper spiller ut til backen på første berøring.",
+      "en": "Always: the left centre-back plays out to the full-back with his first touch."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lcb",
+       "side": "opponent"
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "[44,88]",
+       "to": "[60,86]",
+       "side": "opponent",
+       "label": {
+        "no": "Alltid",
+        "en": "Always"
+       },
+       "tone": "red",
+       "over": 0.8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Da vet elleve mann hvor presset skal gå, og de har øvd på det på torsdag.",
+      "en": "Then eleven men know where the press is going, and they have rehearsed it on Thursday."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "their-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[40,60]",
+       "to": "[58,82]",
+       "side": "team",
+       "label": {
+        "no": "Da går presset",
+        "en": "The press goes here"
+       },
+       "tone": "gold",
+       "over": 0.9
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Hjørnesparket",
+    "en": "The corner"
+   },
+   "bed": "bedUrgent",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Torsdag ettermiddag jobber en egen trener med noe som pleide å være ti minutter på slutten av økta.",
+      "en": "On Thursday afternoon a coach of his own works on something that used to be ten minutes at the end of the session."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedUrgent"
+      },
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 76,
+       "depth": 20,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.zone",
+       "area": "[25,99,43,105]",
+       "label": {
+        "no": "Målfeltet",
+        "en": "The six-yard box"
+       },
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Dødball er den raskest voksende stillingen i faget, og tallene forklarer hvorfor.",
+      "en": "Set pieces are the fastest-growing job in the game, and the numbers explain why."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "final-third"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "dødballtrener"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "I sesongen tjuefireogtjuefem kom tjue komma seks prosent av målene i Premier League fra dødball.",
+      "en": "In 2024-25, twenty point six per cent of Premier League goals came from set pieces."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.zoneHide",
+       "id": "0"
+      },
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 20.6,
+         "value": "20,6 %",
+         "side": "ball",
+         "label": {
+          "no": "2024-25",
+          "en": "2024-25"
+         }
+        },
+        {
+         "n": 30.0,
+         "value": "30,0 %",
+         "side": "team",
+         "label": {
+          "no": "2025-26",
+          "en": "2025-26"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Andel av målene i Premier League fra dødball, uten straffespark.",
+        "en": "Share of Premier League goals from set pieces, penalties excluded."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Sesongen etter er tallet tretti prosent. Det er det nest høyeste i ligaens historie.",
+      "en": "The season after, the figure is thirty per cent. That is the second highest in the league's history."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Et hjørnespark er det eneste øyeblikket i fotball der begge lag står stille og treneren har bestemt alt på forhånd.",
+      "en": "A corner is the only moment in football where both sides are standing still and the coach has decided everything in advance."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "final-third"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 76,
+       "depth": 20,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "dødballtrener",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "To mann sperrer, én løper mot første stolpe, og det er øvd tolv ganger.",
+      "en": "Two men block, one runs to the near post, and it has been rehearsed twelve times."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[2,104]",
+       "to": "[32,99]",
+       "side": "team",
+       "label": {
+        "no": "Innlegget",
+        "en": "The delivery"
+       },
+       "tone": "gold",
+       "over": 0.8
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[40,84]",
+       "to": "[30,97]",
+       "side": "team",
+       "label": {
+        "no": "Løpet",
+        "en": "The run"
+       },
+       "tone": "red",
+       "over": 0.8
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Fredag",
+    "en": "Friday"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Fredag handler ikke om motstanderen i det hele tatt. Den handler om kroppene.",
+      "en": "Friday is not about the opposition at all. It is about the bodies."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "buss-natt",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "En spiller som har spilt to kamper på fire dager er ikke den samme spilleren, og det er målt og ikke gjettet.",
+      "en": "A player who has played two matches in four days is not the same player, and that is measured rather than guessed."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Alle løp er logget. Antall høyintensitetsmeter, antall retningsforandringer, hvor lang tid det tar før pulsen faller.",
+      "en": "Every run is logged. High-intensity metres, changes of direction, how long the heart rate takes to come down."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 44,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "belastningsstyring"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Ut av det kommer en anbefaling, og noen ganger sier den at den beste spilleren din ikke skal starte.",
+      "en": "Out of that comes a recommendation, and sometimes it says that your best player should not start."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "belastningsstyring",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Det er derfor du ser en spiller på benken uten at noe har skjedd med ham.",
+      "en": "That is why you see a player on the bench with nothing having happened to him."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "eight",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "eight",
+       "to": "[6,8]",
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Han er ikke skadet. Noen har regnet på hva han er verdt om ti dager.",
+      "en": "He is not injured. Somebody has worked out what he is worth in ten days' time."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Klokka går",
+    "en": "The clock is running"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Og så begynner kampen, og nesten alt over er ferdig bestemt.",
+      "en": "And then the match starts, and almost all of the above is already decided."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "fjerdedommer",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Det treneren har igjen er tre ting: pausen, ropene, og fem bytter over tre stopp.",
+      "en": "What the coach has left is three things: half-time, shouting, and five substitutions across three stoppages."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Ropene virker dårligere enn folk tror. På et fullt stadion hører de fleste ingenting.",
+      "en": "The shouting works worse than people think. In a full stadium most of them hear nothing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-2-3-1",
+       "line": 44,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 14,
+       "depth": 26,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "innbytte"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Byttet virker, og det er alltid én av tre ting.",
+      "en": "The substitution works, and it is always one of three things."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "innbytte",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Friske bein i den ene rollen som løper mest.",
+      "en": "Fresh legs in the one role that runs furthest."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "eight",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "En ny form, som endrer hvor mennene står uten å bytte hvem de er.",
+      "en": "A new shape, which changes where the men stand without changing who they are."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 40,
+       "depth": 30,
+       "over": 1.8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Eller én bestemt duell: en mann satt inn mot én mann.",
+      "en": "Or one particular duel: a man put on against one man."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "rm",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Kampbildet",
+    "en": "Game state"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Og her er den siste tingen, som gjør alt det andre tvetydig.",
+      "en": "And here is the last thing, which makes all of the rest ambiguous."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 40,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-2-3-1",
+       "line": 16,
+       "depth": 28,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "0-0",
+       "label": {
+        "no": "det trettiende minuttet",
+        "en": "the thirtieth minute"
+       },
+       "side": "ball"
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "kampbilde"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "En formasjon betyr ikke det samme på ulike tidspunkt i kampen.",
+      "en": "A formation does not mean the same thing at different moments in a match."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Fire-fire-to ved null-null i det trettiende minuttet er en plan. Fire-fire-to ved en-null i det åttiende er en vegg.",
+      "en": "Four-four-two at nil-nil in the thirtieth minute is a plan. Four-four-two at one-nil in the eightieth is a wall."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "1-0",
+       "label": {
+        "no": "det åttiende minuttet",
+        "en": "the eightieth minute"
+       },
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-4-2",
+       "line": 22,
+       "depth": 22,
+       "compact": true,
+       "over": 1.8
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "kampbilde",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Samme elleve mann, samme tall på skjermen, to helt forskjellige avgjørelser.",
+      "en": "The same eleven men, the same number on the screen, two entirely different decisions."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Det er derfor kommentatoren sier at laget har byttet til fem bakerst når ingen har byttet noe som helst.",
+      "en": "That is why the commentator says the side has gone to a back five when nobody has changed anything."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,0,68,34]"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "De har bare sluttet å gå fram, fordi resultatet ba dem om det.",
+      "en": "They have simply stopped going forward, because the scoreline asked them to."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Åtte kapitler siden begynte dette med et lag som ledet en-null med ti minutter igjen.",
+      "en": "Eight chapters ago this began with a side leading one-nil with ten minutes to go."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "stue-natt",
+       "motion": "in",
+       "over": 14,
+       "dim": 0.18,
+       "push": 0.06,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Nå kan du si hva de gjør, hvorfor de gjør det, hvem som bestemte det, og hva det koster dem.",
+      "en": "Now you can say what they are doing, why they are doing it, who decided it, and what it costs them."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vab834d6b69';
+const VERSION = 'vd4792d502b';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -247,6 +247,8 @@ const PRECACHE = [
   './content/football/timing.chapter-6-tre-revolusjoner.no.json',
   './content/football/timing.chapter-7-tre-ligaer.en.json',
   './content/football/timing.chapter-7-tre-ligaer.no.json',
+  './content/football/timing.chapter-8-uka.en.json',
+  './content/football/timing.chapter-8-uka.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',

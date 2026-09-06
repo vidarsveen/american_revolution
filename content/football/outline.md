@@ -359,7 +359,6 @@ title: De fem dagene ingen ser | The five days nobody watches
 subtitle: Apparatet, og de nitti minuttene det ikke styrer | The staff, and the ninety minutes they do not control
 blurb: En hovedtrener leder tjue til femti mennesker og har omtrent femten minutter og fem bytter til rådighet mens kampen pågår. Nesten alt du ser på lørdag ble bestemt tidligere i uka av folk med stillingstitler du aldri hører — og de fem byttene er likevel ekte beslutninger, hver av dem én av tre ting. | A head coach leads twenty to fifty people and has about fifteen minutes and five substitutions available while the match is on. Almost everything you see on Saturday was settled earlier in the week by people whose job titles you never hear — and the five changes are still real decisions, each of them one of three things.
 langs: no, en
-planned: true
 for: Å slutte der seeren sitter, og å svare ærlig på hva som faktisk styres.
      Kapitlet har to halvdeler som skal stå mot hverandre: uka, der spilleidéen,
      motstanderrapporten, dødballtreneren og belastningsstyringen gjør nesten alt
