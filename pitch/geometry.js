@@ -150,9 +150,18 @@ export function fitView(box, view = VIEWS.full, pad = 10) {
   const scale = Math.min(w / spanX, h / spanY);
   const drawnW = spanX * scale;
   const drawnH = spanY * scale;
-  // Centred in whatever is left over.
+  /* Centred across, and held HIGH down the frame rather than centred.
+
+     A cropped view is a landscape band on a portrait screen, so it never fills
+     the box: `middle` is 52 m of a 105 m pitch and comes out about 290 px tall
+     in 530. Centred, that leaves a gap above it and a gap below it and the
+     picture reads as unfinished. Held at 28% of the slack, the leftover is one
+     block underneath — which is where the caption sits anyway — and the band
+     reads as a deliberate crop instead of a small picture adrift.
+
+     A full view nearly fills the box, so this changes it by a few pixels. */
   const left = box.x + pad + (w - drawnW) / 2;
-  const top = box.y + pad + (h - drawnH) / 2;
+  const top = box.y + pad + (h - drawnH) * 0.28;
   return {
     scale,
     view: [y0, y1],

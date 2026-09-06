@@ -192,14 +192,13 @@ for: Å åpne med kursets mest avsluttede bevis, og et som ikke krever noe
      same sum, and the sweeper-keeper as its price.
 teaches: rom, linje, ledd, formasjon, overtall, press, høyt press, frispilling bakfra, styringspress, pressfelle, restforsvar, sweeper-keeper, tilbakespillsregelen
 assumes:
-shows: pitch
+shows: pictures, pitch
 
 ## chapter-2-fem-sekunder
 title: De fem sekundene etter | The five seconds after
 subtitle: Sårbarheten bytter side i samme øyeblikk som ballen | Vulnerability changes sides at the same instant the ball does
 blurb: Et lag er på sitt mest utsatte i det det VINNER ballen, ikke i det det mister den: det står i angrepsstilling og har ingenting bak seg. Derfor er den moderne reaksjonen på et balltap å løpe framover, og derfor avgjøres flere kamper i omstillingene enn i det etablerte spillet. | A team is at its most exposed the moment it WINS the ball, not when it loses it: it is standing in an attacking shape with nothing behind it. That is why the modern answer to losing possession is to run forwards, and why more matches are decided in transition than in settled play.
 langs: no, en
-planned: true
 for: Kurset innfører tid som variabel her; alt før dette handlet om rom.
      Mekanismen er presis og lar seg tegne: sårbarheten bytter side i samme
      sekund som ballen, fordi laget som nettopp vant den står oppstilt for å
@@ -223,7 +222,7 @@ for: Kurset innfører tid som variabel her; alt før dette handlet om rom.
      moments inside settled possession.
 teaches: omstilling, gjenpress, kontring, gjennombruddshissighet, kompakthet, midtblokk, ppda
 assumes: press, høyt press, rom, restforsvar, overtall, linje, frispilling bakfra
-shows: pitch
+shows: pitch, pictures
 
 ## chapter-3-rutenettet
 title: Rutenettet | The grid

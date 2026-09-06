@@ -158,5 +158,117 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a floodlit football stadium at night during a match, seen from high up in a packed stand, the near crowd a dense mass of indistinct dark silhouettes filling the lower third and going out of focus, the bright green pitch far below with a few tiny distant figures on it, floodlight glare, hoardings blank and unmarked, no faces recognisable at this distance, no team badges"
+ },
+ "sprint-gress": {
+  "kind": "made",
+  "file": "sprint-gress.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Steget",
+   "en": "The stride"
+  },
+  "claims": "Studs tearing into wet grass at the start of a sprint.",
+  "omits": "Only a boot and a lower leg; no face, no shirt and no branding, so no player is depicted.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "extreme close up of a football boot's studs tearing into wet grass at the moment of a sprint, clods of turf thrown up and frozen in the air, only the boot and the lower leg in a plain sock, no face, no logos, floodlit night, high shutter speed"
+ },
+ "gps-vest": {
+  "kind": "made",
+  "file": "gps-vest.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Vesten",
+   "en": "The vest"
+  },
+  "claims": "A GPS tracking vest of the kind players wear in training, folded on a bench.",
+  "omits": "Not any particular team's equipment. No badge and no brand name.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a black GPS tracking vest folded neatly on a wooden bench in a dim changing room, the small tracker pod visible in its pouch between the shoulder blades, a rolled towel beside it, nobody present, no logos"
+ },
+ "flasker-bibs": {
+  "kind": "made",
+  "file": "flasker-bibs.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Etterpå",
+   "en": "Afterwards"
+  },
+  "claims": "Water bottles and training bibs left on the grass after a session.",
+  "omits": "No badge, no number and nobody present; not any particular club's equipment.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "used water bottles in a crate and a heap of damp training bibs dumped on grass at the side of a pitch after a session, late afternoon light, nobody present, plain bibs with no numbers or badges"
+ },
+ "regn-lys": {
+  "kind": "made",
+  "file": "regn-lys.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Regn i lyset",
+   "en": "Rain in the lights"
+  },
+  "claims": "Floodlights at night with heavy rain falling through the beams.",
+  "omits": "Not a particular ground or match; nobody is in the frame.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "stadium floodlights seen through heavy driving rain at night, the beams full of falling water, the pitch a green blur far below, no people in frame, hoardings blank and unmarked"
+ },
+ "midtsirkel": {
+  "kind": "made",
+  "file": "midtsirkel.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Midtsirkelen",
+   "en": "The centre circle"
+  },
+  "claims": "The centre circle of a floodlit pitch, seen from above and empty.",
+  "omits": "Not a particular ground. Nobody is on the pitch.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "the centre circle of a floodlit football pitch photographed from high above and slightly to one side at night, the white circle and halfway line crisp on mown grass, completely empty, no people"
+ },
+ "tunnel": {
+  "kind": "made",
+  "file": "tunnel.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tunnelen",
+   "en": "The tunnel"
+  },
+  "claims": "The view out of a stadium tunnel onto a floodlit pitch.",
+  "omits": "Plain walls with no signage or badge; not a particular ground, and nobody in frame.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "looking out of a dark stadium tunnel towards a brightly floodlit pitch at night, the tunnel mouth framing the green, the walls plain concrete with no signage, nobody in the tunnel"
+ },
+ "los-ball": {
+  "kind": "made",
+  "file": "los-ball.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Løs ball",
+   "en": "A loose ball"
+  },
+  "claims": "A football alone on a floodlit pitch at night.",
+  "omits": "An arrangement made for this picture. No player, no club and no particular ground.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a single round white and black panelled association football, a soccer ball, perfectly spherical, alone on floodlit grass at night, the grass bending around it, definitely not an oval brown rugby ball or an american football, nobody anywhere near it, the rest of the pitch dark and empty behind, shallow focus"
  }
 }

@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vb577c169d6';
+const VERSION = 'v2ad0b0f9c4';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -167,21 +167,31 @@ const PRECACHE = [
   './content/beer/timing.chapter-6-kveik.en.json',
   './content/beer/timing.chapter-6-kveik.no.json',
   './content/football/chapter-1-baklengs.json',
+  './content/football/chapter-2-fem-sekunder.json',
   './content/football/media.json',
   './content/football/media/analyserom.jpg',
   './content/football/media/benk-regn.jpg',
+  './content/football/media/flasker-bibs.jpg',
+  './content/football/media/gps-vest.jpg',
   './content/football/media/kamp-natt.jpg',
   './content/football/media/keeperfot-ball.jpg',
   './content/football/media/keeperhansker.jpg',
   './content/football/media/kritt-sidelinje.jpg',
+  './content/football/media/los-ball.jpg',
   './content/football/media/lovbok-lampe.jpg',
+  './content/football/media/midtsirkel.jpg',
+  './content/football/media/regn-lys.jpg',
+  './content/football/media/sprint-gress.jpg',
   './content/football/media/taktikktavle.jpg',
   './content/football/media/tom-stadion-natt.jpg',
   './content/football/media/tomt-mal-natt.jpg',
+  './content/football/media/tunnel.jpg',
   './content/football/sound.json',
   './content/football/style.json',
   './content/football/timing.chapter-1-baklengs.en.json',
   './content/football/timing.chapter-1-baklengs.no.json',
+  './content/football/timing.chapter-2-fem-sekunder.en.json',
+  './content/football/timing.chapter-2-fem-sekunder.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',

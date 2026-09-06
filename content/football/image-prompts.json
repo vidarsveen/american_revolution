@@ -1,105 +1,221 @@
 {
   "//": "Bildene til fotballkurset. tools/gen-image.py leser denne fila, rendrer kandidater til image-candidates/football/<id>/, og skriver media.json-oppføringa når én blir godtatt med --accept. Prompten som lagde bildet blir stående her, så «hva ba vi om» overlever den som spurte.",
-
   "//ingen-spillere": "INGEN EKTE SPILLERE, INGEN KLUBBMERKER, INGEN ANSIKTER. Ekte fotballfoto er opphavsrettslig beskyttet, og et generert bilde av en gjenkjennelig spiller skal vi ikke lage. Alle bildene her er steder, ting og lys — tomme stadioner, hansker, kritt, en benk i regn. Der en person er med, er det hender eller føtter, aldri et ansikt og aldri en drakt som kan spores til en klubb. Det står i `omits` på hver eneste oppføring, fordi det er nettopp det feltet er til for.",
-
   "//stil": "Dokumentarfoto i tilgjengelig lys, dempet farge, grunn dybdeskarphet. Samme grep som ølkurset: bildene skal se ut som noe noen har vært til stede og tatt, ikke som en illustrasjon.",
-
   "kamp-natt": {
     "prompt": "a floodlit football stadium at night during a match, seen from high up in a packed stand, the near crowd a dense mass of indistinct dark silhouettes filling the lower third and going out of focus, the bright green pitch far below with a few tiny distant figures on it, floodlight glare, hoardings blank and unmarked, no faces recognisable at this distance, no team badges",
     "style": "documentary photograph, available light, muted colour, wide angle, shallow depth of field",
     "aspect": "portrait",
     "steps": 10,
-    "title": { "no": "Kamp om kvelden", "en": "A match at night" },
+    "title": {
+      "no": "Kamp om kvelden",
+      "en": "A match at night"
+    },
     "claims": "A floodlit stadium at night with a full crowd and a match under way, seen from high in the stand.",
     "omits": "Not a photograph of any particular ground, match or moment. Nobody is identifiable at this distance, and no club badge, sponsor or readable sign appears.",
     "//prompt": "Kapitlet aapner paa 'det staar null-en, det er spilt sytti minutter'. Det laa et TOMT stadion under den setningen, og det ble lest med en gang: 'i starten er det et tomt stadion som ikke gir mening'. CLAUDE.md sin verste regresjon er nettopp dette - et bilde som ikke viser det setningen snakker om er verre enn ingen bilde. Det tomme stadionet er fortsatt riktig i SISTE beat, der kampen er over og det er en ettertanke."
   },
-
   "tom-stadion-natt": {
     "prompt": "an empty football stadium at night seen from high in the empty stands, floodlights on, the pitch bright green and completely deserted, rows of empty plastic seats in the foreground going out of focus, no people anywhere, hoardings blank and unmarked, no team badges",
     "style": "documentary photograph, available light, muted colour, wide angle, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Tomt stadion", "en": "An empty stadium" },
+    "title": {
+      "no": "Tomt stadion",
+      "en": "An empty stadium"
+    },
     "claims": "A large football stadium at night with its floodlights on and nobody in it.",
     "omits": "Not a photograph of any particular ground. It carries no club badge, no sponsor and no readable sign, because it stands for the setting and not for a place."
   },
-
   "keeperhansker": {
     "prompt": "a pair of modern professional goalkeeper gloves lying palm down on lush freshly mown natural grass, close up, clean white and dark latex, no hands in them, no logos or brand marks, soft morning light, shallow depth of field, very high detail, entirely on grass with no tarmac or asphalt anywhere",
     "steps": 10,
     "//prompt": "Foerste forsoek la hanskene paa ASFALT med en malt strek over - det leste som en parkeringsplass, ikke en bane, og lateksen var skitten nok til aa se billig ut. Prompten sier naa gress uttrykkelig OG at asfalt ikke skal vaere der, og hanskene er rene og moderne.",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Hanskene", "en": "The gloves" },
+    "title": {
+      "no": "Hanskene",
+      "en": "The gloves"
+    },
     "claims": "A used pair of goalkeeper gloves on grass by a touchline.",
     "omits": "An arrangement made for this picture. No maker's name is shown and no player is implied; the gloves stand for the job, which the chapter argues changed in 1992."
   },
-
   "lovbok-lampe": {
     "prompt": "an open rule book on a dark wooden desk under a single anglepoise lamp, dense columns of small print, a pencil resting in the gutter between the pages, the rest of the room in darkness, no readable words",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Lovteksten", "en": "The law" },
+    "title": {
+      "no": "Lovteksten",
+      "en": "The law"
+    },
     "claims": "An open book of rules under a desk lamp.",
     "omits": "The text is not legible and is not the Laws of the Game. It stands for a change written down in 1992, not for a document that exists."
   },
-
   "keeperfot-ball": {
     "prompt": "close up of a modern professional football boot resting on a clean modern match ball, the ball perfectly spherical with smooth thermally bonded panels in white with a few crisp coloured graphic lines, no hand stitching and no old fashioned black hexagons, lying on lush freshly mown natural grass with mowing stripes, a crisp white painted line, soft overcast daylight, only the lower leg in a plain sock visible, no face, no logos, sharp focus on the ball, very high detail",
     "steps": 10,
     "//prompt": "To korreksjoner. Foerste forsoek ga en RUGBYBALL i alle tre kandidatene - modellen vet ikke hvilken ball som hoerer til hvilken sport naar prompten bare sier football, som er samme feil som oelkurset sitt oel i vinglass. Andre forsoek ga en RIKTIG ball, men en gammeldags svart-hvit sekskantball paa skitten kunstgress: bildet ble lest som daarlig kvalitet og gammelt. Kuren er den samme begge ganger - si hva tingen IKKE er. Moderne sveiste paneler, ikke sydde sekskanter; ekte klippet gress, ikke kunstgress. steps hevet fra 4 til 10 for detaljen.",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Foten på ballen", "en": "A boot on the ball" },
+    "title": {
+      "no": "Foten på ballen",
+      "en": "A boot on the ball"
+    },
     "claims": "A boot resting on a ball on a goal line.",
     "omits": "No face and no shirt, so no player is depicted. The boot and the ball are unbranded."
   },
-
   "taktikktavle": {
     "prompt": "a green chalkboard tactics board on an easel in a dim room, a half finished diagram of circles and arrows drawn in white chalk, chalk dust on the tray, no words written, nobody present",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Tavla", "en": "The board" },
+    "title": {
+      "no": "Tavla",
+      "en": "The board"
+    },
     "claims": "A tactics board with an unfinished chalk diagram of circles and arrows.",
     "omits": "The diagram is not a real team's plan and spells nothing. It stands for the act of drawing one."
   },
-
   "benk-regn": {
     "prompt": "an empty technical area beside a brightly floodlit football pitch at night during a match, a row of moulded seats in the dark foreground, a folded coat left on one of them, the green pitch glowing beyond and a blurred crowd behind it, nobody sitting in the seats, no faces recognisable, no badges",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
     "steps": 10,
-    "title": { "no": "Benken", "en": "The bench" },
+    "title": {
+      "no": "Benken",
+      "en": "The bench"
+    },
     "claims": "An empty technical area beside a floodlit pitch at night, with a match under way beyond it.",
     "omits": "Not any particular ground or match. No badge, no sponsor, nobody in the seats and nobody identifiable in the crowd beyond.",
     "//prompt": "Var et TOMT skur i dagslys og oesregn, og laa rett etter aapningsbildet av en full kamp om kvelden. To bilder som ikke kan vaere samme kamp, i to paafoelgende beats. Naa er det samme kveld, samme lys, og benken er tom fordi treneren staar - ikke fordi det ikke er kamp."
   },
-
   "kritt-sidelinje": {
     "prompt": "a freshly painted white touchline on close cropped grass, photographed low and along the line so it runs away into shallow focus, low evening sun raking across the blades, a few loose grass clippings on the paint",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Sidelinja", "en": "The touchline" },
+    "title": {
+      "no": "Sidelinja",
+      "en": "The touchline"
+    },
     "claims": "A newly marked touchline on grass in low sun.",
     "omits": "An ordinary line on an ordinary pitch, not a named ground."
   },
-
   "analyserom": {
     "prompt": "a dark video analysis room, three monitors on a desk showing a football pitch filmed from high above, the shapes on the screens too small and blurred to make out, an empty office chair, notes and a coffee cup on the desk, nobody in the room",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Analyserommet", "en": "The analysis room" },
+    "title": {
+      "no": "Analyserommet",
+      "en": "The analysis room"
+    },
     "claims": "An empty video analysis room with overhead footage of a pitch on the monitors.",
     "omits": "The footage is indistinct on purpose and shows no identifiable match, team or player."
   },
-
   "tomt-mal-natt": {
     "prompt": "an empty goal at night photographed from behind the net, the mesh sharp and lit by floodlights, the pitch beyond dark and empty, the six yard box faintly visible, nobody in frame",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
-    "title": { "no": "Tomt mål", "en": "An empty goal" },
+    "title": {
+      "no": "Tomt mål",
+      "en": "An empty goal"
+    },
     "claims": "An empty goal seen through the net, under floodlights.",
     "omits": "Not a photograph of a particular ground or moment."
-  }
+  },
+  "los-ball": {
+    "prompt": "a single round white and black panelled association football, a soccer ball, perfectly spherical, alone on floodlit grass at night, the grass bending around it, definitely not an oval brown rugby ball or an american football, nobody anywhere near it, the rest of the pitch dark and empty behind, shallow focus",
+    "//prompt": "Modellen leverer en RUGBYBALL hver eneste gang prompten bare sier football - tredje gang i dette kurset. Kuren er den samme: si formen, si fargen, og si hva den IKKE er.",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Løs ball",
+      "en": "A loose ball"
+    },
+    "claims": "A football alone on a floodlit pitch at night.",
+    "omits": "An arrangement made for this picture. No player, no club and no particular ground."
+  },
+  "sprint-gress": {
+    "prompt": "extreme close up of a football boot's studs tearing into wet grass at the moment of a sprint, clods of turf thrown up and frozen in the air, only the boot and the lower leg in a plain sock, no face, no logos, floodlit night, high shutter speed",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Steget",
+      "en": "The stride"
+    },
+    "claims": "Studs tearing into wet grass at the start of a sprint.",
+    "omits": "Only a boot and a lower leg; no face, no shirt and no branding, so no player is depicted."
+  },
+  "gps-vest": {
+    "prompt": "a black GPS tracking vest folded neatly on a wooden bench in a dim changing room, the small tracker pod visible in its pouch between the shoulder blades, a rolled towel beside it, nobody present, no logos",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Vesten",
+      "en": "The vest"
+    },
+    "claims": "A GPS tracking vest of the kind players wear in training, folded on a bench.",
+    "omits": "Not any particular team's equipment. No badge and no brand name."
+  },
+  "flasker-bibs": {
+    "prompt": "used water bottles in a crate and a heap of damp training bibs dumped on grass at the side of a pitch after a session, late afternoon light, nobody present, plain bibs with no numbers or badges",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Etterpå",
+      "en": "Afterwards"
+    },
+    "claims": "Water bottles and training bibs left on the grass after a session.",
+    "omits": "No badge, no number and nobody present; not any particular club's equipment."
+  },
+  "regn-lys": {
+    "prompt": "stadium floodlights seen through heavy driving rain at night, the beams full of falling water, the pitch a green blur far below, no people in frame, hoardings blank and unmarked",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Regn i lyset",
+      "en": "Rain in the lights"
+    },
+    "claims": "Floodlights at night with heavy rain falling through the beams.",
+    "omits": "Not a particular ground or match; nobody is in the frame."
+  },
+  "midtsirkel": {
+    "prompt": "the centre circle of a floodlit football pitch photographed from high above and slightly to one side at night, the white circle and halfway line crisp on mown grass, completely empty, no people",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Midtsirkelen",
+      "en": "The centre circle"
+    },
+    "claims": "The centre circle of a floodlit pitch, seen from above and empty.",
+    "omits": "Not a particular ground. Nobody is on the pitch."
+  },
+  "tunnel": {
+    "prompt": "looking out of a dark stadium tunnel towards a brightly floodlit pitch at night, the tunnel mouth framing the green, the walls plain concrete with no signage, nobody in the tunnel",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tunnelen",
+      "en": "The tunnel"
+    },
+    "claims": "The view out of a stadium tunnel onto a floodlit pitch.",
+    "omits": "Plain walls with no signage or badge; not a particular ground, and nobody in frame."
+  },
+  "slitt-gress": {
+    "prompt": "a worn bare patch of turf in the middle of a football pitch, the grass thin and the soil showing through, close up and low, evening light, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Slitt gress",
+      "en": "Worn grass"
+    },
+    "claims": "A worn patch in the middle of a pitch where the grass has gone.",
+    "omits": "An ordinary pitch, not a named ground."
+  },
+  "//kap2": "Kapittel to bruker los-ball, sprint-gress, gps-vest, flasker-bibs, regn-lys, midtsirkel, tunnel og slitt-gress, pluss analyserom som ble laget til kapittel en og ikke ble brukt der. Samme regel som foer: ingen ansikter, ingen klubbmerker, ingen gjenkjennelige spillere."
 }

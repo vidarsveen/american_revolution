@@ -97,6 +97,25 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-2-fem-sekunder",
+      "title": {
+        "no": "De fem sekundene etter",
+        "en": "The five seconds after"
+      },
+      "subtitle": {
+        "no": "Sårbarheten bytter side i samme øyeblikk som ballen",
+        "en": "Vulnerability changes sides at the same instant the ball does"
+      },
+      "blurb": {
+        "no": "Et lag er på sitt mest utsatte i det det VINNER ballen, ikke i det det mister den: det står i angrepsstilling og har ingenting bak seg. Derfor er den moderne reaksjonen på et balltap å løpe framover, og derfor avgjøres flere kamper i omstillingene enn i det etablerte spillet.",
+        "en": "A team is at its most exposed the moment it WINS the ball, not when it loses it: it is standing in an attacking shape with nothing behind it. That is why the modern answer to losing possession is to run forwards, and why more matches are decided in transition than in settled play."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "surfaces": [
