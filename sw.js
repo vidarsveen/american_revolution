@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'v6c142295f2';
+const VERSION = 'v24d69ffa51';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -169,8 +169,10 @@ const PRECACHE = [
   './content/football/chapter-1-baklengs.json',
   './content/football/chapter-2-fem-sekunder.json',
   './content/football/chapter-3-rutenettet.json',
+  './content/football/chapter-4-relasjon.json',
   './content/football/media.json',
   './content/football/media/analyserom.jpg',
+  './content/football/media/ball-mellom-fotter.jpg',
   './content/football/media/benk-regn.jpg',
   './content/football/media/flasker-bibs.jpg',
   './content/football/media/gps-vest.jpg',
@@ -179,17 +181,23 @@ const PRECACHE = [
   './content/football/media/keeperfot-ball.jpg',
   './content/football/media/keeperhansker.jpg',
   './content/football/media/kritt-sidelinje.jpg',
+  './content/football/media/kveld-park.jpg',
   './content/football/media/linjer-krysser.jpg',
   './content/football/media/los-ball.jpg',
   './content/football/media/lovbok-lampe.jpg',
   './content/football/media/mal-vinkel.jpg',
   './content/football/media/midtsirkel.jpg',
+  './content/football/media/naere-sko.jpg',
   './content/football/media/notatbok-rutenett.jpg',
   './content/football/media/regn-lys.jpg',
+  './content/football/media/rondo-firkant.jpg',
   './content/football/media/rutenett-kjegler.jpg',
   './content/football/media/skygger-lange.jpg',
+  './content/football/media/slitt-hjorne.jpg',
+  './content/football/media/smaabane-natt.jpg',
   './content/football/media/sprint-gress.jpg',
   './content/football/media/taktikktavle.jpg',
+  './content/football/media/to-tavler.jpg',
   './content/football/media/tom-stadion-natt.jpg',
   './content/football/media/tomt-mal-natt.jpg',
   './content/football/media/traeningsbane-morgen.jpg',
@@ -203,6 +211,8 @@ const PRECACHE = [
   './content/football/timing.chapter-2-fem-sekunder.no.json',
   './content/football/timing.chapter-3-rutenettet.en.json',
   './content/football/timing.chapter-3-rutenettet.no.json',
+  './content/football/timing.chapter-4-relasjon.en.json',
+  './content/football/timing.chapter-4-relasjon.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',

@@ -314,5 +314,92 @@
     "claims": "A floodlit pitch seen from directly above the top of a stand.",
     "omits": "Not a named ground or match; nobody is identifiable at this distance and no badge or sign appears."
   },
-  "//kap3": "Kapittel tre bruker rutenett-kjegler, hjornet-av-boksen, notatbok-rutenett, mal-vinkel, traeningsbane-morgen, linjer-krysser, skygger-lange og tribune-hoyt. Ingen ansikter, ingen klubbmerker, ingen gjenkjennelige spillere."
+  "//kap3": "Kapittel tre bruker rutenett-kjegler, hjornet-av-boksen, notatbok-rutenett, mal-vinkel, traeningsbane-morgen, linjer-krysser, skygger-lange og tribune-hoyt. Ingen ansikter, ingen klubbmerker, ingen gjenkjennelige spillere.",
+  "to-tavler": {
+    "prompt": "two green chalkboards standing side by side in a dim room, the left one covered in a neat ruled grid of straight lines and evenly spaced circles, the right one covered in loose overlapping loops and curved arrows tangled together, chalk dust on both trays, no words written anywhere, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "To tavler",
+      "en": "Two boards"
+    },
+    "claims": "Two chalkboards, one covered in a regular grid and one in loose curves.",
+    "omits": "Neither diagram is any real team's plan and neither spells anything; they stand for two ways of thinking."
+  },
+  "smaabane-natt": {
+    "prompt": "a small caged five a side pitch at night lit by a single lamp on a pole, worn artificial turf, high mesh fencing all around, a scuffed goal at one end, completely empty, no signage",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Smaabanen",
+      "en": "The small pitch"
+    },
+    "claims": "A small floodlit caged pitch at night, empty.",
+    "omits": "Not a particular place; no signage and nobody present."
+  },
+  "naere-sko": {
+    "prompt": "eight modern football boots, that is four pairs, standing very close together on grass in a tight cluster, low cut moulded soles with plastic studs, worn with football socks pulled up over the ankle, photographed from directly above from the knee down so no faces or bodies are visible, definitely not leather dress shoes or work boots or trainers, no branding, wet grass",
+    "//prompt": "Foerste forsoek ga PENSKO og arbeidsstoevler paa to personer. Modellen tolker boots som fottoey generelt naar konteksten ikke tvinger den. Samme kur som ballen: si stoetter, si sokker, si hva det ikke er, og si hvor mange.",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Tett sammen",
+      "en": "Close together"
+    },
+    "claims": "Four pairs of boots standing close together on grass.",
+    "omits": "Framed below the waist so nobody is identifiable; no shirts, badges or brand marks."
+  },
+  "rondo-firkant": {
+    "prompt": "a small square marked out with orange training cones on grass, no more than ten metres across, one football lying inside it, seen from a low angle with the rest of the training pitch out of focus behind, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Firkanten",
+      "en": "The square"
+    },
+    "claims": "A small square of training cones with a ball inside it.",
+    "omits": "An arrangement made for this picture on an ordinary training pitch; nobody is present."
+  },
+  "ball-mellom-fotter": {
+    "prompt": "a clean modern white match ball with smooth bonded panels lying on grass, surrounded very closely by six modern football boots with plastic studs and football socks pulled up, photographed at ground level so only the boots and the ball are in frame, definitely not leather dress shoes or trainers and not an old stitched ball, no faces, no legs above the knee, no branding, wet grass",
+    "//prompt": "Foerste forsoek ga pensko og en slitt gammel ball - begge feilene kurset allerede har hatt en gang hver.",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Ballen i klyngen",
+      "en": "The ball in the cluster"
+    },
+    "claims": "A ball on grass surrounded by boots at close quarters.",
+    "omits": "Framed at ground level so nobody is identifiable; no shirts, badges or brand marks."
+  },
+  "slitt-hjorne": {
+    "prompt": "one worn bare patch of turf near the corner of a football pitch where the grass has been scuffed away by repeated use, the rest of the pitch green and intact around it, low afternoon light, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Der de alltid står",
+      "en": "Where they always stand"
+    },
+    "claims": "A worn patch of turf near one corner of an otherwise intact pitch.",
+    "omits": "An ordinary pitch, not a named ground."
+  },
+  "kveld-park": {
+    "prompt": "a small public park football pitch at dusk, worn grass, two simple metal goals without nets, trees and low houses far behind, warm fading light, completely empty of people",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Parken",
+      "en": "The park"
+    },
+    "claims": "A small public park pitch at dusk, empty.",
+    "omits": "Not a particular place or country; nobody is present and no signage appears."
+  },
+  "//kap4": "Kapittel fire bruker to-tavler, smaabane-natt, naere-sko, rondo-firkant, ball-mellom-fotter, slitt-hjorne og kveld-park. Ingen ansikter, ingen klubbmerker. Bildene til klyngen er rammet inn under knehoeyde nettopp derfor."
 }

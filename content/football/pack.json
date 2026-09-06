@@ -135,6 +135,25 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-4-relasjon",
+      "title": {
+        "no": "Posisjon eller relasjon",
+        "en": "Position or relation"
+      },
+      "subtitle": {
+        "no": "Den levende striden i faget",
+        "en": "The argument the subject is having now"
+      },
+      "blurb": {
+        "no": "Mot rutenettet står en brasiliansk motposisjon: at fotball ikke er geometri, men relasjoner mellom spillere som står nær nok hverandre til å improvisere. Der Guardiola ser en spiller som trekker innover som en trafikkork, ser Diniz et overtall. Det er den samme bevegelsen, og de to teoriene er uenige om hva den er.",
+        "en": "Against the grid stands a Brazilian counter-position: that football is not geometry but relationships between players standing close enough to improvise. Where Guardiola sees a player drifting inside as congestion, Diniz sees an overload. It is the same movement, and the two theories disagree about what it is."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "surfaces": [

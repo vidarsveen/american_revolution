@@ -391,5 +391,75 @@
       "no": "Den ene backen går innover og blir en fjerde midtbanespiller. Den andre går opp langs linja og blir en femte angriper. Laget er ikke likt på de to sidene, og det er ikke slurv.\n\nGrunnen er at de to sidene har hver sin oppgave. Den ene skal holde ballen og være klar for balltap; den andre skal skape overtall og komme til innlegg.\n\nDet gjør formasjonstallet enda mindre nyttig enn det allerede var: et lag kan stå 4-3-3 på arket og være 3-2-5 med ballen og 4-4-2 uten den.",
       "en": "One full-back steps inside and becomes a fourth midfielder. The other goes up the line and becomes a fifth attacker. The team is not the same on its two sides, and that is not sloppiness.\n\nThe reason is that the two sides have different jobs. One is to keep the ball and be ready for losing it; the other is to make an overload and get to a cross.\n\nIt makes the formation number even less useful than it already was: a side can be a 4-3-3 on paper, a 3-2-5 with the ball and a 4-4-2 without it."
     }
+  },
+  "relasjonsspill": {
+    "term": {
+      "no": "Relasjonsspill",
+      "en": "Relationism"
+    },
+    "short": {
+      "no": "Motposisjonen til posisjonsspillet: spillerne står nær hverandre, og rommet oppstår av det de gjør.",
+      "en": "The counter-position to positional play: players stand close together, and the space arises from what they do."
+    },
+    "body": {
+      "no": "Posisjonsspillet går fra rom til relasjon — først deles banen, så plasseres folk i den. Relasjonsspillet går motsatt vei: først står spillerne nær hverandre, så oppstår rommet, og banen deles ikke i det hele tatt.\n\nMekanismen er den samme geometrien lest baklengs. På fem meters avstand er en pasning aldri vanskelig, og en forsvarer som presser én i klyngen frigjør en annen i samme bevegelse. Den som presser må velge, og i det han velger har de to andre allerede spilt.\n\nPrisen er at resten av banen er tom, og at det ikke kan læres bort på en sesong: klyngen virker bare mellom spillere som har spilt sammen lenge nok til å vite hva den andre gjør før han gjør det.\n\nDe to er ikke motsetninger. De er to endepunkter på samme akse, og hvert lag står et sted mellom dem.",
+      "en": "Positional play reasons from space to relationship — first the pitch is divided, then people are placed in it. Relationism reasons the other way: first the players stand near each other, then the space arises, and the pitch is not divided at all.\n\nThe mechanism is the same geometry read backwards. At five metres a pass is never difficult, and a defender who presses one player in the cluster frees another in the same movement. Whoever presses has to choose, and by the time he chooses the other two have already played.\n\nThe price is that the rest of the pitch is empty, and that it cannot be taught in a season: the cluster only works between players who have played together long enough to know what the other will do before he does it.\n\nThe two are not opposites. They are two ends of one axis, and every side stands somewhere between them."
+    }
+  },
+  "spillerklynge": {
+    "term": {
+      "no": "Spillerklynge",
+      "en": "Cluster"
+    },
+    "short": {
+      "no": "Fire eller fem spillere innenfor femten meter, med vilje.",
+      "en": "Four or five players inside fifteen metres, on purpose."
+    },
+    "body": {
+      "no": "I posisjonsspillet er det et regelbrudd — aldri mer enn tre i én korridor. I relasjonsspillet er det utgangsstillingen.\n\nDet virker fordi kort avstand fjerner alt som gjør en pasning vanskelig: ingen vinkel må finnes, ingen tredjemann må avtales, og mottakeren trenger ikke å snu. To berøringer er nok.\n\nOg det virker mot press av samme grunn. En forsvarer dekker én mann av gangen; i en klynge frigjør hvert valg han tar to andre.",
+      "en": "In positional play it is a breach of the rules — never more than three in one corridor. In relationism it is the starting position.\n\nIt works because short distances remove everything that makes a pass hard: no angle has to be found, no third man has to be arranged, and the receiver does not have to turn. Two touches are enough.\n\nAnd it works against pressing for the same reason. A defender covers one man at a time; in a cluster every choice he makes frees two others."
+    }
+  },
+  "regista": {
+    "term": {
+      "no": "Regista",
+      "en": "Regista"
+    },
+    "short": {
+      "no": "En dyptliggende spillestyrer uten defensiv oppgave, plassert foran forsvaret.",
+      "en": "A deep-lying playmaker with no defensive job, sitting in front of the defence."
+    },
+    "body": {
+      "no": "Italiensk for regissør. Han står der en defensiv midtbanespiller står, men jobben er den motsatte: å se hele bildet og slå den pasningen ingen andre ser.\n\nRollen krever at laget bærer ham. Noen andre må gjøre løpingen hans, og det er en pris et lag bare betaler hvis mannen er god nok til å være verdt den.\n\nEt posisjonelt lag trenger ham ikke. Der er pasningen garantert av oppstillingen: hvis rutene er fylt riktig, finnes vinkelen uansett hvem som står der.",
+      "en": "Italian for director. He stands where a holding midfielder stands, but the job is the opposite: to see the whole picture and play the pass nobody else sees.\n\nThe role requires the team to carry him. Somebody else has to do his running, and that is a price a side only pays if the man is good enough to be worth it.\n\nA positional side does not need him. There the pass is guaranteed by the arrangement: if the squares are filled correctly the angle exists whoever is standing in them."
+    }
+  },
+  "møtende spiss": {
+    "term": {
+      "no": "Møtende spiss",
+      "en": "Target man"
+    },
+    "short": {
+      "no": "En spiss som tar imot ballen feilvendt med forsvarer i ryggen, og holder på den.",
+      "en": "A striker who receives with his back to goal and a defender behind him, and holds it."
+    },
+    "body": {
+      "no": "Han løper ikke i bakrommet og han venter ikke på et innlegg. Han står stille, tar imot under press, og legger ballen videre til noen som kommer i fart.\n\nI et relasjonelt lag er han det faste punktet klyngen dreier rundt. Uten ham har den ingenting å sprette av, og kombinasjonene stopper etter to pasninger.\n\nRollen overlevde alle taktiske moter fordi den aldri handlet om plassering. Den handler om hva en spiller kan gjøre med ryggen mot mål, og det er en ferdighet, ikke en posisjon.",
+      "en": "He does not run in behind and he does not wait for a cross. He stands still, receives under pressure, and lays the ball off to somebody arriving at speed.\n\nIn a relational side he is the fixed point the cluster turns on. Without him it has nothing to bounce off, and the combinations stop after two passes.\n\nThe role survived every tactical fashion because it was never about location. It is about what a player can do with his back to goal, and that is a skill rather than a position."
+    }
+  },
+  "kombinasjonsspill": {
+    "term": {
+      "no": "Kombinasjonsspill",
+      "en": "Combination play"
+    },
+    "short": {
+      "no": "To eller tre spillere som spiller seg gjennom et press på korte, raske berøringer.",
+      "en": "Two or three players working through a press on short, quick touches."
+    },
+    "body": {
+      "no": "Veggspill, tredjemannsløp og førsteberøringspasninger, slått på så kort avstand at forsvaret ikke rekker å flytte seg mellom dem.\n\nDet er relasjonsspillets viktigste verktøy og posisjonsspillets minst brukte: det ene laget vil ha folk nær hverandre for å kunne gjøre nettopp dette, det andre vil ha dem fordelt for å slippe å måtte.\n\nDet er også den delen av spillet som lar seg trene minst. Timingen mellom to spillere som har spilt sammen i fem år kan ikke skrives ned.",
+      "en": "Wall passes, third-man runs and first-time lay-offs, played at distances short enough that the defence cannot move between them.\n\nIt is relationism's most important tool and positional play's least used: one side wants people close together in order to do exactly this, the other wants them spread out so it does not have to.\n\nIt is also the part of the game that is least trainable. The timing between two players who have played together for five years cannot be written down."
+    }
   }
 }

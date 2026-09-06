@@ -1,0 +1,1165 @@
+{
+ "id": "chapter-4-relasjon",
+ "pack": "football",
+ "title": {
+  "no": "Posisjon eller relasjon",
+  "en": "Position or relation"
+ },
+ "subtitle": {
+  "no": "Den levende striden i faget",
+  "en": "The argument the subject is having now"
+ },
+ "ending": {
+  "say": {
+   "no": "To av de beste trenerne i verden er uenige om et førsteprinsipp, og begge vinner. Det er kursets tydeligste bevis på sin egen påstand.",
+   "en": "Two of the best coaches alive disagree about a first principle, and both of them win. That is the course's clearest evidence for its own claim."
+  },
+  "figure": {
+   "value": "2",
+   "label": {
+    "no": "skoler som er uenige om hva fotball er",
+    "en": "schools that disagree about what football is"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Innvendingen",
+    "en": "The objection"
+   },
+   "bed": "bedStill",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Forrige kapittel satte opp et regelverk og lot det stå.",
+      "en": "The last chapter set out a rulebook and left it standing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedStill"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "to-tavler",
+       "motion": "in",
+       "over": 24,
+       "dim": 0.22,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Det finnes en skole som mener at hele premisset er feil.",
+      "en": "There is a school that thinks the whole premise is wrong."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Den kommer fra Brasil, den har et navn — relasjonsspill — og den har en trener folk peker på når de skal forklare den.",
+      "en": "It comes from Brazil, it has a name — relationism — and it has a coach people point at when they want to explain it."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Fernando Diniz vant Copa Libertadores med Fluminense i tjuetjuetre, med et lag som brøt nesten hver eneste av reglene fra forrige kapittel.",
+      "en": "Fernando Diniz won the Copa Libertadores with Fluminense in 2023, with a side that broke nearly every one of the last chapter's rules."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Uenigheten har en presis form, og den er verdt å si nøyaktig.",
+      "en": "The disagreement has a precise shape, and it is worth stating exactly."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 32
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "En kantspiller trekker innover, mot midten, dit en lagkamerat allerede står.",
+      "en": "A winger drifts inside, towards the middle, to where a team-mate is already standing."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lw",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.move",
+       "side": "team",
+       "who": "lw",
+       "to": "[26,74]",
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b7",
+     "say": {
+      "no": "For Guardiola er det en trafikkork: to spillere i samme rute, og en motstander som nå dekker begge.",
+      "en": "To Guardiola that is congestion: two players in one square, and one opponent now covering both."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b8",
+     "say": {
+      "no": "For Diniz er det et overtall: to spillere nær nok hverandre til å spille seg ut av det på to berøringer.",
+      "en": "To Diniz it is an overload: two players close enough to play their way out of it in two touches."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b9",
+     "say": {
+      "no": "Samme bevegelse. To teorier som er uenige om hva den er.",
+      "en": "The same movement. Two theories that disagree about what it is."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Hva de faktisk sier",
+    "en": "What they actually claim"
+   },
+   "bed": "bedStill",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Posisjonsspillet går fra rom til relasjon.",
+      "en": "Positional play reasons from space towards relationship."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedStill"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 46,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "pitch.lanes",
+       "over": 0.8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Først deles banen, så plasseres spillerne i den, og forholdene mellom dem følger av hvor de står.",
+      "en": "First the pitch is divided, then the players are placed in it, and the relations between them follow from where they stand."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Relasjonsspillet går motsatt vei.",
+      "en": "Relationism reasons the other way."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 46,
+       "depth": 22,
+       "width": 0.45,
+       "over": 1.6
+      },
+      {
+       "on": {
+        "no": "word:vei",
+        "en": "word:way"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "relasjonsspill"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Først står spillerne nær hverandre, så oppstår rommet av det de gjør, og banen deles ikke i det hele tatt.",
+      "en": "First the players stand near each other, then the space arises from what they do, and the pitch is not divided at all."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "relasjonsspill",
+       "until": 8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Fire mann innenfor femten meter er ikke et brudd på noen regel. Det er utgangsstillingen.",
+      "en": "Four men inside fifteen metres is not a breach of any rule. It is the starting position."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "middle"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "15 m",
+       "label": {
+        "no": "mellom fire mann",
+        "en": "between four men"
+       },
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "six,eight,eight2,nine",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Og de to er ikke motsetninger på et brett. De er to endepunkter på samme akse, og hvert lag i verden står et sted mellom dem.",
+      "en": "And the two are not opposites on a board. They are two ends of one axis, and every side in the world stands somewhere between them."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Klyngen",
+    "en": "The cluster"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Grunnen til at klyngen virker er den samme geometrien som forrige kapittel brukte, lest baklengs.",
+      "en": "The reason the cluster works is the same geometry the last chapter used, read backwards."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "naere-sko",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "En forsvarer som presser en spiller i en klynge, frigjør en annen i samme bevegelse.",
+      "en": "A defender who presses one player in a cluster frees another in the same movement."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "På fem meters avstand er en pasning aldri vanskelig.",
+      "en": "At five metres a pass is never difficult."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "middle"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 20,
+       "width": 0.4
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 42,
+       "depth": 24
+      },
+      {
+       "on": "start",
+       "do": "pitch.ball",
+       "at": "six",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "5 m",
+       "label": {
+        "no": "og pasningen er gratis",
+        "en": "and the pass is free"
+       },
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Den trenger ingen vinkel, ingen tredjemann og ingen avtale.",
+      "en": "It needs no angle, no third man and no arrangement."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "six,eight,nine",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "six",
+       "to": "eight",
+       "side": "team",
+       "over": 0.5
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "eight",
+       "to": "nine",
+       "side": "team",
+       "over": 0.5
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Den som presser må velge hvem av dem han går på.",
+      "en": "Whoever presses has to choose which of them to go to."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lcm",
+       "side": "opponent"
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[34,50]",
+       "to": "[32,46]",
+       "side": "opponent",
+       "over": 0.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Og i det han velger, har de to andre allerede spilt.",
+      "en": "And by the time he chooses, the other two have already played."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Prisen er at resten av banen er tom.",
+      "en": "The price is that the rest of the pitch is empty."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 46,
+       "depth": 34,
+       "width": 0.9,
+       "over": 1.6
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b8",
+     "say": {
+      "no": "Et relasjonelt lag som mister ballen i klyngen har ingen struktur bak den, fordi strukturen var klyngen.",
+      "en": "A relational side that loses the ball in the cluster has no structure behind it, because the structure was the cluster."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Rollene den trenger",
+    "en": "The roles it needs"
+   },
+   "bed": "bedPatient",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "To roller finnes nesten bare i lag som spiller sånn.",
+      "en": "Two roles exist almost only in sides that play this way."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "rondo-firkant",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.18,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Begge er gamle, begge var nesten ute av bruk, og begge kom tilbake med denne skolen.",
+      "en": "Both are old, both had nearly fallen out of use, and both came back with this school."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Den ene er en dyptliggende spillestyrer.",
+      "en": "The first is a deep-lying playmaker."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 20,
+       "depth": 26
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "six",
+       "side": "team"
+      },
+      {
+       "on": {
+        "no": "word:spillestyrer",
+        "en": "word:playmaker"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "regista"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Han står foran forsvaret og har ingen defensiv oppgave å snakke om. Han er der fordi han ser hele bildet og kan slå den pasningen ingen andre ser.",
+      "en": "He sits in front of the defence with no defensive job to speak of. He is there because he sees the whole picture and can play the pass nobody else sees."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Et posisjonelt lag trenger ham ikke. Der er pasningen garantert av oppstillingen, ikke av en person.",
+      "en": "A positional side does not need him. There the pass is guaranteed by the arrangement, not by a person."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Den andre står med ryggen mot mål og en forsvarer i ryggen, og blir stående der.",
+      "en": "The second stands with his back to goal and a defender behind him, and stays there."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "their-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 54,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "nine",
+       "side": "team"
+      },
+      {
+       "on": {
+        "no": "word:der",
+        "en": "word:there"
+       },
+       "do": "term.mark",
+       "kind": "term",
+       "id": "møtende spiss"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Han er et fast punkt de andre kan sprette ballen av.",
+      "en": "He is a fixed point the others can bounce the ball off."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Uten ham har klyngen ingenting å dreie rundt.",
+      "en": "Without him the cluster has nothing to turn on."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "eight,eight2,nine",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "eight",
+       "to": "nine",
+       "side": "team",
+       "over": 0.5
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "nine",
+       "to": "eight2",
+       "side": "team",
+       "over": 0.5
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Hvorfor begge vinner",
+    "en": "Why both win"
+   },
+   "bed": "bedPatient",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Her er det interessante, og det er grunnen til at dette kapitlet finnes.",
+      "en": "Here is the interesting part, and it is why this chapter exists."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "kveld-park",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "Ingen av dem vinner argumentet, fordi begge vinner kamper.",
+      "en": "Neither of them wins the argument, because both of them win matches."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "To trenere på øverste nivå er uenige om hva spillet i bunn og grunn er.",
+      "en": "Two coaches at the highest level disagree about what the game fundamentally is."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 28,
+       "depth": 26
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "2",
+       "label": {
+        "no": "skoler, ett førsteprinsipp",
+        "en": "schools, one first principle"
+       },
+       "side": "ball"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Den ene mener at rommet kommer først og folk plasseres i det. Den andre at folk kommer først og rommet oppstår av dem.",
+      "en": "One holds that space comes first and people are placed in it. The other that people come first and space arises from them."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Begge har vunnet turneringer med det. Ingen av dem har klart å vise at den andre tar feil.",
+      "en": "Both have won trophies with it. Neither has managed to show that the other is wrong."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "six,eight,eight2",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Det er kursets påstand, bevist av folk som ikke prøvde å bevise den.",
+      "en": "That is the course's claim, proved by people who were not trying to prove it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Det finnes ingen dominant strategi. Hadde det gjort det, ville de to vært enige.",
+      "en": "There is no dominant strategy. If there were, those two would agree."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Hva hver av dem gir fra seg",
+    "en": "What each one gives up"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Begge betaler, og de betaler i hver sin valuta.",
+      "en": "Both of them pay, and they pay in different currencies."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "slitt-hjorne",
+       "motion": "in",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "Ingen av regningene forfaller i den kampen du ser på. De forfaller over en sesong.",
+      "en": "Neither bill falls due in the match you are watching. They fall due over a season."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "Det posisjonelle laget betaler i forutsigbarhet.",
+      "en": "The positional side pays in predictability."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 32
+      },
+      {
+       "on": "start",
+       "do": "pitch.lanes",
+       "over": 0.7
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Motstanderen vet hvilke ruter som blir fylt, for det er de samme rutene hver kamp, og en godt forberedt blokk kan stille seg opp mot dem på forhånd.",
+      "en": "The opposition know which squares will be filled, because they are the same squares every match, and a well-prepared block can arrange itself against them in advance."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.zoneHide"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Det relasjonelle laget betaler i noe verre: det kan ikke læres bort på en sesong.",
+      "en": "The relational side pays in something worse: it cannot be taught in a season."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 48,
+       "depth": 22,
+       "width": 0.45,
+       "over": 1.5
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "Klyngen virker bare mellom spillere som har spilt sammen lenge nok til å vite hva den andre gjør før han gjør det.",
+      "en": "The cluster only works between players who have played together long enough to know what the other will do before he does it."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "six,eight,nine",
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "Kjøp fire nye spillere, og systemet er borte til jul.",
+      "en": "Buy four new players and the system is gone by Christmas."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Det som slår begge",
+    "en": "What beats both"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "De to skolene er uenige om nesten alt, og de har ett felles problem.",
+      "en": "The two schools disagree about nearly everything, and they have one problem in common."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "smaabane-natt",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.22,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Begge trenger rom å arbeide i.",
+      "en": "Both of them need space to work in."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Rutenettet trenger ruter som ikke er fylt.",
+      "en": "The grid needs squares that are not filled."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 58,
+       "depth": 30
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "5-3-2",
+       "line": 14,
+       "depth": 18,
+       "compact": true
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Klyngen trenger fem meter mellom folk til å spille i.",
+      "en": "The cluster needs five metres between people to play in."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Så det finnes ett svar som virker mot begge, og det er ikke elegant.",
+      "en": "So there is one answer that works against both, and it is not elegant."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,0,68,34]"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Ti mann på tretti meter, og ingenting igjen å spille i for noen av dem.",
+      "en": "Ten men in thirty metres, and nothing left for either of them to play in."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "Det er neste kapittel, og det er ikke feighet.",
+      "en": "That is the next chapter, and it is not cowardice."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Det er det som skjer når noen regner ut at din beste sjanse koster mer enn deres dårligste.",
+      "en": "It is what happens when somebody works out that your best chance costs more than their worst one."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

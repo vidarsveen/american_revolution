@@ -256,7 +256,6 @@ title: Posisjon eller relasjon | Position or relation
 subtitle: Den levende striden i faget | The argument the subject is having now
 blurb: Mot rutenettet står en brasiliansk motposisjon: at fotball ikke er geometri, men relasjoner mellom spillere som står nær nok hverandre til å improvisere. Der Guardiola ser en spiller som trekker innover som en trafikkork, ser Diniz et overtall. Det er den samme bevegelsen, og de to teoriene er uenige om hva den er. | Against the grid stands a Brazilian counter-position: that football is not geometry but relationships between players standing close enough to improvise. Where Guardiola sees a player drifting inside as congestion, Diniz sees an overload. It is the same movement, and the two theories disagree about what it is.
 langs: no, en
-planned: true
 for: Kapitlet som gjør dette til et kurs for en voksen og ikke en innføring.
      Striden er ekte, den pågår nå, og den har en presis form: posisjonsspill
      går fra rom til relasjon, relasjonsspill går fra relasjon til rom. Begge
@@ -277,7 +276,7 @@ for: Kapitlet som gjør dette til et kurs for en voksen og ikke en innføring.
      positional one does not. The chapter must decline to name a winner.
 teaches: relasjonsspill, regista, møtende spiss, kombinasjonsspill, improvisasjon, spillerklynge
 assumes: posisjonsspill, halvrom, mellomrom, overtall, rom, isolasjon, tredjemannsløp, formasjon, linje, press
-shows: pitch
+shows: pitch, pictures
 
 ## chapter-5-blokka
 title: Å nekte dem alt | Denying them everything
