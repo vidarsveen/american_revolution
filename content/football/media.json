@@ -1,1 +1,146 @@
-{}
+{
+ "analyserom": {
+  "kind": "made",
+  "file": "analyserom.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Analyserommet",
+   "en": "The analysis room"
+  },
+  "claims": "An empty video analysis room with overhead footage of a pitch on the monitors.",
+  "omits": "The footage is indistinct on purpose and shows no identifiable match, team or player.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a dark video analysis room, three monitors on a desk showing a football pitch filmed from high above, the shapes on the screens too small and blurred to make out, an empty office chair, notes and a coffee cup on the desk, nobody in the room"
+ },
+ "benk-regn": {
+  "kind": "made",
+  "file": "benk-regn.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Benken",
+   "en": "The bench"
+  },
+  "claims": "An empty dugout beside a pitch, in rain.",
+  "omits": "Not any particular ground. No badge, no sponsor, and nobody in the seats.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an empty dugout beside a football pitch in heavy rain, moulded plastic seats streaked with water, a folded coat left on one of them, the pitch beyond out of focus, nobody sitting there"
+ },
+ "keeperhansker": {
+  "kind": "made",
+  "file": "keeperhansker.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Hanskene",
+   "en": "The gloves"
+  },
+  "claims": "A used pair of goalkeeper gloves on grass by a touchline.",
+  "omits": "An arrangement made for this picture. No maker's name is shown and no player is implied; the gloves stand for the job, which the chapter argues changed in 1992.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a worn pair of goalkeeper gloves lying on wet grass beside a white painted line, close up, the latex scuffed and the stitching frayed, morning light, no hands in them, no brand name visible"
+ },
+ "kritt-sidelinje": {
+  "kind": "made",
+  "file": "kritt-sidelinje.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Sidelinja",
+   "en": "The touchline"
+  },
+  "claims": "A newly marked touchline on grass in low sun.",
+  "omits": "An ordinary line on an ordinary pitch, not a named ground.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a freshly painted white touchline on close cropped grass, photographed low and along the line so it runs away into shallow focus, low evening sun raking across the blades, a few loose grass clippings on the paint"
+ },
+ "lovbok-lampe": {
+  "kind": "made",
+  "file": "lovbok-lampe.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Lovteksten",
+   "en": "The law"
+  },
+  "claims": "An open book of rules under a desk lamp.",
+  "omits": "The text is not legible and is not the Laws of the Game. It stands for a change written down in 1992, not for a document that exists.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an open rule book on a dark wooden desk under a single anglepoise lamp, dense columns of small print, a pencil resting in the gutter between the pages, the rest of the room in darkness, no readable words"
+ },
+ "taktikktavle": {
+  "kind": "made",
+  "file": "taktikktavle.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tavla",
+   "en": "The board"
+  },
+  "claims": "A tactics board with an unfinished chalk diagram of circles and arrows.",
+  "omits": "The diagram is not a real team's plan and spells nothing. It stands for the act of drawing one.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a green chalkboard tactics board on an easel in a dim room, a half finished diagram of circles and arrows drawn in white chalk, chalk dust on the tray, no words written, nobody present"
+ },
+ "tom-stadion-natt": {
+  "kind": "made",
+  "file": "tom-stadion-natt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tomt stadion",
+   "en": "An empty stadium"
+  },
+  "claims": "A large football stadium at night with its floodlights on and nobody in it.",
+  "omits": "Not a photograph of any particular ground. It carries no club badge, no sponsor and no readable sign, because it stands for the setting and not for a place.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an empty football stadium at night seen from high in the empty stands, floodlights on, the pitch bright green and completely deserted, rows of empty plastic seats in the foreground going out of focus, no people anywhere, hoardings blank and unmarked, no team badges"
+ },
+ "tomt-mal-natt": {
+  "kind": "made",
+  "file": "tomt-mal-natt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tomt mål",
+   "en": "An empty goal"
+  },
+  "claims": "An empty goal seen through the net, under floodlights.",
+  "omits": "Not a photograph of a particular ground or moment.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "an empty goal at night photographed from behind the net, the mesh sharp and lit by floodlights, the pitch beyond dark and empty, the six yard box faintly visible, nobody in frame"
+ },
+ "keeperfot-ball": {
+  "kind": "made",
+  "file": "keeperfot-ball.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Foten på ballen",
+   "en": "A boot on the ball"
+  },
+  "claims": "A boot resting on a ball on a goal line.",
+  "omits": "No face and no shirt, so no player is depicted. The boot and the ball are unbranded.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "close up of a black football boot resting on top of a round white and black panelled association football, a soccer ball, perfectly spherical, on the goal line, wet grass, white painted line, the goal net blurred behind, only the lower leg in a long sock visible, no face, no branding"
+ }
+}

@@ -1006,17 +1006,9 @@
    "note": "A one-line definition on screen while the word is being said. term.mark makes a word tappable, and almost nobody taps while a voice is running -- so the definition existed and was never seen. This is stage state, shown and hidden by cues, so seeking into the middle of a definition shows the definition. It carries the entry's HOOK, never its body: a fact box is a glance you can read without stopping listening, and the card itself opens the full entry.",
    "args": {
     "kind": {
-     "type": "enum",
+     "type": "entryKind",
      "required": true,
-     "values": [
-      "term",
-      "topic",
-      "place",
-      "person",
-      "grape",
-      "wine"
-     ],
-     "note": "Which pool the id resolves against, as term.mark."
+     "note": "Which pool the id resolves against. Validated against the kinds the PACK declares in `entries`, not against a list here: this argument used to enumerate term|topic|place|person|grape|wine, and `grape` and `wine` are two subject-specific values sitting in the shared vocabulary -- the same leak as a stylesheet selecting on a faction name. A course could not have a lookup kind of its own without editing this file."
     },
     "id": {
      "type": "string",
@@ -1113,20 +1105,13 @@
    "occupies": {
     "channel": "pitch",
     "effect": "fill",
-    "weight": "frame"
+    "weight": "frame",
+    "key": "views"
    },
    "args": {
-    "view": {
-     "type": "enum",
-     "values": [
-      "full",
-      "own-half",
-      "their-half",
-      "final-third",
-      "middle"
-     ],
-     "default": "full",
-     "note": "how much of the pitch this panel shows. Cropping is the phone's half of the answer: the final third alone draws four dots in the space a full pitch spends on eleven."
+    "views": {
+     "type": "string[]",
+     "note": "how much of the pitch each panel shows: full | own-half | their-half | final-third | middle. One panel is written `{pitch.show final-third}` and compiles to a list of one. There was a singular `view` beside this and it was never read by anything: tools/author.py folds a singular positional into the plural list argument, so every chapter on disk was setting `views` and the cropping worked through a path nobody had written down. Found by tools/check-rhythm.py, which keys the frame's identity on this."
     },
     "panels": {
      "type": "number",
@@ -1134,10 +1119,6 @@
      "max": 3,
      "default": 1,
      "note": "more than one pitch at a time - chapter six compares three leagues. Panels stack on a portrait host and sit side by side on a landscape one."
-    },
-    "views": {
-     "type": "string[]",
-     "note": "a view per panel, when they differ."
     },
     "numbers": {
      "type": "boolean",
@@ -1152,7 +1133,7 @@
      "note": "which panel, when pitch.show asked for more than one."
     }
    },
-   "note": "The pitch is drawn PORTRAIT, attacking up the screen - see pitch/geometry.js for why. It is the ground for this surface the way the map is for a map course, so every other pitch verb needs it to have been shown first: a shape drawn on a pitch nobody put up is an empty screen, and tools/check-cover.py fails on it."
+   "note": "The pitch is drawn PORTRAIT, attacking up the screen - see pitch/geometry.js for why. It is the ground for this surface the way the map is for a map course, so every other pitch verb needs it to have been shown first: a shape drawn on a pitch nobody put up is an empty screen, and tools/check-cover.py fails on it. The frame's identity is the VIEW, so cropping from the full pitch to the final third counts as a different picture and tools/check-rhythm.py sees it as one. Putting a new shape on the same view does not: that is content changing inside one image, which is real but is not the screen turning over. The pessimistic reading is the right one for a gate."
   },
   "pitch.hide": {
    "summary": {
@@ -1275,7 +1256,7 @@
      "required": true
     },
     "to": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both."
     },
     "label": {
@@ -1312,12 +1293,12 @@
    "occupies": null,
    "args": {
     "from": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
     "to": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
@@ -1368,12 +1349,12 @@
    "occupies": null,
    "args": {
     "from": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
     "to": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
@@ -1424,12 +1405,12 @@
    "occupies": null,
    "args": {
     "from": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
     "to": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
@@ -1609,7 +1590,7 @@
    "occupies": null,
    "args": {
     "at": {
-     "type": "point",
+     "type": "string",
      "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
      "required": true
     },
@@ -1646,6 +1627,35 @@
     }
    },
    "note": "Leaves the teams standing. pitch.teamClear takes those off."
+  },
+  "pitch.focus": {
+   "summary": {
+    "no": "Si hvor man skal se",
+    "en": "Say where to look"
+   },
+   "surface": "pitch",
+   "occupies": null,
+   "args": {
+    "who": {
+     "type": "string",
+     "note": "one or more roles or shirt numbers, comma separated. Everything not named draws back at 30%."
+    },
+    "side": {
+     "type": "faction",
+     "note": "which team `who` belongs to. Without it, nobody on either side is lit."
+    },
+    "area": {
+     "type": "string",
+     "note": "a named area or four metres, lifted out of the rest of the pitch."
+    },
+    "panel": {
+     "type": "number",
+     "min": 0,
+     "max": 2,
+     "default": 0
+    }
+   },
+   "note": "The signalling principle, and the gap that made a whole chapter mute: the narration said \"somebody behind is now free\" over twenty-two identical dots and pointed at none of them. A diagram that shows everything equally shows nothing. Call it with no arguments to clear it -- a focus left standing across a scene is a permanent dimming nobody asked for. See docs/dramaturgy.md rule 6."
   }
  }
 }

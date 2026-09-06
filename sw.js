@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vdc65d284e1';
+const VERSION = 'vdd6192ed0c';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -168,6 +168,15 @@ const PRECACHE = [
   './content/beer/timing.chapter-6-kveik.no.json',
   './content/football/chapter-1-baklengs.json',
   './content/football/media.json',
+  './content/football/media/analyserom.jpg',
+  './content/football/media/benk-regn.jpg',
+  './content/football/media/keeperfot-ball.jpg',
+  './content/football/media/keeperhansker.jpg',
+  './content/football/media/kritt-sidelinje.jpg',
+  './content/football/media/lovbok-lampe.jpg',
+  './content/football/media/taktikktavle.jpg',
+  './content/football/media/tom-stadion-natt.jpg',
+  './content/football/media/tomt-mal-natt.jpg',
   './content/football/sound.json',
   './content/football/style.json',
   './content/football/timing.chapter-1-baklengs.en.json',

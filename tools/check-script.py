@@ -1220,6 +1220,21 @@ def main():
                     if adef.get("required") and value in (None, "", [], {}):
                         problems.append(f"{bid}: {verb} is missing required '{arg}'")
                         continue
+                    # A kind is the PACK's invention, so it is checked against
+                    # what the pack declares rather than against a list in the
+                    # manifest. `fact.show` used to enumerate grape|wine there,
+                    # which meant no other course could have a lookup of its own
+                    # without editing the shared vocabulary.
+                    if atype == "entryKind" and value is not None:
+                        kinds = entry_pools(pack)
+                        if value not in kinds:
+                            problems.append(
+                                f"{bid}: {verb} kind '{value}' is not an entry kind "
+                                f"content/{pack}/pack.json declares "
+                                f"({', '.join(sorted(kinds)) or 'none'})")
+                        elif cue.get("id") and cue["id"] not in kinds[value]:
+                            problems.append(
+                                f"{bid}: {verb} -> unknown {value} '{cue['id']}'")
                     if atype == "enum" and value is not None:
                         allowed = adef.get("values") or []
                         if allowed and value not in allowed:

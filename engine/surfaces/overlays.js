@@ -233,7 +233,12 @@ export function showFact(cue, instant) {
   const e = entries?.get(cue.kind, cue.id);
   if (!e) return;
   factBeat = cue.beat ?? null;
-  const label = KIND_LABEL[cue.kind];
+  // The PACK's own word for this kind first, and the built-in table only as a
+  // fallback. `grape` and `wine` sat in that table beside `term` and `place`,
+  // which is a wine course's vocabulary living in the shared engine — and a
+  // course with a lookup of its own rendered the card with no kind line at all
+  // rather than with its own word.
+  const label = packEntryLabel(cue.kind) || KIND_LABEL[cue.kind];
   show(factEl, `
     <aside class="ov-fact__card" data-tap="${esc(cue.kind)}:${esc(cue.id)}"
            role="button" tabindex="0">
@@ -271,10 +276,17 @@ export function factBeatIs(beatId) {
 
 /* What to call each kind on the card. A reader should know whether they are
    being told about a word, a plant or a place before they read the line. */
+/** What this pack calls a kind, from its own `entries` block. */
+function packEntryLabel(kind) {
+  return (chapter?.packInfo?.entries || {})[kind]?.label || null;
+}
+
+/* The fallback, for the four kinds the framework itself understands. `grape`
+   and `wine` used to be in here too — a wine course's vocabulary compiled into
+   the engine, and the reason a course with a lookup kind of its own got a card
+   with no heading. A pack that declares a kind now names it. */
 const KIND_LABEL = {
   term:  { no: 'Ord', en: 'Term' },
-  grape: { no: 'Drue', en: 'Grape' },
-  wine:  { no: 'Vin', en: 'Wine' },
   topic: { no: 'Tema', en: 'Topic' },
   place: { no: 'Sted', en: 'Place' },
   person: { no: 'Person', en: 'Person' },

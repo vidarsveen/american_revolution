@@ -1,7 +1,7 @@
 /* ============================================================
    pitch-lab.js — the bench for pitch/.
 
-   SIX FALSIFIABLE QUESTIONS. A lab that is only a gallery will rot, so the
+   SEVEN FALSIFIABLE QUESTIONS. A lab that is only a gallery will rot, so the
    gallery is underneath and these are the point. The fifth was added after
    looking at a screenshot: four green assertions and a picture that was
    plainly wrong, which is the whole argument for still looking.
@@ -430,6 +430,61 @@ function facingsOppose() {
 }
 
 /* ------------------------------------------------------------
+   7. Focus lights exactly what it names
+   ------------------------------------------------------------ */
+
+/**
+ * `pitch.focus` is the surface's answer to the signalling principle, and the
+ * thing it must not do is quietly light the wrong dot. Checked on the
+ * snapshot's `lit` flag rather than on pixels, because the question is which
+ * player the surface BELIEVES is the subject; whether that reads on screen is
+ * assertion 4's job and a screenshot's.
+ *
+ * Also checks that it clears. A focus left standing is a chapter dimmed for
+ * the rest of its scene, which is worse than no focus at all.
+ */
+function focusLightsWhatItNames() {
+  const host = offscreenHost();
+  const p = createPitch(host, {});
+  p.team({ side: 'team', shape: '4-3-3', line: 30, instant: true });
+  p.team({ side: 'opponent', shape: '4-4-2', line: 30, instant: true });
+  const problems = [];
+
+  const litOf = () => {
+    const t = p.snapshot()[0].teams;
+    return Object.fromEntries(t.map((x) => [x.side,
+      x.players.filter((q) => q.lit).map((q) => q.role || q.n)]));
+  };
+
+  let all = litOf();
+  if (all.team.length !== 11 || all.opponent.length !== 11) {
+    problems.push(`with no focus, ${all.team.length}+${all.opponent.length} lit, not 11+11`);
+  }
+
+  p.focus({ side: 'team', who: 'six' });
+  all = litOf();
+  if (all.team.join() !== 'six') problems.push(`focus who=six lit [${all.team}]`);
+  if (all.opponent.length) problems.push(`focus on team also lit ${all.opponent.length} opponents`);
+
+  p.focus({ side: 'team', who: ['lb', 3] });
+  all = litOf();
+  if (all.team.length !== 2) problems.push(`focus on two lit ${all.team.length}`);
+
+  p.focus({ side: 'team', who: 'nobody-by-that-name' });
+  all = litOf();
+  if (all.team.length !== 0) problems.push(`an unknown role lit ${all.team.length} players`);
+
+  p.focus({});
+  all = litOf();
+  if (all.team.length !== 11 || all.opponent.length !== 11) {
+    problems.push(`focus did not clear: ${all.team.length}+${all.opponent.length} lit`);
+  }
+
+  p.destroy(); host.remove();
+  return { ok: !problems.length, problems, checked: 5 };
+}
+
+/* ------------------------------------------------------------
    Running it
    ------------------------------------------------------------ */
 
@@ -441,6 +496,7 @@ async function run() {
   const dots = dotsReadable();
   const crop = croppingCrops();
   const facing = facingsOppose();
+  const focus = focusLightsWhatItNames();
 
   const result = {
     rule1: { ok: rule1.every((r) => r.ok), cases: rule1 },
@@ -449,8 +505,9 @@ async function run() {
     dots,
     crop,
     facing,
+    focus,
   };
-  result.ok = result.rule1.ok && onPitch.ok && lanes.ok && dots.ok && crop.ok && facing.ok;
+  result.ok = result.rule1.ok && onPitch.ok && lanes.ok && dots.ok && crop.ok && facing.ok && focus.ok;
   window.__pitchLab = result;
   render(result);
   $('#status').textContent = result.ok ? 'pass' : 'FAIL';
@@ -495,6 +552,11 @@ function render(r) {
   out.push('<h3>6 · two teams never attack the same way</h3><ul>');
   out.push(line(r.facing.ok, `${r.facing.checked} arrangements`
     + `${r.facing.problems.length ? `<br><code>${r.facing.problems.join('<br>')}</code>` : ''}`));
+  out.push('</ul>');
+
+  out.push('<h3>7 · focus lights exactly what it names</h3><ul>');
+  out.push(line(r.focus.ok, `${r.focus.checked} cases`
+    + `${r.focus.problems.length ? `<br><code>${r.focus.problems.join('<br>')}</code>` : ''}`));
   out.push('</ul>');
 
   $('#out').innerHTML = out.join('');

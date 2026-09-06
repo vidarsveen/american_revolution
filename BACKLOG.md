@@ -18,6 +18,81 @@ wine pack below is the reference course and is not the work.
 
 ---
 
+## The framework — making lessons worth watching
+
+**0. `docs/dramaturgy.md` is new, and it is the level the repo was missing.**
+`planning.md` decides whether there is a course; `authoring.md` says how to type
+a chapter; nothing said how to make one anybody would sit through. A chapter
+shipped that was green on every check in `check-all.py` and was read as *"so
+unengaging and boring ... it's really not there"*.
+
+Twelve rules, each carrying its evidence — a measured number from this repo, or
+a citation. The `.claude/skills/course-craft` skill loads the checklist so it
+does not depend on anybody remembering, and `CLAUDE.md`, `planning.md` and
+`README.md` all point at it.
+
+**The framework exists to fill a gap AI just opened**: short, genuinely
+engaging lessons — one chapter or eight — on subjects that used to be hard to
+get into. Engaging is not polish at the end. It is the work. That sentence is
+now the first thing in the craft doc, because everything else follows from it.
+
+**1. `tools/check-rhythm.py` measures four of the twelve.** The reason the rules
+were ignored is that nothing counted, and every rule that has ever stuck here
+became a check.
+
+    median seconds between frame changes    <= 30
+    longest stretch with no frame change    <= 45   (closing hold exempt)
+    distinct pictures                       one every <= 45 s
+    the first beat carries a frame cue      required
+
+**Beer vetoed two of the four on the first run, and that is the important
+part.** The third gate was written as "no surface may carry more than 75% of
+the frame" — and beer runs 82 to 94% on `plate` and is the best thing in the
+repo. Surface share is not the defect; SAMENESS is. Beer's 22 plates are 22
+photographs; football showed one empty pitch five times. The fourth was "two
+frame states in the first twenty seconds", which failed every beer chapter,
+because opening on one picture and holding it for its legal 24 s is correct.
+**Calibrate against the thing that works and let it veto you.**
+
+`tools/check-rhythm-selftest.py` builds a clean fixture and four broken ones and
+confirms each gate fires. Both are in `check-all.py`.
+
+**2. Two leaks closed, both already named in CLAUDE.md.**
+
+- **`pitch.focus`** — the surface can now say where to look: name the players
+  the sentence is about and the rest drops to 30%. The gap was concrete: the
+  narration said *"somebody behind is now free"* over twenty-two identical dots
+  and pointed at none of them. Arrows are heavier too — 2.2 px of ink across a
+  68 m pitch is a hair. Assertion 7 in `dev/pitch-lab.html`.
+- **`fact.show`'s `kind`** enumerated `term|topic|place|person|grape|wine` in the
+  shared vocabulary — one course's nouns compiled into the engine, and a course
+  could not have a lookup of its own without editing it. It validates against
+  whatever the PACK declares now, and `KIND_LABEL` reads the pack's own word.
+  Proved by planting `kind: grape` in a beer chapter and watching it fail.
+
+**3. A bug the new check found on its way past.** `{pitch.show full}` compiled
+to `views: ["full"]` and the singular `view` argument the manifest declared was
+read by nothing — `author.py` folds a singular positional into a plural list
+argument. The cropping had been working through a path nobody had written down.
+`view` is gone; `views` is the argument and the frame's identity.
+
+**4. KNOWN FLAKE, not caused by this work: `check-engine.py`'s epoch guard.**
+It fails on the wine course with *"an await is outliving its epoch"* at a
+DIFFERENT timestamp on every run — 121.11 s, then 45.13 s, then 108.99 s. That
+non-determinism is the tell.
+
+Measured rather than assumed, because assuming is how a pre-existing failure
+gets attributed to whatever landed last: a git worktree was cut at the previous
+commit, served on its own port, and the bench run against it. **It fails there
+too, the same way.** Nothing on the map or region path has been modified.
+
+It is on a frozen course and CLAUDE.md is explicit that a check reporting one is
+not a reason to work on it. Worth a look on its own day: the assertion is about
+`engine/surfaces/map.js`'s region fetch, and a probe that reads a value too soon
+after the thing that produced it is a shape this repo has hit three times.
+
+---
+
 ## The football pack — planned, not written
 
 **0. The outline ships and nothing else does.**

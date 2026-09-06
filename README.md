@@ -83,6 +83,8 @@ is carried by `process`, and nothing under `engine/surfaces/` draws a sequence o
 
 **`docs/planning.md`** is this step written out — the eight questions as an interview, the
 three tests to run before a word is written, and both courses as worked examples.
+**`docs/dramaturgy.md`** is the level below it: how to make the thing worth watching,
+twelve rules of which four are measured by `tools/check-rhythm.py`.
 
 ### 2. Declare the subject — `content/<id>/pack.json`
 

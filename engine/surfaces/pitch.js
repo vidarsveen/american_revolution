@@ -102,10 +102,13 @@ const withInstant = (cue, instant) => ({ ...cue, instant: instant || cue.instant
 
 export function showPitch(cue, instant) {
   if (!pitch) return;
+  // `views` and nothing else. There was a singular `view` in the manifest that
+  // no chapter ever produced -- tools/author.py folds a singular positional into
+  // the plural list -- so this branch read an argument that was always
+  // undefined and the cropping happened entirely through setPanels below.
   if (cue.panels != null || cue.views) {
-    pitch.setPanels(cue.panels ?? 1, cue.views);
+    pitch.setPanels(cue.panels ?? Math.max(1, (cue.views || []).length), cue.views);
   }
-  if (cue.view) pitch.setView(cue.panel ?? 0, cue.view);
   if (cue.numbers !== undefined) pitch.setNumbers(cue.numbers);
   hostEl?.classList.add('is-on');
   // A seek must not run the fade-in: the stylesheet's transition is on the
@@ -132,6 +135,7 @@ export function lanesCue(cue, instant) { pitch?.lanes(withInstant(cue, instant))
 export function zoneHideCue(cue, instant) { pitch?.hideZone(withInstant(cue, instant)); }
 export function lineCue(cue, instant) { pitch?.line(withInstant(cue, instant)); }
 export function ballCue(cue, instant) { pitch?.ball(withInstant(cue, instant)); }
+export function focusCue(cue) { pitch?.focus(cue); }
 export function clearCue(cue) { pitch?.clear(cue); }
 
 /* ------------------------------------------------------------
@@ -165,6 +169,9 @@ export default {
 
     // A line across the pitch, with the metres between two of them.
     'pitch.line':      (c, i) => lineCue(c, i),
+
+    // Say where to look. Everything not named goes back to 30%.
+    'pitch.focus':     (c)    => focusCue(c),
 
     'pitch.ball':      (c, i) => ballCue(c, i),
     'pitch.clear':     (c)    => clearCue(c),

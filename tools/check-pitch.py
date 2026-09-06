@@ -6,7 +6,7 @@ check-pitch.py — drive dev/pitch-lab.html and fail on a broken pitch.
     python tools/check-pitch.py
     python tools/check-pitch.py --keep-open
 
-Six questions, all with right answers, all of them things that would be
+Seven questions, all with right answers, all of them things that would be
 invisible on screen until a chapter was written against them:
 
   1. does a picture reached by PLAYING match the one reached by SEEKING?
@@ -25,6 +25,9 @@ invisible on screen until a chapter was written against them:
   6. do two teams on one panel attack in opposite directions? It was wrong
      when the opposition was placed first with an explicit facing, and one
      whole team was then drawn outside a cropped band and silently absent.
+  7. does `pitch.focus` light exactly the players it names, and does it clear?
+     The surface's answer to docs/dramaturgy.md rule 6 -- a diagram that shows
+     everything equally shows nothing.
 
 Same arrangement as check-engine.py and check-sound.py: the bench is what you
 open when something is wrong, and this is what notices.
@@ -101,6 +104,13 @@ def report(r) -> bool:
     for p in face["problems"]:
         print(f"        {p}")
 
+    foc = r["focus"]
+    bad = bad or not foc["ok"]
+    print(f"\n7 · focus lights exactly what it names — {foc['checked']} cases")
+    print(f"   {'ok' if foc['ok'] else 'FAIL'}")
+    for p in foc["problems"]:
+        print(f"        {p}")
+
     return bad
 
 
@@ -143,7 +153,7 @@ def main(argv=None) -> int:
             for e in errors[:10]:
                 print(f"   {e}")
 
-        print("\nFAIL" if bad else "\nAll six hold.")
+        print("\nFAIL" if bad else "\nAll seven hold.")
         return 1 if bad else 0
 
 

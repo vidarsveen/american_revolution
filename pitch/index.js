@@ -157,6 +157,10 @@ export function createPitch(host, opts = {}) {
       lines: new Map(),
       arrows: new Map(),
       ball: null,
+      /* What the sentence is about, and therefore what everything else is
+         not. See focus(). Null means everything is lit equally, which is the
+         right default and the wrong thing to leave on for a whole chapter. */
+      focus: null,
     };
   }
 
@@ -303,6 +307,7 @@ export function createPitch(host, opts = {}) {
 
     drawGround(t);
     drawMarkings(t);
+    if (panel.focus?.area) drawFocusArea(t, panel.focus.area);
     for (const zone of panel.zones.values()) drawZone(t, zone);
     for (const line of panel.lines.values()) drawLine(t, line);
     drawCompactness(t, panel);
@@ -480,6 +485,19 @@ export function createPitch(host, opts = {}) {
     }
   }
 
+  /** The ground the sentence is about, lifted out of the rest. */
+  function drawFocusArea(t, area) {
+    const [x0, y0, x1, y1] = area;
+    const [ax, ay] = t.px(x0, y0);
+    const [bx, by] = t.px(x1, y1);
+    ctx.save();
+    ctx.globalAlpha = 0.16;
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(Math.min(ax, bx), Math.min(ay, by),
+      Math.abs(bx - ax), Math.abs(by - ay));
+    ctx.restore();
+  }
+
   /* ---------------- tactical lines ---------------- */
 
   function drawLine(t, spec) {
@@ -565,7 +583,9 @@ export function createPitch(host, opts = {}) {
 
     ctx.save();
     ctx.strokeStyle = colour;
-    ctx.lineWidth = isRun ? 1.8 : 2.2;
+    // Measured at 390 px wide: 2.2 px of ink across a 68 m pitch is a hair.
+    // An arrow is the sentence, not an annotation on it.
+    ctx.lineWidth = isRun ? 2.6 : 3.2;
     ctx.lineCap = 'round';
     if (isRun) ctx.setLineDash([6, 5]);
     ctx.beginPath();
@@ -589,12 +609,12 @@ export function createPitch(host, opts = {}) {
     const [x0, y0] = t.px(from.x, from.y);
     const [x1, y1] = t.px(to.x, to.y);
     const ang = Math.atan2(y1 - y0, x1 - x0);
-    const s = open ? 8 : 9;
+    const s = open ? 11 : 12;
     const spread = open ? 0.5 : 0.42;
     ctx.save();
     ctx.strokeStyle = colour;
     ctx.fillStyle = colour;
-    ctx.lineWidth = 1.8;
+    ctx.lineWidth = 2.6;
     ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(x1 - s * Math.cos(ang - spread), y1 - s * Math.sin(ang - spread));
@@ -614,6 +634,7 @@ export function createPitch(host, opts = {}) {
     for (const p of players) {
       const [x, y] = t.px(p.x, p.y);
       ctx.save();
+      if (!lit(panel, side, p)) ctx.globalAlpha = FOCUS_DIM;
       // A ring in the ground colour lifts a dot off a zone wash it is standing
       // in. Without it, a marker inside a shaded pressing trap loses its edge
       // and the two read as one blob.
@@ -632,11 +653,15 @@ export function createPitch(host, opts = {}) {
       ctx.restore();
 
       if (p.label) {
-        label(pick(p.label), x, y + r + 11, colour, 1, 'center');
+        label(pick(p.label), x, y + r + 11, colour,
+          lit(panel, side, p) ? 1 : FOCUS_DIM, 'center');
       } else if ((showNumbers || team.numbers) && p.num != null) {
         // p.num, never p.n. The index is how a cue points at a dot; the shirt
         // is what the viewer reads, and only some shapes have one.
+        ctx.save();
+        if (!lit(panel, side, p)) ctx.globalAlpha = FOCUS_DIM;
         numberIn(String(p.num), x, y, r);
+        ctx.restore();
       }
     }
     void panel;
@@ -938,12 +963,55 @@ export function createPitch(host, opts = {}) {
     schedule();
   }
 
+  /**
+   * Say where to look.
+   *
+   * The signalling principle, and the gap that made a whole chapter mute: the
+   * narration said "somebody behind is now free" over twenty-two identical
+   * dots and pointed at none of them. A diagram that shows everything equally
+   * is a diagram that shows nothing, and the viewer spends their attention
+   * finding the subject instead of understanding it.
+   *
+   * `who` is a list of roles or shirt numbers on `side`; `area` is a named
+   * area or four metres. Everything not named draws at `FOCUS_DIM`. Called
+   * with neither, it clears — and it must be cleared, because a focus left
+   * standing across a scene is a permanent dimming nobody asked for.
+   *
+   * State, not an effect: keyed on the panel, replayed identically after a
+   * seek, and `instant` has nothing to do because there is nothing to animate
+   * except the opacity the stylesheet already owns.
+   */
+  function focus(spec = {}) {
+    const panel = panelAt(spec.panel);
+    const who = spec.who == null ? []
+      : (Array.isArray(spec.who) ? spec.who : String(spec.who).split(/[,\s]+/));
+    const area = spec.area ? areaOf(spec.area) : null;
+    panel.focus = (who.length || area)
+      ? { side: spec.side ? String(spec.side) : null, who, area }
+      : null;
+    schedule();
+  }
+
+  /** How far back an unlit thing goes. Not zero: it is still the picture. */
+  const FOCUS_DIM = 0.3;
+
+  /** Is this player the one being talked about? */
+  function lit(panel, side, player) {
+    const f = panel.focus;
+    if (!f) return true;
+    if (f.side && f.side !== side) return false;
+    if (!f.who.length) return false;
+    return f.who.some((w) => String(w) === String(player.n)
+      || String(w).toLowerCase() === String(player.role || '').toLowerCase());
+  }
+
   function clear(spec = {}) {
     const panel = panelAt(spec.panel);
     panel.arrows.clear();
     panel.zones.clear();
     panel.lines.clear();
     panel.ball = null;
+    panel.focus = null;
     schedule();
   }
 
@@ -988,11 +1056,14 @@ export function createPitch(host, opts = {}) {
     const r1 = (v) => Math.round(v * 10) / 10;
     return panels.map((p) => ({
       view: p.view,
+      focus: p.focus ? { side: p.focus.side, who: p.focus.who.map(String),
+                         area: p.focus.area ? p.focus.area.map(r1) : null } : null,
       teams: [...p.teams].map(([side, s]) => ({
         side, shape: s.shape, line: s.line, depth: s.depth, width: s.width,
         facing: s.facing, compact: !!s.compact,
         players: (at(s.players, mixPlayers) || []).map((q) => ({
           n: q.n, num: q.num ?? null, role: q.role, x: r1(q.x), y: r1(q.y),
+          lit: lit(p, side, q),
           label: q.label ? pick(q.label) : undefined,
           mark: q.mark || undefined, dim: q.dim || undefined,
         })),
@@ -1017,7 +1088,7 @@ export function createPitch(host, opts = {}) {
   }
 
   return {
-    team, clearTeam, move, zone, lanes, hideZone, line, ball, clear, reset,
+    team, clearTeam, move, zone, lanes, hideZone, line, ball, focus, clear, reset,
     pass: (s) => arrow(s, 'pass'),
     run: (s) => arrow(s, 'run'),
     cross: (s) => arrow(s, 'cross'),

@@ -150,6 +150,17 @@ def main() -> int:
     if "cover" not in skip:
         ok &= run("check-cover", ["tools/check-cover.py"])
 
+    # And is it worth watching? check-cover asks whether the screen is EVER
+    # empty; this asks whether it ever CHANGES. A chapter went out that was
+    # green on every check in this list and was read as "so unengaging and
+    # boring ... it's really not there": one picture, held for 342 seconds,
+    # while the engine's own ceiling for any single image is 34. Nothing
+    # counted, and a rule nobody counts is a rule nobody follows.
+    # docs/dramaturgy.md carries the twelve rules; four of them measure.
+    if "rhythm" not in skip:
+        ok &= run("check-rhythm", ["tools/check-rhythm.py"])
+        ok &= run("check-rhythm --selftest", ["tools/check-rhythm-selftest.py"])
+
     if "script" not in skip:
         for ref in chapters(packs):
             ok &= run(f"check-script {ref}", ["tools/check-script.py", ref])

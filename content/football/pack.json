@@ -126,5 +126,29 @@
     "view": "full",
     "panels": 1,
     "numbers": false
+  },
+  "//media": [
+    "allowPhoto: true, og det er en beslutning som skal staa skrevet.",
+    "",
+    "Regelen gen-image.py haandhever er at et generert bilde som ser ut som et",
+    "opptak ER et opptak for den som ser det. Den er riktig, og italy-wine er",
+    "til na det eneste kurset som har slaatt den av: en generert vinETIKETT ville",
+    "vaert en forfalskning, mens en generert vinmark ikke paastaar noe om noen.",
+    "",
+    "Fotball er samme sak. Bildene i dette kurset er tomme stadioner, hansker,",
+    "kritt, en benk i regn - steder og ting, i naatid, som fotograferes hver dag.",
+    "Ingen av dem paastaar noe om en bestemt kamp, klubb eller spiller, og hver",
+    "eneste `omits` i image-prompts.json sier det rett ut.",
+    "",
+    "Det som IKKE er lov her, og som staar oeverst i image-prompts.json: ingen",
+    "ekte spillere, ingen ansikter, ingen klubbmerker. Et generert bilde av en",
+    "gjenkjennelig spiller ville vaert nettopp forfalskningen regelen finnes for.",
+    "badge staar paa, saa seeren faar vite at bildet er laget."
+  ],
+  "media": {
+    "generated": {
+      "allowPhoto": true,
+      "badge": true
+    }
   }
 }

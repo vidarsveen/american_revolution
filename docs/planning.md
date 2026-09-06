@@ -290,6 +290,14 @@ skipped:
 - a shipped chapter whose cues do not match what `shows:` promised
 - a chapter carried by something the framework has no surface for
 
+## The level below this one
+
+`docs/dramaturgy.md`. This file decides whether there is a course and what each chapter
+is for; that one decides whether anybody would watch it. It is not optional and it is
+not polish: a chapter can answer its question, teach its words, pass every gate in
+`check-all.py` and still be worthless, which is exactly what happened. Read it before
+writing, and run `tools/check-rhythm.py` after.
+
 ## What it cannot check
 
 Whether the course is worth taking. Whether chapter four earns its place. Whether the

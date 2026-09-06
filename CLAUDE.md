@@ -243,6 +243,8 @@ python tools/outline.py italy-wine          # does the course still say what it 
 python tools/author.py content/italy-wine/script.chapter-1-piemonte.md --check   # prose vs the JSON that ships
 python tools/watch-stretch.py beer/chapter-1-fire-ting s3   # PLAY a scene and watch it
 python tools/check-cover.py        # is the screen EVER empty? and does every scene say what it carries?
+python tools/check-rhythm.py       # and does it ever CHANGE? four gates from docs/dramaturgy.md
+python tools/check-rhythm-selftest.py   # and can each of those four still fail?
 python tools/check-cover.py --sheet   # the scene sheet: every picture, its seconds, the bed
 python tools/check-picture.py      # does any picture READ as a blank screen?
 python tools/check-pack.py         # does the app FIND everything a course declares?
@@ -920,6 +922,14 @@ hand. That single sentence settles most of the arguments about how to write:
 paragraphs could swap places without loss, it is a list and it is wrong. A glossary read
 aloud is still a glossary at any length, and the tappable glossary already exists for the
 reader who wants to look something up.
+
+**And correct is not the same as worth watching.** `docs/dramaturgy.md` is the level
+this repo was missing: twelve rules for making a lesson somebody would sit through,
+four of which `tools/check-rhythm.py` measures. A chapter shipped that was green on
+every check in this file and was read as *"so unengaging and boring ... it's really not
+there"* — one picture held for 342 seconds against an engine ceiling of 34, no number
+ever on screen, no music to drop. The `course-craft` skill loads the checklist; read it
+before writing a sentence of any course.
 
 **A course may refine this in its outline's `# for whom`, and that line then wins.**
 Register is a property of the subject and its audience, not of the house — the same leak
