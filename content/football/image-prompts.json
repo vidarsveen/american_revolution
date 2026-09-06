@@ -217,5 +217,102 @@
     "claims": "A worn patch in the middle of a pitch where the grass has gone.",
     "omits": "An ordinary pitch, not a named ground."
   },
-  "//kap2": "Kapittel to bruker los-ball, sprint-gress, gps-vest, flasker-bibs, regn-lys, midtsirkel, tunnel og slitt-gress, pluss analyserom som ble laget til kapittel en og ikke ble brukt der. Samme regel som foer: ingen ansikter, ingen klubbmerker, ingen gjenkjennelige spillere."
+  "//kap2": "Kapittel to bruker los-ball, sprint-gress, gps-vest, flasker-bibs, regn-lys, midtsirkel, tunnel og slitt-gress, pluss analyserom som ble laget til kapittel en og ikke ble brukt der. Samme regel som foer: ingen ansikter, ingen klubbmerker, ingen gjenkjennelige spillere.",
+  "rutenett-kjegler": {
+    "prompt": "a regular grid of small orange training cones laid out across mown grass on an empty training pitch, seen from a low angle so the rows recede into shallow focus, early morning light, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Rutenettet",
+      "en": "The grid"
+    },
+    "claims": "Training cones laid out in a regular grid on an empty pitch.",
+    "omits": "An ordinary training pitch, not a named ground, and nobody is present."
+  },
+  "hjornet-av-boksen": {
+    "prompt": "the corner of a penalty area photographed from ground level at night under floodlights, two crisp white painted lines meeting at a right angle on wet grass, the goal out of focus in the distance, nobody in frame",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Hjørnet av feltet",
+      "en": "The corner of the box"
+    },
+    "claims": "The corner where two lines of the penalty area meet, at night.",
+    "omits": "An ordinary pitch, not a named ground, and nobody is in the frame."
+  },
+  "notatbok-rutenett": {
+    "prompt": "an open notebook on a desk with a football pitch drawn in pencil across the page, divided into a grid of vertical corridors and horizontal bands, small circles marked in some of the squares, a pencil lying across it, no writing or words anywhere, warm lamp light",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Notatboka",
+      "en": "The notebook"
+    },
+    "claims": "A pitch drawn by hand in a notebook, divided into a grid.",
+    "omits": "No words are written and it is not any real coach's notes; it stands for the idea of dividing the pitch."
+  },
+  "mal-vinkel": {
+    "prompt": "a football goal photographed from an oblique angle out near the corner of the penalty area, the near post close and the far post distant so the goal is foreshortened into a narrow slot, floodlit night, empty net, nobody in frame",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Vinkelen",
+      "en": "The angle"
+    },
+    "claims": "An empty goal at night seen from an angle out towards the corner of the penalty area.",
+    "omits": "An empty goal on an ordinary pitch; nobody is in the frame."
+  },
+  "traeningsbane-morgen": {
+    "prompt": "an empty training pitch at dawn in low mist, the grass mown into wide alternating stripes running away from the camera, goalposts small in the distance, nobody present, no buildings with signage",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Treningsfeltet",
+      "en": "The training pitch"
+    },
+    "claims": "An empty training pitch at dawn with the grass mown into stripes.",
+    "omits": "Not a named ground; nobody is present and no signage appears."
+  },
+  "linjer-krysser": {
+    "prompt": "two freshly painted white lines crossing at a right angle on close cropped grass, photographed from directly above and very close, dew on the blades, nothing else in frame",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Der linjene møtes",
+      "en": "Where the lines meet"
+    },
+    "claims": "Two painted lines crossing on grass, seen from above.",
+    "omits": "An ordinary marking on an ordinary pitch."
+  },
+  "skygger-lange": {
+    "prompt": "long shadows of floodlight pylons falling diagonally across an empty green pitch in very low evening sun, the shadows stretching unevenly so the two halves of the pitch look different, nobody present",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Skjeve skygger",
+      "en": "Uneven shadows"
+    },
+    "claims": "Long shadows falling unevenly across an empty pitch in low sun.",
+    "omits": "Not a named ground; nobody is present."
+  },
+  "tribune-hoyt": {
+    "prompt": "looking almost straight down at a floodlit football pitch from the very top of a steep empty stand at night, the whole pitch visible as a green rectangle with its markings, a few tiny distant figures, nobody recognisable, hoardings blank",
+    "style": "documentary photograph, available light, muted colour, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": {
+      "no": "Ovenfra",
+      "en": "From above"
+    },
+    "claims": "A floodlit pitch seen from directly above the top of a stand.",
+    "omits": "Not a named ground or match; nobody is identifiable at this distance and no badge or sign appears."
+  },
+  "//kap3": "Kapittel tre bruker rutenett-kjegler, hjornet-av-boksen, notatbok-rutenett, mal-vinkel, traeningsbane-morgen, linjer-krysser, skygger-lange og tribune-hoyt. Ingen ansikter, ingen klubbmerker, ingen gjenkjennelige spillere."
 }

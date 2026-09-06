@@ -279,5 +279,117 @@
       "no": "Passes per defensive action. Man teller motstanderens pasninger i deres egne to tredjedeler, og deler på antall taklinger, avskjæringer, frispark og pressforsøk laget gjør der.\n\nEt lag på seks lar motstanderen slå seks pasninger før det gjør noe. Et lag på seksten står og ser på. Tallet er det nærmeste faget kommer et mål på hvor mye et lag presser, og det står i sendingsgrafikken.\n\nDet har en kjent svakhet: det teller forsøk, ikke kvalitet. Et lag som løper mye og vinner lite får et flatterende tall, og et lag som styrer motstanderen dit den vil ha den kan se passivt ut mens det gjør nøyaktig det det skal.",
       "en": "Passes per defensive action. You count the opposition's passes in their own two thirds and divide by the tackles, interceptions, fouls and pressing actions the team makes there.\n\nA side on six lets the opposition play six passes before doing something about it. A side on sixteen is watching. The number is the closest the subject comes to a measure of how much a team presses, and it appears in the broadcast graphics.\n\nIt has a known weakness: it counts attempts rather than quality. A team that runs a lot and wins little gets a flattering figure, and a team steering the opposition exactly where it wants them can look passive while doing precisely its job."
     }
+  },
+  "posisjonsspill": {
+    "term": {
+      "no": "Posisjonsspill",
+      "en": "Positional play"
+    },
+    "short": {
+      "no": "Juego de posición: banen deles i ruter, og regler bestemmer hvem som får stå hvor.",
+      "en": "Juego de posición: the pitch is divided into squares, and rules decide who may stand where."
+    },
+    "body": {
+      "no": "Fem loddrette korridorer og noen vannrette bånd. Aldri mer enn tre spillere i én korridor, aldri mer enn to i samme bånd, aldri to i samme rute.\n\nDet ser byråkratisk ut og er det motsatte. Reglene finnes for å garantere at det alltid eksisterer en åpen pasningsvinkel: tre spillere på rekke kan stenges av én motstander, tre i trekant kan ikke. Hele regelverket er den ene setningen gjentatt over hele banen samtidig.\n\nKom fra Amsterdam til Barcelona med Cruyff og ble et system under Guardiola. Prisen er forutsigbarhet — motstanderen vet hvilke ruter som blir fylt, fordi det er de samme hver gang.",
+      "en": "Five vertical corridors and a few horizontal bands. Never more than three players in one corridor, never more than two in the same band, never two in the same square.\n\nIt looks bureaucratic and is the opposite. The rules exist to guarantee that an open passing angle always exists: three players in a line can be shut off by one opponent, three in a triangle cannot. The whole rulebook is that one sentence repeated across the pitch at once.\n\nIt came from Amsterdam to Barcelona with Cruyff and became a system under Guardiola. The price is predictability — the opposition know which squares will be filled, because they are the same ones every time."
+    }
+  },
+  "halvrom": {
+    "term": {
+      "no": "Halvrom",
+      "en": "Half-space"
+    },
+    "short": {
+      "no": "Korridoren mellom kanten og midten. Den eneste med både vinkel og plass.",
+      "en": "The corridor between the wing and the middle. The only one with both angle and space."
+    },
+    "body": {
+      "no": "Ute på kanten er skuddvinkelen en sprekk, og keeperen dekker den ved å stå i nærstolpen. Midt foran mål er vinkelen perfekt og plassen borte, for det er der alle forsvarerne står. Halvrommet er det eneste stedet som har begge deler.\n\nGrensene er ikke femtedeler av bredden: de settes av markeringene som allerede ligger der. Halvrommet er stripa mellom straffefeltets kant og sekstenmeterens forlengelse, og en ball spilt inn der havner i hjørnet av feltet.\n\nFor den som forsvarer er det verre enn som så. En ball inn i halvrommet tvinger midtstopperen til å velge mellom to ting han vil ha samtidig: gå ut og ta mannen, eller bli stående i linja. Går han ut, åpner han rommet bak. Blir han stående, får mottakeren snu.",
+      "en": "Out on the flank the shooting angle is a slot, and the goalkeeper covers it at the near post. Straight in front of goal the angle is perfect and the space is gone, because that is where all the defenders are. The half-space is the only place with both.\n\nIts edges are not fifths of the width: they are set by the markings already on the grass. The half-space is the strip between the edge of the penalty area and the six-yard box extended, and a ball played into it arrives at the corner of the box.\n\nFor the defending side it is worse than that. A ball into the half-space forces the centre-back to choose between two things he wants at once: step out and take the man, or hold his line. Step out and he opens the space behind. Hold, and the receiver turns."
+    }
+  },
+  "femkanalsbanen": {
+    "term": {
+      "no": "Femkanalsbanen",
+      "en": "The five-lane pitch"
+    },
+    "short": {
+      "no": "Banen lest som fem loddrette korridorer: kant, halvrom, midt, halvrom, kant.",
+      "en": "The pitch read as five vertical corridors: wing, half-space, centre, half-space, wing."
+    },
+    "body": {
+      "no": "Korridorene er ikke femtedeler. De er satt av markeringene: kantene ligger utenfor straffefeltet, halvrommene mellom straffefeltets kant og målfeltets forlengelse, midten er like bred som målfeltet.\n\nDet er derfor inndelingen er nyttig og ikke bare en tegnekonvensjon. Grensene faller sammen med steder som allerede betyr noe på banen.\n\nRegelen som følger med er enkel: laget skal ha spillere i minst fire av de fem korridorene til enhver tid, og aldri mer enn tre i én.",
+      "en": "The corridors are not fifths. They are set by the markings: the wings lie outside the penalty area, the half-spaces between the edge of the box and the goal area extended, and the centre is as wide as the goal area.\n\nThat is why the division is useful rather than a drawing convention. Its boundaries coincide with places that already mean something on the pitch.\n\nThe rule that comes with it is simple: the team should occupy at least four of the five corridors at any moment, and never more than three in one."
+    }
+  },
+  "isolasjon": {
+    "term": {
+      "no": "Isolasjon",
+      "en": "Isolation"
+    },
+    "short": {
+      "no": "Å samle folk på én side for å la én spiller stå alene på den andre.",
+      "en": "Crowding one flank so that one player is left alone on the other."
+    },
+    "body": {
+      "no": "Overtall og isolasjon er samme manøver sett fra hver sin ende. Laget samler fire mann i én korridor, motstanderen forskyver seg dit, og den motsatte kanten tømmes.\n\nDa kommer sidebyttet, og der står det én mot én. Det er den eneste situasjonen i etablert angrep der en teknisk spiller får improvisere fritt.\n\nHele oppstillingen har jobbet i tjue sekunder for å lage den ene situasjonen, og det er også svakheten: den er dyr, og den kan ødelegges av at én spiller står fem meter feil.",
+      "en": "An overload and an isolation are the same manoeuvre seen from either end. The team gathers four men in one corridor, the opposition shift across, and the far flank empties.\n\nThen comes the switch, and over there it is one against one. It is the only situation in settled attack where a technical player is allowed to improvise freely.\n\nThe whole arrangement has worked for twenty seconds to make that one situation, which is also its weakness: it is expensive, and one player standing five metres out of place ruins it."
+    }
+  },
+  "spillvending": {
+    "term": {
+      "no": "Spillvending",
+      "en": "Switch of play"
+    },
+    "short": {
+      "no": "En lang, rask ball fra den ene siden av banen til den andre.",
+      "en": "A long, fast ball from one side of the pitch to the other."
+    },
+    "body": {
+      "no": "Farlig fordi den flytter ballen dit motstanderen nettopp har hentet folk fra. Et lag som forskyver seg mot ballen kan ikke være tett på begge sider samtidig, og sidebyttet straffer nøyaktig den avveiningen.\n\nDen må gå fort. En vending som tar fire pasninger gir forsvaret tid til å flytte seg tilbake, og da har den kostet mer enn den ga.\n\nDerfor er den lange diagonalen en av de få lange ballene et posisjonelt lag slår med vilje.",
+      "en": "Dangerous because it moves the ball to where the opposition have just taken people from. A team shifting towards the ball cannot be compact on both sides at once, and the switch punishes exactly that trade.\n\nIt has to be quick. A switch that takes four passes gives the defence time to slide back, and then it has cost more than it gave.\n\nWhich is why the long diagonal is one of the few long balls a positional side plays on purpose."
+    }
+  },
+  "tredjemannsløp": {
+    "term": {
+      "no": "Tredjemannsløp",
+      "en": "Third-man run"
+    },
+    "short": {
+      "no": "A spiller til B, men den egentlige mottakeren er C, som løp mens alle så på ballen.",
+      "en": "A passes to B, but the real receiver is C, who ran while everybody watched the ball."
+    },
+    "body": {
+      "no": "B står med ryggen mot mål og en forsvarer i ryggen, og alle ser på ham. Det er hele poenget. Mens de gjør det, har C startet et løp han begynte før pasningen ble slått, og B legger den videre med første berøring.\n\nIngen av de tre pasningene er teknisk vanskelig. Det vanskelige er at C måtte løpe før han visste at det ville virke.\n\nDerfor er dette bevegelsen som skiller lag som har trent sammen lenge fra lag som ikke har det, og derfor er den nesten umulig å improvisere fram.",
+      "en": "B has his back to goal with a defender behind him, and everybody is watching him. That is the entire point. While they do, C has started a run he began before the pass was played, and B lays it off first time.\n\nNone of the three passes is technically hard. What is hard is that C had to run before he knew it would work.\n\nThat is why this is the movement that separates sides who have trained together a long time from those who have not, and why it is nearly impossible to improvise."
+    }
+  },
+  "invertert back": {
+    "term": {
+      "no": "Invertert back",
+      "en": "Inverted full-back"
+    },
+    "short": {
+      "no": "En back som går innover i midtbanen med ballen i stedet for langs krittet.",
+      "en": "A full-back who steps inside into midfield with the ball, instead of running the line."
+    },
+    "body": {
+      "no": "Han gjør to ting samtidig, og begge er regelverket. Han fyller ruta ved siden av seksseren, så korridoren har tre spillere og ikke to. Og han står allerede der ballen kommer til å bli mistet, klar for gjenpresset.\n\nDet er teoriens mest synlige konsekvens: en spiller som etter all vanlig fotballogikk står på feil sted, og som står der fordi et regelverk sier at ruta skal fylles.\n\nRollen finnes bare i lag som har ballen mye. Et lag som forsvarer seg dypt har ingen bruk for den, og backen løper langs linja som før.",
+      "en": "He does two things at once, and both of them are the rulebook. He fills the square beside the holding midfielder, so the corridor has three players in it rather than two. And he is already standing where the ball is going to be lost, ready for the counter-press.\n\nIt is the theory's most visible consequence: a player who by every ordinary football instinct is in the wrong place, and who is there because a rule says the square must be filled.\n\nThe role only exists in sides that have the ball a lot. A team defending deep has no use for it, and the full-back runs the line as before."
+    }
+  },
+  "asymmetrisk struktur": {
+    "term": {
+      "no": "Asymmetrisk struktur",
+      "en": "Asymmetric structure"
+    },
+    "short": {
+      "no": "Når laget med vilje ikke står speilvendt: den ene siden bygget for å holde ballen, den andre for å angripe.",
+      "en": "When a team deliberately is not mirrored: one side built to keep the ball, the other to attack with it."
+    },
+    "body": {
+      "no": "Den ene backen går innover og blir en fjerde midtbanespiller. Den andre går opp langs linja og blir en femte angriper. Laget er ikke likt på de to sidene, og det er ikke slurv.\n\nGrunnen er at de to sidene har hver sin oppgave. Den ene skal holde ballen og være klar for balltap; den andre skal skape overtall og komme til innlegg.\n\nDet gjør formasjonstallet enda mindre nyttig enn det allerede var: et lag kan stå 4-3-3 på arket og være 3-2-5 med ballen og 4-4-2 uten den.",
+      "en": "One full-back steps inside and becomes a fourth midfielder. The other goes up the line and becomes a fifth attacker. The team is not the same on its two sides, and that is not sloppiness.\n\nThe reason is that the two sides have different jobs. One is to keep the ball and be ready for losing it; the other is to make an overload and get to a cross.\n\nIt makes the formation number even less useful than it already was: a side can be a 4-3-3 on paper, a 3-2-5 with the ball and a 4-4-2 without it."
+    }
   }
 }

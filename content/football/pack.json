@@ -116,6 +116,25 @@
         "no",
         "en"
       ]
+    },
+    {
+      "id": "chapter-3-rutenettet",
+      "title": {
+        "no": "Rutenettet",
+        "en": "The grid"
+      },
+      "subtitle": {
+        "no": "Halvrommet, og hvorfor geometrien gir det verdien",
+        "en": "The half-space, and why the geometry is what makes it valuable"
+      },
+      "blurb": {
+        "no": "Posisjonsspill deler banen i fem vertikale korridorer og bestemmer hvem som får stå hvor. Det høres byråkratisk ut og er det motsatte: reglene finnes for å garantere at det alltid eksisterer en åpen pasningsvinkel. Og korridoren mellom kant og sentrum er verdt mer enn de fire andre, av grunner som er ren geometri.",
+        "en": "Positional play divides the pitch into five vertical corridors and decides who may stand where. It sounds bureaucratic and is the opposite: the rules exist to guarantee an open passing angle always exists. And the corridor between wing and centre is worth more than the other four, for reasons that are pure geometry."
+      },
+      "langs": [
+        "no",
+        "en"
+      ]
     }
   ],
   "surfaces": [

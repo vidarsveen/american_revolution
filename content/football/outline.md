@@ -229,7 +229,6 @@ title: Rutenettet | The grid
 subtitle: Halvrommet, og hvorfor geometrien gir det verdien | The half-space, and why the geometry is what makes it valuable
 blurb: Posisjonsspill deler banen i fem vertikale korridorer og bestemmer hvem som får stå hvor. Det høres byråkratisk ut og er det motsatte: reglene finnes for å garantere at det alltid eksisterer en åpen pasningsvinkel. Og korridoren mellom kant og sentrum er verdt mer enn de fire andre, av grunner som er ren geometri. | Positional play divides the pitch into five vertical corridors and decides who may stand where. It sounds bureaucratic and is the opposite: the rules exist to guarantee an open passing angle always exists. And the corridor between wing and centre is worth more than the other four, for reasons that are pure geometry.
 langs: no, en
-planned: true
 for: Kursets teoritunge kapittel, og det tåler å være det: posisjonsspill er en
      ferdig utviklet romteori med regler, og den kan gjøres presist rede for på
      ti minutter til noen som er vant til abstraksjon. Beviset er halvrommet —
@@ -250,7 +249,7 @@ for: Kursets teoritunge kapittel, og det tåler å være det: posisjonsspill er 
      chapter four attacks it.
 teaches: posisjonsspill, halvrom, femkanalsbanen, mellomrom, bakrom, spillvending, isolasjon, tredjemannsløp, overlapp, underlapp, invertert back, asymmetrisk struktur
 assumes: rom, overtall, linje, ledd, press, formasjon, kompakthet, frispilling bakfra
-shows: pitch
+shows: pitch, pictures
 
 ## chapter-4-relasjon
 title: Posisjon eller relasjon | Position or relation
