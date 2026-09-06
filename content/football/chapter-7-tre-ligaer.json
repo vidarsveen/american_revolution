@@ -1,0 +1,1300 @@
+{
+ "id": "chapter-7-tre-ligaer",
+ "pack": "football",
+ "title": {
+  "no": "Tre ligaer, tre svar",
+  "en": "Three leagues, three answers"
+ },
+ "subtitle": {
+  "no": "England, Spania og Italia på samme bane",
+  "en": "England, Spain and Italy on the same pitch"
+ },
+ "ending": {
+  "say": {
+   "no": "En stil er ikke en folkekarakter. Den er svaret på hva ligaen betaler for.",
+   "en": "A style is not a national character. It is the answer to what the league pays for."
+  },
+  "figure": {
+   "value": "3",
+   "label": {
+    "no": "svar på det samme problemet",
+    "en": "answers to the same problem"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "s0",
+   "title": {
+    "no": "Tre skjermer",
+    "en": "Three screens"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s0.b1",
+     "say": {
+      "no": "Tre kamper går samtidig på tre skjermer: en engelsk, en spansk og en italiensk.",
+      "en": "Three matches are running at once on three screens: one English, one Spanish, one Italian."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "tre-skjermer",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.22,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b2",
+     "say": {
+      "no": "Lyden er av, og logoene er borte. Du skal likevel klare å si hvilken som er hvilken.",
+      "en": "The sound is off and the logos are gone. You should still be able to say which is which."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b3",
+     "say": {
+      "no": "Alle tre lagene står med det samme problemet.",
+      "en": "All three sides are standing in front of the same problem."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-2-3-1",
+       "line": 18,
+       "depth": 30,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 52,
+       "depth": 32
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b4",
+     "say": {
+      "no": "Motstanderen har ballen dypt på egen banehalvdel, og du vil ha den tilbake.",
+      "en": "The opposition have the ball deep in their own half, and you want it back."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,60,68,105]"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s0.b5",
+     "say": {
+      "no": "Det finnes tre måter å svare på, og de tre ligaene har valgt hver sin.",
+      "en": "There are three ways to answer, and the three leagues have taken one each."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s0.b6",
+     "say": {
+      "no": "Og fella skal sies med en gang: dette handler ikke om hva slags folk som bor i de tre landene.",
+      "en": "And the trap should be named straight away: this is not about what sort of people live in the three countries."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": {
+    "no": "Det dommeren lar gå",
+    "en": "What the referee lets go"
+   },
+   "bed": "bedUrgent",
+   "beats": [
+    {
+     "id": "s1.b1",
+     "say": {
+      "no": "Begynn med England, og begynn et sted ingen begynner: hos dommeren.",
+      "en": "Start with England, and start somewhere nobody starts: with the referee."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedUrgent"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "dommer-floyte",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b2",
+     "say": {
+      "no": "Engelske dommere får beskjed om å la spillet flyte. En skulder, en dytt, en hard men ren takling — vinket videre.",
+      "en": "English referees are told to let the game run. A shoulder, a nudge, a hard but fair tackle — waved on."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b3",
+     "say": {
+      "no": "Konsekvensen er målbar. Ballen er i spill i femtiseks og et halvt minutt i snitt, høyest av de store ligaene.",
+      "en": "The consequence is measurable. The ball is in play for fifty-six and a half minutes on average, the highest of the big leagues."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-2-3-1",
+       "line": 16,
+       "depth": 28,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 58,
+       "depth": 26,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "56:33",
+       "label": {
+        "no": "minutter med ballen i spill",
+        "en": "minutes with the ball in play"
+       },
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b4",
+     "say": {
+      "no": "Et press koster arbeid, og arbeid betaler seg bare hvis kampen fortsetter å gå.",
+      "en": "A press costs work, and work only pays if the match keeps running."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b5",
+     "say": {
+      "no": "Så England presser høyt, og gjør det oftere enn noen andre.",
+      "en": "So England presses high, and does it more often than anybody else."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "their-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,58,68,105]"
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[34,58]",
+       "to": "[34,84]",
+       "side": "team",
+       "label": {
+        "no": "Presset",
+        "en": "The press"
+       },
+       "tone": "gold",
+       "over": 1.0
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b6",
+     "say": {
+      "no": "Femten komma ni ganger i kampen vinnes ballen høyt oppe. Spania fjorten komma to. Italia tretten komma fem.",
+      "en": "Fifteen point nine times a match the ball is won high up. Spain fourteen point two. Italy thirteen point five."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "15,9",
+       "label": {
+        "no": "høye balltap per kamp",
+        "en": "high turnovers a game"
+       },
+       "side": "team"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b7",
+     "say": {
+      "no": "Og kampene ender med to komma ni tre mål, flest av de tre.",
+      "en": "And the matches end with two point nine three goals, the most of the three."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "2,93",
+       "label": {
+        "no": "mål per kamp",
+        "en": "goals a game"
+       },
+       "side": "ball"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s1.b8",
+     "say": {
+      "no": "Det er ikke temperament. Det er en tilpasning til en fløyte som ligger stille.",
+      "en": "That is not temperament. It is an adaptation to a whistle that stays quiet."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "spillestil"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": {
+    "no": "Kampen som stopper",
+    "en": "The match that stops"
+   },
+   "bed": "bedPatient",
+   "beats": [
+    {
+     "id": "s2.b1",
+     "say": {
+      "no": "Spania er det motsatte, og det begynner samme sted.",
+      "en": "Spain is the opposite, and it begins in the same place."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedPatient"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "sol-tribune",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.08,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b2",
+     "say": {
+      "no": "Der blir det blåst. Flere frispark enn i England, flere gule kort, og langt flere røde.",
+      "en": "There the whistle goes. More free kicks than in England, more yellow cards, and far more red ones."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b3",
+     "say": {
+      "no": "Regn på det som et lag. Å miste ballen er dyrt, for du får den ikke lett tilbake med kroppen.",
+      "en": "Do the arithmetic as a team. Losing the ball is expensive, because you cannot easily win it back with your body."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 20,
+       "depth": 34
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 54,
+       "depth": 24,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "spillestil",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b4",
+     "say": {
+      "no": "Å stoppe motstanderen med et frispark er billig, for du blir sjelden straffet hardere enn med frisparket.",
+      "en": "Stopping the opposition with a free kick is cheap, because you are rarely punished more heavily than the free kick itself."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b5",
+     "say": {
+      "no": "Så du beholder den. Du spiller deg ut bakfra selv når det ser ubehagelig ut.",
+      "en": "So you keep it. You play out from the back even when it looks uncomfortable."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,0,68,44]"
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "[20,18]",
+       "to": "[34,30]",
+       "side": "team",
+       "over": 0.7
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "[34,30]",
+       "to": "[50,20]",
+       "side": "team",
+       "over": 0.7
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b6",
+     "say": {
+      "no": "Og når du likevel mister den, river du ned angrepet før det rekker å bli et angrep.",
+      "en": "And when you do lose it, you pull the attack down before it has time to become an attack."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[40,64]",
+       "to": "[34,52]",
+       "side": "opponent",
+       "label": {
+        "no": "Frisparket",
+        "en": "The foul"
+       },
+       "tone": "red",
+       "over": 0.8
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "taktisk frispark"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s2.b7",
+     "say": {
+      "no": "Det har et navn, og det er ikke et skjellsord: et taktisk frispark er et frispark du gir bort med vilje.",
+      "en": "It has a name, and it is not an insult: a tactical foul is a free kick you give away on purpose."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "taktisk frispark",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s2.b8",
+     "say": {
+      "no": "Prisen er en kamp som stopper hele tiden, og to komma fire ni mål — færrest av de tre.",
+      "en": "The price is a match that keeps stopping, and two point four nine goals — the fewest of the three."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "2,49",
+       "label": {
+        "no": "mål per kamp",
+        "en": "goals a game"
+       },
+       "side": "ball"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": {
+    "no": "Å gi den bort med vilje",
+    "en": "Giving it away on purpose"
+   },
+   "bed": "bedTension",
+   "beats": [
+    {
+     "id": "s3.b1",
+     "say": {
+      "no": "Italia svarer med noe som ser ut som passivitet og ikke er det.",
+      "en": "Italy answers with something that looks like passivity and is not."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedTension"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "benk-natt-to",
+       "motion": "in",
+       "over": 22,
+       "dim": 0.2,
+       "push": 0.1,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b2",
+     "say": {
+      "no": "Færrest høye balltap av de tre. Ikke fordi de ikke klarer det, men fordi de ikke prøver.",
+      "en": "The fewest high turnovers of the three. Not because they cannot, but because they are not trying to."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b3",
+     "say": {
+      "no": "Spørsmålet er ikke om du skal vinne ballen. Det er hvor.",
+      "en": "The question is not whether you win the ball. It is where."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "5-3-2",
+       "line": 30,
+       "depth": 24,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-3-3",
+       "line": 46,
+       "depth": 32,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "13,5",
+       "label": {
+        "no": "høye balltap per kamp",
+        "en": "high turnovers a game"
+       },
+       "side": "team"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b4",
+     "say": {
+      "no": "Vinner du den høyt, står tre av deres bak deg. Vinner du den her, står seks av dem foran deg.",
+      "en": "Win it high and three of theirs are behind you. Win it here and six of them are in front of you."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,26,68,58]"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b5",
+     "say": {
+      "no": "Så du inviterer dem fram, og lar dem forplikte folk.",
+      "en": "So you invite them forward, and let them commit people."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "middle"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[34,62]",
+       "to": "[34,38]",
+       "side": "opponent",
+       "tone": "red",
+       "over": 1.2
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b6",
+     "say": {
+      "no": "Og så går ballen framover i to pasninger i stedet for ti.",
+      "en": "And then the ball goes forward in two passes instead of ten."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "[34,34]",
+       "to": "[30,62]",
+       "side": "team",
+       "label": {
+        "no": "Første pasning",
+        "en": "The first pass"
+       },
+       "tone": "gold",
+       "over": 0.6
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "[30,62]",
+       "to": "[42,86]",
+       "side": "team",
+       "over": 0.6
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "direkte spill"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s3.b7",
+     "say": {
+      "no": "Det heter direkte spill, og det er en verdivurdering: fire sekunder med rot er verdt mer enn tretti sekunder med kontroll.",
+      "en": "It is called direct play, and it is a judgement about value: four seconds of mess is worth more than thirty seconds of control."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "direkte spill",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s3.b8",
+     "say": {
+      "no": "Resultatet er to komma fem seks mål. Nesten Spanias tall, fra motsatt kant.",
+      "en": "The result is two point five six goals. Nearly Spain's number, arrived at from the opposite side."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "stat.show",
+       "value": "2,56",
+       "label": {
+        "no": "mål per kamp",
+        "en": "goals a game"
+       },
+       "side": "ball"
+      }
+     ],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": {
+    "no": "Tallene ved siden av hverandre",
+    "en": "The numbers side by side"
+   },
+   "bed": "none",
+   "beats": [
+    {
+     "id": "s4.b1",
+     "say": {
+      "no": "Sett de tre tallene ved siden av hverandre, så sier de noe ingen av dem sier alene.",
+      "en": "Put the three numbers side by side and they say something none of them says alone."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 15.9,
+         "value": "15,9",
+         "side": "team",
+         "label": {
+          "no": "England",
+          "en": "England"
+         }
+        },
+        {
+         "n": 14.2,
+         "value": "14,2",
+         "side": "ball",
+         "label": {
+          "no": "Spania",
+          "en": "Spain"
+         }
+        },
+        {
+         "n": 13.5,
+         "value": "13,5",
+         "side": "opponent",
+         "label": {
+          "no": "Italia",
+          "en": "Italy"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Høye balltap per kamp, snitt over fire sesonger.",
+        "en": "High turnovers a game, averaged over four seasons."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b2",
+     "say": {
+      "no": "England vinner ballen høyt oftest, Italia sjeldnest, og Spania ligger imellom.",
+      "en": "England wins the ball high most often, Italy least often, and Spain sits between them."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b3",
+     "say": {
+      "no": "Men målene følger ikke etter i samme rekkefølge.",
+      "en": "But the goals do not follow in the same order."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": "start",
+       "do": "compare.show",
+       "parts": [
+        {
+         "n": 2.93,
+         "value": "2,93",
+         "side": "team",
+         "label": {
+          "no": "England",
+          "en": "England"
+         }
+        },
+        {
+         "n": 2.49,
+         "value": "2,49",
+         "side": "ball",
+         "label": {
+          "no": "Spania",
+          "en": "Spain"
+         }
+        },
+        {
+         "n": 2.56,
+         "value": "2,56",
+         "side": "opponent",
+         "label": {
+          "no": "Italia",
+          "en": "Italy"
+         }
+        }
+       ],
+       "mode": "bar",
+       "note": {
+        "no": "Mål per kamp, sesongen 2024-25.",
+        "en": "Goals a game, the 2024-25 season."
+       }
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b4",
+     "say": {
+      "no": "Spania presser mer enn Italia og scorer mindre. Rekkefølgen brytes, og det er det interessante.",
+      "en": "Spain presses more than Italy and scores less. The order breaks, and that is the interesting part."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s4.b5",
+     "say": {
+      "no": "Et tredje tall forklarer hvorfor: hvor på banen ballen faktisk er.",
+      "en": "A third number explains why: where on the pitch the ball actually is."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "compare.clear"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 52,
+       "depth": 32
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "5-3-2",
+       "line": 24,
+       "depth": 22,
+       "facing": "down",
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "term.mark",
+       "kind": "term",
+       "id": "banetilt"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b6",
+     "say": {
+      "no": "Banetilt måler hvor stor andel av berøringene i siste tredel som er dine.",
+      "en": "Field tilt measures what share of the touches in the final third are yours."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "fact.show",
+       "kind": "term",
+       "id": "banetilt",
+       "until": 8
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s4.b7",
+     "say": {
+      "no": "Et lag kan ha ballen mye og ha den på feil sted, og da er besittelsen bare arbeid.",
+      "en": "A side can have a lot of the ball and have it in the wrong place, and then possession is just work."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": {
+    "no": "Fella",
+    "en": "The trap"
+   },
+   "bed": "bedStill",
+   "beats": [
+    {
+     "id": "s5.b1",
+     "say": {
+      "no": "Nå kommer setningen kapitlet er skrevet for.",
+      "en": "Now comes the sentence the chapter was written for."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedStill"
+      },
+      {
+       "on": "start",
+       "do": "plate.show",
+       "id": "koffert-gate",
+       "motion": "left",
+       "over": 20,
+       "dim": 0.2,
+       "push": 0.12,
+       "into": 1.4
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b2",
+     "say": {
+      "no": "De tre svarene er ikke tre folkeslag. De er tre sett med belønninger.",
+      "en": "The three answers are not three peoples. They are three sets of rewards."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b3",
+     "say": {
+      "no": "En dommer som lar det gå gjør presset lønnsomt. En dommer som blåser gjør frisparket lønnsomt.",
+      "en": "A referee who lets it go makes pressing pay. A referee who blows makes the foul pay."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b4",
+     "say": {
+      "no": "Endrer du instruksen til dommerne, endrer stilen seg innen to sesonger. Det har skjedd før.",
+      "en": "Change the instruction to the referees and the style changes within two seasons. It has happened before."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b5",
+     "say": {
+      "no": "Og det tydeligste beviset står i England.",
+      "en": "And the clearest evidence stands in England."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "plate.hide",
+       "over": 1.1
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 44,
+       "depth": 30,
+       "compact": true
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 14,
+       "depth": 26,
+       "facing": "down"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b6",
+     "say": {
+      "no": "De mest ballbesittende lagene i Premier League trenes stort sett av spanjoler.",
+      "en": "The most possession-based sides in the Premier League are mostly coached by Spaniards."
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s5.b7",
+     "say": {
+      "no": "De tre ligaene har nærmet seg hverandre kraftig på femten år, fordi trenerne flytter og ideene flytter med dem.",
+      "en": "The three leagues have converged sharply in fifteen years, because coaches move and the ideas move with them."
+     },
+     "cues": [],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s5.b8",
+     "say": {
+      "no": "Sier noen at italienerne er defensive av natur, har de sagt noe om seg selv og ingenting om Italia.",
+      "en": "If somebody says Italians are defensive by nature, they have said something about themselves and nothing about Italy."
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": {
+    "no": "Fem spørsmål på to minutter",
+    "en": "Five questions in two minutes"
+   },
+   "bed": "bedOpen",
+   "beats": [
+    {
+     "id": "s6.b1",
+     "say": {
+      "no": "Slå på en hvilken som helst kamp, og du trenger to minutter.",
+      "en": "Put on any match at all, and you need two minutes."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "sound.music",
+       "id": "bedOpen"
+      },
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "their-half"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "team",
+       "shape": "4-3-3",
+       "line": 40,
+       "depth": 32
+      },
+      {
+       "on": "start",
+       "do": "pitch.team",
+       "side": "opponent",
+       "shape": "4-4-2",
+       "line": 12,
+       "depth": 26,
+       "facing": "down"
+      },
+      {
+       "on": "start",
+       "do": "pitch.line",
+       "at": 40,
+       "label": {
+        "no": "Første spørsmål: hvor høyt?",
+        "en": "First question: how high?"
+       },
+       "tone": "gold"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b2",
+     "say": {
+      "no": "Første spørsmål: hvor høyt står den bakerste linja når motstanderen har ballen?",
+      "en": "First question: how high is the last line standing when the opposition have the ball?"
+     },
+     "cues": [],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b3",
+     "say": {
+      "no": "Andre: hvor mange sekunder går det fra de mister ballen til de er samlet igjen?",
+      "en": "Second: how many seconds pass between them losing the ball and being organised again?"
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "area": "[0,34,68,105]"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b4",
+     "say": {
+      "no": "Tredje: hvor mange pasninger er det i angrepene deres — tre eller tretten?",
+      "en": "Third: how many passes are there in their attacks — three or thirteen?"
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b5",
+     "say": {
+      "no": "Fjerde: følger forsvarerne en mann, eller følger de et stykke gress?",
+      "en": "Fourth: do the defenders follow a man, or do they follow a piece of grass?"
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "lcb",
+       "side": "opponent"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b6",
+     "say": {
+      "no": "Og femte: hvem er det som river ned kontringen, og blir han irettesatt for det?",
+      "en": "And fifth: who is it that pulls down the counter, and is he told off for it?"
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "[40,58]",
+       "to": "[34,74]",
+       "side": "opponent",
+       "label": {
+        "no": "Femte",
+        "en": "Fifth"
+       },
+       "tone": "red",
+       "over": 0.8
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s6.b7",
+     "say": {
+      "no": "De fem svarene er stilen. Alt annet er aksent.",
+      "en": "The five answers are the style. Everything else is accent."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.focus"
+      }
+     ],
+     "gapAfter": 0.9
+    },
+    {
+     "id": "s6.b8",
+     "say": {
+      "no": "Og da står bare ett spørsmål igjen: hvem er det egentlig som bestemmer noe av dette mens kampen pågår?",
+      "en": "Which leaves one question: who actually decides any of this while the match is going on?"
+     },
+     "cues": [],
+     "gapAfter": 2.0
+    }
+   ]
+  }
+ ]
+}

@@ -713,5 +713,89 @@
       "no": "Ballbesittelse teller berøringer over hele banen og skiller ikke mellom en pasning mellom to midtstoppere og en pasning inne i sekstenmeteren. Banetilt teller bare der det gjør vondt.\n\nDerfor kan et lag ha sekstifem prosent av ballen og en banetilt under femti, og det betyr noe helt bestemt: de holder på den, men ikke på riktig sted. Da er besittelsen bare arbeid.\n\nDet er også det tallet som skiller de to måtene å dominere på. Et lag som presser høyt og et lag som spiller seg tålmodig framover kan ende med samme banetilt fra helt ulike kamper.",
       "en": "Possession counts touches across the whole pitch and does not distinguish a pass between two centre-backs from a pass inside the penalty area. Field tilt counts only where it hurts.\n\nSo a side can have sixty-five per cent of the ball and a field tilt under fifty, and that means something quite specific: they are keeping it, but not in the right place. Then possession is simply work.\n\nIt is also the number that separates the two ways of dominating. A side that presses high and a side that patiently plays its way forward can end with the same field tilt from completely different matches."
     }
+  },
+  "spilleidé": {
+    "term": {
+      "no": "Spilleidé",
+      "en": "Game model"
+    },
+    "short": {
+      "no": "Klubbens nedskrevne svar på situasjonene som kommer igjen i hver eneste kamp.",
+      "en": "The club's written answer to the situations that come round in every single match."
+    },
+    "body": {
+      "no": "Ikke en plan for én kamp, men en plan for alle kampene. Hvem henter ballen fra keeperen, hvor backen står når ytteren har den, hvem løper i bakrommet når nieren møter.\n\nDen er verdt mer enn en enkelt trener, og det er meningen. En klubb kan sparke hovedtreneren i november og spille nesten likt i desember, fordi det som styrer spillet ligger i permen og ikke i hodet på mannen som er borte.\n\nDet er også derfor klubber kjøper spillere som passer idéen framfor spillere som passer mannen som står der akkurat nå. En spiller som ikke kan spille systemet er dyr uansett hva han koster.",
+      "en": "Not a plan for one match but a plan for all of them. Who collects the ball from the goalkeeper, where the full-back stands when the winger has it, who runs in behind when the nine comes short.\n\nIt is worth more than any single coach, and that is the point. A club can sack the head coach in November and play almost the same way in December, because what governs the football is in the binder and not in the head of the man who has gone.\n\nIt is also why clubs buy players who fit the model rather than players who fit the man standing there right now. A player who cannot play the system is expensive whatever he costs."
+    }
+  },
+  "motstanderrapport": {
+    "term": {
+      "no": "Motstanderrapport",
+      "en": "Opposition report"
+    },
+    "short": {
+      "no": "Tre ting om neste motstander, ikke tjue. Det er alt som får plass i hodet på en spiller.",
+      "en": "Three things about the next opponent, not twenty. That is all that fits inside a player's head."
+    },
+    "body": {
+      "no": "En analytiker har sett fire til seks av motstanderens kamper og skal levere noe som kan brukes klokka tre på lørdag, av folk som løper.\n\nFormen er nesten alltid den samme: én ting de alltid gjør, én ting de aldri gjør, og ett øyeblikk der de er sårbare. Alltid: venstre midtstopper spiller ut til backen på første berøring. Da vet elleve mann hvor presset skal gå.\n\nDet vanskelige er ikke å finne mønstrene. Det er å kaste sytten av dem. En rapport som sier tjue ting sier ingenting, fordi ingen husker tjue ting mens de løper.",
+      "en": "An analyst has watched four to six of the opposition's matches and has to deliver something usable at three o'clock on Saturday, by people who are running.\n\nThe shape is nearly always the same: one thing they always do, one thing they never do, and one moment when they are vulnerable. Always: the left centre-back plays out to the full-back with his first touch. Then eleven men know where the press is going.\n\nThe hard part is not finding the patterns. It is throwing seventeen of them away. A report that says twenty things says nothing, because nobody remembers twenty things while running."
+    }
+  },
+  "dødballtrener": {
+    "term": {
+      "no": "Dødballtrener",
+      "en": "Set-piece coach"
+    },
+    "short": {
+      "no": "Den raskest voksende stillingen i faget, og tallene forklarer hvorfor.",
+      "en": "The fastest-growing job in the game, and the numbers explain why."
+    },
+    "body": {
+      "no": "Et hjørnespark er det eneste øyeblikket i fotball der begge lag står stille og treneren har bestemt alt på forhånd. Alt annet på banen er forhandling; dette er koreografi.\n\nAndelen mål fra dødball i Premier League var tjue komma seks prosent i sesongen 2024-25, uten straffespark. Sesongen etter var den tretti prosent — det nest høyeste i ligaens historie, bak trettién prosent i 2009-10.\n\nDet som gjorde stillingen til en heltidsjobb var ikke en ny idé, men et regnestykke: et hjørnespark koster tjue sekunder å øve og kan ikke forsvares bort av en bedre motstander.",
+      "en": "A corner is the only moment in football where both sides are standing still and the coach has decided everything in advance. Everything else on the pitch is negotiation; this is choreography.\n\nThe share of Premier League goals from set pieces was twenty point six per cent in 2024-25, penalties excluded. The following season it was thirty per cent — the second highest in the league's history, behind thirty-one per cent in 2009-10.\n\nWhat made the job full-time was not a new idea but a sum: a corner costs twenty seconds to rehearse and cannot be defended away by a better opponent."
+    }
+  },
+  "belastningsstyring": {
+    "term": {
+      "no": "Belastningsstyring",
+      "en": "Load management"
+    },
+    "short": {
+      "no": "Å bestemme hvem som ikke skal spille, på tall og ikke på følelse.",
+      "en": "Deciding who does not play, on numbers rather than on feel."
+    },
+    "body": {
+      "no": "Hvert løp er logget. Høyintensitetsmeter, antall retningsforandringer, hvor lang tid pulsen bruker på å falle etter en økt.\n\nUt av det kommer en anbefaling, og noen ganger sier den at den beste spilleren din ikke skal starte. Det er derfor du ser en spiller på benken uten at noe har skjedd med ham: han er ikke skadet, noen har regnet på hva han er verdt om ti dager.\n\nDen dyreste feilen i moderne fotball er ikke et tap i oktober. Det er en muskelskade i mars på en spiller som ikke trengte å spille i oktober.",
+      "en": "Every run is logged. High-intensity metres, changes of direction, how long the heart rate takes to come down after a session.\n\nOut of that comes a recommendation, and sometimes it says your best player should not start. That is why you see a player on the bench with nothing having happened to him: he is not injured, somebody has worked out what he is worth in ten days' time.\n\nThe most expensive mistake in modern football is not a defeat in October. It is a muscle injury in March to a player who did not need to play in October."
+    }
+  },
+  "innbytte": {
+    "term": {
+      "no": "Innbytte",
+      "en": "Substitution"
+    },
+    "short": {
+      "no": "Fem, over høyst tre spillestopp, og hvert av dem er én av tre ting.",
+      "en": "Five, across at most three stoppages, and each of them is one of three things."
+    },
+    "body": {
+      "no": "Det er nesten alt en trener faktisk kan gjøre mens kampen pågår. Ropene virker dårligere enn folk tror — på et fullt stadion hører noen få spillere noe som helst.\n\nEt bytte er alltid ett av tre: friske bein i den ene rollen som løper mest, en ny form som endrer hvor mennene står uten å endre hvem de er, eller én bestemt duell — en mann satt inn mot én mann.\n\nAt de fem må tas over høyst tre stopp er den delen folk overser. Det betyr at to bytter samtidig er nesten gratis, og at et enkelt bytte i det sekstiende minuttet kan koste deg muligheten senere.",
+      "en": "It is almost all a coach can actually do while the match is on. Shouting works worse than people think — in a full stadium only a handful of players hear anything at all.\n\nA substitution is always one of three things: fresh legs in the one role that runs furthest, a new shape that changes where the men stand without changing who they are, or one particular duel — a man put on against one man.\n\nThat the five have to be taken across at most three stoppages is the part people miss. It means two changes at once are nearly free, and that a single change in the sixtieth minute can cost you the chance later."
+    }
+  },
+  "kampbilde": {
+    "term": {
+      "no": "Kampbilde",
+      "en": "Game state"
+    },
+    "short": {
+      "no": "Stillingen og tida. De avgjør hva en formasjon betyr, og uten dem betyr tallet ingenting.",
+      "en": "The score and the clock. They decide what a formation means, and without them the number means nothing."
+    },
+    "body": {
+      "no": "Fire-fire-to ved null-null i det trettiende minuttet er en plan. Fire-fire-to ved en-null i det åttiende er en vegg. Samme elleve mann, samme tall på skjermen, to helt forskjellige avgjørelser.\n\nDet er derfor kommentatoren sier at laget har byttet til fem bakerst når ingen har byttet noe som helst. De har bare sluttet å gå fram, fordi resultatet ba dem om det, og da faller ytterne ned i linja av seg selv.\n\nDet er også den viktigste grunnen til at statistikk fra en kamp må leses mot kampbildet. Et lag som leder skal ha mindre ball, og har det.",
+      "en": "Four-four-two at nil-nil in the thirtieth minute is a plan. Four-four-two at one-nil in the eightieth is a wall. The same eleven men, the same number on the screen, two entirely different decisions.\n\nThat is why the commentator says the side has gone to a back five when nobody has changed anything. They have simply stopped going forward, because the scoreline asked them to, and then the wingers drop into the line of their own accord.\n\nIt is also the main reason match statistics have to be read against the game state. A side that is leading should have less of the ball, and does."
+    }
   }
 }

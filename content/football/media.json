@@ -749,7 +749,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "three television screens side by side on a dark wall, each showing a green football pitch from high above, the rest of the room black, no logos, no graphics, no text on any screen, nobody present"
+  "prompt": "three large television screens filling the frame, mounted close together in a row on a dark wall, photographed square on from a short distance so they occupy most of the picture, each showing green grass from a high camera position, no logos, no graphics, no text on any screen, nobody present"
  },
  "dommer-floyte": {
   "kind": "made",
@@ -845,7 +845,7 @@
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "a thick black ring binder lying open on a plain desk, dense typed pages and small hand-drawn pitch diagrams, no readable words, a pen across the page, one desk lamp, nobody present"
+  "prompt": "photographed from directly above, a thick ring binder lying open and filling the whole frame edge to edge, dense typed pages and small hand-drawn pitch diagrams, no readable words, a pen resting across the page, warm lamp light from one side, nobody present"
  },
  "buss-natt": {
   "kind": "made",
@@ -878,5 +878,21 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "a dim living room at night lit only by a large television showing a green pitch from high above, an armchair and a low table in silhouette, curtains drawn, nobody present, no graphics or logos on the screen"
+ },
+ "fjerdedommer": {
+  "kind": "made",
+  "file": "fjerdedommer.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Tavla",
+   "en": "The board"
+  },
+  "claims": "An electronic substitution board held up under floodlights.",
+  "omits": "No official, club, competition or player is identifiable, and no face is in the picture.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "photographed from behind and slightly above, a black electronic substitution board held up in two raised hands, the back of a shoulder in dark clothing at the bottom edge, bright numerals glowing on the board, blurred floodlights and dark stands beyond, no face in frame, no crests, no advertising"
  }
 }
