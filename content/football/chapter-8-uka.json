@@ -625,7 +625,13 @@
      "cues": [
       {
        "on": "start",
-       "do": "pitch.run",
+       "do": "pitch.ball",
+       "at": "[2,104]",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.cross",
        "from": "[2,104]",
        "to": "[32,99]",
        "side": "team",
@@ -634,12 +640,12 @@
         "en": "The delivery"
        },
        "tone": "gold",
-       "over": 0.8
+       "over": 0.9
       },
       {
        "on": "start",
        "do": "pitch.run",
-       "from": "[40,84]",
+       "from": "nine",
        "to": "[30,97]",
        "side": "team",
        "label": {
@@ -647,7 +653,7 @@
         "en": "The run"
        },
        "tone": "red",
-       "over": 0.8
+       "over": 0.9
       }
      ],
      "gapAfter": 2.0

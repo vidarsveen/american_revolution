@@ -65,7 +65,7 @@ Den gamle reaksjonen var å løpe hjem, komme bak ballen og bygge opp forsvaret 
 {plate.hide 1.1} {pitch.show full} {pitch.team team shape=4-3-3 line=52 depth=30} {pitch.team opponent shape=4-4-2 line=34 depth=26} {pitch.ball [34,58] side=team} Den moderne er noe helt annet.
 > The modern one is something else entirely.
 
-{pitch.focus who=eight,eight2,nine side=team} {pitch.run [30,60] to=[34,55] side=team over=0.7} {pitch.run [44,62] to=[36,56] side=team over=0.7} {pitch.run [34,70] to=[35,58] side=team over=0.7} De løper motsatt vei, mot ballen, med tre mann samtidig.
+{pitch.focus who=eight,eight2,nine side=team} {pitch.run eight to=[28,61] side=team over=0.8} {pitch.run eight2 to=[40,61] side=team over=0.8} {pitch.run nine to=[34,64] side=team over=0.9} De løper motsatt vei, mot ballen, med tre mann samtidig.
 > They run the other way, at the ball, with three men at once.
 
 {pitch.show middle} {pitch.focus who=lcm side=opponent} Og grunnen er den mannen der.
@@ -121,7 +121,7 @@ bed: none
 Det avgjøres av hvor den nærmeste spilleren står i det øyeblikket, og av hvor mye laget har igjen.
 > It is decided by where the nearest player is standing at that instant, and by how much the team has left.
 
-{pitch.show middle} {pitch.focus who=nine side=team} {pitch.run [34,58] to=[34,48] side=team over=0.8} Er du nær nok til å nå ballen før han løfter hodet, presser du.
+{pitch.show middle} {pitch.focus who=nine side=team} {pitch.run nine to=[34,57] side=team over=0.9} Er du nær nok til å nå ballen før han løfter hodet, presser du.
 > If you are close enough to reach the ball before he lifts his head, you press.
 {pitch.focus} {pitch.show full} {pitch.team team shape=4-3-3 line=30 depth=26 over=1.4} Er du det ikke, er det å løpe fram det verste du kan gjøre, for da er du verken der eller hjemme.
 > If you are not, running forward is the worst thing available, because then you are neither there nor home.
@@ -160,7 +160,7 @@ De teller hvor mange sekunder det går fra en pasning til den neste, og hvor for
 {pitch.focus who=lcb side=team} Det gjør det ved å invitere: stå på ballen, se rolig ut, og vente til motstanderen kommer.
 > It does that by inviting: stand on the ball, look calm, and wait until the opposition come.
 
-{pitch.focus who=st,st2,lm side=opponent} {pitch.run [30,40] to=[28,20] side=opponent over=0.8} {pitch.run [40,40] to=[38,22] side=opponent over=0.8} De som kommer, forlater plassen de sto i.
+{pitch.focus who=st,st2,lm side=opponent} {pitch.run st to=[30,19] side=opponent over=0.9} {pitch.run st2 to=[41,20] side=opponent over=0.9} {pitch.run lm to=[14,23] side=opponent over=1.0} De som kommer, forlater plassen de sto i.
 > The ones who come leave the space they were standing in.
 {pitch.focus} {pitch.show full} {pitch.pass lcb to=six side=team over=0.6} {pitch.pass [34,15] to=[34,52] side=team over=0.9} Og en pasning forbi dem er da nøyaktig det samme som en vunnet ball: de står feil, og det er tretti meter tomt bak dem. {mark term:gjennombruddshissighet}
 > And a pass past them is then exactly the same thing as a won ball: they are out of shape, and there are thirty empty metres behind them. {^}

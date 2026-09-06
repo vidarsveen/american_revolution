@@ -26,6 +26,8 @@ invisible on screen until a chapter was written against them:
      when the opposition was placed first with an explicit facing, and one
      whole team was then drawn outside a cropped band and silently absent.
   7. does `pitch.focus` light exactly the players it names, and does it clear?
+  8. do metres written in a cue reach the pitch, and does a run move the man?
+  9. does the picture say which way each side is playing? (measured on pixels)
      The surface's answer to docs/dramaturgy.md rule 6 -- a diagram that shows
      everything equally shows nothing.
 
@@ -111,6 +113,24 @@ def report(r) -> bool:
     for p in foc["problems"]:
         print(f"        {p}")
 
+    met = r["metres"]
+    bad = bad or not met["ok"]
+    print("")
+    print(f"8 · metres in a cue reach the pitch, and a run moves the man"
+          f" — {met['checked']} cases")
+    print(f"   {'ok' if met['ok'] else 'FAIL'}")
+    for p in met["problems"]:
+        print(f"        {p}")
+
+    dr = r["direction"]
+    bad = bad or not dr["ok"]
+    print("")
+    print(f"9 · the picture says which way each side is playing"
+          f" — goal-vs-turf {dr['near']} / {dr['far']}, cropped {dr['turf']}")
+    print(f"   {'ok' if dr['ok'] else 'FAIL'}")
+    for p in dr["problems"]:
+        print(f"        {p}")
+
     return bad
 
 
@@ -153,7 +173,7 @@ def main(argv=None) -> int:
             for e in errors[:10]:
                 print(f"   {e}")
 
-        print("\nFAIL" if bad else "\nAll seven hold.")
+        print("\nFAIL" if bad else "\nAll nine hold.")
         return 1 if bad else 0
 
 

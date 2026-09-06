@@ -55,20 +55,23 @@
    leagues on a cropped middle band, not on three whole pitches.
 
    ------------------------------------------------------------
-   INK ON PAPER, NOT GRASS
+   GRASS, AND WHY IT IS NOT PAPER
    ------------------------------------------------------------
 
-   The pitch is drawn in the app's own colours — paper ground, ink markings —
-   and not in green with white lines. Two reasons, one of them measured: every
-   other surface in this app is paper and ink, and a video-game green rectangle
-   in the middle of it is a different film; and the tokens flip with the theme
-   on their own, so dark mode costs nothing. A team's colour comes from the
-   pack's factions like every other side in this framework.
+   It was built paper-coloured, on the argument that every other surface in the
+   app is paper and ink and a green rectangle in the middle is a different
+   film. That argument lost to one sentence — "why not make the pitch green,
+   that is simpler and more realistic anyway" — and it was right: a viewer
+   reads green with white lines as a pitch instantly and reads a beige
+   rectangle as a diagram of one. The turf, its mown stripe and the line colour
+   are all tokens in css/pitch.css, so they still flip with the theme and dark
+   mode still costs nothing. A team's colour comes from the pack's factions
+   like every other side in this framework.
    ============================================================ */
 
 import {
   PITCH, HALF_W, BOX_X0, BOX_X1, GOAL_AREA_X0, GOAL_AREA_X1,
-  LANES, VIEWS, areaOf, fitView, flip, lerpPoint, bendControl, quadAt,
+  LANES, VIEWS, areaOf, fitView, flip, lerpPoint, bendControl, quadAt, numbersIn,
 } from './geometry.js';
 import { shapeOf, indexOf } from './formations.js';
 
@@ -335,6 +338,7 @@ export function createPitch(host, opts = {}) {
 
     drawGround(t);
     drawMarkings(t);
+    drawDirection(t, panel);
     if (panel.focus?.area) drawFocusArea(t, panel.focus.area);
     for (const zone of panel.zones.values()) drawZone(t, zone);
     for (const line of panel.lines.values()) drawLine(t, line);
@@ -482,6 +486,118 @@ export function createPitch(host, opts = {}) {
     ctx.fill();
   }
 
+  /**
+   * Which way are we playing?
+   *
+   * Reported after eight chapters shipped: "you say the keeper plays it to the
+   * defender and someone is attacking him, and the position is basically the
+   * initial position — there is something lacking there." Half of that is
+   * content and half is this: twenty-two dots on a green rectangle say nothing
+   * about which end anybody is trying to reach, and every sentence in a
+   * tactics course is about direction.
+   *
+   * Nothing here is a cue and nothing here animates. It is drawn from
+   * `panel.facing`, which the team verb already maintains, so it is a pure
+   * function of the state and correct after a seek by construction.
+   *
+   * Two signals, because one was not enough when it was tried:
+   *
+   * - **The goals are real goals**, drawn OUTSIDE the goal line as a box with
+   *   net lines, and filled in the colour of the side that DEFENDS that end.
+   *   A stub on the line reads as a marking; a goal reads as a goal, and a
+   *   goal in your colour reads as yours.
+   * - **Chevrons on both touchlines**, in the attacking side's colour, at the
+   *   middle of whatever band the view is showing — so a cropped view still
+   *   carries them.
+   */
+  function drawDirection(t, panel) {
+    // A side facing 'up' attacks y = 105 and therefore defends y = 0.
+    const defender = { 0: null, 1: null };
+    for (const [side, facing] of panel.facing) {
+      if (!panel.teams.has(side)) continue;
+      if (facing === 'down') defender[1] = side; else defender[0] = side;
+    }
+    const ink = token('--pitch-line', 'rgba(255,255,255,.78)');
+    /* STRADDLING the goal line, not behind it.
+
+       Drawn wholly outside — which is where a goal is — it was invisible in
+       every cropped view, because `own-half` is [0, 58.5] and anything at
+       y = -2 is off the canvas. That is most of chapter one. Half in and half
+       out keeps the shape of a goal and guarantees a band of it is on screen
+       whatever the crop. */
+    const depth = 1.7;                 // metres each side of the goal line
+    const half = PITCH.goalWidth / 2;
+
+    for (const end of [0, 1]) {
+      const gy = end ? PITCH.length : 0;
+      const side = defender[end];
+      const [ax, ay] = t.px(HALF_W - half, gy - depth);
+      const [bx, by] = t.px(HALF_W + half, gy + depth);
+      const x = Math.min(ax, bx);
+      const y = Math.min(ay, by);
+      const w = Math.abs(bx - ax);
+      const h = Math.abs(by - ay);
+      if (h < 2) continue;
+
+      ctx.save();
+      if (side) {
+        ctx.fillStyle = sideColor(side);
+        ctx.globalAlpha = 0.5;
+        ctx.fillRect(x, y, w, h);
+        ctx.globalAlpha = 1;
+      }
+      // The net. Three uprights and one crossbar is enough of a goal at
+      // 390 px; more of it turns into a grey smear.
+      ctx.strokeStyle = ink;
+      ctx.lineWidth = Math.max(1, t.len(0.28));
+      ctx.globalAlpha = 0.7;
+      for (let i = 1; i < 4; i += 1) {
+        const nx = x + (w * i) / 4;
+        ctx.beginPath(); ctx.moveTo(nx, y); ctx.lineTo(nx, y + h); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = Math.max(1.6, t.len(0.5));
+      ctx.strokeRect(x, y, w, h);
+      ctx.restore();
+    }
+
+    /* The chevrons. Drawn for the side that attacks UP the screen, which is
+       the side the course is talking about — `team` unless a cue said
+       otherwise. Two of them, at the middle of the VISIBLE band, so a
+       final-third crop carries the same signal as a full pitch. */
+    const up = [...panel.facing].find(([s, f]) => f === 'up' && panel.teams.has(s));
+    if (!up) return;
+    const [y0, y1] = t.view;
+    const midY = (y0 + y1) / 2;
+    const colour = sideColor(up[0]);
+    const wide = Math.max(11, t.len(3.8));
+    const tall = Math.max(8, t.len(2.8));
+    const gap = Math.max(10, t.len(3.4));
+    ctx.save();
+    ctx.strokeStyle = colour;
+    ctx.lineWidth = Math.max(2.6, t.len(0.55));
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    // 0.55 was invisible on a 390 px screenshot against the mown stripes,
+    // which is the whole point of the thing. Looked at, not reasoned about.
+    ctx.globalAlpha = 0.8;
+    for (const cx of [3.4, PITCH.width - 3.4]) {
+      const [px] = t.px(cx, midY);
+      for (let i = 0; i < 2; i += 1) {
+        // Screen y grows downward and the side attacks up, so the point of
+        // the chevron is the SMALLER screen y.
+        const [, base] = t.px(cx, midY);
+        const yb = base + gap * (i - 0.5) + tall / 2;
+        ctx.beginPath();
+        ctx.moveTo(px - wide / 2, yb);
+        ctx.lineTo(px, yb - tall);
+        ctx.lineTo(px + wide / 2, yb);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
   /* ---------------- zones ---------------- */
 
   function drawZone(t, zone) {
@@ -598,10 +714,18 @@ export function createPitch(host, opts = {}) {
   function drawArrow(t, arrow) {
     const grow = at(arrow.grow, mixNumber);
     if (grow <= 0.001) return;
-    const colour = arrow.side ? sideColor(arrow.side) : toneColor(arrow.tone);
-    const a = arrow.from;
-    const b = arrow.to;
+    const colour = arrow.tone ? toneColor(arrow.tone)
+      : (arrow.side ? sideColor(arrow.side) : toneColor(null));
     const isRun = arrow.kind === 'run';
+    /* Stop short of both ends.
+
+       A run now carries the player who makes it, so the head lands exactly
+       where the dot lands and is drawn UNDER it — three arrows converging on
+       the ball came out as three dashed lines with no points on them, which is
+       the one part of an arrow that says which way. Trimming 1.6 m off each
+       end is also what a tactics board does by hand: the line belongs between
+       the two men, not on top of them. */
+    const [a, b] = trimmed(arrow.from, arrow.to, 1.6);
     const bend = arrow.bend ?? (isRun ? 0.16 : (arrow.kind === 'cross' ? 0.10 : 0));
     const c = bend ? bendControl(a, b, bend) : null;
 
@@ -609,23 +733,62 @@ export function createPitch(host, opts = {}) {
     const end = c ? quadAt(a, c, b, grow) : lerpPoint(a, b, grow);
     const cEnd = c ? quadAt(a, c, b, grow * 0.5) : lerpPoint(a, b, grow * 0.5);
 
+    const path = () => {
+      ctx.beginPath();
+      ctx.moveTo(...t.px(a.x, a.y));
+      if (c) ctx.quadraticCurveTo(...t.px(cEnd.x, cEnd.y), ...t.px(end.x, end.y));
+      else ctx.lineTo(...t.px(end.x, end.y));
+    };
+
     ctx.save();
-    ctx.strokeStyle = colour;
-    // Measured at 390 px wide: 2.2 px of ink across a 68 m pitch is a hair.
-    // An arrow is the sentence, not an annotation on it.
-    ctx.lineWidth = isRun ? 2.6 : 3.2;
     ctx.lineCap = 'round';
-    if (isRun) ctx.setLineDash([6, 5]);
-    ctx.beginPath();
-    ctx.moveTo(...t.px(a.x, a.y));
-    if (c) ctx.quadraticCurveTo(...t.px(cEnd.x, cEnd.y), ...t.px(end.x, end.y));
-    else ctx.lineTo(...t.px(end.x, end.y));
+    /* A dark casing under the ink.
+
+       A faction colour is chosen by the pack, and red on green is the one
+       pair that reliably disappears — the same argument the white outline on
+       a dot makes, one layer out. Measured on a screenshot of chapter one: a
+       red run across the mown stripes was legible on the light band and gone
+       on the dark one. The casing is drawn first and wider, so the arrow has
+       an edge whatever it crosses. */
+    ctx.strokeStyle = 'rgba(0,0,0,.32)';
+    ctx.lineWidth = (isRun ? 3.4 : 4.4) + 2.2;
+    if (isRun) ctx.setLineDash([7, 6]);
+    path();
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.strokeStyle = colour;
+    // Measured at 390 px wide: 2.2 px of ink across a 68 m pitch is a hair,
+    // and 3.2 was still being read as an annotation rather than as the
+    // sentence. An arrow IS the sentence.
+    ctx.lineWidth = isRun ? 3.4 : 4.4;
+    if (isRun) ctx.setLineDash([7, 6]);
+    path();
     ctx.stroke();
     ctx.restore();
 
     // The head, pointing along the last bit of the path.
     const back = c ? quadAt(a, c, b, Math.max(0, grow - 0.06)) : lerpPoint(a, b, Math.max(0, grow - 0.06));
     head(t, back, end, colour, isRun);
+
+    /* A ball riding the head while a pass is in flight.
+
+       The head alone moves, but a 12 px chevron sliding ten metres across a
+       390 px pitch was not something a viewer noticed — the complaint was
+       that nothing appeared to happen. A white disc is the thing the eye
+       actually follows in a match, and it costs nothing: it is a pure
+       function of `grow`, so it is absent at grow = 1 and absent after a seek,
+       which is the same rule the muzzle flash obeys. */
+    if (!isRun && arrow.carry !== false && grow > 0.02 && grow < 0.995) {
+      const [hx, hy] = t.px(end.x, end.y);
+      const br = Math.max(3.5, t.len(1.05));
+      ctx.save();
+      ctx.beginPath(); ctx.arc(hx, hy, br + 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,.5)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(hx, hy, br, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff'; ctx.fill();
+      ctx.restore();
+    }
     if (arrow.label) {
       const mid = c ? quadAt(a, c, b, 0.5) : lerpPoint(a, b, 0.5);
       const [mx, my] = t.px(mid.x, mid.y);
@@ -633,16 +796,38 @@ export function createPitch(host, opts = {}) {
     }
   }
 
+  /** Pull both ends of a path in by `m` metres, when there is room for it. */
+  function trimmed(from, to, m) {
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const len = Math.hypot(dx, dy);
+    if (len < m * 2.6) return [from, to];
+    const ux = (dx / len) * m;
+    const uy = (dy / len) * m;
+    return [{ x: from.x + ux, y: from.y + uy }, { x: to.x - ux, y: to.y - uy }];
+  }
+
   function head(t, from, to, colour, open) {
     const [x0, y0] = t.px(from.x, from.y);
     const [x1, y1] = t.px(to.x, to.y);
     const ang = Math.atan2(y1 - y0, x1 - x0);
-    const s = open ? 11 : 12;
+    const s = open ? 14 : 16;
     const spread = open ? 0.5 : 0.42;
     ctx.save();
+    // Same casing argument as the shaft: the head is the part that says which
+    // way, and it was the part most often crossing a mown stripe.
+    ctx.strokeStyle = 'rgba(0,0,0,.42)';
+    ctx.lineWidth = 6.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(x1 - s * Math.cos(ang - spread), y1 - s * Math.sin(ang - spread));
+    ctx.lineTo(x1, y1);
+    ctx.lineTo(x1 - s * Math.cos(ang + spread), y1 - s * Math.sin(ang + spread));
+    ctx.stroke();
     ctx.strokeStyle = colour;
     ctx.fillStyle = colour;
-    ctx.lineWidth = 2.6;
+    ctx.lineWidth = 3.2;
     ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(x1 - s * Math.cos(ang - spread), y1 - s * Math.sin(ang - spread));
@@ -658,11 +843,12 @@ export function createPitch(host, opts = {}) {
     const players = at(team.players, mixPlayers);
     if (!players) return;
     const colour = sideColor(side);
-    const r = Math.max(4.5, Math.min(11, t.len(1.6)));
+    const base = Math.max(4.5, Math.min(11, t.len(1.6)));
     for (const p of players) {
       const [x, y] = t.px(p.x, p.y);
+      const on = lit(panel, side, p);
+      const r = panel.focus && on ? base * FOCUS_GROW : base * 0.9;
       ctx.save();
-      if (!lit(panel, side, p)) ctx.globalAlpha = FOCUS_DIM;
       // A ring in the ground colour lifts a dot off a zone wash it is standing
       // in. Without it, a marker inside a shaded pressing trap loses its edge
       // and the two read as one blob.
@@ -673,7 +859,7 @@ export function createPitch(host, opts = {}) {
          absolutely louder, and it was reported as the indications not being
          clear enough. A ring outside the dot in the line colour reads at phone
          size against turf whatever the faction colour is. */
-      if (panel.focus && lit(panel, side, p)) {
+      if (panel.focus && on) {
         ctx.beginPath();
         ctx.arc(x, y, r + 4.5, 0, Math.PI * 2);
         ctx.strokeStyle = token('--pitch-line', 'rgba(255,255,255,.78)');
@@ -682,7 +868,19 @@ export function createPitch(host, opts = {}) {
       }
       ctx.beginPath();
       ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = p.dim ? mixHex(colour, token('--pitch-turf', '#4a7c3c'), 0.55) : colour;
+      /* Dim by MIXING, never by alpha.
+
+         Alpha over turf takes the hue out: at 0.32 and again at 0.45 the
+         nineteen unlit dots came out as identical olive smudges and the two
+         teams stopped being two teams — which is a worse failure than not
+         focusing at all, and it is what "the pitch is not always easy to
+         understand" was partly about. The stripes made it worse, because the
+         same dot read differently depending on which mown band it stood on.
+         Mixing toward the turf keeps the hue direction, is uniform across the
+         stripes, and leaves the white outline at full strength. */
+      const turf = token('--pitch-turf', '#4a7c3c');
+      const fill = p.dim ? mixHex(colour, turf, 0.55) : colour;
+      ctx.fillStyle = on ? fill : mixHex(fill, turf, FOCUS_DIM);
       ctx.fill();
       // A thin white outline, always. A faction colour is chosen by the pack
       // and can be any hue; red on green is the one pair that reliably fails
@@ -691,17 +889,19 @@ export function createPitch(host, opts = {}) {
       ctx.strokeStyle = p.mark ? toneColor('gold')
         : token('--pitch-line', 'rgba(255,255,255,.78)');
       ctx.lineWidth = p.mark ? 2.6 : 1.4;
+      if (!on) ctx.globalAlpha = 0.55;
       ctx.stroke();
+      ctx.globalAlpha = 1;
       ctx.restore();
 
       if (p.label) {
         label(pick(p.label), x, y + r + 11, colour,
-          lit(panel, side, p) ? 1 : FOCUS_DIM, 'center');
+          on ? 1 : FOCUS_DIM, 'center');
       } else if ((showNumbers || team.numbers) && p.num != null) {
         // p.num, never p.n. The index is how a cue points at a dot; the shirt
         // is what the viewer reads, and only some shapes have one.
         ctx.save();
-        if (!lit(panel, side, p)) ctx.globalAlpha = FOCUS_DIM;
+        if (!on) ctx.globalAlpha = FOCUS_DIM;
         numberIn(String(p.num), x, y, r);
         ctx.restore();
       }
@@ -824,10 +1024,14 @@ export function createPitch(host, opts = {}) {
    */
   function pointOf(spec, panel, defaultSide) {
     if (spec == null) return null;
-    if (Array.isArray(spec) && spec.length >= 2) return { x: Number(spec[0]), y: Number(spec[1]) };
-    if (typeof spec === 'object' && spec.x != null && spec.y != null) {
+    if (typeof spec === 'object' && !Array.isArray(spec) && spec.x != null && spec.y != null) {
       return { x: Number(spec.x), y: Number(spec.y) };
     }
+    // Two numbers, however they arrived. See numbersIn(): the prose format has
+    // no arrays, so `to=[34,22]` reaches here as text and used to resolve to
+    // nothing at all.
+    const n = (Array.isArray(spec) || typeof spec === 'string') ? numbersIn(spec, 2) : null;
+    if (n) return { x: n[0], y: n[1] };
     const who = typeof spec === 'object' ? spec.who : spec;
     const side = (typeof spec === 'object' && spec.side) || defaultSide;
     const team = panel.teams.get(side);
@@ -932,6 +1136,41 @@ export function createPitch(host, opts = {}) {
     schedule();
   }
 
+  /** Did `spec.from` name a PLAYER, rather than give metres? */
+  function playerRef(from, defaultSide) {
+    if (from == null) return null;
+    if (Array.isArray(from)) return null;
+    // Two numbers is a place, not a person, however it arrived.
+    if (typeof from === 'string' && numbersIn(from, 2)) return null;
+    if (typeof from === 'object') {
+      if (from.x != null && from.y != null) return null;
+      return from.who != null ? { side: String(from.side || defaultSide), who: from.who } : null;
+    }
+    return { side: String(defaultSide), who: from };
+  }
+
+  /**
+   * An arrow, and the thing the arrow is a drawing OF.
+   *
+   * The pitch shipped eight chapters drawing arrows over a shape that never
+   * moved, and it was reported exactly right: "there is someone attacking him
+   * and the position is basically the initial position — something is
+   * lacking." An arrow was a caption on a still picture.
+   *
+   * So the two arrows that describe motion now cause it, over the arrow's own
+   * duration so the two agree frame for frame:
+   *
+   * - a **run** carries the player who starts it, because that is what a run
+   *   is. Only when `from` NAMES a player — an explicit [x, y] is a drawing of
+   *   a run by nobody in particular, which several chapters use deliberately.
+   * - a **pass** or a **cross** carries the ball, when there is a ball on the
+   *   pitch to carry.
+   *
+   * Both go through the existing `move()` and `ball()`, so both are motions
+   * built from the TARGET and both land exactly on it under `instant` — which
+   * is what keeps a seek and a play agreeing (rule 1). `carry: false` opts
+   * out, for the case where the arrow really is only an annotation.
+   */
   function arrow(spec = {}, kind) {
     const panel = panelAt(spec.panel);
     const side = spec.side ? String(spec.side) : null;
@@ -939,10 +1178,24 @@ export function createPitch(host, opts = {}) {
     const to = pointOf(spec.to, panel, side || 'team');
     if (!from || !to) return;
     const id = spec.id || `a${ids += 1}`;
+    const over = spec.over ?? 0.6;
     panel.arrows.set(id, {
       from, to, kind, side, tone: spec.tone, bend: spec.bend, label: spec.label,
-      grow: motion(1, 0, spec.instant ? 0 : (spec.over ?? 0.6)),
+      carry: spec.carry,
+      grow: motion(1, 0, spec.instant ? 0 : over),
     });
+
+    if (spec.carry !== false) {
+      if (kind === 'run') {
+        const ref = playerRef(spec.from, side || 'team');
+        if (ref) {
+          move({ side: ref.side, who: ref.who, to: [to.x, to.y],
+            over, instant: spec.instant, panel: spec.panel });
+        }
+      } else if (panel.ball) {
+        ball({ at: [to.x, to.y], over, instant: spec.instant, panel: spec.panel });
+      }
+    }
     schedule();
   }
 
@@ -1034,8 +1287,17 @@ export function createPitch(host, opts = {}) {
     schedule();
   }
 
-  /** How far back an unlit thing goes. Not zero: it is still the picture. */
-  const FOCUS_DIM = 0.22;
+  /* How far back an unlit thing goes. Not zero: it is still the picture.
+
+     How far an unlit dot is mixed TOWARD the turf — not an alpha. See the
+     fill in drawTeam() for why that distinction is the whole point — it was one of
+     the things behind "the pitch is not always easy to understand". The lit
+     dots grow instead (see FOCUS_GROW), because making the subject louder is
+     a stronger signal than making everything else quieter. */
+  const FOCUS_DIM = 0.5;
+
+  /** How much bigger the thing the sentence is about is drawn. */
+  const FOCUS_GROW = 1.22;
 
   /** Is this player the one being talked about? */
   function lit(panel, side, player) {

@@ -139,7 +139,7 @@ bed: bedPatient
 Alle ser på ballen. Det er hele poenget.
 > Everybody watches the ball. That is the entire point.
 
-{pitch.focus who=eight side=team} {pitch.run [46,62] to=[52,84] side=team over=0.9} Mens de gjør det, har C startet et løp han begynte før pasningen ble slått.
+{pitch.focus who=eight side=team} {pitch.run eight to=[52,84] side=team over=1.0} Mens de gjør det, har C startet et løp han begynte før pasningen ble slått.
 > While they do, C has begun a run he started before the pass was played.
 {pitch.pass nine to=eight side=team over=0.6} {mark term:tredjemannsløp} B legger den videre med første berøring, og C møter ballen i fart.
 > B lays it off first time, and C meets the ball at speed.

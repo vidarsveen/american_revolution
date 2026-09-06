@@ -103,7 +103,7 @@ Sesongen etter er tallet tretti prosent. Det er det nest høyeste i ligaens hist
 
 {compare.clear} {pitch.show final-third} {pitch.team team shape=4-3-3 line=76 depth=20 compact=true} {fact term:dødballtrener until=8} Et hjørnespark er det eneste øyeblikket i fotball der begge lag står stille og treneren har bestemt alt på forhånd.
 > A corner is the only moment in football where both sides are standing still and the coach has decided everything in advance.
-{pitch.run from=[2,104] to=[32,99] side=team label=Innlegget | The delivery tone=gold over=0.8} {pitch.run from=[40,84] to=[30,97] side=team label=Løpet | The run tone=red over=0.8} To mann sperrer, én løper mot første stolpe, og det er øvd tolv ganger.
+{pitch.ball [2,104] side=team} {pitch.cross from=[2,104] to=[32,99] side=team label=Innlegget | The delivery tone=gold over=0.9} {pitch.run nine to=[30,97] side=team label=Løpet | The run tone=red over=0.9} To mann sperrer, én løper mot første stolpe, og det er øvd tolv ganger.
 > Two men block, one runs to the near post, and it has been rehearsed twelve times.
 
 ## Fredag | Friday

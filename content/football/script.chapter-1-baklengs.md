@@ -80,14 +80,17 @@ Den ser ut som dumdristighet.
 ## Pasningen som ser gal ut | The pass that looks mad
 bed: bedPatient
 
-{pitch.show own-half} {pitch.team team shape=4-3-3 line=9 depth=17} {pitch.team opponent shape=4-4-2 line=47 depth=25} Keeperen har ballen. To motstandere kommer mot ham i full fart.
-> The goalkeeper has the ball. Two opponents are coming at him at speed.
-{pitch.ball gk side=team} {pitch.focus who=gk side=team} Han har hele banen foran seg og kan slå den seksti meter opp i det tomme.
+{pitch.show own-half} {pitch.team team shape=4-3-3 line=9 depth=17} {pitch.team opponent shape=4-4-2 line=72 depth=22} {pitch.ball gk side=team} Keeperen har ballen.
+> The goalkeeper has the ball.
+{pitch.run st side=opponent to=[30,7] over=1.4} {pitch.run st2 side=opponent to=[44,11] over=1.6} To motstandere kommer mot ham i full fart.
+> Two opponents are coming at him at speed.
+
+{pitch.show full} {pitch.focus who=gk side=team} {pitch.pass gk to=[34,72] side=team tone=gold label=Seksti meter | Sixty metres over=1.4 carry=false} Han har hele banen foran seg og kan slå den seksti meter opp i det tomme.
 > He has the whole pitch in front of him and could hit it sixty metres into space.
 
-{pitch.focus who=gk,lcb side=team} {pitch.pass gk to=lcb side=team over=0.8} I stedet spiller han ti meter sidelengs, til en midtstopper som også har noen i ryggen.
+{pitch.show own-half} {pitch.focus who=gk,lcb side=team} {pitch.pass gk to=lcb side=team over=0.9} I stedet spiller han ti meter sidelengs, til en midtstopper som også har noen i ryggen.
 > Instead he plays it ten metres sideways, to a centre-back who also has somebody behind him.
-{pitch.focus} Gjør han det feil, står motstanderen alene med keeperen.
+{pitch.focus} {pitch.run st2 side=opponent to=[22,9] over=0.9 tone=red} Gjør han det feil, står motstanderen alene med keeperen.
 > Get it wrong and the opposition are through on goal.
 
 Førti ganger i kampen. Hvert eneste lag i Europa. Hver helg.
@@ -162,7 +165,7 @@ Det finnes to, og bare den ene er billig.
 
 {pitch.focus} {pitch.team opponent shape=4-4-2 line=47 depth=25 over=1.0} Den billige er å ta bort et valg uten å bruke en spiller på det. {mark term:styringspress}
 > The cheap one is to remove an option without spending a player on it. {^}
-{pitch.focus who=st side=opponent} {pitch.run [34,34] to=[23,13] side=opponent bend=0.35 over=1.0} Spissen løper ikke rett mot midtstopperen, men i bue, med kroppen mellom ballen og den andre.
+{pitch.focus who=st side=opponent} {pitch.run st to=[23,13] side=opponent bend=0.35 over=1.0} Spissen løper ikke rett mot midtstopperen, men i bue, med kroppen mellom ballen og den andre.
 > The striker does not run straight at the centre-back but on a curve, with his body between the ball and the other one.
 Da presser han to med én kropp. Den ene kan ikke få ballen. Den andre må ta den.
 > Now he is pressing two with one body. One of them cannot receive it. The other has to.
@@ -176,7 +179,7 @@ Han kan ikke snu unna. Streken bak ham forsvarer like godt som en mann.
 
 {plate.hide 1.1} {pitch.show own-half} {pitch.team team shape=4-3-3 line=9 depth=17} {pitch.team opponent shape=4-4-2 line=47 depth=25} {pitch.zone [0,0,14,40] tone=gold label=Fella | The trap over=0.9} Så pasningen ut dit sto åpen med vilje. {mark term:pressfelle}
 > So the pass out there was left open on purpose. {^}
-{pitch.pass lcb to=lb side=team over=0.7} {pitch.run [26,27] to=[11,12] side=opponent over=0.7} {pitch.run [16,34] to=[9,16] side=opponent over=0.7} Den lukkes i det ballen er underveis, av tre som ankommer samtidig.
+{pitch.pass lcb to=lb side=team over=0.7} {pitch.run st to=[11,12] side=opponent over=0.8} {pitch.run lm to=[9,17] side=opponent over=0.8} {pitch.run lcm to=[16,22] side=opponent over=0.9} Den lukkes i det ballen er underveis, av tre som ankommer samtidig.
 > It is shut while the ball is travelling, by three arriving at once.
 De trenger ikke å vinne en duell. De trenger bare å fjerne utgangene.
 > They do not need to win a duel. They only need to remove the exits.

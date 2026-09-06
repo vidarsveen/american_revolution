@@ -183,8 +183,8 @@
     {
      "id": "s1.b1",
      "say": {
-      "no": "Keeperen har ballen. To motstandere kommer mot ham i full fart.",
-      "en": "The goalkeeper has the ball. Two opponents are coming at him at speed."
+      "no": "Keeperen har ballen.",
+      "en": "The goalkeeper has the ball."
      },
      "cues": [
       {
@@ -212,8 +212,14 @@
        "do": "pitch.team",
        "side": "opponent",
        "shape": "4-4-2",
-       "line": 47,
-       "depth": 25
+       "line": 72,
+       "depth": 22
+      },
+      {
+       "on": "start",
+       "do": "pitch.ball",
+       "at": "gk",
+       "side": "team"
       }
      ],
      "gapAfter": 0.9
@@ -221,21 +227,25 @@
     {
      "id": "s1.b2",
      "say": {
-      "no": "Han har hele banen foran seg og kan slå den seksti meter opp i det tomme.",
-      "en": "He has the whole pitch in front of him and could hit it sixty metres into space."
+      "no": "To motstandere kommer mot ham i full fart.",
+      "en": "Two opponents are coming at him at speed."
      },
      "cues": [
       {
        "on": "start",
-       "do": "pitch.ball",
-       "at": "gk",
-       "side": "team"
+       "do": "pitch.run",
+       "from": "st",
+       "to": "[30,7]",
+       "side": "opponent",
+       "over": 1.4
       },
       {
        "on": "start",
-       "do": "pitch.focus",
-       "who": "gk",
-       "side": "team"
+       "do": "pitch.run",
+       "from": "st2",
+       "to": "[44,11]",
+       "side": "opponent",
+       "over": 1.6
       }
      ],
      "gapAfter": 1.35
@@ -243,10 +253,54 @@
     {
      "id": "s1.b3",
      "say": {
+      "no": "Han har hele banen foran seg og kan slå den seksti meter opp i det tomme.",
+      "en": "He has the whole pitch in front of him and could hit it sixty metres into space."
+     },
+     "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "full"
+       ]
+      },
+      {
+       "on": "start",
+       "do": "pitch.focus",
+       "who": "gk",
+       "side": "team"
+      },
+      {
+       "on": "start",
+       "do": "pitch.pass",
+       "from": "gk",
+       "to": "[34,72]",
+       "side": "team",
+       "label": {
+        "no": "Seksti meter",
+        "en": "Sixty metres"
+       },
+       "tone": "gold",
+       "over": 1.4,
+       "carry": false
+      }
+     ],
+     "gapAfter": 1.35
+    },
+    {
+     "id": "s1.b4",
+     "say": {
       "no": "I stedet spiller han ti meter sidelengs, til en midtstopper som også har noen i ryggen.",
       "en": "Instead he plays it ten metres sideways, to a centre-back who also has somebody behind him."
      },
      "cues": [
+      {
+       "on": "start",
+       "do": "pitch.show",
+       "views": [
+        "own-half"
+       ]
+      },
       {
        "on": "start",
        "do": "pitch.focus",
@@ -259,13 +313,13 @@
        "from": "gk",
        "to": "lcb",
        "side": "team",
-       "over": 0.8
+       "over": 0.9
       }
      ],
      "gapAfter": 0.9
     },
     {
-     "id": "s1.b4",
+     "id": "s1.b5",
      "say": {
       "no": "Gjør han det feil, står motstanderen alene med keeperen.",
       "en": "Get it wrong and the opposition are through on goal."
@@ -274,12 +328,21 @@
       {
        "on": "start",
        "do": "pitch.focus"
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "st2",
+       "to": "[22,9]",
+       "side": "opponent",
+       "tone": "red",
+       "over": 0.9
       }
      ],
      "gapAfter": 1.35
     },
     {
-     "id": "s1.b5",
+     "id": "s1.b6",
      "say": {
       "no": "Førti ganger i kampen. Hvert eneste lag i Europa. Hver helg.",
       "en": "Forty times a match. Every side in Europe. Every weekend."
@@ -288,7 +351,7 @@
      "gapAfter": 1.35
     },
     {
-     "id": "s1.b6",
+     "id": "s1.b7",
      "say": {
       "no": "Det er ikke mot, og det er ikke mote.",
       "en": "It is not courage, and it is not fashion."
@@ -302,7 +365,7 @@
      "gapAfter": 0.9
     },
     {
-     "id": "s1.b7",
+     "id": "s1.b8",
      "say": {
       "no": "Det er et regnestykke, og det ble mulig én sommer.",
       "en": "It is a sum, and it became possible in one particular summer."
@@ -853,7 +916,7 @@
       {
        "on": "start",
        "do": "pitch.run",
-       "from": "[34,34]",
+       "from": "st",
        "to": "[23,13]",
        "side": "opponent",
        "bend": 0.35,
@@ -993,18 +1056,26 @@
       {
        "on": "start",
        "do": "pitch.run",
-       "from": "[26,27]",
+       "from": "st",
        "to": "[11,12]",
        "side": "opponent",
-       "over": 0.7
+       "over": 0.8
       },
       {
        "on": "start",
        "do": "pitch.run",
-       "from": "[16,34]",
-       "to": "[9,16]",
+       "from": "lm",
+       "to": "[9,17]",
        "side": "opponent",
-       "over": 0.7
+       "over": 0.8
+      },
+      {
+       "on": "start",
+       "do": "pitch.run",
+       "from": "lcm",
+       "to": "[16,22]",
+       "side": "opponent",
+       "over": 0.9
       }
      ],
      "gapAfter": 0.9

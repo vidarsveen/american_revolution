@@ -190,6 +190,8 @@ falsifiable question**, not to look at things. A lab that is only a gallery will
 | `dev/pitch-lab.html` | Does a shape reached by seeking match one reached by morphing, dot for dot? |
 | `dev/pitch-lab.html` | Does `view` actually CROP, or does it only reposition? Measured on pixels. |
 | `dev/pitch-lab.html` | Can two dots be told apart at 390x700 — the height a phone really gives? |
+| `dev/pitch-lab.html` | Do metres written in a cue reach the pitch, and does a run move the man? |
+| `dev/pitch-lab.html` | Does the picture say which way each side is playing? On the pixels. |
 | `dev/sound-lab.html` | Does the music duck under speech, and stay silent under `instant`? |
 | `dev/sound-lab.html` | Does every loop join itself at the seam, measured on the samples? |
 | `tools/check-turn.py` | At the instant the stage is rebuilt, is the veil actually opaque? |
@@ -252,7 +254,7 @@ python tools/check-pack-selftest.py   # and does that check still catch anything
 python tools/check-data.py
 python tools/build-sw.py --check   # is sw.js's precache still what the graph says?
 python tools/check-engine.py       # rule 1, measured — needs a server
-python tools/check-pitch.py        # six questions about the pitch — needs a server
+python tools/check-pitch.py        # nine questions about the pitch — needs a server
 python tools/check-turn.py         # is the scene change behind the veil? — needs a server
 python tools/check-scene-plate.py  # does a scene's opening picture survive the turn? — needs a server
 python tools/check-turn-chapter.py # and the chapter change — needs a server
@@ -274,6 +276,48 @@ python tools/check-published.py    # hashes every file index.html reaches
 ---
 
 ## Hazards that have bitten before
+
+**A cue argument the compiler cannot express is not an error, it is a value nobody
+reads.** The prose format has no arrays, so `{pitch.run from=[34,44] to=[34,22]}`
+compiles to the STRING `"[34,44]"` — and `pointOf()` and `areaOf()` both accepted real
+arrays only. So `arrow()` returned early and drew nothing, and `focus({area})` read the
+empty result as CLEAR THE FOCUS. Twenty-four of the football course's thirty-two arrows
+were absent for eight chapters, along with every focus area, and nothing anywhere said
+so: `check-script.py` validated the argument as a `string`, which it is, and the pitch
+bench asserted shapes and crops rather than whether an arrow existed.
+
+It was reported by a person watching, in the only terms available to one: *"you say the
+keeper plays it to the defender and then there is someone attacking him and there is
+not — the position is basically the initial position, so there is something lacking
+there."* Every one of those words was accurate.
+
+Two fixes, and the second is the general one. `numbersIn()` in `pitch/geometry.js` now
+reads coordinates out of either form — requiring **n** numbers, which is what keeps a
+role like `st2` and a shirt number like `9` falling through to the lookup they belong
+to. And **an arrow now causes the movement it draws**: a `run` that starts at a NAMED
+player carries him, a `pass` carries the ball, `carry: false` opts out. An arrow was
+otherwise a caption on a still picture, which is the same defect one level up.
+
+The bench asserts both, and both were confirmed by reintroducing them and watching it
+fail. So was a third — the goals being drawn where a goal actually is, wholly outside
+the goal line, which is off-canvas in every cropped view.
+
+**And two of that bench's own assertions passed while measuring nothing, twice in a
+row.** "The two goal mouths differ in colour" passed with the colour switched off,
+because the mown stripes are 17.5 m bands from y = 0 and the two ends sit on different
+ones — it was measuring the grass. Sampling the goal against the turf beside it at the
+same y still passed, because the middle of the goal mouth is a white upright. It samples
+an eighth of the way in, which is fill and nothing else. **Reintroduce the bug after
+every change to a probe, not once when it is written.**
+
+**Dim by mixing toward the ground, never by alpha.** Unlit players were drawn at
+`globalAlpha` 0.22, then 0.32, then 0.45, and at every value the nineteen dots that were
+not the subject came out as identical olive smudges — alpha over turf takes the hue with
+it, so the two teams stopped being two teams and a focused picture read as an empty one.
+Worse, the same dot looked different depending on which mown stripe it stood on. Mixing
+the fill toward `--pitch-turf` keeps the hue direction and is uniform across the stripes.
+The positive signal does the work anyway: the subject is drawn larger and haloed, which
+is louder than making everything else quieter.
 
 **When the narration names an area, that area goes ON THE MAP.** Not the county it is
 in — the area itself. "Chianti Classico" is a shape between Florence and Siena and the

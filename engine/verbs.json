@@ -1,1661 +1,1676 @@
 {
- "version": 1,
- "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
- "//surfaces": "Every verb names the SURFACE that answers it (engine/surfaces/<id>.js). A pack declares which surfaces it wants in pack.json -> `surfaces`; absent means the four that always existed (map, plate, overlays, sound). Two checks fall out of that and they are why the field exists: tools/check-script.py refuses a chapter using a verb whose surface the pack does not declare -- before this, a chapter written against a pack with no map validated clean and drew nothing -- and engine/stage.js reports at boot when a verb's declared surface is not the surface that implements it. The two verbs with `handledBy` carry no surface: `pause` is resolved by the player and `term.mark` by the compiler, both before a cue list exists.",
- "//occupies": "What each verb does to the SCREEN, which used to be nowhere and was therefore re-derived from the verb's name by every tool that needed it -- wrongly, in the case of tools/check-blank.py, which read four real hide-verbs as shows and invented three verb names that do not exist. `channel` is the slot; the map's channels are map/index.js's own layer names. `effect` is fill (replace) | add (accumulate) | free (empty, or empty one id when `key`'s argument is present) | free-one (always targeted). `weight` is frame (can carry the screen alone) or trim (real on screen, and a screen showing only this is still an empty screen -- docs/design-direction.md calls a fact box 'the picture's edge, and nothing else'). `expires` is 'beat' for a card that dies with its own sentence, or seconds for a self-erasing timer. `null` means the verb draws nothing: a camera move, a one-shot flash, a sound. Every verb must carry a decision, so a new verb cannot be added without saying what it puts on screen.",
- "refTypes": {
-  "place": "chapter.places",
-  "route": "chapter.routes",
-  "person": "pack.people",
-  "media": "pack.media",
-  "quote": "chapter.quotes",
-  "sound": "pack.sound",
-  "region": "chapter.regions",
-  "term": "pack.terms",
-  "topic": "pack.topics"
- },
- "verbs": {
-  "map.flyTo": {
-   "summary": {
-    "no": "Fly kameraet til et sted",
-    "en": "Fly the camera to a place"
-   },
-   "surface": "map",
-   "occupies": null,
-   "args": {
-    "to": {
-     "type": "place",
-     "required": true
+  "version": 1,
+  "note": "The cue vocabulary. THE source of truth: engine/stage.js binds handlers to it and refuses to boot with a mismatch, and tools/check-script.py validates chapters against it. This file exists because the list used to be hand-copied between those two, so adding a verb to one and not the other made a typo in a chapter silently do nothing. Arguments are checked too: check-script.py rejects a cue carrying an argument this file does not declare, because `kind` and `tone` sat in the chapter for months being read by nothing and validating clean.",
+  "//surfaces": "Every verb names the SURFACE that answers it (engine/surfaces/<id>.js). A pack declares which surfaces it wants in pack.json -> `surfaces`; absent means the four that always existed (map, plate, overlays, sound). Two checks fall out of that and they are why the field exists: tools/check-script.py refuses a chapter using a verb whose surface the pack does not declare -- before this, a chapter written against a pack with no map validated clean and drew nothing -- and engine/stage.js reports at boot when a verb's declared surface is not the surface that implements it. The two verbs with `handledBy` carry no surface: `pause` is resolved by the player and `term.mark` by the compiler, both before a cue list exists.",
+  "//occupies": "What each verb does to the SCREEN, which used to be nowhere and was therefore re-derived from the verb's name by every tool that needed it -- wrongly, in the case of tools/check-blank.py, which read four real hide-verbs as shows and invented three verb names that do not exist. `channel` is the slot; the map's channels are map/index.js's own layer names. `effect` is fill (replace) | add (accumulate) | free (empty, or empty one id when `key`'s argument is present) | free-one (always targeted). `weight` is frame (can carry the screen alone) or trim (real on screen, and a screen showing only this is still an empty screen -- docs/design-direction.md calls a fact box 'the picture's edge, and nothing else'). `expires` is 'beat' for a card that dies with its own sentence, or seconds for a self-erasing timer. `null` means the verb draws nothing: a camera move, a one-shot flash, a sound. Every verb must carry a decision, so a new verb cannot be added without saying what it puts on screen.",
+  "refTypes": {
+    "place": "chapter.places",
+    "route": "chapter.routes",
+    "person": "pack.people",
+    "media": "pack.media",
+    "quote": "chapter.quotes",
+    "sound": "pack.sound",
+    "region": "chapter.regions",
+    "term": "pack.terms",
+    "topic": "pack.topics"
+  },
+  "verbs": {
+    "map.flyTo": {
+      "summary": {
+        "no": "Fly kameraet til et sted",
+        "en": "Fly the camera to a place"
+      },
+      "surface": "map",
+      "occupies": null,
+      "args": {
+        "to": {
+          "type": "place",
+          "required": true
+        },
+        "zoom": {
+          "type": "number",
+          "min": 1,
+          "max": 18
+        },
+        "over": {
+          "type": "seconds"
+        }
+      }
     },
-    "zoom": {
-     "type": "number",
-     "min": 1,
-     "max": 18
+    "map.fitRoute": {
+      "summary": {
+        "no": "Ramme inn en hel rute",
+        "en": "Frame a whole route"
+      },
+      "surface": "map",
+      "occupies": null,
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "over": {
+          "type": "seconds"
+        }
+      }
     },
-    "over": {
-     "type": "seconds"
+    "map.fitPlaces": {
+      "summary": {
+        "no": "Ramme inn flere steder",
+        "en": "Frame several places"
+      },
+      "surface": "map",
+      "occupies": null,
+      "args": {
+        "places": {
+          "type": "place[]",
+          "required": true
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "zoom": {
+          "type": "number",
+          "min": 1,
+          "max": 18,
+          "note": "Only meaningful when `places` names exactly one place, where fitting is flying. Ignored otherwise."
+        }
+      }
+    },
+    "map.time": {
+      "summary": {
+        "no": "Sett klokkeslettet på kartet",
+        "en": "Set the clock on the map"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "clock",
+        "effect": "fill",
+        "weight": "trim"
+      },
+      "note": "value: null clears the clock — the epilogue steps outside the day.",
+      "args": {
+        "value": {
+          "type": "i18n"
+        }
+      }
+    },
+    "map.mood": {
+      "summary": {
+        "no": "Tid på døgnet",
+        "en": "Time of day"
+      },
+      "surface": "map",
+      "occupies": null,
+      "args": {
+        "value": {
+          "type": "enum",
+          "values": [
+            "day",
+            "dawn",
+            "dusk",
+            "night",
+            "storm"
+          ],
+          "required": true
+        }
+      }
+    },
+    "map.flash": {
+      "summary": {
+        "no": "Et skudd går av",
+        "en": "A shot goes off"
+      },
+      "surface": "map",
+      "occupies": null,
+      "args": {}
+    },
+    "region.show": {
+      "summary": {
+        "no": "Vis et navngitt område",
+        "en": "Show a named region"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "regions",
+        "effect": "add",
+        "weight": "frame",
+        "key": "names"
+      },
+      "note": "Names resolve against the file the chapter declares in `regions`. A region is never labelled: the wash carries the area and the narration names it. Asked for repeatedly, hidden in CSS for a while, and removed at the source instead.",
+      "args": {
+        "names": {
+          "type": "region[]",
+          "required": true
+        },
+        "side": {
+          "type": "faction"
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "strength": {
+          "type": "number",
+          "default": 1
+        },
+        "vary": {
+          "type": "boolean",
+          "default": true,
+          "note": "Give each region its own colour inside the side's family. On by default: thirteen colonies filled with one wash read as one shape, not thirteen. Set false when a shot is about the side and not about the individual areas."
+        }
+      }
+    },
+    "region.clear": {
+      "summary": {
+        "no": "Fjern områdene",
+        "en": "Clear the regions"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "regions",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "border.set": {
+      "summary": {
+        "no": "Slå grenser av og på",
+        "en": "Turn boundaries on and off"
+      },
+      "surface": "map",
+      "occupies": null,
+      "note": "0 country, 1 state/province. A pack decides what those mean.",
+      "args": {
+        "country": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "boolean"
+        }
+      }
+    },
+    "route.draw": {
+      "summary": {
+        "no": "En marsj tegner seg selv",
+        "en": "A march draws itself"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "routes",
+        "effect": "add",
+        "weight": "frame",
+        "key": "id"
+      },
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "fit": {
+          "type": "boolean",
+          "default": true
+        },
+        "strength": {
+          "type": "number",
+          "note": "How many people are moving. A route with a strength draws an army arrow sized by it; a route without one stays a thin line, which is what a single rider or a ship should be. Normally set on the route itself rather than the cue, because it is a fact about who is moving, not about this moment."
+        }
+      },
+      "note": "Arrow or line is decided by whether anyone declared a strength — see that argument. Seven hundred regulars and one silversmith must not look alike."
+    },
+    "route.clear": {
+      "summary": {
+        "no": "Fjern alle ruter",
+        "en": "Clear every route"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "routes",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "front.show": {
+      "summary": {
+        "no": "En linje som står og venter",
+        "en": "A line of men, holding"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "fronts",
+        "effect": "add",
+        "weight": "frame",
+        "key": "id"
+      },
+      "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "side": {
+          "type": "faction"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "facing": {
+          "type": "number",
+          "default": 1,
+          "note": "Which side of the line the ticks hang from: 1 or -1. Which way they are looking."
+        },
+        "fluid": {
+          "type": "boolean",
+          "default": false,
+          "note": "Dashed, for a body of men who have not formed up properly. Most of this chapter."
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "fit": {
+          "type": "boolean",
+          "default": false,
+          "note": "Off by default: a front is usually drawn inside a shot the camera has already framed."
+        }
+      }
+    },
+    "front.hide": {
+      "summary": {
+        "no": "Fjern én linje",
+        "en": "Remove one front"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "fronts",
+        "effect": "free-one",
+        "weight": "frame",
+        "key": "id"
+      },
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        }
+      }
+    },
+    "front.clear": {
+      "summary": {
+        "no": "Fjern alle linjer",
+        "en": "Clear every front"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "fronts",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "marker.show": {
+      "summary": {
+        "no": "En navngitt nål",
+        "en": "A named pin"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "markers",
+        "effect": "add",
+        "weight": "frame",
+        "key": "at"
+      },
+      "args": {
+        "at": {
+          "type": "place",
+          "required": true
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "side": {
+          "type": "faction"
+        },
+        "kind": {
+          "type": "enum",
+          "values": [
+            "point",
+            "clash",
+            "target",
+            "camp",
+            "siege"
+          ],
+          "default": "point",
+          "note": "point is a plain pin and draws no glyph."
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        }
+      },
+      "note": "`kind` decides what happened there, and drops the matching glyph from the map's battle set under the pin. `tone` names a palette colour when the point is not about a side — a bridge people fought over is not a claim about who owns it."
+    },
+    "marker.hide": {
+      "summary": {
+        "no": "Fjern én nål",
+        "en": "Remove one pin"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "markers",
+        "effect": "free-one",
+        "weight": "frame",
+        "key": "at"
+      },
+      "args": {
+        "at": {
+          "type": "place",
+          "required": true
+        }
+      }
+    },
+    "marker.clear": {
+      "summary": {
+        "no": "Fjern alle nåler",
+        "en": "Clear every pin"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "markers",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "place.highlight": {
+      "summary": {
+        "no": "Peke på kartet mens du snakker",
+        "en": "Point at the map while you talk"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "highlights",
+        "effect": "add",
+        "weight": "frame",
+        "key": "at"
+      },
+      "args": {
+        "at": {
+          "type": "place",
+          "required": true
+        },
+        "side": {
+          "type": "faction"
+        },
+        "centre": {
+          "type": "boolean",
+          "default": true
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ],
+          "note": "A colour, not a side. Defaults to gold, the map’s \"look here\" colour."
+        }
+      }
+    },
+    "place.clear": {
+      "summary": {
+        "no": "Fjern ringene",
+        "en": "Clear the rings"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "highlights",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "converge": {
+      "summary": {
+        "no": "Styrker som kommer inn og møtes",
+        "en": "Forces coming in and joining"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "routes",
+        "effect": "add",
+        "weight": "frame",
+        "key": "to"
+      },
+      "args": {
+        "from": {
+          "type": "place[]",
+          "required": true
+        },
+        "to": {
+          "type": "place",
+          "required": true
+        },
+        "side": {
+          "type": "faction"
+        },
+        "strength": {
+          "type": "number"
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "fit": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "portrait.show": {
+      "summary": {
+        "no": "Personen det snakkes om",
+        "en": "The person being spoken about"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "portrait",
+        "effect": "fill",
+        "weight": "frame",
+        "key": "id"
+      },
+      "args": {
+        "id": {
+          "type": "person",
+          "required": true
+        }
+      }
+    },
+    "portrait.hide": {
+      "summary": {
+        "no": "Skjul portrettet",
+        "en": "Hide the portrait"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "portrait",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "image.show": {
+      "summary": {
+        "no": "Et bilde i full bredde",
+        "en": "A full-bleed image"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "image",
+        "effect": "fill",
+        "weight": "frame",
+        "key": "id"
+      },
+      "args": {
+        "id": {
+          "type": "media",
+          "required": true
+        },
+        "mode": {
+          "type": "enum",
+          "values": [
+            "inset",
+            "full"
+          ],
+          "default": "inset"
+        }
+      }
+    },
+    "image.hide": {
+      "summary": {
+        "no": "Skjul bildet",
+        "en": "Hide the image"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "image",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "quote.show": {
+      "summary": {
+        "no": "Et sitat fra en kilde",
+        "en": "A quote from a source"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "quote",
+        "effect": "fill",
+        "weight": "frame",
+        "key": "id"
+      },
+      "args": {
+        "id": {
+          "type": "quote",
+          "required": true
+        }
+      }
+    },
+    "quote.hide": {
+      "summary": {
+        "no": "Skjul sitatet",
+        "en": "Hide the quote"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "quote",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "stat.show": {
+      "summary": {
+        "no": "Et tall som teller",
+        "en": "A number that matters"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "deck",
+        "effect": "add",
+        "weight": "trim"
+      },
+      "args": {
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "side": {
+          "type": "faction"
+        }
+      }
+    },
+    "stat.clear": {
+      "summary": {
+        "no": "Fjern tallene",
+        "en": "Clear the numbers"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "deck",
+        "effect": "free",
+        "weight": "trim"
+      },
+      "args": {}
+    },
+    "caption.note": {
+      "summary": {
+        "no": "En kort merknad under teksten",
+        "en": "A short note under the caption"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "note",
+        "effect": "fill",
+        "weight": "trim",
+        "expires": 4.2
+      },
+      "args": {
+        "value": {
+          "type": "i18n",
+          "required": true
+        }
+      }
+    },
+    "pause": {
+      "summary": {
+        "no": "Vent på et trykk",
+        "en": "Wait for a tap"
+      },
+      "args": {},
+      "handledBy": "player",
+      "occupies": null
+    },
+    "sound.play": {
+      "summary": {
+        "no": "Spill en lyd én gang",
+        "en": "Play a sound once"
+      },
+      "surface": "sound",
+      "occupies": null,
+      "note": "A single event, and it must name a thing the narration JUST named — not atmosphere by association. One per beat, three per scene, none within 20 s of another; check-script.py holds all three, and prints every effect next to its sentence so a human can read whether it answers it. The effect must also belong to the pack's era: sound/library.js carries a year span per entry and 44 BC fired three cannon before it did. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
+      "args": {
+        "id": {
+          "type": "sound",
+          "required": true
+        },
+        "times": {
+          "type": "number",
+          "default": 1,
+          "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering. Three reports of one gun are ONE cue with `times`, never three cues."
+        },
+        "spread": {
+          "type": "seconds",
+          "default": 0
+        },
+        "gainDb": {
+          "type": "number",
+          "default": 0,
+          "note": "-8, and ±4 only to separate a near thing from a far one inside one scene. check-script.py holds -12…-4."
+        },
+        "rate": {
+          "type": "number",
+          "default": 1
+        }
+      }
+    },
+    "sound.ambience": {
+      "summary": {
+        "no": "Legg en lydkulisse under",
+        "en": "Lay a bed of place under it"
+      },
+      "surface": "sound",
+      "occupies": {
+        "channel": "ambience",
+        "effect": "fill",
+        "weight": "trim"
+      },
+      "note": "Continuous: wind, sea, a crowd. A place lasts a scene, so ONE per scene, and a second only when the narration says the place changed. Crossfades. Omit `id` to stop it. Never ducks — a room does not get quieter when someone speaks.",
+      "args": {
+        "id": {
+          "type": "sound"
+        },
+        "gainDb": {
+          "type": "number",
+          "default": 0,
+          "note": "-15, and ±3 only to separate a near thing from a far one inside one scene. check-script.py holds -18…-12. Further out than that is the recording being wrong, and the fix is `levelled` in content/<pack>/sound.json."
+        }
+      }
+    },
+    "sound.music": {
+      "summary": {
+        "no": "Musikk under fortellingen",
+        "en": "Music under the narration"
+      },
+      "surface": "sound",
+      "occupies": {
+        "channel": "bed",
+        "effect": "fill",
+        "weight": "trim"
+      },
+      "note": "One per scene, in its first beat. Ducks under the voice on its own, from the script word timings. Omit `id` to stop it — but a scene change stops it anyway, so an explicit stop mid-scene is a second bed cue and check-script.py refuses it.",
+      "args": {
+        "id": {
+          "type": "sound"
+        },
+        "gainDb": {
+          "type": "number",
+          "default": 0,
+          "note": "The engine reads it, and no chapter may set it: the bed's level is `bedDb` in sound/soundscape.js, once, for the whole app. Every cue used to carry -6…-12 on top of the bus's own -14, so the bed that shipped was 9-12 dB below the level the module documented and re-balancing meant editing sixty-one numbers. check-script.py fails a chapter that sets it."
+        }
+      }
+    },
+    "road.draw": {
+      "summary": {
+        "no": "Legg ned en vei",
+        "en": "Lay a road down"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "roads",
+        "effect": "add",
+        "weight": "frame",
+        "key": "id"
+      },
+      "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "default": 1.8
+        }
+      }
+    },
+    "term.mark": {
+      "summary": {
+        "no": "Gjør et ord i teksten trykkbart",
+        "en": "Make a word in the caption tappable"
+      },
+      "note": "Marks a word so a reader can tap it and read more. Resolved when the chapter is compiled, NOT when the cue fires — the mark is a property of the sentence, not a thing on the stage, so it cannot violate the rule that the picture is a function of time. There is deliberately no `dossier.show`: a cue that OPENED a card would be replayed on every seek, and forty cards would try to open at once. Same reason a musket must not fire forty times when you scrub back through Lexington. term.mark marks; the reader decides whether to look.",
+      "handledBy": "script",
+      "args": {
+        "kind": {
+          "type": "enum",
+          "required": true,
+          "values": [
+            "term",
+            "person",
+            "place",
+            "topic"
+          ],
+          "note": "Which pool the id resolves against."
+        },
+        "id": {
+          "type": "string",
+          "required": true,
+          "note": "Checked against the pool named by `kind`."
+        },
+        "span": {
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 6,
+          "note": "How many words the term covers. 'Second Continental Congress' is a span of three."
+        }
+      },
+      "occupies": null
+    },
+    "compare.show": {
+      "summary": {
+        "no": "To eller tre tall som ett bilde",
+        "en": "Two or three numbers as one picture"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "compare",
+        "effect": "fill",
+        "weight": "frame"
+      },
+      "note": "Seventy-seven against seven hundred lands as an argument when it is one picture and as trivia when it is two unrelated chips. Same for 230 ships against 400, and for three shares of the Roman world. `n` sizes the bar; `value` is what is printed. They are separate because the pack writes numbers the way they are SPOKEN in the prose and the way they are READ on screen, and a bar needs neither — it needs a number to measure. A part with no `n` falls back to parsing `value`.",
+      "args": {
+        "parts": {
+          "type": "part[]",
+          "required": true,
+          "min": 2,
+          "max": 4,
+          "note": "Each: { n, value, label, side or tone }."
+        },
+        "mode": {
+          "type": "enum",
+          "values": [
+            "bar",
+            "ratio"
+          ],
+          "default": "bar",
+          "note": "`bar` measures them against the largest. `ratio` sets them side by side as one width."
+        },
+        "note": {
+          "type": "i18n",
+          "note": "One line under the bars, where the comparison needs a caveat."
+        },
+        "over": {
+          "type": "seconds",
+          "default": 1.1
+        }
+      }
+    },
+    "compare.clear": {
+      "summary": {
+        "no": "Fjern sammenlikningen",
+        "en": "Remove the comparison"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "compare",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "plate.show": {
+      "summary": {
+        "no": "Fyll skjermen med et bilde, og la kameraet gli",
+        "en": "Fill the screen with a picture, and let the camera drift"
+      },
+      "surface": "plate",
+      "occupies": {
+        "channel": "plate",
+        "effect": "fill",
+        "weight": "frame",
+        "key": "id"
+      },
+      "note": "The map is not the only stage. A chapter has moments that are not on a map at all — the Ides of March happens in a room, the will is read in a senate, the Forum is a place you should SEE rather than see a dot for — and until now the only answer was a small inset card over a map that was still the subject of the screen. A plate takes the whole frame, and drifts: the slow push that is the visual grammar of every history documentary ever made, and the reason a still photograph holds attention for twelve seconds instead of two. The map keeps running underneath and is never unmounted — it costs nothing while covered, because paintGround only re-bakes when the camera moves, and a camera under a plate does not move. Under `instant` the drift does not animate: the plate appears already at its end framing, the same discipline as a march that draws itself whole when you seek.",
+      "args": {
+        "id": {
+          "type": "media",
+          "required": true
+        },
+        "motion": {
+          "type": "enum",
+          "values": [
+            "in",
+            "out",
+            "left",
+            "right",
+            "still"
+          ],
+          "default": "in",
+          "note": "Which way the camera drifts. `in` is the push."
+        },
+        "focus": {
+          "type": "number[]",
+          "note": "[x, y] as fractions of the image, what the drift aims at. Default centre, slightly high — faces are rarely in the middle."
+        },
+        "over": {
+          "type": "seconds",
+          "default": 14,
+          "note": "How long the drift takes. Longer than the beat, on purpose: motion you can SEE is motion that distracts."
+        },
+        "dim": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "note": "Darken the plate so a caption or quote over it stays readable."
+        },
+        "fit": {
+          "type": "enum",
+          "values": [
+            "cover",
+            "contain"
+          ],
+          "note": "How the picture meets a wide stage. `cover` fills it and crops what does not fit, which is right for a painting. `contain` letterboxes, which is the only honest option when the whole frame IS the information: a map, a coin, an inscription. Normally you do not set this -- media.json carries a fit derived from the picture's own shape by tools/fetch-media.py, and this only overrides it."
+        },
+        "push": {
+          "type": "number",
+          "min": 0,
+          "max": 0.6,
+          "note": "How far the camera travels, as a fraction of the frame. Default 0.16, which is what the drift always was. A wide establishing shot wants more; a face wants almost none."
+        },
+        "into": {
+          "type": "seconds",
+          "note": "The cross-dissolve when this plate REPLACES another one that is already up. Default 1.2 (--t-dissolve). Ignored when the plate is coming up over the map, which the whole plate already dissolves for."
+        }
+      }
+    },
+    "plate.hide": {
+      "summary": {
+        "no": "Tilbake til kartet",
+        "en": "Back to the map"
+      },
+      "surface": "plate",
+      "occupies": {
+        "channel": "plate",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {
+        "over": {
+          "type": "seconds",
+          "default": 1.2,
+          "note": "The cross-dissolve back to the map. --t-dissolve in docs/design-direction.md."
+        }
+      }
+    },
+    "fleet.draw": {
+      "summary": {
+        "no": "En eskadre på vei",
+        "en": "A squadron under way"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "fleets",
+        "effect": "add",
+        "weight": "frame",
+        "key": "id"
+      },
+      "note": "Ships, not an arrow. route.draw sizes its arrow by `strength`, which means men per metre of front -- a true statement about an army and a meaningless one about a squadron, where ten destroyers are ten objects in a line. A fleet draws the hulls in line ahead along the travelled part of the track, with wakes trailing, so `over` moves the formation up the fjord and a seek lands it wherever it had got to. The track itself must be water: declare the route `\"medium\": \"sea\"` and tools/check-sealanes.py will hold you to it.",
+      "args": {
+        "id": {
+          "type": "route",
+          "required": true
+        },
+        "ships": {
+          "type": "number",
+          "min": 1,
+          "max": 8,
+          "default": 3,
+          "note": "How many hulls to draw. Capped at eight: past that another lozenge adds nothing and the line stops reading as a line."
+        },
+        "kind": {
+          "type": "enum",
+          "values": [
+            "destroyer",
+            "battleship",
+            "convoy",
+            "submarine"
+          ],
+          "default": "destroyer",
+          "note": "Sizes the hull and the wake. Not to scale with each other -- at the zoom a fjord is read at a real destroyer is under a pixel."
+        },
+        "side": {
+          "type": "faction"
+        },
+        "spacing": {
+          "type": "number",
+          "default": 20,
+          "note": "Pixels between hulls, in line ahead."
+        },
+        "over": {
+          "type": "seconds",
+          "default": 4
+        }
+      }
+    },
+    "fleet.clear": {
+      "summary": {
+        "no": "Ta eskadren av kartet",
+        "en": "Take the squadron off the map"
+      },
+      "surface": "map",
+      "occupies": {
+        "channel": "fleets",
+        "effect": "free",
+        "weight": "frame",
+        "key": "id"
+      },
+      "args": {
+        "id": {
+          "type": "route"
+        }
+      }
+    },
+    "fact.show": {
+      "summary": {
+        "no": "Vis en kort forklaring",
+        "en": "Show a short definition"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "fact",
+        "effect": "fill",
+        "weight": "trim",
+        "expires": "beat"
+      },
+      "note": "A one-line definition on screen while the word is being said. term.mark makes a word tappable, and almost nobody taps while a voice is running -- so the definition existed and was never seen. This is stage state, shown and hidden by cues, so seeking into the middle of a definition shows the definition. It carries the entry's HOOK, never its body: a fact box is a glance you can read without stopping listening, and the card itself opens the full entry.",
+      "args": {
+        "kind": {
+          "type": "entryKind",
+          "required": true,
+          "note": "Which pool the id resolves against. Validated against the kinds the PACK declares in `entries`, not against a list here: this argument used to enumerate term|topic|place|person|grape|wine, and `grape` and `wine` are two subject-specific values sitting in the shared vocabulary -- the same leak as a stylesheet selecting on a faction name. A course could not have a lookup kind of its own without editing this file."
+        },
+        "id": {
+          "type": "string",
+          "required": true
+        },
+        "until": {
+          "type": "seconds",
+          "note": "How long the box stays up. Default 6.5. The hide is derived from this at compile time against the recorded timing, so it lands the same distance after the spoken word in every language. Authoring the hide on a later BEAT was the previous design and a beat is the wrong unit: a beat can be three sentences."
+        }
+      }
+    },
+    "fact.hide": {
+      "summary": {
+        "no": "Skjul forklaringen",
+        "en": "Hide the definition"
+      },
+      "surface": "overlays",
+      "occupies": {
+        "channel": "fact",
+        "effect": "free",
+        "weight": "trim"
+      },
+      "args": {},
+      "note": "Rarely authored. fact.show derives its own hide from `until`; write this only to take a box down EARLY."
+    },
+    "chart.show": {
+      "summary": {
+        "no": "Tegn en profil fra pakkens egne tall",
+        "en": "Draw a profile from the pack's own numbers"
+      },
+      "surface": "chart",
+      "occupies": {
+        "channel": "chart",
+        "effect": "fill",
+        "weight": "frame"
+      },
+      "note": "A measured shape, resolved against the pack's own entry pools the way fact.show is -- not numbers written into the cue. An entry may carry a `profile`: an ordered set of named axes with values 0..1. The AXES are declared once per kind, in pack.json -> entries.<kind>.profile.axes, because two entries are only comparable if they carry the same axes in the same order and a per-entry list cannot promise that. The framework learns nothing about what an axis MEANS: it draws a list of ids and labels it has never heard of, so a finance course declaring {risk, liquidity, horizon} gets the same picture from the same code.\n\nTwo profiles over each other is the primary case, not an extra: \"Barolo and Barbaresco are the same grape and different wines\" is a shape alone and an argument in pairs. Drawn as bars per axis rather than as a radar, for two reasons the content supplies -- a zero axis (every dry wine's sweetness) collapses to the centre of a web and reads as a rendering fault, and two NEARLY IDENTICAL polygons at 390 px are mush while two bars in one track differ visibly at 0.05.\n\nThere is deliberately no `over`. The bars grow over --t-enter from the stylesheet, so there is no authored duration that can drift off the motion scale, and `instant` draws them finished.",
+      "args": {
+        "kind": {
+          "type": "enum",
+          "values": [
+            "profile",
+            "bar"
+          ],
+          "default": "profile",
+          "note": "`profile` measures against a fixed ceiling of 1, so the track IS the scale and 0.85 means the same thing in every chart the pack draws. `bar` measures against the largest value on screen, which is the only honest scale for a magnitude with no natural ceiling. There is no `line`: a line needs a series over time, no pack has one, and declaring an enum value with no handler behind it is exactly the `kind`-on-marker.show defect this file exists to prevent."
+        },
+        "ref": {
+          "type": "string",
+          "required": true,
+          "note": "'<kind>:<id>' into the pack's entry index -- 'wine:barolo'. Checked against the pool the kind names, and the entry must carry a `profile`."
+        },
+        "against": {
+          "type": "string",
+          "note": "A second entry, drawn over the first on the same axes. The case this verb exists for."
+        },
+        "axes": {
+          "type": "string[]",
+          "note": "Which axes, in which order. Default: every axis the pack declares for the kind. Naming a subset is an argument about those axes and is read in the order written, not in pack order."
+        },
+        "side": {
+          "type": "faction",
+          "note": "Override the first series' colour. Normally do not: two things being CONTRASTED must not take the same faction colour, and Barolo and Barbaresco are both `red`. A series colour says which one, not what it is, so the default is the palette's look-here role and its neighbour."
+        },
+        "againstSide": {
+          "type": "faction",
+          "note": "The same, for the second series."
+        },
+        "note": {
+          "type": "i18n",
+          "note": "One line under the chart, where the comparison needs a caveat."
+        }
+      }
+    },
+    "chart.hide": {
+      "summary": {
+        "no": "Ta profilen ned",
+        "en": "Take the chart down"
+      },
+      "surface": "chart",
+      "occupies": {
+        "channel": "chart",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "pitch.show": {
+      "summary": {
+        "no": "Sett banen paa skjermen",
+        "en": "Put the pitch on screen"
+      },
+      "surface": "pitch",
+      "occupies": {
+        "channel": "pitch",
+        "effect": "fill",
+        "weight": "frame",
+        "key": "views"
+      },
+      "args": {
+        "views": {
+          "type": "string[]",
+          "note": "how much of the pitch each panel shows: full | own-half | their-half | final-third | middle. One panel is written `{pitch.show final-third}` and compiles to a list of one. There was a singular `view` beside this and it was never read by anything: tools/author.py folds a singular positional into the plural list argument, so every chapter on disk was setting `views` and the cropping worked through a path nobody had written down. Found by tools/check-rhythm.py, which keys the frame's identity on this."
+        },
+        "panels": {
+          "type": "number",
+          "min": 1,
+          "max": 3,
+          "default": 1,
+          "note": "more than one pitch at a time - chapter six compares three leagues. Panels stack on a portrait host and sit side by side on a landscape one."
+        },
+        "numbers": {
+          "type": "boolean",
+          "default": false,
+          "note": "draw 1-11 inside the dots. Off by default: a shape reads better as plain dots, and the numbers are chapter two's subject rather than every chapter's furniture."
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      },
+      "note": "The pitch is drawn PORTRAIT, attacking up the screen - see pitch/geometry.js for why. It is the ground for this surface the way the map is for a map course, so every other pitch verb needs it to have been shown first: a shape drawn on a pitch nobody put up is an empty screen, and tools/check-cover.py fails on it. The frame's identity is the VIEW, so cropping from the full pitch to the final third counts as a different picture and tools/check-rhythm.py sees it as one. Putting a new shape on the same view does not: that is content changing inside one image, which is real but is not the screen turning over. The pessimistic reading is the right one for a gate."
+    },
+    "pitch.hide": {
+      "summary": {
+        "no": "Ta banen bort",
+        "en": "Take the pitch away"
+      },
+      "surface": "pitch",
+      "occupies": {
+        "channel": "pitch",
+        "effect": "free",
+        "weight": "frame"
+      },
+      "args": {}
+    },
+    "pitch.team": {
+      "summary": {
+        "no": "Sett opp et lag i en formasjon",
+        "en": "Set a team out in a shape"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing.",
+          "required": true
+        },
+        "shape": {
+          "type": "string",
+          "required": true,
+          "note": "any digit string adding up to ten outfield players - 4-4-2, 4-2-3-1, 3-4-3, 5-3-2, 2-3-5 - or a named one: wm, catenaccio, back-three, back-five, pyramid."
+        },
+        "line": {
+          "type": "number",
+          "min": 0,
+          "max": 90,
+          "default": 30,
+          "note": "where the deepest outfield line stands, in metres from that team's own goal. THIS is a high line or a low block: the same shape at a different number."
+        },
+        "depth": {
+          "type": "number",
+          "min": 6,
+          "max": 60,
+          "default": 34,
+          "note": "metres from the back line to the front one. Compactness, which is chapter four's whole argument."
+        },
+        "width": {
+          "type": "number",
+          "min": 0.2,
+          "max": 1,
+          "default": 0.88,
+          "note": "how much of the 68 m the block spreads across."
+        },
+        "facing": {
+          "type": "enum",
+          "values": [
+            "up",
+            "down"
+          ],
+          "note": "only needed when the automatic answer is wrong."
+        },
+        "compact": {
+          "type": "boolean",
+          "default": false,
+          "note": "draw the measured distance between the deepest and the highest outfield player, in metres, down the side."
+        },
+        "numbers": {
+          "type": "boolean"
+        },
+        "over": {
+          "type": "seconds",
+          "note": "a second call for the same side MORPHS from where it was. That is chapter two: 2-3-5 becoming a WM has to be one shape turning into another, not a cut between two pictures."
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      }
+    },
+    "pitch.teamClear": {
+      "summary": {
+        "no": "Ta et lag av banen",
+        "en": "Take a team off"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      }
+    },
+    "pitch.move": {
+      "summary": {
+        "no": "Flytt eller merk en spiller",
+        "en": "Move or mark one player"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing.",
+          "required": true
+        },
+        "who": {
+          "type": "string",
+          "note": "a shirt number 1-11 (1 is the keeper) or a role the shape declares: gk, lb, lcb, six, eight, ten, nine, lwb, libero, inside-left and so on.",
+          "required": true
+        },
+        "to": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both."
+        },
+        "label": {
+          "type": "i18n",
+          "note": "a name under the dot."
+        },
+        "mark": {
+          "type": "boolean",
+          "note": "a gold ring - this is the one the sentence is about."
+        },
+        "dim": {
+          "type": "boolean",
+          "note": "fade this dot back so the others read."
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      },
+      "note": "The false nine, the full-back stepping inside, the six dropping between the centre-backs: every one of those is one dot leaving the shape it was drawn in."
+    },
+    "pitch.pass": {
+      "summary": {
+        "no": "En pasning",
+        "en": "A pass"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "from": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "to": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+        },
+        "id": {
+          "type": "string",
+          "note": "give it one to replace it later; without one it stands until pitch.clear."
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "bend": {
+          "type": "number",
+          "min": -0.6,
+          "max": 0.6
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        },
+        "carry": {
+          "type": "boolean",
+          "default": true,
+          "note": "An arrow is a drawing of a movement, and by default the movement HAPPENS: a `run` that starts at a named player carries that player to `to` over the same `over`, and a `pass` or `cross` carries the ball if there is one on the pitch. The pitch shipped eight chapters without this and was reported as \"the position is basically the initial position\" -- the arrow was a caption on a still picture. Set false when the arrow really is only an annotation: the option not taken, the pass he COULD have played, a lane drawn for reference. A run whose `from` is an explicit [x, y] names nobody and carries nobody, which is why several chapters need no change."
+        }
+      },
+      "note": "A straight solid arrow with a filled head - the ball moving."
+    },
+    "pitch.run": {
+      "summary": {
+        "no": "Et loep",
+        "en": "A run"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "from": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "to": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+        },
+        "id": {
+          "type": "string",
+          "note": "give it one to replace it later; without one it stands until pitch.clear."
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "bend": {
+          "type": "number",
+          "min": -0.6,
+          "max": 0.6
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        },
+        "carry": {
+          "type": "boolean",
+          "default": true,
+          "note": "An arrow is a drawing of a movement, and by default the movement HAPPENS: a `run` that starts at a named player carries that player to `to` over the same `over`, and a `pass` or `cross` carries the ball if there is one on the pitch. The pitch shipped eight chapters without this and was reported as \"the position is basically the initial position\" -- the arrow was a caption on a still picture. Set false when the arrow really is only an annotation: the option not taken, the pass he COULD have played, a lane drawn for reference. A run whose `from` is an explicit [x, y] names nobody and carries nobody, which is why several chapters need no change."
+        }
+      },
+      "note": "A bent dashed arrow with an open head - a person moving. Drawn differently from a pass on purpose: a third-man run is a pass one way and a run the other at the same moment, and one mark for both makes the thing it exists to explain unreadable."
+    },
+    "pitch.cross": {
+      "summary": {
+        "no": "Et innlegg eller et sidebytte",
+        "en": "A cross or a switch"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "from": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "to": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+        },
+        "id": {
+          "type": "string",
+          "note": "give it one to replace it later; without one it stands until pitch.clear."
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "bend": {
+          "type": "number",
+          "min": -0.6,
+          "max": 0.6
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        },
+        "carry": {
+          "type": "boolean",
+          "default": true,
+          "note": "An arrow is a drawing of a movement, and by default the movement HAPPENS: a `run` that starts at a named player carries that player to `to` over the same `over`, and a `pass` or `cross` carries the ball if there is one on the pitch. The pitch shipped eight chapters without this and was reported as \"the position is basically the initial position\" -- the arrow was a caption on a still picture. Set false when the arrow really is only an annotation: the option not taken, the pass he COULD have played, a lane drawn for reference. A run whose `from` is an explicit [x, y] names nobody and carries nobody, which is why several chapters need no change."
+        }
+      },
+      "note": "A long shallow curve. Chapter five's sidebytte and tilbakelegg are both this."
+    },
+    "pitch.zone": {
+      "summary": {
+        "no": "Skyggelegg et omraade",
+        "en": "Shade an area"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "area": {
+          "type": "string",
+          "note": "a named area - final-third, middle-third, defensive-third, their-half, own-half, box, own-box, wing-left, half-space-left, centre, half-space-right, wing-right - or four numbers [x0,y0,x1,y1] in metres, x across 0-68 and y along 0-105 from your own goal line.",
+          "required": true
+        },
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      },
+      "note": "A pressing trap, a half-space, the block, the third being defended."
+    },
+    "pitch.lanes": {
+      "summary": {
+        "no": "Tegn de fem kanalene",
+        "en": "Draw the five lanes"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      },
+      "note": "The five-lane pitch in one cue. The lanes are NOT fifths of the width - they are set by the markings already on the grass, which is why a half-space is a real place: a ball played into one arrives at the corner of the penalty area. See LANES in pitch/geometry.js."
+    },
+    "pitch.zoneHide": {
+      "summary": {
+        "no": "Fjern et skyggelagt omraade",
+        "en": "Take a shaded area away"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "id": {
+          "type": "string",
+          "note": "leave it out to clear every zone on the panel."
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      }
+    },
+    "pitch.line": {
+      "summary": {
+        "no": "En linje tvers over banen",
+        "en": "A line across the pitch"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "at": {
+          "type": "number",
+          "min": 0,
+          "max": 105,
+          "required": true,
+          "note": "metres from your own goal line."
+        },
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "i18n"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "red",
+            "blue",
+            "gold",
+            "sage"
+          ]
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      },
+      "note": "The defensive line, the offside line, the edge of the block. A line steps up by calling this again with the same id and an over."
+    },
+    "pitch.ball": {
+      "summary": {
+        "no": "Sett ballen",
+        "en": "Put the ball"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "at": {
+          "type": "string",
+          "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
+          "required": true
+        },
+        "side": {
+          "type": "faction",
+          "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
+        },
+        "over": {
+          "type": "seconds"
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      }
+    },
+    "pitch.clear": {
+      "summary": {
+        "no": "Toem banen for piler, soner og linjer",
+        "en": "Clear the arrows, zones and lines"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "note": "which panel, when pitch.show asked for more than one."
+        }
+      },
+      "note": "Leaves the teams standing. pitch.teamClear takes those off."
+    },
+    "pitch.focus": {
+      "summary": {
+        "no": "Si hvor man skal se",
+        "en": "Say where to look"
+      },
+      "surface": "pitch",
+      "occupies": null,
+      "args": {
+        "who": {
+          "type": "string",
+          "note": "one or more roles or shirt numbers, comma separated. Everything not named draws back at 30%."
+        },
+        "side": {
+          "type": "faction",
+          "note": "which team `who` belongs to. Without it, nobody on either side is lit."
+        },
+        "area": {
+          "type": "string",
+          "note": "a named area or four metres, lifted out of the rest of the pitch."
+        },
+        "panel": {
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "default": 0
+        }
+      },
+      "note": "The signalling principle, and the gap that made a whole chapter mute: the narration said \"somebody behind is now free\" over twenty-two identical dots and pointed at none of them. A diagram that shows everything equally shows nothing. Call it with no arguments to clear it -- a focus left standing across a scene is a permanent dimming nobody asked for. See docs/dramaturgy.md rule 6."
     }
-   }
-  },
-  "map.fitRoute": {
-   "summary": {
-    "no": "Ramme inn en hel rute",
-    "en": "Frame a whole route"
-   },
-   "surface": "map",
-   "occupies": null,
-   "args": {
-    "id": {
-     "type": "route",
-     "required": true
-    },
-    "over": {
-     "type": "seconds"
-    }
-   }
-  },
-  "map.fitPlaces": {
-   "summary": {
-    "no": "Ramme inn flere steder",
-    "en": "Frame several places"
-   },
-   "surface": "map",
-   "occupies": null,
-   "args": {
-    "places": {
-     "type": "place[]",
-     "required": true
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "zoom": {
-     "type": "number",
-     "min": 1,
-     "max": 18,
-     "note": "Only meaningful when `places` names exactly one place, where fitting is flying. Ignored otherwise."
-    }
-   }
-  },
-  "map.time": {
-   "summary": {
-    "no": "Sett klokkeslettet på kartet",
-    "en": "Set the clock on the map"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "clock",
-    "effect": "fill",
-    "weight": "trim"
-   },
-   "note": "value: null clears the clock — the epilogue steps outside the day.",
-   "args": {
-    "value": {
-     "type": "i18n"
-    }
-   }
-  },
-  "map.mood": {
-   "summary": {
-    "no": "Tid på døgnet",
-    "en": "Time of day"
-   },
-   "surface": "map",
-   "occupies": null,
-   "args": {
-    "value": {
-     "type": "enum",
-     "values": [
-      "day",
-      "dawn",
-      "dusk",
-      "night",
-      "storm"
-     ],
-     "required": true
-    }
-   }
-  },
-  "map.flash": {
-   "summary": {
-    "no": "Et skudd går av",
-    "en": "A shot goes off"
-   },
-   "surface": "map",
-   "occupies": null,
-   "args": {}
-  },
-  "region.show": {
-   "summary": {
-    "no": "Vis et navngitt område",
-    "en": "Show a named region"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "regions",
-    "effect": "add",
-    "weight": "frame",
-    "key": "names"
-   },
-   "note": "Names resolve against the file the chapter declares in `regions`. A region is never labelled: the wash carries the area and the narration names it. Asked for repeatedly, hidden in CSS for a while, and removed at the source instead.",
-   "args": {
-    "names": {
-     "type": "region[]",
-     "required": true
-    },
-    "side": {
-     "type": "faction"
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "strength": {
-     "type": "number",
-     "default": 1
-    },
-    "vary": {
-     "type": "boolean",
-     "default": true,
-     "note": "Give each region its own colour inside the side's family. On by default: thirteen colonies filled with one wash read as one shape, not thirteen. Set false when a shot is about the side and not about the individual areas."
-    }
-   }
-  },
-  "region.clear": {
-   "summary": {
-    "no": "Fjern områdene",
-    "en": "Clear the regions"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "regions",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "border.set": {
-   "summary": {
-    "no": "Slå grenser av og på",
-    "en": "Turn boundaries on and off"
-   },
-   "surface": "map",
-   "occupies": null,
-   "note": "0 country, 1 state/province. A pack decides what those mean.",
-   "args": {
-    "country": {
-     "type": "boolean"
-    },
-    "state": {
-     "type": "boolean"
-    }
-   }
-  },
-  "route.draw": {
-   "summary": {
-    "no": "En marsj tegner seg selv",
-    "en": "A march draws itself"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "routes",
-    "effect": "add",
-    "weight": "frame",
-    "key": "id"
-   },
-   "args": {
-    "id": {
-     "type": "route",
-     "required": true
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "fit": {
-     "type": "boolean",
-     "default": true
-    },
-    "strength": {
-     "type": "number",
-     "note": "How many people are moving. A route with a strength draws an army arrow sized by it; a route without one stays a thin line, which is what a single rider or a ship should be. Normally set on the route itself rather than the cue, because it is a fact about who is moving, not about this moment."
-    }
-   },
-   "note": "Arrow or line is decided by whether anyone declared a strength — see that argument. Seven hundred regulars and one silversmith must not look alike."
-  },
-  "route.clear": {
-   "summary": {
-    "no": "Fjern alle ruter",
-    "en": "Clear every route"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "routes",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "front.show": {
-   "summary": {
-    "no": "En linje som står og venter",
-    "en": "A line of men, holding"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "fronts",
-    "effect": "add",
-    "weight": "frame",
-    "key": "id"
-   },
-   "note": "Geometry comes from a route, because a line is a line. An arrow says these people moved; a front says they stood there and faced something. Seventy-seven men on a village green are the second thing, and drawing them as an arrow says the one thing about them that is not true.",
-   "args": {
-    "id": {
-     "type": "route",
-     "required": true
-    },
-    "side": {
-     "type": "faction"
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    },
-    "facing": {
-     "type": "number",
-     "default": 1,
-     "note": "Which side of the line the ticks hang from: 1 or -1. Which way they are looking."
-    },
-    "fluid": {
-     "type": "boolean",
-     "default": false,
-     "note": "Dashed, for a body of men who have not formed up properly. Most of this chapter."
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "fit": {
-     "type": "boolean",
-     "default": false,
-     "note": "Off by default: a front is usually drawn inside a shot the camera has already framed."
-    }
-   }
-  },
-  "front.hide": {
-   "summary": {
-    "no": "Fjern én linje",
-    "en": "Remove one front"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "fronts",
-    "effect": "free-one",
-    "weight": "frame",
-    "key": "id"
-   },
-   "args": {
-    "id": {
-     "type": "route",
-     "required": true
-    }
-   }
-  },
-  "front.clear": {
-   "summary": {
-    "no": "Fjern alle linjer",
-    "en": "Clear every front"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "fronts",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "marker.show": {
-   "summary": {
-    "no": "En navngitt nål",
-    "en": "A named pin"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "markers",
-    "effect": "add",
-    "weight": "frame",
-    "key": "at"
-   },
-   "args": {
-    "at": {
-     "type": "place",
-     "required": true
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "side": {
-     "type": "faction"
-    },
-    "kind": {
-     "type": "enum",
-     "values": [
-      "point",
-      "clash",
-      "target",
-      "camp",
-      "siege"
-     ],
-     "default": "point",
-     "note": "point is a plain pin and draws no glyph."
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    }
-   },
-   "note": "`kind` decides what happened there, and drops the matching glyph from the map's battle set under the pin. `tone` names a palette colour when the point is not about a side — a bridge people fought over is not a claim about who owns it."
-  },
-  "marker.hide": {
-   "summary": {
-    "no": "Fjern én nål",
-    "en": "Remove one pin"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "markers",
-    "effect": "free-one",
-    "weight": "frame",
-    "key": "at"
-   },
-   "args": {
-    "at": {
-     "type": "place",
-     "required": true
-    }
-   }
-  },
-  "marker.clear": {
-   "summary": {
-    "no": "Fjern alle nåler",
-    "en": "Clear every pin"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "markers",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "place.highlight": {
-   "summary": {
-    "no": "Peke på kartet mens du snakker",
-    "en": "Point at the map while you talk"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "highlights",
-    "effect": "add",
-    "weight": "frame",
-    "key": "at"
-   },
-   "args": {
-    "at": {
-     "type": "place",
-     "required": true
-    },
-    "side": {
-     "type": "faction"
-    },
-    "centre": {
-     "type": "boolean",
-     "default": true
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ],
-     "note": "A colour, not a side. Defaults to gold, the map’s \"look here\" colour."
-    }
-   }
-  },
-  "place.clear": {
-   "summary": {
-    "no": "Fjern ringene",
-    "en": "Clear the rings"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "highlights",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "converge": {
-   "summary": {
-    "no": "Styrker som kommer inn og møtes",
-    "en": "Forces coming in and joining"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "routes",
-    "effect": "add",
-    "weight": "frame",
-    "key": "to"
-   },
-   "args": {
-    "from": {
-     "type": "place[]",
-     "required": true
-    },
-    "to": {
-     "type": "place",
-     "required": true
-    },
-    "side": {
-     "type": "faction"
-    },
-    "strength": {
-     "type": "number"
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "fit": {
-     "type": "boolean",
-     "default": true
-    }
-   }
-  },
-  "portrait.show": {
-   "summary": {
-    "no": "Personen det snakkes om",
-    "en": "The person being spoken about"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "portrait",
-    "effect": "fill",
-    "weight": "frame",
-    "key": "id"
-   },
-   "args": {
-    "id": {
-     "type": "person",
-     "required": true
-    }
-   }
-  },
-  "portrait.hide": {
-   "summary": {
-    "no": "Skjul portrettet",
-    "en": "Hide the portrait"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "portrait",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "image.show": {
-   "summary": {
-    "no": "Et bilde i full bredde",
-    "en": "A full-bleed image"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "image",
-    "effect": "fill",
-    "weight": "frame",
-    "key": "id"
-   },
-   "args": {
-    "id": {
-     "type": "media",
-     "required": true
-    },
-    "mode": {
-     "type": "enum",
-     "values": [
-      "inset",
-      "full"
-     ],
-     "default": "inset"
-    }
-   }
-  },
-  "image.hide": {
-   "summary": {
-    "no": "Skjul bildet",
-    "en": "Hide the image"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "image",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "quote.show": {
-   "summary": {
-    "no": "Et sitat fra en kilde",
-    "en": "A quote from a source"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "quote",
-    "effect": "fill",
-    "weight": "frame",
-    "key": "id"
-   },
-   "args": {
-    "id": {
-     "type": "quote",
-     "required": true
-    }
-   }
-  },
-  "quote.hide": {
-   "summary": {
-    "no": "Skjul sitatet",
-    "en": "Hide the quote"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "quote",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "stat.show": {
-   "summary": {
-    "no": "Et tall som teller",
-    "en": "A number that matters"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "deck",
-    "effect": "add",
-    "weight": "trim"
-   },
-   "args": {
-    "value": {
-     "type": "string",
-     "required": true
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "side": {
-     "type": "faction"
-    }
-   }
-  },
-  "stat.clear": {
-   "summary": {
-    "no": "Fjern tallene",
-    "en": "Clear the numbers"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "deck",
-    "effect": "free",
-    "weight": "trim"
-   },
-   "args": {}
-  },
-  "caption.note": {
-   "summary": {
-    "no": "En kort merknad under teksten",
-    "en": "A short note under the caption"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "note",
-    "effect": "fill",
-    "weight": "trim",
-    "expires": 4.2
-   },
-   "args": {
-    "value": {
-     "type": "i18n",
-     "required": true
-    }
-   }
-  },
-  "pause": {
-   "summary": {
-    "no": "Vent på et trykk",
-    "en": "Wait for a tap"
-   },
-   "args": {},
-   "handledBy": "player",
-   "occupies": null
-  },
-  "sound.play": {
-   "summary": {
-    "no": "Spill en lyd én gang",
-    "en": "Play a sound once"
-   },
-   "surface": "sound",
-   "occupies": null,
-   "note": "A single event, and it must name a thing the narration JUST named — not atmosphere by association. One per beat, three per scene, none within 20 s of another; check-script.py holds all three, and prints every effect next to its sentence so a human can read whether it answers it. The effect must also belong to the pack's era: sound/library.js carries a year span per entry and 44 BC fired three cannon before it did. Never replayed when the picture is rebuilt after a seek — scrubbing back through Lexington must not fire forty muskets.",
-   "args": {
-    "id": {
-     "type": "sound",
-     "required": true
-    },
-    "times": {
-     "type": "number",
-     "default": 1,
-     "note": "Fire it this many times, spread over `spread` seconds, each at a slightly different pitch so it reads as several guns rather than one sample stuttering. Three reports of one gun are ONE cue with `times`, never three cues."
-    },
-    "spread": {
-     "type": "seconds",
-     "default": 0
-    },
-    "gainDb": {
-     "type": "number",
-     "default": 0,
-     "note": "-8, and ±4 only to separate a near thing from a far one inside one scene. check-script.py holds -12…-4."
-    },
-    "rate": {
-     "type": "number",
-     "default": 1
-    }
-   }
-  },
-  "sound.ambience": {
-   "summary": {
-    "no": "Legg en lydkulisse under",
-    "en": "Lay a bed of place under it"
-   },
-   "surface": "sound",
-   "occupies": {
-    "channel": "ambience",
-    "effect": "fill",
-    "weight": "trim"
-   },
-   "note": "Continuous: wind, sea, a crowd. A place lasts a scene, so ONE per scene, and a second only when the narration says the place changed. Crossfades. Omit `id` to stop it. Never ducks — a room does not get quieter when someone speaks.",
-   "args": {
-    "id": {
-     "type": "sound"
-    },
-    "gainDb": {
-     "type": "number",
-     "default": 0,
-     "note": "-15, and ±3 only to separate a near thing from a far one inside one scene. check-script.py holds -18…-12. Further out than that is the recording being wrong, and the fix is `levelled` in content/<pack>/sound.json."
-    }
-   }
-  },
-  "sound.music": {
-   "summary": {
-    "no": "Musikk under fortellingen",
-    "en": "Music under the narration"
-   },
-   "surface": "sound",
-   "occupies": {
-    "channel": "bed",
-    "effect": "fill",
-    "weight": "trim"
-   },
-   "note": "One per scene, in its first beat. Ducks under the voice on its own, from the script word timings. Omit `id` to stop it — but a scene change stops it anyway, so an explicit stop mid-scene is a second bed cue and check-script.py refuses it.",
-   "args": {
-    "id": {
-     "type": "sound"
-    },
-    "gainDb": {
-     "type": "number",
-     "default": 0,
-     "note": "The engine reads it, and no chapter may set it: the bed's level is `bedDb` in sound/soundscape.js, once, for the whole app. Every cue used to carry -6…-12 on top of the bus's own -14, so the bed that shipped was 9-12 dB below the level the module documented and re-balancing meant editing sixty-one numbers. check-script.py fails a chapter that sets it."
-    }
-   }
-  },
-  "road.draw": {
-   "summary": {
-    "no": "Legg ned en vei",
-    "en": "Lay a road down"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "roads",
-    "effect": "add",
-    "weight": "frame",
-    "key": "id"
-   },
-   "note": "A standing line, drawn quietly and all at once — not an event. Marches then travel along something instead of across open ground. Takes the same shape as a route, because it IS the route everyone on that day used; drawing it claims no more precision than the marches already do.",
-   "args": {
-    "id": {
-     "type": "route",
-     "required": true
-    },
-    "width": {
-     "type": "number",
-     "default": 1.8
-    }
-   }
-  },
-  "term.mark": {
-   "summary": {
-    "no": "Gjør et ord i teksten trykkbart",
-    "en": "Make a word in the caption tappable"
-   },
-   "note": "Marks a word so a reader can tap it and read more. Resolved when the chapter is compiled, NOT when the cue fires — the mark is a property of the sentence, not a thing on the stage, so it cannot violate the rule that the picture is a function of time. There is deliberately no `dossier.show`: a cue that OPENED a card would be replayed on every seek, and forty cards would try to open at once. Same reason a musket must not fire forty times when you scrub back through Lexington. term.mark marks; the reader decides whether to look.",
-   "handledBy": "script",
-   "args": {
-    "kind": {
-     "type": "enum",
-     "required": true,
-     "values": [
-      "term",
-      "person",
-      "place",
-      "topic"
-     ],
-     "note": "Which pool the id resolves against."
-    },
-    "id": {
-     "type": "string",
-     "required": true,
-     "note": "Checked against the pool named by `kind`."
-    },
-    "span": {
-     "type": "number",
-     "default": 1,
-     "min": 1,
-     "max": 6,
-     "note": "How many words the term covers. 'Second Continental Congress' is a span of three."
-    }
-   },
-   "occupies": null
-  },
-  "compare.show": {
-   "summary": {
-    "no": "To eller tre tall som ett bilde",
-    "en": "Two or three numbers as one picture"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "compare",
-    "effect": "fill",
-    "weight": "frame"
-   },
-   "note": "Seventy-seven against seven hundred lands as an argument when it is one picture and as trivia when it is two unrelated chips. Same for 230 ships against 400, and for three shares of the Roman world. `n` sizes the bar; `value` is what is printed. They are separate because the pack writes numbers the way they are SPOKEN in the prose and the way they are READ on screen, and a bar needs neither — it needs a number to measure. A part with no `n` falls back to parsing `value`.",
-   "args": {
-    "parts": {
-     "type": "part[]",
-     "required": true,
-     "min": 2,
-     "max": 4,
-     "note": "Each: { n, value, label, side or tone }."
-    },
-    "mode": {
-     "type": "enum",
-     "values": [
-      "bar",
-      "ratio"
-     ],
-     "default": "bar",
-     "note": "`bar` measures them against the largest. `ratio` sets them side by side as one width."
-    },
-    "note": {
-     "type": "i18n",
-     "note": "One line under the bars, where the comparison needs a caveat."
-    },
-    "over": {
-     "type": "seconds",
-     "default": 1.1
-    }
-   }
-  },
-  "compare.clear": {
-   "summary": {
-    "no": "Fjern sammenlikningen",
-    "en": "Remove the comparison"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "compare",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "plate.show": {
-   "summary": {
-    "no": "Fyll skjermen med et bilde, og la kameraet gli",
-    "en": "Fill the screen with a picture, and let the camera drift"
-   },
-   "surface": "plate",
-   "occupies": {
-    "channel": "plate",
-    "effect": "fill",
-    "weight": "frame",
-    "key": "id"
-   },
-   "note": "The map is not the only stage. A chapter has moments that are not on a map at all — the Ides of March happens in a room, the will is read in a senate, the Forum is a place you should SEE rather than see a dot for — and until now the only answer was a small inset card over a map that was still the subject of the screen. A plate takes the whole frame, and drifts: the slow push that is the visual grammar of every history documentary ever made, and the reason a still photograph holds attention for twelve seconds instead of two. The map keeps running underneath and is never unmounted — it costs nothing while covered, because paintGround only re-bakes when the camera moves, and a camera under a plate does not move. Under `instant` the drift does not animate: the plate appears already at its end framing, the same discipline as a march that draws itself whole when you seek.",
-   "args": {
-    "id": {
-     "type": "media",
-     "required": true
-    },
-    "motion": {
-     "type": "enum",
-     "values": [
-      "in",
-      "out",
-      "left",
-      "right",
-      "still"
-     ],
-     "default": "in",
-     "note": "Which way the camera drifts. `in` is the push."
-    },
-    "focus": {
-     "type": "number[]",
-     "note": "[x, y] as fractions of the image, what the drift aims at. Default centre, slightly high — faces are rarely in the middle."
-    },
-    "over": {
-     "type": "seconds",
-     "default": 14,
-     "note": "How long the drift takes. Longer than the beat, on purpose: motion you can SEE is motion that distracts."
-    },
-    "dim": {
-     "type": "number",
-     "min": 0,
-     "max": 1,
-     "default": 0,
-     "note": "Darken the plate so a caption or quote over it stays readable."
-    },
-    "fit": {
-     "type": "enum",
-     "values": [
-      "cover",
-      "contain"
-     ],
-     "note": "How the picture meets a wide stage. `cover` fills it and crops what does not fit, which is right for a painting. `contain` letterboxes, which is the only honest option when the whole frame IS the information: a map, a coin, an inscription. Normally you do not set this -- media.json carries a fit derived from the picture's own shape by tools/fetch-media.py, and this only overrides it."
-    },
-    "push": {
-     "type": "number",
-     "min": 0,
-     "max": 0.6,
-     "note": "How far the camera travels, as a fraction of the frame. Default 0.16, which is what the drift always was. A wide establishing shot wants more; a face wants almost none."
-    },
-    "into": {
-     "type": "seconds",
-     "note": "The cross-dissolve when this plate REPLACES another one that is already up. Default 1.2 (--t-dissolve). Ignored when the plate is coming up over the map, which the whole plate already dissolves for."
-    }
-   }
-  },
-  "plate.hide": {
-   "summary": {
-    "no": "Tilbake til kartet",
-    "en": "Back to the map"
-   },
-   "surface": "plate",
-   "occupies": {
-    "channel": "plate",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {
-    "over": {
-     "type": "seconds",
-     "default": 1.2,
-     "note": "The cross-dissolve back to the map. --t-dissolve in docs/design-direction.md."
-    }
-   }
-  },
-  "fleet.draw": {
-   "summary": {
-    "no": "En eskadre på vei",
-    "en": "A squadron under way"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "fleets",
-    "effect": "add",
-    "weight": "frame",
-    "key": "id"
-   },
-   "note": "Ships, not an arrow. route.draw sizes its arrow by `strength`, which means men per metre of front -- a true statement about an army and a meaningless one about a squadron, where ten destroyers are ten objects in a line. A fleet draws the hulls in line ahead along the travelled part of the track, with wakes trailing, so `over` moves the formation up the fjord and a seek lands it wherever it had got to. The track itself must be water: declare the route `\"medium\": \"sea\"` and tools/check-sealanes.py will hold you to it.",
-   "args": {
-    "id": {
-     "type": "route",
-     "required": true
-    },
-    "ships": {
-     "type": "number",
-     "min": 1,
-     "max": 8,
-     "default": 3,
-     "note": "How many hulls to draw. Capped at eight: past that another lozenge adds nothing and the line stops reading as a line."
-    },
-    "kind": {
-     "type": "enum",
-     "values": [
-      "destroyer",
-      "battleship",
-      "convoy",
-      "submarine"
-     ],
-     "default": "destroyer",
-     "note": "Sizes the hull and the wake. Not to scale with each other -- at the zoom a fjord is read at a real destroyer is under a pixel."
-    },
-    "side": {
-     "type": "faction"
-    },
-    "spacing": {
-     "type": "number",
-     "default": 20,
-     "note": "Pixels between hulls, in line ahead."
-    },
-    "over": {
-     "type": "seconds",
-     "default": 4
-    }
-   }
-  },
-  "fleet.clear": {
-   "summary": {
-    "no": "Ta eskadren av kartet",
-    "en": "Take the squadron off the map"
-   },
-   "surface": "map",
-   "occupies": {
-    "channel": "fleets",
-    "effect": "free",
-    "weight": "frame",
-    "key": "id"
-   },
-   "args": {
-    "id": {
-     "type": "route"
-    }
-   }
-  },
-  "fact.show": {
-   "summary": {
-    "no": "Vis en kort forklaring",
-    "en": "Show a short definition"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "fact",
-    "effect": "fill",
-    "weight": "trim",
-    "expires": "beat"
-   },
-   "note": "A one-line definition on screen while the word is being said. term.mark makes a word tappable, and almost nobody taps while a voice is running -- so the definition existed and was never seen. This is stage state, shown and hidden by cues, so seeking into the middle of a definition shows the definition. It carries the entry's HOOK, never its body: a fact box is a glance you can read without stopping listening, and the card itself opens the full entry.",
-   "args": {
-    "kind": {
-     "type": "entryKind",
-     "required": true,
-     "note": "Which pool the id resolves against. Validated against the kinds the PACK declares in `entries`, not against a list here: this argument used to enumerate term|topic|place|person|grape|wine, and `grape` and `wine` are two subject-specific values sitting in the shared vocabulary -- the same leak as a stylesheet selecting on a faction name. A course could not have a lookup kind of its own without editing this file."
-    },
-    "id": {
-     "type": "string",
-     "required": true
-    },
-    "until": {
-     "type": "seconds",
-     "note": "How long the box stays up. Default 6.5. The hide is derived from this at compile time against the recorded timing, so it lands the same distance after the spoken word in every language. Authoring the hide on a later BEAT was the previous design and a beat is the wrong unit: a beat can be three sentences."
-    }
-   }
-  },
-  "fact.hide": {
-   "summary": {
-    "no": "Skjul forklaringen",
-    "en": "Hide the definition"
-   },
-   "surface": "overlays",
-   "occupies": {
-    "channel": "fact",
-    "effect": "free",
-    "weight": "trim"
-   },
-   "args": {},
-   "note": "Rarely authored. fact.show derives its own hide from `until`; write this only to take a box down EARLY."
-  },
-  "chart.show": {
-   "summary": {
-    "no": "Tegn en profil fra pakkens egne tall",
-    "en": "Draw a profile from the pack's own numbers"
-   },
-   "surface": "chart",
-   "occupies": {
-    "channel": "chart",
-    "effect": "fill",
-    "weight": "frame"
-   },
-   "note": "A measured shape, resolved against the pack's own entry pools the way fact.show is -- not numbers written into the cue. An entry may carry a `profile`: an ordered set of named axes with values 0..1. The AXES are declared once per kind, in pack.json -> entries.<kind>.profile.axes, because two entries are only comparable if they carry the same axes in the same order and a per-entry list cannot promise that. The framework learns nothing about what an axis MEANS: it draws a list of ids and labels it has never heard of, so a finance course declaring {risk, liquidity, horizon} gets the same picture from the same code.\n\nTwo profiles over each other is the primary case, not an extra: \"Barolo and Barbaresco are the same grape and different wines\" is a shape alone and an argument in pairs. Drawn as bars per axis rather than as a radar, for two reasons the content supplies -- a zero axis (every dry wine's sweetness) collapses to the centre of a web and reads as a rendering fault, and two NEARLY IDENTICAL polygons at 390 px are mush while two bars in one track differ visibly at 0.05.\n\nThere is deliberately no `over`. The bars grow over --t-enter from the stylesheet, so there is no authored duration that can drift off the motion scale, and `instant` draws them finished.",
-   "args": {
-    "kind": {
-     "type": "enum",
-     "values": [
-      "profile",
-      "bar"
-     ],
-     "default": "profile",
-     "note": "`profile` measures against a fixed ceiling of 1, so the track IS the scale and 0.85 means the same thing in every chart the pack draws. `bar` measures against the largest value on screen, which is the only honest scale for a magnitude with no natural ceiling. There is no `line`: a line needs a series over time, no pack has one, and declaring an enum value with no handler behind it is exactly the `kind`-on-marker.show defect this file exists to prevent."
-    },
-    "ref": {
-     "type": "string",
-     "required": true,
-     "note": "'<kind>:<id>' into the pack's entry index -- 'wine:barolo'. Checked against the pool the kind names, and the entry must carry a `profile`."
-    },
-    "against": {
-     "type": "string",
-     "note": "A second entry, drawn over the first on the same axes. The case this verb exists for."
-    },
-    "axes": {
-     "type": "string[]",
-     "note": "Which axes, in which order. Default: every axis the pack declares for the kind. Naming a subset is an argument about those axes and is read in the order written, not in pack order."
-    },
-    "side": {
-     "type": "faction",
-     "note": "Override the first series' colour. Normally do not: two things being CONTRASTED must not take the same faction colour, and Barolo and Barbaresco are both `red`. A series colour says which one, not what it is, so the default is the palette's look-here role and its neighbour."
-    },
-    "againstSide": {
-     "type": "faction",
-     "note": "The same, for the second series."
-    },
-    "note": {
-     "type": "i18n",
-     "note": "One line under the chart, where the comparison needs a caveat."
-    }
-   }
-  },
-  "chart.hide": {
-   "summary": {
-    "no": "Ta profilen ned",
-    "en": "Take the chart down"
-   },
-   "surface": "chart",
-   "occupies": {
-    "channel": "chart",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "pitch.show": {
-   "summary": {
-    "no": "Sett banen paa skjermen",
-    "en": "Put the pitch on screen"
-   },
-   "surface": "pitch",
-   "occupies": {
-    "channel": "pitch",
-    "effect": "fill",
-    "weight": "frame",
-    "key": "views"
-   },
-   "args": {
-    "views": {
-     "type": "string[]",
-     "note": "how much of the pitch each panel shows: full | own-half | their-half | final-third | middle. One panel is written `{pitch.show final-third}` and compiles to a list of one. There was a singular `view` beside this and it was never read by anything: tools/author.py folds a singular positional into the plural list argument, so every chapter on disk was setting `views` and the cropping worked through a path nobody had written down. Found by tools/check-rhythm.py, which keys the frame's identity on this."
-    },
-    "panels": {
-     "type": "number",
-     "min": 1,
-     "max": 3,
-     "default": 1,
-     "note": "more than one pitch at a time - chapter six compares three leagues. Panels stack on a portrait host and sit side by side on a landscape one."
-    },
-    "numbers": {
-     "type": "boolean",
-     "default": false,
-     "note": "draw 1-11 inside the dots. Off by default: a shape reads better as plain dots, and the numbers are chapter two's subject rather than every chapter's furniture."
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "The pitch is drawn PORTRAIT, attacking up the screen - see pitch/geometry.js for why. It is the ground for this surface the way the map is for a map course, so every other pitch verb needs it to have been shown first: a shape drawn on a pitch nobody put up is an empty screen, and tools/check-cover.py fails on it. The frame's identity is the VIEW, so cropping from the full pitch to the final third counts as a different picture and tools/check-rhythm.py sees it as one. Putting a new shape on the same view does not: that is content changing inside one image, which is real but is not the screen turning over. The pessimistic reading is the right one for a gate."
-  },
-  "pitch.hide": {
-   "summary": {
-    "no": "Ta banen bort",
-    "en": "Take the pitch away"
-   },
-   "surface": "pitch",
-   "occupies": {
-    "channel": "pitch",
-    "effect": "free",
-    "weight": "frame"
-   },
-   "args": {}
-  },
-  "pitch.team": {
-   "summary": {
-    "no": "Sett opp et lag i en formasjon",
-    "en": "Set a team out in a shape"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing.",
-     "required": true
-    },
-    "shape": {
-     "type": "string",
-     "required": true,
-     "note": "any digit string adding up to ten outfield players - 4-4-2, 4-2-3-1, 3-4-3, 5-3-2, 2-3-5 - or a named one: wm, catenaccio, back-three, back-five, pyramid."
-    },
-    "line": {
-     "type": "number",
-     "min": 0,
-     "max": 90,
-     "default": 30,
-     "note": "where the deepest outfield line stands, in metres from that team's own goal. THIS is a high line or a low block: the same shape at a different number."
-    },
-    "depth": {
-     "type": "number",
-     "min": 6,
-     "max": 60,
-     "default": 34,
-     "note": "metres from the back line to the front one. Compactness, which is chapter four's whole argument."
-    },
-    "width": {
-     "type": "number",
-     "min": 0.2,
-     "max": 1,
-     "default": 0.88,
-     "note": "how much of the 68 m the block spreads across."
-    },
-    "facing": {
-     "type": "enum",
-     "values": [
-      "up",
-      "down"
-     ],
-     "note": "only needed when the automatic answer is wrong."
-    },
-    "compact": {
-     "type": "boolean",
-     "default": false,
-     "note": "draw the measured distance between the deepest and the highest outfield player, in metres, down the side."
-    },
-    "numbers": {
-     "type": "boolean"
-    },
-    "over": {
-     "type": "seconds",
-     "note": "a second call for the same side MORPHS from where it was. That is chapter two: 2-3-5 becoming a WM has to be one shape turning into another, not a cut between two pictures."
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   }
-  },
-  "pitch.teamClear": {
-   "summary": {
-    "no": "Ta et lag av banen",
-    "en": "Take a team off"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   }
-  },
-  "pitch.move": {
-   "summary": {
-    "no": "Flytt eller merk en spiller",
-    "en": "Move or mark one player"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing.",
-     "required": true
-    },
-    "who": {
-     "type": "string",
-     "note": "a shirt number 1-11 (1 is the keeper) or a role the shape declares: gk, lb, lcb, six, eight, ten, nine, lwb, libero, inside-left and so on.",
-     "required": true
-    },
-    "to": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both."
-    },
-    "label": {
-     "type": "i18n",
-     "note": "a name under the dot."
-    },
-    "mark": {
-     "type": "boolean",
-     "note": "a gold ring - this is the one the sentence is about."
-    },
-    "dim": {
-     "type": "boolean",
-     "note": "fade this dot back so the others read."
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "The false nine, the full-back stepping inside, the six dropping between the centre-backs: every one of those is one dot leaving the shape it was drawn in."
-  },
-  "pitch.pass": {
-   "summary": {
-    "no": "En pasning",
-    "en": "A pass"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "from": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "to": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
-    },
-    "id": {
-     "type": "string",
-     "note": "give it one to replace it later; without one it stands until pitch.clear."
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    },
-    "bend": {
-     "type": "number",
-     "min": -0.6,
-     "max": 0.6
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "A straight solid arrow with a filled head - the ball moving."
-  },
-  "pitch.run": {
-   "summary": {
-    "no": "Et loep",
-    "en": "A run"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "from": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "to": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
-    },
-    "id": {
-     "type": "string",
-     "note": "give it one to replace it later; without one it stands until pitch.clear."
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    },
-    "bend": {
-     "type": "number",
-     "min": -0.6,
-     "max": 0.6
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "A bent dashed arrow with an open head - a person moving. Drawn differently from a pass on purpose: a third-man run is a pass one way and a run the other at the same moment, and one mark for both makes the thing it exists to explain unreadable."
-  },
-  "pitch.cross": {
-   "summary": {
-    "no": "Et innlegg eller et sidebytte",
-    "en": "A cross or a switch"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "from": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "to": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
-    },
-    "id": {
-     "type": "string",
-     "note": "give it one to replace it later; without one it stands until pitch.clear."
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    },
-    "bend": {
-     "type": "number",
-     "min": -0.6,
-     "max": 0.6
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "A long shallow curve. Chapter five's sidebytte and tilbakelegg are both this."
-  },
-  "pitch.zone": {
-   "summary": {
-    "no": "Skyggelegg et omraade",
-    "en": "Shade an area"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "area": {
-     "type": "string",
-     "note": "a named area - final-third, middle-third, defensive-third, their-half, own-half, box, own-box, wing-left, half-space-left, centre, half-space-right, wing-right - or four numbers [x0,y0,x1,y1] in metres, x across 0-68 and y along 0-105 from your own goal line.",
-     "required": true
-    },
-    "id": {
-     "type": "string"
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "A pressing trap, a half-space, the block, the third being defended."
-  },
-  "pitch.lanes": {
-   "summary": {
-    "no": "Tegn de fem kanalene",
-    "en": "Draw the five lanes"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "The five-lane pitch in one cue. The lanes are NOT fifths of the width - they are set by the markings already on the grass, which is why a half-space is a real place: a ball played into one arrives at the corner of the penalty area. See LANES in pitch/geometry.js."
-  },
-  "pitch.zoneHide": {
-   "summary": {
-    "no": "Fjern et skyggelagt omraade",
-    "en": "Take a shaded area away"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "id": {
-     "type": "string",
-     "note": "leave it out to clear every zone on the panel."
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   }
-  },
-  "pitch.line": {
-   "summary": {
-    "no": "En linje tvers over banen",
-    "en": "A line across the pitch"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "at": {
-     "type": "number",
-     "min": 0,
-     "max": 105,
-     "required": true,
-     "note": "metres from your own goal line."
-    },
-    "id": {
-     "type": "string"
-    },
-    "label": {
-     "type": "i18n"
-    },
-    "tone": {
-     "type": "enum",
-     "values": [
-      "red",
-      "blue",
-      "gold",
-      "sage"
-     ]
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "The defensive line, the offside line, the edge of the block. A line steps up by calling this again with the same id and an over."
-  },
-  "pitch.ball": {
-   "summary": {
-    "no": "Sett ballen",
-    "en": "Put the ball"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "at": {
-     "type": "string",
-     "note": "two numbers [x,y] in metres, or a player: a role or shirt number when side is given, or an object naming both.",
-     "required": true
-    },
-    "side": {
-     "type": "faction",
-     "note": "a faction id from pack.json. The first side placed on a panel attacks UP the screen and the second attacks down, so a two-team picture never needs an explicit facing."
-    },
-    "over": {
-     "type": "seconds"
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   }
-  },
-  "pitch.clear": {
-   "summary": {
-    "no": "Toem banen for piler, soner og linjer",
-    "en": "Clear the arrows, zones and lines"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0,
-     "note": "which panel, when pitch.show asked for more than one."
-    }
-   },
-   "note": "Leaves the teams standing. pitch.teamClear takes those off."
-  },
-  "pitch.focus": {
-   "summary": {
-    "no": "Si hvor man skal se",
-    "en": "Say where to look"
-   },
-   "surface": "pitch",
-   "occupies": null,
-   "args": {
-    "who": {
-     "type": "string",
-     "note": "one or more roles or shirt numbers, comma separated. Everything not named draws back at 30%."
-    },
-    "side": {
-     "type": "faction",
-     "note": "which team `who` belongs to. Without it, nobody on either side is lit."
-    },
-    "area": {
-     "type": "string",
-     "note": "a named area or four metres, lifted out of the rest of the pitch."
-    },
-    "panel": {
-     "type": "number",
-     "min": 0,
-     "max": 2,
-     "default": 0
-    }
-   },
-   "note": "The signalling principle, and the gap that made a whole chapter mute: the narration said \"somebody behind is now free\" over twenty-two identical dots and pointed at none of them. A diagram that shows everything equally shows nothing. Call it with no arguments to clear it -- a focus left standing across a scene is a permanent dimming nobody asked for. See docs/dramaturgy.md rule 6."
   }
- }
 }

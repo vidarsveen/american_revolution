@@ -488,6 +488,155 @@ function focusLightsWhatItNames() {
    Running it
    ------------------------------------------------------------ */
 
+/**
+ * 8 - metres written in a cue reach the pitch, and a run moves the man.
+ *
+ * Two failures that shipped eight chapters and were reported together as
+ * "there is someone attacking him and the position is basically the initial
+ * position -- something is lacking there".
+ *
+ * The first is silent by construction. The prose format has no arrays, so
+ * `{pitch.run from=[34,44] to=[34,22]}` compiles to the STRING "[34,44]";
+ * pointOf() and areaOf() both took real arrays only, so arrow() returned early
+ * and drew nothing, and focus({area}) read an empty spec as CLEAR THE FOCUS.
+ * Neither path logs anything. Every arrow written in metres in the course was
+ * absent and every check in the repo was green.
+ *
+ * The second is a design gap rather than a bug: an arrow was a caption on a
+ * still picture. A run now carries the player who starts it.
+ */
+function metresAndMotion() {
+  const host = offscreenHost();
+  const p = createPitch(host, {});
+  p.team({ side: 'team', shape: '4-3-3', line: 30, instant: true });
+  p.team({ side: 'opponent', shape: '4-4-2', line: 30, instant: true });
+  const problems = [];
+  const snap = () => p.snapshot()[0];
+  const of = (side, role) => snap().teams.find((t) => t.side === side)
+    .players.find((q) => q.role === role);
+
+  // Coordinates as TEXT, which is the only form the compiler emits.
+  p.pass({ from: 'gk', to: '[34,72]', side: 'team', instant: true });
+  const a = snap().arrows;
+  if (a.length !== 1) problems.push(`a pass to "[34,72]" produced ${a.length} arrows`);
+  else if (Math.abs(a[0].to.x - 34) > 0.2 || Math.abs(a[0].to.y - 72) > 0.2) {
+    problems.push(`"[34,72]" resolved to ${a[0].to.x},${a[0].to.y}`);
+  }
+
+  // And an area as text, which used to CLEAR the focus instead of setting it.
+  p.focus({ area: '[0,60,68,105]' });
+  const f = snap().focus;
+  if (!f || !f.area) problems.push('focus area="[0,60,68,105]" set no area');
+  else if (f.area.join() !== '0,60,68,105') problems.push(`area resolved to ${f.area}`);
+  p.focus({});
+
+  // A run from a NAMED player takes him with it.
+  const before = of('opponent', 'st');
+  p.run({ from: 'st', to: '[30,7]', side: 'opponent', instant: true });
+  const after = of('opponent', 'st');
+  if (Math.abs(after.x - 30) > 0.2 || Math.abs(after.y - 7) > 0.2) {
+    problems.push(`a run left st at ${after.x},${after.y}, not 30,7`);
+  }
+  if (before.x === after.x && before.y === after.y) problems.push('the run moved nobody');
+
+  // A run drawn between two places names nobody and moves nobody.
+  const held = snap().teams.find((t) => t.side === 'team')
+    .players.map((q) => `${q.x},${q.y}`).join('|');
+  p.run({ from: '[10,20]', to: '[10,60]', side: 'team', instant: true });
+  const still = snap().teams.find((t) => t.side === 'team')
+    .players.map((q) => `${q.x},${q.y}`).join('|');
+  if (held !== still) problems.push('a run from bare metres moved somebody');
+
+  // carry:false is how a script says "the run he could have made".
+  const kept = of('opponent', 'st2');
+  p.run({ from: 'st2', to: '[5,5]', side: 'opponent', carry: false, instant: true });
+  const kept2 = of('opponent', 'st2');
+  if (kept.x !== kept2.x || kept.y !== kept2.y) problems.push('carry:false still moved the man');
+
+  p.destroy(); host.remove();
+  return { ok: !problems.length, problems, checked: 5 };
+}
+
+/**
+ * 9 - the picture says which way each side is playing.
+ *
+ * "Some more animation showing what's going on, which direction the teams are
+ * playing, etcetera." Twenty-two dots on a green rectangle say nothing about
+ * which end anybody is trying to reach, and every sentence in a tactics course
+ * is about direction. Each goal is drawn in the colour of the side that
+ * DEFENDS it, which is a pure function of `facing` and so is correct after a
+ * seek by construction.
+ *
+ * Measured on the PIXELS. A state field would have vouched for the first
+ * version of this, which drew the goals wholly outside the goal line -- where
+ * a goal actually is, and where `own-half` crops them off the canvas entirely.
+ */
+function directionIsDrawn() {
+  const host = offscreenHost();
+  const p = createPitch(host, {});
+  p.team({ side: 'team', shape: '4-3-3', line: 20, instant: true });
+  p.team({ side: 'opponent', shape: '4-4-2', line: 20, instant: true });
+  p.draw();
+  const problems = [];
+  const cv = host.querySelector('canvas');
+  const g = cv.getContext('2d');
+  const dpr = cv.width / PHONE.w;
+  // Ask the module where it actually drew, rather than re-deriving fitView
+  // here -- a probe that recomputes the frame goes on judging a frame the app
+  // no longer draws, which is how check-legible.py nearly vouched for nothing.
+  const read = (x, y, span = VIEWS.full) => {
+    const box = p.frames()[0];
+    const scale = box.w / PITCH.width;
+    const px = box.x + x * scale;
+    const py = box.y + (span[1] - y) * scale;
+    const d = g.getImageData(Math.round(px * dpr), Math.round(py * dpr), 1, 1).data;
+    return [d[0], d[1], d[2]];
+  };
+  /* Against the turf BESIDE it, at the same y.
+
+     The first version of this compared the two goal mouths to each other and
+     passed with the tint switched off, because the mown stripes are 17.5 m
+     bands from y = 0 and the two ends of the pitch sit on different ones. It
+     was measuring the grass. A bench that has never failed has not been shown
+     to measure anything, and this one had not: the bug was reintroduced and it
+     said ok.
+
+     What is actually claimed is that each goal is marked AGAINST ITS OWN
+     GROUND, and that the two marks differ from each other. */
+  /* And AWAY FROM THE NET LINES, in the fill.
+
+     Second false pass, same shape as the first: sampling the middle of the
+     goal mouth caught the white uprights, so switching the tint off still read
+     as "something is drawn there" and the bench said ok. The uprights are at
+     the quarters of the box; this samples an eighth in, which is fill and
+     nothing else. */
+  const inx = PITCH.width / 2 - PITCH.goalWidth * 0.375;
+  const iny = 0.85;                         // inside the 1.7 m box, off the rim
+  const off = PITCH.goalWidth / 2 + 3;      // clear of the goal, same stripe
+  const delta = (u, v) => [u[0] - v[0], u[1] - v[1], u[2] - v[2]];
+  const size = (u) => Math.hypot(u[0], u[1], u[2]);
+  const nearD = delta(read(inx, iny), read(PITCH.width / 2 + off, iny));
+  const farD = delta(read(inx, PITCH.length - iny),
+    read(PITCH.width / 2 + off, PITCH.length - iny));
+  if (size(nearD) < 18) problems.push(`the near goal is not marked (delta ${nearD})`);
+  if (size(farD) < 18) problems.push(`the far goal is not marked (delta ${farD})`);
+  if (size(delta(nearD, farD)) < 24) {
+    problems.push(`both goals are marked the same (${nearD} vs ${farD})`);
+  }
+
+  // And it must survive a crop, which is where the first version failed.
+  p.setView(0, 'own-half');
+  p.draw();
+  const cropD = delta(read(inx, iny, VIEWS['own-half']),
+    read(PITCH.width / 2 + off, iny, VIEWS['own-half']));
+  if (size(cropD) < 18) problems.push('the goal vanishes in a cropped view');
+
+  p.destroy(); host.remove();
+  return { ok: !problems.length, problems, checked: 4,
+    near: nearD.map(Math.round).join(','), far: farD.map(Math.round).join(','),
+    turf: cropD.map(Math.round).join(',') };
+}
+
 async function run() {
   $('#status').textContent = 'running';
   const rule1 = [...await seekMatchesPlay(), ...await resetLeavesNothing()];
@@ -497,6 +646,8 @@ async function run() {
   const crop = croppingCrops();
   const facing = facingsOppose();
   const focus = focusLightsWhatItNames();
+  const metres = metresAndMotion();
+  const direction = directionIsDrawn();
 
   const result = {
     rule1: { ok: rule1.every((r) => r.ok), cases: rule1 },
@@ -506,8 +657,11 @@ async function run() {
     crop,
     facing,
     focus,
+    metres,
+    direction,
   };
-  result.ok = result.rule1.ok && onPitch.ok && lanes.ok && dots.ok && crop.ok && facing.ok && focus.ok;
+  result.ok = result.rule1.ok && onPitch.ok && lanes.ok && dots.ok && crop.ok
+    && facing.ok && focus.ok && metres.ok && direction.ok;
   window.__pitchLab = result;
   render(result);
   $('#status').textContent = result.ok ? 'pass' : 'FAIL';
@@ -557,6 +711,16 @@ function render(r) {
   out.push('<h3>7 · focus lights exactly what it names</h3><ul>');
   out.push(line(r.focus.ok, `${r.focus.checked} cases`
     + `${r.focus.problems.length ? `<br><code>${r.focus.problems.join('<br>')}</code>` : ''}`));
+  out.push('</ul>');
+
+  out.push('<h3>8 · metres in a cue reach the pitch, and a run moves the man</h3><ul>');
+  out.push(line(r.metres.ok, `${r.metres.checked} cases`
+    + `${r.metres.problems.length ? `<br><code>${r.metres.problems.join('<br>')}</code>` : ''}`));
+  out.push('</ul>');
+
+  out.push('<h3>9 · the picture says which way each side is playing</h3><ul>');
+  out.push(line(r.direction.ok, `goals ${r.direction.near} / ${r.direction.far}, turf ${r.direction.turf}`
+    + `${r.direction.problems.length ? `<br><code>${r.direction.problems.join('<br>')}</code>` : ''}`));
   out.push('</ul>');
 
   $('#out').innerHTML = out.join('');

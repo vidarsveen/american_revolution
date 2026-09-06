@@ -912,10 +912,10 @@
       {
        "on": "start",
        "do": "pitch.run",
-       "from": "[46,62]",
+       "from": "eight",
        "to": "[52,84]",
        "side": "team",
-       "over": 0.9
+       "over": 1.0
       }
      ],
      "gapAfter": 0.9

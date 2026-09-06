@@ -233,9 +233,34 @@ export function quadAt(a, c, b, t) {
 }
 
 /** Resolve a named area, or pass an explicit [x0,y0,x1,y1] straight through. */
+/**
+ * The `n` numbers in a value, whether it arrived as an array or as text.
+ *
+ * A cue written `{pitch.run from=[34,44] to=[34,22]}` compiles to the STRING
+ * "[34,44]", because the prose format has no arrays — and both readers here
+ * only accepted real arrays, so every arrow and every focus area written with
+ * literal metres in the football course resolved to null and drew NOTHING. Not
+ * an error, not a warning: `arrow()` returned early and `focus()` read an empty
+ * spec as "clear the focus". Eight chapters shipped that way and it was
+ * reported as "there is someone attacking him and the position is basically
+ * the initial position — something is lacking there".
+ *
+ * Requiring `n` numbers is what keeps a player reference out of this: a role
+ * like `st2` and a shirt number like `9` each yield one number and fall
+ * through to the lookup they belong to.
+ */
+export function numbersIn(v, n) {
+  const list = Array.isArray(v) ? v
+    : (typeof v === 'string' ? v.match(/-?\d+(?:\.\d+)?/g) : null);
+  if (!list || list.length < n) return null;
+  const a = list.slice(0, n).map(Number);
+  return a.every(Number.isFinite) ? a : null;
+}
+
 export function areaOf(name) {
-  if (Array.isArray(name) && name.length === 4) {
-    const [x0, y0, x1, y1] = name.map(Number);
+  const n = numbersIn(name, 4);
+  if (n) {
+    const [x0, y0, x1, y1] = n;
     return [Math.min(x0, x1), Math.min(y0, y1), Math.max(x0, x1), Math.max(y0, y1)];
   }
   return AREAS[name] ? AREAS[name].slice() : null;
