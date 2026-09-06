@@ -1175,8 +1175,8 @@
        "do": "pitch.line",
        "at": 40,
        "label": {
-        "no": "Første spørsmål: hvor høyt?",
-        "en": "First question: how high?"
+        "no": "Hvor høyt?",
+        "en": "How high?"
        },
        "tone": "gold"
       }

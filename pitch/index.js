@@ -962,7 +962,11 @@ export function createPitch(host, opts = {}) {
     if (!text || alpha <= 0.05) return;
     ctx.save();
     ctx.globalAlpha = Math.min(1, alpha);
-    const px = Math.max(10, Math.round(parseFloat(token('--fs-3xs', '11px'))) || 11);
+    // One step up from --fs-3xs. This is the only text a viewer has to read
+    // inside the drawing rather than beside it, and at 11 px over turf it
+    // was a pill with something in it. Still below the caption, which is
+    // what keeps the hierarchy right.
+    const px = Math.max(12, Math.round(parseFloat(token('--fs-2xs', '13px'))) || 13);
     ctx.font = `600 ${px}px ${fontStack()}`;
     ctx.textAlign = align;
     ctx.textBaseline = 'middle';

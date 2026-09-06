@@ -169,7 +169,7 @@ Sier noen at italienerne er defensive av natur, har de sagt noe om seg selv og i
 ## Fem spørsmål på to minutter | Five questions in two minutes
 bed: bedOpen
 
-{pitch.show their-half} {pitch.team team shape=4-3-3 line=40 depth=32} {pitch.team opponent shape=4-4-2 line=12 depth=26 facing=down} {pitch.line 40 label=Første spørsmål: hvor høyt? | First question: how high? tone=gold} Slå på en hvilken som helst kamp, og du trenger to minutter.
+{pitch.show their-half} {pitch.team team shape=4-3-3 line=40 depth=32} {pitch.team opponent shape=4-4-2 line=12 depth=26 facing=down} {pitch.line 40 label=Hvor høyt? | How high? tone=gold} Slå på en hvilken som helst kamp, og du trenger to minutter.
 > Put on any match at all, and you need two minutes.
 Første spørsmål: hvor høyt står den bakerste linja når motstanderen har ballen?
 > First question: how high is the last line standing when the opposition have the ball?
