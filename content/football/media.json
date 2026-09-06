@@ -24,12 +24,12 @@
    "no": "Benken",
    "en": "The bench"
   },
-  "claims": "An empty dugout beside a pitch, in rain.",
-  "omits": "Not any particular ground. No badge, no sponsor, and nobody in the seats.",
+  "claims": "An empty technical area beside a floodlit pitch at night, with a match under way beyond it.",
+  "omits": "Not any particular ground or match. No badge, no sponsor, nobody in the seats and nobody identifiable in the crowd beyond.",
   "licence": "Apache-2.0",
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
-  "prompt": "an empty dugout beside a football pitch in heavy rain, moulded plastic seats streaked with water, a folded coat left on one of them, the pitch beyond out of focus, nobody sitting there"
+  "prompt": "an empty technical area beside a brightly floodlit football pitch at night during a match, a row of moulded seats in the dark foreground, a folded coat left on one of them, the green pitch glowing beyond and a blurred crowd behind it, nobody sitting in the seats, no faces recognisable, no badges"
  },
  "keeperhansker": {
   "kind": "made",
@@ -142,5 +142,21 @@
   "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
   "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
   "prompt": "close up of a modern professional football boot resting on a clean modern match ball, the ball perfectly spherical with smooth thermally bonded panels in white with a few crisp coloured graphic lines, no hand stitching and no old fashioned black hexagons, lying on lush freshly mown natural grass with mowing stripes, a crisp white painted line, soft overcast daylight, only the lower leg in a plain sock visible, no face, no logos, sharp focus on the ball, very high detail"
+ },
+ "kamp-natt": {
+  "kind": "made",
+  "file": "kamp-natt.jpg",
+  "fit": "cover",
+  "method": "flux2-klein-4b-Q8_0",
+  "title": {
+   "no": "Kamp om kvelden",
+   "en": "A match at night"
+  },
+  "claims": "A floodlit stadium at night with a full crowd and a match under way, seen from high in the stand.",
+  "omits": "Not a photograph of any particular ground, match or moment. Nobody is identifiable at this distance, and no club badge, sponsor or readable sign appears.",
+  "licence": "Apache-2.0",
+  "credit": "Generated with FLUX.2-klein-4B (Black Forest Labs), Apache 2.0, via stable-diffusion.cpp.",
+  "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "prompt": "a floodlit football stadium at night during a match, seen from high up in a packed stand, the near crowd a dense mass of indistinct dark silhouettes filling the lower third and going out of focus, the bright green pitch far below with a few tiny distant figures on it, floodlight glare, hoardings blank and unmarked, no faces recognisable at this distance, no team badges"
  }
 }

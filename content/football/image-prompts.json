@@ -5,6 +5,17 @@
 
   "//stil": "Dokumentarfoto i tilgjengelig lys, dempet farge, grunn dybdeskarphet. Samme grep som ølkurset: bildene skal se ut som noe noen har vært til stede og tatt, ikke som en illustrasjon.",
 
+  "kamp-natt": {
+    "prompt": "a floodlit football stadium at night during a match, seen from high up in a packed stand, the near crowd a dense mass of indistinct dark silhouettes filling the lower third and going out of focus, the bright green pitch far below with a few tiny distant figures on it, floodlight glare, hoardings blank and unmarked, no faces recognisable at this distance, no team badges",
+    "style": "documentary photograph, available light, muted colour, wide angle, shallow depth of field",
+    "aspect": "portrait",
+    "steps": 10,
+    "title": { "no": "Kamp om kvelden", "en": "A match at night" },
+    "claims": "A floodlit stadium at night with a full crowd and a match under way, seen from high in the stand.",
+    "omits": "Not a photograph of any particular ground, match or moment. Nobody is identifiable at this distance, and no club badge, sponsor or readable sign appears.",
+    "//prompt": "Kapitlet aapner paa 'det staar null-en, det er spilt sytti minutter'. Det laa et TOMT stadion under den setningen, og det ble lest med en gang: 'i starten er det et tomt stadion som ikke gir mening'. CLAUDE.md sin verste regresjon er nettopp dette - et bilde som ikke viser det setningen snakker om er verre enn ingen bilde. Det tomme stadionet er fortsatt riktig i SISTE beat, der kampen er over og det er en ettertanke."
+  },
+
   "tom-stadion-natt": {
     "prompt": "an empty football stadium at night seen from high in the empty stands, floodlights on, the pitch bright green and completely deserted, rows of empty plastic seats in the foreground going out of focus, no people anywhere, hoardings blank and unmarked, no team badges",
     "style": "documentary photograph, available light, muted colour, wide angle, shallow depth of field",
@@ -55,12 +66,14 @@
   },
 
   "benk-regn": {
-    "prompt": "an empty dugout beside a football pitch in heavy rain, moulded plastic seats streaked with water, a folded coat left on one of them, the pitch beyond out of focus, nobody sitting there",
+    "prompt": "an empty technical area beside a brightly floodlit football pitch at night during a match, a row of moulded seats in the dark foreground, a folded coat left on one of them, the green pitch glowing beyond and a blurred crowd behind it, nobody sitting in the seats, no faces recognisable, no badges",
     "style": "documentary photograph, available light, muted colour, shallow depth of field",
     "aspect": "portrait",
+    "steps": 10,
     "title": { "no": "Benken", "en": "The bench" },
-    "claims": "An empty dugout beside a pitch, in rain.",
-    "omits": "Not any particular ground. No badge, no sponsor, and nobody in the seats."
+    "claims": "An empty technical area beside a floodlit pitch at night, with a match under way beyond it.",
+    "omits": "Not any particular ground or match. No badge, no sponsor, nobody in the seats and nobody identifiable in the crowd beyond.",
+    "//prompt": "Var et TOMT skur i dagslys og oesregn, og laa rett etter aapningsbildet av en full kamp om kvelden. To bilder som ikke kan vaere samme kamp, i to paafoelgende beats. Naa er det samme kveld, samme lys, og benken er tom fordi treneren staar - ikke fordi det ikke er kamp."
   },
 
   "kritt-sidelinje": {

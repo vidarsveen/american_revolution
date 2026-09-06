@@ -46,10 +46,10 @@
       {
        "on": "start",
        "do": "plate.show",
-       "id": "tom-stadion-natt",
+       "id": "kamp-natt",
        "motion": "in",
        "over": 24,
-       "dim": 0.2,
+       "dim": 0.22,
        "push": 0.1,
        "into": 1.4
       }
@@ -1283,10 +1283,10 @@
       {
        "on": "start",
        "do": "plate.show",
-       "id": "analyserom",
+       "id": "kamp-natt",
        "motion": "right",
        "over": 22,
-       "dim": 0.2,
+       "dim": 0.22,
        "push": 0.12,
        "into": 1.4
       }

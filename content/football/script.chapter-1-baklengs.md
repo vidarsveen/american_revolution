@@ -34,6 +34,13 @@
 // forklares. Ingen definisjonslinjer.
 //
 // HVER SCENE SETTER OPP BANEN PÅ NYTT — en scenebytte tømmer stagen.
+//
+// BILDET MÅ VISE DET SETNINGEN SNAKKER OM. Aapningen laa foerst paa et TOMT
+// stadion under "det staar null-en, det er spilt sytti minutter", og ble lest
+// med en gang: "i starten er det et tomt stadion som ikke gir mening". Bildet
+// paastod at det ikke var kamp mens setningen sa at det var det. Det tomme
+// stadionet er flyttet til siste beat, der kampen er over og bildet er en
+// ettertanke, og benken er flyttet til samme kveld som aapningen.
 
 ---
 id: chapter-1-baklengs
@@ -50,7 +57,7 @@ figure.label: året keeperen ble en utespiller | the year the goalkeeper became 
 ## Sytti minutter | Seventy minutes
 bed: bedPatient
 
-{plate tom-stadion-natt motion=in over=24 dim=0.2 push=0.1 into=1.4} Det står null-én. Det er spilt sytti minutter.
+{plate kamp-natt motion=in over=24 dim=0.22 push=0.1 into=1.4} Det står null-én. Det er spilt sytti minutter.
 > It is nil-one. Seventy minutes have gone.
 Laget som ligger under har hatt ballen i {stat 61% label=ballinnehav, og ingenting å vise for det | possession, and nothing to show for it side=team} sekstién prosent av kampen og ikke kommet til noe.
 > The team behind have had the ball for {^} sixty-one per cent of the match and made nothing of it.
@@ -209,7 +216,7 @@ Et lag velger hvilken av dem det vil ha mest av, og betaler for den andre.
 ## Tilbake til sytti | Back to seventy minutes
 bed: bedPatient
 
-{plate analyserom motion=right over=22 dim=0.2 push=0.12 into=1.4} Tilbake til null-én, og de tjue minuttene.
+{plate kamp-natt motion=right over=22 dim=0.22 push=0.12 into=1.4} Tilbake til null-én, og de tjue minuttene.
 > Back to nil-one, and the twenty minutes.
 Det treneren gjorde først var ikke et bytte. Han flyttet forsvarslinja fem meter fram.
 > The first thing that manager did was not a substitution. He moved his defensive line five metres up.

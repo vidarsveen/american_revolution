@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vd802f68b1c';
+const VERSION = 'vb577c169d6';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -170,6 +170,7 @@ const PRECACHE = [
   './content/football/media.json',
   './content/football/media/analyserom.jpg',
   './content/football/media/benk-regn.jpg',
+  './content/football/media/kamp-natt.jpg',
   './content/football/media/keeperfot-ball.jpg',
   './content/football/media/keeperhansker.jpg',
   './content/football/media/kritt-sidelinje.jpg',
