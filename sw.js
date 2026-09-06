@@ -15,7 +15,7 @@
 /* BEGIN GENERATED — tools/build-sw.py */
 // Written by tools/build-sw.py from the files index.html actually reaches,
 // plus each pack's runtime data. Do not edit by hand — run the tool.
-const VERSION = 'vd8587147cf';
+const VERSION = 'vab834d6b69';
 const APP_CACHE = `fortell-app-${VERSION}`;
 const TILE_CACHE = `fortell-tiles-${VERSION}`;
 const TILE_LIMIT = 400;
@@ -172,13 +172,19 @@ const PRECACHE = [
   './content/football/chapter-4-relasjon.json',
   './content/football/chapter-5-blokka.json',
   './content/football/chapter-6-tre-revolusjoner.json',
+  './content/football/chapter-7-tre-ligaer.json',
+  './content/football/chapter-8-uka.json',
   './content/football/media.json',
   './content/football/media/analyserom.jpg',
   './content/football/media/arkiv-hylle.jpg',
   './content/football/media/ball-mellom-fotter.jpg',
   './content/football/media/benk-mange.jpg',
+  './content/football/media/benk-natt-to.jpg',
   './content/football/media/benk-regn.jpg',
+  './content/football/media/buss-natt.jpg',
+  './content/football/media/dommer-floyte.jpg',
   './content/football/media/dorlas.jpg',
+  './content/football/media/fjerdedommer.jpg',
   './content/football/media/flasker-bibs.jpg',
   './content/football/media/fullt-felt.jpg',
   './content/football/media/gps-vest.jpg',
@@ -187,6 +193,7 @@ const PRECACHE = [
   './content/football/media/kamp-natt.jpg',
   './content/football/media/keeperfot-ball.jpg',
   './content/football/media/keeperhansker.jpg',
+  './content/football/media/koffert-gate.jpg',
   './content/football/media/kritt-sidelinje.jpg',
   './content/football/media/krittavle-bokstaver.jpg',
   './content/football/media/kveld-park.jpg',
@@ -199,6 +206,7 @@ const PRECACHE = [
   './content/football/media/naere-sko.jpg',
   './content/football/media/notatbok-rutenett.jpg',
   './content/football/media/offsideflagg.jpg',
+  './content/football/media/permen.jpg',
   './content/football/media/regn-lys.jpg',
   './content/football/media/rondo-firkant.jpg',
   './content/football/media/rutenett-kjegler.jpg',
@@ -207,7 +215,9 @@ const PRECACHE = [
   './content/football/media/slitt-hjorne.jpg',
   './content/football/media/smaabane-natt.jpg',
   './content/football/media/smale-hus.jpg',
+  './content/football/media/sol-tribune.jpg',
   './content/football/media/sprint-gress.jpg',
+  './content/football/media/stue-natt.jpg',
   './content/football/media/taake-bane.jpg',
   './content/football/media/taktikktavle.jpg',
   './content/football/media/tavle-visket.jpg',
@@ -217,6 +227,8 @@ const PRECACHE = [
   './content/football/media/tomt-mal-natt.jpg',
   './content/football/media/traeningsbane-morgen.jpg',
   './content/football/media/trang-korridor.jpg',
+  './content/football/media/tre-skjermer.jpg',
+  './content/football/media/treningsfelt-morgen.jpg',
   './content/football/media/tribune-hoyt.jpg',
   './content/football/media/tunnel.jpg',
   './content/football/sound.json',
@@ -233,6 +245,8 @@ const PRECACHE = [
   './content/football/timing.chapter-5-blokka.no.json',
   './content/football/timing.chapter-6-tre-revolusjoner.en.json',
   './content/football/timing.chapter-6-tre-revolusjoner.no.json',
+  './content/football/timing.chapter-7-tre-ligaer.en.json',
+  './content/football/timing.chapter-7-tre-ligaer.no.json',
   './content/italy-wine/chapter-1-piemonte.json',
   './content/italy-wine/chapter-2-toscana.json',
   './content/italy-wine/geo/detail-toscana.json',
