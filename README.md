@@ -6,8 +6,12 @@ the **word** it belongs to. Norwegian and English, mobile first, no build step.
 
 Live: **https://vidarsveen.github.io/american_revolution/**
 
-Five courses run on it today: **Øl**, **Vin fra Italia**, **Den amerikanske
-revolusjonen**, **Kampen om Narvik** and **Romerriket**. The beer course is the one
+Six courses run on it today: **Moderne fotballtaktikk**, **Øl**, **Vin fra Italia**,
+**Den amerikanske revolusjonen**, **Kampen om Narvik** and **Romerriket**.
+
+The football course is the one that proves the framework is not about maps: it draws a
+pitch instead, in portrait, with twenty-two players that morph from one shape into
+another — and its eight chapters never open a map at all. The beer course is the one
 built almost entirely out of pictures — thirteen full-frame stills in ten minutes, and
 a map that stays empty until the last minute of the chapter, because until then there
 is no place worth pointing at.

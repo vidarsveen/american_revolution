@@ -955,16 +955,52 @@ of the surrounding file.
 
 ## In flight
 
-- **FOOTBALL is the course being planned, and the `pitch` surface is built.**
-  `content/football/outline.md` has eight chapters, all `planned: true`. The
-  question is *hvorfor står elleve spillere akkurat der de står?* and the
-  answer the whole course unpacks is that football is a fight for space. One
-  history chapter, three on the phases of a match, one comparing England,
-  Spain and Italy in nothing but the vocabulary of the first five, and two on
-  the manager. Zero kroner: the figures are drawn in code, and anything that
-  needs a picture is made locally in LM Studio.
+- **FOOTBALL IS FINISHED. All eight chapters ship, in both languages.**
+  *Moderne fotballtaktikk*, roughly fifty minutes, and it answers one question:
+  can you follow what a commentator says during a Premier League match? The
+  spine is that football is a fight for space, and every chapter is an argument
+  rather than a list of terms — the 1992 back-pass law and what it did to the
+  goalkeeper; the five seconds after a turnover; the grid and the half-space;
+  position against relation; the low block as arithmetic and not cowardice;
+  three revolutions (1925, 1953, 1974), two of them triggered by lawyers; three
+  leagues answering the same problem differently because their referees reward
+  different things; and the week nobody watches against the ninety minutes
+  nobody controls. Fifty-seven terms in the glossary.
 
-  **The pitch is the app's sixth surface and its third drawing module.** It
+  **Zero kroner.** Every picture is generated locally through
+  `tools/gen-image.py` (FLUX.2-klein-4B, Apache 2.0, on this machine's card);
+  the diagrams are drawn in code; the narration is the same `edge-tts` path as
+  every other course. No API key was used and nothing was bought.
+
+  **It is the course that proves the framework is not about maps.** It declares
+  `pitch, plate, overlays, chart, sound` and never loads `map/` at all.
+
+  Three things it taught that generalise, and all three cost real time:
+
+  - **Register is a property of the course, not of the house.** The first draft
+    was rejected as *"too banal and too childish"*, the second as *"a boring
+    list of terms"*, the third as *"thirty per cent where the other courses are
+    eighty"*. The fix was `# for whom` in every `outline.md`, `docs/dramaturgy.md`
+    for the craft, and `tools/check-rhythm.py` so the craft is measured rather
+    than remembered. The reader here has a university degree in something else:
+    get to the point, and never explain that a pitch is large.
+  - **Pitch coordinates are in the team's own frame and are NOT mirrored for a
+    side.** `pitch.team opponent line=16 facing=down` puts them at our y=89, but
+    an explicit `[x, y]` on a run, a pass or a focus area is taken literally.
+    So an arrow written from the opposition's point of view runs the wrong way
+    down the pitch, and a focus area meant for their build-up lights our own
+    penalty box. Four of them did, in two chapters, and every check passed.
+  - **Naming the object is not enough; you have to name what it is not, and
+    then look.** "A football" gave a rugby ball four times. "Football boots"
+    gave work boots three times. The cure that worked was not a better noun —
+    it was to stop needing the object: a bolted door says *catenaccio* better
+    than a museum case, and a row of narrow houses says "a small country with no
+    spare room" better than a ball. And the history chapter carries one extra
+    rule written at the top of its prose: **no generated historical
+    photographs.** A made picture that looks like a record of 1925 is a record
+    to whoever is watching it.
+
+- **The pitch is the app's sixth surface and its third drawing module.** It
   draws PORTRAIT — the team attacks up the screen — because a landscape pitch
   in a 390-wide stage is 253 px tall in a 734 px box, and because "the line
   steps up" then means up. Fourteen verbs, all prefixed `pitch.`.
